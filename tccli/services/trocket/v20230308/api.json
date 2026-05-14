@@ -84,6 +84,13 @@
       "output": "DescribeConsumerGroupResponse",
       "status": "online"
     },
+    "DescribeConsumerGroupList": {
+      "document": "Get the consumer group list. The Filter parameter usage instructions are as follows:\n\n-ConsumerGroupName, the consumer group name, supports fuzzy query and can be obtained from the [ConsumeGroupItem](https://www.tencentcloud.com/document/api/1493/96031?from_cn_redirect=1#ConsumeGroupItem) in the API response of [DescribeConsumerGroupList](https://www.tencentcloud.com/document/api/1493/101535?from_cn_redirect=1) or the console.\n-ConsumeMessageOrderly, shipping order, enumeration value as follows:\n-ordered delivery\n-Concurrent delivery: false.\n-RetryPolicy, retry policy, enumeration values as follows:\n-EXPONENTIAL: fixed interval\n-CUSTOMIZED: Tier backoff\n\nExample of Filters: \n[{ \"Name\": \"ConsumeMessageOrderly\", \"Values\": [\"true\"] }]\nThis API is applicable to 5.x clusters. For 4.x clusters, refer to the REST API documentation [DescribeRocketMQGroups](https://www.tencentcloud.com/document/api/1179/63420?from_cn_redirect=1) to get the consumer group list.",
+      "input": "DescribeConsumerGroupListRequest",
+      "name": "Query the consumer group list",
+      "output": "DescribeConsumerGroupListResponse",
+      "status": "online"
+    },
     "DescribeConsumerLag": {
       "document": "This API is used to query the number of heaped messages in a specified consumer group.",
       "input": "DescribeConsumerLagRequest",
@@ -404,6 +411,166 @@
         }
       ],
       "usage": "out"
+    },
+    "ConsumeGroupItem": {
+      "document": "Consumer group information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "rmq-72mo3a9o",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Consumer group name",
+          "example": "group1",
+          "member": "string",
+          "name": "ConsumerGroup",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Enable consumption",
+          "example": "true",
+          "member": "bool",
+          "name": "ConsumeEnable",
+          "output_required": true,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Ordered delivery: true\nConcurrent delivery: false.",
+          "example": "true",
+          "member": "bool",
+          "name": "ConsumeMessageOrderly",
+          "output_required": true,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum number of retries",
+          "example": "3",
+          "member": "int64",
+          "name": "MaxRetryTimes",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remarks",
+          "example": "remark1",
+          "member": "string",
+          "name": "Remark",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ID of a 4.x cluster.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cluster1",
+          "member": "string",
+          "name": "ClusterIdV4",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Namespace of a 4.x cluster.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "namespace",
+          "member": "string",
+          "name": "NamespaceV4",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Consumer group name of a 4.x cluster.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "group1",
+          "member": "string",
+          "name": "ConsumerGroupV4",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Complete namespace of a 4.x cluster.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "namespace",
+          "member": "string",
+          "name": "FullNamespaceV4",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of subscribed topics.",
+          "example": "10",
+          "member": "int64",
+          "name": "SubscribeTopicNum",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1753153590",
+          "member": "int64",
+          "name": "CreateTime",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "List of bound tags",
+          "example": "无",
+          "member": "Tag",
+          "name": "TagList",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Retry policy",
+          "example": "无",
+          "member": "RetryPolicy",
+          "name": "RetryPolicy",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "ConsumerClient": {
       "document": "Consumer client",
@@ -1162,6 +1329,116 @@
           "output_required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeConsumerGroupListRequest": {
+      "document": "DescribeConsumerGroupList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "TDMQ RocketMQ instance ID. It can be obtained from the API [DescribeFusionInstanceList](https://www.tencentcloud.com/document/api/1493/106745?from_cn_redirect=1) or the console.",
+          "example": "rmq-72mo3a9o",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tag filter",
+          "example": "无",
+          "member": "TagFilter",
+          "name": "TagFilters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Filtering condition list. See the description of the API using this parameter for the usage method.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Starting position of the query. Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Maximum number of queried results. Default value: 20.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Queries consumer groups under a specified topic.",
+          "example": "test_topic",
+          "member": "string",
+          "name": "FromTopic",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sort by specified field, with the enumerated values as follows:\n-subscribeNum: Number of topics subscribed",
+          "example": "subscribeNum",
+          "member": "string",
+          "name": "SortedBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sort in ascending or descending order, with the enumerated values as follows:\n\n-asc: Ascending\n- DESC: descending order.",
+          "example": "asc",
+          "member": "string",
+          "name": "SortOrder",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeConsumerGroupListResponse": {
+      "document": "DescribeConsumerGroupList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total query count",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Consumer group list",
+          "example": "无",
+          "member": "ConsumeGroupItem",
+          "name": "Data",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -5205,6 +5482,34 @@
         }
       ],
       "type": "object"
+    },
+    "RetryPolicy": {
+      "document": "retry policy",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Retry policy type. The enumeration values are as follows:\n\n-EXPONENTIAL: Fixed interval\n-CUSTOMIZED: Tier backoff",
+          "example": "EXPONENTIAL",
+          "member": "string",
+          "name": "PolicyType",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Fixed retry interval. This parameter takes effect when a fixed interval-based retry policy is configured.",
+          "example": "180",
+          "member": "int64",
+          "name": "RetryInterval",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "RoleItem": {
       "document": "Role information.",

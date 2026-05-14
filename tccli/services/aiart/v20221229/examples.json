@@ -1,10 +1,18 @@
 {
   "actions": {
+    "ChangeClothes": [
+      {
+        "document": "This example shows you how to call this API.",
+        "input": "POST / HTTP/1.1\nHost: aiart.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ChangeClothes\n<Common request parameters>\n\n{\n    \"ModelUrl\": \"https://xxx.com/test.jpg\",\n    \"ClothesUrl\": \"https://xxx.com/test.jpg\",\n    \"ClothesType\": \"Upper-body\",\n    \"RspImgType\": \"url\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"0d0728ed-f777-4861-aa4b-5a6167daa0b6\",\n        \"ResultImage\": \"https://result.jpg\"\n    }\n}",
+        "title": "Calling the API successfully"
+      }
+    ],
     "ImageToImage": [
       {
         "document": "This example shows you how to call this API.",
         "input": "POST / HTTP/1.1\nHost: aiart.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ImageToImage\n<Common request parameters>\n\n\n\n{\n    \"InputImage\": \"/asoaisjdio\",\n    \"Prompt\": \"Girl\",\n    \"Styles\": [\n        \"201\"\n    ],\n    \"ResultConfig\": {\n        \"Resolution\": \"768:768\"\n    },\n    \"Strength\": 0.5\n}",
-        "output": "{\n    \"Response\": {\n        \"ResultImage\": \"/asjdioajsoi\",\n        \"RequestId\": \"301bfc25-61ca-4ece-b03e-f6aefb547969\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"ResultImage\": \"https://aiart-xxx.cos.ap-guangzhou.myqcloud.com/xxx.jpg?q-sign-algorithm=sha1&q-ak=xxxxx&q-sign-time=1731574045;1731577645&q-key-time=1731574045;1731577645&q-header-list=host&q-url-param-list=&q-signature=31fe75c1c18c3d91db59508961209dd37aaf41c7\",\n        \"RequestId\": \"301bfc25-61ca-4ece-b03e-f6aefb547969\"\n    }\n}",
         "title": "Calling the API"
       }
     ]

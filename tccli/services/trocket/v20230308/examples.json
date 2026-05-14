@@ -96,6 +96,14 @@
         "title": "Query consumer group details."
       }
     ],
+    "DescribeConsumerGroupList": [
+      {
+        "document": "This API is used to obtain the consumer group list.",
+        "input": "POST / HTTP/1.1\nHost: trocket.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeConsumerGroupList\n<Common request parameters>\n\n{\n    \"InstanceId\": \"rmq-72mo3a9o\",\n    \"Offset\": 0,\n    \"Limit\": 1\n}",
+        "output": "{\n    \"Error\": null,\n    \"RequestId\": null,\n    \"Response\": {\n        \"Data\": [\n            {\n                \"ConsumeEnable\": true,\n                \"ConsumeMessageOrderly\": true,\n                \"ConsumerGroup\": \"test_group\",\n                \"InstanceId\": \"rmq-72mo3a9o\",\n                \"MaxRetryTimes\": 16,\n                \"Remark\": \"Test consumption group\",\n                \"ClusterIdV4\": null,\n                \"NamespaceV4\": null,\n                \"ConsumerGroupV4\": null,\n                \"FullNamespaceV4\": null\n            }\n        ],\n        \"RequestId\": \"318142bf-0dd1-4b81-9444-a40f988619a1\",\n        \"TotalCount\": 1\n    }\n}",
+        "title": "This API is used to obtain the consumer group list."
+      }
+    ],
     "DescribeConsumerLag": [
       {
         "document": "Query the accumulation of successes for the designated client",

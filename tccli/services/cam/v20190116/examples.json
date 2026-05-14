@@ -2,7 +2,7 @@
   "actions": {
     "AddUser": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddUser\n<Common request parameters>\n\n{\n    \"Remark\": \"test\",\n    \"Name\": \"test124\",\n    \"CountryCode\": \"86\",\n    \"NeedResetPassword\": \"0\",\n    \"PhoneNum\": \"10086\",\n    \"UseApi\": \"1\",\n    \"ConsoleLogin\": \"1\",\n    \"Password\": \"test123456\",\n    \"Email\": \"123%40qq.com\"\n}",
         "output": "{\n    \"Response\": {\n        \"Uid\": 5648765,\n        \"Uin\": 100000546533,\n        \"Name\": \"test124\",\n        \"Password\": \"test123456\",\n        \"SecretId\": \"faweffewagwaegawe\",\n        \"SecretKey\": \"fawef23rjhiuaefhuaifhiuawef\",\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
         "title": "Adding a sub-user"
@@ -10,7 +10,7 @@
     ],
     "AddUserToGroup": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddUserToGroup\n<Common request parameters>\n\n{\n    \"Info\": [\n        {\n            \"Uid\": \"1001408\",\n            \"GroupId\": \"2020\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"47c4a570-17fa-44a3-8ff6-fe006170c104\"\n    }\n}",
         "title": "Adding a user to a user group"
@@ -26,7 +26,7 @@
     ],
     "AttachRolePolicy": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cam.tencentcloudapi.com/?Action=AttachRolePolicy\n&PolicyId=1\n&AttachRoleId=4611686018427397905\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"0b55ef5b-36b1-4649-8bb9-1aca465f17fb\"\n    }\n}",
         "title": "Associating a permissions policy with a role"
@@ -42,7 +42,7 @@
     ],
     "ConsumeCustomMFAToken": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cam.tencentcloudapi.com/?Action=ConsumeCustomMFAToken\r\n&MFAToken=abc123\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"f8914327-5a9f-4016-8b2e-00f8b8901121\"\n    }\n}",
         "title": "Verifying custom multi-factor token"
@@ -50,7 +50,7 @@
     ],
     "CreateAccessKey": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cam.tencentcloudapi.com/?Action=CreateAccessKey\n&TargetUin=123456\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"AccessKey\": {\n            \"AccessKeyId\": \"AKID8GFED7s****QrFXkmb\",\n            \"SecretAccessKey\": \"iDVjy****tNzX\",\n            \"Status\": \"Active\",\n            \"CreateTime\": \"2020-03-03 18:00:26\"\n        },\n        \"RequestId\": \"f8423e9b-a7da-488d-9539-333f1955ca78\"\n    }\n}",
         "title": "Creating an access key"
@@ -58,7 +58,7 @@
     ],
     "CreateGroup": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateGroup\n<Common request parameters>\n\n{\n    \"GroupName\": \"test1\",\n    \"Remark\": \"test2\"\n}",
         "output": "{\n    \"Response\": {\n        \"GroupId\": 2020,\n        \"RequestId\": \"f36a5d34-0d51-4b91-b9fc-af5d02571656\"\n    }\n}",
         "title": "Creating a user group"
@@ -66,7 +66,7 @@
     ],
     "CreateOIDCConfig": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateOIDCConfig\n<Common request parameters>\n\n{\n    \"IdentityKey\": \"ewogICAgImtleXMiOiBbCiAgIC***************V9jenYyT0kiCiAgICAgICAgfQogICAgXQp9\",\n    \"IdentityUrl\": \"https://*******.qq.cn/\",\n    \"Name\": \"oidc\",\n    \"ClientId\": [\n        \"61adcf00******ddbc9546\"\n    ],\n    \"Description\": \"Desc\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"0d8de866-7385-4230-8f28-060a92d723ee\"\n    }\n}",
         "title": "Adding role OIDC configurations"
@@ -90,15 +90,15 @@
     ],
     "CreateRole": [
       {
-        "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=CreateRole\n&RoleName=test_1234544\n&PolicyDocument=%7B%22version%22%3A%222.0%22%2C%22statement%22%3A%5B%7B%22action%22%3A%22name%2Fsts%3AAssumeRole%22%2C%22effect%22%3A%22allow%22%2C%22principal%22%3A%7B%22service%22%3A%5B%22cloudaudit.cloud.tencent.com%22%2C%22cls.cloud.tencent.com%22%5D%7D%7D%5D%7D\n&Description=abc\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RoleId\": 123456789,\n        \"RequestId\": \"0bac591a-6cc7-4e9d-8d01-74618f1a9611\"\n    }\n}",
-        "title": "Creating a role"
+        "document": " The following example creates a role based on Log Service and Operation Audit.",
+        "input": "https://cam.tencentcloudapi.com/?Action=CreateRole\n&RoleName=test_1234544\n&PolicyDocument=%7B%22version%22%3A%222.0%22%2C%22statement%22%3A%5B%7B%22action%22%3A%22name%2Fsts%3AAssumeRole%22%2C%22effect%22%3A%22allow%22%2C%22principal%22%3A%7B%22service%22%3A%5B%22cloudaudit.cloud.tencent.com%22%2C%22cls.cloud.tencent.com%22%5D%7D%7D%5D%7D\n&Description=adminRole remark\n&<Common Parameter>",
+        "output": "{\n    \"Response\": {\n        \"RoleId\": \"123456789000\",\n        \"RequestId\": \"0bac591a-6cc7-4e9d-8d01-74618f1a9611\"\n    }\n}",
+        "title": "Create a role"
       }
     ],
     "CreateSAMLProvider": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cam.tencentcloudapi.com/?Action=CreateSAMLProvider\n&Name=testName\n&Description=testProvider\n&SAMLMetadataDocument=PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48bWQ6RW50aXR5RGVzY3JpcHRvciBlbnRpdHlJRD0iaHR0cDovL3d3dy5va3RhLmNvbS9leGsxa3F4bWNqUW1HQURNeTM1NyIgeG1sbnM6bWQ9InVybjpvYXNpczpuYW1lczp0YzpTQU1MOjIuMDptZXRhZGF0YSI%2BPG1kOklEUFNTT0Rlc2NyaXB0b3IgV2FudEF1dGhuUmVxdWVzdHNTaWduZWQ9ImZhbHNlIiBwcm90b2NvbFN1cHBvcnRFbnVtZXJhdGlvbj0idXJuOm9hc2lzOm5hbWVzOnRjOlNBTUw6Mi4wOnB%3D%3D\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"ProviderArn\": \"testProviderArn\",\n        \"RequestId\": \"2a44e8e5-7438-4aa0-8bd2-584dde56caab\"\n    }\n}",
         "title": "Creating an identity provider"
@@ -106,7 +106,7 @@
     ],
     "CreateServiceLinkedRole": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cam.tencentcloudapi.com/?Action=CreateServiceLinkedRole\n&QCSServiceName.0=ccs.qcloud.com\n&CustomSuffix=forTest\n&Description=ccsLinkedRole\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RoleId\": \"4611686018427411525\",\n        \"RequestId\": \"c3da1c1c-df35-467d-9335-99c68d993e0a\"\n    }\n}",
         "title": "Creating a service-related role"
@@ -114,7 +114,7 @@
     ],
     "CreateUserOIDCConfig": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateUserOIDCConfig\n<Common request parameters>\n\n{\n    \"ResponseType\": \"id_token\",\n    \"IdentityUrl\": \"https://tencent.auth***.cn/\",\n    \"ResponseMode\": \"form_post\",\n    \"Description\": \"Test\",\n    \"IdentityKey\": \"ewogICAgImtleXMiOiBbCi******\",\n    \"ClientId\": \"61adcf00620c31e3***\",\n    \"MappingFiled\": \"sub\",\n    \"AuthorizationEndpoint\": \"https://tencent.auth**.cn\",\n    \"Scope\": [\n        \"openidScope.1\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"8a70d447-3c04-43c0-94ca-db899d4d05ac\"\n    }\n}",
         "title": "Adding user OIDC configuration"
@@ -122,7 +122,7 @@
     ],
     "CreateUserSAMLConfig": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateUserSAMLConfig\n<Common request parameters>\n\n{\n    \"SAMLMetadataDocument\": \"metadataDocumentDemo\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Creating user SAML configurations"
@@ -130,7 +130,7 @@
     ],
     "DeleteAccessKey": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteAccessKey\n<Common request parameters>\n\n{\n    \"TargetUin\": \"123456\",\n    \"AccessKeyId\": \"AKIDtm****lqorp\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"99d650e2-10fa-4c8f-819f-874578039641\"\n    }\n}",
         "title": "Deleting an access key"
@@ -138,7 +138,7 @@
     ],
     "DeleteGroup": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteGroup\n<Common request parameters>\n\n{\n    \"GroupId\": \"2020\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1fadd33e-6f57-4404-a912-bc00680b89d2\"\n    }\n}",
         "title": "Deleting a user group"
@@ -146,7 +146,7 @@
     ],
     "DeleteOIDCConfig": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteOIDCConfig\n<Common request parameters>\n\n{\n    \"Name\": \"Name\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"7ed37b07-25aa-4861-b141-9b614d82bf69\"\n    }\n}",
         "title": "Deleting role OIDC configurations"
@@ -170,7 +170,7 @@
     ],
     "DeleteRole": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteRole\n<Common request parameters>\n\n{\n    \"RoleId\": \"4611686018427844696\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"dc9759b5-5345-490e-b276-a3a0dd45004c\"\n    }\n}",
         "title": "Deleting a role"
@@ -178,7 +178,7 @@
     ],
     "DeleteRolePermissionsBoundary": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cam.tencentcloudapi.com/?Action=DeleteRolePermissionsBoundary\n&RoleId=1234567\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4097a057-19c9-45bd-ad12-b4225a75c085\"\n    }\n}",
         "title": "Deleting a role permissions boundary"
@@ -194,7 +194,7 @@
     ],
     "DeleteServiceLinkedRole": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cam.tencentcloudapi.com/?Action=DeleteServiceLinkedRole\n&RoleName=Qcs_Role\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"DeletionTaskId\": \"100\",\n        \"RequestId\": \"c3da1c1c-df35-467d-9335-99c68d993e0a\"\n    }\n}",
         "title": "Deleting service role"
@@ -210,7 +210,7 @@
     ],
     "DeleteUserPermissionsBoundary": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteUserPermissionsBoundary\n<Common request parameters>\n\n{\n    \"TargetUin\": \"1234567\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4097a057-19c9-45bd-ad12-b4225a75c085\"\n    }\n}",
         "title": "Deleting a user permissions boundary"
@@ -218,7 +218,7 @@
     ],
     "DescribeOIDCConfig": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOIDCConfig\n<Common request parameters>\n\n{\n    \"Name\": \"Name\"\n}",
         "output": "{\n    \"Response\": {\n        \"Description\": \"Desc\",\n        \"ProviderType\": 11,\n        \"IdentityUrl\": \"https://*****.qq.cn/\",\n        \"IdentityKey\": \"ewogICAgImtleXMiOiBbCiAgICAg********jenYyT0kiCiAgICAgICAgfQogICAgXQp9\",\n        \"ClientId\": [\n            \"61adcf0******bc9546\"\n        ],\n        \"Name\": \"Name\",\n        \"Status\": 11,\n        \"RequestId\": \"24366174-63dd-42ba-8073-bd6b0af0f241\"\n    }\n}",
         "title": "Getting role OIDC configurations"
@@ -226,7 +226,7 @@
     ],
     "DescribeRoleList": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRoleList\n<Common request parameters>\n\n{\n    \"Rp\": \"5\",\n    \"Page\": \"1\"\n}",
         "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"AddTime\": \"2020-11-28 10:05:52\",\n                \"ConsoleLogin\": 0,\n                \"DeletionTaskId\": null,\n                \"Description\": \"The current role is the TencentCloud Automation Tools (TAT) service-linked role, and it will access your other Tencent Cloud resources within the permissions granted by the associated policies.\",\n                \"PolicyDocument\": \"{\\\"version\\\":\\\"2.0\\\",\\\"statement\\\":[{\\\"action\\\":\\\"sts:AssumeRole\\\",\\\"effect\\\":\\\"allow\\\",\\\"principal\\\":{\\\"service\\\":[\\\"command.tat.cloud.tencent.com\\\"]}}]}\",\n                \"RoleId\": \"4611686018433460000\",\n                \"RoleName\": \"TAT_QCSLinkedRoleInCommand\",\n                \"RoleType\": \"service_linked\",\n                \"SessionDuration\": 43200,\n                \"Tags\": [],\n                \"UpdateTime\": \"2020-11-28 10:05:52\"\n            },\n            {\n                \"AddTime\": \"2020-06-28 12:07:06\",\n                \"ConsoleLogin\": 0,\n                \"DeletionTaskId\": null,\n                \"Description\": \"The current role is the CVM service-linked role, and it will access your other Tencent Cloud resources within the permissions granted by the associated policies.\",\n                \"PolicyDocument\": \"{\\\"version\\\":\\\"2.0\\\",\\\"statement\\\":[{\\\"action\\\":\\\"sts:AssumeRole\\\",\\\"effect\\\":\\\"allow\\\",\\\"principal\\\":{\\\"service\\\":[\\\"cvmsmartdiagnostic.cvm.cloud.tencent.com\\\"]}}]}\",\n                \"RoleId\": \"4611686018432380000\",\n                \"RoleName\": \"CVM_QCSLinkedRoleInCVMSmartDiagnostic\",\n                \"RoleType\": \"service_linked\",\n                \"SessionDuration\": 43200,\n                \"Tags\": [\n                    {\n                        \"Key\": \"K1\",\n                        \"Value\": \"V7\"\n                    }\n                ],\n                \"UpdateTime\": \"2020-06-28 12:07:06\"\n            }\n        ],\n        \"RequestId\": \"36d78422-f6ce-4edb-a5a0-a217b366aa70\",\n        \"TotalNum\": 2\n    }\n}",
         "title": "Getting the role list"
@@ -242,7 +242,7 @@
     ],
     "DescribeSafeAuthFlagIntl": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cam.tencentcloudapi.com/?Action=DescribeSafeAuthFlagIntl\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"LoginFlag\": {\n            \"Phone\": 1,\n            \"Token\": 0,\n            \"Stoken\": 0,\n            \"Wechat\": 0,\n            \"Custom\": 0\n            \"Mail\": 0\n        },\n        \"ActionFlag\": {\n            \"Phone\": 0,\n            \"Token\": 0,\n            \"Stoken\": 0,\n            \"Wechat\": 0,\n            \"Custom\": 0\n            \"Mail\": 0\n        },\n        \"OffsiteFlag\": {\n            \"VerifyFlag\": 0,\n            \"NotifyPhone\": 1,\n            \"NotifyEmail\": 1,\n            \"NotifyWechat\": 1,\n            \"Tips\": 0\n        },\n        \"RequestId\": \"9626da03-4645-4c54-ba90-74836284af0c\"\n    }\n}",
         "title": "Querying security settings"
@@ -250,7 +250,7 @@
     ],
     "DescribeSubAccounts": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSubAccounts\n<Common request parameters>\n\n{\n    \"FilterSubAccountUin\": [\n        \"200000548558\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"SubAccounts\": [\n            {\n                \"Remark\": \"xx\",\n                \"Uid\": 1,\n                \"Uin\": 1,\n                \"UserType\": 1,\n                \"CreateTime\": \"2020-09-22 00:00:00\",\n                \"Name\": \"xx\"\n            },\n            {\n                \"Remark\": \"xx\",\n                \"Name\": \"xx\",\n                \"Uin\": 1,\n                \"UserType\": 1,\n                \"CreateTime\": \"2020-09-22 00:00:00\",\n                \"Uid\": 1\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Querying sub-users through sub-user UIN list"
@@ -258,7 +258,7 @@
     ],
     "DescribeUserOIDCConfig": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeUserOIDCConfig\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"Description\": \"Description\",\n        \"ProviderType\": 12,\n        \"IdentityUrl\": \"https://tencent.auth**.cn/\",\n        \"IdentityKey\": \"ewogICAgImtleXMiOiBbC****\",\n        \"ClientId\": \"61adcf00620c31e3d***\",\n        \"AuthorizationEndpoint\": \"https://tencent.auth**.cn\",\n        \"Scope\": [\n            \"openid\",\n            \"email\"\n        ],\n        \"ResponseType\": \"id_token\",\n        \"ResponseMode\": \"form_post\",\n        \"MappingFiled\": \"sub\",\n        \"Status\": 11,\n        \"RequestId\": \"e00eaca1-57b4-49e7-978d-648c5f1b9bd3\"\n    }\n}",
         "title": "Getting user OIDC configuration"
@@ -266,7 +266,7 @@
     ],
     "DescribeUserSAMLConfig": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeUserSAMLConfig\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"SAMLMetadata\": \"\",\n        \"Status\": 0,\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Querying user SAML configurations"
@@ -282,7 +282,7 @@
     ],
     "DetachRolePolicy": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DetachRolePolicy\n<Common request parameters>\n\n{\n    \"PolicyId\": \"1\",\n    \"DetachRoleId\": \"4611686018427397905\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"62c57079-8c81-469a-9112-9c5f2025b0b0\"\n    }\n}",
         "title": "Disassociating a policy from a role"
@@ -298,7 +298,7 @@
     ],
     "DisableUserSSO": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DisableUserSSO\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"60debf2c-1bba-4cd9-bc6a-53a23b863c08\"\n    }\n}",
         "title": "Disabling user SSO"
@@ -306,7 +306,7 @@
     ],
     "GetAccountSummary": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cam.tencentcloudapi.com/?Action=GetAccountSummary\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"User\": 1,\n        \"Group\": 1,\n        \"Member\": 1,\n        \"Policies\": 1,\n        \"Roles\": 1,\n        \"Idps\": 1,\n        \"RequestId\": \"e2ad0281-794d-4ff1-a840-794bca5da890\"\n    }\n}",
         "title": "Querying account summary"
@@ -314,7 +314,7 @@
     ],
     "GetCustomMFATokenInfo": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cam.tencentcloudapi.com/?Action=GetCustomMFATokenInfo\r\n&MFAToken=abc123\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Uin\": 12345678,\n        \"RequestId\": \"f8914327-5a9f-4016-8b2e-00f8b8901121\"\n    }\n}",
         "title": "Getting information associated with custom multi-factor token"
@@ -322,7 +322,7 @@
     ],
     "GetGroup": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cam.tencentcloudapi.com/?Action=GetGroup\r\n&GroupId=2020\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"GroupId\": 2020,\n        \"GroupName\": \"test1\",\n        \"GroupNum\": 1,\n        \"Remark\": \"test2\",\n        \"CreateTime\": \"2019-04-03 15:11:34\",\n        \"UserInfo\": [\n            {\n                \"Uid\": 1001408,\n                \"Uin\": 100000545998,\n                \"Name\": \"testName\",\n                \"PhoneNum\": \"\",\n                \"CountryCode\": \"86\",\n                \"PhoneFlag\": 0,\n                \"Email\": \"\",\n                \"EmailFlag\": 0,\n                \"UserType\": 3,\n                \"CreateTime\": \"2018-04-24 15:36:26\",\n                \"IsReceiverOwner\": 0\n            }\n        ],\n        \"RequestId\": \"4a00d281-862a-4699-9d71-387d9fc2c36a\"\n    }\n}",
         "title": "Querying user group details"
@@ -331,9 +331,9 @@
     "GetPolicy": [
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=GetPolicy\r\n&PolicyId=17698703\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"PolicyDocument\": \"{\\\"version\\\":\\\"2.0\\\",\\\"statement\\\":[{\\\"effect\\\":\\\"allow\\\",\\\"action\\\":[\\\"name\\\\/cos:*\\\"],\\\"resource\\\":[\\\"*\\\"]}]}\",\n        \"UpdateTime\": \"2019-04-29 21:28:32\",\n        \"AddTime\": \"2019-04-29 21:18:40\",\n        \"PolicyName\": \"test-2019-04-29\",\n        \"Description\": \"Test policy\",\n        \"Type\": 1,\n        \"RequestId\": \"845b309d-e531-402d-a4f6-ec124f06738b\",\n        \"PresetAlias\": \"Remarks\",\n        \"IsServiceLinkedRolePolicy\": 0\n    }\n}",
-        "title": "Querying policy details"
+        "input": "https://cam.tencentcloudapi.com/?Action=GetPolicy\n&PolicyId=17698703\n&<Common Request Parameter>",
+        "output": "{\n    \"Response\": {\n        \"PolicyDocument\": \"{\\\"version\\\":\\\"2.0\\\",\\\"statement\\\":[{\\\"effect\\\":\\\"allow\\\",\\\"action\\\":[\\\"name/cos:*\\\"],\\\"resource\\\":[\\\"*\\\"]}]}\",\n        \"UpdateTime\": \"2019-04-29 21:28:32\",\n        \"AddTime\": \"2019-04-29 21:18:40\",\n        \"PolicyName\": \"test-2019-04-29\",\n        \"Description\": \"Test Policy\",\n        \"Type\": 1,\n        \"RequestId\": \"845b309d-e531-402d-a4f6-ec124f06738b\",\n        \"PresetAlias\": \"Remarks\",\n        \"IsServiceLinkedRolePolicy\": 0,\n        \"Tags\": [\n            {\n                \"Key\": \"region\",\n                \"Value\": \"ap-guangzhou\"\n            }\n        ]\n    }\n}",
+        "title": "View Policy Details"
       }
     ],
     "GetPolicyVersion": [
@@ -368,7 +368,7 @@
     ],
     "GetSecurityLastUsed": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetSecurityLastUsed\n<Common request parameters>\n\n{\n    \"SecretIdList\": [\n        \"***\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"SecretIdLastUsedRows\": [\n            {\n                \"SecretId\": \"***\",\n                \"LastUsedDate\": \"2022-12-19\",\n                \"LastSecretUsedDate\": 1671681023555\n            }\n        ],\n        \"RequestId\": \"b790d4ca-5692-42ae-8a8c-d15c6ed976db\"\n    }\n}",
         "title": "Querying the last time when the key was accessed"
@@ -376,7 +376,7 @@
     ],
     "GetServiceLinkedRoleDeletionStatus": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cam.tencentcloudapi.com/?Action=GetServiceLinkedRoleDeletionStatus\r\n&DeletionTaskId=100\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Status\": \"SUCCEEDED\",\n        \"ServiceType\": \"cam\",\n        \"ServiceName\": \"CAM\",\n        \"Reason\": \"{}\",\n        \"RequestId\": \"c3da1c1c-df35-467d-9335-99c68d993e0a\"\n    }\n}",
         "title": "Getting the deletion status of service role"
@@ -392,7 +392,7 @@
     ],
     "GetUserAppId": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cam.tencentcloudapi.com/?Action=GetUserAppId\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Uin\": \"12345678\",\n        \"OwnerUin\": \"12345678\",\n        \"AppId\": 1250000000,\n        \"RequestId\": \"6fd84cee-0df1-4003-88c9-029acc082ad1\"\n    }\n}",
         "title": "Getting the user AppId"
@@ -400,7 +400,7 @@
     ],
     "ListAccessKeys": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cam.tencentcloudapi.com/?Action=ListAccessKeys\n&TargetUin=123456\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"AccessKeys\": [\n            {\n                \"AccessKeyId\": \"AKIDlOp****mQsJQWEaYK\",\n                \"Status\": \"Active\",\n                \"CreateTime\": \"2019-12-25 14:53:03\"\n            },\n            {\n                \"AccessKeyId\": \"A2342hOv****QOHySnzb5P7dv8\",\n                \"Status\": \"Active\",\n                \"CreateTime\": \"2020-03-03 16:51:21\"\n            }\n        ],\n        \"RequestId\": \"bbc4c6b1-ee32-416a-9135-68de318c54f2\"\n    }\n}",
         "title": "Listing access keys"
@@ -416,7 +416,7 @@
     ],
     "ListAttachedRolePolicies": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cam.tencentcloudapi.com/?Action=ListAttachedRolePolicies\n&RoleId=4611686018427397905\n&Page=1\n&Rp=10\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"PolicyName\": \"QcloudAccessForASRole\",\n                \"Description\": \"xx\",\n                \"CreateMode\": 1,\n                \"Deactived\": 1,\n                \"AddTime\": \"2019-07-10 11:17:41\",\n                \"PolicyType\": \"QCS\",\n                \"PolicyId\": 13847366,\n                \"DeactivedDetail\": [\n                    \"xx\"\n                ]\n            }\n        ],\n        \"RequestId\": \"60dc7f3f-5d8b-45e9-b703-5feefac9960c\",\n        \"TotalNum\": 1\n    }\n}",
         "title": "Getting the list of policies associated with a role"
@@ -424,7 +424,7 @@
     ],
     "ListAttachedUserAllPolicies": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cam.tencentcloudapi.com/?Action=ListAttachedUserAllPolicies\n&Rp=1\n&Page=10\n&AttachType=1\n&TargetUin=1234565\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalNum\": 11,\n        \"PolicyList\": [\n            {\n                \"PolicyId\": \"522474\",\n                \"PolicyName\": \"policygen-20191204195412\",\n                \"Description\": \"\",\n                \"AddTime\": \"2019-12-04 19:56:35\",\n                \"StrategyType\": \"1\",\n                \"CreateMode\": \"3\",\n                \"Deactived\": 1,\n                \"Groups\": [],\n                \"DeactivedDetail\": [\n                    \"xx\"\n                ]\n            }\n        ],\n        \"RequestId\": \"d369dabb-ebc9-4598-baae-e1177e9e3868\"\n    }\n}",
         "title": "Listing policies associated with the user (including those inherited from the user group)"
@@ -440,7 +440,7 @@
     ],
     "ListCollaborators": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cam.tencentcloudapi.com/?Action=ListCollaborators\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalNum\": 1,\n        \"Data\": [\n            {\n                \"Uin\": 10000000001,\n                \"Name\": \"test\",\n                \"Uid\": 1000001,\n                \"Remark\": \"\",\n                \"ConsoleLogin\": 0,\n                \"PhoneNum\": \"16166666661\",\n                \"CountryCode\": \"86\",\n                \"Email\": \" \",\n                \"CreateTime\": \"2021-11-11 19:38:01\"\n            }\n        ],\n        \"RequestId\": \"93ea219e-7dbe-4b76-ad63-baef14b31a3a\"\n    }\n}",
         "title": "Getting the collaborator list"
@@ -448,7 +448,7 @@
     ],
     "ListEntitiesForPolicy": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cam.tencentcloudapi.com/?Action=ListEntitiesForPolicy\n&PolicyId=524497\n&Page=1\n&Rp=10\n&EntityFilter=All\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"Id\": \"1133398\",\n                \"RelatedType\": 1,\n                \"Uin\": 3449203261,\n                \"AttachmentTime\": \"2021-11-11 19:38:01\",\n                \"Name\": \"test1\"\n            }\n        ],\n        \"TotalNum\": 1,\n        \"RequestId\": \"836d7034-9854-44f0-9d4a-ee57842f8644\"\n    }\n}",
         "title": "Querying the list of entities associated with a policy"
@@ -456,7 +456,7 @@
     ],
     "ListGroups": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cam.tencentcloudapi.com/?Action=ListGroups\r\n&Page=1\r\n&Rp=20\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalNum\": 2,\n        \"GroupInfo\": [\n            {\n                \"GroupId\": 2021,\n                \"GroupName\": \"test2\",\n                \"CreateTime\": \"2019-04-03 15:15:18\",\n                \"Remark\": \"test2\"\n            },\n            {\n                \"GroupId\": 2020,\n                \"GroupName\": \"test1\",\n                \"CreateTime\": \"2019-04-03 15:11:34\",\n                \"Remark\": \"test2\"\n            }\n        ],\n        \"RequestId\": \"dbb91d87-5e3f-42b4-8cc9-ad9f16600370\"\n    }\n}",
         "title": "Querying user group list"
@@ -464,7 +464,7 @@
     ],
     "ListGroupsForUser": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListGroupsForUser\n<Common request parameters>\n\n{\n    \"Uid\": \"1001408\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalNum\": 1,\n        \"GroupInfo\": [\n            {\n                \"GroupId\": 2020,\n                \"GroupName\": \"test1\",\n                \"CreateTime\": \"2019-04-03 15:11:34\",\n                \"Remark\": \"test2\"\n            }\n        ],\n        \"RequestId\": \"a614c392-3079-4dab-b819-0ab0563a32f0\"\n    }\n}",
         "title": "Listing user groups associated with a user"
@@ -472,7 +472,7 @@
     ],
     "ListPolicies": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListPolicies\n<Common request parameters>\n\n{\n    \"Rp\": \"1\",\n    \"Page\": \"10\"\n}",
         "output": "{\n    \"Response\": {\n        \"ServiceTypeList\": [\n            \"xx\"\n        ],\n        \"List\": [\n            {\n                \"PolicyId\": 16313162,\n                \"PolicyName\": \"QcloudAccessForCDNRole\",\n                \"AddTime\": \"2019-04-19 10:55:31\",\n                \"Type\": 2,\n                \"Description\": \"Tencent Cloud Content Delivery Network (CDN) permissions include CRUD operations for CLS logsets and log topics as well as searching for, downloading, and uploading logs.\",\n                \"CreateMode\": 2,\n                \"Attachments\": 0,\n                \"ServiceType\": \"cooperator\",\n                \"IsAttached\": 1,\n                \"Deactived\": 1,\n                \"DeactivedDetail\": [\n                    \"cvm\"\n                ],\n                \"IsServiceLinkedPolicy\": 1\n                \"UpdateTime\": \"2019-04-19 10:55:31\",\n                \"AttachEntityCount\": 0,\n                \"AttachEntityBoundaryCount\": 0\n            }\n        ],\n        \"TotalNum\": 239,\n        \"RequestId\": \"ae2bd2b7-1d55-4b0a-8154-e02407a2b390\"\n    }\n}",
         "title": "Querying the policy list"
@@ -497,14 +497,14 @@
     "ListUsers": [
       {
         "document": "",
-        "input": "https://cam.tencentcloudapi.com/?Action=ListUsers\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"Uin\": 100021969091,\n                \"Name\": \"cam001\",\n                \"Uid\": 11398137,\n                \"Remark\": \"\",\n                \"ConsoleLogin\": 1,\n                \"PhoneNum\": \"\",\n                \"CountryCode\": \"86\",\n                \"Email\": \"\",\n                \"CreateTime\": \"2021-10-28 18:02:00\"\n            }\n        ],\n        \"RequestId\": \"b2c7267c-8ee5-408b-9a88-ac359f13c8b1\"\n    }\n}",
-        "title": "Pulling the sub-users"
+        "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListUsers\n<Common Request Parameter>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"Uin\": 0,\n                \"Name\": \"Developer\",\n                \"Uid\": 1003668,\n                \"Remark\": \"\",\n                \"ConsoleLogin\": 0,\n                \"PhoneNum\": \"15118121005\",\n                \"CountryCode\": \"86\",\n                \"Email\": \"evianwang@personal.com\",\n                \"CreateTime\": \"2021-11-26 16:21:01\",\n                \"NickName\": \"Developer\"\n            }\n        ],\n        \"RequestId\": \"81b595fc-0700-40e3-847e-6bbf711c0d2c\"\n    }\n}",
+        "title": "listUsers"
       }
     ],
     "ListUsersForGroup": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cam.tencentcloudapi.com/?Action=ListUsersForGroup\r\n&GroupId=2020\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalNum\": 1,\n        \"UserInfo\": [\n            {\n                \"Uid\": 1001408,\n                \"Uin\": 100000545998,\n                \"Name\": \"testName\",\n                \"PhoneNum\": \"\",\n                \"CountryCode\": \"86\",\n                \"PhoneFlag\": 0,\n                \"Email\": \"\",\n                \"EmailFlag\": 0,\n                \"UserType\": 3,\n                \"CreateTime\": \"2018-04-24 15:36:26\",\n                \"IsReceiverOwner\": 0\n            }\n        ],\n        \"RequestId\": \"576e68f4-49cf-451b-b717-a584cb68910a\"\n    }\n}",
         "title": "Querying the list of users associated with user group"
@@ -512,7 +512,7 @@
     ],
     "PutRolePermissionsBoundary": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cam.tencentcloudapi.com/?Action=PutRolePermissionsBoundary\n&RoleId=1234567\n&PolicyId=1234567\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4097a057-19c9-45bd-ad12-b4225a75c085\"\n    }\n}",
         "title": "Setting a role permissions boundary"
@@ -520,7 +520,7 @@
     ],
     "PutUserPermissionsBoundary": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: PutUserPermissionsBoundary\n<Common request parameters>\n\n{\n    \"TargetUin\": \"1234567\",\n    \"PolicyId\": \"1234567\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4097a057-19c9-45bd-ad12-b4225a75c085\"\n    }\n}",
         "title": "Setting a user permissions boundary"
@@ -528,7 +528,7 @@
     ],
     "RemoveUserFromGroup": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RemoveUserFromGroup\n<Common request parameters>\n\n{\n    \"Info\": [\n        {\n            \"Uid\": \"1001408\",\n            \"GroupId\": \"2020\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1fadd33e-6f57-4404-a912-bc00680b89d2\"\n    }\n}",
         "title": "Deleting a user from a user group"
@@ -544,7 +544,7 @@
     ],
     "SetMfaFlag": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SetMfaFlag\n<Common request parameters>\n\n{\n    \"OpUin\": 123,\n    \"LoginFlag\": {\n        \"Wechat\": 1\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"cf75531d-b72d-4dcb-b0ed-d1c029a37f38\"\n    }\n}",
         "title": "Setting login protection method to WeChat verification"
@@ -552,7 +552,7 @@
     ],
     "TagRole": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: TagRole\n<Common request parameters>\n\n{\n    \"Tags\": [\n        {\n            \"Key\": \"AKey\",\n            \"Value\": \"AValue\"\n        }\n    ],\n    \"RoleName\": \"CAM_QCSRole\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxx-xxx-xxx-xxx\"\n    }\n}",
         "title": "Binding tags to a role"
@@ -560,7 +560,7 @@
     ],
     "UntagRole": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UntagRole\n<Common request parameters>\n\n{\n    \"TagKeys\": [\n        \"AKey\"\n    ],\n    \"RoleName\": \"CAM_QCSRole\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxx-xxx-xxx-xxx\"\n    }\n}",
         "title": "Unbinding tags from a role"
@@ -568,7 +568,7 @@
     ],
     "UpdateAccessKey": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cam.tencentcloudapi.com/?Action=UpdateAccessKey\n&TargetUin=123456\n&AccessKeyId=AKIDtm****lqorp\n&Status=Active\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"99d650e2-10fa-4c8f-819f-874578039641\"\n    }\n}",
         "title": "Updating an access key"
@@ -576,7 +576,7 @@
     ],
     "UpdateAssumeRolePolicy": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cam.tencentcloudapi.com/?Action=UpdateAssumeRolePolicy\n&RoleId=4611686018427731422\n&PolicyDocument=%7B%22version%22%3A%222.0%22%2C%22statement%22%3A%5B%7B%22action%22%3A%22name%2Fsts%3AAssumeRole%22%2C%22effect%22%3A%22allow%22%2C%22principal%22%3A%7B%22service%22%3A%5B%22cloudaudit.cloud.tencent.com%22%2C%22cls.cloud.tencent.com%22%5D%7D%7D%5D%7D\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"69103fca-ec49-40c9-8986-788b57421501\"\n    }\n}",
         "title": "Modifying role trust policy"
@@ -584,7 +584,7 @@
     ],
     "UpdateGroup": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateGroup\n<Common request parameters>\n\n{\n    &GroupName=2020test\n    \"GroupId\": \"2020\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1fadd33e-6f57-4404-a912-bc00680b89d2\"\n    }\n}",
         "title": "Updating a user group"
@@ -592,7 +592,7 @@
     ],
     "UpdateOIDCConfig": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateOIDCConfig\n<Common request parameters>\n\n{\n    \"IdentityKey\": \"ewogICAgImtleXMiOiBbCiAgICAgICAgewogIC************klJbUpsLV9jenYyT0kiCiAgICAgICAgfQogICAgXQp9\",\n    \"IdentityUrl\": \"https://test.qq.cn/\",\n    \"Name\": \"test-oidc\",\n    \"ClientId\": [\n        \"61adcf0*****9546\"\n    ],\n    \"Description\": \"Desc\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"59b8efa4-cdd3-46dd-b9e7-0925aa1bee74\"\n    }\n}",
         "title": "Modifying role OIDC configurations"
@@ -616,7 +616,7 @@
     ],
     "UpdateRoleDescription": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://cam.tencentcloudapi.com/?Action=UpdateRoleDescription\n&RoleId=4611686018427731422\n&Description=abc234\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"405af400-30ec-4c78-8955-ef4da843bde2\"\n    }\n}",
         "title": "Modifying a role description"
@@ -624,7 +624,7 @@
     ],
     "UpdateSAMLProvider": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateSAMLProvider\n<Common request parameters>\n\n{\n    \"SAMLMetadataDocument\": \"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48bWQ6RW50aXR5RGVzY3JpcHRvciBlbnRpdHlJRD0iaHR0cDovL3d3dy5va3RhLmNvbS9leGsxa3F4bWNqUW1HQURNeTM1NyIgeG1sbnM6bWQ9InVybjpvYXNpczpuYW1lczp0YzpTQU1MOjIuMDptZXRhZGF0YSI%2BPG1kOklEUFNTT0Rlc2NyaXB0b3IgV2FudEF1dGhuUmVxdWVzdHNTaWduZWQ9ImZhbHNlIiBwcm90b2NvbFN1cHBvcnRFbnVtZXJhdGlvbj0idXJuOm9hc2lzOm5hbWVzOnRjOlNBTUw6Mi4wOnB%3D%3D\",\n    \"Name\": \"testName\",\n    \"Description\": \"testProvider\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1e44e8e5-7878-4aa0-8bd2-555dde56cddb\"\n    }\n}",
         "title": "Updating IdP"
@@ -632,7 +632,7 @@
     ],
     "UpdateUser": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateUser\n<Common request parameters>\n\n{\n    \"Remark\": \"test\",\n    \"Name\": \"test124\",\n    \"CountryCode\": \"86\",\n    \"NeedResetPassword\": \"0\",\n    \"PhoneNum\": \"10086\",\n    \"ConsoleLogin\": \"1\",\n    \"Password\": \"test123456\",\n    \"Email\": \"123%40qq.com\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
         "title": "Updating a sub-user"
@@ -640,7 +640,7 @@
     ],
     "UpdateUserOIDCConfig": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateUserOIDCConfig\n<Common request parameters>\n\n{\n    \"ResponseType\": \"id_token\",\n    \"IdentityUrl\": \"https://tencent.auth**.com\",\n    \"ResponseMode\": \"form_post\",\n    \"Description\": \"Description\",\n    \"IdentityKey\": \"key\",\n    \"ClientId\": \"cbaefefes9823***\",\n    \"MappingFiled\": \"sub\",\n    \"AuthorizationEndpoint\": \"https://tencent.auth**.com\",\n    \"Scope\": [\n        \"email\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"10a20884-070e-48a8-aa40-9ed295a33ea2\"\n    }\n}",
         "title": "Modifying user OIDC configuration"
@@ -648,7 +648,7 @@
     ],
     "UpdateUserSAMLConfig": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateUserSAMLConfig\n<Common request parameters>\n\n{\n    \"Operate\": \"updateSAML\",\n    \"SAMLMetadataDocument\": \"metadataDocumentDemo\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Modifying user SAML configurations"

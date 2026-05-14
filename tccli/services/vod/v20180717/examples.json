@@ -172,10 +172,10 @@
     ],
     "CreateContentReviewTemplate": [
       {
-        "document": "Create a custom AI content review template, enable the task of information with objectionable content on the screen, and at the same time enable the task of information with unsafe content and inappropriate information, determine the score threshold for violations, and determine the need for manual identification The score thresholds of are all default and no filtering label is specified.",
-        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateContentReviewTemplate\n<Public Request Parameter>\n\n{\n    \"Comment\": \"test template\",\n    \"PornConfigure\": {\n        \"ImgReviewInfo\": {\n            \"Switch\": \"ON\"\n        }\n    },\n    \"ReviewWallSwitch\": \"OFF\",\n    \"Name\": \"TestTemplate\",\n    \"PoliticalConfigure\": {\n        \"ImgReviewInfo\": {\n            \"Switch\": \"ON\"\n        }\n    },\n    \"TerrorismConfigure\": {\n        \"ImgReviewInfo\": {\n            \"Switch\": \"ON\"\n        },\n        \"OcrReviewInfo\": null\n    }\n}",
-        "output": "{\n    \"Response\": {\n        \"Definition\": 32,\n        \"RequestId\": \"88aee3e9-2qd3-4151-9d4b-4390a45227a9\"\n    }\n}",
-        "title": "Create content intelligent review templates that enable multiple identification tasks"
+        "document": "Create a custom AI content review template, start the information task of objectionable screen content, specify the score threshold for judging the screen violation to be 80 points, the threshold score for judging the screen to require manual identification as 30 points, and the frame interception interval as 1 second .",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateContentReviewTemplate\n<Public Request Parameter>\n\n{\n    \"Comment\": \"Template 2\",\n    \"PornConfigure\": {\n        \"ImgReviewInfo\": {\n            \"BlockConfidence\": \"80\",\n            \"Switch\": \"ON\",\n            \"ReviewConfidence\": \"30\"\n        }\n    },\n    \"ReviewWallSwitch\": \"OFF\",\n    \"Name\": \"Content moderation template\",\n    \"ScreenshotInterval\": \"1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Definition\": 31,\n        \"RequestId\": \"97aee3e9-2qd3-4151-9d4b-9730a45227a9\"\n    }\n}",
+        "title": "Create a task content review template that only turns on objectionable information on the screen, and specify the score threshold and frame interception interval"
       },
       {
         "document": "Create a custom AI content review template, and only enable the task of information with objectionable screen content. The score thresholds that are judged as violations and the score thresholds that are judged as requiring manual identification are both default values, and no filtering labels are specified.",
@@ -184,16 +184,16 @@
         "title": "Create a content moderation template that only turns on offensive messages"
       },
       {
+        "document": "Create a custom AI content review template, enable the task of information with objectionable content on the screen, and at the same time enable the task of information with unsafe content and inappropriate information, determine the score threshold for violations, and determine the need for manual identification The score thresholds of are all default and no filtering label is specified.",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateContentReviewTemplate\n<Public Request Parameter>\n\n{\n    \"Comment\": \"test template\",\n    \"PornConfigure\": {\n        \"ImgReviewInfo\": {\n            \"Switch\": \"ON\"\n        }\n    },\n    \"ReviewWallSwitch\": \"OFF\",\n    \"Name\": \"TestTemplate\",\n    \"PoliticalConfigure\": {\n        \"ImgReviewInfo\": {\n            \"Switch\": \"ON\"\n        }\n    },\n    \"TerrorismConfigure\": {\n        \"ImgReviewInfo\": {\n            \"Switch\": \"ON\"\n        },\n        \"OcrReviewInfo\": null\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Definition\": 32,\n        \"RequestId\": \"88aee3e9-2qd3-4151-9d4b-4390a45227a9\"\n    }\n}",
+        "title": "Create content intelligent review templates that enable multiple identification tasks"
+      },
+      {
         "document": "Create a custom AI content review template, start the screen content pornographic identification task, specify the filter tags as pornographic and sexy, and set the score thresholds for violations and manual review as the default.",
         "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateContentReviewTemplate\n<Public Request Parameter>\n\n{\n    \"Comment\": \"Template 1\",\n    \"PornConfigure\": {\n        \"ImgReviewInfo\": {\n            \"Switch\": \"ON\",\n            \"LabelSet\": [\n                \"sexy\",\n                \"porn\"\n            ]\n        }\n    },\n    \"ReviewWallSwitch\": \"OFF\",\n    \"Name\": \"Content moderation template\"\n}",
         "output": "{\n    \"Response\": {\n        \"Definition\": 33,\n        \"RequestId\": \"67aee3e9-2qd3-2395-9d4b-4390a96837a7\"\n    }\n}",
         "title": "Create a content moderation template that opens objectionable messages and specify filtering labels"
-      },
-      {
-        "document": "Create a custom AI content review template, start the information task of objectionable screen content, specify the score threshold for judging the screen violation to be 80 points, the threshold score for judging the screen to require manual identification as 30 points, and the frame interception interval as 1 second .",
-        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateContentReviewTemplate\n<Public Request Parameter>\n\n{\n    \"Comment\": \"Template 2\",\n    \"PornConfigure\": {\n        \"ImgReviewInfo\": {\n            \"BlockConfidence\": \"80\",\n            \"Switch\": \"ON\",\n            \"ReviewConfidence\": \"30\"\n        }\n    },\n    \"ReviewWallSwitch\": \"OFF\",\n    \"Name\": \"Content moderation template\",\n    \"ScreenshotInterval\": \"1\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Definition\": 31,\n        \"RequestId\": \"97aee3e9-2qd3-4151-9d4b-9730a45227a9\"\n    }\n}",
-        "title": "Create a task content review template that only turns on objectionable information on the screen, and specify the score threshold and frame interception interval"
       }
     ],
     "CreateDomainVerifyRecord": [

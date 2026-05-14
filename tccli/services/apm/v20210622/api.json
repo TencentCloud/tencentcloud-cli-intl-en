@@ -10,7 +10,7 @@
     "CreateApmPrometheusRule": {
       "document": "This API is used to create metric match rules between apm Business System and Prometheus Instance.",
       "input": "CreateApmPrometheusRuleRequest",
-      "name": "Create a match rule for metrics between apm business system and Prometheus instance",
+      "name": "Create metrics match rules between an APM business system and a Prometheus instance",
       "output": "CreateApmPrometheusRuleResponse",
       "status": "online"
     },
@@ -42,17 +42,24 @@
       "output": "DescribeApmAgentResponse",
       "status": "online"
     },
+    "DescribeApmAllVulCount": {
+      "document": "Query all vulnerability information of the user",
+      "input": "DescribeApmAllVulCountRequest",
+      "name": "Query the security vulnerability data of applications belonging to the user",
+      "output": "DescribeApmAllVulCountResponse",
+      "status": "online"
+    },
     "DescribeApmApplicationConfig": {
       "document": "This API is used to query application configuration.",
       "input": "DescribeApmApplicationConfigRequest",
-      "name": "Query application configuration",
+      "name": "Query application configuration (Recommended)",
       "output": "DescribeApmApplicationConfigResponse",
       "status": "online"
     },
     "DescribeApmAssociation": {
       "document": "This API is used to query the relationship between apm Business System and other product.",
       "input": "DescribeApmAssociationRequest",
-      "name": "Query the relationship between apm business system and other product",
+      "name": "Query the relationship between the APM business system and other products",
       "output": "DescribeApmAssociationResponse",
       "status": "online"
     },
@@ -66,8 +73,15 @@
     "DescribeApmPrometheusRule": {
       "document": "This API is used to query the match rule for metrics between apm Business System and Prometheus Instance.",
       "input": "DescribeApmPrometheusRuleRequest",
-      "name": "Query the match rule for metrics between apm business system and Prometheus instance",
+      "name": "Query metrics match rules between an APM business system and a Prometheus instance",
       "output": "DescribeApmPrometheusRuleResponse",
+      "status": "online"
+    },
+    "DescribeApmSQLInjectionDetail": {
+      "document": "Query SQL injection details",
+      "input": "DescribeApmSQLInjectionDetailRequest",
+      "name": "Query SQL injection details",
+      "output": "DescribeApmSQLInjectionDetailResponse",
       "status": "online"
     },
     "DescribeApmSampleConfig": {
@@ -84,15 +98,29 @@
       "output": "DescribeApmServiceMetricResponse",
       "status": "online"
     },
+    "DescribeApmVulnerabilityCount": {
+      "document": "Query vulnerability metrics",
+      "input": "DescribeApmVulnerabilityCountRequest",
+      "name": "Query vulnerability metrics",
+      "output": "DescribeApmVulnerabilityCountResponse",
+      "status": "online"
+    },
+    "DescribeApmVulnerabilityDetail": {
+      "document": "Query vulnerability details.",
+      "input": "DescribeApmVulnerabilityDetailRequest",
+      "name": "Query vulnerability details.",
+      "output": "DescribeApmVulnerabilityDetailResponse",
+      "status": "online"
+    },
     "DescribeGeneralApmApplicationConfig": {
       "document": "This API is used to query the application configuration information.",
       "input": "DescribeGeneralApmApplicationConfigRequest",
-      "name": "This api is used to query the application configuration information",
+      "name": "Query application configuration information (not recommended)",
       "output": "DescribeGeneralApmApplicationConfigResponse",
       "status": "online"
     },
     "DescribeGeneralMetricData": {
-      "document": "This API is a general API used to obtain metric data. Users submit request parameters as needed and receive the corresponding metric data.\nThe API call frequency is limited to 20 requests per second and 1200 requests per minute. The number of data points per request is limited to 1440.\n**Usage of the General Interface for Fetching Metric Data**\nDescribeGeneralMetricData is a general interface for querying metric data, supporting flexible data retrieval. The query method of this interface is similar to using the following SQL statement:\nSELECT {Metrics} FROM {ViewName} WHERE {Filters} GROUP BY {GroupBy}.\n1. View (ViewName)\nDetermines the data domain you want to query.\nExamples: service_metric (Service Monitoring View), db_metric (Database View), etc. For views supported by APM, please refer to [Metric Views](https://www.tencentcloud.com/document/product/248/68462?has_map=1&lang=en&pg=)\n2. Metrics (Metrics)\nUsed to specify one or more metric items to be included in the returned results.\nExamples: request_count (Total Requests), duration_avg (Average Latency), error_rate (Error Rate). For metrics supported by APM, please refer to the [APM Metric Protocol Standard](https://www.tencentcloud.com/document/product/248/68462?has_map=1&lang=en&pg=).\n3. Filters (Filters)\nSupports one or more filtering conditions in the form of Key-Value pairs.\nExample: Querying only a specific service: service.name = \"order-service\". Common dimensions and specific dimensions supported by each ViewName can be used as keys in filtering conditions. For more details, please refer to the [APM Metric Protocol Standard](https://www.tencentcloud.com/document/product/248/68462?has_map=1&lang=en&pg=).\n4. Aggregation (GroupBy)\nSupports one or more aggregation dimensions, equivalent to the GROUP BY clause in SQL.\nExample: Grouping by the interface name operation to view the performance of each interface. Common dimensions and specific dimensions supported by each ViewName can be used as aggregation dimensions. For more details, please refer to the [APM Metric Protocol Standard](https://www.tencentcloud.com/document/product/248/68462?has_map=1&lang=en&pg=).\n5. Granularity (Period)\nThis parameter determines whether the data needs to be aggregated by time slices.\n    - Period = 1 (Time Series Mode): The returned results are aggregated by time slices. The multiple values contained in the TimeSerial and DataSerial correspond one-to-one, representing the aggregation results for specific time slices. Time Series Mode is primarily used for displaying time trend charts.\n    - Period = 0 (Summary Statistics Mode): In the returned results, the DataSerial contains only a single value, representing the summarized data for the entire time range.",
+      "document": "General interface to obtain metric data. Submit request parameters as needed and receive the corresponding metric data.\nAPI call frequency limit: 20 requests/second, 1,200 requests/minute. Data point limit per single request: up to 1,440 data points.\n\nGeneral interface to obtain metric data usage: This API is used to query metric data flexibly. The query method of this API is similar to using the following SQL statement: SELECT {Metrics} FROM {ViewName} WHERE {Filters} GROUP BY {GroupBy}. Before initiating request, please confirm the following key parameters:\n1. View (ViewName)\nDetermine the domain of the queried data.\nFor example: service_metric (service monitoring view), db_metric (database view). For views supported by APM, see metrics view (https://www.tencentcloud.com/document/product/248/101681?from_cn_redirect=1#069b06a9-2593-49db-b694-dea4200f3b19).\n\n2. Metrics\nUsed to specify one or more metric items in the returned result.\nFor example: request_count (request count), duration_avg (avg duration), error_rate (error rate). For supported metrics about APM, see [APM Protocol Standards](https://www.tencentcloud.com/document/product/248/101681?from_cn_redirect=1). Each view (ViewName) supports an exclusive metric set.\n3. Filters\nSupport filter criteria in the form of one or multiple Key-Value pairs.\nFor example: Only query a certain specific service with service.name = \"order-service\". Common dimensional and each view (ViewName) support exclusive dimensions, which can be used as keys in filter conditions. For details, refer to the APM metrics protocol standard (https://www.tencentcloud.com/document/product/248/101681?from_cn_redirect=1).\n\n4. GroupBy (aggregation)\nSupport one or more aggregate dimensions, equivalent to SQL GROUP BY.\nFor example: Group by API name operation to view the performance of each API. Common dimensional and each view (ViewName) support exclusive dimensional, which can be used as aggregation dimension. For details, see [APM protocol standards](https://www.tencentcloud.com/document/product/248/101681?from_cn_redirect=1).\n5. Granularity (Period) \nThis parameter determines whether time slice aggregation is required.\n-Period = 1: Time series mode: In the returned result, aggregation is performed by time slice. The time series (TimeSerial) and data sequence (DataSerial) have a one-to-one correspondence, representing aggregation results for specific time slices. Time series mode is mainly used to show time trend charts.\n-Period = 0: Summarize mode. In the returned result, the data sequence (DataSerial) only contains a unique value, representing the aggregated data for the entire time interval.",
       "input": "DescribeGeneralMetricDataRequest",
       "name": "General interface to obtain metric data (recommend)",
       "output": "DescribeGeneralMetricDataResponse",
@@ -119,6 +147,13 @@
       "output": "DescribeMetricRecordsResponse",
       "status": "online"
     },
+    "DescribeOPRAllVulCount": {
+      "document": "Query all vulnerability information of the user",
+      "input": "DescribeOPRAllVulCountRequest",
+      "name": "Query the number of vulnerabilities under the user’s name",
+      "output": "DescribeOPRAllVulCountResponse",
+      "status": "online"
+    },
     "DescribeServiceOverview": {
       "document": "This API is used to pull application overview data.",
       "input": "DescribeServiceOverviewRequest",
@@ -133,17 +168,24 @@
       "output": "DescribeTagValuesResponse",
       "status": "online"
     },
+    "DescribeTopologyNew": {
+      "document": "This API is used to query the service topology diagram according to the application name.",
+      "input": "DescribeTopologyNewRequest",
+      "name": "Retrieve a topology map",
+      "output": "DescribeTopologyNewResponse",
+      "status": "online"
+    },
     "ModifyApmApplicationConfig": {
       "document": "Modify application configurations",
       "input": "ModifyApmApplicationConfigRequest",
-      "name": "Modify application configuration",
+      "name": "Modify application configuration (recommended)",
       "output": "ModifyApmApplicationConfigResponse",
       "status": "online"
     },
     "ModifyApmAssociation": {
       "document": "This API is used to modify the relationship between the apm Business System and other products, including deletion.",
       "input": "ModifyApmAssociationRequest",
-      "name": "Modify the relationship between apm business system and other product",
+      "name": "Modify the relationship between the APM business system and other products",
       "output": "ModifyApmAssociationResponse",
       "status": "online"
     },
@@ -157,7 +199,7 @@
     "ModifyApmPrometheusRule": {
       "document": "This API is used to modify metric match rules between apm Business System and Prometheus Instance.",
       "input": "ModifyApmPrometheusRuleRequest",
-      "name": "Modify the metrics match rule between the apm business system and Prometheus instance",
+      "name": "Modify the metrics match rule between the APM business system and the Prometheus instance",
       "output": "ModifyApmPrometheusRuleResponse",
       "status": "online"
     },
@@ -168,17 +210,24 @@
       "output": "ModifyApmSampleConfigResponse",
       "status": "online"
     },
+    "ModifyApmService": {
+      "document": "This API is used to edit information about applications of APM.",
+      "input": "ModifyApmServiceRequest",
+      "name": "Changes application information",
+      "output": "ModifyApmServiceResponse",
+      "status": "online"
+    },
     "ModifyGeneralApmApplicationConfig": {
       "document": "OpenAPI available for external use. Customers can flexibly specify the fields to be modified, and then add the list of services to be modified.",
       "input": "ModifyGeneralApmApplicationConfigRequest",
-      "name": "Modifies application configuration information",
+      "name": "Modify application configuration (not recommended)",
       "output": "ModifyGeneralApmApplicationConfigResponse",
       "status": "online"
     },
     "TerminateApmInstance": {
       "document": "Termination of APM business system.",
       "input": "TerminateApmInstanceRequest",
-      "name": "Terminates a business system",
+      "name": "This API is used to terminate the Application Performance Monitoring (APM) business system.",
       "output": "TerminateApmInstanceResponse",
       "status": "online"
     }
@@ -355,7 +404,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID.",
+          "document": "<p>Instance ID</p>",
           "example": "1o8yMC47u",
           "member": "string",
           "name": "InstanceKey",
@@ -365,7 +414,7 @@
         },
         {
           "disabled": false,
-          "document": "Service name.",
+          "document": "<p>Service name</p>",
           "example": "java-order-service",
           "member": "string",
           "name": "ServiceName",
@@ -375,7 +424,7 @@
         },
         {
           "disabled": false,
-          "document": "URL convergence switch.",
+          "document": "<p>URL convergence switch</p>",
           "example": "1",
           "member": "int64",
           "name": "UrlConvergenceSwitch",
@@ -385,7 +434,7 @@
         },
         {
           "disabled": false,
-          "document": "URL convergence threshold",
+          "document": "<p>URL convergence threshold</p>",
           "example": "50",
           "member": "int64",
           "name": "UrlConvergenceThreshold",
@@ -395,7 +444,7 @@
         },
         {
           "disabled": false,
-          "document": "URL convergence regular expression.",
+          "document": "<p>URL regular convergence</p>",
           "example": "market.StockService.getStock(.*?),market.StockService.getPreDayS",
           "member": "string",
           "name": "UrlConvergence",
@@ -405,7 +454,7 @@
         },
         {
           "disabled": false,
-          "document": "Exception filtering regular expression.",
+          "document": "<p>Exception filter regular</p>",
           "example": "io.grpc.StatusRuntimeException,java.sql.(.*?)",
           "member": "string",
           "name": "ExceptionFilter",
@@ -415,7 +464,7 @@
         },
         {
           "disabled": false,
-          "document": "Error code filtering.",
+          "document": "<p>Error code filtering</p>",
           "example": "400,500",
           "member": "string",
           "name": "ErrorCodeFilter",
@@ -425,7 +474,7 @@
         },
         {
           "disabled": false,
-          "document": "Service component type.",
+          "document": "<p>Service component type</p>",
           "example": "springMVC,springRestTemplate,Redis,grpc,mysql",
           "member": "string",
           "name": "Components",
@@ -435,7 +484,7 @@
         },
         {
           "disabled": false,
-          "document": "URL exclusion regular.",
+          "document": "<p>URL exclusion regular</p>",
           "example": "market.StockService.getStock(.*?),market.StockService.getPreDayS",
           "member": "string",
           "name": "UrlExclude",
@@ -445,7 +494,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the log source.",
+          "document": "<p>Log source</p>",
           "example": "CLS",
           "member": "string",
           "name": "LogSource",
@@ -455,7 +504,7 @@
         },
         {
           "disabled": false,
-          "document": "Log region.",
+          "document": "<p>Log region</p>",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "LogRegion",
@@ -465,7 +514,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether logging is enabled. valid values: 0 (disabled), 1 (enabled).",
+          "document": "<p>Whether logging is enabled 0 Disabled 1 Enabled</p>",
           "example": "1",
           "member": "int64",
           "name": "IsRelatedLog",
@@ -475,7 +524,7 @@
         },
         {
           "disabled": false,
-          "document": "Log topic ID",
+          "document": "<p>Log topic ID</p>",
           "example": "VKIDkKeiV1GFyQcYITQ9dtufAOL1RaS3NRFn",
           "member": "string",
           "name": "LogTopicID",
@@ -485,7 +534,7 @@
         },
         {
           "disabled": false,
-          "document": "API names to filter",
+          "document": "<p>Interface Names to Filter</p>",
           "example": "getOrderInfo",
           "member": "string",
           "name": "IgnoreOperationName",
@@ -495,7 +544,7 @@
         },
         {
           "disabled": false,
-          "document": "CLS log set/ES cluster ID",
+          "document": "<p>CLS logset | ES cluster ID</p>",
           "example": "AM8dqnTs0rSmpb7ML3VgaDYdRxCBtKUN",
           "member": "string",
           "name": "LogSet",
@@ -505,7 +554,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of traces reported by the probe per second.",
+          "document": "<p>Number of traces reported by the probe per second</p>",
           "example": "100",
           "member": "int64",
           "name": "TraceRateLimit",
@@ -515,7 +564,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether thread profiling is enabled.",
+          "document": "<p>Whether thread profiling is enabled</p>",
           "example": "false",
           "member": "bool",
           "name": "EnableSnapshot",
@@ -525,7 +574,7 @@
         },
         {
           "disabled": false,
-          "document": "Timeout threshold for thread profiling.",
+          "document": "<p>Timeout threshold for thread profiling</p>",
           "example": "2000",
           "member": "int64",
           "name": "SnapshotTimeout",
@@ -535,7 +584,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether agent is enabled.",
+          "document": "<p>Whether to enable agent</p>",
           "example": "true",
           "member": "bool",
           "name": "AgentEnable",
@@ -545,7 +594,7 @@
         },
         {
           "disabled": false,
-          "document": "Component List\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Component list</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "Instrument",
           "name": "InstrumentList",
@@ -555,7 +604,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether link compression is enabled.",
+          "document": "<p>Whether to enable link compression</p>",
           "example": "false",
           "member": "bool",
           "name": "TraceSquash",
@@ -565,7 +614,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether application diagnosis is enabled.",
+          "document": "<p>Whether the application diagnosis switch is enabled</p>",
           "example": "false",
           "member": "bool",
           "name": "EventEnable",
@@ -575,7 +624,7 @@
         },
         {
           "disabled": false,
-          "document": "Related configurations of the probe APIs.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>probe API related configuration</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "AgentOperationConfigView",
           "name": "AgentOperationConfigView",
@@ -585,7 +634,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable application log configuration.",
+          "document": "<p>Whether the application log configuration is enabled</p>",
           "example": "false",
           "member": "bool",
           "name": "EnableLogConfig",
@@ -595,7 +644,7 @@
         },
         {
           "disabled": false,
-          "document": "Application ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Application ID</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "svc-test",
           "member": "string",
           "name": "ServiceID",
@@ -605,7 +654,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable the dashboard configuration for applications. false: disabled (consistent with the business system configuration); true: enabled (application-level configuration).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Whether the dashboard configuration is enabled: false (disabled, consistent with the business system)/true (enabled, hierarchical configuration)</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "false",
           "member": "bool",
           "name": "EnableDashboardConfig",
@@ -615,7 +664,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to associate with Dashboard. 0: disabled; 1: enabled.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Whether dashboard is associated: 0 Disabled 1 Enabled</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "IsRelatedDashboard",
@@ -625,7 +674,7 @@
         },
         {
           "disabled": false,
-          "document": "dashboard ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>dashboard ID</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "VKIDkKeiV1GFyQcYITQ9dtufAOL1RaS3NRFn",
           "member": "string",
           "name": "DashboardTopicID",
@@ -635,7 +684,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable the application-level configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Whether the application-level configuration is enabled</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "false",
           "member": "bool",
           "name": "EnableSecurityConfig",
@@ -645,7 +694,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable detection of component vulnerability.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Whether the component vulnerability detection is enabled</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "IsInstrumentationVulnerabilityScan",
@@ -655,7 +704,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable SQL injection analysis.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Whether SQL injection analysis is enabled</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "IsSqlInjectionAnalysis",
@@ -665,7 +714,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable execution analysis of remote command.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Whether remote command execution analysis is enabled</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "IsRemoteCommandExecutionAnalysis",
@@ -675,7 +724,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable detection analysis of Java webshell.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Whether Java Webshell detection and analysis is enabled</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "IsMemoryHijackingAnalysis",
@@ -685,7 +734,7 @@
         },
         {
           "disabled": false,
-          "document": "CLS index type. (0 = full-text index; 1 = key-value index).",
+          "document": "<p>CLS index type (0=full-text index, 1=key-value index)</p>",
           "example": "0",
           "member": "int64",
           "name": "LogIndexType",
@@ -695,7 +744,7 @@
         },
         {
           "disabled": false,
-          "document": "Index key of traceId. It is valid when the CLS index type is key-value index.",
+          "document": "<p>Index key of traceId: This parameter is valid only when the CLS index type is key-value index.</p>",
           "example": "trace_id",
           "member": "string",
           "name": "LogTraceIdKey",
@@ -705,7 +754,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable the detection of deleting arbitrary files. (0 - disabled; 1: enabled.)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Whether to enable file deletion detection (0 - disabled, 1 - enabled)</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "IsDeleteAnyFileAnalysis",
@@ -715,7 +764,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable the detection of reading arbitrary files. (0 - disabled; 1 - enabled.)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Whether to enable arbitrary file read detection (0 - disabled, 1 - enabled)</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "IsReadAnyFileAnalysis",
@@ -725,7 +774,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable the detection of uploading arbitrary files. (0 - disabled; 1 - enabled.)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Whether to enable arbitrary file upload detection (0 - disabled, 1 - enabled)</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "IsUploadAnyFileAnalysis",
@@ -735,7 +784,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable the detection of the inclusion of arbitrary files. (0: disabled, 1: enabled.)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Whether to enable detection of arbitrary files (0 - disabled, 1 - enabled)</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "IsIncludeAnyFileAnalysis",
@@ -745,7 +794,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable traversal detection of the directory. (0 - disabled; 1 - enabled).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Whether path traversal detection is enabled (0-disabled, 1-enabled)</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "IsDirectoryTraversalAnalysis",
@@ -755,7 +804,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable template engine injection detection. (0: disabled; 1: enabled.)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Whether to enable template engine injection detection (0-disable, 1-enable)</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "IsTemplateEngineInjectionAnalysis",
@@ -765,7 +814,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable script engine injection detection. (0 - disabled; 1 - enabled.)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Whether script engine injection detection is enabled (0-disabled, 1-enabled)</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "IsScriptEngineInjectionAnalysis",
@@ -775,7 +824,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable expression injection detection. (0 - disabled; 1 - enabled.)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Whether expression injection detection is enabled (0-disabled, 1-enabled)</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "IsExpressionInjectionAnalysis",
@@ -785,7 +834,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable JNDI injection detection. (0 - disabled; 1 - enabled.)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Whether JNDI injection detection is enabled (0-disabled, 1-enabled)</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "IsJNDIInjectionAnalysis",
@@ -795,7 +844,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable JNI injection detection. (0 - disabled, 1 - enabled).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Whether JNI injection detection is enabled (0 - disabled, 1 - enabled)</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "IsJNIInjectionAnalysis",
@@ -805,7 +854,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable Webshell backdoor detection. (0 - disabled; 1 - enabled).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Whether to enable Webshell backdoor detection (0 - disabled, 1 - enabled)</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "IsWebshellBackdoorAnalysis",
@@ -815,7 +864,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable deserialization detection. (0 - disabled; 1 - enabled).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Whether deserialization detection is enabled (0-disabled, 1-enabled)</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "IsDeserializationAnalysis",
@@ -825,7 +874,7 @@
         },
         {
           "disabled": false,
-          "document": "API name automatic convergence switch (0 - disabled; 1 - enabled)",
+          "document": "<p>API name auto convergence switch (0-off, 1-on)</p>",
           "example": "false",
           "member": "bool",
           "name": "UrlAutoConvergenceEnable",
@@ -835,7 +884,7 @@
         },
         {
           "disabled": false,
-          "document": "Convergence threshold for URL long segments.",
+          "document": "<p>URL long segment convergence threshold</p>",
           "example": "40",
           "member": "int64",
           "name": "UrlLongSegmentThreshold",
@@ -845,7 +894,7 @@
         },
         {
           "disabled": false,
-          "document": "Convergence threshold for URL numerical segments.",
+          "document": "<p>URL digit segment convergence threshold</p>",
           "example": "5",
           "member": "int64",
           "name": "UrlNumberSegmentThreshold",
@@ -855,7 +904,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the memory threshold for probe fusing.",
+          "document": "<p>Fuse memory threshold of the probe</p>",
           "example": "90",
           "member": "int64",
           "name": "DisableMemoryUsed",
@@ -865,12 +914,112 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the CPU threshold for probe fusing.",
+          "document": "<p>Probe fuse CPU threshold</p>",
           "example": "90",
           "member": "int64",
           "name": "DisableCpuUsed",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether SQL parameter access is enabled</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "DbStatementParametersEnabled",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Slow SQL threshold</p>",
+          "example": "无",
+          "member": "ApmTag",
+          "name": "SlowSQLThresholds",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether the masking rule is enabled</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "EnableDesensitizationRule",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Masking rule</p>",
+          "example": "email,password",
+          "member": "string",
+          "name": "DesensitizationRule",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Index key of spanId: This parameter is valid only when the CLS index type is key-value index.</p>",
+          "example": "span_id",
+          "member": "string",
+          "name": "LogSpanIdKey",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Automated performance analysis configuration</p>",
+          "example": "无",
+          "member": "AutoProfilingConfig",
+          "name": "AutoProfilingConfig",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Threshold configuration switch. true means use application level threshold; false means use business system level threshold.</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableThresholdConfig",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Error rate threshold (%) used to judge the application health status as \"red\".</p>",
+          "example": "5",
+          "member": "int64",
+          "name": "ErrRateThreshold",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Alert threshold for response time (ms), used to judge the application health status as \"yellow\".</p>",
+          "example": "500",
+          "member": "int64",
+          "name": "ResponseDurationWarningThreshold",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to use the built-in fuse threshold of the probe by default</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "UseDefaultFuseConfig",
+          "output_required": false,
+          "type": "bool",
           "value_allowed_null": false
         }
       ],
@@ -881,7 +1030,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Business system id.",
+          "document": "<p>Business system ID</p>",
           "example": "apm-059oXBfTL",
           "member": "string",
           "name": "InstanceKey",
@@ -892,8 +1041,8 @@
         },
         {
           "disabled": false,
-          "document": "Application name\t.\t",
-          "example": "java-order-service\t",
+          "document": "<p>Application name</p>",
+          "example": "java-order-service",
           "member": "string",
           "name": "ServiceName",
           "output_required": true,
@@ -903,7 +1052,7 @@
         },
         {
           "disabled": false,
-          "document": "API filtering.",
+          "document": "<p>Interface Filtering</p>",
           "example": "RPCServer/market.MarketService2/(.*?)",
           "member": "string",
           "name": "OperationNameFilter",
@@ -914,8 +1063,8 @@
         },
         {
           "disabled": false,
-          "document": "Error type filtering.",
-          "example": "io.grpc.StatusRuntimeException,java.sql.(.*?)\t",
+          "document": "<p>Error type filtering</p>",
+          "example": "io.grpc.StatusRuntimeException,java.sql.(.*?)",
           "member": "string",
           "name": "ExceptionFilter",
           "output_required": true,
@@ -925,8 +1074,8 @@
         },
         {
           "disabled": false,
-          "document": "HTTP status code filtering.",
-          "example": "400,500\t",
+          "document": "<p>HTTP status code filtering</p>",
+          "example": "400,500",
           "member": "string",
           "name": "ErrorCodeFilter",
           "output_required": true,
@@ -936,7 +1085,7 @@
         },
         {
           "disabled": false,
-          "document": "Application diagnosis switch (deprecated).",
+          "document": "<p>Application diagnosis switch (abandoned)</p>",
           "example": "true",
           "member": "bool",
           "name": "EventEnable",
@@ -947,7 +1096,7 @@
         },
         {
           "disabled": false,
-          "document": "URL convergence switch. 0: off; 1: on.",
+          "document": "<p>URL convergence switch 0 Off 1 On</p>",
           "example": "1",
           "member": "int64",
           "name": "UrlConvergenceSwitch",
@@ -958,7 +1107,7 @@
         },
         {
           "disabled": false,
-          "document": "URL convergence threshold.\t",
+          "document": "<p>URL convergence threshold</p>",
           "example": "50",
           "member": "int64",
           "name": "UrlConvergenceThreshold",
@@ -969,8 +1118,8 @@
         },
         {
           "disabled": false,
-          "document": "URL convergence rule in the form of a regular expression.\t",
-          "example": "market.StockService.getStock(.*?),market.StockService.getPreDayS\t",
+          "document": "<p>URL regular convergence rules</p>",
+          "example": "market.StockService.getStock(.*?),market.StockService.getPreDayS",
           "member": "string",
           "name": "UrlConvergence",
           "output_required": true,
@@ -980,8 +1129,8 @@
         },
         {
           "disabled": false,
-          "document": "URL exclusion rule in the form of a regular expression.",
-          "example": "market.StockService.getStock(.*?),market.StockService.getPreDayS\t",
+          "document": "<p>URL exclusion rule regex</p>",
+          "example": "market.StockService.getStock(.*?),market.StockService.getPreDayS",
           "member": "string",
           "name": "UrlExclude",
           "output_required": true,
@@ -991,7 +1140,7 @@
         },
         {
           "disabled": false,
-          "document": "Log feature switch. 0: off; 1: on.",
+          "document": "<p>Whether logging is enabled 0 Disabled 1 Enabled</p>",
           "example": "1",
           "member": "int64",
           "name": "IsRelatedLog",
@@ -1002,7 +1151,7 @@
         },
         {
           "disabled": false,
-          "document": "Log source.\t",
+          "document": "<p>Log source</p>",
           "example": "CLS",
           "member": "string",
           "name": "LogSource",
@@ -1013,7 +1162,7 @@
         },
         {
           "disabled": false,
-          "document": "Log set. ",
+          "document": "<p>Logset</p>",
           "example": "postgres",
           "member": "string",
           "name": "LogSet",
@@ -1024,7 +1173,7 @@
         },
         {
           "disabled": false,
-          "document": "Log topic.",
+          "document": "<p>Log topic</p>",
           "example": "032f3078-10b6-46a0-978f-1696e8e79696",
           "member": "string",
           "name": "LogTopicID",
@@ -1035,7 +1184,7 @@
         },
         {
           "disabled": false,
-          "document": "Method stack snapshot switch: true to enable, false to disable.",
+          "document": "<p>Method stack snapshot switch. Enabled indicates true. false indicates disabled.</p>",
           "example": "false",
           "member": "bool",
           "name": "SnapshotEnable",
@@ -1046,7 +1195,7 @@
         },
         {
           "disabled": false,
-          "document": "Slow call listening trigger threshold.",
+          "document": "<p>Slow call monitoring trigger threshold</p>",
           "example": "2000",
           "member": "int64",
           "name": "SnapshotTimeout",
@@ -1057,7 +1206,7 @@
         },
         {
           "disabled": false,
-          "document": "Probe master switch.",
+          "document": "<p>Master switch for probes</p>",
           "example": "true",
           "member": "bool",
           "name": "AgentEnable",
@@ -1068,7 +1217,7 @@
         },
         {
           "disabled": false,
-          "document": "Component list switch (deprecated).",
+          "document": "<p>Component list toggle (abandoned)</p>",
           "example": "无",
           "member": "Instrument",
           "name": "InstrumentList",
@@ -1079,7 +1228,7 @@
         },
         {
           "disabled": false,
-          "document": "Link compression switch (deprecated).",
+          "document": "<p>Link compression switch (abandoned)</p>",
           "example": "true",
           "member": "bool",
           "name": "TraceSquash",
@@ -1090,7 +1239,238 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the memory threshold for probe fusing.",
+          "document": "<p>Link filtering configuration</p>",
+          "example": "/api/v1/getOrderList",
+          "member": "string",
+          "name": "AgentIgnoreOperation",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Enable the application security switch</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "EnableSecurityConfig",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether SQL injection detection is enabled</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "IsSqlInjectionAnalysis",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether component vulnerability detection is enabled</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "IsInstrumentationVulnerabilityScan",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether remote command execution detection is enabled</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "IsRemoteCommandExecutionAnalysis",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether memory leakage detection is enabled</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "IsMemoryHijackingAnalysis",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable detection of any file deletion</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "IsDeleteAnyFileAnalysis",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable arbitrary file read detection</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "IsReadAnyFileAnalysis",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable arbitrary file upload detection</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "IsUploadAnyFileAnalysis",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable detection of arbitrary files</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "IsIncludeAnyFileAnalysis",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether path traversal detection is enabled</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "IsDirectoryTraversalAnalysis",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable template engine injection detection</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "IsTemplateEngineInjectionAnalysis",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether script engine injection detection is enabled</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "IsScriptEngineInjectionAnalysis",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether expression injection detection is enabled</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "IsExpressionInjectionAnalysis",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether JNDI injection detection is enabled</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "IsJndiInjectionAnalysis",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether JNI injection detection is enabled</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "IsJniInjectionAnalysis",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether Webshell backdoor detection is enabled</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "IsWebshellBackdoorAnalysis",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether deserialization detection is enabled</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "IsDeserializationAnalysis",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether the console switch is enabled</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableDashboardConfig",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to associate with Dashboard</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "IsRelatedDashboard",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Dashboard topic</p>",
+          "example": "l7a1zv238ovic1bm",
+          "member": "string",
+          "name": "DashboardTopicID",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Fuse memory threshold of the probe</p>",
           "example": "90",
           "member": "int64",
           "name": "DisableMemoryUsed",
@@ -1101,13 +1481,112 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the CPU threshold for probe fusing.",
+          "document": "<p>Probe fuse CPU threshold</p>",
           "example": "90",
           "member": "int64",
           "name": "DisableCpuUsed",
           "output_required": true,
           "required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether SQL parameter access is enabled</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "DbStatementParametersEnabled",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Slow SQL threshold</p>",
+          "example": "无",
+          "member": "ApmTag",
+          "name": "SlowSQLThresholds",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether the masking rule is enabled</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "EnableDesensitizationRule",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Masking rule</p>",
+          "example": "email,password",
+          "member": "string",
+          "name": "DesensitizationRule",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Automated performance analysis task configuration</p>",
+          "example": "无",
+          "member": "AutoProfilingConfig",
+          "name": "AutoProfilingConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Threshold configuration switch</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableThresholdConfig",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Error rate threshold</p><p>Unit: %</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "ErrRateThreshold",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Alert threshold of response time</p><p>Unit: ms</p>",
+          "example": "300",
+          "member": "int64",
+          "name": "ResponseDurationWarningThreshold",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to use the default fuse threshold of the probe</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "UseDefaultFuseConfig",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
           "value_allowed_null": false
         }
       ],
@@ -1118,7 +1597,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Associated product instance ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Instance ID of the associated product</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "prom-xxxxxx",
           "member": "string",
           "name": "PeerId",
@@ -1128,7 +1607,7 @@
         },
         {
           "disabled": false,
-          "document": "Association status: 1 (enabled), 2 (disabled), 3 (invalid).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Association status: 1 (enabled), 2 (not enabled), 3 (invalid)</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
           "name": "Status",
@@ -1138,10 +1617,20 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the CKafka message topic.",
+          "document": "<p>CKafka message topic</p>",
           "example": "\"test-topic\"",
           "member": "string",
           "name": "Topic",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Ckafka consumption topic</p><p>Used for Kafka metric delivery</p>",
+          "example": "\"apm-metric\"",
+          "member": "string",
+          "name": "MetricTopic",
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1797,6 +2286,16 @@
           "output_required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Index key of spanId: This parameter is valid only when the CLS index type is key-value index",
+          "example": "span_id",
+          "member": "string",
+          "name": "LogSpanIdKey",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1939,7 +2438,7 @@
         {
           "disabled": false,
           "document": "Number of spans sampled",
-          "example": "1111",
+          "example": "1000",
           "member": "int64",
           "name": "SpanNum",
           "output_required": true,
@@ -2060,6 +2559,178 @@
         }
       ],
       "usage": "both"
+    },
+    "ApmVulnerabilityServiceDetail": {
+      "document": "Vulnerability-related information of APM application instance",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application instance\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "127.0.0.1",
+          "member": "string",
+          "name": "ServiceInstance",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Path of the jar package with the vulnerability\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "/v1/test",
+          "member": "string",
+          "name": "Path",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Last occurrence time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1728910000",
+          "member": "int64",
+          "name": "LastOccurTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AutoProfilingConfig": {
+      "document": "Automated performance analysis configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Auto CPU profiling task switch",
+          "example": "true",
+          "member": "bool",
+          "name": "CpuProfilingEnable",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Auto memory profiling task switch",
+          "example": "true",
+          "member": "bool",
+          "name": "MemoryProfilingEnable",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Auto CPU profiling task threshold",
+          "example": "80",
+          "member": "int64",
+          "name": "CpuProfilingThreshold",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Automated memory profiling task threshold",
+          "example": "80",
+          "member": "int64",
+          "name": "MemoryProfilingThreshold",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "CPU auto profiling task duration",
+          "example": "60000",
+          "member": "int64",
+          "name": "CpuProfilingDuration",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Memory auto profiling task duration",
+          "example": "60000",
+          "member": "int64",
+          "name": "MemoryProfilingDuration",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CVMMeta": {
+      "document": "CVM metadata.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Region.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ins-test",
+          "member": "string",
+          "name": "InstanceID",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ComponentTopologyView": {
+      "document": "Contains the quantity of node component types in the view.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of nodes at the service level.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "5",
+          "member": "int64",
+          "name": "Service",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Node count of the database.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "5",
+          "member": "int64",
+          "name": "Database",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Node count of the message queue.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "MQ",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "CreateApmInstanceRequest": {
       "document": "CreateApmInstance request structure.",
@@ -2206,6 +2877,16 @@
     "CreateApmPrometheusRuleResponse": {
       "document": "CreateApmPrometheusRule response structure.",
       "members": [
+        {
+          "disabled": false,
+          "document": "ID of the metric match rule",
+          "example": "438",
+          "member": "int64",
+          "name": "RuleId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -2515,6 +3196,82 @@
       ],
       "type": "object"
     },
+    "DescribeApmAllVulCountRequest": {
+      "document": "DescribeApmAllVulCount request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "unix second-level timestamp",
+          "example": "1728910000",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "unix second-level timestamp",
+          "example": "1728910000",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApmAllVulCountResponse": {
+      "document": "DescribeApmAllVulCount response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Vulnerability metrics as well as number of business systems\t",
+          "example": "无",
+          "member": "ApmMetricRecord",
+          "name": "VulnerabilityList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of vulnerabilities",
+          "example": "1",
+          "member": "int64",
+          "name": "VulnerabilityCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of critical vulnerabilities",
+          "example": "1",
+          "member": "int64",
+          "name": "ImportantVulnerabilityCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "High-risk vulnerability count",
+          "example": "1",
+          "member": "int64",
+          "name": "CriticalVulnerabilityCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeApmApplicationConfigRequest": {
       "document": "DescribeApmApplicationConfig request structure.",
       "members": [
@@ -2548,7 +3305,7 @@
           "example": "无",
           "member": "ApmAppConfig",
           "name": "ApmAppConfig",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -2591,7 +3348,7 @@
         {
           "disabled": false,
           "document": "Associated product instance ID.",
-          "example": "\"ApmAssociation\": {             \"PeerId\": \"\",             \"Status\": 0         }",
+          "example": "无",
           "member": "ApmAssociation",
           "name": "ApmAssociation",
           "output_required": true,
@@ -2710,10 +3467,129 @@
         {
           "disabled": false,
           "document": "Specifies the metric match rule.",
-          "example": "[             {                 \"Name\": \"use\",                 \"ServiceName\": \"\",                 \"Status\": 1,                 \"MetricNameRule\": \"task.duration\",                 \"MatchType\": 2             },             {                 \"Name\": \"qwe\",                 \"ServiceName\": \"\",                 \"Status\": 1,                 \"MetricNameRule\": \"task.\",                 \"MatchType\": 2             }         ]",
+          "example": "无",
           "member": "ApmPrometheusRules",
           "name": "ApmPrometheusRules",
           "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApmSQLInjectionDetailRequest": {
+      "document": "DescribeApmSQLInjectionDetail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Business system ID",
+          "example": "apm-CVfliqa8U",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Limit",
+          "example": "9",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Offset.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "unix second-level timestamp",
+          "example": "1728910000",
+          "member": "int64",
+          "name": "StartTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "unix second-level timestamp",
+          "example": "1728910000",
+          "member": "int64",
+          "name": "EndTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Order.",
+          "example": "{       \"Key\":\"time\",       \"Value\":\"desc\"   }",
+          "member": "OrderBy",
+          "name": "OrderBy",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Query filter criteria.",
+          "example": "[         {             \"Key\": \"process.serviceName\",             \"Type\": \"=\",             \"Value\": \"profile-service\"         }     ]",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Aggregation dimension",
+          "example": "[\"error.object\"]",
+          "member": "string",
+          "name": "GroupBy",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Metric list",
+          "example": "无",
+          "member": "QueryMetricItem",
+          "name": "Metrics",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApmSQLInjectionDetailResponse": {
+      "document": "DescribeApmSQLInjectionDetail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "SQL dimension information",
+          "example": "无",
+          "member": "ApmTag",
+          "name": "Tags",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Link information",
+          "example": "无",
+          "member": "ApmMetricRecord",
+          "name": "Records",
+          "output_required": false,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2978,6 +3854,183 @@
       ],
       "type": "object"
     },
+    "DescribeApmVulnerabilityCountRequest": {
+      "document": "DescribeApmVulnerabilityCount request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "APM business system ID",
+          "example": "apm-CVfliqa8U",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "app name",
+          "example": "java-order-service",
+          "member": "string",
+          "name": "ServiceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "unix second-level timestamp",
+          "example": "1728910000",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "unix second-level timestamp",
+          "example": "1728910000",
+          "member": "int64",
+          "name": "EndTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Data type of queried data. Attack detection is \"attack_detect\".",
+          "example": "attack_detect",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApmVulnerabilityCountResponse": {
+      "document": "DescribeApmVulnerabilityCount response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Vulnerability metrics as well as number of business systems",
+          "example": "无",
+          "member": "ApmMetricRecord",
+          "name": "VulnerabilityList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of vulnerabilities",
+          "example": "10",
+          "member": "int64",
+          "name": "VulnerabilityCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of critical vulnerabilities",
+          "example": "5",
+          "member": "int64",
+          "name": "ImportantVulnerabilityCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "High-risk vulnerability count",
+          "example": "5",
+          "member": "int64",
+          "name": "CriticalVulnerabilityCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApmVulnerabilityDetailRequest": {
+      "document": "DescribeApmVulnerabilityDetail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "unix second-level timestamp",
+          "example": "1728910000",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "unix second-level timestamp",
+          "example": "1728910000",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "APM business system ID",
+          "example": "apm-CVfliqa8U",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Conditional filtering, required service.name, instrumentation.name, version, vul.id",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApmVulnerabilityDetailResponse": {
+      "document": "DescribeApmVulnerabilityDetail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Vulnerability details",
+          "example": "无",
+          "member": "ApmTag",
+          "name": "Tags",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of business systems related to vulnerabilities",
+          "example": "无",
+          "member": "ApmVulnerabilityServiceDetail",
+          "name": "ServiceInstanceList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeGeneralApmApplicationConfigRequest": {
       "document": "DescribeGeneralApmApplicationConfig request structure.",
       "members": [
@@ -3147,7 +4200,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Business system id.",
+          "document": "<p>Business system ID</p>",
           "example": "apm-CVfliqa8U",
           "member": "string",
           "name": "InstanceId",
@@ -3156,7 +4209,7 @@
         },
         {
           "disabled": false,
-          "document": "Span query start timestamp (unit: seconds).",
+          "document": "<p>Span query start timestamp (unit: seconds)</p>",
           "example": "1617123538",
           "member": "int64",
           "name": "StartTime",
@@ -3165,7 +4218,7 @@
         },
         {
           "disabled": false,
-          "document": "Span query end timestamp (unit: seconds).",
+          "document": "<p>Span query end timestamp (unit: s)</p>",
           "example": "1617123538",
           "member": "int64",
           "name": "EndTime",
@@ -3174,7 +4227,7 @@
         },
         {
           "disabled": false,
-          "document": "Universal filter parameters.",
+          "document": "<p>Universal filter parameters supported filter key such as service.name</p>",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -3183,7 +4236,7 @@
         },
         {
           "disabled": false,
-          "document": "Sort\n.\nThe currently supported keys are:.\n\n-StartTime (start time).\n-EndTime (end time).\n-Duration (response time).\n\nThe currently supported values are:.\n\n- desc: sort in descending order.\n-Asc - ascending order.",
+          "document": "<p>Sort<br>Keys now supported:</p><ul><li>startTime</li><li>endTime</li><li>duration</li></ul><p>Values now supported:</p><ul><li>desc (sort in descending order)</li><li>asc (ascending order)</li></ul>",
           "example": "无",
           "member": "OrderBy",
           "name": "OrderBy",
@@ -3192,7 +4245,7 @@
         },
         {
           "disabled": false,
-          "document": "The service name of the business itself. console users should fill in taw.",
+          "document": "<p>Business service name. Console users please enter taw</p>",
           "example": "taw",
           "member": "string",
           "name": "BusinessName",
@@ -3201,7 +4254,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of items per page, defaults to 10,000, valid value range is 0 – 10,000.",
+          "document": "<p>Count of single-page projects. Defaults to 10000. Valid value range is 0–10000.</p>",
           "example": "15",
           "member": "int64",
           "name": "Limit",
@@ -3210,7 +4263,7 @@
         },
         {
           "disabled": false,
-          "document": "Pagination.",
+          "document": "<p>Page</p>",
           "example": "1",
           "member": "int64",
           "name": "Offset",
@@ -3225,7 +4278,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total number.",
+          "document": "<p>Total number</p>",
           "example": "200",
           "member": "int64",
           "name": "TotalCount",
@@ -3235,7 +4288,7 @@
         },
         {
           "disabled": false,
-          "document": "The Spans field contains the entire content of the link data. since the data is compressed, perform the following three steps to switch back to the original text.\nDecode the text in the Spans field with Base64 to get the compressed byte[].\nUse gzip to decompress the compressed byte array and get the byte array before compression.\nUses UTF-8 character set to convert byte[] before compression to text.\n",
+          "document": "<p>The Spans field contains all content of the link data. Since the data is compressed, perform the following three steps to restore the original text.</p><ol><li>Decode the text in the Spans field with Base64 to get the compressed byte[].</li><li>Decompress the compressed byte[] with gzip to get the byte array before compression.</li><li>Convert the byte array before compression to text using the UTF-8 character set.</li></ol>",
           "example": "H4sIAAAAAAAA/8RY3W7bPBJ9lYDXlixKoiz5bjcNii6KoGjSYIFNEFDk2GZkkSxJOU4Dv/tCcn4sx6LTtMB3Y0AUz4jDc+bPj8iAVY1hcKGptGj6v9cVNH1E1DkjysbB9lUFD2iKLJiVYBBKWgMaoRVdNt1m64yQ86vtI",
           "member": "string",
           "name": "Spans",
@@ -3257,7 +4310,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Business system id.",
+          "document": "<p>Business system ID</p>",
           "example": "apm-CVfliqa8U",
           "member": "string",
           "name": "InstanceId",
@@ -3266,7 +4319,7 @@
         },
         {
           "disabled": false,
-          "document": "Span query start timestamp (unit: seconds).",
+          "document": "<p>Span query start timestamp (unit: seconds)</p>",
           "example": "1617123538",
           "member": "int64",
           "name": "StartTime",
@@ -3275,7 +4328,7 @@
         },
         {
           "disabled": false,
-          "document": "Span query end timestamp (unit: seconds).",
+          "document": "<p>Span query end timestamp (unit: s)</p>",
           "example": "1617123538",
           "member": "int64",
           "name": "EndTime",
@@ -3284,7 +4337,7 @@
         },
         {
           "disabled": false,
-          "document": "Universal filter parameters.",
+          "document": "<p>Universal filter parameters supported filter key such as service.name</p>",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -3293,7 +4346,7 @@
         },
         {
           "disabled": false,
-          "document": "Sort\n.\nThe currently supported keys are:.\n\n-StartTime (start time).\n-EndTime (end time).\n-Duration (response time).\n\nThe currently supported values are:.\n\n- desc: sort in descending order.\n-Asc - ascending order.",
+          "document": "<p>Sort<br>Keys now supported:</p><ul><li>startTime</li><li>endTime</li><li>duration</li></ul><p>Values now supported:</p><ul><li>desc (sort in descending order)</li><li>asc (ascending order)</li></ul>",
           "example": "无",
           "member": "OrderBy",
           "name": "OrderBy",
@@ -3302,7 +4355,7 @@
         },
         {
           "disabled": false,
-          "document": "The service name of the business itself. console users should fill in taw.",
+          "document": "<p>Business service name. Console users please enter taw</p>",
           "example": "taw",
           "member": "string",
           "name": "BusinessName",
@@ -3311,7 +4364,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of items per page, defaults to 10,000, valid values are 0 to 10,000.",
+          "document": "<p>Count of single-page projects. Defaults to 1000. Valid value range is 1–1000.</p>",
           "example": "15",
           "member": "int64",
           "name": "Limit",
@@ -3320,7 +4373,7 @@
         },
         {
           "disabled": false,
-          "document": "Pagination.",
+          "document": "<p>Page</p>",
           "example": "1",
           "member": "int64",
           "name": "Offset",
@@ -3335,7 +4388,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total number.",
+          "document": "<p>Total number</p>",
           "example": "200",
           "member": "int64",
           "name": "TotalCount",
@@ -3345,7 +4398,7 @@
         },
         {
           "disabled": false,
-          "document": "Span pagination list.",
+          "document": "<p>Span pagination list</p>",
           "example": "无",
           "member": "Span",
           "name": "Spans",
@@ -3513,6 +4566,82 @@
           "example": "1",
           "member": "int64",
           "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOPRAllVulCountRequest": {
+      "document": "DescribeOPRAllVulCount request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "unix second-level timestamp",
+          "example": "1728910000",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "unix second-level timestamp",
+          "example": "1728910000",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOPRAllVulCountResponse": {
+      "document": "DescribeOPRAllVulCount response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Vulnerability metrics as well as number of business systems\t",
+          "example": "无",
+          "member": "ApmMetricRecord",
+          "name": "VulnerabilityList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of vulnerabilities",
+          "example": "1",
+          "member": "int64",
+          "name": "VulnerabilityCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of critical vulnerabilities",
+          "example": "1",
+          "member": "int64",
+          "name": "ImportantVulnerabilityCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "High-risk vulnerability count",
+          "example": "1",
+          "member": "int64",
+          "name": "CriticalVulnerabilityCount",
           "output_required": true,
           "type": "int",
           "value_allowed_null": false
@@ -3726,12 +4855,223 @@
       ],
       "type": "object"
     },
+    "DescribeTopologyNewRequest": {
+      "document": "DescribeTopologyNew request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Business system ID",
+          "example": "apm-52Dpv13GR",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Querying start time.",
+          "example": "1617163200",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Query end time",
+          "example": "1617192000",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Application name",
+          "example": "java-order-service",
+          "member": "string",
+          "name": "ServiceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Upstream level.",
+          "example": "2",
+          "member": "int64",
+          "name": "UpLevel",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Application instance information.",
+          "example": "127.0.0.1",
+          "member": "string",
+          "name": "ServiceInstance",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "downstream hierarchy",
+          "example": "2",
+          "member": "int64",
+          "name": "DownLevel",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "perspective",
+          "example": "db",
+          "member": "string",
+          "name": "View",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter.",
+          "example": "[ { \"key\":\"TraceID\", \"operator\":\"eq\", \"value\":\"9c35b592750d5e0c15bd202bbae57a29\" } ]",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Represents topic (for MQ topology)",
+          "example": "prod.ecommerce.order.created.v1",
+          "member": "string",
+          "name": "Topic",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "View filtering list.",
+          "example": "{ \"Component\":[ \"Service\", \"MQ\", \"Database\" ] }",
+          "member": "Selectors",
+          "name": "Selectors",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "View ID",
+          "example": "topo_apm-xxxxyzj_6d15af9600d6e8aefd739a2",
+          "member": "string",
+          "name": "Id",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "TraceID",
+          "example": "9c35b592750d5e0c15bd202bbae57a29",
+          "member": "string",
+          "name": "TraceID",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the top 5 slow response nodes query.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsSlowTopFive",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Whether the resource layer information is obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "GetResource",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Filters by application tag.",
+          "example": "[ { \"Key\": \"运营产品\", \"Value\": \"云监控产品\" } ]",
+          "member": "ApmTag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Node type not displayed.",
+          "example": "{ \"Component\":[ \"MQ\", \"Database\" ] }",
+          "member": "Selectors",
+          "name": "Hidden",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTopologyNewResponse": {
+      "document": "DescribeTopologyNew response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Node collection.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TopologyNode",
+          "name": "Nodes",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Edge set.",
+          "example": "无",
+          "member": "TopologyEdgeNew",
+          "name": "Edges",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether the topology map is modified\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "TopologyModifyFlag",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of nodes.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "SelectorView",
+          "name": "Selectors",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "Filter": {
       "document": "Queries filter parameters.",
       "members": [
         {
           "disabled": false,
-          "document": "Filtering method (=, !=, in).",
+          "document": "<p>Filter method (=, !=, in)</p>",
           "example": "=",
           "member": "string",
           "name": "Type",
@@ -3742,7 +5082,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter dimension name.",
+          "document": "<p>Filter dimension name</p><p>For details, see the actual interface field description</p>",
           "example": "service.name",
           "member": "string",
           "name": "Key",
@@ -3753,7 +5093,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter value. uses commas to separate multiple values in in filtering method.",
+          "document": "<p>Filter value. Use comma-separated multiple values for in filtering method.</p>",
           "example": "sso-api",
           "member": "string",
           "name": "Value",
@@ -3888,7 +5228,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Business system ID.",
+          "document": "<p>Business system ID</p>",
           "example": "apm-1o8yMC47u",
           "member": "string",
           "name": "InstanceId",
@@ -3897,7 +5237,7 @@
         },
         {
           "disabled": false,
-          "document": "Application name",
+          "document": "<p>Application name</p>",
           "example": "java-market-service",
           "member": "string",
           "name": "ServiceName",
@@ -3906,7 +5246,7 @@
         },
         {
           "disabled": false,
-          "document": "URL convergence switch. 0: Off; 1: On",
+          "document": "<p>URL convergence switch, 0 Off | 1 On</p>",
           "example": "1",
           "member": "int64",
           "name": "UrlConvergenceSwitch",
@@ -3915,7 +5255,7 @@
         },
         {
           "disabled": false,
-          "document": "URL convergence threshold",
+          "document": "<p>URL convergence threshold</p>",
           "example": "500",
           "member": "int64",
           "name": "UrlConvergenceThreshold",
@@ -3924,7 +5264,7 @@
         },
         {
           "disabled": false,
-          "document": "Regex rules for exception filtering, separated by commas",
+          "document": "<p>Exception filtering regex rules, comma-separated</p>",
           "example": "stock(.*?),ppp(.*?)",
           "member": "string",
           "name": "ExceptionFilter",
@@ -3933,7 +5273,7 @@
         },
         {
           "disabled": false,
-          "document": "Regex rules for URL convergence, separated by commas",
+          "document": "<p>URL convergence regex rules, comma-separated</p>",
           "example": "stock(.*?),ppp(.*?)",
           "member": "string",
           "name": "UrlConvergence",
@@ -3942,7 +5282,7 @@
         },
         {
           "disabled": false,
-          "document": "Error code filtering, separated by commas",
+          "document": "<p>Error code filtering, comma-separated</p>",
           "example": "500,400",
           "member": "string",
           "name": "ErrorCodeFilter",
@@ -3951,7 +5291,7 @@
         },
         {
           "disabled": false,
-          "document": "Regex rules for URL exclusion, separated by commas",
+          "document": "<p>URL exclusion regex rule, comma-separated</p>",
           "example": "stock(.*?),ppp(.*?)",
           "member": "string",
           "name": "UrlExclude",
@@ -3960,7 +5300,7 @@
         },
         {
           "disabled": false,
-          "document": "Log switch. 0: Off; 1: On",
+          "document": "<p>Log switch 0 Disabled 1 Enabled</p>",
           "example": "0",
           "member": "int64",
           "name": "IsRelatedLog",
@@ -3969,7 +5309,7 @@
         },
         {
           "disabled": false,
-          "document": "Log region.",
+          "document": "<p>Log region</p>",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "LogRegion",
@@ -3978,7 +5318,7 @@
         },
         {
           "disabled": false,
-          "document": "Log topic ID",
+          "document": "<p>Log topic ID</p>",
           "example": "84bac169-79d8-4409-8e56-aebcf63b5783",
           "member": "string",
           "name": "LogTopicID",
@@ -3987,7 +5327,7 @@
         },
         {
           "disabled": false,
-          "document": "CLS log set/ES cluster ID",
+          "document": "<p>CLS logset | ES cluster ID</p>",
           "example": "postgres",
           "member": "string",
           "name": "LogSet",
@@ -3996,7 +5336,7 @@
         },
         {
           "disabled": false,
-          "document": "Log source: CLS or ES",
+          "document": "<p>Log source CLS | ES</p>",
           "example": "CLS",
           "member": "string",
           "name": "LogSource",
@@ -4005,7 +5345,7 @@
         },
         {
           "disabled": false,
-          "document": "APIs to be filtered",
+          "document": "<p>Interfaces to Filter</p>",
           "example": "getOrderInfo",
           "member": "string",
           "name": "IgnoreOperationName",
@@ -4014,7 +5354,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether thread profiling is enabled.",
+          "document": "<p>Whether thread profiling is enabled</p>",
           "example": "false",
           "member": "bool",
           "name": "EnableSnapshot",
@@ -4023,7 +5363,7 @@
         },
         {
           "disabled": false,
-          "document": "Timeout threshold for thread profiling.",
+          "document": "<p>Timeout threshold for thread profiling</p>",
           "example": "2000",
           "member": "int64",
           "name": "SnapshotTimeout",
@@ -4032,7 +5372,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether agent is enabled.",
+          "document": "<p>Whether to enable agent</p>",
           "example": "true",
           "member": "bool",
           "name": "AgentEnable",
@@ -4041,7 +5381,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether link compression is enabled.",
+          "document": "<p>Whether to enable link compression</p>",
           "example": "false",
           "member": "bool",
           "name": "TraceSquash",
@@ -4050,7 +5390,7 @@
         },
         {
           "disabled": false,
-          "document": "Switch for enabling application diagnosis.",
+          "document": "<p>Whether the switch for enabling application diagnosis is enabled</p>",
           "example": "true",
           "member": "bool",
           "name": "EventEnable",
@@ -4059,7 +5399,7 @@
         },
         {
           "disabled": false,
-          "document": "Component List",
+          "document": "<p>Component list</p>",
           "example": "无",
           "member": "Instrument",
           "name": "InstrumentList",
@@ -4068,7 +5408,7 @@
         },
         {
           "disabled": false,
-          "document": "Related configurations of the probe APIs.",
+          "document": "<p>probe API related configuration</p>",
           "example": "无",
           "member": "AgentOperationConfigView",
           "name": "AgentOperationConfigView",
@@ -4077,7 +5417,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable application log configuration.",
+          "document": "<p>Whether the application log configuration is enabled</p>",
           "example": "false",
           "member": "bool",
           "name": "EnableLogConfig",
@@ -4086,7 +5426,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable the dashboard configuration for applications. false: disabled (consistent with the business system configuration); true: enabled (application-level configuration).",
+          "document": "<p>Whether the dashboard configuration is enabled: false (disabled, consistent with the business system)/true (enabled, application-level configuration)</p>",
           "example": "false",
           "member": "bool",
           "name": "EnableDashboardConfig",
@@ -4095,7 +5435,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to associate with Dashboard. 0: disabled; 1: enabled.",
+          "document": "<p>Whether to associate with dashboard: 0 off 1 on</p>",
           "example": "0",
           "member": "int64",
           "name": "IsRelatedDashboard",
@@ -4104,7 +5444,7 @@
         },
         {
           "disabled": false,
-          "document": "dashboard ID",
+          "document": "<p>dashboard ID</p>",
           "example": "2bl22vlyd6gq0wx3",
           "member": "string",
           "name": "DashboardTopicID",
@@ -4113,7 +5453,7 @@
         },
         {
           "disabled": false,
-          "document": "CLS index type. (0 = full-text index; 1 = key-value index).",
+          "document": "<p>CLS index type (0=full-text index, 1=key-value index)</p>",
           "example": "0",
           "member": "int64",
           "name": "LogIndexType",
@@ -4122,7 +5462,7 @@
         },
         {
           "disabled": false,
-          "document": "Index key of traceId. It is valid when the CLS index type is key-value index.",
+          "document": "<p>Index key of traceId: This parameter is valid only when the CLS index type is key-value index.</p>",
           "example": "trace_id",
           "member": "string",
           "name": "LogTraceIdKey",
@@ -4131,7 +5471,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable the application security configuration.",
+          "document": "<p>Whether application security configuration is enabled</p>",
           "example": "false",
           "member": "bool",
           "name": "EnableSecurityConfig",
@@ -4140,7 +5480,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable SQL injection analysis.",
+          "document": "<p>Whether SQL injection analysis is enabled</p>",
           "example": "0",
           "member": "int64",
           "name": "IsSqlInjectionAnalysis",
@@ -4149,7 +5489,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable detection of component vulnerability.",
+          "document": "<p>Whether component vulnerability detection is enabled</p>",
           "example": "0",
           "member": "int64",
           "name": "IsInstrumentationVulnerabilityScan",
@@ -4158,7 +5498,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether remote command detection is enabled.",
+          "document": "<p>Whether remote command detection is enabled</p>",
           "example": "0",
           "member": "int64",
           "name": "IsRemoteCommandExecutionAnalysis",
@@ -4167,7 +5507,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable detection of Java webshell.",
+          "document": "<p>Whether Java Webshell detection is enabled</p>",
           "example": "0",
           "member": "int64",
           "name": "IsMemoryHijackingAnalysis",
@@ -4176,7 +5516,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable the detection of deleting arbitrary files. (0 - disabled; 1: enabled.)",
+          "document": "<p>Whether to enable detection of any file deletion (0 - turn off, 1 - turn on)</p>",
           "example": "0",
           "member": "int64",
           "name": "IsDeleteAnyFileAnalysis",
@@ -4185,7 +5525,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable the detection of reading arbitrary files. (0 - disabled; 1 - enabled.)",
+          "document": "<p>Whether to enable arbitrary file read detection (0 - disabled, 1 - enabled)</p>",
           "example": "0",
           "member": "int64",
           "name": "IsReadAnyFileAnalysis",
@@ -4194,7 +5534,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable the detection of uploading arbitrary files. (0 - disabled; 1 - enabled.)",
+          "document": "<p>Whether to enable arbitrary file upload detection (0-disable, 1-enable)</p>",
           "example": "0",
           "member": "int64",
           "name": "IsUploadAnyFileAnalysis",
@@ -4203,7 +5543,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable the detection of the inclusion of arbitrary files. (0: disabled, 1: enabled.)",
+          "document": "<p>Whether to enable detection of arbitrary files (0 - disabled, 1 - enabled)</p>",
           "example": "0",
           "member": "int64",
           "name": "IsIncludeAnyFileAnalysis",
@@ -4212,7 +5552,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable traversal detection of the directory. (0 - disabled; 1 - enabled).",
+          "document": "<p>Whether path traversal detection is enabled (0-disabled, 1-enabled)</p>",
           "example": "0",
           "member": "int64",
           "name": "IsDirectoryTraversalAnalysis",
@@ -4221,7 +5561,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable template engine injection detection. (0: disabled; 1: enabled.)",
+          "document": "<p>Whether to enable template engine injection detection (0-disable, 1-enable)</p>",
           "example": "0",
           "member": "int64",
           "name": "IsTemplateEngineInjectionAnalysis",
@@ -4230,7 +5570,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable script engine injection detection. (0 - disabled; 1 - enabled.)",
+          "document": "<p>Whether to enable script engine injection detection (0-disable, 1-enable)</p>",
           "example": "0",
           "member": "int64",
           "name": "IsScriptEngineInjectionAnalysis",
@@ -4239,7 +5579,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable expression injection detection. (0 - disabled; 1 - enabled.)",
+          "document": "<p>Whether expression injection detection is enabled (0-disabled, 1-enabled)</p>",
           "example": "0",
           "member": "int64",
           "name": "IsExpressionInjectionAnalysis",
@@ -4248,7 +5588,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable JNDI injection detection. (0 - disabled; 1 - enabled.)",
+          "document": "<p>Whether JNDI injection detection is enabled (0 - disabled, 1 - enabled)</p>",
           "example": "0",
           "member": "int64",
           "name": "IsJNDIInjectionAnalysis",
@@ -4257,7 +5597,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable JNI injection detection. (0 - disabled, 1 - enabled).",
+          "document": "<p>Whether JNI injection detection is enabled (0-disabled, 1-enabled)</p>",
           "example": "0",
           "member": "int64",
           "name": "IsJNIInjectionAnalysis",
@@ -4266,7 +5606,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable Webshell backdoor detection. (0 - disabled; 1 - enabled).",
+          "document": "<p>Whether to enable Webshell backdoor detection (0 - disabled, 1 - enabled)</p>",
           "example": "0",
           "member": "int64",
           "name": "IsWebshellBackdoorAnalysis",
@@ -4275,7 +5615,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable deserialization detection. (0 - disabled; 1 - enabled).",
+          "document": "<p>Whether deserialization detection is enabled (0-disabled, 1-enabled)</p>",
           "example": "0",
           "member": "int64",
           "name": "IsDeserializationAnalysis",
@@ -4284,7 +5624,7 @@
         },
         {
           "disabled": false,
-          "document": "Automatic convergence switch for APIs. 0: disabled | 1: enabled.",
+          "document": "<p>API auto convergence switch, 0-off | 1-on</p>",
           "example": "false",
           "member": "bool",
           "name": "UrlAutoConvergenceEnable",
@@ -4293,7 +5633,7 @@
         },
         {
           "disabled": false,
-          "document": "Convergence threshold for URL long segments.",
+          "document": "<p>URL long segment convergence threshold</p>",
           "example": "40",
           "member": "int64",
           "name": "UrlLongSegmentThreshold",
@@ -4302,7 +5642,7 @@
         },
         {
           "disabled": false,
-          "document": "Convergence threshold for URL numerical segments.",
+          "document": "<p>URL digit segment convergence threshold</p>",
           "example": "5",
           "member": "int64",
           "name": "UrlNumberSegmentThreshold",
@@ -4311,7 +5651,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the memory threshold for probe fusing.",
+          "document": "<p>Fuse memory threshold of the probe</p>",
           "example": "90",
           "member": "int64",
           "name": "DisableMemoryUsed",
@@ -4320,12 +5660,102 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the CPU threshold for probe fusing.",
+          "document": "<p>Probe fuse CPU threshold</p>",
           "example": "90",
           "member": "int64",
           "name": "DisableCpuUsed",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether SQL parameter access is enabled</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "DbStatementParametersEnabled",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Slow SQL threshold</p>",
+          "example": "无",
+          "member": "ApmTag",
+          "name": "SlowSQLThresholds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether the masking rule is enabled</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "EnableDesensitizationRule",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Masking rule</p>",
+          "example": "email,password",
+          "member": "string",
+          "name": "DesensitizationRule",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Index key of spanId: This parameter is valid only when the CLS index type is key-value index.</p>",
+          "example": "span_id",
+          "member": "string",
+          "name": "LogSpanIdKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Automated performance analysis task configuration</p>",
+          "example": "无",
+          "member": "AutoProfilingConfig",
+          "name": "AutoProfilingConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Threshold configuration switch. true means use application level threshold; false means use business system level threshold.</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableThresholdConfig",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Error rate threshold (%) used to judge the application health status as \"red\".</p>",
+          "example": "5",
+          "member": "int64",
+          "name": "ErrRateThreshold",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Alert threshold for response time (ms), used to judge the application health status as \"yellow\".</p>",
+          "example": "500",
+          "member": "int64",
+          "name": "ResponseDurationWarningThreshold",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to use the default fuse threshold of the probe</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "UseDefaultFuseConfig",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -4347,7 +5777,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Associated product name. currently only supports Prometheus.",
+          "document": "<p>Associated product name, currently only support Prometheus, CKafka</p>",
           "example": "Prometheus",
           "member": "string",
           "name": "ProductName",
@@ -4356,7 +5786,7 @@
         },
         {
           "disabled": false,
-          "document": "Status of the association relationship: // association status: 1 (enabled), 2 (disabled), 4 (deleted).",
+          "document": "<p>Status of the association relationship: // Association relationship status: 1 (enabled), 2 (disabled)</p>",
           "example": "1",
           "member": "uint64",
           "name": "Status",
@@ -4365,7 +5795,7 @@
         },
         {
           "disabled": false,
-          "document": "Business system ID",
+          "document": "<p>Business system ID</p>",
           "example": "apm-059oXBfTL",
           "member": "string",
           "name": "InstanceId",
@@ -4374,7 +5804,7 @@
         },
         {
           "disabled": false,
-          "document": "Associated product instance ID.",
+          "document": "<p>ID of the associated product instance</p>",
           "example": "prom-xxxxxx",
           "member": "string",
           "name": "PeerId",
@@ -4383,10 +5813,19 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the CKafka message topic.",
+          "document": "<p>CKafka message topic</p>",
           "example": "apm-trace",
           "member": "string",
           "name": "Topic",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Ckafka message topic</p>",
+          "example": "apm-metric",
+          "member": "string",
+          "name": "MetricTopic",
           "required": false,
           "type": "string"
         }
@@ -4785,6 +6224,15 @@
           "name": "UrlNumberSegmentThreshold",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Index key of spanId: This parameter is valid only when the CLS index type is key-value index",
+          "example": "span_id",
+          "member": "string",
+          "name": "LogSpanIdKey",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -4981,6 +6429,51 @@
       ],
       "type": "object"
     },
+    "ModifyApmServiceRequest": {
+      "document": "ModifyApmService request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID",
+          "example": "svc-SgUX9ueaj",
+          "member": "string",
+          "name": "ServiceID",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Application description",
+          "example": "测试",
+          "member": "string",
+          "name": "ServiceDescription",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tag list",
+          "example": "[{ \t\t\"Key\": \"appid\", \t\t\"Value\": \"123123422\" \t}]",
+          "member": "ApmTag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyApmServiceResponse": {
+      "document": "ModifyApmService response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyGeneralApmApplicationConfigRequest": {
       "document": "ModifyGeneralApmApplicationConfig request structure.",
       "members": [
@@ -5060,6 +6553,32 @@
       ],
       "usage": "in"
     },
+    "Position": {
+      "document": "Node location information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Node horizontal coordinate\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
+          "member": "float",
+          "name": "X",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Node vertical coordinate\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "200",
+          "member": "float",
+          "name": "Y",
+          "required": false,
+          "type": "float",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "QueryMetricItem": {
       "document": "Querying.",
       "members": [
@@ -5093,12 +6612,84 @@
       ],
       "usage": "in"
     },
+    "Resource": {
+      "document": "Resource layer information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Resource type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"Tke\"]",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "TKE resource layer information.",
+          "example": "[{\"Region\":\"ap-guangzhou\",\"ClusterID\":\"cls-pkask1w4\",\"PodName\":\"java-taw-mock-project-experience-log-test-5788578c94-lb29z\",\"Namespace\":\"taw-mock\",\"Deployment\":\"java-taw-mock-project-experience-log\",\"PodIP\":\"10.80.3.69\",\"NodeIP\":\"30.167.52.173\"}]",
+          "member": "TkeMeta",
+          "name": "TKEMeta",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "CVM resource information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[]",
+          "member": "CVMMeta",
+          "name": "CVMMeta",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "SelectorView": {
+      "document": "Contains the quantities of components and healthy nodes in the nodes.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Component Count\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ComponentTopologyView",
+          "name": "Component",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "Selectors": {
+      "document": "Selection status of the topology view.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Selection status of the component.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Component",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "ServiceDetail": {
       "document": "Detailed information about applications.",
       "members": [
         {
           "disabled": false,
-          "document": "Application ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Application ID</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "svc-test",
           "member": "string",
           "name": "ServiceID",
@@ -5109,7 +6700,7 @@
         },
         {
           "disabled": false,
-          "document": "Business system ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Business system ID</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "apm-test",
           "member": "string",
           "name": "InstanceKey",
@@ -5120,8 +6711,8 @@
         },
         {
           "disabled": false,
-          "document": "User appid.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "123",
+          "document": "<p>User appid</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1251763868",
           "member": "int64",
           "name": "AppID",
           "output_required": false,
@@ -5131,8 +6722,8 @@
         },
         {
           "disabled": false,
-          "document": "Host account UIN\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "12",
+          "document": "<p>main account uin</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1500000688",
           "member": "string",
           "name": "CreateUIN",
           "output_required": false,
@@ -5142,7 +6733,7 @@
         },
         {
           "disabled": false,
-          "document": "Application name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Application name</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "demo",
           "member": "string",
           "name": "ServiceName",
@@ -5153,7 +6744,7 @@
         },
         {
           "disabled": false,
-          "document": "Application description\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Application description</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "describe",
           "member": "string",
           "name": "ServiceDescription",
@@ -5164,7 +6755,7 @@
         },
         {
           "disabled": false,
-          "document": "Region.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Region</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
@@ -5175,7 +6766,7 @@
         },
         {
           "disabled": false,
-          "document": "Tag.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Tag</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ApmTag",
           "name": "Tags",
@@ -5186,7 +6777,7 @@
         },
         {
           "disabled": false,
-          "document": "Business system name.",
+          "document": "<p>Business system name</p>",
           "example": "travy-test",
           "member": "string",
           "name": "InstanceName",
@@ -5194,6 +6785,39 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Threshold configuration switch. true means use application level threshold; false means use business system level threshold.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableThresholdConfig",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Error rate threshold (%) used to judge the application health status as \"red\".</p><p>Unit: %</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "5",
+          "member": "int64",
+          "name": "ErrRateThreshold",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Alert threshold for response time (ms), used to judge application health status as \"yellow\".</p><p>Unit: ms</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "500",
+          "member": "int64",
+          "name": "ResponseDurationWarningThreshold",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -5486,6 +7110,431 @@
         }
       ],
       "type": "object"
+    },
+    "TkeMeta": {
+      "document": "TKE resource metadata.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Region.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "cls-pkask1w4",
+          "member": "string",
+          "name": "ClusterID",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "pod name",
+          "example": "java-taw-mock-project-experience-log-test-5788578c94-92tbv",
+          "member": "string",
+          "name": "PodName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Namespace",
+          "example": "test",
+          "member": "string",
+          "name": "Namespace",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "workload",
+          "example": "test",
+          "member": "string",
+          "name": "Deployment",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "pod ip",
+          "example": "10.80.1.34",
+          "member": "string",
+          "name": "PodIP",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "node ip",
+          "example": "9.223.65.110",
+          "member": "string",
+          "name": "NodeIP",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "TopologyEdgeNew": {
+      "document": "Topology edge definition",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Source node",
+          "example": "customer",
+          "member": "string",
+          "name": "Source",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Edge ID",
+          "example": "customer_mysql",
+          "member": "string",
+          "name": "Id",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Edge weight\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1.0",
+          "member": "float",
+          "name": "Weight",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Target node",
+          "example": "mysql",
+          "member": "string",
+          "name": "Target",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "response time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
+          "member": "float",
+          "name": "Duration",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Error rate\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0.36",
+          "member": "float",
+          "name": "ErrRate",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "throughput\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
+          "member": "float",
+          "name": "Qps",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Edge type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "virtual",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Edge color\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "red",
+          "member": "string",
+          "name": "Color",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "SQL call count\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100.0",
+          "member": "float",
+          "name": "SqlRequestCount",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "SQL call error count\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100.0",
+          "member": "float",
+          "name": "SqlErrorRequestCount",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Source node type on the edge of the topology diagram. Application/MQ/DB.",
+          "example": "mq",
+          "member": "string",
+          "name": "SourceComp",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Target node type on the edge of the topology diagram. Application/MQ/DB.",
+          "example": "mq",
+          "member": "string",
+          "name": "TargetComp",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TopologyNode": {
+      "document": "Topology graph edge node",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Error rate\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0.36",
+          "member": "float",
+          "name": "ErrRate",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Node type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "SPAN_KIND_SERVER",
+          "member": "string",
+          "name": "Kind",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Node name",
+          "example": "Customer",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Node weight\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1.0",
+          "member": "float",
+          "name": "Weight",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Node color\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "red",
+          "member": "string",
+          "name": "Color",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "response time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
+          "member": "float",
+          "name": "Duration",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "throughput\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
+          "member": "float",
+          "name": "Qps",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Node type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "http",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Node ID",
+          "example": "156",
+          "member": "string",
+          "name": "Id",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Node size\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "large",
+          "member": "string",
+          "name": "Size",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Indicate whether the node is a component\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsModule",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Node location information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Position",
+          "name": "Position",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Node tags\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ApmTag",
+          "name": "Tags",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether the node supports drill-down.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "CanDrillDown",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Resource layer information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Resource",
+          "name": "Resource",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Name of the topology node view.",
+          "example": "mq",
+          "member": "string",
+          "name": "NodeView",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Message consumption time of the MQ consumer, in ms.",
+          "example": "100",
+          "member": "float",
+          "name": "ConsumerDuration",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error rate of the MQ consumers, in %.",
+          "example": "0.36",
+          "member": "float",
+          "name": "ConsumerErrRate",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Throughput of the message queue (MQ) consumer.",
+          "example": "100",
+          "member": "float",
+          "name": "ConsumerQps",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Application ID.",
+          "example": "svc-1xfew23",
+          "member": "string",
+          "name": "ServiceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     }
   },
   "version": "1.0"

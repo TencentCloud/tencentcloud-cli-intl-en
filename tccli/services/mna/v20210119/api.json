@@ -1,0 +1,5361 @@
+{
+  "actions": {
+    "ActivateHardware": {
+      "document": "Activate hardware device",
+      "input": "ActivateHardwareRequest",
+      "name": "Activates hardware devices in batch",
+      "output": "ActivateHardwareResponse",
+      "status": "online"
+    },
+    "AddApplication": {
+      "document": "This API is used to create an application",
+      "input": "AddApplicationRequest",
+      "name": "Create an application",
+      "output": "AddApplicationResponse",
+      "status": "online"
+    },
+    "AddDevice": {
+      "document": "Create new device records",
+      "input": "AddDeviceRequest",
+      "name": "Create a new device",
+      "output": "AddDeviceResponse",
+      "status": "online"
+    },
+    "AddGroup": {
+      "document": "Create group",
+      "input": "AddGroupRequest",
+      "name": "Create group",
+      "output": "AddGroupResponse",
+      "status": "online"
+    },
+    "AddHardware": {
+      "document": "Add hardware devices, generate inactive hardware devices, and support batch addition",
+      "input": "AddHardwareRequest",
+      "name": "Add hardware device",
+      "output": "AddHardwareResponse",
+      "status": "online"
+    },
+    "AddL3Conn": {
+      "document": "Create an interconnection rule",
+      "input": "AddL3ConnRequest",
+      "name": "Create an interconnection rule",
+      "output": "AddL3ConnResponse",
+      "status": "online"
+    },
+    "CreateEncryptedKey": {
+      "document": "This API is used to configure and refresh preset keys.",
+      "input": "CreateEncryptedKeyRequest",
+      "name": "Set or update a key",
+      "output": "CreateEncryptedKeyResponse",
+      "status": "online"
+    },
+    "DeleteApplication": {
+      "document": "This API is used to delete applications",
+      "input": "DeleteApplicationRequest",
+      "name": "Deletes applications",
+      "output": "DeleteApplicationResponse",
+      "status": "online"
+    },
+    "DeleteDevice": {
+      "document": "Delete device info",
+      "input": "DeleteDeviceRequest",
+      "name": "Delete a device",
+      "output": "DeleteDeviceResponse",
+      "status": "online"
+    },
+    "DeleteGroup": {
+      "document": "Delete group",
+      "input": "DeleteGroupRequest",
+      "name": "Delete group",
+      "output": "DeleteGroupResponse",
+      "status": "online"
+    },
+    "DeleteL3Conn": {
+      "document": "Delete an interconnection rule",
+      "input": "DeleteL3ConnRequest",
+      "name": "Delete an interconnection rule",
+      "output": "DeleteL3ConnResponse",
+      "status": "online"
+    },
+    "DownloadActiveDeviceCount": {
+      "document": "Download the number of active devices statistics",
+      "input": "DownloadActiveDeviceCountRequest",
+      "name": "Download the number of active devices statistics",
+      "output": "DownloadActiveDeviceCountResponse",
+      "status": "online"
+    },
+    "GetActiveDeviceCount": {
+      "document": "Number of active devices statistics",
+      "input": "GetActiveDeviceCountRequest",
+      "name": "Number of active devices statistics",
+      "output": "GetActiveDeviceCountResponse",
+      "status": "online"
+    },
+    "GetApplication": {
+      "document": "This API is used to query applications.",
+      "input": "GetApplicationRequest",
+      "name": "This API is used to obtain application information.",
+      "output": "GetApplicationResponse",
+      "status": "online"
+    },
+    "GetDestIPByName": {
+      "document": "Statistics of a single device accessing the target IP address",
+      "input": "GetDestIPByNameRequest",
+      "name": "Query target IP addresses based on device name",
+      "output": "GetDestIPByNameResponse",
+      "status": "online"
+    },
+    "GetDevice": {
+      "document": "This API is used to search device details by specified device ID.",
+      "input": "GetDeviceRequest",
+      "name": "Retrieve device details",
+      "output": "GetDeviceResponse",
+      "status": "online"
+    },
+    "GetDevicePayMode": {
+      "document": "This API is used to obtain the payment mode of a device.",
+      "input": "GetDevicePayModeRequest",
+      "name": "Obtain the payment mode of a device",
+      "output": "GetDevicePayModeResponse",
+      "status": "online"
+    },
+    "GetDevices": {
+      "document": "This API is used to get device information list.",
+      "input": "GetDevicesRequest",
+      "name": "List of Device Information",
+      "output": "GetDevicesResponse",
+      "status": "online"
+    },
+    "GetFlowAlarmInfo": {
+      "document": "This API is used to query user traffic alarm settings based on AppId, including threshold, callback url and key.",
+      "input": "GetFlowAlarmInfoRequest",
+      "name": "Query traffic alarm info",
+      "output": "GetFlowAlarmInfoResponse",
+      "status": "online"
+    },
+    "GetFlowPackages": {
+      "document": "Retrieve the data transfer plan list",
+      "input": "GetFlowPackagesRequest",
+      "name": "Retrieve the Data Transfer Plan List",
+      "output": "GetFlowPackagesResponse",
+      "status": "online"
+    },
+    "GetFlowStatistic": {
+      "document": "Retrieve traffic usage data for a specified device Id at a specified time point.",
+      "input": "GetFlowStatisticRequest",
+      "name": "Retrieve data traffic stats",
+      "output": "GetFlowStatisticResponse",
+      "status": "online"
+    },
+    "GetFlowStatisticByGroup": {
+      "document": "Retrieve traffic usage data for the specified group and time period",
+      "input": "GetFlowStatisticByGroupRequest",
+      "name": "Retrieve data traffic stats based on device group",
+      "output": "GetFlowStatisticByGroupResponse",
+      "status": "online"
+    },
+    "GetFlowStatisticByName": {
+      "document": "Retrieve traffic usage data for a specified device Id at a specified time point.",
+      "input": "GetFlowStatisticByNameRequest",
+      "name": "Retrieve data traffic stats based on device name",
+      "output": "GetFlowStatisticByNameResponse",
+      "status": "online"
+    },
+    "GetFlowStatisticByRegion": {
+      "document": "Retrieve traffic usage data for the specified region and time point",
+      "input": "GetFlowStatisticByRegionRequest",
+      "name": "Retrieve data traffic stats by region",
+      "output": "GetFlowStatisticByRegionResponse",
+      "status": "online"
+    },
+    "GetGroupDetail": {
+      "document": "View group details",
+      "input": "GetGroupDetailRequest",
+      "name": "Get group details",
+      "output": "GetGroupDetailResponse",
+      "status": "online"
+    },
+    "GetGroupList": {
+      "document": "This API is used to obtain a group list.",
+      "input": "GetGroupListRequest",
+      "name": "This API is used to obtain a group list.",
+      "output": "GetGroupListResponse",
+      "status": "online"
+    },
+    "GetHardwareInfo": {
+      "document": "This API is used to get hardware device information.",
+      "input": "GetHardwareInfoRequest",
+      "name": "Retrieve hardware device information",
+      "output": "GetHardwareInfoResponse",
+      "status": "online"
+    },
+    "GetHardwareList": {
+      "document": "This API is used to get the hardware list of the manufacturer.",
+      "input": "GetHardwareListRequest",
+      "name": "Get the hardware list of the manufacturer",
+      "output": "GetHardwareListResponse",
+      "status": "online"
+    },
+    "GetL3ConnList": {
+      "document": "Retrieve the list of interconnection rules",
+      "input": "GetL3ConnListRequest",
+      "name": "Retrieve the interconnection rule list",
+      "output": "GetL3ConnListResponse",
+      "status": "online"
+    },
+    "GetMonitorDataByName": {
+      "document": "This API is used to obtain the download file URL for all monitoring metrics of a single device.",
+      "input": "GetMonitorDataByNameRequest",
+      "name": "Download the monitoring data file based on device name",
+      "output": "GetMonitorDataByNameResponse",
+      "status": "online"
+    },
+    "GetMultiFlowStatistic": {
+      "document": "Obtain batch device traffic statistics curves",
+      "input": "GetMultiFlowStatisticRequest",
+      "name": "Obtain batch device traffic statistics",
+      "output": "GetMultiFlowStatisticResponse",
+      "status": "online"
+    },
+    "GetNetMonitor": {
+      "document": "This API is used to obtain real-time traffic statistics per device.",
+      "input": "GetNetMonitorRequest",
+      "name": "Retrieve traffic monitoring information",
+      "output": "GetNetMonitorResponse",
+      "status": "online"
+    },
+    "GetNetMonitorByName": {
+      "document": "This API is used to obtain real-time traffic statistics per device.",
+      "input": "GetNetMonitorByNameRequest",
+      "name": "Retrieve traffic monitoring information based on device name",
+      "output": "GetNetMonitorByNameResponse",
+      "status": "online"
+    },
+    "GetPublicKey": {
+      "document": "This API is used to access the public key for signature verification.",
+      "input": "GetPublicKeyRequest",
+      "name": "Access the public key.",
+      "output": "GetPublicKeyResponse",
+      "status": "online"
+    },
+    "GetStatisticData": {
+      "document": "Download traffic data on the usage statistics page",
+      "input": "GetStatisticDataRequest",
+      "name": "Download usage statistics",
+      "output": "GetStatisticDataResponse",
+      "status": "online"
+    },
+    "GetStatisticDataByName": {
+      "document": "Download traffic data on the usage statistics page",
+      "input": "GetStatisticDataByNameRequest",
+      "name": "Download usage statistics based on device name",
+      "output": "GetStatisticDataByNameResponse",
+      "status": "online"
+    },
+    "GetVendorHardware": {
+      "document": "This API is used to get the hardware device list of the manufacturer.",
+      "input": "GetVendorHardwareRequest",
+      "name": "Get the hardware device list of the manufacturer",
+      "output": "GetVendorHardwareResponse",
+      "status": "online"
+    },
+    "GroupAddDevice": {
+      "document": "Add device to already exist group",
+      "input": "GroupAddDeviceRequest",
+      "name": "Adds a device to a group",
+      "output": "GroupAddDeviceResponse",
+      "status": "online"
+    },
+    "GroupDeleteDevice": {
+      "document": "Delete devices in the group",
+      "input": "GroupDeleteDeviceRequest",
+      "name": "Deletes a device in the group",
+      "output": "GroupDeleteDeviceResponse",
+      "status": "online"
+    },
+    "ModifyPackageRenewFlag": {
+      "document": "Auto renewal of data transfer plans can be enabled or disabled, unaffected by ongoing effective plans in the current cycle.",
+      "input": "ModifyPackageRenewFlagRequest",
+      "name": "Modify the data transfer plan auto-renewal flag",
+      "output": "ModifyPackageRenewFlagResponse",
+      "status": "online"
+    },
+    "OrderFlowPackage": {
+      "document": "Purchase a Prepaid Traffic Package",
+      "input": "OrderFlowPackageRequest",
+      "name": "Subscribe to a data transfer plan",
+      "output": "OrderFlowPackageResponse",
+      "status": "online"
+    },
+    "OrderPerLicense": {
+      "document": "Purchase a single-use License",
+      "input": "OrderPerLicenseRequest",
+      "name": "Purchase a single-use License",
+      "output": "OrderPerLicenseResponse",
+      "status": "online"
+    },
+    "ReportOrder": {
+      "document": "Users report custom order information, and the Multiple Network Acceleration service saves the information related to.",
+      "input": "ReportOrderRequest",
+      "name": "Report order information",
+      "output": "ReportOrderResponse",
+      "status": "online"
+    },
+    "SetNotifyUrl": {
+      "document": "This API is used to set user traffic alarm information. Use this API setting to configure the data transfer plan alarm threshold as well as the callback url and key when an alarm is generated.",
+      "input": "SetNotifyUrlRequest",
+      "name": "Set user traffic alarm info",
+      "output": "SetNotifyUrlResponse",
+      "status": "online"
+    },
+    "UpdateApplicationInfo": {
+      "document": "Update application information",
+      "input": "UpdateApplicationInfoRequest",
+      "name": "Update application information",
+      "output": "UpdateApplicationInfoResponse",
+      "status": "online"
+    },
+    "UpdateApplicationKey": {
+      "document": "Update application key",
+      "input": "UpdateApplicationKeyRequest",
+      "name": "Update the application key",
+      "output": "UpdateApplicationKeyResponse",
+      "status": "online"
+    },
+    "UpdateDevice": {
+      "document": "Update device information",
+      "input": "UpdateDeviceRequest",
+      "name": "Update a device",
+      "output": "UpdateDeviceResponse",
+      "status": "online"
+    },
+    "UpdateGroup": {
+      "document": "Update group remark",
+      "input": "UpdateGroupRequest",
+      "name": "Update group information",
+      "output": "UpdateGroupResponse",
+      "status": "online"
+    },
+    "UpdateHardware": {
+      "document": "Refresh hardware info",
+      "input": "UpdateHardwareRequest",
+      "name": "Refresh hardware info",
+      "output": "UpdateHardwareResponse",
+      "status": "online"
+    },
+    "UpdateL3Cidr": {
+      "document": "Update the interconnection rule CIDR",
+      "input": "UpdateL3CidrRequest",
+      "name": "Update the interconnection rule CIDR",
+      "output": "UpdateL3CidrResponse",
+      "status": "online"
+    },
+    "UpdateL3Conn": {
+      "document": "Update the interconnection rule remark",
+      "input": "UpdateL3ConnRequest",
+      "name": "Update the remark of an interconnection rule",
+      "output": "UpdateL3ConnResponse",
+      "status": "online"
+    },
+    "UpdateL3Switch": {
+      "document": "Update the interconnection rule switch",
+      "input": "UpdateL3SwitchRequest",
+      "name": "Modify the interconnection rule switch",
+      "output": "UpdateL3SwitchResponse",
+      "status": "online"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2021-01-19",
+    "serviceNameCN": "多网聚合加速",
+    "serviceShortName": "mna"
+  },
+  "objects": {
+    "ActivateHardware": {
+      "document": "Activate device",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Vendor name",
+          "example": "vendor1",
+          "member": "string",
+          "name": "Vendor",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Device SN serial number",
+          "example": "AN",
+          "member": "string",
+          "name": "SN",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Device name.",
+          "example": "mna-w795bzezug",
+          "member": "string",
+          "name": "DeviceName",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remarks",
+          "example": "this is descript",
+          "member": "string",
+          "name": "Description",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "device key",
+          "example": "123drer43sr",
+          "member": "string",
+          "name": "DataKey",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Access environment. 0: public cloud gateway; 1: private gateway; 2: public cloud gateway and private gateway. By default if left blank, public cloud gateway is selected. Specific meaning: Public cloud gateway: device can only integrate with public cloud gateway (nearby access). Private gateway: device can only integrate with private gateway that has been launched (nearby access or fixed ip). Public cloud gateway and private gateway: device can also integrate with public cloud gateway and private gateway that has been launched (nearby access or fixed ip).",
+          "example": "0",
+          "member": "int64",
+          "name": "AccessScope",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "When the payer is the tenant, the tenant license payment method is available.\nMonthly authorization\n1: Permanent license\nIf not passed, it defaults to monthly authorization.\nThis parameter is invalid when the manufacturer is the payer.\n",
+          "example": "0",
+          "member": "int64",
+          "name": "LicensePayMode",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "device group ID",
+          "example": "cliGrp-xf8rboasbh",
+          "member": "string",
+          "name": "GroupId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Device group name. Reserved parameter. GroupId must be imported when grouping is required.",
+          "example": "group-name",
+          "member": "string",
+          "name": "GroupName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "No traffic processing method for the device. 0: pay-as-you-go, 1: truncate and accelerate",
+          "example": "0",
+          "member": "int64",
+          "name": "FlowTrunc",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Device ID after activation",
+          "example": "mna-w795bzezug",
+          "member": "string",
+          "name": "DeviceId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ActivateHardwareRequest": {
+      "document": "ActivateHardware request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Device list to be activated",
+          "example": "无",
+          "member": "ActivateHardware",
+          "name": "Hardware",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ActivateHardwareResponse": {
+      "document": "ActivateHardware response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Device information after activation",
+          "example": "无",
+          "member": "ActivateHardware",
+          "name": "HardwareInfo",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ActiveDeviceList": {
+      "document": "Activated device statistics",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Quantity.",
+          "example": "1",
+          "member": "int64",
+          "name": "Count",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Time",
+          "example": "2024-11-20",
+          "member": "string",
+          "name": "Time",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AddApplicationRequest": {
+      "document": "AddApplication request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application name of the created app",
+          "example": "application1",
+          "member": "string",
+          "name": "MpApplicationName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Remark of the created device",
+          "example": "game",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "base64 key string of the new application, optional, automatically generated by the system if not filled",
+          "example": "dasdfrfwer32e4r",
+          "member": "string",
+          "name": "MpApplicationKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Access environment. 0: public cloud gateway; 1: private gateway; 2: public cloud gateway and private gateway. By default if left blank, public cloud gateway is selected. Specific meaning: Public cloud gateway: The device can only connect to public cloud gateway (Proximity access). Private gateway: The device can only connect to already launched private gateway (Proximity access or fixed ip access). Public cloud gateway and private gateway: The device can also connect to both public cloud gateway and already launched private gateway (Proximity access or fixed ip access).",
+          "example": "0",
+          "member": "int64",
+          "name": "AccessScope",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "AddApplicationResponse": {
+      "document": "AddApplication response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID",
+          "example": "mna-w795bzezug",
+          "member": "string",
+          "name": "MpApplicationId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "base64-format key encrypted with the encryption algorithm",
+          "example": "dasdfrfwer32e4r",
+          "member": "string",
+          "name": "MpApplicationKey",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Application name",
+          "example": "application1",
+          "member": "string",
+          "name": "MpApplicationName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddDeviceRequest": {
+      "document": "AddDevice request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Name of the new device",
+          "example": "dev1",
+          "member": "string",
+          "name": "DeviceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Remark of the created device",
+          "example": "mobile",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "base64-encoded key string of the new device, optional. If not filled, automatically generated by the system.",
+          "example": "dasdfrfwer32e4r",
+          "member": "string",
+          "name": "DataKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to set the preset key.\ntrue: set preset key.\nfalse: Leave the preset key unset.",
+          "example": "true",
+          "member": "bool",
+          "name": "Encrypted",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Access environment. 0: public cloud gateway; 1: private gateway; 2: public cloud gateway and private gateway. By default if left blank, public cloud gateway.\nspecific meaning\nPublic cloud gateway: The device can only integrate with the public cloud gateway (nearby access).\nPrivate gateway: The device can only integrate with the already launched private gateway (nearby access or fixed ip integration).\nPublic cloud gateway and private gateway: The device can also integrate with the public cloud gateway and the already launched private gateway (connected to nearby or fixed ip access).",
+          "example": "0",
+          "member": "int64",
+          "name": "AccessScope",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "license payment method \nMonthly authorization \nPermanent license \nIf not specified, it defaults to monthly authorization. To permanently license a device, you need to call the OrderPerLicense API to pay the authorization fee. Otherwise, the device cannot be used.",
+          "example": "0",
+          "member": "int64",
+          "name": "LicensePayMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Device group name. Optional. Reserved parameter. GroupId must be imported when grouping is required.",
+          "example": "group-test",
+          "member": "string",
+          "name": "GroupName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Device group ID. Optional. If not filled, the default device is not grouped.",
+          "example": "1a2b3c4d5e",
+          "member": "string",
+          "name": "GroupId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "No traffic processing method for the device. 0: pay-as-you-go, 1: truncate and accelerate",
+          "example": "0",
+          "member": "int64",
+          "name": "FlowTrunc",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "AddDeviceResponse": {
+      "document": "AddDevice response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "base64-format key encrypted by the encryption algorithm",
+          "example": "dasdfrfwer32e4r",
+          "member": "string",
+          "name": "DataKey",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "device ID",
+          "example": "mna-w795bzezug",
+          "member": "string",
+          "name": "DeviceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "signature string",
+          "example": "\"test\"",
+          "member": "string",
+          "name": "Signature",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddGroupRequest": {
+      "document": "AddGroup request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Group name",
+          "example": "\"group-test\"",
+          "member": "string",
+          "name": "GroupName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Group description",
+          "example": "\"description for group-test\"",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddGroupResponse": {
+      "document": "AddGroup response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique ID of the group, only for grouping case-sensitive",
+          "example": "1a2b3c4d5e",
+          "member": "string",
+          "name": "GroupId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddHardwareRequest": {
+      "document": "AddHardware request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of Hardware",
+          "example": "无",
+          "member": "Hardware",
+          "name": "Hardware",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "AddHardwareResponse": {
+      "document": "AddHardware response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Hardware device",
+          "example": "无",
+          "member": "Hardware",
+          "name": "Hardware",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddL3ConnRequest": {
+      "document": "AddL3Conn request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Set the interconnect CIDR1. Supported ranges: 10.0.0.0 - 10.255.255.255, 172.16.0.0 - 172.31.255.255, 192.168.0.0 - 192.168.255.255.",
+          "example": "\"172.12.0.0/16\"",
+          "member": "string",
+          "name": "Cidr1",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Set the interconnection CIDR2. Supported ranges: 10.0.0.0 - 10.255.255.255, 172.16.0.0 - 172.31.255.255, 192.168.0.0 - 192.168.255.255.",
+          "example": "\"172.13.0.0/16\"",
+          "member": "string",
+          "name": "Cidr2",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Device ID corresponding to CIDR1",
+          "example": "mna-de234ff",
+          "member": "string",
+          "name": "DeviceId1",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Device ID corresponding to CIDR2",
+          "example": "cde",
+          "member": "string",
+          "name": "DeviceId2",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rule description",
+          "example": "规则描述",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddL3ConnResponse": {
+      "document": "AddL3Conn response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Interconnection rule ID",
+          "example": "\"l3conn-4413p97xxx\"",
+          "member": "string",
+          "name": "L3ConnId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateEncryptedKeyRequest": {
+      "document": "CreateEncryptedKey request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "CreateEncryptedKeyResponse": {
+      "document": "CreateEncryptedKey response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Preset key",
+          "example": "\"BgkqhkiG9w0BAQ\"",
+          "member": "string",
+          "name": "EncryptedKey",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DelApplicationList": {
+      "document": "Application ID list",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID.",
+          "example": "mna-w795bzezug",
+          "member": "string",
+          "name": "MpApplicationId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "DeleteApplicationRequest": {
+      "document": "DeleteApplication request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID list",
+          "example": "无",
+          "member": "DelApplicationList",
+          "name": "MpApplicationIdList",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteApplicationResponse": {
+      "document": "DeleteApplication response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDeviceRequest": {
+      "document": "DeleteDevice request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Delete the device unique ID",
+          "example": "\"mna-xxx\"",
+          "member": "string",
+          "name": "DeviceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDeviceResponse": {
+      "document": "DeleteDevice response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteGroupRequest": {
+      "document": "DeleteGroup request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Delete the specified group",
+          "example": "1a2b3c4d5e",
+          "member": "string",
+          "name": "GroupId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteGroupResponse": {
+      "document": "DeleteGroup response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteL3ConnRequest": {
+      "document": "DeleteL3Conn request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of interconnection rule IDs",
+          "example": "[\"l3conn-zfd9rpvxxx\"]",
+          "member": "string",
+          "name": "L3ConnIdList",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteL3ConnResponse": {
+      "document": "DeleteL3Conn response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DestIpInfo": {
+      "document": "Target IP info",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Time: s",
+          "example": "1662622200",
+          "member": "string",
+          "name": "Time",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Gateway IP\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"xxx.xxx.xx.xx\"",
+          "member": "string",
+          "name": "GatewayIp",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "gateway address\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"guangzhou\"",
+          "member": "string",
+          "name": "GatewaySite",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of target IPs\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "IpCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Target IP list\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "IpList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DeviceBaseInfo": {
+      "document": "basic device information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Device unique ID",
+          "example": "\"mna-2x2tllhb18\"",
+          "member": "string",
+          "name": "DeviceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Device name.",
+          "example": "\"mna-2x2tllhb18\"",
+          "member": "string",
+          "name": "DeviceName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The time when the device is created, in ms.",
+          "example": "169043203113091072",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last online time of the device, in ms.",
+          "example": "169043203113091072",
+          "member": "string",
+          "name": "LastTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Device remark",
+          "example": "\"remark\"",
+          "member": "string",
+          "name": "Remark",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Access environment. 0: Public cloud gateway; 1: Private gateway; 2: Public cloud gateway and private gateway. Default is public cloud gateway. Specific meaning: Public cloud gateway: The device can only connect to the public cloud gateway (nearby access). Private gateway: The device can only connect to the already launched private gateway (nearby access or fixed ip access). Public cloud gateway and private gateway: The device can also connect to both the public cloud gateway and the already launched private gateway (nearby access or fixed ip access).",
+          "example": "0",
+          "member": "int64",
+          "name": "AccessScope",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Authorization validity period of license 0: Monthly authorization 1: Permanent license",
+          "example": "1",
+          "member": "int64",
+          "name": "LicensePayMode",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Payer 0: Manufacturer payment 1: Customer payment",
+          "example": "1",
+          "member": "int64",
+          "name": "Payer",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "device group ID",
+          "example": "\"cliGrp-xf8rboasbh\"",
+          "member": "string",
+          "name": "GroupId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Device group name",
+          "example": "\"cliGrp-xf8rboasbh\"",
+          "member": "string",
+          "name": "GroupName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "No traffic processing method for the device. 0: pay-as-you-go, 1: truncate and accelerate",
+          "example": "0",
+          "member": "int64",
+          "name": "FlowTrunc",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Device sn",
+          "example": "\"AN\"",
+          "member": "string",
+          "name": "Sn",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "manufacturer",
+          "example": "\"vendor\"",
+          "member": "string",
+          "name": "Vendor",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DeviceDetails": {
+      "document": "device details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Device basic info",
+          "example": "无",
+          "member": "DeviceBaseInfo",
+          "name": "DeviceBaseInfo",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Device network info",
+          "example": "无",
+          "member": "DeviceNetInfo",
+          "name": "DeviceNetInfo",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Aggregate server address",
+          "example": "gz",
+          "member": "string",
+          "name": "GatewaySite",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Downlink Rate",
+          "example": "10",
+          "member": "float",
+          "name": "BusinessDownRate",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Business-wise uplink rate",
+          "example": "12",
+          "member": "float",
+          "name": "BusinessUpRate",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DeviceNetInfo": {
+      "document": "Device network status information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Network type:\nData\n1:Wi-Fi\n2: Wired",
+          "example": "1",
+          "member": "int64",
+          "name": "Type",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Enable or disable.",
+          "example": "true",
+          "member": "bool",
+          "name": "DataEnable",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Uplink speed limit",
+          "example": "10000",
+          "member": "string",
+          "name": "UploadLimit",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Downstream speed limit",
+          "example": "10000",
+          "member": "string",
+          "name": "DownloadLimit",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "receive real-time speed",
+          "example": "100",
+          "member": "uint64",
+          "name": "DataRx",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Send real-time speed",
+          "example": "100",
+          "member": "uint64",
+          "name": "DataTx",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Operator type:\n1: CMCC;\n2: CTCC \n3: CUCC",
+          "example": "1",
+          "member": "int64",
+          "name": "Vendor",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Connection status:\n0: connectionless\n1: Connecting\n2: Connected",
+          "example": "1",
+          "member": "int64",
+          "name": "State",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Public IP address",
+          "example": "\"xxx.xxx.xxx.xx\"",
+          "member": "string",
+          "name": "PublicIp",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Signal strength/Measurement unit: dbm",
+          "example": "-85",
+          "member": "int64",
+          "name": "SignalStrength",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Data network type:\n-1: Invalid value.   \n2:2G \n3:3G \n4:4G \n5:5G",
+          "example": "4",
+          "member": "int64",
+          "name": "Rat",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "NIC Name",
+          "example": "\"eth1\"",
+          "member": "string",
+          "name": "NetInfoName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Downstream real-time rate (floating-point type replaces the integer type of the previous version DataRx).",
+          "example": "12.3",
+          "member": "float",
+          "name": "DownRate",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Uplink real-time rate (floating-point type replaces the integer of the previous version TxRate)",
+          "example": "1.23",
+          "member": "float",
+          "name": "UpRate",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DevicePayModeInfo": {
+      "document": "Device payment mode info",
+      "members": [
+        {
+          "disabled": false,
+          "document": "device ID",
+          "example": "mna-dev1",
+          "member": "string",
+          "name": "DeviceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Payment mode.\nPrepaid Traffic Package\n0: Pay-as-you-go by traffic",
+          "example": "1",
+          "member": "int64",
+          "name": "PayMode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Payment mode description.",
+          "example": "50G流量包",
+          "member": "string",
+          "name": "PayModeDesc",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Traffic package ID. Only available when the payment mode is package type.",
+          "example": "res-1",
+          "member": "string",
+          "name": "ResourceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DownloadActiveDeviceCountRequest": {
+      "document": "DownloadActiveDeviceCount request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Query granularity. Valid values: 0: day, 1: week, 2: month. Default is day.",
+          "example": "0",
+          "member": "int64",
+          "name": "Period",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Start time. In seconds.",
+          "example": "1732176361",
+          "member": "int64",
+          "name": "StartTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End time. In seconds.",
+          "example": "1732176361",
+          "member": "int64",
+          "name": "EndTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "device group, if not passed, query all",
+          "example": "group1",
+          "member": "string",
+          "name": "DevGroup",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "License type. If not passed, query all. 1: Tenant monthly payment, 2: Manufacturer monthly payment, 3: Permanent license.",
+          "example": "1",
+          "member": "int64",
+          "name": "LicenseType",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DownloadActiveDeviceCountResponse": {
+      "document": "DownloadActiveDeviceCount response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "URL address",
+          "example": "http://cos.com",
+          "member": "string",
+          "name": "FilePath",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "FlowDetails": {
+      "document": "Device traffic information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Traffic data point",
+          "example": "无",
+          "member": "NetDetails",
+          "name": "NetDetails",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "device ID",
+          "example": "\"mna-xxx\"",
+          "member": "string",
+          "name": "DeviceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum value of traffic (measurement unit: bytes)",
+          "example": "51548",
+          "member": "float",
+          "name": "MaxValue",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Average traffic (unit: bytes)",
+          "example": "15441",
+          "member": "float",
+          "name": "AvgValue",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total traffic (unit: bytes)",
+          "example": "656546",
+          "member": "float",
+          "name": "TotalValue",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "FlowPackageInfo": {
+      "document": "Traffic package information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique resource ID of the data transfer plan",
+          "example": "resoiurce-id",
+          "member": "string",
+          "name": "ResourceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "User AppId belonging to the data transfer plan",
+          "example": "1009876765",
+          "member": "uint64",
+          "name": "AppId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Traffic package specification type. Values are as follows:\nDEVICE_1_FLOW_20G,DEVICE_2_FLOW_50G,\nDEVICE_3_FLOW_100G,\nDEVICE_5_FLOW_500G represents traffic packages of 20G, 50G, 100G, and 500G gear selection.\nGear selection also impacts the bandwidth cap of the data transfer plan.\n20G: Bind up to 1 device.\n50G: Bind up to 2 devices.\n100G: Bind up to 3 devices.\n500G: Bind up to 5 devices.",
+          "example": "DEVICE_1_FLOW_20G",
+          "member": "string",
+          "name": "PackageType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Traffic packet status. 0: Inactive, 1: Within validity period, 2: Expired.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Purchase time, Unix timestamp format, unit: second",
+          "example": "1697181612",
+          "member": "int64",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Effective time, Unix Timestamp Format, unit: second",
+          "example": "1697181612",
+          "member": "int64",
+          "name": "ActiveTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Expiration time, Unix Timestamp Format, unit: second",
+          "example": "1699860012",
+          "member": "int64",
+          "name": "ExpireTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Device ID list bound to the data transfer plan",
+          "example": "[\"mna-test1\",\"mna-test2\"]",
+          "member": "string",
+          "name": "DeviceList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total traffic plan capacity (unit: MB)",
+          "example": "20000",
+          "member": "uint64",
+          "name": "CapacitySize",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remaining data transfer plan, unit: MB",
+          "example": "10000",
+          "member": "uint64",
+          "name": "CapacityRemain",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Auto-renewal flag. true represents auto-renewal, false represents no auto-renewal.",
+          "example": "true",
+          "member": "bool",
+          "name": "RenewFlag",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Resource package change status: 0: No change; 1: Changing; 2: Changed or renewed",
+          "example": "0",
+          "member": "int64",
+          "name": "ModifyStatus",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Traffic truncation flag. true to enable traffic truncation, false to disable traffic truncation.",
+          "example": "false",
+          "member": "bool",
+          "name": "TruncFlag",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Precise remaining data transfer plan, unit: MB",
+          "example": "200",
+          "member": "uint64",
+          "name": "CapacityRemainPrecise",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "GetActiveDeviceCountRequest": {
+      "document": "GetActiveDeviceCount request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Query granularity. Valid values: 0: day, 1: week, 2: month. Default is day.",
+          "example": "0",
+          "member": "int64",
+          "name": "Period",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Start time. In seconds.",
+          "example": "1732176361",
+          "member": "int64",
+          "name": "StartTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End time. In seconds.",
+          "example": "1732176361",
+          "member": "int64",
+          "name": "EndTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "device group, if not passed, query all",
+          "example": "group1",
+          "member": "string",
+          "name": "DevGroup",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "License type. If not passed, query all. 1: Tenant monthly payment, 2: Manufacturer monthly payment, 3: Permanent license.",
+          "example": "1",
+          "member": "int64",
+          "name": "LicenseType",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetActiveDeviceCountResponse": {
+      "document": "GetActiveDeviceCount response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Activate device statistics",
+          "example": "[                     {                         \"count\": 1,                         \"time\": \"2024-11-20\"                     }                 ]",
+          "member": "ActiveDeviceList",
+          "name": "ActiveDeviceList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Query granularity. Valid values: 0: day, 1: week, 2: month. Default is day.",
+          "example": "1",
+          "member": "int64",
+          "name": "Period",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "2024-11-20",
+          "member": "string",
+          "name": "StartTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "End time.",
+          "example": "2024-11-20",
+          "member": "string",
+          "name": "EndTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "device group",
+          "example": "group1",
+          "member": "string",
+          "name": "DevGroup",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "License type. If not passed, query all. 1: Tenant monthly payment, 2: Manufacturer monthly payment, 3: Permanent license.",
+          "example": "1",
+          "member": "string",
+          "name": "LicenseType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "tenant ID",
+          "example": "251198806",
+          "member": "string",
+          "name": "AppId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetApplicationRequest": {
+      "document": "GetApplication request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID.",
+          "example": "mna-w795bzezug",
+          "member": "string",
+          "name": "MpApplicationId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetApplicationResponse": {
+      "document": "GetApplication response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID",
+          "example": "mna-w795bzezug",
+          "member": "string",
+          "name": "MpApplicationId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "base64-format key encrypted with the encryption algorithm",
+          "example": "dasdfrfwer32e4r",
+          "member": "string",
+          "name": "MpApplicationKey",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Application name",
+          "example": "application1",
+          "member": "string",
+          "name": "MpApplicationName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Device remark",
+          "example": "game",
+          "member": "string",
+          "name": "Remark",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Access environment. 0: public cloud gateway; 1: private gateway; 2: public cloud gateway and private gateway. By default if left blank, public cloud gateway is selected. Specific meaning: Public cloud gateway: The device can only connect to public cloud gateway (Proximity access). Private gateway: The device can only connect to already launched private gateway (Proximity access or fixed ip access). Public cloud gateway and private gateway: The device can also connect to both public cloud gateway and already launched private gateway (Proximity access or fixed ip access).",
+          "example": "0",
+          "member": "int64",
+          "name": "AccessScope",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDestIPByNameRequest": {
+      "document": "GetDestIPByName request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Device name",
+          "example": "\"devicexx\"",
+          "member": "string",
+          "name": "DeviceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "1662622200",
+          "member": "int64",
+          "name": "BeginTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End time.",
+          "example": "1662624800",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.",
+          "example": "0",
+          "member": "int64",
+          "name": "GatewayType",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDestIPByNameResponse": {
+      "document": "GetDestIPByName response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Target IP info\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DestIpInfo",
+          "name": "DestIpInfo",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Access region. Value ranges from 'MC' to 'AM'. MC=Chinese mainland AP=Asia Pacific EU=Europe AM=Americas.",
+          "example": "MC",
+          "member": "string",
+          "name": "AccessRegion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDevicePayModeRequest": {
+      "document": "GetDevicePayMode request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Device ID list",
+          "example": "[     \"mna-test1\",         \"mna-test2\",         \"mna-test3\"     ]",
+          "member": "string",
+          "name": "DeviceIdList",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDevicePayModeResponse": {
+      "document": "GetDevicePayMode response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Result Information",
+          "example": "无",
+          "member": "DevicePayModeInfo",
+          "name": "Result",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDeviceRequest": {
+      "document": "GetDevice request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Search for the id of the specified device",
+          "example": "\"mna-xxx\"",
+          "member": "string",
+          "name": "DeviceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDeviceResponse": {
+      "document": "GetDevice response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "device details",
+          "example": "无",
+          "member": "DeviceDetails",
+          "name": "DeviceDetails",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDevicesRequest": {
+      "document": "GetDevices request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Display records per page. When both PageSize and PageNumber are -1, match all devices with unlimited entries on one page.",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Currently viewed page number. When PageSize and PageNumber are both -1, match all devices with unlimited entries on one page.",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNumber",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Search for a device by keyword (ID or device name). Leave it empty to match all devices.",
+          "example": "\"mna-xxx\"",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "DeviceType\nLeave it blank: Return all devices.\n1: Your own equipment;\n2: Third-party device",
+          "example": "1",
+          "member": "int64",
+          "name": "DeviceType",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDevicesResponse": {
+      "document": "GetDevices response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of Device Information",
+          "example": "无",
+          "member": "DeviceBaseInfo",
+          "name": "DeviceInfos",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of devices",
+          "example": "20",
+          "member": "int64",
+          "name": "Length",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total pages",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalPage",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetFlowAlarmInfoRequest": {
+      "document": "GetFlowAlarmInfo request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "GetFlowAlarmInfoResponse": {
+      "document": "GetFlowAlarmInfo response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Alarm threshold of the data transfer plan",
+          "example": "20",
+          "member": "int64",
+          "name": "AlarmValue",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alarm notification callback url",
+          "example": "http://ip:port/callurl",
+          "member": "string",
+          "name": "NotifyUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alarm notification callback key",
+          "example": "xd23y5cb89bx23432",
+          "member": "string",
+          "name": "CallbackKey",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetFlowPackagesRequest": {
+      "document": "GetFlowPackages request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Page number, starting from 1.",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageNumber",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of Entry Per Page",
+          "example": "10",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Unique resource ID of the data transfer plan",
+          "example": "live-jjc000eABvgr",
+          "member": "string",
+          "name": "ResourceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Device ID bound to the data transfer plan",
+          "example": "mna-dev1",
+          "member": "string",
+          "name": "DeviceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Traffic packet status. 0: Not in effect, 1: Within the validity period, 2: Expired.\n",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetFlowPackagesResponse": {
+      "document": "GetFlowPackages response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data Transfer Plan List",
+          "example": "无",
+          "member": "FlowPackageInfo",
+          "name": "PackageList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "12",
+          "member": "uint64",
+          "name": "Total",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetFlowStatisticByGroupRequest": {
+      "document": "GetFlowStatisticByGroup request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "group ID",
+          "example": "1a2b3c4d5e",
+          "member": "string",
+          "name": "GroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Search start time",
+          "example": "1659514436",
+          "member": "int64",
+          "name": "BeginTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "end time",
+          "example": "1659515436",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Traffic type (1: uplink traffic, 2: downstream traffic, 3: sum of upstream and downstream)",
+          "example": "1",
+          "member": "int64",
+          "name": "Type",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Time granularity (1: hourly statistics, 2: daily statistics)",
+          "example": "1",
+          "member": "int64",
+          "name": "TimeGranularity",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Access region. Value ranges from 'MC' to 'AM'. MC=Chinese mainland AP=Asia Pacific EU=Europe AM=Americas. Leave it blank to represent all regions.",
+          "example": "MC",
+          "member": "string",
+          "name": "AccessRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.",
+          "example": "0",
+          "member": "int64",
+          "name": "GatewayType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Application ID. No need to use when querying group traffic. When querying application traffic, this field is the application ID. Fill \"-1\" for GroupId.",
+          "example": "mna-test1",
+          "member": "string",
+          "name": "MpApplicationId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetFlowStatisticByGroupResponse": {
+      "document": "GetFlowStatisticByGroup response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Traffic details",
+          "example": "{         \"Current\": 305576473,         \"Time\": \"1711555200\"       },       {         \"Current\": 3291852,         \"Time\": \"1711641600\"       }",
+          "member": "NetDetails",
+          "name": "NetDetails",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Search the maximum value of traffic usage in a time period (measurement unit: byte)",
+          "example": "216516",
+          "member": "float",
+          "name": "MaxValue",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Search time period traffic usage average (unit: byte)",
+          "example": "25151",
+          "member": "float",
+          "name": "AvgValue",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Search total traffic usage in the time period (unit: byte)",
+          "example": "35465464",
+          "member": "float",
+          "name": "TotalValue",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetFlowStatisticByNameRequest": {
+      "document": "GetFlowStatisticByName request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Device name.",
+          "example": "devicexxxx",
+          "member": "string",
+          "name": "DeviceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Search start time",
+          "example": "1659514436",
+          "member": "int64",
+          "name": "BeginTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "end time",
+          "example": "1659515436",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Traffic type (1: uplink traffic, 2: downstream traffic, 3: sum of upstream and downstream)",
+          "example": "1",
+          "member": "int64",
+          "name": "Type",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Time granularity (1: hourly statistics, 2: daily statistics)",
+          "example": "1",
+          "member": "int64",
+          "name": "TimeGranularity",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Access region. Value ranges from 'MC' to 'AM'. MC=Chinese mainland AP=Asia Pacific EU=Europe AM=Americas. Leave it blank to represent all regions.",
+          "example": "MC",
+          "member": "string",
+          "name": "AccessRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.",
+          "example": "0",
+          "member": "int64",
+          "name": "GatewayType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Device name list. Used for querying traffic volume across devices. When this field is enabled, DeviceId can be \"-1\".",
+          "example": "[\"device01\",\"device02\"]",
+          "member": "string",
+          "name": "DeviceList",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "GetFlowStatisticByNameResponse": {
+      "document": "GetFlowStatisticByName response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Traffic details",
+          "example": "无",
+          "member": "NetDetails",
+          "name": "NetDetails",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Search the maximum value of traffic usage in a time period (measurement unit: byte)",
+          "example": "216516",
+          "member": "float",
+          "name": "MaxValue",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Search time period traffic usage average (unit: byte)",
+          "example": "25151",
+          "member": "float",
+          "name": "AvgValue",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Search total traffic usage in the time period (unit: byte)",
+          "example": "35465464",
+          "member": "float",
+          "name": "TotalValue",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetFlowStatisticByRegionRequest": {
+      "document": "GetFlowStatisticByRegion request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Search start time",
+          "example": "1659514436",
+          "member": "int64",
+          "name": "BeginTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "end time",
+          "example": "1659515436",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Traffic type (1: uplink traffic, 2: downstream traffic, 3: sum of upstream and downstream)",
+          "example": "1",
+          "member": "int64",
+          "name": "Type",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Time granularity (1: hourly statistics, 2: daily statistics)",
+          "example": "1",
+          "member": "int64",
+          "name": "TimeGranularity",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Gateway type. 0: public cloud gateway; 1: private gateway.",
+          "example": "0",
+          "member": "int64",
+          "name": "GatewayType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Access region. Value ranges from 'MC' to 'AM'. MC=Chinese mainland AP=Asia Pacific EU=Europe AM=Americas. Leave it blank to represent all regions.",
+          "example": "MC",
+          "member": "string",
+          "name": "AccessRegion",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetFlowStatisticByRegionResponse": {
+      "document": "GetFlowStatisticByRegion response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Traffic details",
+          "example": "无",
+          "member": "NetDetails",
+          "name": "NetDetails",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Search the maximum value of traffic usage in a time period (measurement unit: byte)",
+          "example": "216516",
+          "member": "float",
+          "name": "MaxValue",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Search time period traffic usage average (unit: byte)",
+          "example": "25151",
+          "member": "float",
+          "name": "AvgValue",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Search total traffic usage in the time period (unit: byte)",
+          "example": "35465464",
+          "member": "float",
+          "name": "TotalValue",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetFlowStatisticRequest": {
+      "document": "GetFlowStatistic request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "device ID",
+          "example": "245aee95-f37e-55d0-5258-19520bdf4b53",
+          "member": "string",
+          "name": "DeviceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Search start time",
+          "example": "1659514436",
+          "member": "int64",
+          "name": "BeginTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "end time",
+          "example": "1659515436",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Traffic type (1: uplink traffic, 2: downstream traffic, 3: sum of upstream and downstream)",
+          "example": "1",
+          "member": "int64",
+          "name": "Type",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Time granularity (1: hourly statistics, 2: daily statistics)",
+          "example": "1",
+          "member": "int64",
+          "name": "TimeGranularity",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Access region. Value ranges from 'MC' to 'AM'. MC=Chinese mainland AP=Asia Pacific EU=Europe AM=Americas. Leave it blank to represent all regions.",
+          "example": "MC",
+          "member": "string",
+          "name": "AccessRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.",
+          "example": "0",
+          "member": "int64",
+          "name": "GatewayType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Device ID list. Used for querying traffic volume across devices. When this field is enabled, DeviceId can be \"-1\".",
+          "example": "[\"mna-test1\",\"mna-test2\"]",
+          "member": "string",
+          "name": "DeviceList",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "GetFlowStatisticResponse": {
+      "document": "GetFlowStatistic response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Traffic details",
+          "example": "无",
+          "member": "NetDetails",
+          "name": "NetDetails",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Search the maximum value of traffic usage in a time period (measurement unit: byte)",
+          "example": "216516",
+          "member": "float",
+          "name": "MaxValue",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Search time period traffic usage average (unit: byte)",
+          "example": "25151",
+          "member": "float",
+          "name": "AvgValue",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Search total traffic usage in the time period (unit: byte)",
+          "example": "35465464",
+          "member": "float",
+          "name": "TotalValue",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetGroupDetailRequest": {
+      "document": "GetGroupDetail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "group ID",
+          "example": "1a2b3c4d5e",
+          "member": "string",
+          "name": "GroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Display per page number of records. When PageSize and PageNumber are -1, match all devices by 1 page with no limit entries.\t\nExample value: 1.\n",
+          "example": "1",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of records displayed per page. When PageSize and PageNumber are both -1, match all devices by 1 page with no limit entries.\t\nExample value: 10.\n",
+          "example": "10",
+          "member": "int64",
+          "name": "PageNumber",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Search Keywords",
+          "example": "keywords",
+          "member": "string",
+          "name": "KeyWord",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetGroupDetailResponse": {
+      "document": "GetGroupDetail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Group basic info",
+          "example": "无",
+          "member": "GroupInfo",
+          "name": "GroupInfo",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Device list grouped in",
+          "example": "无",
+          "member": "DeviceBaseInfo",
+          "name": "DeviceInfos",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of devices",
+          "example": "20",
+          "member": "int64",
+          "name": "Length",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total pages",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalPage",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetGroupListRequest": {
+      "document": "GetGroupList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of records displayed per page. When both PageSize and PageNumber are -1, match all devices with no limit on a single page.\nExample value: 10.",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Currently viewed page number. When both PageSize and PageNumber are -1, match all devices as one page with no limit on entries.\nExample value: 1.",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNumber",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Search for groups by keyword. Match all groups when empty.",
+          "example": "\"keywords\"",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetGroupListResponse": {
+      "document": "GetGroupList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of Device Information",
+          "example": "无",
+          "member": "GroupInfo",
+          "name": "GroupInfos",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of devices",
+          "example": "20",
+          "member": "int64",
+          "name": "Length",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total pages",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalPage",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetHardwareInfoRequest": {
+      "document": "GetHardwareInfo request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Vendor name",
+          "example": "TENCENT",
+          "member": "string",
+          "name": "Vendor",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Device SN serial number",
+          "example": "abcd",
+          "member": "string",
+          "name": "SN",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetHardwareInfoResponse": {
+      "document": "GetHardwareInfo response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Authorization validity period of license \n0: Monthly authorization \n1: Permanent license \n-Unknown",
+          "example": "0",
+          "member": "int64",
+          "name": "LicensePayMode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Payer 0: Customer payment 1: Manufacturer payment",
+          "example": "0",
+          "member": "int64",
+          "name": "Payer",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Hardware Serial Number",
+          "example": "abcd",
+          "member": "string",
+          "name": "SN",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Vendor name",
+          "example": "TENCENT",
+          "member": "string",
+          "name": "Vendor",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetHardwareListRequest": {
+      "document": "GetHardwareList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Page number",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNumber",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Device quantity on the webpage",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Keyword.",
+          "example": "keywords",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetHardwareListResponse": {
+      "document": "GetHardwareList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of Hardware Information",
+          "example": "无",
+          "member": "HardwareInfo",
+          "name": "HardwareInfos",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of hardware",
+          "example": "12",
+          "member": "int64",
+          "name": "Length",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total pages",
+          "example": "3",
+          "member": "int64",
+          "name": "TotalPage",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetL3ConnListRequest": {
+      "document": "GetL3ConnList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Display records per page. When both PageSize and PageNumber are -1, match all devices with unlimited entries on one page.",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Currently viewed page number. When PageSize and PageNumber are both -1, match all devices with unlimited entries on one page.",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNumber",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Search for groups by DeviceId. Match all groups when empty.",
+          "example": "devid",
+          "member": "string",
+          "name": "DeviceId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetL3ConnListResponse": {
+      "document": "GetL3ConnList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of interconnection rules",
+          "example": "无",
+          "member": "L3ConnInfo",
+          "name": "L3ConnList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of devices",
+          "example": "20",
+          "member": "int64",
+          "name": "Length",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total pages",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalPage",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetMonitorDataByNameRequest": {
+      "document": "GetMonitorDataByName request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Device name.",
+          "example": "\"devicexxx\"",
+          "member": "string",
+          "name": "DeviceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "1662622200",
+          "member": "int64",
+          "name": "BeginTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End time.",
+          "example": "1662624800",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.",
+          "example": "0",
+          "member": "int64",
+          "name": "GatewayType",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetMonitorDataByNameResponse": {
+      "document": "GetMonitorDataByName response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "File download link",
+          "example": "无",
+          "member": "string",
+          "name": "FilePath",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetMultiFlowStatisticRequest": {
+      "document": "GetMultiFlowStatistic request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Device id list, up to 10 devices at a time",
+          "example": "[\"mna-dev1\"]",
+          "member": "string",
+          "name": "DeviceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "1659514436",
+          "example": "1659514436",
+          "member": "int64",
+          "name": "BeginTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "1659515000",
+          "example": "1659515000",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Statistics traffic type (1: uplink traffic, 2: downstream traffic, 3: sum of upstream and downstream)",
+          "example": "1",
+          "member": "int64",
+          "name": "Type",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Statistical time granularity (1: hourly statistics, 2: daily statistics).",
+          "example": "1",
+          "member": "int64",
+          "name": "TimeGranularity",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Access region. Value ranges from 'MC' to 'AM'. MC=Chinese mainland AP=Asia Pacific EU=Europe AM=Americas. Leave it blank to represent all regions.",
+          "example": "MC",
+          "member": "string",
+          "name": "AccessRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.",
+          "example": "0",
+          "member": "int64",
+          "name": "GatewayType",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetMultiFlowStatisticResponse": {
+      "document": "GetMultiFlowStatistic response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Batch device traffic information",
+          "example": "无",
+          "member": "FlowDetails",
+          "name": "FlowDetails",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetNetMonitorByNameRequest": {
+      "document": "GetNetMonitorByName request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Device name",
+          "example": "\"devicexxx\"",
+          "member": "string",
+          "name": "DeviceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "1662622200",
+          "member": "int64",
+          "name": "BeginTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End time.",
+          "example": "1662624800",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Statistical metric (Uplink rate: \"TxRate\": bit/s, Downstream rate: \"RxRate\": bit/s, Packet loss: \"Loss\": %, Latency: \"RTT\": ms)",
+          "example": "\"TxRate\"",
+          "member": "string",
+          "name": "Metrics",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.",
+          "example": "0",
+          "member": "int64",
+          "name": "GatewayType",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetNetMonitorByNameResponse": {
+      "document": "GetNetMonitorByName response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "monitoring data",
+          "example": "无",
+          "member": "MonitorData",
+          "name": "MonitorData",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Access region. Valid values: ['MC','AP','EU','AM'].\nMC=Chinese mainland\nAP=Asia Pacific\nEU=Europe\nAM=Americas",
+          "example": "MC",
+          "member": "string",
+          "name": "AccessRegion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetNetMonitorRequest": {
+      "document": "GetNetMonitor request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Device ID",
+          "example": "\"mna-xxx\"",
+          "member": "string",
+          "name": "DeviceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time.",
+          "example": "1662622200",
+          "member": "int64",
+          "name": "BeginTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End time.",
+          "example": "1662624800",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Statistical metric (Uplink rate: \"TxRate\": bit/s, Downstream rate: \"RxRate\": bit/s, Packet loss: \"Loss\": %, Latency: \"RTT\": ms)",
+          "example": "\"TxRate\"",
+          "member": "string",
+          "name": "Metrics",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.",
+          "example": "0",
+          "member": "int64",
+          "name": "GatewayType",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetNetMonitorResponse": {
+      "document": "GetNetMonitor response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "monitoring data",
+          "example": "无",
+          "member": "MonitorData",
+          "name": "MonitorData",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Access region. Valid values: ['MC','AP','EU','AM'].\nMC=Chinese mainland\nAP=Asia Pacific\nEU=Europe\nAM=Americas",
+          "example": "MC",
+          "member": "string",
+          "name": "AccessRegion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetPublicKeyRequest": {
+      "document": "GetPublicKey request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "GetPublicKeyResponse": {
+      "document": "GetPublicKey response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Asymmetric public key",
+          "example": "\"-----BEGIN RSA Public Key-----\\nMIIBIjANBgkqhkiG9w0Bd7Fqz8X\\no+TronsIDAQAB\\n-----END RSA Public Key-----\"",
+          "member": "string",
+          "name": "PublicKey",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetStatisticDataByNameRequest": {
+      "document": "GetStatisticDataByName request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Device name. If not specified, pass \"-1\".",
+          "example": "\"devicexxx\"",
+          "member": "string",
+          "name": "DeviceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time of statistics (seconds).",
+          "example": "1661212800",
+          "member": "int64",
+          "name": "BeginTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Statistics end time (s).",
+          "example": "1661587200",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Aggregation granularity:\nHourly statistics\n2: Daily statistics",
+          "example": "1",
+          "member": "int64",
+          "name": "TimeGranularity",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Access region. Value ranges from 'MC' to 'AM'. MC=Chinese mainland AP=Asia Pacific EU=Europe AM=Americas. Leave it blank to represent all regions.",
+          "example": "MC",
+          "member": "string",
+          "name": "AccessRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.",
+          "example": "0",
+          "member": "int64",
+          "name": "GatewayType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Device name list. Up to 10 devices. Used when downloading traffic volume of multiple devices. At this point, DeviceName can be \"-1\".",
+          "example": "[\"device1\",\"device2\"]",
+          "member": "string",
+          "name": "DeviceList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Device group ID. If not specified, do not pass it. Used when downloading data by grouping.",
+          "example": "\"group-test\"",
+          "member": "string",
+          "name": "GroupId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Application ID. Leave blank if no designated application is specified. Used when downloading data by app.",
+          "example": "\"app-fvwy7esyat\"",
+          "member": "string",
+          "name": "MpApplicationId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetStatisticDataByNameResponse": {
+      "document": "GetStatisticDataByName response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "File address url",
+          "example": "\"http://xxxx\"",
+          "member": "string",
+          "name": "FilePath",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetStatisticDataRequest": {
+      "document": "GetStatisticData request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Device ID. If not specified, pass \"-1\".",
+          "example": "\"mna-xxx\"",
+          "member": "string",
+          "name": "DeviceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time of statistics (seconds).",
+          "example": "1661212800",
+          "member": "int64",
+          "name": "BeginTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Statistics end time (s).",
+          "example": "1661587200",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Aggregation granularity:\nHourly statistics\n2: Daily statistics",
+          "example": "1",
+          "member": "int64",
+          "name": "TimeGranularity",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Access region. Value ranges from 'MC' to 'AM'. MC=Chinese mainland AP=Asia Pacific EU=Europe AM=Americas. Leave it blank to represent all regions.",
+          "example": "MC",
+          "member": "string",
+          "name": "AccessRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.",
+          "example": "0",
+          "member": "int64",
+          "name": "GatewayType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Device ID list. Up to 10 devices. Used when downloading total traffic of multiple devices. At this point, DeviceId can be \"-1\".",
+          "example": "[\"mna-test1\",\"mna-test2\"]",
+          "member": "string",
+          "name": "DeviceList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Device group ID. If not specified, do not pass it. Used when downloading data by grouping.",
+          "example": "\"group-test\"",
+          "member": "string",
+          "name": "GroupId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetStatisticDataResponse": {
+      "document": "GetStatisticData response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "File address url",
+          "example": "\"http://xxxx\"",
+          "member": "string",
+          "name": "FilePath",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetVendorHardwareRequest": {
+      "document": "GetVendorHardware request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Page number",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNumber",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Page count",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Keyword.",
+          "example": "mna-xxx",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Activation status\nEmpty: All;\n1: To be activated.\n2: Activated;",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "GetVendorHardwareResponse": {
+      "document": "GetVendorHardware response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of Hardware Information",
+          "example": "无",
+          "member": "VendorHardware",
+          "name": "VendorHardware",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of devices",
+          "example": "10",
+          "member": "int64",
+          "name": "Length",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total pages",
+          "example": "3",
+          "member": "int64",
+          "name": "TotalPage",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GroupAddDeviceRequest": {
+      "document": "GroupAddDevice request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "group ID",
+          "example": "\"1a2b3c4d5e\"",
+          "member": "string",
+          "name": "GroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Device list to be added",
+          "example": "[\"mna-test1\",\"mna-test2\"]",
+          "member": "string",
+          "name": "DeviceList",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "GroupAddDeviceResponse": {
+      "document": "GroupAddDevice response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of devices grouped in",
+          "example": "5",
+          "member": "int64",
+          "name": "DeviceNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GroupDeleteDeviceRequest": {
+      "document": "GroupDeleteDevice request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "group ID",
+          "example": "\"1a2b3c4d5e\"",
+          "member": "string",
+          "name": "GroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Device list to be deleted",
+          "example": "[\"mna-test1\",\"mna-test2\"]",
+          "member": "string",
+          "name": "DeviceList",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "GroupDeleteDeviceResponse": {
+      "document": "GroupDeleteDevice response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of devices grouped in",
+          "example": "5",
+          "member": "int64",
+          "name": "DeviceNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GroupInfo": {
+      "document": "Basic info of the group",
+      "members": [
+        {
+          "disabled": false,
+          "document": "group ID",
+          "example": "\"1a2b3c4d5e\"",
+          "member": "string",
+          "name": "GroupId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Group name",
+          "example": "\"group-test\"",
+          "member": "string",
+          "name": "GroupName",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The time when the group is created, in ms.\t",
+          "example": "169043203113091072",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The time when the group is updated, in ms.\t",
+          "example": "169043203113091072",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Group description",
+          "example": "\"description for group\"",
+          "member": "string",
+          "name": "Description",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of devices grouped in",
+          "example": "5",
+          "member": "int64",
+          "name": "DeviceNum",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Hardware": {
+      "document": "Create Hardware input parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Hardware Serial Number",
+          "example": "AN",
+          "member": "string",
+          "name": "SN",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "license billing mode:\n1. Tenant payment\n2: Manufacturer monthly payment\n3: Manufacturer permanent license",
+          "example": "1",
+          "member": "int64",
+          "name": "LicenseChargingMode",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Device description",
+          "example": "this is descript",
+          "member": "string",
+          "name": "Description",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Hardware ID. No need to pass as an input parameter.",
+          "example": "cpe-9oii2ew1z4",
+          "member": "string",
+          "name": "HardwareId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "HardwareInfo": {
+      "document": "Hardware Information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "device ID",
+          "example": "mna-dev1",
+          "member": "string",
+          "name": "DeviceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Device name.",
+          "example": "dev-name",
+          "member": "string",
+          "name": "DeviceName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Activation time",
+          "example": "1676800844",
+          "member": "string",
+          "name": "ActiveTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last online time",
+          "example": "1676800844",
+          "member": "string",
+          "name": "LastOnlineTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remarks",
+          "example": "this is descript",
+          "member": "string",
+          "name": "Description",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "vendor remarks",
+          "example": "厂商备注",
+          "member": "string",
+          "name": "VendorDescription",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "License billing mode: 1. Tenant monthly payment 2. Manufacturer monthly payment 3. Permanent license.\nNote: This parameter will be subsequently deprecated. Please use LicensePayMode and Payer for new access.",
+          "example": "1",
+          "member": "int64",
+          "name": "LicenseChargingMode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.",
+          "example": "1676800844",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Hardware Serial Number",
+          "example": "AN",
+          "member": "string",
+          "name": "SN",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Authorization validity period of license \n0: Monthly authorization \n1: Permanent license",
+          "example": "0",
+          "member": "int64",
+          "name": "LicensePayMode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Payer \n0: Customer payment \n1: Manufacturer payment",
+          "example": "1",
+          "member": "int64",
+          "name": "Payer",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "device group ID",
+          "example": "\"group-1\"",
+          "member": "string",
+          "name": "GroupId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Device group name",
+          "example": "\"g-name\"",
+          "member": "string",
+          "name": "GroupName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "No traffic processing method for the device. 0: pay-as-you-go, 1: truncate and accelerate\t",
+          "example": "0",
+          "member": "int64",
+          "name": "FlowTrunc",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "L3ConnInfo": {
+      "document": "Layer 3 interconnection rule information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Interconnection rule ID",
+          "example": "l3conn-abcd",
+          "member": "string",
+          "name": "L3ConnId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "interworking device ID",
+          "example": "mna-dex",
+          "member": "string",
+          "name": "DeviceId1",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Interconnection rule CIDR",
+          "example": "173.12.0.0/16",
+          "member": "string",
+          "name": "Cidr1",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "interworking device ID",
+          "example": "mna-cde",
+          "member": "string",
+          "name": "DeviceId2",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Interconnection rule CIDR",
+          "example": "173.13.0.0/16",
+          "member": "string",
+          "name": "Cidr2",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule Enable Status",
+          "example": "true",
+          "member": "bool",
+          "name": "Enable",
+          "output_required": true,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Interconnection rule description",
+          "example": "this is descript",
+          "member": "string",
+          "name": "Description",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ModifyPackageRenewFlagRequest": {
+      "document": "ModifyPackageRenewFlag request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique resource ID of the data transfer plan",
+          "example": "56d11777-50f7-4c60-9c89-e7076c8529a9-0",
+          "member": "string",
+          "name": "ResourceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Auto-renewal flag. true represents auto-renewal, false represents no auto-renewal.",
+          "example": "true",
+          "member": "bool",
+          "name": "RenewFlag",
+          "required": true,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyPackageRenewFlagResponse": {
+      "document": "ModifyPackageRenewFlag response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "MonitorData": {
+      "document": "Traffic monitoring metrics",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Time point: s",
+          "example": "1662622200",
+          "member": "string",
+          "name": "Time",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Business Metric (bps/ms/%)",
+          "example": "1.0",
+          "member": "float",
+          "name": "BusinessMetrics",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Network interface status info",
+          "example": "无",
+          "member": "SlotNetInfo",
+          "name": "SlotNetInfo",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "NetDetails": {
+      "document": "Network details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Traffic volume (byte)",
+          "example": "98",
+          "member": "float",
+          "name": "Current",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Time point, unit: s",
+          "example": "1690424186",
+          "member": "string",
+          "name": "Time",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "OrderFlowPackageRequest": {
+      "document": "OrderFlowPackage request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Traffic package specification type. Values are as follows:\nDEVICE_1_FLOW_20G,DEVICE_2_FLOW_50G,\nDEVICE_3_FLOW_100G,\nDEVICE_5_FLOW_500G represents traffic packages of 20G, 50G, 100G, and 500G gear selection.\nGear selection also impacts the bandwidth cap of the data transfer plan.\n20G: Bind up to 1 device.\n50G: Bind up to 2 devices.\n100G: Bind up to 3 devices.\n500G: Bind up to 5 devices.",
+          "example": "DEVICE_1_FLOW_20G",
+          "member": "string",
+          "name": "PackageType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Device ID list bound to the data transfer plan. Number of bundled instances depends on the specification tiers of the plan.\n20G: Bind up to 1 device.\n50G: Bind up to 2 devices.\n100G: Bind up to 3 devices.\n500G: Bind up to 5 devices.",
+          "example": "[\"mna-test1\",\"mna-test2\"]",
+          "member": "string",
+          "name": "DeviceList",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Whether the service is automatically renewed conflicts with traffic truncation. You can only enable one option.",
+          "example": "true",
+          "member": "bool",
+          "name": "AutoRenewFlag",
+          "required": true,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Region flag. 0: Chinese mainland, 1: outside the Chinese mainland",
+          "example": "0",
+          "member": "int64",
+          "name": "PackageRegion",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether traffic truncation is enabled. This option conflicts with auto renewal.",
+          "example": "false",
+          "member": "bool",
+          "name": "FlowTruncFlag",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to automatically select voucher. Default false.\nSelection strategy for multiple vouchers: Deduct vouchers by this priority - voucher that can offset the total amount of the Payment Order, voucher with the earliest Expiration, voucher with the maximum deductible amount, voucher with the minimum balance, cash voucher. Only one voucher can be deducted at most.",
+          "example": "true",
+          "member": "bool",
+          "name": "AutoVoucher",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Designated voucher ID. This parameter is invalid when selecting voucher automatically. Only one voucher can be input.\nNote: If the designated voucher does not meet the order deduction conditions, proceed with normal payment without deducting the voucher.",
+          "example": "[\"OLSKVPGO4KUIU8HFDTEST1\"]",
+          "member": "string",
+          "name": "VoucherIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "OrderFlowPackageResponse": {
+      "document": "OrderFlowPackage response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique resource ID of the data transfer plan",
+          "example": "56d11777-50f7-4c60-9c89-e7076c8529a9-0",
+          "member": "string",
+          "name": "ResourceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "OrderInfo": {
+      "document": "Return the reported order information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Account uin of the parent account",
+          "example": "700001394326",
+          "member": "string",
+          "name": "Uin",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Project ID",
+          "example": "4002428",
+          "member": "string",
+          "name": "ProjectId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Usage type",
+          "example": "pack_1",
+          "member": "string",
+          "name": "PackageType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Order number unique identifier",
+          "example": "100003848",
+          "member": "string",
+          "name": "OrderId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Report month, current month by default",
+          "example": "2025-08",
+          "member": "string",
+          "name": "ReportMonth",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Data update time",
+          "example": "2025-08-02 15:04:05",
+          "member": "string",
+          "name": "Updated",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "OrderPerLicenseRequest": {
+      "document": "OrderPerLicense request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Device ID for purchasing a permanent License. If it is an unactivated device from the manufacturer, use HardwareId.",
+          "example": "\"mna-test1\"",
+          "member": "string",
+          "name": "DeviceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Device type. 0: SDK, 1: CPE. Enter 0 when creating or activating a device as a user. Enter 1 when creating a device to be activated as a manufacturer.",
+          "example": "0",
+          "member": "int64",
+          "name": "Type",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Rollback or not (delete device) after purchase fail, default false. If the device is bound to a currently effective traffic package, rollback is not allowed.",
+          "example": "true",
+          "member": "bool",
+          "name": "RollBack",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to automatically select voucher. Default false.\nSelection strategy for multiple vouchers: Deduct vouchers by this priority - voucher that can offset the total amount of the Payment Order, voucher with the earliest Expiration, voucher with the maximum deductible amount, voucher with the minimum balance, cash voucher. Only one voucher can be deducted at most.",
+          "example": "false",
+          "member": "bool",
+          "name": "AutoVoucher",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Designated voucher ID. This parameter is invalid when selecting voucher automatically. Only one voucher can be input.\nNote: If the designated voucher does not meet the order deduction conditions, proceed with normal payment without deducting the voucher.",
+          "example": "[\"OLSKVPGO4KUIU8HFDTEST1\"]",
+          "member": "string",
+          "name": "VoucherIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "OrderPerLicenseResponse": {
+      "document": "OrderPerLicense response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Resource ID of the single-use License",
+          "example": "56d11777-50f7-4c60-9c89-e7076c8529a9-0",
+          "member": "string",
+          "name": "ResourceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ReportOrderRequest": {
+      "document": "ReportOrder request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Order number unique identifier",
+          "example": "100003848",
+          "member": "string",
+          "name": "OrderId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID",
+          "example": "4002428",
+          "member": "string",
+          "name": "ProjectId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Usage type",
+          "example": "pack_1",
+          "member": "string",
+          "name": "PackageType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Report month, current month by default",
+          "example": "2025-08",
+          "member": "string",
+          "name": "ReportMonth",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ReportOrderResponse": {
+      "document": "ReportOrder response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Order information",
+          "example": "无",
+          "member": "OrderInfo",
+          "name": "OrderInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SetNotifyUrlRequest": {
+      "document": "SetNotifyUrl request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Alarm notification callback url",
+          "example": "http://ip:port/callurl",
+          "member": "string",
+          "name": "NotifyUrl",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Alarm notification callback key",
+          "example": "xd23y5cb89bx23432",
+          "member": "string",
+          "name": "CallbackKey",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Alarm threshold of the data transfer plan",
+          "example": "20",
+          "member": "int64",
+          "name": "AlarmValue",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "SetNotifyUrlResponse": {
+      "document": "SetNotifyUrl response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SlotNetInfo": {
+      "document": "NIC traffic metric data",
+      "members": [
+        {
+          "disabled": false,
+          "document": "NIC Name",
+          "example": "\"eth0\"",
+          "member": "string",
+          "name": "NetInfoName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Public IP address",
+          "example": "\"xxx.xxx.xx.xxx\"",
+          "member": "string",
+          "name": "PublicIP",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Metric data (bps/ms/%)",
+          "example": "2.3",
+          "member": "float",
+          "name": "Current",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "UpdateApplicationInfoRequest": {
+      "document": "UpdateApplicationInfo request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID",
+          "example": "mna-w795bzezug",
+          "member": "string",
+          "name": "MpApplicationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Application name of the created app",
+          "example": "application1",
+          "member": "string",
+          "name": "MpApplicationName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Remark of the created device",
+          "example": "game",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Access environment. 0: public cloud gateway; 1: private gateway; 2: public cloud gateway and private gateway. By default if left blank, public cloud gateway is selected. Specific meaning: Public cloud gateway: The device can only connect to public cloud gateway (Proximity access). Private gateway: The device can only connect to already launched private gateway (Proximity access or fixed ip access). Public cloud gateway and private gateway: The device can also connect to both public cloud gateway and already launched private gateway (Proximity access or fixed ip access).",
+          "example": "0",
+          "member": "int64",
+          "name": "AccessScope",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateApplicationInfoResponse": {
+      "document": "UpdateApplicationInfo response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateApplicationKeyRequest": {
+      "document": "UpdateApplicationKey request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "base64 key string of the application",
+          "example": "dasdfrfwer32e4r",
+          "member": "string",
+          "name": "MpApplicationKey",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Application ID",
+          "example": "mna-w795bzezug",
+          "member": "string",
+          "name": "MpApplicationId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateApplicationKeyResponse": {
+      "document": "UpdateApplicationKey response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateDeviceRequest": {
+      "document": "UpdateDevice request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Device ID",
+          "example": "\"mna-xxx\"",
+          "member": "string",
+          "name": "DeviceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Device name.",
+          "example": "\"dev\"",
+          "member": "string",
+          "name": "DeviceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "device Remarks",
+          "example": "\"remark\"",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Update device network info",
+          "example": "无",
+          "member": "UpdateNetInfo",
+          "name": "UpdateNetInfo",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "No traffic processing method for the device. 0: pay-as-you-go, 1: truncate and accelerate",
+          "example": "1",
+          "member": "int64",
+          "name": "FlowTrunc",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateDeviceResponse": {
+      "document": "UpdateDevice response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateGroupRequest": {
+      "document": "UpdateGroup request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "group ID",
+          "example": "\"1a2b3c4d5e\"",
+          "member": "string",
+          "name": "GroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Group remark",
+          "example": "\"this is descript\"",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateGroupResponse": {
+      "document": "UpdateGroup response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateHardwareRequest": {
+      "document": "UpdateHardware request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Hardware ID",
+          "example": "cpe-6zmf86knqu",
+          "member": "string",
+          "name": "HardwareId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Hardware Serial Number",
+          "example": "adsqda",
+          "member": "string",
+          "name": "SN",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "device Remarks",
+          "example": "description",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateHardwareResponse": {
+      "document": "UpdateHardware response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateL3CidrRequest": {
+      "document": "UpdateL3Cidr request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Interconnection rule ID",
+          "example": "\"l3conn-c0rkbqhig\"",
+          "member": "string",
+          "name": "L3ConnId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Interconnection rule CIDR",
+          "example": "\"192.168.0.0/28\"",
+          "member": "string",
+          "name": "Cidr1",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "interworking device ID",
+          "example": "mna-f8v7e6o43g",
+          "member": "string",
+          "name": "DeviceId1",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "interworking device ID",
+          "example": "mna-f8v7e6o432",
+          "member": "string",
+          "name": "DeviceId2",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Interconnection rule CIDR",
+          "example": "\"192.168.0.16/28\"",
+          "member": "string",
+          "name": "Cidr2",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateL3CidrResponse": {
+      "document": "UpdateL3Cidr response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateL3ConnRequest": {
+      "document": "UpdateL3Conn request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Interconnection rule ID",
+          "example": "l3conn-c0rkbqhig8",
+          "member": "string",
+          "name": "L3ConnId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Interconnection rule remark",
+          "example": "\"this is discript\"",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateL3ConnResponse": {
+      "document": "UpdateL3Conn response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateL3SwitchRequest": {
+      "document": "UpdateL3Switch request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Interconnection rule ID",
+          "example": "\"id-1\"",
+          "member": "string",
+          "name": "L3ConnId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Interconnection rule switch",
+          "example": "true",
+          "member": "bool",
+          "name": "Enable",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateL3SwitchResponse": {
+      "document": "UpdateL3Switch response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateNetInfo": {
+      "document": "Update device network status information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Network type:\nData\n1:Wi-Fi",
+          "example": "1",
+          "member": "int64",
+          "name": "Type",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Enable or disable.",
+          "example": "true",
+          "member": "bool",
+          "name": "DataEnable",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Uplink speed limit: bit",
+          "example": "10000",
+          "member": "uint64",
+          "name": "UploadLimit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Downstream speed limit: bit.",
+          "example": "10000",
+          "member": "uint64",
+          "name": "DownloadLimit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "NIC Name",
+          "example": "\"eth1\"",
+          "member": "string",
+          "name": "NetInfoName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "VendorHardware": {
+      "document": "Manufacturer Hardware Information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Hardware id",
+          "example": "cpe-ids1",
+          "member": "string",
+          "name": "HardwareId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Hardware Serial Number",
+          "example": "AN",
+          "member": "string",
+          "name": "SN",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.",
+          "example": "1680019225",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Activation status, empty: all; 1: to be activated; 2: activated",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Activation time",
+          "example": "1680019225",
+          "member": "string",
+          "name": "ActiveTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "vendor remarks",
+          "example": "this is descript",
+          "member": "string",
+          "name": "Description",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Device ID",
+          "example": "mna-dev1",
+          "member": "string",
+          "name": "DeviceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "License billing mode: 1. Tenant monthly payment 2. Manufacturer monthly payment 3. Permanent license.\nNote: When the device is paid by the tenant and inactive (not selected for monthly or permanent payment), this parameter returns 1, indicating only that the tenant has paid. This parameter will be subsequently deprecated. For new access, please use LicensePayMode and Payer.",
+          "example": "1",
+          "member": "int64",
+          "name": "LicenseChargingMode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last online time",
+          "example": "1680019225",
+          "member": "string",
+          "name": "LastOnlineTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Authorization validity period\nMonthly authorization\n1: Permanent license\n-Unknown",
+          "example": "0",
+          "member": "int64",
+          "name": "LicensePayMode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Payer\n0: Customer payment\n1: Manufacturer payment",
+          "example": "0",
+          "member": "int64",
+          "name": "Payer",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    }
+  },
+  "version": "1.0"
+}
