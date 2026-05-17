@@ -133,6 +133,13 @@
       "output": "DescribeCertificatesResponse",
       "status": "online"
     },
+    "DescribeCompanies": {
+      "document": "Query company list",
+      "input": "DescribeCompaniesRequest",
+      "name": "Query the company list",
+      "output": "DescribeCompaniesResponse",
+      "status": "online"
+    },
     "DescribeHostTeoInstanceList": {
       "document": "This API is used to query the list of EdgeOne instances to which a certificate can be deployed.",
       "input": "DescribeHostTeoInstanceListRequest",
@@ -166,6 +173,13 @@
       "input": "DescribeHostUploadUpdateRecordDetailRequest",
       "name": "Query certificate update record (certificate ID unchanged) deployment record details",
       "output": "DescribeHostUploadUpdateRecordDetailResponse",
+      "status": "online"
+    },
+    "DescribeManagers": {
+      "document": "Query the list of people in charge",
+      "input": "DescribeManagersRequest",
+      "name": "Query the list of people in charge",
+      "output": "DescribeManagersResponse",
       "status": "online"
     },
     "DownloadCertificate": {
@@ -2516,6 +2530,112 @@
         }
       ],
       "type": "object"
+    },
+    "CompanyInfo": {
+      "document": "Company Information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Company Name",
+          "example": "Tencent",
+          "member": "string",
+          "name": "CompanyName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "company ID",
+          "example": "178283",
+          "member": "int64",
+          "name": "CompanyId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Country of residence",
+          "example": "China",
+          "member": "string",
+          "name": "CompanyCountry",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Company province",
+          "example": "Guangdong",
+          "member": "string",
+          "name": "CompanyProvince",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Company located city",
+          "example": "Shenzhen",
+          "member": "string",
+          "name": "CompanyCity",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Company's detailed address",
+          "example": "Binhai****",
+          "member": "string",
+          "name": "CompanyAddress",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "company phone number",
+          "example": "27384893",
+          "member": "string",
+          "name": "CompanyPhone",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Company document type. Valid values:\nTYDMZ (unified social credit code): This field is required only for CFCA certs and not required for other types.\nOTHERS",
+          "example": "TYDMZ",
+          "member": "string",
+          "name": "IdType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Company identification number, value ranges from...to...\nTYDMZ (unified social credit code): 11532xxxxxxxx24820",
+          "example": "11532xxxxxxxx24820",
+          "member": "string",
+          "name": "IdNumber",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tag.",
+          "example": "无",
+          "member": "Tags",
+          "name": "Tags",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "CosInstanceDetail": {
       "document": "COS instance description.",
@@ -4953,6 +5073,71 @@
       ],
       "type": "object"
     },
+    "DescribeCompaniesRequest": {
+      "document": "DescribeCompanies request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Paging offset. Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Page limit per page. Default value: 0. Maximum value: 1000.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "company ID",
+          "example": "17633",
+          "member": "int64",
+          "name": "CompanyId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCompaniesResponse": {
+      "document": "DescribeCompanies response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Company List",
+          "example": "无",
+          "member": "CompanyInfo",
+          "name": "Companies",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of companies",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeHostTeoInstanceListRequest": {
       "document": "DescribeHostTeoInstanceList request structure.",
       "members": [
@@ -5341,6 +5526,107 @@
           "name": "DeployRecordList",
           "output_required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeManagersRequest": {
+      "document": "DescribeManagers request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Company ID, obtain through the API DescribeCompanies",
+          "example": "12",
+          "member": "int64",
+          "name": "CompanyId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination offset. If not provided, default value is 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination quantity per page. If not provided, the default value is 10. Maximum value is 1000.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Manager name (deprecated). Please use SearchKey.",
+          "example": "腾讯",
+          "member": "string",
+          "name": "ManagerName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Fuzzy query manager mailbox (deprecated), please use SearchKey",
+          "example": "tencent@tencent.com",
+          "member": "string",
+          "name": "ManagerMail",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter based on manager status. Valid values:\n'none' pending review\n'audit', reviewing by AsiaInfo\n'CAaudit' CA under review\n'ok' reviewed\n'review failed' for 'invalid'\nexpiring soon\nexpired",
+          "example": "audit",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Based on the format: manager surname|manager name|mailbox|department, perform accurate matching",
+          "example": "luke|sky|tencent@tencent.com|开发一部",
+          "member": "string",
+          "name": "SearchKey",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeManagersResponse": {
+      "document": "DescribeManagers response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of company managers",
+          "example": "无",
+          "member": "ManagerInfo",
+          "name": "Managers",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of company managers",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -5757,6 +6043,267 @@
           "output_required": true,
           "type": "string",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ManagerInfo": {
+      "document": "Administrator information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Status: audit: under review ok: pass invalid: invalid expiring: expiring soon expired: expired",
+          "example": "audit",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Manager name",
+          "example": "luke",
+          "member": "string",
+          "name": "ManagerFirstName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Manager name",
+          "example": "sky",
+          "member": "string",
+          "name": "ManagerLastName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "manager position",
+          "example": "Waibao",
+          "member": "string",
+          "name": "ManagerPosition",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Manager phone",
+          "example": "188**77373",
+          "member": "string",
+          "name": "ManagerPhone",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Manager mailbox",
+          "example": "173**@qq.com",
+          "member": "string",
+          "name": "ManagerMail",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "department of the manager",
+          "example": "IT",
+          "member": "string",
+          "name": "ManagerDepartment",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2018-09-10 00:00:00",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of domains for manager",
+          "example": "10",
+          "member": "int64",
+          "name": "DomainCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of manager certificates",
+          "example": "1",
+          "member": "int64",
+          "name": "CertCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Manager ID",
+          "example": "17777",
+          "member": "int64",
+          "name": "ManagerId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Review valid expiry time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2019-09-10 00:00:00",
+          "member": "string",
+          "name": "ExpireTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Last submission review time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2018-09-10 00:00:00",
+          "member": "string",
+          "name": "SubmitAuditTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Approval Time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2018-09-10 00:00:00",
+          "member": "string",
+          "name": "VerifyTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Review status info\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ManagerStatusInfo",
+          "name": "StatusInfo",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Tag.",
+          "example": "无",
+          "member": "Tags",
+          "name": "Tags",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ManagerPreAuditDomain": {
+      "document": "Domain name list for manager prereview",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Domain information for prereview",
+          "example": "tencent.com",
+          "member": "string",
+          "name": "Domain",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Prereview domain creation time",
+          "example": "2025-01-01 08:00:00",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Prereview domain expiry time",
+          "example": "2026-01-01 08:00:00",
+          "member": "string",
+          "name": "ExpireTime",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ManagerStatusInfo": {
+      "document": "Four types of manager review status",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Review type, enumeration value: ov, ev",
+          "example": "ov",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Review status, enumeration value: pending, completed, invalid, submitted, expiring, expired.",
+          "example": "pending",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.",
+          "example": "2018-09-10 20:00:00",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Expiration time",
+          "example": "2019-09-10 20:00:00",
+          "member": "string",
+          "name": "ExpireTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Domain name list for manager prereview",
+          "example": "无",
+          "member": "ManagerPreAuditDomain",
+          "name": "ManagerPreAuditDomains",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
