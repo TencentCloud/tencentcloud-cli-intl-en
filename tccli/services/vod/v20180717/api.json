@@ -91,6 +91,13 @@
       "output": "CreateAnimatedGraphicsTemplateResponse",
       "status": "online"
     },
+    "CreateBlindWatermarkTemplate": {
+      "document": "This API is used to create a user-defined digital watermark template.",
+      "input": "CreateBlindWatermarkTemplateRequest",
+      "name": "Creates a digital watermark template",
+      "output": "CreateBlindWatermarkTemplateResponse",
+      "status": "online"
+    },
     "CreateCDNDomain": {
       "document": "This API is used for adding domain names to VOD. A user can add up to 20 domain names. 1. After the domain name is added successfully, VOD will carry out the deployment of the domain name. It takes approximately 2 minutes for the domain name to change from the deployment status to the online status.",
       "input": "CreateCDNDomainRequest",
@@ -315,6 +322,13 @@
       "output": "DeleteAnimatedGraphicsTemplateResponse",
       "status": "online"
     },
+    "DeleteBlindWatermarkTemplate": {
+      "document": "This API is used to delete a user-defined digital watermark template.",
+      "input": "DeleteBlindWatermarkTemplateRequest",
+      "name": "Deletes a digital watermark template",
+      "output": "DeleteBlindWatermarkTemplateResponse",
+      "status": "online"
+    },
     "DeleteCDNDomain": {
       "document": "Delete CDN Domain",
       "input": "DeleteCDNDomainRequest",
@@ -523,6 +537,13 @@
       "input": "DescribeAnimatedGraphicsTemplatesRequest",
       "name": "Gets the list of animated image generating templates",
       "output": "DescribeAnimatedGraphicsTemplatesResponse",
+      "status": "online"
+    },
+    "DescribeBlindWatermarkTemplates": {
+      "document": "Query user-customized digital watermark templates.",
+      "input": "DescribeBlindWatermarkTemplatesRequest",
+      "name": "Obtains the list of digital watermark templates",
+      "output": "DescribeBlindWatermarkTemplatesResponse",
       "status": "online"
     },
     "DescribeCDNDomains": {
@@ -847,6 +868,13 @@
       "output": "ExecuteFunctionResponse",
       "status": "online"
     },
+    "ExtractBlindWatermark": {
+      "document": "This API is used to initiate a digital watermark extraction task for a video. The extraction result can be queried through DescribeTaskDetail.",
+      "input": "ExtractBlindWatermarkRequest",
+      "name": "Extracts the digital watermark for a video",
+      "output": "ExtractBlindWatermarkResponse",
+      "status": "online"
+    },
     "ExtractCopyRightWatermark": {
       "document": "Extract CopyRight Watermark.",
       "input": "ExtractCopyRightWatermarkRequest",
@@ -936,6 +964,13 @@
       "input": "ModifyAnimatedGraphicsTemplateRequest",
       "name": "Modifies an animated image generating template",
       "output": "ModifyAnimatedGraphicsTemplateResponse",
+      "status": "online"
+    },
+    "ModifyBlindWatermarkTemplate": {
+      "document": "This API is used to modify a user-defined digital watermark template. The digital watermark type cannot be modified.",
+      "input": "ModifyBlindWatermarkTemplateRequest",
+      "name": "Modifies a digital watermark template",
+      "output": "ModifyBlindWatermarkTemplateResponse",
       "status": "online"
     },
     "ModifyCDNDomainConfig": {
@@ -10524,6 +10559,82 @@
       ],
       "usage": "both"
     },
+    "BlindWatermarkTemplate": {
+      "document": "Digital watermark template details.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique identifier of the digital watermark template.",
+          "example": "10",
+          "member": "int64",
+          "name": "Definition",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Digital watermark type. Valid values: <li>blind-basic: basic copyright digital watermark;</li> <li>blind-nagra: NAGRA forensics watermark.</li>",
+          "example": "blind-basic",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Digital watermark template name.",
+          "example": "数字水印模板1",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Text content of the digital watermark template. The length cannot exceed 64 characters.",
+          "example": "水印文本内容",
+          "member": "string",
+          "name": "TextContent",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Description information of the digital watermark template.",
+          "example": "数字水印模板",
+          "member": "string",
+          "name": "Comment",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).",
+          "example": "2025-08-01T18:00:00+08:00",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last modification time of the digital watermark template in [ISO date and time format](https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).",
+          "example": "2025-08-01T18:00:00+08:00",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "BlurConfigureInfo": {
       "document": "Control parameters for video blur detection.",
       "members": [
@@ -14132,6 +14243,79 @@
       ],
       "type": "object"
     },
+    "CreateBlindWatermarkTemplateRequest": {
+      "document": "CreateBlindWatermarkTemplate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Digital watermark type. Valid values: <li>blind-basic: basic copyright digital watermark;</li> <li>blind-nagra: NAGRA watermark.</li>",
+          "example": "blind-basic",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Text content of the digital watermark. The length cannot exceed 64 characters. After NAGRA watermark templates are created, the text content cannot be modified.",
+          "example": "数字水印文本",
+          "member": "string",
+          "name": "TextContent",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "VOD application ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the application ID when accessing resources in on-demand applications (default application or newly created application).",
+          "example": "1490012345",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Digital watermark template name, which supports Chinese, English, digits, underscores (_), hyphens (-), and periods (.). The length cannot exceed 64 characters.",
+          "example": "数字水印模板1",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Description information of the digital watermark template. The length cannot exceed 256 characters.",
+          "example": "数字水印模板",
+          "member": "string",
+          "name": "Comment",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateBlindWatermarkTemplateResponse": {
+      "document": "CreateBlindWatermarkTemplate response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique identifier of the digital watermark template.",
+          "example": "20000",
+          "member": "int64",
+          "name": "Definition",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateCDNDomainRequest": {
       "document": "CreateCDNDomain request structure.",
       "members": [
@@ -16905,6 +17089,42 @@
       ],
       "type": "object"
     },
+    "DeleteBlindWatermarkTemplateRequest": {
+      "document": "DeleteBlindWatermarkTemplate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique identifier of the digital watermark template.",
+          "example": "10",
+          "member": "int64",
+          "name": "Definition",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "VOD application ID. Starting from December 25, 2023, customers who activate on-demand services must fill this field with the app ID when accessing resources in on-demand applications (whether default or newly created application).",
+          "example": "1490012345",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteBlindWatermarkTemplateResponse": {
+      "document": "DeleteBlindWatermarkTemplate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteCDNDomainRequest": {
       "document": "DeleteCDNDomain request structure.",
       "members": [
@@ -18190,6 +18410,89 @@
           "example": "无",
           "member": "AnimatedGraphicsTemplate",
           "name": "AnimatedGraphicsTemplateSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBlindWatermarkTemplatesRequest": {
+      "document": "DescribeBlindWatermarkTemplates request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "VOD application ID. Starting from December 25, 2023, customers who activate on-demand services must fill this field with the app ID when accessing resources in on-demand applications (whether default or newly created application).",
+          "example": "1490012345",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filtering condition for the unique identifier of the digital watermark template. The array length cannot exceed 100.",
+          "example": "[10,20,30]",
+          "member": "int64",
+          "name": "Definitions",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Digital watermark type. Valid values: <li>blind-basic: basic copyright digital watermark;</li> <li>blind-nagra: NAGRA forensics watermark.</li>",
+          "example": "blind-basic",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination offset. Default value: 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of returned entries\n<li>Default value: 10.</li>\n<li>Maximum value: 100.</li>",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBlindWatermarkTemplatesResponse": {
+      "document": "DescribeBlindWatermarkTemplates response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of records that meet the filtering conditions.",
+          "example": "10",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of digital watermark template details.",
+          "example": "无",
+          "member": "BlindWatermarkTemplate",
+          "name": "BlindWatermarkTemplateSet",
           "output_required": true,
           "type": "list",
           "value_allowed_null": false
@@ -23695,6 +23998,97 @@
         }
       ],
       "usage": "both"
+    },
+    "ExtractBlindWatermarkRequest": {
+      "document": "ExtractBlindWatermark request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Digital watermark type. Valid values: <li>blind-basic: basic copyright digital watermark;</li> <li>blind-trace: trace the source ab sequence watermark.</li>",
+          "example": "blind-basic",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "File input information for the Media Processing Service (MPS) task.",
+          "example": "无",
+          "member": "ExtractBlindWatermarkInputInfo",
+          "name": "InputInfo",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "VOD application ID for watermarking. Note that the SubAppId must be in line with the one used during watermarking to extract the watermark, whether importing FILEID or URL.",
+          "example": "1490012345",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Configuration of the digital watermark extraction task.",
+          "example": "无",
+          "member": "ExtractBlindWatermarkTaskConfig",
+          "name": "ExtractBlindWatermarkConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Identify source context, used for passing through user request information. The value of this field will be returned in the ExtractBlindWatermarkComplete callback and task flow status change callback, with a maximum length of 1000 characters.",
+          "example": "202410011900***tmsd\t",
+          "member": "string",
+          "name": "SessionContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "An identification code for task deduplication. If there has been a request with the same identification code within the past 3 days, an error will be returned for the current request. The maximum length is 50 characters. Leaving it blank or with an empty string indicates no deduplication.",
+          "example": "6bb56a09278740bc80c5dc6dab783eff",
+          "member": "string",
+          "name": "SessionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Task priority. The higher the value, the higher the priority. The value ranges from -10 to 10. If left blank, it represents 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "TasksPriority",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ExtractBlindWatermarkResponse": {
+      "document": "ExtractBlindWatermark response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "125xxx65-ExtractBlindWatermark-bffb15f07530b57bc1aabb01fac74bca",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ExtractBlindWatermarkTask": {
       "document": "Extract digital watermark from video task info",
@@ -32350,6 +32744,69 @@
     },
     "ModifyAnimatedGraphicsTemplateResponse": {
       "document": "ModifyAnimatedGraphicsTemplate response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyBlindWatermarkTemplateRequest": {
+      "document": "ModifyBlindWatermarkTemplate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique identifier of the digital watermark template.",
+          "example": "10",
+          "member": "int64",
+          "name": "Definition",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "VOD application ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the application ID when accessing resources in on-demand applications (default application or newly created application).",
+          "example": "1490012345",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Digital watermark template name, which supports Chinese, English, digits, underscores (_), hyphens (-), and periods (.). The length cannot exceed 64 characters.",
+          "example": "数字水印模板1",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Description information of the digital watermark template. The length cannot exceed 256 characters.",
+          "example": "数字水印模板",
+          "member": "string",
+          "name": "Comment",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Text content of the digital watermark. The length cannot exceed 64 characters. The text content cannot be modified for NAGRA watermark templates.",
+          "example": "数字水印文本",
+          "member": "string",
+          "name": "TextContent",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyBlindWatermarkTemplateResponse": {
+      "document": "ModifyBlindWatermarkTemplate response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",

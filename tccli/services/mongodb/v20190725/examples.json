@@ -8,6 +8,14 @@
         "title": "Specifying the Associated Project of a TencentDB for MongoDB Instance"
       }
     ],
+    "CloseAuditService": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CloseAuditService\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-l0w4cf5v\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
+        "title": "Disabling Audit Service"
+      }
+    ],
     "CreateAccountUser": [
       {
         "document": "This example shows you how to customize an instance account.",
@@ -18,10 +26,10 @@
     ],
     "CreateBackupDBInstance": [
       {
-        "document": "This example shows how to back up an instance.",
-        "input": "https://mongodb.tencentcloudapi.com/?Action=CreateBackupDBInstance\n&InstanceId=cmgo-ayxpky6l\n&BackupRemark=remarkInfo\n&BackupMethod=0\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"AsyncRequestId\": \"1680780049\",\n        \"RequestId\": \"1df930fb-eb7e-4e3f-bcab-15a1aa5fede0\"\n    }\n}",
-        "title": "Backing Up an Instance"
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateBackupDBInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-xxxxxx\",\n    \"BackupMethod\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"AsyncRequestId\": \"1750660112000249\",\n        \"RequestId\": \"fa4e07a8-4452-4490-94f4-bbac1f220256\"\n    }\n}",
+        "title": "Initiate a backup task"
       }
     ],
     "CreateBackupDownloadTask": [
@@ -80,6 +88,30 @@
         "title": "Querying async task status"
       }
     ],
+    "DescribeAuditConfig": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAuditConfig\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-bfyv0sy7\"\n}",
+        "output": "{\n    \"Response\": {\n        \"AuditAll\": true,\n        \"CreateTime\": \"2025-12-11 11:47:20\",\n        \"InstanceId\": \"cmgo-bfyv****\",\n        \"InstanceName\": \"cmgo-bfyv****\",\n        \"IsClosing\": \"false\",\n        \"IsOpening\": \"false\",\n        \"LogExpireDay\": 7,\n        \"LogType\": \"storage\",\n        \"RequestId\": \"d94bc81b-3b76-4104-9270-0582d8227ebc\"\n    }\n}",
+        "title": "Queries audit service configurations"
+      }
+    ],
+    "DescribeAuditLogFiles": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAuditLogFiles\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-xfts****\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"TotalCount\": 1,\n        \"Items\": [\n            {\n                \"FileName\": \"test.txt\",\n                \"Status\": \"running\",\n                \"CreateTime\": \"2019-03-20 17:09:13\",\n                \"FileSize\": 3,\n                \"DownloadUrl\": \"http://xxxxxx\"\n            }\n        ]\n    }\n}",
+        "title": "Querying Audit Log Files"
+      }
+    ],
+    "DescribeAuditLogs": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAuditLogs\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-f0vo457l\",\n    \"StartTime\": \"2022-09-28 14:25:38\",\n    \"EndTime\": \"2026-09-28 15:25:38\",\n    \"Filter\": {\n        \"Atype\": [\n            \"insert\"\n        ],\n        \"Result\": [\n            \"0\"\n        ],\n        \"Param\": [\n            \"insert\"\n        ]\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"AffectRows\": 2,\n                \"Atype\": \"insert\",\n                \"ExecTime\": 0,\n                \"Host\": \"10.0.xx.xx\",\n                \"Param\": \"{ ns: dbinsert_2.collinsert_1, cmd: { _id: ObjectId('1'), df: [ \\\"sw\\\", \\\"re\\\" ], likes: 100, title: 3 } }\",\n                \"Result\": 0,\n                \"Roles\": \"xxx@admin\",\n                \"Timestamp\": \"2026-01-27 10:54:17\",\n                \"User\": \"mongouser@xxx\"\n            }\n        ],\n        \"TotalCount\": 2,\n        \"RequestId\": \"184c371f-8635-4af9-881b-d0f29856c0f7\"\n    }\n}",
+        "title": "This API is used to query an audit log."
+      }
+    ],
     "DescribeBackupDownloadTask": [
       {
         "document": " ",
@@ -90,10 +122,10 @@
     ],
     "DescribeBackupRules": [
       {
-        "document": "This example shows you how to query the automatic backup rule information of an instance.",
-        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBackupRules\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-9d0p****\"\n}",
-        "output": "{\n    \"Response\": {\n        \"BackupMethod\": 0,\n        \"BackupSaveTime\": 7,\n        \"BackupTime\": 1,\n        \"RequestId\": \"07ec4290-d682-11ed-aa06-f56fb86dae78\"\n    }\n}",
-        "title": "Querying the Automatic Backup Rule Information of an Instance"
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBackupRules\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-xxxxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ActiveWeekdays\": \"0,1,2,3,4,5,6\",\n        \"AlertThreshold\": 0,\n        \"BackupFrequency\": 12,\n        \"BackupMethod\": 0,\n        \"BackupSaveTime\": 7,\n        \"BackupTime\": 0,\n        \"BackupTotalSize\": {\n            \"FreeQuota\": 10737418240,\n            \"OplogSize\": 602372,\n            \"SnapshotSize\": 28916\n        },\n        \"BackupVersion\": 1,\n        \"LongTermActiveDays\": \"\",\n        \"LongTermExpiredDays\": 0,\n        \"LongTermInterval\": \"\",\n        \"OplogExpiredDays\": 0,\n        \"RequestId\": \"b544304c-e8eb-4819-8715-05a005c010ca\"\n    }\n}",
+        "title": "Getting Instance Backup Rules"
       }
     ],
     "DescribeClientConnections": [
@@ -198,6 +230,14 @@
         "title": "Querying Logs"
       }
     ],
+    "DescribeSRVConnectionDomain": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSRVConnectionDomain\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-3ap*****\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Error\": {\n            \"Code\": \"InvalidParameter\",\n            \"Message\": \"SRV connection has not enabled.\"\n        },\n        \"RequestId\": \"ac6aebb4-fddc-4a7c-9ce2-00359c74ce67\"\n    }\n}",
+        "title": "Instance SRV link not enabled"
+      }
+    ],
     "DescribeSecurityGroup": [
       {
         "document": "This example shows you how to query all security groups bound to the current instance.",
@@ -230,12 +270,42 @@
         "title": "Querying Saleable TencentDB for MongoDB Specifications"
       }
     ],
+    "DisableSRVConnectionUrl": [
+      {
+        "document": "Closed successfully. Return the task ID.",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DisableSRVConnectionUrl\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-gnu9vvnr\"\n}",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 1709799295,\n        \"RequestId\": \"763eb658-5b5a-4dff-ae17-9d86695655cd\"\n    }\n}",
+        "title": "Shut down the SRV access address of the instance."
+      }
+    ],
+    "EnableSRVConnectionUrl": [
+      {
+        "document": "Successfully enabled. Return the task ID.",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: EnableSRVConnectionUrl\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-gnu9vvnr\"\n}",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 1709799293,\n        \"RequestId\": \"289f0372-6311-4679-9947-485d6de7c227\"\n    }\n}",
+        "title": "Enabling the SRV connection address of an instance"
+      },
+      {
+        "document": "The SRV access address of the instance is enabled.",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: EnableSRVConnectionUrl\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-gnu9vvnr\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Error\": {\n            \"Code\": \"InvalidParameter\",\n            \"Message\": \"SRV connection has enabled.\"\n        },\n        \"RequestId\": \"ad34dcec-b457-439f-8968-56109168efe2\"\n    }\n}",
+        "title": "Enabling the SRV access address of the instance"
+      }
+    ],
     "EnableTransparentDataEncryption": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: EnableTransparentDataEncryption\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-igjy****\",\n    \"KmsRegion\": \"ap-guangzhou\",\n    \"KeyId\": \"AKID********************************\"\n}",
         "output": "{\n    \"Response\": {\n        \"FlowId\": 17316505316,\n        \"RequestId\": \"a8dce7a4-d488-49c9-8d24-33cf623f5992\"\n    }\n}",
         "title": "Enabling TDE for an Instance"
+      }
+    ],
+    "EnableWanService": [
+      {
+        "document": "The instance does not have public network access enabled. Request this API to enable public network access.",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: EnableWanService\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-qwla****\",\n    \"LoadBalancerId\": \"lb-94d6****\",\n    \"NodeList\": [\n        {\n            \"VipVport\": \"10.0.30.*:27017\",\n            \"ListenerPort\": \"10001\"\n        },\n        {\n            \"VipVport\": \"10.0.30.*:27017\",\n            \"ListenerPort\": \"10002\"\n        },\n        {\n            \"VipVport\": \"10.0.30.1*:27017\",\n            \"ListenerPort\": \"10003\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 174548484400,\n        \"RequestId\": \"ce73f291-7ffd-4390-9434-7c****12sa1b0\"\n    }\n}",
+        "title": "Enable the public network access address of the instance."
       }
     ],
     "FlushInstanceRouterConfig": [
@@ -312,12 +382,6 @@
     ],
     "ModifyDBInstanceSpec": [
       {
-        "document": "This example shows you how to adjust the configuration of a TencentDB for MongoDB instance.",
-        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBInstanceSpec\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-p8vn****\",\n    \"Volume\": 250,\n    \"Memory\": 4\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"d88095e5-50e8-4245-a0cf-993a536f9b20\",\n        \"DealId\": \"7142863\"\n    }\n}",
-        "title": "Adjusting the Configuration of a TencentDB for MongoDB Instance"
-      },
-      {
         "document": "This example shows you how to delete 2 secondary nodes in total from Guangzhou Zone 2 and Zone 3. The final number of nodes changes to 3.",
         "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBInstanceSpec\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-abcdef\",\n    \"Memory\": 4,\n    \"Volume\": 100,\n    \"OplogSize\": 30,\n    \"NodeNum\": 3,\n    \"ReplicateSetNum\": 1,\n    \"InMaintenance\": 1,\n    \"RemoveNodeList\": [\n        {\n            \"NodeName\": \"cmgo-3iecwbfx_0-node0\",\n            \"Role\": \"SECONDARY\",\n            \"Zone\": \"ap-guangzhou-2\"\n        },\n        {\n            \"NodeName\": \"cmgo-3iecwbfx_0-node1\",\n            \"Role\": \"SECONDARY\",\n            \"Zone\": \"ap-guangzhou-3\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"DealId\": \"7142863\",\n        \"RequestId\": \"d88095e5-50e8-4245-a0cf-993a536f9b20\"\n    }\n}",
@@ -328,6 +392,20 @@
         "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBInstanceSpec\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-p8vn****\",\n    \"Memory\": 4,\n    \"Volume\": 100,\n    \"OplogSize\": 30,\n    \"NodeNum\": 5,\n    \"ReplicateSetNum\": 1,\n    \"InMaintenance\": 1,\n    \"AddNodeList\": [\n        {\n            \"Role\": \"SECONDARY\",\n            \"Zone\": \"ap-guangzhou-2\"\n        },\n        {\n            \"Role\": \"SECONDARY\",\n            \"Zone\": \"ap-guangzhou-3\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"DealId\": \"7142863\",\n        \"RequestId\": \"d88095e5-50e8-4245-a0cf-993a536f9b20\"\n    }\n}",
         "title": "Adding Secondary Nodes to a TencentDB for MongoDB Instance"
+      },
+      {
+        "document": "This example shows you how to adjust the configuration of a TencentDB for MongoDB instance.",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBInstanceSpec\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-p8vn****\",\n    \"Volume\": 250,\n    \"Memory\": 4\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"d88095e5-50e8-4245-a0cf-993a536f9b20\",\n        \"DealId\": \"7142863\"\n    }\n}",
+        "title": "Adjusting the Configuration of a TencentDB for MongoDB Instance"
+      }
+    ],
+    "ModifyInstanceAz": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyInstanceAz\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-p9d****\",\n    \"PrimaryNodeZone\": \"ap-guangzhou-2\",\n    \"HiddenNodeZone\": \"ap-guangzhou-3\",\n    \"SecondaryNodeZone\": [\n        \"ap-guangzhou-4\"\n    ],\n    \"ReadonlyNodeZone\": [\n        null\n    ],\n    \"InMaintenance\": null\n}",
+        "output": "{\n    \"Response\": {\n        \"DealId\": \"2025080702700316299****\",\n        \"RequestId\": \"87f3a779-9b2e-475f-bcf5-966cffbbbe9f\"\n    }\n}",
+        "title": "Change a single-AZ instance to multi-availability zone"
       }
     ],
     "ModifyInstanceParams": [
@@ -336,6 +414,14 @@
         "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyInstanceParams\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-9d0p6umb\",\n    \"InstanceParams\": [\n        {\n            \"Value\": \"operation.profiling.slowOpThresholdMs\",\n            \"Key\": \"operation.profiling.slowOpThresholdMs\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"Changed\": true,\n        \"RequestId\": \"e51b4590-db7b-4835-9899-1f5c33f92fbf\",\n        \"TaskId\": 0\n    }\n}",
         "title": "Modifying the Parameter for a TencentDB for MongoDB Instance"
+      }
+    ],
+    "ModifySRVConnectionUrl": [
+      {
+        "document": "The edit was successful. Return task ID.",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifySRVConnectionUrl\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-gnu9vvnr\",\n    \"CustomDomain\": \"myinstancedomain\"\n}",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 1709799294,\n        \"RequestId\": \"e799e11c-c615-49c0-8b24-67b5fb45820f\"\n    }\n}",
+        "title": "Modify the TTL time of the SRV connection address of the instance."
       }
     ],
     "OfflineIsolatedDBInstance": [
@@ -368,6 +454,14 @@
         "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResetDBInstancePassword\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-7pje****\",\n    \"UserName\": \"rwuser\",\n    \"Password\": \"*******\"\n}",
         "output": "{\n    \"Response\": {\n        \"AsyncRequestId\": \"4769\",\n        \"RequestId\": \"e600a8d0-9014-11ea-84c1-01cccde830c6\"\n    }\n}",
         "title": "Changing the Password of the User Accessing the Instance"
+      }
+    ],
+    "RestoreDBInstance": [
+      {
+        "document": "Rollback the database instance to a specified time point",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RestoreDBInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-o59c****\",\n    \"RestoreTime\": \"2026-03-16 17:45:24\",\n    \"Databases\": [\n        {\n            \"Db\": \"testdb\",\n            \"Collections\": [\n                {\n                    \"OldCollection\": \"users\",\n                    \"NewCollection\": \"users_bak0316174524\"\n                }\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 100000068,\n        \"RequestId\": \"653add02-24bc-4e00-ac03-45078117895b\"\n    }\n}",
+        "title": "Rollback Instance"
       }
     ],
     "SetAccountUserPrivilege": [
@@ -413,7 +507,7 @@
     "UpgradeDbInstanceVersion": [
       {
         "document": "This example shows you how to upgrade a TencentDB for MongoDB instance from 3.6 to 4.0.",
-        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpgradeDbInstanceVersion\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-p8vnipr5\",\n    \"MongoVersion\": \"MONGO_42_WT\"\n}",
+        "input": "POST / HTTP/1.1\nHost: mongodb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpgradeDbInstanceVersion\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cmgo-p8vn****\",\n    \"MongoVersion\": \"MONGO_42_WT\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2efcf780-9970-11ec-8975-6bc44e3bfad7\",\n        \"FlowId\": 19677\n    }\n}",
         "title": "Upgrading an Instance from 3.6 to 4.0"
       }

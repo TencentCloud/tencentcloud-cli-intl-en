@@ -273,6 +273,13 @@
       "output": "UpdateFunctionCodeResponse",
       "status": "online"
     },
+    "UpdateFunctionConfiguration": {
+      "document": "This API is used to update the function configuration based on the input parameters.",
+      "input": "UpdateFunctionConfigurationRequest",
+      "name": "Updates the function configuration",
+      "output": "UpdateFunctionConfigurationResponse",
+      "status": "online"
+    },
     "UpdateFunctionEventInvokeConfig": {
       "document": "This API is used to update the async retry configuration of a function, including the number of retry attempts and message retention period.",
       "input": "UpdateFunctionEventInvokeConfigRequest",
@@ -483,6 +490,127 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CfsConfig": {
+      "document": "File system (CFS) configuration description",
+      "members": [
+        {
+          "disabled": false,
+          "document": "File system information list",
+          "example": "",
+          "member": "CfsInsInfo",
+          "name": "CfsInsList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CfsInsInfo": {
+      "document": "Configuration information of the CFS instance associated with function",
+      "members": [
+        {
+          "disabled": false,
+          "document": "User ID",
+          "example": "10000",
+          "member": "string",
+          "name": "UserId",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "User group ID",
+          "example": "10000",
+          "member": "string",
+          "name": "UserGroupId",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "CFS instance ID",
+          "example": "cfs-xxxxxxxx",
+          "member": "string",
+          "name": "CfsId",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File system mount target ID",
+          "example": "cfs-xxxxxxxx",
+          "member": "string",
+          "name": "MountInsId",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Local mount target",
+          "example": "/mnt/",
+          "member": "string",
+          "name": "LocalMountDir",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remote mount target",
+          "example": "/remotedir",
+          "member": "string",
+          "name": "RemoteMountDir",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File system IP, which is not required when you configure CFS.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "10.0.0.3",
+          "member": "string",
+          "name": "IpAddress",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "VPC ID of file system, which is not required when you configure CFS.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "vpc-xxxxxxxx",
+          "member": "string",
+          "name": "MountVpcId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "VPC subnet ID of file system, which is not required when you configure CFS.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "subnet-xxxxxxxx",
+          "member": "string",
+          "name": "MountSubnetId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -940,6 +1068,45 @@
       ],
       "type": "object"
     },
+    "DeadLetterConfig": {
+      "document": "Dead letter queue parameter",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Dead letter queue mode",
+          "example": "CMQ-QUEUE",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Dead letter queue name",
+          "example": "cmq-test-queue",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tag form of a dead letter queue topic mode",
+          "example": "暂无使用",
+          "member": "string",
+          "name": "FilterType",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "DeleteAliasRequest": {
       "document": "DeleteAlias request structure.",
       "members": [
@@ -1236,6 +1403,37 @@
         }
       ],
       "type": "object"
+    },
+    "EipConfigIn": {
+      "document": "Fixed IP configuration for public network access",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Status of the EIP. Values: ['ENABLE','DISABLE']",
+          "example": "DISABLE",
+          "member": "string",
+          "name": "EipStatus",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "Environment": {
+      "document": "Environment variable parameter of the function",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Environment variable array",
+          "example": "无",
+          "member": "Variable",
+          "name": "Variables",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "Filter": {
       "document": "Key-value pair filters for conditional filtering queries, such as filtering ID, name, and status.\nIf more than one filter exists, the logical relationship between these filters is `AND`.\nIf multiple values exist in one filter, the logical relationship between these values under the same filter is `OR`.",
@@ -2680,6 +2878,32 @@
       ],
       "usage": "out"
     },
+    "LayerVersionSimple": {
+      "document": "Specifies a layer version",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Name of the layer to bind. Leave it blank if you want to unbind layers",
+          "example": "layername",
+          "member": "string",
+          "name": "LayerName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Version ID f the layer to bind/unbind. If the layer version to unbind is the only layer version of the function version, enter `0`.",
+          "example": "1",
+          "member": "int64",
+          "name": "LayerVersion",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "LimitsInfo": {
       "document": "Limit information",
       "members": [
@@ -3665,6 +3889,46 @@
         }
       ],
       "usage": "out"
+    },
+    "ProtocolParams": {
+      "document": "Parameters of the protocol",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Parameters of WebSockets protocol\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "{             IdleTimeOut: 15     }",
+          "member": "WSParams",
+          "name": "WSParams",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "PublicNetConfigIn": {
+      "document": "Public network access configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable public network access. Valid values: ['DISABLE', 'ENABLE']",
+          "example": "DISABLE",
+          "member": "string",
+          "name": "PublicNetStatus",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "EIP configuration",
+          "example": "{\"EipStatus\":\"DISABLE\"}",
+          "member": "EipConfigIn",
+          "name": "EipConfig",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "usage": "in"
     },
     "PublishLayerVersionRequest": {
       "document": "PublishLayerVersion request structure.",
@@ -5021,6 +5285,204 @@
       ],
       "type": "object"
     },
+    "UpdateFunctionConfigurationRequest": {
+      "document": "UpdateFunctionConfiguration request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Name of the function to be modified",
+          "example": "<FunctionName>",
+          "member": "string",
+          "name": "FunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Function description. It can contain up to 1,000 characters, including letters, digits, spaces, commas (,), periods (.), and Chinese characters.",
+          "example": "<Description>",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Memory size available for function during execution. Default value: 128 MB. Value range: 64 or 128-3,072 MB in increments of 128 MB.",
+          "example": "128",
+          "member": "int64",
+          "name": "MemorySize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Maximum execution duration of function in seconds. Value range: 1-900 seconds. Default value: 3 seconds",
+          "example": "3",
+          "member": "int64",
+          "name": "Timeout",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, Nodejs12.16, PHP5, PHP7, Go1, Java8, CustomRuntime",
+          "example": "Python3.6",
+          "member": "string",
+          "name": "Runtime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Function environment variable",
+          "example": "无",
+          "member": "Environment",
+          "name": "Environment",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Function namespace",
+          "example": "default",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Function VPC configuration",
+          "example": "无",
+          "member": "VpcConfig",
+          "name": "VpcConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Role bound to the function",
+          "example": "SCF_ExecuteRole",
+          "member": "string",
+          "name": "Role",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to [install dependency online](https://intl.cloud.tencent.com/document/product/583/37920?from_cn_redirect=1). `TRUE`: yes. Default to `FALSE`. It is only available for Node.js functions.",
+          "example": "FALSE",
+          "member": "string",
+          "name": "InstallDependency",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "CLS logset ID to which logs are shipped",
+          "example": "fsdfs-sfdsdfsd-sdfsdf",
+          "member": "string",
+          "name": "ClsLogsetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "CLS Topic ID to which logs are shipped",
+          "example": "fsdfs-sfdsdfsd-sdfsdf",
+          "member": "string",
+          "name": "ClsTopicId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "It specifies whether to synchronously publish a new version during the update. The default value is `FALSE`, indicating not to publish a new version",
+          "example": "FALSE",
+          "member": "string",
+          "name": "Publish",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable L5 access. TRUE: enable; FALSE: not enable",
+          "example": "FALSE",
+          "member": "string",
+          "name": "L5Enable",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of layer versions that bound with the function. Files with the same name will be overridden by the bound layer versions according to the ascending order in the list. ",
+          "example": "无",
+          "member": "LayerVersionSimple",
+          "name": "Layers",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Information of a dead letter queue associated with a function",
+          "example": "无",
+          "member": "DeadLetterConfig",
+          "name": "DeadLetterConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Public network access configuration",
+          "example": "无",
+          "member": "PublicNetConfigIn",
+          "name": "PublicNetConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "File system configuration input parameter, which is used for the function to bind the CFS file system",
+          "example": "无",
+          "member": "CfsConfig",
+          "name": "CfsConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The function initialization timeout period",
+          "example": "15",
+          "member": "int64",
+          "name": "InitTimeout",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Parameters of the specified protocol",
+          "example": "无",
+          "member": "ProtocolParams",
+          "name": "ProtocolParams",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateFunctionConfigurationResponse": {
+      "document": "UpdateFunctionConfiguration response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "UpdateFunctionEventInvokeConfigRequest": {
       "document": "UpdateFunctionEventInvokeConfig request structure.",
       "members": [
@@ -5232,6 +5694,34 @@
       ],
       "usage": "out"
     },
+    "Variable": {
+      "document": "Variable parameter",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Variable name",
+          "example": "testKey",
+          "member": "string",
+          "name": "Key",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Variable value",
+          "example": "testValue",
+          "member": "string",
+          "name": "Value",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "VersionMatch": {
       "document": "Function version with match rule",
       "members": [
@@ -5360,6 +5850,50 @@
           "required": true,
           "type": "float",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "VpcConfig": {
+      "document": "VPC parameter configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "VPC ID",
+          "example": "vpc-xxxxxxxx",
+          "member": "string",
+          "name": "VpcId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subnet ID",
+          "example": "subnet-xxxxxxx",
+          "member": "string",
+          "name": "SubnetId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "WSParams": {
+      "document": "Parameters of the specified protocol",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Idle timeout period in seconds. Default: 15; range: 1 to 1800\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "15",
+          "member": "uint64",
+          "name": "IdleTimeOut",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"

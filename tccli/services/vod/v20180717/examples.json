@@ -146,6 +146,14 @@
         "title": "Creating an animated image generating template"
       }
     ],
+    "CreateBlindWatermarkTemplate": [
+      {
+        "document": "This example shows you how to create a digital watermark template.",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateBlindWatermarkTemplate\n<Common request parameters>\n\n{\n    \"Name\": \"Digital watermark template 1\",\n    \"Comment\": \"Digital watermark\",\n    \"Type\": \"blind-nagra\",\n    \"TextContent\": \"Digital watermark text\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Definition\": 10,\n        \"RequestId\": \"93dda61a-c2c5-465d-a78c-0860997fb01b\"\n    }\n}",
+        "title": "Creating a Digital Watermark Template"
+      }
+    ],
     "CreateCDNDomain": [
       {
         "document": "Create CDN domain",
@@ -468,6 +476,14 @@
         "title": "Deleting an animated image generating template"
       }
     ],
+    "DeleteBlindWatermarkTemplate": [
+      {
+        "document": "This example shows you how to delete a user-defined digital watermark template.",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteBlindWatermarkTemplate\n<Common request parameters>\n\n{\n    \"Definition\": 10\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
+        "title": "Deleting a User-Defined Digital Watermark Template"
+      }
+    ],
     "DeleteCDNDomain": [
       {
         "document": "Delete VOD domain",
@@ -730,6 +746,14 @@
         "input": "https://vod.tencentcloudapi.com/?Action=DescribeAnimatedGraphicsTemplates\n&Definitions.0=10001\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"AnimatedGraphicsTemplateSet\": [\n            {\n                \"Definition\": 10001,\n                \"Name\": \"Animated image generating template 1\",\n                \"CreateTime\": \"2018-10-01T10:00:00Z\",\n                \"UpdateTime\": \"2018-10-01T10:00:00Z\",\n                \"Height\": 540,\n                \"Width\": 960,\n                \"Format\": \"gif\",\n                \"Fps\": 30,\n                \"Quality\": 75,\n                \"ResolutionAdaptive\": \"open\",\n                \"Type\": \"Custom\",\n                \"Comment\": \"\"\n            }\n        ],\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Querying animated image generating templates"
+      }
+    ],
+    "DescribeBlindWatermarkTemplates": [
+      {
+        "document": "This example shows you how to query a user-defined digital watermark template.",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBlindWatermarkTemplates\n<Common request parameters>\n\n{\n    \"Definitions\": [\n        10,\n        20,\n        30\n    ],\n    \"Type\": \"blind-basic\",\n    \"Offset\": 0,\n    \"Limit\": 10\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"BlindWatermarkTemplateSet\": [\n            {\n                \"Definition\": 1001,\n                \"Type\": \"blind-basic\",\n                \"Name\": \"Digital watermark template 1\",\n                \"Comment\": \"Test template\",\n                \"TextContent\": \"Text content\",\n                \"CreateTime\": \"2018-10-01T10:00:00Z\",\n                \"UpdateTime\": \"2018-10-01T10:00:00Z\"\n            }\n        ],\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
+        "title": "Querying a User-Defined Digital Watermark Template"
       }
     ],
     "DescribeCDNDomains": [
@@ -1202,6 +1226,14 @@
         "title": "Customer A initiating a custom video processing task"
       }
     ],
+    "ExtractBlindWatermark": [
+      {
+        "document": "This example shows you how to initiate a digital watermark extraction task for a video.",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ExtractBlindWatermark\n<Common request parameters>\n\n{\n    \"Type\": \"blind-basic\",\n    \"InputInfo\": {\n        \"Type\": \"URL\",\n        \"Url\": \"http://test.cos.com/video.mp4\"\n    },\n    \"ExtractBlindWatermarkConfig\": {\n        \"SegmentDuration\": 5000\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2134541-fdc5-4b08-bf2d-97f7d6678b44\",\n        \"TaskId\": \"24000105-ExtractBlindWatermark-xxxxxx\"\n    }\n}",
+        "title": "Initiating a Digital Watermark Extraction Task for a Video"
+      }
+    ],
     "ExtractCopyRightWatermark": [
       {
         "document": "Used to extract copyright watermarks.",
@@ -1340,6 +1372,14 @@
         "input": "https://vod.tencentcloudapi.com/?Action=ModifyAnimatedGraphicsTemplate\n&Definition=10001\n&Name=Animated image generating template 1\n&Width=540\n&Height=960\n&Fps=30\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Modifying an animated image generating template"
+      }
+    ],
+    "ModifyBlindWatermarkTemplate": [
+      {
+        "document": "This example shows you how to modify a digital watermark template.",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyBlindWatermarkTemplate\n<Common request parameters>\n\n{\n    \"Definition\": 10,\n    \"Name\": \"Digital watermark template 2\",\n    \"Comment\": \"Digital watermark 2\",\n    \"TextContent\": \"Digital watermark text content 2\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
+        "title": "Modifying a Digital Watermark Template"
       }
     ],
     "ModifyCDNDomainConfig": [

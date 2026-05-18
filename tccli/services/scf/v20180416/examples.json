@@ -318,6 +318,14 @@
         "title": "Updating the function code"
       }
     ],
+    "UpdateFunctionConfiguration": [
+      {
+        "document": " ",
+        "input": "https://scf.tencentcloudapi.com/?Action=UpdateFunctionConfiguration\n&FunctionName=<FunctionName>\n&Description=<Description>\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
+        "title": "Updating function configuration"
+      }
+    ],
     "UpdateFunctionEventInvokeConfig": [
       {
         "document": " ",
