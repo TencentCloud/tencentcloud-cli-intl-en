@@ -771,7 +771,7 @@
         {
           "disabled": false,
           "document": "Error message",
-          "example": "参数错误。\t",
+          "example": "参数错误。",
           "member": "string",
           "name": "ErrorMessage",
           "output_required": false,
@@ -786,6 +786,16 @@
           "name": "ResultFile3Ds",
           "output_required": false,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Component segmentation data;\nOutput format: {\"MeshName_part_1\": {\"face_ids\": [1,2,3..], \"color\": \"#FF805C\"}}\nHere, face_idsis an integer array representing a set of face IDs for the segment, and colorspecifies the display color.",
+          "example": "{\\\"part_0\\\":{\\\"face_ids\\\":[4560,4561,...],\\\"color\\\":\\\"#598DC6\\\"}}",
+          "member": "string",
+          "name": "PartSegmentationInfo",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -1189,6 +1199,24 @@
           "name": "File",
           "required": false,
           "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Model component segmentation data;<br>The format is a JSON string, e.g., {\"MeshName_part_1\":{\"face_ids\":[1,2,3..],\"color\":\"#FF805C\"}}.<br>Here, `face_ids` is an integer array representing the set of face IDs for the segment, and `color` specifies the color.</p>",
+          "example": "{\"MeshName_part_1\": {\"face_ids\": [1, 2, 3], \"color\": \"#FF805C\"}}",
+          "member": "string",
+          "name": "PartSegmentationInfo",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Determines whether component generation is performed in a step-by-step manner.<br>When enabled, providing the original model allows for the generation of a model containing segmentation information, along with the corresponding segmentation data. Users can then edit this information before submitting the segmented model and data to proceed with the component generation process.<br>This parameter is disabled by default.</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableStagedGeneration",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
