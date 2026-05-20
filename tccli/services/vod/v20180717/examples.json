@@ -218,6 +218,22 @@
         "title": "Create VOD domain"
       }
     ],
+    "CreateCLSLogset": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCLSLogset\n<Common request parameters>\n\n{\n    \"CLSRegion\": \"ap-guangzhou\"\n}",
+        "output": "{\n    \"Response\": {\n        \"LogsetId\": \"54079098-61ea-48f9-8270-3b041a5d0150\",\n        \"RequestId\": \"xxx\"\n    }\n}",
+        "title": "Creating a New Logset"
+      }
+    ],
+    "CreateCLSTopic": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCLSTopic\n<Common request parameters>\n\n{\n    \"CLSRegion\": \"ap-guangzhou\",\n    \"TopicName\": \"mytopic\",\n    \"LogsetId\": \"54079098-61ea-48f9-8270-3b041a5d0150\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TopicId\": \"780ba384-5bc1-4cb1-a0e9-0cf8fafd3ee0\",\n        \"RequestId\": \"xxx\"\n    }\n}",
+        "title": "Create a new log topic"
+      }
+    ],
     "CreateClass": [
       {
         "document": " ",
@@ -956,6 +972,14 @@
         "input": "https://vod.tencentcloudapi.com/?Action=DescribeDailyPlayStatFileList\n&StartTime=2020-12-01T00:00:00+08:00\n&EndTime=2020-12-02T00:00:00+08:00\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"PlayStatFileSet\": [\n            {\n                \"Date\": \"2020-12-01T00:00:00+08:00\",\n                \"Url\": \"http://xxx.test.com/playstat/2021201.csv.gz?sign=abc\"\n            },\n            {\n                \"Date\": \"2020-12-02T00:00:00+08:00\",\n                \"Url\": \"http://xxx.test.com/playstat/20201202.csv.gz?sign=abc\"\n            }\n        ],\n        \"RequestId\": \"requestId\"\n    }\n}",
         "title": "Query the playback statistics file list from 2020-12-01 to 2020-12-02"
+      }
+    ],
+    "DescribeDefaultDistributionConfig": [
+      {
+        "document": "Query the default distribution configuration.",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDefaultDistributionConfig\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"requestId\",\n        \"Domain\": \"test.vod2.myqcluod.com\",\n        \"DomainName\": \"test.vod2.myqcluod.com\",\n        \"Scheme\": \"HTTPS\",\n        \"PlayKey\": \"abc12342a\"\n    }\n}",
+        "title": "Query the default distribution configuration"
       }
     ],
     "DescribeDrmKeyProviderInfo": [

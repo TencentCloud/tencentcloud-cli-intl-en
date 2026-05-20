@@ -288,9 +288,9 @@
       "status": "online"
     },
     "StartAIConversation": {
-      "document": "Initiate AI conversation task, where the AI bot enters the TRTC room to engage in AI conversation with specified members in the room. This is suitable for scenarios such as intelligent customer service and AI language teachers. The TRTC AI conversation feature has built-in speech-to-text capabilities , allowing customers to flexibly specify third-party AI model (LLM) services and text-to-speech (TTS) services. For more [feature details](https://cloud.tencent.com/document/product/647/108901).",
+      "document": "Start an AI conversation task. The AI Channel Robot joins the TRTC room and performs AI dialogue with specified members inside the room. Suitable for smart customer service, AI spoken language teacher, and other scenarios.\n\nThe TRTC AI dialogue function has built-in speech-to-text capability and provides both Channel Service, allowing customers to flexibly designate third-party AI model (LLM) services and Text-to-Audio (TTS) services.",
       "input": "StartAIConversationRequest",
-      "name": "Start AI conversation task",
+      "name": "Start an AI conversation task",
       "output": "StartAIConversationResponse",
       "status": "online"
     },
@@ -302,7 +302,7 @@
       "status": "online"
     },
     "StartPublishCdnStream": {
-      "document": "API description:.  \nStart a mixed stream forwarding task to mix multiple audio and video streams in a TRTC room into one media stream, transcode it, and push it to live stream CDN or back to the TRTC room. It also supports directly forwarding a single stream from the TRTC room without transcoding. After startup successful, it will return a task ID (TaskId) unique to the SdkAppid dimension. You need to save this TaskId, as it will be relied on to update and end the task subsequently. See document: [Feature Description](https://www.tencentcloud.com/document/product/647/84721?from_cn_redirect=1#b9a855f4-e38c-4616-9b07-fc44e0e8282a) and [Common Issues](https://www.tencentcloud.com/document/product/647/62620?from_cn_redirect=1).\n\nNote:.\nYou can enable bypass relay callback through console activation for monitoring events of CDN state. Refer to the documentation for callback: [Bypass Relay Callback Description](https://www.tencentcloud.com/document/product/647/88552?from_cn_redirect=1).  \nInitiating a mixed stream push task may incur the following fees:.  \nFor MCU mix transcoding fees, refer to the documentation: On-Cloud MixTranscoding billing (https://www.tencentcloud.com/document/product/647/49446?from_cn_redirect=1).  \nFor forwarding expenses of non-Tencent Cloud CDN, refer to the documentation: [Cloud-based forwarding billing explanation](https://www.tencentcloud.com/document/product/647/82155?from_cn_redirect=1).",
+      "document": "API description:.  \nStart a mixed stream forwarding task to mix multiple audio and video streams in a TRTC room into one media stream, transcode it, and push it to live stream CDN or back to the TRTC room. It also supports directly forwarding a single stream from the TRTC room without transcoding. After startup successful, it will return a task ID (TaskId) unique to the SdkAppid dimension. You need to save this TaskId, as it will be relied on to update and end the task subsequently. \n\nNote:.\nYou can enable bypass relay callback through console activation for monitoring events of CDN state. \nInitiating a mixed stream push task may incur the following fees:.  \nMCU mix transcoding fees.\nForwarding expenses of non-Tencent Cloud CDN.",
       "input": "StartPublishCdnStreamRequest",
       "name": "Starts a relaying task",
       "output": "StartPublishCdnStreamResponse",
@@ -468,12 +468,12 @@
       "usage": "out"
     },
     "AgentConfig": {
-      "document": "Robot parameters",
+      "document": "Bot parameters.",
       "members": [
         {
           "disabled": false,
-          "document": "The robot's UserId is used to enter a room and initiate tasks. [Note] This UserId cannot be repeated with the host viewer [UserId](https://cloud.tencent.com/document/product/647/46351#userid) in the current room. If multiple tasks are initiated in a room, the robot's UserId cannot be repeated, otherwise the previous task will be interrupted. The robot's UserId must be unique in the room.",
-          "example": "无",
+          "document": "The robot's UserId is used to enter a room and initiate a task. note that this UserId cannot be duplicated with the host or audience [UserId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#UserId) in the current room. if multiple tasks are initiated in a room, the robot's UserId cannot be mutually duplicated. otherwise, the previous task will be interrupted. ensure the robot's UserId is unique in the room.",
+          "example": "user_132",
           "member": "string",
           "name": "UserId",
           "output_required": false,
@@ -483,8 +483,8 @@
         },
         {
           "disabled": false,
-          "document": "The verification signature corresponding to the robot's UserId, that is, UserId and UserSig are equivalent to the robot's login password to enter the room. For the specific calculation method, please refer to the TRTC calculation [UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig) solution.",
-          "example": "无",
+          "document": "Signature verification corresponding to the chatbot's UserId, namely, the UserId and UserSig serve as the login password for the chatbot to enter the room. for specific calculation methods, see TRTC solution for calculating [UserSig](https://www.tencentcloud.com/document/product/647/45910?from_cn_redirect=1#UserSig).",
+          "example": "ehbciOiJS",
           "member": "string",
           "name": "UserSig",
           "output_required": false,
@@ -494,8 +494,8 @@
         },
         {
           "disabled": false,
-          "document": "The UserId of the robot pulling the media stream. After filling in, the robot will pull the media stream of the UserId for real-time processing",
-          "example": "无",
+          "document": "UserId for robot stream pulling. after fill, the robot performs stream pulling and processes in real time.",
+          "example": "user_132",
           "member": "string",
           "name": "TargetUserId",
           "output_required": false,
@@ -505,8 +505,8 @@
         },
         {
           "disabled": false,
-          "document": "If there is no streaming in the room for more than MaxIdleTime, the Service will automatically close the task. The default value is 60s.",
-          "example": "无",
+          "document": "Exceeding MaxIdleTime in the room with no streaming automatically shuts down the backend task. default value is 60s.",
+          "example": "60",
           "member": "uint64",
           "name": "MaxIdleTime",
           "output_required": false,
@@ -516,8 +516,8 @@
         },
         {
           "disabled": false,
-          "document": "Robot's welcome message",
-          "example": "无",
+          "document": "Robot'S greeting.",
+          "example": "你好呀",
           "member": "string",
           "name": "WelcomeMessage",
           "output_required": false,
@@ -527,8 +527,8 @@
         },
         {
           "disabled": false,
-          "document": "Intelligent interruption mode, the default value is 0, 0 means the server automatically interrupts, 1 means the server does not interrupt, and the client sends an interrupt signal to interrupt",
-          "example": "无",
+          "document": "Intelligent interruption mode, defaults to 0. 0 means server-side automatic interruption. 1 means the server does not interrupt, and the client sends an interruption signal to perform interruption.",
+          "example": "0",
           "member": "uint64",
           "name": "InterruptMode",
           "output_required": false,
@@ -538,13 +538,112 @@
         },
         {
           "disabled": false,
-          "document": "Used when InterruptMode is 0, in milliseconds, with a default value of 500ms. This means that the server will interrupt when it detects a human voice that lasts for InterruptSpeechDuration milliseconds.",
-          "example": "无",
+          "document": "Used when InterruptMode is 0, in milliseconds, defaults to 500ms. indicates the server will interrupt when it detects continuous voice for InterruptSpeechDuration milliseconds.",
+          "example": "500",
           "member": "uint64",
           "name": "InterruptSpeechDuration",
           "output_required": false,
           "required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Controls the trigger mode for a new dialogue. default is 0.\n-0 means a new dialogue is automatically triggered when the server detects a complete sentence through automatic speech recognition.\n-1 indicates the client determines whether to manually send a chat signaling trigger for a new dialogue upon receiving the caption message.",
+          "example": "0",
+          "member": "uint64",
+          "name": "TurnDetectionMode",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to filter out sentences where the user only says one word. true indicates filtering, false indicates no filtering. default value is true.",
+          "example": "true",
+          "member": "bool",
+          "name": "FilterOneWord",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Welcome message priority. valid values: 0 (default), 1 (high priority). high priority messages cannot be interrupted.",
+          "example": "0",
+          "member": "uint64",
+          "name": "WelcomeMessagePriority",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "For filtering LLM return content, do not play the content in brackets.\nChinese bracket ().\n2: english parentheses.\n3: chinese square brackets [].\n4: english square brackets [].\n5: english curly braces {}.\nEmpty by default, means no filtering.",
+          "example": "1",
+          "member": "uint64",
+          "name": "FilterBracketsContent",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Ambient sound settings.",
+          "example": "无",
+          "member": "AmbientSound",
+          "name": "AmbientSound",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Voiceprint configuration.",
+          "example": "无",
+          "member": "VoicePrint",
+          "name": "VoicePrint",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Semantic sentence segmentation detection.",
+          "example": "无",
+          "member": "TurnDetection",
+          "name": "TurnDetection",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Robot subtitle display mode.\n-0 means display as soon as possible without synchronizing with audio playback. at this point, subtitles are fully delivered, and subsequent subtitles will include previous ones.\n-1 indicates sentence-level real-time display, which synchronizes with audio playback. only when the current sentence's corresponding audio playback is complete will the next subtitle be delivered. at this point, subtitles are delivered incrementally, and the terminal needs to concatenate the leading and trailing subtitles to form a complete subtitle.",
+          "example": "1",
+          "member": "uint64",
+          "name": "SubtitleMode",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Interruption word list. during AI speaking, only speak words in the list to interrupt AI speaking.\nNote: interrupt words avoid triggering AI reply.",
+          "example": "[\"停下\"]",
+          "member": "string",
+          "name": "InterruptWordList",
+          "output_required": false,
+          "required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -582,6 +681,34 @@
         }
       ],
       "usage": "in"
+    },
+    "AmbientSound": {
+      "document": "Background sound settings will add environmental sound effects during a call to make the experience more realistic. currently support the following options:.\nCoffee_shops: chat in a coffee shop communication environment with background chatter.\nbusy office: customer service center.\nStreet traffic: outdoors street.\nevening_mountain: outdoors mountain.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Scenario selection.",
+          "example": "coffee_shops",
+          "member": "string",
+          "name": "Scene",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Control the volume of ambient sound. value ranges from [0,2]. the lower the value, the softer the ambient sound; the higher the value, the louder the ambient sound. if not set, use the default value 1.",
+          "example": "1.0",
+          "member": "float",
+          "name": "Volume",
+          "output_required": false,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "AsrParam": {
       "document": "Parameters used in speech recognition",
@@ -5387,11 +5514,11 @@
       "usage": "both"
     },
     "STTConfig": {
-      "document": "Speech-to-text parameters",
+      "document": "Convert speech to text parameter.",
       "members": [
         {
           "disabled": false,
-          "document": "The supported languages for speech recognition are as follows, with the default being \"zh\" for Chinese. The values for the `Language` field follow the [ISO639](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) standard. Here is the full list of supported languages:\n\n1. Chinese = \"zh\"\n2. Chinese_TW = \"zh-TW\"\n3. Chinese_DIALECT = \"zh-dialect\"\n4. English = \"en\"\n5. Vietnamese = \"vi\"\n6. Japanese = \"ja\"\n7. Korean = \"ko\"\n8. Indonesian = \"id\"\n9. Thai = \"th\"\n10. Portuguese = \"pt\"\n11. Turkish = \"tr\"\n12. Arabic = \"ar\"\n13. Spanish = \"es\"\n14. Hindi = \"hi\"\n15. French = \"fr\"\n16. Malay = \"ms\"\n17. Filipino = \"fil\"\n18. German = \"de\"\n19. Italian = \"it\"\n20. Russian = \"ru\"\n\n**Note:** If the language you need is not listed, please contact our technical support team.",
+          "document": "Convert speech to text supported languages, \"zh\" chinese is selected by default.\n\nYou can unlock different languages by purchasing the \"AI intelligent recognition duration package\" or claiming the trial version of the monthly subscription package. for detailed instructions, see: [AI intelligent recognition billing description](https://www.tencentcloud.com/document/product/647/111976?from_cn_redirect=1).\n\nSupported languages for different speech to text package versions are as follows:.\n\nBasic language engine:.\n-\"zh\": chinese (simplified).\n-`zh-TW`: chinese (traditional).\n-\"En\": english.\n-\"16k_zh_edu\": chinese education.\n-\"16k_zh_medical\": medical chinese.\n-\"16k_zh_court\": chinese court.\n\n**Standard language engine:**.\n-\"8k_zh_large\": engine (large model version) for telecommunication. the current model supports chinese and other language recognition, has a large number of parameters, and features language model performance enhancement. it greatly improves recognition accuracy for telephone audio in various scenarios and chinese dialects.\n-\"16k_zh_large\": large model engine for mandarin, chinese dialects, and english. the current model supports language recognition for chinese, english, and multiple chinese dialects. it has a large number of parameters and enhanced language model performance, targeting low-quality audio such as loud noise, strong echo, low voice volume, and voice from far away with greatly improved recognition accuracy.\n-\"16k_multi_lang\": multilingual large model engine. the current model simultaneously supports english, japanese, korean, arabic, filipino, french, hindi, indonesian, malay, portuguese, spanish, thai, turkish, vietnamese, and german. it achieves auto-identification of 15 languages at the sentence or paragraph level.\n-\"16k_zh_en\": chinese-english large model engine. the current model supports chinese and english recognition at the same time, has a large number of parameters, and features language model performance enhancement. it greatly improves recognition accuracy against low-quality audio such as loud noise, echo, low voice volume, and voice from far away.\n\n**Advanced language engine:**.\n-\"zh-dialect\": chinese dialect.\n-\"zh-yue\": cantonese in china.\n-\"Vi\": \"vietnamese.\".\n-\"Ja\": \"japanese.\".\n-\"Ko\": \"korean.\".\n-\"id\": \"indonesian\".\n-\"Th\": thai.\n-\"pt\": portuguese.\n-\"tr\": \"turkish.\".\n-\"Ar\": \"arabic\".\n-\"es\": \"spanish\".\n-\"Hi\": \"hindi\".\n-\"Fr\": \"french.\".\n-\"ms\": malay.\n-\"Fil\": filipino.\n-\"de\": german.\n-`It`: italian.\n-\"Ru\": russian.\n-\"sv\": \"swedish.\".\n-\"Da\": \"danish.\".\n-\"No\": norwegian.\n\n**Note**:.\nIf the language you need is not available, contact our technical staff.",
           "example": "zh",
           "member": "string",
           "name": "Language",
@@ -5402,8 +5529,8 @@
         },
         {
           "disabled": false,
-          "document": "Initiate fuzzy recognition to replace additional language types. Fill in up to 3 language types. Note: When Language is specified as \"zh-dialect\", fuzzy recognition is not supported and this field is invalid.",
-          "example": "无",
+          "document": "**Fuzzy recognition is an advanced edition capacity, charged by default as the advanced edition.**.\nNote: does not support entering \"zh-dialect\", \"16k_zh_edu\", \"16k_zh_medical\", \"16k_zh_court\", \"8k_zh_large\", \"16k_zh_large\", \"16k_multi_lang\", \"16k_zh_en\".\n",
+          "example": "[\"zh\", \"en\"]",
           "member": "string",
           "name": "AlternativeLanguage",
           "output_required": false,
@@ -5413,10 +5540,32 @@
         },
         {
           "disabled": false,
-          "document": "The time for speech recognition vad is in the range of 240-2000, the default value is 1000, and the unit is ms. A smaller value will make speech recognition sentence segmentation faster.",
-          "example": "无",
+          "document": "Custom parameter. contact for background usage.\n",
+          "example": "{\"key\": \"xx\"}",
+          "member": "string",
+          "name": "CustomParam",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the time when automatic speech recognition (asr) vad is active. value range: 240-2000. default: 1000. unit: ms. a smaller value enables faster speech recognition sentence segmentation.",
+          "example": "500",
           "member": "uint64",
           "name": "VadSilenceTime",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The vad far-field voice suppression capacity (without impacting asr recognition performance) ranges from 0 to 5, with a default value of 0, indicating disabled far-field voice suppression. the recommended setting is 2 for better far-field voice suppression. in a noisy office environment, it can be set to 3, and in more noisy environments, 4 and 5 are available for use. note that a higher VadLevel may suppress single words as noise.",
+          "example": "1",
+          "member": "uint64",
+          "name": "VadLevel",
           "output_required": false,
           "required": false,
           "type": "int",
@@ -5778,8 +5927,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "TRTC's [SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid) is the same as the SdkAppId used by the room that starts the conversation task.",
-          "example": "无",
+          "document": "[SdkAppId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#SdkAppId) of TRTC, which is the same as the SdkAppId used by the room with transcription task enabled.",
+          "example": "14000000000",
           "member": "uint64",
           "name": "SdkAppId",
           "required": true,
@@ -5787,8 +5936,8 @@
         },
         {
           "disabled": false,
-          "document": "TRTC's [RoomId](https://cloud.tencent.com/document/product/647/46351#roomid), which indicates the room number where the conversation task is started.",
-          "example": "无",
+          "document": "[RoomId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#RoomId) of TRTC refers to the room number that enables the conversation task.",
+          "example": "10000",
           "member": "string",
           "name": "RoomId",
           "required": true,
@@ -5796,7 +5945,7 @@
         },
         {
           "disabled": false,
-          "document": "Robot parameters",
+          "document": "Bot parameters.",
           "example": "无",
           "member": "AgentConfig",
           "name": "AgentConfig",
@@ -5805,7 +5954,7 @@
         },
         {
           "disabled": false,
-          "document": "The unique ID passed in by the caller can be used by the client to prevent repeated task initiation and to query the task status through this field.",
+          "document": "The unique Id passed by the caller can be used to prevent duplication of task initiation on the client side as well as query task status through this field.",
           "example": "conversation_1_2",
           "member": "string",
           "name": "SessionId",
@@ -5814,8 +5963,8 @@
         },
         {
           "disabled": false,
-          "document": "The type of TRTC room number. 0 represents a numeric room number, and 1 represents a string room number. If not filled in, the default is a numeric room number.",
-          "example": "无",
+          "document": "Type of the TRTC room number. 0 indicates digit room number, 1 indicates string room number. by default if left blank, it is digit room number.",
+          "example": "0",
           "member": "uint64",
           "name": "RoomIdType",
           "required": false,
@@ -5832,8 +5981,8 @@
         },
         {
           "disabled": false,
-          "document": "LLM configuration. It must comply with the openai specification and be a JSON string. The example is as follows: <pre> { <br> &emsp; \"LLMType\": \"Large model type\", // String required, such as: \"openai\" <br> &emsp; \"Model\": \"Your model name\", // String required, specify the model to be used<br> \"APIKey\": \"Your LLM API key\", // String required <br> &emsp; \"APIUrl\": \"https://api.xxx.com/chat/completions\", // String required, URL for LLM API access<br> &emsp; \"Streaming\": true // Boolean optional, specify whether to use streaming<br> &emsp;} </pre>",
-          "example": "{\\\"LLMType\\\": \\\"openai\\\", \\\"Model\\\": \\\"gpt-xxx\", \\\"APIKey\\\": \\\"xxxxxxxx\\\", \\\"APIUrl\\\": \\\"https://api.xxx.com/v1\\\", \\\"Streaming\\\": true}",
+          "document": "Required parameter, LLM configuration. it must comply with the openai standard and be a JSON String. example: <pre> { <br> &emsp;  \"LLMType\": \"Model type\",  // String required, for example: \"openai\" <br> &emsp;  \"Model\": \"your Model name\", // String required, specifies the Model to be used<br>    \"APIKey\": \"your LLM API key\", // String required <br> &emsp;  \"APIUrl\": \"https://API.xxx.com/chat/completions\", // String required, the URL for LLM API access<br> &emsp;  \"History\": 10, // Integer optional, sets the context rounds for LLM, default value is 0, maximum value is 50<br> &emsp;  \"HistoryMode\": 1, // Integer optional, 1 means the content in the LLM context will synchronize with playback audio, and text corresponding to unplayed audio will not appear in the context. 0 means no synchronization, default value is 0<br> &emsp;  \"Streaming\": true // Boolean optional, whether to use Streaming<br> &emsp;} </pre>.",
+          "example": "{\\\"LLMType\\\": \\\"openai\\\", \\\"Model\\\": \\\"gpt-xxx\", \\\"APIKey\\\": \\\"xxxxxxxx\\\", \\\"APIUrl\\\": \\\"https://api.xxx.com/v1/chat/completions\\\", \\\"Streaming\\\": true}",
           "member": "string",
           "name": "LLMConfig",
           "required": false,
@@ -5841,10 +5990,19 @@
         },
         {
           "disabled": false,
-          "document": "TTS configuration, which is a JSON string. The Tencent Cloud TTS example is as follows: <pre>{ <br> &emsp; \"AppId\": your application ID, // Integer Required<br> &emsp; \"TTSType\": \"TTS type\", // String TTS type, fixed to \"tencent\"<br> &emsp; \"SecretId\": \"Your key ID\", // String Required<br> &emsp; \"SecretKey\": \"Your keyKey\", // String Required<br> &emsp; \"VoiceType\": 101001, // Integer Required, voice ID, including standard voice and premium voice. Premium voice has higher fidelity and different price from standard voice. For details, please refer to <a href=\"https://cloud.tencent.com/document/product/1073/34112\">Overview of Speech Synthesis Billing</a>. For a complete list of timbre IDs, see <a href=\"https://cloud.tencent.com/document/product/1073/92668#55924b56-1a73-4663-a7a1-a8dd82d6e823\">List of speech synthesis timbre IDs</a>. <br> &emsp; \"Speed\": 1.25, // Integer Optional, speaking speed, range: [-2, 6], corresponding to different speaking speeds: -2: 0.6 times -1: 0.8 times 0: 1.0 times (default) 1: 1.2 times 2: 1.5 times 6: 2.5 times If a more detailed speaking speed is required, 2 decimal places can be retained, such as 0.5/1.25/2.81, etc. For the conversion between parameter value and actual speech speed, please refer to <a href=\"https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz\">Speed Conversion</a><br> &emsp; \"Volume\": 5, // Integer Optional, volume size, range: [0, 10], corresponding to 11 levels of volume, the default value is 0, representing normal volume. <br> &emsp; \"PrimaryLanguage\": \"zh-CN\" // String Optional, primary language<br> &emsp;}</pre>",
-          "example": "{\\\"TTSType\\\": \\\"tencent\\\", \\\"AppId\\\": 136666666, \\\"SecretId\\\": \\\"AKIxxxx\\\", \\\"SecretKey\\\": \\\"Hlxxxxx\\\", \\\"VoiceType\\\": 1008, \\\"Speed\\\": 1}",
+          "document": "Required parameter, TTS configuration. it is a JSON string: TRTC TTS configuration as follows:.  \n<pre> { <br> &emsp;  \"TTSType\": \"flow\",  // [required] fixed to this value.  <br> &emsp;  \"VoiceId\": \"v-female-R2s4N9qJ\", // [required] premium timbre ID/clone voice ID. selectable different timbres. refer to the following timbre list for ID library.   <br> &emsp;  \"Model\": \"flow_01_turbo\", // (required) current default TTS Model version (corresponds to Flash version).  <br> &emsp;  \"Speed\": 1.0,    // [option] adjust the speaking rate. value range [0.5-2.0]. default 1.0. the larger the value, the faster the speech speed. <br> &emsp;  \"Volume\": 1.0,   // [optional] adjust volume [0,10]. default: 1.0. a larger value indicates higher volume.   <br> &emsp;  \"Pitch\": 0,   // [optional] adjusts the tone [-12,12]. default value is 0. among them, 0 outputs the original voice type. <br> &emsp;  \"Language\": \"zh\" // [optional] recommend filling in. currently supports filling in chinese: zh, english: en, cantonese dialect: yue. parameter reference: (ISO 639-1). <br> &emsp;} </pre>",
+          "example": "{\\\"TTSType\\\": \\\"flow\\\",\\\"VoiceId\\\": \\\"v-female-R2s4N9qJ\\\", \\\"Speed\\\": 1}",
           "member": "string",
           "name": "TTSConfig",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Experimental parameter, contact for background usage.",
+          "example": "{\"internal\": \"xxx\"}",
+          "member": "string",
+          "name": "ExperimentalParams",
           "required": false,
           "type": "string"
         }
@@ -5856,7 +6014,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Used to uniquely identify a conversation task.",
+          "document": "For uniquely identifying a conversation task.",
           "example": "SV1FR+XTtvzAjRxZZ+aof1DfJF00VSBBNE0zR9W-PEpgCPBmt402BbnqMCdom79LtZO-VbLyV1nhVY1pFauWgrW12BevPvJ5Zn010nD6vj3hgfbVH0.",
           "member": "string",
           "name": "TaskId",
@@ -5970,7 +6128,7 @@
         {
           "disabled": false,
           "document": "[SdkAppId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#SdkAppId) of TRTC, which is the same as the SdkAppId corresponding to the relayed room.",
-          "example": "1400***000",
+          "example": "1400000000",
           "member": "uint64",
           "name": "SdkAppId",
           "required": true,
@@ -5997,7 +6155,7 @@
         {
           "disabled": false,
           "document": "Relay service bot parameters for joining TRTC room.",
-          "example": "{\"UserId\":\"trtc_user_agent\",\"UserSig\":\"eJw1zV8****pljzBb*IOTE_\",\"MaxIdleTime\":30}",
+          "example": "无",
           "member": "AgentParams",
           "name": "AgentParams",
           "required": true,
@@ -6015,7 +6173,7 @@
         {
           "disabled": false,
           "document": "Audio encoding parameters for stream retransmission. since audio must be transcoded (no transcoding costs will be incurred), this field is required when starting a task.",
-          "example": "{\"AudioEncode\":{\"SampleRate\":48000,\"Channel\":2,\"BitRate\":64,\"Codec\":0}}",
+          "example": "无",
           "member": "McuAudioParams",
           "name": "AudioParams",
           "required": false,
@@ -6024,7 +6182,7 @@
         {
           "disabled": false,
           "document": "Video encoding parameters for the relay stream. leave blank for audio-only relay.",
-          "example": "{\"VideoEncode\":{\"Width\":64,\"Height\":64,\"Fps\":15,\"BitRate\":128,\"Gop\":2},\"LayoutParams\":{\"MixLayoutMode\":3}}",
+          "example": "无",
           "member": "McuVideoParams",
           "name": "VideoParams",
           "required": false,
@@ -6033,7 +6191,7 @@
         {
           "disabled": false,
           "document": "The user uplink parameters require single stream bypass forwarding. WithTranscoding needs to be set to 0 for single stream bypass forwarding.",
-          "example": "{\"UserMediaStream\":{\"UserInfo\":{\"RoomId\":\"123456\",\"RoomIdType\":0,\"UserId\":\"trtc_user_id\"},\"StreamType\":0}}",
+          "example": "无",
           "member": "SingleSubscribeParams",
           "name": "SingleSubscribeParams",
           "required": false,
@@ -6042,7 +6200,7 @@
         {
           "disabled": false,
           "document": "The CDN parameters for relay push support up to 10 push urls for a task. there must be one pushback room parameter.",
-          "example": "[{\"IsTencentCdn\":1,\"PublishCdnUrl\":\"rtmp://***&txTime=68639060\"}]",
+          "example": "无",
           "member": "McuPublishCdnParam",
           "name": "PublishCdnParams",
           "required": false,
@@ -6051,7 +6209,7 @@
         {
           "disabled": false,
           "document": "Stream mixing SEI parameter.",
-          "example": "{\"LayoutVolume\":{\"AppData\":\"***\",\"PayloadType\":120, \"Interval\":3000,\"FollowIdr\":1}}",
+          "example": "无",
           "member": "McuSeiParams",
           "name": "SeiParams",
           "required": false,
@@ -6060,7 +6218,7 @@
         {
           "disabled": false,
           "document": "Push back room information. a task supports up to 10 push rooms, and there must be one forward CDN parameter. note: use SDK version 10.4 or higher to push room. if you need assistance, contact tencent cloud technical support.",
-          "example": "[{\"RoomId\":\"123456\",\"RoomIdType\":0,\"UserId\":\"trtc_user_fb\",\"UserSig\":\"eJw1jdEKgj***AEOjOFw_\"}]",
+          "example": "无",
           "member": "McuFeedBackRoomParams",
           "name": "FeedBackRoomParams",
           "required": false,
@@ -6069,7 +6227,7 @@
         {
           "disabled": false,
           "document": "Relay recording parameters. refer to the reference document (https://www.tencentcloud.com/document/product/647/111748?from_cn_redirect=1).",
-          "example": "{\"UniRecord\":1,\"RecordKey\": \"test_recore_key_a\"}",
+          "example": "无",
           "member": "McuRecordParams",
           "name": "RecordParams",
           "required": false,
@@ -7108,6 +7266,23 @@
       ],
       "usage": "out"
     },
+    "TurnDetection": {
+      "document": "Sentence segmentation configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "This parameter is valid only when TurnDetectionMode is 3, indicating the sensitivity of sentence segmentation.\n\n\nFeature description: determines whether the user has finished speaking to separate the audio.\n\n\nOptional: \"low\" | \"medium\" | \"high\" | \"auto\".\n\n\nauto is the default value, same as medium.\nlow will give users sufficient time to speak.\nhigh will perform audio chunking as soon as possible.\n\n\nIf you wish the model to respond more frequently in conversation mode, you can set SemanticEagerness to high.\nIf you wish the AI to wait a moment when the user pauses, set SemanticEagerness to low.\nRegardless of the mode, it will eventually split and send to a large model for reply.\n",
+          "example": "auto",
+          "member": "string",
+          "name": "SemanticEagerness",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "UpdateAIConversationRequest": {
       "document": "UpdateAIConversation request structure.",
       "members": [
@@ -7638,6 +7813,34 @@
         }
       ],
       "usage": "in"
+    },
+    "VoicePrint": {
+      "document": "Voiceprint configuration parameters.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The default is 0, which means voiceprint is not enabled. 1 means voiceprint is enabled, at which point you need to fill in the voiceprint id.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Mode",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VoicePrint Mode requires filling in when set to 1. currently only support a VoicePrint id.",
+          "example": "[\"your-voiceprint-id\"]",
+          "member": "string",
+          "name": "IdList",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "WaterMark": {
       "document": "The watermark layout.",
