@@ -133,6 +133,13 @@
       "output": "DescribeDiskConfigQuotaResponse",
       "status": "online"
     },
+    "DescribeDiskStoragePool": {
+      "document": "This API is used to query the list of dedicated cloud disk clusters under the current user account.\n\n* You can query by the dedicated cloud disk cluster ID (`CdcId`) and availability zone (`zone`). Multiple filters are combined with AND. For details about filtering, please see `Filter`.\n* If the parameter is empty, a number (as specified by `Limit`; the default is 20) of dedicated cloud disk clusters are returned.",
+      "input": "DescribeDiskStoragePoolRequest",
+      "name": "DescribeDiskStoragePool",
+      "output": "DescribeDiskStoragePoolResponse",
+      "status": "online"
+    },
     "DescribeDisks": {
       "document": "This API (DescribeDisks) is used to query the list of cloud disks.\n\n* The details of the cloud disk can be queried based on the ID, type or status of the cloud disk. The relationship between different conditions is AND. For more information about filtering, please see the `Filter`.\n* If the parameter is empty, a certain number (specified by `Limit`; the default is 20) of cloud disk lists are returned to the current user.",
       "input": "DescribeDisksRequest",
@@ -890,6 +897,138 @@
         }
       ],
       "type": "object"
+    },
+    "Cdc": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "cage-xxxxxxxx",
+          "member": "string",
+          "name": "CageId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Exclusive cluster status. value ranges from:<br><li>NORMAL: NORMAL;</li><br><li>CLOSED: CLOSED. at this time, the exclusive cluster will be unavailable to create new cloud disks;</li><br><li>FAULT: abnormal exclusive cluster status. at this point, the exclusive cluster will be inoperable, and the tencent cloud ops team will promptly fix the cluster;</li><br><li>ISOLATED: the exclusive cluster is ISOLATED due to not renewed timely. at this moment, the exclusive cluster will be unavailable to create new cloud disks, and the corresponding cloud disks will also be inoperable.</li>.",
+          "example": "NORMAL",
+          "member": "string",
+          "name": "CdcState",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the AZ ID of the exclusive cluster.",
+          "example": "ap-shenzhen-fsi-2",
+          "member": "string",
+          "name": "Zone",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "Untitled Cdc",
+          "member": "string",
+          "name": "CdcName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the capacity size of the dedicated cluster.",
+          "example": "{\"DiskAavilable\":1,\"DiskTotal\":10}",
+          "member": "CdcSize",
+          "name": "CdcResource",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "cdc-xxxxxxxx",
+          "member": "string",
+          "name": "CdcId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Exclusive cluster type. valid values: <br><li>CLOUD_BASIC: BASIC CLOUD disk cluster</li><br><li>CLOUD_PREMIUM: high-performance CLOUD block storage cluster</li><br><li>CLOUD_SSD: SSD CLOUD disk cluster.</li>.",
+          "example": "CLOUD_PREMIUM",
+          "member": "string",
+          "name": "DiskType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Expiry time of the dedicated cloud disk cluster.",
+          "example": "2029-01-01 00:00:00",
+          "member": "datetime",
+          "name": "ExpiredTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time of the resource pool.",
+          "example": "2018-01-01 00:00:00",
+          "member": "datetime_iso",
+          "name": "CreatedTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of cloud disks created in the current cluster.",
+          "example": "1",
+          "member": "uint64",
+          "name": "DiskNumber",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CdcSize": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "200",
+          "member": "uint64",
+          "name": "DiskTotal",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the available capacity size of the dedicated cluster in GiB.",
+          "example": "100000",
+          "member": "uint64",
+          "name": "DiskAvailable",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "CopySnapshotCrossRegionsRequest": {
       "document": "CopySnapshotCrossRegions request structure.",
@@ -1882,6 +2021,87 @@
           "member": "DiskConfig",
           "name": "DiskConfigSet",
           "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDiskStoragePoolRequest": {
+      "document": "DescribeDiskStoragePool request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of returned results, defaults to 20 with a maximum value of 100. For further introduction about `Limit`, see relevant sections in the API [overview](/document/product/362/15633).",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specify the exclusive cluster ID list you want to query. This parameter cannot be used with Filters.\n",
+          "example": "cdc-asdasd",
+          "member": "string",
+          "name": "CdcIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Filter conditions. `CdcIds` and `Filters` cannot be specified at the same time. <br><li>cdc-id - Array of String - Optional - Filter by the cluster ID. <br><li>zone - Array of String - Optional - Filter by the [availability zone](https://intl.cloud.tencent.com/document/product/213/15753?from_cn_redirect=1#ZoneInfo) where the cluster resides. <br><li>cage-id - Array of String - Optional - Filter by the ID of the cage where the cluster resides. <br><li>disk-type - Array of string - Optional - Filter by the media type of cloud disks (`CLOUD_BASIC`: HDD cloud disk | `CLOUD_PREMIUM`: Premium cloud disk. | `CLOUD_SSD`: SSD cloud disk.)",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Offset, defaults to 0. For further introduction about `Offset`, see the relevant sections in the API [overview](/document/product/362/15633).",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDiskStoragePoolResponse": {
+      "document": "DescribeDiskStoragePool response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "the number of eligible dedicated clusters.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Details of the dedicated cluster.",
+          "example": "无",
+          "member": "Cdc",
+          "name": "CdcSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Exclusive cluster details list.",
+          "example": "无",
+          "member": "Cdc",
+          "name": "DiskStoragePoolSet",
           "type": "list",
           "value_allowed_null": false
         },

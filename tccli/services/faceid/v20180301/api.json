@@ -597,7 +597,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Suspected attack trace types\nSuspectedSpoofingAttack: Suspected spoofing attack\nSuspectedSynthesisImage: Suspected synthesis image\nSuspectedSynthesisVideo: Suspected synthesis video\nSuspectedeAnomalyAttack: Suspected anomaly attack\nSuspectedAdversarialAttack: Suspected adversarial attack \nSuspectedBlackIndustry: Suspected batch generation attack\nSuspectedWatermark: Suspected watermark",
+          "document": "<p>Suspected attack trace type, specific type as follows:<br>SuspectedSpoofingAttack: Rephotography attack<br>SuspectedSynthesisImage: Suspected synthesized image<br>SuspectedSynthesisVideo: Suspected synthesized video<br>SuspectedAnomalyAttack: Facial features suspected of not being real<br>SuspectedAdversarialAttack: Suspected adversarial sample attack<br>SuspectedBlackIndustry: Suspected black industry batch template attack<br>SuspectedWatermark: Suspected watermark</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "SuspectedWatermark",
           "member": "string",
           "name": "Type",
@@ -1929,7 +1929,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Enter the image or video with a face to be detected, in base64 encoding. Base64 value of the image: The overall image resolution is recommended to be 480x640, and the face size is 100X100 or larger; The image data size after Base64 encoding does not exceed 3M, and only supports jpg and png formats. Please use standard Base64 encoding (use = for padding). Refer to RFC4648 for encoding specifications. Base64 value of the video: The size after Base64 encoding does not exceed 8M, and supports mp4, avi, and flv formats. Please use standard Base64 encoding (use = for padding). Refer to RFC4648 for encoding specifications. The maximum supported video length is 20s, and the recommended length is 2 to 5s. The recommended video resolution is 480x640, and the frame rate is between 25fps and 30fps.",
+          "document": "<p>Import the face image or facial video to be detected (currently only single face detection is supported) in base64 encoding. If your scenario involves both video and image, we recommend using video for detection. For better detection results, please note the following input data limits and suggestions:</p><ul><li><p>base64 value of the image:<br>Recommend an overall image resolution of 480x640, with the face size no less than 100x100, captured by the mobile front camera.<br>The size of the base64-encoded image data should not exceed 3M, with a maximum of 10M. Only jpg and png formats are supported.<br>Please use the standard base64 encoding method (with = padding). Refer to RFC4648 for the coding specification.</p></li><li><p>base64 value of the video:<br>The size after base64 encoding should be within 8M, with a maximum of 10M. Supported formats include mp4, avi, and flv, captured by the mobile front camera.<br>Video duration is recommended to be 2–5s, with a maximum of 20s.<br>Video resolution is recommended at 480x640 (maximum support for 720p), with a frame rate between 25fps and 30fps.<br>Please use the standard base64 encoding method (with = padding). Refer to RFC4648 for the coding specification.</p></li></ul><p>If you do not use Encryption for secure transmission, this field is a required parameter.</p>",
           "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "FaceInput",
@@ -1938,7 +1938,7 @@
         },
         {
           "disabled": false,
-          "document": "The type of input is 1- The input type is a picture 2- The input type is a video Others - Return error code InvalidParameter",
+          "document": "<p>Passed in type.</p><ul><li>Value ranges from 1 to 2:<br>1: Passed in image type.<br>2: Passed in video type.<br>Other: Return error code InvalidParameter.</li></ul><p>If you do not use Encryption for encrypting transmission, this field is mandatory.</p>",
           "example": "1",
           "member": "int64",
           "name": "FaceInputType",
@@ -1947,7 +1947,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether the request information needs to be fully encrypted; Supported encryption algorithms: AES-256-CBC, SM4-GCM; Users with encryption requirements can use this parameter, for details, please click the link on the left.",
+          "document": "<p>Whether to encrypt the entire request information.</p><ul><li>Supported encryption algorithms: AES-256-CBC, SM4-GCM.</li><li>The user with encryption requirements can use this parameter. For details, please click the left-side link.</li></ul>",
           "example": "无",
           "member": "Encryption",
           "name": "Encryption",
@@ -1956,7 +1956,7 @@
         },
         {
           "disabled": false,
-          "document": "Encrypted ciphertext; The data format before encryption is as follows:{\"FaceInput\":\"AAAAA\",\"FaceInputType\":1}",
+          "document": "<p>Encrypted ciphertext.</p><ul><li>The data format before encryption is as follows: {\"FaceInput\":\"AAAAA\",\"FaceInputType\":1}.</li></ul>",
           "example": "fH6Fc1xHm......UrjSoYE",
           "member": "string",
           "name": "EncryptedBody",
@@ -1971,7 +1971,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether the detected image is an attack: Low: No attack risk Mid: Moderately suspected attack High: Highly suspected attack",
+          "document": "<p>Detection result for the input image/video to check the existence of face spoofing attack.</p><ul><li>Low: Low attack risk.</li><li>Mid: Moderately suspected attack.</li><li>High: Highly suspected attack.</li></ul><p>It is advisable to judge as interception when the return value is High, and pass for Mid and Low to better balance security and pass rate.</p>",
           "example": "Mid",
           "member": "string",
           "name": "AttackRiskLevel",
@@ -1981,7 +1981,7 @@
         },
         {
           "disabled": false,
-          "document": "A list of suspected attack traces detected. Note: When no attack traces are detected, an empty array is returned. This parameter is only used as a reference for result judgment. In actual applications, it is still recommended to use the result of AttackRiskLevel.",
+          "document": "<p>List of suspected attack traces detected. It is returned only when AttackRiskLevel is High or Mid.</p><ul><li>Description: Return an empty array if no attack traces are detected.</li><li>This output parameter is for result determination reference. The result of AttackRiskLevel is still recommended for actual use.</li></ul>",
           "example": "无",
           "member": "AttackRiskDetail",
           "name": "AttackRiskDetailList",
@@ -1991,7 +1991,7 @@
         },
         {
           "disabled": false,
-          "document": "Additional Information",
+          "document": "<p>Return additional information (including detailed information of cache hit templates).</p>",
           "example": "无",
           "member": "ExtraInfo",
           "name": "ExtraInfo",
@@ -2674,7 +2674,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The detection mode. Valid values:\n`liveness`: Liveness detection only.\n`compare`: Selfie Verification(liveness detection and face comparison).\nDefault value: `liveness`.",
+          "document": "<p>Indicates the detection mode. Parameter values as follows:<br>\"liveness\": liveness detection only;<br>\"compare\": liveness detection + face comparison;<br>Default value: \"liveness\".</p>",
           "example": "liveness",
           "member": "string",
           "name": "CheckMode",
@@ -2683,7 +2683,7 @@
         },
         {
           "disabled": false,
-          "document": "The verification security level. Valid values:\n`1`: Video-based liveness detection.\n`2`: Motion-based liveness detection.\n`3`: Reflection-based liveness detection.\n`4`: Motion- and reflection-based liveness detection.\nDefault value: `4`.",
+          "document": "<p>Indicates the security level of authentication. Security levels are divided into:<br>\"1\": silent liveness;<br>\"2\": action liveness detection;<br>\"3\": light liveness;<br>\"4\": action + light liveness;<br>Default value is \"4\".</p>\n**Note:** Security level increases from `1` to `4`, with `4` providing the highest security.",
           "example": "1",
           "member": "string",
           "name": "SecureLevel",
@@ -2692,7 +2692,7 @@
         },
         {
           "disabled": false,
-          "document": "The photo (in Base64) to compare. This parameter is required when the value of `CheckMode` is `compare`.",
+          "document": "<p>The base64 code of the image for comparison, used for the \"liveness comparison\" mode. This parameter is required when CheckMode is \"compare\".</p>",
           "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "Image",
@@ -2701,7 +2701,7 @@
         },
         {
           "disabled": false,
-          "document": "The pass-through parameter, which can be omitted if there are no special requirements.",
+          "document": "<p>This parameter is a business passthrough parameter and can be omitted unless otherwise needed.</p>",
           "example": "extra",
           "member": "string",
           "name": "Extra",
@@ -2710,7 +2710,7 @@
         },
         {
           "disabled": false,
-          "document": "This interface is used to control th action sequences.\nAction types are as follows:\n\"blink\"\n\"mouth\"\n\"nod\"\n\"shake\"\nYou can choose 1-2 actions out of the four.\nSingle action example: \"blink\"\nMultiple action example: \"blink,mouth\"\nThe default value is blink. The different action types passed in this parameter take effect only when the SecurityLevel is 2 or 4; otherwise, the interface reports an error.",
+          "document": "<p>This API is used to control the sequence of actions. The action types are as follows:<br>\"blink\"<br>\"mouth\"<br>\"nod\"<br>\"shake\"<br>Choose 1-2 actions from the four.<br>Single action example: \"blink\"<br>Multi-action example: \"blink,mouth\".<br>Default value is blink.<br>Input this parameter only when SecureLevel is 2 or 4 for different action types to take effect; otherwise, the API returns an error.</p>",
           "example": "blink",
           "member": "string",
           "name": "ActionList",
@@ -2719,12 +2719,21 @@
         },
         {
           "disabled": false,
-          "document": "BASIC: Basic version (Default).\nENHANCE: Enhance version, enable additional output of device risk level field.\nPRO: Pro version, enable additional output of attack type fields.\nPLUS: Plus version, enable additional output of device risk level and attack type fields.\nPlease contact us to access enhance version & plus version.\t",
+          "document": "<p>PLUS: PLUS version, PRO: PRO version, ENHANCED: enhanced, BASIC: basic (default)</p>",
           "example": "BASIC",
           "member": "string",
           "name": "SdkVersion",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Liveness retry count</p><p>Value ranges from 1 to 5</p><p>Default value: 5</p>",
+          "example": "5",
+          "member": "int64",
+          "name": "RetryLimit",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -2734,7 +2743,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The SDK token, which is used throughout the verification process and to get the verification result.",
+          "document": "<p>SdkToken, used to connect the identity verification process. The verification result can be retrieved with this token. Each SdkToken has a validity of 10 minutes.</p>",
           "example": "0749c982-499e-4d1d-9e6a-103390933016",
           "member": "string",
           "name": "SdkToken",
@@ -6122,11 +6131,11 @@
       "type": "object"
     },
     "RetrievalLivenessExtraInfo": {
-      "document": "",
+      "document": "Template retrieve detailed information",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Hit template type. Among them, Common - public library; Auto - Auto Clustering Library; Owner - custom template.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "Common",
           "member": "string",
           "name": "HitGroup",
@@ -6136,7 +6145,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>The similarity between the request image and the hit attack template ranges from [0,2]. The smaller the value, the higher the probability of hitting the attack template. The default threshold is 0.6. When SimilarityScore≥0.6, it is judged as normal. SimilarityScore&lt;0.6 is judged as an attack.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0.98",
           "member": "float",
           "name": "SimilarityScore",
@@ -6146,7 +6155,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Template id of the cache hit</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1ec4db9b-1494-961b-d972-3dad70eab613",
           "member": "string",
           "name": "HitTemplate",

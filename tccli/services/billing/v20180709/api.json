@@ -4307,7 +4307,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing mode prePay (monthly subscription)/postPay (pay-as-you-go billing)",
+          "document": "Billing mode prePay (yearly/monthly subscription)/postPay (pay-as-you-go billing)",
           "example": "postPay",
           "member": "string",
           "name": "PayModes",
@@ -4329,7 +4329,7 @@
         },
         {
           "disabled": false,
-          "document": "Cost allocation tag key",
+          "document": "Cost allocation tag key and value",
           "example": "{\"二级业务\":\"CoreDB_740044\"}",
           "member": "string",
           "name": "Tags",
@@ -13015,7 +13015,7 @@
         },
         {
           "disabled": false,
-          "document": "Cost allocation tag value",
+          "document": "Cost allocation tag key",
           "example": "project",
           "member": "string",
           "name": "TagKeyStr",
@@ -13059,7 +13059,7 @@
         {
           "disabled": false,
           "document": "Header information.",
-          "example": "{ \"name\":\"产品\", \"total\":\"总计\", \"headDetail\":[ { \"name\":\"2023-12-01 00:00:00\" }, { \"name\":\"2024-01-01 00:00:00\" } ] }",
+          "example": "无",
           "member": "AnalyseHeaderDetail",
           "name": "Header",
           "output_required": false,
@@ -13069,7 +13069,7 @@
         {
           "disabled": false,
           "document": "Data details",
-          "example": "{ \"name\":\"云服务器CVM\", \"total\":11.63454774, \"timeDetail\":[ { \"time\":\"2023-12-01 00:00:00\", \"money\":\"2.92527168\" }, { \"time\":\"2024-01-01 00:00:00\", \"money\":\"8.70927606\" } ] }",
+          "example": "无",
           "member": "AnalyseDetail",
           "name": "Detail",
           "output_required": false,
@@ -13079,7 +13079,7 @@
         {
           "disabled": false,
           "document": "data total",
-          "example": "{ \"name\":\"总计\", \"total\":7662.59744864, \"timeDetail\":[ { \"name\":\"2023-12-01 00:00:00\", \"money\":\"7313.09744864\" }, { \"name\":\"2024-01-01 00:00:00\", \"money\":\"349.50000000\" } ] }",
+          "example": "无",
           "member": "AnalyseDetail",
           "name": "TotalDetail",
           "output_required": false,

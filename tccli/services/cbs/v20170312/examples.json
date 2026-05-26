@@ -164,6 +164,14 @@
         "title": "Querying Available Specifications of High-Performance Cloud Block Storage in Shanghai Zone 5"
       }
     ],
+    "DescribeDiskStoragePool": [
+      {
+        "document": "This example shows you how to query the exclusive clusters you own for some users in finance who have exclusive requirements for cbs clusters using this API.",
+        "input": "POST / HTTP/1.1\nHost: cbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDiskStoragePool\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Name\": \"cdc-id\",\n            \"Values\": [\n                \"cdc-6brr1cvj\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"2ed78bbb-c62b-4a93-8a97-a614ed9ef7e0\",\n        \"DiskStoragePoolSet\": [],\n        \"CdcSet\": [\n            {\n                \"CageId\": \"cdc-6brr1cvj\",\n                \"CdcState\": \"NORMAL\",\n                \"Zone\": \"ap-chongqing-1\",\n                \"CdcName\": \"untitled\",\n                \"CdcResource\": {\n                    \"DiskTotal\": 10\n                },\n                \"CdcId\": \"cdc-xxx\",\n                \"DiskType\": \"CLOUD_SSD\",\n                \"DiskNumber\": 135,\n                \"ExpiredTime\": \"2022-02-25 15:59:15\",\n                \"CreatedTime\": \"2022-01-25T15:59:15+00:00\"\n            }\n        ]\n    }\n}",
+        "title": "Specify the Exclusive Cluster ID to Query Cluster Details"
+      }
+    ],
     "DescribeDisks": [
       {
         "document": "This example shows you how to query all mounted data disks.",

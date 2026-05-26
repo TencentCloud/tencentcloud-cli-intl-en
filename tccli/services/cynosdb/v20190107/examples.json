@@ -8,6 +8,22 @@
         "title": "Restore Instance Access"
       }
     ],
+    "ActivateLibraDBCluster": [
+      {
+        "document": "Restore from quarantine the analysis cluster",
+        "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ActivateLibraDBCluster\n<Common request parameters>\n\n{\n    \"ClusterId\": \"libradb-i8okw971\"\n}",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 2105105,\n        \"RequestId\": \"bcfd81ac-c322-4038-ab58-6018dac7e33a\"\n    }\n}",
+        "title": "Restoring from Quarantine the Analysis Cluster"
+      }
+    ],
+    "ActivateLibraDBInstance": [
+      {
+        "document": "This interface (ActivateLibraDBInstance) unbinds an isolated read-only analysis engine instance.",
+        "input": "https://cynosdb.tencentcloudapi.com/?Action=ActivateLibraDBInstance\n&ClusterId=cynosdbmysql-bzxxrmtq\n&InstanceIdList.0=cynosdbmysql-libradb-ins-mhrc48ym\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fd5759b5-89e9-483c-b79c-d99b27c33192\",\n        \"FlowId\": 147183\n    }\n}",
+        "title": "Unbind the read-only analysis engine instance from the quarantined state"
+      }
+    ],
     "AddClusterSlaveZone": [
       {
         "document": "This example shows you how to enable multi-AZ deployment.",
@@ -24,12 +40,28 @@
         "title": "Add an Instance"
       }
     ],
+    "AddLibraDBInstances": [
+      {
+        "document": "This interface (AddLibraDBInstances) is used for adding a read-only analysis engine to a cluster.",
+        "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddLibraDBInstances\n<Common request parameters>\n\n{\n    \"Zone\": \"ap-guangzhou-7\",\n    \"ClusterId\": \"cynosdbmysql-037c8yll\",\n    \"Cpu\": 4,\n    \"Mem\": 16,\n    \"StorageSize\": 100,\n    \"PayMode\": 0,\n    \"Objects\": {\n        \"DatabaseTables\": {\n            \"MigrateDBMode\": \"all\"\n        }\n    },\n    \"GoodsNum\": 1,\n    \"VpcId\": \"vpc-nnakli31\",\n    \"SubnetId\": \"subnet-558rhwt2\"\n}",
+        "output": "{\n    \"Response\": {\n        \"BigDealIds\": null,\n        \"DealNames\": [\n            \"20250417625002746837731\"\n        ],\n        \"RequestId\": \"173601bd-d6ab-4774-8714-775b37c8613d\",\n        \"ResourceIds\": [\n            \"libradb-ins-7ohnx2nu\"\n        ],\n        \"TranId\": \"20250417625002746837741\"\n    }\n}",
+        "title": "Creating a Read-Only Analysis Engine Instance"
+      }
+    ],
     "BindClusterResourcePackages": [
       {
         "document": "This example shows you how to bind a resource pack to a cluster.",
         "input": "POST / HTTP/1.1Host: cynosdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: BindClusterResourcePackages<common request parameters>{    \"PackageIds\": [        \"abc\"    ],    \"ClusterId\": \"abc\"}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
         "title": "Binding a resource pack to the cluster"
+      }
+    ],
+    "CheckCreateLibraDBInstance": [
+      {
+        "document": "This interface (CheckCreateLibraDBInstance) is used for verification to check if it is possible to add a read-only analysis engine instance to the cluster.",
+        "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CheckCreateLibraDBInstance\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cynosdbmysql-6474meew\",\n    \"InstanceId\": \"\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"128046\",\n        \"Status\": \"\",\n        \"CheckItem\": [\n            {}\n        ]\n    }\n}",
+        "title": "Validate if it is possible to add read-only analysis engine to the cluster"
       }
     ],
     "CloseAuditService": [
@@ -144,6 +176,22 @@
         "title": "Creating an Integrated Cluster"
       }
     ],
+    "CreateLibraDBClusterAccounts": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLibraDBClusterAccounts\n<Common request parameters>\n\n{\n    \"ClusterId\": \"libradb-i794jfvg\",\n    \"Accounts\": [\n        {\n            \"AccountName\": \"Admin\",\n            \"AccountPassword\": \"Admin*111\",\n            \"Host\": \"%\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f7d312b6-48bb-4c10-84f5-4774072355fe\"\n    }\n}",
+        "title": "Creates an account"
+      }
+    ],
+    "CreateLibraDBClusters": [
+      {
+        "document": "Create a new TDSQL-C analysis cluster",
+        "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLibraDBClusters\n<Common request parameters>\n\n{\n    \"Count\": 1,\n    \"Zone\": \"ap-guangzhou-7\",\n    \"InstanceInitInfos\": [\n        {\n            \"Cpu\": 4,\n            \"Memory\": 16,\n            \"StorageSize\": 20,\n            \"StorageType\": \"\",\n            \"InstanceType\": \"Common\",\n            \"LibraDBVersion\": \"\",\n            \"InstanceCount\": 1,\n            \"VpcId\": \"vpc-nnakli31\",\n            \"SubnetId\": \"subnet-558rhwt2\",\n            \"Port\": 3306\n        }\n    ],\n    \"AdminPassword\": \"root123\",\n    \"ClusterName\": \"duckduckgogogo\",\n    \"DealMode\": \"0\",\n    \"OrderSource\": \"autotest\",\n    \"PayMode\": 1,\n    \"ProjectId\": \"0\",\n    \"TimeSpan\": 1,\n    \"TimeUnit\": \"m\",\n    \"ResourceTags\": [\n        {\n            \"TagKey\": \"autotest\",\n            \"TagValue\": \"autotest\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"BigDealIds\": [\n            \"20250515625002861909831\"\n        ],\n        \"ClusterIds\": [],\n        \"DealNames\": [\n            \"20250515625002861909861\"\n        ],\n        \"RequestId\": \"cf0a271a-4c08-42e8-96e2-d00ca6167e48\",\n        \"ResourceIds\": [],\n        \"TranId\": \"\"\n    }\n}",
+        "title": "Create a TDSQL-C Analysis Cluster"
+      }
+    ],
     "CreateParamTemplate": [
       {
         "document": "This example shows you how to create a parameter template.",
@@ -220,6 +268,22 @@
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteClusterDatabase\n<Common request parameters>\n\n{\n    \"DbNames\": [\n        \"db1\"\n    ],\n    \"ClusterId\": \"cynosdbmysql-j9i41hfv\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"f569bea2-0a51-11ec-af61-525400542aa6\"\n    }\n}",
         "title": "Create a Database"
+      }
+    ],
+    "DeleteLibraDBCluster": [
+      {
+        "document": "Completely decommission the TDSQL-C analysis cluster",
+        "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteLibraDBCluster\n<Common request parameters>\n\n{\n    \"ClusterId\": \"libradb-i8okw971\"\n}",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 2105108,\n        \"RequestId\": \"fe34045a-0fa2-4507-b8a6-6dd5a527faf0\"\n    }\n}",
+        "title": "Deleting a TDSQL-C Analysis Cluster"
+      }
+    ],
+    "DeleteLibraDBClusterAccounts": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteLibraDBClusterAccounts\n<Common request parameters>\n\n{\n    \"ClusterId\": \"libradb-i794jfvg\",\n    \"Accounts\": [\n        {\n            \"AccountName\": \"Admin\",\n            \"Host\": \"%\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b813e2cc-814e-43d3-9cb4-02986ba485b3\"\n    }\n}",
+        "title": "Delete an analytical cluster account"
       }
     ],
     "DeleteParamTemplate": [
@@ -524,6 +588,30 @@
         "input": "https://cynosdb.tencentcloudapi.com/?Action=DescribeIsolatedInstances\n&Limit=20\n&Offset=0\n&Filters.0.Names.0=InstanceId\n&Filters.0.Values.0=cynosdbpg-ins-bzkxxrmt\n&DbType=MYSQL\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"InstanceSet\": [\n            {\n                \"AppId\": 1311111346,\n                \"BusinessType\": \"\",\n                \"ClusterId\": \"cynosdbmysql-grhvkwd\",\n                \"ClusterName\": \"cynosdbmysql-grhvkwd\",\n                \"Cpu\": 2,\n                \"CreateTime\": \"2024-12-03 14:03:58\",\n                \"CynosVersion\": \"2.1.13.001\",\n                \"DbMode\": \"NORMAL\",\n                \"DbType\": \"MYSQL\",\n                \"DbVersion\": \"5.7\",\nDestroyDeadlineText: \"<7 days\"\n                \"DestroyTime\": \"2024-12-30 19:51:33\",\n                \"DeviceType\": \"exclusive\",\n                \"InstanceAbility\": {\n                    \"IsSupportForceRestart\": \"no\",\n                    \"NonsupportForceRestartReason\": \"NoForcedRestartAllowed\"\n                },\n                \"InstanceId\": \"cynosdbmysql-ins-crl6j3l\",\n                \"InstanceIndexMode\": \"onlyRowIndex\",\n                \"InstanceName\": \"cynosdbmysql-ins-crl6j3l\",\n                \"InstanceNetInfo\": [\n                    {\n                        \"InstanceGroupId\": \"cynosdbmysql-grp-r7hmdx4\",\n                        \"InstanceGroupType\": \"ha\",\n                        \"NetType\": 1,\n                        \"SubnetId\": \"subnet-oiz56c8\",\n                        \"Vip\": \"172.0.0.2\",\n                        \"VpcId\": \"vpc-gy34uq2\",\n                        \"Vport\": 3306,\n                        \"WanDomain\": \"\",\n                        \"WanIP\": \"\",\n                        \"WanPort\": 0,\n                        \"WanStatus\": \"init\"\n                    }\n                ],\n                \"InstanceRole\": \"master\",\n                \"InstanceStorageType\": \"\",\n                \"InstanceType\": \"rw\",\n                \"IsFreeze\": \"no\",\n                \"IsolateTime\": \"2024-12-23 19:51:33\",\n                \"MasterZone\": \"ap-chongqing-1\",\n                \"MaxCpu\": 0,\n                \"Memory\": 4,\n                \"MinCpu\": 0,\n                \"NetType\": 1,\n                \"PayMode\": 1,\n                \"PeriodEndTime\": \"2024-12-23 19:51:24\",\n                \"PhysicalZone\": \"ap-chongqing-1\",\n                \"ProcessingTask\": \"\",\n                \"ProjectId\": 0,\n                \"Region\": \"ap-chongqing\",\n                \"RenewFlag\": 1,\n                \"ResourcePackages\": null,\n                \"ResourceTags\": null,\n                \"ServerlessStatus\": \"\",\n                \"SlaveZones\": [],\n                \"Status\": \"isolated\",\n\"StatusDesc\": \"Isolated\"\n                \"Storage\": 10,\n                \"StorageId\": \"cynosdbmysql-grhvkwd\",\n                \"StoragePayMode\": 1,\n                \"SubnetId\": \"subnet-oiz56c8\",\n                \"Tasks\": [],\n                \"Uin\": \"100011147054\",\n                \"UpdateTime\": \"2024-12-23 19:51:33\",\n                \"Vip\": \"172.0.0.2\",\n                \"VpcId\": \"vpc-gy34uq2\",\n                \"Vport\": 3306,\n                \"WanDomain\": \"\",\n                \"WanIP\": \"\",\n                \"WanPort\": 0,\n                \"WanStatus\": \"init\",\n                \"Zone\": \"ap-chongqing-1\"\n            },\n            {\n                \"AppId\": 1311111346,\n                \"BusinessType\": \"\",\n                \"ClusterId\": \"cynosdbmysql-grhvkwd\",\n                \"ClusterName\": \"cynosdbmysql-grhvkwd\",\n                \"Cpu\": 2,\n                \"CreateTime\": \"2024-12-03 14:03:58\",\n                \"CynosVersion\": \"2.1.13.001\",\n                \"DbMode\": \"NORMAL\",\n                \"DbType\": \"MYSQL\",\n                \"DbVersion\": \"5.7\",\nDestroyDeadlineText: \"<7 days\"\n                \"DestroyTime\": \"2024-12-30 19:51:33\",\n                \"DeviceType\": \"exclusive\",\n                \"InstanceAbility\": {\n                    \"IsSupportForceRestart\": \"no\",\n                    \"NonsupportForceRestartReason\": \"NoForcedRestartAllowed\"\n                },\n                \"InstanceId\": \"cynosdbmysql-ins-6t9ynb7\",\n                \"InstanceIndexMode\": \"onlyRowIndex\",\n                \"InstanceName\": \"cynosdbmysql-ins-6t9ynb7\",\n                \"InstanceNetInfo\": [\n                    {\n                        \"InstanceGroupId\": \"cynosdbmysql-grp-08o6vj0\",\n                        \"InstanceGroupType\": \"singleRo\",\n                        \"NetType\": 1,\n                        \"SubnetId\": \"subnet-oiz56c8\",\n                        \"Vip\": \"172.0.0.7\",\n                        \"VpcId\": \"vpc-gy34uq2\",\n                        \"Vport\": 3306,\n                        \"WanDomain\": \"\",\n                        \"WanIP\": \"\",\n                        \"WanPort\": 0,\n                        \"WanStatus\": \"init\"\n                    }\n                ],\n                \"InstanceRole\": \"ro\",\n                \"InstanceStorageType\": \"\",\n                \"InstanceType\": \"ro\",\n                \"IsFreeze\": \"no\",\n                \"IsolateTime\": \"2024-12-23 19:51:33\",\n                \"MasterZone\": \"ap-chongqing-1\",\n                \"MaxCpu\": 0,\n                \"Memory\": 4,\n                \"MinCpu\": 0,\n                \"NetType\": 1,\n                \"PayMode\": 1,\n                \"PeriodEndTime\": \"2024-12-23 19:51:24\",\n                \"PhysicalZone\": \"ap-chongqing-1\",\n                \"ProcessingTask\": \"\",\n                \"ProjectId\": 0,\n                \"Region\": \"ap-chongqing\",\n                \"RenewFlag\": 1,\n                \"ResourcePackages\": null,\n                \"ResourceTags\": null,\n                \"ServerlessStatus\": \"\",\n                \"SlaveZones\": [],\n                \"Status\": \"isolated\",\n\"StatusDesc\": \"Isolated\"\n                \"Storage\": 10,\n                \"StorageId\": \"cynosdbmysql-grhvkwd\",\n                \"StoragePayMode\": 1,\n                \"SubnetId\": \"subnet-oiz56c8\",\n                \"Tasks\": [],\n                \"Uin\": \"100011147054\",\n                \"UpdateTime\": \"2024-12-23 19:51:33\",\n                \"Vip\": \"172.0.0.7\",\n                \"VpcId\": \"vpc-gy34uq2\",\n                \"Vport\": 3306,\n                \"WanDomain\": \"\",\n                \"WanIP\": \"\",\n                \"WanPort\": 0,\n                \"WanStatus\": \"init\",\n                \"Zone\": \"ap-chongqing-1\"\n            }\n        ],\n        \"RequestId\": \"8f291dbc-3840-40f9-aa39-841437c247fb\",\n        \"TotalCount\": 2\n    }\n}",
         "title": "Inquiry Recycle Bin Instance List"
+      }
+    ],
+    "DescribeLibraDBClusterAccountAllPrivileges": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLibraDBClusterAccountAllPrivileges\n<Common request parameters>\n\n{\n    \"ClusterId\": \"libradb-i794jfvg\",\n    \"Account\": {\n        \"AccountName\": \"admin\",\n        \"Host\": \"127.0.0.1\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"DatabasePrivileges\": null,\n        \"GlobalPrivileges\": [\n            \"SELECT\"\n        ],\n        \"PrivilegeStatements\": null,\n        \"TablePrivileges\": null,\n        \"RequestId\": \"83c02582-a157-4bcf-a33d-b190c033c627\"\n    }\n}",
+        "title": "Querying and Analyzing Cluster Account Permissions"
+      }
+    ],
+    "DescribeLibraDBClusterAccountPrivileges": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLibraDBClusterAccountAllPrivileges\n<Common request parameters>\n\n{\n    \"ClusterId\": \"libradb-i794jfvg\",\n    \"AccountName\": \"admin\",\n    \"Host\": \"127.0.0.1\",\n    \"Db\": \"Database1\",\n    \"Type\": \"*\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Privileges\": [\n            \"SELECT\"\n        ],\n        \"RequestId\": \"83c02582-a157-4bcf-a33d-b190c033c627\"\n    }\n}",
+        "title": "Querying and Analyzing Cluster Account Permissions"
+      }
+    ],
+    "DescribeLibraDBClusterAccounts": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLibraDBClusterAccounts\n<Common request parameters>\n\n{\n    \"ClusterId\": \"libradb-i794jfvg\"\n}",
+        "output": "{\n    \"Response\": {\n        \"AccountSet\": [\n            {\n                \"AccountName\": \"root\",\n                \"CreateTime\": \"2025-12-25 16:20:05\",\n                \"Description\": \"\",\n                \"Host\": \"%\",\n                \"MaxUserConnections\": 0,\n                \"UpdateTime\": \"2025-12-25 16:22:41\"\n            }\n        ],\n        \"TotalCount\": 2,\n        \"RequestId\": \"353a315c-71c3-4a39-a5d8-c1055f1f176d\"\n    }\n}",
+        "title": "Querying an analysis cluster account"
       }
     ],
     "DescribeMaintainPeriod": [

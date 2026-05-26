@@ -7707,7 +7707,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "VPC instance ID. obtain through the API [DescribeVpcs](https://www.tencentcloud.comom/document/product/1108/43663?from_cn_redirect=1).",
+          "document": "VPC instance ID. obtain through the API [DescribeVpcs](https://www.tencentcloud.com/document/product/1108/43663?from_cn_redirect=1).",
           "example": "vpc-q26u781x。",
           "member": "string",
           "name": "VpcId",
@@ -7716,7 +7716,7 @@
         },
         {
           "disabled": false,
-          "document": "Subnet instance ID. can be obtained through the [DescribeSubnets](https://www.tencentcloud.comom/document/product/215/15784?from_cn_redirect=1) api.",
+          "document": "Subnet instance ID. can be obtained through the [DescribeSubnets](https://www.tencentcloud.com/document/product/215/15784?from_cn_redirect=1) api.",
           "example": "subnet-qmqye6ew。",
           "member": "string",
           "name": "SubnetId",
@@ -7734,7 +7734,7 @@
         },
         {
           "disabled": false,
-          "document": "Endpoint service ID, which can be obtained through the [DescribeVpcEndPointService](https://www.tencentcloud.comom/document/product/215/54678?from_cn_redirect=1) api.",
+          "document": "Endpoint service ID, which can be obtained through the [DescribeVpcEndPointService](https://www.tencentcloud.com/document/product/215/54678?from_cn_redirect=1) api.",
           "example": "vpcsvc-ettmyyrn。",
           "member": "string",
           "name": "EndPointServiceId",
@@ -7752,7 +7752,7 @@
         },
         {
           "disabled": false,
-          "document": "Security group ID. can be obtained through the API [DescribeSecurityGroups](https://www.tencentcloud.comom/document/product/215/15808?from_cn_redirect=1).",
+          "document": "Security group ID. can be obtained through the API [DescribeSecurityGroups](https://www.tencentcloud.com/document/product/215/15808?from_cn_redirect=1).",
           "example": "sg-123456。",
           "member": "string",
           "name": "SecurityGroupId",
@@ -16467,7 +16467,7 @@
         },
         {
           "disabled": false,
-          "document": "The unique ID of the VPC. obtain through the API [DescribeVpcs](https://www.tencentcloud.comom/document/product/215/15778?from_cn_redirect=1).",
+          "document": "The unique ID of the VPC. obtain through the API [DescribeVpcs](https://www.tencentcloud.com/document/product/215/15778?from_cn_redirect=1).",
           "example": "vpc-hj3he929",
           "member": "string",
           "name": "VpcId",

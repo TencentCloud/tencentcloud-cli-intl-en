@@ -29,7 +29,7 @@
       "status": "online"
     },
     "CreateCloudTranscription": {
-      "document": "API description:\nEnable the cloud transcription feature.",
+      "document": "API description: Enable the cloud transcription feature.",
       "input": "CreateCloudTranscriptionRequest",
       "name": "Starts a cloud transcription task",
       "output": "CreateCloudTranscriptionResponse",
@@ -295,9 +295,9 @@
       "status": "online"
     },
     "StartAITranscription": {
-      "document": "Initiate the transcription bot. The backend will pull the stream through the bot to perform real-time speech recognition and deliver subtitles and transcription messages. The transcription bot supports two stream pulling modes, controlled by the `TranscriptionMode` field:\n- Pull the stream of the entire room.\n- Pull the stream of a specific user.\n\nThe server delivers subtitles and transcription messages in real-time through TRTC's custom messages, with `CmdId` fixed at 1. The client only needs to listen for the callback of custom messages. For example, see the [C++ callback](https://cloud.tencent.com/document/product/647/79637#4cd82f4edb24992a15a25187089e1565). Other clients, such as Android, Web, etc., can also be found at the same link.",
+      "document": "Start up the transcription bot. The backend will pass the robot stream pulling to perform real-time speech recognition and deliver subtitles and transcription messages.\nThe transcription bot supports two stream pulling methods, controlled by the TranscriptionMode field.\n- Pull the stream of all players in the room.\n- Pull the stream for a specific user.\n\nThe server delivers subtitles and transcription messages in real time through TRTC custom messages, with CmdId fixed to 1. Clients just need to listen to the custom message callback, such as the C++ callback (https://www.tencentcloud.com/document/product/647/79637?from_cn_redirect=1#4cd82f4edb24992a15a25187089e1565). Other clients such as Android and Web can likewise find it at the same link.\n\n\n**Note:**\nWhen TranscriptionMode is 0, ensure only one task is initiated in a room. If multiple tasks are initiated, robots will subscribe with each other. Unless the task is stopped proactively, it will timeout exit after 10 hours. In such cases, it is advisable to fill in SessionId to ensure subsequent repeated task failures.",
       "input": "StartAITranscriptionRequest",
-      "name": "Start AI transcription task",
+      "name": "Starts an AI transcription task",
       "output": "StartAITranscriptionResponse",
       "status": "online"
     },
@@ -357,6 +357,20 @@
       "output": "StopWebRecordResponse",
       "status": "online"
     },
+    "TextToSpeech": {
+      "document": "This API is used to perform text to speech.",
+      "input": "TextToSpeechRequest",
+      "name": "Real-Time text to speech",
+      "output": "TextToSpeechResponse",
+      "status": "online"
+    },
+    "TextToSpeechSSE": {
+      "document": "This API is used to stream text-to-speech.",
+      "input": "TextToSpeechSSERequest",
+      "name": "Real-Time SSE streaming text to speech",
+      "output": "TextToSpeechSSEResponse",
+      "status": "online"
+    },
     "UpdateAIConversation": {
       "document": "Update AI conversation task parameters",
       "input": "UpdateAIConversationRequest",
@@ -377,6 +391,13 @@
       "name": "Update Relay Task",
       "output": "UpdateStreamIngestResponse",
       "status": "online"
+    },
+    "VoiceClone": {
+      "document": "This API is used to clone sound.",
+      "input": "VoiceCloneRequest",
+      "name": "Clone a voice",
+      "output": "VoiceCloneResponse",
+      "status": "online"
     }
   },
   "metadata": {
@@ -390,23 +411,23 @@
       "members": [
         {
           "disabled": false,
-          "document": "The error event ID. For details, see https://www.tencentcloud.com/document/product/647/37906?has_map=1",
-          "example": "",
+          "document": "Exception event ID. view the specific value in the appendix: abnormal experience ID [mapping table](https://trtc.io/document/37906)",
+          "example": "4",
           "member": "uint64",
           "name": "AbnormalEventId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The remote user ID. If this parameter is empty, it indicates that the error event is not associated with a remote user.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "document": "Remote user ID,\"\": indicates the exception event is not user-generated.",
+          "example": "itachi3",
           "member": "string",
           "name": "PeerId",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -417,50 +438,50 @@
         {
           "disabled": false,
           "document": "The user ID.",
-          "example": "",
+          "example": "itest3",
           "member": "string",
           "name": "UserId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The abnormal experience ID.",
-          "example": "",
+          "example": "4",
           "member": "uint64",
           "name": "ExperienceId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The room ID (string).",
-          "example": "",
+          "example": "461",
           "member": "string",
           "name": "RoomId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The possible error events.",
-          "example": "",
+          "example": "无",
           "member": "AbnormalEvent",
           "name": "AbnormalEventList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The report time.",
-          "example": "",
+          "example": "1592448600",
           "member": "uint64",
           "name": "EventTime",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -483,7 +504,7 @@
         },
         {
           "disabled": false,
-          "document": "Signature verification corresponding to the chatbot's UserId, namely, the UserId and UserSig serve as the login password for the chatbot to enter the room. for specific calculation methods, see TRTC solution for calculating [UserSig](https://www.tencentcloud.com/document/product/647/45910?from_cn_redirect=1#UserSig).",
+          "document": "Signature verification corresponding to the chatbot's UserId, namely, the UserId and UserSig serve as the login password for the chatbot to enter the room. for specific calculation methods, see TRTC solution for calculating.",
           "example": "ehbciOiJS",
           "member": "string",
           "name": "UserSig",
@@ -682,6 +703,56 @@
       ],
       "usage": "in"
     },
+    "AlignmentItem": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "TimeBeginMs",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "760",
+          "member": "uint64",
+          "name": "TimeEndMs",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "TextBegin",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2",
+          "member": "uint64",
+          "name": "TextEnd",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "AmbientSound": {
       "document": "Background sound settings will add environmental sound effects during a call to make the experience more realistic. currently support the following options:.\nCoffee_shops: chat in a coffee shop communication environment with background chatter.\nbusy office: customer service center.\nStreet traffic: outdoors street.\nevening_mountain: outdoors mountain.",
       "members": [
@@ -839,6 +910,45 @@
         }
       ],
       "usage": "in"
+    },
+    "AudioFormat": {
+      "document": "Format of TTS audio output.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Generated audio format.\n\n-TextToSpeechSSE streaming API.\n\nSupports pcm. default: pcm.\n\n-TextToSpeech non-streaming API.\n\nSupports pcm, wav, mp3. default: pcm.",
+          "example": "pcm",
+          "member": "string",
+          "name": "Format",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Generated audio sample rate. default 24000.\nSelectable.\n- 16000\n- 24000 ",
+          "example": "24000",
+          "member": "uint64",
+          "name": "SampleRate",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "MP3 bitrate (kbps), only applicable to mp3 format. can choose: `64`, `128`, `192`, `256`. default: `128`.",
+          "example": "128",
+          "member": "uint64",
+          "name": "Bitrate",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "AudioParams": {
       "document": "The audio transcoding parameters for recording.",
@@ -3066,7 +3176,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The application ID, such as `1400xxxxxx`.",
+          "document": "User SdkAppId (for example: 1400xxxxxx).",
           "example": "1400xxxxxx",
           "member": "uint64",
           "name": "SdkAppId",
@@ -3075,7 +3185,7 @@
         },
         {
           "disabled": false,
-          "document": "The start time, which is a Unix timestamp (seconds) in local time, such as `1590065777`.\nNote: Only data in the last 14 days can be queried.",
+          "document": "Query start time, local unix timestamp, in seconds (for example: 1590065777).\nNote: support querying data within the last 14 days.",
           "example": "1590065777",
           "member": "uint64",
           "name": "StartTime",
@@ -3084,7 +3194,7 @@
         },
         {
           "disabled": false,
-          "document": "The end time, which is a Unix timestamp (seconds) in local time, such as `1590065877`. The end time and start time cannot be more than one hour apart.",
+          "document": "Query end time, local unix timestamp, in seconds (for example, 1590065877). note: the time interval from StartTime should be no more than 1 hour.",
           "example": "1590065877",
           "member": "uint64",
           "name": "EndTime",
@@ -3093,7 +3203,7 @@
         },
         {
           "disabled": false,
-          "document": "The room ID. Up to 20 random abnormal user experiences of the specified room will be returned.",
+          "document": "Room number. query up to 20 abnormal experience events in the room.",
           "example": "223",
           "member": "string",
           "name": "RoomId",
@@ -3108,7 +3218,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The number of records returned.\nValue range: 0-20.",
+          "document": "Total number of returned data entries.\nValue range: [0, 20].",
           "example": "11",
           "member": "uint64",
           "name": "Total",
@@ -3118,7 +3228,7 @@
         },
         {
           "disabled": false,
-          "document": "The information of the abnormal user experiences.",
+          "document": "Abnormal experience list.",
           "example": "无",
           "member": "AbnormalExperience",
           "name": "AbnormalExperienceList",
@@ -4088,7 +4198,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Retweet recording mode. \n0/Leave blank: not currently supported; behavior is undefined.\n1: disable recording.\n2: enable recording (via console automatic recording template parameters, see: [redirection document](https://www.tencentcloud.com/document/product/647/111748?from_cn_redirect=1#.E5.BD.95.E5.88.B6.E6.8E.A7.E5.88.B6.E6.96.B9.E6.A1.88));.\n3: enable recording (use API to specify parameter).",
+          "document": "Retweet recording mode. \n0/Leave blank: not currently supported; behavior is undefined.\n1: disable recording.\n2: enable recording (via console automatic recording template parameters.\n3: enable recording (use API to specify parameter).",
           "example": "2",
           "member": "uint64",
           "name": "UniRecord",
@@ -5174,6 +5284,34 @@
       ],
       "type": "object"
     },
+    "PronunciationDict": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "银行",
+          "member": "string",
+          "name": "Word",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "yin2 hang2",
+          "member": "string",
+          "name": "Pronunciation",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "QualityData": {
       "document": "The quality data returned by ES.",
       "members": [
@@ -5221,11 +5359,11 @@
       "usage": "out"
     },
     "RecognizeConfig": {
-      "document": "Configuration used by speech recognition",
+      "document": "Configuration for speech recognition usage.",
       "members": [
         {
           "disabled": false,
-          "document": "The supported languages for speech recognition are as follows, with the default being \"zh\" for Chinese. The values for the `Language` field follow the [ISO639](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) standard. Here is the full list of supported languages:\n\n1. Chinese = \"zh\"\n2. Chinese_TW = \"zh-TW\"\n3. Chinese_DIALECT = \"zh-dialect\"\n4. English = \"en\"\n5. Vietnamese = \"vi\"\n6. Japanese = \"ja\"\n7. Korean = \"ko\"\n8. Indonesian = \"id\"\n9. Thai = \"th\"\n10. Portuguese = \"pt\"\n11. Turkish = \"tr\"\n12. Arabic = \"ar\"\n13. Spanish = \"es\"\n14. Hindi = \"hi\"\n15. French = \"fr\"\n16. Malay = \"ms\"\n17. Filipino = \"fil\"\n18. German = \"de\"\n19. Italian = \"it\"\n20. Russian = \"ru\"\n\n**Note:** If the language you need is not listed, please contact our technical support team.",
+          "document": "Convert speech to text supported languages, \"zh\" chinese is selected by default.\n\nYou can unlock different languages by purchasing the \"AI intelligent recognition duration package\" or claiming the trial version of the monthly subscription package. \n\nSupported languages for different speech to text package versions are as follows:.\n\nBasic language engine:.\n-\"zh\": chinese (simplified).\n\n**Standard language engine:**.\n-\"8k_zh_large\": engine (large model version) for telecommunication. the current model supports chinese and other language recognition, has a large number of parameters, and features language model performance enhancement. it greatly improves recognition accuracy for telephone audio in various scenarios and chinese dialects.\n-\"16k_zh_large\": large model engine for mandarin, chinese dialects, and english. the current model supports language recognition for chinese, english, and multiple chinese dialects. it has a large number of parameters and enhanced language model performance, targeting low-quality audio such as loud noise, strong echo, low voice volume, and voice from far away with greatly improved recognition accuracy.\n-\"16k_zh_en\": chinese-english large model engine. the current model simultaneously supports chinese and english recognition, has a large number of parameters, and features language model performance enhancement. it greatly improves recognition accuracy for low-quality audio such as loud noise, strong echo, low voice volume, and voice from far away.\n\n**Advanced language engine:**.\n-\"zh-dialect\": chinese dialect.\n-\"zh-yue\": cantonese in china.\n-\"Vi\": \"vietnamese.\".\n-\"Ja\": \"japanese.\".\n-\"Ko\": \"korean.\".\n-\"id\": \"indonesian\".\n-\"Th\": thai.\n-\"pt\": portuguese.\n-\"tr\": \"turkish.\".\n-\"Ar\": \"arabic\".\n-\"es\": \"spanish\".\n-\"Hi\": \"hindi\".\n-\"Fr\": \"french.\".\n-\"ms\": malay.\n-\"Fil\": filipino.\n-\"de\": german.\n-`It`: italian.\n-\"Ru\": russian.\n-\"sv\": \"swedish.\".\n-\"Da\": \"danish.\".\n-\"No\": norwegian.\n\n**Note**:.\nIf the language you need is not available, contact our technical staff.",
           "example": "zh",
           "member": "string",
           "name": "Language",
@@ -5234,12 +5372,39 @@
         },
         {
           "disabled": false,
-          "document": "Initiate fuzzy recognition to replace additional language types. Fill in up to 3 language types. Note: When Language is specified as \"zh-dialect\", fuzzy recognition is not supported and this field is invalid.",
+          "document": "**Fuzzy recognition is an advanced edition capacity, charged as advanced edition by default, and only supports filling in basic version and advanced edition language.**.\nNote: does not support entering \"zh-dialect\".",
           "example": "[\"en\",\"jp\"]",
           "member": "string",
           "name": "AlternativeLanguage",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Hot word list: this parameter is used for improving recognition accuracy. each hot word is limited to \"term|weight\", with no more than 30 characters (a maximum of 10 chinese characters) per term. weight ranges from 1 to 11 or 100, for example: \"tencent cloud|5\" or \"ASR|11\". hot word list limitation: multiple terms separated by commas, supports up to 300 hot words, for example: \"tencent cloud|10, speech recognition|5, ASR|11\".",
+          "example": "腾讯云|10,语音识别|5,ASR|11",
+          "member": "string",
+          "name": "HotWordList",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the time when automatic speech recognition (asr) vad is active. value range: 240-2000. default: 1000. unit: ms. a smaller value enables faster speech recognition sentence segmentation.",
+          "example": "1000",
+          "member": "uint64",
+          "name": "VadSilenceTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The vad far-field voice suppression capacity (does not impact asr recognition performance) ranges from 0 to 3, with a default value of 0. recommended setting is 2 for better far-field voice suppression.",
+          "example": "1",
+          "member": "uint64",
+          "name": "VadLevel",
+          "required": false,
+          "type": "int"
         }
       ],
       "usage": "in"
@@ -5518,7 +5683,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Convert speech to text supported languages, \"zh\" chinese is selected by default.\n\nYou can unlock different languages by purchasing the \"AI intelligent recognition duration package\" or claiming the trial version of the monthly subscription package. for detailed instructions, see: [AI intelligent recognition billing description](https://www.tencentcloud.com/document/product/647/111976?from_cn_redirect=1).\n\nSupported languages for different speech to text package versions are as follows:.\n\nBasic language engine:.\n-\"zh\": chinese (simplified).\n-`zh-TW`: chinese (traditional).\n-\"En\": english.\n-\"16k_zh_edu\": chinese education.\n-\"16k_zh_medical\": medical chinese.\n-\"16k_zh_court\": chinese court.\n\n**Standard language engine:**.\n-\"8k_zh_large\": engine (large model version) for telecommunication. the current model supports chinese and other language recognition, has a large number of parameters, and features language model performance enhancement. it greatly improves recognition accuracy for telephone audio in various scenarios and chinese dialects.\n-\"16k_zh_large\": large model engine for mandarin, chinese dialects, and english. the current model supports language recognition for chinese, english, and multiple chinese dialects. it has a large number of parameters and enhanced language model performance, targeting low-quality audio such as loud noise, strong echo, low voice volume, and voice from far away with greatly improved recognition accuracy.\n-\"16k_multi_lang\": multilingual large model engine. the current model simultaneously supports english, japanese, korean, arabic, filipino, french, hindi, indonesian, malay, portuguese, spanish, thai, turkish, vietnamese, and german. it achieves auto-identification of 15 languages at the sentence or paragraph level.\n-\"16k_zh_en\": chinese-english large model engine. the current model supports chinese and english recognition at the same time, has a large number of parameters, and features language model performance enhancement. it greatly improves recognition accuracy against low-quality audio such as loud noise, echo, low voice volume, and voice from far away.\n\n**Advanced language engine:**.\n-\"zh-dialect\": chinese dialect.\n-\"zh-yue\": cantonese in china.\n-\"Vi\": \"vietnamese.\".\n-\"Ja\": \"japanese.\".\n-\"Ko\": \"korean.\".\n-\"id\": \"indonesian\".\n-\"Th\": thai.\n-\"pt\": portuguese.\n-\"tr\": \"turkish.\".\n-\"Ar\": \"arabic\".\n-\"es\": \"spanish\".\n-\"Hi\": \"hindi\".\n-\"Fr\": \"french.\".\n-\"ms\": malay.\n-\"Fil\": filipino.\n-\"de\": german.\n-`It`: italian.\n-\"Ru\": russian.\n-\"sv\": \"swedish.\".\n-\"Da\": \"danish.\".\n-\"No\": norwegian.\n\n**Note**:.\nIf the language you need is not available, contact our technical staff.",
+          "document": "Convert speech to text supported languages, \"zh\" chinese is selected by default.\n\nYou can unlock different languages by purchasing the \"AI intelligent recognition duration package\" or claiming the trial version of the monthly subscription package. \n\nSupported languages for different speech to text package versions are as follows:.\n\nBasic language engine:.\n-\"zh\": chinese (simplified).\n-`zh-TW`: chinese (traditional).\n-\"En\": english.\n-\"16k_zh_edu\": chinese education.\n-\"16k_zh_medical\": medical chinese.\n-\"16k_zh_court\": chinese court.\n\n**Standard language engine:**.\n-\"8k_zh_large\": engine (large model version) for telecommunication. the current model supports chinese and other language recognition, has a large number of parameters, and features language model performance enhancement. it greatly improves recognition accuracy for telephone audio in various scenarios and chinese dialects.\n-\"16k_zh_large\": large model engine for mandarin, chinese dialects, and english. the current model supports language recognition for chinese, english, and multiple chinese dialects. it has a large number of parameters and enhanced language model performance, targeting low-quality audio such as loud noise, strong echo, low voice volume, and voice from far away with greatly improved recognition accuracy.\n-\"16k_multi_lang\": multilingual large model engine. the current model simultaneously supports english, japanese, korean, arabic, filipino, french, hindi, indonesian, malay, portuguese, spanish, thai, turkish, vietnamese, and german. it achieves auto-identification of 15 languages at the sentence or paragraph level.\n-\"16k_zh_en\": chinese-english large model engine. the current model supports chinese and english recognition at the same time, has a large number of parameters, and features language model performance enhancement. it greatly improves recognition accuracy against low-quality audio such as loud noise, echo, low voice volume, and voice from far away.\n\n**Advanced language engine:**.\n-\"zh-dialect\": chinese dialect.\n-\"zh-yue\": cantonese in china.\n-\"Vi\": \"vietnamese.\".\n-\"Ja\": \"japanese.\".\n-\"Ko\": \"korean.\".\n-\"id\": \"indonesian\".\n-\"Th\": thai.\n-\"pt\": portuguese.\n-\"tr\": \"turkish.\".\n-\"Ar\": \"arabic\".\n-\"es\": \"spanish\".\n-\"Hi\": \"hindi\".\n-\"Fr\": \"french.\".\n-\"ms\": malay.\n-\"Fil\": filipino.\n-\"de\": german.\n-`It`: italian.\n-\"Ru\": russian.\n-\"sv\": \"swedish.\".\n-\"Da\": \"danish.\".\n-\"No\": norwegian.\n\n**Note**:.\nIf the language you need is not available, contact our technical staff.",
           "example": "zh",
           "member": "string",
           "name": "Language",
@@ -6036,7 +6201,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "TRTC's [SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid) is the same as the SdkAppId used by the room that starts the transcription task.",
+          "document": "[SdkAppId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#SdkAppId) of TRTC, which is the same as the SdkAppId used by the room with transcription task enabled.",
           "example": "14600000",
           "member": "uint64",
           "name": "SdkAppId",
@@ -6045,7 +6210,7 @@
         },
         {
           "disabled": false,
-          "document": "TRTC's [RoomId](https://cloud.tencent.com/document/product/647/46351#roomid), which indicates the room number where the transcription task is started.",
+          "document": "[RoomId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#RoomId) of TRTC refers to the room number that enables the transcription task.",
           "example": "11",
           "member": "string",
           "name": "RoomId",
@@ -6054,7 +6219,7 @@
         },
         {
           "disabled": false,
-          "document": "Parameters of the transcription robot.",
+          "document": "Transcription robot parameters.",
           "example": "无",
           "member": "TranscriptionParams",
           "name": "TranscriptionParams",
@@ -6063,7 +6228,7 @@
         },
         {
           "disabled": false,
-          "document": "The unique ID passed by the caller is used by the server to deduplicate. Note: If this parameter is passed, the server will use it first to deduplicate. If this parameter is not passed, the server's deduplication strategy is as follows: \n- If the TranscriptionMode field is 0, only one task can be opened in a room\n- If the TranscriptionMode field is 1, only one task can be opened in a TargetUserId",
+          "document": "Unique Id passed by the caller, used by the server for task deduplication. duplicate tasks will fail to initiate. the server uses SdkAppId+RoomId+RoomIdType+RobotUserId for deduplication by default. if SessionId is provided, it will also be used for deduplication.\nNote:.\nWhen TranscriptionMode is 0, ensure only one task is initiated in a room. if multiple tasks are initiated, robots will subscribe to each other. unless the task is stopped proactively, it will timeout exit after 10 hours. in such cases, it is advisable to fill in SessionId to ensure subsequent repeated tasks fail.",
           "example": "session_1",
           "member": "string",
           "name": "SessionId",
@@ -6072,7 +6237,7 @@
         },
         {
           "disabled": false,
-          "document": "The type of TRTC room number. 0 represents a numeric room number, and 1 represents a string room number. If not filled in, the default is a numeric room number.",
+          "document": "Type of the TRTC room number. 0 indicates digit room number, 1 indicates string room number. by default if left blank, it is digit room number.",
           "example": "0",
           "member": "uint64",
           "name": "RoomIdType",
@@ -6090,7 +6255,7 @@
         },
         {
           "disabled": false,
-          "document": "Translation config.",
+          "document": "Translate configuration details.",
           "example": "无",
           "member": "TranslationConfig",
           "name": "TranslationConfig",
@@ -6105,7 +6270,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Used to uniquely identify a transcription task.",
+          "document": "For unique identification of transcription task.",
           "example": "5df46eb2-8e4b-490e-9c3c-dbd3b84faefc",
           "member": "string",
           "name": "TaskId",
@@ -6892,17 +7057,50 @@
       "usage": "out"
     },
     "TTSConfig": {
-      "document": "TTS-related configurations",
+      "document": "TTS configuration.",
       "members": [
         {
           "disabled": false,
-          "document": "Voice ID",
-          "example": "xiaoming",
+          "document": "Voice type ID.",
+          "example": "v-female-R2s4N9qJ",
           "member": "string",
           "name": "VoiceId",
           "output_required": false,
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "TTS model: flow_01_turbo is selected by default. options: [flow_01_turbo, flow_01_ex].",
+          "example": "flow_01_turbo",
+          "member": "string",
+          "name": "Model",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Speaking rate. value range: 0.5-2.0. default: 1.0.",
+          "example": "1.0",
+          "member": "float",
+          "name": "Speed",
+          "output_required": false,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Value range: (0, 10]. default value: 1.0.",
+          "example": "1.0",
+          "member": "float",
+          "name": "Volume",
+          "output_required": false,
+          "required": false,
+          "type": "float",
           "value_allowed_null": false
         }
       ],
@@ -6996,11 +7194,11 @@
       "usage": "in"
     },
     "Terminology": {
-      "document": "Translation terminology",
+      "document": "Translate terminology.",
       "members": [
         {
           "disabled": false,
-          "document": "Source terminology",
+          "document": "Source terminology.",
           "example": "腾讯云",
           "member": "string",
           "name": "Source",
@@ -7011,7 +7209,7 @@
         },
         {
           "disabled": false,
-          "document": "Target terminology",
+          "document": "Terminology translation result.",
           "example": "Tencent Cloud",
           "member": "string",
           "name": "Target",
@@ -7022,6 +7220,234 @@
         }
       ],
       "usage": "both"
+    },
+    "TextToSpeechRequest": {
+      "document": "TextToSpeech request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Text to be converted to speech. length range: [1, 255].",
+          "example": "你好呀，欢迎使用语音合成",
+          "member": "string",
+          "name": "Text",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Audio configuration for text-to-speech.",
+          "example": "无",
+          "member": "Voice",
+          "name": "Voice",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the SdkAppId of TRTC.",
+          "example": "1400000000",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the output audio format for text-to-speech.",
+          "example": "无",
+          "member": "AudioFormat",
+          "name": "AudioFormat",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": true,
+          "document": "API key for TTS.",
+          "example": "sk-xxxxxx",
+          "member": "string",
+          "name": "APIKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "TTS model, current fixed value: flow_01_turbo.",
+          "example": "flow_01_turbo",
+          "member": "string",
+          "name": "Model",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Language to be synthesised (ISO 639-1). supports zh (chinese), en (english), yue (cantonese), ja (japanese), and ko (korean). defaults to auto-identification.",
+          "example": "zh",
+          "member": "string",
+          "name": "Language",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "PronunciationDict",
+          "name": "PronunciationDict",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "AlignmentMode",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "TextToSpeechResponse": {
+      "document": "TextToSpeech response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Base64-Encoded audio data.",
+          "example": "ejujainengoxpam",
+          "member": "string",
+          "name": "Audio",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "AlignmentItem",
+          "name": "Alignments",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "760",
+          "member": "uint64",
+          "name": "TotalDurationMs",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TextToSpeechSSERequest": {
+      "document": "TextToSpeechSSE request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Text to be converted to speech. length range: [1, 255].",
+          "example": "你好呀，欢迎使用语音合成",
+          "member": "string",
+          "name": "Text",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Audio configuration for text-to-speech.",
+          "example": "无",
+          "member": "Voice",
+          "name": "Voice",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the SdkAppId of TRTC.",
+          "example": "140000000",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the output audio format for text-to-speech.",
+          "example": "无",
+          "member": "AudioFormat",
+          "name": "AudioFormat",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": true,
+          "document": "API key for TTS.",
+          "example": "sk-xxxxxxx",
+          "member": "string",
+          "name": "APIKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "TTS model, current fixed value: flow_01_turbo.",
+          "example": "flow_01_turbo",
+          "member": "string",
+          "name": "Model",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Language to be synthesised (ISO 639-1). supports zh (chinese), en (english), yue (cantonese), ja (japanese), and ko (korean). defaults to auto-identification.",
+          "example": "zh",
+          "member": "string",
+          "name": "Language",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "PronunciationDict",
+          "name": "PronunciationDict",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "AlignmentMode",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "TextToSpeechSSEResponse": {
+      "document": "TextToSpeechSSE response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem. As a streaming response API, when the request is successfully completed, the RequestId will be placed in the Header \"X-TC-RequestId\" of the HTTP response.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "TimeValue": {
       "document": "The quality data, which consists of the `time` and `value` parameters.",
@@ -7063,7 +7489,7 @@
         },
         {
           "disabled": false,
-          "document": "User signature for the transcription service to join a TRTC room. The signature verification corresponding to the current UserId serves as the login password. For specific details, see TRTC solution for calculating [UserSig](https://www.tencentcloud.com/document/product/647/45910?from_cn_redirect=1#UserSig).",
+          "document": "User signature for the transcription service to join a TRTC room. The signature verification corresponding to the current UserId serves as the login password. For specific details, see TRTC solution for calculating [UserSig](https://intl.cloud.tencent.com/zh/document/product/647/38104).",
           "example": "transcription_1234_sig",
           "member": "string",
           "name": "UserSig",
@@ -7110,11 +7536,11 @@
       "usage": "in"
     },
     "TranscriptionParams": {
-      "document": "AI Transcription Params",
+      "document": "AI transcribe parameters.",
       "members": [
         {
           "disabled": false,
-          "document": "The robot's UserId is used to enter a room and initiate tasks. [Note] This UserId cannot be repeated with the host viewer [UserId](https://cloud.tencent.com/document/product/647/46351#userid) in the current room. If multiple tasks are initiated in a room, the robot's UserId cannot be repeated, otherwise the previous task will be interrupted. The robot's UserId must be unique in the room.",
+          "document": "The transcription robot's UserId is used to enter the room and trigger a transcription task. note that this UserId cannot be the same as the host or audience [UserId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#UserId) in the current room. if multiple transcription tasks are initiated in a room, the robot's UserId must also be unique to avoid interrupting the previous task. ensure the transcription robot's UserId is unique in the room.",
           "example": "user329",
           "member": "string",
           "name": "UserId",
@@ -7123,7 +7549,7 @@
         },
         {
           "disabled": false,
-          "document": "The verification signature corresponding to the robot's UserId, that is, UserId and UserSig are equivalent to the robot's login password to enter the room. For the specific calculation method, please refer to the TRTC calculation [UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig) solution.",
+          "document": "Verification signature corresponding to the transcription bot's UserId, namely, the UserId and UserSig serve as the login password for the transcription bot to enter the room. for specific calculation methods, see TRTC solution for calculating.",
           "example": "egjirneiwrwq",
           "member": "string",
           "name": "UserSig",
@@ -7132,7 +7558,7 @@
         },
         {
           "disabled": false,
-          "document": "If there is no streaming in the room for more than MaxIdleTime, the background will automatically close the task. The default value is 60s.",
+          "document": "After all push users exit the room and exceed MaxIdleTime seconds, the backend automation shuts down the transcription task. default value is 60s.",
           "example": "60",
           "member": "uint64",
           "name": "MaxIdleTime",
@@ -7141,7 +7567,7 @@
         },
         {
           "disabled": false,
-          "document": "1 means the robot subscribes to the stream of only one person, 0 means the robot subscribes to the stream of the entire room. If it is not filled in, the robot subscribes to the stream of the entire room by default.",
+          "document": "1 means the robot subscribes to the stream of an individual, and 0 means the robot subscribes to the stream of the entire room. if left empty, it defaults to subscribing to the stream of the entire room.",
           "example": "1",
           "member": "uint64",
           "name": "TranscriptionMode",
@@ -7150,12 +7576,30 @@
         },
         {
           "disabled": false,
-          "document": "Required when TranscriptionMode is 1. The robot will only pull the stream of the userid and ignore other users in the room.",
+          "document": "Required when TranscriptionMode is 1, the robot only pulls streams from this userid and ignores other users in the room.",
           "example": "user219",
           "member": "string",
           "name": "TargetUserId",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Voiceprint configuration.",
+          "example": "无",
+          "member": "VoicePrint",
+          "name": "VoicePrint",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Semantic sentence segmentation detection.",
+          "example": "无",
+          "member": "TurnDetection",
+          "name": "TurnDetection",
+          "required": false,
+          "type": "object"
         }
       ],
       "usage": "in"
@@ -7176,11 +7620,11 @@
       "usage": "in"
     },
     "TranslationConfig": {
-      "document": "Translation config",
+      "document": "Translate configuration.",
       "members": [
         {
           "disabled": false,
-          "document": "Target language, target language list (ISO 639-1).",
+          "document": "Target language for translation, target language list (ISO 639-1).\n",
           "example": "[\"en\", \"ja\"]",
           "member": "string",
           "name": "TargetLanguages",
@@ -7191,7 +7635,7 @@
         },
         {
           "disabled": false,
-          "document": "1: Only text translation, 2: Voice simultaneous interpretation.",
+          "document": "1: text translation only 2: speech simultaneous interpretation.\n",
           "example": "2",
           "member": "uint64",
           "name": "Mode",
@@ -7202,7 +7646,7 @@
         },
         {
           "disabled": false,
-          "document": "Voice simultaneous interpretation configuration: When enabling simultaneous interpretation, this parameter needs to be passed.",
+          "document": "Speech simultaneous interpretation configuration. when enabling simultaneous interpretation, transmission is required.",
           "example": "无",
           "member": "TTSConfig",
           "name": "TTSConfig",
@@ -7213,7 +7657,7 @@
         },
         {
           "disabled": false,
-          "document": "Translation terminology.",
+          "document": "Translation terminology collection.",
           "example": "无",
           "member": "Terminology",
           "name": "Terminology",
@@ -7813,6 +8257,147 @@
         }
       ],
       "usage": "in"
+    },
+    "Voice": {
+      "document": "TTS sound parameter configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Voice ID, can be obtained from the timbre list or use a custom voice ID generated by sound clone.",
+          "example": "v-female-R2s4N9qJ",
+          "member": "string",
+          "name": "VoiceId",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Speech speed adjustment. 0.5 for half speed, 2.0 for 2x speed, and 1.0 for normal speed. value range: [0.5, 2.0]. default: 1.0.",
+          "example": "1.0",
+          "member": "float",
+          "name": "Speed",
+          "output_required": false,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Audio volume adjustment, where 0 indicates mute and 10 indicates maximum volume. recommended to keep the default value of 1.0. value range: [0,10]. default: 1.0.",
+          "example": "1.0",
+          "member": "float",
+          "name": "Volume",
+          "output_required": false,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Pitch adjustment. negative value makes the sound deeper, positive value makes the sound sharper. 0 indicates the original pitch. value range: [-12, 12]. default: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Pitch",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "VoiceCloneRequest": {
+      "document": "VoiceClone request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the SdkAppId of TRTC.",
+          "example": "14600000000",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sound clone name. only digits, letters, and underscores are allowed with a maximum of 36 characters.",
+          "example": "xiaoming_01",
+          "member": "string",
+          "name": "VoiceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The reference audio for voice cloning must be a base64 string of a 16k mono wav file with length between 10–180 seconds.",
+          "example": "ejiwnorinofnODSw",
+          "member": "string",
+          "name": "PromptAudio",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": true,
+          "document": "API key for TTS.",
+          "example": "sk-xxxxxxx",
+          "member": "string",
+          "name": "APIKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Reference text for voice cloning. specifies the text corresponding to the reference audio.",
+          "example": "你好，我要复刻一个我的音色。",
+          "member": "string",
+          "name": "PromptText",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "TTS model: flow_01_turbo, flow_01_ex.",
+          "example": "flow_01_turbo",
+          "member": "string",
+          "name": "Model",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Language parameter, empty by default. see: (ISO 639-1).",
+          "example": "zh",
+          "member": "string",
+          "name": "Language",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "VoiceCloneResponse": {
+      "document": "VoiceClone response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cloned voice type ID. specifies the ID for performing text to speech.",
+          "example": "xiaoming_01_ejwiqnd",
+          "member": "string",
+          "name": "VoiceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "VoicePrint": {
       "document": "Voiceprint configuration parameters.",

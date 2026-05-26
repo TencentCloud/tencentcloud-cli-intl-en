@@ -259,18 +259,6 @@
     "DeleteSecurityGroupPolicies": [
       {
         "document": " ",
-        "input": "https://ecm.tencentcloudapi.com/?Action=DeleteSecurityGroupPolicies\r\n&SecurityGroupId=esg-ohuuioma\r\n&SecurityGroupPolicySet.Version=37\r\n&SecurityGroupPolicySet.Ingress.0.Port=80\r\n&SecurityGroupPolicySet.Ingress.0.Protocol=tcp\r\n&SecurityGroupPolicySet.Ingress.0.CidrBlock=10.0.0.0/16\r\n&SecurityGroupPolicySet.Ingress.0.Action=accept\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"354f4ac3-8546-4516-8c8a-69e3ab73aa8a\"\n    }\n}",
-        "title": "Deleting the inbound rule of security group based on rule matching"
-      },
-      {
-        "document": " ",
-        "input": "https://ecm.tencentcloudapi.com/?Action=DeleteSecurityGroupPolicies\r\n&SecurityGroupId=esg-ohuuioma\r\n&SecurityGroupPolicySet.Version=38\r\n&SecurityGroupPolicySet.Egress.0.Protocol=tcp\r\n&SecurityGroupPolicySet.Egress.0.Port=80\r\n&SecurityGroupPolicySet.Egress.0.CidrBlock=10.9.89.9/25\r\n&SecurityGroupPolicySet.Egress.0.Action=accept\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"354f4ac3-8546-4516-8c8a-69e3ab73aa8a\"\n    }\n}",
-        "title": "Deleting the outbound rule of security group based on rule matching"
-      },
-      {
-        "document": " ",
         "input": "https://ecm.tencentcloudapi.com/?Action=DeleteSecurityGroupPolicies\r\n&SecurityGroupId=esg-ohuuioma\r\n&SecurityGroupPolicySet.Version=39\r\n&SecurityGroupPolicySet.Ingress.0.PolicyIndex=0\r\n&SecurityGroupPolicySet.Ingress.1.PolicyIndex=1\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"354f4ac3-8546-4516-8c8a-69e3ab73aa8a\"\n    }\n}",
         "title": "Deleting the inbound rule of security group based on index matching"
@@ -280,6 +268,18 @@
         "input": "https://ecm.tencentcloudapi.com/?Action=DeleteSecurityGroupPolicies\r\n&SecurityGroupId=esg-ohuuioma\r\n&SecurityGroupPolicySet.Version=40\r\n&SecurityGroupPolicySet.Egress.0.PolicyIndex=0\r\n&SecurityGroupPolicySet.Egress.1.PolicyIndex=1\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"354f4ac3-8546-4516-8c8a-69e3ab73aa8a\"\n    }\n}",
         "title": "Deleting the outbound rule of security group based on index matching"
+      },
+      {
+        "document": " ",
+        "input": "https://ecm.tencentcloudapi.com/?Action=DeleteSecurityGroupPolicies\r\n&SecurityGroupId=esg-ohuuioma\r\n&SecurityGroupPolicySet.Version=37\r\n&SecurityGroupPolicySet.Ingress.0.Port=80\r\n&SecurityGroupPolicySet.Ingress.0.Protocol=tcp\r\n&SecurityGroupPolicySet.Ingress.0.CidrBlock=10.0.0.0/16\r\n&SecurityGroupPolicySet.Ingress.0.Action=accept\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"354f4ac3-8546-4516-8c8a-69e3ab73aa8a\"\n    }\n}",
+        "title": "Deleting the inbound rule of security group based on rule matching"
+      },
+      {
+        "document": " ",
+        "input": "https://ecm.tencentcloudapi.com/?Action=DeleteSecurityGroupPolicies\r\n&SecurityGroupId=esg-ohuuioma\r\n&SecurityGroupPolicySet.Version=38\r\n&SecurityGroupPolicySet.Egress.0.Protocol=tcp\r\n&SecurityGroupPolicySet.Egress.0.Port=80\r\n&SecurityGroupPolicySet.Egress.0.CidrBlock=10.9.89.9/25\r\n&SecurityGroupPolicySet.Egress.0.Action=accept\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"354f4ac3-8546-4516-8c8a-69e3ab73aa8a\"\n    }\n}",
+        "title": "Deleting the outbound rule of security group based on rule matching"
       }
     ],
     "DeleteSnapshots": [

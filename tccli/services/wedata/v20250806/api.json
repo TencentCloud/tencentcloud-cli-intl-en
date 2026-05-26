@@ -4279,7 +4279,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Project ID.",
+          "document": "<p>Project ID</p>",
           "example": "2378393617299558400",
           "member": "string",
           "name": "ProjectId",
@@ -4288,7 +4288,7 @@
         },
         {
           "disabled": false,
-          "document": "The basic attributes of the task.",
+          "document": "<p>The\nbasic attributes of the task.</p>",
           "example": "无",
           "member": "CreateTaskBaseAttribute",
           "name": "TaskBaseAttribute",
@@ -4297,7 +4297,7 @@
         },
         {
           "disabled": false,
-          "document": "Task configurations.",
+          "document": "<p>Task configurations.</p>",
           "example": "无",
           "member": "CreateTaskConfiguration",
           "name": "TaskConfiguration",
@@ -4306,7 +4306,7 @@
         },
         {
           "disabled": false,
-          "document": "Task scheduling configuration.",
+          "document": "<p>Task scheduling configuration</p>",
           "example": "无",
           "member": "CreateTaskSchedulerConfiguration",
           "name": "TaskSchedulerConfiguration",
@@ -4321,7 +4321,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task ID",
+          "document": "<p>Task ID.</p>",
           "example": "无",
           "member": "CreateTaskResult",
           "name": "Data",
@@ -4359,7 +4359,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Period type: defaults to DAY_CYCLE.\n\nSupported types. \n\nONEOFF_CYCLE: specifies a one-time cycle.\nYEAR_CYCLE: specifies the year cycle.\nMONTH_CYCLE: specifies the monthly cycle.\nWEEK_CYCLE: specifies the week cycle.\nDAY_CYCLE: specifies the day cycle.\nHOUR_CYCLE: specifies the hour cycle.\nMINUTE_CYCLE: specifies the minute cycle.\nCRONTAB_CYCLE: specifies the crontab expression type.",
+          "document": "<p>Period type: Defaults to DAY_CYCLE</p><p>Supported types are </p><ul><li>ONEOFF_CYCLE: One-time</li><li>YEAR_CYCLE: Year</li><li>MONTH_CYCLE: Month</li><li>WEEK_CYCLE: Week</li><li>DAY_CYCLE: Day</li><li>HOUR_CYCLE: Hour</li><li>MINUTE_CYCLE: Minute</li><li>CRONTAB_CYCLE: crontab expression</li></ul>",
           "example": "DAY_CYCLE",
           "member": "string",
           "name": "CycleType",
@@ -4368,7 +4368,7 @@
         },
         {
           "disabled": false,
-          "document": "Time zone, defaults to UTC+8.",
+          "document": "<p>Time zone, defaults to UTC+8</p>",
           "example": "UTC+8",
           "member": "string",
           "name": "ScheduleTimeZone",
@@ -4377,7 +4377,7 @@
         },
         {
           "disabled": false,
-          "document": "Cron expression, defaults to 0 0 0 * * ? *.",
+          "document": "<p>Cron expression, defaults to 0 0 0 * * ? *</p>",
           "example": "0 0 0 * * ? *",
           "member": "string",
           "name": "CrontabExpression",
@@ -4386,7 +4386,7 @@
         },
         {
           "disabled": false,
-          "document": "Effective date, defaults to 00:00:00 of the current date.",
+          "document": "<p>Effective date, defaults to 00:00:00 of the current date</p>",
           "example": "2025-08-26 00:00:00",
           "member": "string",
           "name": "StartTime",
@@ -4395,7 +4395,7 @@
         },
         {
           "disabled": false,
-          "document": "End date, defaults to 2099-12-31 23:59:59.",
+          "document": "<p>End date, defaults to 2099-12-31 23:59:59</p>",
           "example": "2099-12-31 23:59:59",
           "member": "string",
           "name": "EndTime",
@@ -4404,7 +4404,7 @@
         },
         {
           "disabled": false,
-          "document": "Execution time: the left-closed interval. Default: 00:00.",
+          "document": "<p>Execution time left-closed interval, default 00:00</p>",
           "example": "00:00",
           "member": "string",
           "name": "ExecutionStartTime",
@@ -4413,7 +4413,7 @@
         },
         {
           "disabled": false,
-          "document": "Execution time: the right closed interval. Default: 23:59.",
+          "document": "<p>Execution time right closed interval, default 23:59</p>",
           "example": "23:59",
           "member": "string",
           "name": "ExecutionEndTime",
@@ -4422,7 +4422,7 @@
         },
         {
           "disabled": false,
-          "document": "Calendar scheduling value: 0 or 1, where 1 means ON and 0 means OFF. Default is 0.",
+          "document": "<p>Calendar scheduling value is 0 and 1, where 1 is on and 0 is shutdown, with a default value of 0.</p>",
           "example": "0",
           "member": "string",
           "name": "CalendarOpen",
@@ -4431,7 +4431,7 @@
         },
         {
           "disabled": false,
-          "document": "Calendar scheduling:  the calendar ID.",
+          "document": "<p>Calendar scheduling Calendar ID</p>",
           "example": "26",
           "member": "string",
           "name": "CalendarId",
@@ -4440,7 +4440,7 @@
         },
         {
           "disabled": false,
-          "document": "Self-Dependent. Valid values: parallel, serial, orderly. Default value: serial. ",
+          "document": "<p>Self-dependent, default value serial, value: parallel, serial, orderly</p>",
           "example": "serial",
           "member": "string",
           "name": "SelfDepend",
@@ -4449,7 +4449,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the upstream dependency list.",
+          "document": "<p>Upstream dependency array</p>",
           "example": "无",
           "member": "DependencyTaskBrief",
           "name": "UpstreamDependencyConfigList",
@@ -4458,7 +4458,7 @@
         },
         {
           "disabled": false,
-          "document": "List of Events",
+          "document": "<p>Event array</p>",
           "example": "无",
           "member": "EventListener",
           "name": "EventListenerList",
@@ -4467,7 +4467,7 @@
         },
         {
           "disabled": false,
-          "document": "Rerun & Refill Configuration: Default: ALL;\n\n* ALL: Rerun or refill is allowed regardless of whether the task succeeds or fails.\n\n* FAILURE: Rerun or refill is allowed only if the task fails; not allowed if the task succeeds.\n\n* NONE: Rerun or refill is not allowed regardless of success or failure.",
+          "document": "<p>Rerun & replenishment configuration, defaults to ALL; , ALL allows rerun or replenishment after successful or failed running, FAILURE cannot rerun or replenish after successful running but allows rerun or replenishment after running FAILURE, NONE does not allow rerun or replenishment after either successful or failed running;</p>",
           "example": "ALL",
           "member": "string",
           "name": "AllowRedoType",
@@ -4476,7 +4476,7 @@
         },
         {
           "disabled": false,
-          "document": "Output parameter list.",
+          "document": "<p>Output parameter array</p>",
           "example": "无",
           "member": "OutTaskParameter",
           "name": "ParamTaskOutList",
@@ -4485,7 +4485,7 @@
         },
         {
           "disabled": false,
-          "document": "Input parameter list.",
+          "document": "<p>Input parameter array</p>",
           "example": "无",
           "member": "InTaskParameter",
           "name": "ParamTaskInList",
@@ -4494,7 +4494,7 @@
         },
         {
           "disabled": false,
-          "document": "Output registration.",
+          "document": "<p>Output registration</p>",
           "example": "无",
           "member": "TaskDataRegistry",
           "name": "TaskOutputRegistryList",
@@ -4503,7 +4503,7 @@
         },
         {
           "disabled": false,
-          "document": "**Instance generation policy**.\nT_PLUS_0: specifies t+0 generation. default policy.\nT_PLUS_1: specifies t+1 generation.",
+          "document": "<p><strong>Instance Generation Policy</strong></p><ul><li>T_PLUS_0: T+0 generation, default policy</li><li>T_PLUS_1: T+1 generation</li></ul>",
           "example": "T_PLUS_0",
           "member": "string",
           "name": "InitStrategy",
@@ -4512,7 +4512,7 @@
         },
         {
           "disabled": true,
-          "document": "Scheduling type: 0 for normal scheduling, 1 for dry-run scheduling. Default is 0.",
+          "document": "<p>Scheduling type: 0 normal scheduling 1 dry-run scheduling, default is 0</p>",
           "example": "0",
           "member": "string",
           "name": "ScheduleRunType",
@@ -4521,7 +4521,7 @@
         },
         {
           "disabled": true,
-          "document": "Task scheduling priority. Valid values: 4 (high), 5 (medium), 6 (low). Default: 6.",
+          "document": "<p>Task scheduling priority Execution priority 4 High 5 Medium 6 Low, Default:6</p>",
           "example": "6",
           "member": "string",
           "name": "RunPriority",
@@ -4530,7 +4530,7 @@
         },
         {
           "disabled": true,
-          "document": "Retry Policy: Retry Wait Time (in minutes): Default 5",
+          "document": "<p>Retry policy Retry wait time, in minutes: Default: 5</p>",
           "example": "5",
           "member": "string",
           "name": "RetryWait",
@@ -4539,7 +4539,7 @@
         },
         {
           "disabled": true,
-          "document": "Retry Policy: maximum attempts. Default: 4.",
+          "document": "<p>Retry policy Maximum attempts, Default: 4</p>",
           "example": "4",
           "member": "string",
           "name": "MaxRetryAttempts",
@@ -4548,7 +4548,7 @@
         },
         {
           "disabled": true,
-          "document": "Timeout Handling Policy: Execution Timeout (in minutes), default: -1",
+          "document": "<p>Timeout handling strategy Runtime timeout (unit: minutes) Default is -1</p>",
           "example": "-1",
           "member": "string",
           "name": "ExecutionTTL",
@@ -4557,7 +4557,7 @@
         },
         {
           "disabled": true,
-          "document": "Timeout Handling Policy: Wait Duration Timeout  (in minutes), default: -1",
+          "document": "<p>Timeout handling strategy Wait duration timeout (unit: minutes) Default value is -1</p>",
           "example": "-1",
           "member": "string",
           "name": "WaitExecutionTotalTTL",
@@ -4566,7 +4566,7 @@
         },
         {
           "disabled": false,
-          "document": "Scheduling type: 0 normal scheduling 1 dry-run scheduling, defaults to 0.",
+          "document": "<p>Scheduling type: 0 normal scheduling 1 dry-run scheduling, default is 0</p>",
           "example": "0",
           "member": "int64",
           "name": "ScheduleType",
@@ -4575,7 +4575,7 @@
         },
         {
           "disabled": false,
-          "document": "Task scheduling priority. execution priority. valid values: 4 (high), 5 (medium), 6 (low). default: 6.",
+          "document": "<p>Task scheduling priority Execution priority 4 High 5 Medium 6 Low, Default:6</p>",
           "example": "6",
           "member": "int64",
           "name": "RunPriorityType",
@@ -4584,7 +4584,7 @@
         },
         {
           "disabled": false,
-          "document": "Retry policy retry wait time, in minutes: default: 5.",
+          "document": "<p>Retry policy Retry wait time, in minutes: Default: 5</p>",
           "example": "5",
           "member": "int64",
           "name": "RetryWaitMinute",
@@ -4593,7 +4593,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum attempts of the retry policy. default: 4.",
+          "document": "<p>Retry policy Maximum attempts, Default: 4</p>",
           "example": "4",
           "member": "int64",
           "name": "MaxRetryNumber",
@@ -4602,7 +4602,7 @@
         },
         {
           "disabled": false,
-          "document": "Timeout handling strategy runtime timeout (unit: minutes) defaults to -1.",
+          "document": "<p>Timeout handling strategy Runtime timeout (unit: minutes) Default is -1</p>",
           "example": "-1",
           "member": "int64",
           "name": "ExecutionTTLMinute",
@@ -4611,10 +4611,28 @@
         },
         {
           "disabled": false,
-          "document": "Timeout handling strategy wait duration timeout (unit: minutes) defaults to -1.",
+          "document": "<p>Timeout handling strategy Wait duration timeout (unit: minutes) Default value is -1</p>",
           "example": "-1",
           "member": "int64",
           "name": "WaitExecutionTotalTTLMinute",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<ul><li>The task dependency run condition defaults to ALL_SUCCESS. Currently, only workflow scheduling under the project supports configuration.</li><li>ALL_SUCCESS: All successful: When all upstream dependency tasks reach the final state, perform a dependency check. If all upstream tasks are successful, the dependency check passes. Otherwise, if one upstream task skips running, it is marked as skipped. In other cases, it is marked as upstream failure.</li><li>ALL_FAILED: All failed: When all upstream dependency tasks reach the final state, perform a dependency check. If all upstream tasks are in a failed state or marked as upstream failure, the dependency check passes. Otherwise, it is marked as skipped.</li><li>ALL_DONE: All completed: When all upstream dependency tasks reach the final state, perform a dependency check, and the dependency check passes directly.</li><li>ALL_DONE_AT_LEAST_ONE_SUCCESS: All upstream tasks completed with at least one success: When all upstream dependency tasks reach the final state, perform a dependency check. If at least one is successful, the dependency check passes. Otherwise, it skips running.</li><li>ALL_SKIPPED: All upstream tasks skipped: When all upstream dependency tasks reach the final state, perform a dependency check. Only if all upstream tasks are in a skipped state does the dependency check pass. Otherwise, the current node skips running.</li><li>ONE_FAILED: At least one failed: If at least one upstream task fails, perform a dependency check, and the check passes. If all upstream tasks complete but none fail, it skips running.</li><li>ONE_SUCCESS: At least one success: If at least one upstream task succeeds, perform a dependency check, and the check passes. If all upstream tasks complete but none succeed, it skips running.</li><li>ONE_DONE: At least one completed: If at least one upstream task completes, perform a dependency check, and the check passes. Otherwise, it continues waiting for upstream.</li><li>NONE_FAILED: All upstream tasks completed with no failure: When all upstream dependency tasks reach the final state, perform a dependency check. If all upstream tasks are successful or skipped, the check passes. Otherwise, it is marked as upstream failure.</li><li>ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS: All upstream tasks completed with no failure and at least one success: When all upstream dependency tasks reach the final state, perform a dependency check. If no upstream task fails and at least one succeeds, the check passes. Otherwise, it skips running.</li><li>NONE_SKIPPED: All upstream tasks completed with no skipped runs: When all upstream dependency tasks reach the final state, perform a dependency check. If all upstream tasks are in a successful, failed, or upstream failure state, the check passes. Otherwise, it skips running.</li><li>ALL_DONE_AT_LEAST_ONE_FAILED: All upstream tasks completed with at least one failure: When all upstream dependency tasks reach the final state, perform a dependency check. If at least one fails, the check passes. Otherwise, it skips running.</li></ul>",
+          "example": "ALL_SUCCESS",
+          "member": "string",
+          "name": "DependencyTriggerPolicy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": true,
+          "document": "<p>Whether to allow downstream dependency 1 Allow 0 Do not allow</p><p>Value ranges from 0 to 1</p><p>Default value: 1</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "AllowDownstreamDependency",
           "required": false,
           "type": "int"
         }
@@ -10115,7 +10133,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Parameter name.\n",
+          "document": "<p>Parameter name</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "intask_v",
           "member": "string",
           "name": "ParamKey",
@@ -10126,7 +10144,7 @@
         },
         {
           "disabled": false,
-          "document": "Parameter Description: The format is ProjectIdentifier.TaskName.ParameterName\nExample: project_wedata_1.sh_250820_104107.pp_out",
+          "document": "<p>Parameter description: Format is project ID.task name.parameter name; for example: project_wedata_1.sh_250820_104107.pp_out</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "DATA_DEV_SIM_PROJ_01.sh_241204_111248.taskout_v1",
           "member": "string",
           "name": "ParamDesc",
@@ -10137,7 +10155,7 @@
         },
         {
           "disabled": false,
-          "document": "Parent Task ID\n",
+          "document": "<p>Parent task ID.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "20241204111252781",
           "member": "string",
           "name": "FromTaskId",
@@ -10148,12 +10166,23 @@
         },
         {
           "disabled": false,
-          "document": "Parent task parameter key.\n",
+          "document": "<p>Parent task parameter key</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "taskout_v1",
           "member": "string",
           "name": "FromParamKey",
           "output_required": false,
           "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task input type, by default uses TASK.</p><p>Enumeration value:</p><ul><li>TASK: Source is the parent task.</li><li>CONSTANT: Constant value, currently only supported by for-each node.</li></ul>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "TASK",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": true
         }
@@ -21694,6 +21723,39 @@
           "example": "250910180037",
           "member": "string",
           "name": "TableGuid",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Catalog name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "catalog1",
+          "member": "string",
+          "name": "CatalogName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data source name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "a0a0a",
+          "member": "string",
+          "name": "DatasourceName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Catalog (if any).Database (if any).Table name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "a1010.a123",
+          "member": "string",
+          "name": "QualifiedName",
           "output_required": false,
           "required": false,
           "type": "string",

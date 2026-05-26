@@ -7,6 +7,20 @@
       "output": "ActivateInstanceResponse",
       "status": "online"
     },
+    "ActivateLibraDBCluster": {
+      "document": "Release the analysis cluster from quarantined state",
+      "input": "ActivateLibraDBClusterRequest",
+      "name": "Release the analysis cluster from isolation",
+      "output": "ActivateLibraDBClusterResponse",
+      "status": "online"
+    },
+    "ActivateLibraDBInstance": {
+      "document": "This API is used to unbind an isolated read-only analysis engine instance.",
+      "input": "ActivateLibraDBInstanceRequest",
+      "name": "Unlock the read-only analysis engine",
+      "output": "ActivateLibraDBInstanceResponse",
+      "status": "online"
+    },
     "AddClusterSlaveZone": {
       "document": "This interface (AddClusterSlaveZone) is used to enable multi-az deployment for a cluster.",
       "input": "AddClusterSlaveZoneRequest",
@@ -21,11 +35,25 @@
       "output": "AddInstancesResponse",
       "status": "online"
     },
+    "AddLibraDBInstances": {
+      "document": "This API is used to add read-only analysis engine to a cluster.",
+      "input": "AddLibraDBInstancesRequest",
+      "name": "Create a read-only analysis engine",
+      "output": "AddLibraDBInstancesResponse",
+      "status": "online"
+    },
     "BindClusterResourcePackages": {
       "document": "This API is used to bind resource packages to a cluster.",
       "input": "BindClusterResourcePackagesRequest",
       "name": "Binds a resource pack to a cluster",
       "output": "BindClusterResourcePackagesResponse",
+      "status": "online"
+    },
+    "CheckCreateLibraDBInstance": {
+      "document": "This API is used to verify whether it is possible to add a read-only analysis engine instance to the cluster.",
+      "input": "CheckCreateLibraDBInstanceRequest",
+      "name": "Validate whether the cluster can add a read-only analysis engine",
+      "output": "CheckCreateLibraDBInstanceResponse",
       "status": "online"
     },
     "CloseAuditService": {
@@ -126,6 +154,20 @@
       "output": "CreateIntegrateClusterResponse",
       "status": "online"
     },
+    "CreateLibraDBClusterAccounts": {
+      "document": "This API is used to create an analysis cluster account.",
+      "input": "CreateLibraDBClusterAccountsRequest",
+      "name": "Create an analysis cluster account",
+      "output": "CreateLibraDBClusterAccountsResponse",
+      "status": "online"
+    },
+    "CreateLibraDBClusters": {
+      "document": "This API is used to create a TDSQL-C analysis cluster",
+      "input": "CreateLibraDBClustersRequest",
+      "name": "Create an analysis cluster",
+      "output": "CreateLibraDBClustersResponse",
+      "status": "online"
+    },
     "CreateParamTemplate": {
       "document": "This API is used to create parameter templates.",
       "input": "CreateParamTemplateRequest",
@@ -187,6 +229,20 @@
       "input": "DeleteClusterDatabaseRequest",
       "name": "Deletes a database",
       "output": "DeleteClusterDatabaseResponse",
+      "status": "online"
+    },
+    "DeleteLibraDBCluster": {
+      "document": "Deleting a TDSQL-C Analysis Cluster",
+      "input": "DeleteLibraDBClusterRequest",
+      "name": "Deletes a TDSQL-C Analysis Cluster",
+      "output": "DeleteLibraDBClusterResponse",
+      "status": "online"
+    },
+    "DeleteLibraDBClusterAccounts": {
+      "document": "This API is used to delete cluster accounts.",
+      "input": "DeleteLibraDBClusterAccountsRequest",
+      "name": "Delete an analytical cluster account",
+      "output": "DeleteLibraDBClusterAccountsResponse",
       "status": "online"
     },
     "DeleteParamTemplate": {
@@ -453,6 +509,27 @@
       "input": "DescribeIsolatedInstancesRequest",
       "name": "Queries a recycle bin instance list",
       "output": "DescribeIsolatedInstancesResponse",
+      "status": "online"
+    },
+    "DescribeLibraDBClusterAccountAllPrivileges": {
+      "document": "This API is used to query and analyze all permissions of a cluster account.",
+      "input": "DescribeLibraDBClusterAccountAllPrivilegesRequest",
+      "name": "Query and analyze all permissions of a cluster account",
+      "output": "DescribeLibraDBClusterAccountAllPrivilegesResponse",
+      "status": "online"
+    },
+    "DescribeLibraDBClusterAccountPrivileges": {
+      "document": "This API is used to query the permissions of a cluster account.",
+      "input": "DescribeLibraDBClusterAccountPrivilegesRequest",
+      "name": "Query and analyze cluster account permissions",
+      "output": "DescribeLibraDBClusterAccountPrivilegesResponse",
+      "status": "online"
+    },
+    "DescribeLibraDBClusterAccounts": {
+      "document": "This API is used to query and analyze cluster accounts.",
+      "input": "DescribeLibraDBClusterAccountsRequest",
+      "name": "Query an analysis cluster account",
+      "output": "DescribeLibraDBClusterAccountsResponse",
       "status": "online"
     },
     "DescribeMaintainPeriod": {
@@ -1238,6 +1315,16 @@
         },
         {
           "disabled": false,
+          "document": "Host",
+          "example": "%",
+          "member": "string",
+          "name": "Host",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
           "document": "Database account description",
           "example": "andyuse",
           "member": "string",
@@ -1268,21 +1355,21 @@
         },
         {
           "disabled": false,
-          "document": "Host",
-          "example": "%",
-          "member": "string",
-          "name": "Host",
-          "output_required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
           "document": "The max connections",
           "example": "3000",
           "member": "int64",
           "name": "MaxUserConnections",
           "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether password rotation is enabled (0: turn off; 1: turn on)",
+          "example": "0",
+          "member": "int64",
+          "name": "PasswordRotation",
+          "output_required": false,
           "type": "int",
           "value_allowed_null": false
         }
@@ -1325,6 +1412,89 @@
           "output_required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ActivateLibraDBClusterRequest": {
+      "document": "ActivateLibraDBCluster request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Analysis Cluster ID",
+          "example": "libradb-xxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ActivateLibraDBClusterResponse": {
+      "document": "ActivateLibraDBCluster response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "flow id",
+          "example": "123",
+          "member": "int64",
+          "name": "FlowId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ActivateLibraDBInstanceRequest": {
+      "document": "ActivateLibraDBInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "cynosdbmysql-bzxxrmtq",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Read-only analysis engine instance ID list",
+          "example": "[\"cynosdbmysql-libradb-ins-mhrc48ym\"]",
+          "member": "string",
+          "name": "InstanceIdList",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ActivateLibraDBInstanceResponse": {
+      "document": "ActivateLibraDBInstance response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "task flow id\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "147183",
+          "member": "int64",
+          "name": "FlowId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -1573,6 +1743,271 @@
           "output_required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddLibraDBInstancesRequest": {
+      "document": "AddLibraDBInstances request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Availability zone",
+          "example": "ap-guangzhou-3",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "cynosdbmysql-6gtlgm5l",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "CPU cores",
+          "example": "2",
+          "member": "int64",
+          "name": "Cpu",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Memory in GB",
+          "example": "4",
+          "member": "int64",
+          "name": "Mem",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Disk size.",
+          "example": "100",
+          "member": "int64",
+          "name": "StorageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Payment mode",
+          "example": "0",
+          "member": "int64",
+          "name": "PayMode",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sync object list",
+          "example": "无",
+          "member": "Objects",
+          "name": "Objects",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Port used when adding new RO groups, value range [0,65535)",
+          "example": "2000",
+          "member": "int64",
+          "name": "Port",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of newly-added read-only instances, value range (0,15]",
+          "example": "1",
+          "member": "int64",
+          "name": "GoodsNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Instance name, string length range [0,64), value range uppercase and lowercase letters, digits 0-9, '_', '-', '.'",
+          "example": "cynosmysql-xxxxxxxx",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Number of replicas",
+          "example": "1",
+          "member": "int64",
+          "name": "ReplicasNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Value is 'Exclusive' when ReplicasNum>1 or ReplicasNum=1 and Cpu>=32 cores, and 'Common' in other scenarios.",
+          "example": "Common",
+          "member": "string",
+          "name": "InstanceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Disk type.",
+          "example": "本地盘",
+          "member": "string",
+          "name": "StorageType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to automatically select a voucher. 1: Yes; 0: No. Default is 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "AutoVoucher",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Order source, string length range [0,64)",
+          "example": "api",
+          "member": "string",
+          "name": "OrderSource",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Transaction mode 0-Place order and pay 1-Place order",
+          "example": "0",
+          "member": "int64",
+          "name": "DealMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "ID of the associated VPC network.",
+          "example": "vpc-1ptuei0b",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Subnet ID. If VpcId is set up, SubnetId is required.",
+          "example": "subnet-1tmw9t4o",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Security group ID. You can specify security groups when creating a read-only instance.",
+          "example": "[\"sg-rgf3qgld\"]",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Analysis engine version",
+          "example": "1.2404.21.0",
+          "member": "string",
+          "name": "LibraDBVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Purchase period, combined with TimeUnit for the changes to take effect",
+          "example": "1",
+          "member": "int64",
+          "name": "TimeSpan",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Duration unit, takes effect when combined with TimeSpan. Options: day:d, month:m",
+          "example": "m",
+          "member": "string",
+          "name": "TimeUnit",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Source instance id",
+          "example": "cynosdbmysql-ins-xxx",
+          "member": "string",
+          "name": "SrcInstanceId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddLibraDBInstancesResponse": {
+      "document": "AddLibraDBInstances response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Large order number.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"202411073872\"]",
+          "member": "string",
+          "name": "BigDealIds",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Freeze transaction. One frozen flow is activated at a time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "myTranId",
+          "member": "string",
+          "name": "TranId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Post-paid order number.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"182711111\"]",
+          "member": "string",
+          "name": "DealNames",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Delivery resource id list.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"cynosdbmysql-mwg712mm\"]",
+          "member": "string",
+          "name": "ResourceIds",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -2756,6 +3191,108 @@
         }
       ],
       "usage": "in"
+    },
+    "CheckCreateLibraDBInstanceRequest": {
+      "document": "CheckCreateLibraDBInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "cynosdbmysql-6gtlgm5l",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "libradb-ins-qvni5111",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CheckCreateLibraDBInstanceResponse": {
+      "document": "CheckCreateLibraDBInstance response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Overall verification status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "success",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Check item\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CheckItem",
+          "name": "CheckItem",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CheckItem": {
+      "document": "Check item",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Check item name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Item",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Verification result of this item\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Result",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Detailed explanation of validation failure and modification suggestions\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CurrentValue",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Details of validation failure and modification suggestions\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ExpectedValue",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "CloseAuditServiceRequest": {
       "document": "CloseAuditService request structure.",
@@ -4540,6 +5077,299 @@
           "output_required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateLibraDBClusterAccountsRequest": {
+      "document": "CreateLibraDBClusterAccounts request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Analysis Cluster id",
+          "example": "libradb-i794jfvg",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Account information",
+          "example": "无",
+          "member": "NewAccount",
+          "name": "Accounts",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Encryption method",
+          "example": "hash",
+          "member": "string",
+          "name": "EncryptMethod",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateLibraDBClusterAccountsResponse": {
+      "document": "CreateLibraDBClusterAccounts response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateLibraDBClustersRequest": {
+      "document": "CreateLibraDBClusters request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Quantity.",
+          "example": "1",
+          "member": "int64",
+          "name": "Count",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Availability zone",
+          "example": "ap-guangzhou-6\"",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance initialization information",
+          "example": "无",
+          "member": "LibraDBInstanceInitInfo",
+          "name": "InstanceInitInfos",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "user password",
+          "example": "\"autotest1\"",
+          "member": "string",
+          "name": "AdminPassword",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to perform auto-renewal.",
+          "example": "0",
+          "member": "int64",
+          "name": "AutoRenewFlag",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to automatically select a voucher.",
+          "example": "0",
+          "member": "int64",
+          "name": "AutoVoucher",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Cluster name.",
+          "example": "libradb-xxx",
+          "member": "string",
+          "name": "ClusterName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Order placement mode",
+          "example": "0",
+          "member": "string",
+          "name": "DealMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Encryption method",
+          "example": "hash",
+          "member": "string",
+          "name": "EncryptMethod",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "LibraDBVersion version. Defaults to the latest version.",
+          "example": "2410",
+          "member": "string",
+          "name": "LibraDBVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Order Source",
+          "example": "\"autotest\"",
+          "member": "string",
+          "name": "OrderSource",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Payment mode",
+          "example": "0",
+          "member": "int64",
+          "name": "PayMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID",
+          "example": "0",
+          "member": "string",
+          "name": "ProjectId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Security group",
+          "example": "[\"secrtury-a3df313\"]",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Duration",
+          "example": "60",
+          "member": "int64",
+          "name": "TimeSpan",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Time unit",
+          "example": "s",
+          "member": "string",
+          "name": "TimeUnit",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance creation binds Tag array information",
+          "example": "无",
+          "member": "Tag",
+          "name": "ResourceTags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "VPC ID of the cluster location",
+          "example": "vpc-nnakli31",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Subnet ID of the cluster location",
+          "example": "subnet-558rhwt2",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Port.",
+          "example": "3306",
+          "member": "string",
+          "name": "Port",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateLibraDBClustersResponse": {
+      "document": "CreateLibraDBClusters response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Prepaid Total Order Number",
+          "example": "[\"20250515625002861909831\" ]",
+          "member": "string",
+          "name": "BigDealIds",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "[\"libradb-xxx\"]",
+          "member": "string",
+          "name": "ClusterIds",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Each resource corresponds to a dealName. The business needs to ensure the delivery API idempotency based on the dealName.",
+          "example": "[\"20250515625002861909831\" ]",
+          "member": "string",
+          "name": "DealNames",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Freeze transaction",
+          "example": "asfasdf",
+          "member": "string",
+          "name": "TranId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "[\"libradb-ins-xxx\"]",
+          "member": "string",
+          "name": "ResourceIds",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -7816,6 +8646,79 @@
       ],
       "type": "object"
     },
+    "DeleteLibraDBClusterAccountsRequest": {
+      "document": "DeleteLibraDBClusterAccounts request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Analysis Cluster id",
+          "example": "libradb-xxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Account",
+          "example": "无",
+          "member": "InputAccount",
+          "name": "Accounts",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLibraDBClusterAccountsResponse": {
+      "document": "DeleteLibraDBClusterAccounts response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLibraDBClusterRequest": {
+      "document": "DeleteLibraDBCluster request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Analysis Cluster ID",
+          "example": "libradb-xxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLibraDBClusterResponse": {
+      "document": "DeleteLibraDBCluster response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "flow id",
+          "example": "123",
+          "member": "int64",
+          "name": "FlowId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteParamTemplateRequest": {
       "document": "DeleteParamTemplate request structure.",
       "members": [
@@ -10483,6 +11386,256 @@
           "name": "InstanceSet",
           "output_required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLibraDBClusterAccountAllPrivilegesRequest": {
+      "document": "DescribeLibraDBClusterAccountAllPrivileges request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Analysis Cluster id",
+          "example": "libradb-xxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Account",
+          "example": "无",
+          "member": "InputAccount",
+          "name": "Account",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLibraDBClusterAccountAllPrivilegesResponse": {
+      "document": "DescribeLibraDBClusterAccountAllPrivileges response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Permission statement\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"GRANT CREATE, ALTER ON *.* TO 'andy'@'%'\",\"GRANT DROP, EXECUTE ON `andy1`.* TO 'andy'@'%'\",\"GRANT UPDATE, SHOW VIEW ON `andy2`.`user1` TO 'andy'@'%'\"]",
+          "member": "string",
+          "name": "PrivilegeStatements",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Global permission\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"CREATE\",\"ALTER\"]",
+          "member": "string",
+          "name": "GlobalPrivileges",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Database permission\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DatabasePrivileges",
+          "name": "DatabasePrivileges",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Table permission\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TablePrivileges",
+          "name": "TablePrivileges",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLibraDBClusterAccountPrivilegesRequest": {
+      "document": "DescribeLibraDBClusterAccountPrivileges request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID.",
+          "example": "libradb-xxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Account name.",
+          "example": "admin",
+          "member": "string",
+          "name": "AccountName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "host name",
+          "example": "127.0.0.1",
+          "member": "string",
+          "name": "Host",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Database name",
+          "example": "Db1",
+          "member": "string",
+          "name": "Db",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Type.",
+          "example": "table",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Table name",
+          "example": "table1",
+          "member": "string",
+          "name": "TableName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLibraDBClusterAccountPrivilegesResponse": {
+      "document": "DescribeLibraDBClusterAccountPrivileges response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Permission list\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"SELECT\"]",
+          "member": "string",
+          "name": "Privileges",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLibraDBClusterAccountsRequest": {
+      "document": "DescribeLibraDBClusterAccounts request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Analysis Cluster id",
+          "example": "libradb-xxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Account name.",
+          "example": "[\"admin1\", \"admin2\"]",
+          "member": "string",
+          "name": "AccountNames",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Fuzzy matching keyword",
+          "example": "admin",
+          "member": "string",
+          "name": "AccountRegular",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "host name",
+          "example": "[\"127.0.0.1\"]",
+          "member": "string",
+          "name": "Hosts",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Limit",
+          "example": "1",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Offset",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLibraDBClusterAccountsResponse": {
+      "document": "DescribeLibraDBClusterAccounts response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Account information",
+          "example": "无",
+          "member": "Account",
+          "name": "AccountSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -13765,6 +14918,133 @@
       ],
       "type": "object"
     },
+    "LibraDBInstanceInitInfo": {
+      "document": "libra instance initialization info",
+      "members": [
+        {
+          "disabled": false,
+          "document": "cpu",
+          "example": "4",
+          "member": "int64",
+          "name": "Cpu",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "memory",
+          "example": "16",
+          "member": "int64",
+          "name": "Memory",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "hard disk",
+          "example": "100",
+          "member": "int64",
+          "name": "StorageSize",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Storage type",
+          "example": "CLOUD_TCS",
+          "member": "string",
+          "name": "StorageType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance type",
+          "example": "common",
+          "member": "string",
+          "name": "InstanceType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance version",
+          "example": "2410",
+          "member": "string",
+          "name": "LibraDBVersion",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance count",
+          "example": "2",
+          "member": "int64",
+          "name": "InstanceCount",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "vpc id",
+          "example": "vpc-xxx",
+          "member": "string",
+          "name": "VpcId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "subnet id",
+          "example": "subnet-xxx",
+          "member": "string",
+          "name": "SubnetId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Port.",
+          "example": "4000",
+          "member": "int64",
+          "name": "Port",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of instance replicas to purchase",
+          "example": "1",
+          "member": "int64",
+          "name": "ReplicasNum",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "LogicBackupConfigInfo": {
       "document": "Logical Backup Configuration Information",
       "members": [
@@ -13882,6 +15162,90 @@
         }
       ],
       "usage": "out"
+    },
+    "MigrateDBItem": {
+      "document": "Synchronized database and table objects.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Database name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DbName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data table migration mode\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "MigrateTableMode",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data table information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "MigrateTableItem",
+          "name": "Tables",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "MigrateObject": {
+      "document": "Synchronize data objects",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Database migration mode\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "MigrateDBMode",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Database information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "MigrateDBItem",
+          "name": "Databases",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "MigrateTableItem": {
+      "document": "Synchronize data table name",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data table name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TableName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "ModifiableInfo": {
       "document": "Details of whether the parameter can be modified",
@@ -16154,7 +17518,7 @@
       "usage": "both"
     },
     "NewAccount": {
-      "document": "The newly created x08 account",
+      "document": "Create account",
       "members": [
         {
           "disabled": false,
@@ -16162,6 +17526,15 @@
           "example": "0",
           "member": "string",
           "name": "AccountName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Host",
+          "example": "0",
+          "member": "string",
+          "name": "Host",
           "required": true,
           "type": "string"
         },
@@ -16176,12 +17549,12 @@
         },
         {
           "disabled": false,
-          "document": "Host",
+          "document": "Whether password rotation is enabled (0: turn off; 1: turn on)",
           "example": "0",
-          "member": "string",
-          "name": "Host",
-          "required": true,
-          "type": "string"
+          "member": "int64",
+          "name": "PasswordRotation",
+          "required": false,
+          "type": "int"
         },
         {
           "disabled": false,
@@ -16261,6 +17634,23 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Objects": {
+      "document": "sync object list",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Database table information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "MigrateObject",
+          "name": "DatabaseTables",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"

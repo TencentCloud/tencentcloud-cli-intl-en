@@ -138,15 +138,21 @@
     ],
     "DetectAIFakeFaces": [
       {
-        "document": "Example of a full-body encrypted request",
-        "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DetectAIGCContent\n< Common request parameters >\n\n{\n    \"Encryption\": {\n        \"Algorithm\": \"AES-256-CBC\",\n        \"EncryptList\": [\n            \"EncryptionBody\"\n        ],\n        \"CiphertextBlob\": \"qwRTgn+52FAvnfrGL1oPBsXG4FLBd42YRw\",\n        \"Iv\": \"vqfsaEOpGJESA==\"\n    },\n    \"EncryptedBody\": \"v32onREKL6bk6WHOGFEjE2M6kvqybGCVTjlm\"\n}",
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DetectAIFakeFaces\n<Common request parameters>\n\n{\n    \"FaceInputType\": 1,\n    \"FaceInput\": \"VBORw0KGgoAAAANSUhEUgAAAkYAAAI9CAYAAADfOLduAAABQ2lDQ1BJQ0MgUHJvZmlsZQAAKJFjYGASSCwoyGFhYGDIzSspCnJ3UoiIjFJgf87AziDBwMcgwqCQmFxc4BgQ4ANUwgCjUcG3awyMIPqyLsgsz5I1BWZcn/xff7Y4dPvimWmY6lEAV0pqcTKQ/gPEyckFRSUMDIwJQLZyeUkBiN0CZIsUAR0FZM8AsdMh7DUgdhKEfQCsJiTIGci+AmQLJGckpgDZT4BsnSQk8XQkNtReEOD0CFBwNTI3LiTgVpJBSWpFCYh2zi+oLMpMzyhRcASGUKqCZ16yno6CkYGRMQMDKLwhqj/fAIcjoxgHQqzwKgODhTyQ8RQhlniBgWH3OgYG4Z8IMWUDBgYeoGn7/AsSixLhDmD8xlKcZmwEYXNvZ2Bgnfb//+dwBgZ2TQaGv9f///+9/f//v8sYGJhvMTAc+AYADqxgzYM88zoAAAA4ZVhJZk1NACoAAAAIAAGHaQAEAAAAAQAAABoAAAAAAAKgAgAEAAAAAQAAAkagAwAEAAAAAQAAAj0AAAAAi/M5dAAAQABJREFUeAHsvWd35EiSbYsIRlCkViW6pmq6Wry71vz/fzEf3n2fpufd\"\n}",
         "output": "{\n    \"Response\": {\n        \"AttackRiskDetailList\": [\n            {\n                \"Type\": \"SuspectedWatermark\"\n            }\n        ],\n        \"AttackRiskLevel\": \"High\",\n        \"RequestId\": \"2dd93e6f-5121-4bac-8c64-d6ad646663d2\"\n    }\n}",
-        "title": "Example of a full-body encrypted request"
+        "title": "Unencrypted Request Example"
+      },
+      {
+        "document": "Example of a full-body encrypted request",
+        "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DetectAIGCContent\n<Common request parameters>\n\n{\n    \"Encryption\": {\n        \"Algorithm\": \"AES-256-CBC\",\n        \"EncryptList\": [\n            \"EncryptionBody\"\n        ],\n        \"CiphertextBlob\": \"qwRTgn+52FAvnfrGL1oPBsXG4FLBd42YRw\",\n        \"Iv\": \"vqfsaEOpGJESA==\"\n    },\n    \"EncryptedBody\": \"v32onREKL6bk6WHOGFEjE2M6kvqybGCVTjlm\"\n}",
+        "output": "{\n    \"Response\": {\n        \"AttackRiskDetailList\": [\n            {\n                \"Type\": \"SuspectedWatermark\"\n            }\n        ],\n        \"AttackRiskLevel\": \"High\",\n        \"RequestId\": \"2dd93e6f-5121-4bac-8c64-d6ad646663d2\"\n    }\n}",
+        "title": "Full Body Encryption Request Example"
       },
       {
         "document": "Image decoding failed",
-        "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DetectAIFakeFaces\n< Common request parameters >\n\n{\n    \"FaceInputType\": 2,\n    \"FaceInput\": \"AAAAHGZ0eXBtcDQyAAAAAWlzb21tcDQxbXA0MgAADXNtb292AAAAbG12aGQAAAAA2qNvttqjb7cAAB9AAACYFgABAAABAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAJ/XRyYWsAAABcdGtoZAAAAAHao2+22qNvtwAAAAEAAAAAAACYFgAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAEAAAAADwAAAAtAAAAAAACRlZHRzAAAAHGVsc3QAAAAAAAAAAQAAmBYAAAAUAAEAAAAACXVtZGlhAAAAIG1kaGQAAAAA2qNvttqjb7cAAAJYAAALaFXEAAAAAAAxaGRscgAAAAAAAAAAdmlkZQAAAAAAAAAAAAAAAENvcmUgTWVkaWEgVmlkZW8AAAAJHG1pbmYAAAAUdm1oZAAAAAEAAAAAAAAAAAAAACRkaW5mAAAAHGRyZWYAAAAAAAAAAQ\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Error\": {\n            \"Code\": \"FailedOperation.ImageDecodeFailed\",\n            \"Message\": \" Image decoding failed.\"\n        },\n        \"RequestId\": \"0e77ad29-ad65-4901-9efc-b49a6e0a357b\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DetectAIFakeFaces\n<Common request parameters>\n\n{\n    \"FaceInputType\": 2,\n    \"FaceInput\": \"AAAAHGZ0eXBtcDQyAAAAAWlzb21tcDQxbXA0MgAADXNtb292AAAAbG12aGQAAAAA2qNvttqjb7cAAB9AAACYFgABAAABAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAJ/XRyYWsAAABcdGtoZAAAAAHao2+22qNvtwAAAAEAAAAAAACYFgAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAEAAAAADwAAAAtAAAAAAACRlZHRzAAAAHGVsc3QAAAAAAAAAAQAAmBYAAAAUAAEAAAAACXVtZGlhAAAAIG1kaGQAAAAA2qNvttqjb7cAAAJYAAALaFXEAAAAAAAxaGRscgAAAAAAAAAAdmlkZQAAAAAAAAAAAAAAAENvcmUgTWVkaWEgVmlkZW8AAAAJHG1pbmYAAAAUdm1oZAAAAAEAAAAAAAAAAAAAACRkaW5mAAAAHGRyZWYAAAAAAAAAAQ\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Error\": {\n            \"Code\": \"FailedOperation.ImageDecodeFailed\",\n            \"Message\": \"Image decoding failed.\"\n        },\n        \"RequestId\": \"0e77ad29-ad65-4901-9efc-b49a6e0a357b\"\n    }\n}",
         "title": "Exception Example"
       }
     ],
@@ -176,10 +182,10 @@
     ],
     "GetFaceIdTokenIntl": [
       {
-        "document": "This example shows you how to apply for an SDK-based verification token.",
-        "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetFaceIdTokenIntl\n<Common request parameters>\n\n{\n    \"CheckMode\": \"liveness\",\n    \"SecureLevel\": \"4\",\n    \"Extra\": \"idxxxx\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c27f8a53-1766-4d62-84fc-c400843e9e21\",\n        \"SdkToken\": \"91BF5AD0-C5C9-41CC-9562-DB35BBA2712D\"\n    }\n}",
-        "title": "Applying for a token"
+        "document": "Specify liveness retry count, call succeeded",
+        "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetFaceIdTokenIntl\n<Common request parameters>\n\n{\n    \"CheckMode\": \"liveness\",\n    \"RetryLimit\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ace1147a-d761-49a2-a180-0c95263b50ff\",\n        \"SdkToken\": \"C8CFF283-539AF-014E77-A5CF-DD9CAD93EFE2\"\n    }\n}",
+        "title": "GetFaceIdTokenIntl Example"
       }
     ],
     "GetLivenessResult": [

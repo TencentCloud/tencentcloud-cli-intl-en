@@ -78,7 +78,7 @@
       "status": "online"
     },
     "CreateAigcAudioClone": {
-      "document": "This API is used to create AIGC voice replication. Note that calling this API will incur fees. See the billing documentation (https://www.tencentcloud.com/document/product/266/95125?from_cn_redirect=1#96b3b59a-f9e1-49e9-966a-bedb70a4bf12).",
+      "document": "This API is used to create AIGC voice replication. Note that calling this API will incur fees. See the [billing documentation](https://intl.cloud.tencent.com/document/product/266/14666#87e472ca-9c95-4658-ab7b-8f2130608419).",
       "input": "CreateAigcAudioCloneRequest",
       "name": "Create an AIGC voice clone",
       "output": "CreateAigcAudioCloneResponse",
@@ -427,6 +427,13 @@
       "output": "DeleteCDNDomainResponse",
       "status": "online"
     },
+    "DeleteCLSTopic": {
+      "document": "Delete the log topic enabled by VOD.",
+      "input": "DeleteCLSTopicRequest",
+      "name": "Delete a log topic",
+      "output": "DeleteCLSTopicResponse",
+      "status": "online"
+    },
     "DeleteClass": {
       "document": "* A category can be deleted only if it has no subcategories and associated media files;\n* Otherwise, [delete the media files](https://intl.cloud.tencent.com/document/product/266/31764?from_cn_redirect=1) and subcategories first before deleting the category.",
       "input": "DeleteClassRequest",
@@ -684,6 +691,20 @@
       "input": "DescribeCDNUsageDataRequest",
       "name": "Queries CDN usage data of VOD",
       "output": "DescribeCDNUsageDataResponse",
+      "status": "online"
+    },
+    "DescribeCLSLogsets": {
+      "document": "Query the CLS log set created by VOD.",
+      "input": "DescribeCLSLogsetsRequest",
+      "name": "Query log set list.",
+      "output": "DescribeCLSLogsetsResponse",
+      "status": "online"
+    },
+    "DescribeCLSTopics": {
+      "document": "Query the log topic list created by VOD.",
+      "input": "DescribeCLSTopicsRequest",
+      "name": "Querying the Log Topic List",
+      "output": "DescribeCLSTopicsResponse",
       "status": "online"
     },
     "DescribeCdnLogs": {
@@ -7382,7 +7403,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Media file ID, the globally unique identifier of the file in VOD, is assigned by the VOD backend after successful upload. You can get this field in the <a href=\"/document/product/266/7830\">video upload completion event notification</a> or the <a href=\"https://console.cloud.tencent.com/vod/media\">VOD console</a>. This parameter is valid when Type value is File. Description: 1. Image less than 10M is recommended. 2. Image format values: jpeg, jpg, png.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Media file ID, the globally unique identifier of the file in VOD, is assigned by the VOD backend after successful upload. You can get this field in the <a href=\"/document/product/266/7830?from_cn_redirect=1\">video upload completion event notification</a> or the <a href=\"https://console.cloud.tencent.com/vod/media\">VOD console</a>. This parameter is valid when Type value is File. Description: 1. Image less than 10M is recommended. 2. Image format values: jpeg, jpg, png.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "98327487213123",
           "member": "string",
           "name": "FileId",
@@ -7493,7 +7514,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>The media file ID of the audio file, which is the globally unique identifier of this file on VOD, is assigned by the VOD backend after a successful upload. You can retrieve this field in the <a href=\"/document/product/266/7830\">video upload completion event notification</a> or the <a href=\"https://console.cloud.tencent.com/vod/media\">VOD console</a>. This parameter is valid when the Type value is File.</p>",
+          "document": "<p>The media file ID of the audio file, which is the globally unique identifier of this file on VOD, is assigned by the VOD backend after a successful upload. You can retrieve this field in the <a href=\"/document/product/266/7830?from_cn_redirect=1\">video upload completion event notification</a> or the <a href=\"https://console.cloud.tencent.com/vod/media\">VOD console</a>. This parameter is valid when the Type value is File.</p>",
           "example": "653321134",
           "member": "string",
           "name": "FileId",
@@ -7532,7 +7553,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>The media file ID of the video file, which is the globally unique identifier of the file in VOD, is assigned by the VOD backend after a successful upload. You can get this field in the <a href=\"/document/product/266/7830\">video upload completion event notification</a> or the <a href=\"https://console.cloud.tencent.com/vod/media\">VOD console</a>. This parameter is valid when the Type value is File.</p>",
+          "document": "<p>The media file ID of the video file, which is the globally unique identifier of the file in VOD, is assigned by the VOD backend after a successful upload. You can get this field in the <a href=\"/document/product/266/7830?from_cn_redirect=1\">video upload completion event notification</a> or the <a href=\"https://console.cloud.tencent.com/vod/media\">VOD console</a>. This parameter is valid when the Type value is File.</p>",
           "example": "653321134",
           "member": "string",
           "name": "FileId",
@@ -8987,7 +9008,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Media file ID, the globally unique identifier of this file in VOD, is assigned by the VOD backend after a successful upload. You can obtain this field in the <a href=\"/document/product/266/7830\">video upload completion event notification</a> or the <a href=\"https://console.cloud.tencent.com/vod/media\">VOD console</a>. This parameter is valid when the Type value is File. Description: 1. Recommended image size is less than 10M. 2. Image format values: jpeg, jpg, png.</p>",
+          "document": "<p>Media file ID, the globally unique identifier of this file in VOD, is assigned by the VOD backend after a successful upload. You can obtain this field in the <a href=\"/document/product/266/7830?from_cn_redirect=1\">video upload completion event notification</a> or the <a href=\"https://console.cloud.tencent.com/vod/media\">VOD console</a>. This parameter is valid when the Type value is File. Description: 1. Recommended image size is less than 10M. 2. Image format values: jpeg, jpg, png.</p>",
           "example": "9662********524268",
           "member": "string",
           "name": "FileId",
@@ -9205,7 +9226,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Media file ID used as the end frame to generate video. This file has a globally unique ID on VOD, assigned by the VOD backend after successful upload. You can get this field in the <a href=\"/document/product/266/7830\">video upload completion event notification</a> or the <a href=\"https://console.cloud.tencent.com/vod/media\">VOD console</a>.</p>",
+          "document": "<p>Media file ID used as the end frame to generate video. This file has a globally unique ID on VOD, assigned by the VOD backend after successful upload. You can get this field in the <a href=\"/document/product/266/7830?from_cn_redirect=1\">video upload completion event notification</a> or the <a href=\"https://console.cloud.tencent.com/vod/media\">VOD console</a>.</p>",
           "example": "3704211***509911",
           "member": "string",
           "name": "LastFrameFileId",
@@ -9333,7 +9354,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Media file ID, the globally unique identifier of the file in VOD, is assigned by the VOD backend after successful upload. You can obtain this field in the <a href=\"/document/product/266/7830\">video upload completion event notification</a> or the <a href=\"https://console.cloud.tencent.com/vod/media\">VOD console</a>. This parameter is valid when the Type value is File. Description:</p><ol><li>Images less than 10M are recommended;</li><li>Image format values: jpeg, jpg, png.</li></ol>",
+          "document": "<p>Media file ID, the globally unique identifier of the file in VOD, is assigned by the VOD backend after successful upload. You can obtain this field in the <a href=\"/document/product/266/7830?from_cn_redirect=1\">video upload completion event notification</a> or the <a href=\"https://console.cloud.tencent.com/vod/media\">VOD console</a>. This parameter is valid when the Type value is File. Description:</p><ol><li>Images less than 10M are recommended;</li><li>Image format values: jpeg, jpg, png.</li></ol>",
           "example": "3704211***509819",
           "member": "string",
           "name": "FileId",
@@ -9348,6 +9369,17 @@
           "example": "https://test.com/1.png",
           "member": "string",
           "name": "Url",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "base64",
+          "member": "string",
+          "name": "Base64",
           "output_required": false,
           "required": false,
           "type": "string",
@@ -11786,6 +11818,68 @@
           "name": "Config",
           "output_required": false,
           "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CLSLogsetInfo": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "“54079098-61ea-48f9-8270-3b041a5d0150”",
+          "member": "string",
+          "name": "LogsetId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "“mylogset”",
+          "member": "string",
+          "name": "LogsetName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CLSTopicInfo": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Log topic ID.",
+          "example": "topic***a1",
+          "member": "string",
+          "name": "TopicId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log topic name.",
+          "example": "MyTopic",
+          "member": "string",
+          "name": "TopicName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log Set ID.",
+          "example": "logset***a1",
+          "member": "string",
+          "name": "LogsetId",
+          "output_required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -19157,6 +19251,42 @@
       ],
       "type": "object"
     },
+    "DeleteCLSTopicRequest": {
+      "document": "DeleteCLSTopic request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The region to which the log set belongs, the values are: <li>ap-guangzhou: Guangzhou;</li> <li>ap-beijing: Beijing;</li> <li>ap-chengdu: Chengdu;</li> < li>ap-chongqing: Chongqing; </li> <li>ap-nanjing: Nanjing; </li> <li>ap-shanghai: Shanghai; </li> <li>ap-singapore: Singapore. </li>",
+          "example": "\"ap-guangzhou\"",
+          "member": "string",
+          "name": "CLSRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log topic ID.",
+          "example": "\"780ba384-5bc1-4cb1-a0e9-0cf8fafd3ee0\"",
+          "member": "string",
+          "name": "TopicId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteCLSTopicResponse": {
+      "document": "DeleteCLSTopic response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteClassRequest": {
       "document": "DeleteClass request structure.",
       "members": [
@@ -20966,6 +21096,126 @@
           "example": "无",
           "member": "StatDataItem",
           "name": "Data",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCLSLogsetsRequest": {
+      "document": "DescribeCLSLogsets request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Region of the logset belonging to. Valid values: <li>ap-guangzhou: Guangzhou;</li> <li>ap-beijing: Beijing;</li> <li>ap-chengdu: Chengdu;</li> <li>ap-chongqing: Chongqing;</li> <li>ap-nanjing: Nanjing;</li> <li>ap-shanghai: Shanghai;</li> <li>ap-singapore: Singapore.</li>",
+          "example": "“ap-guangzhou”",
+          "member": "string",
+          "name": "CLSRegion",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCLSLogsetsResponse": {
+      "document": "DescribeCLSLogsets response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Queried logset list.",
+          "example": "无",
+          "member": "CLSLogsetInfo",
+          "name": "Logsets",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCLSTopicsRequest": {
+      "document": "DescribeCLSTopics request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Region of the logset belonging to. Valid values: <li>ap-guangzhou: Guangzhou;</li> <li>ap-beijing: Beijing;</li> <li>ap-chengdu: Chengdu;</li> <li>ap-chongqing: Chongqing;</li> <li>ap-nanjing: Nanjing;</li> <li>ap-shanghai: Shanghai;</li> <li>ap-singapore: Singapore.</li>",
+          "example": "\"ap-guangzhou\"",
+          "member": "string",
+          "name": "CLSRegion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log Set ID of Log Topic.",
+          "example": "\"54079098-61ea-48f9-8270-3b041a5d0150\"",
+          "member": "string",
+          "name": "LogsetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log topic ID list. If left empty, means query all log topics.",
+          "example": "[\"780ba384-5bc1-4cb1-a0e9-0cf8fafd3ee0\"]",
+          "member": "string",
+          "name": "TopicIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination offset. Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of returned entries. Default value: 20. Maximum value: 100.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCLSTopicsResponse": {
+      "document": "DescribeCLSTopics response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of log topics.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log topic list.",
+          "example": "[]",
+          "member": "CLSTopicInfo",
+          "name": "Topics",
           "output_required": true,
           "type": "list",
           "value_allowed_null": false
@@ -42202,7 +42452,7 @@
         },
         {
           "disabled": false,
-          "document": "Designate the upload park, applicable only to the user with special requirement for upload target region.\n<li>If left blank, files will be uploaded to your [default region](https://www.tencentcloud.com/document/product/266/14059?from=11329?from_cn_redirect=1#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4) by default.</li>\n<li>If a designated upload park is specified, please confirm the [upload storage settings](https://www.tencentcloud.com/document/product/266/14059?from=11329?from_cn_redirect=1#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4) have already enabled corresponding storage regions.</li>",
+          "document": "Designate the upload park, applicable only to the user with special requirement for upload target region.\n<li>If left blank, files will be uploaded to your [default region](https://www.tencentcloud.com/zh/document/product/266/18874?has_map=1#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4) by default.</li>\n<li>If a designated upload park is specified, please confirm the [upload storage settings](https://www.tencentcloud.com/zh/document/product/266/18874) have already enabled corresponding storage regions.</li>",
           "example": "ap-beijing",
           "member": "string",
           "name": "StorageRegion",

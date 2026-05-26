@@ -596,6 +596,14 @@
         "title": "Delete VOD domain"
       }
     ],
+    "DeleteCLSTopic": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteCLSTopic\n<Public Request Parameter>\n\n{\n    \"TopicId\": \"780ba384-5bc1-4cb1-a0e9-0cf8fafd3ee0\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxx\"\n    }\n}",
+        "title": "Delete CLS log topic"
+      }
+    ],
     "DeleteClass": [
       {
         "document": " ",
@@ -926,6 +934,22 @@
         "input": "https://vod.tencentcloudapi.com/?Action=DescribeCDNUsageData\n&StartTime=2018-12-01T00:00:00+08:00\n&EndTime=2018-12-03T00:00:00+08:00\n&DataType=Bandwidth\n&SubAppId=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"DataInterval\": 1440,\n        \"Data\": [\n            {\n                \"Time\": \"2018-12-01T00:00:00+08:00\",\n                \"Value\": 700000\n            },\n            {\n                \"Time\": \"2018-12-01T05:00:00+08:00\",\n                \"Value\": 800000\n            },\n            {\n                \"Time\": \"2018-12-01T10:00:00+08:00\",\n                \"Value\": 920000\n            }\n        ],\n        \"RequestId\": \"requestId\"\n    }\n}",
         "title": "Admin query all domain name bandwidth statistics from 2018-12-01 to 2018-12-07"
+      }
+    ],
+    "DescribeCLSLogsets": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCLSLogsets\n<Common request parameters>\n\n{\n    \"CLSRegion\": \"ap-guangzhou\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Logsets\": [\n            {\n                \"LogsetId\": \"54079098-61ea-48f9-8270-3b041a5d0150\",\n                \"LogsetName\": \"vod_cdn_logset_cn\"\n            }\n        ],\n        \"RequestId\": \"xxx\"\n    }\n}",
+        "title": "Query the logset created by VOD in Guangzhou region"
+      }
+    ],
+    "DescribeCLSTopics": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCLSTopics\n<Common request parameters>\n\n{\n    \"CLSRegion\": \"ap-guangzhou\",\n    \"LogsetId\": \"54079098-61ea-48f9-8270-3b041a5d0150\",\n    \"Offset\": 0,\n    \"Limit\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Topics\": [\n            {\n                \"TopicId\": \"780ba384-5bc1-4cb1-a0e9-0cf8fafd3ee0\",\n                \"TopicName\": \"mytopic\",\n                \"LogsetId\": \"54079098-61ea-48f9-8270-3b041a5d0150\"\n            }\n        ],\n        \"RequestId\": \"xxx\"\n    }\n}",
+        "title": "Querying the Specified Log Topic"
       }
     ],
     "DescribeCdnLogs": [
