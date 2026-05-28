@@ -344,7 +344,7 @@
       "status": "online"
     },
     "ScaleInInstances": {
-      "document": "This API is used to reduce the specified number of instances from the scaling group.\n* There is no on going scaling task.\n* This API is valid even when the scaling group is disabled. For more details, see [DisableAutoScalingGroup](https://intl.cloud.tencent.com/document/api/377/20435?from_cn_redirect=1).\n* You can specify the instances to remove in the scale-in activity by using `TerminationPolicies`. For more information, see [Scaling In Policies](https://intl.cloud.tencent.com/document/product/377/8563?from_cn_redirect=1).\n* Only the `IN_SERVICE` instances will be reduced. To reduce instances in other statues, use the [`DetachInstances`](https://intl.cloud.tencent.com/document/api/377/31011?from_cn_redirect=1) or [`RemoveInstances`](https://intl.cloud.tencent.com/document/api/377/31005?from_cn_redirect=1) API.\n* The desired capacity will be reduced accordingly. The new desired capacity should be no less than the minimum capacity.\n* If the scale-in activity failed or partially succeeded, the final desired capacity only deducts the instances that have been reduced successfully.",
+      "document": "This API is used to reduce the specified number of instances from the scaling group.\n* There is no on going scaling task.\n* This API is valid even when the scaling group is disabled. For more details, see [DisableAutoScalingGroup](https://intl.cloud.tencent.com/document/product/377/31010).\n* You can specify the instances to remove in the scale-in activity by using `TerminationPolicies`. For more information, see [Scaling In Policies](https://intl.cloud.tencent.com/document/product/377/8563).\n* Only the `IN_SERVICE` instances will be reduced. To reduce instances in other statues, use the [`DetachInstances`](https://intl.cloud.tencent.com/document/api/377/31011) or [`RemoveInstances`](https://intl.cloud.tencent.com/document/api/377/31005) API.\n* The desired capacity will be reduced accordingly. The new desired capacity should be no less than the minimum capacity.\n* If the scale-in activity failed or partially succeeded, the final desired capacity only deducts the instances that have been reduced successfully.",
       "input": "ScaleInInstancesRequest",
       "name": "Reduces the specified number of instances",
       "output": "ScaleInInstancesResponse",
@@ -7079,7 +7079,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Scaling activity ID",
+          "document": "Scaling activity ID.",
           "example": "asa-k1q8oaz6",
           "member": "string",
           "name": "ActivityId",

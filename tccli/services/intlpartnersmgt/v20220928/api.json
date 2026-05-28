@@ -126,6 +126,13 @@
       "output": "DescribeCustomerOwnCostExplorerFilterResponse",
       "status": "online"
     },
+    "DescribeCustomerOwnCostExplorerSummary": {
+      "document": "Cost analysis API",
+      "input": "DescribeCustomerOwnCostExplorerSummaryRequest",
+      "name": "Query the cost analysis API of a sub-account",
+      "output": "DescribeCustomerOwnCostExplorerSummaryResponse",
+      "status": "online"
+    },
     "DescribeCustomerOwnVoucherList": {
       "document": "This API is used to query the voucher list by Customer. \nCallable roles: Customer.",
       "input": "DescribeCustomerOwnVoucherListRequest",
@@ -1062,6 +1069,202 @@
         }
       ],
       "usage": "out"
+    },
+    "CostAnalyzeDimensionData": {
+      "document": "Cost analysis dimension data",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total number of entries by dimension statistics</p>",
+          "example": "13",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sum value</p>",
+          "example": "0.7",
+          "member": "string",
+          "name": "SumCost",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total amount by date dimension</p>",
+          "example": "无",
+          "member": "PeriodItemDetail",
+          "name": "PeriodItemDetail",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CostAnalyzeFilter": {
+      "document": "Cost analysis filter input",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Contains product code</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"p_cbs\"]",
+          "member": "string",
+          "name": "BusinessIn",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Contains sub-product code</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"sp_cbs_premium\"]",
+          "member": "string",
+          "name": "ProductIn",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Contains region id</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"1\"]",
+          "member": "string",
+          "name": "RegionIn",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Contains transaction type</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"pre_purchase\"]",
+          "member": "string",
+          "name": "ActionTypeIn",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Includes payment mode</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"prePay\"]",
+          "member": "string",
+          "name": "PayModeIn",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Include project name</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"0\"]",
+          "member": "string",
+          "name": "ProjectIn",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Contains payer uin</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"800000400309\"]",
+          "member": "string",
+          "name": "PayerUinIn",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Tag key.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "qingyun",
+          "member": "string",
+          "name": "TagKey",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Tag value list</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"biqian11\"]",
+          "member": "string",
+          "name": "TagIn",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Contains availability zones</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"100002\"]",
+          "member": "string",
+          "name": "ZoneIn",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Owner uin</p>",
+          "example": "[\"800000425835\"]",
+          "member": "string",
+          "name": "OwnerUinIn",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Component type info</p>",
+          "example": "[\"v_cvm_mem\"]",
+          "member": "string",
+          "name": "ComponentIn",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Component name</p>",
+          "example": "[\"sp_cbs_premium\"]",
+          "member": "string",
+          "name": "ItemIn",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Resource id information</p>",
+          "example": "[\"disk-fata3hgu\"]",
+          "member": "string",
+          "name": "ResourceIn",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "CostAnalyzeFilterDetail": {
       "document": "Advanced filtering for cost analysis",
@@ -2564,6 +2767,144 @@
       ],
       "type": "object"
     },
+    "DescribeCustomerOwnCostExplorerSummaryRequest": {
+      "document": "DescribeCustomerOwnCostExplorerSummary request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Classification dimension</p><p>Enumeration value:</p><ul><li>Default: Default dimension</li><li>Business: Product</li><li>Product: Subproduct</li><li>Region: Region</li><li>Zone: Availability zone</li><li>ActionType: Transaction type</li><li>PayMode: Payment mode</li><li>Project: Project</li><li>PayerUin: Payer uin</li><li>OwnerUin: Owner uin</li><li>Tag: Tag</li></ul>",
+          "example": "Default",
+          "member": "string",
+          "name": "Dimension",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Fee type</p><p>Enumeration value:</p><ul><li>originalCost: Original Cost</li><li>totalCost: Total Cost</li></ul>",
+          "example": "originalCost",
+          "member": "string",
+          "name": "FeeType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Billing mode</p><p>Enumeration value:</p><ul><li>1: Billing statement</li></ul>",
+          "example": "1",
+          "member": "int64",
+          "name": "BillType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Start time</p><p>Parameter format: YYYY-MM-DD hh:mm:ss, for example 2006-01-02 00:00:00</p><p>Input limit: When PeriodType is month, the time range is 6 calendar months; when PeriodType is day, the time range is 2 calendar months;</p>",
+          "example": "2024-09-01 00:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>End time</p><p>Parameter format: YYYY-MM-DD hh:mm:ss, for example 2006-01-02 00:00:00</p><p>Input limit: When PeriodType is month, the time range is 6 calendar months. When PeriodType is day, the time range is 2 calendar months.</p>",
+          "example": "2024-09-12 23:59:59",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Time type</p><p>Enumeration value:</p><ul><li>day: By day</li><li>month: By month</li></ul>",
+          "example": "day",
+          "member": "string",
+          "name": "PeriodType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Page number</p><p>Value range: [1, 10000]</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "Page",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Page size</p><p>Value range: [1, 200]</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Tag key of the statistical dimension. When Dimension is Tag, TagKey is required.</p>",
+          "example": "qingyun",
+          "member": "string",
+          "name": "TagKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter\n\nYou can pass the data returned by [DescribeCustomerOwnCostExplorerFilter](https://www.tencentcloud.com/document/product/1085/80125) as a parameter to filter the data.",
+          "example": "无",
+          "member": "CostAnalyzeFilter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCustomerOwnCostExplorerSummaryResponse": {
+      "document": "DescribeCustomerOwnCostExplorerSummary response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Classification dimension</p>",
+          "example": "Default",
+          "member": "string",
+          "name": "DimensionName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Details</p>",
+          "example": "无",
+          "member": "DimensionPeriodData",
+          "name": "Detail",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Classification dimension statistics</p>",
+          "example": "无",
+          "member": "CostAnalyzeDimensionData",
+          "name": "TotalDetail",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeCustomerOwnVoucherItem": {
       "document": "Voucher data.",
       "members": [
@@ -3373,6 +3714,52 @@
       ],
       "type": "object"
     },
+    "DimensionPeriodData": {
+      "document": "Cost dimension periodic data",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Function name by dimensional classification</p>",
+          "example": "default",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>code corresponding to the function name after dimensional classification</p>",
+          "example": "biqian11",
+          "member": "string",
+          "name": "Code",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sum value of the current group</p>",
+          "example": "0.7",
+          "member": "string",
+          "name": "SumCost",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Amount statistics by date grouping</p>",
+          "example": "无",
+          "member": "PeriodItemDetail",
+          "name": "ItemDetail",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "ForceQNRequest": {
       "document": "ForceQN request structure.",
       "members": [
@@ -3589,6 +3976,32 @@
           "member": "string",
           "name": "TotalCost",
           "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "PeriodItemDetail": {
+      "document": "Cost cycle entry info",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Date</p>",
+          "example": "2024-09-09",
+          "member": "string",
+          "name": "Period",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Fee</p>",
+          "example": "2.1",
+          "member": "string",
+          "name": "Cost",
+          "output_required": false,
           "type": "string",
           "value_allowed_null": false
         }

@@ -23447,7 +23447,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of Items per Page",
+          "document": "Number of Items per Page.",
           "example": "1",
           "member": "uint64",
           "name": "PageSize",
@@ -38190,7 +38190,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Query Framework, required",
+          "document": "Query Framework, required.",
           "example": "无",
           "member": "SearchConditionInstanceNew",
           "name": "Instance",
