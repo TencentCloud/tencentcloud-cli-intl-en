@@ -8,20 +8,52 @@
         "title": "Batch Isolate Instances"
       }
     ],
+    "CreateCloneInstance": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCloneInstance\n<Common request parameters>\n\n{\n    \"Zone\": \"ap-chengdu-1\",\n    \"VpcId\": \"vpc-jksnni36\",\n    \"SubnetId\": \"subnet-dz7wfk4r\",\n    \"SpecCode\": \"1c2g\",\n    \"Disk\": 20,\n    \"StorageNodeNum\": 3,\n    \"InstanceId\": \"tdsql3-2a6b33ef\",\n    \"BackupName\": \"/tdsql3_ap_chengdu/251231015/tdsql3-2a6b33ef/automatic/physical/full-backup/2026-04-22/1776859363/tdstore-data\",\n    \"StorageNodeCpu\": 1,\n    \"StorageNodeMem\": 2,\n    \"CreateVersion\": \"21.2.5\",\n    \"InstanceType\": \"hybrid\",\n    \"StorageType\": \"CLOUD_HSSD\",\n    \"Zones\": [\n        \"ap-chengdu-1\"\n    ],\n    \"InstanceMode\": \"enhanced\"\n}",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 4295036956,\n        \"InstanceId\": \"tdsql3-ba6b4cbc\",\n        \"RequestId\": \"f23a4c9f-39d1-489f-839f-bab199c2d37e\"\n    }\n}",
+        "title": "Create a clone from this enhanced instance"
+      }
+    ],
+    "CreateDBInstances": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDBInstances\n<Common request parameters>\n\n{\n    \"Zone\": \"ap-chengdu-2\",\n    \"VpcId\": \"vpc-jksnni36\",\n    \"SubnetId\": \"subnet-dz7wfk4r\",\n    \"SpecCode\": \"1c2g\",\n    \"Disk\": 30,\n    \"StorageNodeNum\": 3,\n    \"Replications\": 3,\n    \"InstanceCount\": 1,\n    \"CreateVersion\": \"21.2.3\",\n    \"InitParams\": [\n        {\n            \"Param\": \"character_set_server\",\n            \"Value\": \"utf8mb4\"\n        }\n    ],\n    \"StorageNodeCpu\": 1,\n    \"StorageNodeMem\": 2,\n    \"Zones\": [\n        \"ap-chengdu-2\"\n    ],\n    \"InstanceType\": \"hybrid\",\n    \"StorageType\": \"CLOUD_HSSD\",\n    \"InstanceMode\": \"enhanced\",\n    \"SQLMode\": \"MySQL\"\n}",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 4294998382,\n        \"InstanceIds\": [\n            \"tdsql3-ac67c142\"\n        ],\n        \"RequestId\": \"b3e61005-1e6d-48a2-b5af-de6c4f19dd01\"\n    }\n}",
+        "title": "Creating an Instance"
+      }
+    ],
     "CreateDBSBackup": [
       {
-        "document": "Create a backup set manually",
-        "input": "POST / HTTP/1.1\nHost: dbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateBackup\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql3-xxx\",\n    \"BackupMethod\": \"physical\",\n    \"BackupType\": \"full\",\n    \"BackupName\": \"test-backup\"\n}",
-        "output": "{\n    \"Response\": {\n        \"IsSuccess\": true,\n        \"BackupSetId\": 0,\n        \"RequestId\": \"fsafdsfasdfasdfsd\"\n    }\n}",
-        "title": "Creating a Backup Set"
+        "document": "Manually create a backup",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDBSBackup\n<Common request parameters>\n\n{\n    \"BackupMethod\": \"physical\",\n    \"BackupType\": \"full\",\n    \"InstanceId\": \"tdsql3-3f17e49d\",\n    \"BackupName\": \"myback\"\n}",
+        "output": "{\n    \"Response\": {\n        \"BackupSetId\": 73165397733012,\n        \"IsSuccess\": true,\n        \"RequestId\": \"048bd43c-279c-4d32-97a4-c65b378bf550\"\n    }\n}",
+        "title": "Creating a Manual Backup"
       }
     ],
     "DeleteDBSBackupSets": [
       {
         "document": "Delete a manual backup",
-        "input": "POST / HTTP/1.1\nHost: dbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteBackupSets\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdstore-dfasfa\",\n    \"BackupSetIdList\": [\n        0\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"IsSuccess\": true,\n        \"Total\": 0,\n        \"Deleted\": 0,\n        \"RequestId\": \"f234c20b-d71a-4abe-af8c-a8ef15df73d8\"\n    }\n}",
-        "title": "Delete Backup Set"
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteDBSBackupSets\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql3-3f17e49d\",\n    \"BackupSetIdList\": [\n        73165397733012\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Deleted\": 1,\n        \"IsSuccess\": true,\n        \"Total\": 1,\n        \"RequestId\": \"bb46e0a1-2e6f-4483-9317-78197c170bdc\"\n    }\n}",
+        "title": "Delete backup"
+      }
+    ],
+    "DescribeDBInstanceDetail": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBInstanceDetail\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql3-a5952a76\"\n}",
+        "output": "{\n    \"Response\": {\n        \"AZMode\": 1,\n        \"AnalysisInstanceInfo\": {\n            \"ReplicasNum\": 0\n        },\n        \"AnalysisMode\": \"\",\n        \"AnalysisRelationInfos\": [],\n        \"BinlogStatus\": 0,\n        \"BinlogType\": \"\",\n        \"CharSet\": \"utf8mb4\",\n        \"ColumnarNodeCpu\": 0,\n        \"ColumnarNodeDisk\": 0,\n        \"ColumnarNodeMem\": 0,\n        \"ColumnarNodeNum\": 0,\n        \"ColumnarNodeSpecCode\": \"\",\n        \"ColumnarNodeStorageType\": \"\",\n        \"ColumnarVip\": \"\",\n        \"ColumnarVport\": 0,\n        \"CreateTime\": \"2026-04-20 21:18:35\",\n        \"CreateVersion\": \"21.6.2.0.permanent.1192.ssl\",\n        \"Disk\": 100,\n        \"DiskUsage\": 19,\n        \"DumperVip\": \"\",\n        \"DumperVport\": 0,\n        \"ExpireAt\": \"0001-01-01 00:00:00\",\n        \"FullReplications\": 3,\n        \"InitParams\": [\n            {\n                \"Param\": \"lower_case_table_names\",\n                \"Value\": \"1\"\n            }\n        ],\n        \"InstanceCategory\": 0,\n        \"InstanceId\": \"tdsql3-446540ae\",\n        \"InstanceMode\": \"normal\",\n        \"InstanceName\": \"test003\",\n        \"InstanceType\": \"hybrid\",\n        \"IsSupportColumnar\": true,\n        \"IsSwitchFullReplicationsEnable\": false,\n        \"IsolatedAt\": \"0001-01-01 00:00:00\",\n        \"MaintenanceWindow\": {\n            \"Duration\": 3600,\n            \"StartTime\": 10800,\n            \"WeekDays\": [\n                \"Monday\"\n            ]\n        },\n        \"Node\": [\n            {\n                \"BinlogInfo\": [],\n                \"Cpu\": 1,\n                \"DataDisk\": 100,\n                \"Host\": \"\",\n                \"IP\": \"10.0.70.65\",\n                \"Mem\": 2,\n                \"NodeId\": \"node-tdsql3-446540ae-001\",\n                \"Port\": 6008,\n                \"Type\": \"hybridnode\",\n                \"Zone\": \"ap-guangzhou-7\"\n            }\n        ],\n        \"PayMode\": \"postPay\",\n        \"Region\": \"ap-guangzhou\",\n        \"RenewFlag\": 0,\n        \"Replications\": 3,\n        \"ResourceTags\": [],\n        \"SQLMode\": \"MySQL\",\n        \"SpecCode\": \"1c2g\",\n        \"StandbyFlag\": 1,\n        \"Status\": \"running\",\n\"StatusDesc\": \"Running\"\n        \"StorageNodeCpu\": 1,\n        \"StorageNodeMem\": 2,\n        \"StorageNodeNum\": 3,\n        \"StorageType\": \"CLOUD_HSSD\",\n        \"SubnetId\": \"subnet-30tyayxk\",\n        \"TemplateId\": \"\",\n        \"TemplateName\": \"\",\n        \"TimingModifyInstanceFlag\": 1,\n        \"UpdateTime\": \"2026-04-23 12:13:32\",\n        \"Vip\": \"10.31.16.52\",\n        \"VpcId\": \"vpc-o7ssr1vx\",\n        \"Vport\": 3306,\n        \"Zone\": \"ap-guangzhou-7\",\n        \"Zones\": [\n            \"ap-guangzhou-7\"\n        ],\n        \"RequestId\": \"27f36bdc-e23b-4b75-aa7c-4a4da0e836c4\"\n    }\n}",
+        "title": "Querying Instance Details"
+      }
+    ],
+    "DescribeDBInstances": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBInstances\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Name\": \"Status\",\n            \"Values\": [\n                \"creating\",\n                \"running\"\n            ]\n        },\n        {\n            \"Name\": \"VpcId\",\n            \"Values\": [\n                \"vpc-asdfifff\"\n            ]\n        }\n    ],\n    \"Limit\": 20,\n    \"Offset\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"Instances\": [\n            {\n                \"ComputeNodeNum\": 2,\n                \"Region\": \"ap-guangzhou\",\n                \"Zone\": \"ap-guangzhou-1\",\n                \"CreateVersion\": \"RELEASE_R080D001\",\n                \"InitParams\": [\n                    {\n                        \"Value\": \"lower_case_table_names\",\n                        \"Param\": \"0\"\n                    }\n                ],\n                \"Status\": \"running\",\n\"StatusDesc\": \"Running\"\n                \"InstanceId\": \"tdsql3-f3475547\",\n                \"StorageNodeNum\": 3,\n                \"ResourceTags\": [\n                    {\n                        \"TagKey\": \"tag-key\",\n                        \"TagValue\": \"tag-value\"\n                    }\n                ],\n                \"InstanceName\": \"tdsql3-f3475547\",\n                \"Cpu\": 4,\n                \"VpcId\": \"vpc-o7ssr1vx\",\n                \"Mem\": 8,\n                \"Vip\": \"172.16.113.202\",\n                \"SubnetId\": \"subnet-s21doiba\",\n                \"Vport\": 6008,\n                \"Disk\": 200,\n                \"CreateTime\": \"2006-01-02 15:04:05\"\n            }\n        ],\n        \"RequestId\": \"a93d2900-ef72-11eb-ab93-0716f253da76\",\n        \"TotalCount\": 100\n    }\n}",
+        "title": "Querying the Instance List"
       }
     ],
     "DescribeDBParameters": [
@@ -32,12 +64,52 @@
         "title": "Obtaining the Current Parameters of a Database"
       }
     ],
+    "DescribeDBSArchiveLogs": [
+      {
+        "document": "Query instance archive log list information",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBSArchiveLogs\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql3-000d02ac\",\n    \"Limit\": 1,\n    \"Offset\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"ArchiveLogId\": 7365,\n                \"BackupDuration\": 59610,\n                \"BackupStatus\": \"success\",\n                \"EndTime\": \"2025-07-31 16:02:34\",\n                \"ErrorMessage\": \"\",\n                \"ExpiredTime\": \"2025-08-07 16:02:34\",\n                \"FileName\": \"2025-07-31\",\n                \"FileSize\": 397689856,\n                \"InstanceId\": \"tdsql3-000d02ac\",\n                \"StartTime\": \"2025-07-30 23:42:34\"\n            }\n        ],\n        \"RequestId\": \"e8f0457c-f287-45a0-b45f-a5be3ef7a30b\",\n        \"TotalCount\": 8\n    }\n}",
+        "title": "Querying Instance Archive Log List"
+      }
+    ],
     "DescribeDBSAvailableRecoveryTime": [
       {
         "document": "Recoverable time query",
-        "input": "POST / HTTP/1.1\nHost: dbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAvailableRecoveryTime\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdpg-qw8te1qw\"\n}",
-        "output": "{\n    \"Response\": {\n        \"StartTime\": \"2024-10-16 12:00:00\",\n        \"EndTime\": \"2024-10-21 12:00:00\",\n        \"Intervals\": [\n            {\n                \"StartTime\": \"2024-10-16 12:00:00\",\n                \"EndTime\": \"2024-10-21 12:00:00\",\n                \"MajorVersion\": \"18.3\",\n                \"MinorVersion\": \"18.3.0\"\n            }\n        ],\n        \"RequestId\": \"ea784d7e-cdcc-41e0-bc6b-4532815d6bf2\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBSAvailableRecoveryTime\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql3-3f17e49d\"\n}",
+        "output": "{\n    \"Response\": {\n        \"EndTime\": \"2026-03-26 20:12:29\",\n        \"Intervals\": [\n            {\n                \"EndTime\": \"2026-03-26 20:12:29\",\n                \"MajorVersion\": \"\",\n                \"MinorVersion\": \"\",\n                \"StartTime\": \"2026-03-23 22:14:09\"\n            }\n        ],\n        \"StartTime\": \"2026-03-23 22:14:09\",\n        \"RequestId\": \"2c15b222-d578-4173-a2fb-fb4843a9983e\"\n    }\n}",
         "title": "Recoverable Time Query"
+      }
+    ],
+    "DescribeDBSBackupPolicy": [
+      {
+        "document": "Query instance backup strategy info",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBSBackupPolicy\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql3-3f17e49d\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"BackupEndTime\": \"04:00\",\n                \"BackupMethod\": \"physical\",\n                \"BackupStartTime\": \"00:00\",\n                \"DBType\": \"tdstore\",\n                \"DBVersion\": \"21.6.1\",\n                \"EnableFull\": 1,\n                \"EnableLog\": 1,\n                \"ExpectedNextBackupPeriod\": \"2026-03-27 00:00:00 ~ 2026-03-27 04:00:00\",\n                \"FullRetentionPeriod\": 7,\n                \"ID\": 3260,\n                \"InstanceId\": \"tdsql3-3f17e49d\",\n                \"LogRetentionPeriod\": 7,\n                \"PeriodTime\": \"0,1,2,3,4,5,6\",\n                \"PeriodType\": 0,\n                \"Region\": \"ap-chengdu\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"ae01ddd4-36fd-44af-a71c-7f786f01e6c7\"\n    }\n}",
+        "title": "Querying instance backup strategy info"
+      }
+    ],
+    "DescribeDBSBackupSets": [
+      {
+        "document": "Query backup set list",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBSBackupSets\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql3-3f17e49d\",\n    \"EndTime\": \"2026-03-27 10:00:00\",\n    \"FilterBy\": {\n        \"BackupMethod\": \"physical,snapshot\",\n        \"BackupStatus\": \"running,success\",\n        \"BackupType\": \"full\",\n        \"ManualBackup\": \"0,1\"\n    },\n    \"Limit\": 1,\n    \"Offset\": 0,\n    \"OrderType\": \"DESC\",\n    \"StartTime\": \"2026-03-23 10:00:00\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"BackupDuration\": 75,\n                \"BackupMethod\": \"physical\",\n                \"BackupName\": \"tdsql3-3f17e49d_20260327000013\",\n                \"BackupProgress\": 100,\n                \"BackupSetId\": 73180813688075,\n                \"BackupStatus\": \"success\",\n                \"BackupType\": \"full\",\n                \"DBVersion\": \"21.6.1\",\n                \"EndTime\": \"2026-03-27 00:01:28\",\n                \"EndTrxTime\": \"2026-03-27 00:00:49\",\n                \"ErrorMessage\": \"\",\n                \"ExpiredTime\": \"2026-04-03 00:01:28\",\n                \"FileName\": \"tdstore-data\",\n                \"FileSize\": 9437184,\n                \"InstanceId\": \"tdsql3-3f17e49d\",\n                \"ManualBackup\": 0,\n                \"StartTime\": \"2026-03-27 00:00:13\"\n            }\n        ],\n        \"TotalCount\": 5,\n        \"RequestId\": \"66a71db2-18c5-445e-a28b-39ab02c1774e\"\n    }\n}",
+        "title": "Query Backup Set List"
+      }
+    ],
+    "DescribeDBSBackupStatistics": [
+      {
+        "document": "Backup overview statistics",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBSBackupStatistics\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql3-3f17e49d\",\n    \"EndTime\": \"2026-03-26 20:10:00\",\n    \"StartTime\": \"2026-03-20 10:10:00\"\n}",
+        "output": "{\n    \"Response\": {\n        \"BackupMethodStatistics\": {\n            \"AutoBackupSize\": 37748736,\n            \"AverageSizePerDay\": 18874368,\n            \"ManualBackupSize\": 0,\n            \"TotalSize\": 37748736\n        },\n        \"BackupStatistics\": {\n            \"AverageSizePerDay\": 50508288,\n            \"DataBackupSize\": 37748736,\n            \"LogBackupSize\": 63267840,\n            \"TotalCount\": 8,\n            \"TotalSize\": 101016576\n        },\n        \"DataBackupStatistics\": {\n            \"AutoBackupCount\": 0,\n            \"AutoBackupSize\": 0,\n            \"AverageSizePerBackup\": 9437184,\n            \"AverageSizePerDay\": 18874368,\n            \"ManualBackupCount\": 0,\n            \"ManualBackupSize\": 0,\n            \"TotalCount\": 4,\n            \"TotalSize\": 37748736\n        },\n        \"LogBackupStatistics\": {\n            \"AverageSizePerBackup\": 15816960,\n            \"AverageSizePerDay\": 31633920,\n            \"TotalCount\": 4,\n            \"TotalSize\": 63267840\n        },\n        \"RequestId\": \"35fc7900-6809-4168-916e-e42be89c02cb\"\n    }\n}",
+        "title": "Backup Overview Statistics"
+      }
+    ],
+    "DescribeDBSBackupStatisticsDetail": [
+      {
+        "document": "Query Backup Set Statistical Detail",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBSBackupStatisticsDetail\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql3-3f17e49d\",\n    \"EndTime\": \"2026-03-23 22:00:00\",\n    \"StartTime\": \"2026-03-23 00:00:00\"\n}",
+        "output": "{\n    \"Response\": {\n        \"BackupMethodStatistics\": {\n            \"AutoBackupSize\": [\n                9437184\n            ],\n            \"ManualBackupSize\": [\n                0\n            ]\n        },\n        \"BackupTime\": [\n            \"2026-03-23\"\n        ],\n        \"BackupTypeStatistics\": {\n            \"DataBackupSize\": [\n                9437184\n            ],\n            \"LogBackupSize\": [\n                2332672\n            ]\n        },\n        \"RequestId\": \"712340ca-ab30-4acb-a784-38473a2c57f0\"\n    }\n}",
+        "title": "Querying the Statistical Detail of Backup Sets"
       }
     ],
     "DescribeDBSCloneInstances": [
@@ -64,6 +136,26 @@
         "title": "1"
       }
     ],
+    "DescribeDatabases": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDatabases\n<Common request parameters>\n\n{\n    \"InstanceId\": \"\"tdsql3-01d1c3ed\"\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Databases\": [\n            {\n                \"DbName\": \"mysql\"\n            }\n        ],\n        \"InstanceId\": \"tdsql3-01d1c3ed\",\n        \"RequestId\": \"9b5e5e4a-30f2-46f8-91ee-788495d1e21f\"\n    }\n}",
+        "title": "1"
+      },
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDatabases\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql3-jko12hds\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Databases\": [],\n        \"InstanceId\": \"tdsql3-jko12hds\",\n        \"RequestId\": \"2efb7186-2e29-46d1-9bc7-05dc2b8240bf\"\n    }\n}",
+        "title": "123"
+      },
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDatabases\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql3-5baee8df\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Databases\": [\n            {\n                \"DbName\": \"information_schema\"\n            },\n            {\n                \"DbName\": \"mysql\"\n            },\n            {\n                \"DbName\": \"performance_schema\"\n            },\n            {\n                \"DbName\": \"sys\"\n            }\n        ],\n        \"InstanceId\": \"tdsql3-42f40429 \",\n        \"RequestId\": \"545457454fdasda\"\n    }\n}",
+        "title": "Querying the Database List of a TDSQL Instance"
+      }
+    ],
     "DescribeFlow": [
       {
         "document": "Query flow",
@@ -72,12 +164,76 @@
         "title": "Querying flow Status"
       }
     ],
+    "DescribeSaleInfo": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSaleInfo\n<Common request parameters>\n\n{\n    \"InstanceType\": \"serverless\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RegionList\": [\n            {\n                \"AvailableZoneNum\": 3,\n                \"Enable\": 1,\n                \"IsSupportServerless\": true,\n                \"IsSupportedLogReplica\": true,\n                \"Region\": \"ap-guangzhou\",\n                \"RegionName\": \"å¹¿å·ž\",\n                \"ZoneGroup\": [\n                    {\n                        \"AvailableDiskTypes\": [],\n                        \"IsSupportServerless\": true,\n                        \"SupportTypes\": [\n                            \"0\"\n                        ],\n                        \"ZoneNum\": 1,\n                        \"Zones\": [\n                            \"ap-guangzhou-7\"\n                        ]\n                    }\n                ],\n                \"ZoneList\": [\n                    {\n                        \"AvailableDiskTypes\": [],\n                        \"Enable\": 1,\n                        \"IsDefaultMaster\": 0,\n                        \"IsSupportServerless\": true,\n                        \"SupportTypes\": [\n                            \"0\"\n                        ],\n                        \"Zone\": \"ap-guangzhou-7\",\n                        \"ZoneName\": \"å¹¿å·žä¸ƒåŒº\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"cc7f4880-5ed6-4daa-a45f-df2a5780d573\"\n    }\n}",
+        "title": "Return purchasable regions"
+      }
+    ],
+    "DescribeSpecs": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSpecs\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"HybridNodeSpecs\": [\n            {\n                \"SpecCode\": \"1c2g\",\n                \"StorageNodeCpu\": 1,\n                \"StorageNodeMaxDisk\": 500,\n                \"StorageNodeMaxNum\": 18,\n                \"StorageNodeMem\": 2,\n                \"StorageNodeMinDisk\": 20,\n                \"StorageNodeMinNum\": 3,\n                \"StorageType\": \"CLOUD_HSSD\"\n            },\n            {\n                \"SpecCode\": \"2c4g\",\n                \"StorageNodeCpu\": 2,\n                \"StorageNodeMaxDisk\": 500,\n                \"StorageNodeMaxNum\": 18,\n                \"StorageNodeMem\": 4,\n                \"StorageNodeMinDisk\": 20,\n                \"StorageNodeMinNum\": 3,\n                \"StorageType\": \"CLOUD_HSSD\"\n            },\n            {\n                \"SpecCode\": \"4c8g\",\n                \"StorageNodeCpu\": 4,\n                \"StorageNodeMaxDisk\": 500,\n                \"StorageNodeMaxNum\": 18,\n                \"StorageNodeMem\": 8,\n                \"StorageNodeMinDisk\": 20,\n                \"StorageNodeMinNum\": 3,\n                \"StorageType\": \"CLOUD_HSSD\"\n            }\n        ],\n        \"RequestId\": \"f2bed855-af44-46c8-bd47-e84fd52e5b16\"\n    }\n}",
+        "title": "List Peer-to-Peer component specifications"
+      },
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSpecs\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"HybridNodeSpecs\": [\n            {\n                \"StorageNodeMaxDisk\": 0,\n                \"StorageNodeMinNum\": 0,\n                \"StorageNodeMinDisk\": 0,\n                \"SpecCode\": \"1c2g\",\n                \"StorageNodeCpu\": 0,\n                \"StorageNodeMem\": 0,\n                \"StorageNodeMaxNum\": 0,\n                \"StorageType\": \"CLOUD_HSSD\"\n            }\n        ],\n        \"RequestId\": \"f2bed855-af44-46c8-bd47-e84fd52e5b16\"\n    }\n}",
+        "title": "List available component specifications"
+      }
+    ],
+    "DescribeUserPrivileges": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeUserPrivileges\n<Common request parameters>\n\n{\n    \"UserName\": \"qt4s_test\",\n    \"InstanceId\": \"tdsql3-0b2f04e0\",\n    \"Object\": \"sbtest10\",\n    \"Host\": \"%\",\n    \"DbName\": \"test\",\n    \"ObjectType\": \"table\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Privileges\": [],\n        \"RequestId\": \"40b596e8-0b33-48ce-bd61-a2a5891a0920\"\n    }\n}",
+        "title": "1"
+      },
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeUserPrivileges\n<Common request parameters>\n\n{\n    \"UserName\": \"string\",\n    \"InstanceId\": \"tdsql3-267841d2\",\n    \"Object\": \"string\",\n    \"ColName\": \"String\",\n    \"Host\": \"%\",\n    \"DbName\": \"string\",\n    \"ObjectType\": \"string\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Privileges\": [],\n        \"RequestId\": \"cae0499f-194e-4fec-a46a-9c42eaaeb753\"\n    }\n}",
+        "title": "123"
+      },
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeUserPrivileges\n<Common request parameters>\n\n{\n    \"UserName\": \"string\",\n    \"InstanceId\": \"tdsql3-267841d2\",\n    \"Object\": \"string\",\n    \"ColName\": \"String\",\n    \"Host\": \"%\",\n    \"DbName\": \"string\",\n    \"ObjectType\": \"string\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Privileges\": [],\n        \"RequestId\": \"7ac86126-4006-43aa-9dad-267e2f5ff0d8\"\n    }\n}",
+        "title": "321"
+      },
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeUserPrivileges\n<Common request parameters>\n\n{\n    \"UserName\": \"qt4s_test\",\n    \"InstanceId\": \"tdsql3-789a2481\",\n    \"Host\": \"%\",\n    \"DbName\": \"test\",\n    \"ObjectType\": \"table\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Privileges\": null,\n        \"RequestId\": \"949d8d5e-3622-4a81-9c47-7af93613eeb5\"\n    }\n}",
+        "title": "null"
+      }
+    ],
+    "DescribeUsers": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeUsers\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql3-d8fffc3c\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Users\": [\n            {\n                \"UserName\": \"test_user\",\n                \"Description\": \"test\",\n                \"Host\": \"%\",\n                \"CreateTime\": \"2006-01-02 15:04:05\",\n                \"UpdateTime\": \"2006-01-02 15:04:05\"\n            }\n        ],\n        \"RequestId\": \"a93d2900-ef72-11eb-ab93-0716f253da76\"\n    }\n}",
+        "title": "Querying the User List"
+      }
+    ],
     "DestroyInstances": [
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DestroyInstances\n<Common request parameters>\n\n{\n    \"InstanceIds\": [\n        \"tdsql3-d8fffc3c\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"SuccessInstanceIds\": [\n            \"tdsql3-d8fffc3c\",\n            \"tdsql3-d8fffc4s\"\n        ],\n        \"FailedInstanceIds\": [\n            \"tdsql3-d8fffc4s\"\n        ],\n        \"RequestId\": \"a93d2900-ef72-11eb-ab93-0716f253da76\"\n    }\n}",
         "title": "Batch Isolate Instances"
+      }
+    ],
+    "ExpandInstance": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ExpandInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql3-ecab00ac\",\n    \"StorageNodeNum\": 4,\n    \"Zones\": [\n        \"ap-chengdu-1\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 4295036759,\n        \"RequestId\": \"5b104d05-7e16-4869-87fe-dbd2e8f30b70\"\n    }\n}",
+        "title": "Scale Out a Two-Replica Instance"
       }
     ],
     "IsolateDBInstance": [
@@ -114,17 +270,17 @@
     ],
     "ModifyDBSBackupPolicy": [
       {
-        "document": "Modify instance backup strategy",
-        "input": "POST / HTTP/1.1\nHost: dbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyBackupPolicy\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql3-31l2r0yn912rg\",\n    \"BackupPolicy\": {\n        \"FullRetentionPeriod\": 7,\n        \"LogRetentionPeriod\": 8,\n        \"PeriodTime\": \"0,1,2,3,4,5,6\",\n        \"BackupMethod\": \"physical\",\n        \"BackupStartTime\": \"00:00\",\n        \"BackupEndTime\": \"04:00\",\n        \"StorageType\": \"COS\"\n    }\n}",
-        "output": "{\n    \"Response\": {\n        \"IsSuccess\": true,\n        \"Msg\": \"Modify backup policy successfully\",\n        \"RequestId\": \"5cf77a8a-94e8-4fae-8abf-a48284f75606\"\n    }\n}",
-        "title": "Modifying the Instance Backup Strategy"
+        "document": "Modify the instance backup strategy",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBSBackupPolicy\n<Common request parameters>\n\n{\n    \"BackupPolicy\": {\n        \"BackupEndTime\": \"04:00\",\n        \"BackupMethod\": \"physical\",\n        \"BackupStartTime\": \"00:00\",\n        \"EnableFull\": 1,\n        \"EnableLog\": 1,\n        \"FullRetentionPeriod\": 7,\n        \"InstanceId\": \"tdsql3-3f17e49d\",\n        \"PeriodTime\": \"0,1,2,3,4,5,6\",\n        \"StorageType\": \"COS\"\n    },\n    \"InstanceId\": \"tdsql3-3f17e49d\"\n}",
+        "output": "{\n    \"Response\": {\n        \"IsSuccess\": true,\n        \"Msg\": \"Modify backup policy successfully\",\n        \"RequestId\": \"823cf9b7-d0b0-4a77-a16c-058634190809\"\n    }\n}",
+        "title": "Modify the instance backup strategy"
       }
     ],
     "ModifyDBSBackupSetComment": [
       {
-        "document": "Modify backup set remark",
-        "input": "POST / HTTP/1.1\nHost: dbs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyBackupSetComment\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql3-31l2r0yn912rg\",\n    \"BackupSetId\": 28217173338212,\n    \"NewBackupName\": \"test-manual\"\n}",
-        "output": "{\n    \"Response\": {\n        \"IsSuccess\": true,\n        \"Msg\": \"Modify backup set successfully\",\n        \"RequestId\": \"fa6a683c-5625-402b-9ab1-7b2a82a85fee\"\n    }\n}",
+        "document": "Modify the backup set remark",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBSBackupSetComment\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql3-3f17e49d\",\n    \"BackupSetId\": 73094409561375,\n    \"NewBackupName\": \"newBackName\"\n}",
+        "output": "{\n    \"Response\": {\n        \"IsSuccess\": true,\n        \"Msg\": \"Modify backup set successfully\",\n        \"RequestId\": \"570461d1-4936-4f07-8a5f-952c9161544f\"\n    }\n}",
         "title": "Modify Backup Set Remark"
       }
     ],
@@ -134,6 +290,30 @@
         "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyInstanceName\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql3-e732378b\",\n    \"InstanceName\": \"new-instance-name\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"a9ddd5d0-ef72-11eb-ab93-0716f253da76\"\n    }\n}",
         "title": "Modifying the Instance Name"
+      }
+    ],
+    "ModifyUserPrivileges": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyUserPrivileges\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql3-0b2f04e0\",\n    \"Users\": [\n        {\n            \"UserName\": \"mysql.sys\",\n            \"Host\": \"localhost\"\n        }\n    ],\n    \"GlobalPrivileges\": [\n        \"SELECT\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"4c2c4b96-5807-4c63-b55c-78a93937d111\"\n    }\n}",
+        "title": "Modify user permissions"
+      }
+    ],
+    "RestartDBInstances": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RestartDBInstances\n<Common request parameters>\n\n{\n    \"InstanceIds\": [\n        \"tdsql3-bcedf765\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 4295036740,\n        \"RequestId\": \"6ebdb0db-fb1c-417b-b865-f98a58398615\"\n    }\n}",
+        "title": "Restarting Instances"
+      }
+    ],
+    "UpgradeInstance": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpgradeInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql3-bcedf765\",\n    \"SpecCode\": \"1c2g\",\n    \"Disk\": 20,\n    \"StorageNodeCpu\": 1,\n    \"StorageNodeMem\": 2,\n    \"StorageType\": \"CLOUD_TCS\"\n}",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 4295036957,\n        \"RequestId\": \"c2341b01-296a-4fd3-9f5c-009c0f232d09\"\n    }\n}",
+        "title": "Enhanced Instance Vertical Scaling"
       }
     ]
   },

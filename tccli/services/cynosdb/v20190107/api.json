@@ -4263,7 +4263,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "AZ",
+          "document": "<p>AZ.</p>",
           "example": "ap-guangzhou-3",
           "member": "string",
           "name": "Zone",
@@ -4272,7 +4272,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC ID",
+          "document": "<p>VPC network ID</p>",
           "example": "vpc-1ptuei0b",
           "member": "string",
           "name": "VpcId",
@@ -4281,7 +4281,7 @@
         },
         {
           "disabled": false,
-          "document": "Subnet ID",
+          "document": "<p>Subnet ID</p>",
           "example": "subnet-1tmw9t4o",
           "member": "string",
           "name": "SubnetId",
@@ -4290,7 +4290,7 @@
         },
         {
           "disabled": false,
-          "document": "Database type. Valid values: \n<li> MYSQL </li>",
+          "document": "<p>Database type</p><p>Enumeration value:</p><ul><li>MYSQL: MYSQL</li></ul>",
           "example": "MYSQL",
           "member": "string",
           "name": "DbType",
@@ -4299,7 +4299,7 @@
         },
         {
           "disabled": false,
-          "document": "Database version. Valid values: \n<li> Valid values for `MYSQL`: 5.7 and 8.0 </li>",
+          "document": "<p>Database version</p><p>Enumeration value:</p><ul><li>5.7: MySQL 5.7 edition</li><li>8.0: MySQL 8.0 edition</li></ul>",
           "example": "5.7",
           "member": "string",
           "name": "DbVersion",
@@ -4308,7 +4308,7 @@
         },
         {
           "disabled": false,
-          "document": "Project ID.",
+          "document": "<p>project-ID</p>",
           "example": "0",
           "member": "int64",
           "name": "ProjectId",
@@ -4317,7 +4317,7 @@
         },
         {
           "disabled": false,
-          "document": "It is required when `DbMode` is set to `NORMAL` or left empty.\nNumber of CPU cores of normal instance",
+          "document": "<p>Required when DbMode is NORMAL or left blank<br>Cpu cores of the regular instance</p>",
           "example": "1",
           "member": "int64",
           "name": "Cpu",
@@ -4326,7 +4326,7 @@
         },
         {
           "disabled": false,
-          "document": "It is required when `DbMode` is set to `NORMAL` or left empty.\nMemory of a non-serverless instance in GB",
+          "document": "<p>Required when DbMode is NORMAL or left blank<br>Ordinary instance memory in GB</p>",
           "example": "4",
           "member": "int64",
           "name": "Memory",
@@ -4335,7 +4335,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance count. valid values: a quantity range from 0 to 16. the default value is 2 (that is, one rw instance + one ro instance). the transmitted n represents 1 rw instance + (n - 1) ro instances (with identical specifications). if a more precise cluster composition collocation is required, please use InstanceInitInfos.",
+          "document": "<p>Instance count</p><p>Value ranges from [1, 16]</p><p>Default value: 2</p><ul><li>A value of 2 means one rw instance + one ro instance.</li><li>The transmitted n refers to one rw instance + n-1 ro instances (identical specifications).</li><li>For a more precise cluster composition collocation, please use InstanceInitInfos.</li><li>The value set by this parameter is suitable for provisioned resource cluster. If needed to set the specifications and quantity of Serverless cluster, please use the InstanceInitInfo structure in InstanceInitInfos.n.</li></ul>",
           "example": "1",
           "member": "int64",
           "name": "InstanceCount",
@@ -4344,7 +4344,7 @@
         },
         {
           "disabled": false,
-          "document": "This parameter has been deprecated.\nStorage capacity in GB",
+          "document": "<p>This parameter is meaningless and abandoned.<br>Storage size, in GB.</p>",
           "example": "100",
           "member": "int64",
           "name": "Storage",
@@ -4353,7 +4353,7 @@
         },
         {
           "disabled": false,
-          "document": "Cluster name, which can contain less than 64 letters, digits, or symbols (-_.).",
+          "document": "<p>Cluster name, length less than 64 characters, each character value ranges from uppercase/lowercase letters, digits, special symbols ('-', '_', '.')</p>",
           "example": "MyClusterName",
           "member": "string",
           "name": "ClusterName",
@@ -4362,7 +4362,7 @@
         },
         {
           "disabled": false,
-          "document": "Account password, which must contain 8-64 characters in at least three of the following four types: uppercase letters, lowercase letters, digits, and symbols (~!@#$%^&*_-+=`|\\(){}[]:;'<>,.?/).",
+          "document": "<p>Account (8-64 characters, a combination of uppercase and lowercase letters, digits and symbols ~!@#$%^&amp;*_-+=`|(){}[]:;&#39;&lt;&gt;,.?/ with any three types required)</p>",
           "example": "passwd@admin",
           "member": "string",
           "name": "AdminPassword",
@@ -4371,7 +4371,7 @@
         },
         {
           "disabled": false,
-          "document": "Port. Valid range: [0, 65535). Default value: 3306",
+          "document": "<p>Port, default 3306, in the range of [0, 65535)</p>",
           "example": "3306",
           "member": "int64",
           "name": "Port",
@@ -4380,7 +4380,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing mode. supported values: 0 and 1. default value: 0.\nValue is 0, indicating pay-as-you-go billing.\nValue is 1, which means yearly/monthly subscription.",
+          "document": "<p>Billing mode</p><p>Enumeration value:</p><ul><li>0: Pay-as-you-go billing</li><li>1: Monthly Subscription</li></ul><p>Default value: 0</p>",
           "example": "0",
           "member": "int64",
           "name": "PayMode",
@@ -4389,7 +4389,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of purchased clusters. Valid range: [1,50]. Default value: 1",
+          "document": "<p>Number of clusters to purchase. Optional value range: [1,50]. Default is 1.</p>",
           "example": "1",
           "member": "int64",
           "name": "Count",
@@ -4398,7 +4398,7 @@
         },
         {
           "disabled": false,
-          "document": "Rollback type:\nnoneRollback: no rollback;\nsnapRollback: rollback by snapshot;\ntimeRollback: rollback by time point",
+          "document": "<p>Rollback type</p><p>Enumeration value:</p><ul><li>noneRollback: No rollback</li><li>snapRollback: Snapshot rollback</li><li>timeRollback: Point-in-time rollback</li></ul>",
           "example": "noneRollback",
           "member": "string",
           "name": "RollbackStrategy",
@@ -4407,7 +4407,7 @@
         },
         {
           "disabled": false,
-          "document": "`snapshotId` for snapshot rollback or `queryId` for time point rollback. 0 indicates to determine whether the time point is valid",
+          "document": "<p>Snapshot rollback means snapshotId; point-in-time rollback means queryId. A value of 0 indicates requirement to judge whether the time point is valid.</p>",
           "example": "0",
           "member": "uint64",
           "name": "RollbackId",
@@ -4416,7 +4416,7 @@
         },
         {
           "disabled": false,
-          "document": "The source cluster ID passed in during rollback to find the source `poolId`",
+          "document": "<p>During rollback, input the source cluster ID to search for the source poolId</p>",
           "example": "cynosdbmysql-xxxxxxxx",
           "member": "string",
           "name": "OriginalClusterId",
@@ -4425,7 +4425,7 @@
         },
         {
           "disabled": false,
-          "document": "Specified time for time point rollback or snapshot time for snapshot rollback",
+          "document": "<p>Point-in-time rollback, specified time; snapshot rollback, snapshot time</p>",
           "example": "2021-04-26 18:13:10",
           "member": "string",
           "name": "ExpectTime",
@@ -4434,7 +4434,7 @@
         },
         {
           "disabled": false,
-          "document": "This parameter has been deprecated.\nSpecified allowed time range for time point rollback",
+          "document": "<p>This parameter is meaningless and abandoned.<br>Point-in-time rollback, allowed range of specified time.</p>",
           "example": "0",
           "member": "uint64",
           "name": "ExpectTimeThresh",
@@ -4443,7 +4443,7 @@
         },
         {
           "disabled": false,
-          "document": "Storage upper limit of normal instance in GB\nIf `DbType` is `MYSQL` and the storage billing mode is yearly/monthly subscription, the parameter value can't exceed the maximum storage corresponding to the CPU and memory specifications.",
+          "document": "<p>Ordinary instance storage cap, in GB<br>When DbType is MYSQL and the storage billing mode is prepaid, this parameter should not exceed the maximum storage specification corresponding to cpu and memory.</p>",
           "example": "100",
           "member": "int64",
           "name": "StorageLimit",
@@ -4452,7 +4452,7 @@
         },
         {
           "disabled": false,
-          "document": "Purchase duration of yearly/monthly subscription plan",
+          "document": "<p>Annual and monthly subscription duration</p>",
           "example": "1",
           "member": "int64",
           "name": "TimeSpan",
@@ -4461,7 +4461,7 @@
         },
         {
           "disabled": false,
-          "document": "Duration unit of yearly/monthly subscription. Valid values: `s`, `d`, `m`, `y`",
+          "document": "<p>Annual and monthly subscription duration unit, ['s', 'd', 'm', 'y']</p>",
           "example": "m",
           "member": "string",
           "name": "TimeUnit",
@@ -4470,7 +4470,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies whether the annual/yearly/monthly subscription is auto-renewed. the default value is 0.\n0 indicates the default renewal method. 1 means auto-renewal. 2 means no auto-renewal.",
+          "document": "<p>Whether Annual/Monthly Subscription is auto-renewed</p><p>Enumeration value:</p><ul><li>0: Default renewal method</li><li>1: Auto-renewal</li><li>2: No auto-renewal</li></ul><p>Default value: 0</p>",
           "example": "0",
           "member": "int64",
           "name": "AutoRenewFlag",
@@ -4479,7 +4479,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to automatically select a voucher. `1`: yes; `0`: no. Default value: `0`",
+          "document": "<p>Whether to automatically select voucher 1 Yes 0 No Default value: 0</p><p>Enumeration value:</p><ul><li>1: Yes</li><li>0: No</li></ul><p>Default value: 0</p>",
           "example": "0",
           "member": "int64",
           "name": "AutoVoucher",
@@ -4488,7 +4488,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of instances (this parameter has been disused and is retained only for compatibility with existing instances)",
+          "document": "<p>Instance count (this parameter is deprecated and only for existing accommodative)</p>",
           "example": "1",
           "member": "int64",
           "name": "HaCount",
@@ -4497,7 +4497,7 @@
         },
         {
           "disabled": false,
-          "document": "Order source",
+          "document": "<p>Order source</p>",
           "example": "MyOrderSource",
           "member": "string",
           "name": "OrderSource",
@@ -4506,7 +4506,7 @@
         },
         {
           "disabled": false,
-          "document": "Array of tags to be bound to the created cluster",
+          "document": "<p>tag Array info that should be bound for cluster creation</p>",
           "example": "无",
           "member": "Tag",
           "name": "ResourceTags",
@@ -4515,7 +4515,7 @@
         },
         {
           "disabled": false,
-          "document": "Database type\nValid values when `DbType` is `MYSQL` (default value: `NORMAL`):\n<li>NORMAL</li>\n<li>SERVERLESS</li>",
+          "document": "<p>Db type</p><p>Enumeration value:</p><ul><li>NORMAL: NORMAL instance</li><li>SERVERLESS: SERVERLESS instance</li></ul><p>Default value: NORMAL</p><p>Selectable when DbType is MYSQL (default NORMAL)</p>",
           "example": "NORMAL",
           "member": "string",
           "name": "DbMode",
@@ -4524,7 +4524,7 @@
         },
         {
           "disabled": false,
-          "document": "This parameter is required if `DbMode` is `SERVERLESS`.\nMinimum number of CPU cores. For the value range, see the returned result of `DescribeServerlessInstanceSpecs`.",
+          "document": "<p>Required when DbMode is SERVERLESS<br>Minimum value of cpu. For optional range, see API response of DescribeServerlessInstanceSpecs</p>",
           "example": "1.0",
           "member": "float",
           "name": "MinCpu",
@@ -4533,7 +4533,7 @@
         },
         {
           "disabled": false,
-          "document": "This parameter is required if `DbMode` is `SERVERLESS`.\nMaximum number of CPU cores. For the value range, see the returned result of `DescribeServerlessInstanceSpecs`.",
+          "document": "<p>Required when DbMode is SERVERLESS:<br>Maximum value of cpu. For optional range, see API response of DescribeServerlessInstanceSpecs.</p>",
           "example": "2.0",
           "member": "float",
           "name": "MaxCpu",
@@ -4542,7 +4542,7 @@
         },
         {
           "disabled": false,
-          "document": "This parameter specifies whether the cluster will be automatically paused if `DbMode` is `SERVERLESS`. Valid values:\n<li>yes</li>\n<li>no</li>\nDefault value: yes",
+          "document": "<p>No auto pause</p><p>Enumeration value:</p><ul><li>yes: Yes</li><li>no: No</li></ul><p>Default value: yes</p><p>Take effect when DbMode is SERVERLESS</p>",
           "example": "yes",
           "member": "string",
           "name": "AutoPause",
@@ -4551,7 +4551,7 @@
         },
         {
           "disabled": false,
-          "document": "This parameter specifies the delay for automatic cluster pause in seconds if `DbMode` is `SERVERLESS`. Value range: [600,691200]\nDefault value: `600`",
+          "document": "<p>When DbMode is SERVERLESS, specify the delay for Cluster Auto-Pause in seconds. Optional range: [600,691200]<br>Default value: 600</p>",
           "example": "600",
           "member": "int64",
           "name": "AutoPauseDelay",
@@ -4560,7 +4560,7 @@
         },
         {
           "disabled": false,
-          "document": "The billing mode of cluster storage. Valid values: `0` (pay-as-you-go), `1` (yearly/monthly subscription). Default value: `0`.\nIf `DbType` is `MYSQL` and the billing mode of cluster compute is pay-as-you-go (or the `DbMode` is `SERVERLESS`), the billing mode of cluster storage must be pay-as-you-go.\nClusters with storage billed in yearly/monthly subscription can't be cloned or rolled back.",
+          "document": "<p>The storage billing mode of the cluster. Pay-As-You-Go: 0, Monthly Subscription: 1. Default is Pay-As-You-Go.<br>When DbType is MYSQL and the compute billing mode of the cluster is postpaid (including DbMode as SERVERLESS), the storage billing mode can only be Pay-As-You-Go.<br>Rollback and clone do not support Monthly Subscription storage.</p>",
           "example": "0",
           "member": "int64",
           "name": "StoragePayMode",
@@ -4569,7 +4569,7 @@
         },
         {
           "disabled": false,
-          "document": "Array of security group IDs",
+          "document": "<p>Security group id array</p>",
           "example": "[\"sg-ajr1jzgj\"]",
           "member": "string",
           "name": "SecurityGroupIds",
@@ -4578,7 +4578,7 @@
         },
         {
           "disabled": false,
-          "document": "Array of alarm policy IDs",
+          "document": "<p>Alarm policy Id array</p>",
           "example": "[\"policy-jylgsf32\"]",
           "member": "string",
           "name": "AlarmPolicyIds",
@@ -4587,7 +4587,7 @@
         },
         {
           "disabled": false,
-          "document": "Array of parameters. Valid values: `character_set_server` (utf8/latin1/gbk/utf8mb4), `lower_case_table_names`. 0: case-sensitive; 1: case-insensitive).",
+          "document": "<p>Parameter array, temporarily supports character_set_server (utf8|latin1|gbk|utf8mb4), lower_case_table_names, 1-case-insensitive, 0-case-sensitive</p>",
           "example": "无",
           "member": "ParamItem",
           "name": "ClusterParams",
@@ -4596,7 +4596,7 @@
         },
         {
           "disabled": false,
-          "document": "Transaction mode. Valid values: `0` (place and pay for an order), `1` (place an order)",
+          "document": "<p>Transaction mode</p><p>Enumeration value:</p><ul><li>0: Place order and pay</li><li>1: Place order</li></ul><p>Default value: 0</p>",
           "example": "0",
           "member": "int64",
           "name": "DealMode",
@@ -4605,7 +4605,7 @@
         },
         {
           "disabled": false,
-          "document": "Parameter template ID, which can be obtained by querying parameter template information \"DescribeParamTemplates\"",
+          "document": "<p>Parameter template ID. The parameter template ID can be obtained through querying parameter template information DescribeParamTemplates.</p>",
           "example": "0",
           "member": "int64",
           "name": "ParamTemplateId",
@@ -4614,7 +4614,7 @@
         },
         {
           "disabled": false,
-          "document": "Multi-AZ address",
+          "document": "<p>Multi-AZ address</p>",
           "example": "ap-guangzhou-2",
           "member": "string",
           "name": "SlaveZone",
@@ -4623,7 +4623,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance initialization configuration information, which is used to select instances with different specifications when purchasing a cluster.",
+          "document": "<p>Instance initialization configuration information is mainly used to select different specification instances during cluster purchase.</p>",
           "example": "无",
           "member": "InstanceInitInfo",
           "name": "InstanceInitInfos",
@@ -4632,7 +4632,7 @@
         },
         {
           "disabled": false,
-          "document": "Global database unique identifier.",
+          "document": "<p>Global database unique ID</p>",
           "example": "cynosmysql-gdn-dbsgxagb",
           "member": "string",
           "name": "GdnId",
@@ -4641,7 +4641,7 @@
         },
         {
           "disabled": false,
-          "document": "Database proxy configuration.",
+          "document": "<p>Database proxy configuration</p>",
           "example": "无",
           "member": "ProxyConfig",
           "name": "ProxyConfig",
@@ -4650,7 +4650,7 @@
         },
         {
           "disabled": false,
-          "document": "Automatically archive.",
+          "document": "<p>Auto archive or not</p><p>Enumeration value:</p><ul><li>yes: Yes</li><li>no: No</li></ul><p>Default value: no</p><p>This parameter takes effect only when the primary instance of the current cluster is SERVERLESS</p>",
           "example": "yes",
           "member": "string",
           "name": "AutoArchive",
@@ -4659,7 +4659,7 @@
         },
         {
           "disabled": false,
-          "document": "Archiving processing time after pausing.",
+          "document": "<p>Archiving processing time after pausing</p><p>Measurement unit: hour</p><p>Default value: 12</p><p>This parameter takes effect only when the primary instance of the current cluster is SERVERLESS.</p>",
           "example": "12",
           "member": "int64",
           "name": "AutoArchiveDelayHours",
@@ -4668,7 +4668,16 @@
         },
         {
           "disabled": false,
-          "document": "Kernel minor version number.",
+          "document": "<p>Cluster level, optional. Example: P0, P1. (This field can be ignored)</p>",
+          "example": "P0",
+          "member": "string",
+          "name": "ClusterLevel",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Kernel minor version</p>",
           "example": "3.1.16.002",
           "member": "string",
           "name": "CynosVersion",
@@ -4683,7 +4692,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Frozen transaction ID.",
+          "document": "<p>Frozen transaction ID</p>",
           "example": "20190522160000003106844584180998",
           "member": "string",
           "name": "TranId",
@@ -4693,7 +4702,7 @@
         },
         {
           "disabled": false,
-          "document": "Order ID",
+          "document": "<p>Order ID</p>",
           "example": "[\"20190522112283\"]",
           "member": "string",
           "name": "DealNames",
@@ -4703,7 +4712,7 @@
         },
         {
           "disabled": false,
-          "document": "Resource ID list (this field is no longer maintained. please use the dealNames field and the DescribeResourcesByDealName query API to obtain resource ids.).",
+          "document": "<p>Resource ID list (This field is no longer maintained. Please use the dealNames field to query the API DescribeResourcesByDealName to obtain resource IDs)</p>",
           "example": "[\"cynosdbpg-ins-67rmucgk\"]",
           "member": "string",
           "name": "ResourceIds",
@@ -4713,7 +4722,7 @@
         },
         {
           "disabled": false,
-          "document": "Cluster ID list. this field is no longer maintained. please use the dealNames field and the DescribeResourcesByDealName query API to get the cluster ID.",
+          "document": "<p>Cluster ID list (This field is no longer maintained. Please use the dealNames field and the query API DescribeResourcesByDealName to get the cluster ID)</p>",
           "example": "[\"cynosdbmysql-sls-9nts65r2\"]",
           "member": "string",
           "name": "ClusterIds",
@@ -4723,7 +4732,7 @@
         },
         {
           "disabled": false,
-          "document": "Big order ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Large Order ID</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[\"2019052211228311\"]",
           "member": "string",
           "name": "BigDealIds",
@@ -14350,7 +14359,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance CPU",
+          "document": "<p>Instance cpu</p>",
           "example": "1",
           "member": "int64",
           "name": "Cpu",
@@ -14359,7 +14368,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance memory",
+          "document": "<p>Instance memory</p>",
           "example": "2",
           "member": "int64",
           "name": "Memory",
@@ -14368,7 +14377,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance type. Valid values:`rw`, `ro`.",
+          "document": "<p>Instance type rw/ro</p>",
           "example": "rw",
           "member": "string",
           "name": "InstanceType",
@@ -14377,7 +14386,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of the instances. Value range: 1-15.",
+          "document": "<p>Number of instances, range [1,15]</p>",
           "example": "1",
           "member": "int64",
           "name": "InstanceCount",
@@ -14386,7 +14395,7 @@
         },
         {
           "disabled": false,
-          "document": "Minimum number of serverless instances. Value range: 1-15.",
+          "document": "<p>Minimum count of Serverless instance, range [1,15]</p>",
           "example": "1",
           "member": "int64",
           "name": "MinRoCount",
@@ -14395,7 +14404,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum number of serverless instances. Value range: 1-15.",
+          "document": "<p>Maximum count of Serverless instances, range [1,15]</p>",
           "example": "1",
           "member": "int64",
           "name": "MaxRoCount",
@@ -14404,7 +14413,7 @@
         },
         {
           "disabled": false,
-          "document": "Minimum specifications for serverless instance",
+          "document": "<p>Minimum specification of Serverless instance</p>",
           "example": "0.5",
           "member": "float",
           "name": "MinRoCpu",
@@ -14413,7 +14422,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum specifications for serverless instance",
+          "document": "<p>Maximum specification of Serverless instance</p>",
           "example": "1.0",
           "member": "float",
           "name": "MaxRoCpu",
@@ -14422,7 +14431,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance machine type.\n1. common: general.\n2. exclusive: exclusive.",
+          "document": "<p>Instance Machine Type</p><ol><li>common, universal type.</li><li>exclusive, dedicated.</li></ol>",
           "example": "exclusive",
           "member": "string",
           "name": "DeviceType",
@@ -19171,9 +19180,9 @@
       "document": "Access proxy configuration.",
       "members": [
         {
-          "disabled": false,
-          "document": "Number of database proxy group nodes. this parameter is no longer recommended. recommend using ProxyZones.",
-          "example": "cynosdbmysql-xxxxxxx",
+          "disabled": true,
+          "document": "<p>Number of database proxy group nodes. This parameter is no longer recommended. Recommend using ProxyZones.</p>",
+          "example": "1",
           "member": "int64",
           "name": "ProxyCount",
           "required": false,
@@ -19181,7 +19190,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of CPU cores",
+          "document": "<p>cpu cores</p>",
           "example": "2",
           "member": "int64",
           "name": "Cpu",
@@ -19190,7 +19199,7 @@
         },
         {
           "disabled": false,
-          "document": "Memory.",
+          "document": "<p>Memory</p>",
           "example": "4000",
           "member": "int64",
           "name": "Mem",
@@ -19199,7 +19208,7 @@
         },
         {
           "disabled": false,
-          "document": "Connection pool type: SessionConnectionPool (session-level connection pool).",
+          "document": "<p>Connection pool type: SessionConnectionPool (session-level connection pool)</p>",
           "example": "SessionConnectionPool",
           "member": "string",
           "name": "ConnectionPoolType",
@@ -19208,7 +19217,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable the connection pool. valid values: yes (enable), no (not enabled).",
+          "document": "<p>Whether the connection pool is enabled, yes-enable, no-disable</p>",
           "example": "yes",
           "member": "string",
           "name": "OpenConnectionPool",
@@ -19217,7 +19226,7 @@
         },
         {
           "disabled": false,
-          "document": "Connection pool threshold. measurement unit (seconds).",
+          "document": "<p>Connection pool threshold: Measurement unit (seconds)</p>",
           "example": "0",
           "member": "int64",
           "name": "ConnectionPoolTimeOut",
@@ -19226,7 +19235,7 @@
         },
         {
           "disabled": false,
-          "document": "Description.",
+          "document": "<p>description</p>",
           "example": "只读代理",
           "member": "string",
           "name": "Description",
@@ -19235,7 +19244,7 @@
         },
         {
           "disabled": false,
-          "document": "Database node information (this parameter is used in combination with ProxyCount, either one must be manually input).",
+          "document": "<p>Database node information (this parameter is used in combination with ProxyCount and either one must be input)</p>",
           "example": "无",
           "member": "ProxyZone",
           "name": "ProxyZones",

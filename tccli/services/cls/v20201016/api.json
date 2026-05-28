@@ -8105,9 +8105,10 @@
         {
           "disabled": false,
           "document": "Machine group type. Valid values: `ip`: the IP addresses of collection machines are stored in `Values` of the machine group; `label`: the tags of the machines are stored in `Values` of the machine group",
-          "example": "",
+          "example": "ip",
           "member": "string",
           "name": "Type",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -8115,10 +8116,11 @@
         {
           "disabled": false,
           "document": "Machine description list",
-          "example": "",
+          "example": "[10.1.1.1,10.2.2.2]",
           "member": "string",
           "name": "Values",
-          "required": true,
+          "output_required": true,
+          "required": false,
           "type": "list",
           "value_allowed_null": false
         }

@@ -119,6 +119,13 @@
       "output": "DescribeCustomerInfoResponse",
       "status": "online"
     },
+    "DescribeCustomerOwnCostExplorerFilter": {
+      "document": "Cost analysis API advanced filtering",
+      "input": "DescribeCustomerOwnCostExplorerFilterRequest",
+      "name": "Query cost analysis option list",
+      "output": "DescribeCustomerOwnCostExplorerFilterResponse",
+      "status": "online"
+    },
     "DescribeCustomerOwnVoucherList": {
       "document": "This API is used to query the voucher list by Customer. \nCallable roles: Customer.",
       "input": "DescribeCustomerOwnVoucherListRequest",
@@ -908,6 +915,32 @@
       ],
       "usage": "out"
     },
+    "BillQueryFilterMsg": {
+      "document": "Query condition content kv format for bills",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Query condition key: various codes</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "p_cbs",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Query condition value: Display name</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cloud block storage",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "BusinessInfo": {
       "document": "Product information",
       "members": [
@@ -1025,6 +1058,92 @@
           "name": "TotalCost",
           "output_required": true,
           "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CostAnalyzeFilterDetail": {
+      "document": "Advanced filtering for cost analysis",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Product key-value pair.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BillQueryFilterMsg",
+          "name": "Business",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Region key-value pair</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BillQueryFilterMsg",
+          "name": "Region",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Availability zone key-value pair</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BillQueryFilterMsg",
+          "name": "Zone",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Transaction type key-value pair</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BillQueryFilterMsg",
+          "name": "ActionType",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Key-value pair of payment mode</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BillQueryFilterMsg",
+          "name": "PayMode",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project key-value pair</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BillQueryFilterMsg",
+          "name": "Project",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Payer uin information</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BillQueryFilterMsg",
+          "name": "PayerUin",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sub-account uin information</p>",
+          "example": "无",
+          "member": "BillQueryFilterMsg",
+          "name": "OwnerUin",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -2379,6 +2498,61 @@
           "name": "Data",
           "output_required": false,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCustomerOwnCostExplorerFilterRequest": {
+      "document": "DescribeCustomerOwnCostExplorerFilter request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Start time</p><p>Parameter format: YYYY-MM-DD hh:mm:ss, for example 2006-01-02 00:00:00</p><p>Input limit: When PeriodType is month, the time range is 6 calendar months. When PeriodType is day, the time range is 2 calendar months;</p>",
+          "example": "2024-09-01 00:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>End time</p><p>Parameter format: YYYY-MM-DD hh:mm:ss, for example 2006-01-02 00:00:00</p><p>Input limit: When PeriodType is month, the time range is 6 calendar months. When PeriodType is day, the time range is 2 calendar months.</p>",
+          "example": "2024-09-12 23:59:59",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Date type</p><p>Enumeration value:</p><ul><li>day: By day</li><li>month: Monthly</li></ul>",
+          "example": "month",
+          "member": "string",
+          "name": "PeriodType",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCustomerOwnCostExplorerFilterResponse": {
+      "document": "DescribeCustomerOwnCostExplorerFilter response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Filter information</p>",
+          "example": "无",
+          "member": "CostAnalyzeFilterDetail",
+          "name": "Data",
+          "output_required": false,
+          "type": "object",
           "value_allowed_null": false
         },
         {

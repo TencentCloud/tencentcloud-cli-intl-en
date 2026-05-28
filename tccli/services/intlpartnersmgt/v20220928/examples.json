@@ -172,6 +172,14 @@
         "title": "Querying Sub-Customer Information"
       }
     ],
+    "DescribeCustomerOwnCostExplorerFilter": [
+      {
+        "document": "Used for querying the Option List of the cost analysis API",
+        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCustomerOwnCostExplorerFilter\n<Common request parameters>\n\n{\n    \"StartTime\": \"2024-09-01 00:00:00\",\n    \"EndTime\": \"2024-09-12 23:59:59\",\n    \"PeriodType\": \"month\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"ActionType\": [\n                {\n                    \"Key\": \"prepay_return\",\n                    \"Value\": \" Monthly subscription refund\"\n                }\n            ],\n            \"Business\": [\n                {\n                    \"Key\": \"p_cbs\",\n                    \"Value\": \"cloud block storage\"\n                }\n            ],\n            \"OwnerUin\": [\n                {\n                    \"Key\": \"80000*******\",\n                    \"Value\": \"**********-tes****uin (800000******)\"\n                }\n            ],\n            \"PayMode\": [\n                {\n                    \"Key\": \"prePay\",\n                    \"Value\": \"Monthly subscription\"\n                }\n            ],\n            \"PayerUin\": [\n                {\n                    \"Key\": \"80000*******\",\n                    \"Value\": \"***(80000*******)\"\n                }\n            ],\n            \"Project\": [\n                {\n                    \"Key\": \"default\",\n                    \"Value\": \"default\"\n                }\n            ],\n            \"Region\": [\n                {\n                    \"Key\": \"1\",\n                    \"Value\": \"South China (Guangzhou)\"\n                }\n            ],\n            \"Zone\": [\n                {\n                    \"Key\": \"100002\",\n                    \"Value\": \"Guangzhou Zone 2\"\n                }\n            ]\n        },\n        \"RequestId\": \"79e94658-fb30-40e4-be16-3edfd0391b35\"\n    }\n}",
+        "title": "DescribeCustomerOwnCostExplorerFilter"
+      }
+    ],
     "DescribeCustomerOwnVoucherList": [
       {
         "document": "This example shows you how to query successfully.",
