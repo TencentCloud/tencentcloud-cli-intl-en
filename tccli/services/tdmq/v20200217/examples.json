@@ -89,9 +89,9 @@
     "CreateRabbitMQUser": [
       {
         "document": "This example shows you how to create a TDMQ for RabbitMQ user.",
-        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRabbitMQUser\n<Common request parameters>\n\n{\n    \"InstanceId\": \"amqp-2ppxx4rq\",\n    \"User\": \"test_user\",\n    \"Password\": \"abc123._\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a8f28d5e-a7e2-4b0b-afa0-2fba09c077a0\",\n        \"User\": \"test_user\"\n    }\n}",
-        "title": "Creating a RabbitMQ User"
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRabbitMQUser\n<Common request parameters>\n\n{\n    \"InstanceId\": \"amqp-7jwe5pr5\",\n    \"User\": \"grace\",\n    \"Password\": \"abcABC123\",\n    \"EnableCamAuth\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"User\": \"grace\",\n        \"RequestId\": \"83a4c4d3-43d9-456a-bf80-c8a5aa27c26a\"\n    }\n}",
+        "title": "Creating a TDMQ RabbitMQ User"
       }
     ],
     "CreateRabbitMQVipInstance": [
@@ -140,6 +140,14 @@
         "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRocketMQGroup\n<Common request parameters>\n\n{\n    \"Remark\": \"Test creation\",\n    \"BroadcastEnable\": \"false\",\n    \"ClusterId\": \"rocketmq-2p9vx3ax9jxg\",\n    \"RetryMaxTimes\": \"16\",\n    \"Namespace\": \"test_namespace\",\n    \"ReadEnable\": \"true\",\n    \"GroupType\": \"TCP\",\n    \"GroupId\": \"test_group\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"0604a303-6d5f-40e6-9dfe-6c4ddd8fe2df\"\n    }\n}",
         "title": "Create consumer groups."
+      }
+    ],
+    "CreateRocketMQMigrationTask": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: tdmq.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRocketMQMigrationTask\n<Common request parameters>\n\n{\n    \"Namespace\": \"test_ns\",\n    \"Topics\": [\n        {\n            \"Namespace\": \"test_ns\",\n            \"Remark\": \"test topic info.\",\n            \"Type\": \"Normal\",\n            \"TopicName\": \"test_topic\",\n            \"Partitions\": \"2\"\n        }\n    ],\n    \"ClusterId\": \"rocketmq-9npap34p9pa4\",\n    \"Type\": \"0\",\n    \"Groups\": [\n        {\n            \"ConsumeBroadcastEnable\": \"true\",\n            \"GroupName\": \"test_group\",\n            \"Remark\": \"test group info.\",\n            \"Namespace\": \"test_ns\",\n            \"ConsumeEnable\": \"true\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"0484ec00-1ae3-4dec-872d-279d3ab83346\"\n    }\n}",
+        "title": "Add a migration task"
       }
     ],
     "CreateRocketMQNamespace": [

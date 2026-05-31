@@ -1087,7 +1087,7 @@
     "ModifyPrometheusConfig": [
       {
         "document": "This example shows you how to add a configuration.",
-        "input": "https://monitor.tencentcloudapi.com/?Action=ModifyPrometheusConfig\n&InstanceId=prom-xxx\n&ClusterType=tke\n&ClusterId=cls-xxx\n&<Common request parameters>",
+        "input": "https://monitor.intl.tencentcloudapi.com/?Action=ModifyPrometheusConfig\n&InstanceId=prom-xxx\n&ClusterType=tke\n&ClusterId=cls-xxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Adding a configuration"
       }
@@ -1111,7 +1111,7 @@
     "ModifyPrometheusRecordRuleYaml": [
       {
         "document": "This example shows you how to modify a recording rule.",
-        "input": "https://monitor.tencentcloudapi.com/?Action=ModifyPrometheusRecordRuleYaml\n&InstanceId=prom-xxx\n&Name=sss\n&Content=xxx\n&<Common request parameters>",
+        "input": "https://monitor.intl.tencentcloudapi.com/?Action=ModifyPrometheusRecordRuleYaml\n&InstanceId=prom-xxx\n&Name=sss\n&Content=xxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Modifying a recording rule"
       }

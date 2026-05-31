@@ -91,6 +91,13 @@
       "output": "MainlandPermitOCRResponse",
       "status": "online"
     },
+    "PODAuditAI": {
+      "document": "The POD intelligent review deeply integrates multimodal large model image understanding technology, targeting the logistics last-mile delivery scenario to provide high-precision POD compliance audit service. The system auto-recognizes ticket imperfections and risks of non-compliance, helping businesses achieve standardized control in the delivery process and effectively avoid customer complaints and disputes caused by non-compliant credentials.",
+      "input": "PODAuditAIRequest",
+      "name": "POD Smart Audit Service",
+      "output": "PODAuditAIResponse",
+      "status": "online"
+    },
     "PermitOCR": {
       "document": "This API is used to recognize the fields on an exit/entry permit (card) for traveling to and from Hong Kong, Macao, or Taiwan, including place of issuance, issuing authority, validity period, gender, date of birth, name in English, name in Chinese, and document number.\n\nA maximum of 10 requests can be initiated per second for this API.",
       "input": "PermitOCRRequest",
@@ -641,6 +648,52 @@
           "name": "FlightItems",
           "required": false,
           "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AnalyzedLog": {
+      "document": "Intelligent review log",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Indexes of the procedure.</p><p>Enumeration value:</p><ul><li>L1_IMAGE_QUALITY: Image quality detection</li><li>L2_RULE_ENGINE: Rule verification</li><li>L3_LLM_JUDGE: Large model judgment</li></ul>",
+          "example": "L1_IMAGE_QUALITY",
+          "member": "string",
+          "name": "StepKey",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Compliant and non-compliant are final states; to be determined is an intermediate state. Judgment status of each layer: Compliant Non-Compliant Pending.</p>",
+          "example": "Pending",
+          "member": "string",
+          "name": "Decision",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Reason for the current layer judgment</p>",
+          "example": "图像质量无法判定，已移交规则引擎复核：L1 未给出确定结论",
+          "member": "string",
+          "name": "DecisionMessage",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Time taken by the current layer</p><p>Unit: ms</p>",
+          "example": "561",
+          "member": "int64",
+          "name": "CostTime",
+          "output_required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -5518,6 +5571,100 @@
         }
       ],
       "usage": "out"
+    },
+    "PODAuditAIRequest": {
+      "document": "PODAuditAI request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The Base64 value of the image/PDF. The Base64 must be no more than 10M, resolution is recommended to be 600*800 or higher, and supports PNG, JPG, JPEG, BMP, PDF formats. Either ImageUrl or ImageBase64 of the image must be provided. If both are provided, only use ImageUrl. Example value: /9j/4AAQSkZJRg.....s97n//2Q==</p>",
+          "example": "[\"data:image/jpeg\"]",
+          "member": "string",
+          "name": "ImageBase64List",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The Url address of the image/PDF. The image after Base64 encoding should be no more than 10M, with a resolution of 600*800 or higher, and supports PNG, JPG, JPEG, BMP, and PDF formats. The image download time should not exceed 3 seconds. Images stored in Tencent Cloud's Url can guarantee higher download speed and stability. It is recommended to store images in Tencent Cloud. The speed and stability of non-Tencent Cloud storage URLs may be impacted to a certain extent. Example value: https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/general/GeneralAccurateOCR/GeneralAccurateOCR1.JPG</p>",
+          "example": "[\"https\"]",
+          "member": "string",
+          "name": "ImageUrlList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Waybill number is used for pod rule review assistance</p>",
+          "example": "GFUS01038480376513",
+          "member": "string",
+          "name": "WaybillNumber",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>No      The acknowledge type, 0 is selected by default</p><p>Enumeration value:</p><ul><li>0: Doorstep/yard</li><li>1: Parcel reception room</li><li>2: Myself/others acknowledge</li><li>3: Front desk/reception</li><li>4: Express delivery collection point</li><li>5: Express cabinet</li></ul>",
+          "example": "2",
+          "member": "int64",
+          "name": "SignType",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "PODAuditAIResponse": {
+      "document": "PODAuditAI response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>0 means non-compliance 1 means compliance</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "AuditorDecision",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Reason code for non-compliance. If there are multiple, return a list of multiple codes.</p><p>Enumeration value:</p><ul><li>100: Wrong delivery address</li><li>101: No house number</li><li>104: Single question</li><li>200: No package</li><li>202: Privacy leakage</li></ul>",
+          "example": "[\"101\"]",
+          "member": "string",
+          "name": "FailCode",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Entire approval result analysis content</p>",
+          "example": "步骤1：通过，单号A=CR000411956883,B=CR000411956883,一致。步骤2：不通过，有效：无；疑似备选：[]。",
+          "member": "string",
+          "name": "ResultAnalysis",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Analysis result logs of each layer, including time taken, judgment reason, and judgment conclusion</p>",
+          "example": "无",
+          "member": "AnalyzedLog",
+          "name": "AnalyzedLogs",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "PassportRecognizeInfos": {
       "document": "Information Section Content.",
