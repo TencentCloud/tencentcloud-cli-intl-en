@@ -2152,7 +2152,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Order ID for payment. Description: Recommend you use the <a href=\"https://www.tencentcloud.com/document/product/1003/52131?from_cn_redirect=1\">DescribeResourcesByDealName</a> api to query order associated instance.</p>",
+          "document": "<p>Order ID for payment. Description: Recommend you use the <a href=\"https://www.tencentcloud.com/document/product/1098/40735\">DescribeResourcesByDealName</a> api to query order associated instance.</p>",
           "example": "[\"182711111\"]",
           "member": "string",
           "name": "DealNames",
