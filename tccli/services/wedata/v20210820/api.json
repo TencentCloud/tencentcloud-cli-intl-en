@@ -13227,7 +13227,7 @@
         {
           "disabled": false,
           "document": "Event Consumption Task Record List\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "{\"Items\":[],\"PageCount\":0,\"PageNumber\":1,\"PageSize\":20,\"TotalCount\":0,\"TotalPage\":0}",
+          "example": "无",
           "member": "EventCaseConsumeLogOptDtoCollection",
           "name": "Data",
           "output_required": true,
@@ -42524,7 +42524,7 @@
         {
           "disabled": false,
           "document": "Task IDNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "2025****6518",
           "member": "string",
           "name": "TaskId",
           "output_required": true,
@@ -42535,10 +42535,10 @@
         {
           "disabled": false,
           "document": "Virtual Task ID\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "202***6518",
           "member": "string",
           "name": "VirtualTaskId",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -42546,10 +42546,10 @@
         {
           "disabled": false,
           "document": "Virtual Task Marker\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "true",
           "member": "bool",
           "name": "VirtualFlag",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "bool",
           "value_allowed_null": true
@@ -42557,7 +42557,7 @@
         {
           "disabled": false,
           "document": "Task NameNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "myTask",
           "member": "string",
           "name": "TaskName",
           "output_required": true,
@@ -42568,7 +42568,7 @@
         {
           "disabled": false,
           "document": "Workflow IDNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "0004e***7dcad1c04e",
           "member": "string",
           "name": "WorkflowId",
           "output_required": true,
@@ -42579,10 +42579,10 @@
         {
           "disabled": false,
           "document": "Actual Workflow ID when the task is a virtual task\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "23404e***7dcad1c04e",
           "member": "string",
           "name": "RealWorkflowId",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -42590,10 +42590,10 @@
         {
           "disabled": false,
           "document": "Workflow nameNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "myWorkFlow",
           "member": "string",
           "name": "WorkflowName",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -42601,10 +42601,10 @@
         {
           "disabled": false,
           "document": "Folder ID\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "62d7d****9f277de5",
           "member": "string",
           "name": "FolderId",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -42612,10 +42612,10 @@
         {
           "disabled": false,
           "document": "Folder Name\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "FolderName",
           "member": "string",
           "name": "FolderName",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -42623,10 +42623,10 @@
         {
           "disabled": false,
           "document": "Creation TimeNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "2025-10-11 12:22:00",
           "member": "string",
           "name": "CreateTime",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -42634,10 +42634,10 @@
         {
           "disabled": false,
           "document": "Latest Update Time\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "2025-10-11 12:22:00",
           "member": "string",
           "name": "LastUpdate",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -42645,7 +42645,7 @@
         {
           "disabled": false,
           "document": "Task StatusNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "1",
           "member": "string",
           "name": "Status",
           "output_required": true,
@@ -42656,10 +42656,10 @@
         {
           "disabled": false,
           "document": "Person in ChargeNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "test1",
           "member": "string",
           "name": "InCharge",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -42667,10 +42667,10 @@
         {
           "disabled": false,
           "document": "Responsible User ID\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "100****468",
           "member": "string",
           "name": "InChargeId",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -42678,10 +42678,10 @@
         {
           "disabled": false,
           "document": "Scheduling Effective Date\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "2025-10-11 12:22:00",
           "member": "string",
           "name": "StartTime",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -42689,10 +42689,10 @@
         {
           "disabled": false,
           "document": "Scheduling End Date\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "2025-10-11 12:22:00",
           "member": "string",
           "name": "EndTime",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -42700,10 +42700,10 @@
         {
           "disabled": false,
           "document": "Execution Time Left Closed Interval\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "2025-10-11 12:22:00",
           "member": "string",
           "name": "ExecutionStartTime",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -42711,10 +42711,10 @@
         {
           "disabled": false,
           "document": "Execution Time Right Closed Interval\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "2025-10-11 12:22:00",
           "member": "string",
           "name": "ExecutionEndTime",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -42722,7 +42722,7 @@
         {
           "disabled": false,
           "document": "Cycle Type\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "2025-10-11 12:22:00",
           "member": "string",
           "name": "CycleType",
           "output_required": true,
@@ -42733,10 +42733,10 @@
         {
           "disabled": false,
           "document": "Step Length\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "CycleStep",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "int",
           "value_allowed_null": true
@@ -42744,10 +42744,10 @@
         {
           "disabled": false,
           "document": "Scheduling Cron Expression\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "0 0 0 * * ? *",
           "member": "string",
           "name": "CrontabExpression",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -42755,10 +42755,10 @@
         {
           "disabled": false,
           "document": "Delayed Execution Time, unit=minutes\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "100",
           "member": "uint64",
           "name": "DelayTime",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "int",
           "value_allowed_null": true
@@ -42766,10 +42766,10 @@
         {
           "disabled": false,
           "document": "Start Execution Time\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "0",
           "member": "uint64",
           "name": "StartupTime",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "int",
           "value_allowed_null": true
@@ -42777,10 +42777,10 @@
         {
           "disabled": false,
           "document": "Retry Wait Time, unit=minutes\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "RetryWait",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "int",
           "value_allowed_null": true
@@ -42788,10 +42788,10 @@
         {
           "disabled": false,
           "document": "Whether to Retry, 1 represents retryable\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "0",
           "member": "uint64",
           "name": "RetryAble",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "int",
           "value_allowed_null": true
@@ -42799,10 +42799,10 @@
         {
           "disabled": false,
           "document": "Scheduling Configuration - Elastic Cycle Configuration, available for Hour/Weekly/Month/Year schedules. For hourly tasks scheduled at 0, 3, 4 o'clock, it would be '0,3,4'\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "0",
           "member": "string",
           "name": "TaskAction",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -42810,10 +42810,10 @@
         {
           "disabled": false,
           "document": "Limit on Number of Runs\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "4",
           "member": "uint64",
           "name": "TryLimit",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "int",
           "value_allowed_null": true
@@ -42821,10 +42821,10 @@
         {
           "disabled": false,
           "document": "Running Priority\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "4",
           "member": "uint64",
           "name": "RunPriority",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "int",
           "value_allowed_null": true
@@ -42843,10 +42843,10 @@
         {
           "disabled": false,
           "document": "Specified Running Nodes\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "10.2.3.4",
           "member": "string",
           "name": "BrokerIp",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -42854,10 +42854,10 @@
         {
           "disabled": false,
           "document": "Cluster Name\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "admddxx",
           "member": "string",
           "name": "ClusterId",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -42865,10 +42865,10 @@
         {
           "disabled": false,
           "document": "Minimum Data Time\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "2025-10-11 12:22:00",
           "member": "string",
           "name": "MinDateTime",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -42876,10 +42876,10 @@
         {
           "disabled": false,
           "document": "Maximum Data Time\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "2025-10-11 12:22:00",
           "member": "string",
           "name": "MaxDateTime",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -42887,10 +42887,10 @@
         {
           "disabled": false,
           "document": "Runtime Timeout\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "1",
           "member": "int64",
           "name": "ExecutionTTL",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "int",
           "value_allowed_null": true
@@ -42898,10 +42898,10 @@
         {
           "disabled": false,
           "document": "Self-Dependency Type\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "self",
           "member": "string",
           "name": "SelfDepend",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -42909,10 +42909,10 @@
         {
           "disabled": false,
           "document": "Left Coordinate\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "0.0",
           "member": "float",
           "name": "LeftCoordinate",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "float",
           "value_allowed_null": true
@@ -42920,10 +42920,10 @@
         {
           "disabled": false,
           "document": "Top Coordinate\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "0.0",
           "member": "float",
           "name": "TopCoordinate",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "float",
           "value_allowed_null": true
@@ -42931,10 +42931,10 @@
         {
           "disabled": false,
           "document": "Task Remark\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "note",
           "member": "string",
           "name": "Notes",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -42942,10 +42942,10 @@
         {
           "disabled": false,
           "document": "Task Initialization Strategy\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "T+1",
           "member": "string",
           "name": "InstanceInitStrategy",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -42953,10 +42953,10 @@
         {
           "disabled": false,
           "document": "Compute Queue\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "qq",
           "member": "string",
           "name": "YarnQueue",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -42964,10 +42964,10 @@
         {
           "disabled": false,
           "document": "Latest Schedule Submission Time\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "2025-10-11 12:22:00",
           "member": "string",
           "name": "LastSchedulerCommitTime",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -42975,10 +42975,10 @@
         {
           "disabled": false,
           "document": "Task Start Time Calculated by cron Expression\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "2025-10-11 00:00:00",
           "member": "string",
           "name": "NormalizedJobStartTime",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -42986,10 +42986,10 @@
         {
           "disabled": false,
           "document": "Scheduling Plan Description\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "desc",
           "member": "string",
           "name": "SchedulerDesc",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -42997,10 +42997,10 @@
         {
           "disabled": false,
           "document": "Compute Resource Group\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "resource",
           "member": "string",
           "name": "ResourceGroup",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43008,10 +43008,10 @@
         {
           "disabled": false,
           "document": "Task Creator\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "test1",
           "member": "string",
           "name": "Creator",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43019,10 +43019,10 @@
         {
           "disabled": false,
           "document": "Task Dependency Type: and, or\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "dep",
           "member": "string",
           "name": "DependencyRel",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43030,10 +43030,10 @@
         {
           "disabled": false,
           "document": "Task Workflow Dependency: yes, no\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "self",
           "member": "string",
           "name": "DependencyWorkflow",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43041,10 +43041,10 @@
         {
           "disabled": false,
           "document": "Event Listening Configuration\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "event",
           "member": "string",
           "name": "EventListenerConfig",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43052,10 +43052,10 @@
         {
           "disabled": false,
           "document": "Event-driven Configuration\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "event",
           "member": "string",
           "name": "EventPublisherConfig",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43063,10 +43063,10 @@
         {
           "disabled": false,
           "document": "Virtual Task Status\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "0",
           "member": "string",
           "name": "VirtualTaskStatus",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43077,7 +43077,7 @@
           "example": "无",
           "member": "LinkOpsDto",
           "name": "TaskLinkInfo",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "object",
           "value_allowed_null": true
@@ -43085,10 +43085,10 @@
         {
           "disabled": false,
           "document": "Task Product TypeNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "dev",
           "member": "string",
           "name": "ProductName",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43096,10 +43096,10 @@
         {
           "disabled": false,
           "document": "Project IDNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "197***296",
           "member": "string",
           "name": "ProjectId",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43107,10 +43107,10 @@
         {
           "disabled": false,
           "document": "Project IdentifierNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "test1",
           "member": "string",
           "name": "ProjectIdent",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43118,10 +43118,10 @@
         {
           "disabled": false,
           "document": "Project nameNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "test2",
           "member": "string",
           "name": "ProjectName",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43129,10 +43129,10 @@
         {
           "disabled": false,
           "document": "Main Account userId\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "100*7778",
           "member": "string",
           "name": "OwnId",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43140,10 +43140,10 @@
         {
           "disabled": false,
           "document": "User userId\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "100*764",
           "member": "string",
           "name": "UserId",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43151,10 +43151,10 @@
         {
           "disabled": false,
           "document": "Tenant ID\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "100**897",
           "member": "string",
           "name": "TenantId",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43162,10 +43162,10 @@
         {
           "disabled": false,
           "document": "Updater's Nickname\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "test2",
           "member": "string",
           "name": "UpdateUser",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43173,10 +43173,10 @@
         {
           "disabled": false,
           "document": "Update timeNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "2025-10-11 12:22:00",
           "member": "string",
           "name": "UpdateTime",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43184,10 +43184,10 @@
         {
           "disabled": false,
           "document": "Updater's userId\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "100***773",
           "member": "string",
           "name": "UpdateUserId",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43195,10 +43195,10 @@
         {
           "disabled": false,
           "document": "Task Type ID\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "26",
           "member": "int64",
           "name": "TaskTypeId",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "int",
           "value_allowed_null": true
@@ -43206,10 +43206,10 @@
         {
           "disabled": false,
           "document": "Task Type Description\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "desc",
           "member": "string",
           "name": "TaskTypeDesc",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43217,10 +43217,10 @@
         {
           "disabled": false,
           "document": "Whether to Display Workflow\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "true",
           "member": "bool",
           "name": "ShowWorkflow",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "bool",
           "value_allowed_null": true
@@ -43228,10 +43228,10 @@
         {
           "disabled": false,
           "document": "First Submission Time\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "2025-10-11 12:22:00",
           "member": "string",
           "name": "FirstSubmitTime",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43239,10 +43239,10 @@
         {
           "disabled": false,
           "document": "First Execution Time\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "2025-10-11 12:22:00",
           "member": "string",
           "name": "FirstRunTime",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43250,10 +43250,10 @@
         {
           "disabled": false,
           "document": "Scheduling Description\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "desc",
           "member": "string",
           "name": "ScheduleDesc",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43261,10 +43261,10 @@
         {
           "disabled": false,
           "document": "CycleNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "1",
           "member": "int64",
           "name": "CycleNum",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "int",
           "value_allowed_null": true
@@ -43272,10 +43272,10 @@
         {
           "disabled": false,
           "document": "ExpressionsNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "0 0 0 * * ? *",
           "member": "string",
           "name": "Crontab",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43283,10 +43283,10 @@
         {
           "disabled": false,
           "document": "Start Date\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "2025-10-11 12:22:00",
           "member": "string",
           "name": "StartDate",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43294,10 +43294,10 @@
         {
           "disabled": false,
           "document": "End Date\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "2025-10-11 12:22:00",
           "member": "string",
           "name": "EndDate",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43305,10 +43305,10 @@
         {
           "disabled": false,
           "document": "Cycle Unit\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "D",
           "member": "string",
           "name": "CycleUnit",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43316,10 +43316,10 @@
         {
           "disabled": false,
           "document": "Initialization Strategy\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "T+1",
           "member": "string",
           "name": "InitStrategy",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43327,10 +43327,10 @@
         {
           "disabled": false,
           "document": "Hierarchy\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "\"first\"",
           "member": "string",
           "name": "Layer",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43338,10 +43338,10 @@
         {
           "disabled": false,
           "document": "Source Data Source ID\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "124003",
           "member": "string",
           "name": "SourceServiceId",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43349,10 +43349,10 @@
         {
           "disabled": false,
           "document": "Source Data Source Type\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "source",
           "member": "string",
           "name": "SourceServiceType",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43360,10 +43360,10 @@
         {
           "disabled": false,
           "document": "Target Data Source ID\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "target",
           "member": "string",
           "name": "TargetServiceId",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43371,10 +43371,10 @@
         {
           "disabled": false,
           "document": "Target Data Source Type\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "servicetype",
           "member": "string",
           "name": "TargetServiceType",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43382,10 +43382,10 @@
         {
           "disabled": false,
           "document": "Subtask List\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "taskstr",
           "member": "string",
           "name": "TasksStr",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -43393,10 +43393,10 @@
         {
           "disabled": false,
           "document": "Whether the Task Version Has Been Submitted\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "true",
           "member": "bool",
           "name": "Submit",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "bool",
           "value_allowed_null": true
@@ -43404,7 +43404,7 @@
         {
           "disabled": false,
           "document": "Resource Group IDNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "xxxabc",
           "member": "string",
           "name": "ExecutorGroupId",
           "output_required": false,
@@ -43415,7 +43415,7 @@
         {
           "disabled": false,
           "document": "Resource Group NameNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "groupName",
           "member": "string",
           "name": "ExecutorGroupName",
           "output_required": false,

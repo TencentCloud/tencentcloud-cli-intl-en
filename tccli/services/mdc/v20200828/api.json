@@ -2329,6 +2329,15 @@
           "name": "Period",
           "required": true,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Peer IP address",
+          "example": "101.101.101.101",
+          "member": "string",
+          "name": "RemoteIp",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2342,7 +2351,7 @@
           "example": "无",
           "member": "FlowSRTInfo",
           "name": "Infos",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3148,7 +3157,7 @@
           "example": "1611288000",
           "member": "int64",
           "name": "Timestamp",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3158,7 +3167,7 @@
           "example": "0",
           "member": "int64",
           "name": "SendPacketLossRate",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3168,7 +3177,7 @@
           "example": "0",
           "member": "int64",
           "name": "SendRetransmissionRate",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3178,7 +3187,7 @@
           "example": "0",
           "member": "int64",
           "name": "RecvPacketLossRate",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3188,7 +3197,7 @@
           "example": "0",
           "member": "int64",
           "name": "RecvRetransmissionRate",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3198,7 +3207,7 @@
           "example": "100",
           "member": "int64",
           "name": "RTT",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3208,7 +3217,7 @@
           "example": "15346848",
           "member": "string",
           "name": "SessionId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3218,7 +3227,7 @@
           "example": "0",
           "member": "int64",
           "name": "SendPacketDropNumber",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3228,7 +3237,157 @@
           "example": "0",
           "member": "int64",
           "name": "RecvPacketDropNumber",
-          "required": true,
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "bandwidth",
+          "example": "227.82",
+          "member": "float",
+          "name": "Bandwidth",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Transmit bandwidth",
+          "example": "0",
+          "member": "float",
+          "name": "SendBandwidth",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Receive bandwidth",
+          "example": "8.92",
+          "member": "float",
+          "name": "RecvBandwidth",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of packets sent",
+          "example": "0",
+          "member": "int64",
+          "name": "SendPackets",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of received packets",
+          "example": "4569",
+          "member": "int64",
+          "name": "RecvPackets",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Send lost package",
+          "example": "0",
+          "member": "int64",
+          "name": "SendLostPackets",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Accept lost packages",
+          "example": "0",
+          "member": "int64",
+          "name": "RecvLostPackets",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of retransmission packets sent",
+          "example": "0",
+          "member": "int64",
+          "name": "SendRetransmitPackets",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of received retransmission packets",
+          "example": "0",
+          "member": "int64",
+          "name": "RecvRetransmitPackets",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Flight window size",
+          "example": "0",
+          "member": "int64",
+          "name": "FlightSize",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "congestion window",
+          "example": "7123",
+          "member": "int64",
+          "name": "CongestionWindow",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Send buffer (ms)",
+          "example": "0",
+          "member": "int64",
+          "name": "SendBuffer",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Receive buffer (ms)",
+          "example": "0",
+          "member": "int64",
+          "name": "RecvBuffer",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Sending delay",
+          "example": "0",
+          "member": "int64",
+          "name": "SendLatency",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Receiving delay",
+          "example": "0",
+          "member": "int64",
+          "name": "RecvLatency",
+          "output_required": false,
           "type": "int",
           "value_allowed_null": false
         }

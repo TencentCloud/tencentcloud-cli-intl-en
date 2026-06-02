@@ -473,7 +473,7 @@
         {
           "disabled": false,
           "document": "List of instance IDs in the format of dcdbt-ow728lmc, which can be obtained through the `DescribeDCDBInstances` API.",
-          "example": "[]",
+          "example": "[\"tdsqlshard-cq3ndzu7\",\"tdsqlshard-m7xhodc5\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -491,15 +491,17 @@
           "example": "[\"tdsqlshard-cq3ndzu7\"]",
           "member": "string",
           "name": "SuccessInstanceIds",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "IDs of instances failed to be removed from isolation",
-          "example": "[]",
+          "example": "[\"tdsqlshard-m7xhodc5\"]",
           "member": "string",
           "name": "FailedInstanceIds",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
