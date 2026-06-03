@@ -413,6 +413,13 @@
       "output": "DescribeCloneListResponse",
       "status": "online"
     },
+    "DescribeClusterInfo": {
+      "document": "This API is used to query cloud disk edition instance info.",
+      "input": "DescribeClusterInfoRequest",
+      "name": "Query a cloud disk edition instance",
+      "output": "DescribeClusterInfoResponse",
+      "status": "online"
+    },
     "DescribeDBFeatures": {
       "document": "This API is used to query cloud database version attributes, including whether database encryption and database audit are supported, and other features.",
       "input": "DescribeDBFeaturesRequest",
@@ -1360,6 +1367,82 @@
         }
       ],
       "type": "object"
+    },
+    "AddressInfo": {
+      "document": "Instance address information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Resource ID identifier of the address.",
+          "example": "cdb-rqd2jddd",
+          "member": "string",
+          "name": "ResourceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The vpc where the address resides.",
+          "example": "vpc-1qm52ddd",
+          "member": "string",
+          "name": "UniqVpcId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The subnet where the address resides.",
+          "example": "subnet-i1nhbddd",
+          "member": "string",
+          "name": "UniqSubnetId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "vip address.",
+          "example": "172.1.1.1",
+          "member": "string",
+          "name": "Vip",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The port of the address.",
+          "example": "3306",
+          "member": "int64",
+          "name": "VPort",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Public network address domain name.",
+          "example": "gz-cdb-*******.sql.tencentcdb.com",
+          "member": "string",
+          "name": "WanDomain",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Public network address port.",
+          "example": "25640",
+          "member": "int64",
+          "name": "WanPort",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "AdjustCdbProxyAddressRequest": {
       "document": "AdjustCdbProxyAddress request structure.",
@@ -4299,6 +4382,67 @@
           "member": "string",
           "name": "Zone",
           "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ClusterNodeInfo": {
+      "document": "Cluster Edition instance node information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "node id.",
+          "example": "dbn-xxx",
+          "member": "string",
+          "name": "NodeId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Node role.",
+          "example": "master/ro",
+          "member": "string",
+          "name": "Role",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Node AZ.",
+          "example": "ap-guangzhou-3",
+          "member": "string",
+          "name": "Zone",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Weight of the node",
+          "example": "100",
+          "member": "uint64",
+          "name": "Weight",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Node status.",
+          "example": "normal",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -9105,6 +9249,93 @@
           "name": "Items",
           "output_required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterInfoRequest": {
+      "document": "DescribeClusterInfo request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.\nDescription: Only able to input the instance ID of instances with cloud disk architecture, corresponding to console instance configurations displayed as \"Cloud Disk Edition (Cloud Disk)\".",
+          "example": "cdb-dctw4edd",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterInfoResponse": {
+      "document": "DescribeClusterInfo response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance name.",
+          "example": "cdb38936",
+          "member": "string",
+          "name": "ClusterName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Address information for reading and writing of the cloud disk edition instance.",
+          "example": "10.1.*.1:3306",
+          "member": "AddressInfo",
+          "name": "ReadWriteAddress",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Read-only address information of the cloud disk edition instance.",
+          "example": "10.1.*.2:3306",
+          "member": "AddressInfo",
+          "name": "ReadOnlyAddress",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Node list information of the Cloud Disk Edition instance.",
+          "example": "[{\"NodeId\": \"dbn-qqeo1111\",\"Role\": \"master\",\"Zone\": \"ap-guangzhou-1\",\"Weight\": 1,\"Status\": \"online\"},{\"NodeId\": \"dbn-qqeo2222\",\"Role\": \"slave\",\"Zone\": \"ap-guangzhou-2\",\"Weight\": 1,\"Status\": \"online\"}]",
+          "member": "ClusterNodeInfo",
+          "name": "NodeList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Read-only space protection threshold, GB",
+          "example": "2",
+          "member": "int64",
+          "name": "ReadonlyLimit",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of instance nodes.",
+          "example": "2",
+          "member": "int64",
+          "name": "NodeCount",
+          "output_required": false,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -15777,7 +16008,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID, which can be obtained through the [DescribeDBInstances](https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1) API.",
+          "document": "<p>Instance ID, which can be obtained through the <a href=\"https://www.tencentcloud.com/document/product/236/15872?from_cn_redirect=1\">DescribeDBInstances</a> API.</p>",
           "example": "cdb-234rsta",
           "member": "string",
           "name": "InstanceId",
@@ -15786,7 +16017,7 @@
         },
         {
           "disabled": false,
-          "document": "Log type. error: error log. slowlog: slow log.",
+          "document": "<p>Log type. Error: error log, slowlog: slow log.</p>",
           "example": "error",
           "member": "string",
           "name": "LogType",
@@ -15795,7 +16026,7 @@
         },
         {
           "disabled": false,
-          "document": "Delivery status. ON: Enabled, OFF: Disabled.",
+          "document": "<p>Delivery status. ON: enabled, OFF: disabled.</p>",
           "example": "ON",
           "member": "string",
           "name": "Status",
@@ -15804,7 +16035,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether required to create logset. Default to false.",
+          "document": "<p>Whether required to create logset. Default to false.</p>",
           "example": "true",
           "member": "bool",
           "name": "CreateLogset",
@@ -15813,7 +16044,7 @@
         },
         {
           "disabled": false,
-          "document": "Logset name when creating a logset; logset ID when selecting an existing log set. Empty by default.\nDescription: When the parameter Status is set to ON, you must fill in either the Logset or LogTopic parameter.",
+          "document": "<p>Logset name when creating a logset; logset ID when selecting an existing logset. Empty by default.<br>Description: When the Status parameter is ON, either the Logset or LogTopic parameter must be filled.</p>",
           "example": "my_test",
           "member": "string",
           "name": "Logset",
@@ -15822,7 +16053,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether required to create log topic. Default to false.",
+          "document": "<p>Whether required to create log topic. Default to false.</p>",
           "example": "true",
           "member": "bool",
           "name": "CreateLogTopic",
@@ -15831,7 +16062,7 @@
         },
         {
           "disabled": false,
-          "document": "Log topic name when creating a log topic; log topic ID when selecting an existing log topic. Empty by default.\nDescription: When the parameter Status is set to ON, you must fill in either the Logset or LogTopic parameter.",
+          "document": "<p>Enter a log topic name when creating a log topic, or enter a log topic ID when selecting an existing log topic. Empty by default.<br>Description: When the Status parameter is set to ON, either the Logset or LogTopic parameter must be specified.</p>",
           "example": "my_test",
           "member": "string",
           "name": "LogTopic",
@@ -15840,7 +16071,7 @@
         },
         {
           "disabled": false,
-          "document": "Log topic valid period. Default value: 30 days if left empty. Maximum value: 3600.",
+          "document": "<p>Valid period of the log topic. Default value: 30 days if left empty. Maximum value: 3600 days.</p>",
           "example": "30",
           "member": "int64",
           "name": "Period",
@@ -15849,7 +16080,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to create an index when creating a log topic. Default to false.",
+          "document": "<p>Whether to create an index when creating a log topic. Defaults to false.</p>",
           "example": "true",
           "member": "bool",
           "name": "CreateIndex",
@@ -15858,12 +16089,21 @@
         },
         {
           "disabled": false,
-          "document": "The region of CLS. If left empty, it defaults to the parameter value of Region.",
+          "document": "<p>CLS region. If left empty, it defaults to the Region parameter value.</p>",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "ClsRegion",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Selectable when creating a log topic. Cannot exceed 10 tags</p>",
+          "example": "无",
+          "member": "TagInfoItem",
+          "name": "ResourceTags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"

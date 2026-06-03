@@ -5309,7 +5309,7 @@
         },
         {
           "disabled": false,
-          "document": "Hong kong identity card version.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Hong Kong identity card version number, HKID-2003: 03 edition ID card, HKID-2018: 18 edition ID card\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "HKID-2003",
           "member": "string",
           "name": "HKIDVersion",
@@ -5703,8 +5703,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Is the indentity verification or OCR process passed",
-          "example": "无",
+          "document": "<p>Whether the identity authentication or OCR process is successful.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
           "member": "bool",
           "name": "IsPass",
           "output_required": false,
@@ -5713,8 +5713,8 @@
         },
         {
           "disabled": false,
-          "document": "The Base64 of ID card image\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "<p>Base64 of the ID image</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "/9j/4AAQS*******",
           "member": "string",
           "name": "CardImageBase64",
           "output_required": false,
@@ -5723,7 +5723,7 @@
         },
         {
           "disabled": true,
-          "document": "OCR result of the ID card.",
+          "document": "<p>ID card recognition result</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "CardInfo",
           "name": "CardInfo",
@@ -5733,7 +5733,7 @@
         },
         {
           "disabled": false,
-          "document": "OCR result of the ID card.",
+          "document": "<p>Document recognition result (when CheckMode value is 4, return the OriginalCardInfo field; other scenarios return the current field)</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "NormalCardInfo",
           "name": "NormalCardInfo",
@@ -5743,8 +5743,8 @@
         },
         {
           "disabled": false,
-          "document": "The request id",
-          "example": "无",
+          "document": "<p>Request id</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "946d***5e333d",
           "member": "string",
           "name": "RequestId",
           "output_required": false,
@@ -5753,7 +5753,7 @@
         },
         {
           "disabled": false,
-          "document": "Base64 of cropped image of ID card",
+          "document": "<p>Base64 of the cropped ID image</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "CardCutImageBase64",
@@ -5763,7 +5763,7 @@
         },
         {
           "disabled": false,
-          "document": "Base64 of the cropped image on the reverse side of the ID card",
+          "document": "<p>Base64 of the cropped image of the back side of the ID</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "CardBackCutImageBase64",
@@ -5773,12 +5773,22 @@
         },
         {
           "disabled": false,
-          "document": "Card Warning Information\n\n-9101 Alarm for covered certificate,\n-9102 Alarm for photocopied certificate,\n-9103 Alarm for photographed certificate,\n-9104 Alarm for PS certificate,\n-9107 Alarm for reflective certificate,\n-9108 Alarm for blurry image,\n-9109 This capability is not enabled.",
-          "example": "无",
+          "document": "<p>Alarm code</p><p>Enumeration value:</p><ul><li>-9101: Alarm for incomplete document border</li><li>-9102: Alarm for document photocopy</li><li>-9103: Alarm for rephotographing</li><li>-9104: PS alarm</li><li>-9107: Reflective alarm</li><li>-9108: Blurry alarm</li><li>-9109: Alarm capability not enabled</li></ul>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[ -9101]",
           "member": "int64",
           "name": "WarnCardInfos",
           "output_required": false,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Original document recognition information (the current field will be returned when CheckMode value is 4)</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\\\"CnName\\\":\\\"李**\\\",\\\"EnName\\\":\\\"LEE**\\\",\\\"WarnCardInfos\\\":[-9101,-9104],\\\"RequestId\\\":\\\"946d***5e333d\\\"}",
+          "member": "string",
+          "name": "OriginalCardInfo",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -6813,6 +6823,16 @@
           "name": "Seq",
           "output_required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Describe the detailed reason why the current request was rejected in the liveness phase. This parameter only applies to the PLUS edition eKYC service.\n-Details as follows:\n01-User eyes closed throughout\n02-User not completed specified action\n03-Suspected rephotography attack\n04-Suspected Synthesis Attack\n05-Suspected fraudulent template\n06-Suspected watermark\n07-Reflection validation failed\n08 - Suspected change of person midway\n09-Poor face quality\n10 - Distance validation failed\n11-Suspected adversarial sample attack\n12 - Suspected attack traces in the mouth area\n13 - Suspected attack traces exist in the eye area\n14 - Eye or mouth obstruction\nNote: This field may return null, indicating that no valid values can be obtained.\nExample value: [\"01\"].\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"04\"]",
+          "member": "string",
+          "name": "LivenessInfoTag",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": true
         }
       ],

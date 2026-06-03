@@ -533,7 +533,7 @@
     "ModifyImageSharePermission": [
       {
         "document": "This example shows you how to share the image `img-6pb6lrmy` to the account `1038493875`.",
-        "input": "https://cvm.tencentcloudapi.com/?Action=ModifyImageSharePermission\n&ImageId=img-6pb6lrmy\n&AccountIds.0=1038493875\n&Permission=SHARE\n&<Common request parameters>",
+        "input": "https://cvm.intl.tencentcloudapi.com/?Action=ModifyImageSharePermission\n&ImageId=img-6pb6lrmy\n&AccountIds.0=1038493875\n&Permission=SHARE\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"71e69b56-32be-4412-ab45-49eded6a87be\"\n    }\n}",
         "title": "Sharing an image"
       }

@@ -1689,7 +1689,7 @@
         },
         {
           "disabled": false,
-          "document": "Role id",
+          "document": "Role ID",
           "example": "[\"3083352602742340\", \"3083352606768904\"]",
           "member": "string",
           "name": "RoleIds",

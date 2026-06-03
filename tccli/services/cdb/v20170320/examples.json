@@ -508,6 +508,14 @@
         "title": "Querying the clone list"
       }
     ],
+    "DescribeClusterInfo": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeClusterInfo\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdb-dctw4edd\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ClusterName\": \"dbname\",\n        \"ReadWriteAddress\": {\n            \"ResourceId\": \"cdb-dctw4edd\",\n            \"UniqVpcId\": \"vpc-hendkj\",\n            \"UniqSubnetId\": \"subnet-eushjw\",\n            \"Vip\": \"192.168.3.4\",\n            \"VPort\": 3306,\n            \"WanDomain\": \"gz-cdb-*******.sql.tencentcdb.com\",\n            \"WanPort\": 23356\n        },\n        \"ReadOnlyAddress\": [\n            {\n                \"ResourceId\": \"cdbro-3a1eccdd\",\n                \"UniqVpcId\": \"vpc-ehndjs\",\n                \"UniqSubnetId\": \"subnet-euwhsn\",\n                \"Vip\": \"192.168.3.5\",\n                \"VPort\": 3306,\n                \"WanDomain\": \"gz-cdb-*******.sql.tencentcdb.com\",\n                \"WanPort\": 23356\n            }\n        ],\n        \"NodeList\": [\n            {\n                \"NodeId\": \"dbn-qqeo1111\",\n                \"Role\": \"master\",\n                \"Zone\": \"ap-guangzhou-1\",\n                \"Weight\": 1,\n                \"Status\": \"online\"\n            },\n            {\n                \"NodeId\": \"dbn-qqeo2222\",\n                \"Role\": \"slave\",\n                \"Zone\": \"ap-guangzhou-2\",\n                \"Weight\": 1,\n                \"Status\": \"online\"\n            }\n        ],\n        \"ReadonlyLimit\": 10,\n        \"NodeCount\": 2,\n        \"RequestId\": \"mnksadas-cb0d-4943-9b17-c3306ed3d\"\n    }\n}",
+        "title": "Query cloud disk edition instance info"
+      }
+    ],
     "DescribeDBFeatures": [
       {
         "document": "Query instance features, such as kernel minor version and whether audit is enabled.",
