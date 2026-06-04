@@ -38166,7 +38166,7 @@
         },
         {
           "disabled": false,
-          "document": "Business Products, options: <DATA_DEV / DATA_QUALITY / DATA_INTEGRATION, default DATA_DEV. Non-empty. Default own project",
+          "document": "Business Products, options: DATA_DEV, DATA_QUALITY, DATA_INTEGRATION, default DATA_DEV. Non-empty. Default own project",
           "example": "DATA_INTEGRATION",
           "member": "string",
           "name": "ProductName",
