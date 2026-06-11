@@ -2674,7 +2674,7 @@
         },
         {
           "disabled": false,
-          "document": "Owner of the database. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/api/409/18109?from_cn_redirect=1).",
+          "document": "Owner of the database. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/product/409/18109).",
           "example": "data_team",
           "member": "string",
           "name": "DatabaseOwner",
@@ -4611,7 +4611,7 @@
         },
         {
           "disabled": false,
-          "document": "Account name to be deleted. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/api/409/18109?from_cn_redirect=1).",
+          "document": "Account name to be deleted. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/product/409/18109).",
           "example": "readonly_user",
           "member": "string",
           "name": "UserName",
@@ -9193,7 +9193,7 @@
         },
         {
           "disabled": false,
-          "document": "Modify the permission of this account for a database object. obtain through the [DescribeAccounts](https://www.tencentcloud.com/document/api/409/18109?from_cn_redirect=1) api.",
+          "document": "Modify the permission of this account for a database object. obtain through the [DescribeAccounts](https://www.tencentcloud.com/document/product/409/18109) api.",
           "example": "readonly_user",
           "member": "string",
           "name": "UserName",
@@ -10228,7 +10228,7 @@
         },
         {
           "disabled": false,
-          "document": "New owner of the database. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/api/409/18109?from_cn_redirect=1).",
+          "document": "New owner of the database. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/product/409/18109).",
           "example": "alice",
           "member": "string",
           "name": "DatabaseOwner",
@@ -11935,7 +11935,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance account name. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/api/409/18109?from_cn_redirect=1).",
+          "document": "Instance account name. obtain through the api [DescribeAccounts](https://www.tencentcloud.com/document/product/409/18109).",
           "example": "test_account",
           "member": "string",
           "name": "UserName",
@@ -11944,7 +11944,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the new password for the UserName account.\nPassword settings rule specifies the following:.\n- valid values: 8 to 32 characters. a password with more than 12 characters is recommended.\n-Must not start with \"/\".\n-Must include the following four items:.\nLowercase letters a ~ z.\nUppercase letters: A – Z.\nDigits: 0-9.\nSpecial symbols: ()`~!@#$%^&*-+=_|{}[]:<>,.?/.",
+          "document": "Specifies the new password for the UserName account.\nPassword settings rule specifies the following:.\n- valid values: 8 to 32 characters. a password with more than 12 characters is recommended.\n- Must not start with \"/\".\n- Must include the following four items:.\nLowercase letters a - z.\nUppercase letters: A - Z.\nDigits: 0-9.\nSpecial symbols: ()`~!@#$%^&*-+=_|{}[]:<>,.?/.",
           "example": "1357Qwer()",
           "member": "string",
           "name": "Password",

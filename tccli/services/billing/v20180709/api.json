@@ -765,7 +765,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing mode: Resource billing mode, which can be monthly subscription or pay-as-you-go.",
+          "document": "Billing mode: Resource billing mode, which can be yearly/monthly subscription\u0005or pay-as-you-go.",
           "example": "按量计费",
           "member": "string",
           "name": "PayModeName",
@@ -2820,7 +2820,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing mode: Resource billing mode, which can be monthly subscription or pay-as-you-go.",
+          "document": "Billing mode: Resource billing mode, which can be  yearly/monthly subscription\u0005or pay-as-you-go.",
           "example": "按量计费",
           "member": "string",
           "name": "PayModeName",
@@ -3556,7 +3556,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing mode: Resource billing mode, which can be monthly subscription or pay-as-you-go.",
+          "document": "Billing mode: Resource billing mode, which can be  yearly/monthly subscription\u0005or pay-as-you-go.",
           "example": "\"按量计费\"",
           "member": "string",
           "name": "PayModeName",
@@ -5628,7 +5628,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing mode: The billing mode, which can be monthly subscription or pay-as-you-go.",
+          "document": "Billing mode: The billing mode, which can be yearly/monthly subscription or pay-as-you-go.",
           "example": "包年包月",
           "member": "string",
           "name": "PayModeName",
@@ -5688,7 +5688,7 @@
         },
         {
           "disabled": false,
-          "document": "Transaction type, which can be monthly subscription purchase, monthly subscription renewal, pay-as-you-go deduction, etc.",
+          "document": "Transaction type, which can be yearly/monthly subscription purchase, yearly/monthly subscription renewal, pay-as-you-go deduction, etc.",
           "example": "包年包月新购",
           "member": "string",
           "name": "ActionTypeName",
@@ -5698,7 +5698,7 @@
         },
         {
           "disabled": false,
-          "document": "Order ID: The ID of a monthly subscription order.",
+          "document": "Order ID: The ID of a yearly/monthly subscription order.",
           "example": "20210818400005559878881",
           "member": "string",
           "name": "OrderId",
@@ -6095,7 +6095,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing mode: Resource billing mode, which can be monthly subscription or pay-as-you-go.",
+          "document": "Billing mode: Resource billing mode, which can be yearly/monthly subscription or pay-as-you-go.",
           "example": "按量计费",
           "member": "string",
           "name": "PayModeName",
@@ -14805,7 +14805,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing mode: The billing mode, which can be monthly subscription or pay-as-you-go.",
+          "document": "Billing mode: The billing mode, which can be yearly/monthly subscription\u0005or pay-as-you-go.",
           "example": "按量计费",
           "member": "string",
           "name": "PayModeName",
@@ -14865,7 +14865,7 @@
         },
         {
           "disabled": false,
-          "document": "Transaction type, which can be monthly subscription purchase, monthly subscription renewal, pay-as-you-go deduction, etc.",
+          "document": "Transaction type, which can be yearly/monthly subscription purchase, yearly/monthly subscription renewal, pay-as-you-go deduction, etc.",
           "example": "包年包月新购",
           "member": "string",
           "name": "ActionTypeName",
@@ -14875,7 +14875,7 @@
         },
         {
           "disabled": false,
-          "document": "Order ID: The ID of a monthly subscription order.",
+          "document": "Order ID: The ID of a yearly/monthly subscription order.",
           "example": "20211202400008418120371",
           "member": "string",
           "name": "OrderId",
@@ -15437,7 +15437,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing mode: Resource billing mode, which can be monthly subscription or pay-as-you-go.",
+          "document": "Billing mode: Resource billing mode, which can be yearly/monthly subscription or pay-as-you-go.",
           "example": "按量计费",
           "member": "string",
           "name": "PayModeName",

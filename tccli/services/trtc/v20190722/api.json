@@ -828,6 +828,33 @@
           "name": "VadLevel",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to filter out dirty words (currently only support basic language engine and standard language engine). Range: [0, 2]. Default value: 0.\n0: Not filtering; 1: Filter out dirty words; 2: Replace dirty words with \"*\".",
+          "example": "0",
+          "member": "uint64",
+          "name": "FilterDirty",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to filter filler words (currently only support basic language engine and standard language engine). Range:  [0, 2]. Default value 0.\n0:No filtering; 1: Partial filtering; 2: Strict filtering.",
+          "example": "0",
+          "member": "uint64",
+          "name": "FilterModal",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to filter periods at the end of sentences (currently only support basic language engine and standard language engine), range [0, 1], default value 0.\n0: Do not filter out periods at the end of sentences; 1: Filter out periods at the end of sentences.",
+          "example": "0",
+          "member": "uint64",
+          "name": "FilterPunc",
+          "required": false,
+          "type": "int"
         }
       ],
       "usage": "in"
@@ -1586,7 +1613,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "[SdkAppId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#sdkappid) of TRTC, which is the same as the SdkAppId corresponding to the transcribed room.",
+          "document": "<p>The <a href=\"https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#sdkappid\">SdkAppId</a> of TRTC is the same as the SdkAppId corresponding to the transcribe room.</p>",
           "example": "140000000",
           "member": "uint64",
           "name": "SdkAppId",
@@ -1595,7 +1622,7 @@
         },
         {
           "disabled": false,
-          "document": "[RoomId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#roomid) of TRTC, which is the RoomId corresponding to the transcribed TRTC room. Note: The room ID type defaults to integer. If the room ID type is string, specify it via RoomIdType.",
+          "document": "<p>The <a href=\"https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#roomid\">RoomId</a> of TRTC, which is the RoomId corresponding to the transcribed TRTC room. Note: The room ID type defaults to integer. If the room ID type is string, specify it through RoomIdType.</p>",
           "example": "room_366",
           "member": "string",
           "name": "RoomId",
@@ -1604,7 +1631,7 @@
         },
         {
           "disabled": false,
-          "document": "Room information RoomType must be the same as the RoomId type of the corresponding transcribed room. 0 indicates an integer type room ID, and 1 indicates a string Room Number.",
+          "document": "<p>The room information RoomType must be identical to the data type of the RoomId corresponding to the transcribed room. 0 indicates an integer room number, and 1 indicates a string Room Number.</p>",
           "example": "1",
           "member": "uint64",
           "name": "RoomIdType",
@@ -1613,7 +1640,7 @@
         },
         {
           "disabled": false,
-          "document": "Parameters for transcribe service to join TRTC room.",
+          "document": "<p>Parameters for the transcribe service to join TRTC room.</p>",
           "example": "无",
           "member": "TranscriptionParam",
           "name": "TranscriptionParam",
@@ -1622,7 +1649,7 @@
         },
         {
           "disabled": false,
-          "document": "Parameters used by the ASR transcribe service.",
+          "document": "<p>Parameters used by the ASR transcribe service.</p>",
           "example": "无",
           "member": "AsrParam",
           "name": "AsrParam",
@@ -1631,12 +1658,21 @@
         },
         {
           "disabled": false,
-          "document": "Translation parameters used for transcription.",
+          "document": "<p>Parameters used to transcribe the translation service.</p>",
           "example": "无",
           "member": "TranslationParam",
           "name": "TranslationParam",
           "required": false,
           "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Parameters used by the TTS transcribe service.</p>",
+          "example": "无",
+          "member": "TTSParam",
+          "name": "TTSParam",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -1646,7 +1682,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "A unique identifier for the transcription task, generated by the Tencent Cloud server. The TaskID parameter is required for all subsequent query and stop requests.",
+          "document": "<p>A unique identifier for the transcription task, generated by the Tencent Cloud server. The TaskID parameter is required for all subsequent query and stop requests.</p>",
           "example": "-m9-bVVU7k801X-VX8gO***GrDFLaZwKKZ5-fTXqywE.",
           "member": "string",
           "name": "TaskId",
@@ -5683,7 +5719,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Convert speech to text supported languages, \"zh\" chinese is selected by default.\n\nYou can unlock different languages by purchasing the \"AI intelligent recognition duration package\" or claiming the trial version of the monthly subscription package. \n\nSupported languages for different speech to text package versions are as follows:.\n\nBasic language engine:.\n-\"zh\": chinese (simplified).\n-`zh-TW`: chinese (traditional).\n-\"En\": english.\n-\"16k_zh_edu\": chinese education.\n-\"16k_zh_medical\": medical chinese.\n-\"16k_zh_court\": chinese court.\n\n**Standard language engine:**.\n-\"8k_zh_large\": engine (large model version) for telecommunication. the current model supports chinese and other language recognition, has a large number of parameters, and features language model performance enhancement. it greatly improves recognition accuracy for telephone audio in various scenarios and chinese dialects.\n-\"16k_zh_large\": large model engine for mandarin, chinese dialects, and english. the current model supports language recognition for chinese, english, and multiple chinese dialects. it has a large number of parameters and enhanced language model performance, targeting low-quality audio such as loud noise, strong echo, low voice volume, and voice from far away with greatly improved recognition accuracy.\n-\"16k_multi_lang\": multilingual large model engine. the current model simultaneously supports english, japanese, korean, arabic, filipino, french, hindi, indonesian, malay, portuguese, spanish, thai, turkish, vietnamese, and german. it achieves auto-identification of 15 languages at the sentence or paragraph level.\n-\"16k_zh_en\": chinese-english large model engine. the current model supports chinese and english recognition at the same time, has a large number of parameters, and features language model performance enhancement. it greatly improves recognition accuracy against low-quality audio such as loud noise, echo, low voice volume, and voice from far away.\n\n**Advanced language engine:**.\n-\"zh-dialect\": chinese dialect.\n-\"zh-yue\": cantonese in china.\n-\"Vi\": \"vietnamese.\".\n-\"Ja\": \"japanese.\".\n-\"Ko\": \"korean.\".\n-\"id\": \"indonesian\".\n-\"Th\": thai.\n-\"pt\": portuguese.\n-\"tr\": \"turkish.\".\n-\"Ar\": \"arabic\".\n-\"es\": \"spanish\".\n-\"Hi\": \"hindi\".\n-\"Fr\": \"french.\".\n-\"ms\": malay.\n-\"Fil\": filipino.\n-\"de\": german.\n-`It`: italian.\n-\"Ru\": russian.\n-\"sv\": \"swedish.\".\n-\"Da\": \"danish.\".\n-\"No\": norwegian.\n\n**Note**:.\nIf the language you need is not available, contact our technical staff.",
+          "document": "Convert speech to text supported languages, \"zh\" chinese is selected by default.\n\nYou can unlock different languages by purchasing the \"AI intelligent recognition duration package\" or claiming the trial version of the monthly subscription package. \n\nSupported languages for different speech to text package versions are as follows:.\n\n- \"zh\": chinese (simplified).\n- \"zh-TW\": chinese (traditional).\n- \"en\": english.\n- \"zh-yue\": cantonese in china.\n- \"vi\": \"vietnamese.\".\n- \"ja\": \"japanese.\".\n- \"ko\": \"korean.\".\n- \"id\": \"indonesian\".\n- \"th\": thai.\n- \"pt\": portuguese.\n- \"tr\": \"turkish.\".\n- \"ar\": \"arabic\".\n- \"es\": \"spanish\".\n- \"hi\": \"hindi\".\n- \"ft\": \"french.\".\n- \"ms\": malay.\n- \"fil\": filipino.\n- \"de\": german.\n-`it`: italian.\n- \"ru\": russian.\n- \"sv\": \"swedish.\".\n- \"da\": \"danish.\".\n- \"no\": norwegian.\n- \"pl\": polski.\n-\"af-ZA\": afrikaans.\n- \"nl-NL\": dutch.\n- \"nl-BE\": flemish.\n- \"uz\": uzbek.\n- \"hu\": hungarian.\n- \"he\": hebrew.\n- \"ur\": urdu.\n\n**Note**:.\nIf the language you need is not available, contact our technical staff.",
           "example": "zh",
           "member": "string",
           "name": "Language",
@@ -5694,7 +5730,7 @@
         },
         {
           "disabled": false,
-          "document": "**Fuzzy recognition is an advanced edition capacity, charged by default as the advanced edition.**.\nNote: does not support entering \"zh-dialect\", \"16k_zh_edu\", \"16k_zh_medical\", \"16k_zh_court\", \"8k_zh_large\", \"16k_zh_large\", \"16k_multi_lang\", \"16k_zh_en\".\n",
+          "document": "**Fuzzy recognition is an advanced edition capacity, charged by default as the advanced edition.**.",
           "example": "[\"zh\", \"en\"]",
           "member": "string",
           "name": "AlternativeLanguage",
@@ -7106,6 +7142,99 @@
       ],
       "usage": "both"
     },
+    "TTSParam": {
+      "document": "Transcription TTS parameter",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>TTS model</p>",
+          "example": "flow_02_turbo",
+          "member": "string",
+          "name": "Model",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>TTS language must be in the TargetLang list of TranslationParam.</p>",
+          "example": "zh",
+          "member": "string",
+          "name": "Language",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The user requesting TTS playback. They must be on the subscription allowlist and not on the blocklist.</p>",
+          "example": "无",
+          "member": "TranscriptionUserInfoParams",
+          "name": "TargetUser",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The robot user that pushes TTS audio back into the room.</p>",
+          "example": "无",
+          "member": "TranscriptionUserInfoParams",
+          "name": "TTSRobotUser",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>TTS configuration parameters.</p>",
+          "example": "无",
+          "member": "TTSVoice",
+          "name": "Voice",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "usage": "in"
+    },
+    "TTSVoice": {
+      "document": "Speech parameter configuration for companion transcription TTS",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Voice ID.</p>",
+          "example": "v-female-R2s4N9qJ",
+          "member": "string",
+          "name": "VoiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Speech speed. 0.5 for half speed, 2.0 for 2x speed, 1.0 for normal speed. Value range: [0.5, 2.0]. Default: 1.0.</p>",
+          "example": "1",
+          "member": "float",
+          "name": "Speed",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Audio volume. 0 is mute, 10 is maximum volume. It is recommended to keep the default value to 1.0. Value range: [0, 10]. Default: 1.0.</p>",
+          "example": "1",
+          "member": "float",
+          "name": "Volume",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Pitch. Negative value makes the sound low and deep, positive value makes it sharper. 0 indicates the original pitch. Value range: [-12, 12]. Default 0.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "Pitch",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "usage": "in"
+    },
     "TencentVod": {
       "document": "The Tencent Cloud VOD parameters.",
       "members": [
@@ -7193,6 +7322,30 @@
       ],
       "usage": "in"
     },
+    "TermPair": {
+      "document": "Glossary phrase pairs for transcription",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Source terms.</p>",
+          "example": "人工智能",
+          "member": "string",
+          "name": "Source",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Translated terms in target language.</p>",
+          "example": "AI",
+          "member": "string",
+          "name": "Target",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
     "Terminology": {
       "document": "Translate terminology.",
       "members": [
@@ -7220,6 +7373,30 @@
         }
       ],
       "usage": "both"
+    },
+    "TerminologyItem": {
+      "document": "Transcription companion terminology table entry",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Target language.</p>",
+          "example": "en",
+          "member": "string",
+          "name": "TargetLang",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Terminology configuration.</p>",
+          "example": "无",
+          "member": "TermPair",
+          "name": "Terminology",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
     },
     "TextToSpeechRequest": {
       "document": "TextToSpeech request structure.",
@@ -7525,7 +7702,7 @@
         },
         {
           "disabled": false,
-          "document": "Controls whether the custom data channel is enabled. Accepted values: 0 (disabled) or 1 (enabled). Defaults to 0 if omitted.",
+          "document": "Custom data mode: 0 indicates disabled, 1 indicates enabled.\nLeave blank defaults to 0, meaning custom data is disabled.",
           "example": "1",
           "member": "uint64",
           "name": "SendCustomMode",
@@ -7674,10 +7851,19 @@
       "members": [
         {
           "disabled": false,
-          "document": "Target language for translation. Example: [\"en\", \"ja\"].\n\nSupported target languages:\n\n- <code>\"zh\"</code>: Chinese\n- <code>\"en\"</code>: English\n- <code>\"vi\"</code>: Vietnamese\n- <code>\"ja\"</code>: Japanese\n- <code>\"ko\"</code>: Korean\n- <code>\"id\"</code>: Indonesian\n- <code>\"th\"</code>: Thai\n- <code>\"pt\"</code>: Portuguese\n- <code>\"ar\"</code>: Arabic\n- <code>\"es\"</code>: Spanish\n- <code>\"fr\"</code>: French\n- <code>\"ms\"</code>: Malay\n- <code>\"de\"</code>: German\n- <code>\"it\"</code>: Italian\n- <code>\"ru\"</code>: Russian",
+          "document": "<p>Target language for translation, example value [\"en\", \"ja\"]. Target language list [Chinese \"zh\", English \"en\", Vietnamese \"vi\", Japanese \"ja\", Korean \"ko\", Indonesian \"id\", Thai \"th\", Portuguese \"pt\", Arabic \"ar\", Spanish \"es\", French \"fr\", Malay \"ms\", German \"de\", Italian \"it\", Russian \"ru\"].</p>",
           "example": "[\"en\", \"ja\"]",
           "member": "string",
           "name": "TargetLang",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Glossary configuration.</p>",
+          "example": "无",
+          "member": "TerminologyItem",
+          "name": "Terminologies",
           "required": false,
           "type": "list"
         }

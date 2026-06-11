@@ -600,6 +600,15 @@
           "name": "Uids",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "List of users to exclude (string type)",
+          "example": "[\"Andy\",\"John\"]",
+          "member": "string",
+          "name": "StrUids",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -1193,7 +1202,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "RealTime: Real-time Voice Analysis; \nVoiceMessage: Voice Message; \nGMECloudApi: GME Cloud API; ",
           "example": "RealTime",
           "member": "string",
           "name": "SceneId",
@@ -1204,7 +1213,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Switch state, true for on, false for off.\n",
           "example": "false",
           "member": "bool",
           "name": "Status",
@@ -1215,7 +1224,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "callback URL",
           "example": "https://0.0.0.0/user_callback",
           "member": "string",
           "name": "CallbackUrl",
