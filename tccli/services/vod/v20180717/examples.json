@@ -141,9 +141,9 @@
     "CreateAigcAudioTask": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAigcAudioTask\n<Common request parameters>\n\n{\n    \"ModelName\": \"Kling\",\n    \"SceneType\": \"sfx\",\n\"Prompt\": \"Fireworks during Spring Festival celebrations\"\n    \"OutputConfig\": {\n        \"StorageMode\": \"Temporary\",\n        \"Duration\": 6\n    }\n}",
-        "output": "{\n    \"Response\": {\n        \"TaskId\": \"251441341-AigcAudioTask-f3259ddeb615203726d73c03da05d9fft\",\n        \"RequestId\": \"4794b445-abc7-46c6-9e74-b30429f3a2c6\"\n    }\n}",
-        "title": "Generate Sound Effects"
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAigcAudioTask\n<Common request parameters>\n\n{\n    \"SubAppId\": 251441341,\n    \"ModelName\": \"MiniMaxMusic\",\n    \"ModelVersion\": \"2.0\",\n    \"SceneType\": \"music\",\n\"Prompt\": \"A happy song\"\n    \"OutputConfig\": {\n        \"StorageMode\": \"Temporary\",\n        \"OutputAudioFormat\": \"mp3\"\n    },\n\"AdditionalParameters\": \"{\\\"lyrics\\\": \\\"The sea, full of water, the steed, with four legs,***************\\\"}\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"251441341-AigcAudioTask-ed886585de73592fca966e81b6bc2d20t\",\n        \"RequestId\": \"a9a9e323-d543-4bd3-b638-5853763e90c7\"\n    }\n}",
+        "title": "Creating Music"
       }
     ],
     "CreateAigcCustomElement": [
@@ -868,12 +868,20 @@
         "title": "Retrieve face information"
       }
     ],
+    "DescribeAigcFaceInfoAsync": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAigcFaceInfoAsync\n<Common request parameters>\n\n{\n    \"SubAppId\": 250000002,\n    \"FileInfos\": [\n        {\n            \"Type\": \"Url\",\n            \"Url\": \"https://150******************************************************************************************20.mp4\"\n        }\n    ],\n    \"SessionId\": \"my*******Id1\",\n    \"SessionContext\": \"my*******Context\",\n    \"TasksPriority\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"251007502-DescribeAigcFaceInfoAsync-d5a02998082d0a58cecd7e69165b5245t\",\n        \"RequestId\": \"fc945039-2d72-4591-9ce7-780856bc4e24\"\n    }\n}",
+        "title": "Asynchronously fetch AIGC face information"
+      }
+    ],
     "DescribeAigcUsageData": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAigcUsageData\n<Common request parameters>\n\n{\n    \"StartTime\": \"2025-11-18T00:00:00+08:00\",\n    \"EndTime\": \"2025-11-19T23:59:00+08:00\",\n    \"AigcType\": \"Video\"\n}",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAigcUsageData\n<Common request parameters>\n\n{\n    \"StartTime\": \"2025-11-18T00:00:00+08:00\",\n    \"EndTime\": \"2025-11-19T23:59:00+08:00\",\n    \"AigcType\": \"Video\",\n    \"APIKey\": \"xxxxxxxxxxxxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"AigcUsageDataSet\": [\n            {\n                \"DataSet\": [\n                    {\n                        \"Count\": 0,\n                        \"Time\": \"2025-11-17T00:00:00+08:00\",\n                        \"Usage\": 0\n                    },\n                    {\n                        \"Count\": 3,\n                        \"Time\": \"2025-11-18T00:00:00+08:00\",\n                        \"Usage\": 15\n                    },\n                    {\n                        \"Count\": 0,\n                        \"Time\": \"2025-11-19T00:00:00+08:00\",\n                        \"Usage\": 0\n                    }\n                ],\n                \"Specification\": \"Kling2.0&2.1std_720P\"\n            }\n        ],\n        \"RequestId\": \"2f47fc6d-c03a-49f7-b50b-xxxxxxxx\"\n    }\n}",
-        "title": "Query AI-generated video usage data"
+        "title": "Querying AI-generated video usage data"
       }
     ],
     "DescribeAllClass": [

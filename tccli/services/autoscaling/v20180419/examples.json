@@ -492,16 +492,16 @@
     ],
     "ModifyScalingPolicy": [
       {
-        "document": "This example shows you how to specify the policy ID to modify the attributes of a simple policy.",
-        "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyScalingPolicy\n<Common request parameters>\n\n{\n    \"AutoScalingPolicyId\": \"asp-iir70sxv\",\n    \"Cooldown\": 60,\n    \"ScalingPolicyName\": \"cpu_policy_test\",\n    \"AdjustmentType\": \"CHANGE_IN_CAPACITY\",\n    \"MetricAlarm\": {\n        \"Period\": 60,\n        \"ContinuousTime\": 5,\n        \"ComparisonOperator\": \"GREATER_THAN\",\n        \"Statistic\": \"AVERAGE\",\n        \"Threshold\": 50,\n        \"MetricName\": \"CPU_UTILIZATION\"\n    },\n    \"AdjustmentValue\": \"1\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"91413a64-9587-486b-aef4-9aba5e8a0068\"\n    }\n}",
-        "title": "Modifying the Simple Alarm Triggering Policy"
-      },
-      {
         "document": "This example shows you how to specify the policy ID to modify the attributes of a target tracking policy.",
         "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyScalingPolicy\n<Common request parameters>\n\n{\n    \"AutoScalingPolicyId\": \"asp-9uroe7ta\",\n    \"ScalingPolicyName\": \"target-trackiing-test-policy\",\n    \"DisableScaleIn\": false,\n    \"EstimatedInstanceWarmup\": 300,\n    \"TargetValue\": 60,\n    \"PredefinedMetricType\": \"ASG_AVG_CPU_UTILIZATION\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"881a6752-55e8-4485-878a-a80065732a9f\"\n    }\n}",
         "title": "Modifying the Target Tracking Alarm Triggering Policy"
+      },
+      {
+        "document": "This example shows you how to specify the policy ID to modify the attributes of a simple policy.",
+        "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyScalingPolicy\n<Common request parameters>\n\n{\n    \"AutoScalingPolicyId\": \"asp-iir70sxv\",\n    \"Cooldown\": 60,\n    \"ScalingPolicyName\": \"cpu_policy_test\",\n    \"AdjustmentType\": \"CHANGE_IN_CAPACITY\",\n    \"MetricAlarm\": {\n        \"Period\": 60,\n        \"ContinuousTime\": 5,\n        \"ComparisonOperator\": \"GREATER_THAN\",\n        \"Statistic\": \"AVERAGE\",\n        \"Threshold\": 50,\n        \"MetricName\": \"CPU_UTILIZATION\"\n    },\n    \"AdjustmentValue\": \"1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"91413a64-9587-486b-aef4-9aba5e8a0068\"\n    }\n}",
+        "title": "Modifying the Simple Alarm Triggering Policy"
       }
     ],
     "ModifyScheduledAction": [

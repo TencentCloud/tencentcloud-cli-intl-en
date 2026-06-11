@@ -212,6 +212,14 @@
         "title": "Creating an Edge Function"
       }
     ],
+    "CreateFunctionReplica": [
+      {
+        "document": "Add an edge function replica named Hello-World-Replica for the edge function with function ID ef-crkwnfy0. After creating a copy, you can access the functions of the replica by adding the request header EO-Function-Replica-Name: \"Hello-World-Replica\".",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateFunctionReplica\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-3exa7oergn0l\",\n    \"FunctionId\": \"ef-crkwnfy0\",\n    \"ReplicaName\": \"Hello-World-Replica\",\n    \"Content\": \"addEventListener('fetch', e => {\\r\\n  const response = new Response('Hello World!');\\r\\n  e.respondWith(response);\\r\\n});\",\n    \"Remark\": \"Hello World Replica\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"176711aa-10e2-4573-b3ee-b4fbdac2780f\"\n    }\n}",
+        "title": "Create edge function replica"
+      }
+    ],
     "CreateFunctionRule": [
       {
         "document": "This example shows you how to create an edge function rule for site zone-293e7s5jne1i. When the Request host is www.function.com, the rule is matched and the target function is selected via direct specify, with the target function ID being ef-1pakhnuy.",
@@ -632,6 +640,14 @@
         "title": "Deleting an Edge Function"
       }
     ],
+    "DeleteFunctionReplica": [
+      {
+        "document": "Delete the edge function replica with the function replica name Hello-World-Replica, function ID ef-crkwnfy0, and site ID zone-3exa7oergn0l.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteFunctionReplica\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-3exa7oergn0l\",\n    \"FunctionId\": \"ef-crkwnfy0\",\n    \"ReplicaNames\": [\n        \"Hello-World-Replica\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ed746f01-805b-474c-b020-9db1898a7302\"\n    }\n}",
+        "title": "Delete Edge Function Replica"
+      }
+    ],
     "DeleteFunctionRules": [
       {
         "document": " ",
@@ -980,6 +996,14 @@
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeFunctionComponentBindings\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-3j1xw7910arp\",\n    \"FunctionId\": \"ef-x5tuixcj\",\n    \"Offset\": 0,\n    \"Limit\": 10\n}",
         "output": "{\n    \"Response\": {\n        \"FunctionComponentBindings\": [\n            {\n                \"KVNamespaceParameters\": {\n                    \"Namespace\": \"ns-011\",\n                    \"ZoneId\": \"zone-3j1xw7910arp\"\n                },\n                \"Type\": \"kv_namespace\",\n                \"VariableName\": \"MY_KV\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"34da5ee4-18b8-4d18-9354-907df99d4234\"\n    }\n}",
         "title": "Querying the Bound List of an Edge Function Component"
+      }
+    ],
+    "DescribeFunctionReplicas": [
+      {
+        "document": "Query the replica list of the edge function with ID ef-crkwnfy0 in the ZoneId zone-3exa7oergn0l.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeFunctionReplicas\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-3exa7oergn0l\",\n    \"FunctionId\": \"ef-crkwnfy0\",\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"SortBy\": \"created-on\",\n    \"SortOrder\": \"desc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"FunctionReplicas\": [\n            {\n                \"Content\": \"addEventListener('fetch', e => {\\r\\n  const response = new Response('Hello World 2!');\\r\\n  e.respondWith(response);\\r\\n});\",\n                \"CreatedOn\": \"2026-01-19T10:22:55+08:00\",\n                \"FunctionId\": \"ef-crkwnfy0\",\n                \"ModifiedOn\": \"2026-01-19T11:48:52+08:00\",\n                \"Remark\": \"Hello World Replica\",\n                \"ReplicaName\": \"Hello-World-Replica\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"9fc970ff-64bf-4234-a010-a8a7875f77f7\"\n    }\n}",
+        "title": "Query edge function replica list"
       }
     ],
     "DescribeFunctionRules": [
@@ -1778,6 +1802,14 @@
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyFunctionComponentBindings\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-3j1xw7910arp\",\n    \"FunctionId\": \"ef-x5tuixcj\",\n    \"Operation\": \"bind\",\n    \"FunctionComponentBindings\": [\n        {\n            \"Type\": \"kv_namespace\",\n            \"VariableName\": \"MY_KV\",\n            \"KVNamespaceParameters\": {\n                \"ZoneId\": \"zone-3j1xw7910arp\",\n                \"Namespace\": \"ns-011\"\n            }\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3fe9013c-47a3-4f0c-a660-e5f6e02faba1\"\n    }\n}",
         "title": "Bind an EdgeKV namespace to an edge function"
+      }
+    ],
+    "ModifyFunctionReplica": [
+      {
+        "document": "Modify the content and description of an edge function copy named Hello-World-Replica under the edge function with ID ef-crkwnfy0.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyFunctionReplica\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-3exa7oergn0l\",\n    \"FunctionId\": \"ef-crkwnfy0\",\n    \"ReplicaName\": \"Hello-World-Replica\",\n    \"Content\": \"addEventListener('fetch', e => {\\r\\n  const response = new Response('Hello World 2!');\\r\\n  e.respondWith(response);\\r\\n});\",\n    \"Remark\": \"Hello World Replica\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"58b4ccab-3ce0-4e2a-a832-93c88eeb3c71\"\n    }\n}",
+        "title": "Editing an edge function replica"
       }
     ],
     "ModifyFunctionRule": [

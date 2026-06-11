@@ -71,7 +71,7 @@
       "status": "online"
     },
     "CreateScalingPolicy": {
-      "document": "This API (CreateScalingPolicy) is used to create an alarm trigger policy.",
+      "document": "This API is used to create an alarm-triggered scaling policy.\n-The target tracking policy triggers scale-out when the specified type of metric exceeds the threshold (target value) for 3 consecutive cycles (1 minute each). It triggers auto scale-down when the specified type of metric is below the threshold (80% of the target value) for 15 consecutive cycles (1 minute each).",
       "input": "CreateScalingPolicyRequest",
       "name": "Creates an alarm trigger policy",
       "output": "CreateScalingPolicyResponse",
@@ -134,7 +134,7 @@
       "status": "online"
     },
     "DescribeAutoScalingActivities": {
-      "document": "This API (DescribeAutoScalingActivities) is used to query the activity history of an auto scaling group.",
+      "document": "This API is used to query the scaling activities of the scaling group. Currently, only scaling operations from the past two years are saved.",
       "input": "DescribeAutoScalingActivitiesRequest",
       "name": "Queries scaling activities",
       "output": "DescribeAutoScalingActivitiesResponse",
@@ -665,7 +665,7 @@
         },
         {
           "disabled": false,
-          "document": "CVM instance ID list. you can obtain available instance ID in the following ways:.\n<li>Query instance ID by logging in to the <a href=\"https://console.cloud.tencent.com/cvm/index\">console</a>.</li>.\n<li>Get the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and retrieving the `InstanceId` from the returned information.</li>.",
+          "document": "CVM instance ID list. you can obtain available instance ID in the following ways:\n<li>Query instance ID by logging in to the [console](https://console.cloud.tencent.com/cvm/index).</li>\n<li>Get the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and retrieving the `InstanceId` from the returned information.</li>",
           "example": "[\"ins-cri8d02t\",\"ins-osckfnm7\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -702,7 +702,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.",
+          "document": "Scaling group ID. obtain the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.",
           "example": "asg-12wjuh0s",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -721,7 +721,7 @@
         {
           "disabled": false,
           "document": "Specifies the list of load balancers. each scaling group can bind a maximum of 100 application clbs. either LoadBalancerIds or ForwardLoadBalancers can be specified at the same time. can be obtained through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.",
-          "example": "[{\"LoadBalancerId\": \"lb-af8li2kn\", \"ListenerId\": \"lbl-akw1lgo7\", \"TargetAttributes\": [{\"Port\": 80, \"Weight\": 10}]}]",
+          "example": "无",
           "member": "ForwardLoadBalancer",
           "name": "ForwardLoadBalancers",
           "required": false,
@@ -1530,7 +1530,7 @@
         },
         {
           "disabled": false,
-          "document": "vpc ID. a valid vpc ID can be queried by logging in to the console (https://console.cloud.tencent.com/vpc/vpc). you can also call the api DescribeVpc (https://intl.cloud.tencent.com/document/api/215/15778?from_cn_redirect=1) and obtain it from the VpcId field in the api response.",
+          "document": "vpc ID. a valid vpc ID can be queried by logging in to the [console](https://console.cloud.tencent.com/vpc/vpc). you can also call the api [DescribeVpc](https://intl.cloud.tencent.com/document/api/215/15778?from_cn_redirect=1) and obtain it from the VpcId field in the api response.",
           "example": "vpc-uhygtf56",
           "member": "string",
           "name": "VpcId",
@@ -1584,7 +1584,7 @@
         },
         {
           "disabled": false,
-          "document": "The subnet ID list must specify a subnet in VPC scenarios. multiple subnets are attempted sequentially based on the fill-in order as priority until successful instance creation. effective VPC subnet ids can be queried by logging in to the console (https://console.cloud.tencent.com/VPC/subnet) or obtained from the SubnetId field in the API response by calling the DescribeSubnets API (https://intl.cloud.tencent.com/document/product/215/15784?from_cn_redirect=1).",
+          "document": "The subnet ID list must specify a subnet in VPC scenarios. multiple subnets are attempted sequentially based on the fill-in order as priority until successful instance creation. effective VPC subnet ids can be queried by logging in to the [console](https://console.cloud.tencent.com/VPC/subnet) or obtained from the SubnetId field in the API response by calling the [DescribeSubnets](https://intl.cloud.tencent.com/document/product/215/15784?from_cn_redirect=1) API.",
           "example": "[\"subnet-uhygtf56\"]",
           "member": "string",
           "name": "SubnetIds",
@@ -2154,7 +2154,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.",
+          "document": "Scaling group ID. obtain the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.",
           "example": "asg-12wjuh0s",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -2236,7 +2236,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.",
+          "document": "Scaling group ID. obtain the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.",
           "example": "asg-12wjuh0s",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -2291,7 +2291,7 @@
         {
           "disabled": false,
           "document": "Alarm monitoring metric, apply only to simple policies, required in the scenario of simple policy.",
-          "example": "{\"ComparisonOperator\": \"GREATER_THAN\", \"ContinuousTime\": 1, \"MetricName\": \"CPU_UTILIZATION\", \"Period\": 60, \"Statistic\": \"AVERAGE\", \"Threshold\": 15}",
+          "example": "无",
           "member": "MetricAlarm",
           "name": "MetricAlarm",
           "required": false,
@@ -2444,7 +2444,7 @@
         },
         {
           "disabled": false,
-          "document": "Disable update DesiredCapacity Indicates the DesiredCapacity is updated normally during scheduled task triggering.\n\nSpecifies whether the scheduled task triggers proactive modification of the DesiredCapacity when the value is True. DesiredCapacity may be modified by the minSize and maxSize mechanism.\nThe following cases assume that DisableUpdateDesiredCapacity is True:\n- When scheduled task triggered, the original DesiredCapacity is 5. The scheduled task changes the minSize to 10, the maxSize to 20, and the DesiredCapacity to 15. Since the DesiredCapacity update is disabled, 15 does not take effect. However, the original DesiredCapacity 5 is less than minSize 10, so the final new DesiredCapacity is 10.\n- When scheduled task triggered, the original DesiredCapacity is 25. The scheduled task changes the minSize to 10 and the maxSize to 20, and the DesiredCapacity to 15. Since the DesiredCapacity update is disabled, 15 does not take effect. However, the original DesiredCapacity 25 is greater than the maxSize 20, so the final new DesiredCapacity is 20.\n- When scheduled task triggered, the original DesiredCapacity is 13. The scheduled task changes the minSize to 10 and the maxSize to 20, and the DesiredCapacity to 15. Since the DesiredCapacity update is disabled, 15 does not take effect, and the DesiredCapacity is still 13.",
+          "document": "This flag disables the normal update of the DesiredCapacityproperty that would otherwise occur when a scheduled scaling task is triggered.\n\nSpecifies whether the scheduled task triggers proactive modification of the DesiredCapacity when the value is True. DesiredCapacity may be modified by the minSize and maxSize mechanism.\nThe following cases assume that DisableUpdateDesiredCapacity is True:\n- When scheduled task triggered, the original DesiredCapacity is 5. The scheduled task changes the minSize to 10, the maxSize to 20, and the DesiredCapacity to 15. Since the DesiredCapacity update is disabled, 15 does not take effect. However, the original DesiredCapacity 5 is less than minSize 10, so the final new DesiredCapacity is 10.\n- When scheduled task triggered, the original DesiredCapacity is 25. The scheduled task changes the minSize to 10 and the maxSize to 20, and the DesiredCapacity to 15. Since the DesiredCapacity update is disabled, 15 does not take effect. However, the original DesiredCapacity 25 is greater than the maxSize 20, so the final new DesiredCapacity is 20.\n- When scheduled task triggered, the original DesiredCapacity is 13. The scheduled task changes the minSize to 10 and the maxSize to 20, and the DesiredCapacity to 15. Since the DesiredCapacity update is disabled, 15 does not take effect, and the DesiredCapacity is still 13.",
           "example": "false",
           "member": "bool",
           "name": "DisableUpdateDesiredCapacity",
@@ -2564,7 +2564,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.",
+          "document": "Scaling group ID. obtain the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.",
           "example": "asg-nvnlpbb8",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -2645,7 +2645,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The notification ID to be deleted. this is currently a required parameter. you can obtain the notification ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeNotificationConfigurations](https://intl.cloud.tencent.com/document/api/377/33183?from_cn_redirect=1) and retrieving the AutoScalingNotificationId from the returned information.",
+          "document": "The notification ID to be deleted. this is currently a required parameter. you can obtain the notification ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeNotificationConfigurations](https://intl.cloud.tencent.com/document/api/377/33183?from_cn_redirect=1) and retrieving the AutoScalingNotificationId from the returned information.",
           "example": "asn-2sestqbr",
           "member": "string",
           "name": "AutoScalingNotificationId",
@@ -2672,7 +2672,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The Alarm policy ID to be deleted. you can obtain the Alarm policy ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeScalingPolicies](https://intl.cloud.tencent.com/document/api/377/33178?from_cn_redirect=1) and retrieving the AutoScalingPolicyId from the returned information.",
+          "document": "The Alarm policy ID to be deleted. you can obtain the Alarm policy ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeScalingPolicies](https://intl.cloud.tencent.com/document/api/377/33178?from_cn_redirect=1) and retrieving the AutoScalingPolicyId from the returned information.",
           "example": "asp-lnfqbsoq",
           "member": "string",
           "name": "AutoScalingPolicyId",
@@ -2793,7 +2793,7 @@
         {
           "disabled": false,
           "document": "Filter criteria. the filter field value ranges from...to.\n<ul>\n<li><strong>auto-scaling-group-id</strong><ul><li>Filter by [<strong>scaling group id</strong>]. you can log IN to the [console](https://console.cloud.tencent.com/autoscaling/group) or call the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) to obtain the scaling group id from the returned information.</li><li>type: String</li><li>required: no</li><li>example value: asg-kiju7yt5</li></ul></li>  <li><strong>activity-status-code</strong><ul><li>filter by [<strong>scaling activity status</strong>]</li><li>type: String</li><li>required: no</li><li>options: </li><ul><li>INIT: initializing</li><li>RUNNING: RUNNING</li><li>SUCCESSFUL: SUCCESSFUL activity</li><li>PARTIALLY_SUCCESSFUL: PARTIALLY SUCCESSFUL activity</li><li>FAILED: activity FAILED</li><li>CANCELLED: activity CANCELLED</li></ul></ul></li>  <li><strong>activity-type</strong><ul><li>filter by [<strong>scaling activity type</strong>]</li><li>type: String</li><li>required: no</li><li>options: </li><ul><li>SCALE_OUT: SCALE-OUT activity</li><li>SCALE_IN: SCALE-IN activity</li><li>ATTACH_INSTANCES: adding INSTANCES</li><li>REMOVE_INSTANCES: terminating INSTANCES</li><li>DETACH_INSTANCES: REMOVE INSTANCE</li><li>TERMINATE_INSTANCES_UNEXPECTEDLY: TERMINATE INSTANCE IN CVM console</li><li>REPLACE_UNHEALTHY_INSTANCE: REPLACE UNHEALTHY INSTANCES</li><li>START_INSTANCES: START INSTANCES</li><li>STOP_INSTANCES: shut down INSTANCE</li><li>INVOKE_COMMAND: execute COMMAND</li></ul></ul></li>  <li><strong>activity-id</strong><ul><li>filter by [<strong>scaling activity id</strong>]. you can log IN to the [console](https://console.cloud.tencent.com/autoscaling/group) to obtain the scaling activity id.</li><li>type: String</li><li>required: no</li><li>example value: asa-hy6tr4ed</li></ul></li></ul>.\nThe maximum number of `Filters` per request is 10. the upper limit for `Filter.Values` is 5. parameters must not specify both `ActivityIds` and `Filters` simultaneously.",
-          "example": "[{\"Name\": \"auto-scaling-group-id\", \"Values\": [\"asg-mgmeawez\"]}]",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -2819,7 +2819,7 @@
         },
         {
           "disabled": false,
-          "document": "The earliest start time of the scaling activity, which will be ignored if ActivityIds is specified. The value is in `UTC time` in the format of `YYYY-MM-DDThh:mm:ssZ` according to the `ISO8601` standard.",
+          "document": "The earliest start time of the scaling operation. if ActivityIds is specified, this parameter will be ignored. value is in UTC time, following the ISO8601 standard, format: YYYY-MM-DDThh:MM:ssZ. note: currently, only scaling operations from the past two years are saved.",
           "example": "2024-11-11T15:29:59Z",
           "member": "datetime_iso",
           "name": "StartTime",
@@ -2875,7 +2875,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The scaling group list to be queried, with an upper limit of 100. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.",
+          "document": "The scaling group list to be queried, with an upper limit of 100. obtain the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.",
           "example": "[\"asg-2pvrsyog\", \"asg-4wtj6aeq\"]",
           "member": "string",
           "name": "AutoScalingGroupIds",
@@ -2912,7 +2912,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Auto scaling group ID list. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving AutoScalingGroupId from the returned information.",
+          "document": "Auto scaling group ID list. obtain the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving AutoScalingGroupId from the returned information.",
           "example": "[\"asg-2umy3jbd\"]",
           "member": "string",
           "name": "AutoScalingGroupIds",
@@ -2967,7 +2967,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter criteria\n\n<li> auto-scaling-group-id - String - required: no - (filter) filter by auto scaling group id.</li>.\nSpecifies the scaling group ID obtained by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.\n<li> auto-scaling-group-name - String - required: no - (filter) filter by auto scaling group name.</li>.\n<li> vague-auto-scaling-group-name - String - required: no - (filter) filter by scaling group name fuzzy search.</li>.\n<li>launch-configuration-id - String - required: no - (filter condition) filter by launch configuration id. you can obtain the launch configuration id by logging in to the console (https://console.cloud.tencent.com/autoscaling/config) or calling the api DescribeLaunchConfigurations (https://intl.cloud.tencent.com/document/api/377/20445?from_cn_redirect=1) and retrieving the LaunchConfigurationId from the returned information.</li>.\n<li> `tag-key` - String - optional - filter by the tag key. you can call the API [GetTags](https://intl.cloud.tencent.com/document/product/651/72275?from_cn_redirect=1) to obtain the tag key from the returned information.</li>.\n<li>tag-value - String - required: no - (filter condition) filter by tag value. you can obtain the tag value by calling the API [GetTags](https://intl.cloud.tencent.com/document/product/651/72275?from_cn_redirect=1) and retrieving the TagValue from the returned information.</li>.\n<li>tag:tag-key - String - required: no - (filter condition) filter by tag key-value pair. replace tag-key with a specific tag key. see example 2 for reference. call the API [GetTags](https://intl.cloud.tencent.com/document/product/651/72275?from_cn_redirect=1) to obtain the TagKey from the returned information.</li>.\nThe maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `AutoScalingGroupIds` and `Filters` parameters cannot be specified simultaneously.",
+          "document": "Filter criteria\n\n<li> auto-scaling-group-id - String - required: no - (filter) filter by auto scaling group id.</li>.\nSpecifies the scaling group ID obtained by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.\n<li> auto-scaling-group-name - String - required: no - (filter) filter by auto scaling group name.</li>.\n<li> vague-auto-scaling-group-name - String - required: no - (filter) filter by scaling group name fuzzy search.</li>.\n<li>launch-configuration-id - String - required: no - (filter condition) filter by launch configuration id. you can obtain the launch configuration id by logging in to the [console](https://console.cloud.tencent.com/autoscaling/config) or calling the api [DescribeLaunchConfigurations](https://intl.cloud.tencent.com/document/api/377/20445?from_cn_redirect=1) and retrieving the LaunchConfigurationId from the returned information.</li>.\n<li> `tag-key` - String - optional - filter by the tag key. you can call the API [GetTags](https://intl.cloud.tencent.com/document/product/651/72275?from_cn_redirect=1) to obtain the tag key from the returned information.</li>.\n<li>tag-value - String - required: no - (filter condition) filter by tag value. you can obtain the tag value by calling the API [GetTags](https://intl.cloud.tencent.com/document/product/651/72275?from_cn_redirect=1) and retrieving the TagValue from the returned information.</li>.\n<li>tag:tag-key - String - required: no - (filter condition) filter by tag key-value pair. replace tag-key with a specific tag key. see example 2 for reference. call the API [GetTags](https://intl.cloud.tencent.com/document/product/651/72275?from_cn_redirect=1) to obtain the TagKey from the returned information.</li>.\nThe maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `AutoScalingGroupIds` and `Filters` parameters cannot be specified simultaneously.",
           "example": "[{\"Name\": \"auto-scaling-group-name\", \"Values\": [\"production-as\"]}]",
           "member": "Filter",
           "name": "Filters",
@@ -3032,7 +3032,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "IDs of the CVM instances to query. the instance ID list has a length limit of 100. `InstanceIds` and `Filters` cannot be specified simultaneously.\nYou can get available instance ids in the following ways:.\n<li>Query instance ID by logging in to the <a href=\"https://console.cloud.tencent.com/cvm/index\">console</a>.</li>.\n<li>Get the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and retrieving the `InstanceId` from the returned information.</li>.",
+          "document": "IDs of the CVM instances to query. the instance ID list has a length limit of 100. `InstanceIds` and `Filters` cannot be specified simultaneously.\nYou can get available instance ids in the following ways:\n<li>Query instance ID by logging in to the [console](https://console.cloud.tencent.com/cvm/index).</li>\n<li>Get the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and retrieving the `InstanceId` from the returned information.</li>",
           "example": "[\"ins-1fswxz1m\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -3041,7 +3041,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter criteria\n\n<li> instance-id - String - required: no - (filter condition) filter by instance id. get the instance id by logging in to the [console](https://console.cloud.tencent.com/cvm/index) or making an api call to [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1), and retrieve the `InstanceId` from the returned information.</li>.\n<li> auto-scaling-group-id - String - required: no - (filter) filter by auto scaling group id. you can obtain the scaling group id by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or making an api call to [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.</li>.\nThe maximum number of `Filters` per request is 10, and the maximum number of `Filter.Values` is 5. parameters do not support specifying both `InstanceIds` and `Filters`.",
+          "document": "Filter criteria\n<li> instance-id - String - required: no - (filter condition) filter by instance id. get the instance id by logging in to the console (https://console.cloud.tencent.com/cvm/index) or calling the api DescribeInstances (https://www.tencentcloud.com/document/api/213/15728?from_cn_redirect=1), and retrieve the `InstanceId` from the returned information.</li>.\n<li> auto-scaling-group-id - String - required: no - (filter) filter by auto scaling group id. obtain the scaling group id by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeAutoScalingGroups](https://www.tencentcloud.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.</li>.\n<li>private-ip-address - String - required: no - (filter condition) filters instances by private ip address. you can obtain the private ip address by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeInstances](https://www.tencentcloud.com/document/api/213/15728?from_cn_redirect=1), and retrieving the `PrivateIpAddresses` from the returned information.</li>.\nThe maximum number of `Filters` per request is 10, and the maximum number of `Filter.Values` is 5. the parameter does not support specifying both `InstanceIds` and `Filters`.",
           "example": "[{\"Name\": \"auto-scaling-group-id\", \"Values\": [\"asg-ewdpp04x\"]}]",
           "member": "Filter",
           "name": "Filters",
@@ -3254,7 +3254,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Query by one or more notification ids. the list length limit is 100. you can obtain the notification ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group). parameters AutoScalingNotificationIds and Filters must not be specified simultaneously.",
+          "document": "Query by one or more notification ids. the list length limit is 100. you can obtain the notification ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group). parameters AutoScalingNotificationIds and Filters must not be specified simultaneously.",
           "example": "[\"asn-9bhwvxqh\"]",
           "member": "string",
           "name": "AutoScalingNotificationIds",
@@ -3263,7 +3263,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter criteria\n\n<li> auto-scaling-notification-id - String - required: no - (filter) filter by notification id.</li>.\n<li> auto-scaling-group-id - String - required: no - (filter) filter by auto scaling group id. you can obtain the scaling group id by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.</li>.\nThe maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `AutoScalingNotificationIds` and `Filters` parameters cannot be specified simultaneously.",
+          "document": "Filter criteria\n\n<li> auto-scaling-notification-id - String - required: no - (filter) filter by notification id.</li>\n<li> auto-scaling-group-id - String - required: no - (filter) filter by auto scaling group id. you can obtain the scaling group id by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.</li>\nThe maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `AutoScalingNotificationIds` and `Filters` parameters cannot be specified simultaneously.",
           "example": "[{\"Name\": \"auto-scaling-group-id\", \"Values\": [\"asg-hyfg539t\"]}]",
           "member": "Filter",
           "name": "Filters",
@@ -3346,7 +3346,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of returned pieces. Default value: 20. Maximum value: 100. For further information on Limit, please refer to relevant sections in API [Overview] (https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "document": "Number of returned pieces. Default value: 20. Maximum value: 100. For further information on Limit, please refer to relevant sections in API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
           "example": "100",
           "member": "uint64",
           "name": "Limit",
@@ -3355,7 +3355,7 @@
         },
         {
           "disabled": false,
-          "document": "Offset, 0 by default. For further information on Offset, please refer to relevant sections in API [Overview] (https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "document": "Offset, 0 by default. For further information on Offset, please refer to relevant sections in API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
           "example": "0",
           "member": "uint64",
           "name": "Offset",
@@ -3476,7 +3476,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Query by one or more scheduled task ids. you can obtain the scheduled task ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group). the maximum number of instances per request is 100. parameters ScheduledActionIds and Filters must not be specified simultaneously.",
+          "document": "Query by one or more scheduled task ids. you can obtain the scheduled task ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group). the maximum number of instances per request is 100. parameters ScheduledActionIds and Filters must not be specified simultaneously.",
           "example": "[\"asst-caa5ha40\"]",
           "member": "string",
           "name": "ScheduledActionIds",
@@ -3485,7 +3485,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter criteria. obtain the scheduled task ID, scheduled task name, and scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group).\n<li> scheduled-action-id - String - required: no - (filter) filter by scheduled task id.</li>.\n<li> scheduled-action-name - String - required: no - (filter criteria) filters by scheduled task name.</li>.\n<li> auto-scaling-group-id - String - required: no - (filter) filter by auto scaling group id.</li>.",
+          "document": "Filter criteria. obtain the scheduled task ID, scheduled task name, and scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).\n<li> scheduled-action-id - String - required: no - (filter) filter by scheduled task id.</li>\n<li> scheduled-action-name - String - required: no - (filter criteria) filters by scheduled task name.</li>\n<li> auto-scaling-group-id - String - required: no - (filter) filter by auto scaling group id.</li>",
           "example": "[{\"Name\": \"auto-scaling-group-name\", \"Values\": [\"production-as\"]}]",
           "member": "Filter",
           "name": "Filters",
@@ -3559,7 +3559,7 @@
         },
         {
           "disabled": false,
-          "document": "List of CVM instance ids. you can obtain available instance ids in the following ways:.\n<li>Query instance ID by logging in to the <a href=\"https://console.cloud.tencent.com/cvm/index\">console</a>.</li>.\n<li>Specifies the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and getting `InstanceId` from the return information.</li>.",
+          "document": "List of CVM instance ids. you can obtain available instance ids in the following ways:\n<li>Query instance ID by logging in to the [console](https://console.cloud.tencent.com/cvm/index).</li>\n<li>Specifies the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and getting `InstanceId` from the return information.</li>",
           "example": "[\"ins-cri8d02t\",\"ins-osckfnm7\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -3596,7 +3596,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.",
+          "document": "Scaling group ID. obtain the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.",
           "example": "asg-12wjuh0s",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -3727,7 +3727,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.",
+          "document": "Scaling group ID. obtain the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.",
           "example": "asg-nvnlpbb8",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -3836,7 +3836,7 @@
         },
         {
           "disabled": false,
-          "document": "List of running instances. non-running instances are not supported. you can obtain available instance ids in the following ways:.\n<li>Query instance ID by logging in to the <a href=\"https://console.cloud.tencent.com/cvm/index\">console</a>.</li>.\n<li>Specifies the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and getting `InstanceId` from the return information.</li>.",
+          "document": "List of running instances. non-running instances are not supported. you can obtain available instance ids in the following ways:\n<li>Query instance ID by logging in to the [console](https://console.cloud.tencent.com/cvm/index).</li>\n<li>Specifies the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and getting `InstanceId` from the return information.</li>",
           "example": "[\"ins-cri8d02t\",\"ins-osckfnm7\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -3937,7 +3937,7 @@
         },
         {
           "disabled": false,
-          "document": "List of CVM instances in standby status. you can obtain available instance ID in the following ways:.\n<li>Query instance ID by logging in to the <a href=\"https://console.cloud.tencent.com/cvm/index\">console</a>.</li>.\n<li>Get the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and retrieving the `InstanceId` from the returned information.</li>.",
+          "document": "List of CVM instances in standby status. you can obtain available instance ID in the following ways:\n<li>Query instance ID by logging in to the [console](https://console.cloud.tencent.com/cvm/index).</li>\n<li>Get the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and retrieving the `InstanceId` from the returned information.</li>",
           "example": "[\"ins-cri8d02t\",\"ins-osckfnm7\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -4064,8 +4064,7 @@
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -4074,8 +4073,7 @@
           "member": "string",
           "name": "ListenerId",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -4084,8 +4082,7 @@
           "member": "string",
           "name": "LocationId",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         }
       ],
       "usage": "in"
@@ -4167,7 +4164,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the delimiter for the CVM host name. The default delimiter is a dot (.). Valid values: \n- dot (.)\n-  hyphen (-)\n- empty string.\nDelimiter used for concatenating host name, index, and suffix. Assuming host name is testGpu4090, index is 0007, and suffix is server.\n-The delimiter is a period (.), and the final concatenation is testGpu4090.007.server.\n-Specifies the delimiter as a hyphen (-), with the final concatenation as testGpu4090-007-server.\n-Delimiter is an empty string, finally concatenated as testGpu4090007server.",
+          "document": "Specifies the delimiter for the CVM host name. The default delimiter is a dot (.). Valid values: \n- dot (.)\n-  hyphen (-)\n- empty string.\nDelimiter used for concatenating host name, index, and suffix. Assuming host name is testGpu4090, index is 0007, and suffix is server.\n- The delimiter is a period (.), and the final concatenation is testGpu4090.007.server.\n- Specifies the delimiter as a hyphen (-), with the final concatenation as testGpu4090-007-server.\n- Delimiter is an empty string, finally concatenated as testGpu4090007server.",
           "example": ".",
           "member": "string",
           "name": "HostNameDelimiter",
@@ -4504,7 +4501,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the delimiter for the CVM instance name. The default delimiter is a dot (.). Valid values: \n- dot (.)\n-  hyphen (-)\n- empty string.\nDelimiter used for concatenating instance name, index, and suffix. Assuming instance name is testGpu4090, index is 0007, and suffix is server.\n-The delimiter is a period (.), and the final concatenation is testGpu4090.007.server.\n-Specifies the delimiter as a hyphen (-), with the final concatenation as testGpu4090-007-server.\n-Delimiter is an empty string, finally concatenated as testGpu4090007server.",
+          "document": "Specifies the delimiter for the CVM instance name. The default delimiter is a dot (.). Valid values: \n- dot (.)\n-  hyphen (-)\n- empty string.\nDelimiter used for concatenating instance name, index, and suffix. Assuming instance name is testGpu4090, index is 0007, and suffix is server.\n- The delimiter is a period (.), and the final concatenation is testGpu4090.007.server.\n- Specifies the delimiter as a hyphen (-), with the final concatenation as testGpu4090-007-server.\n- Delimiter is an empty string, finally concatenated as testGpu4090007server.",
           "example": ".",
           "member": "string",
           "name": "InstanceNameDelimiter",
@@ -4604,7 +4601,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the public IP type.\n\n<Li>WanIP: specifies the public ip address.</li>.\n<Li>HighQualityEIP: highqualityip. only Singapore and hong kong (china) support highqualityip.</li>.\n<Li>AntiDDoSEIP: anti-ddos eip. only partially supported regions can use anti-ddos eip. details visible in [elastic ip product overview](https://www.tencentcloud.com/zh/document/product/213/5733).</li>. \nIf needed to assign an elastic IPv4 address to a resource, specify the elastic IPv4 address type. if only use WanIP, do not set this field.\n\nHigh quality IP the anti-ddos feature is only in beta test in some regions. if needed, submit a ticket for consultation (https://console.cloud.tencent.com/workorder/category).",
+          "document": "Specifies the public IP type.\n\n<Li>WanIP: specifies the public ip address.</li>.\n<Li>HighQualityEIP: highqualityip. only Singapore and hong kong (china) support highqualityip.</li>.\n<Li>AntiDDoSEIP: anti-ddos eip. only partially supported regions can use anti-ddos eip. details visible in [elastic ip product overview](https://www.tencentcloud.com/zh/document/product/213/5733).</li>. \nIf needed to assign an elastic IPv4 address to a resource, specify the elastic IPv4 address type. if only use WanIP, do not set this field.\n\nHigh quality IP the anti-ddos feature is only in beta test in some regions. if needed, [submit a ticket for consultation](https://console.cloud.tencent.com/workorder/category).",
           "example": "WanIP",
           "member": "string",
           "name": "IPv4AddressType",
@@ -4929,7 +4926,7 @@
         },
         {
           "disabled": false,
-          "document": "Role name of the CAM role. can be obtained from roleName in the return value from the DescribeRoleList API (https://intl.cloud.tencent.com/document/product/598/36223?from_cn_redirect=1).",
+          "document": "Role name of the CAM role. can be obtained from roleName in the return value from the [DescribeRoleList API](https://intl.cloud.tencent.com/document/product/598/36223?from_cn_redirect=1).",
           "example": "TestRole",
           "member": "string",
           "name": "CamRoleName",
@@ -5075,7 +5072,7 @@
         },
         {
           "disabled": false,
-          "document": "Result of command invocation,\n<li>`SUCCESSFUL`: Successful command invocation. It does mean that the task is successfully. You can query the task result with the `InvocationId.</li>\n<li>`FAILED`: Failed to invoke the command</li>\n<li>`NONE`</li>",
+          "document": "Result of command invocation,\n<li>`SUCCESSFUL`: Successful command invocation. It does mean that the task is successfully. You can query the task result with the `InvocationId`.</li>\n<li>`FAILED`: Failed to invoke the command</li>\n<li>`NONE`</li>",
           "example": "SUCCESSFUL",
           "member": "string",
           "name": "InvokeCommandResult",
@@ -5179,7 +5176,7 @@
         },
         {
           "disabled": false,
-          "document": "Action to be taken by the scaling group in case of lifecycle hook timeout or LifecycleCommand execution failure. valid values:.\n-CONTINUE execution by default means capacity expansion or reduction.\n-For scale-out hooks, cvms with hook timeout or failed LifecycleCommand execution will be released directly or removed; for scale-in hooks, scale-in activities will continue.",
+          "document": "Action to be taken by the scaling group in case of lifecycle hook timeout or LifecycleCommand execution failure. valid values:.\n- CONTINUE execution by default means capacity expansion or reduction.\n- For scale-out hooks, cvms with hook timeout or failed LifecycleCommand execution will be released directly or removed; for scale-in hooks, scale-in activities will continue.",
           "example": "CONTINUE",
           "member": "string",
           "name": "DefaultResult",
@@ -5199,7 +5196,7 @@
         },
         {
           "disabled": false,
-          "document": "Scenario for entering the lifecycle hook. valid values:.\n-`INSTANCE_LAUNCHING`: the lifecycle hook is being scaled out.\n-INSTANCE_TERMINATING: scale-in lifecycle hook.",
+          "document": "Scenario for entering the lifecycle hook. valid values:.\n- `INSTANCE_LAUNCHING`: the lifecycle hook is being scaled out.\n- `INSTANCE_TERMINATING`: scale-in lifecycle hook.",
           "example": "INSTANCE_TERMINATING",
           "member": "string",
           "name": "LifecycleTransition",
@@ -5442,7 +5439,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>Scaling group ID. obtain available scaling group ids in the following ways:</p><li>query scaling group ids by logging in to the <a href=\"https://console.cloud.tencent.com/autoscaling/group\">console</a>.</li><li>obtain scaling group ids by calling the <a href=\"https://www.tencentcloud.com/document/api/377/20438?from_cn_redirect=1\">DescribeAutoScalingGroups</a> api and retrieving AutoScalingGroupId from the returned information.</li>.",
+          "document": "<p>Scaling group ID. obtain available scaling group ids in the following ways:</p>\n<li>query scaling group ids by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>\n<li>obtain scaling group ids by calling the [DescribeAutoScalingGroups](https://www.tencentcloud.com/document/api/377/20438?from_cn_redirect=1) api and retrieving AutoScalingGroupId from the returned information.</li>",
           "example": "asg-gf5r6t7u",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -5478,7 +5475,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Launch configuration ID. obtain available launch configuration ids in the following ways:</p><li>query the launch configuration ID by logging in to the <a href=\"https://console.cloud.tencent.com/autoscaling/config\">console</a>.</li><li>obtain the launch configuration ID by calling the <a href=\"https://www.tencentcloud.com/document/api/377/20445?from_cn_redirect=1\">DescribeLaunchConfigurations</a> api and retrieving the LaunchConfigurationId from the returned information.</li>.",
+          "document": "<p>Launch configuration ID. obtain available launch configuration ids in the following ways:</p>\n<li>query the launch configuration ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/config).</li>\n<li>obtain the launch configuration ID by calling the [DescribeLaunchConfigurations](https://www.tencentcloud.com/document/api/377/20445?from_cn_redirect=1) api and retrieving the LaunchConfigurationId from the returned information.</li>",
           "example": "asc-gf5r6t7u",
           "member": "string",
           "name": "LaunchConfigurationId",
@@ -5505,7 +5502,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Project ID. obtain this parameter by calling the `ProjectId` field in the return value of <a href=\"https://www.tencentcloud.com/document/api/651/78725?from_cn_redirect=1\">DescribeProject</a>. default value is 0, indicating usage of the default project.</p>.",
+          "document": "<p>Project ID. obtain this parameter by calling the `ProjectId` field in the return value of [DescribeProject](https://www.tencentcloud.com/document/api/651/78725?from_cn_redirect=1). Default value is 0, indicating usage of the default project.</p>.",
           "example": "1",
           "member": "uint64",
           "name": "ProjectId",
@@ -5514,7 +5511,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>subnet ID list. valid vpc subnet ids can be obtained by logging in to the <a href=\"https://console.cloud.tencent.com/vpc/subnet\">console</a> for querying. you can also call the API <a href=\"https://www.tencentcloud.com/document/product/215/15784?from_cn_redirect=1\">DescribeSubnets</a> and retrieve them from the SubnetId field in the API response.</p>.",
+          "document": "subnet ID list. valid vpc subnet ids can be obtained by logging in to the [console](https://console.cloud.tencent.com/vpc/subnet) for querying. you can also call the API [DescribeSubnets](https://www.tencentcloud.com/document/product/215/15784?from_cn_redirect=1) and retrieve them from the SubnetId field in the API response.",
           "example": "[\"subnet-gf5r6t7u\"]",
           "member": "string",
           "name": "SubnetIds",
@@ -5532,7 +5529,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>vpc ID. when modifying the vpc, you need to change the SubnetIds parameter to the subnet of this vpc. effective VpcId can be queried by logging in to the <a href=\"https://console.cloud.tencent.com/vpc/vpc\">console</a>; you can also call the <a href=\"https://www.tencentcloud.com/document/api/215/15778?from_cn_redirect=1\">DescribeVpc</a> api and get the VpcId field from the api response.</p>.",
+          "document": "vpc ID. when modifying the vpc, you need to change the SubnetIds parameter to the subnet of this vpc. effective VpcId can be queried by logging in to the [console](https://console.cloud.tencent.com/vpc/vpc); you can also call the [DescribeVpc](https://www.tencentcloud.com/document/api/215/15778?from_cn_redirect=1) api and get the VpcId field from the api response.",
           "example": "vpc-gf5r6t7u",
           "member": "string",
           "name": "VpcId",
@@ -5685,7 +5682,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.",
+          "document": "Scaling group ID. obtain the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api[ DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.",
           "example": "asg-nvnlpbb8",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -5739,7 +5736,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Launch configuration ID. obtain the launch configuration ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/config) or calling the api DescribeLaunchConfigurations (https://intl.cloud.tencent.com/document/api/377/20445?from_cn_redirect=1) and retrieving the LaunchConfigurationId from the return information.",
+          "document": "Launch configuration ID. obtain the launch configuration ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/config) or calling the api [DescribeLaunchConfigurations](https://intl.cloud.tencent.com/document/api/377/20445?from_cn_redirect=1) and retrieving the LaunchConfigurationId from the return information.",
           "example": "asc-aaaabbbb",
           "member": "string",
           "name": "LaunchConfigurationId",
@@ -5892,7 +5889,7 @@
         },
         {
           "disabled": false,
-          "document": "Role name of the CAM role. can be obtained from roleName in the return value from the DescribeRoleList API (https://intl.cloud.tencent.com/document/product/598/36223?from_cn_redirect=1).",
+          "document": "Role name of the CAM role. can be obtained from roleName in the return value from the [DescribeRoleList API](https://intl.cloud.tencent.com/document/product/598/36223?from_cn_redirect=1).",
           "example": "TestRole",
           "member": "string",
           "name": "CamRoleName",
@@ -6090,7 +6087,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.",
+          "document": "Scaling group ID. obtain the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.",
           "example": "asg-12wjuh0s",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -6443,7 +6440,7 @@
         },
         {
           "disabled": false,
-          "document": "The repeating mode of the scheduled task. follows the standard Cron format. the Recurrence parameter limits (https://intl.cloud.tencent.com/document/product/377/88119?from_cn_redirect=1) consist of 5 fields separated by space, with the structure: minute, hr, date, month, week. this parameter must be simultaneously specified with `EndTime`.",
+          "document": "The repeating mode of the scheduled task. follows the standard Cron format. The [Recurrence parameter limits](https://intl.cloud.tencent.com/document/product/377/88119?from_cn_redirect=1) consist of 5 fields separated by space, with the structure: minute, hr, date, month, week. this parameter must be simultaneously specified with `EndTime`.",
           "example": "0 18 * * 1,2,3,4,5",
           "member": "string",
           "name": "Recurrence",
@@ -6452,7 +6449,7 @@
         },
         {
           "disabled": false,
-          "document": "Disable update DesiredCapacity Indicates the DesiredCapacity is updated normally during scheduled task triggering.\n\nSpecifies whether the scheduled task triggers proactive modification of the DesiredCapacity when the value is True. DesiredCapacity may be modified by the minSize and maxSize mechanism.\nThe following cases assume that DisableUpdateDesiredCapacity is True:\n- When scheduled task triggered, the original DesiredCapacity is 5. The scheduled task changes the minSize to 10, the maxSize to 20, and the DesiredCapacity to 15. Since the DesiredCapacity update is disabled, 15 does not take effect. However, the original DesiredCapacity 5 is less than minSize 10, so the final new DesiredCapacity is 10.\n- When scheduled task triggered, the original DesiredCapacity is 25. The scheduled task changes the minSize to 10 and the maxSize to 20, and the DesiredCapacity to 15. Since the DesiredCapacity update is disabled, 15 does not take effect. However, the original DesiredCapacity 25 is greater than the maxSize 20, so the final new DesiredCapacity is 20.\n- When scheduled task triggered, the original DesiredCapacity is 13. The scheduled task changes the minSize to 10 and the maxSize to 20, and the DesiredCapacity to 15. Since the DesiredCapacity update is disabled, 15 does not take effect, and the DesiredCapacity is still 13.",
+          "document": "This flag disables the normal update of the DesiredCapacityproperty that would otherwise occur when a scheduled scaling task is triggered.\n\nSpecifies whether the scheduled task triggers proactive modification of the DesiredCapacity when the value is True. DesiredCapacity may be modified by the minSize and maxSize mechanism.\nThe following cases assume that DisableUpdateDesiredCapacity is True:\n- When scheduled task triggered, the original DesiredCapacity is 5. The scheduled task changes the minSize to 10, the maxSize to 20, and the DesiredCapacity to 15. Since the DesiredCapacity update is disabled, 15 does not take effect. However, the original DesiredCapacity 5 is less than minSize 10, so the final new DesiredCapacity is 10.\n- When scheduled task triggered, the original DesiredCapacity is 25. The scheduled task changes the minSize to 10 and the maxSize to 20, and the DesiredCapacity to 15. Since the DesiredCapacity update is disabled, 15 does not take effect. However, the original DesiredCapacity 25 is greater than the maxSize 20, so the final new DesiredCapacity is 20.\n- When scheduled task triggered, the original DesiredCapacity is 13. The scheduled task changes the minSize to 10 and the maxSize to 20, and the DesiredCapacity to 15. Since the DesiredCapacity update is disabled, 15 does not take effect, and the DesiredCapacity is still 13.",
           "example": "false",
           "member": "bool",
           "name": "DisableUpdateDesiredCapacity",
@@ -6479,7 +6476,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Target type. valid values include `CMQ_QUEUE`, `CMQ_TOPIC`, `TDMQ_CMQ_QUEUE`, `TDMQ_CMQ_TOPIC`.\n<li>CMQ_QUEUE, specifies tencent cloud message QUEUE - queueing model. the corresponding product is offline. it is recommended to switch to TDMQ_CMQ_QUEUE (https://intl.cloud.tencent.com/document/product/1496/83970?from_cn_redirect=1).</li>.\n<li>CMQ_TOPIC, specifies tencent cloud message queue - TOPIC model. the corresponding product is offline. it is recommended to switch to TDMQ_CMQ_TOPIC (https://intl.cloud.tencent.com/document/product/1496/83970?from_cn_redirect=1).</li>.\n<li> TDMQ_CMQ_QUEUE. specifies the tencent cloud TDMQ message QUEUE - queueing model.</li>.\n<Li>TDMQ_CMQ_TOPIC. specifies tencent cloud tdmq message queue - topic model.</li>.",
+          "document": "Target type. valid values include `CMQ_QUEUE`, `CMQ_TOPIC`, `TDMQ_CMQ_QUEUE`, `TDMQ_CMQ_TOPIC`.\n<li>CMQ_QUEUE, specifies tencent cloud message QUEUE - queueing model. the corresponding product is offline. it is recommended to switch to [TDMQ_CMQ_QUEUE](https://intl.cloud.tencent.com/document/product/1496/83970?from_cn_redirect=1).</li>.\n<li>CMQ_TOPIC, specifies tencent cloud message queue - TOPIC model. the corresponding product is offline. it is recommended to switch to [TDMQ_CMQ_TOPIC](https://intl.cloud.tencent.com/document/product/1496/83970?from_cn_redirect=1).</li>.\n<li> TDMQ_CMQ_QUEUE. specifies the tencent cloud TDMQ message QUEUE - queueing model.</li>.\n<Li>TDMQ_CMQ_TOPIC. specifies tencent cloud tdmq message queue - topic model.</li>.",
           "example": "TDMQ_CMQ_QUEUE",
           "member": "string",
           "name": "TargetType",
@@ -6746,7 +6743,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Rolling update settings parameters. RefreshMode is rolling update. this parameter must be filled in.",
+          "document": "Rolling update settings. This parameter group must be configured if the RefreshMode parameter starts with ROLLING_UPDATE(e.g., ROLLING_UPDATE_RESET).",
           "example": "{\"BatchNumber\": 1, \"MaxSurge\": 1, \"BatchPause\": \"AUTOMATIC\"}",
           "member": "RollingUpdateSettings",
           "name": "RollingUpdateSettings",
@@ -6757,13 +6754,24 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable the backend service health check for the instance. Default value: FALSE. This parameter is valid only for the scaling group bound to an application-based CLB. After this feature is enabled, if the instance fails the check after refresh, the port weight of the CLB will be always 0, and it will be marked as a refresh failure. Valid values: <li>TRUE: enable;</li> <li>FALSE: disable.</li>",
+          "document": "Whether to enable the backend service health check for the instance. Default value: FALSE. \nThis parameter is valid only for the scaling group bound to CLB. After this feature is enabled, if the instance fails the check after refresh, the port weight of the CLB will be always 0, and it will be marked as a refresh failure. Valid values: <li>TRUE: enable;</li> <li>FALSE: disable.</li>",
           "example": "TRUE",
           "member": "bool",
           "name": "CheckInstanceTargetHealth",
           "output_required": true,
           "required": false,
           "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the timeout period for instance backend service health check, in seconds. \nValue range: [60,7200]. Default value: 1800 seconds. \nThis parameter takes effect only when the CheckInstanceTargetHealth parameter is enabled.  If an instance health check times out, the instance will be marked as a refresh failure.",
+          "example": "600",
+          "member": "uint64",
+          "name": "CheckInstanceTargetHealthTimeout",
+          "output_required": false,
+          "required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -6809,7 +6817,7 @@
         },
         {
           "disabled": false,
-          "document": "CVM instance ID list. you can obtain available instance ID in the following ways:.\n<li>Query instance ID by logging in to the <a href=\"https://console.cloud.tencent.com/cvm/index\">console</a>.</li>.\n<li>Specifies the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and getting `InstanceId` from the return information.</li>.",
+          "document": "CVM instance ID list. you can obtain available instance ID in the following ways:.\n<li>Query instance ID by logging in to the [console](https://console.cloud.tencent.com/cvm/index).</li>\n<li>Specifies the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and getting `InstanceId` from the return information.</li>",
           "example": "[\"ins-cri8d02t\",\"ins-osckfnm7\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -6891,7 +6899,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Scaling group ID. you can obtain available scaling group ids in the following ways. \n<li>Query the scaling group ID by logging in to the <a href=\"https://console.cloud.tencent.com/autoscaling/group\">console</a>.</li>.\n<li>Obtain the scaling group ID by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.</li>.",
+          "document": "Scaling group ID. you can obtain available scaling group ids in the following ways. \n<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>\n<li>Obtain the scaling group ID by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.</li>",
           "example": "asg-12yqet78",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -7101,7 +7109,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Scaling group ID",
+          "document": "Scaling group ID. obtain available scaling group ids in the following ways:.\n<li>Specifies the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.\n<li>Obtain the scaling group ID by calling the api [DescribeAutoScalingGroups](https://www.tencentcloud.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.</li>.",
           "example": "asg-12yqet78",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -7110,7 +7118,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of instances to be added",
+          "document": "Number of resource instances to scale out. the static value range of this parameter is [1,2000]. this parameter must not be larger than the difference between the expected number and the maximum value. for example, if the expected number of the scaling group is 20 and the maximum value is 100, the valid values are [1,80].",
           "example": "1",
           "member": "uint64",
           "name": "ScaleOutNumber",
@@ -7129,6 +7137,7 @@
           "example": "asa-n6w01f6m",
           "member": "string",
           "name": "ActivityId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -7332,7 +7341,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the repeating mode of the scheduled task. the Recurrence parameter limits (https://intl.cloud.tencent.com/document/product/377/88119?from_cn_redirect=1) consist of 5 fields separated by space, with the structure: minute, hour, date, month, week.",
+          "document": "Specifies the repeating mode of the scheduled task. The [Recurrence parameter limits](https://intl.cloud.tencent.com/document/product/377/88119?from_cn_redirect=1) consist of 5 fields separated by space, with the structure: minute, hour, date, month, week.",
           "example": "0 23 */1 * *",
           "member": "string",
           "name": "Recurrence",
@@ -7402,7 +7411,7 @@
         },
         {
           "disabled": false,
-          "document": "Disable update DesiredCapacity Indicates the DesiredCapacity is updated normally during scheduled task triggering.\n\nSpecifies whether the scheduled task triggers proactive modification of the DesiredCapacity when the value is True. DesiredCapacity may be modified by the minSize and maxSize mechanism.\nThe following cases assume that DisableUpdateDesiredCapacity is True:\n- When scheduled task triggered, the original DesiredCapacity is 5. The scheduled task changes the minSize to 10, the maxSize to 20, and the DesiredCapacity to 15. Since the DesiredCapacity update is disabled, 15 does not take effect. However, the original DesiredCapacity 5 is less than minSize 10, so the final new DesiredCapacity is 10.\n- When scheduled task triggered, the original DesiredCapacity is 25. The scheduled task changes the minSize to 10 and the maxSize to 20, and the DesiredCapacity to 15. Since the DesiredCapacity update is disabled, 15 does not take effect. However, the original DesiredCapacity 25 is greater than the maxSize 20, so the final new DesiredCapacity is 20.\n- When scheduled task triggered, the original DesiredCapacity is 13. The scheduled task changes the minSize to 10 and the maxSize to 20, and the DesiredCapacity to 15. Since the DesiredCapacity update is disabled, 15 does not take effect, and the DesiredCapacity is still 13.",
+          "document": "This flag disables the normal update of the DesiredCapacityproperty that would otherwise occur when a scheduled scaling task is triggered.\n\nSpecifies whether the scheduled task triggers proactive modification of the DesiredCapacity when the value is True. DesiredCapacity may be modified by the minSize and maxSize mechanism.\nThe following cases assume that DisableUpdateDesiredCapacity is True:\n- When scheduled task triggered, the original DesiredCapacity is 5. The scheduled task changes the minSize to 10, the maxSize to 20, and the DesiredCapacity to 15. Since the DesiredCapacity update is disabled, 15 does not take effect. However, the original DesiredCapacity 5 is less than minSize 10, so the final new DesiredCapacity is 10.\n- When scheduled task triggered, the original DesiredCapacity is 25. The scheduled task changes the minSize to 10 and the maxSize to 20, and the DesiredCapacity to 15. Since the DesiredCapacity update is disabled, 15 does not take effect. However, the original DesiredCapacity 25 is greater than the maxSize 20, so the final new DesiredCapacity is 20.\n- When scheduled task triggered, the original DesiredCapacity is 13. The scheduled task changes the minSize to 10 and the maxSize to 20, and the DesiredCapacity to 15. Since the DesiredCapacity update is disabled, 15 does not take effect, and the DesiredCapacity is still 13.",
           "example": "false",
           "member": "bool",
           "name": "DisableUpdateDesiredCapacity",
@@ -7510,7 +7519,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance ID. you can obtain available instance ID in the following ways:.\n<li>Query instance ID by logging in to the <a href=\"https://console.cloud.tencent.com/cvm/index\">console</a>.</li>.\n<li>Specifies the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and getting `InstanceId` from the return information.</li>.",
+          "document": "Instance ID. you can obtain available instance ID in the following ways:.\n<li>Query instance ID by logging in to the [console](https://console.cloud.tencent.com/cvm/index)</li>\n<li>Specifies the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and getting `InstanceId` from the return information.</li>",
           "example": "[\"ins-b2d33ywt\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -7629,7 +7638,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the instance ID list of CVM to enable. you can obtain available instance ID in the following ways.\n<li>Query instance ID by logging in to the <a href=\"https://console.cloud.tencent.com/cvm/index\">console</a>.</li>.\n<li>Get the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and retrieving the `InstanceId` from the returned information.</li>.",
+          "document": "Specifies the instance ID list of CVM to enable. you can obtain available instance ID in the following ways.\n<li>Query instance ID by logging in to the [console](https://console.cloud.tencent.com/cvm/index)</li>\n<li>Get the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and retrieving the `InstanceId` from the returned information.</li>",
           "example": "[\"ins-cri8d02t\",\"ins-osckfnm7\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -7666,7 +7675,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Scaling group ID.",
+          "document": "Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeAutoScalingGroups](https://www.tencentcloud.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.",
           "example": "asg-12yqet78",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -7730,7 +7739,7 @@
         },
         {
           "disabled": false,
-          "document": "List of CVM instance ids to be closed. you can obtain available instance ids in the following ways:.\n<li>Query instance ID by logging in to the <a href=\"https://console.cloud.tencent.com/cvm/index\">console</a>.</li>.\n<li>Specifies the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and getting `InstanceId` from the return information.</li>.",
+          "document": "List of CVM instance ids to be closed. you can obtain available instance ids in the following ways:.\n<li>Query instance ID by logging in to the [console](https://console.cloud.tencent.com/cvm/index).</li>\n<li>Specifies the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and getting `InstanceId` from the return information.</li>",
           "example": "[\"ins-cri8d02t\",\"ins-osckfnm7\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -8034,7 +8043,7 @@
         {
           "disabled": false,
           "document": "Base64-encoded custom data of up to 16 KB.",
-          "example": "\"\"",
+          "example": "IyEvYmluL2Jhc2gKZWNobyAx",
           "member": "string",
           "name": "UserData",
           "required": false,
@@ -8088,7 +8097,7 @@
         {
           "disabled": false,
           "document": "Selection policy of cloud disks. Default value: ORIGINAL. Valid values:\n<br><li>ORIGINAL: uses the configured cloud disk type\n<br><li>AUTOMATIC: automatically chooses an available cloud disk type",
-          "example": "无",
+          "example": "ORIGINAL",
           "member": "string",
           "name": "DiskTypePolicy",
           "required": false,
@@ -8178,7 +8187,7 @@
         {
           "disabled": false,
           "document": "Notification result. `NotificationTarget` and `LifecycleCommand` cannot be specified at the same time.",
-          "example": "{\"QueueName\": \"as-pool\", \"TargetType\": \"TDMQ_CMQ_QUEUE\"}",
+          "example": "无",
           "member": "NotificationTarget",
           "name": "NotificationTarget",
           "required": false,
@@ -8196,7 +8205,7 @@
         {
           "disabled": false,
           "document": "Remote command execution object. `NotificationMetadata`, `NotificationTarget`, and `LifecycleCommand` are mutually exclusive and cannot be specified simultaneously.",
-          "example": "{\"CommandId\": \"cmd-am4e3hd8\", \"Parameters\": \"{123: 222}\"}",
+          "example": "无",
           "member": "LifecycleCommand",
           "name": "LifecycleCommand",
           "required": false,

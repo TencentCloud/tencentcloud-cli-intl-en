@@ -802,7 +802,7 @@
       "usage": "in"
     },
     "Auth": {
-      "document": "",
+      "document": "User Permissions",
       "members": [
         {
           "disabled": false,
@@ -2534,7 +2534,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The list of instance accounts.",
           "example": "无",
           "member": "UserInfo",
           "name": "Users",
@@ -4421,7 +4421,7 @@
         },
         {
           "disabled": false,
-          "document": "Log category.\n- Log categories include but are not limited to COMMAND, ACCESS, CONTROL, FTDC, INDEX, NETWORK, QUERY, REPL, SHARDING, STORAGE, RECOVERY, JOURNAL, and WRITE. The specific supported categories may vary depending on the MongoDB version. For details, see Log Messages (https://www.mongodb.com/zh-cn/docs/v5.0/reference/log-messages/#log-message-examples).\n- Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and view the **log category** on the **Error Log** tab of the **Log Management** page.",
+          "document": "Log category.\n- Log categories include but are not limited to COMMAND, ACCESS, CONTROL, FTDC, INDEX, NETWORK, QUERY, REPL, SHARDING, STORAGE, RECOVERY, JOURNAL, and WRITE. The specific supported categories may vary depending on the MongoDB version. For details, see [Log Messages](https://www.mongodb.com/docs/v5.0/reference/log-messages/#log-message-examples).\n- Log in to the [TencentDB for MongoDB console](https://console.cloud.tencent.com/mongodb), and view the **log category** on the **Error Log** tab of the **Log Management** page.",
           "example": "[\"COMMAND\"]",
           "member": "string",
           "name": "LogComponents",
@@ -7271,7 +7271,7 @@
         },
         {
           "disabled": false,
-          "document": "Database type that the parameter template applies to.\n- REPLSET: replica set instance.\n- SHARD: shard instance.\n-STANDALONE: Single-node instance.",
+          "document": "Database type that the parameter template applies to.\n- REPLSET: replica set instance.\n- SHARD: shard instance.\n- STANDALONE: Single-node instance.",
           "example": "SHARD",
           "member": "string",
           "name": "ClusterType",
@@ -7291,7 +7291,7 @@
         },
         {
           "disabled": false,
-          "document": "Template type.\n-DEFAULT: System default template.\n-CUSTOMIZE: custom template.",
+          "document": "Template type.\n- DEFAULT: System default template.\n- CUSTOMIZE: custom template.",
           "example": "DEFAULT",
           "member": "string",
           "name": "TplType",
@@ -7894,7 +7894,7 @@
         {
           "disabled": false,
           "document": "Start time of the maintenance window. The value range is any hour or half-hour between 00:00 and 23:00, such as 00:00 or 00:30.",
-          "example": "\"04:00\"",
+          "example": "04:00",
           "member": "string",
           "name": "MaintenanceStart",
           "required": true,
@@ -7903,7 +7903,7 @@
         {
           "disabled": false,
           "document": "End time of the maintenance window.\n- The value range is any hour or half-hour between 00:00 and 23:00. The minimum value of maintenance time is 30 minutes, and the maximum value is 3 hours.\n- The end time should be later than the start time.",
-          "example": "\"05:00\"",
+          "example": "05:00",
           "member": "string",
           "name": "MaintenanceEnd",
           "required": true,
@@ -8619,7 +8619,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The account name.",
           "example": "mongo_test",
           "member": "string",
           "name": "UserName",
@@ -8629,7 +8629,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The account permission details.",
           "example": "无",
           "member": "Auth",
           "name": "AuthRole",
@@ -8639,7 +8639,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The time when the account was created.",
           "example": "2021-09-28 14:25:38",
           "member": "string",
           "name": "CreateTime",
@@ -8649,7 +8649,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The time when the account was last updated.",
           "example": "2021-09-28 14:25:38",
           "member": "string",
           "name": "UpdateTime",
@@ -8659,7 +8659,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The remarks for the account.",
           "example": "mongodb测试账号",
           "member": "string",
           "name": "UserDesc",
@@ -8669,7 +8669,7 @@
         },
         {
           "disabled": false,
-          "document": "Console password update time.",
+          "document": "The time when the console password was last updated.",
           "example": "2021-09-28 14:25:38",
           "member": "string",
           "name": "ConsolePassUpdateTime",

@@ -1100,7 +1100,7 @@
         },
         {
           "disabled": false,
-          "document": "-agent-status - String - required: no - (filter condition) filters by agent status. valid values: Online, Offline. \n-environment - String - required: no - (filter condition) query by agent runtime environment. valid values: Linux, Windows.\n-instance-id - String - required: no - (filter condition) filter by instance id. you can get the instance id through the query instance API of the corresponding cloud services. currently supports instance types: CVM, Lighthouse, and managed instances.\n\nThe maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `InstanceIds` and `Filters` parameters cannot be specified at the same time.",
+          "document": "- agent-status \n    - String \n    - required: no \n    - (filter condition) filters by agent status. valid values: Online, Offline. \n- environment \n    - String \n    - required: no \n    - (filter condition) query by agent runtime environment. valid values: Linux, Windows.\n- instance-id \n    - String \n    - required: no \n    - (filter condition) filter by instance id. you can get the instance id through the query instance API of the corresponding cloud services. currently supports instance types: CVM, Lighthouse, and managed instances.\n\nThe maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `InstanceIds` and `Filters` parameters cannot be specified at the same time.",
           "example": "[ { \"Name\": \"instance-id\", \"Values\": [\"ins-zcewfho0\"] }]",
           "member": "Filter",
           "name": "Filters",
@@ -1927,7 +1927,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Resource name\n\nValue is:.\n\n- COMMAND: COMMAND.\n-REGISTER_CODE: managed instance registration code.",
+          "document": "Resource name\n\nValue is:.\n\n- COMMAND: COMMAND.\n- REGISTER_CODE: managed instance registration code.",
           "example": "COMMAND",
           "member": "string",
           "name": "ResourceName",
@@ -1996,7 +1996,7 @@
         },
         {
           "disabled": false,
-          "document": "Execution task status. valid values:.\n\n-PENDING: waiting for distribution.\n- RUNNING: command RUNNING.\n-Canceling.\n-SUCCESS: command success.\n-TIMEOUT: command timeout.\n- FAILED: command FAILED.\n-CANCELLED: all commands canceled.\n-PARTIAL_FAILED: the command partially failed.\n-PARTIAL_CANCELLED: the command is partially canceled.",
+          "document": "Execution task status. valid values:.\n\n- PENDING: waiting for distribution.\n- RUNNING: command is running.\n- CANCELLING: canceling.\n- SUCCESS: command success.\n- TIMEOUT: command timeout.\n- FAILED: command FAILED.\n- CANCELLED: all commands canceled.\n- PARTIAL_FAILED: the command partially failed.\n- PARTIAL_CANCELLED: the command is partially canceled.",
           "example": "SUCCESS",
           "member": "string",
           "name": "InvocationStatus",
@@ -2106,7 +2106,7 @@
         },
         {
           "disabled": false,
-          "document": "Invocation source.\n\n-USER: originate from user invocation.\n-INVOKER: originate from scheduled execution.",
+          "document": "Invocation source.\n\n- USER: originate from user invocation.\n- INVOKER: originate from scheduled execution.",
           "example": "USER",
           "member": "string",
           "name": "InvocationSource",
@@ -2212,7 +2212,7 @@
         },
         {
           "disabled": false,
-          "document": "Execution task status. valid values:.\n\n-PENDING: waiting for distribution.\n-DELIVERING: distributing.\n-DELIVER_DELAYED: delivery delay.\n-DELIVER_FAILED: delivery fail.\n-START_FAILED: command start failed.\n- RUNNING: command RUNNING.\n-SUCCESS: command success.\n-FAILED: command execution failed, exit code not 0.\n-TIMEOUT: command timeout.\n-TASK_TIMEOUT: client no response.\n-Canceling.\n- CANCELLED: canceled (command canceled before startup).\n-TERMINATED: suspended (canceled during command execution).",
+          "document": "Execution task status. valid values:.\n\n- PENDING: waiting for distribution.\n- DELIVERING: distributing.\n- DELIVER_DELAYED: delivery delay.\n- DELIVER_FAILED: delivery fail.\n- START_FAILED: command start failed.\n- RUNNING: command RUNNING.\n- SUCCESS: command success.\n- FAILED: command execution failed, exit code not 0.\n- TIMEOUT: command timeout.\n- TASK_TIMEOUT: client no response.\n- CANCELLING: canceling.\n- CANCELLED: canceled (command canceled before startup).\n- TERMINATED: suspended (canceled during command execution).",
           "example": "SUCCESS",
           "member": "string",
           "name": "TaskStatus",
@@ -2302,7 +2302,7 @@
         },
         {
           "disabled": false,
-          "document": "Invocation source.\n\n-USER: originate from user invocation.\n-INVOKER: originate from scheduled execution.",
+          "document": "Invocation source.\n\n- USER: originate from user invocation.\n- INVOKER: originate from scheduled execution.",
           "example": "USER",
           "member": "string",
           "name": "InvocationSource",
@@ -2338,7 +2338,7 @@
         },
         {
           "disabled": false,
-          "document": "Execution task status. valid values:.\n\n-PENDING: waiting for distribution.\n-DELIVERING: distributing.\n-DELIVER_DELAYED: delivery delay.\n-DELIVER_FAILED: delivery fail.\n-START_FAILED: command start failed.\n- RUNNING: command RUNNING.\n-SUCCESS: command success.\n-FAILED: command execution failed, exit code not 0.\n-TIMEOUT: command timeout.\n-TASK_TIMEOUT: client no response.\n-Canceling.\n- CANCELLED: canceled (command canceled before startup).\n-TERMINATED: suspended (canceled during command execution).",
+          "document": "Execution task status. valid values:.\n\n- PENDING: waiting for distribution.\n- DELIVERING: distributing.\n- DELIVER_DELAYED: delivery delay.\n- DELIVER_FAILED: delivery fail.\n- START_FAILED: command start failed.\n- RUNNING: command RUNNING.\n- SUCCESS: command success.\n- FAILED: command execution failed, exit code not 0.\n- TIMEOUT: command timeout.\n- TASK_TIMEOUT: client no response.\n- CANCELLING: cancelling.\n- CANCELLED: canceled (command canceled before startup).\n- TERMINATED: suspended (canceled during command execution).",
           "example": "SUCCESS",
           "member": "string",
           "name": "TaskStatus",
@@ -2620,7 +2620,7 @@
         },
         {
           "disabled": false,
-          "document": "Trigger result.\n\n-PENDING: waiting for distribution.\n- RUNNING: command RUNNING.\n-Canceling.\n-SUCCESS: command success.\n-TIMEOUT: command timeout.\n- FAILED: command FAILED.\n-CANCELLED: all commands canceled.\n-PARTIAL_FAILED: the command partially failed.\n-PARTIAL_CANCELLED: the command is partially canceled.",
+          "document": "Trigger result.\n\n- PENDING: waiting for distribution.\n- RUNNING: command RUNNING.\n- CANCELLING: canceling.\n- SUCCESS: command success.\n- TIMEOUT: command timeout.\n- FAILED: command FAILED.\n- CANCELLED: all commands canceled.\n- PARTIAL_FAILED: the command partially failed.\n- PARTIAL_CANCELLED: the command is partially canceled.",
           "example": "SUCCESS",
           "member": "string",
           "name": "Result",
@@ -3454,7 +3454,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Execution policy.\n\n-ONCE: one-time execution.\n-RECURRENCE: execute periodically.",
+          "document": "Execution policy.\n\n- ONCE: one-time execution.\n- RECURRENCE: execute periodically.",
           "example": "ONCE",
           "member": "string",
           "name": "Policy",

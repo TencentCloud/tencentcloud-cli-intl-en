@@ -64,6 +64,14 @@
         "title": "DEMO"
       }
     ],
+    "CreateMNGAppSecret": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateMNGAppSecret\n<Common request parameters>\n\n{\n    \"MNPId\": \"mgcozy957r7iflwr\",\n    \"PlatformId\": \"T04914TJ0911724TSAK\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"SecretKey\": \"59fc578*****************c966042f\"\n        },\n        \"RequestId\": \"44410959-c747-42f6-96f0-ab7bb7a9785e\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
     "CreateMNGApproval": [
       {
         "document": "",
@@ -88,6 +96,14 @@
         "title": "DEMO"
       }
     ],
+    "CreateMNGSubscribeMessageTemplate": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateMNGSubscribeMessageTemplate\n<Common request parameters>\n\n{\n    \"PlatformId\": \"T04914TJ0911724TSAK\",\n    \"MNPId\": \"mgcozy957r7iflwr\",\n    \"TemplateLibraryId\": \"tmpl_fWlcCPdHdh1742883251\",\n    \"Keywords\": [\n        \"kwoWSMVekFJU1742883251\"\n    ],\n    \"ScenarioDescription\": \"order\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"Result\": true\n        },\n        \"RequestId\": \"fec0ad44-8a38-4034-afa7-da30d306997d\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
     "CreateMNGVersion": [
       {
         "document": "",
@@ -102,6 +118,14 @@
         "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateMNP\n<Common request parameters>\n\n{\n    \"PlatformId\": \"T02245JR9111721GKOI\",\n    \"TeamId\": \"6519624807\",\n    \"MNPName\": \"apiminiprogram\",\n    \"MNPType\": \"Life Service->144_Lilliputian Services\",\n    \"MNPIntro\": \"api create mini program\",\n    \"MNPDesc\": \"api create mini program\",\n    \"MNPIcon\": \"https://127.0.0.1/console/20240812101023-f1ae758593.jpeg\"\n}",
         "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"ResourceId\": \"mp1mkdcf53ob2h8m\"\n        },\n        \"RequestId\": \"e5b444cb698246b6852bd980114ca151\"\n    }\n}",
         "title": "CreateMNP"
+      }
+    ],
+    "CreateMNPAppSecret": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateMNPAppSecret\n<Common request parameters>\n\n{\n    \"MNPId\": \"mp7sfajpbl2vr1tr\",\n    \"PlatformId\": \"T04914TJ0911724TSAK\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"SecretKey\": \"8b95************************da92\"\n        },\n        \"RequestId\": \"ac773a00-edda-441a-b331-adab66df8700\"\n    }\n}",
+        "title": "Example"
       }
     ],
     "CreateMNPApproval": [
@@ -125,7 +149,7 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateMNPSecretKey\n<Common request parameters>\n\n{\n    \"PlatformId\": \"T08123WM5791733VNCZ\",\n    \"MNPId\": \"mpjnms6wibvjj8dd\"\n}",
         "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"KeyId\": \"202603111414116361758560\",\n            \"SecretKey\": \"d1d9be684ffaa73e6fc81c8f7a04ad827aedf9779c593b09b5e375c64b4d3a0f\"\n        },\n        \"RequestId\": \"eff07e65-8f28-48d0-8b40-88c2de3fac03\"\n    }\n}",
-        "title": "DEMO"
+        "title": "Example"
       }
     ],
     "CreateMNPSensitiveAPIPermissionApproval": [
@@ -134,6 +158,14 @@
         "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateMNPSensitiveAPIPermissionApproval\n<Common request parameters>\n\n{\n    \"APIId\": \"api-0min3gqxp8vs1dkh\",\n    \"ApplyReason\": \"We need it.\",\n    \"MNPId\": \"mpg9yjc0qbpkelik\",\n    \"PlatformId\": \"T04257DS9431720WTAG\"\n}",
         "output": "{\n    \"Response\": {\n        \"Data\": {},\n        \"RequestId\": \"aa461996-fbb3-4391-8b26-8551731805dc\"\n    }\n}",
         "title": "CreateMNPSensitiveAPIPermissionApproval"
+      }
+    ],
+    "CreateMNPSubscribeMessageTemplate": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateMNPSubscribeMessageTemplate\n<Common request parameters>\n\n{\n    \"PlatformId\": \"T04914TJ0911724TSAK\",\n    \"MNPId\": \"mpdsteb1avwknpls\",\n    \"TemplateLibraryId\": \"tmpl_OmrBUPHRot1734081492\",\n    \"Keywords\": [\n        \"kwzfzeNffxER1734081492\"\n    ],\n    \"ScenarioDescription\": \"Order scenario\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"Result\": true\n        },\n        \"RequestId\": \"8d310fd9-94f8-48c2-87c2-7b07f9b482fc\"\n    }\n}",
+        "title": "Example"
       }
     ],
     "CreateMNPVersion": [
@@ -200,12 +232,28 @@
         "title": "DEMO"
       }
     ],
+    "DeleteMNGSubscribeMessageTemplate": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteMNGSubscribeMessageTemplate\n<Common request parameters>\n\n{\n    \"PlatformId\": \"T04914TJ0911724TSAK\",\n    \"MNPId\": \"mgcozy957r7iflwr\",\n    \"TemplateId\": \"mti_HXguKrqvPmBFXIqxhJlKAtYsXwGNtxzdVQbrqpb\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"Result\": true\n        },\n        \"RequestId\": \"7badfd55-fd15-4831-a2b0-6d3b8d912205\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
     "DeleteMNP": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteMNP\n<Common request parameters>\n\n{\n    \"MNPId\": \"mpub1oskm7olulc5\",\n    \"PlatformId\": \"T04257DS9431720WTAG\"\n}",
         "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"Result\": true\n        },\n        \"RequestId\": \"e82b6b6c-44c9-458a-abd2-910f8309b712\"\n    }\n}",
         "title": "DeleteMNP"
+      }
+    ],
+    "DeleteMNPSubscribeMessageTemplate": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteMNPSubscribeMessageTemplate\n<Common request parameters>\n\n{\n    \"PlatformId\": \"T04914TJ0911724TSAK\",\n    \"MNPId\": \"mpdsteb1avwknpls\",\n    \"TemplateId\": \"mti_IqOzjtxjrlbYRCjkkdkAGOSHZgTYIAfTzEOTtNv\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"Result\": true\n        },\n        \"RequestId\": \"4ad3f681-f441-4488-a1d8-37e13ce896db\"\n    }\n}",
+        "title": "Example"
       }
     ],
     "DeleteTeam": [
@@ -408,6 +456,14 @@
         "title": "DEMO"
       }
     ],
+    "DescribeMNGAppSecret": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNGAppSecret\n<Common request parameters>\n\n{\n    \"MNPId\": \"mgcozy957r7iflwr\",\n    \"PlatformId\": \"T04914TJ0911724TSAK\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"OpenServerURL\": \"https://openapi-dev.tcmppcloud.com/openserver\",\n            \"SecretStatus\": 0\n        },\n        \"RequestId\": \"ef231dc3-1c4f-4bd6-a91d-795b74cebadf\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
     "DescribeMNGCategory": [
       {
         "document": "",
@@ -427,9 +483,9 @@
     "DescribeMNGList": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNGList\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"PlatformId\": \"T04914TJ0911724TSAK\",\n    \"Keyword\": \"pay\",\n    \"TeamId\": \"4191195423\",\n    \"ApplicationId\": \"app-hospwn8hgc\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"DataList\": [\n                {\n                    \"ApplicationName\": \"\",\n                    \"CreateTime\": \"1755506382\",\n                    \"CreateUser\": \"murphypeng_app_mini\",\n                    \"EffectMNPVersion\": \"\",\n                    \"EffectMNPVersionId\": 0,\n                    \"EffectStatus\": 1,\n                    \"MNPIcon\": \"https://tcmpp-dev-renter-1258344699.cos.ap-guangzhou.myqcloud.com/596e07d66e3441f191a03748550236f7.png\",\n                    \"MNPId\": \"mg89adajrzt8tp7t\",\n                    \"MNPIntro\": \"Mini game V2\",\n                    \"MNPName\": \"Mini game V2\",\n                    \"MNPType\": \"Board & card games -> 10115_Board games\n                    \"Status\": 0,\n                    \"TeamName\": \"Mini game V2 MINI\",\n                    \"UpdateTime\": \"1760523666\",\n                    \"UpdateUser\": \"murphypeng_app_mini\"\n                }\n            ],\n            \"TotalCount\": 1\n        },\n        \"RequestId\": \"d4f66f0b-774a-4840-ae66-a567eb5a1657\"\n    }\n}",
-        "title": "DEMO"
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNGList\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"PlatformId\": \"T09891LW9411772TWFN\",\n    \"Keyword\": \"\",\n    \"TeamId\": \"\",\n    \"ApplicationId\": \"\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"DataList\": [\n                {\n                    \"ApplicationName\": \"autotest_app\",\n                    \"CreateTime\": \"1775616419\",\n                    \"CreateUser\": \"autotest_admin_admin_admin_admin\",\n                    \"EffectMNPVersion\": \"\",\n                    \"EffectMNPVersionId\": 0,\n                    \"EffectStatus\": 1,\n                    \"MNPIcon\": \"https://mp-b699cbee82-1314481471.cos.accelerate.myqcloud.com/T09891LW9411772TWFN/tcmpp/d2f08dae22a1474db78a896dd7f55dfb.jpg\",\n                    \"MNPId\": \"mggmlsubsh1ayswv\",\n                    \"MNPIntro\": \"\",\n                    \"MNPName\": \"openapi_game0122\",\n                    \"MNPType\": \"Action->10109_Racing\",\n                    \"Status\": 0,\n                    \"TeamName\": \"autotest_mini_team\",\n                    \"UpdateTime\": \"1775616419\",\n                    \"UpdateUser\": \"autotest_admin_admin_admin_admin\"\n                }\n            ],\n            \"TotalCount\": 11\n        },\n        \"RequestId\": \"6da54419-49c4-40d6-8aec-90cfef93fccf\"\n    }\n}",
+        "title": "Example"
       }
     ],
     "DescribeMNGMAUDataDetail": [
@@ -536,6 +592,38 @@
         "title": "DEMO"
       }
     ],
+    "DescribeMNGSubscribeMessageTemplate": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNGSubscribeMessageTemplate\n<Common request parameters>\n\n{\n    \"PlatformId\": \"T04914TJ0911724TSAK\",\n    \"MNPId\": \"mgcozy957r7iflwr\",\n    \"TemplateId\": \"mti_HXguKrqvPmBFXIqxhJlKAtYsXwGNtxzdVQbrqpb\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"CreateTime\": \"1779259433\",\n            \"CreateUser\": \"murphypeng\",\n            \"ScenarioDescription\": \"name\",\n            \"TemplateInfo\": {\n                \"DefaultLang\": \"en-US\",\n                \"KeywordList\": [\n                    {\n                        \"DefaultValue\": \"1\",\n                        \"DefaultValueList\": [\n                            {\n                                \"Lang\": \"en-US\",\n                                \"Value\": \"1\"\n                            }\n                        ],\n                        \"Keyword\": \"f1\",\n                        \"KeywordId\": \"kwoWSMVekFJU1742883251\",\n                        \"KeywordList\": [\n                            {\n                                \"Lang\": \"en-US\",\n                                \"Value\": \"f1\"\n                            }\n                        ],\n                        \"KeywordType\": \"date.DATA\"\n                    }\n                ],\n                \"Languages\": [\n                    \"en-US\"\n                ],\n                \"MNPIcon\": \"https://tcmpp-dev-renter-1258344699.cos.ap-guangzhou.myqcloud.com/T04914TJ0911724TSAK/tcmpp/c6ae74310ec848e5ab00f1b1ed9a1a90.png\",\n                \"MNPName\": \"minigame001\",\n                \"TemplateId\": \"mti_HXguKrqvPmBFXIqxhJlKAtYsXwGNtxzdVQbrqpb\",\n                \"TemplateTitle\": \"test0325\",\n                \"TitleList\": [\n                    {\n                        \"Lang\": \"en-US\",\n                        \"Value\": \"test0325\"\n                    }\n                ]\n            }\n        },\n        \"RequestId\": \"d494889d-8951-4304-9452-bc1550db6b8d\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "DescribeMNGSubscribeMessageTemplateLibrary": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNGSubscribeMessageTemplateLibrary\n<Common request parameters>\n\n{\n    \"PlatformId\": \"T04914TJ0911724TSAK\",\n    \"MNPId\": \"mgcozy957r7iflwr\",\n    \"TemplateLibraryId\": \"tmpl_fWlcCPdHdh1742883251\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"DefaultLang\": \"en-US\",\n            \"KeywordList\": [\n                {\n                    \"DefaultValue\": \"1\",\n                    \"DefaultValueList\": [\n                        {\n                            \"Lang\": \"en-US\",\n                            \"Value\": \"1\"\n                        }\n                    ],\n                    \"Keyword\": \"f1\",\n                    \"KeywordId\": \"kwoWSMVekFJU1742883251\",\n                    \"KeywordList\": [\n                        {\n                            \"Lang\": \"en-US\",\n                            \"Value\": \"f1\"\n                        }\n                    ],\n                    \"KeywordType\": \"date.DATA\"\n                }\n            ],\n            \"MNPIcon\": \"https://tcmpp-dev-renter-1258344699.cos.ap-guangzhou.myqcloud.com/T04914TJ0911724TSAK/tcmpp/c6ae74310ec848e5ab00f1b1ed9a1a90.png\",\n            \"MNPName\": \"minigame001\",\n            \"SupportLang\": \"en-US\",\n            \"TemplateTitle\": \"test0325\",\n            \"TitleList\": [\n                {\n                    \"Lang\": \"en-US\",\n                    \"Value\": \"test0325\"\n                }\n            ]\n        },\n        \"RequestId\": \"35399ad6-3ac9-4d4d-8264-0713dfb0fb4a\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "DescribeMNGSubscribeMessageTemplateLibraryList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNGSubscribeMessageTemplateLibraryList\n<Common request parameters>\n\n{\n    \"PlatformId\": \"T04914TJ0911724TSAK\",\n    \"MNPId\": \"mgcozy957r7iflwr\",\n    \"Limit\": 1,\n    \"QueryType\": 2,\n    \"Offset\": 0,\n    \"QueryStr\": \"n\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"DataList\": [\n                {\n                    \"DefaultLang\": \"en-US\",\n                    \"Description\": \" \",\n                    \"KeywordI18nList\": [\n                        {\n                            \"I18nList\": [\n                                {\n                                    \"Lang\": \"en-US\",\n                                    \"Value\": \"f1\"\n                                }\n                            ]\n                        }\n                    ],\n                    \"Keywords\": \"f1\",\n                    \"SupportLang\": \"en-US\",\n                    \"TemplateLibraryId\": \"tmpl_fWlcCPdHdh1742883251\",\n                    \"TemplateTitle\": \"test0325\",\n                    \"TemplateTitleI18nList\": [\n                        {\n                            \"Lang\": \"en-US\",\n                            \"Value\": \"test0325\"\n                        }\n                    ]\n                }\n            ],\n            \"TotalCount\": 4\n        },\n        \"RequestId\": \"c1850ab9-91b9-4407-8bd6-238bec978c2b\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "DescribeMNGSubscribeMessageTemplateList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNGSubscribeMessageTemplateList\n<Common request parameters>\n\n{\n    \"PlatformId\": \"T04914TJ0911724TSAK\",\n    \"MNPId\": \"mgcozy957r7iflwr\",\n    \"Offset\": 0,\n    \"Limit\": 10\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"DataList\": [\n                {\n                    \"CreateTime\": \"1779264948\",\n                    \"CreateUser\": \"murphypeng\",\n                    \"DefaultLang\": \"en-US\",\n                    \"KeywordI18nList\": [\n                        {\n                            \"I18nList\": [\n                                {\n                                    \"Lang\": \"en-US\",\n                                    \"Value\": \"f1\"\n                                }\n                            ]\n                        }\n                    ],\n                    \"Keywords\": \"f1\",\n                    \"Status\": 1,\n                    \"SupportLang\": [\n                        \"en-US\"\n                    ],\n                    \"TemplateId\": \"mti_VESFWfhtoXnSKEPjdQVcLtTmBsiRbGYbXzNSjcY\",\n                    \"TemplateTitle\": \"test0325\",\n                    \"TemplateTitleI18nList\": [\n                        {\n                            \"Lang\": \"en-US\",\n                            \"Value\": \"test0325\"\n                        }\n                    ],\n                    \"TemplateType\": 2\n                }\n            ],\n            \"TotalCount\": 1\n        },\n        \"RequestId\": \"cdeaade1-8432-4e2b-9d1b-da1d7ddb3277\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
     "DescribeMNGVersion": [
       {
         "document": "",
@@ -582,6 +670,14 @@
         "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNPAllStageVersions\n<Common request parameters>\n\n{\n    \"MNPId\": \"mpg9yjc0qbpkelik\",\n    \"PlatformId\": \"T04257DS9431720WTAG\"\n}",
         "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"MNPId\": \"mpg9yjc0qbpkelik\",\n                \"MNPVersionId\": 2596,\n                \"MNPName\": \"autotest_miniapp\",\n                \"MNPIcon\": \"http://127.0.0.1/T04257DS9431720WTAG/console/20240820061043-30fc239971.png\",\n                \"MNPType\": \"Logistics Services->1_Pickup/Delivery,Life Service->144_Lilliputian Services\",\n                \"MNPIntro\": \"mini program introduce\",\n                \"MNPDesc\": \"mini program desc\",\n                \"CreateUser\": \"autotest_op\",\n                \"CreateTime\": \"1724142147\",\n                \"MNPVersion\": \"1.0.277\",\n                \"MNPVersionIntro\": \"mini program version introduce\",\n                \"Phase\": \"Platform\",\n                \"ApprovalNo\": \"aud7hnb70973ng51ca\",\n                \"ApprovalStatus\": 3,\n                \"VersionCurrentStatus\": 3,\n                \"ShowCase\": 1,\n                \"RollbackVersion\": 0,\n                \"Status\": 1\n            },\n            {\n                \"MNPId\": \"mpg9yjc0qbpkelik\",\n                \"MNPVersionId\": 2596,\n                \"MNPName\": \"autotest_miniapp\",\n                \"MNPIcon\": \"http://127.0.0.1/T04257DS9431720WTAG/console/20240820061043-30fc239971.png\",\n                \"MNPType\": \"Logistics Services->1_Pickup/Delivery,Life Service->144_Lilliputian Services\",\n                \"MNPIntro\": \"mini program introduce\",\n                \"MNPDesc\": \"mini program desc\",\n                \"CreateUser\": \"autotest_op\",\n                \"CreateTime\": \"1724142147\",\n                \"MNPVersion\": \"1.0.277\",\n                \"MNPVersionIntro\": \"mini program version introduce\",\n                \"Phase\": \"Online\",\n                \"ApprovalNo\": \"aud7hnb70973ng51ca\",\n                \"ApprovalStatus\": 3,\n                \"VersionCurrentStatus\": 3,\n                \"ShowCase\": 1,\n                \"RollbackVersion\": 0,\n                \"Status\": 1\n            }\n        ],\n        \"RequestId\": \"2802e966-d4ab-4a91-8350-00b803e5a49c\"\n    }\n}",
         "title": "DescribeMNPAllStageVersions"
+      }
+    ],
+    "DescribeMNPAppSecret": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNPAppSecret\n<Common request parameters>\n\n{\n    \"MNPId\": \"mpdsteb1avwknpls\",\n    \"PlatformId\": \"T04914TJ0911724TSAK\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"OpenServerURL\": \"https://openapi-dev.tcmppcloud.com/openserver\",\n            \"SecretStatus\": 1\n        },\n        \"RequestId\": \"e4189503-5f5b-471f-960d-6d628de322f2\"\n    }\n}",
+        "title": "Example"
       }
     ],
     "DescribeMNPApprovalList": [
@@ -720,6 +816,38 @@
         "title": "DescribeMNPSensitiveAPIPermissionList"
       }
     ],
+    "DescribeMNPSubscribeMessageTemplate": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNPSubscribeMessageTemplate\n<Common request parameters>\n\n{\n    \"PlatformId\": \"T04914TJ0911724TSAK\",\n    \"MNPId\": \"mpdsteb1avwknpls\",\n    \"TemplateId\": \"mti_IqOzjtxjrlbYRCjkkdkAGOSHZgTYIAfTzEOTtNv\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"CreateTime\": \"1779185030\",\n            \"CreateUser\": \"murphypeng\",\n            \"ScenarioDescription\": \"Order scenario\",\n            \"TemplateInfo\": {\n                \"DefaultLang\": \"en-US\",\n                \"KeywordList\": [\n                    {\n                        \"DefaultValue\": \"100020241130100001\",\n                        \"DefaultValueList\": [\n                            {\n                                \"Lang\": 'zh-cn':{\n                                \"Value\": \"88800,\n                            }\n                        ],\n                        \"Keyword\": \"Order number 1\",\n                        \"KeywordId\": \"kwzfzeNffxER1734081492\",\n                        \"KeywordList\": [\n                            {\n                                \"Lang\": \"en-US\",\n                                \"Value\": \"Order Number\"\n                            }\n                        ],\n                        \"KeywordType\": \"thing.DATA\"\n                    }\n                ],\n                \"Languages\": [\n                    \"en-US\"\n                ],\n                \"MNPIcon\": \"https://tcmpp-dev-renter-1258344699.cos.ap-guangzhou.myqcloud.com/T04914TJ0911724TSAK/tcmpp/10f7400082c941a782ed5b0390ccce8a.png\",\n                \"MNPName\": \"i18n Chinese\",\n                \"TemplateId\": \"mti_IqOzjtxjrlbYRCjkkdkAGOSHZgTYIAfTzEOTtNv\",\n                \"TemplateTitle\": \"Received order notification\",\n                \"TitleList\": [\n                    {\n                        \"Lang\": \"en-US\",\n                        \"Value\": \"Received order notification\"\n                    }\n                ]\n            }\n        },\n        \"RequestId\": \"d9ae7db4-661c-473f-893c-5b7a33bc46d4\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "DescribeMNPSubscribeMessageTemplateLibrary": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNPSubscribeMessageTemplateLibrary\n<Common request parameters>\n\n{\n    \"PlatformId\": \"T04914TJ0911724TSAK\",\n    \"MNPId\": \"mpdsteb1avwknpls\",\n    \"TemplateLibraryId\": \"tmpl_OmrBUPHRot1734081492\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"DefaultLang\": \"en-US\",\n            \"KeywordList\": [\n                {\n                    \"DefaultValue\": \"100020241130100001\",\n                    \"DefaultValueList\": [\n                        {\n                            \"Lang\": \"en-US\",\n                            \"Value\": \"88800\",\n                        }\n                    ],\n                    \"Keyword\": \"Order number 1\",\n                    \"KeywordId\": \"kwzfzeNffxER1734081492\",\n                    \"KeywordList\": [\n                        {\n                            \"Lang\": \"en-US\",\n                            \"Value\": \"Order Number\"\n                        }\n                    ],\n                    \"KeywordType\": \"thing.DATA\"\n                }\n            ],\n            \"MNPIcon\": \"https://tcmpp-dev-renter-1258344699.cos.ap-guangzhou.myqcloud.com/T04914TJ0911724TSAK/tcmpp/10f7400082c941a782ed5b0390ccce8a.png\",\n            \"MNPName\": \"i18n Chinese\",\n            \"SupportLang\": \"en-US,zh-CN\",\n            \"TemplateTitle\": \"Received order notification\",\n            \"TitleList\": [\n                {\n                    \"Lang\": \"en-US\",\n                    \"Value\": \"Received order notification\"\n                }\n            ]\n        },\n        \"RequestId\": \"17dad6b9-93ce-41cc-93a7-aa3927bf6bd3\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "DescribeMNPSubscribeMessageTemplateLibraryList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNPSubscribeMessageTemplateLibraryList\n<Common request parameters>\n\n{\n    \"PlatformId\": \"T04914TJ0911724TSAK\",\n    \"MNPId\": \"mpdsteb1avwknpls\",\n    \"Limit\": 10,\n    \"QueryType\": 2,\n    \"Offset\": 0,\n    \"QueryStr\": \"o\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"DataList\": [\n                {\n                    \"DefaultLang\": \"en-US\",\n                    \"Description\": \"...\",\n                    \"KeywordI18nList\": [\n                        {\n                            \"I18nList\": [\n                                {\n                                    \"Lang\": \"en-US\",\n                                    \"Value\": \"Order Number\"\n                                }\n                            ]\n                        }\n                    ],\n                    \"Keywords\": \"Order number 1, Order type, Order status, Order time, Remarks, Appointment time, Associated customer\",\n                    \"SupportLang\": \"en-US,zh-CN\",\n                    \"TemplateLibraryId\": \"tmpl_OmrBUPHRot1734081492\",\n                    \"TemplateTitle\": \"Received order notification\",\n                    \"TemplateTitleI18nList\": [\n                        {\n                            \"Lang\": \"en-US\",\n                            \"Value\": \"Received order notification\"\n                        }\n                    ]\n                }\n            ],\n            \"TotalCount\": 1\n        },\n        \"RequestId\": \"4af60cdd-cd46-42f0-a2d6-070e658c82cd\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "DescribeMNPSubscribeMessageTemplateList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNPSubscribeMessageTemplateList\n<Common request parameters>\n\n{\n    \"PlatformId\": \"T04914TJ0911724TSAK\",\n    \"MNPId\": \"mpdsteb1avwknpls\",\n    \"Offset\": 0,\n    \"Limit\": 10\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"DataList\": [\n                {\n                    \"CreateTime\": \"1779185009\",\n                    \"CreateUser\": \"superadmin\",\n                    \"DefaultLang\": \"en-US\",\n                    \"KeywordI18nList\": [\n                        {\n                            \"I18nList\": [\n                                {\n                                    \"Lang\": \"zh-CN\",\n                                    \"Value\": \"Order number 1\"\n                                }\n                            ]\n                        }\n                    ],\n                    \"Keywords\": \"Order number 1, order type\",\n                    \"Status\": 1,\n                    \"SupportLang\": [\n                        \"en-US\"\n                    ],\n                    \"TemplateId\": \"mti_TikvyJNgOssvwGDuOaPztteNrKfuPblcetpuvTd\",\n                    \"TemplateTitle\": \"Received order notification\",\n                    \"TemplateTitleI18nList\": [\n                        {\n                            \"Lang\": \"en-US\",\n                            \"Value\": \"Received order notification\"\n                        }\n                    ],\n                    \"TemplateType\": 2\n                }\n            ],\n            \"TotalCount\": 1\n        },\n        \"RequestId\": \"aa27e052-4bed-4d91-a670-0faecdeaf5de\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
     "DescribeMNPVersion": [
       {
         "document": "",
@@ -856,6 +984,14 @@
         "title": "DEMO"
       }
     ],
+    "ModifyMNGAppSecretStatus": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyMNGAppSecretStatus\n<Common request parameters>\n\n{\n    \"MNPId\": \"mgcozy957r7iflwr\",\n    \"PlatformId\": \"T04914TJ0911724TSAK\",\n    \"SecretStatus\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"Result\": true\n        },\n        \"RequestId\": \"8680243e-53e4-4b2a-96cc-f6c0d4ad3302\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
     "ModifyMNGDomain": [
       {
         "document": "",
@@ -870,6 +1006,14 @@
         "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyMNP\n<Common request parameters>\n\n{\n    \"MNPType\": \"Logistics Services->1_Pickup/Delivery,Life Service->144_Lilliputian Services\",\n    \"MNPName\": \"autotest_miniapp\",\n    \"MNPIntro\": \"game\",\n    \"MNPDesc\": \"demo game\",\n    \"MNPId\": \"mpg9yjc0qbpkelik\",\n    \"MNPIcon\": \"http://127.0.0.1/T04257DS9431720WTAG/console/20240820162809-c31a505943.png\",\n    \"PlatformId\": \"T04257DS9431720WTAG\"\n}",
         "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"ResourceId\": 727\n        },\n        \"RequestId\": \"36b3ccc2-a04a-4f73-82be-b472f5e4b262\"\n    }\n}",
         "title": "ModifyMNP"
+      }
+    ],
+    "ModifyMNPAppSecretStatus": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyMNPAppSecretStatus\n<Common request parameters>\n\n{\n    \"MNPId\": \"mp7sfajpbl2vr1tr\",\n    \"PlatformId\": \"T04914TJ0911724TSAK\",\n    \"SecretStatus\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"Result\": true\n        },\n        \"RequestId\": \"69ac85bb-89d4-4acb-8cc4-f3a8b43576e8\"\n    }\n}",
+        "title": "Example"
       }
     ],
     "ModifyMNPDomain": [
@@ -950,6 +1094,22 @@
         "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RemoveMNP\n<Common request parameters>\n\n{\n    \"MNPId\": \"mp0sbz01tzh2du7n\",\n    \"PlatformId\": \"T04257DS9431720WTAG\"\n}",
         "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"Result\": true\n        },\n        \"RequestId\": \"744134c4-76ba-4979-ac23-7d09ed04acb5\"\n    }\n}",
         "title": "RemoveMNP"
+      }
+    ],
+    "ResetMNGAppSecret": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResetMNGAppSecret\n<Common request parameters>\n\n{\n    \"MNPId\": \"mgcozy957r7iflwr\",\n    \"PlatformId\": \"T04914TJ0911724TSAK\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"SecretKey\": \"3e31af******************c1ff4e75\"\n        },\n        \"RequestId\": \"4f53a452-f980-4be6-880f-751f5217fc65\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "ResetMNPAppSecret": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResetMNPAppSecret\n<Common request parameters>\n\n{\n    \"MNPId\": \"mp7sfajpbl2vr1tr\",\n    \"PlatformId\": \"T04914TJ0911724TSAK\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"SecretKey\": \"b592c*********************13fd3a\"\n        },\n        \"RequestId\": \"b91122cb-380d-4862-8a60-d8b9d4c2e496\"\n    }\n}",
+        "title": "Example"
       }
     ],
     "RollbackMNGVersion": [

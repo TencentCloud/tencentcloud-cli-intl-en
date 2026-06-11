@@ -56,6 +56,13 @@
       "output": "CreateMNGResponse",
       "status": "online"
     },
+    "CreateMNGAppSecret": {
+      "document": "This API is used to generate a mini game secret key.",
+      "input": "CreateMNGAppSecretRequest",
+      "name": "This API is used to generate a mini game secret key.",
+      "output": "CreateMNGAppSecretResponse",
+      "status": "online"
+    },
     "CreateMNGApproval": {
       "document": "This API is used to create a mini game approval request.",
       "input": "CreateMNGApprovalRequest",
@@ -77,6 +84,13 @@
       "output": "CreateMNGSensitiveAPIPermissionApprovalResponse",
       "status": "online"
     },
+    "CreateMNGSubscribeMessageTemplate": {
+      "document": "This API is used to create a mini game subscription message template.",
+      "input": "CreateMNGSubscribeMessageTemplateRequest",
+      "name": "Creates a mini game subscription message template",
+      "output": "CreateMNGSubscribeMessageTemplateResponse",
+      "status": "online"
+    },
     "CreateMNGVersion": {
       "document": "This API is used to create a mini game version.",
       "input": "CreateMNGVersionRequest",
@@ -89,6 +103,13 @@
       "input": "CreateMNPRequest",
       "name": "Creates a mini program",
       "output": "CreateMNPResponse",
+      "status": "online"
+    },
+    "CreateMNPAppSecret": {
+      "document": "This API is used to generate a mini program secret key.",
+      "input": "CreateMNPAppSecretRequest",
+      "name": "Generates a mini program secret key",
+      "output": "CreateMNPAppSecretResponse",
       "status": "online"
     },
     "CreateMNPApproval": {
@@ -117,6 +138,13 @@
       "input": "CreateMNPSensitiveAPIPermissionApprovalRequest",
       "name": "Creates a permission request to allow a mini program to call sensitive APIs",
       "output": "CreateMNPSensitiveAPIPermissionApprovalResponse",
+      "status": "online"
+    },
+    "CreateMNPSubscribeMessageTemplate": {
+      "document": "This API is used to create a mini program subscription message template.",
+      "input": "CreateMNPSubscribeMessageTemplateRequest",
+      "name": "Creates a mini program subscription message template.",
+      "output": "CreateMNPSubscribeMessageTemplateResponse",
       "status": "online"
     },
     "CreateMNPVersion": {
@@ -175,11 +203,25 @@
       "output": "DeleteMNGResponse",
       "status": "online"
     },
+    "DeleteMNGSubscribeMessageTemplate": {
+      "document": "This API is used to delete a mini game subscription message template.",
+      "input": "DeleteMNGSubscribeMessageTemplateRequest",
+      "name": "Deletes a mini game subscription message template",
+      "output": "DeleteMNGSubscribeMessageTemplateResponse",
+      "status": "online"
+    },
     "DeleteMNP": {
       "document": "This API is used to delete a mini program.",
       "input": "DeleteMNPRequest",
       "name": "Deletes a mini program",
       "output": "DeleteMNPResponse",
+      "status": "online"
+    },
+    "DeleteMNPSubscribeMessageTemplate": {
+      "document": "This API is used to delete a mini program subscription message template.",
+      "input": "DeleteMNPSubscribeMessageTemplateRequest",
+      "name": "Deletes a mini program subscription message template",
+      "output": "DeleteMNPSubscribeMessageTemplateResponse",
       "status": "online"
     },
     "DeleteTeam": {
@@ -351,10 +393,17 @@
       "status": "online"
     },
     "DescribeMNGAllStageVersions": {
-      "document": "This API is used to query the mini game version information.",
+      "document": "This API is used to query mini game version information across all phases.",
       "input": "DescribeMNGAllStageVersionsRequest",
-      "name": "Queries the mini game version information",
+      "name": "Queries mini game version information across all phases",
       "output": "DescribeMNGAllStageVersionsResponse",
+      "status": "online"
+    },
+    "DescribeMNGAppSecret": {
+      "document": "This API is used to query mini game secret keys.",
+      "input": "DescribeMNGAppSecretRequest",
+      "name": "Queries mini game secret keys",
+      "output": "DescribeMNGAppSecretResponse",
       "status": "online"
     },
     "DescribeMNGCategory": {
@@ -469,6 +518,34 @@
       "output": "DescribeMNGSensitiveAPIPermissionListResponse",
       "status": "online"
     },
+    "DescribeMNGSubscribeMessageTemplate": {
+      "document": "This API is used to query mini game subscription message template details.",
+      "input": "DescribeMNGSubscribeMessageTemplateRequest",
+      "name": "Queries mini game subscription message template details",
+      "output": "DescribeMNGSubscribeMessageTemplateResponse",
+      "status": "online"
+    },
+    "DescribeMNGSubscribeMessageTemplateLibrary": {
+      "document": "This API is used to query mini game subscription message template library details.",
+      "input": "DescribeMNGSubscribeMessageTemplateLibraryRequest",
+      "name": "Queries mini game subscription message template library details",
+      "output": "DescribeMNGSubscribeMessageTemplateLibraryResponse",
+      "status": "online"
+    },
+    "DescribeMNGSubscribeMessageTemplateLibraryList": {
+      "document": "This API is used to query the mini game subscription message template library list.",
+      "input": "DescribeMNGSubscribeMessageTemplateLibraryListRequest",
+      "name": "Queries the mini game subscription message template library list",
+      "output": "DescribeMNGSubscribeMessageTemplateLibraryListResponse",
+      "status": "online"
+    },
+    "DescribeMNGSubscribeMessageTemplateList": {
+      "document": "This API is used to query the mini game subscription message template list.",
+      "input": "DescribeMNGSubscribeMessageTemplateListRequest",
+      "name": "Queries the mini game subscription message template list",
+      "output": "DescribeMNGSubscribeMessageTemplateListResponse",
+      "status": "online"
+    },
     "DescribeMNGVersion": {
       "document": "This API is used to query the mini game version creation results.",
       "input": "DescribeMNGVersionRequest",
@@ -505,10 +582,17 @@
       "status": "online"
     },
     "DescribeMNPAllStageVersions": {
-      "document": "This API is used to query versions of a mini program across all stages.",
+      "document": "This API is used to query mini program version information across all phases.",
       "input": "DescribeMNPAllStageVersionsRequest",
-      "name": "Queries versions of a mini program across all stages",
+      "name": "Queries mini program version information across all phases",
       "output": "DescribeMNPAllStageVersionsResponse",
+      "status": "online"
+    },
+    "DescribeMNPAppSecret": {
+      "document": "This API is used to query mini program secret keys.",
+      "input": "DescribeMNPAppSecretRequest",
+      "name": "Queries mini program secret keys",
+      "output": "DescribeMNPAppSecretResponse",
       "status": "online"
     },
     "DescribeMNPApprovalList": {
@@ -630,6 +714,34 @@
       "output": "DescribeMNPSensitiveAPIPermissionListResponse",
       "status": "online"
     },
+    "DescribeMNPSubscribeMessageTemplate": {
+      "document": "This API is used to query mini program subscription message template details.",
+      "input": "DescribeMNPSubscribeMessageTemplateRequest",
+      "name": "Queries mini program subscription message template details",
+      "output": "DescribeMNPSubscribeMessageTemplateResponse",
+      "status": "online"
+    },
+    "DescribeMNPSubscribeMessageTemplateLibrary": {
+      "document": "This API is used to query mini program subscription message template library details.",
+      "input": "DescribeMNPSubscribeMessageTemplateLibraryRequest",
+      "name": "Queries mini program subscription message template library details",
+      "output": "DescribeMNPSubscribeMessageTemplateLibraryResponse",
+      "status": "online"
+    },
+    "DescribeMNPSubscribeMessageTemplateLibraryList": {
+      "document": "This API is used to query the mini program subscription message template library list.",
+      "input": "DescribeMNPSubscribeMessageTemplateLibraryListRequest",
+      "name": "Queries the mini program subscription message template library list",
+      "output": "DescribeMNPSubscribeMessageTemplateLibraryListResponse",
+      "status": "online"
+    },
+    "DescribeMNPSubscribeMessageTemplateList": {
+      "document": "This API is used to query the mini program subscription message template list.",
+      "input": "DescribeMNPSubscribeMessageTemplateListRequest",
+      "name": "Queries the mini program subscription message template list",
+      "output": "DescribeMNPSubscribeMessageTemplateListResponse",
+      "status": "online"
+    },
     "DescribeMNPVersion": {
       "document": "This API is used to query the mini program version creation results.",
       "input": "DescribeMNPVersionRequest",
@@ -749,6 +861,13 @@
       "output": "ModifyMNGResponse",
       "status": "online"
     },
+    "ModifyMNGAppSecretStatus": {
+      "document": "This API is used to modify the secret key status of a mini game.",
+      "input": "ModifyMNGAppSecretStatusRequest",
+      "name": "Modifies the secret key status of a mini game",
+      "output": "ModifyMNGAppSecretStatusResponse",
+      "status": "online"
+    },
     "ModifyMNGDomain": {
       "document": "This API is used to edit the mini game domain information.",
       "input": "ModifyMNGDomainRequest",
@@ -761,6 +880,13 @@
       "input": "ModifyMNPRequest",
       "name": "Edits the mini program information",
       "output": "ModifyMNPResponse",
+      "status": "online"
+    },
+    "ModifyMNPAppSecretStatus": {
+      "document": "This API is used to modify the secret key status of a mini program.",
+      "input": "ModifyMNPAppSecretStatusRequest",
+      "name": "Modifies the secret key status of a mini program",
+      "output": "ModifyMNPAppSecretStatusResponse",
       "status": "online"
     },
     "ModifyMNPDomain": {
@@ -831,6 +957,20 @@
       "input": "RemoveMNPRequest",
       "name": "Removes a mini program",
       "output": "RemoveMNPResponse",
+      "status": "online"
+    },
+    "ResetMNGAppSecret": {
+      "document": "This API is used to reset a mini game secret key.",
+      "input": "ResetMNGAppSecretRequest",
+      "name": "Resets a mini game secret key",
+      "output": "ResetMNGAppSecretResponse",
+      "status": "online"
+    },
+    "ResetMNPAppSecret": {
+      "document": "This API is used to reset a mini program secret key.",
+      "input": "ResetMNPAppSecretRequest",
+      "name": "Resets a mini program secret key",
+      "output": "ResetMNPAppSecretResponse",
       "status": "online"
     },
     "RollbackMNGVersion": {
@@ -1362,12 +1502,12 @@
       "usage": "out"
     },
     "AnalysisData": {
-      "document": "Trend data value.",
+      "document": "Data analysis API response value object. key is the data time, and number is the data value.",
       "members": [
         {
           "disabled": false,
-          "document": "Data time.",
-          "example": "",
+          "document": "<p>Data time.</p>",
+          "example": "20251104",
           "member": "string",
           "name": "DataTime",
           "output_required": false,
@@ -1376,8 +1516,8 @@
         },
         {
           "disabled": false,
-          "document": "Data value.",
-          "example": "",
+          "document": "<p>Data value.</p>",
+          "example": "0",
           "member": "string",
           "name": "Number",
           "output_required": false,
@@ -2120,6 +2260,68 @@
       ],
       "usage": "out"
     },
+    "CreateMNGAppSecretRequest": {
+      "document": "CreateMNGAppSecret request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Mini program appid.</p>",
+          "example": "mgcozy957r7iflwr",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T04914TJ0911724TSAK",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateMNGAppSecretResp": {
+      "document": "Response for generating a mini program secret key",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Mini game secret key.</p>",
+          "example": "59fc578******************966042f",
+          "member": "string",
+          "name": "SecretKey",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateMNGAppSecretResponse": {
+      "document": "CreateMNGAppSecret response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Response data.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CreateMNGAppSecretResp",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateMNGApprovalRequest": {
       "document": "CreateMNGApproval request structure.",
       "members": [
@@ -2324,7 +2526,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>The mini game name and description in multiple languages.</p>",
+          "document": "<p>Mini game name and introduction in multiple languages.</p>",
           "example": "无",
           "member": "MNPI18NSyncDto",
           "name": "I18nList",
@@ -2420,6 +2622,79 @@
       ],
       "type": "object"
     },
+    "CreateMNGSubscribeMessageTemplateRequest": {
+      "document": "CreateMNGSubscribeMessageTemplate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T04914TJ0911724TSAK",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program appid.</p>",
+          "example": "mgcozy957r7iflwr",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template ID.</p>",
+          "example": "tmpl_fWlcCPdHdh1742883251",
+          "member": "string",
+          "name": "TemplateLibraryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template keywords.</p>",
+          "example": "[\"kwoWSMVekFJU1742883251\"]",
+          "member": "string",
+          "name": "Keywords",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template scenario description.</p>",
+          "example": "order",
+          "member": "string",
+          "name": "ScenarioDescription",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateMNGSubscribeMessageTemplateResponse": {
+      "document": "CreateMNGSubscribeMessageTemplate response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Response data.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BooleanInfo",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateMNGVersionRequest": {
       "document": "CreateMNGVersion request structure.",
       "members": [
@@ -2500,6 +2775,68 @@
           "output_required": false,
           "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateMNPAppSecretRequest": {
+      "document": "CreateMNPAppSecret request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Mini program appid.</p>",
+          "example": "mp7sfajpbl2vr1tr",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T04914TJ0911724TSAK",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateMNPAppSecretResp": {
+      "document": "Response for generating a mini program secret key",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Mini program secret key.</p>",
+          "example": "8b95**********************0bda92",
+          "member": "string",
+          "name": "SecretKey",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateMNPAppSecretResponse": {
+      "document": "CreateMNPAppSecret response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Response data.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CreateMNPAppSecretResp",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -2714,7 +3051,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>The mini program name and description in multiple languages.</p>",
+          "document": "<p>Mini program name and introduction in multiple languages.</p>",
           "example": "无",
           "member": "MNPI18NSyncDto",
           "name": "I18nList",
@@ -2729,7 +3066,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>The returned mini game appid returned.</p>",
+          "document": "<p>Returned mini program ID.</p>",
           "example": "无",
           "member": "ResourceIdStringInfo",
           "name": "Data",
@@ -2760,7 +3097,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Mini program or mini game appid.</p>",
+          "document": "<p>Mini program appid.</p>",
           "example": "mpjnms6wibvjj8dd",
           "member": "string",
           "name": "MNPId",
@@ -2771,7 +3108,7 @@
       "type": "object"
     },
     "CreateMNPSecretKeyResp": {
-      "document": "Response for creating a mini program secret key.",
+      "document": "Response for creating a mini program secret key",
       "members": [
         {
           "disabled": false,
@@ -2872,6 +3209,79 @@
           "output_required": true,
           "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateMNPSubscribeMessageTemplateRequest": {
+      "document": "CreateMNPSubscribeMessageTemplate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T04914TJ0911724TSAK",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program appid.</p>",
+          "example": "mpdsteb1avwknpls",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template library ID.</p>",
+          "example": "tmpl_OmrBUPHRot1734081492",
+          "member": "string",
+          "name": "TemplateLibraryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template keyword.</p>",
+          "example": "[\"kwzfzeNffxER1734081492\"]",
+          "member": "string",
+          "name": "Keywords",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template scenario description.</p>",
+          "example": "订单场景",
+          "member": "string",
+          "name": "ScenarioDescription",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateMNPSubscribeMessageTemplateResponse": {
+      "document": "CreateMNPSubscribeMessageTemplate response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Response data.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BooleanInfo",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -3371,6 +3781,61 @@
       ],
       "type": "object"
     },
+    "DeleteMNGSubscribeMessageTemplateRequest": {
+      "document": "DeleteMNGSubscribeMessageTemplate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T04914TJ0911724TSAK",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program appid.</p>",
+          "example": "mgcozy957r7iflwr",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template ID.</p>",
+          "example": "mti_HXguKrqvPmBFXIqxhJlKAtYsXwGNtxzdVQbrqpb",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMNGSubscribeMessageTemplateResponse": {
+      "document": "DeleteMNGSubscribeMessageTemplate response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Response data.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BooleanInfo",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteMNPRequest": {
       "document": "DeleteMNP request structure.",
       "members": [
@@ -3407,6 +3872,61 @@
           "output_required": true,
           "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMNPSubscribeMessageTemplateRequest": {
+      "document": "DeleteMNPSubscribeMessageTemplate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T04914TJ0911724TSAK",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program appid.</p>",
+          "example": "mpdsteb1avwknpls",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Template ID.</p>",
+          "example": "mti_IqOzjtxjrlbYRCjkkdkAGOSHZgTYIAfTzEOTtNv",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteMNPSubscribeMessageTemplateResponse": {
+      "document": "DeleteMNPSubscribeMessageTemplate response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Response data.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BooleanInfo",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -4726,7 +5246,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "API ID.",
+          "document": "<p>APIID</p>",
           "example": "api-28ghlp8yodkxxwzd",
           "member": "string",
           "name": "APIId",
@@ -4736,7 +5256,7 @@
         },
         {
           "disabled": false,
-          "document": "API name.",
+          "document": "<p>API name.</p>",
           "example": "testState1",
           "member": "string",
           "name": "APIName",
@@ -4746,7 +5266,7 @@
         },
         {
           "disabled": false,
-          "document": "API request method.",
+          "document": "<p>API method.</p>",
           "example": "testState1",
           "member": "string",
           "name": "APIMethod",
@@ -4756,7 +5276,7 @@
         },
         {
           "disabled": false,
-          "document": "API description.",
+          "document": "<p>API description.</p>",
           "example": "testState1",
           "member": "string",
           "name": "APIDesc",
@@ -4766,7 +5286,7 @@
         },
         {
           "disabled": false,
-          "document": "Creator.",
+          "document": "<p>Creator.</p>",
           "example": "800001096389",
           "member": "string",
           "name": "CreateUser",
@@ -4776,7 +5296,7 @@
         },
         {
           "disabled": false,
-          "document": "Creation time.",
+          "document": "<p>Creation time.</p>",
           "example": "1741317548",
           "member": "string",
           "name": "CreateTime",
@@ -4786,7 +5306,7 @@
         },
         {
           "disabled": false,
-          "document": "Last modifier.",
+          "document": "<p>Last modifier.</p>",
           "example": "1741317548",
           "member": "string",
           "name": "UpdateUser",
@@ -4796,7 +5316,7 @@
         },
         {
           "disabled": false,
-          "document": "Last modified time.",
+          "document": "<p>Last modified time.</p>",
           "example": "1741317548",
           "member": "string",
           "name": "UpdateTime",
@@ -4806,7 +5326,7 @@
         },
         {
           "disabled": false,
-          "document": "Superapp ID.",
+          "document": "<p>Superapp ID.</p>",
           "example": "app-or80bj0q46",
           "member": "string",
           "name": "ApplicationId",
@@ -4816,7 +5336,7 @@
         },
         {
           "disabled": false,
-          "document": "Superapp name.",
+          "document": "<p>Superapp name.</p>",
           "example": "autotest_app",
           "member": "string",
           "name": "ApplicationName",
@@ -4826,7 +5346,7 @@
         },
         {
           "disabled": false,
-          "document": "Team ID.",
+          "document": "<p>Team ID.</p>",
           "example": "6534341001",
           "member": "string",
           "name": "TeamId",
@@ -4836,7 +5356,7 @@
         },
         {
           "disabled": false,
-          "document": "Team name.",
+          "document": "<p>Team name.</p>",
           "example": "autotest_app_team",
           "member": "string",
           "name": "TeamName",
@@ -4846,7 +5366,7 @@
         },
         {
           "disabled": false,
-          "document": "Superapp icon.",
+          "document": "<p>Superapp icon.</p>",
           "example": "https://mp-d73d473dbe-1314481471.cos.accelerate.myqcloud.com/T03774IM9541735YJZV/tcmpp/b0468b7638d84b20b71f8b4f68a432f5.png",
           "member": "string",
           "name": "ApplicationLogo",
@@ -4856,7 +5376,7 @@
         },
         {
           "disabled": false,
-          "document": "API type. Valid values: 1: System; 2: Custom.",
+          "document": "<p>API type. Valid values: 1: System; 2: Custom.</p>",
           "example": "2",
           "member": "int64",
           "name": "APIType",
@@ -4866,7 +5386,7 @@
         },
         {
           "disabled": false,
-          "document": "API status. Valid values: 0: Public; 1: Restricted.",
+          "document": "<p>API status. Valid values: 0: Public; 1: Restricted.</p>",
           "example": "0",
           "member": "int64",
           "name": "Status",
@@ -4876,7 +5396,7 @@
         },
         {
           "disabled": false,
-          "document": "Applicable scope: Valid values: 0: Mini program; 1: Mini game; 100: Both.",
+          "document": "<p>Applicable scope: Valid values: 0: Mini program; 1: Mini game; 100: Both.</p>",
           "example": "0",
           "member": "int64",
           "name": "UseScope",
@@ -6103,6 +6623,78 @@
       ],
       "type": "object"
     },
+    "DescribeMNGAppSecretRequest": {
+      "document": "DescribeMNGAppSecret request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Mini program appid.</p>",
+          "example": "mgcozy957r7iflwr",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T04914TJ0911724TSAK",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGAppSecretResp": {
+      "document": "Response for querying mini program secret keys",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Mini game secret key status. Valid values: 0: Not generated; 1: Active; 2: Frozen.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "SecretStatus",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Public service URL that developers need to access when integrating login, payment, and subscription message features.</p>",
+          "example": "https://openapi-dev.tcmppcloud.com/openserver",
+          "member": "string",
+          "name": "OpenServerURL",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeMNGAppSecretResponse": {
+      "document": "DescribeMNGAppSecret response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Response data.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DescribeMNGAppSecretResp",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeMNGCategoryRequest": {
       "document": "DescribeMNGCategory request structure.",
       "members": [
@@ -6838,7 +7430,7 @@
         },
         {
           "disabled": false,
-          "document": "The mini game name and description in multiple languages.",
+          "document": "<p>Mini game information in multiple languages.</p>",
           "example": "无",
           "member": "MNPDetailI18nVO",
           "name": "I18nList",
@@ -7902,6 +8494,790 @@
       ],
       "type": "object"
     },
+    "DescribeMNGSubscribeMessageTemplateDetailResp": {
+      "document": "Mini game subscription message template details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Creator.</p>",
+          "example": "murphypeng",
+          "member": "string",
+          "name": "CreateUser",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Creation time.</p>",
+          "example": "1779259433",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Scenario description.</p>",
+          "example": "name",
+          "member": "string",
+          "name": "ScenarioDescription",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template information.</p>",
+          "example": "无",
+          "member": "MNGSubscribeMessageTemplateDetailResp",
+          "name": "TemplateInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeMNGSubscribeMessageTemplateInfoResp": {
+      "document": "Mini game subscription message template list information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template title.</p>",
+          "example": "test0325",
+          "member": "string",
+          "name": "TemplateTitle",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template title in multiple languages.</p>",
+          "example": "无",
+          "member": "I18nItem",
+          "name": "TemplateTitleI18nList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Default language.</p>",
+          "example": "en-US",
+          "member": "string",
+          "name": "DefaultLang",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Supported languages.</p>",
+          "example": "[\"en-US\"]",
+          "member": "string",
+          "name": "SupportLang",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template ID.</p>",
+          "example": "mti_VESFWfhtoXnSKEPjdQVcLtTmBsiRbGYbXzNSjcY",
+          "member": "string",
+          "name": "TemplateId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template keywords.</p>",
+          "example": "f1",
+          "member": "string",
+          "name": "Keywords",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template keyword in multiple languages.</p>",
+          "example": "无",
+          "member": "SubscribeMessageTemplateLibraryKeywordI18nInfoResp",
+          "name": "KeywordI18nList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template type. Valid values: 2: One-time message; 3: Long-term subscription message.</p>",
+          "example": "2",
+          "member": "int64",
+          "name": "TemplateType",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Creator.</p>",
+          "example": "murphypeng",
+          "member": "string",
+          "name": "CreateUser",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Creation time.</p>",
+          "example": "1779264948",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Status. Valid values: 1: Active.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeMNGSubscribeMessageTemplateLibraryInfoResp": {
+      "document": "Response for querying mini game subscription message template library information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template library title.</p>",
+          "example": "Game Item Delivery Remind",
+          "member": "string",
+          "name": "TemplateTitle",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template library title in multiple languages.</p>",
+          "example": "无",
+          "member": "I18nItem",
+          "name": "TemplateTitleI18nList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template library default language.</p>",
+          "example": "en-US",
+          "member": "string",
+          "name": "DefaultLang",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template library supported languages.</p>",
+          "example": "en-US",
+          "member": "string",
+          "name": "SupportLang",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template library keywords.</p>",
+          "example": "title,name,time",
+          "member": "string",
+          "name": "Keywords",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template library keyword in multiple languages.</p>",
+          "example": "无",
+          "member": "SubscribeMessageTemplateLibraryKeywordI18nInfoResp",
+          "name": "KeywordI18nList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template library description.</p>",
+          "example": "desc",
+          "member": "string",
+          "name": "Description",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template library ID.</p>",
+          "example": "tmpl_hpmJSetRMU1742876300",
+          "member": "string",
+          "name": "TemplateLibraryId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Template type. Valid values: 2: One-time message; 3: Long-term subscription message.</p>",
+          "example": "2",
+          "member": "int64",
+          "name": "TemplateType",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeMNGSubscribeMessageTemplateLibraryKeywordData": {
+      "document": "Mini game subscription message template keyword information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template library keyword ID.</p>",
+          "example": "kwoWSMVekFJU1742883251",
+          "member": "string",
+          "name": "KeywordId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template library keyword.</p>",
+          "example": "f1",
+          "member": "string",
+          "name": "Keyword",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template library keyword type.</p>",
+          "example": "date.DATA",
+          "member": "string",
+          "name": "KeywordType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template library keyword default value.</p>",
+          "example": "1",
+          "member": "string",
+          "name": "DefaultValue",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template library keyword multilingual list.</p>",
+          "example": "无",
+          "member": "I18nItem",
+          "name": "KeywordList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template library keywords in multiple languages.</p>",
+          "example": "无",
+          "member": "I18nItem",
+          "name": "DefaultValueList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeMNGSubscribeMessageTemplateLibraryKeywordInfoResp": {
+      "document": "Response for querying mini game subscription message template library details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template library keyword ID.</p>",
+          "example": "kwoWSMVekFJU1742883251",
+          "member": "string",
+          "name": "KeywordId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template library keywords.</p>",
+          "example": "f1",
+          "member": "string",
+          "name": "Keyword",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template library keyword type.</p>",
+          "example": "date.DATA",
+          "member": "string",
+          "name": "KeywordType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template library keyword default value.</p>",
+          "example": "1",
+          "member": "string",
+          "name": "DefaultValue",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template library keyword in multiple languages.</p>",
+          "example": "无",
+          "member": "I18nItem",
+          "name": "KeywordList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template library keyword default value list.</p>",
+          "example": "无",
+          "member": "I18nItem",
+          "name": "DefaultValueList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeMNGSubscribeMessageTemplateLibraryListRequest": {
+      "document": "DescribeMNGSubscribeMessageTemplateLibraryList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T04914TJ0911724TSAK",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program appid.</p>",
+          "example": "mgcozy957r7iflwr",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Limit.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Query type. Valid values: 2: One-time message; 3: Long-term subscription message.</p>",
+          "example": "2",
+          "member": "int64",
+          "name": "QueryType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Pagination offset.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Limit.</p>",
+          "example": "n",
+          "member": "string",
+          "name": "QueryStr",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGSubscribeMessageTemplateLibraryListResp": {
+      "document": "Response for querying the mini game subscription message template library list",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total count.</p>",
+          "example": "4",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template library data.</p>",
+          "example": "无",
+          "member": "DescribeMNGSubscribeMessageTemplateLibraryInfoResp",
+          "name": "DataList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeMNGSubscribeMessageTemplateLibraryListResponse": {
+      "document": "DescribeMNGSubscribeMessageTemplateLibraryList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Response data.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DescribeMNGSubscribeMessageTemplateLibraryListResp",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGSubscribeMessageTemplateLibraryRequest": {
+      "document": "DescribeMNGSubscribeMessageTemplateLibrary request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T04914TJ0911724TSAK",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program appid.</p>",
+          "example": "mgcozy957r7iflwr",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template library ID.</p>",
+          "example": "tmpl_fWlcCPdHdh1742883251",
+          "member": "string",
+          "name": "TemplateLibraryId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGSubscribeMessageTemplateLibraryResp": {
+      "document": "Response for querying mini game subscription message template library keyword details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Mini game name.</p>",
+          "example": "minigame001",
+          "member": "string",
+          "name": "MNPName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini game icon.</p>",
+          "example": "https://tcmpp-dev-renter-1258344699.cos.ap-guangzhou.myqcloud.com/T04914TJ0911724TSAK/tcmpp/c6ae74310ec848e5ab00f1b1ed9a1a90.png",
+          "member": "string",
+          "name": "MNPIcon",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template title.</p>",
+          "example": "test0325",
+          "member": "string",
+          "name": "TemplateTitle",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template title in multiple languages.</p>",
+          "example": "无",
+          "member": "I18nItem",
+          "name": "TitleList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template default language.</p>",
+          "example": "en-US",
+          "member": "string",
+          "name": "DefaultLang",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template supported languages.</p>",
+          "example": "en-US",
+          "member": "string",
+          "name": "SupportLang",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template keyword list.</p>",
+          "example": "无",
+          "member": "DescribeMNGSubscribeMessageTemplateLibraryKeywordInfoResp",
+          "name": "KeywordList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Template type. Valid values: 2: One-time message; 3: Long-term subscription message.</p>",
+          "example": "2",
+          "member": "int64",
+          "name": "TemplateType",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeMNGSubscribeMessageTemplateLibraryResponse": {
+      "document": "DescribeMNGSubscribeMessageTemplateLibrary response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Response data.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DescribeMNGSubscribeMessageTemplateLibraryResp",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGSubscribeMessageTemplateListRequest": {
+      "document": "DescribeMNGSubscribeMessageTemplateList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T04914TJ0911724TSAK",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program appid.</p>",
+          "example": "mgcozy957r7iflwr",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Pagination offset.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Limit.</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGSubscribeMessageTemplateListResp": {
+      "document": "Mini game subscription message template list",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total count.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template data.</p>",
+          "example": "无",
+          "member": "DescribeMNGSubscribeMessageTemplateInfoResp",
+          "name": "DataList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeMNGSubscribeMessageTemplateListResponse": {
+      "document": "DescribeMNGSubscribeMessageTemplateList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Response data.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DescribeMNGSubscribeMessageTemplateListResp",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGSubscribeMessageTemplateRequest": {
+      "document": "DescribeMNGSubscribeMessageTemplate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T04914TJ0911724TSAK",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program appid.</p>",
+          "example": "mgcozy957r7iflwr",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template ID.</p>",
+          "example": "mti_HXguKrqvPmBFXIqxhJlKAtYsXwGNtxzdVQbrqpb",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGSubscribeMessageTemplateResponse": {
+      "document": "DescribeMNGSubscribeMessageTemplate response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Response data.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DescribeMNGSubscribeMessageTemplateDetailResp",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeMNGVersionRequest": {
       "document": "DescribeMNGVersion request structure.",
       "members": [
@@ -8276,6 +9652,78 @@
           "name": "Data",
           "output_required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPAppSecretRequest": {
+      "document": "DescribeMNPAppSecret request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Mini program appid.</p>",
+          "example": "mpdsteb1avwknpls",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T04914TJ0911724TSAK",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPAppSecretResp": {
+      "document": "Response for querying mini program secret keys",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Mini program secret key status. Valid values: 0: Not generated; 1: Active; 2: Frozen; 3: Reset.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "SecretStatus",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Public service URL that developers need to access when integrating login, payment, and subscription message features.</p>",
+          "example": "https://openapi-dev.tcmppcloud.com/openserver",
+          "member": "string",
+          "name": "OpenServerURL",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeMNPAppSecretResponse": {
+      "document": "DescribeMNPAppSecret response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Response data.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DescribeMNPAppSecretResp",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
           "value_allowed_null": true
         },
         {
@@ -9189,7 +10637,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Mini program category.",
+          "document": "<p>Mini program category.</p>",
           "example": "IT tech-tools",
           "member": "string",
           "name": "MNPType",
@@ -9199,7 +10647,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program appid.",
+          "document": "<p>Mini program appid.</p>",
           "example": "mp4qnfj01bkbm1th",
           "member": "string",
           "name": "MNPId",
@@ -9209,7 +10657,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program name.",
+          "document": "<p>Mini program name.</p>",
           "example": "autotest_online_miniapp",
           "member": "string",
           "name": "MNPName",
@@ -9219,7 +10667,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program icon.",
+          "document": "<p>Mini program icon.</p>",
           "example": "https://mp-d73d473dbe-1314481471.cos.accelerate.myqcloud.com/T03774IM9541735YJZV/tcmpp/b0468b7638d84b20b71f8b4f68a432f5.png",
           "member": "string",
           "name": "MNPIcon",
@@ -9229,7 +10677,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program introduction.",
+          "document": "<p>Mini program introduction.</p>",
           "example": "flash",
           "member": "string",
           "name": "MNPIntro",
@@ -9239,7 +10687,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program description.",
+          "document": "<p>Mini program description.</p>",
           "example": "this app light your screen",
           "member": "string",
           "name": "MNPDesc",
@@ -9249,7 +10697,7 @@
         },
         {
           "disabled": false,
-          "document": "Creation time.",
+          "document": "<p>Creation time.</p>",
           "example": "1735544030",
           "member": "string",
           "name": "CreateTime",
@@ -9259,7 +10707,7 @@
         },
         {
           "disabled": false,
-          "document": "Creator.",
+          "document": "<p>Creator.</p>",
           "example": "autotest_op",
           "member": "string",
           "name": "CreateUser",
@@ -9269,7 +10717,7 @@
         },
         {
           "disabled": false,
-          "document": "Access status. Valid values: 1: not connected; 2: connected.",
+          "document": "<p>Access status. Valid values: 1: Not connected; 2: Connected.</p>",
           "example": "2",
           "member": "int64",
           "name": "AccessStatus",
@@ -9279,7 +10727,7 @@
         },
         {
           "disabled": false,
-          "document": "Team name.",
+          "document": "<p>Team name.</p>",
           "example": "autotest_mini_team",
           "member": "string",
           "name": "TeamName",
@@ -9289,7 +10737,7 @@
         },
         {
           "disabled": false,
-          "document": "Team ID.",
+          "document": "<p>Team ID.</p>",
           "example": "2666639703",
           "member": "string",
           "name": "TeamId",
@@ -9299,7 +10747,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program available status. Valid values: 1: Available; 2: Removed.",
+          "document": "<p>Mini program available status. Valid values: 1: Available; 2: Not available.</p>",
           "example": "1",
           "member": "int64",
           "name": "Status",
@@ -9309,7 +10757,7 @@
         },
         {
           "disabled": false,
-          "document": "The mini program name and description in multiple languages.",
+          "document": "<p>The mini program name and description in multiple languages.</p>",
           "example": "无",
           "member": "MNPDetailI18nVO",
           "name": "I18nList",
@@ -10559,6 +12007,450 @@
       ],
       "type": "object"
     },
+    "DescribeMNPSubscribeMessageTemplateDetailResp": {
+      "document": "Mini program subscription message template details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Creator.</p>",
+          "example": "murphypeng",
+          "member": "string",
+          "name": "CreateUser",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Creation time.</p>",
+          "example": "1779185030",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Scenario description.</p>",
+          "example": "订单场景",
+          "member": "string",
+          "name": "ScenarioDescription",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template information.</p>",
+          "example": "无",
+          "member": "MNPSubscribeMessageTemplateDetailResp",
+          "name": "TemplateInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeMNPSubscribeMessageTemplateInfoResp": {
+      "document": "Mini program subscription message template list information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Template title.</p>",
+          "example": "Received order notification",
+          "member": "string",
+          "name": "TemplateTitle",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Template title in multiple languages.</p>",
+          "example": "无",
+          "member": "I18nItem",
+          "name": "TemplateTitleI18nList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Default language.</p>",
+          "example": "en-US",
+          "member": "string",
+          "name": "DefaultLang",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Supported languages.</p>",
+          "example": "[\"en-US\"]",
+          "member": "string",
+          "name": "SupportLang",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Template ID.</p>",
+          "example": "mti_IqOzjtxjrlbYRCjkkdkAGOSHZgTYIAfTzEOTtNv",
+          "member": "string",
+          "name": "TemplateId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Keywords.</p>",
+          "example": "订单编号1",
+          "member": "string",
+          "name": "Keywords",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Template keyword in multiple languages.</p>",
+          "example": "无",
+          "member": "SubscribeMessageTemplateLibraryKeywordI18nInfoResp",
+          "name": "KeywordI18nList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Template type. Valid values: 2: One-time message; 3: Long-term subscription message.</p>",
+          "example": "2",
+          "member": "int64",
+          "name": "TemplateType",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Creator.</p>",
+          "example": "murphypeng",
+          "member": "string",
+          "name": "CreateUser",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Creation time.</p>",
+          "example": "1779185030",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Status. Valid values: 1: Active.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeMNPSubscribeMessageTemplateLibraryListRequest": {
+      "document": "DescribeMNPSubscribeMessageTemplateLibraryList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T04914TJ0911724TSAK",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program appid.</p>",
+          "example": "mpdsteb1avwknpls",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Limit.</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template type. Valid values: 2: One-time message; 3: Long-term subscription message.</p>",
+          "example": "2",
+          "member": "int64",
+          "name": "QueryType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Pagination offset.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Search keyword.</p>",
+          "example": "o",
+          "member": "string",
+          "name": "QueryStr",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPSubscribeMessageTemplateLibraryListResponse": {
+      "document": "DescribeMNPSubscribeMessageTemplateLibraryList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Response data.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DescribeSubscribeMessageTemplateLibraryListResp",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPSubscribeMessageTemplateLibraryRequest": {
+      "document": "DescribeMNPSubscribeMessageTemplateLibrary request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T04914TJ0911724TSAK",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program appid.</p>",
+          "example": "mpdsteb1avwknpls",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template library ID.</p>",
+          "example": "tmpl_OmrBUPHRot1734081492",
+          "member": "string",
+          "name": "TemplateLibraryId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPSubscribeMessageTemplateLibraryResponse": {
+      "document": "DescribeMNPSubscribeMessageTemplateLibrary response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Response data.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DescribeSubscribeMessageTemplateLibraryResp",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPSubscribeMessageTemplateListRequest": {
+      "document": "DescribeMNPSubscribeMessageTemplateList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T04914TJ0911724TSAK",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program appid.</p>",
+          "example": "mpdsteb1avwknpls",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Pagination offset.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Limit.</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPSubscribeMessageTemplateListResp": {
+      "document": "Mini program subscription message template list",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total count.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program subscription message template data.</p>",
+          "example": "无",
+          "member": "DescribeMNPSubscribeMessageTemplateInfoResp",
+          "name": "DataList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeMNPSubscribeMessageTemplateListResponse": {
+      "document": "DescribeMNPSubscribeMessageTemplateList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Response data.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DescribeMNPSubscribeMessageTemplateListResp",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPSubscribeMessageTemplateRequest": {
+      "document": "DescribeMNPSubscribeMessageTemplate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T04914TJ0911724TSAK",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program appid.</p>",
+          "example": "mpdsteb1avwknpls",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template ID.</p>",
+          "example": "mti_IqOzjtxjrlbYRCjkkdkAGOSHZgTYIAfTzEOTtNv",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPSubscribeMessageTemplateResponse": {
+      "document": "DescribeMNPSubscribeMessageTemplate response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Response data.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DescribeMNPSubscribeMessageTemplateDetailResp",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeMNPVersionRequest": {
       "document": "DescribeMNPVersion request structure.",
       "members": [
@@ -10776,7 +12668,7 @@
         },
         {
           "disabled": false,
-          "document": "Stage: Develop, preview, released.",
+          "document": "Phase: Valid values: Develop; Platform; Online.",
           "example": "Develop",
           "member": "string",
           "name": "Phase",
@@ -11255,6 +13147,346 @@
         }
       ],
       "type": "object"
+    },
+    "DescribeSubscribeMessageTemplateLibraryInfoResp": {
+      "document": "Response for querying mini program subscription message template library information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template title.</p>",
+          "example": "Received order notification",
+          "member": "string",
+          "name": "TemplateTitle",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template title in multiple languages.</p>",
+          "example": "无",
+          "member": "I18nItem",
+          "name": "TemplateTitleI18nList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Default language.</p>",
+          "example": "en-US",
+          "member": "string",
+          "name": "DefaultLang",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Supported languages.</p>",
+          "example": "en-US,zh-CN",
+          "member": "string",
+          "name": "SupportLang",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Keywords.</p>",
+          "example": "订单编号1,订单类型,订单状态,订单时间,备注,预约时间,所属客户",
+          "member": "string",
+          "name": "Keywords",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message keyword in multiple languages.</p>",
+          "example": "无",
+          "member": "SubscribeMessageTemplateLibraryKeywordI18nInfoResp",
+          "name": "KeywordI18nList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Description.</p>",
+          "example": "desc",
+          "member": "string",
+          "name": "Description",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template ID.</p>",
+          "example": "tmpl_OmrBUPHRot1734081492",
+          "member": "string",
+          "name": "TemplateLibraryId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Template type. Valid values: 2: One-time message; 3: Long-term subscription message.</p>",
+          "example": "2",
+          "member": "int64",
+          "name": "TemplateType",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeSubscribeMessageTemplateLibraryKeywordData": {
+      "document": "Mini program subscription message template keyword information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template library keyword ID.</p>",
+          "example": "kwzfzeNffxER1734081492",
+          "member": "string",
+          "name": "KeywordId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template library keywords.</p>",
+          "example": "订单编号1",
+          "member": "string",
+          "name": "Keyword",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template library keyword type.</p>",
+          "example": "thing.DATA",
+          "member": "string",
+          "name": "KeywordType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template library keyword default value.</p>",
+          "example": "100020241130100001",
+          "member": "string",
+          "name": "DefaultValue",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template library keyword in multiple languages.</p>",
+          "example": "无",
+          "member": "I18nItem",
+          "name": "KeywordList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template library keyword default value multilingual type.</p>",
+          "example": "无",
+          "member": "I18nItem",
+          "name": "DefaultValueList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeSubscribeMessageTemplateLibraryKeywordInfoResp": {
+      "document": "Response for querying mini program subscription message template library details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Template keyword ID.</p>",
+          "example": "kwzfzeNffxER1734081492",
+          "member": "string",
+          "name": "KeywordId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Template keyword.</p>",
+          "example": "订单编号1",
+          "member": "string",
+          "name": "Keyword",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Template keyword type.</p>",
+          "example": "thing.DATA",
+          "member": "string",
+          "name": "KeywordType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Template keyword default value.</p>",
+          "example": "100020241130100001",
+          "member": "string",
+          "name": "DefaultValue",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Template keyword in multiple languages.</p>",
+          "example": "无",
+          "member": "I18nItem",
+          "name": "KeywordList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Template keyword default values in multiple languages.</p>",
+          "example": "无",
+          "member": "I18nItem",
+          "name": "DefaultValueList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeSubscribeMessageTemplateLibraryListResp": {
+      "document": "Response for querying the mini program subscription message template library list",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total count.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template library list.</p>",
+          "example": "无",
+          "member": "DescribeSubscribeMessageTemplateLibraryInfoResp",
+          "name": "DataList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeSubscribeMessageTemplateLibraryResp": {
+      "document": "Response for querying mini program subscription message template library details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Mini program name.</p>",
+          "example": "i18n中文",
+          "member": "string",
+          "name": "MNPName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program icon.</p>",
+          "example": "https://tcmpp-dev-renter-1258344699.cos.ap-guangzhou.myqcloud.com/T04914TJ0911724TSAK/tcmpp/10f7400082c941a782ed5b0390ccce8a.png",
+          "member": "string",
+          "name": "MNPIcon",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Template title.</p>",
+          "example": "Received order notification",
+          "member": "string",
+          "name": "TemplateTitle",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Template title in multiple languages.</p>",
+          "example": "无",
+          "member": "I18nItem",
+          "name": "TitleList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Default language.</p>",
+          "example": "en-US",
+          "member": "string",
+          "name": "DefaultLang",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Supported languages.</p>",
+          "example": "en-US,zh-CN",
+          "member": "string",
+          "name": "SupportLang",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Template keyword in multiple languages.</p>",
+          "example": "无",
+          "member": "DescribeSubscribeMessageTemplateLibraryKeywordInfoResp",
+          "name": "KeywordList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Template type. Valid values: 2: One-time message; 3: Long-term subscription message.</p>",
+          "example": "2",
+          "member": "int64",
+          "name": "TemplateType",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "DescribeTeamDetailResp": {
       "document": "Team details.",
@@ -11934,7 +14166,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "User ID.",
+          "document": "<p>User ID.</p>",
           "example": "U20250305181019YVKIPN",
           "member": "string",
           "name": "UserId",
@@ -11944,7 +14176,7 @@
         },
         {
           "disabled": false,
-          "document": "User account.",
+          "document": "<p>User account.</p>",
           "example": "xiebin_app",
           "member": "string",
           "name": "UserAccount",
@@ -11964,7 +14196,7 @@
         },
         {
           "disabled": false,
-          "document": "User name.",
+          "document": "<p>User name.</p>",
           "example": "xiebin_app",
           "member": "string",
           "name": "UserName",
@@ -11974,7 +14206,7 @@
         },
         {
           "disabled": false,
-          "document": "Creation time.",
+          "document": "<p>Creation time.</p>",
           "example": "1741169419",
           "member": "string",
           "name": "CreateTime",
@@ -11994,7 +14226,7 @@
         },
         {
           "disabled": false,
-          "document": "Team name.",
+          "document": "<p>Team name.</p>",
           "example": "undefined",
           "member": "string",
           "name": "TeamName",
@@ -12294,6 +14526,32 @@
           "name": "Result",
           "output_required": false,
           "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "I18nItem": {
+      "document": "Multilingual information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Language.</p>",
+          "example": "en-US",
+          "member": "string",
+          "name": "Lang",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Value in the corresponding language.</p>",
+          "example": "Order Number",
+          "member": "string",
+          "name": "Value",
+          "output_required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -12671,6 +14929,102 @@
       ],
       "usage": "out"
     },
+    "MNGSubscribeMessageTemplateDetailResp": {
+      "document": "Mini game subscription template detail information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template ID.</p>",
+          "example": "mti_HXguKrqvPmBFXIqxhJlKAtYsXwGNtxzdVQbrqpb",
+          "member": "string",
+          "name": "TemplateId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template title.</p>",
+          "example": "test0325",
+          "member": "string",
+          "name": "TemplateTitle",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template title in multiple languages.</p>",
+          "example": "无",
+          "member": "I18nItem",
+          "name": "TitleList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template default language.</p>",
+          "example": "en-US",
+          "member": "string",
+          "name": "DefaultLang",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template supported languages.</p>",
+          "example": "[\"en-US\"]",
+          "member": "string",
+          "name": "Languages",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template keywords.</p>",
+          "example": "无",
+          "member": "DescribeMNGSubscribeMessageTemplateLibraryKeywordData",
+          "name": "KeywordList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini game name.</p>",
+          "example": "minigame001",
+          "member": "string",
+          "name": "MNPName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini game icon.</p>",
+          "example": "https://tcmpp-dev-renter-1258344699.cos.ap-guangzhou.myqcloud.com/T04914TJ0911724TSAK/tcmpp/c6ae74310ec848e5ab00f1b1ed9a1a90.png",
+          "member": "string",
+          "name": "MNPIcon",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Template type. Valid values: 2: One-time message; 3: Long-term subscription message.</p>",
+          "example": "2",
+          "member": "int64",
+          "name": "TemplateType",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "MNGTypeDefine": {
       "document": "Mini game category definition.",
       "members": [
@@ -12816,11 +15170,11 @@
       "usage": "out"
     },
     "MNPDetailI18nVO": {
-      "document": "The mini program name and description in multiple languages.",
+      "document": "Mini program multilingual information",
       "members": [
         {
           "disabled": false,
-          "document": "Language ID.",
+          "document": "<p>Language ID.</p>",
           "example": "4268",
           "member": "int64",
           "name": "ID",
@@ -12830,7 +15184,7 @@
         },
         {
           "disabled": false,
-          "document": "Language type. Valid values: en-US: English; zh-CN: Simplified Chinese; zh-Hant: Traditional Chinese; fr-FR: French; ar-SA: Arabic; id-ID: Indonesian; vi-VN: Vietnamese. Default value: en-US.",
+          "document": "<p>Language type. Valid values: en-US: English; zh-CN: Simplified Chinese; zh-Hant: Traditional Chinese; fr-FR: French; ar-SA: Arabic; id-ID: Indonesian; vi-VN: Vietnamese. Default value: en-US.</p>",
           "example": "en-US",
           "member": "string",
           "name": "Lang",
@@ -12840,7 +15194,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether this is the default language. Valid values: 0: No; 1: Yes. Default value: 0.",
+          "document": "<p>Whether this is the default language. Valid values: 0: No; 1: Yes. Default value: 0.</p>",
           "example": "1",
           "member": "int64",
           "name": "IsDefault",
@@ -12850,7 +15204,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program name.",
+          "document": "<p>Mini program name.</p>",
           "example": "3213124",
           "member": "string",
           "name": "MNPName",
@@ -12860,7 +15214,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program introduction.",
+          "document": "<p>Mini program introduction.</p>",
           "example": "2",
           "member": "string",
           "name": "MNPIntro",
@@ -12872,11 +15226,11 @@
       "usage": "out"
     },
     "MNPI18NSyncDto": {
-      "document": "The mini program name and description in multiple languages.",
+      "document": "Mini program information in multiple languages.",
       "members": [
         {
           "disabled": false,
-          "document": "Language type. Valid values: en-US: English; zh-CN: Simplified Chinese; zh-Hant: Traditional Chinese; fr-FR: French; ar-SA: Arabic; id-ID: Indonesian; vi-VN: Vietnamese. Default value: en-US.",
+          "document": "Language type. Valid values: en-US: English; zh-CN: Simplified Chinese; zh-Hant: Traditional Chinese; fr-FR: French; ar-SA: Arabic; id-ID: Indonesian; vi-VN: Vietnamese.",
           "example": "en-US",
           "member": "string",
           "name": "Lang",
@@ -12887,7 +15241,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether this is the default language. Valid values: 0: No; 1: Yes. Default value: 0.",
+          "document": "<p>Whether this is the default language. Valid values: 0: No; 1: Yes. Default value: 0.</p>",
           "example": "1",
           "member": "int64",
           "name": "IsDefault",
@@ -12898,7 +15252,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program name.",
+          "document": "<p>Mini program name.</p>",
           "example": "3213124",
           "member": "string",
           "name": "MNPName",
@@ -12909,7 +15263,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program introduction.",
+          "document": "<p>Mini program introduction.</p>",
           "example": "2",
           "member": "string",
           "name": "MNPIntro",
@@ -13053,6 +15407,102 @@
           "output_required": false,
           "type": "string",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "MNPSubscribeMessageTemplateDetailResp": {
+      "document": "Mini program subscription template detail information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template ID.</p>",
+          "example": "mti_IqOzjtxjrlbYRCjkkdkAGOSHZgTYIAfTzEOTtNv",
+          "member": "string",
+          "name": "TemplateId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template title.</p>",
+          "example": "Received order notification",
+          "member": "string",
+          "name": "TemplateTitle",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template title in multiple languages.</p>",
+          "example": "无",
+          "member": "I18nItem",
+          "name": "TitleList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template default language.</p>",
+          "example": "en-US",
+          "member": "string",
+          "name": "DefaultLang",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template supported languages.</p>",
+          "example": "[\"en-US\"]",
+          "member": "string",
+          "name": "Languages",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subscription message template keywords.</p>",
+          "example": "无",
+          "member": "DescribeSubscribeMessageTemplateLibraryKeywordData",
+          "name": "KeywordList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program name.</p>",
+          "example": "i18n中文",
+          "member": "string",
+          "name": "MNPName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program icon.</p>",
+          "example": "https://tcmpp-dev-renter-1258344699.cos.ap-guangzhou.myqcloud.com/T04914TJ0911724TSAK/tcmpp/*************1a782ed5b0390ccce8a.png",
+          "member": "string",
+          "name": "MNPIcon",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Template type. Valid values: 2: One-time message; 3: Long-term subscription message.</p>",
+          "example": "2",
+          "member": "int64",
+          "name": "TemplateType",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -13366,6 +15816,77 @@
       ],
       "type": "object"
     },
+    "ModifyMNGAppSecretStatusRequest": {
+      "document": "ModifyMNGAppSecretStatus request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Mini program appid.</p>",
+          "example": "mgcozy957r7iflwr",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T04914TJ0911724TSAK",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Operation status. Valid values: 1: Freeze; 2: Unfreeze.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "SecretStatus",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMNGAppSecretStatusResp": {
+      "document": "Response for modifying mini program secret key status",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Operation result.</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "Result",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ModifyMNGAppSecretStatusResponse": {
+      "document": "ModifyMNGAppSecretStatus response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Response data.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ModifyMNGAppSecretStatusResp",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyMNGDomainRequest": {
       "document": "ModifyMNGDomain request structure.",
       "members": [
@@ -13489,7 +16010,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>The mini game name and description in multiple languages.\t</p>",
+          "document": "<p>Mini game name and introduction in multiple languages.</p>",
           "example": "无",
           "member": "MNPI18NSyncDto",
           "name": "I18nList",
@@ -13511,6 +16032,77 @@
           "output_required": true,
           "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMNPAppSecretStatusRequest": {
+      "document": "ModifyMNPAppSecretStatus request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Mini program appid.</p>",
+          "example": "mp7sfajpbl2vr1tr",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T04914TJ0911724TSAK",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Operation status. Valid values: 1: Freeze; 2: Unfreeze.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "SecretStatus",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMNPAppSecretStatusResp": {
+      "document": "Response for modifying mini program secret key status",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Operation result.</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "Result",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ModifyMNPAppSecretStatusResponse": {
+      "document": "ModifyMNPAppSecretStatus response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Response data.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ModifyMNPAppSecretStatusResp",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -13581,7 +16173,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Mini program category.",
+          "document": "<p>Mini program category.</p>",
           "example": "Logistics Services->1_Pickup/Delivery,Life Service->144_Lilliputian Services",
           "member": "string",
           "name": "MNPType",
@@ -13590,7 +16182,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program name.",
+          "document": "<p>Mini program name.</p>",
           "example": "mini program name",
           "member": "string",
           "name": "MNPName",
@@ -13599,7 +16191,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program introduction.",
+          "document": "<p>Mini program introduction.</p>",
           "example": "mini program introduce",
           "member": "string",
           "name": "MNPIntro",
@@ -13608,7 +16200,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program description.",
+          "document": "<p>Mini program description.</p>",
           "example": "mini program describe",
           "member": "string",
           "name": "MNPDesc",
@@ -13617,7 +16209,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program appid.",
+          "document": "<p>Mini program appid.</p>",
           "example": "mini program id",
           "member": "string",
           "name": "MNPId",
@@ -13626,7 +16218,7 @@
         },
         {
           "disabled": false,
-          "document": "Platform ID.",
+          "document": "<p>Platform ID.</p>",
           "example": "T04257DS9431720WTAG",
           "member": "string",
           "name": "PlatformId",
@@ -13635,7 +16227,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program icon.",
+          "document": "<p>Mini program icon.</p>",
           "example": "http://127.0.0.1/T04257DS9431720WTAG/console/20240820162809-c31a505943.png",
           "member": "string",
           "name": "MNPIcon",
@@ -13644,7 +16236,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>The mini program name and description in multiple languages.</p>",
+          "document": "<p>Mini program name and introduction in multiple languages.</p>",
           "example": "无",
           "member": "MNPI18NSyncDto",
           "name": "I18nList",
@@ -13659,7 +16251,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Response data.",
+          "document": "<p>Response data.</p>",
           "example": "无",
           "member": "ResourceIdInfo",
           "name": "Data",
@@ -14769,6 +17361,130 @@
       ],
       "usage": "out"
     },
+    "ResetMNGAppSecretRequest": {
+      "document": "ResetMNGAppSecret request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Mini program appid.</p>",
+          "example": "mgcozy957r7iflwr",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T04914TJ0911724TSAK",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetMNGAppSecretResp": {
+      "document": "Response for resetting a mini program secret key",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Mini game secret key.</p>",
+          "example": "3e31**********************ff4e75",
+          "member": "string",
+          "name": "SecretKey",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ResetMNGAppSecretResponse": {
+      "document": "ResetMNGAppSecret response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Response data.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ResetMNGAppSecretResp",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetMNPAppSecretRequest": {
+      "document": "ResetMNPAppSecret request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Mini program appid.</p>",
+          "example": "mp7sfajpbl2vr1tr",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T04914TJ0911724TSAK",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetMNPAppSecretResp": {
+      "document": "Response for resetting a mini program secret key",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Mini program secret key.</p>",
+          "example": "b592c*********************13fd3a",
+          "member": "string",
+          "name": "SecretKey",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ResetMNPAppSecretResponse": {
+      "document": "ResetMNPAppSecret response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Response data.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ResetMNPAppSecretResp",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ResourceIdInfo": {
       "document": "Unified ID data returned on successful operation (Integer type).",
       "members": [
@@ -15161,6 +17877,22 @@
         }
       ],
       "usage": "both"
+    },
+    "SubscribeMessageTemplateLibraryKeywordI18nInfoResp": {
+      "document": "Subscription message template library keywords in multiple languages.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Multilanguage list.</p>",
+          "example": "无",
+          "member": "I18nItem",
+          "name": "I18nList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "UploadFileTempSecret": {
       "document": "Temporary credentials for file upload.",

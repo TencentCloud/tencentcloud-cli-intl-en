@@ -456,9 +456,9 @@
       "status": "online"
     },
     "DescribeTawInstances": {
-      "document": "This API is used to query instance information.",
+      "document": "Query instance information.",
       "input": "DescribeTawInstancesRequest",
-      "name": "Queries instance information",
+      "name": "Query RUM business system information",
       "output": "DescribeTawInstancesResponse",
       "status": "online"
     },
@@ -10155,7 +10155,7 @@
         },
         {
           "disabled": false,
-          "document": "Region ID",
+          "document": "Region Id",
           "example": "1",
           "member": "int64",
           "name": "AreaIds",
@@ -10164,7 +10164,7 @@
         },
         {
           "disabled": true,
-          "document": "Instance status (1: creating; 2: running; 3: exceptional; 4: restarting; 5: stopping; 6: stopped; 7: terminating; 8: terminated)",
+          "document": "Instance status (1=creating, 2=running, 3=abnormal, 4=restarting, 5=stopping, 6=stopped, 7=being destroyed, 8=terminated). Deprecated. Please note in Filters.",
           "example": "2",
           "member": "int64",
           "name": "InstanceStatuses",
@@ -10173,7 +10173,7 @@
         },
         {
           "disabled": true,
-          "document": "Instance ID",
+          "document": "Instance Id, deprecated. Please note in Filters.",
           "example": "****7ixj431zO1",
           "member": "string",
           "name": "InstanceIds",
@@ -10182,7 +10182,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter parameter",
+          "document": "Filter parameters; In demo mode, pass {\"Name\": \"IsDemo\", \"Values\":[\"1\"]}.",
           "example": "[{\"Name\":\"Region\",\"Values\":[\"ap-guangzhou\"]}]",
           "member": "Filter",
           "name": "Filters",
@@ -10191,7 +10191,7 @@
         },
         {
           "disabled": true,
-          "document": "Whether it is in the demo mode. `1`: Yes; `2`: No.",
+          "document": "Deprecated. For demo mode, please note in Filters.",
           "example": "1",
           "member": "int64",
           "name": "IsDemo",
@@ -10966,11 +10966,11 @@
       "usage": "out"
     },
     "RumInstanceInfo": {
-      "document": "RUM instance information",
+      "document": "Rum instance information",
       "members": [
         {
           "disabled": false,
-          "document": "Instance status (1: creating; 2: running; 3: exceptional; 4: restarting; 5: stopping; 6: stopped; 7: deleted)",
+          "document": "Instance status (1=creating, 2=running, 3=abnormal, 4=restarting, 5=stopping, 6=stopped, 7=deleted)",
           "example": "2",
           "member": "int64",
           "name": "InstanceStatus",
@@ -10980,7 +10980,7 @@
         },
         {
           "disabled": false,
-          "document": "Region ID",
+          "document": "Zone Id",
           "example": "1",
           "member": "int64",
           "name": "AreaId",
@@ -11000,7 +11000,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance ID",
+          "document": "Instance ID.",
           "example": "taw-12345678",
           "member": "string",
           "name": "InstanceId",
@@ -11030,7 +11030,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing status (1: in use; 2: expired; 3: terminated; 4: assigning; 5: assignment failed)",
+          "document": "Billing status (1=Active, 2=Expired, 3=Terminated, 4=Allocating, 5=Allocation failure)",
           "example": "1",
           "member": "int64",
           "name": "ChargeStatus",
@@ -11040,7 +11040,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing type (1: free; 2: prepaid; 3: postpaid)",
+          "document": "Billing type (1=Free edition, 2=Prepayment, 3=Pay-as-you-go)",
           "example": "1",
           "member": "int64",
           "name": "ChargeType",
@@ -11060,7 +11060,7 @@
         },
         {
           "disabled": false,
-          "document": "Data retention period (in days)",
+          "document": "Data retention time (days)",
           "example": "30",
           "member": "int64",
           "name": "DataRetentionDays",
@@ -11070,7 +11070,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance name",
+          "document": "Instance name.",
           "example": "taw-user",
           "member": "string",
           "name": "InstanceName",
@@ -11080,7 +11080,7 @@
         },
         {
           "disabled": false,
-          "document": "Creation time",
+          "document": "Creation time.",
           "example": "2021-01-01 00:00:00",
           "member": "string",
           "name": "CreatedAt",
@@ -11090,7 +11090,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance type 1: Original web-related class 2: app endpoint type",
           "example": "1",
           "member": "int64",
           "name": "InstanceType",
@@ -11786,7 +11786,7 @@
       "type": "object"
     },
     "Tag": {
-      "document": "Tag",
+      "document": "Tag.",
       "members": [
         {
           "disabled": false,

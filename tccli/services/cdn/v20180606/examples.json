@@ -274,28 +274,28 @@
     ],
     "ModifyDomainConfig": [
       {
-        "document": "This example shows how to modify the configuration of a domain name.",
+        "document": "This example shows you how to update the origin server configuration of a domain.",
         "input": "POST / HTTP/1.1\nHost: cdn.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDomainConfig\n<Common request parameters>\n\n{\n    \"Domain\": \"www.test.com\",\n    \"Route\": \"Origin.Origins\",\n    \"Value\": \"{\\\"update\\\":[\\\"1.1.1.1\\\"]}\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eb029ee0-7e91-4a18-86f3-7fac952a446e\"\n    }\n}",
-        "title": "Modifying the configuration of a domain name"
+        "title": "Updating the Origin Server Configuration of a Domain"
       },
       {
-        "document": "This example shows you how to modify the timeout threshold of pulling resources from the origin.",
+        "document": "This example shows you how to update the Origin-Pull Timeout configuration for a domain.",
         "input": "POST / HTTP/1.1\nHost: cdn.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDomainConfig\n<Common request parameters>\n\n{\n    \"Domain\": \"www.test.com\",\n    \"Route\": \"OriginPullTimeout\",\n    \"Value\": \"{\\\"update\\\":{\\\"ConnectTimeout\\\":10,\\\"ReceiveTimeout\\\":10}}\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"23cd4005-496f-4bc4-87d8-ab348d5b0c21\"\n    }\n}",
-        "title": "Modifying the origin-pull timeout"
+        "title": "Updating the Origin-Pull Timeout Configuration for a Domain"
       },
       {
-        "document": "This example shows you how to modify the timeout threshold of establishing a connection with the origin.",
+        "document": "This example shows you how to update the origin-pull connection timeout for a domain.",
         "input": "POST / HTTP/1.1\nHost: cdn.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDomainConfig\n<Common request parameters>\n\n{\n    \"Domain\": \"www.test.com\",\n    \"Route\": \"OriginPullTimeout.ConnectTimeout\",\n    \"Value\": \"{\\\"update\\\":10}\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"23cd4005-496f-4bc4-87d8-ab348d5b0c11\"\n    }\n}",
-        "title": "Modifying the origin connection timeout threshold"
+        "title": "Updating the Origin-Pull Connection Timeout for a Domain"
       },
       {
-        "document": "This example shows you how to modify the HTTPS server certificate. A certificate ID is auto-generated when the certificate is added to Tencent Cloud SSL Certificates.",
+        "document": "This example shows you how to update the server certificate ID (automatically generated during SSL certificate management for certificate hosting).",
         "input": "POST / HTTP/1.1\nHost: cdn.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDomainConfig\n<Common request parameters>\n\n{\n    \"Domain\": \"www.test.com\",\n    \"Route\": \"Https.CertInfo.CertId\",\n    \"Value\": \"{\\\"update\\\":\\\"0VpOXiPz\\\"}\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"56a166ec-d784-4001-a850-7d62a5c07971\"\n    }\n}",
-        "title": "Modifying the HTTPS server certificate"
+        "title": "Updating the HTTPS Server Certificate ID (Automatically Generated during SSL Certificate Management for Certificate Hosting)"
       }
     ],
     "PurgePathCache": [
@@ -318,16 +318,16 @@
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: cdn.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: PushUrlsCache\n<Common request parameters>\n\n{\n    \"Urls\": [\n        \"http://www.test.com/1.jpg\"\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"123\",\n        \"TaskId\": \"15475444535871929928456\"\n    }\n}",
-        "title": "Prefetching URLs"
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"26cbf416-0155-411f-93df-7256930245a4\",\n        \"TaskId\": \"15475444535871929928456\"\n    }\n}",
+        "title": "Preheating URL"
       }
     ],
     "SearchClsLog": [
       {
         "document": " ",
-        "input": "https://cdn.tencentcloudapi.com/?Action=SearchClsLog\n&Channel=cdn\n&LogsetId=4242424-8723-45e3-9c75-a0599ef9143a\n&TopicIds=57460798-8723-45e3-9c75-a0599ef9143a,57460798-8723-45e3-9c75-22242141\n&StartTime=2019-11-18 00:00:00\n&EndTime=2019-11-18 02:00:00\n&Query=abc\n&Limit=10\n&<Common request parameters>",
+        "input": "https://cdn.tencentcloudapi.com/?Action=SearchClsLog\n&Channel=cdn\n&LogsetId=4242424-8723-45e3-9c75-a0599ef9143a\n&TopicIds=57460798-8723-45e3-9c75-a0599ef9143a,57460798-8723-45e3-9c75-22242141\n&StartTime=2019-11-18 00:00:00\n&EndTime=2019-11-18 02:00:00\n&Query=http_status:200\n&Limit=10\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"242144aeff-8723-45e3-9c75-a0599ef9143a\",\n        \"Logs\": {\n            \"Context\": \"2e1414\",\n            \"Listover\": false,\n            \"Results\": [\n                {\n                    \"TopicId\": \"57460798-8723-45e3-9c75-a0599ef9143a\",\n                    \"TopicName\": \"test_topic\",\n                    \"Timestamp\": \"2019-11-18 00:00:00\",\n                    \"Content\": \"abcdafaf\",\n                    \"Filename\": \"\",\n                    \"Source\": \"\"\n                }\n            ]\n        }\n    }\n}",
-        "title": "Searching for logs"
+        "title": "Search Log"
       }
     ],
     "StartCdnDomain": [
@@ -348,10 +348,10 @@
     ],
     "UpdateDomainConfig": [
       {
-        "document": "This example shows you how to update domain name configurations.",
-        "input": "POST / HTTP/1.1\nHost: cdn.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateDomainConfig\n<Common request parameters>\n\n{\n    \"ProjectId\": \"0\",\n    \"Domain\": \"www.test.com\"\n}",
+        "document": "This example shows you how to update domain configuration.",
+        "input": "POST / HTTP/1.1\nHost: cdn.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateDomainConfig\n<Common request parameters>\n\n{\n    \"ProjectId\": 0,\n    \"Domain\": \"www.test.com\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"23cd4005-496f-4bc4-87d8-ab348d5b0c17\"\n    }\n}",
-        "title": "Updating domain name configurations"
+        "title": "Updating Domain Configuration"
       }
     ],
     "UpdatePayType": [

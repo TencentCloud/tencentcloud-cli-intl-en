@@ -1927,7 +1927,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Cluster ID",
+          "document": "Cluster ID.",
           "example": "cynosdbmysql-xxxxxxx",
           "member": "string",
           "name": "ClusterId",
@@ -1936,7 +1936,7 @@
         },
         {
           "disabled": false,
-          "document": "Replica AZ",
+          "document": "Replica AZ.",
           "example": "ap-guangzhou-4",
           "member": "string",
           "name": "SlaveZone",
@@ -1945,7 +1945,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Binlog sync mode. Default value: async. Optional values: sync, semisync, async.",
           "example": "async",
           "member": "string",
           "name": "BinlogSyncWay",
@@ -1969,7 +1969,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Async FlowId",
+          "document": "Async FlowId.",
           "example": "147184",
           "member": "int64",
           "name": "FlowId",
@@ -2718,11 +2718,11 @@
       "type": "object"
     },
     "AuditInstanceFilters": {
-      "document": "",
+      "document": "Filter criteria for querying audit instances.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Filter condition values. Supported values include: InstanceId - Instance ID, InstanceName - Instance name, ProjectId - Project ID, TagKey - Tag key, Tag - Tag (separated by vertical bar, e.g., TagKey|TagValue).",
           "example": "InstanceId",
           "member": "string",
           "name": "Name",
@@ -2732,7 +2732,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "True indicates exact match, false indicates fuzzy match.",
           "example": "true",
           "member": "bool",
           "name": "ExactMatch",
@@ -2742,7 +2742,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Filter value.",
           "example": "cynosdbmysql-ins-3nskq234",
           "member": "string",
           "name": "Values",
@@ -2754,7 +2754,7 @@
       "usage": "in"
     },
     "AuditInstanceInfo": {
-      "document": "",
+      "document": "Audit instance details.",
       "members": [
         {
           "disabled": false,
@@ -2768,7 +2768,7 @@
         },
         {
           "disabled": false,
-          "document": "Tag information",
+          "document": "Tag information.",
           "example": "[{\"TagKey\": \"created-by\",\"TagValue\": \"andy\"}]",
           "member": "Tag",
           "name": "TagList",
@@ -4139,11 +4139,11 @@
       "usage": "out"
     },
     "BizTaskModifyInstanceParam": {
-      "document": "",
+      "document": "Instance parameter modification task details.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance ID.",
           "example": "cynosdbmysql-ins-xxx",
           "member": "string",
           "name": "InstanceId",
@@ -4165,11 +4165,11 @@
       "usage": "out"
     },
     "BizTaskModifyParamsData": {
-      "document": "",
+      "document": "Modify parameter task data.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Cluster ID.",
           "example": "cynosdbmysql-xxx",
           "member": "string",
           "name": "ClusterId",
@@ -4201,11 +4201,11 @@
       "usage": "out"
     },
     "CLSInfo": {
-      "document": "",
+      "document": "CLS log delivery configuration.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Log topic operation: Options are create, reuse. \ncreate: Create a new log topic, using TopicName to create the log topic.\nreuse: Use an existing log topic, using TopicId to specify the log topic.\nThe combination of using an existing log topic while creating a new logset is not allowed.",
           "example": "create",
           "member": "string",
           "name": "TopicOperation",
@@ -4214,7 +4214,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Logset operation: Options are create, reuse.\ncreate: Create a new logset, using GroupName to create the logset.\nreuse: Use an existing logset, using GroupId to specify the logset.\nThe combination of using an existing log topic while creating a new logset is not allowed.",
           "example": "create",
           "member": "string",
           "name": "GroupOperation",
@@ -4223,7 +4223,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Log delivery region.",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
@@ -4232,7 +4232,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Log topic ID.",
           "example": "8c392615-b4c0-4f70-b07d-1fb5cd688f60",
           "member": "string",
           "name": "TopicId",
@@ -4241,7 +4241,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Log topic name.",
           "example": "cloud_lala_topic",
           "member": "string",
           "name": "TopicName",
@@ -4250,7 +4250,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Logset ID.",
           "example": "95a03fb4-395b-4ce7-802b-4ce10c7431dd",
           "member": "string",
           "name": "GroupId",
@@ -4259,7 +4259,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Logset name.",
           "example": "cloud_haha_logset",
           "member": "string",
           "name": "GroupName",
@@ -5069,7 +5069,7 @@
       "usage": "out"
     },
     "ClusterSlaveData": {
-      "document": "",
+      "document": "Cluster slave availability zone information.",
       "members": [
         {
           "disabled": false,
@@ -5083,7 +5083,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Old slave availability zone.",
           "example": "[ap-guangzhou-5]",
           "member": "string",
           "name": "OldSlaveZone",
@@ -5103,7 +5103,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "New slave availability zone.",
           "example": "[ap-guangzhou-5]",
           "member": "string",
           "name": "NewSlaveZone",
@@ -5590,11 +5590,11 @@
       "type": "object"
     },
     "CreateClustersData": {
-      "document": "",
+      "document": "Create cluster task information.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance CPU.",
           "example": "1",
           "member": "int64",
           "name": "Cpu",
@@ -5604,7 +5604,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance memory.",
           "example": "2",
           "member": "int64",
           "name": "Memory",
@@ -5614,7 +5614,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Cluster storage upper limit.",
           "example": "3000",
           "member": "int64",
           "name": "StorageLimit",
@@ -5729,7 +5729,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Account (8-64 characters, a combination of uppercase and lowercase letters, digits and symbols ~!@#$%^&amp;*_-+=`|(){}[]:;&#39;&lt;&gt;,.?/ with any three types required)</p>",
+          "document": "<p>Account (8-64 characters, a combination of uppercase and lowercase letters, digits and symbols ~!@#$%^&amp;*_-+=|(){}[]:;&#39;&lt;&gt;,.?/ with any three types required)</p>",
           "example": "passwd@admin",
           "member": "string",
           "name": "AdminPassword",
@@ -6121,7 +6121,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Availability zone",
+          "document": "Availability zone.",
           "example": "ap-guangzhou-2",
           "member": "string",
           "name": "Zone",
@@ -6157,7 +6157,7 @@
         },
         {
           "disabled": false,
-          "document": "Project ID",
+          "document": "Project ID.",
           "example": "0",
           "member": "int64",
           "name": "ProjectId",
@@ -6175,7 +6175,7 @@
         },
         {
           "disabled": false,
-          "document": "Account password (8-64 characters, a combination of uppercase and lowercase letters, digits and symbols ~!@#$%^&*_-+=`|\\(){}[]:;'<>,.?/ with any three types).",
+          "document": "Account password (8-64 characters, a combination of uppercase and lowercase letters, digits and symbols ~!@#$%^&*_-+=|\\(){}[]:;'<>,.?/ with any three types).",
           "example": "test@km1",
           "member": "string",
           "name": "AdminPassword",
@@ -6416,7 +6416,7 @@
         },
         {
           "disabled": false,
-          "document": "Order ID",
+          "document": "Order ID.",
           "example": "[       \"20250812065021475117801\",        \"20250812065021475117811\"     ]",
           "member": "string",
           "name": "DealNames",
@@ -6843,7 +6843,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Cluster ID.",
+          "document": "<p>Cluster ID.</p>",
           "example": "cynosdbmysql-xxxxxxx",
           "member": "string",
           "name": "ClusterId",
@@ -6852,7 +6852,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC ID. By default, it remains consistent with the VPC ID of the cluster.",
+          "document": "<p>VPC ID.</p>",
           "example": "vpc-5l7l5q11",
           "member": "string",
           "name": "UniqueVpcId",
@@ -6861,7 +6861,7 @@
         },
         {
           "disabled": false,
-          "document": "Subnet ID of the VPC. By default, it remains consistent with the subnet ID of the cluster.",
+          "document": "<p>VPC subnet ID.</p>",
           "example": "subnet-b5v6id11",
           "member": "string",
           "name": "UniqueSubnetId",
@@ -6870,7 +6870,7 @@
         },
         {
           "disabled": false,
-          "document": "Type of connection pool: SessionConnectionPool (session-level connection pool).",
+          "document": "<p>Connection pool Type: SessionConnectionPool (session-level connection pool).</p>",
           "example": "SessionConnectionPool",
           "member": "string",
           "name": "ConnectionPoolType",
@@ -6879,7 +6879,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable the connection pool.\nyes: indicates enabled.\nno: indicates not enabled.",
+          "document": "<p>Whether the connection pool is enabled.<br>yes: enabled.<br>no: disabled.</p>",
           "example": "yes",
           "member": "string",
           "name": "OpenConnectionPool",
@@ -6888,7 +6888,7 @@
         },
         {
           "disabled": false,
-          "document": "Threshold of the connection pool: unit (seconds). Valid values: 0 - 300 seconds.",
+          "document": "<p>Connection pool threshold: measurement unit (seconds), optional range: 0 - 300 seconds.</p>",
           "example": "0",
           "member": "int64",
           "name": "ConnectionPoolTimeOut",
@@ -6897,7 +6897,7 @@
         },
         {
           "disabled": false,
-          "document": "Array of bound security group IDs.",
+          "document": "<p>Bound security group ID array.</p>",
           "example": "[\"sg-asdqwe\"]",
           "member": "string",
           "name": "SecurityGroupIds",
@@ -6906,7 +6906,7 @@
         },
         {
           "disabled": false,
-          "document": "Description.",
+          "document": "<p>Description.</p>",
           "example": "代理1",
           "member": "string",
           "name": "Description",
@@ -6915,7 +6915,7 @@
         },
         {
           "disabled": false,
-          "document": "The vip information to be bound must correspond to the UniqueVpcId.",
+          "document": "<p>vip information that should be bound must correspond to UniqueVpcId.</p>",
           "example": "192.168.0.0",
           "member": "string",
           "name": "Vip",
@@ -6924,7 +6924,7 @@
         },
         {
           "disabled": false,
-          "document": "Weight mode:\nsystem: system-assigned.\ncustom: custom.",
+          "document": "<p>Weight mode:<br>system: system-assigned.<br>custom: custom.</p>",
           "example": "system",
           "member": "string",
           "name": "WeightMode",
@@ -6933,7 +6933,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to automatically add a read-only instance.\nyes: indicates automatically adding a read-only instance.\nno: indicates not to automatically add a read-only instance.",
+          "document": "<p>Automatically add read-only instance.<br>yes: means automatically add read-only instance.<br>no: means not automatic add read-only instance.</p>",
           "example": "yes",
           "member": "string",
           "name": "AutoAddRo",
@@ -6942,7 +6942,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable failover.\nyes: indicates enabled. After it is enabled, when the database proxy encounters faults, the connection address will be routed to the primary instance.\nno: indicates not enabled.\nDescription:\nOnly when the value of the RwType parameter is READWRITE can this option be configured.",
+          "document": "<p>Whether fault migration is enabled.<br>yes: Enable. Once enabled, when a database proxy failure occurs, the connection address will be routed to the primary instance.<br>no: Disabled.<br>Description:<br>This item can be set to only when the RwType parameter value is READWRITE.</p>",
           "example": "yes",
           "member": "string",
           "name": "FailOver",
@@ -6951,7 +6951,7 @@
         },
         {
           "disabled": false,
-          "document": "Consistency Type:\neventual: eventual consistency.\nglobal: global consistency.\nsession: session consistency.\nDescription:\nOnly when the RwType parameter value is READWRITE can this option be configured.",
+          "document": "<p>Consistency type:<br>eventual: Final consistency.<br>global: Global consistency.<br>session: Session consistency.<br>Description:<br>This item can be set to only when the RwType parameter value is READWRITE.</p>",
           "example": "session",
           "member": "string",
           "name": "ConsistencyType",
@@ -6960,7 +6960,7 @@
         },
         {
           "disabled": false,
-          "document": "Read-Write Attribute:\nREADWRITE: indicates read/write splitting. Only when this parameter value is READWRITE can the FailOver and ConsistencyType parameters be configured.\nREADONLY: indicates read-only.",
+          "document": "<p>Read-write attribute:<br>READWRITE: means read-write separation. When the parameter value is READWRITE, FailOver and ConsistencyType parameters can be set.<br>READONLY: means read-only.</p>",
           "example": "READONLY",
           "member": "string",
           "name": "RwType",
@@ -6969,7 +6969,7 @@
         },
         {
           "disabled": false,
-          "document": "The consistency timeout period. Value range: 0 - 1000000 (microseconds). When set to 0, if a read-only instance experiences latency causing the consistency policy to be unsatisfied, the request will wait indefinitely.",
+          "document": "<p>Consistency timeout. Value ranges from 0 to 1000000 (microseconds). When set to 0, it means the request will wait if the read-only instance fails to satisfy the consistency policy due to latency.</p>",
           "example": "1000",
           "member": "int64",
           "name": "ConsistencyTimeOut",
@@ -6978,7 +6978,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable transaction split. After it is enabled, read and write operations in a transaction are split to different instances for execution.",
+          "document": "<p>Whether to enable transaction split. Once enabled, read and write operations in a transaction are split and executed on different instances.</p>",
           "example": "true",
           "member": "bool",
           "name": "TransSplit",
@@ -6987,7 +6987,7 @@
         },
         {
           "disabled": false,
-          "document": "Access mode:\nnearby: nearby access.\nbalance: balanced allocation.",
+          "document": "<p>Access mode:<br>nearby: proximity access.<br>balance: balanced allocation.</p>",
           "example": "balance",
           "member": "string",
           "name": "AccessMode",
@@ -6996,12 +6996,21 @@
         },
         {
           "disabled": false,
-          "document": "Instance weight.",
+          "document": "<p>Instance weight.</p>",
           "example": "无",
           "member": "ProxyInstanceWeight",
           "name": "InstanceWeights",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "static",
+          "member": "string",
+          "name": "LoadBalanceMode",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -7011,7 +7020,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "asynchronous process ID.",
+          "document": "<p>Async process ID.</p>",
           "example": "147189",
           "member": "int64",
           "name": "FlowId",
@@ -7021,7 +7030,7 @@
         },
         {
           "disabled": false,
-          "document": "Asynchronous task ID.",
+          "document": "<p>Asynchronous Task ID.</p>",
           "example": "276387",
           "member": "int64",
           "name": "TaskId",
@@ -7031,7 +7040,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of the Database proxy group.",
+          "document": "<p>Database Proxy Group ID.</p>",
           "example": "cynosdbmysql-proxy-lti34611",
           "member": "string",
           "name": "ProxyGroupId",
@@ -7954,11 +7963,11 @@
       "usage": "both"
     },
     "CynosdbClusterDetail": {
-      "document": "Cluster details",
+      "document": "Cluster details.",
       "members": [
         {
           "disabled": false,
-          "document": "Cluster ID",
+          "document": "Cluster ID.",
           "example": "cynosdbmysql-8sj2h3bx",
           "member": "string",
           "name": "ClusterId",
@@ -7968,7 +7977,7 @@
         },
         {
           "disabled": false,
-          "document": "Cluster name",
+          "document": "Cluster name.",
           "example": "cynosdbmysql-8sj2h3bx",
           "member": "string",
           "name": "ClusterName",
@@ -7978,7 +7987,7 @@
         },
         {
           "disabled": false,
-          "document": "Region",
+          "document": "Region.",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
@@ -7988,7 +7997,7 @@
         },
         {
           "disabled": false,
-          "document": "AZ",
+          "document": "AZ.",
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "Zone",
@@ -8008,7 +8017,7 @@
         },
         {
           "disabled": false,
-          "document": "Status. supported values are as follows:.\n-Creating: creating.\n- running: running.\n-isolating.\n-Isolated: isolated.\n-activating: restore from recycle bin.\n-offlining: offline.\n-offlined: offline.\n- deleting: deleting.\n- deleted: deleted.",
+          "document": "Status. supported values are as follows:.\n- Creating: creating.\n- running: running.\n- isolating.\n- Isolated: isolated.\n- activating: restore from recycle bin.\n- offlining: offline.\n- offlined: offline.\n- deleting: deleting.\n- deleted: deleted.",
           "example": "running",
           "member": "string",
           "name": "Status",
@@ -8088,7 +8097,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC name",
+          "document": "VPC name.",
           "example": "Default-VPC",
           "member": "string",
           "name": "VpcName",
@@ -8098,7 +8107,7 @@
         },
         {
           "disabled": false,
-          "document": "Unique VPC ID",
+          "document": "Unique VPC ID.",
           "example": "vpc-4pbgx2ld",
           "member": "string",
           "name": "VpcId",
@@ -8108,7 +8117,7 @@
         },
         {
           "disabled": false,
-          "document": "Subnet name",
+          "document": "Subnet name.",
           "example": "Default-Subnet",
           "member": "string",
           "name": "SubnetName",
@@ -8118,7 +8127,7 @@
         },
         {
           "disabled": false,
-          "document": "Subnet ID",
+          "document": "Subnet ID.",
           "example": "subnet-a2emqb1d",
           "member": "string",
           "name": "SubnetId",
@@ -8128,7 +8137,7 @@
         },
         {
           "disabled": false,
-          "document": "Character set",
+          "document": "Character set.",
           "example": "utf8",
           "member": "string",
           "name": "Charset",
@@ -8138,7 +8147,7 @@
         },
         {
           "disabled": false,
-          "document": "Creation time",
+          "document": "Creation time.",
           "example": "2021-05-25 19:23:31",
           "member": "string",
           "name": "CreateTime",
@@ -8148,7 +8157,7 @@
         },
         {
           "disabled": false,
-          "document": "Database type",
+          "document": "Database type.",
           "example": "MYSQL",
           "member": "string",
           "name": "DbType",
@@ -8168,7 +8177,7 @@
         },
         {
           "disabled": false,
-          "document": "Database version",
+          "document": "Database version.",
           "example": "5.7",
           "member": "string",
           "name": "DbVersion",
@@ -8188,7 +8197,7 @@
         },
         {
           "disabled": false,
-          "document": "Used capacity",
+          "document": "Used capacity.",
           "example": "100",
           "member": "int64",
           "name": "UsedStorage",
@@ -8198,7 +8207,7 @@
         },
         {
           "disabled": false,
-          "document": "VIP",
+          "document": "VIP.",
           "example": "10.36.173.27",
           "member": "string",
           "name": "Vip",
@@ -8208,7 +8217,7 @@
         },
         {
           "disabled": false,
-          "document": "vport",
+          "document": "vport.",
           "example": "3306",
           "member": "int64",
           "name": "Vport",
@@ -8308,7 +8317,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance information",
+          "document": "Instance information.",
           "example": "无",
           "member": "ClusterInstanceDetail",
           "name": "InstanceSet",
@@ -8318,7 +8327,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing mode",
+          "document": "Billing mode.",
           "example": "1",
           "member": "int64",
           "name": "PayMode",
@@ -8328,7 +8337,7 @@
         },
         {
           "disabled": false,
-          "document": "Expiration time",
+          "document": "Expiration time.",
           "example": "2021-05-25 19:23:31",
           "member": "string",
           "name": "PeriodEndTime",
@@ -8338,7 +8347,7 @@
         },
         {
           "disabled": false,
-          "document": "Project ID",
+          "document": "Project ID.",
           "example": "1623",
           "member": "int64",
           "name": "ProjectID",
@@ -8348,7 +8357,7 @@
         },
         {
           "disabled": false,
-          "document": "Array of tags bound to instance",
+          "document": "Array of tags bound to instance.",
           "example": "无",
           "member": "Tag",
           "name": "ResourceTags",
@@ -10290,7 +10299,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Cluster ID",
+          "document": "Cluster ID.",
           "example": "cynosdbmysql-j9i41hfv",
           "member": "string",
           "name": "ClusterId",
@@ -10299,7 +10308,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Database name.",
           "example": "[\"db1\"]",
           "member": "string",
           "name": "DbNames",
@@ -11416,7 +11425,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Cluster ID",
+          "document": "Cluster ID.",
           "example": "cynosdbpg-ilgo90hu",
           "member": "string",
           "name": "ClusterId",
@@ -11425,7 +11434,7 @@
         },
         {
           "disabled": false,
-          "document": "The number of results to be returned. Value range: (0,100]",
+          "document": "The number of results to be returned. Value range: (0,100].",
           "example": "10",
           "member": "int64",
           "name": "Limit",
@@ -11434,7 +11443,7 @@
         },
         {
           "disabled": false,
-          "document": "Record offset. Value range: [0,INF)",
+          "document": "Record offset. Value range: [0,INF).",
           "example": "0",
           "member": "int64",
           "name": "Offset",
@@ -11452,7 +11461,7 @@
         },
         {
           "disabled": false,
-          "document": "Backup ID",
+          "document": "Backup ID.",
           "example": "[172365]",
           "member": "int64",
           "name": "BackupIds",
@@ -11479,7 +11488,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Snapshot type. Optional values: full - Full snapshot; increment - Incremental snapshot.",
           "example": "full",
           "member": "string",
           "name": "SnapShotType",
@@ -11488,7 +11497,7 @@
         },
         {
           "disabled": false,
-          "document": "Backup start time",
+          "document": "Backup start time.",
           "example": "2022-01-01 12:00:00",
           "member": "string",
           "name": "StartTime",
@@ -11497,7 +11506,7 @@
         },
         {
           "disabled": false,
-          "document": "Backup end time",
+          "document": "Backup end time.",
           "example": "2022-01-01 14:00:00",
           "member": "string",
           "name": "EndTime",
@@ -11506,7 +11515,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Backup file name, fuzzy search.",
           "example": "[\"sls_20241028221204\"]",
           "member": "string",
           "name": "FileNames",
@@ -11524,7 +11533,7 @@
         },
         {
           "disabled": false,
-          "document": "ID list of the snapshot backup",
+          "document": "ID list of the snapshot backup.",
           "example": "[1883726,1883728]",
           "member": "int64",
           "name": "SnapshotIdList",
@@ -11533,7 +11542,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Backup region.",
           "example": "ap-beijing",
           "member": "string",
           "name": "BackupRegion",
@@ -11542,7 +11551,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether cross-region backup.",
           "example": "yes",
           "member": "string",
           "name": "IsCrossRegionsBackup",
@@ -11551,7 +11560,7 @@
         },
         {
           "disabled": false,
-          "document": "Status you want to query",
+          "document": "Status you want to query.",
           "example": "[\"done\"]",
           "member": "string",
           "name": "BackupStatus",
@@ -11566,7 +11575,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total number of backup files",
+          "document": "Total number of backup files.",
           "example": "1",
           "member": "int64",
           "name": "TotalCount",
@@ -11576,7 +11585,7 @@
         },
         {
           "disabled": false,
-          "document": "Backup file list",
+          "document": "Backup file list.",
           "example": "无",
           "member": "BackupFileInfo",
           "name": "BackupList",
@@ -12395,7 +12404,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Cluster ID",
+          "document": "Cluster ID.",
           "example": "cynosdbmysql-1xcycbu8",
           "member": "string",
           "name": "ClusterId",
@@ -12404,10 +12413,19 @@
         },
         {
           "disabled": false,
-          "document": "Parameter name",
+          "document": "Parameter name.",
           "example": "binlog",
           "member": "string",
           "name": "ParamName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is a global parameter.",
+          "example": "yes",
+          "member": "string",
+          "name": "IsGlobal",
           "required": false,
           "type": "string"
         }
@@ -12419,7 +12437,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Number of parameters",
+          "document": "Number of parameters.",
           "example": "2",
           "member": "int64",
           "name": "TotalCount",
@@ -12910,7 +12928,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID",
+          "document": "Instance ID.",
           "example": "cynosdbmysql-ins-4senc2fm",
           "member": "string",
           "name": "InstanceId",
@@ -12919,7 +12937,7 @@
         },
         {
           "disabled": false,
-          "document": "Limit on the number of logs",
+          "document": "Limit on the number of logs.",
           "example": "20",
           "member": "int64",
           "name": "Limit",
@@ -12928,7 +12946,7 @@
         },
         {
           "disabled": false,
-          "document": "Offset of the log number",
+          "document": "Offset of the log number.",
           "example": "0",
           "member": "int64",
           "name": "Offset",
@@ -12937,7 +12955,7 @@
         },
         {
           "disabled": false,
-          "document": "Start time",
+          "document": "Start time.",
           "example": "2022-01-02 15:04:05",
           "member": "string",
           "name": "StartTime",
@@ -12946,7 +12964,7 @@
         },
         {
           "disabled": false,
-          "document": "End time",
+          "document": "End time.",
           "example": "2022-02-02 15:04:05",
           "member": "string",
           "name": "EndTime",
@@ -12982,7 +13000,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Keywords, supports fuzzy search.",
           "example": "unconnected",
           "member": "string",
           "name": "KeyWords",
@@ -13300,6 +13318,15 @@
           "name": "IncludeZoneStocks",
           "required": false,
           "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Instance machine type.",
+          "example": "exclusive",
+          "member": "string",
+          "name": "DeviceType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -17199,7 +17226,7 @@
       "usage": "both"
     },
     "ExchangeInstanceInfo": {
-      "document": "",
+      "document": "Swap instance information.",
       "members": [
         {
           "disabled": false,
@@ -17225,7 +17252,7 @@
       "usage": "out"
     },
     "ExchangeRoGroupInfo": {
-      "document": "",
+      "document": "Swap RO group information.",
       "members": [
         {
           "disabled": false,
@@ -17507,7 +17534,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID",
+          "document": "Instance ID.",
           "example": "cynosdbmysql-ins-123",
           "member": "string",
           "name": "InstanceId",
@@ -17516,7 +17543,7 @@
         },
         {
           "disabled": false,
-          "document": "Log start time",
+          "document": "Log start time.",
           "example": "2022-01-01 12:00:00",
           "member": "string",
           "name": "StartTime",
@@ -17525,7 +17552,7 @@
         },
         {
           "disabled": false,
-          "document": "Log end time",
+          "document": "Log end time.",
           "example": "2022-01-01 14:00:00",
           "member": "string",
           "name": "EndTime",
@@ -17534,7 +17561,7 @@
         },
         {
           "disabled": false,
-          "document": "The max number of returned results",
+          "document": "The max number of returned results.",
           "example": "100",
           "member": "int64",
           "name": "Limit",
@@ -17543,7 +17570,7 @@
         },
         {
           "disabled": false,
-          "document": "Offset",
+          "document": "Offset.",
           "example": "0",
           "member": "int64",
           "name": "Offset",
@@ -17552,7 +17579,7 @@
         },
         {
           "disabled": false,
-          "document": "Log level",
+          "document": "Log level.",
           "example": "error",
           "member": "string",
           "name": "LogLevels",
@@ -17561,7 +17588,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "KeyWords.",
           "example": "reading communication packets",
           "member": "string",
           "name": "KeyWords",
@@ -17579,7 +17606,7 @@
         },
         {
           "disabled": false,
-          "document": "Valid value: `Timestamp`",
+          "document": "Valid value: `Timestamp`.",
           "example": "Timestamp",
           "member": "string",
           "name": "OrderBy",
@@ -18616,7 +18643,7 @@
       "type": "object"
     },
     "InstanceAbility": {
-      "document": "",
+      "document": "List of allowed operations for the instance.",
       "members": [
         {
           "disabled": false,
@@ -18698,11 +18725,11 @@
       "usage": "out"
     },
     "InstanceAuditStatus": {
-      "document": "",
+      "document": "Instance audit details information.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance ID.",
           "example": "cynosdbmysql-ins-3nskq214",
           "member": "string",
           "name": "InstanceId",
@@ -18712,7 +18739,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Audit status. ON - Indicates audit is enabled, OFF - Indicates audit is disabled.",
           "example": "ON",
           "member": "string",
           "name": "AuditStatus",
@@ -18854,11 +18881,11 @@
       "usage": "out"
     },
     "InstanceCLSDeliveryInfo": {
-      "document": "",
+      "document": "Instance log delivery information.",
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID",
+          "document": "Instance ID.",
           "example": "cynosdbmysql-ins-nwc5ao8g",
           "member": "string",
           "name": "InstanceId",
@@ -18868,7 +18895,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance name\n\n",
+          "document": "Instance name.\n",
           "example": "cynosdbmysql-ins-nwc5ao8g",
           "member": "string",
           "name": "InstanceName",
@@ -18888,7 +18915,7 @@
         },
         {
           "disabled": false,
-          "document": "Log topic name",
+          "document": "Log topic name.",
           "example": "cloud_lala_topic",
           "member": "string",
           "name": "TopicName",
@@ -18898,7 +18925,7 @@
         },
         {
           "disabled": false,
-          "document": "Log set id.\n",
+          "document": "Log set id.",
           "example": "95a03fb4-395b-4ce7-802b-4ce10c7431dd",
           "member": "string",
           "name": "GroupId",
@@ -18908,7 +18935,7 @@
         },
         {
           "disabled": false,
-          "document": "Log set name.\n\n",
+          "document": "Log set name.\n",
           "example": "cloud_haha_logset",
           "member": "string",
           "name": "GroupName",
@@ -18918,7 +18945,7 @@
         },
         {
           "disabled": false,
-          "document": "Log delivery region.\n",
+          "document": "Log delivery region.",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
@@ -18928,7 +18955,7 @@
         },
         {
           "disabled": false,
-          "document": "Delivery status: creating, running, offlining, offlined.\n",
+          "document": "Delivery status: creating, running, offlining, offlined.",
           "example": "creating",
           "member": "string",
           "name": "Status",
@@ -19619,7 +19646,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Cluster ID",
+          "document": "Cluster ID.",
           "example": "cynosdbpg-bzxxrmtq",
           "member": "string",
           "name": "ClusterId",
@@ -19637,7 +19664,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance return reason type.",
           "example": "[1,2,3]",
           "member": "int64",
           "name": "IsolateReasonTypes",
@@ -19646,7 +19673,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance return reason supplement.",
           "example": "隔离原因",
           "member": "string",
           "name": "IsolateReason",
@@ -19655,7 +19682,7 @@
         },
         {
           "disabled": false,
-          "document": "Retain backup, true - Retained (incur fees)",
+          "document": "Retain backup, true - Retained (incur fees).",
           "example": "false",
           "member": "bool",
           "name": "SaveBackup",
@@ -21460,7 +21487,7 @@
       "usage": "in"
     },
     "LogicBackupConfigInfo": {
-      "document": "",
+      "document": "Logical backup configuration information.",
       "members": [
         {
           "disabled": false,
@@ -21519,7 +21546,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Regions covered by logical backup.",
           "example": "[\"ap-guangzhou\"]",
           "member": "string",
           "name": "LogicCrossRegions",
@@ -21543,11 +21570,11 @@
       "usage": "both"
     },
     "ManualBackupData": {
-      "document": "",
+      "document": "Manual backup task information.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Backup type. snapshot - Snapshot backup.",
           "example": "snapshot",
           "member": "string",
           "name": "BackupType",
@@ -21557,7 +21584,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Backup method. auto - Automatic backup, manual - Manual backup.",
           "example": "manual",
           "member": "string",
           "name": "BackupMethod",
@@ -21567,7 +21594,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Backup time.",
           "example": "2023-11-03 15:27:22",
           "member": "string",
           "name": "SnapshotTime",
@@ -21690,11 +21717,11 @@
       "usage": "both"
     },
     "ModifiableInfo": {
-      "document": "Details of whether the parameter can be modified",
+      "document": "Details of whether the parameter can be modified.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether the parameter can be modified, 1: Yes 0: No.",
           "example": "1",
           "member": "int64",
           "name": "IsModifiable",
@@ -22909,11 +22936,11 @@
       "type": "object"
     },
     "ModifyDbVersionData": {
-      "document": "",
+      "document": "Modify database kernel version task information.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Version before modification.",
           "example": "3.1.11",
           "member": "string",
           "name": "OldVersion",
@@ -22923,7 +22950,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Version after modification.",
           "example": "3.1.13",
           "member": "string",
           "name": "NewVersion",
@@ -22933,7 +22960,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Upgrade method.",
           "example": "upgradeInMaintain",
           "member": "string",
           "name": "UpgradeType",
@@ -22945,11 +22972,11 @@
       "usage": "out"
     },
     "ModifyInstanceData": {
-      "document": "",
+      "document": "Instance resizing task information.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "CPU after resizing.",
           "example": "2",
           "member": "int64",
           "name": "Cpu",
@@ -22959,7 +22986,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Memory after resizing.",
           "example": "4",
           "member": "int64",
           "name": "Memory",
@@ -22969,7 +22996,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Storage upper limit after resizing.",
           "example": "156000",
           "member": "int64",
           "name": "StorageLimit",
@@ -22979,7 +23006,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "CPU before resizing.",
           "example": "1",
           "member": "int64",
           "name": "OldCpu",
@@ -22989,7 +23016,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Memory before resizing.",
           "example": "2",
           "member": "int64",
           "name": "OldMemory",
@@ -22999,7 +23026,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Storage upper limit before resizing.",
           "example": "100000",
           "member": "int64",
           "name": "OldStorageLimit",
@@ -23029,7 +23056,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Upgrade method. Switch after upgrade completes or switch within maintenance window.",
           "example": "upgradeInMaintain",
           "member": "string",
           "name": "UpgradeType",
@@ -23799,11 +23826,11 @@
       "type": "object"
     },
     "ModifyParamsData": {
-      "document": "",
+      "document": "Modify parameter information.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Parameter name.",
           "example": "",
           "member": "string",
           "name": "Name",
@@ -23813,7 +23840,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Parameter value before modification.",
           "example": "",
           "member": "string",
           "name": "OldValue",
@@ -23823,7 +23850,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Parameter value after modification.",
           "example": "",
           "member": "string",
           "name": "CurValue",
@@ -23884,7 +23911,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Cluster ID",
+          "document": "<p>Cluster ID, for example, cynosdbmysql-asd123</p>",
           "example": "cynosdbmysql-j8zw5111",
           "member": "string",
           "name": "ClusterId",
@@ -23893,7 +23920,7 @@
         },
         {
           "disabled": false,
-          "document": "Database proxy group ID",
+          "document": "<p>Database Proxy Group ID, such as cynosdbmysql-proxy-qwe123</p>",
           "example": "cynosdbmysql-proxy-5mwoh111",
           "member": "string",
           "name": "ProxyGroupId",
@@ -23902,7 +23929,7 @@
         },
         {
           "disabled": false,
-          "document": "Consistency type. Valid values: `eventual` (eventual consistency), `session` (session consistency), `global` (global consistency).",
+          "document": "<p>Consistency Type \"eventual\"-final consistency, \"session\"-session consistency, \"global\"-global consistency</p>",
           "example": "session",
           "member": "string",
           "name": "ConsistencyType",
@@ -23911,7 +23938,7 @@
         },
         {
           "disabled": false,
-          "document": "Consistency timeout period",
+          "document": "<p>Consistency timeout.<br>Value ranges from 0 to 1000000 (microseconds). When set to 0, it means the request will wait if the read-only instance fails to satisfy the consistency policy due to delay.</p>",
           "example": "100",
           "member": "string",
           "name": "ConsistencyTimeOut",
@@ -23920,7 +23947,7 @@
         },
         {
           "disabled": false,
-          "document": "Assignment mode of read/write weights. Valid values: `system` (auto-assigned), `custom`",
+          "document": "<p>Read-write weight allocation mode; system Auto-Assignment: \"system\", custom: \"custom\"</p>",
           "example": "custom",
           "member": "string",
           "name": "WeightMode",
@@ -23929,7 +23956,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance Read-Only Weight.\n",
+          "document": "<p>Instance read-only weight.</p>",
           "example": "无",
           "member": "ProxyInstanceWeight",
           "name": "InstanceWeights",
@@ -23938,7 +23965,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable failover. If it is enabled, the connection address will route requests to the source instance in case of proxy failure. Valid values: `true`, `false`.",
+          "document": "<p>Whether fault migration is enabled. After a failure occurs, the connection address will be routed to primary instance. Value: \"yes\", \"no\"</p>",
           "example": "yes",
           "member": "string",
           "name": "FailOver",
@@ -23947,7 +23974,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to automatically add read-only instances. Valid values: `true`, `false`",
+          "document": "<p>Automatically add read-only instance, value: \"yes\", \"no\"</p>",
           "example": "yes",
           "member": "string",
           "name": "AutoAddRo",
@@ -23956,7 +23983,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable read/write separation",
+          "document": "<p>Whether to enable read-write separation.<br>This parameter is deprecated. Set the read-write attribute through RwType.</p>",
           "example": "no",
           "member": "string",
           "name": "OpenRw",
@@ -23965,7 +23992,7 @@
         },
         {
           "disabled": false,
-          "document": "Read/Write type. Valid values:\n`READWRITE`, `READONLY`.",
+          "document": "<p>Read-write type:<br>READWRITE, READONLY</p>",
           "example": "READONLY",
           "member": "string",
           "name": "RwType",
@@ -23974,7 +24001,7 @@
         },
         {
           "disabled": false,
-          "document": "Transaction split",
+          "document": "<p>Transaction split.<br>Read and write operations in a transaction are split and executed on different instances.</p>",
           "example": "true",
           "member": "bool",
           "name": "TransSplit",
@@ -23983,7 +24010,7 @@
         },
         {
           "disabled": false,
-          "document": "Connection mode. Valid values:\n`nearby`, `balance`.",
+          "document": "<p>Connection mode:<br>nearby, balance</p>",
           "example": "nearby",
           "member": "string",
           "name": "AccessMode",
@@ -23992,7 +24019,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable the connection pool. Valid values: \n`yes`, `no`.",
+          "document": "<p>Whether to enable the connection pool:<br>yes, no</p>",
           "example": "yes",
           "member": "string",
           "name": "OpenConnectionPool",
@@ -24001,7 +24028,7 @@
         },
         {
           "disabled": false,
-          "document": "Connection pool type. Valid values:\n`ConnectionPoolType`, `SessionConnectionPool`.",
+          "document": "<p>Connection pool Type:<br>SessionConnectionPool</p>",
           "example": "SessionConnectionPool",
           "member": "string",
           "name": "ConnectionPoolType",
@@ -24010,7 +24037,7 @@
         },
         {
           "disabled": false,
-          "document": "Connection persistence timeout",
+          "document": "<p>Connection pool time.<br>Optional range: 0-300 (seconds).</p>",
           "example": "100",
           "member": "int64",
           "name": "ConnectionPoolTimeOut",
@@ -24019,7 +24046,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to treat the libra node as an ordinary RO node",
+          "document": "<p>Whether to treat the libra node as an ordinary RO node</p>",
           "example": "false",
           "member": "bool",
           "name": "ApNodeAsRoNode",
@@ -24028,12 +24055,21 @@
         },
         {
           "disabled": false,
-          "document": "libra node fault, whether to forward to other nodes",
+          "document": "<p>Whether to forward to other nodes when a libra node fault occurs</p>",
           "example": "false",
           "member": "bool",
           "name": "ApQueryToOtherNode",
           "required": false,
           "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "static",
+          "member": "string",
+          "name": "LoadBalanceMode",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -24043,7 +24079,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Async FlowId",
+          "document": "<p>Async FlowId</p>",
           "example": "147286",
           "member": "int64",
           "name": "FlowId",
@@ -24053,7 +24089,7 @@
         },
         {
           "disabled": false,
-          "document": "Async task ID",
+          "document": "<p>Asynchronous task ID.</p>",
           "example": "148762",
           "member": "int64",
           "name": "TaskId",
@@ -25141,7 +25177,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID",
+          "document": "Instance ID.",
           "example": "cynosdbmysql-ins-6990cckk",
           "member": "string",
           "name": "InstanceId",
@@ -25150,7 +25186,7 @@
         },
         {
           "disabled": false,
-          "document": "Log retention period",
+          "document": "Log retention period.",
           "example": "30",
           "member": "uint64",
           "name": "LogExpireDay",
@@ -25159,7 +25195,7 @@
         },
         {
           "disabled": false,
-          "document": "Frequent log retention period",
+          "document": "Frequent log retention period.",
           "example": "7",
           "member": "uint64",
           "name": "HighLogExpireDay",
@@ -25186,7 +25222,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Audit type. true - Full audit; default false - Rule-based audit.",
           "example": "true",
           "member": "bool",
           "name": "AuditAll",
@@ -25432,7 +25468,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Please use the cluster information description (https://intl.cloud.tencent.com/document/api/1003/48086?from_cn_redirect=1) to obtain the clusterId.",
+          "document": "Please use the [cluster information description](https://www.tencentcloud.com/document/product/1098/40752) to obtain the clusterId.",
           "example": "cynosdbmysql-bdcl1n11",
           "member": "string",
           "name": "ClusterId",
@@ -25441,7 +25477,7 @@
         },
         {
           "disabled": false,
-          "document": "Please use the cluster information description (https://intl.cloud.tencent.com/document/api/1003/48086?from_cn_redirect=1) to obtain the instanceId.",
+          "document": "Please use the [cluster information description](https://www.tencentcloud.com/document/product/1098/40752) to obtain the instanceId.",
           "example": "cynosdbmysql-ins-foddsm11",
           "member": "string",
           "name": "InstanceId",
@@ -25450,7 +25486,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the designated vpc ID. please use the \"query vpc list\" to obtain the vpc ID.",
+          "document": "Specifies the designated vpc ID. please use the [query vpc list](https://www.tencentcloud.com/document/product/215/15778) to obtain the vpc ID.",
           "example": "vpc-74h05211",
           "member": "string",
           "name": "VpcId",
@@ -25459,7 +25495,7 @@
         },
         {
           "disabled": false,
-          "document": "Specified subnet ID. if vpc ID is set, SubnetId is required. please use query subnet list (https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) to get SubnetId.",
+          "document": "Specified subnet ID. if vpc ID is set, SubnetId is required. please use [query subnet list](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) to get SubnetId.",
           "example": "subnet-d16fxg11",
           "member": "string",
           "name": "SubnetId",
@@ -25492,7 +25528,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Activation process ID",
+          "document": "Activation process ID.",
           "example": "147284",
           "member": "int64",
           "name": "FlowId",
@@ -26314,7 +26350,7 @@
       "usage": "out"
     },
     "ParamItemInfo": {
-      "document": "",
+      "document": "Parameter change information.",
       "members": [
         {
           "disabled": false,
@@ -26961,7 +26997,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Consistency type. Valid values: `eventual` (eventual consistency), `session` (session consistency), `global` (global consistency).",
+          "document": "<p>Consistency Type eventual-final consistency,global-global consistency,session-session consistency</p>",
           "example": "eventual",
           "member": "string",
           "name": "ConsistencyType",
@@ -26972,7 +27008,7 @@
         },
         {
           "disabled": false,
-          "document": "Consistency timeout period",
+          "document": "<p>Consistency timeout</p>",
           "example": "0",
           "member": "int64",
           "name": "ConsistencyTimeOut",
@@ -26983,7 +27019,7 @@
         },
         {
           "disabled": false,
-          "document": "Weight mode. Valid values: `system` (auto-assigned), `custom`.",
+          "document": "<p>Weight mode system-system-assigned, custom-custom</p>",
           "example": "system",
           "member": "string",
           "name": "WeightMode",
@@ -26994,7 +27030,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable failover",
+          "document": "<p>Whether fault migration is enabled</p>",
           "example": "no",
           "member": "string",
           "name": "FailOver",
@@ -27005,7 +27041,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to automatically add read-only instance. Valid value: `yes`, `no`.",
+          "document": "<p>Automatically add read-only instance, yes-yes, no-no</p>",
           "example": "no",
           "member": "string",
           "name": "AutoAddRo",
@@ -27016,7 +27052,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance weight array",
+          "document": "<p>Instance weight array</p>",
           "example": "无",
           "member": "ProxyInstanceWeight",
           "name": "InstanceWeights",
@@ -27027,7 +27063,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable read-write nodes. valid values: yes, no.",
+          "document": "<p>Whether to enable the read-write node, yes - enable, no - disable</p>",
           "example": "yes",
           "member": "string",
           "name": "OpenRw",
@@ -27038,7 +27074,7 @@
         },
         {
           "disabled": false,
-          "document": "Read/write attribute. Valid values: `READWRITE`, `READONLY`.",
+          "document": "<p>Read-write attribute, value range: READWRITE, READONLY</p>",
           "example": "READONLY",
           "member": "string",
           "name": "RwType",
@@ -27049,7 +27085,7 @@
         },
         {
           "disabled": false,
-          "document": "Transaction split",
+          "document": "<p>Transaction split</p>",
           "example": "false",
           "member": "bool",
           "name": "TransSplit",
@@ -27060,7 +27096,7 @@
         },
         {
           "disabled": false,
-          "document": "Connection mode. Valid values: `balance`, `nearby`.",
+          "document": "<p>Connection mode, available values: balance, nearby</p>",
           "example": "balance",
           "member": "string",
           "name": "AccessMode",
@@ -27071,7 +27107,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to treat the libra node as an ordinary RO node",
+          "document": "<p>Whether to treat the libra node as an ordinary RO node</p>",
           "example": "false",
           "member": "bool",
           "name": "ApNodeAsRoNode",
@@ -27082,13 +27118,24 @@
         },
         {
           "disabled": false,
-          "document": "libra node fault, whether to forward to other nodes",
+          "document": "<p>Whether to forward to other nodes when a libra node fault occurs</p>",
           "example": "false",
           "member": "bool",
           "name": "ApQueryToOtherNode",
           "output_required": false,
           "required": false,
           "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "static",
+          "member": "string",
+          "name": "LoadBalanceMode",
+          "output_required": false,
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -27123,11 +27170,11 @@
       "usage": "both"
     },
     "ProxyNodeInfo": {
-      "document": "Node in the database proxy group",
+      "document": "Node in the database proxy group.",
       "members": [
         {
           "disabled": false,
-          "document": "Database proxy node ID",
+          "document": "Database proxy node ID.",
           "example": "cynosdbmysql-proxyNode-pv4hg4na",
           "member": "string",
           "name": "ProxyNodeId",
@@ -27147,7 +27194,7 @@
         },
         {
           "disabled": false,
-          "document": "CPU of the database proxy node",
+          "document": "CPU of the database proxy node.",
           "example": "2",
           "member": "int64",
           "name": "Cpu",
@@ -27157,7 +27204,7 @@
         },
         {
           "disabled": false,
-          "document": "Memory of the database proxy node",
+          "document": "Memory of the database proxy node.",
           "example": "4000",
           "member": "int64",
           "name": "Mem",
@@ -27167,7 +27214,7 @@
         },
         {
           "disabled": false,
-          "document": "Status of the database proxy node",
+          "document": "Status of the database proxy node.",
           "example": "running",
           "member": "string",
           "name": "Status",
@@ -27177,7 +27224,7 @@
         },
         {
           "disabled": false,
-          "document": "Database proxy group ID",
+          "document": "Database proxy group ID.",
           "example": "cynosdbmysql-proxy-mdhg57su",
           "member": "string",
           "name": "ProxyGroupId",
@@ -27187,7 +27234,7 @@
         },
         {
           "disabled": false,
-          "document": "Cluster ID",
+          "document": "Cluster ID.",
           "example": "cynosdbmysql-i2weamox",
           "member": "string",
           "name": "ClusterId",
@@ -27197,7 +27244,7 @@
         },
         {
           "disabled": false,
-          "document": "User AppID",
+          "document": "User AppID.",
           "example": "1772344699",
           "member": "int64",
           "name": "AppId",
@@ -27207,7 +27254,7 @@
         },
         {
           "disabled": false,
-          "document": "Region",
+          "document": "Region.",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
@@ -27217,7 +27264,7 @@
         },
         {
           "disabled": false,
-          "document": "AZ",
+          "document": "AZ.",
           "example": "ap-guangzhou-6",
           "member": "string",
           "name": "Zone",
@@ -27227,7 +27274,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Database proxy node name.",
           "example": "cynosdbmysql-proxyNode-q52v1wp4",
           "member": "string",
           "name": "OssProxyNodeName",
@@ -28576,11 +28623,11 @@
       "type": "object"
     },
     "RollbackData": {
-      "document": "",
+      "document": "Rollback task information.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance CPU.",
           "example": "5",
           "member": "int64",
           "name": "Cpu",
@@ -28590,7 +28637,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance memory.",
           "example": "48",
           "member": "int64",
           "name": "Memory",
@@ -28600,7 +28647,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Cluster storage upper limit.",
           "example": "10",
           "member": "int64",
           "name": "StorageLimit",
@@ -28610,7 +28657,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Original cluster ID.",
           "example": "cynosdbmysql-j9i41hfv",
           "member": "string",
           "name": "OriginalClusterId",
@@ -28620,7 +28667,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Original cluster name.",
           "example": "cynosdbmysql-j9i41hfv",
           "member": "string",
           "name": "OriginalClusterName",
@@ -28630,7 +28677,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Rollback method.",
           "example": "ROLLBACK_STRATEGY_SNAP",
           "member": "string",
           "name": "RollbackStrategy",
@@ -28640,7 +28687,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Snapshot time.",
           "example": "2022.01.01",
           "member": "string",
           "name": "SnapshotTime",
@@ -28650,7 +28697,7 @@
         },
         {
           "disabled": false,
-          "document": "Roll back to the Serverless cluster with minimum CPU",
+          "document": "Roll back to the Serverless cluster with minimum CPU.",
           "example": "0",
           "member": "int64",
           "name": "MinCpu",
@@ -28660,7 +28707,7 @@
         },
         {
           "disabled": false,
-          "document": "Roll back to the Serverless cluster with maximum CPU",
+          "document": "Roll back to the Serverless cluster with maximum CPU.",
           "example": "10",
           "member": "int64",
           "name": "MaxCpu",
@@ -28680,7 +28727,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Rollback database.",
           "example": "无",
           "member": "RollbackDatabase",
           "name": "RollbackDatabases",
@@ -28690,7 +28737,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Rollback data table.",
           "example": "无",
           "member": "RollbackTable",
           "name": "RollbackTables",
@@ -28722,11 +28769,11 @@
       "usage": "out"
     },
     "RollbackDatabase": {
-      "document": "",
+      "document": "Rollback database information.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Old database name.",
           "example": "db1",
           "member": "string",
           "name": "OldDatabase",
@@ -28737,7 +28784,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "New database name.",
           "example": "db2",
           "member": "string",
           "name": "NewDatabase",
@@ -28750,7 +28797,7 @@
       "usage": "both"
     },
     "RollbackInstanceInfo": {
-      "document": "",
+      "document": "Rollback instance information.",
       "members": [
         {
           "disabled": false,
@@ -28814,7 +28861,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance ID",
+          "document": "Instance ID.",
           "example": "cynosdbmysql-ins-twpmnatl",
           "member": "string",
           "name": "InstanceId",
@@ -28824,7 +28871,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance name",
+          "document": "Instance name.",
           "example": "cynosdbmysql-ins-twpmnatl",
           "member": "string",
           "name": "InstanceName",
@@ -28834,7 +28881,7 @@
         },
         {
           "disabled": false,
-          "document": "Status",
+          "document": "Status.",
           "example": "success",
           "member": "string",
           "name": "Status",
@@ -28844,7 +28891,7 @@
         },
         {
           "disabled": false,
-          "document": "CPU Size",
+          "document": "CPU Size.",
           "example": "2",
           "member": "int64",
           "name": "Cpu",
@@ -28854,7 +28901,7 @@
         },
         {
           "disabled": false,
-          "document": "Memory Size",
+          "document": "Memory Size.",
           "example": "4",
           "member": "int64",
           "name": "Mem",
@@ -28864,7 +28911,7 @@
         },
         {
           "disabled": false,
-          "document": "Storage size",
+          "document": "Storage size.",
           "example": "100",
           "member": "int64",
           "name": "StorageLimit",
@@ -28876,7 +28923,7 @@
       "usage": "out"
     },
     "RollbackProcessInfo": {
-      "document": "",
+      "document": "Rollback progress details.",
       "members": [
         {
           "disabled": false,
@@ -28900,7 +28947,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Swap instance list.",
           "example": "无",
           "member": "ExchangeInstanceInfo",
           "name": "ExchangeInstanceInfoList",
@@ -28910,7 +28957,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Swap RO group list.",
           "example": "无",
           "member": "ExchangeRoGroupInfo",
           "name": "ExchangeRoGroupInfoList",
@@ -28952,11 +28999,11 @@
       "usage": "out"
     },
     "RollbackRoGroupInfo": {
-      "document": "",
+      "document": "Rollback RO group information.",
       "members": [
         {
           "disabled": false,
-          "document": "Instance group ID",
+          "document": "Instance group ID.",
           "example": "cynosdbmysql-grp-ywnxpisy",
           "member": "string",
           "name": "InstanceGroupId",
@@ -28966,7 +29013,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC information",
+          "document": "VPC information.",
           "example": "vpc-4pbgx2dd",
           "member": "string",
           "name": "UniqVpcId",
@@ -29008,11 +29055,11 @@
       "usage": "out"
     },
     "RollbackTable": {
-      "document": "",
+      "document": "Rollback databases and tables.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Database name.",
           "example": "db1",
           "member": "string",
           "name": "Database",
@@ -29023,7 +29070,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Database table.",
           "example": "[\"OldTable\": \"tb1\", \"NewTable\": \"tb2\"]",
           "member": "RollbackTableInfo",
           "name": "Tables",
@@ -29036,7 +29083,7 @@
       "usage": "both"
     },
     "RollbackTableInfo": {
-      "document": "",
+      "document": "Rollback table information.",
       "members": [
         {
           "disabled": false,
@@ -29458,7 +29505,7 @@
       "usage": "both"
     },
     "RuleTemplateInfo": {
-      "document": "",
+      "document": "Rule template content.",
       "members": [
         {
           "disabled": false,
@@ -30277,11 +30324,11 @@
       "type": "object"
     },
     "SlaveZoneAttrItem": {
-      "document": "",
+      "document": "Availability zone attribute item.",
       "members": [
         {
           "disabled": false,
-          "document": "Availability zone",
+          "document": "Availability zone.",
           "example": "ap-guangzhou-3",
           "member": "string",
           "name": "Zone",
@@ -30313,7 +30360,7 @@
       "usage": "out"
     },
     "SlaveZoneStockInfo": {
-      "document": "",
+      "document": "Standby availability zone inventory information.",
       "members": [
         {
           "disabled": false,
@@ -30907,7 +30954,7 @@
       "type": "object"
     },
     "SwitchClusterLogBin": {
-      "document": "",
+      "document": "Switch cluster log bin toggle",
       "members": [
         {
           "disabled": false,
@@ -30991,7 +31038,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Cluster ID",
+          "document": "<p>Cluster Id</p>",
           "example": "cynosdbmysql-hr7oi711",
           "member": "string",
           "name": "ClusterId",
@@ -31000,7 +31047,7 @@
         },
         {
           "disabled": false,
-          "document": "The current AZ",
+          "document": "<p>Current availability zone</p>",
           "example": "ap-guangzhou-2",
           "member": "string",
           "name": "OldZone",
@@ -31009,7 +31056,7 @@
         },
         {
           "disabled": false,
-          "document": "New AZ",
+          "document": "<p>Availability zone to switch to</p>",
           "example": "ap-guangzhou-3",
           "member": "string",
           "name": "NewZone",
@@ -31018,7 +31065,7 @@
         },
         {
           "disabled": false,
-          "document": "Valid values: `yes` (execute during maintenance time), `no` (execute now)",
+          "document": "<p>Execute during maintenance period - yes, immediately execute - no</p>",
           "example": "no",
           "member": "string",
           "name": "IsInMaintainPeriod",
@@ -31033,7 +31080,17 @@
       "members": [
         {
           "disabled": false,
-          "document": "Async FlowId",
+          "document": "<p>Task ID.</p>",
+          "example": "183415",
+          "member": "int64",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Async FlowId</p>",
           "example": "1473274",
           "member": "int64",
           "name": "FlowId",
@@ -31814,7 +31871,7 @@
         },
         {
           "disabled": false,
-          "document": "Database CPU",
+          "document": "Database CPU.",
           "example": "2",
           "member": "int64",
           "name": "Cpu",
@@ -31823,7 +31880,7 @@
         },
         {
           "disabled": false,
-          "document": "Database memory in GB",
+          "document": "Database memory in GB.",
           "example": "4",
           "member": "int64",
           "name": "Memory",
@@ -31832,7 +31889,7 @@
         },
         {
           "disabled": false,
-          "document": "Upgrade type. Valid values: upgradeImmediate, upgradeInMaintain",
+          "document": "Upgrade type. Valid values: upgradeImmediate, upgradeInMaintain.",
           "example": "upgradeImmediate",
           "member": "string",
           "name": "UpgradeType",
@@ -31859,7 +31916,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to automatically select a voucher. 1: yes; 0: no. Default value: 0",
+          "document": "Whether to automatically select a voucher. 1: yes; 0: no. Default value: 0.",
           "example": "0",
           "member": "int64",
           "name": "AutoVoucher",
@@ -31877,7 +31934,7 @@
         },
         {
           "disabled": false,
-          "document": "Transaction mode. Valid values: `0` (place and pay for an order), `1` (place an order)",
+          "document": "Transaction mode. Valid values: `0` (place and pay for an order), `1` (place an order).",
           "example": "0",
           "member": "int64",
           "name": "DealMode",
@@ -31895,7 +31952,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Proxy synchronous upgrade.",
           "example": "{\"Cpu\": 2,\"Mem\": 4000,\"ReloadBalance\": \"auto\",\"ProxyZones\": [{\"ProxyNodeZone\": \"ap-guangzhou-3\",\"ProxyNodeCount\": 2}]}",
           "member": "UpgradeProxy",
           "name": "UpgradeProxy",
@@ -31930,7 +31987,7 @@
         },
         {
           "disabled": false,
-          "document": "Order ID",
+          "document": "Order ID.",
           "example": "[\"202411040738\"]",
           "member": "string",
           "name": "DealNames",
@@ -31948,7 +32005,7 @@
       "type": "object"
     },
     "UpgradeProxy": {
-      "document": "",
+      "document": "When adding or resizing an instance, synchronously upgrade the proxy.",
       "members": [
         {
           "disabled": false,
@@ -31970,7 +32027,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Proxy node information",
           "example": "无",
           "member": "ProxyZone",
           "name": "ProxyZones",
@@ -31979,7 +32036,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Rebalance",
           "example": "auto",
           "member": "string",
           "name": "ReloadBalance",

@@ -5461,7 +5461,7 @@
         },
         {
           "disabled": false,
-          "document": "Authorization validity period\nMonthly authorization\n1: Permanent license\n-Unknown",
+          "document": "Authorization validity period\n0: Monthly authorization\n1: Permanent license\n-1: Unknown",
           "example": "0",
           "member": "int64",
           "name": "LicensePayMode",

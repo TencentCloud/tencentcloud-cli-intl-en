@@ -99,7 +99,7 @@
       "status": "online"
     },
     "CreateAigcCustomVoice": {
-      "document": "This API is used to create custom voice types for AIGC.",
+      "document": "This API is used to create custom voice types. Note that calling this API will incur customization fees. See the billing documentation (https://www.tencentcloud.com/document/product/266/95125?from_cn_redirect=1#5e5217e8-29fc-467e-ac2d-853648f988b7).",
       "input": "CreateAigcCustomVoiceRequest",
       "name": "Create an AIGC custom voice type",
       "output": "CreateAigcCustomVoiceResponse",
@@ -642,6 +642,13 @@
       "input": "DescribeAigcFaceInfoRequest",
       "name": "Obtain AIGC face information",
       "output": "DescribeAigcFaceInfoResponse",
+      "status": "online"
+    },
+    "DescribeAigcFaceInfoAsync": {
+      "document": "This API is used to asynchronously fetch AIGC face information. Note that calling this API incurs face recognition fees. Refer to the billing documentation (https://www.tencentcloud.com/document/product/266/95125?from_cn_redirect=1#96b3b59a-f9e1-49e9-966a-bedb70a4bf12).",
+      "input": "DescribeAigcFaceInfoAsyncRequest",
+      "name": "Asynchronously fetch AIGC face information",
+      "output": "DescribeAigcFaceInfoAsyncResponse",
       "status": "online"
     },
     "DescribeAigcUsageData": {
@@ -2070,6 +2077,17 @@
           "output_required": true,
           "required": false,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Third-party DRM encrypted information. Task flow is not currently supported to initiate task via third-party DRM information.</p>",
+          "example": "无",
+          "member": "ThirdPartyDrmInfo",
+          "name": "DrmInfo",
+          "output_required": false,
+          "required": false,
+          "type": "object",
           "value_allowed_null": false
         }
       ],
@@ -7951,8 +7969,10 @@
           "example": "File",
           "member": "string",
           "name": "Type",
+          "output_required": false,
           "required": false,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -7960,8 +7980,10 @@
           "example": "9662*********84062",
           "member": "string",
           "name": "FileId",
+          "output_required": false,
           "required": false,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -7969,11 +7991,13 @@
           "example": "https://************************.com/********************************************************/*********.mp4",
           "member": "string",
           "name": "Url",
+          "output_required": false,
           "required": false,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "AigcImageOutputConfig": {
       "document": "Output media file configuration for the AIGC image generation task.",
@@ -8024,7 +8048,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Resolution of the generated image. Available values for each model:</p><ul><li>OG: 1K, 2K, 4K, default 1K;</li><li>GG 2.5: 1K, 2K, 4K, default 1K;</li><li>GG 3.0: 1K, 2K, 4K, default 1K;</li><li>GG 3.1: 512, 1K, 2K, 4K, default 1K;</li><li>Kling 2.1: 1k, 2k, default 1k;</li><li>Kling 3.0: 1k, 2k, default 1k;</li><li>Kling 3.0-Omni: 1k, 2k, 4k, default 1k;</li><li>Kling O1: 1k, 2k, 4k, default 1k;</li><li>SI 4.0: 1K, 2K, 4K, default 1K;</li><li>SI 4.5: 2K, 4K, default 2K;</li><li>SI 5.0-lite: 2K, 3K, default 2K;</li><li>Vidu q2: 1080p, 2K, 4K, default 1080p;</li><li>Hunyuan 3.0: This field is not currently supported. Set resolution via the <code>ExtInfo</code> field;</li><li>Qwen 0925: This field is not currently supported. Set resolution via the <code>ExtInfo</code> field;</li></ul>",
+          "document": "<p>Image generation resolution. Available values for each model:</p><ul><li>OG: 1K, 2K, 4K, default 1K;</li><li>GG 2.5: 1K, 2K, 4K, default 1K;</li><li>GG 3.0: 1K, 2K, 4K, default 1K;</li><li>GG 3.1: 720P, 1K, 2K, 4K, default 1K;</li><li>Kling 2.1: 1k, 2k, default 1k;</li><li>Kling 3.0: 1k, 2k, default 1k;</li><li>Kling 3.0-Omni: 1k, 2k, 4k, default 1k;</li><li>Kling O1: 1k, 2k, 4k, default 1k;</li><li>SI 4.0: 1K, 2K, 4K, default 1K;</li><li>SI 4.5: 2K, 4K, default 2K;</li><li>SI 5.0-lite: 2K, 3K, default 2K;</li><li>Vidu q2: 1080p, 2K, 4K, default 1080p;</li><li>Hunyuan 3.0: This field is not currently supported. Use the <code>ExtInfo</code> field to set resolution;</li><li>Qwen 0925: This field is not currently supported. Use the <code>ExtInfo</code> field to set resolution;</li></ul>",
           "example": "1K",
           "member": "string",
           "name": "Resolution",
@@ -8293,7 +8317,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Prompt for image generation. Supports up to 1000 characters. This parameter is required when FileInfos is empty.</p>",
+          "document": "<p>Prompt content for image generation. This parameter is required when FileInfos is empty.</p>",
           "example": "generate a car",
           "member": "string",
           "name": "Prompt",
@@ -8303,7 +8327,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>To prevent the model from generating images, set a prompt. Supports a maximum of 1000 characters.</p>",
+          "document": "<p>To prevent the model from generating image prompts.</p>",
           "example": "red",
           "member": "string",
           "name": "NegativePrompt",
@@ -8369,7 +8393,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Input video file type. Valid values: <li>File: on-demand media file;</li> <li>Url: accessible URL;</li>",
+          "document": "<p>Input file type. Valid values: <li>File: on-demand media file;</li> <li>Url: accessible Url;</li> <li>Base64: Base64 string of image or video conversion;</li></p>",
           "example": "File",
           "member": "string",
           "name": "Type",
@@ -8380,7 +8404,7 @@
         },
         {
           "disabled": false,
-          "document": "The media File ID of the image File, which is the globally unique identifier of the File in vod, is assigned by the vod backend after successful upload. you can get this field in the [video upload completion event notification](https://www.tencentcloud.com/document/product/266/7830?from_cn_redirect=1) or [vod console](https://console.cloud.tencent.com/vod/media). this parameter is valid when the Type value is File.\nDescription:.\n1. recommended for use: image less than 7 mb.\n2. Valid values of image format: jpeg, jpg, png, and webp.",
+          "document": "<p>The media file ID of the image file, which is the globally unique identifier of this file in VOD, is assigned by the VOD backend after successful upload. You can obtain this field in the <a href=\"/document/product/266/7830\">video upload completion event notification</a> or the <a href=\"https://console.cloud.tencent.com/vod/media\">VOD console</a>. This parameter is valid when the Type value is File.<br>Note:</p><ol><li>Images less than 7M are recommended;</li><li>The image format values are: jpeg, jpg, png, webp.</li></ol>",
           "example": "3704211***509819",
           "member": "string",
           "name": "FileId",
@@ -8391,7 +8415,7 @@
         },
         {
           "disabled": false,
-          "document": "Accessible file URL. this parameter is valid when the Type value is URL.\nDescription:.\n1. recommended for use: image less than 7 mb.\n2. Valid values of image format: jpeg, jpg, png, and webp.",
+          "document": "<p>Accessible file URL. This parameter is valid when the Type value is URL.</p><ol><li>Images less than 7M are recommended.</li><li>Image format values: jpeg, jpg, png, webp.</li></ol>",
           "example": "https://test.com/1.png",
           "member": "string",
           "name": "Url",
@@ -8402,10 +8426,32 @@
         },
         {
           "disabled": false,
-          "document": "Description of the input image, used to help the model understand the image. valid for GEM 2.5 and GEM 3.0 only.",
+          "document": "<p>Accessible file Base64. This parameter is valid when Type value is Base64. Description:</p><ol><li>Total size of all files must not exceed 7 MB to avoid exceeding the 10 MB size limit of the cloud API after converting to Base64;</li><li>Format should be jpeg, jpg, png, or webp;</li><li>Do not include prefixes such as data:image/jpeg;base64,.</li></ol>",
+          "example": "base64",
+          "member": "string",
+          "name": "Base64",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Description of the input image, used to help the model understand the image. Only valid for GEM 2.5 and GEM 3.0.</p>",
           "example": "任务背景：这是需要翻新的主建筑（图1），不得改变其几何结构。",
           "member": "string",
           "name": "Text",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p><strong>Valid only when ModelName is OG</strong>. Image type.</p><p>Enumeration value:</p><ul><li>mask: Image mask.</li></ul>",
+          "example": "mask",
+          "member": "string",
+          "name": "ReferenceType",
           "output_required": false,
           "required": false,
           "type": "string",
@@ -8591,7 +8637,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Duration of the generated video, unit: seconds.</p><li>When ModelName is Kling, available values are 5 and 10, default is 5;</li><li>When ModelName is Hailuo, available values are 6 and 10, default is 6;</li><li>When ModelName is Vidu, specify 1-10;</li><li>When ModelName is GV, available values are 8, default is 8;</li><li>When ModelName is OS, available values are 4, 8, and 12, default is 8;</li><li>When ModelName is PixVerse, specify 1-15, default is 5;</li>",
+          "document": "<p>Duration of the generated video, unit: seconds.</p><li>When ModelName is Kling, optional values are 3-15, default is 5.</li><li>When ModelName is Hailuo, optional values are 6 and 10, default is 6.</li><li>When ModelName is Vidu, specify 1-10.</li><li>When ModelName is GV, optional value is 8, default is 8.</li><li>When ModelName is OS, optional values are 4, 8, and 12, default is 8.</li><li>When ModelName is PixVerse, specify 1-15, default is 5.</li>",
           "example": "8.0",
           "member": "float",
           "name": "Duration",
@@ -9332,7 +9378,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>Input video file type. Valid values: <li>File: On-demand media file;</li> <li>Url: Accessible URL;</li></p>",
+          "document": "<p>Input video file type. Valid values: <li>File: on-demand media file;</li> <li>Url: accessible Url;</li> <li>Base64: Base64 string of image or video conversion;</li></p>",
           "example": "File",
           "member": "string",
           "name": "Type",
@@ -9376,7 +9422,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Accessible file Base64. This parameter is valid when Type value is Base64. Description:</p><ol><li>The total size of all files must not exceed 7MB to avoid exceeding the 10MB upper limit of message size for cloud APIs after conversion to Base64.</li><li>Image format should be: jpeg, jpg, png, webp.</li><li>Video format should be: mp4, mov, avi.</li><li>Do not include prefixes like data:image/jpeg;base64.</li></ol>",
           "example": "base64",
           "member": "string",
           "name": "Base64",
@@ -9431,7 +9477,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Used to distinguish whether the input image is for <strong>first (last) frame to video</strong>, <strong>image to video</strong>, or <strong>reference to video</strong>. Available values:</p><ul><li>FirstFrame: For first (last) frame to video or image to video;</li><li>Reference: For reference to video;</li></ul><p><strong>Note: FirstFrame is selected by default</strong></p>",
+          "document": "<p>Used to distinguish whether the input image is for <strong>first (last) frame to video</strong>, <strong>image to video</strong>, or <strong>reference to video</strong>. Available values:</p><ul><li>FirstFrame: Used for the first frame of first (last) frame to video or image to video.</li><li>Reference: Used for reference to video.</li><li>LastFrame: Used for the last frame of first (last) frame to video.</li></ul><p><strong>Note that FirstFrame is selected by default</strong></p>",
           "example": "FirstFrame",
           "member": "string",
           "name": "Usage",
@@ -9520,10 +9566,20 @@
       "members": [
         {
           "disabled": false,
-          "document": "Output file information of the AIGC video task.\t",
+          "document": "<p>Output file info of the AIGC video task.</p>",
           "example": "无",
           "member": "AigcVideoTaskOutputFileInfo",
           "name": "FileInfos",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>The task ID of the task type Procedure. If a task flow template (Procedure) is specified when initiating <a href=\"https://www.tencentcloud.com/document/product/266/126239?from_cn_redirect=1\">AIGC video task creation</a>, the task is initiated when the task flow template specifies one or more of MediaProcessTask, AiAnalysisTask, or AiRecognitionTask.</p>",
+          "example": "[\"12530xxx-procedurev2-xxx\"]",
+          "member": "string",
+          "name": "ProcedureTaskIds",
           "output_required": true,
           "type": "list",
           "value_allowed_null": false
@@ -14131,6 +14187,15 @@
         },
         {
           "disabled": false,
+          "document": "<p>If the overseas custom subject library is enabled, you can input <code>True</code> to use it.</p><p>Enumeration value:</p><ul><li>True: Use the overseas custom subject library.</li><li>False: Non-use of the overseas custom subject library.</li></ul>",
+          "example": "True",
+          "member": "string",
+          "name": "DisableModeration",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
           "document": "<p>Identifier for deduplication. If a request with the same identifier has been sent within the past three days, an error is returned for the current request. The maximum length is 50 characters. If this is not specified or left empty, deduplication is not performed.</p>",
           "example": "mySessionId",
           "member": "string",
@@ -14694,6 +14759,15 @@
       "members": [
         {
           "disabled": false,
+          "document": "<p>VOD app ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the app ID when accessing resources in on-demand applications (whether default or newly created application).</p>",
+          "example": "251441341",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
           "document": "<p>Model name.</p>",
           "example": "Kling",
           "member": "string",
@@ -14712,7 +14786,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Designated scenarios currently support sfx (sound effects).</p>",
+          "document": "<p>Designated scenarios currently support sfx (sound effects) and music.</p>",
           "example": "sfx",
           "member": "string",
           "name": "SceneType",
@@ -14773,7 +14847,7 @@
         {
           "disabled": false,
           "document": "<p>Returned task ID after the task is created successfully.<br>The task progress and generation results can be obtained by calling the query API.</p>",
-          "example": "251441341-AigcAudioTask-f3259ddeb615203726d73c03da05d9fft",
+          "example": "251441341-AigcAudioTask-ed886585de73592fca966e81b6bc2d20t",
           "member": "string",
           "name": "TaskId",
           "output_required": false,
@@ -14941,6 +15015,15 @@
           "example": "myVideoId",
           "member": "string",
           "name": "VideoId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>If the overseas custom timbre library is enabled, you can input <code>True</code> to use it.</p><p>Enumeration value:</p><ul><li>True: Use the overseas custom timbre library.</li><li>False: Non-use of the overseas custom timbre library.</li></ul>",
+          "example": "True",
+          "member": "string",
+          "name": "DisableModeration",
           "required": false,
           "type": "string"
         },
@@ -15125,7 +15208,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Model version. Parameter value:</p><li>When ModelName is OG, available values are image2_low, image2_medium, image2_high;</li><li>When ModelName is GG, available values are 2.5, 3.0, 3.1;</li><li>When ModelName is Jimeng, available values are 4.0;</li><li>When ModelName is SI, available values are 4.0, 4.5, 5.0-lite;</li><li>When ModelName is Qwen, available values are 0925;</li><li>When ModelName is Hunyuan, available values are 3.0;</li><li>When ModelName is Vidu, available values are q2;</li><li>When ModelName is Kling, available values are 2.1, 3.0, 3.0-Omni, O1;</li>",
+          "document": "<p>Model version. Parameter:</p><li>When ModelName is OG, available values are image2_low, image2_medium, image2_high;</li><li>When ModelName is GG, available values are 2.5, 3.0, 3.1;</li><li>When ModelName is Jimeng, available values are 4.0;</li><li>When ModelName is SI, available values are 4.0, 4.5, 5.0-lite;</li><li>When ModelName is Qwen, available values are 0925;</li><li>When ModelName is Hunyuan, available values are 3.0;</li><li>When ModelName is Vidu, available values are q2;</li><li>When ModelName is Kling, available values are 2.1, 3.0, 3.0-Omni, O1, scene;</li>",
           "example": "3.0",
           "member": "string",
           "name": "ModelVersion",
@@ -15188,7 +15271,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Scenario type. Values as follows: <li>When ModelName is Hunyuan: 3d_panorama means Panoramic View;</li> <li>Other ModelName is not currently supported.</li></p>",
+          "document": "<p>Scenario type. Values are as follows:</p><li>When ModelName is Hunyuan: 3d_panorama means panoramic view;</li><li>When ModelName is Kling: image_expand means image expansion;</li><li>Other ModelNames are not currently supported.</li>",
           "example": "3d_panorama",
           "member": "string",
           "name": "SceneType",
@@ -15233,7 +15316,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Reserved field, used for special purpose.</p><ul><li><p>Hunyuan 3.0</p><ul><li>Supports freely setting resolution width and height. Both width and height must be within [512, 2048] pixels, and the product of width and height must be ≤ 1024x1024 pixels. Example: <code>{\"AdditionalParameters\": \"{\\\"size\\\":\\\"728x1024\\\"}\"}</code></li></ul></li><li><p>SI series</p><ul><li>Supports freely setting resolution width and height:<ul><li>SI 4.0: Valid total pixel range [1280x720=921600, 4096x4096=16777216]. Example: <code>{\"AdditionalParameters\": \"{\\\"size\\\":\\\"728x1356\\\"}\"}</code></li><li>SI 4.5: Valid total pixel range [2560x1440=3686400, 4096x4096=16777216]. Example: <code>{\"AdditionalParameters\": \"{\\\"size\\\":\\\"2560x1440\\\"}\"}</code></li><li>SI 5.0-lite: Valid total pixel range [2560x1440=3686400, 3072x3072x1.1025=10404496]. Example: <code>{\"AdditionalParameters\": \"{\\\"size\\\":\\\"2560x1440\\\"}\"}</code></li></ul></li><li>Can be used to enable output of multiple images. Example: <code>{\"AdditionalParameters\": \"{\\\"sequential_image_generation\\\":\\\"auto\\\"}\"}</code>. Besides, the number of output images must be specified in <code>Prompt</code>, such as: output 3 images.</li></ul></li><li><p>Qwen 0925</p><ul><li>Supports freely setting resolution width and height. Valid total pixel range [512x512=261632, 2048x2048=4194304]. Example: <code>{\"AdditionalParameters\": \"{\\\"size\\\":\\\"728*1024\\\"}\"}</code></li></ul></li></ul>",
+          "document": "<p>Reserved field, used for special purpose.</p><ul><li><p>Hunyuan 3.0</p><ul><li>Supports freely setting resolution width and height, both within [512, 2048] pixels, with the product of width and height ≤ 1024x1024 pixels. Example: <code>{\"AdditionalParameters\": \"{\\\"size\\\":\\\"728x1024\\\"}\"}</code></li></ul></li><li><p>SI series</p><ul><li>Supports freely setting resolution width and height:<ul><li>SI 4.0: Valid total pixel range [1280x720=921600, 4096x4096=16777216]. Example: <code>{\"AdditionalParameters\": \"{\\\"size\\\":\\\"728x1356\\\"}\"}</code></li><li>SI 4.5: Valid total pixel range [2560x1440=3686400, 4096x4096=16777216]. Example: <code>{\"AdditionalParameters\": \"{\\\"size\\\":\\\"2560x1440\\\"}\"}</code></li><li>SI 5.0-lite: Valid total pixel range [2560x1440=3686400, 3072x3072x1.1025=10404496]. Example: <code>{\"AdditionalParameters\": \"{\\\"size\\\":\\\"2560x1440\\\"}\"}</code></li></ul></li><li>Can be used to enable output of multiple images. Example: <code>{\"AdditionalParameters\": \"{\\\"sequential_image_generation\\\":\\\"auto\\\"}\"}</code>. Besides, the number of images to output must be specified in the <code>Prompt</code>, such as \"output 3 images\".</li></ul></li><li><p>Qwen 0925</p><ul><li>Supports freely setting resolution width and height, with valid total pixel range [512x512=261632, 2048x2048=4194304]. Example: <code>{\"AdditionalParameters\": \"{\\\"size\\\":\\\"728*1024\\\"}\"}</code></li></ul></li><li><p>OG</p><ul><li>Supports freely setting resolution width and height:<ul><li>Pixel size must be divisible by 16.</li><li>Total pixels must be at least 655,360 and should not exceed 8,294,400.</li><li>Example: <code>{\"AdditionalParameters\": \"{\\\"size\\\":\\\"728*1024\\\"}\"}</code></li></ul></li><li>Supports setting transparent layer:<ul><li>Example: <code>{\"AdditionalParameters\": \"{\\\"background\\\":\\\"transparent\\\"}\"}</code></li></ul></li></ul></li><li><p>Kling</p><ul><li>Supports setting image expansion parameters. Example: <code>{AdditionalParameters\":\"{\\\"down_expansion_ratio\\\":0.2,\\\"left_expansion_ratio\\\":0.3,\\\"right_expansion_ratio\\\":0.4,\\\"up_expansion_ratio\\\":0.1}}</code><ul><li>Common constraints:<ul><li>Value range: [0, 2].</li><li>The overall area of the new image should not exceed 3 times that of the original image.</li><li>Forward prompts can be input through the <code>Prompt</code> field.</li><li>Example description:<ul><li>up_expansion_ratio: Upward expansion range, calculated based on a multiple of the original image height. If the original image height is 20 and the parameter value is 0.1, the distance from the top edge of the original image to the top edge of the new image is 20 × 0.1 = 2, which is the expansion range.</li><li>down_expansion_ratio: Downward expansion range, calculated based on a multiple of the original image height. If the original image height is 20 and the parameter value is 0.2, the distance from the bottom edge of the original image to the bottom edge of the new image is 20 × 0.2 = 4, which is the expansion range.</li><li>left_expansion_ratio: Leftward expansion range, calculated based on a multiple of the original image width. If the original image width is 30 and the parameter value is 0.3, the distance from the left edge of the original image to the left edge of the new image is 30 × 0.3 = 9, which is the expansion range.</li><li>right_expansion_ratio: Rightward expansion range, calculated based on a multiple of the original image width. If the original image width is 30 and the parameter value is 0.4, the distance from the right edge of the original image to the right edge of the new image is 30 × 0.4 = 12, which is the expansion range.</li></ul></li></ul></li></ul></li></ul></li></ul>",
           "example": "{\"AdditionalParameters\": \"\"}",
           "member": "string",
           "name": "ExtInfo",
@@ -15647,7 +15730,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Model version. Parameter Value:<br>When ModelName is Hailuo, optional values are 02, 2.3, and 2.3-fast.<br>When ModelName is Kling, optional values are 1.6, 2.0, 2.1, 2.5, 2.6, O1, 3.0, and 3.0-Omni.<br>When ModelName is Jimeng, optional value is 3.0pro.<br>When ModelName is Vidu, optional values are q2, q2-pro, q2-turbo, q3, q3-pro, and q3-turbo.<br>When ModelName is GV, optional values are 3.1 and 3.1-fast.<br>When ModelName is OS, optional value is 2.0.<br>When ModelName is Hunyuan, optional value is 1.5.<br>When ModelName is Mingmou, optional value is 1.0.<br>When ModelName is PixVerse, optional values are v5.6, v6, and c1.</p>",
+          "document": "<p>Model version. Parameter value:<br>When ModelName is Hailuo, optional values are 02, 2.3, and 2.3-fast.<br>When ModelName is Kling, optional values are 1.6, 2.0, 2.1, 2.5, 2.6, O1, 3.0, and 3.0-Omni.<br>When ModelName is Vidu, optional values are q2, q2-pro, q2-turbo, q3, q3-pro, and q3-turbo.<br>When ModelName is GV, optional values are 3.1 and 3.1-fast.<br>When ModelName is OS, optional value is 2.0.<br>When ModelName is Hunyuan, optional value is 1.5.<br>When ModelName is Mingmou, optional value is 1.0.<br>When ModelName is PixVerse, optional values are v5.6, v6, and c1.</p>",
           "example": "O1",
           "member": "string",
           "name": "ModelVersion",
@@ -15741,6 +15824,15 @@
           "example": "motion_control",
           "member": "string",
           "name": "SceneType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p><a href=\"https://www.tencentcloud.com/document/product/266/33475?from_cn_redirect=1#.E4.BB.BB.E5.8A.A1.E6.B5.81\">Task flow name</a>. Fill in when you need to execute task flow for the generated new video.</p>",
+          "example": "testProcedure",
+          "member": "string",
+          "name": "Procedure",
           "required": false,
           "type": "string"
         },
@@ -20511,6 +20603,217 @@
       ],
       "type": "object"
     },
+    "DescribeAigcFaceInfoAsyncInput": {
+      "document": "Asynchronously fetch AIGC face information input.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Input video information that needs to get face information.</p>",
+          "example": "无",
+          "member": "AigcFaceInputFileInfo",
+          "name": "FileInfos",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeAigcFaceInfoAsyncOutput": {
+      "document": "Asynchronously fetch AIGC human face information output",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Face information.</p>",
+          "example": "无",
+          "member": "AigcFaceInfo",
+          "name": "FaceInfoSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeAigcFaceInfoAsyncRequest": {
+      "document": "DescribeAigcFaceInfoAsync request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p><b>VOD <a href=\"/document/product/266/14574?from_cn_redirect=1\">application</a> ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the app ID when accessing resources in on-demand applications (whether the default application or a newly created application).</b></p>",
+          "example": "250000002",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Input video information that needs to get face information. It can contain up to one file.</p>",
+          "example": "无",
+          "member": "AigcFaceInputFileInfo",
+          "name": "FileInfos",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Identifier for deduplication. If a request with the same identifier has been sent within the past three days, an error is returned for the current request. The maximum length is 50 characters. If this is not specified or left empty, deduplication is not performed.</p>",
+          "example": "my*******Id1",
+          "member": "string",
+          "name": "SessionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Source context. This is used to pass through user request information. The audio and video quality revival complete callback returns the value of this field. The maximum length is 1000 characters.</p>",
+          "example": "my*******Context",
+          "member": "string",
+          "name": "SessionContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task priority. The higher the value, the higher the priority. The value range is from -10 to 10. If this is not specified, the default value is 0.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "TasksPriority",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAigcFaceInfoAsyncResponse": {
+      "document": "DescribeAigcFaceInfoAsync response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "251007502-DescribeAigcFaceInfoAsync-d5a02998082d0a58cecd7e69165b5245t",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAigcFaceInfoAsyncTask": {
+      "document": "Asynchronously fetch AIGC face information tasks.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "251007502-DescribeAigcFaceInfoAsync-**********2d0a58cecd7e69165b5245t",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task status. Valid values: </p><li>PROCESSING: Processing; </li><li>FINISH: Completed.</li>",
+          "example": "FINISH",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Error code. It returns a non-zero error code in case of a source error. Please use the ErrCode of each specific task when it returns 0.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "ErrCode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended error codes.</p><p>Parameter format: extended error codes.</p><p>Enumeration values:</p><ul><li>RequestLimitExceeded: The call exceeds the concurrency limit.</li><li>InvalidParameterValue: Parameter error.</li><li>InternalError: Internal error.</li><li>FailedOperation: Operation failed.</li></ul>",
+          "example": "InternalError",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Error message.</p>",
+          "example": "task failed with status: FAIL, message: Something went wrong when we tried to get the contents of the file.",
+          "member": "string",
+          "name": "Message",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task progress, in the range of [0-100].</p>",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Input information to asynchronously fetch face information of the AIGC task.</p>",
+          "example": "无",
+          "member": "DescribeAigcFaceInfoAsyncInput",
+          "name": "Input",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Asynchronously fetch the output message of the human face information task for AIGC.</p>",
+          "example": "无",
+          "member": "DescribeAigcFaceInfoAsyncOutput",
+          "name": "Output",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Identifier for deduplication. If a request with the same identifier has been sent within the past seven days, an error is returned for the current request. The maximum length is 50 characters. If this is not specified or left empty, deduplication is not performed.</p>",
+          "example": "mySessionId1",
+          "member": "string",
+          "name": "SessionId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Source context. This is used to pass user request information. The task status change callback returns the value of this field. The maximum length is 1000 characters.</p>",
+          "example": "mySessionContext",
+          "member": "string",
+          "name": "SessionContext",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "DescribeAigcFaceInfoRequest": {
       "document": "DescribeAigcFaceInfo request structure.",
       "members": [
@@ -20580,7 +20883,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>AIGC type.</p><p>Enumeration value:</p><ul><li>Video: Video</li><li>Image: Image</li><li>Text: Text</li><li>SceneAigcVideo: Scenario-based video processing</li><li>SceneAigcImage: Scenario-based image processing</li><li>SceneAigcTime: Scenario-based processing times</li></ul>",
+          "document": "<p>AIGC type.</p><p>Enumeration value:</p><ul><li>Video: video</li><li>Image: image</li><li>Text: text</li><li>Audio: audio</li><li>SceneAigcVideo: scenario-based video processing</li><li>SceneAigcImage: scenario-based image processing</li><li>SceneAigcTime: scenario-based processing times</li></ul>",
           "example": "Image",
           "member": "string",
           "name": "AigcType",
@@ -20595,6 +20898,24 @@
           "name": "SubAppId",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>API Key</p>",
+          "example": "abcxxx",
+          "member": "string",
+          "name": "APIKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>API Key</p>",
+          "example": "[\"abcxxx\"]",
+          "member": "string",
+          "name": "APIKeys",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -24119,7 +24440,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>Task type. Value: <li>Procedure: Video processing task;</li><li>EditMedia: Video editing task;</li><li>SplitMedia: Video splitting task;</li><li>ComposeMedia: Media file creation task;</li><li>WechatPublish: WeChat publish task;</li><li>WechatMiniProgramPublish: WeChat Mini Program Video Publishing Task;</li><li>PullUpload: Pull and upload media files task;</li><li>FastClipMedia: Quick trimming task;</li><li>RemoveWatermarkTask: Intelligent watermark removal task;</li><li>DescribeFileAttributesTask: File attribute retrieval task;</li><li>RebuildMedia: Audio and video quality regeneration task (not recommended);</li><li>ReviewAudioVideo: Audio/video moderation task;</li><li>ExtractTraceWatermark: Source watermark extraction task;</li><li>ExtractCopyRightWatermark: Copyright Watermark Extraction Task;</li><li>QualityInspect: Audio and video quality inspection task;</li><li>QualityEnhance: Audio and video quality regeneration task;</li><li>ComplexAdaptiveDynamicStreaming: Complex adaptive bitstream task;</li><li>ProcessMediaByMPS: MPS video processing task;</li><li>AigcImageTask: AIGC image generation task;</li><li>SceneAigcImageTask: Scenario-based AIGC image generation task;</li><li>AigcVideoTask: AIGC video generation task;</li><li>ImportMediaKnowledge: Import media knowledge task.</li><li>SceneAigcVideoTask: Scenario-based AIGC video generation task;</li><li>ExtractBlindWatermark: Digital watermark extraction task.</li><li>ExtractBlindWatermark: Digital watermark extraction task.</li><li>CreateAigcAdvancedCustomElement: Create custom subject task</li><li>CreateAigcCustomVoice: Create custom voice type task</li><li>CreateAigcSubject: Create subject task</li><li>AigcVideoRedrawTask: AIGC video redraw task</li><li>CreateAigcAudioClone: AIGC sound clone task</li></p>",
+          "document": "<p>Task type. Valid values: <li>Procedure: Video processing task;</li><li>EditMedia: Video editing task;</li><li>SplitMedia: Video splitting task;</li><li>ComposeMedia: Media file creation task;</li><li>WechatPublish: WeChat publishing task;</li><li>WechatMiniProgramPublish: WeChat Mini Program Video Publishing Task;</li><li>PullUpload: Pull and upload media files task;</li><li>FastClipMedia: Quick trimming task;</li><li>RemoveWatermarkTask: Intelligent watermark removal task;</li><li>DescribeFileAttributesTask: File attribute retrieval task;</li><li>RebuildMedia: Audio and video quality regeneration task (not recommended);</li><li>ReviewAudioVideo: Audio/video moderation task;</li><li>ExtractTraceWatermark: Source watermark extraction task;</li><li>ExtractCopyRightWatermark: Copyright Watermark Extraction Task;</li><li>QualityInspect: Audio and video quality inspection task;</li><li>QualityEnhance: Audio and video quality regeneration task;</li><li>ComplexAdaptiveDynamicStreaming: Complex adaptive bitstream task;</li><li>ProcessMediaByMPS: MPS video processing task;</li><li>AigcImageTask: AIGC image generation task;</li><li>SceneAigcImageTask: Scenario-based AIGC image generation task;</li><li>AigcVideoTask: AIGC video generation task;</li><li>ImportMediaKnowledge: Import media knowledge task.</li><li>SceneAigcVideoTask: Scenario-based AIGC video generation task;</li><li>ExtractBlindWatermark: Digital watermark extraction task.</li><li>ExtractBlindWatermark: Digital watermark extraction task.</li><li>CreateAigcAdvancedCustomElement: Create custom subject task</li><li>CreateAigcCustomVoice: Create custom voice type task</li><li>CreateAigcSubject: Create subject task</li><li>AigcVideoRedrawTask: AIGC video redraw task</li><li>CreateAigcAudioClone: AIGC voice clone task</li><li>DescribeAigcFaceInfoAsync: Asynchronously fetch AIGC face information task</li></p>",
           "example": "Procedure",
           "member": "string",
           "name": "TaskType",
@@ -24499,7 +24820,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>AIGC video conversion info. This field has a value only when TaskType is AigcVideoRedrawTask.</p>",
+          "document": "<p>AIGC video redraw info, valid only when TaskType is AigcVideoRedrawTask and this field has a value.</p>",
           "example": "无",
           "member": "AigcVideoRedrawTask",
           "name": "AigcVideoRedrawTask",
@@ -24509,7 +24830,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>AIGC audio effect info. This field has a value only when TaskType is AigcAudioTask.</p>",
+          "document": "<p>AIGC sound effect information. This field has a value only when TaskType is AigcAudioTask.</p>",
           "example": "无",
           "member": "AigcAudioTask",
           "name": "AigcAudioTask",
@@ -24523,6 +24844,16 @@
           "example": "无",
           "member": "CreateAigcAudioCloneTask",
           "name": "CreateAigcAudioCloneTask",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Asynchronously fetch AIGC face information. This field has a value only when TaskType is DescribeAigcFaceInfoAsync.</p>",
+          "example": "无",
+          "member": "DescribeAigcFaceInfoAsyncTask",
+          "name": "DescribeAigcFaceInfoAsyncTask",
           "output_required": false,
           "type": "object",
           "value_allowed_null": false
@@ -30615,7 +30946,7 @@
         },
         {
           "disabled": false,
-          "document": "Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the [Create Category](https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1) API.\n<li>Default value: 0, indicating other categories.</li>\nValid when IsPersistence is 1.",
+          "document": "Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the [Create Category](https://www.tencentcloud.com/document/product/266/31772?from_cn_redirect=1) API.\n<li>Default value: 0, indicating other categories.</li>\nValid when IsPersistence is 1.",
           "example": "0",
           "member": "int64",
           "name": "ClassId",
@@ -35743,7 +36074,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Address of output video file.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>File URL of the transcoded video.</p>",
           "example": "http://xxxx/xxx.mp4",
           "member": "string",
           "name": "Url",
@@ -35753,7 +36084,7 @@
         },
         {
           "disabled": false,
-          "document": "For transcoding specification ID, see [Transcoding Parameter Template](https://intl.cloud.tencent.com/document/product/266/33476?from_cn_redirect=1). \n<font color=red>Note: A value of 0 represents the original file. </font>",
+          "document": "<p>Transcoding specification ID. Please refer to <a href=\"https://www.tencentcloud.com/document/product/266/33476?from_cn_redirect=1\">transcoding parameter template</a>.<br><font color=\"red\">Note: A value of 0 means the raw file.</font></p>",
           "example": "10010",
           "member": "int64",
           "name": "Definition",
@@ -35763,7 +36094,7 @@
         },
         {
           "disabled": false,
-          "document": "Sum of the average bitrate of a video stream and that of an audio stream in bps.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Sum of the mean bitrate of a stream and the mean audio stream bit rate, unit: bps.</p>",
           "example": "125000",
           "member": "int64",
           "name": "Bitrate",
@@ -35773,7 +36104,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum value of the height of a video stream in px.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Maximum value of video stream height. Unit: px.</p>",
           "example": "720",
           "member": "int64",
           "name": "Height",
@@ -35783,7 +36114,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum value of the width of a video stream in px.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Maximum value of video stream width. Unit: px.</p>",
           "example": "1080",
           "member": "int64",
           "name": "Width",
@@ -35793,7 +36124,7 @@
         },
         {
           "disabled": false,
-          "document": "The file size (bytes).\n<li>If the file is an HLS file, the value of this parameter is the sum of the size of the M3U8 and TS files.</li>",
+          "document": "<p>Total size of media files, measurement unit: byte.</p><li>When the media file is HLS, the size is the sum of m3u8 and ts file sizes.</li>",
           "example": "123000",
           "member": "int64",
           "name": "Size",
@@ -35803,7 +36134,7 @@
         },
         {
           "disabled": false,
-          "document": "Video duration in seconds.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Video duration, in seconds.</p>",
           "example": "10",
           "member": "float",
           "name": "Duration",
@@ -35813,7 +36144,7 @@
         },
         {
           "disabled": false,
-          "document": "MD5 value of video.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>md5 value of the video.</p>",
           "example": "1231",
           "member": "string",
           "name": "Md5",
@@ -35823,7 +36154,7 @@
         },
         {
           "disabled": false,
-          "document": "Container, such as m4a and mp4.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Container type, such as m4a, mp4.</p>",
           "example": "mp4",
           "member": "string",
           "name": "Container",
@@ -35833,7 +36164,7 @@
         },
         {
           "disabled": false,
-          "document": "Video stream information.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Video stream information.</p>",
           "example": "无",
           "member": "MediaVideoStreamItem",
           "name": "VideoStreamSet",
@@ -35843,7 +36174,7 @@
         },
         {
           "disabled": false,
-          "document": "Audio stream information.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Audio stream information.</p>",
           "example": "无",
           "member": "MediaAudioStreamItem",
           "name": "AudioStreamSet",
@@ -35853,7 +36184,7 @@
         },
         {
           "disabled": false,
-          "document": "The watermark type. Valid values:\n<li>Trace: Digital watermark</li>\n<li>None: Regular watermark</li>",
+          "document": "<p>Digital watermark type. Available values:</p><li>Trace means transit watermark processing;</li><li>CopyRight means copyright watermark processing;</li><li>None means no digital watermark processing.</li>",
           "example": "Trace",
           "member": "string",
           "name": "DigitalWatermarkType",
@@ -35863,7 +36194,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Copyright information.</p>",
           "example": "None",
           "member": "string",
           "name": "CopyRightWatermarkText",
@@ -35873,12 +36204,22 @@
         },
         {
           "disabled": false,
-          "document": "Digital watermark template id.",
+          "document": "<p>Digital watermark template id.</p>",
           "example": "10000",
           "member": "int64",
           "name": "BlindWatermarkDefinition",
           "output_required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Generated new FileId for transcoding. Valid when requesting to enable independence media output.</p>",
+          "example": "5001834******823362",
+          "member": "string",
+          "name": "FileId",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -42036,6 +42377,15 @@
           "name": "Url",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The media processing transcoding result is output as standalone media assets. Enabling this option will output the product as standalone media assets and generate a brand-new FileID. Currently only support outputting TranscodeTask transcoding tasks as standalone media assets.</p><p>Enumeration value:</p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul><p>Default value: OFF</p><p>Note: New media assets will incur storage fees. This option does not currently support enabling for video opening/closing credits and traceable watermarks in transcoding tasks.</p>",
+          "example": "ON",
+          "member": "string",
+          "name": "OutputAsIndependentMedia",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -42461,7 +42811,7 @@
         },
         {
           "disabled": false,
-          "document": "Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the [create category](https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1) API.",
+          "document": "Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the [create category](https://www.tencentcloud.com/document/product/266/31772?from_cn_redirect=1) API.",
           "example": "1",
           "member": "int64",
           "name": "ClassId",
@@ -46915,6 +47265,78 @@
       ],
       "usage": "both"
     },
+    "SPEKEDrm": {
+      "document": "Third-party DRM manufacturer encrypted information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Resource tagging. This field content is user-customized. It supports 1-128 characters, including numbers, letters, underscores (_), and hyphens (-). This field corresponds to the cid field in the Speke request. Note: Different DRM manufacturers have differences in limitations for this field (for example: Huawei Xloud does not support underscores (_) in this field). For specific rules, contact the DRM manufacturer for confirmation.</p>",
+          "example": "test-****************",
+          "member": "string",
+          "name": "ResourceId",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>DRM manufacturer access address. The field content is obtained from the DRM manufacturer. Note: Different DRM manufacturers have different limits on the number of substreams. For example, PallyCon limits the number to a maximum of 5 substreams, while DRMtoday only supports up to 9 substream encryptions.</p>",
+          "example": "https:*************.******************************************************************************",
+          "member": "string",
+          "name": "KeyServerUrl",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Initialization vector (32-byte hexadecimal string) for encryption. The field content is user-customized.</p>",
+          "example": "3995502b2c0bed6c54ad1c89af9c5ea3a97b4b71048d4178fb234b4c6e85b4c9",
+          "member": "string",
+          "name": "Vector",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Encryption method. Available values:<br>cbcs: supports PlayReady, Widevine, FairPlay, Widevine+FairPlay, Widevine+PlayReady, PlayReady+FairPlay, Widevine+PlayReady+FairPlay;<br>cenc: supports PlayReady, Widevine, Widevine+PlayReady;<br>If left blank, FairPlay defaults to cbcs;<br>PlayReady and Widevine default to cenc;<br>Widevine+FairPlay, PlayReady+FairPlay, and Widevine+PlayReady+FairPlay default to cbcs;<br>Widevine+PlayReady defaults to cenc;</p>",
+          "example": "cbcs",
+          "member": "string",
+          "name": "EncryptionMethod",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Substream encryption rules, default preset 0<br>preset 0: use the same key to encrypt all substreams;<br>preset 1: use different keys to encrypt each substream;</p>",
+          "example": "preset0",
+          "member": "string",
+          "name": "EncryptionPreset",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>DRM manufacturer request method.</p><p>Enumeration value:</p><ul><li>POST: Most DRM manufacturers use the POST method.</li><li>GET: Partial DRM manufacturers support the GET method. At the time of request using this method, the KeyServerUrl field needs to include all request information.</li></ul><p>Default value: POST</p>",
+          "example": "GET",
+          "member": "string",
+          "name": "KeyAcquireMode",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "SampleSnapshotTaskInput": {
       "document": "Input parameter type of sampling screencapturing task",
       "members": [
@@ -48434,7 +48856,7 @@
         },
         {
           "disabled": false,
-          "document": "Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the [create category](https://www.tencentcloud.com/document/product/266/7812?from_cn_redirect=1) API.\n<li>Default value: 0, indicating other categories.</li>\nValid when IsPersistence is 1.",
+          "document": "Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the [create category](https://www.tencentcloud.com/document/product/266/31772?from_cn_redirect=1) API.\n<li>Default value: 0, indicating other categories.</li>\nValid when IsPersistence is 1.",
           "example": "1",
           "member": "int64",
           "name": "ClassId",
@@ -50631,6 +51053,34 @@
           "output_required": false,
           "required": false,
           "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ThirdPartyDrmInfo": {
+      "document": "Third-party Drm encrypted information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Encryption type:</p><ul><li>FairPlay: Can only be used for HLS. The slice format can only be mp4.</li><li>Widevine: Can be used for HLS and DASH. The slice format can only be mp4.</li><li>PlayReady: Can be used for HLS and DASH. The slice format can only be mp4.</li><li>Widevine+FairPlay, PlayReady+FairPlay, Widevine PlayReady FairPlay composite: Can only be used for HLS. The slice format can only be mp4.</li><li>Widevine PlayReady composite: Can be used for HLS and MPEG-DASH. The slice format can only be mp4.</li></ul>",
+          "example": "[\"Widevine\"]",
+          "member": "string",
+          "name": "DrmTypes",
+          "output_required": false,
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>External DRM vendor information.</p>",
+          "example": "无",
+          "member": "SPEKEDrm",
+          "name": "SPEKEDrm",
+          "output_required": false,
+          "required": false,
+          "type": "object",
           "value_allowed_null": false
         }
       ],

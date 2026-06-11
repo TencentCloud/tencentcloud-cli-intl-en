@@ -1646,117 +1646,130 @@
         {
           "disabled": false,
           "document": "Function name",
+          "example": "function-demo",
           "member": "string",
           "name": "FunctionName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Return value after the function is executed",
+          "example": " \\\"Hello World\\\"",
           "member": "string",
           "name": "RetMsg",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "RequestId corresponding to the executed function",
+          "example": "633934da-c2b6-11ef-87ca-5254007bbe22",
           "member": "string",
           "name": "RequestId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Start time of the function execution",
-          "member": "datetime",
+          "example": "2024-12-25 19:50:07",
+          "member": "string",
           "name": "StartTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Function execution result. `0` indicates successful execution and other values indicate failure.",
+          "example": "0",
           "member": "int64",
           "name": "RetCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "It specifies whether the function invocation is finished. `1` indicates execution completion and other values indicate that exceptions occurred during the invocation.",
+          "example": "1",
           "member": "int64",
           "name": "InvokeFinished",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Duration of the function execution. The unit is millisecond (ms).",
+          "example": "8",
           "member": "float",
           "name": "Duration",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Function billing duration. The unit is millisecond (ms). The value is rounded up to a multiple of 100 ms.",
+          "example": "8",
           "member": "int64",
           "name": "BillDuration",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Actual memory size used during the function execution. The unit is byte.",
+          "example": "8253440",
           "member": "int64",
           "name": "MemUsage",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Function execution logs",
+          "example": "START RequestId: 633934da-c2b6-11ef-87ca-5254007bbe22",
           "member": "string",
           "name": "Log",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Log level",
+          "example": "无",
           "member": "string",
           "name": "Level",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Log source",
+          "example": "无",
           "member": "string",
           "name": "Source",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Number of retries",
+          "example": "0",
           "member": "uint64",
           "name": "RetryNum",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -2216,29 +2229,35 @@
         {
           "disabled": false,
           "document": "Total number of function logs",
+          "example": "100",
           "member": "int64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Function log information",
+          "example": "无",
           "member": "FunctionLog",
           "name": "Data",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "This field is disused.",
+          "example": "无",
           "member": "LogSearchContext",
           "name": "SearchContext",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3726,11 +3745,11 @@
         {
           "disabled": false,
           "document": "Values of `filter.RetCode` include:\nnot0, indicating that only logs of failed execution will be returned.\nis0, indicating that only logs of successful execution will be returned.\nTimeLimitExceeded, indicating that logs of function invocations which timed out will be returned.\nResourceLimitExceeded, indicating that logs of function invocations during which resources exceeded the upper limit will be returned.\nUserCodeException, indicating that logs of function invocations during which a user code error occurred will be returned.\nBlank, indicating that all logs will be returned.",
+          "example": "is0",
           "member": "string",
           "name": "RetCode",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         }
       ],
       "usage": "in"
@@ -3741,8 +3760,10 @@
         {
           "disabled": false,
           "document": "Offset.",
+          "example": "0",
           "member": "string",
           "name": "Offset",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -3750,8 +3771,10 @@
         {
           "disabled": false,
           "document": "Log record number",
+          "example": "100",
           "member": "uint64",
           "name": "Limit",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -3759,8 +3782,10 @@
         {
           "disabled": false,
           "document": "Log keyword",
+          "example": "Some Keyword",
           "member": "string",
           "name": "Keyword",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -3768,8 +3793,10 @@
         {
           "disabled": false,
           "document": "Log type. The value is `Application` (default) or `Platform`.",
+          "example": "Application",
           "member": "string",
           "name": "Type",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -5799,7 +5826,7 @@
         {
           "disabled": false,
           "document": "Function name.",
-          "example": "funcName",
+          "example": "function-demo",
           "member": "string",
           "name": "FunctionName",
           "required": true,
@@ -5808,7 +5835,7 @@
         {
           "disabled": false,
           "document": "Trigger name",
-          "example": "test",
+          "example": "SCF-timer-1735218857",
           "member": "string",
           "name": "TriggerName",
           "required": true,
@@ -5826,7 +5853,7 @@
         {
           "disabled": false,
           "document": "Function version. It defaults to `$LATEST`. It’s recommended to use `[$DEFAULT](https://intl.cloud.tencent.com/document/product/583/36149?from_cn_redirect=1#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)` for canary release.",
-          "example": "$DEFAULT",
+          "example": "$LATEST",
           "member": "string",
           "name": "Qualifier",
           "required": false,
@@ -5844,7 +5871,7 @@
         {
           "disabled": false,
           "document": "To update a COS trigger, this field is required. It stores the data {\"event\":\"cos:ObjectCreated:*\"} in the JSON format. The data content of this field is in the same format as that of SetTrigger. This field is optional if a scheduled trigger or CMQ trigger is to be deleted.",
-          "example": "无",
+          "example": "\t 0 0 0 */1 * * *",
           "member": "string",
           "name": "TriggerDesc",
           "required": false,
@@ -5857,7 +5884,7 @@
       "document": "UpdateTriggerStatus response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"

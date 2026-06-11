@@ -66,7 +66,7 @@
     "DescribeStreamLinkFlowSRTStatistics": {
       "document": "This API is used to query the SRT streaming performance of a StreamLink flow.",
       "input": "DescribeStreamLinkFlowSRTStatisticsRequest",
-      "name": "Queries SRT streaming performance",
+      "name": "Query SRT protocol link statistical information",
       "output": "DescribeStreamLinkFlowSRTStatisticsResponse",
       "status": "online"
     },
@@ -166,7 +166,7 @@
         {
           "disabled": false,
           "document": "Allowlist of input IPs in CIDR format.",
-          "example": "0.0.0.0/0",
+          "example": "[\"0.0.0.0/0\"]",
           "member": "string",
           "name": "AllowIpList",
           "required": false,
@@ -175,7 +175,7 @@
         {
           "disabled": false,
           "document": "SRT configuration information of input.",
-          "example": "0",
+          "example": "无",
           "member": "CreateInputSRTSettings",
           "name": "SRTSettings",
           "required": false,
@@ -184,7 +184,7 @@
         {
           "disabled": false,
           "document": "RTP configuration information of input.",
-          "example": "0",
+          "example": "无",
           "member": "CreateInputRTPSettings",
           "name": "RTPSettings",
           "required": false,
@@ -238,7 +238,7 @@
         {
           "disabled": false,
           "document": "The bound security group IDs.",
-          "example": "无",
+          "example": "[\"683920CA0000AA2A5610\"]",
           "member": "string",
           "name": "SecurityGroupIds",
           "required": false,
@@ -247,7 +247,7 @@
         {
           "disabled": false,
           "document": "Availability zone, optional. If disaster recovery is enabled, you must enter two different availability zones. Otherwise, you can only enter one availability zone at most.",
-          "example": "无",
+          "example": "[\"ap-mumbai\"]",
           "member": "string",
           "name": "Zones",
           "required": false,
@@ -257,11 +257,11 @@
       "usage": "in"
     },
     "CreateInputHLSPullSettings": {
-      "document": "Created input HLS pull stream configuration.",
+      "document": "",
       "members": [
         {
           "disabled": false,
-          "document": "The origin server address for the HLS origin server. There can be only one.",
+          "document": "",
           "example": "无",
           "member": "HLSPullSourceAddress",
           "name": "SourceAddresses",
@@ -273,11 +273,11 @@
       "usage": "in"
     },
     "CreateInputRTMPPullSettings": {
-      "document": "Created input RTMP pull stream configuration.",
+      "document": "",
       "members": [
         {
           "disabled": false,
-          "document": "The origin server address for the RTMP origin server. There can be only one.",
+          "document": "",
           "example": "无",
           "member": "RTMPPullSourceAddress",
           "name": "SourceAddresses",
@@ -315,11 +315,11 @@
       "usage": "in"
     },
     "CreateInputRTSPPullSettings": {
-      "document": "Created input RTSP pull stream configuration.",
+      "document": "",
       "members": [
         {
           "disabled": false,
-          "document": "The origin server address for the RTSP origin server. There can be only one.",
+          "document": "",
           "example": "无",
           "member": "RTSPPullSourceAddress",
           "name": "SourceAddresses",
@@ -340,8 +340,7 @@
           "member": "string",
           "name": "Mode",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -350,8 +349,7 @@
           "member": "string",
           "name": "StreamId",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -360,8 +358,7 @@
           "member": "int64",
           "name": "Latency",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -370,8 +367,7 @@
           "member": "int64",
           "name": "RecvLatency",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -380,8 +376,7 @@
           "member": "int64",
           "name": "PeerLatency",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -390,8 +385,7 @@
           "member": "int64",
           "name": "PeerIdleTimeout",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -400,8 +394,7 @@
           "member": "string",
           "name": "Passphrase",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -410,8 +403,7 @@
           "member": "int64",
           "name": "PbKeyLen",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -420,8 +412,7 @@
           "member": "SRTSourceAddressReq",
           "name": "SourceAddresses",
           "required": false,
-          "type": "list",
-          "value_allowed_null": false
+          "type": "list"
         }
       ],
       "usage": "in"
@@ -468,7 +459,7 @@
         {
           "disabled": false,
           "document": "The SRT configuration.",
-          "example": "0",
+          "example": "无",
           "member": "CreateOutputSrtSettings",
           "name": "SRTSettings",
           "required": false,
@@ -477,7 +468,7 @@
         {
           "disabled": false,
           "document": "The RTMP configuration.",
-          "example": "0",
+          "example": "无",
           "member": "CreateOutputRTMPSettings",
           "name": "RTMPSettings",
           "required": false,
@@ -486,7 +477,7 @@
         {
           "disabled": false,
           "document": "The RTP configuration.",
-          "example": "0",
+          "example": "无",
           "member": "CreateOutputInfoRTPSettings",
           "name": "RTPSettings",
           "required": false,
@@ -495,7 +486,7 @@
         {
           "disabled": false,
           "document": "IP whitelist, in CIDR format, such as 0.0.0.0/0. This is valid when Protocol is RTMP_PULL, and empty means no restriction on client IP.",
-          "example": "0",
+          "example": "[\"0.0.0.0/0\"]",
           "member": "string",
           "name": "AllowIpList",
           "required": false,
@@ -513,7 +504,7 @@
         {
           "disabled": false,
           "document": "The bound security group IDs.",
-          "example": "无",
+          "example": "[\"0194d404c4a91eb4611d2110e8a4\"]",
           "member": "string",
           "name": "SecurityGroupIds",
           "required": false,
@@ -522,7 +513,7 @@
         {
           "disabled": false,
           "document": "Availability zone: output supports at most one availability zone as input.",
-          "example": "无",
+          "example": "[\"ap-shanghai-01\"]",
           "member": "string",
           "name": "Zones",
           "required": false,
@@ -573,22 +564,20 @@
         {
           "disabled": false,
           "document": "The relay destination addresses. One or two addresses are allowed.",
-          "example": "",
+          "example": "无",
           "member": "CreateOutputRtmpSettingsDestinations",
           "name": "Destinations",
           "required": true,
-          "type": "list",
-          "value_allowed_null": false
+          "type": "list"
         },
         {
           "disabled": false,
           "document": "The RTMP chunk size. Value range: [4096, 40960].",
-          "example": "",
+          "example": "4096",
           "member": "int64",
           "name": "ChunkSize",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         }
       ],
       "usage": "in"
@@ -655,8 +644,7 @@
           "member": "CreateOutputSrtSettingsDestinations",
           "name": "Destinations",
           "required": true,
-          "type": "list",
-          "value_allowed_null": false
+          "type": "list"
         },
         {
           "disabled": false,
@@ -665,8 +653,7 @@
           "member": "string",
           "name": "StreamId",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -675,8 +662,7 @@
           "member": "int64",
           "name": "Latency",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -685,8 +671,7 @@
           "member": "int64",
           "name": "RecvLatency",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -695,8 +680,7 @@
           "member": "int64",
           "name": "PeerLatency",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -705,8 +689,7 @@
           "member": "int64",
           "name": "PeerIdleTimeout",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -715,8 +698,7 @@
           "member": "string",
           "name": "Passphrase",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -725,8 +707,7 @@
           "member": "int64",
           "name": "PbKeyLen",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -735,8 +716,7 @@
           "member": "string",
           "name": "Mode",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         }
       ],
       "usage": "in"
@@ -747,22 +727,20 @@
         {
           "disabled": false,
           "document": "The output IP.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Ip",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "The output port.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "Port",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         }
       ],
       "usage": "in"
@@ -773,7 +751,7 @@
         {
           "disabled": false,
           "document": "Flow name",
-          "example": "aaa",
+          "example": "pgm_flow",
           "member": "string",
           "name": "FlowName",
           "required": true,
@@ -800,11 +778,20 @@
         {
           "disabled": false,
           "document": "The media transmission event ID associated with the Flow. Each flow can only be associated with one event.",
-          "example": "eventid",
+          "example": "01937702c54509dc0f3269ca341f",
           "member": "string",
           "name": "EventId",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Flow output group.",
+          "example": "无",
+          "member": "CreateOutputInfo",
+          "name": "OutputGroup",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -818,6 +805,7 @@
           "example": "无",
           "member": "DescribeFlow",
           "name": "Info",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -863,7 +851,7 @@
           "example": "无",
           "member": "DescribeFlow",
           "name": "Info",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -909,7 +897,7 @@
           "example": "无",
           "member": "DescribeOutput",
           "name": "Info",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -955,7 +943,7 @@
         {
           "disabled": false,
           "document": "Flow ID",
-          "example": "aaa",
+          "example": "01937702c54509dc0f3269ca341f",
           "member": "string",
           "name": "FlowId",
           "required": true,
@@ -964,7 +952,7 @@
         {
           "disabled": false,
           "document": "Output ID",
-          "example": "asd21dsa",
+          "example": "019202e96d9f09dc0f325e7f7a2a",
           "member": "string",
           "name": "OutputId",
           "required": true,
@@ -994,7 +982,7 @@
           "example": "flowid",
           "member": "string",
           "name": "FlowId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1004,7 +992,7 @@
           "example": "flowname",
           "member": "string",
           "name": "FlowName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1014,7 +1002,7 @@
           "example": "IDLE",
           "member": "string",
           "name": "State",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1024,7 +1012,7 @@
           "example": "200",
           "member": "int64",
           "name": "MaxBandwidth",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1034,7 +1022,7 @@
           "example": "无",
           "member": "DescribeInput",
           "name": "InputGroup",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1044,7 +1032,7 @@
           "example": "无",
           "member": "DescribeOutput",
           "name": "OutputGroup",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -1054,7 +1042,7 @@
           "example": "eventid",
           "member": "string",
           "name": "EventId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -1062,11 +1050,11 @@
       "usage": "out"
     },
     "DescribeHLSPullSourceAddress": {
-      "document": "Query the input HLS configuration.",
+      "document": "",
       "members": [
         {
           "disabled": false,
-          "document": "The Url of the HLS origin server.",
+          "document": "",
           "example": "http://domain[:port]/server_URL",
           "member": "string",
           "name": "Url",
@@ -1123,7 +1111,7 @@
         {
           "disabled": false,
           "document": "Input address list.",
-          "example": "0",
+          "example": "无",
           "member": "InputAddress",
           "name": "InputAddressList",
           "output_required": true,
@@ -1133,7 +1121,7 @@
         {
           "disabled": false,
           "document": "Input IP allowlist.",
-          "example": "0",
+          "example": "[\"0.0.0.0\"]",
           "member": "string",
           "name": "AllowIpList",
           "output_required": true,
@@ -1143,7 +1131,7 @@
         {
           "disabled": false,
           "document": "SRT configuration information of input.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "0",
+          "example": "无",
           "member": "DescribeInputSRTSettings",
           "name": "SRTSettings",
           "output_required": true,
@@ -1153,7 +1141,7 @@
         {
           "disabled": false,
           "document": "RTP configuration information of input.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "0",
+          "example": "无",
           "member": "DescribeInputRTPSettings",
           "name": "RTPSettings",
           "output_required": true,
@@ -1173,7 +1161,7 @@
         {
           "disabled": false,
           "document": "RTMP configuration information of an input",
-          "example": "0",
+          "example": "无",
           "member": "DescribeInputRTMPSettings",
           "name": "RTMPSettings",
           "output_required": true,
@@ -1192,7 +1180,7 @@
         },
         {
           "disabled": false,
-          "document": "Input RTMP_PULL configuration.",
+          "document": "",
           "example": "无",
           "member": "DescribeInputRTMPPullSettings",
           "name": "RTMPPullSettings",
@@ -1202,7 +1190,7 @@
         },
         {
           "disabled": false,
-          "document": "Input RTSP_PULL configuration.",
+          "document": "",
           "example": "无",
           "member": "DescribeInputRTSPPullSettings",
           "name": "RTSPPullSettings",
@@ -1212,7 +1200,7 @@
         },
         {
           "disabled": false,
-          "document": "Input HLS_PULL configuration.",
+          "document": "",
           "example": "无",
           "member": "DescribeInputHLSPullSettings",
           "name": "HLSPullSettings",
@@ -1222,7 +1210,7 @@
         },
         {
           "disabled": false,
-          "document": "Delayed broadcast smooth stream delivery configuration.",
+          "document": "",
           "example": "无",
           "member": "ResilientStreamConf",
           "name": "ResilientStream",
@@ -1233,7 +1221,7 @@
         {
           "disabled": false,
           "document": "The bound security group ID.",
-          "example": "无",
+          "example": "[\"68B15XXXXXX014B6526A\"]",
           "member": "string",
           "name": "SecurityGroupIds",
           "output_required": false,
@@ -1244,11 +1232,11 @@
       "usage": "out"
     },
     "DescribeInputHLSPullSettings": {
-      "document": "Query the input HLS configuration.",
+      "document": "",
       "members": [
         {
           "disabled": false,
-          "document": "The address information of the HLS origin server.",
+          "document": "",
           "example": "无",
           "member": "DescribeHLSPullSourceAddress",
           "name": "SourceAddresses",
@@ -1260,11 +1248,11 @@
       "usage": "out"
     },
     "DescribeInputRTMPPullSettings": {
-      "document": "Query the input RTMP configuration.",
+      "document": "",
       "members": [
         {
           "disabled": false,
-          "document": "The address information of the RTMP origin server.",
+          "document": "",
           "example": "streamKey",
           "member": "DescribeRTMPPullSourceAddress",
           "name": "SourceAddresses",
@@ -1328,11 +1316,11 @@
       "usage": "out"
     },
     "DescribeInputRTSPPullSettings": {
-      "document": "Query the input RTSP configuration.",
+      "document": "",
       "members": [
         {
           "disabled": false,
-          "document": "The address information of the RTSP origin server.",
+          "document": "",
           "example": "无",
           "member": "DescribeRTSPPullSourceAddress",
           "name": "SourceAddresses",
@@ -1352,7 +1340,7 @@
           "example": "LISTENER",
           "member": "string",
           "name": "Mode",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1362,7 +1350,7 @@
           "example": "StreamId",
           "member": "string",
           "name": "StreamId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1372,7 +1360,7 @@
           "example": "0",
           "member": "int64",
           "name": "Latency",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1382,7 +1370,7 @@
           "example": "120",
           "member": "int64",
           "name": "RecvLatency",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1392,7 +1380,7 @@
           "example": "0",
           "member": "int64",
           "name": "PeerLatency",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1402,7 +1390,7 @@
           "example": "5000",
           "member": "int64",
           "name": "PeerIdleTimeout",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1412,7 +1400,7 @@
           "example": "无",
           "member": "string",
           "name": "Passphrase",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1422,7 +1410,7 @@
           "example": "0",
           "member": "int64",
           "name": "PbKeyLen",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1432,7 +1420,7 @@
           "example": "无",
           "member": "SRTSourceAddressResp",
           "name": "SourceAddresses",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         }
@@ -1555,7 +1543,7 @@
         {
           "disabled": false,
           "document": "CIDR allowlist\nThis parameter is valid if `Protocol` is set to `RTMP_PULL`. If this parameter is left empty, there is no restriction on clients’ IP addresses.\nNote: This field may return `null`, indicating that no valid value was found.",
-          "example": "无",
+          "example": "[\"0.0.0.0/0\"]",
           "member": "string",
           "name": "AllowIpList",
           "output_required": true,
@@ -1564,7 +1552,7 @@
         },
         {
           "disabled": false,
-          "document": "Output RTSP pull stream configuration.",
+          "document": "",
           "example": "无",
           "member": "DescribeOutputRTSPPullSettings",
           "name": "RTSPPullSettings",
@@ -1574,7 +1562,7 @@
         },
         {
           "disabled": false,
-          "document": "Output HLS pull stream configuration.",
+          "document": "",
           "example": "无",
           "member": "DescribeOutputHLSPullSettings",
           "name": "HLSPullSettings",
@@ -1584,7 +1572,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum pull stream concurrency, maximum 4, default 4.",
+          "document": "",
           "example": "1",
           "member": "uint64",
           "name": "MaxConcurrent",
@@ -1595,7 +1583,7 @@
         {
           "disabled": false,
           "document": "The bound security group IDs.",
-          "example": "无",
+          "example": "[\"0194d404c4a91eb4611d2110e8a4\"]",
           "member": "string",
           "name": "SecurityGroupIds",
           "output_required": false,
@@ -1606,11 +1594,11 @@
       "usage": "out"
     },
     "DescribeOutputHLSPullServerUrl": {
-      "document": "Query output HLS pull stream URL information.",
+      "document": "",
       "members": [
         {
           "disabled": false,
-          "document": "The Url of the HLS pull stream address.",
+          "document": "",
           "example": "http://domain[port]/server_URL",
           "member": "string",
           "name": "Url",
@@ -1622,11 +1610,11 @@
       "usage": "out"
     },
     "DescribeOutputHLSPullSettings": {
-      "document": "Query the output HLS pull stream configuration.",
+      "document": "",
       "members": [
         {
           "disabled": false,
-          "document": "HLS pull stream address list.",
+          "document": "",
           "example": "无",
           "member": "DescribeOutputHLSPullServerUrl",
           "name": "ServerUrls",
@@ -1672,7 +1660,7 @@
           "example": "无",
           "member": "DescribeOutputRTMPPullServerUrl",
           "name": "ServerUrls",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         }
@@ -1685,30 +1673,30 @@
         {
           "disabled": false,
           "document": "Idle timeout period.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "int64",
           "name": "IdleTimeout",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Chunk size.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "4096",
           "member": "int64",
           "name": "ChunkSize",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Destination address information list of RTMP push.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "RTMPAddressDestination",
           "name": "Destinations",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         }
@@ -1752,11 +1740,11 @@
       "usage": "out"
     },
     "DescribeOutputRTSPPullServerUrl": {
-      "document": "Query output RTSP pull stream URL information.",
+      "document": "",
       "members": [
         {
           "disabled": false,
-          "document": "RTSP pull stream address Url.",
+          "document": "",
           "example": "rtsp://ip_or_domain[:rtsp_port]/server_URL",
           "member": "string",
           "name": "Url",
@@ -1768,15 +1756,15 @@
       "usage": "out"
     },
     "DescribeOutputRTSPPullSettings": {
-      "document": "Query output RTSP pull stream configuration information.",
+      "document": "",
       "members": [
         {
           "disabled": false,
-          "document": "RTSP pull stream address list.",
+          "document": "",
           "example": "无",
           "member": "DescribeOutputRTSPPullServerUrl",
           "name": "ServerUrls",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         }
@@ -1792,7 +1780,7 @@
           "example": "无",
           "member": "SRTAddressDestination",
           "name": "Destinations",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -1802,7 +1790,7 @@
           "example": "StreamId",
           "member": "string",
           "name": "StreamId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1812,7 +1800,7 @@
           "example": "0",
           "member": "int64",
           "name": "Latency",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -1822,7 +1810,7 @@
           "example": "120",
           "member": "int64",
           "name": "RecvLatency",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -1832,7 +1820,7 @@
           "example": "0",
           "member": "int64",
           "name": "PeerLatency",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -1842,7 +1830,7 @@
           "example": "5000",
           "member": "int64",
           "name": "PeerIdleTimeout",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -1852,7 +1840,7 @@
           "example": "无",
           "member": "string",
           "name": "Passphrase",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1862,7 +1850,7 @@
           "example": "0",
           "member": "int64",
           "name": "PbKeyLen",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -1872,7 +1860,7 @@
           "example": "CALLER",
           "member": "string",
           "name": "Mode",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1882,7 +1870,7 @@
           "example": "无",
           "member": "OutputSRTSourceAddressResp",
           "name": "SourceAddresses",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         }
@@ -1890,11 +1878,11 @@
       "usage": "out"
     },
     "DescribeRTMPPullSourceAddress": {
-      "document": "Query the input RTMP configuration.",
+      "document": "",
       "members": [
         {
           "disabled": false,
-          "document": "The TcUrl address of the RTMP origin server.",
+          "document": "",
           "example": "rtmp://domain/live",
           "member": "string",
           "name": "TcUrl",
@@ -1904,7 +1892,7 @@
         },
         {
           "disabled": false,
-          "document": "The StreamKey of the RTMP origin server.\n\nThe concatenation rule for the RTMP origin server address is: $TcUrl/$StreamKey.",
+          "document": "",
           "example": "streamKey",
           "member": "string",
           "name": "StreamKey",
@@ -1916,11 +1904,11 @@
       "usage": "out"
     },
     "DescribeRTSPPullSourceAddress": {
-      "document": "Query the input RTSP configuration.",
+      "document": "",
       "members": [
         {
           "disabled": false,
-          "document": "The Url address of the RTSP origin server.",
+          "document": "",
           "example": "rtsp://ip_or_domain[:rtsp_port]/server_URL",
           "member": "string",
           "name": "Url",
@@ -2149,7 +2137,7 @@
           "example": "无",
           "member": "FlowMediaInfo",
           "name": "Infos",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2424,7 +2412,7 @@
         {
           "disabled": false,
           "document": "The end time for query, which is 1 hour after the start time by default. The longest time range allowed for query is 24 hours.\nIt must be in UTC format, such as `2020-01-01T12:00:00Z`.",
-          "example": "2020-01-01T12:00:00Z",
+          "example": "2020-01-01T12:10:00Z",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -2442,7 +2430,7 @@
           "example": "无",
           "member": "FlowStatisticsArray",
           "name": "Infos",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2488,7 +2476,7 @@
           "example": "无",
           "member": "DescribeFlow",
           "name": "Infos",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2498,7 +2486,7 @@
           "example": "1",
           "member": "int64",
           "name": "PageNum",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2508,7 +2496,7 @@
           "example": "10",
           "member": "int64",
           "name": "PageSize",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2518,7 +2506,7 @@
           "example": "1",
           "member": "int64",
           "name": "TotalNum",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2528,7 +2516,7 @@
           "example": "1",
           "member": "int64",
           "name": "TotalPage",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2555,7 +2543,7 @@
           "example": "无",
           "member": "StreamLinkRegionInfo",
           "name": "Info",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -3243,7 +3231,7 @@
         },
         {
           "disabled": false,
-          "document": "bandwidth",
+          "document": "Bandwidth",
           "example": "227.82",
           "member": "float",
           "name": "Bandwidth",
@@ -3253,7 +3241,7 @@
         },
         {
           "disabled": false,
-          "document": "Transmit bandwidth",
+          "document": "transmit bandwidth",
           "example": "0",
           "member": "float",
           "name": "SendBandwidth",
@@ -3263,7 +3251,7 @@
         },
         {
           "disabled": false,
-          "document": "Receive bandwidth",
+          "document": "Receiving bandwidth",
           "example": "8.92",
           "member": "float",
           "name": "RecvBandwidth",
@@ -3273,7 +3261,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of packets sent",
+          "document": "Sent packet count",
           "example": "0",
           "member": "int64",
           "name": "SendPackets",
@@ -3283,7 +3271,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of received packets",
+          "document": "Received packets",
           "example": "4569",
           "member": "int64",
           "name": "RecvPackets",
@@ -3293,7 +3281,7 @@
         },
         {
           "disabled": false,
-          "document": "Send lost package",
+          "document": "Sent lost packets",
           "example": "0",
           "member": "int64",
           "name": "SendLostPackets",
@@ -3303,7 +3291,7 @@
         },
         {
           "disabled": false,
-          "document": "Accept lost packages",
+          "document": "accept lost packets",
           "example": "0",
           "member": "int64",
           "name": "RecvLostPackets",
@@ -3313,7 +3301,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of retransmission packets sent",
+          "document": "Retransmitted packet count",
           "example": "0",
           "member": "int64",
           "name": "SendRetransmitPackets",
@@ -3323,7 +3311,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of received retransmission packets",
+          "document": "Retransmitted packets received",
           "example": "0",
           "member": "int64",
           "name": "RecvRetransmitPackets",
@@ -3333,7 +3321,7 @@
         },
         {
           "disabled": false,
-          "document": "Flight window size",
+          "document": "Window size",
           "example": "0",
           "member": "int64",
           "name": "FlightSize",
@@ -3343,7 +3331,7 @@
         },
         {
           "disabled": false,
-          "document": "congestion window",
+          "document": "Congestion window",
           "example": "7123",
           "member": "int64",
           "name": "CongestionWindow",
@@ -3353,7 +3341,7 @@
         },
         {
           "disabled": false,
-          "document": "Send buffer (ms)",
+          "document": "Sending buffer (ms)",
           "example": "0",
           "member": "int64",
           "name": "SendBuffer",
@@ -3373,7 +3361,7 @@
         },
         {
           "disabled": false,
-          "document": "Sending delay",
+          "document": "Send delay",
           "example": "0",
           "member": "int64",
           "name": "SendLatency",
@@ -3383,7 +3371,7 @@
         },
         {
           "disabled": false,
-          "document": "Receiving delay",
+          "document": "receive latency",
           "example": "0",
           "member": "int64",
           "name": "RecvLatency",
@@ -3513,11 +3501,11 @@
       "usage": "out"
     },
     "HLSPullSourceAddress": {
-      "document": "Created input HLS pull stream origin server configuration.",
+      "document": "",
       "members": [
         {
           "disabled": false,
-          "document": "The Url of the HLS origin server.",
+          "document": "",
           "example": "http://testdomain.com:8806/live/streamname",
           "member": "string",
           "name": "Url",
@@ -3596,7 +3584,7 @@
         {
           "disabled": false,
           "document": "The SRT configuration information.",
-          "example": "0",
+          "example": "无",
           "member": "CreateInputSRTSettings",
           "name": "SRTSettings",
           "required": true,
@@ -3605,7 +3593,7 @@
         {
           "disabled": false,
           "document": "The RTP configuration information.",
-          "example": "0",
+          "example": "无",
           "member": "CreateInputRTPSettings",
           "name": "RTPSettings",
           "required": true,
@@ -3632,7 +3620,7 @@
         {
           "disabled": false,
           "document": "Configuration information for RTMP_PULL.",
-          "example": "0",
+          "example": "无",
           "member": "CreateInputRTMPPullSettings",
           "name": "RTMPPullSettings",
           "required": false,
@@ -3668,7 +3656,7 @@
         {
           "disabled": false,
           "document": "The ID of the input security group to bind. Only one security group can be associated.",
-          "example": "无",
+          "example": "[\"683920CA0000AA2A5610\"]",
           "member": "string",
           "name": "SecurityGroupIds",
           "required": false,
@@ -3677,7 +3665,7 @@
         {
           "disabled": false,
           "document": "Availability zone, optional, supports up to two availability zones. For interfaces that need to be changed, the second availability zone will participate in resource allocation. This is effective if disaster recovery is enabled for input or RTSP_PULL protocol switching is involved (addresses will be reallocated).",
-          "example": "无",
+          "example": "[\"ap-mumbai\"]",
           "member": "string",
           "name": "Zones",
           "required": false,
@@ -3755,7 +3743,7 @@
         {
           "disabled": false,
           "document": "IP whitelist, in CIDR format, such as 0.0.0.0/0. This is valid when Protocol is RTMP_PULL, and empty means no restriction on client IP.",
-          "example": "无",
+          "example": "[\"0.0.0.0/0\"]",
           "member": "string",
           "name": "AllowIpList",
           "required": false,
@@ -3773,7 +3761,7 @@
         {
           "disabled": false,
           "document": "The bound security group IDs.",
-          "example": "无",
+          "example": "[\"0194d404c4a91eb4611d2110e8a4\"]",
           "member": "string",
           "name": "SecurityGroupIds",
           "required": false,
@@ -3788,7 +3776,7 @@
         {
           "disabled": false,
           "document": "Flow ID",
-          "example": "aaa",
+          "example": "0194407416cf09dc0f321631343d",
           "member": "string",
           "name": "FlowId",
           "required": true,
@@ -3797,7 +3785,7 @@
         {
           "disabled": false,
           "document": "Name of the flow to modify",
-          "example": "aaa",
+          "example": "flow_name\t",
           "member": "string",
           "name": "FlowName",
           "required": true,
@@ -3851,7 +3839,7 @@
           "example": "无",
           "member": "DescribeInput",
           "name": "Info",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -3897,7 +3885,7 @@
           "example": "无",
           "member": "DescribeOutput",
           "name": "Info",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -3935,9 +3923,10 @@
           "example": "1.1.1.1",
           "member": "string",
           "name": "Ip",
+          "output_required": false,
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
@@ -3945,9 +3934,10 @@
           "example": "65535",
           "member": "int64",
           "name": "Port",
+          "output_required": false,
           "required": true,
           "type": "int",
-          "value_allowed_null": false
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -3979,11 +3969,11 @@
       "usage": "out"
     },
     "RTMPPullSourceAddress": {
-      "document": "Created input RTMP pull stream origin server configuration.",
+      "document": "",
       "members": [
         {
           "disabled": false,
-          "document": "The TcUrl address of the RTMP origin server.",
+          "document": "",
           "example": "rtmp://domain/live",
           "member": "string",
           "name": "TcUrl",
@@ -3993,7 +3983,7 @@
         },
         {
           "disabled": false,
-          "document": "The StreamKey of the RTMP origin server.",
+          "document": "",
           "example": "streamKey",
           "member": "string",
           "name": "StreamKey",
@@ -4031,11 +4021,11 @@
       "usage": "out"
     },
     "RTSPPullSourceAddress": {
-      "document": "Created input RTSP pull stream origin server configuration.",
+      "document": "",
       "members": [
         {
           "disabled": false,
-          "document": "The Url address of the RTSP origin server.",
+          "document": "",
           "example": "rtsp://9.223.70.41:8806/live/streamname",
           "member": "string",
           "name": "Url",
@@ -4063,11 +4053,11 @@
       "usage": "out"
     },
     "ResilientStreamConf": {
-      "document": "Delayed broadcast smooth stream delivery configuration.",
+      "document": "",
       "members": [
         {
           "disabled": false,
-          "document": "Whether to enable delayed broadcast smooth stream delivery: true to enable, false to disable. It is disabled by default.",
+          "document": "",
           "example": "true",
           "member": "bool",
           "name": "Enable",
@@ -4077,7 +4067,7 @@
         },
         {
           "disabled": false,
-          "document": "Delayed broadcast duration, in seconds. Supported range: 10 to 300 seconds.",
+          "document": "",
           "example": "133",
           "member": "uint64",
           "name": "BufferTime",
@@ -4094,20 +4084,20 @@
         {
           "disabled": false,
           "document": "Destination address IP.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Ip",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Destination address port.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "Port",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -4124,8 +4114,7 @@
           "member": "string",
           "name": "Ip",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -4134,8 +4123,7 @@
           "member": "int64",
           "name": "Port",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         }
       ],
       "usage": "in"
@@ -4149,9 +4137,10 @@
           "example": "1.1.1.1",
           "member": "string",
           "name": "Ip",
+          "output_required": false,
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
@@ -4159,9 +4148,10 @@
           "example": "65535",
           "member": "int64",
           "name": "Port",
+          "output_required": false,
           "required": true,
           "type": "int",
-          "value_allowed_null": false
+          "value_allowed_null": true
         }
       ],
       "usage": "both"

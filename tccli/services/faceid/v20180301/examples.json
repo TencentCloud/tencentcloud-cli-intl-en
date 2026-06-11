@@ -10,10 +10,10 @@
     ],
     "ApplySdkVerificationToken": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ApplySdkVerificationToken\n\n{\n    \"CheckMode\": 1,\n    \"SecurityLevel\": 4,\n    \"IdCardType\": \"HK\",\n    \"CompareImage\": \"/9j/4AAQSkZJRg.....s97n//2Q==\",\n    \"DisableChangeOcrResult\": true,\n    \"DisableCheckOcrWarnings\": true,\n    \"SdkVersion\": \"ENHANCED\",\n    \"ActionList\": \"blink\",\n    \"AllowExpiredDocument\": false\n}",
-        "output": "{\n    \"Response\": {\n        \"SdkToken\": \"65474840-81919-014342-85A1-1F2B3E3DC7BF\",\n        \"RequestId\": \"319f2c60-09db-4120-aedb-90579e3f430a\"\n    }\n}",
-        "title": "ApplySdkVerificationToken Invocation Example"
+        "document": "Call succeeded with specified retry times",
+        "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ApplySdkVerificationToken\n<Common Request Parameters>\n\n{\n    \"CheckMode\": 3,\n    \"RetryLimit\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e43ab16a-6eb3-4fc0-8e44-f594f7dc2c20\",\n        \"SdkToken\": \"C736CEB2-03D89-014A10-B17B-B2DC535CA53B\"\n    }\n}",
+        "title": "ApplySdkVerificationToken Example"
       }
     ],
     "ApplyWebVerificationBizTokenIntl": [

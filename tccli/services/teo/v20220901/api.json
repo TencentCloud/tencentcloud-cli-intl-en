@@ -1,7 +1,7 @@
 {
   "actions": {
     "ApplyFreeCertificate": {
-      "document": "This API is used to apply for a free certificate. If you need to proceed with DNS delegated verification or file verification, you can call this API to initiate the certificate application and obtain the corresponding verification content based on the application method. The order for API calls is as follows:.\nStep 1: Call ApplyFreeCertificate, specify the verification method for free certificate application, and obtain the verification content.\nStep 2: Configure the corresponding domain as verification content.\nStep 3: Call CheckFreeCertificateVerification to verify. After verification passes, the free certificate application is completed.\nStep 4: Call ModifyHostsCertificate to issue a domain certificate configured to use the EdgeOne free certificate.\n\nThe application method introduction in the document: [Free Certificate Application Description](https://www.tencentcloud.com/document/product/1552/90437?from_cn_redirect=1). \ndescription:.\n- Only CNAME access mode can call this API to specify the free certificate application method. NS/DNSPod hosting access modes use automatic validation to apply for free certificates with no need to call this API.\n- If you need to switch the free certificate authentication method, you can call this API again by changing the VerificationMethod field to update it.\n- A domain name can only apply for one free certificate. After calling this API, the backend will trigger the free certificate application task. You need to complete the domain name verification info configuration within 2 days, then finish certificate authentication.",
+      "document": "This API is used to apply for a free certificate. If you need to proceed with DNS delegated verification or file verification, you can call this API to initiate the certificate application and obtain the corresponding verification content based on the application method. The order for API calls is as follows:.\nStep 1: Call ApplyFreeCertificate, specify the verification method for free certificate application, and obtain the verification content.\nStep 2: Configure the corresponding domain as verification content.\nStep 3: Call CheckFreeCertificateVerification to verify. After verification passes, the free certificate application is completed.\nStep 4: Call ModifyHostsCertificate to issue a domain certificate configured to use the EdgeOne free certificate.\n\nThe application method introduction in the document: [Free Certificate Application Description](https://www.tencentcloud.com/document/product/1552/90437?from_cn_redirect=1). \ndescription:\n- Only CNAME access mode can call this API to specify the free certificate application method. NS/DNSPod hosting access modes use automatic validation to apply for free certificates with no need to call this API.\n- If you need to switch the free certificate authentication method, you can call this API again by changing the VerificationMethod field to update it.\n- A domain name can only apply for one free certificate. After calling this API, the backend will trigger the free certificate application task. You need to complete the domain name verification info configuration within 2 days, then finish certificate authentication.",
       "input": "ApplyFreeCertificateRequest",
       "name": "Applies for a free certificate",
       "output": "ApplyFreeCertificateResponse",
@@ -133,6 +133,13 @@
       "output": "CreateFunctionResponse",
       "status": "online"
     },
+    "CreateFunctionReplica": {
+      "document": "This API is used to create copies of specified edge functions. After creating copies, when client requests match configured trigger rules or the default domain name, you can access specific function copies by adding EO-Function-Replica-Name:[copy name] to the request header. Each function supports creating two copies by default.",
+      "input": "CreateFunctionReplicaRequest",
+      "name": "Creates an edge function replica",
+      "output": "CreateFunctionReplicaResponse",
+      "status": "online"
+    },
     "CreateFunctionRule": {
       "document": "This API is used to create trigger rules for edge functions. It supports determining whether to execute the function via customized filter conditions. When execution is required, it provides multiple ways to select the target function, including directly specifying, selecting based on client region, and selecting based on weight.",
       "input": "CreateFunctionRuleRequest",
@@ -232,7 +239,7 @@
       "status": "online"
     },
     "CreateRealtimeLogDeliveryTask": {
-      "document": "This API is used to create a real-time log delivery task. The following limits apply.\n-When the data delivery type (LogType) is site acceleration log (Layer 7 Access Logs), L4 proxy logs, or edge function logs, an entity (L7 domain, L4 proxy instance, or edge function instance) under the same combination of data delivery type (LogType) and data delivery area (Area) can only be added to the following real-time log delivery task type (TaskType) combinations:.\n-A task to push to Tencent Cloud CLS, add another task to push to a custom HTTP(S) address;.\n-A task to push to Tencent Cloud CLS, add another task to push to AWS S3-compatible Cloud Object Storage;.\n-When the data delivery type (LogType) is rate limit and CC attack defense log, managed rule log, custom rule log, or Bot Management Log, an entity can only be added to one real-time log delivery task under the same combination of data delivery type (LogType) and data delivery Area.\n-When the real-time log delivery task type (TaskType) is EdgeOne log analysis (log_analysis), it supports only the data delivery type (LogType) as site acceleration log (domain). Under the combination of the same site (ZoneId) and data delivery area (Area), you can only add one real-time log delivery task for EdgeOne log analysis.\n\nThis API is used to query the real-time log delivery task list based on the entity to check whether the entity has been added to another real-time log delivery task. It is advisable to use the [DescribeRealtimeLogDeliveryTasks](https://www.tencentcloud.com/document/product/1552/104110?from_cn_redirect=1) API first.",
+      "document": "This API is used to create a real-time log delivery task. The following limits apply:\n-When the data delivery type (LogType) is site acceleration log (Layer 7 Access Logs), four-layer proxy logs, or edge function logs, the same entity (L7 domain, L4 proxy instance, or edge function instance) under the same combination of data delivery type (LogType) and data delivery area (Area) can only be added to the following real-time log delivery task type (TaskType) combinations:\n-A task to push to Tencent Cloud CLS, add another task to push to a custom HTTP(S) address.\n-A task to push to Tencent Cloud CLS, add another task to push to S3-compatible object storage.\n-When the data delivery type (LogType) is rate limit and CC attack defense log, managed rule log, custom rule log, or Bot Management Log, an entity can only be added to one real-time log delivery task under the combination of the same data delivery type (LogType) and data delivery area (Area).\n-When the real-time log delivery task type (TaskType) is EdgeOne log analysis (log_analysis), it supports only data delivery type (LogType) as site acceleration log (domain) or managed rule log (web-attack). Under the same site (ZoneId), same data delivery area (Area), and data combination, each data delivery type (LogType) can only add one real-time log delivery task pushed to EdgeOne log analysis.\n\nIt is recommended to first query the real-time log delivery task list according to the entity via the [DescribeRealtimeLogDeliveryTasks](https://www.tencentcloud.com/document/product/1552/104110?from_cn_redirect=1) API, and check whether the entity has been added to another real-time log delivery task.",
       "input": "CreateRealtimeLogDeliveryTaskRequest",
       "name": "Creates a real-time log delivery task",
       "output": "CreateRealtimeLogDeliveryTaskResponse",
@@ -362,6 +369,13 @@
       "input": "DeleteFunctionRequest",
       "name": "Deletes an edge function",
       "output": "DeleteFunctionResponse",
+      "status": "online"
+    },
+    "DeleteFunctionReplica": {
+      "document": "This API is used to delete specified edge function replicas.",
+      "input": "DeleteFunctionReplicaRequest",
+      "name": "Delete an edge function replica",
+      "output": "DeleteFunctionReplicaResponse",
       "status": "online"
     },
     "DeleteFunctionRules": {
@@ -642,6 +656,13 @@
       "input": "DescribeFunctionComponentBindingsRequest",
       "name": "Query the bound list of a function component",
       "output": "DescribeFunctionComponentBindingsResponse",
+      "status": "online"
+    },
+    "DescribeFunctionReplicas": {
+      "document": "This API is used to query the replica list of edge functions.",
+      "input": "DescribeFunctionReplicasRequest",
+      "name": "Queries the list of edge function replicas",
+      "output": "DescribeFunctionReplicasResponse",
       "status": "online"
     },
     "DescribeFunctionRules": {
@@ -946,7 +967,7 @@
       "status": "online"
     },
     "DescribeTimingL7OriginPullData": {
-      "document": "This API is used to query time series data of origin-pull for L7 domains. \nGroup aggregation can be performed by specifying the query dimension <code>DimensionName</code>, returning multiple groups of time series data. For detailed guide and limits, see [How to Use API to Implement Grouping Aggregation in a Single Call](https://www.tencentcloud.com/document/product/1145/77047?lang=en&pg=).",
+      "document": "This API is used to query time series data of the layer-7 domain name business.\nYou can choose to perform grouping queries by specifying the query dimension <code>DimensionName</code>, returning multiple groups of time series data. For detailed directions and usage limits, see [How to Implement Group Query in a Single Call Using API](https://www.tencentcloud.com/document/product/1552/127501?from_cn_redirect=1).",
       "input": "DescribeTimingL7OriginPullDataRequest",
       "name": "Query origin time series data",
       "output": "DescribeTimingL7OriginPullDataResponse",
@@ -1209,6 +1230,13 @@
       "input": "ModifyFunctionComponentBindingsRequest",
       "name": "Modify a function component binding",
       "output": "ModifyFunctionComponentBindingsResponse",
+      "status": "online"
+    },
+    "ModifyFunctionReplica": {
+      "document": "This API is used to modify the content and description of a specified edge function replica.",
+      "input": "ModifyFunctionReplicaRequest",
+      "name": "Edit an edge function replica",
+      "output": "ModifyFunctionReplicaResponse",
       "status": "online"
     },
     "ModifyFunctionRule": {
@@ -2243,6 +2271,17 @@
         },
         {
           "disabled": false,
+          "document": "Rule ID of adaptive frequency control, returned as an output parameter.",
+          "example": "2147483645",
+          "member": "string",
+          "name": "Id",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
           "document": "The restriction level of adaptive frequency control. required when Enabled is on. valid values: <li>Loose: Loose</li><li>Moderate: Moderate</li><li>Strict: Strict</li>.",
           "example": "Loose",
           "member": "string",
@@ -2796,7 +2835,7 @@
         },
         {
           "disabled": false,
-          "document": "The session persistence duration.",
+          "document": "Session hold time, unit: seconds.",
           "example": "3600",
           "member": "uint64",
           "name": "SessionPersistTime",
@@ -2925,7 +2964,7 @@
         },
         {
           "disabled": false,
-          "document": "Origin server information.\n<li>When OriginType is custom, it indicates one or more origin servers, such as `[\"8.8.8.8\",\"9.9.9.9\"]` or `OriginValue=[\"test.com\"]`;</li>\n<li>When OriginType is loadbalancer, it indicates a cloud load balancer, such as [\"lb-xdffsfasdfs\"];</li>\n<li>When OriginType is origins, it requires one and only one element, indicating the origin server group ID, such as [\"origin-537f5b41-162a-11ed-abaa-525400c5da15\"].</li>",
+          "document": "Details of the origin server:\n<li>When OriginType is custom, it indicates one or more origin servers, such as `[\"8.8.8.8\",\"9.9.9.9\"]` or `OriginValue=[\"test.com\"]`;</li>\n<li>When OriginType is loadbalancer, it indicates a load balancer, such as [\"lb-3pbiw4d9iqz0\"];</li>\n<li>When OriginType is origins, it requires one and only one element, indicating the origin server group ID, such as [\"origin-537f5b41-162a-11ed-abaa-525400c5da15\"].</li>",
           "example": "[\"1.1.1.1\",\"2.2.2.2\"]",
           "member": "string",
           "name": "OriginValue",
@@ -2980,7 +3019,7 @@
         },
         {
           "disabled": false,
-          "document": "Duration for session persistence. the value takes effect only when SessionPersist is true.",
+          "document": "Duration for session persistence, in seconds. The value takes effect only when SessionPersist is true.",
           "example": "3600",
           "member": "uint64",
           "name": "SessionPersistTime",
@@ -3237,6 +3276,17 @@
           "name": "Enabled",
           "output_required": false,
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule ID of traffic anti-fraud, returned as an output parameter.",
+          "example": "4294967290",
+          "member": "string",
+          "name": "Id",
+          "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3746,17 +3796,6 @@
       "members": [
         {
           "disabled": false,
-          "document": "Based on client and request features, divides request sources into human requests, legitimate Bot requests, suspected Bot requests, and high-risk Bot requests, and provides request handling options.",
-          "example": "无",
-          "member": "BotRatings",
-          "name": "BotRatings",
-          "output_required": false,
-          "required": false,
-          "type": "object",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
           "document": "Specifies the switch for Bot intelligent analysis configuration. valid values:.\n\non: enabled.\noff: disabled.",
           "example": "on",
           "member": "string",
@@ -3764,6 +3803,28 @@
           "output_required": false,
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule ID of Bot intelligent analysis, returned as an output parameter.",
+          "example": "4294967292",
+          "member": "string",
+          "name": "Id",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Based on client and request features, divides request sources into human requests, legitimate Bot requests, suspected Bot requests, and high-risk Bot requests, and provides request handling options.",
+          "example": "无",
+          "member": "BotRatings",
+          "name": "BotRatings",
+          "output_required": false,
+          "required": false,
+          "type": "object",
           "value_allowed_null": false
         }
       ],
@@ -4903,7 +4964,7 @@
       "usage": "both"
     },
     "CacheKeyParameters": {
-      "document": "Custom Cache Key configuration parameters.",
+      "document": "Custom Cache Key config.",
       "members": [
         {
           "disabled": false,
@@ -5692,6 +5753,17 @@
           "name": "Enabled",
           "output_required": false,
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule ID of intelligent client filtering, returned as an output parameter.",
+          "example": "4294967293",
+          "member": "string",
+          "name": "Id",
+          "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
@@ -6659,7 +6731,7 @@
         },
         {
           "disabled": false,
-          "document": "Duration for the persistent session. The value takes effect only when `SessionPersist = true`.",
+          "document": "Duration for session persistence, in seconds. The value takes effect only when SessionPersist is true.",
           "example": "3600",
           "member": "uint64",
           "name": "SessionPersistTime",
@@ -7072,6 +7144,69 @@
     },
     "CreateEdgeKVNamespaceResponse": {
       "document": "CreateEdgeKVNamespace response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateFunctionReplicaRequest": {
+      "document": "CreateFunctionReplica request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-3exa7oergn0l",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Function ID.",
+          "example": "ef-crkwnfy0",
+          "member": "string",
+          "name": "FunctionId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Edge function copy name. Limit to enter 1-50 characters. Allowed characters are a-z, 0-9, and -. The - cannot be registered alone or used continuously, and cannot be placed at the beginning or the end. Copy names under the same FunctionId must be unique.",
+          "example": "Hello-World-Replica",
+          "member": "string",
+          "name": "ReplicaName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Edge function replica content. Currently only supports JavaScript code. Supports a maximum of 5 MB.",
+          "example": "addEventListener('fetch', e => {\r\n  const response = new Response('Hello World!');\r\n  e.respondWith(response);\r\n});",
+          "member": "string",
+          "name": "Content",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Edge function replica description. Supports up to 50 characters.",
+          "example": "Hello World Replica",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateFunctionReplicaResponse": {
+      "document": "CreateFunctionReplica response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -8147,7 +8282,7 @@
         },
         {
           "disabled": false,
-          "document": "The information attached when the node cache purge type is set to purge_cache_tag.",
+          "document": "The parameter is required when the node cache clearing type is set to purge_cache_tag, and the input value is the domain name.",
           "example": "无",
           "member": "CacheTag",
           "name": "CacheTag",
@@ -8203,6 +8338,24 @@
         },
         {
           "disabled": false,
+          "document": "Data shipping area. Available values:<ul><li>mainland: within the Chinese mainland;</li><li>overseas: global (excluding the Chinese mainland).</li></ul>",
+          "example": "mainland",
+          "member": "string",
+          "name": "Area",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Data delivery type. Available values: <ul><li>domain: site acceleration log;</li><li>application: four-layer proxy logs;</li><li>function: edge function logs;</li><li>web-rateLiming: rate limit and CC attack defense log;</li><li>web-attack: managed rule log;</li><li>web-rule: custom rule logs;</li><li>web-bot: bot management log.</li></ul>",
+          "example": "domain",
+          "member": "string",
+          "name": "LogType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
           "document": "Name of a real-time log delivery task, which can contain up to 200 characters, including digits, English letters, hyphens (-) and underscores (_).",
           "example": "test_log_task",
           "member": "string",
@@ -8212,7 +8365,7 @@
         },
         {
           "disabled": false,
-          "document": "Type of a real-time log shipping task. valid values:.\n<li>cls: push to tencent cloud cls.</li>.\n<li>custom_endpoint: push to a custom HTTP(S) address.</li>.\n<li>s3: push to an AWS s3-compatible bucket address.</li>.\n<li>log_analysis: pushes to EdgeOne log analytics. this task type only supports the \"site acceleration log\" data delivery type.</li>.",
+          "document": "Type of a real-time log shipping task. Valid values:<ul><li>cls: push to Tencent Cloud CLS;</li><li>custom_endpoint: push to a custom HTTP(S) address;</li><li>s3: push to an AWS S3-compatible bucket address;</li><li>log_analysis: push to EdgeOne log analytics. Only supported when LogType = domain or web-attack.</li></ul>",
           "example": "cls",
           "member": "string",
           "name": "TaskType",
@@ -8221,7 +8374,7 @@
         },
         {
           "disabled": false,
-          "document": "Entity list corresponding to the real-time log delivery task. example values:.\n<Li>Specifies the layer-7 domain name: domain.example.com.</li>.\n<Li>Specifies the l4 proxy instance: sid-2s69eb5wcms7.</li>.\n<Li>Edge function instance: test-zone-2mxigizoh9l9-1257626257.</li>.",
+          "document": "List of entities corresponding to the real-time log delivery task. Example values are as follows: <ul><li>Layer 7 domain: domain.example.com</li><li>L4 proxy instance: sid-2s69eb5wcms7</li><li>Cloud function instance: test-zone-2mxigizoh9l9-1257626257</li></ul>",
           "example": "[\"domain.example.com\"]",
           "member": "string",
           "name": "EntityList",
@@ -8230,25 +8383,7 @@
         },
         {
           "disabled": false,
-          "document": "Data delivery type. valid values:.\n<li>domain: specifies the site acceleration logs.</li>.\n<li>application: four-layer proxy logs.</li>.\n<Li>Function: specifies the edge function logs.</li>.\n<li>web-rateLiming: specifies the rate limit and CC attack defense logs.</li>.\n<li>web-attack: managed rule logs;</li>.\n<li>web-rule: custom rule logs;</li>.\n<li>web-bot: Bot management logs.</li>",
-          "example": "domain",
-          "member": "string",
-          "name": "LogType",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Data area. Valid values:\n<li>mainland: within the Chinese mainland;</li>\n<li>overseas: global (excluding the Chinese mainland).</li>",
-          "example": "mainland",
-          "member": "string",
-          "name": "Area",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Predefined fields for delivery. valid values:.\n<Li>[Site acceleration log (l7 access log)](https://www.tencentcloud.com/document/product/1552/105791?from_cn_redirect=1)</li>.\n<Li><A href=\"https://www.tencentcloud.com/document/product/1552/105792?from_cn_redirect=1\">four-layer proxy logs</a></li>.\n<Li>Specifies the edge function logs (https://www.tencentcloud.com/document/product/1552/115585?from_cn_redirect=1).</li>.",
+          "document": "Predefined fields for delivery. Value reference: <ul><li>[Site acceleration log (Layer 7 Access Logs)](https://www.tencentcloud.com/document/product/1552/105791?from_cn_redirect=1)</li><li>[Four-layer proxy logs](https://www.tencentcloud.com/document/product/1552/105792?from_cn_redirect=1)</li><li>[Edge Function logs](https://www.tencentcloud.com/document/product/1552/115585?from_cn_redirect=1)</li></ul>",
           "example": "[\"RequestID\",\"ClientIP\",\"RequestTime\"]",
           "member": "string",
           "name": "Fields",
@@ -8284,7 +8419,7 @@
         },
         {
           "disabled": false,
-          "document": "Output format for log delivery. if this field is not specified, the default format is used, which works as follows:.\n<li>When TaskType is 'custom_endpoint', the default format is an array of JSON objects, with each JSON object representing a log entry;</li>.\n<li>When TaskType is 's3', the default format is JSON Lines;</li>specifically, when TaskType is 'cls' or 'log_analysis', the only allowed value for LogFormat.FormatType is 'JSON', and other parameters in LogFormat will be ignored. it is recommended not to transfer LogFormat.",
+          "document": "Output format for log delivery. If left empty, the default format is used. The default format logic is as follows:<ul><li>When TaskType is 'custom_endpoint', the default format is an array of JSON objects, each JSON object represents a log entry;</li><li>When TaskType is 's3', the default format is JSON Lines;</li></ul>Particularly, when TaskType is 'cls' or 'log_analysis', the only allowed value for LogFormat.FormatType is 'json', and other parameters in LogFormat will be ignored. It is recommended not to transfer LogFormat.",
           "example": "无",
           "member": "LogFormat",
           "name": "LogFormat",
@@ -9321,7 +9456,7 @@
         },
         {
           "disabled": false,
-          "document": "The maximum attack bandwidth.",
+          "document": "Maximum bandwidth of the attack in bps.",
           "example": "4930",
           "member": "int64",
           "name": "AttackMaxBandWidth",
@@ -9331,7 +9466,7 @@
         },
         {
           "disabled": false,
-          "document": "The peak attack packet rate.",
+          "document": "Peak attack packet rate, unit: pps.",
           "example": "4930",
           "member": "int64",
           "name": "AttackPacketMaxRate",
@@ -9963,6 +10098,51 @@
     },
     "DeleteEdgeKVNamespaceResponse": {
       "document": "DeleteEdgeKVNamespace response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteFunctionReplicaRequest": {
+      "document": "DeleteFunctionReplica request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-3exa7oergn0l",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Function ID.",
+          "example": "ef-crkwnfy0",
+          "member": "string",
+          "name": "FunctionId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Copy name of the deleted function. Input in the form of a list is supported.",
+          "example": "[\"Hello-World-Replica\"]",
+          "member": "string",
+          "name": "ReplicaNames",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteFunctionReplicaResponse": {
+      "document": "DeleteFunctionReplica response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -12456,6 +12636,107 @@
           "example": "无",
           "member": "FunctionComponentBinding",
           "name": "FunctionComponentBindings",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeFunctionReplicasRequest": {
+      "document": "DescribeFunctionReplicas request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-3exa7oergn0l",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Function ID.",
+          "example": "ef-crkwnfy0",
+          "member": "string",
+          "name": "FunctionId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The offset of paginated query. Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number limit of paginated query. Default value: 20. Maximum value: 200.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting basis. Valid values: <li>created-on: Creation time.</li> Default sorting is based on the created-on attribute.",
+          "example": "created-on",
+          "member": "string",
+          "name": "SortBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List sort method. Valid values: <li>asc: ascending order;</li> <li>desc: sort in descending order.</li> Default value: asc.",
+          "example": "desc",
+          "member": "string",
+          "name": "SortOrder",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filtering Conditions. The maximum of Filters.Values is 20. If this parameter is left empty, it returns all function replicas under the function ID. Detailed filter criteria: <li>replica-name: Filter by function replica name. Fuzzy query is supported.</li>",
+          "example": "无",
+          "member": "AdvancedFilter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeFunctionReplicasResponse": {
+      "document": "DescribeFunctionReplicas response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of edge function replicas.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Edge function replica list.",
+          "example": "无",
+          "member": "FunctionReplica",
+          "name": "FunctionReplicas",
           "output_required": true,
           "type": "list",
           "value_allowed_null": false
@@ -16996,7 +17277,7 @@
         },
         {
           "disabled": false,
-          "document": "Name list. Maximum array length is 20. Each key cannot be empty, with a length of 1-512 characters. Allowed characters include letters, numbers, hyphens, and underscores. To delete a single key, import an array with one element.",
+          "document": "Name list. Maximum array length is 20. Each key cannot be empty, with a length of 1-512 characters, supporting valid UTF-8 characters. To delete one key, input an array containing one element.",
           "example": "[\"hello\"]",
           "member": "string",
           "name": "Keys",
@@ -17041,7 +17322,7 @@
         },
         {
           "disabled": false,
-          "document": "Name list. Maximum array length is 20. Each key cannot be empty, with a length of 1-512 characters. Allowed characters include letters, numbers, hyphens, and underscores. To query a single key, input an array with one element.",
+          "document": "Name list. Maximum array length is 20. Each key cannot be empty, with a length of 1-512 characters, and supports valid UTF-8 characters. When querying a single key, input an array with one element.",
           "example": "[\"hello\"]",
           "member": "string",
           "name": "Keys",
@@ -17179,7 +17460,7 @@
         },
         {
           "disabled": false,
-          "document": "Key name. The length is 1-512 characters. Allowed characters include letters, digits, hyphens, and underscores.",
+          "document": "Key name, with a length of 1-512 characters, supports valid UTF-8 characters.",
           "example": "hello",
           "member": "string",
           "name": "Key",
@@ -17197,7 +17478,7 @@
         },
         {
           "disabled": false,
-          "document": "Expiration time, absolute time. It means the seconds elapsed since midnight (UTC/GMT) on January 1, 1970, and cannot be earlier than the current time. If both Expiration and ExpirationTTL are filled in, ExpirationTTL takes precedence. If neither Expiration nor ExpirationTTL is specified, the key-value pair will never expire.",
+          "document": "Expiry date of the key-value pair, absolute time in seconds, represents the seconds elapsed since 00:00:00 on January 1, 1970 (UTC) (Unix timestamp). The value must be greater than or equal to current time + 60, meaning the expiry date is at least 60 seconds from now. When both Expiration and ExpirationTTL are filled, ExpirationTTL takes precedence. If left empty, the key-value pair will never expire.",
           "example": "1774513200",
           "member": "int64",
           "name": "Expiration",
@@ -17206,7 +17487,7 @@
         },
         {
           "disabled": false,
-          "document": "Expiration time, relative time, in seconds. Indicates the data will expire after the specified seconds, must be greater than 0. If both Expiration and ExpirationTTL are filled in, ExpirationTTL takes precedence. If neither Expiration nor ExpirationTTL is specified, the key-value pair will never expire.",
+          "document": "The survival time of the key-value pair is a relative time in seconds, indicating that the data will expire after transit of specified seconds. Value ranges from 60. When both Expiration and ExpirationTTL are filled, ExpirationTTL takes precedence; if left empty, the key-value pair will never expire.",
           "example": "3600",
           "member": "int64",
           "name": "ExpirationTTL",
@@ -18206,6 +18487,17 @@
         },
         {
           "disabled": false,
+          "document": "Rule ID of high frequency scan protection, returned as an output parameter.",
+          "example": "4294967288",
+          "member": "string",
+          "name": "Id",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
           "document": "The handling action for high-frequency scan protection. required when Enabled is on. valid values for SecurityAction Name: <li>Deny: block and respond with an interception page;</li> <li>Monitor: observe without processing requests, log security events in logs;</li> <li>JSChallenge: respond with a JavaScript challenge page.</li>.",
           "example": "无",
           "member": "SecurityAction",
@@ -18453,6 +18745,72 @@
         }
       ],
       "usage": "both"
+    },
+    "FunctionReplica": {
+      "document": "Edge function replica.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Function ID.",
+          "example": "ef-crkwnfy0",
+          "member": "string",
+          "name": "FunctionId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Edge function copy name.",
+          "example": "Hello-World-Replica",
+          "member": "string",
+          "name": "ReplicaName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Edge function replica content. Format is JavaScript code.",
+          "example": "addEventListener('fetch', e => {\r\n  const response = new Response('Hello World 2!');\r\n  e.respondWith(response);\r\n});",
+          "member": "string",
+          "name": "Content",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Edge function replica description.",
+          "example": "Hello World Replica",
+          "member": "string",
+          "name": "Remark",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Edge function replica creation time.",
+          "example": "2026-01-19T10:22:55+08:00",
+          "member": "datetime_iso",
+          "name": "CreatedOn",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Edge function replica last update time.",
+          "example": "2026-01-19T11:48:52+08:00",
+          "member": "datetime_iso",
+          "name": "ModifiedOn",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "FunctionRule": {
       "document": "Trigger rules for an edge function",
@@ -18942,7 +19300,7 @@
         },
         {
           "disabled": false,
-          "document": "Check frequency, in seconds. It indicates how often a health check task is initiated. Valid values: 30, 60, 180, 300, 600.",
+          "document": "Check frequency, in seconds. It indicates how often a health check task is initiated. Configurable range: 10-600 seconds.",
           "example": "30",
           "member": "uint64",
           "name": "Interval",
@@ -20297,7 +20655,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Key name. Each key name cannot be empty, with a length of 1-512 characters. Allowed characters include letters, digits, hyphens, and underscores.",
+          "document": "Key name. Each key name cannot be empty, with a length of 1-512 characters, and supports valid UTF-8 characters.",
           "example": "hello",
           "member": "string",
           "name": "Key",
@@ -21886,7 +22244,7 @@
         },
         {
           "disabled": false,
-          "document": "Duration for the persistent session. The value takes effect only when `SessionPersist = true`.",
+          "document": "Duration for session persistence, in seconds. The value takes effect only when SessionPersist is true.",
           "example": "3600",
           "member": "uint64",
           "name": "SessionPersistTime",
@@ -22339,6 +22697,69 @@
     },
     "ModifyFunctionComponentBindingsResponse": {
       "document": "ModifyFunctionComponentBindings response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyFunctionReplicaRequest": {
+      "document": "ModifyFunctionReplica request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-3exa7oergn0l",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Function ID.",
+          "example": "ef-crkwnfy0",
+          "member": "string",
+          "name": "FunctionId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Edge function copy name that needs to be modified.",
+          "example": "Hello-World-Replica",
+          "member": "string",
+          "name": "ReplicaName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Edge function replica content. Currently only supports JavaScript code. Supports a maximum of 5 MB.",
+          "example": "addEventListener('fetch', e => {\r\n  const response = new Response('Hello World 2!');\r\n  e.respondWith(response);\r\n});",
+          "member": "string",
+          "name": "Content",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Edge function replica description. Supports up to 50 characters.",
+          "example": "Hello World Replica",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyFunctionReplicaResponse": {
+      "document": "ModifyFunctionReplica response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -23344,7 +23765,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The origin type. values:.\n<Li>IPDomain: ipv4, ipv6, or domain name type origin server;</li>.\n<Li>OriginGroup: origin server group type origin server;</li>.\n<Li>LoadBalance: cloud load balancer (clb), this feature is in beta test. to use it, please submit a ticket or contact smart customer service;</li>.\n<Li>COS: tencent cloud COS origin server;</li>.\n<Li>AWSS3: all object storage origin servers that support the aws s3 protocol.</li>.",
+          "document": "Origin server type. Valid values:\n<li>IPDomain: IPV4, IPV6, or domain type origin server;</li>\n<li>OriginGroup: origin server group type origin server;</li>\n<li>LoadBalance: load balancing. This feature is in beta test. If needed, submit a ticket;</li>\n<li>COS: Tencent Cloud COS origin server;</li>\n<li>AWSS3: supports ALL AWS S3-compatible COS origin servers.</li>",
           "example": "IPDomain",
           "member": "string",
           "name": "OriginType",
@@ -23355,7 +23776,7 @@
         },
         {
           "disabled": false,
-          "document": "Origin server address, which varies according to the value of origintype:.\n<Li>When origintype = ipdomain, fill in an ipv4 address, an ipv6 address, or a domain name;</li>.\n<Li>When origintype = cos, please fill in the access domain name of the cos bucket;</li>.\n<Li>When origintype = awss3, fill in the access domain name of the s3 bucket;</li>.\n<Li>When origintype = origingroup, fill in the origin server group id;</li>.\n<Li>When origintype = loadbalance, fill in the cloud load balancer instance id. this feature is currently only available to the allowlist.</li>.",
+          "document": "Origin server address, which varies according to the value of OriginType:\n<li>When OriginType = IPDomain, specify this parameter with an IPV4 address, an IPV6 address, or a domain name;</li>\n<li>When OriginType = COS, specify the cos bucket access domain.</li>\n<li>When OriginType = AWSS3, specify this parameter as the access domain of the S3 bucket;</li>\n<li>When OriginType = OriginGroup, fill in the origin server group ID; when it is an output parameter, if the origin server group of other sites is referenced, the format is {origin server group ID}@{ZoneID}. For example: og-testorigin@zone-38moq1z10wwwy;</li>\n<li>When OriginType = LoadBalance, specify this parameter as the Cloud Load Balancer instance ID. This feature is currently only available to the allowlist. When it is an output parameter, if the load balancing of other sites is referenced, the format is {LoadBalancer ID}@{ZoneID}, such as lb-2rxpamcyqfzg@zone-38moq1z10wwwy.</li>",
           "example": "1.2.3.4",
           "member": "string",
           "name": "Origin",
@@ -27240,8 +27661,19 @@
         },
         {
           "disabled": false,
+          "document": "Speed limit mode. Within the statistical time window CountingPeriod, the following speed limit modes can be configured for requests that meet the feature CountBy:<li>Block: Block access source. When the count exceeds the threshold MaxRequestThreshold, execute Action disposal for ALL subsequent requests that meet the feature within the ActionDuration. </li><li>Throttle: Only dispose excess requests. When the count exceeds the threshold MaxRequestThreshold, only execute Action disposal for requests that exceed the threshold, and stop disposal when the window ends. At this point, the ActionDuration parameter will be ignored.</li><br />Default value is Block.",
+          "example": "block",
+          "member": "string",
+          "name": "Mode",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
           "document": "The match mode of the rate threshold request feature. this field is required when Enabled is on.<br /><br />when there are multiple conditions, composite conditions are used to collect statistics. the maximum number of conditions cannot exceed 5. valid values:<br/><li><b>http.request.ip</b>: client ip;</li><li><b>http.request.xff_header_ip</b>: client ip (priority match xff header);</li><li><b>http.request.uri.path</b>: access path of the request;</li><li><b>http.request.cookies['session']</b>: Cookie named session, where session can be replaced with your own parameter;</li><li><b>http.request.headers['user-agent']</b>: http header named user-agent, where user-agent can be replaced with your own parameter;</li><li><b>http.request.ja3</b>: ja3 fingerprint of the request;</li><li><b>http.request.ja4</b>: ja4 fingerprint of the request;</li><li><b>http.request.uri.query['test']</b>: URL query parameter named test, where test can be replaced with your own parameter.</li>.",
-          "example": "http.request.ip",
+          "example": "[\"http.request.ip\"]",
           "member": "string",
           "name": "CountBy",
           "output_required": false,
@@ -27273,7 +27705,7 @@
         },
         {
           "disabled": false,
-          "document": "The duration of an Action is only supported in the following units: <li>s: seconds, value range 1-120;</li> <li>m: minutes, value range 1-120;</li> <li>h: hours, value range 1-48;</li> <li>d: days, value range 1-30.</li>.",
+          "document": "Duration of the Action. Only the following units are supported: <li>s: second, value range 1-120;</li><li>m: minute, value range 1-120;</li><li>h: hour, value range 1-48;</li><li>d: day, value range 1-30.</li><br />This parameter will be ignored and will not take effect when Mode is Throttle.",
           "example": "60s",
           "member": "string",
           "name": "ActionDuration",
@@ -28268,7 +28700,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Operation Name. the Name must correspond to the parameter structure, such as Name=Cache, then CacheParameters is required.\n<li>Cache: specifies the node Cache TTL.</li>.\n<Li>CacheKey: specifies the custom cache key.</li>.\n<Li>CachePrefresh: specifies cache pre-refresh.</li>.\n<Li>AccessURLRedirect: specifies access url redirection.</li>.\n<Li>UpstreamURLRewrite: specifies the origin-pull url rewrite.</li>.\n<li>QUIC:QUIC;</li>\n<li>WebSocket:WebSocket;</li>\n<li>Authentication: Token Authentication;</li>.\n<li>MaxAge: specifies the browser cache TTL.</li>.\n<li>StatusCodeCache: specifies the status code cache TTL.</li>.\n<Li>OfflineCache: specifies the offline cache.</li>.\n<Li>SmartRouting: specifies smart acceleration.</li>.\n<Li>RangeOriginPull: specifies range-based origin pull.</li>.\n<Li>UpstreamHTTP2: specifies http/2 origin pull.</li>.\n<Li>HostHeader: specifies the host header rewrite.</li>.\n<Li>ForceRedirectHTTPS: specifies the forced https redirect configuration for access protocol.</li>.\n<li>OriginPullProtocol: specifies HTTPS origin pull.</li>.\n<Li>Compression: specifies the intelligent compression configuration.</li>.\n<li>HSTS:HSTS;</li>\n<Li>ClientIPHeader: specifies the header information configuration for storing client request ip.</li>.\n<Li>OCSPStapling: specifies ocsp stapling.</li>.\n<Li>HTTP2: specifies http/2 integration.</li>.\n<li>PostMaxSize: specifies the maximum limit for file streaming transmission in POST request upload.</li>.\n<Li>ClientIPCountry: specifies the regional information of the client ip carried during origin-pull.</li>.\n<Li>UpstreamFollowRedirect: specifies the parameter configuration for redirection during origin pull.</li>.\n<Li>UpstreamRequest: specifies the origin-pull request parameters.</li>.\n<li>TLSConfig: specifies SSL/TLS security.</li>.\n<Li>ModifyOrigin: modifies the origin server.</li>.\n<Li>HTTPUpstreamTimeout: specifies the layer-7 origin-pull timeout configuration.</li>.\n<li>HttpResponse: HTTP response.</li>.\n<Li>ErrorPage: specifies the custom error page.</li>.\n<li>ModifyResponseHeader: modifies the HTTP node response header.</li>.\n<li>ModifyRequestHeader: modifies the request header of an HTTP node.</li>.\n<Li>ResponseSpeedLimit: specifies the download speed limit for a single connection.</li>.\n<Li>SetContentIdentifier: specifies the content identifier.</li>.\n<Li>Vary: specifies the vary feature configuration.</li>.\n<Li>ContentCompression: specifies the content compression configuration.</li>.\n<Li>OriginAuthentication. specifies the origin authentication configuration.</li>.",
+          "document": "Operation name. The name must correspond to the parameter structure. For example, if Name=Cache, CacheParameters is required.\n<li>Cache: Node caching TTL;</li>\n<li>CacheKey: custom Cache Key;</li>\n<li>CachePrefresh: cache pre-refresh;</li>\n<li>AccessURLRedirect: URL redirection;</li>\n<li>UpstreamURLRewrite: origin-pull URL rewrite;</li>\n<li>QUIC:QUIC;</li>\n<li>WebSocket:WebSocket;</li>\n<li>Authentication: Token authentication;</li>\n<li>MaxAge: Browser cache TTL;</li>\n<li>StatusCodeCache: Status code cache TTL;</li>\n<li>OfflineCache: Offline cache;</li>\n<li>SmartRouting: Smart acceleration;</li>\n<li>RangeOriginPull: Range-based origin pull;</li>\n<li>UpstreamHTTP2: HTTP/2 origin pull;</li>\n<li>HostHeader: Host header rewrite;</li>\n<li>ForceRedirectHTTPS: Forced HTTPS redirect configuration for access protocol.</li>\n<li>HTTPS origin pull (OriginPullProtocol);</li>\n<li>Compression: Intelligent compression configuration;</li>\n<li>HSTS:HSTS;</li>\n<li>ClientIPHeader: Header information configuration that stores the client request IP.</li>\n<li>OCSPStapling: OCSP stapling;</li>\n<li>HTTP2: HTTP/2 integration;</li>\n<li>PostMaxSize: Maximum limit for file streaming transmission in POST requests.</li>\n<li>ClientIPCountry: Carry regional information of the client IP during origin pull.</li>\n<li>UpstreamFollowRedirect: Parameter configuration for redirection during origin pull;</li>\n<li>UpstreamRequest: Origin-pull request parameter;</li>\n<li>Shield: Origin server uninstallation.</li>\n<li>TLSConfig: SSL/TLS security;</li>\n<li>ModifyOrigin: Modify origin server;</li>\n<li>SiteFailover: origin server failure failover;</li>\n<li>HTTPUpstreamTimeout: Layer-7 origin-pull timeout configuration.</li>\n<li>HTTP response: HTTP response;</li>\n<li>ErrorPage: Custom error page;</li>\n<li>ModifyResponseHeader: Modify the HTTP node response header;</li>\n<li>ModifyRequestHeader: Modify the request header of an HTTP node;</li>\n<li>ResponseSpeedLimit: Download speed limit for a single connection;</li>\n<li>SetContentIdentifier: Set the content identifier.</li>\n<li>Vary: Vary feature configuration;</li>\n<li>ContentCompression: Content compression configuration;</li>\n<li>OriginAuthentication: Origin authentication configuration.</li>",
           "example": "Cache",
           "member": "string",
           "name": "Name",
@@ -28565,6 +28997,17 @@
         },
         {
           "disabled": false,
+          "document": "Origin server uninstallation config. When the Name value is Shield, this parameter is required.\nNote: This field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "ShieldParameters",
+          "name": "ShieldParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
           "document": "SSL/TLS security configuration parameter. this parameter is required when the name is set to tlsconfig.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
           "example": "无",
           "member": "TLSConfigParameters",
@@ -28580,6 +29023,17 @@
           "example": "无",
           "member": "ModifyOriginParameters",
           "name": "ModifyOriginParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Origin server failure failover configuration parameter. This parameter is required when the Name value is SiteFailover.\nNote: This field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "SiteFailoverParameters",
+          "name": "SiteFailoverParameters",
           "output_required": false,
           "required": false,
           "type": "object",
@@ -29907,6 +30361,211 @@
       ],
       "usage": "out"
     },
+    "ShieldParameters": {
+      "document": "Origin server uninstallation config.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Origin server uninstallation space ID.",
+          "example": "space-842",
+          "member": "string",
+          "name": "ShieldSpaceId",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SiteFailover": {
+      "document": "Origin server failover configuration parameter internal structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Origin server failover type. Valid values:\n<li>FailoverToHost: Fail back to the specified IP/domain.</li>\n<li>FailoverToCOS: Fail back to Tencent Cloud COS;</li>\n<li>FailoverToS3CompatibleObjectStorage: Fail over to S3-compatible object storage;</li>\n<li> FailoverRedirectToURL: Redirect to the specified URL.</li>\n<li>FailoverCustomResponsePage: Use a custom response page.</li>",
+          "example": "FailoverRedirectToURL",
+          "member": "string",
+          "name": "Mode",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Origin server address, divided into following scenarios based on the Mode value:\n<li>When Mode = FailoverToHost, specify an IPV4 address, an IPV6 address, or a domain name;</li>\n<li>When Mode = FailoverToCOS, specify the access domain name of the COS bucket;</li>\n<li>When Mode = FailoverToS3CompatibleObjectStorage, specify the access domain of the S3 bucket.</li>",
+          "example": "www.example.com",
+          "member": "string",
+          "name": "Origin",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Protocol configuration. This parameter is required when Mode value is FailoverToHost. Valid values:\n<li>http: use HTTP protocol;</li>\n<li>https: Using HTTPS protocol;</li>\n<li>follow: protocol following.</li>",
+          "example": "follow",
+          "member": "string",
+          "name": "OriginProtocol",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "HTTP origin port, value ranges from 1 to 65535. This parameter is required when the origin-pull protocol OriginProtocol is http or follow.",
+          "example": "80",
+          "member": "int64",
+          "name": "HTTPOriginPort",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "HTTPS origin port, value ranges from 1–65535. This parameter is required when the origin-pull protocol OriginProtocol is https or follow.",
+          "example": "443",
+          "member": "int64",
+          "name": "HTTPSOriginPort",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Host Header rewrite configuration for origin-pull",
+          "example": "无",
+          "member": "HostHeaderParameters",
+          "name": "UpstreamHostHeader",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Origin-pull URL rewrite configuration.",
+          "example": "无",
+          "member": "UpstreamURLRewriteParameters",
+          "name": "UpstreamURLRewrite",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Origin Requests parameter configuration.",
+          "example": "无",
+          "member": "UpstreamRequestParameters",
+          "name": "UpstreamRequestParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "HTTP2 origin-pull configuration parameters.",
+          "example": "无",
+          "member": "UpstreamHTTP2Parameters",
+          "name": "UpstreamHTTP2Parameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specify whether access to the private object storage origin server is allowed. This parameter is required when the origin server type is FailoverToCOS or FailoverToS3CompatibleObjectStorage. Valid values:\n<li>on: Enable private authentication;</li>\n<li>off: Disable private authentication.</li>",
+          "example": "off",
+          "member": "string",
+          "name": "PrivateAccess",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Private authentication parameter. This parameter is valid only when Mode = FailoverToS3CompatibleObjectStorage and PrivateAccess = on.",
+          "example": "无",
+          "member": "OriginPrivateParameters",
+          "name": "PrivateParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Redirect target URL. This parameter is required when Mode has a value of FailoverRedirectToURL.",
+          "example": "http://www.example.com",
+          "member": "string",
+          "name": "RedirectURL",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Response page ID. This parameter is required when Mode value is FailoverCustomResponsePage.",
+          "example": "p-3qck1u3hvaqk",
+          "member": "string",
+          "name": "ResponsePageId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Response status code. This parameter is required when Mode is a value of FailoverRedirectToURL or FailoverCustomResponsePage. Valid values:\n<li>When Mode = FailoverRedirectToURL, the parameter value is one of 301, 302, 303, 307, 308.</li>\n<li>When Mode = FailoverCustomResponsePage, the parameter value is one of 400, 403, 404, 405, 414, 416, 451, 500, 501, 502, 503, 504.</li>",
+          "example": "302",
+          "member": "int64",
+          "name": "StatusCode",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SiteFailoverParameters": {
+      "document": "Origin server failure failover config.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Origin server fault migration condition status code. The origin server response status code must hit the field return to execute origin server migration as SiteFailoverParams. The parameter value is one of 4xx, 5xx.",
+          "example": "[502]",
+          "member": "int64",
+          "name": "SiteFailoverStatusCodes",
+          "output_required": false,
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Origin server failure failover configuration parameter list. Minimum length is 1, maximum length is 2.",
+          "example": "无",
+          "member": "SiteFailover",
+          "name": "SiteFailoverParams",
+          "output_required": false,
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "SkipCondition": {
       "document": "Exception rule conditions, used to filter requests by specific fields",
       "members": [
@@ -29990,6 +30649,17 @@
           "name": "Enabled",
           "output_required": false,
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule ID of slow attack protection, returned as an output parameter.",
+          "example": "4294967289",
+          "member": "string",
+          "name": "Id",
+          "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
