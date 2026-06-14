@@ -2591,7 +2591,7 @@
         },
         {
           "disabled": false,
-          "document": "Gender on the document.\n-M: man.\n-F: woman.\n-X: other gender identity.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Gender on the document.\n- M: man.\n- F: woman.\n- X: other gender identity.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "",
           "member": "string",
           "name": "Sex",
@@ -6987,7 +6987,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Residence category",
           "example": "RESIDENTE",
           "member": "string",
           "name": "CLASSIFICATION",
@@ -6997,7 +6997,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Residence validity term",
           "example": "01/01/1950",
           "member": "string",
           "name": "PRAZODERESIDENCIA",
