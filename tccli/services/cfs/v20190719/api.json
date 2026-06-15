@@ -1121,8 +1121,17 @@
         },
         {
           "disabled": false,
+          "document": "",
+          "example": "true",
+          "member": "bool",
+          "name": "Encrypted",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
           "document": "File system tag",
-          "example": "[{\"TagKey\":\"a\",\"TagValue\":1}]",
+          "example": "无",
           "member": "TagInfo",
           "name": "ResourceTags",
           "required": false,
@@ -1288,7 +1297,7 @@
         {
           "disabled": false,
           "document": "Whether a file system is encrypted",
-          "example": "False",
+          "example": "false",
           "member": "bool",
           "name": "Encrypted",
           "output_required": true,
@@ -1736,20 +1745,20 @@
         },
         {
           "disabled": false,
-          "document": "The path or file to be settled supports passing only one path and cannot be empty.",
-          "example": "/cfs/data",
-          "member": "string",
-          "name": "TaskPath",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
           "document": "Task name.",
           "example": "dataarchive",
           "member": "string",
           "name": "TaskName",
           "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The path or file to be settled supports passing only one path and cannot be empty.",
+          "example": "/cfs/data",
+          "member": "string",
+          "name": "TaskPath",
+          "required": false,
           "type": "string"
         },
         {

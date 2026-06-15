@@ -77,6 +77,13 @@
       "output": "CreateGrafanaNotificationChannelResponse",
       "status": "online"
     },
+    "CreateOnCallForm": {
+      "document": "Creates an on-call schedule.",
+      "input": "CreateOnCallFormRequest",
+      "name": "Create an On-Call Schedule",
+      "output": "CreateOnCallFormResponse",
+      "status": "online"
+    },
     "CreatePolicyGroup": {
       "document": "This API is used to add a policy group.",
       "input": "CreatePolicyGroupRequest",
@@ -222,6 +229,13 @@
       "input": "DeleteGrafanaNotificationChannelRequest",
       "name": "Deletes a Grafana notification channel",
       "output": "DeleteGrafanaNotificationChannelResponse",
+      "status": "online"
+    },
+    "DeleteOnCallForms": {
+      "document": "Deletes an on-call schedule.",
+      "input": "DeleteOnCallFormsRequest",
+      "name": "Delete an On-Call Schedule",
+      "output": "DeleteOnCallFormsResponse",
       "status": "online"
     },
     "DeletePolicyGroup": {
@@ -488,6 +502,20 @@
       "input": "DescribeMonitorTypesRequest",
       "name": "Queries monitor types",
       "output": "DescribeMonitorTypesResponse",
+      "status": "online"
+    },
+    "DescribeOnCallForm": {
+      "document": "Describes On-Call Schedule Details.",
+      "input": "DescribeOnCallFormRequest",
+      "name": "Describe On-Call Schedule Details",
+      "output": "DescribeOnCallFormResponse",
+      "status": "online"
+    },
+    "DescribeOnCallForms": {
+      "document": "Describes on-call schedule list.",
+      "input": "DescribeOnCallFormsRequest",
+      "name": "Describe On-Call Schedule List",
+      "output": "DescribeOnCallFormsResponse",
       "status": "online"
     },
     "DescribePolicyConditionList": {
@@ -985,6 +1013,13 @@
       "input": "UpdateGrafanaWhiteListRequest",
       "name": "Updates the Grafana allowlist",
       "output": "UpdateGrafanaWhiteListResponse",
+      "status": "online"
+    },
+    "UpdateOnCallForm": {
+      "document": "Modifies an on-call schedule.",
+      "input": "UpdateOnCallFormRequest",
+      "name": "Modify an On-Call Schedule",
+      "output": "UpdateOnCallFormResponse",
       "status": "online"
     },
     "UpdatePrometheusAgentStatus": {
@@ -2892,6 +2927,42 @@
       ],
       "usage": "out"
     },
+    "CoverStaffInfo": {
+      "document": "Shift personnel group information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Shift personnel ID group.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CoverStaffIDs",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Shift start time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "CoverStartTime",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Shift end time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "CoverEndTime",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "CreateAlarmNoticeRequest": {
       "document": "CreateAlarmNotice request structure.",
       "members": [
@@ -3594,6 +3665,133 @@
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateOnCallFormRequest": {
+      "document": "CreateOnCallForm request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The fixed value is monitor.",
+          "example": "monitor",
+          "member": "string",
+          "name": "Module",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "On-call schedule name.",
+          "example": "form-12345",
+          "member": "string",
+          "name": "OnCallFormName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "On-call personnel ID group.",
+          "example": "无",
+          "member": "StaffInfo",
+          "name": "StaffInfos",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Rotation type.",
+          "example": "无",
+          "member": "string",
+          "name": "RotationType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Shift change time.",
+          "example": "12:00",
+          "member": "string",
+          "name": "ShiftTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Effect time. Unit: seconds.",
+          "example": "1648742400",
+          "member": "int64",
+          "name": "EffectiveStartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End time of the validity period (in seconds).",
+          "example": "1649520000",
+          "member": "int64",
+          "name": "EffectiveEndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Time zone (-12 to 12).",
+          "example": "9",
+          "member": "float",
+          "name": "TimeZone",
+          "required": true,
+          "type": "float"
+        },
+        {
+          "disabled": false,
+          "document": "Description of the shift schedule.",
+          "example": "无",
+          "member": "string",
+          "name": "OnCallFormDesc",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Shift information.",
+          "example": "无",
+          "member": "CoverStaffInfo",
+          "name": "CoverStaffInfos",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Tag bound to the template",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateOnCallFormResponse": {
+      "document": "CreateOnCallForm response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "On-call schedule ID.",
+          "example": "form-12345",
+          "member": "string",
+          "name": "OnCallFormID",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -4930,6 +5128,60 @@
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteOnCallFormsRequest": {
+      "document": "DeleteOnCallForms request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The fixed value is monitor.",
+          "example": "monitor",
+          "member": "string",
+          "name": "Module",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "ID of the on-call schedule to be deleted.",
+          "example": "无",
+          "member": "string",
+          "name": "OnCallFormIDs",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteOnCallFormsResponse": {
+      "document": "DeleteOnCallForms response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "On-call schedule IDs failed to be deleted.",
+          "example": "无",
+          "member": "string",
+          "name": "FailedOnCallFormIDs",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "On-call schedule IDs deleted successfully.",
+          "example": "无",
+          "member": "string",
+          "name": "SuccessOnCallFormIDs",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -8132,6 +8384,150 @@
           "member": "MonitorTypeInfo",
           "name": "MonitorTypeInfos",
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOnCallFormRequest": {
+      "document": "DescribeOnCallForm request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The fixed value is monitor.",
+          "example": "monitor",
+          "member": "string",
+          "name": "Module",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "On-call schedule ID.",
+          "example": "无",
+          "member": "string",
+          "name": "OnCallFormID",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOnCallFormResponse": {
+      "document": "DescribeOnCallForm response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "On-call schedule details.",
+          "example": "无",
+          "member": "OneOnCallForm",
+          "name": "OnCallForm",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOnCallFormsRequest": {
+      "document": "DescribeOnCallForms request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The fixed value is monitor.",
+          "example": "无",
+          "member": "string",
+          "name": "Module",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination start offset.",
+          "example": "无",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of pages for pagination query.",
+          "example": "无",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Supports searching based on user ID.",
+          "example": "无",
+          "member": "string",
+          "name": "OnCallFormStaffIDs",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Rotation type",
+          "example": "无",
+          "member": "string",
+          "name": "RotationType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting method.",
+          "example": "无",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Supports searching bay on ID and name.",
+          "example": "无",
+          "member": "string",
+          "name": "OnCallFormName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOnCallFormsResponse": {
+      "document": "DescribeOnCallForms response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "On-call schedule information",
+          "example": "无",
+          "member": "OnCallForm",
+          "name": "OnCallForms",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "无",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -15123,6 +15519,228 @@
       ],
       "usage": "in"
     },
+    "OnCallForm": {
+      "document": "Shift information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Schedule ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "form-12345",
+          "member": "string",
+          "name": "OnCallFormID",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Shift name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "OnCallFormName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Schedule description\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "OnCallFormDesc",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Rotation type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "RotationType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Shift change time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ShiftTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Validity start time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "EffectiveStartTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Validity end time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "EffectiveEndTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Time zone\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "float",
+          "name": "TimeZone",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Current on-duty personnel\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CurrOnCallStaffs",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Tag bound to the template\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "OneOnCallForm": {
+      "document": "Shift details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Duty ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "OnCallFormID",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "On-call name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "OnCallFormName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Shift description\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "OnCallFormDesc",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "On-duty personnel\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "StaffInfo",
+          "name": "StaffInfos",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Rotation type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "RotationType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Shift change time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ShiftTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Start time of the on-call validity period\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "EffectiveStartTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "End time of the on-call validity period\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "EffectiveEndTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Time zone\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "float",
+          "name": "TimeZone",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Shift information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CoverStaffInfo",
+          "name": "CoverStaffInfos",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Tag bound to the template\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "Operator": {
       "document": "Operators supported by the instance",
       "members": [
@@ -18195,6 +18813,22 @@
       ],
       "type": "object"
     },
+    "StaffInfo": {
+      "document": "On-duty personnel ID group.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "On-duty personnel ID group.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"StaffIDs\":[                 \"123\",                 \"456\"             ]",
+          "member": "string",
+          "name": "StaffIDs",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "SyncPrometheusTempRequest": {
       "document": "SyncPrometheusTemp request structure.",
       "members": [
@@ -19427,6 +20061,132 @@
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateOnCallFormRequest": {
+      "document": "UpdateOnCallForm request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The fixed value is monitor.",
+          "example": "monitor",
+          "member": "string",
+          "name": "Module",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "On-call schedule ID.",
+          "example": "form-12345",
+          "member": "string",
+          "name": "OnCallFormID",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "On-call schedule name.",
+          "example": "test",
+          "member": "string",
+          "name": "OnCallFormName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "On-call personnel ID group.",
+          "example": "无",
+          "member": "StaffInfo",
+          "name": "StaffInfos",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Rotation type.",
+          "example": "day/week",
+          "member": "string",
+          "name": "RotationType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Shift change time.",
+          "example": "12:00",
+          "member": "string",
+          "name": "ShiftTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Effect time. Unit: seconds.",
+          "example": "1648742400",
+          "member": "int64",
+          "name": "EffectiveStartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End time of the validity period (in seconds).",
+          "example": "1649520000",
+          "member": "int64",
+          "name": "EffectiveEndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Time zone (-12 to 12).",
+          "example": "无",
+          "member": "float",
+          "name": "TimeZone",
+          "required": true,
+          "type": "float"
+        },
+        {
+          "disabled": false,
+          "document": "Description of the shift schedule.",
+          "example": "无",
+          "member": "string",
+          "name": "OnCallFormDesc",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Shift information.",
+          "example": "无",
+          "member": "CoverStaffInfo",
+          "name": "CoverStaffInfos",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateOnCallFormResponse": {
+      "document": "UpdateOnCallForm response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "On-call schedule ID.",
+          "example": "form-12345",
+          "member": "string",
+          "name": "OnCallFormID",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
