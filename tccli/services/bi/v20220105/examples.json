@@ -16,6 +16,14 @@
         "title": "page token Cleanup"
       }
     ],
+    "CreateDataTable": [
+      {
+        "document": "Create a data table",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDataTable\n<Common request parameters>\n\n{\n    \"Type\": 1,\n    \"Name\": \"testdata\",\n    \"FoldId\": 1,\n    \"DatasourceId\": \"testdata\",\n    \"TableName\": \"testdata\",\n    \"Sql\": \"testdata\",\n    \"ExcelUrl\": \"testdata\",\n    \"Fields\": [\n        {\n            \"DbName\": \"testdata\",\n            \"AliasName\": \"testdata\",\n            \"DbType\": \"testdata\",\n            \"FieldType\": \"testdata\",\n            \"FieldComplexType\": \"testdata\",\n            \"Mark\": \"testdata\",\n            \"FormatRule\": \"testdata\",\n            \"IsFilter\": true,\n            \"CalcType\": \"testdata\",\n            \"CalcFormula\": \"testdata\",\n            \"CalcDesc\": \"testdata\",\n            \"DictId\": 1,\n            \"DictName\": \"testdata\",\n            \"TableNodeId\": \"testdata\",\n            \"ExcelName\": \"testdata\",\n            \"TableName\": \"testdata\",\n            \"JsonPathName\": \"testdata\",\n            \"Granularity\": \"testdata\"\n        }\n    ],\n    \"ProjectId\": 1,\n    \"TableNodeType\": 1,\n    \"Tables\": [\n        {\n            \"TableNodeType\": 1,\n            \"TableNodeId\": \"testdata\",\n            \"ParentId\": \"testdata\",\n            \"TableId\": \"testdata\",\n            \"TableName\": \"testdata\",\n            \"Fields\": [\n                {\n                    \"DbName\": \"testdata\",\n                    \"AliasName\": \"testdata\",\n                    \"DbType\": \"testdata\",\n                    \"FieldType\": \"testdata\",\n                    \"FieldComplexType\": \"testdata\",\n                    \"Mark\": \"testdata\",\n                    \"FormatRule\": \"testdata\",\n                    \"IsFilter\": true,\n                    \"CalcType\": \"testdata\",\n                    \"CalcFormula\": \"testdata\",\n                    \"CalcDesc\": \"testdata\",\n                    \"DictId\": 1,\n                    \"DictName\": \"testdata\",\n                    \"TableNodeId\": \"testdata\",\n                    \"ExcelName\": \"testdata\",\n                    \"TableName\": \"testdata\",\n                    \"JsonPathName\": \"testdata\",\n                    \"Granularity\": \"testdata\"\n                }\n            ],\n            \"DatasourceId\": 1,\n            \"TableAlias\": \"testdata\"\n        }\n    ],\n    \"Joins\": [\n        {\n            \"JoinId\": \"testdata\",\n            \"SourceTableNodeId\": \"testdata\",\n            \"TargetTableNodeId\": \"testdata\",\n            \"JoinType\": \"testdata\",\n            \"Fields\": [\n                {\n                    \"FieldJoinId\": \"testdata\",\n                    \"SourceField\": {\n                        \"DbName\": \"testdata\",\n                        \"AliasName\": \"testdata\",\n                        \"DbType\": \"testdata\",\n                        \"FieldType\": \"testdata\",\n                        \"FieldComplexType\": \"testdata\",\n                        \"Mark\": \"testdata\",\n                        \"FormatRule\": \"testdata\",\n                        \"IsFilter\": true,\n                        \"CalcType\": \"testdata\",\n                        \"CalcFormula\": \"testdata\",\n                        \"CalcDesc\": \"testdata\",\n                        \"DictId\": 1,\n                        \"DictName\": \"testdata\",\n                        \"TableNodeId\": \"testdata\",\n                        \"ExcelName\": \"testdata\",\n                        \"TableName\": \"testdata\",\n                        \"JsonPathName\": \"testdata\",\n                        \"Granularity\": \"testdata\"\n                    }\n                }\n            ]\n        }\n    ],\n    \"ExtInfo\": \"testdata\",\n    \"DlcExtInfo\": \"testdata\",\n    \"AsyncRequest\": true,\n    \"ParentTranId\": \"testdata\",\n    \"ApiDatasourceConfig\": {\n        \"FieldsJsonData\": \"testdata\",\n        \"ConnectionType\": 1,\n        \"FrequencyConfig\": {\n            \"Frequency\": \"testdata\",\n            \"Dates\": [\n                0\n            ],\n            \"Time\": \"testdata\",\n            \"IntervalTime\": 1,\n            \"IntervalTimeUnit\": 1,\n            \"Hours\": [\n                0\n            ],\n            \"Minute\": [\n                0\n            ]\n        },\n        \"Url\": \"testdata\",\n        \"RequestMethod\": 1,\n        \"RequestHeader\": \"testdata\",\n        \"RequestParams\": \"testdata\",\n        \"RequestBody\": \"testdata\",\n        \"UserName\": \"testdata\",\n        \"Password\": \"testdata\",\n        \"AuthorizationType\": 1,\n        \"TableId\": 1,\n        \"JsonPathDbNameMap\": \"testdata\"\n    },\n    \"ParamList\": [\n        {\n            \"ParamName\": \"testdata\",\n            \"DefaultValue\": \"testdata\",\n            \"ParamType\": \"testdata\",\n            \"FormatRule\": \"testdata\",\n            \"ComplexType\": \"testdata\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"Id\": 0,\n            \"AccessKey\": \"testdata\",\n            \"ProjectId\": 1,\n            \"TranId\": \"testdata\",\n            \"TranStatus\": 0\n        },\n        \"Extra\": \"testdata\",\n        \"Msg\": \"testdata\",\n        \"RequestId\": \"testdata\"\n    }\n}",
+        "title": "Creating a Data Table"
+      }
+    ],
     "CreateDatasource": [
       {
         "document": "This example shows you how to create a data source.",
@@ -38,6 +46,14 @@
         "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateEmbedToken\n<Common request parameters>\n\n{\n    \"ProjectId\": 1982493789748932,\n    \"PageId\": 1982493789748932,\n    \"Intention\": \"Intention\",\n    \"Scope\": \"Scope\",\n    \"ExpireTime\": \"ExpireTime\",\n    \"ExtraParam\": \"ExtraParam\",\n    \"UserCorpId\": \"UserCorpId\",\n    \"UserId\": \"UserId\",\n    \"TicketNum\": 1982493789748932,\n    \"GlobalParam\": \"GlobalParam\",\n    \"TokenType\": 1982493789748932,\n    \"TokenNum\": 1982493789748932\n}",
         "output": "{\n    \"Response\": {\n        \"Msg\": \"success\",\n        \"RequestId\": \"adfacf71-c59c-4569-897d-955a1e41ee89\",\n        \"Extra\": \"\",\n        \"Data\": {\n            \"Id\": 11,\n            \"ProjectId\": \"1\",\n            \"PageId\": null,\n            \"ExtraParam\": \"\",\n            \"Scope\": \"panel\",\n            \"ExpireTime\": 10,\n            \"CreatedUser\": null,\n            \"CreatedAt\": \"2022-04-28 14:26:01\",\n            \"UpdatedUser\": null,\n            \"UpdatedAt\": \"2022-04-28 14:26:01\",\n            \"BIToken\": \"300cf2a4-cfb8-47b8-9bc0-4a1f1f74bc1d\",\n            \"UserCorpId\": \"\",\n            \"UserId\": \"\",\n            \"TicketNum\": 0,\n            \"GlobalParam\": \"[{\\\"ParamKey\\\": \\\"province\\\",         \\\"JoinType\\\": \\\"and\\\",         \\\"WhereList\\\": [             {                 \\\"Operator\\\": \\\"-is\\\",                 \\\"Value\\\": [                     \\\"Chongqing City\\\",                     \\\"Hubei Province\\\",                     \\\"Hunan Province\\\",                     \\\"Sichuan Province\\\"             ]             }         ]     } ]\"\n        }\n    }\n}",
         "title": "Creating a Token for Report Embedding - Strong Authentication"
+      }
+    ],
+    "CreatePermissionRanks": [
+      {
+        "document": "Create row/column permissions",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePermissionRanks\n<Common request parameters>\n\n{\n    \"TableId\": 10628115,\n    \"Mode\": \"all\",\n    \"RoleType\": \"others\",\n    \"RoleId\": 0,\n    \"RulerInfo\": \"{\\\"Logic\\\":\\\"and\\\",\\\"Items\\\":[]}\",\n    \"Type\": \"column\",\n    \"OpenStatus\": \"open\",\n    \"ProjectId\": 11055177,\n    \"RowColumnConfigList\": []\n}",
+        "output": "{\n    \"Response\": {\n        \"Msg\": \"Default business success\",\n        \"RequestId\": \"131ecec6-e8c7-4147-af1c-3c5725307583\",\n        \"Extra\": \"\",\n        \"Data\": null\n    }\n}",
+        "title": "Creating row/column permissions"
       }
     ],
     "CreateProject": [
@@ -140,6 +156,14 @@
         "title": "Checking Project List Data"
       }
     ],
+    "DescribeSourceFieldList": [
+      {
+        "document": "raw data table field interface",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSourceFieldList\n<Common request parameters>\n\n{\n    \"DataSourceId\": 0,\n    \"TableName\": \"testdata\",\n    \"Sql\": \"testdata\",\n    \"ProjectId\": 1,\n    \"AsyncRequest\": true,\n    \"TranId\": \"testdata\",\n    \"DlcExtInfo\": \"testdata\",\n    \"ParamList\": [\n        {\n            \"ParamName\": \"testdata\",\n            \"DefaultValue\": \"testdata\",\n            \"ParamType\": \"testdata\",\n            \"FormatRule\": \"testdata\",\n            \"ComplexType\": \"testdata\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Extra\": \"testdata\",\n        \"Msg\": \"testdata\",\n        \"Data\": {\n            \"List\": [\n                {\n                    \"DbName\": \"testdata\",\n                    \"AliasName\": \"testdata\",\n                    \"DbType\": \"testdata\",\n                    \"FieldType\": \"testdata\",\n                    \"Mark\": \"testdata\",\n                    \"ExcelName\": \"testdata\",\n                    \"DictId\": 0,\n                    \"DictName\": \"testdata\",\n                    \"TableNodeId\": \"testdata\",\n                    \"TableName\": \"testdata\",\n                    \"FieldComplexType\": \"testdata\",\n                    \"FormatRule\": \"testdata\",\n                    \"IsFilter\": true,\n                    \"CalcType\": \"testdata\",\n                    \"CalcFormula\": \"testdata\",\n                    \"CalcDesc\": \"testdata\",\n                    \"JsonPathName\": \"testdata\",\n                    \"Granularity\": \"testdata\"\n                }\n            ],\n            \"TranId\": \"testdata\",\n            \"TranStatus\": 0\n        },\n        \"RequestId\": \"testdata\"\n    }\n}",
+        "title": "Original data table field API"
+      }
+    ],
     "DescribeUserProjectList": [
       {
         "document": "This example shows you how to check a user in the project.",
@@ -194,6 +218,22 @@
         "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyProject\n<Common request parameters>\n\n{\n    \"Id\": 1982493789748932,\n    \"Name\": \"Name\",\n    \"ColorCode\": \"ColorCode\",\n    \"Logo\": \"Logo\",\n    \"Mark\": \"Mark\",\n    \"IsApply\": false,\n    \"Seed\": \"Seed\",\n    \"DefaultPanelType\": 1982493789748932,\n    \"PanelScope\": \"PanelScope\",\n    \"ManagePlatform\": \"ManagePlatform\"\n}",
         "output": "{\n    \"Response\": {\n        \"Extra\": \"\",\n        \"Data\": \"\",\n        \"Msg\": \"Successful\",\n        \"RequestId\": \"RequestId-22131ds\"\n    }\n}",
         "title": "Modifying a Project"
+      }
+    ],
+    "ModifyResourceUser": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyResourceUser\n<Common request parameters>\n\n{\n    \"ProjectId\": 560,\n    \"UserId\": \"u1\",\n    \"EntityIds\": [\n        2477\n    ],\n    \"ResourceType\": \"page\",\n    \"Resource\": {\n        \"ResourceList\": [\n            {\n                \"ResourceName\": \"PageView\",\n                \"ResourceValue\": true,\n                \"CanChange\": true\n            }\n        ]\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Msg\": \"Default business success\",\n        \"RequestId\": \"uuid\",\n        \"Extra\": \"\",\n        \"Data\": null\n    }\n}",
+        "title": "Modify"
+      }
+    ],
+    "ModifyResourceUserGroupResource": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: bi.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyResourceUserGroupResource\n<Common request parameters>\n\n{\n    \"ProjectId\": 1,\n    \"UserGroupId\": \"1\",\n    \"EntityIds\": [\n        1\n    ],\n    \"ResourceType\": \"page\",\n    \"Resource\": {\n        \"ResourceList\": [\n            {\n                \"ResourceName\": \"PageView\",\n                \"ResourceValue\": true,\n                \"CanChange\": true\n            }\n        ]\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Msg\": \"Default business success\",\n        \"RequestId\": \"uid\",\n        \"Extra\": \"\",\n        \"Data\": null\n    }\n}",
+        "title": "Updating"
       }
     ],
     "ModifyUserRole": [
