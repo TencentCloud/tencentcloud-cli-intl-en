@@ -15,7 +15,7 @@
       "status": "online"
     },
     "AssociateTargetGroups": {
-      "document": "This API is used to bind target groups to Cloud Load Balancer listeners (Layer-4 protocol) or forwarding rules (L7 protocol).\nThis API is asynchronous. After it returns a successful result, you need to call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as input parameter to check whether this task is successful.\nThis API is used to describe restrictions.\n-Binding a legacy version target group to a Layer-4 listener requires the listener to have backend target groups enabled.\n-Layer-7 bind target group. LocationId is a required item in the data structure TargetGroupAssociation.\n-The VPC of the Cloud Load Balancer must match the VPC of the target group.",
+      "document": "This API is used to bind target groups to Cloud Load Balancer listeners (Layer-4 protocol) or forwarding rules (L7 protocol).\nThis API is asynchronous. After it returns a successful result, you need to call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as input parameter to check whether this task is successful.\nThis API is used to describe restrictions.\n- Binding a legacy version target group to a Layer-4 listener requires the listener to have backend target groups enabled.\n- Layer-7 bind target group. LocationId is a required item in the data structure TargetGroupAssociation.\n- The VPC of the Cloud Load Balancer must match the VPC of the target group.",
       "input": "AssociateTargetGroupsRequest",
       "name": "Binds target groups to rules",
       "output": "AssociateTargetGroupsResponse",
@@ -57,7 +57,7 @@
       "status": "online"
     },
     "CloneLoadBalancer": {
-      "document": "This API is used to clone a load balancing instance with identical rules and binding relationships based on the designated Cloud Load Balancer. The cloning process is an asynchronous operation. The cloned data is based on the status when calling CloneLoadBalancer. If the source CLB changes after calling CloneLoadBalancer, the change rules will not be cloned.\n\nNote: The instance creation status can be queried based on the returned requestId by accessing the DescribeTaskStatus API (https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1).\n\nThis API is used to describe restriction descriptions.\nThis API is used to set instance attribute restrictions.\n-The cloning feature supports both pay-as-you-go and yearly/monthly subscription instances. For cloned yearly/monthly subscription instances, the new instance's network billing mode switches to billing by hourly bandwidth, with its bandwidth and specifications remaining consistent with the settings of the original instance.\n-CLB instances not associated with billable items cannot be cloned (historic free activity creation).\n-Classic CLB instances and Anti-DDoS CLBs cannot be cloned.\n-Cloning of classic network-based instances is not supported.\n-Anycast instances cannot be cloned.\n-IPv6 NAT64 edition instances cannot be cloned.\n-Blocked or frozen instances cannot be cloned.\n-Before performing the cloning operation, make sure that all certificates used on the instance have not expired, otherwise cloning will fail.\nThis API is used to set quota dimension restrictions.\n-Cloning is not supported when the number of instance listeners exceeds 50.\n-Cloning is not supported when the public network bandwidth cap of a shared instance exceeds 2G.\n\nThis API is used to call APIs.\nThis API is used to specify the BGP bandwidth package ID.\nThis API is used to perform exclusive cluster cloning with corresponding parameters, otherwise shared instance creation will be used.",
+      "document": "This API is used to clone a load balancing instance with identical rules and binding relationships based on the designated Cloud Load Balancer. The cloning process is an asynchronous operation. The cloned data is based on the status when calling CloneLoadBalancer. If the source CLB changes after calling CloneLoadBalancer, the change rules will not be cloned.\n\nNote: The instance creation status can be queried based on the returned requestId by accessing the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API.\n\nThis API is used to describe restriction descriptions.\nThis API is used to set instance attribute restrictions.\n- The cloning feature supports both pay-as-you-go and yearly/monthly subscription instances. For cloned yearly/monthly subscription instances, the new instance's network billing mode switches to billing by hourly bandwidth, with its bandwidth and specifications remaining consistent with the settings of the original instance.\n- CLB instances not associated with billable items cannot be cloned (historic free activity creation).\n- Classic CLB instances and Anti-DDoS CLBs cannot be cloned.\n- Cloning of classic network-based instances is not supported.\n- Anycast instances cannot be cloned.\n- IPv6 NAT64 edition instances cannot be cloned.\n- Blocked or frozen instances cannot be cloned.\n- Before performing the cloning operation, make sure that all certificates used on the instance have not expired, otherwise cloning will fail.\n\nThis API is used to set quota dimension restrictions.\n- Cloning is not supported when the number of instance listeners exceeds 50.\n- Cloning is not supported when the public network bandwidth cap of a shared instance exceeds 2G.\n\nThis API is used to call APIs.\nThis API is used to specify the BGP bandwidth package ID.\nThis API is used to perform exclusive cluster cloning with corresponding parameters, otherwise shared instance creation will be used.",
       "input": "CloneLoadBalancerRequest",
       "name": "Clones a CLB instance",
       "output": "CloneLoadBalancerResponse",
@@ -169,7 +169,7 @@
       "status": "online"
     },
     "DeregisterFunctionTargets": {
-      "document": "This API is used to unbind a cloud function from the forwarding rule of a Cloud Load Balancer. For a layer-7 (HTTP/HTTPS) listener, the forwarding rule must be specified by LocationId or Domain+Url.\nThis API is used to perform asynchronous operations. After it returns a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.\nThis API is used to describe restrictions.\n\n-SCF binding is supported only in Guangzhou, Shenzhen Finance, Shanghai, Shanghai Finance, Beijing, Chengdu, Hong Kong (China), Singapore, Tokyo, and Silicon Valley.\n-Only the standard account type supports binding SCF. The classic account type is unsupported. We recommend upgrading to the standard account type. For more information, see [Account Types](https://www.tencentcloud.com/document/product/684/15246).\n-Classic CLB does not support binding SCF.\n-Basic Network Type does not support binding SCF.\n-CLB supports binding ALL SCFs in the same region by default, supports cross-VPC binding, but cross-region selection is not supported.\n-Currently, only IPv4 and IPv6 NAT64 versions of Cloud Load Balancer support binding SCF. IPv6 version is not currently supported.\n-Only layer-7 (HTTP, HTTPS) listeners support binding SCF. Layer-4 (TCP, UDP, TCP SSL) listeners and layer-7 QUIC listeners are unsupported.\n-CLB binding SCF only supports binding cloud functions of the \"Event function\" type.",
+      "document": "This API is used to unbind a cloud function from the forwarding rule of a Cloud Load Balancer. For a layer-7 (HTTP/HTTPS) listener, the forwarding rule must be specified by LocationId or Domain+Url.\nThis API is used to perform asynchronous operations. After it returns a successful result, call the [DescribeTaskStatus](https://www.tencentcloud.com/document/product/214/30683?from_cn_redirect=1) API with the returned RequestID as an input parameter to check whether this task is successful.\nThis API is used to describe restrictions.\n\n- SCF binding is supported only in Guangzhou, Shenzhen Finance, Shanghai, Shanghai Finance, Beijing, Chengdu, Hong Kong (China), Singapore, Tokyo, and Silicon Valley.\n- Only the standard account type supports binding SCF. The classic account type is unsupported. We recommend upgrading to the standard account type. For more information, see [Account Types](https://www.tencentcloud.com/document/product/684/15246).\n- Classic CLB does not support binding SCF.\n- Basic Network Type does not support binding SCF.\n- CLB supports binding ALL SCFs in the same region by default, supports cross-VPC binding, but cross-region selection is not supported.\n- Currently, only IPv4 and IPv6 NAT64 versions of Cloud Load Balancer support binding SCF. IPv6 version is not currently supported.\n- Only layer-7 (HTTP, HTTPS) listeners support binding SCF. Layer-4 (TCP, UDP, TCP SSL) listeners and layer-7 QUIC listeners are unsupported.\n- CLB binding SCF only supports binding cloud functions of the \"Event function\" type.",
       "input": "DeregisterFunctionTargetsRequest",
       "name": "Unbinding an SCF function from a forwarding rule",
       "output": "DeregisterFunctionTargetsResponse",
@@ -267,9 +267,9 @@
       "status": "online"
     },
     "DescribeIdleLoadBalancers": {
-      "document": "Idle CLB instances are pay-as-you-go load balancers that, within seven days after the creation, do not have rules configured or the configured rules are not associated with any servers. ",
+      "document": "Idle CLB instances are pay-as-you-go load balancers that, within seven days after the creation, do not have rules configured or the configured rules are not associated with any servers.",
       "input": "DescribeIdleLoadBalancersRequest",
-      "name": "Queries the list of CLB instances",
+      "name": "Queries the list of CLB idle instances",
       "output": "DescribeIdleLoadBalancersResponse",
       "status": "online"
     },
@@ -348,6 +348,13 @@
       "input": "DescribeRewriteRequest",
       "name": "Queries the redirection relationship between CLB forwarding rules",
       "output": "DescribeRewriteResponse",
+      "status": "online"
+    },
+    "DescribeTargetGroupInstanceStatus": {
+      "document": "This API is used to query the backend service status of a target group. Currently, only GWLB type target groups support querying backend service status.",
+      "input": "DescribeTargetGroupInstanceStatusRequest",
+      "name": "Queries the backend service status of a target group",
+      "output": "DescribeTargetGroupInstanceStatusResponse",
       "status": "online"
     },
     "DescribeTargetGroupInstances": {
@@ -477,7 +484,7 @@
       "status": "online"
     },
     "ModifyFunctionTargets": {
-      "document": "This API is used to modify the SCF bound to a Cloud Load Balancer forwarding rule.\nThis API is used to describe restrictions.\n-Only supports binding SCF of the \"Event function\" type.",
+      "document": "This API is used to modify the SCF bound to a Cloud Load Balancer forwarding rule.\nThis API is used to describe restrictions.\n- Only supports binding SCF of the \"Event function\" type.",
       "input": "ModifyFunctionTargetsRequest",
       "name": "Modifies the cloud functions associated with a forwarding rule",
       "output": "ModifyFunctionTargetsResponse",
@@ -498,7 +505,7 @@
       "status": "online"
     },
     "ModifyLoadBalancerSla": {
-      "document": "This API is used to adjust the performance capacity specification of usage-based billing mode instances, for example upgrading from shared type to performance capacity type or modifying the specification of LCU-supported instances.\nThis API is used to set use limits.\n-This API only supports adjustments for pay-as-you-go CLB instances. For CLB instance upgrades with annual/monthly subscription, make adjustments through the console.\n-After upgrading from a shared instance to a performance and capacity instance, reverting to a shared instance is not supported.\n-A classic CLB instance does not support upgrading to a performance and capacity instance.",
+      "document": "This API is used to adjust the performance capacity specification of usage-based billing mode instances, for example, upgrading from shared type to performance capacity type, or adjusting the specification of performance and capacity instances.\nlimit:\n-After upgrading from a shared instance to a performance and capacity instance, you cannot revert to a shared instance.\n-A classic CLB instance does not support upgrading to a performance and capacity instance.",
       "input": "ModifyLoadBalancerSlaRequest",
       "name": "Adjust the performance capacity specification of an instance",
       "output": "ModifyLoadBalancerSlaResponse",
@@ -554,7 +561,7 @@
       "status": "online"
     },
     "RegisterFunctionTargets": {
-      "document": "This API is used to bind a cloud function to the forwarding rule of a Cloud Load Balancer. Before that, you need to create a related HTTP or HTTPS listener and forwarding rule.\nThis API is used to perform asynchronous operations. After returning a successful result, call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.\nThis API is used to describe restrictions.\n-SCF binding is supported only in Guangzhou, Shenzhen Finance, Shanghai, Shanghai Finance, Beijing, Chengdu, Hong Kong (China), Singapore, Tokyo, and Silicon Valley.\n-Only the standard account type supports binding SCF. The classic account type is unsupported. We recommend upgrading to the standard account type. For more information, see [Checking Account Type](https://www.tencentcloud.com/document/product/684/15246). \n-Classic CLB does not support binding SCF.\n-Basic Network Type does not support binding SCF.\n-CLB supports binding ALL SCFs in the same region by default, supports cross-VPC binding, but cross-region selection is not supported.\n-Currently, only IPv4 and IPv6 NAT64 versions of Cloud Load Balancer support binding SCF. IPv6 version is not currently supported.\n-Only layer-7 (HTTP, HTTPS) listeners support binding SCF. Layer-4 (TCP, UDP, TCP SSL) listeners and layer-7 QUIC listeners are unsupported.\n- CLB binding SCF only supports binding SCF of the \"Event function\" type.\n-A forwarding rule supports binding only one SCF.",
+      "document": "This API is used to bind a cloud function to the forwarding rule of a Cloud Load Balancer. Before that, you need to create a related HTTP or HTTPS listener and forwarding rule.\nThis API is used to perform asynchronous operations. After returning a successful result, call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.\nThis API is used to describe restrictions.\n- SCF binding is supported only in Guangzhou, Shenzhen Finance, Shanghai, Shanghai Finance, Beijing, Chengdu, Hong Kong (China), Singapore, Tokyo, and Silicon Valley.\n- Only the standard account type supports binding SCF. The classic account type is unsupported. We recommend upgrading to the standard account type. For more information, see [Checking Account Type](https://www.tencentcloud.com/document/product/684/15246). \n- Classic CLB does not support binding SCF.\n- Basic Network Type does not support binding SCF.\n- CLB supports binding ALL SCFs in the same region by default, supports cross-VPC binding, but cross-region selection is not supported.\n- Currently, only IPv4 and IPv6 NAT64 versions of Cloud Load Balancer support binding SCF. IPv6 version is not currently supported.\n- Only layer-7 (HTTP, HTTPS) listeners support binding SCF. Layer-4 (TCP, UDP, TCP SSL) listeners and layer-7 QUIC listeners are unsupported.\n- CLB binding SCF only supports binding SCF of the \"Event function\" type.\n- A forwarding rule supports binding only one SCF.",
       "input": "RegisterFunctionTargetsRequest",
       "name": "Binds an SCF function with a forwarding rule",
       "output": "RegisterFunctionTargetsResponse",
@@ -581,6 +588,13 @@
       "output": "RegisterTargetsWithClassicalLBResponse",
       "status": "online"
     },
+    "RenewLoadBalancers": {
+      "document": "This API is used to renew annual and monthly subscription instances.",
+      "input": "RenewLoadBalancersRequest",
+      "name": "Renewing Yearly/Monthly Subscription Instances",
+      "output": "RenewLoadBalancersResponse",
+      "status": "online"
+    },
     "ReplaceCertForLoadBalancers": {
       "document": "This API (ReplaceCertForLoadBalancers) is used to replace the certificate associated with a CLB instance. A new certificates can be associated with a CLB only after the original certificate is disassociated from it.\nThis API supports replacing server certificates and client certificates.\nThe new certificate to be used can be specified by passing in the certificate ID. If no certificate ID is specified, relevant information such as certificate content must be passed in to create a new certificate and bind it to the CLB.\nNote: This API can only be called in the Guangzhou region; for other regions, an error will occur due to domain name resolution problems.",
       "input": "ReplaceCertForLoadBalancersRequest",
@@ -603,7 +617,7 @@
       "status": "online"
     },
     "SetLoadBalancerSecurityGroups": {
-      "document": "This API is used to bind or unbind security groups for a public network load balancing instance. To query currently bound security groups of a load balancing instance, use the DescribeLoadBalancers API (https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1). This API follows set semantics.\nThis API is used to pass in all security groups that should be bound to the Cloud Load Balancer instance during the binding operation (bound + new binding).\nFor unbinding operations, the input parameters should specify all security groups bound to a CLB instance after unbinding. If you want to unbind all security groups, you can omit this parameter or input an empty array. Note: After a private network CLB is bound to an EIP, the security groups on the CLB do not take effect for the traffic from the EIP, but take effect for the traffic from the private network CLB.",
+      "document": "This API is used to bind or unbind security groups for a public network load balancing instance. To query currently bound security groups of a load balancing instance, use the [DescribeLoadBalancers]((https://www.tencentcloud.com/document/product/1108/48459?from_cn_redirect=1)) API. This API follows set semantics.\nThis API is used to pass in all security groups that should be bound to the Cloud Load Balancer instance during the binding operation (bound + new binding).\nFor unbinding operations, the input parameters should specify all security groups bound to a CLB instance after unbinding. If you want to unbind all security groups, you can omit this parameter or input an empty array. Note: After a private network CLB is bound to an EIP, the security groups on the CLB do not take effect for the traffic from the EIP, but take effect for the traffic from the private network CLB.",
       "input": "SetLoadBalancerSecurityGroupsRequest",
       "name": "Configures security groups for a CLB instance",
       "output": "SetLoadBalancerSecurityGroupsResponse",
@@ -937,11 +951,11 @@
       "type": "object"
     },
     "AvailableZoneAffinityInfo": {
-      "document": "",
+      "document": "Availability zone forward affinity info",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether to enable availability zone forwarding affinity. true: enable availability zone forwarding affinity; false: enable availability zone forwarding affinity.",
           "example": "true",
           "member": "bool",
           "name": "Enable",
@@ -952,7 +966,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The threshold for availability zone forwarding affinity failure. When the healthy ratio of backend services in an availability zone is less than this threshold, the Cloud Load Balancer will exit availability zone forwarding affinity and convert to forwarding across all availability zones.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "65",
           "member": "uint64",
           "name": "ExitRatio",
@@ -963,7 +977,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The threshold for re-enabling availability zone affinity forwarding. When forwarding across all availability zones and the health ratio of backend services in the Cloud Load Balancer AZ is greater than or equal to this threshold, the CLB will enter availability zone affinity forwarding again.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "80",
           "member": "uint64",
           "name": "ReentryRatio",
@@ -1077,6 +1091,16 @@
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The availability zone where the backend service resides, such as ap-guangzhou-1\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "Zone",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1214,7 +1238,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "CLB instance ID",
+          "document": "<p>CLB instance ID.</p>",
           "example": "lb-dx98lwo0",
           "member": "string",
           "name": "LoadBalancerId",
@@ -1223,7 +1247,7 @@
         },
         {
           "disabled": false,
-          "document": "List of weights to be modified in batches",
+          "document": "<p>List of weights to be modified in batch. The ModifyList array can contain no more than 100 elements, ModifyList[i].Targets can have no more than 50, and the total number of Targets must not exceed 500.</p>",
           "example": "无",
           "member": "RsWeightRule",
           "name": "ModifyList",
@@ -1846,7 +1870,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "CLB listener ID",
+          "document": "<p>CLB listener ID</p>",
           "example": "lbl-hscepds6",
           "member": "string",
           "name": "ListenerId",
@@ -1856,7 +1880,7 @@
         },
         {
           "disabled": false,
-          "document": "CLB listener port",
+          "document": "<p>CLB listener port</p>",
           "example": "80",
           "member": "int64",
           "name": "ListenerPort",
@@ -1866,7 +1890,7 @@
         },
         {
           "disabled": false,
-          "document": "Backend forwarding port of a listener",
+          "document": "<p>listener backend forwarding port</p>",
           "example": "8080",
           "member": "int64",
           "name": "InstancePort",
@@ -1876,7 +1900,7 @@
         },
         {
           "disabled": false,
-          "document": "Listener name",
+          "document": "<p>Listener name</p>",
           "example": "CLASSIC-LB-LISTENER",
           "member": "string",
           "name": "ListenerName",
@@ -1886,7 +1910,7 @@
         },
         {
           "disabled": false,
-          "document": "Listener protocol type",
+          "document": "<p>Listener protocol type</p>",
           "example": "TCP",
           "member": "string",
           "name": "Protocol",
@@ -1896,7 +1920,7 @@
         },
         {
           "disabled": false,
-          "document": "Session persistence time",
+          "document": "<p>Session persistence time</p>",
           "example": "0",
           "member": "int64",
           "name": "SessionExpire",
@@ -1906,7 +1930,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether health check is enabled. 1: enabled; 0: disabled.",
+          "document": "<p>Whether health check is enabled: 1 (enabled), 0 (disabled)</p>",
           "example": "1",
           "member": "int64",
           "name": "HealthSwitch",
@@ -1916,7 +1940,7 @@
         },
         {
           "disabled": false,
-          "document": "Response timeout period",
+          "document": "<p>Response timeout</p><p>Unit: second</p>",
           "example": "2",
           "member": "int64",
           "name": "TimeOut",
@@ -1926,7 +1950,7 @@
         },
         {
           "disabled": false,
-          "document": "Check interval",
+          "document": "<p>Check interval</p><p>Unit: seconds</p>",
           "example": "5",
           "member": "int64",
           "name": "IntervalTime",
@@ -1936,7 +1960,7 @@
         },
         {
           "disabled": false,
-          "document": "Health threshold",
+          "document": "<p>Health threshold</p>",
           "example": "3",
           "member": "int64",
           "name": "HealthNum",
@@ -1946,7 +1970,7 @@
         },
         {
           "disabled": false,
-          "document": "Unhealthy threshold",
+          "document": "<p>Unhealthy threshold</p>",
           "example": "3",
           "member": "int64",
           "name": "UnhealthNum",
@@ -1956,7 +1980,7 @@
         },
         {
           "disabled": false,
-          "document": "Request balancing method for listeners of the classic public network CLB. An empty string or wrr indicates weighted round robin. ip_hash indicates consistent hashing based on the accessed source IP address. least_conn indicates least connections.",
+          "document": "<p>Request balancing method for listeners of the classic public network CLB. An empty string or wrr indicates weighted round robin. ip_hash indicates consistent hashing based on the accessed source IP address. least_conn indicates least connections.</p>",
           "example": "wrr",
           "member": "string",
           "name": "HttpHash",
@@ -1966,7 +1990,7 @@
         },
         {
           "disabled": false,
-          "document": "Health check return code for HTTP and HTTPS listeners of a public network classic CLB. For more information, see the explanation of the field in the listener creating API.",
+          "document": "<p>Health check return code of HTTP and HTTPS listeners for public network CLB. For details, see the explanation of this field in listener creation API.</p>",
           "example": "31",
           "member": "int64",
           "name": "HttpCode",
@@ -1976,7 +2000,7 @@
         },
         {
           "disabled": false,
-          "document": "Health check path for HTTP and HTTPS listeners of a public network classic CLB",
+          "document": "<p>Health check path of HTTP and HTTPS listeners for public network CLB</p>",
           "example": "/healthchk",
           "member": "string",
           "name": "HttpCheckPath",
@@ -1986,7 +2010,7 @@
         },
         {
           "disabled": false,
-          "document": "Authentication method for an HTTPS listener of a public network classic CLB",
+          "document": "<p>Authentication method of the HTTPS listener for public network CLB</p>",
           "example": "UNIDIRECTIONAL",
           "member": "string",
           "name": "SSLMode",
@@ -1996,7 +2020,7 @@
         },
         {
           "disabled": false,
-          "document": "Server certificate ID for an HTTPS listener of a public network classic CLB",
+          "document": "<p>Server certificate ID of the HTTPS listener for the public network CLB</p>",
           "example": "Cps86Nwh",
           "member": "string",
           "name": "CertId",
@@ -2006,7 +2030,7 @@
         },
         {
           "disabled": false,
-          "document": "Client certificate ID for an HTTPS listener of a public network classic CLB",
+          "document": "<p>Client certificate ID of the HTTPS listener for public network CLB</p>",
           "example": "FYybUazg",
           "member": "string",
           "name": "CertCaId",
@@ -2016,7 +2040,7 @@
         },
         {
           "disabled": false,
-          "document": "Listener status. Value range: 0 (creating), 1 (running)",
+          "document": "<p>Listener status. 0 indicates creating in progress, 1 indicates running.</p>",
           "example": "1",
           "member": "int64",
           "name": "Status",
@@ -2203,7 +2227,7 @@
         },
         {
           "disabled": false,
-          "document": "Applicable only to public network clb. AZ ID, both availability zone ID and name are supported. specify availability zone to create a load balancing instance, for example: 100001 or ap-guangzhou-1. if not passed, queries CVM instances in all azs. if needed, call the API for the query DescribeZones (https://www.tencentcloud.com/document/product/213/15707?from_cn_redirect=1) to specify availability zone.",
+          "document": "Applicable only to public network clb. AZ ID, both availability zone ID and name are supported. specify availability zone to create a load balancing instance, for example: 100001 or ap-guangzhou-1. if not passed, queries CVM instances in all azs. if needed, call the API for the query [DescribeZones](https://www.tencentcloud.com/document/product/213/15707?from_cn_redirect=1) to specify availability zone.",
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "ZoneId",
@@ -2311,7 +2335,7 @@
         },
         {
           "disabled": false,
-          "document": "Applicable only to private network clb. when connected to nearby, select availability zone for deployment. you can call DescribeZones (https://www.tencentcloud.com/document/product/213/15707?from_cn_redirect=1) to query the availability zone list.",
+          "document": "Applicable only to private network clb. when connected to nearby, select availability zone for deployment. you can call [DescribeZones](https://www.tencentcloud.com/document/product/213/15707?from_cn_redirect=1) to query the availability zone list.",
           "example": "[\"ap-guangzhou-3\"]",
           "member": "string",
           "name": "Zones",
@@ -2320,7 +2344,7 @@
         },
         {
           "disabled": false,
-          "document": "The unique ID of EIP, such as EIP-qhx8udkc, applicable only to private network clb binding EIP, can be queried through the DescribeAddresses API (https://www.tencentcloud.com/document/product/215/16702?from_cn_redirect=1).",
+          "document": "The unique ID of EIP, such as EIP-qhx8udkc, applicable only to private network clb binding EIP, can be queried through the [DescribeAddresses](https://www.tencentcloud.com/document/product/215/16702?from_cn_redirect=1) API .",
           "example": "eip-qhx8udkc",
           "member": "string",
           "name": "EipAddressId",
@@ -2507,7 +2531,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the CLB instance. You can call the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) API to obtain the ID.",
+          "document": "<p>ID of the Cloud Load Balancer (CLB) instance. You can call the <a href=\"https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1\">DescribeLoadBalancers</a> API to obtain the ID.</p>",
           "example": "lb-cuxw****",
           "member": "string",
           "name": "LoadBalancerId",
@@ -2516,7 +2540,7 @@
         },
         {
           "disabled": false,
-          "document": "Ports for creating listeners. Each port corresponds to a listener.\nPort range: 1–65535.",
+          "document": "<p>Which ports to create listeners on, each port maps to a new listener.<br>Port range: 1–65535</p>",
           "example": "[7569, 7570]",
           "member": "int64",
           "name": "Ports",
@@ -2525,7 +2549,7 @@
         },
         {
           "disabled": false,
-          "document": "Listener protocol. Valid values: TCP, UDP, HTTP, HTTPS, TCP_SSL, and QUIC.",
+          "document": "<p>Listener protocol. Valid values: TCP, UDP, HTTP, HTTPS, TCP_SSL, and QUIC.</p>",
           "example": "TCP",
           "member": "string",
           "name": "Protocol",
@@ -2534,7 +2558,7 @@
         },
         {
           "disabled": false,
-          "document": "List of names of listeners to be created. The names correspond to ports one by one. This parameter can be left blank if you do not want to name the listeners immediately.",
+          "document": "<p>List of listener names to be created. Names correspond sequentially to Ports. If naming is not immediately necessary, this parameter need not be provided. Naming rule: 1-80 characters including English letters, Chinese characters, digits, connecting line \"-\", underscore \"_\" and other common characters (Unicode supplementary characters such as emoji and rare Chinese characters are forbidden).</p>",
           "example": "[\"listener0\",\"listener1\"]",
           "member": "string",
           "name": "ListenerNames",
@@ -2543,7 +2567,7 @@
         },
         {
           "disabled": false,
-          "document": "Health check parameter. This parameter applies only to TCP, UDP, TCP_SSL, and QUIC listeners.",
+          "document": "<p>Health check parameters. This parameter is applicable only to TCP/UDP/TCP_SSL/QUIC listeners.</p>",
           "example": "无",
           "member": "HealthCheck",
           "name": "HealthCheck",
@@ -2552,7 +2576,7 @@
         },
         {
           "disabled": false,
-          "document": "Certificate-related information. The parameter limitations are as follows:\n<li>This parameter applies only to TCP_SSL listeners and HTTPS listeners with the SNI feature disabled.</li>\n<li>Either this parameter or the MultiCertInfo parameter should be specified when you create a TCP_SSL listener or an HTTPS listener with the SNI feature disabled. You cannot specify them at the same time.</li>",
+          "document": "<p>Certificate-related information. The limits are as follows:</p><li>This parameter is applicable only to TCP_SSL listeners and HTTPS listeners with SNI feature disabled.</li><li>When creating a TCP_SSL listener or an HTTPS listener with SNI feature disabled, a minimum of this parameter or MultiCertInfo must be specified, but they cannot be specified at the same time.</li>",
           "example": "无",
           "member": "CertificateInput",
           "name": "Certificate",
@@ -2561,7 +2585,7 @@
         },
         {
           "disabled": false,
-          "document": "Session persistence duration, in seconds. Value range: 30–3600. Default value: 0, indicating that session persistence is not enabled by default. This parameter applies only to TCP and UDP listeners.",
+          "document": "<p>Session persistence duration, in seconds. Value range: 30–3600. Default value: 0, indicating that session persistence is not enabled by default. This parameter applies only to TCP and UDP listeners.</p>",
           "example": "60",
           "member": "int64",
           "name": "SessionExpireTime",
@@ -2570,7 +2594,7 @@
         },
         {
           "disabled": false,
-          "document": "Listener forwarding mode. valid values: WRR (weighted round-robin), LEAST_CONN (LEAST connections).\nDefault value: WRR. This parameter applies only to TCP, UDP, TCP_SSL, and QUIC listeners.",
+          "document": "<p>Listener forwarding mode. Available values: WRR (weighted round-robin), LEAST_CONN (least connections).<br>Default WRR. This parameter is applicable only to TCP/UDP/TCP_SSL/QUIC listeners.</p>",
           "example": "WRR",
           "member": "string",
           "name": "Scheduler",
@@ -2579,7 +2603,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable the SNI feature. This parameter applies only to HTTPS listeners. 0: disable; 1: enable.",
+          "document": "<p>Whether to enable SNI feature. This parameter applies only to HTTPS listeners. 0: not enabled, 1: enable.</p>",
           "example": "1",
           "member": "int64",
           "name": "SniSwitch",
@@ -2588,7 +2612,7 @@
         },
         {
           "disabled": false,
-          "document": "Real server type. NODE: ordinary node; TARGETGROUP: real server group. This parameter applies only to TCP and UDP listeners. For layer-7 listeners, set the type in forwarding rules.",
+          "document": "<p>Backend target type. NODE indicates binding to a general node. TARGETGROUP indicates binding to a target group. This parameter is applicable only to TCP/UDP listeners. For layer-7 (HTTP/HTTPS) listeners, configure it in forwarding rules.</p>",
           "example": "NODE",
           "member": "string",
           "name": "TargetType",
@@ -2597,7 +2621,7 @@
         },
         {
           "disabled": false,
-          "document": "Session persistence type. If this parameter is not specified or the value is set to NORMAL, the default session persistence type is used. QUIC_CID: perform session persistence based on QUIC connection ID. If the value is set to QUIC_CID, only the UDP protocol is supported. This parameter applies only to TCP and UDP listeners. For layer-7 listeners, set the type in forwarding rules. (If the value is set to QUIC_CID, the Protocol value should be UDP, the Scheduler value should be WRR, and only IPv4 addresses are supported.)",
+          "document": "<p>Session persistence type. Leaving it blank or passing NORMAL means the default session persistence type. QUIC_CID refers to maintaining the session based on QUIC Connection ID. QUIC_CID supports only UDP Protocol. This parameter is applicable only to TCP/UDP listeners. Layer-7 (HTTP/HTTPS) listeners should set this in forwarding rules. (If QUIC_CID is selected, Protocol must be UDP, Scheduler must be WRR, and it supports only ipv4 concurrently).</p>",
           "example": "NORMAL",
           "member": "string",
           "name": "SessionType",
@@ -2606,7 +2630,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable the persistent connection feature. This parameter applies only to HTTP and HTTPS listeners. 0: disable; 1: enable. This feature is disabled by default.\nEnable this feature with caution if the maximum number of connections is limited for real servers. This feature is in beta testing. To use it, submit a [beta testing application](https://intl.cloud.tencent.com/apply/p/tsodp6qm21?from_cn_redirect=1).",
+          "document": "<p>Whether to enable long connections. This parameter is applicable only to HTTP/HTTPS listeners. 0: off by default; 1: enable. <br>If the backend service has a connection limit, enable with caution. This feature is currently in internal testing. If you need to use it, submit a <a href=\"https://www.tencentcloud.com/apply/p/tsodp6qm21?from_cn_redirect=1\">beta application</a>.</p>",
           "example": "0",
           "member": "int64",
           "name": "KeepaliveEnable",
@@ -2615,7 +2639,7 @@
         },
         {
           "disabled": false,
-          "document": "End port. This parameter is required for creating a listener with a port range. In this case, the input parameter Ports allows only one value to indicate the start port. To experience the port range feature, [submit a ticket for application](https://console.cloud.tencent.com/workorder/category).",
+          "document": "<p>End port. This parameter is required for creating a listener with a port range. In this case, the input parameter Ports allows only one value to indicate the start port. To experience the port range feature, [submit a ticket for application](https://console.cloud.tencent.com/workorder/category).</p>",
           "example": "1000",
           "member": "uint64",
           "name": "EndPort",
@@ -2624,7 +2648,7 @@
         },
         {
           "disabled": false,
-          "document": "Reschedules when unbinding real servers. only supported for TCP/UDP listeners. toggle on to enable this feature.",
+          "document": "<p>Rescheduling feature, which provides a switch for scaling out the backend service. If the switch is toggled on, rescheduling is triggered when the backend service is unbound. This parameter is applicable only to TCP/UDP listeners.</p>",
           "example": "false",
           "member": "bool",
           "name": "DeregisterTargetRst",
@@ -2633,7 +2657,7 @@
         },
         {
           "disabled": false,
-          "document": "Certificate information. You can import multiple server certificates with different algorithms at the same time. The parameter limitations are as follows:\n<li>This parameter applies only to TCP_SSL listeners and HTTPS listeners with the SNI feature disabled.</li>\n<li>Either this parameter or the Certificate parameter should be specified when you create a TCP_SSL listener or an HTTPS listener with the SNI feature disabled. You cannot specify them at the same time.</li>",
+          "document": "<p>Certificate information. Multiple server certificates with different algorithm types can be imported at the same time. Parameter constraints are as follows:</p><li>This parameter is applicable only to TCP_SSL listeners and HTTPS listeners with SNI feature disabled.</li><li>When creating a TCP_SSL listener or an HTTPS listener with SNI feature disabled, a minimum of this parameter or Certificate must be specified, but they cannot be specified at the same time.</li>",
           "example": "无",
           "member": "MultiCertInfo",
           "name": "MultiCertInfo",
@@ -2642,7 +2666,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum number of connections to a listener. Currently, this parameter applies only to TCP, UDP, TCP_SSL, and QUIC listeners of LCU-supported instances. If this parameter is not specified or the value is set to -1, the maximum number of connections is not limited. This parameter is not supported for classic network-based instances.",
+          "document": "<p>Maximum number of connections to a listener. Currently, this parameter applies only to TCP, UDP, TCP_SSL, and QUIC listeners of LCU-supported instances. If this parameter is not specified or the value is set to -1, the maximum number of connections is not limited. This parameter is not supported for classic network-based instances.</p>",
           "example": "1000",
           "member": "int64",
           "name": "MaxConn",
@@ -2651,7 +2675,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum number of new connections to a listener. Currently, this parameter applies only to TCP, UDP, TCP_SSL, and QUIC listeners of LCU-supported instances. If this parameter is not specified or the value is set to -1, the maximum number of new connections is not limited. This parameter is not supported for classic network-based instances.",
+          "document": "<p>Maximum number of new connections to a listener. Currently, this parameter applies only to TCP, UDP, TCP_SSL, and QUIC listeners of LCU-supported instances. If this parameter is not specified or the value is set to -1, the maximum number of new connections is not limited. This parameter is not supported for classic network-based instances.</p>",
           "example": "1000",
           "member": "int64",
           "name": "MaxCps",
@@ -2660,7 +2684,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the idle connection timeout in seconds. this parameter applies only to TCP/UDP listeners. default value: 900 for TCP listeners and 300 for UDP listeners. value range: 10–900 for shared instances and dedicated instances and 10–1980 for lcu-supported instances. to set a value exceeding the permissible range, [submit a ticket for application](https://console.cloud.tencent.com/workorder/category).",
+          "document": "<p>Idle connection timeout, in seconds. This parameter applies only to TCP/UDP listeners. Default value: 900 for TCP listeners and 300 for UDP listeners. Value range: 10–900 for shared instances and dedicated instances and 10–1980 for LCU-supported instances. To set a value exceeding the permissible range, <a href=\"https://console.cloud.tencent.com/workorder/category\">submit a ticket for application</a>.</p><p>Permissible range: [10, 1980]</p><p>Measurement unit: seconds</p><p>Default value: 900</p><p>Default value: 900 for TCP listeners and 300 for UDP listeners. Value range: 10–900 for shared instances and dedicated instances and 10–1980 for LCU-supported instances.</p>",
           "example": "900",
           "member": "int64",
           "name": "IdleConnectTimeout",
@@ -2669,7 +2693,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies whether PP is supported for TCP_SSL and QUIC.",
+          "document": "<p>Whether TCP_SSL and QUIC support PP</p>",
           "example": "false",
           "member": "bool",
           "name": "ProxyProtocol",
@@ -2678,7 +2702,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether SNAT (source IP replacement) is enabled. valid values: True (enabled), False (disabled). disabled by default. note: when SnatEnable is enabled, the client source IP will be replaced, at this point the `pass through client source IP` option is disabled, and vice versa.",
+          "document": "<p>Whether SNAT (source IP replacement) is enabled, True (enabled), False (disabled). Disabled by default. Note: When SnatEnable is enabled, the client source IP will be replaced. At this point, the <code>Pass through client source IP</code> option is disabled, and vice versa.</p>",
           "example": "false",
           "member": "bool",
           "name": "SnatEnable",
@@ -2687,7 +2711,7 @@
         },
         {
           "disabled": false,
-          "document": "End port of a listener with a port range. Range of the port: 2–65535.",
+          "document": "<p>End port of a listener with a port range. Range of the port: 2–65535.</p>",
           "example": "[600]",
           "member": "int64",
           "name": "FullEndPorts",
@@ -2696,7 +2720,7 @@
         },
         {
           "disabled": false,
-          "document": "Enable private network http listener h2c switch. valid values: True (enable), False (disable).\nDisabled by default.",
+          "document": "<p>Enable the h2c switch for the private network HTTP listener.<br>True (enabled), False (disabled). Disabled by default.<br>Once enabled, the listener only supports creating layer-7 rules with GRPC or GRPCS as the backend forwarding type. When creating rules, explicitly input GRPC or GRPCS in Rules.N.ForwardType.</p>",
           "example": "false",
           "member": "bool",
           "name": "H2cSwitch",
@@ -2705,7 +2729,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to disable SSL for TCP_SSL listeners. dual-stack binding is still supported after SSL is disabled. valid values: True (disable), False (enable).\nDisabled by default.",
+          "document": "<p>Control whether to remove the SSL encryption layer for TCP_SSL listeners. Once enabled, the listener will run as a normal TCP protocol. Available values:</p><ul><li>True: Disable SSL (protocol downgraded to plain text TCP).</li><li>False (default): Keep SSL enabled.</li></ul>",
           "example": "false",
           "member": "bool",
           "name": "SslCloseSwitch",
@@ -2714,7 +2738,7 @@
         },
         {
           "disabled": false,
-          "document": "Data compression mode. Valid values: transparent (passthrough mode) and compatibility (compatibility mode).",
+          "document": "<p>Data compression mode. Valid values: transparent (passthrough mode) and compatibility (compatibility mode).</p>",
           "example": "transparent/compatibility",
           "member": "string",
           "name": "DataCompressMode",
@@ -2723,7 +2747,7 @@
         },
         {
           "disabled": false,
-          "document": "Reschedules when setting backend server weight to 0. only supported for TCP/UDP listeners. toggle on to enable this feature.",
+          "document": "<p>Rescheduling feature, which provides a switch for changing the weight to 0. If the switch is toggled on, rescheduling is triggered when the weight of a real server is changed to 0. This parameter is applicable only to TCP/UDP listeners.</p>",
           "example": "false",
           "member": "bool",
           "name": "RescheduleTargetZeroWeight",
@@ -2732,7 +2756,7 @@
         },
         {
           "disabled": false,
-          "document": "Reschedules when health check exceptions occur on real servers. only supported for TCP/UDP listeners. toggle on to enable this feature.",
+          "document": "<p>Rescheduling feature, which provides a switch for detecting health check exceptions. If the switch is toggled on, rescheduling is triggered when the real server health check fails. This parameter is applicable only to TCP/UDP listeners.</p>",
           "example": "false",
           "member": "bool",
           "name": "RescheduleUnhealthy",
@@ -2741,7 +2765,7 @@
         },
         {
           "disabled": false,
-          "document": "Reschedules when adding or removing backend servers. only supported for TCP/UDP listeners. toggle on to enable this feature.",
+          "document": "<p>Rescheduling feature, which provides a switch for scaling out real servers. If the switch is toggled on, rescheduling is triggered when the number of real servers increases or decreases. This parameter is applicable only to TCP/UDP listeners.</p>",
           "example": "false",
           "member": "bool",
           "name": "RescheduleExpandTarget",
@@ -2750,7 +2774,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the trigger start time for rescheduling. value range: 0-3600s. supported only by TCP/UDP listeners.",
+          "document": "<p>Rescheduling trigger start time. Value range: 0–3600. Unit: s. This parameter is applicable only to TCP/UDP listeners.</p>",
           "example": "1",
           "member": "int64",
           "name": "RescheduleStartTime",
@@ -2759,7 +2783,7 @@
         },
         {
           "disabled": false,
-          "document": "Rescheduling trigger duration. valid values: 0-3600s. only TCP/UDP listeners support this.",
+          "document": "<p>Rescheduling trigger duration. Value range: 0–3600. Unit: s. This parameter is applicable only to TCP/UDP listeners.</p>",
           "example": "1",
           "member": "int64",
           "name": "RescheduleInterval",
@@ -2774,7 +2798,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Array of the unique IDs of created listeners.",
+          "document": "<p>Array of the unique IDs of created listeners.</p>",
           "example": "[\"lbl-d1ubsydq\",\"lbl-4udz130k\"]",
           "member": "string",
           "name": "ListenerIds",
@@ -2796,7 +2820,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "CLB instance network type:\nOPEN: public network; INTERNAL: private network.",
+          "document": "<p>Network type of the Cloud Load Balancer instance:<br>OPEN: public network attribute, INTERNAL: private network attribute.</p>",
           "example": "OPEN",
           "member": "string",
           "name": "LoadBalancerType",
@@ -2805,7 +2829,7 @@
         },
         {
           "disabled": false,
-          "document": "CLB instance type. Valid value: 1 (generic CLB instance).",
+          "document": "<p>Type of the Cloud Load Balancer instance. 1: Common CLB instance. Currently only support passing in 1.</p>",
           "example": "1",
           "member": "int64",
           "name": "Forward",
@@ -2814,7 +2838,7 @@
         },
         {
           "disabled": false,
-          "document": "CLB instance name, which takes effect only when only one instance is to be created in the request. It can consist 1 to 60 letters, digits, hyphens (-), or underscores (_).\nNote: if the name of the new CLB instance already exists, a default name will be generated automatically.",
+          "document": "<p>The name of the Cloud Load Balancer instance is effective only when creating an instance. Rule: 1-80 characters in internationally compatible languages such as English letters, Chinese characters, digits, connecting line \"-\", underscore \"_\", and other common characters (Unicode supplementary characters such as emoji and rare Chinese characters are forbidden). Note: If the name is identical to an existing Cloud Load Balancer instance name in the system, the system will automatically generate the name for the created CLB instance.</p>",
           "example": "test-cvm-bussiness",
           "member": "string",
           "name": "LoadBalancerName",
@@ -2832,7 +2856,7 @@
         },
         {
           "disabled": false,
-          "document": "A subnet ID should be specified when you purchase a private network CLB instance under a VPC. The VIP of the private network CLB instance is in this subnet. This parameter is required when you create a private network CLB instance but not supported when you create a public network IPv4 CLB instance.",
+          "document": "<p>When you purchase a private network CLB instance in a VPC, the subnet ID must be specified. The VIP of the private network CLB instance is generated in this subnet.<br>This parameter is required when you create a private network CLB instance or a CLB instance of the IPv6FullChain version.<br>It cannot be specified when you create a public network IPv4 CLB instance.</p>",
           "example": "subnet-dva8****",
           "member": "string",
           "name": "SubnetId",
@@ -2850,7 +2874,7 @@
         },
         {
           "disabled": false,
-          "document": "It's only applicable to public network CLB instances. IP version. Values: `IPV4`, `IPV6` and `IPv6FullChain` (case-insensitive). Default: `IPV4`. Note: `IPV6` indicates IPv6 NAT64, while `IPv6FullChain` indicates IPv6. ",
+          "document": "<p>Applicable only to public network CLB. IP version, valid values: IPV4, IPV6, IPv6FullChain, case-insensitive, default value IPV4. Description: A value of IPV6 means IPV6 NAT64 version; a value of IPv6FullChain means IPv6 version.</p>",
           "example": "IPV4",
           "member": "string",
           "name": "AddressIPVersion",
@@ -2859,7 +2883,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the count of cloud load balancers to create, with a default value of 1. the count must not exceed the maximum value allowed for the account, with a default creation maximum value of 20.",
+          "document": "<p>Count of Cloud Load Balancers to create, default value is 1. The count must not exceed the maximum value allowed for the account, with a default creation maximum value of 20.</p>",
           "example": "1",
           "member": "uint64",
           "name": "Number",
@@ -2868,7 +2892,7 @@
         },
         {
           "disabled": false,
-          "document": "Applicable only to public network IPv4 cloud load balancer instances. specifies the primary AZ ID for cross-az disaster recovery. both AZ ID and name are supported, such as 100001 or ap-guangzhou-1.\nNote: the primary AZ loads traffic. the secondary AZ does not load traffic by default and is used only if the primary AZ becomes unavailable.",
+          "document": "<p>Applicable only to public network load balancing with IP version IPv4. Sets the primary AZ ID for cross-AZ disaster recovery. Both AZ ID and name are supported, such as 100001 or ap-guangzhou-1.<br>Note: The primary AZ loads traffic. The secondary AZ does not load traffic by default and is used only if the primary AZ becomes unavailable.</p>",
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "MasterZoneId",
@@ -2877,7 +2901,7 @@
         },
         {
           "disabled": false,
-          "document": "Applicable only to public network IPv4 clb instances. specifies the AZ ID or availability zone name for creating a clb instance. for example, 100001 or ap-guangzhou-1.",
+          "document": "<p>Applicable only to public network load balancing with IP version IPv4. AZ ID, availability zone id and name are supported. Specify availability zone to create a CLB instance. For example: 100001 or ap-guangzhou-1.</p>",
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "ZoneId",
@@ -2886,7 +2910,7 @@
         },
         {
           "disabled": false,
-          "document": "Network billing mode by the maximum outbound bandwidth. It applies only to private network LCU-supported instances and all public network instances. The feature of purchasing yearly/monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).",
+          "document": "<p>Maximum outbound bandwidth under the network billing mode. It applies only to LCU-supported instances of the private network type and all instances of the public network type.</p>",
           "example": "无",
           "member": "InternetAccessible",
           "name": "InternetAccessible",
@@ -2895,7 +2919,7 @@
         },
         {
           "disabled": false,
-          "document": "ISP of VIP. Values: `CMCC` (China Mobile), `CUCC` (China Unicom) and `CTCC` (China Telecom). You need to activate static single-line IPs. This feature is in beta and is only available in Guangzhou, Shanghai, Nanjing, Jinan, Hangzhou, Fuzhou, Beijing, Shijiazhuang, Wuhan, Changsha, Chengdu and Chongqing regions. To try it out, please contact your sales rep. If it's specified, the network billing mode must be `BANDWIDTH_PACKAGE`. If it's not specified, BGP is used by default. To query ISPs supported in a region, please use [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1). ",
+          "document": "<p>Applicable only to public network CLB. Currently, only Guangzhou, Shanghai, Nanjing, Jinan, Hangzhou, Fuzhou, Beijing, Shijiazhuang, Wuhan, Changsha, Chengdu, and Chongqing regions support static single-line IP type. If you need to experience it, contact business manager to submit a request. After approval, you can select operator type of China Mobile (CMCC), China Unicom (CUCC), or China Telecom (CTCC). Only can be used network billing mode BANDWIDTH_PACKAGE. If this parameter is not specified, use BGP by default. You can query ISPs supported in a region via <a href=\"https://www.tencentcloud.com/document/api/214/70213?from_cn_redirect=1\">DescribeResources</a> api.</p>",
           "example": "CMCC",
           "member": "string",
           "name": "VipIsp",
@@ -2904,7 +2928,7 @@
         },
         {
           "disabled": false,
-          "document": "Tags the CLB instance when purchasing it. Up to 20 tag key value pairs are supported.",
+          "document": "<p>When purchasing a Cloud Load Balancer, you can tag it with up to 20 tag key-value pairs.</p>",
           "example": "无",
           "member": "TagInfo",
           "name": "Tags",
@@ -2913,7 +2937,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the VIP for the application of a CLB instance. This parameter is optional. If you do not specify this parameter, the system automatically assigns a value for the parameter. IPv4 and IPv6 CLB instances support this parameter, but IPv6 NAT64 CLB instances do not.\nNote: If the specified VIP is occupied or is not within the IP range of the specified VPC subnet, you cannot use the VIP to create a CLB instance in a private network or an IPv6 BGP CLB instance in a public network.",
+          "document": "<p>Specify VIP to apply for Cloud Load Balancer. This parameter is optional. If this parameter is not specified, VIP is automatically assigned. This parameter is supported for IPv4 and IPv6 types but not for IPv6 NAT64 type.<br>Note: When creating a private network instance or a public IPv6 BGP instance with a designated VIP, creation fails if the VIP is not within the IP range of the specified VPC subnet or if the VIP is already occupied.</p>",
           "example": "139.X.X.X",
           "member": "string",
           "name": "Vip",
@@ -2922,7 +2946,7 @@
         },
         {
           "disabled": false,
-          "document": "BANDWIDTH PACKAGE ID, which can be obtained through the [DescribeBandwidthPackages](https://www.tencentcloud.com/document/api/215/19209?from_cn_redirect=1) api. specifies the BANDWIDTH PACKAGE ID. when this parameter is specified, the network billing mode (InternetAccessible.InternetChargeType) supports only billing by BANDWIDTH PACKAGE (BANDWIDTH_PACKAGE). the attributes of the BANDWIDTH PACKAGE determine the settlement method. for IPv6 clb instances purchased by non-promoted users, if the operator type is not BGP, the BANDWIDTH PACKAGE ID cannot be specified.",
+          "document": "<p>Bandwidth package ID, which can be obtained through the <a href=\"https://www.tencentcloud.com/document/api/215/19209?from_cn_redirect=1\">DescribeBandwidthPackages</a> API. When this parameter is specified, the network billing mode (InternetAccessible.InternetChargeType) supports only billing by bandwidth package (BANDWIDTH_PACKAGE), and the bandwidth package attributes determine the settlement method. For IPv6 Cloud Load Balancer instances purchased by non-promoted users with a non-BGP operator type, specifying bandwidth package ID is unsupported.</p>",
           "example": "bwp-pnbe****",
           "member": "string",
           "name": "BandwidthPackageId",
@@ -2931,7 +2955,7 @@
         },
         {
           "disabled": false,
-          "document": "Information about the dedicated CLB instance. You must specify this parameter when you create a dedicated CLB instance in a private network.",
+          "document": "<p>Dedicated instance info. This parameter is required when creating a private network CLB instance of exclusive type.</p>",
           "example": "无",
           "member": "ExclusiveCluster",
           "name": "ExclusiveCluster",
@@ -2940,7 +2964,7 @@
         },
         {
           "disabled": false,
-          "document": "Specification of the LCU-supported instance.<ul><li>If you need to create an LCU-supported instance, this parameter is required. Valid values:<ul><li> clb.c2.medium: Standard </li><li> clb.c3.small: Advanced 1 </li><li> clb.c3.medium: Advanced 2 </li><li> clb.c4.small: Super Large 1 </li><li> clb.c4.medium: Super Large 2 </li><li> clb.c4.large: Super Large 3 </li><li> clb.c4.xlarge: Super Large 4 </li></ul></li><li>If you need to create a shared instance, this parameter is not required.</li></ul> For specification details, see [Instance Specifications Comparison](https://intl.cloud.tencent.com/document/product/214/84689?from_cn_redirect=1).",
+          "document": "<p>Performance capacity specification.</p><ul><li>If you need to create an LCU-supported instance, this parameter is required. Valid values:<ul><li> clb.c2.medium: Standard </li><li> clb.c3.small: Advanced 1 </li><li> clb.c3.medium: Advanced 2 </li><li> clb.c4.small: Super Large 1 </li><li> clb.c4.medium: Super Large 2 </li><li> clb.c4.large: Super Large 3 </li><li> clb.c4.xlarge: Super Large 4 </li></ul></li><li>For Chinese site users who need to create a shared instance, this parameter is not required. International site users will purchase a standard instance by default if this parameter is not passed.</li></ul> For specification details, see [Instance Specifications Comparison](https://www.tencentcloud.com/document/product/214/84689?from_cn_redirect=1).",
           "example": "clb.c2.medium",
           "member": "string",
           "name": "SlaType",
@@ -2949,7 +2973,7 @@
         },
         {
           "disabled": false,
-          "document": "Cluster ID. This cluster identifier is used for configuring a public cloud exclusive cluster or a cloud dedicated cluster. To apply for a public cloud exclusive cluster, [submit a ticket](https://console.cloud.tencent.com/workorder/category). For cloud dedicated clusters, see the descriptions in [Cloud Dedicated Cluster](https://intl.cloud.tencent.com/document/product/1346?from_cn_redirect=1).",
+          "document": "<p>Cluster ID. This cluster identifier is used for configuring a public cloud exclusive cluster or a local dedicated cluster. To apply for a public cloud exclusive cluster, <a href=\"https://console.cloud.tencent.com/workorder/category\">submit a ticket</a>. For local dedicated clusters, refer to the description in <a href=\"https://www.tencentcloud.com/document/product/1346?from_cn_redirect=1\">Local Dedicated Cluster</a>.</p>",
           "example": "[\"cluster-gbo2****\"]",
           "member": "string",
           "name": "ClusterIds",
@@ -2958,7 +2982,7 @@
         },
         {
           "disabled": false,
-          "document": "A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.",
+          "document": "<p>String used to ensure request idempotency. This string is generated by the customer and must be unique among different requests, with a maximum value of 64 ASCII characters. If not specified, request idempotency cannot be guaranteed.</p>",
           "example": "23494*****",
           "member": "string",
           "name": "ClientToken",
@@ -2967,7 +2991,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether Binding IPs of other VPCs feature switch",
+          "document": "<p>Whether binding cross-regional or cross-Vpc IP addresses is supported.</p>",
           "example": "true",
           "member": "bool",
           "name": "SnatPro",
@@ -2976,7 +3000,7 @@
         },
         {
           "disabled": false,
-          "document": "Creates `SnatIp` when the binding IPs of other VPCs feature is enabled",
+          "document": "<p>Enable the cross-regional or cross-Vpc IP binding feature to create a SnatIp.</p>",
           "example": "无",
           "member": "SnatIp",
           "name": "SnatIps",
@@ -2985,7 +3009,7 @@
         },
         {
           "disabled": false,
-          "document": "Tag for the STGW exclusive cluster.",
+          "document": "<p>Tag of the Stgw exclusive cluster.</p>",
           "example": "ziyan",
           "member": "string",
           "name": "ClusterTag",
@@ -2994,7 +3018,7 @@
         },
         {
           "disabled": false,
-          "document": "Applicable only to public network IPv4 clb instances. specifies the secondary AZ ID for cross-az disaster recovery. both AZ ID and name are supported, such as 100001 or ap-guangzhou-1.\nNote: The secondary AZ sustains traffic when the primary AZ encounters faults. You can call the [DescribeResources](https://www.tencentcloud.com/document/api/214/70213?from_cn_redirect=1) API to query the list of primary/secondary AZs in a region. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).",
+          "document": "<p>Applicable only to public network load balancing with IP version IPv4. Sets the secondary AZ ID for cross-AZ disaster recovery. AZ ID and name are supported, such as 100001 or ap-guangzhou-1.<br>Note: The secondary AZ is the availability zone that needs to carry traffic after primary availability zone failure. Query a region's list of primary/secondary AZs via the <a href=\"https://www.tencentcloud.com/document/api/214/70213?from_cn_redirect=1\">DescribeResources</a> API. [If you need to trial the feature, submit a ticket application via <a href=\"https://console.cloud.tencent.com/workorder/category\">Work Order</a>]</p>",
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "SlaveZoneId",
@@ -3003,7 +3027,7 @@
         },
         {
           "disabled": false,
-          "document": "The unique ID of EIP, which can be queried through the DescribeAddresses API (https://www.tencentcloud.com/document/product/215/16702?from_cn_redirect=1). format: EIP-qhx8udkc. applicable only to private network clb binding EIP.",
+          "document": "<p>The unique ID of EIP can be accessed through the <a href=\"https://www.tencentcloud.com/document/product/215/16702?from_cn_redirect=1\">DescribeAddresses</a> api for the query. Example: eip-qhx8udkc, applicable only to bind EIP for private network CLB.</p>",
           "example": "eip-qhx8udkc",
           "member": "string",
           "name": "EipAddressId",
@@ -3012,7 +3036,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies whether to allow CLB traffic to the Target. enable (true): verify security groups on CLB. disable (false): verify security groups on both CLB and backend instances. IPv6 CLB security group default permit, this parameter is not required.",
+          "document": "<p>Allow CLB traffic to the Target. Enable (true): verify security groups on CLB; deny CLB traffic to the Target (false): verify security groups on both CLB and backend instances. IPv6 CLB security group default permit, this parameter is not required.</p>",
           "example": "true",
           "member": "bool",
           "name": "LoadBalancerPassToTarget",
@@ -3021,7 +3045,7 @@
         },
         {
           "disabled": false,
-          "document": "Upgrades to domain name-based CLB",
+          "document": "<p>Create a domain-name based CLB.</p>",
           "example": "true",
           "member": "bool",
           "name": "DynamicVip",
@@ -3030,7 +3054,7 @@
         },
         {
           "disabled": false,
-          "document": "Network egress point",
+          "document": "<p>Network outbound</p>",
           "example": "center_egress1",
           "member": "string",
           "name": "Egress",
@@ -3039,7 +3063,7 @@
         },
         {
           "disabled": false,
-          "document": "Prepayment-related attributes of a CLB instance. The feature of purchasing yearly/monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).",
+          "document": "<p>Prepaid billing attributes of the CLB instance</p>",
           "example": "无",
           "member": "LBChargePrepaid",
           "name": "LBChargePrepaid",
@@ -3048,7 +3072,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing type of a CLB instance. Valid values: POSTPAID_BY_HOUR and PREPAID. Default value: POSTPAID_BY_HOUR. The feature of purchasing yearly/monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).",
+          "document": "<p>Billing type of the CLB instance. Valid values: POSTPAID_BY_HOUR and PREPAID. Default value: POSTPAID_BY_HOUR.</p><p>Enumeration values:</p><ul><li>POSTPAID_BY_HOUR: Pay-As-You-Go</li><li>PREPAID: Monthly Subscription</li></ul>",
           "example": "POSTPAID_BY_HOUR",
           "member": "string",
           "name": "LBChargeType",
@@ -3057,7 +3081,7 @@
         },
         {
           "disabled": false,
-          "document": "Topic ID of logs of traffic access over layer-7 protocols.",
+          "document": "<p>L7 access log topic ID</p>",
           "example": "9ec21ce7-a71b-4ba7-afb1-c1bd630233**",
           "member": "string",
           "name": "AccessLogTopicId",
@@ -3066,12 +3090,21 @@
         },
         {
           "disabled": false,
-          "document": "Whether layer-7 advanced routing is enabled.",
+          "document": "<p>Whether layer-7 advanced routing is enabled</p>",
           "example": "false",
           "member": "bool",
           "name": "AdvancedRoute",
           "required": false,
           "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Availability zone affinity info</p>",
+          "example": "无",
+          "member": "AvailableZoneAffinityInfo",
+          "name": "AvailableZoneAffinityInfo",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -3081,7 +3114,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Array of unique CLB instance IDs.\nThis field may return `null` in some cases, such as there is delay during instance creation. You can query the IDs of the created instances by invoking `DescribeTaskStatus` with the `RequestId` or `DealName` returned by this API.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "<p>An array consisting of the unique IDs of Cloud Load Balancer instances.<br>In certain scenarios, such as delay in creation, this field may return null. At this point, you can query the created resource ID through the DescribeTaskStatus API using the RequestId or DealName parameter returned by the API.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[\"lb-6efswuxa\"]",
           "member": "string",
           "name": "LoadBalancerIds",
@@ -3091,7 +3124,7 @@
         },
         {
           "disabled": false,
-          "document": "Order ID.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "<p>Order number.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2022XXXX",
           "member": "string",
           "name": "DealName",
@@ -3213,7 +3246,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Target group name (up to 50 characters)",
+          "document": "<p>Target group name. Naming rule: 1-80 English letters, Chinese characters and other internationally compatible language characters, digits, connecting line \"-\", underscore \"_\" and other common characters (Unicode supplementary characters such as emoji and rare Chinese characters are forbidden).</p>",
           "example": "test-name",
           "member": "string",
           "name": "TargetGroupName",
@@ -3222,7 +3255,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the vpc id attribute of the target group. uses the default vpc if left empty.",
+          "document": "<p>The vpcId attribute of the target group. Leave it blank to use the default VPC.</p>",
           "example": "vpc-i1******",
           "member": "string",
           "name": "VpcId",
@@ -3231,7 +3264,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the default Port of the target group. the default Port can be used when servers are added subsequently. this parameter is not supported for full-listen target groups. for non-full-listen target groups, either Port or Port in TargetGroupInstances.N is required.\n",
+          "document": "<p>Default port of target group. Default port can be used when servers are added subsequently. Full listen target group does not support this parameter. For non-full listen target group, either Port or port in TargetGroupInstances.N is required.</p>",
           "example": "80",
           "member": "uint64",
           "name": "Port",
@@ -3240,7 +3273,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the real servers bound to the target group. supports up to 50 at a time.",
+          "document": "<p>The target group supports up to 50 real servers bound to it.</p>",
           "example": "无",
           "member": "TargetGroupInstance",
           "name": "TargetGroupInstances",
@@ -3249,7 +3282,7 @@
         },
         {
           "disabled": false,
-          "document": "Target group type, currently supported v1 (legacy version target group) and v2 (new version target group), defaults to v1 (legacy version target group).",
+          "document": "<p>Target Group Type, currently supported v1 (legacy version target group), v2 (new version target group), defaults to v1 (legacy version target group).</p>",
           "example": "v1",
           "member": "string",
           "name": "Type",
@@ -3258,7 +3291,7 @@
         },
         {
           "disabled": false,
-          "document": "Backend forwarding protocol of the target group. this field is required for the new version (v2) target group. currently supports TCP, UDP, HTTP, HTTPS, GRPC.",
+          "document": "<p>Backend forwarding protocol of the target group. This field is required for the new version target group v2. Currently supports TCP, UDP, HTTP, HTTPS, GRPC.</p>",
           "example": "TCP",
           "member": "string",
           "name": "Protocol",
@@ -3267,7 +3300,7 @@
         },
         {
           "disabled": false,
-          "document": "Health check.",
+          "document": "<p>Health check.</p>",
           "example": "无",
           "member": "TargetGroupHealthCheck",
           "name": "HealthCheck",
@@ -3276,7 +3309,7 @@
         },
         {
           "disabled": false,
-          "document": "Scheduling algorithm. this parameter is valid only for target groups of the new version V2 when the backend forwarding protocol is HTTP, HTTPS, or GRPC. available values:.\n<ur><li>WRR: weighted round-robin.</li><li>LEAST_CONN: LEAST connection.</li><li>IP_HASH: based on IP HASH.</li><li>default is WRR.</li></ur>.",
+          "document": "<p>Scheduling algorithm. This parameter is valid only for new version V2 target groups with backend forwarding protocol (HTTP|HTTPS|GRPC). Available values:</p><li>WRR: weighted round-robin.</li><li>LEAST_CONN: least connection.</li><li>IP_HASH: based on IP hash.</li><li>Default WRR.</li>",
           "example": "WRR",
           "member": "string",
           "name": "ScheduleAlgorithm",
@@ -3285,7 +3318,7 @@
         },
         {
           "disabled": false,
-          "document": "Tag.",
+          "document": "<p>Tag.</p>",
           "example": "无",
           "member": "TagInfo",
           "name": "Tags",
@@ -3294,7 +3327,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the default weight of the backend service. among them:.\n<ul><li>Value ranges from 0 to 100.</li><li>after setting this value, when adding a backend service to the target group, if the backend service does not set Weight separately, use the default Weight here.</li><li>Weight parameter settings not supported for v1 target group type.</li></ul>.",
+          "document": "<p>Default weight of the backend service, where:</p><ul><li>Value ranges from 0 to 100.</li><li>After setting this value, when adding a backend service to the target group, if the backend service does not set the weight separately, use the default weight here.</li><li>Weight parameter settings not supported for v1 target group type.</li></ul>",
           "example": "100",
           "member": "uint64",
           "name": "Weight",
@@ -3303,7 +3336,7 @@
         },
         {
           "disabled": false,
-          "document": "Full listen target group flag. valid values: true (yes), false (no). only target groups of the new version V2 event type support this parameter.",
+          "document": "<p>Full listen target group flag. true: yes, false: no. Only target groups of the new version V2 support this parameter.</p>",
           "example": "true",
           "member": "bool",
           "name": "FullListenSwitch",
@@ -3312,7 +3345,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies whether to enable the persistent connection feature. this parameter applies only to HTTP and HTTPS target groups. 0: disable; 1: enable. this feature is off by default.",
+          "document": "<p>Whether to enable long connections. This parameter is applicable only to HTTP/HTTPS target groups. 0: off; 1: on. Off by default.</p>",
           "example": "true",
           "member": "bool",
           "name": "KeepaliveEnable",
@@ -3321,7 +3354,7 @@
         },
         {
           "disabled": false,
-          "document": "Session hold time, unit: second. value range: 30-3600. default: 0, disabled. this parameter is supported only for target groups with HTTP/HTTPS/GRPC backend forwarding protocol in the new version V2.",
+          "document": "<p>Session persistence time, unit: second. Available values: 30-3600, default 0, disabled. This parameter is supported only for target groups with HTTP/HTTPS/GRPC backend forwarding protocol in the new version V2.</p>",
           "example": "30",
           "member": "uint64",
           "name": "SessionExpireTime",
@@ -3330,7 +3363,7 @@
         },
         {
           "disabled": false,
-          "document": "IP version type.",
+          "document": "<p>IP version type.</p>",
           "example": "IPv4",
           "member": "string",
           "name": "IpVersion",
@@ -3339,7 +3372,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Whether SNAT (source IP replacement) is enabled, True (enabled), False (disabled). Disabled by default. Note: When SnatEnable is enabled, the client source IP will be replaced. At this point, the <code>Pass through client source IP</code> option is disabled, and vice versa.</p>",
           "example": "true",
           "member": "bool",
           "name": "SnatEnable",
@@ -3354,7 +3387,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID generated after target group creation",
+          "document": "<p>Generated id after target group creation</p>",
           "example": "lbtg-81******",
           "member": "string",
           "name": "TargetGroupId",
@@ -3796,7 +3829,7 @@
         },
         {
           "disabled": false,
-          "document": "Forwarding path of the forwarding rule to be deleted can be accessed through the DescribeLoadBalancersDetail api (https://www.tencentcloud.com/document/api/214/46916?from_cn_redirect=1).",
+          "document": "Forwarding path of the forwarding rule to be deleted can be accessed through the [DescribeLoadBalancersDetail](https://www.tencentcloud.com/document/api/214/46916?from_cn_redirect=1) api.",
           "example": "/bar2",
           "member": "string",
           "name": "Url",
@@ -4805,7 +4838,7 @@
         },
         {
           "disabled": false,
-          "document": "Type of the listener protocols to be queried. Values: TCP`, `UDP`, `HTTP`, `HTTPS`, `TCP_SSL` and `QUIC`.",
+          "document": "Type of the listener protocols to be queried. Values: `TCP`, `UDP`, `HTTP`, `HTTPS`, `TCP_SSL`  and  `QUIC`.",
           "example": "TCP",
           "member": "string",
           "name": "Protocol",
@@ -5006,7 +5039,7 @@
         },
         {
           "disabled": false,
-          "document": "List of fields. Only fields specified will be returned. If it’s left blank, `null` is returned. The fields `LoadBalancerId` and `LoadBalancerName` are added by default. For details about fields, see <a href=\"https://intl.cloud.tencent.com/document/api/214/30694?from_cn_redirect=1#LoadBalancerDetail\">LoadBalancerDetail</a>.",
+          "document": "List of fields. Only fields specified will be returned. If it's left blank, `null` is returned. The fields `LoadBalancerId` and `LoadBalancerName` are added by default. For details about fields, see [LoadBalancerDetail](https://intl.cloud.tencent.com/document/api/214/30694?from_cn_redirect=1#LoadBalancerDetail)",
           "example": "[\"LoadBalancerId\",\"LoadBalancerName\"]",
           "member": "string",
           "name": "Fields",
@@ -5431,6 +5464,52 @@
       ],
       "type": "object"
     },
+    "DescribeTargetGroupInstanceStatusRequest": {
+      "document": "DescribeTargetGroupInstanceStatus request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique target group ID",
+          "example": "lbtg-xxx",
+          "member": "string",
+          "name": "TargetGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of backend service IPs bound to the target group",
+          "example": "[\"10.0.0.1\"]",
+          "member": "string",
+          "name": "TargetGroupInstanceIps",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTargetGroupInstanceStatusResponse": {
+      "document": "DescribeTargetGroupInstanceStatus response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Health check backend RS status list",
+          "example": "null",
+          "member": "TargetGroupInstanceStatus",
+          "name": "TargetGroupInstanceSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeTargetGroupInstancesRequest": {
       "document": "DescribeTargetGroupInstances request structure.",
       "members": [
@@ -5511,7 +5590,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Target group ID array",
+          "document": "<p>Target group ID array.</p>",
           "example": "[\"lbtg-5xu****\"]",
           "member": "string",
           "name": "TargetGroupIds",
@@ -5520,7 +5599,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter array, which is exclusive of `TargetGroupIds`. Valid values: `TargetGroupVpcId` and `TargetGroupName`. Target group ID will be used first.",
+          "document": "<p>Filter condition array. Support TargetGroupVpcId and TargetGroupName. Mutually exclusive with TargetGroupIds. Prioritize target group ID.</p>",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -5529,7 +5608,7 @@
         },
         {
           "disabled": false,
-          "document": "Starting display offset",
+          "document": "<p>Starting display offset.</p>",
           "example": "1",
           "member": "uint64",
           "name": "Offset",
@@ -5538,7 +5617,7 @@
         },
         {
           "disabled": false,
-          "document": "Limit of the number of displayed results. Default value: 20.",
+          "document": "<p>Number of entries displayed per page.</p><p>Value ranges from 0 to 100.</p><p>The default value is 20.</p>",
           "example": "20",
           "member": "uint64",
           "name": "Limit",
@@ -5553,7 +5632,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Number of displayed results",
+          "document": "<p>Number of displayed results.</p>",
           "example": "2",
           "member": "uint64",
           "name": "TotalCount",
@@ -5563,7 +5642,7 @@
         },
         {
           "disabled": false,
-          "document": "Information set of displayed target groups",
+          "document": "<p>Collection of displayed target group information.</p>",
           "example": "无",
           "member": "TargetGroupInfo",
           "name": "TargetGroupSet",
@@ -5659,7 +5738,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "List of IDs of CLB instances to be queried",
+          "document": "<p>List of Cloud Load Balancer instance IDs to query. The array size supports up to 30.</p>",
           "example": "[\"lb-qc2iq5yc\"]",
           "member": "string",
           "name": "LoadBalancerIds",
@@ -5668,7 +5747,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the listener ID list to query.",
+          "document": "<p>Listener ID list to query.</p>",
           "example": "[\"lbl-cpu5e38u\"]",
           "member": "string",
           "name": "ListenerIds",
@@ -5677,7 +5756,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the list of rule ids to be queried.",
+          "document": "<p>List of forwarding rule IDs to query.</p>",
           "example": "[\"loc-q41gixxq\"]",
           "member": "string",
           "name": "LocationIds",
@@ -5692,7 +5771,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "LoadBalancer list.",
+          "document": "<p>CLB list.</p>",
           "example": "无",
           "member": "LoadBalancerHealth",
           "name": "LoadBalancers",
@@ -5983,7 +6062,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Filter name",
+          "document": "<p>Filter name</p>",
           "example": "tag-key",
           "member": "string",
           "name": "Name",
@@ -5992,7 +6071,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter value array",
+          "document": "<p>filter value array</p>",
           "example": "[\"tke-clusterId\"]",
           "member": "string",
           "name": "Values",
@@ -6917,7 +6996,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "CLB listener ID",
+          "document": "<p>CLB listener ID</p>",
           "example": "lbl-odt45qxx",
           "member": "string",
           "name": "ListenerId",
@@ -6927,7 +7006,7 @@
         },
         {
           "disabled": false,
-          "document": "Listener protocol. valid values: TCP, UDP, HTTP, HTTPS, TCP_SSL, QUIC.",
+          "document": "<p>Listener protocol. Available values: TCP, UDP, HTTP, HTTPS, TCP_SSL, QUIC</p>",
           "example": "HTTP",
           "member": "string",
           "name": "Protocol",
@@ -6937,7 +7016,7 @@
         },
         {
           "disabled": false,
-          "document": "Listener port. value range: 1-65535.",
+          "document": "<p>Listener port, port range: 1–65535</p>",
           "example": "80",
           "member": "int64",
           "name": "Port",
@@ -6947,7 +7026,7 @@
         },
         {
           "disabled": false,
-          "document": "Information of certificates bound to the listener\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Listener bound certificate information</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "CertificateOutput",
           "name": "Certificate",
@@ -6957,7 +7036,7 @@
         },
         {
           "disabled": false,
-          "document": "Health check information of the listener\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Health check information of the listener</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "HealthCheck",
           "name": "HealthCheck",
@@ -6967,7 +7046,7 @@
         },
         {
           "disabled": false,
-          "document": "Request scheduling method. WRR, LEAST_CONN, and IP_HASH respectively indicate weighted round robin, least connections, and IP hash.Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Requested scheduling method. WRR, LEAST_CONN, and IP_HASH indicate weighted round-robin, least connection, and IP Hash respectively.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "WRR",
           "member": "string",
           "name": "Scheduler",
@@ -6977,7 +7056,7 @@
         },
         {
           "disabled": false,
-          "document": "Session persistence time, in seconds. value range: 30-3600. default value: 0, indicating that session persistence is not enabled by default. this parameter applies only to TCP and UDP listeners.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Session persistence time, unit: second. Available values: 30-3600, default 0, disabled by default. This parameter is applicable only to TCP/UDP listener.</p><p>Unit: second</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "SessionExpireTime",
@@ -6987,7 +7066,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies whether to enable the SNI feature. 1: enable; 0: disable. this parameter is applicable only to HTTPS listeners.",
+          "document": "<p>Whether to enable SNI feature. 1: enable, 0: disabled (this parameter is applicable only to HTTPS listeners)</p>",
           "example": "0",
           "member": "int64",
           "name": "SniSwitch",
@@ -6997,7 +7076,7 @@
         },
         {
           "disabled": false,
-          "document": "All forwarding rules under a listener (this parameter is meaningful only for HTTP/HTTPS listeners)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>All forwarding rules under a listener (this parameter is only meaningful for HTTP/HTTPS listeners)</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "RuleOutput",
           "name": "Rules",
@@ -7007,7 +7086,7 @@
         },
         {
           "disabled": false,
-          "document": "Listener name",
+          "document": "<p>Listener name</p>",
           "example": "Name",
           "member": "string",
           "name": "ListenerName",
@@ -7017,7 +7096,7 @@
         },
         {
           "disabled": false,
-          "document": "Listener creation time",
+          "document": "<p>Listener creation time.</p>",
           "example": "2021-03-01 15:27:04",
           "member": "string",
           "name": "CreateTime",
@@ -7027,7 +7106,7 @@
         },
         {
           "disabled": false,
-          "document": "End port of the port range. value range: 2-65535.",
+          "document": "<p>End port of the port range: 2–65535</p>",
           "example": "7890",
           "member": "int64",
           "name": "EndPort",
@@ -7037,7 +7116,7 @@
         },
         {
           "disabled": false,
-          "document": "Backend server type. available values: NODE, POLARIS, TARGETGROUP, TARGETGROUP-V2.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Backend server type. Available values: NODE, POLARIS, TARGETGROUP, TARGETGROUP-V2.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "NODE",
           "member": "string",
           "name": "TargetType",
@@ -7047,7 +7126,7 @@
         },
         {
           "disabled": false,
-          "document": "Basic information of a bound target group. This field will be returned when a target group is bound to a listener.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Bound target group basic information; return this field when listener binding target group.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "BasicTargetGroupInfo",
           "name": "TargetGroup",
@@ -7057,7 +7136,7 @@
         },
         {
           "disabled": false,
-          "document": "Session persistence type. NORMAL: Default session persistence type; QUIC_CID: Session persistence by Quic Connection ID.",
+          "document": "<p>Session persistence type. NORMAL means the default session persistence type. QUIC_CID refers to maintaining the session based on Quic Connection ID.</p>",
           "example": "NORMAL",
           "member": "string",
           "name": "SessionType",
@@ -7067,7 +7146,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether a persistent connection is enabled (1: enabled; 0: disabled). This parameter can only be configured in HTTP/HTTPS listeners.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "<p>Whether to enable long connections. 1: enable, 0: disable (this parameter is applicable only to HTTP/HTTPS listeners)</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "KeepaliveEnable",
@@ -7077,7 +7156,7 @@
         },
         {
           "disabled": false,
-          "document": "Supports Nat64 CLB TCP listeners only",
+          "document": "<p>Only supports Nat64 CLB TCP listener</p>",
           "example": "false",
           "member": "bool",
           "name": "Toa",
@@ -7087,7 +7166,7 @@
         },
         {
           "disabled": false,
-          "document": "Reschedules when unbinding real servers. only supported for TCP/UDP listeners. toggle on to enable this feature.",
+          "document": "<p>Rescheduling feature, which provides a switch for scaling out the backend service. If the switch is toggled on, rescheduling is triggered when the backend service is unbound. This parameter is applicable only to TCP/UDP listeners.</p>",
           "example": "false",
           "member": "bool",
           "name": "DeregisterTargetRst",
@@ -7097,7 +7176,7 @@
         },
         {
           "disabled": false,
-          "document": "Describes the attributes of the listener.",
+          "document": "<p>Listener attribute.</p>",
           "example": "[\"Stop\"]",
           "member": "string",
           "name": "AttrFlags",
@@ -7107,7 +7186,7 @@
         },
         {
           "disabled": false,
-          "document": "List of bound target groups\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "<p>List of bound target groups</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "BasicTargetGroupInfo",
           "name": "TargetGroupList",
@@ -7117,7 +7196,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum number of connections to a listener. -1 indicates unlimited speed at the listener dimension.",
+          "document": "<p>Maximum number of connections to a listener. -1 means no speed limit at the listener dimension.</p>",
           "example": "-1",
           "member": "int64",
           "name": "MaxConn",
@@ -7127,7 +7206,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum number of new connections to a listener. -1 means no speed limit at the listener dimension.",
+          "document": "<p>Maximum number of new connections to a listener. -1 means no speed limit at the listener dimension.</p>",
           "example": "-1",
           "member": "int64",
           "name": "MaxCps",
@@ -7137,7 +7216,7 @@
         },
         {
           "disabled": false,
-          "document": "Connection idle timeout period (in seconds). It’s only available to TCP listeners. Value range: 300-900 for shared and dedicated instances; 300-2000 for LCU-supported CLB instances. It defaults to 900.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "<p>Idle connection timeout is only supported for TCP listeners. Default value: 900. Value range: 300–900 for shared instances and dedicated instances and 300–1980 for LCU-supported instances.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "900",
           "member": "int64",
           "name": "IdleConnectTimeout",
@@ -7147,7 +7226,7 @@
         },
         {
           "disabled": false,
-          "document": "Rescheduling trigger duration, valid values: 0-3600s. only TCP/UDP listeners support this. after triggering rescheduling, persistent connections will disconnect and be reassigned within the set scheduling time.",
+          "document": "<p>Rescheduling trigger duration. Value range: 0–3600. Unit: s. This parameter is applicable only to TCP/UDP listeners. After rescheduling is triggered, persistent connections will be disconnected and reassigned within the scheduled time window. </p><p>Unit: s.</p>",
           "example": "600",
           "member": "uint64",
           "name": "RescheduleInterval",
@@ -7157,7 +7236,7 @@
         },
         {
           "disabled": false,
-          "document": "Data compression mode.",
+          "document": "<p>Data compression mode</p>",
           "example": "compatibility",
           "member": "string",
           "name": "DataCompressMode",
@@ -7167,7 +7246,7 @@
         },
         {
           "disabled": false,
-          "document": "Reschedules the startup time. when configured, rescheduling will be triggered upon arrival of the start time.",
+          "document": "<p>Rescheduling startup time: After the rescheduling startup time is configured, rescheduling is triggered when the startup time is arrived.</p>",
           "example": "600",
           "member": "int64",
           "name": "RescheduleStartTime",
@@ -7393,7 +7472,7 @@
         },
         {
           "disabled": false,
-          "document": "Network type of the load balancing instance.\nOPEN: public network attribute. INTERNAL: private network attribute. for a cloud load balancer with private network attribute, you can bind an EIP for public network access. for details, see the EIP document on binding elastic IP (https://www.tencentcloud.com/document/product/215/16700?from_cn_redirect=1).",
+          "document": "Network type of the load balancing instance.\nOPEN: public network attribute. INTERNAL: private network attribute. for a cloud load balancer with private network attribute, you can bind an EIP for public network access. for details, see the EIP document on [Binding Elastic IP](https://www.tencentcloud.com/document/product/215/16700?from_cn_redirect=1).",
           "example": "OPEN",
           "member": "string",
           "name": "LoadBalancerType",
@@ -7602,7 +7681,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the VPC ID in numerical form, obtainable through the DescribeVpcs API (https://www.tencentcloud.com/document/product/215/15778?from_cn_redirect=1).",
+          "document": "Specifies the VPC ID in numerical form, obtainable through the [DescribeVpcs]((https://www.tencentcloud.com/document/product/215/15778?from_cn_redirect=1)) API.",
           "example": "77599",
           "member": "uint64",
           "name": "NumericalVpcId",
@@ -7613,7 +7692,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the ISP of the load balancer IP address.\n\n-BGP (multi-line).\n- CMCC: CMCC single line network.\n-CTCC: ctcc single-line.\n- CUCC: china unicom single-line.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Specifies the ISP of the load balancer IP address.\n\n- BGP (multi-line).\n- CMCC: CMCC single line network.\n- CTCC: ctcc single-line.\n- CUCC: china unicom single-line.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "BGP",
           "member": "string",
           "name": "VipIsp",
@@ -8009,7 +8088,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Availability zone forwarding affinity info",
           "example": "无",
           "member": "AvailableZoneAffinityInfo",
           "name": "AvailableZoneAffinityInfo",
@@ -8442,6 +8521,16 @@
           "name": "Exclusive",
           "output_required": false,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Availability zone forwarding affinity info\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AvailableZoneAffinityInfo",
+          "name": "AvailableZoneAffinityInfo",
+          "output_required": false,
+          "type": "object",
           "value_allowed_null": true
         }
       ],
@@ -9014,7 +9103,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the CLB instance. You can call the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) API to query the ID.",
+          "document": "<p>ID of the Cloud Load Balancer (CLB) instance. You can call the <a href=\"https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1\">DescribeLoadBalancers</a> API to query the ID.</p>",
           "example": "lb-cuxw****",
           "member": "string",
           "name": "LoadBalancerId",
@@ -9023,7 +9112,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of the CLB instance listener. You can call the [DescribeListeners](https://intl.cloud.tencent.com/document/product/214/30686?from_cn_redirect=1) API to query the ID.",
+          "document": "<p>ID of the CLB listener. You can call the <a href=\"https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1\">DescribeListeners</a> API to query the ID.</p>",
           "example": "lbl-d1ub****",
           "member": "string",
           "name": "ListenerId",
@@ -9032,7 +9121,7 @@
         },
         {
           "disabled": false,
-          "document": "New listener name. The maximum length is 255 characters.",
+          "document": "<p>New listener name. Naming rule: 1-80 characters including English letters, Chinese characters, digits, connecting line \"-\", underscore \"_\" and other common characters (Unicode supplementary characters such as emoji and rare Chinese characters are forbidden).</p>",
           "example": "newlis",
           "member": "string",
           "name": "ListenerName",
@@ -9041,7 +9130,7 @@
         },
         {
           "disabled": false,
-          "document": "Session persistence time in seconds. Value range: 30-3,600. The default value is 0, indicating that session persistence is not enabled. This parameter is applicable only to TCP/UDP listeners.",
+          "document": "<p>Session persistence time, unit: second. Available values: 30-3600, default 0, disabled. This parameter is applicable only to TCP/UDP listener.</p>",
           "example": "120",
           "member": "int64",
           "name": "SessionExpireTime",
@@ -9050,7 +9139,7 @@
         },
         {
           "disabled": false,
-          "document": "Health check parameter. It is only applicable only to TCP, UDP, TCP_SSL and QUIC listeners.",
+          "document": "<p>Health check parameters. This parameter is applicable only to TCP/UDP/TCP_SSL/QUIC listeners.</p>",
           "example": "无",
           "member": "HealthCheck",
           "name": "HealthCheck",
@@ -9059,7 +9148,7 @@
         },
         {
           "disabled": false,
-          "document": "Certificate information. This parameter is only applicable to HTTPS/TCP_SSL/QUIC listeners. `Certificate` and `MultiCertInfo` cannot be both specified.",
+          "document": "<p>Certificate-related information. This parameter is applicable only to HTTPS/TCP_SSL/QUIC listeners. This parameter and MultiCertInfo cannot be specified at the same time.</p>",
           "example": "无",
           "member": "CertificateInput",
           "name": "Certificate",
@@ -9068,7 +9157,7 @@
         },
         {
           "disabled": false,
-          "document": "Listener forwarding method. Valid values: WRR (weighted round-robin), LEAST_CONN (least connections), and IP_HASH (IP address hash).\nThey indicate weighted round-robin and least connections, respectively. Default value: WRR.\nUse cases: This applies to TCP/UDP/TCP_SSL/QUIC listeners. The balancing method for Layer-7 listeners should be modified in the forwarding rules.",
+          "document": "<p>Listener forwarding method. Valid values: WRR (weighted round-robin), LEAST_CONN (least connections), and IP_HASH (IP address hash).<br>They indicate weighted round-robin and least connection respectively. Default is WRR.<br>Usage scenario: Suitable for TCP/UDP/TCP_SSL/QUIC listeners. The balancing method for Layer-7 listeners should be modified in the forwarding rules.</p>",
           "example": "LEAST_CONN",
           "member": "string",
           "name": "Scheduler",
@@ -9077,7 +9166,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable the SNI feature. This parameter applies only to HTTPS listeners. The default value is 0, indicating disabled, and 1 indicates enabled. Note: The SNI feature can be enabled for listeners that have not enabled SNI, but cannot be disabled for listeners that have enabled SNI.",
+          "document": "<p>Whether to enable SNI feature. This parameter applies only to HTTPS listeners. Default is 0 (disabled) or 1 (enable). Note: You can enable SNI for listeners without SNI. SNI cannot be disabled for listeners with SNI enabled.</p>",
           "example": "0",
           "member": "int64",
           "name": "SniSwitch",
@@ -9086,7 +9175,7 @@
         },
         {
           "disabled": false,
-          "document": "Target backend type. `NODE`: A single node; `TARGETGROUP`: A target group.",
+          "document": "<p>Backend target type. NODE indicates binding to a general node. TARGETGROUP indicates binding to a target group.</p>",
           "example": "NODE",
           "member": "string",
           "name": "TargetType",
@@ -9095,7 +9184,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable the persistent connection feature. This parameter applies only to HTTP/HTTPS listeners.\nThe default value is 0, indicating disabled, and 1 indicates enabled.\n\nEnable this feature with caution if the maximum number of connections is limited for real servers. This feature is in beta testing. To use it, submit a [beta testing application](https://intl.cloud.tencent.com/apply/p/tsodp6qm21?from_cn_redirect=1).",
+          "document": "<p>Whether to enable long connections. This parameter is applicable only to HTTP/HTTPS listeners.<br>The default value 0 means disabled, and 1 means enable.<br>If the backend service has a connection limit, enable with caution. This feature is currently in internal testing. If needed, submit a <a href=\"https://www.tencentcloud.com/apply/p/tsodp6qm21?from_cn_redirect=1\">beta application</a>.</p>",
           "example": "0",
           "member": "int64",
           "name": "KeepaliveEnable",
@@ -9104,7 +9193,7 @@
         },
         {
           "disabled": false,
-          "document": "Reschedules when unbinding real servers. only supported for TCP/UDP listeners. toggle on to enable this feature.",
+          "document": "<p>Rescheduling feature, which provides a switch for scaling out the backend service. If the switch is toggled on, rescheduling is triggered when the backend service is unbound. This parameter is applicable only to TCP/UDP listeners.</p>",
           "example": "false",
           "member": "bool",
           "name": "DeregisterTargetRst",
@@ -9113,7 +9202,7 @@
         },
         {
           "disabled": false,
-          "document": "Session persistence type. NORMAL: default session persistence type; QUIC_CID: perform session persistence based on QUIC connection ID. If the value is set to QUIC_CID, only the UDP protocol is supported.\nUse cases: This applies to TCP/UDP/TCP_SSL/QUIC listeners.\n\nDefault value: NORMAL.",
+          "document": "<p>Session persistence type. NORMAL means the default session persistence type. QUIC_CID refers to maintaining the session based on Quic Connection ID. QUIC_CID supports only UDP Protocol.<br>Usage scenario: Applicable to TCP/UDP/TCP_SSL/QUIC listeners.<br>Default is NORMAL.</p>",
           "example": "NORMAL",
           "member": "string",
           "name": "SessionType",
@@ -9122,7 +9211,7 @@
         },
         {
           "disabled": false,
-          "document": "Certificate information. You can specify multiple server-side certificates with different algorithm types. This parameter is only applicable to HTTPS listeners with the SNI feature not enabled. `Certificate` and `MultiCertInfo` cannot be specified at the same time. ",
+          "document": "<p>Certificate information. Multiple server certificates with different algorithm types can be imported at the same time. This parameter is applicable only to HTTPS listeners with SNI feature disabled. This parameter and Certificate cannot be specified at the same time.</p>",
           "example": "无",
           "member": "MultiCertInfo",
           "name": "MultiCertInfo",
@@ -9131,7 +9220,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum number of concurrent connections at the listener level. This parameter is supported only for LCU-supported instances with TCP/UDP/TCP_SSL/QUIC listeners currently. Value range: 1 to the maximum number of concurrent connections for the instance specification. -1 indicates that no limit is set on the concurrent connections at the listener level. Classic network instances do not support this parameter.\n\nDefault value: -1, which indicates no limit.",
+          "document": "<p>Maximum number of concurrent connections at the listener level. This parameter is supported only for LCU-supported instances with TCP/UDP/TCP_SSL/QUIC listeners currently. Value range: 1 to the maximum number of concurrent connections for the instance specification. -1 indicates no speed limit on the concurrent connections at the listener level. Classic network instances do not support this parameter.<br>Default value is -1, which means unlimited speed.</p>",
           "example": "1",
           "member": "int64",
           "name": "MaxConn",
@@ -9140,7 +9229,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum number of new connections at the listener level. This parameter is supported only for LCU-supported instances with TCP/UDP/TCP_SSL/QUIC listeners currently. Value range: 1 to the maximum number of new connections for the instance specification. -1 indicates that no limit is set on the new connections at the listener level. Classic network instances do not support this parameter.\n\nDefault value: -1, which indicates no limit.",
+          "document": "<p>Maximum number of new connections at the listener level. This parameter is supported only for LCU-supported instances with TCP/UDP/TCP_SSL/QUIC listeners currently. Value range: 1 to the maximum number of new connections for the instance specification. -1 indicates no speed limit on new connections at the listener level. Classic network instances do not support this parameter.<br>Default is -1, which means unlimited speed.</p>",
           "example": "1",
           "member": "int64",
           "name": "MaxCps",
@@ -9149,7 +9238,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the idle connection timeout in seconds. this parameter applies only to TCP/UDP listeners. default value: 900 for TCP listeners and 300 for UDP listeners. value range: 10–900 for shared instances and dedicated instances and 10–1980 for lcu-supported instances. to set a value exceeding 1980, [submit a ticket application](https://console.cloud.tencent.com/workorder/category). the maximum settable value is 3600.",
+          "document": "<p>Idle connection timeout. This parameter applies only to TCP/UDP listeners. To set a value exceeding 1980, <a href=\"https://console.cloud.tencent.com/workorder/category\">submit a ticket for application</a>. The maximum value can be 3600.</p><p>Range of values: [10, 1980]</p><p>Unit: seconds</p><p>Default value: 900</p><p>Default value for TCP listeners: 900. Default value for UDP listeners: 300. Value range: 10–900 for shared instances and dedicated instances and 10–1980 for LCU-supported instances.</p>",
           "example": "900",
           "member": "int64",
           "name": "IdleConnectTimeout",
@@ -9158,7 +9247,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies whether PP is supported for TCP_SSL and QUIC.",
+          "document": "<p>Whether TCP_SSL and QUIC support PP</p>",
           "example": "false",
           "member": "bool",
           "name": "ProxyProtocol",
@@ -9167,7 +9256,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether SNAT (source IP replacement) is enabled. valid values: True (enabled), False (disabled). disabled by default. note: when SnatEnable is enabled, the client source IP will be replaced, at this point the `pass through client source IP` option is disabled, and vice versa.",
+          "document": "<p>Whether SNAT (source IP replacement) is enabled, True (enabled), False (disabled). Disabled by default. Note: When SnatEnable is enabled, the client source IP will be replaced. At this point, the <code>Pass through client source IP</code> option is disabled, and vice versa.</p>",
           "example": "false",
           "member": "bool",
           "name": "SnatEnable",
@@ -9176,7 +9265,7 @@
         },
         {
           "disabled": false,
-          "document": "Data compression mode.",
+          "document": "<p>Data compression mode</p><p>Enumeration value:</p><ul><li>transparent: Transparent mode (default value)</li><li>compatibility: Compatible mode (enable gzip compression configuration)</li></ul>",
           "example": "transparent",
           "member": "string",
           "name": "DataCompressMode",
@@ -9185,7 +9274,7 @@
         },
         {
           "disabled": false,
-          "document": "Reschedules when setting backend server weight to 0. only supported for TCP/UDP listeners. toggle on to enable this feature.",
+          "document": "<p>Rescheduling feature, which provides a switch for changing the weight to 0. If the switch is toggled on, rescheduling is triggered when the weight of a real server is changed to 0. This parameter is applicable only to TCP/UDP listeners.</p>",
           "example": "false",
           "member": "bool",
           "name": "RescheduleTargetZeroWeight",
@@ -9194,7 +9283,7 @@
         },
         {
           "disabled": false,
-          "document": "Reschedules when health check exceptions occur on real servers. only supported for TCP/UDP listeners. toggle on to enable this feature.",
+          "document": "<p>Rescheduling feature, which provides a switch for detecting health check exceptions. If the switch is toggled on, rescheduling is triggered when the real server health check fails. This parameter is applicable only to TCP/UDP listeners.</p>",
           "example": "false",
           "member": "bool",
           "name": "RescheduleUnhealthy",
@@ -9203,7 +9292,7 @@
         },
         {
           "disabled": false,
-          "document": "Reschedules when adding or removing backend servers. only supported for TCP/UDP listeners. toggle on to enable this feature.",
+          "document": "<p>Rescheduling feature, which provides a switch for scaling out real servers. If the switch is toggled on, rescheduling is triggered when the number of real servers increases or decreases. This parameter is applicable only to TCP/UDP listeners.</p>",
           "example": "false",
           "member": "bool",
           "name": "RescheduleExpandTarget",
@@ -9212,7 +9301,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the trigger start time for rescheduling. value range: 0-3600s. supported only by TCP/UDP listeners.",
+          "document": "<p>Rescheduling trigger start time. Value range: 0–3600. Unit: s. This parameter is applicable only to TCP/UDP listeners.</p>",
           "example": "600",
           "member": "int64",
           "name": "RescheduleStartTime",
@@ -9221,7 +9310,7 @@
         },
         {
           "disabled": false,
-          "document": "Rescheduling trigger duration. valid values: 0-3600s. only TCP/UDP listeners support this.",
+          "document": "<p>Rescheduling trigger duration. Value range: 0–3600. Unit: s. This parameter is applicable only to TCP/UDP listeners.</p>",
           "example": "600",
           "member": "int64",
           "name": "RescheduleInterval",
@@ -9248,7 +9337,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Specifies the unique ID of the cloud load balancer. you can call the [DescribeLoadBalancers](https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1) API to obtain the ID.",
+          "document": "<p>Unique ID of the Cloud Load Balancer (CLB). You can call the <a href=\"https://www.tencentcloud.com/document/product/214/30685?from_cn_redirect=1\">DescribeLoadBalancers</a> API to obtain the ID.</p>",
           "example": "lb-6efswuxa",
           "member": "string",
           "name": "LoadBalancerId",
@@ -9257,7 +9346,7 @@
         },
         {
           "disabled": false,
-          "document": "Load balancing instance name. rule: 1-60 english letters, chinese characters, digits, hyphens \"-\", or underscores \"_\".",
+          "document": "<p>CLB instance name. Rules: 1-80 internationally compatible characters including letters, Chinese characters, digits, \"-\", \"_\", and other common characters (Unicode supplementary characters such as emojis and rare Chinese characters are forbidden).</p>",
           "example": "newlbname",
           "member": "string",
           "name": "LoadBalancerName",
@@ -9266,7 +9355,7 @@
         },
         {
           "disabled": false,
-          "document": "The backend service information of cross-region binding 1.0",
+          "document": "<p>Set the backend service information for cross-region binding 1.0 of Cloud Load Balancer.</p>",
           "example": "无",
           "member": "TargetRegionInfo",
           "name": "TargetRegionInfo",
@@ -9275,7 +9364,7 @@
         },
         {
           "disabled": false,
-          "document": "Network billing parameter",
+          "document": "<p>Network billing related parameters</p>",
           "example": "无",
           "member": "InternetAccessible",
           "name": "InternetChargeInfo",
@@ -9284,7 +9373,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies whether to allow CLB traffic to the Target.\nEnable pass-through (true): verify security groups on CLB only.\nDenies CLB traffic to the target (false): verify security groups on both CLB and backend instances.\nSpecifies no modification if left blank.",
+          "document": "<p>Allow CLB traffic to the Target.<br>Enable (true): verify security groups on CLB;<br>deny CLB traffic to the Target (false): verify security groups on both CLB and backend instances.<br>Leave blank for no modification.</p>",
           "example": "true",
           "member": "bool",
           "name": "LoadBalancerPassToTarget",
@@ -9293,7 +9382,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Switchover between different billing modes: 0 means no switchover, 1 means switch between prepaid and postpaid, 2 means switch between postpaid modes. Default value: 0</p>",
           "example": "0",
           "member": "uint64",
           "name": "SwitchFlag",
@@ -9302,7 +9391,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies whether the cross-region binding 2.0 feature is enabled. leave blank for no modification.",
+          "document": "<p>Whether cross-region binding 2.0 is enabled. Leave it blank for no modification.</p>",
           "example": "false",
           "member": "bool",
           "name": "SnatPro",
@@ -9311,7 +9400,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies whether to enable deletion protection. leave it blank to keep the current setting.",
+          "document": "<p>Whether to enable deletion protection. Leave it empty to skip modification.</p>",
           "example": "false",
           "member": "bool",
           "name": "DeleteProtect",
@@ -9320,7 +9409,7 @@
         },
         {
           "disabled": false,
-          "document": "Modifies the second-level domain name of cloud load balancer from mycloud.com to tencentclb.com. the subdomain will be transformed, and the mycloud.com domain name will become invalid after modification. leave it blank if no modification is required.",
+          "document": "<p>Change the second-level domain name of Cloud Load Balancer (CLB) from mycloud.com to tencentclb.com. The subdomain will also be transformed. After modification, the mycloud.com domain name will become invalid. Leave it blank if no modification is needed.</p>",
           "example": "true",
           "member": "bool",
           "name": "ModifyClassicDomain",
@@ -9329,7 +9418,7 @@
         },
         {
           "disabled": false,
-          "document": "The associated endpoint Id, which can be queried via the [DescribeVpcEndPoint](https://www.tencentcloud.com/document/product/215/54679?from_cn_redirect=1) api. input an empty string to unbind.",
+          "document": "<p>Id of the associated endpoint, which can be queried via the <a href=\"https://www.tencentcloud.com/document/product/215/54679?from_cn_redirect=1\">DescribeVpcEndPoint</a> api. Input an empty string to unbind.</p>",
           "example": "vpce-h0fk8lfc",
           "member": "string",
           "name": "AssociateEndpoint",
@@ -9344,7 +9433,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "This parameter can be used to query whether CLB billing mode switch is successful.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>When switching the billing mode of Cloud Load Balancer, you can use this parameter to check if the switch task is successful.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "string",
           "name": "DealName",
@@ -9390,7 +9479,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Order number.",
           "example": "2022XXXX",
           "member": "string",
           "name": "DealName",
@@ -9466,7 +9555,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the rule ID of the forwarding rule to be modified, which can be obtained through the DescribeListeners API (https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1).",
+          "document": "Specifies the rule ID of the forwarding rule to be modified, which can be obtained through the [DescribeListeners](https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1) API.",
           "example": "loc-9dr7bsl3",
           "member": "string",
           "name": "LocationId",
@@ -9574,7 +9663,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Target group ID",
+          "document": "<p>Target group ID.</p>",
           "example": "lbtg-815iz538",
           "member": "string",
           "name": "TargetGroupId",
@@ -9583,7 +9672,7 @@
         },
         {
           "disabled": false,
-          "document": "New name of target group",
+          "document": "<p>New name of target group. Naming rule: 1-80 English letters, Chinese characters and other internationally compatible language characters, digits, connecting line \"-\", underscore \"_\" and other common characters (Unicode supplementary characters such as emoji and rare Chinese characters are forbidden).</p>",
           "example": "xxxxholic",
           "member": "string",
           "name": "TargetGroupName",
@@ -9592,7 +9681,7 @@
         },
         {
           "disabled": false,
-          "document": "The new default port of the target group. this parameter is not supported for full listen target groups.",
+          "document": "<p>New default port of target group. Full listen target group does not support this parameter.</p>",
           "example": "22",
           "member": "uint64",
           "name": "Port",
@@ -9601,7 +9690,7 @@
         },
         {
           "disabled": false,
-          "document": "Scheduling algorithm. this parameter is valid only for target groups of the new version V2 when the backend forwarding protocol is HTTP, HTTPS, or GRPC. available values:.\n<ur><li>WRR: weighted round-robin.</li><li>LEAST_CONN: LEAST connection.</li><li>IP_HASH: based on IP HASH.</li><li>default is WRR.</li></ur>.",
+          "document": "<p>Scheduling algorithm. This parameter is valid only for new version V2 target groups with backend forwarding protocol (HTTP|HTTPS|GRPC). Available values:<br>&lt;ur&gt;<li>WRR: weighted round-robin.</li><li>LEAST_CONN: least connection.</li><li>IP_HASH: based on IP hash.</li><li>Default WRR.</li>&lt;ur&gt;</p>",
           "example": "LEAST_CONN",
           "member": "string",
           "name": "ScheduleAlgorithm",
@@ -9610,7 +9699,7 @@
         },
         {
           "disabled": false,
-          "document": "Health check details.",
+          "document": "<p>Health check details.</p>",
           "example": "无",
           "member": "TargetGroupHealthCheck",
           "name": "HealthCheck",
@@ -9619,7 +9708,7 @@
         },
         {
           "disabled": false,
-          "document": "Default Weight for backend service. among them: <ul><li>value ranges from 0 to 100.</li><li>after setting this value, when adding a backend service to the target group, if the backend service does not set Weight separately, use the default Weight here.</li><li>Weight parameter settings not supported for v1 target group type.</li></ul>.",
+          "document": "<p>Default weight of the backend service. Among them: <ul><li>Value ranges from 0 to 100.</li><li>After setting this value, when adding a backend service to the target group, if the backend service does not set weight individually, use the default weight here.</li><li>Weight parameter settings not supported for Target Group Type v1.</li></ul></p>",
           "example": "100",
           "member": "uint64",
           "name": "Weight",
@@ -9628,7 +9717,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies whether to enable the persistent connection feature. this parameter applies only to HTTP and HTTPS target groups. true: disable; false: enable. this feature is off by default.",
+          "document": "<p>Whether to enable long connections. This parameter is applicable only to HTTP/HTTPS target groups. true: off; false: on. Off by default.</p>",
           "example": "true",
           "member": "bool",
           "name": "KeepaliveEnable",
@@ -9637,7 +9726,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the session persistence time in seconds. value range: 30-3600. default: 0 (disabled). this parameter is unsupported for TCP/UDP target groups.",
+          "document": "<p>Session persistence time, unit: second. Available values: 30-3600, default 0, disabled. This parameter is not supported for TCP/UDP target group.</p>",
           "example": "30",
           "member": "uint64",
           "name": "SessionExpireTime",
@@ -9646,7 +9735,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Whether SNAT (source IP replacement) is enabled, True (enabled), False (disabled). Disabled by default. Note: When SnatEnable is enabled, the client source IP will be replaced. At this point, the <code>Pass through client source IP</code> option is disabled, and vice versa.</p>",
           "example": "true",
           "member": "bool",
           "name": "SnatEnable",
@@ -10175,7 +10264,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the forwarding rule ID, which can be obtained through the DescribeListeners API (https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1). you must provide this parameter or either Domain or Url when binding a backend service to a layer-7 forwarding rule.",
+          "document": "Specifies the forwarding rule ID, which can be obtained through the [DescribeListeners]((https://www.tencentcloud.com/document/product/214/30686?from_cn_redirect=1)) API. you must provide this parameter or either Domain or Url when binding a backend service to a layer-7 forwarding rule.",
           "example": "loc-fi8g****",
           "member": "string",
           "name": "LocationId",
@@ -10242,6 +10331,52 @@
     "RegisterTargetsWithClassicalLBResponse": {
       "document": "RegisterTargetsWithClassicalLB response structure.",
       "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RenewLoadBalancersRequest": {
+      "document": "RenewLoadBalancers request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique ID array of the CLB instance, supports up to 20.",
+          "example": "[\"lb-hcrzu8au\"]",
+          "member": "string",
+          "name": "LoadBalancerIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Prepaid billing attributes of the CLB instance.",
+          "example": "无",
+          "member": "LBChargePrepaid",
+          "name": "LBChargePrepaid",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "RenewLoadBalancersResponse": {
+      "document": "RenewLoadBalancers response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Order number.",
+          "example": "2022XXXX",
+          "member": "string",
+          "name": "DealName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -10471,7 +10606,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "CLB listener ID.",
+          "document": "<p>CLB listener ID.</p>",
           "example": "lbl-cuxw****",
           "member": "string",
           "name": "ListenerId",
@@ -10480,7 +10615,7 @@
         },
         {
           "disabled": false,
-          "document": "List of real servers with tags to be modified.",
+          "document": "<p>List of real servers with tags to be modified.</p>",
           "example": "无",
           "member": "Target",
           "name": "Targets",
@@ -10489,7 +10624,7 @@
         },
         {
           "disabled": false,
-          "document": "Forwarding rule ID, which is required only for Layer-7 rules but not for Layer-4 rules.",
+          "document": "<p>Forwarding rule ID, required for layer-7 rules, not required for layer-4 rules.</p>",
           "example": "loc-o8cn****",
           "member": "string",
           "name": "LocationId",
@@ -10498,7 +10633,7 @@
         },
         {
           "disabled": false,
-          "document": "Modified Tag of the backend service. this parameter has a lower priority than the Tag parameter in the aforementioned [Target](https://www.tencentcloud.com/document/api/214/30694?from_cn_redirect=1#Target). the final Tag value is based on the Tag parameter in the Target. the Tag parameter in RsTagRule will be used only when the Tag parameter in the Target is empty.",
+          "document": "<p>Modified tag of the backend service. This parameter has a lower priority than the Tag parameter in the aforementioned <a href=\"https://www.tencentcloud.com/document/api/214/30694?from_cn_redirect=1#Target\">Target</a>. The final tag value is based on the Tag parameter in the Target. The Tag parameter in RsTagRule will be used only when the Tag parameter in the Target is empty.</p>",
           "example": "tag_target",
           "member": "string",
           "name": "Tag",
@@ -11155,7 +11290,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the personalized configuration content. this field is required when creating or modifying custom configuration.\nSpecifies specific restrictions. view layer-7 personalized configuration (https://www.tencentcloud.com/document/product/214/15171?from_cn_redirect=1).",
+          "document": "Specifies the personalized configuration content. this field is required when creating or modifying custom configuration.\nSpecifies specific restrictions. view [layer-7 personalized configuration](https://www.tencentcloud.com/document/product/214/15171?from_cn_redirect=1).",
           "example": "client_max_body_size 222M;",
           "member": "string",
           "name": "ConfigContent",
@@ -11928,7 +12063,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Target group ID",
+          "document": "<p>Target group ID</p>",
           "example": "lbtg-xxxxxxxx",
           "member": "string",
           "name": "TargetGroupId",
@@ -11938,7 +12073,7 @@
         },
         {
           "disabled": false,
-          "document": "`vpcid` of target group",
+          "document": "<p>VPC ID of the target group</p>",
           "example": "vpc-xxxxxxxx",
           "member": "string",
           "name": "VpcId",
@@ -11948,7 +12083,7 @@
         },
         {
           "disabled": false,
-          "document": "Target group name",
+          "document": "<p>Target group name</p>",
           "example": "Name",
           "member": "string",
           "name": "TargetGroupName",
@@ -11958,7 +12093,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the default port of the target group. for a full listen target group, this field returns 0, indicating an invalid port.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Default port of target group. This field returns 0 for full listen target group, indicating an invalid port.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "60",
           "member": "uint64",
           "name": "Port",
@@ -11968,7 +12103,7 @@
         },
         {
           "disabled": false,
-          "document": "Target group creation time",
+          "document": "<p>Creation time of target group</p>",
           "example": "2022-03-23 10:37:16",
           "member": "datetime",
           "name": "CreatedTime",
@@ -11978,7 +12113,7 @@
         },
         {
           "disabled": false,
-          "document": "Target group modification time",
+          "document": "<p>Target group modification time</p>",
           "example": "2022-03-23 10:37:16",
           "member": "datetime",
           "name": "UpdatedTime",
@@ -11988,7 +12123,7 @@
         },
         {
           "disabled": false,
-          "document": "Associated rule array. This parameter cannot be obtained when the DescribeTargetGroupList API is called.Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Associated rule array. This parameter cannot be obtained in the DescribeTargetGroupList API call.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "AssociationItem",
           "name": "AssociatedRule",
@@ -11998,7 +12133,7 @@
         },
         {
           "disabled": false,
-          "document": "Backend forwarding protocol of the target group. only returns valid values for the new version (v2) target group.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Backend forwarding protocol of the target group. Only the new version target group v2 returns a valid value.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "tcp",
           "member": "string",
           "name": "Protocol",
@@ -12008,7 +12143,7 @@
         },
         {
           "disabled": false,
-          "document": "Scheduling algorithm. returns a valid value only when the backend forwarding protocol is HTTP, HTTPS, or GRPC. available values:.\n<ur>\n<Li>WRR: weighted round-robin.</li>.\n<Li>LEAST_CONN: specifies the least connection.</li>.\n<Li>IP_HASH: based on ip hash.</li>.\n</ur>\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Scheduling algorithm. This parameter returns valid values only for target groups with backend forwarding protocol (HTTP, HTTPS, GRPC). Available values:</p><ur></p><li>WRR: weighted round-robin.</li><li>LEAST_CONN: LEAST connection.</li><li>IP_HASH: based on IP HASH.</li></ur>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "WRR",
           "member": "string",
           "name": "ScheduleAlgorithm",
@@ -12018,7 +12153,7 @@
         },
         {
           "disabled": false,
-          "document": "Health check details.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Health check details.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "TargetGroupHealthCheck",
           "name": "HealthCheck",
@@ -12028,7 +12163,7 @@
         },
         {
           "disabled": false,
-          "document": "Target group type, currently supported v1 (legacy version target group) and v2 (new version target group). defaults to v1 (legacy version target group).",
+          "document": "<p>Target Group Type, currently supported v1 (legacy version target group), v2 (new version target group). Defaults to v1 (legacy version target group).</p>",
           "example": "v1",
           "member": "string",
           "name": "TargetGroupType",
@@ -12038,7 +12173,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of rules associated with the target group.",
+          "document": "<p>Number of rules associated with the target group.</p>",
           "example": "60",
           "member": "int64",
           "name": "AssociatedRuleCount",
@@ -12048,7 +12183,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the number of instances in the target group.",
+          "document": "<p>Number of instances in the target group.</p>",
           "example": "1",
           "member": "int64",
           "name": "RegisteredInstancesCount",
@@ -12058,7 +12193,7 @@
         },
         {
           "disabled": false,
-          "document": "Tag.",
+          "document": "<p>Tag.</p>",
           "example": "无",
           "member": "TagInfo",
           "name": "Tag",
@@ -12068,7 +12203,7 @@
         },
         {
           "disabled": false,
-          "document": "Default weight. only target groups of v2 type return this field. when NULL is returned, it means the default weight is not set.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Default weight. Only target groups of v2 type return this field. When NULL is returned, it means the default weight is not set.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "100",
           "member": "uint64",
           "name": "Weight",
@@ -12078,7 +12213,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies whether to listen to all target groups.",
+          "document": "<p>Whether to listen to the target group.</p>",
           "example": "true",
           "member": "bool",
           "name": "FullListenSwitch",
@@ -12088,7 +12223,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable persistent connections. valid only when the backend forwarding protocol is HTTP/HTTPS/GRPC and returned by the target group.",
+          "document": "<p>Whether to enable long connections. Only target groups with HTTP/HTTPS/GRPC as the backend forwarding protocol return a valid value.</p>",
           "example": "true",
           "member": "bool",
           "name": "KeepaliveEnable",
@@ -12098,7 +12233,7 @@
         },
         {
           "disabled": false,
-          "document": "Session persistence time. valid only when the backend forwarding protocol is HTTP/HTTPS/GRPC and the target group returns a valid value.",
+          "document": "<p>Session hold time. Only target groups with backend forwarding protocol set to HTTP/HTTPS/GRPC return a valid value.</p>",
           "example": "0",
           "member": "int64",
           "name": "SessionExpireTime",
@@ -12108,12 +12243,22 @@
         },
         {
           "disabled": false,
-          "document": "IP version.",
+          "document": "<p>IP version.</p>",
           "example": "IPv4",
           "member": "string",
           "name": "IpVersion",
           "output_required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable SNAT</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "SnatEnable",
+          "output_required": false,
+          "type": "bool",
           "value_allowed_null": false
         }
       ],
@@ -12160,6 +12305,62 @@
         }
       ],
       "usage": "in"
+    },
+    "TargetGroupInstanceStatus": {
+      "document": "It is used for the health check status of the target group backend RS.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "IP of backend RS",
+          "example": "10.0.0.1",
+          "member": "string",
+          "name": "InstanceIp",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Health check status. Parameter values and meanings are as follows:\n● on: Indicates checking.\n● off: means health check disabled.\n● Health: Indicates healthy.\n● unhealth: indicates being abnormal.",
+          "example": "health",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "ins-xxxxxxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Port.",
+          "example": "90",
+          "member": "uint64",
+          "name": "Port",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "NIC ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "eni-xxxxxxxx",
+          "member": "string",
+          "name": "EniId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "TargetHealth": {
       "document": "Describes the health information of a target",

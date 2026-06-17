@@ -1274,6 +1274,13 @@
       "output": "OfflineLibraDBInstanceResponse",
       "status": "online"
     },
+    "OpenAIOptimizer": {
+      "document": "This API is used to start the optimizer switch of an instance.",
+      "input": "OpenAIOptimizerRequest",
+      "name": "Enable AI optimizer",
+      "output": "OpenAIOptimizerResponse",
+      "status": "online"
+    },
     "OpenAuditService": {
       "document": "This API is used to enable database audit service for an instance.",
       "input": "OpenAuditServiceRequest",
@@ -7005,7 +7012,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Load balancing mode</p><p>Enumeration value:</p><ul><li>static: Static load</li><li>dynamic: Dynamic load</li></ul>",
           "example": "static",
           "member": "string",
           "name": "LoadBalanceMode",
@@ -7967,7 +7974,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Cluster ID.",
+          "document": "<p>Cluster ID.</p>",
           "example": "cynosdbmysql-8sj2h3bx",
           "member": "string",
           "name": "ClusterId",
@@ -7977,7 +7984,7 @@
         },
         {
           "disabled": false,
-          "document": "Cluster name.",
+          "document": "<p>Cluster name.</p>",
           "example": "cynosdbmysql-8sj2h3bx",
           "member": "string",
           "name": "ClusterName",
@@ -7987,7 +7994,7 @@
         },
         {
           "disabled": false,
-          "document": "Region.",
+          "document": "<p>Region</p>",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
@@ -7997,7 +8004,7 @@
         },
         {
           "disabled": false,
-          "document": "AZ.",
+          "document": "<p>AZ.</p>",
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "Zone",
@@ -8007,7 +8014,7 @@
         },
         {
           "disabled": false,
-          "document": "Physical availability zone.",
+          "document": "<p>Physical AZ</p>",
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "PhysicalZone",
@@ -8017,7 +8024,7 @@
         },
         {
           "disabled": false,
-          "document": "Status. supported values are as follows:.\n- Creating: creating.\n- running: running.\n- isolating.\n- Isolated: isolated.\n- activating: restore from recycle bin.\n- offlining: offline.\n- offlined: offline.\n- deleting: deleting.\n- deleted: deleted.",
+          "document": "<p>Status. Supported values are as follows:</p><ul><li>creating: Creating</li><li>running: Running</li><li>isolating: Isolation</li><li>isolated: Isolated</li><li>activating: Restore from recycle bin</li><li>offlining: Offline</li><li>offlined: Offline</li><li>deleting: Deleting</li><li>deleted: Deleted</li></ul>",
           "example": "running",
           "member": "string",
           "name": "Status",
@@ -8027,7 +8034,7 @@
         },
         {
           "disabled": false,
-          "document": "Status description",
+          "document": "<p>Status description</p>",
           "example": "运行中",
           "member": "string",
           "name": "StatusDesc",
@@ -8037,7 +8044,7 @@
         },
         {
           "disabled": false,
-          "document": "Serverless cluster status when the database type is `SERVERLESS`. Valid values:\nresume\nresuming\npause\npausing",
+          "document": "<p>When the Db type is SERVERLESS, the SERVERLESS cluster status. Available values:<br>resume<br>resuming<br>pause<br>pausing</p>",
           "example": "resume",
           "member": "string",
           "name": "ServerlessStatus",
@@ -8047,7 +8054,7 @@
         },
         {
           "disabled": false,
-          "document": "Storage Id.",
+          "document": "<p>Storage Id</p>",
           "example": "cynosdbmysql-8sj2h3bx",
           "member": "string",
           "name": "StorageId",
@@ -8057,7 +8064,7 @@
         },
         {
           "disabled": false,
-          "document": "Storage size in gb.",
+          "document": "<p>Storage size in GB</p>",
           "example": "200",
           "member": "int64",
           "name": "Storage",
@@ -8067,7 +8074,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum storage specification, in gb.",
+          "document": "<p>Maximum storage specification, in GB</p>",
           "example": "3000",
           "member": "int64",
           "name": "MaxStorageSize",
@@ -8077,7 +8084,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the minimum storage specification, in gb.",
+          "document": "<p>Minimum storage specification, in GB</p>",
           "example": "10",
           "member": "int64",
           "name": "MinStorageSize",
@@ -8087,7 +8094,7 @@
         },
         {
           "disabled": false,
-          "document": "Storage billing type. 1 indicates yearly/monthly subscription, and 0 indicates pay-as-you-go.",
+          "document": "<p>Storage billing type. Valid values: 1 (yearly/monthly subscription); 0 (pay-as-you-go).</p>",
           "example": "1",
           "member": "int64",
           "name": "StoragePayMode",
@@ -8097,7 +8104,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC name.",
+          "document": "<p>VPC name</p>",
           "example": "Default-VPC",
           "member": "string",
           "name": "VpcName",
@@ -8107,7 +8114,7 @@
         },
         {
           "disabled": false,
-          "document": "Unique VPC ID.",
+          "document": "<p>vpc Unique id</p>",
           "example": "vpc-4pbgx2ld",
           "member": "string",
           "name": "VpcId",
@@ -8117,7 +8124,7 @@
         },
         {
           "disabled": false,
-          "document": "Subnet name.",
+          "document": "<p>Subnet name.</p>",
           "example": "Default-Subnet",
           "member": "string",
           "name": "SubnetName",
@@ -8127,7 +8134,7 @@
         },
         {
           "disabled": false,
-          "document": "Subnet ID.",
+          "document": "<p>Subnet ID.</p>",
           "example": "subnet-a2emqb1d",
           "member": "string",
           "name": "SubnetId",
@@ -8137,7 +8144,7 @@
         },
         {
           "disabled": false,
-          "document": "Character set.",
+          "document": "<p>Character set.</p>",
           "example": "utf8",
           "member": "string",
           "name": "Charset",
@@ -8147,7 +8154,7 @@
         },
         {
           "disabled": false,
-          "document": "Creation time.",
+          "document": "<p>Creation time.</p>",
           "example": "2021-05-25 19:23:31",
           "member": "string",
           "name": "CreateTime",
@@ -8157,7 +8164,7 @@
         },
         {
           "disabled": false,
-          "document": "Database type.",
+          "document": "<p>Database type</p>",
           "example": "MYSQL",
           "member": "string",
           "name": "DbType",
@@ -8167,7 +8174,7 @@
         },
         {
           "disabled": false,
-          "document": "Db type: <li>NORMAL</li> <li>SERVERLESS</li>.",
+          "document": "<p>Db type: <li>NORMAL</li><li>SERVERLESS</li></p>",
           "example": "NORMAL",
           "member": "string",
           "name": "DbMode",
@@ -8177,7 +8184,7 @@
         },
         {
           "disabled": false,
-          "document": "Database version.",
+          "document": "<p>Database version</p>",
           "example": "5.7",
           "member": "string",
           "name": "DbVersion",
@@ -8187,7 +8194,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the maximum storage space.",
+          "document": "<p>Storage space limit</p>",
           "example": "3000",
           "member": "int64",
           "name": "StorageLimit",
@@ -8197,7 +8204,7 @@
         },
         {
           "disabled": false,
-          "document": "Used capacity.",
+          "document": "<p>Used capacity</p>",
           "example": "100",
           "member": "int64",
           "name": "UsedStorage",
@@ -8207,7 +8214,7 @@
         },
         {
           "disabled": false,
-          "document": "VIP.",
+          "document": "<p>vip address</p>",
           "example": "10.36.173.27",
           "member": "string",
           "name": "Vip",
@@ -8217,7 +8224,7 @@
         },
         {
           "disabled": false,
-          "document": "vport.",
+          "document": "<p>vport port</p>",
           "example": "3306",
           "member": "int64",
           "name": "Vport",
@@ -8227,7 +8234,7 @@
         },
         {
           "disabled": false,
-          "document": "VIP and vport of the read-only instance in a cluster.",
+          "document": "<p>vip address and vport of the cluster read-only instance</p>",
           "example": "无",
           "member": "Addr",
           "name": "RoAddr",
@@ -8237,7 +8244,7 @@
         },
         {
           "disabled": false,
-          "document": "Functions supported by the cluster.",
+          "document": "<p>Functions supported by the cluster</p>",
           "example": "无",
           "member": "Ability",
           "name": "Ability",
@@ -8247,7 +8254,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the cynos version.",
+          "document": "<p>cynos version</p>",
           "example": "2.0.21",
           "member": "string",
           "name": "CynosVersion",
@@ -8257,7 +8264,7 @@
         },
         {
           "disabled": false,
-          "document": "Business type.",
+          "document": "<p>Business type</p>",
           "example": "bus_a",
           "member": "string",
           "name": "BusinessType",
@@ -8267,7 +8274,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether there is an availability zone.",
+          "document": "<p>Whether there is a secondary AZ</p>",
           "example": "yes",
           "member": "string",
           "name": "HasSlaveZone",
@@ -8277,7 +8284,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to freeze.",
+          "document": "<p>Freeze or not</p>",
           "example": "no",
           "member": "string",
           "name": "IsFreeze",
@@ -8287,7 +8294,7 @@
         },
         {
           "disabled": false,
-          "document": "Task list.",
+          "document": "<p>Task List</p>",
           "example": "无",
           "member": "ObjectTask",
           "name": "Tasks",
@@ -8297,7 +8304,7 @@
         },
         {
           "disabled": false,
-          "document": "Primary AZ.",
+          "document": "<p>Primary AZ</p>",
           "example": "ap-guangzhou-3",
           "member": "string",
           "name": "MasterZone",
@@ -8307,7 +8314,7 @@
         },
         {
           "disabled": false,
-          "document": "Availability zone list.",
+          "document": "<p>From the AZ list</p>",
           "example": "[\"ap-guangzhou-3\"]",
           "member": "string",
           "name": "SlaveZones",
@@ -8317,7 +8324,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance information.",
+          "document": "<p>Instance information</p>",
           "example": "无",
           "member": "ClusterInstanceDetail",
           "name": "InstanceSet",
@@ -8327,7 +8334,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing mode.",
+          "document": "<p>Payment mode</p>",
           "example": "1",
           "member": "int64",
           "name": "PayMode",
@@ -8337,7 +8344,7 @@
         },
         {
           "disabled": false,
-          "document": "Expiration time.",
+          "document": "<p>Expiry time.</p>",
           "example": "2021-05-25 19:23:31",
           "member": "string",
           "name": "PeriodEndTime",
@@ -8347,7 +8354,7 @@
         },
         {
           "disabled": false,
-          "document": "Project ID.",
+          "document": "<p>Project ID.</p>",
           "example": "1623",
           "member": "int64",
           "name": "ProjectID",
@@ -8357,7 +8364,7 @@
         },
         {
           "disabled": false,
-          "document": "Array of tags bound to instance.",
+          "document": "<p>tag Array information for instance binding</p>",
           "example": "无",
           "member": "Tag",
           "name": "ResourceTags",
@@ -8367,7 +8374,7 @@
         },
         {
           "disabled": false,
-          "document": "Proxy status.",
+          "document": "<p>Proxy status</p>",
           "example": "running",
           "member": "string",
           "name": "ProxyStatus",
@@ -8377,7 +8384,7 @@
         },
         {
           "disabled": false,
-          "document": "binlog switch. valid values: ON, OFF.",
+          "document": "<p>binlog switch, available values: ON, OFF</p>",
           "example": "OFF",
           "member": "string",
           "name": "LogBin",
@@ -8387,7 +8394,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies whether to skip the transaction.",
+          "document": "<p>Skip transaction or not</p>",
           "example": "no",
           "member": "string",
           "name": "IsSkipTrade",
@@ -8397,7 +8404,7 @@
         },
         {
           "disabled": false,
-          "document": "PITR type: valid values: normal, redo_pitr.",
+          "document": "<p>PITR type, available values: normal, redo_pitr</p>",
           "example": "normal",
           "member": "string",
           "name": "PitrType",
@@ -8407,7 +8414,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable password complexity.",
+          "document": "<p>Whether to toggle on password complexity</p>",
           "example": "yes",
           "member": "string",
           "name": "IsOpenPasswordComplexity",
@@ -8417,7 +8424,7 @@
         },
         {
           "disabled": false,
-          "document": "Network type.",
+          "document": "<p>Network type</p>",
           "example": "tcp",
           "member": "string",
           "name": "NetworkStatus",
@@ -8427,7 +8434,7 @@
         },
         {
           "disabled": false,
-          "document": "The resource package information that is bound to the cluster.\t",
+          "document": "<p>Package info of the bound resource for the cluster</p>",
           "example": "无",
           "member": "ResourcePackage",
           "name": "ResourcePackages",
@@ -8437,7 +8444,7 @@
         },
         {
           "disabled": false,
-          "document": "Auto-Renewal flag. 1 indicates auto-renewal. 0 indicates non-renewal upon expiration.",
+          "document": "<p>Auto-renewal flag. 1 means auto-renewal, 0 means non-renewal upon expiration.</p>",
           "example": "1",
           "member": "int64",
           "name": "RenewFlag",
@@ -8447,7 +8454,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the node network type.",
+          "document": "<p>Node network type</p>",
           "example": "whole_rdma",
           "member": "string",
           "name": "NetworkType",
@@ -8457,7 +8464,7 @@
         },
         {
           "disabled": false,
-          "document": "Secondary availability zone property.",
+          "document": "<p>Secondary availability zone property</p>",
           "example": "无",
           "member": "SlaveZoneAttrItem",
           "name": "SlaveZoneAttr",
@@ -8467,7 +8474,7 @@
         },
         {
           "disabled": false,
-          "document": "Version Tag.",
+          "document": "<p>Version tag</p>",
           "example": "stable",
           "member": "string",
           "name": "CynosVersionTag",
@@ -8477,7 +8484,7 @@
         },
         {
           "disabled": false,
-          "document": "Global database network unique id.",
+          "document": "<p>Unique ID of the global database network</p>",
           "example": "cynosdbmysql-gdn-xdgsdbsa",
           "member": "string",
           "name": "GdnId",
@@ -8487,7 +8494,7 @@
         },
         {
           "disabled": false,
-          "document": "The role of clusters in the global data network.\nprimary cluster.\nSlave cluster - standby.\nIf empty, the field is invalid.",
+          "document": "<p>Role of the cluster in the global data network.<br>Primary cluster - primary<br>Slave cluster - standby<br>If empty, the field is invalid.</p>",
           "example": "primary",
           "member": "string",
           "name": "GdnRole",
@@ -8497,7 +8504,7 @@
         },
         {
           "disabled": false,
-          "document": "Secondary storage usage, unit: G.",
+          "document": "<p>Second-level storage usage in GB</p>",
           "example": "100",
           "member": "int64",
           "name": "UsedArchiveStorage",
@@ -8507,7 +8514,7 @@
         },
         {
           "disabled": false,
-          "document": "Archiving status, enumeration value <li>normal: normal</li><li>archiving: archiving</li><li>resuming: recovering</li><li>archived: archived</li>.",
+          "document": "<p>Archiving status. Enumeration value <li>normal: Normal</li><li>archiving: Archiving</li><li>resuming: Recovering</li><li>archived: Archived</li></p>",
           "example": "normal",
           "member": "string",
           "name": "ArchiveStatus",
@@ -8517,7 +8524,7 @@
         },
         {
           "disabled": false,
-          "document": "Archive progress, percentage.",
+          "document": "<p>Archive progress, percentage.</p>",
           "example": "64",
           "member": "int64",
           "name": "ArchiveProgress",
@@ -8527,7 +8534,17 @@
         },
         {
           "disabled": false,
-          "document": "Whether transparent encryption is enabled.",
+          "document": "<p>Cluster level. For example P0, P1</p>",
+          "example": "P0",
+          "member": "string",
+          "name": "ClusterLevel",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable transparent data encryption</p>",
           "example": "false",
           "member": "bool",
           "name": "IsOpenTDE",
@@ -13303,7 +13320,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Database type. Valid values: \n<li> MYSQL </li>",
+          "document": "<p>Database type, value ranges from...to... </p><li> MYSQL </li>",
           "example": "MYSQL",
           "member": "string",
           "name": "DbType",
@@ -13312,7 +13329,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to return the AZ information.",
+          "document": "<p>Whether required to return AZ information</p>",
           "example": "false",
           "member": "bool",
           "name": "IncludeZoneStocks",
@@ -13321,10 +13338,19 @@
         },
         {
           "disabled": false,
-          "document": "Instance machine type.",
+          "document": "<p>Instance machine type.</p>",
           "example": "exclusive",
           "member": "string",
           "name": "DeviceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Cluster level, optional. For example P0, P1</p>",
+          "example": "P0",
+          "member": "string",
+          "name": "ClusterLevel",
           "required": false,
           "type": "string"
         }
@@ -13336,7 +13362,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Specification information",
+          "document": "<p>Specification information.</p>",
           "example": "无",
           "member": "InstanceSpec",
           "name": "InstanceSpecSet",
@@ -14998,7 +15024,7 @@
         {
           "disabled": false,
           "document": "List of parameters",
-          "example": "[{\"CurrentValue\": \"1\",\"Default\": \"1\",\"Description\": \"Controls the interval between successive column values.\",\"EnumValue\": [],\"Func\": \"\",\"FuncPattern\": \"\",\"IsFunc\": false,\"IsGlobal\": 1,\"MatchType\": \"\",\"MatchValue\": \"\",\"Max\": \"65535\",\"Min\": \"1\",\"ModifiableInfo\": {\"IsModifiable\": 1},\"NeedReboot\": 0,\"ParamName\": \"auto_increment_increment\",\"ParamType\": \"integer\",\"SupportFunc\": false}]",
+          "example": "[{\"CurrentValue\": \"1\",\"Default\": \"1\",\"Description\": \"Controls the interval between successive column values.\",\"EnumValue\": [],\"Func\": \"\",\"FuncPattern\": \"\",\"IsFunc\": false,\"IsGlobal\": 1,\"MatchType\": \"\",\"MatchValue\": \"\",\"Max\": \"65535\",\"Min\": \"1\"}]",
           "member": "ParamDetail",
           "name": "Items",
           "output_required": true,
@@ -16281,10 +16307,19 @@
       "members": [
         {
           "disabled": false,
-          "document": "Availability zone",
+          "document": "<p>AZ.</p>",
           "example": "ap-guangzhou-3",
           "member": "string",
           "name": "Zone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Cluster level</p>",
+          "example": "L1",
+          "member": "string",
+          "name": "ClusterLevel",
           "required": false,
           "type": "string"
         }
@@ -16296,7 +16331,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Available specifications of Serverless instance.",
+          "document": "<p>Serverless instance available specifications</p>",
           "example": "无",
           "member": "ServerlessSpec",
           "name": "Specs",
@@ -24064,7 +24099,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Load balancing mode</p><p>Enumeration value:</p><ul><li>static: Static load</li><li>dynamic: Dynamic load</li></ul>",
           "example": "static",
           "member": "string",
           "name": "LoadBalanceMode",
@@ -25171,6 +25206,52 @@
         }
       ],
       "usage": "out"
+    },
+    "OpenAIOptimizerRequest": {
+      "document": "OpenAIOptimizer request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Cluster ID.</p>",
+          "example": "cynosdbmysql-06bf6v90",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Instance ID.</p>",
+          "example": "cynosdbmysql-ins-n5yrdmp7",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "OpenAIOptimizerResponse": {
+      "document": "OpenAIOptimizer response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task flow id.</p>",
+          "example": "1048940",
+          "member": "int64",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "OpenAuditServiceRequest": {
       "document": "OpenAuditService request structure.",
@@ -27129,7 +27210,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Auto load</p><p>Enumeration value:</p><ul><li>static: Static load</li><li>dynamic: Dynamic load</li></ul>",
           "example": "static",
           "member": "string",
           "name": "LoadBalanceMode",
