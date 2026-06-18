@@ -970,16 +970,16 @@
     ],
     "DescribeBanStatus": [
       {
-        "document": "This example shows you how to get the new BanStatus.",
+        "document": "New BanStatus",
         "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBanStatus\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"BanBlackIp\": true,\n        \"BanByRule\": false,\n        \"BanVulIp\": true,\n        \"OpenSmartMode\": true,\n        \"RequestId\": \"b76c888e-31cf-4dfe-b40a-0e3d30ee555e\",\n        \"ShowTips\": false,\n        \"Status\": 2\n    }\n}",
-        "title": "This example shows you how to get the new BanStatus."
+        "title": "New BanStatus"
       },
       {
         "document": "",
         "input": "https://cwp.tencentcloudapi.com/?Action=DescribeBanStatus\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Status\": 1,\n        \"ShowTips\": false,\n        \"RequestId\": \"354f4ac3-8546-4516-8c8a-69e3ab73aa8a\"\n    }\n}",
-        "title": "Obtaining the Status of Blocking Button"
+        "title": "Get blocking button status"
       }
     ],
     "DescribeBanWhiteList": [
@@ -1446,7 +1446,7 @@
     ],
     "DescribeLicenseGeneral": [
       {
-        "document": "This example shows you license general status",
+        "document": "Example 1",
         "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLicenseGeneral\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"AISecurityVersionLicenseCnt\": 0,\n        \"ApplicationAvailableLicenseCnt\": 0,\n        \"AutoBindRaspSwitch\": false,\n        \"AutoDowngradeSwitch\": false,\n        \"AutoOpenRaspSwitch\": false,\n        \"AutoOpenStatus\": false,\n        \"AutoRepurchaseRenewSwitch\": false,\n        \"AutoRepurchaseSwitch\": false,\n        \"AvailableAISecurityLicenseCnt\": 0,\n        \"AvailableFlagshipVersionLicenseCnt\": 0,\n        \"AvailableLHLicenseCnt\": 0,\n        \"AvailableLicenseCnt\": 0,\n        \"AvailableProVersionLicenseCnt\": 0,\n        \"CwpVersionLicenseCnt\": 0,\n        \"DestroyOrderNum\": 1,\n        \"ExpireLicenseCnt\": 10,\n        \"FlagshipVersionLicenseCnt\": 0,\n        \"IsOpenStatusHistory\": false,\n        \"LicenseCnt\": 0,\n        \"NearExpiryLicenseCnt\": 0,\n        \"NotExpiredLicenseCnt\": 0,\n        \"ProVersionLicenseCnt\": 0,\n        \"ProtectType\": \"FLAGSHIP_PREPAY\",\n        \"RepurchaseRenewSwitch\": false,\n        \"UsedLicenseCnt\": 0,\n        \"RequestId\": \"98fd0d2c-c27c-43f3-8622-1b5fe386c5fa\"\n    }\n}",
         "title": "Example"
@@ -1462,8 +1462,8 @@
     ],
     "DescribeLicenseWhiteConfig": [
       {
-        "document": "This example shows you how to query whether trial configurations exist.",
-        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLicenseWhiteConfig\n<Common request parameters>\n\n{\n    \"RuleName\": \"cwp\"\n}",
+        "document": "Check whether a trial configuration exists",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLicenseWhiteConfig\n<Common request parameters>\n\n{\n    \"RuleName\": \"cwp_yunying\"\n}",
         "output": "{\n    \"Response\": {\n        \"FlagShip\": {\n            \"Deadline\": 7,\n            \"IsApplyFor\": false,\n            \"LicenseNum\": 10,\n            \"SourceType\": 6\n        },\n        \"LOG\": {\n            \"Deadline\": 0,\n            \"IsApplyFor\": false,\n            \"LicenseNum\": 0,\n            \"SourceType\": 0\n        },\n        \"PrattWhitney\": {\n            \"Deadline\": 0,\n            \"IsApplyFor\": false,\n            \"LicenseNum\": 0,\n            \"SourceType\": 0\n        },\n        \"Professional\": {\n            \"Deadline\": 0,\n            \"IsApplyFor\": false,\n            \"LicenseNum\": 0,\n            \"SourceType\": 0\n        },\n        \"RASP\": {\n            \"Deadline\": 0,\n            \"IsApplyFor\": false,\n            \"LicenseNum\": 0,\n            \"SourceType\": 0\n        },\n        \"RequestId\": \"09c2d4b3-ffdf-495d-9817-a89fdad0de89\"\n    }\n}",
         "title": "Example"
       }
@@ -1610,6 +1610,14 @@
         "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMachineGeneral\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"AliCloudMachineCnt\": 0,\n        \"BaiduCloudMachineCnt\": 0,\n        \"BaseMachineCnt\": 34,\n        \"CloudFrom\": [\n            {\n                \"CloudFrom\": 0,\n                \"MachineCnt\": 124\n            },\n            {\n                \"CloudFrom\": 1,\n                \"MachineCnt\": 2\n            },\n            {\n                \"CloudFrom\": 2,\n                \"MachineCnt\": 6\n            }\n        ],\n        \"CompareYesterdayDeadlineMachineCnt\": 2,\n        \"CompareYesterdayMachineCnt\": 132,\n        \"CompareYesterdayNotProtectMachineCnt\": 64,\n        \"CompareYesterdayRiskMachineCnt\": 35,\n        \"DeadlineMachineCnt\": 2,\n        \"FlagshipMachineCnt\": 34,\n        \"IDCMachineCnt\": 0,\n        \"LHGeneralDiscountCnt\": 0,\n        \"MachineCnt\": 132,\n        \"MachineDestroyAfterOfflineHours\": 1,\n        \"NotProtectMachineCnt\": 64,\n        \"OtherCloudMachineCnt\": 0,\n        \"ProtectMachineCnt\": 34,\n        \"RequestId\": \"9f5fd122-589a-4faa-b004-efd7ef35e240\",\n        \"RiskMachineCnt\": 35,\n        \"SpecialtyMachineCnt\": 0,\n        \"TencentCloudMachineCnt\": 0\n    }\n}",
         "title": "Example"
+      }
+    ],
+    "DescribeMachineInfo": [
+      {
+        "document": "This example shows you how to get server details.",
+        "input": "https://yunjing.tencentcloudapi.com/?Action=DescribeMachineInfo\r\n&Uuid=UUID\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"MachineType\": \"CVM\",\n        \"MachineRegion\": \"ap-guangzhou\",\n        \"InstanceId\": \"ins-ibqb87x3\",\n        \"MachineWanIp\": \"130.111.77.111\",\n        \"MachineIp\": \"10.104.248.0\",\n        \"MachineName\": \"Development server\",\n        \"MachineOs\": \"3.10.0-327.36.3.el7.x86_64\",\n        \"MachineStatus\": \"ONLINE\",\n        \"ProtectDays\": 120,\n        \"Quuid\": \"56af8eea-5a2a-4f0c-81ca-47208e7cd9b2\",\n        \"Uuid\": \"e3fcbf68-3bd6-11e8-8954-0819a624c497\",\n        \"IsProVersion\": true,\n        \"PayMode\": \"PREPAY\",\n        \"ProVersionOpenDate\": \"2018-07-30 12:34:22\",\n        \"RequestId\": \"ad31cc35-8523-42a2-93e0-b733ad247daa\"\n    }\n}",
+        "title": "Getting server details"
       }
     ],
     "DescribeMachineLicenseDetail": [

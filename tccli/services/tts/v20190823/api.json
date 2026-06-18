@@ -148,7 +148,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instant Voice Clone Voice ID. Required when using Instant Voice Clone voices.",
           "example": "WCHN-766926cXXXXXXXX5e76537fc",
           "member": "string",
           "name": "FastVoiceType",
@@ -202,7 +202,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Controls the emotion of synthesized speech. This parameter is supported only by multi-emotion voices. Valid values: neutral, sad, happy, angry, fear, news, story, radio, poetry, call, sajiao, disgusted, amaze, peaceful, exciting, aojiao, jieshuo. <br>Example value: neutral.",
           "example": "neutral",
           "member": "string",
           "name": "EmotionCategory",
@@ -211,7 +211,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Controls the intensity of emotion in synthesized speech. Valid values: [50, 200]. Default: 100. Takes effect only when EmotionCategoryis specified.",
           "example": "100",
           "member": "int64",
           "name": "EmotionIntensity",

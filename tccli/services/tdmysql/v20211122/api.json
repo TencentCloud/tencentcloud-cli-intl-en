@@ -28,11 +28,25 @@
       "output": "CreateDBSBackupResponse",
       "status": "online"
     },
+    "CreateUsers": {
+      "document": "This API is used to create users in batches.",
+      "input": "CreateUsersRequest",
+      "name": "This API is used to create users in batches.",
+      "output": "CreateUsersResponse",
+      "status": "online"
+    },
     "DeleteDBSBackupSets": {
       "document": "This API is used to delete manual backups of instances.",
       "input": "DeleteDBSBackupSetsRequest",
       "name": "Delete a manual backup of an instance",
       "output": "DeleteDBSBackupSetsResponse",
+      "status": "online"
+    },
+    "DeleteUsers": {
+      "document": "This API is used to batch delete users.",
+      "input": "DeleteUsersRequest",
+      "name": "Batch deletes users",
+      "output": "DeleteUsersResponse",
       "status": "online"
     },
     "DescribeDBInstanceDetail": {
@@ -133,11 +147,32 @@
       "output": "DescribeFlowResponse",
       "status": "online"
     },
+    "DescribeInstanceSSLStatus": {
+      "document": "This API is used to query the SSL status of an instance.",
+      "input": "DescribeInstanceSSLStatusRequest",
+      "name": "Query the SSL status of an instance",
+      "output": "DescribeInstanceSSLStatusResponse",
+      "status": "online"
+    },
+    "DescribeMaintenanceWindow": {
+      "document": "Query maintenance time window configurations",
+      "input": "DescribeMaintenanceWindowRequest",
+      "name": "Query the maintenance time window",
+      "output": "DescribeMaintenanceWindowResponse",
+      "status": "online"
+    },
     "DescribeSaleInfo": {
       "document": "This API is used to query available regions.",
       "input": "DescribeSaleInfoRequest",
       "name": "Query available regions",
       "output": "DescribeSaleInfoResponse",
+      "status": "online"
+    },
+    "DescribeSlowLogs": {
+      "document": "This API is used to query slow logs.",
+      "input": "DescribeSlowLogsRequest",
+      "name": "Query slow log list",
+      "output": "DescribeSlowLogsResponse",
       "status": "online"
     },
     "DescribeSpecs": {
@@ -196,6 +231,13 @@
       "output": "ModifyDBInstanceSecurityGroupsResponse",
       "status": "online"
     },
+    "ModifyDBInstanceVPort": {
+      "document": "This API is used to modify the VPC port of an instance.",
+      "input": "ModifyDBInstanceVPortRequest",
+      "name": "Modify the VPC port of an instance",
+      "output": "ModifyDBInstanceVPortResponse",
+      "status": "online"
+    },
     "ModifyDBParameters": {
       "document": "This API is used to modify instance parameters.",
       "input": "ModifyDBParametersRequest",
@@ -224,11 +266,39 @@
       "output": "ModifyInstanceNameResponse",
       "status": "online"
     },
+    "ModifyInstanceNetwork": {
+      "document": "This API is used to modify the network to which the instance belongs.",
+      "input": "ModifyInstanceNetworkRequest",
+      "name": "Modify the network to which the instance belongs",
+      "output": "ModifyInstanceNetworkResponse",
+      "status": "online"
+    },
+    "ModifyInstanceSSLStatus": {
+      "document": "This API is used to enable or disable the SSL feature of an instance.",
+      "input": "ModifyInstanceSSLStatusRequest",
+      "name": "Modify the SSL status of an instance",
+      "output": "ModifyInstanceSSLStatusResponse",
+      "status": "online"
+    },
+    "ModifyMaintenanceWindow": {
+      "document": "Add new or modify instance maintenance time window configurations",
+      "input": "ModifyMaintenanceWindowRequest",
+      "name": "Update the maintenance time window",
+      "output": "ModifyMaintenanceWindowResponse",
+      "status": "online"
+    },
     "ModifyUserPrivileges": {
       "document": "This API is used to modify user permissions.",
       "input": "ModifyUserPrivilegesRequest",
       "name": "Modify user permissions",
       "output": "ModifyUserPrivilegesResponse",
+      "status": "online"
+    },
+    "ResetUserPassword": {
+      "document": "This API is used to reset user password.",
+      "input": "ResetUserPasswordRequest",
+      "name": "Resets user password",
+      "output": "ResetUserPasswordResponse",
       "status": "online"
     },
     "RestartDBInstances": {
@@ -1604,6 +1674,15 @@
           "name": "InstanceMode",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Security group id list</p>",
+          "example": "[\"sg-l9ak3sqs\"]",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -1912,6 +1991,42 @@
           "name": "AutoScaleConfig",
           "required": false,
           "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Bind to security group list</p>",
+          "example": "[\"sg-lpowk2a\"]",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>root userName. The default is dbaadmin in the current version. It will reset to dbaadmin even if a value is passed.</p>",
+          "example": "dbaadmin",
+          "member": "string",
+          "name": "UserName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>dbaadmin password</p>",
+          "example": "T********3",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether transparent data encryption is enabled. 0: not enabled; 1: enabled</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "EncryptionEnable",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -2011,6 +2126,79 @@
           "name": "IsSuccess",
           "output_required": false,
           "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateUsersRequest": {
+      "document": "CreateUsers request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Instance id</p>",
+          "example": "tdsql3-831053d8",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Add user list</p>",
+          "example": "无",
+          "member": "User",
+          "name": "Users",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Unencrypted password</p>",
+          "example": "t******3",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Encryption password</p>",
+          "example": "*******x*********",
+          "member": "string",
+          "name": "EncryptedPassword",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>User description</p>",
+          "example": "测试账号",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateUsersResponse": {
+      "document": "CreateUsers response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "4295045717",
+          "member": "int64",
+          "name": "FlowId",
+          "output_required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -2294,6 +2482,52 @@
           "member": "int64",
           "name": "Total",
           "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteUsersRequest": {
+      "document": "DeleteUsers request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Instance id</p>",
+          "example": "tdsql3-831053d8",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Batch delete user list</p>",
+          "example": "无",
+          "member": "User",
+          "name": "Users",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteUsersResponse": {
+      "document": "DeleteUsers response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "4295045725",
+          "member": "int64",
+          "name": "FlowId",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2915,6 +3149,26 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
+          "document": "<p>Whether transparent data encryption is enabled. 0: not enabled; 1: enabled</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "EncryptionEnable",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Real-use kms region for subsequent call to kms service</p>",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "EncryptionKmsRegion",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -2928,7 +3182,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Filter parameters.",
+          "document": "<p>Filter parameters</p>",
           "example": "无",
           "member": "InstanceFilter",
           "name": "Filters",
@@ -2937,7 +3191,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum return count, defaults to 20, maximum 100",
+          "document": "<p>Maximum return count, defaults to 20, maximum 100</p>",
           "example": "20",
           "member": "int64",
           "name": "Limit",
@@ -2946,12 +3200,21 @@
         },
         {
           "disabled": false,
-          "document": "Offset, which is an integer multiple of Limit.",
+          "document": "<p>Offset, which is an integer multiple of Limit.</p>",
           "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Specified query engine type</p><p>Enumeration value:</p><ul><li>libra: Column storage engine</li></ul>",
+          "example": "libra",
+          "member": "string",
+          "name": "EngineType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2961,7 +3224,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Return the instance list information",
+          "document": "<p>Return to instance list information</p>",
           "example": "无",
           "member": "InstanceInfo",
           "name": "Instances",
@@ -2971,7 +3234,7 @@
         },
         {
           "disabled": false,
-          "document": "Total number of conditions met",
+          "document": "<p>Total number of conditions met</p>",
           "example": "100",
           "member": "int64",
           "name": "TotalCount",
@@ -3165,15 +3428,6 @@
           "name": "InstanceId",
           "required": true,
           "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "<p>Backup set ID. the value comes from the DescribeDBSBackupSets api response.</p>",
-          "example": "0",
-          "member": "int64",
-          "name": "BackupSetId",
-          "required": false,
-          "type": "int"
         }
       ],
       "type": "object"
@@ -3946,6 +4200,100 @@
       ],
       "type": "object"
     },
+    "DescribeInstanceSSLStatusRequest": {
+      "document": "DescribeInstanceSSLStatus request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Instance ID.</p>",
+          "example": "tdsql3-446540ae",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceSSLStatusResponse": {
+      "document": "DescribeInstanceSSLStatus response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>SSL enable status</p><p>Enumeration values:</p><ul><li>Enabled: SSL is on</li><li>Disabled: SSL is closed</li><li>Enabling: SSL is enabling</li><li>Disabling: SSL is disabling</li></ul>",
+          "example": "Disabled",
+          "member": "string",
+          "name": "SSLStatus",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMaintenanceWindowRequest": {
+      "document": "DescribeMaintenanceWindow request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Instance ID.</p>",
+          "example": "tdsql3-99c63ac1",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMaintenanceWindowResponse": {
+      "document": "DescribeMaintenanceWindow response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Instance ID.</p>",
+          "example": "tdsql3-99c63ac1",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Ops window time range</p>",
+          "example": "01:00-02:00",
+          "member": "string",
+          "name": "MaintenanceWindow",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Ops window number of days range</p>",
+          "example": "[\"Monday\"]",
+          "member": "string",
+          "name": "WeekDays",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeSaleInfoRequest": {
       "document": "DescribeSaleInfo request structure.",
       "members": [
@@ -4218,6 +4566,116 @@
         }
       ],
       "usage": "out"
+    },
+    "DescribeSlowLogsRequest": {
+      "document": "DescribeSlowLogs request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Search log start time",
+          "example": "2024-04-18 18:09:27",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time to retrieve logs",
+          "example": "2024-04-18 18:09:27",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter criteria.",
+          "example": "无",
+          "member": "LogFilter",
+          "name": "LogFilter",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Items per page limit",
+          "example": "无",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Offset.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sort, selectable: ASC, DESC",
+          "example": "无",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting criteria may not be the same as selectable fields used to sort according to business.",
+          "example": "无",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSlowLogsResponse": {
+      "document": "DescribeSlowLogs response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of logs",
+          "example": "无",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log details.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "SlowLogData",
+          "name": "Items",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "DescribeSpecsRequest": {
       "document": "DescribeSpecs request structure.",
@@ -4531,6 +4989,144 @@
         }
       ],
       "type": "object"
+    },
+    "Explain": {
+      "document": "Execution plan",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Identifier</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "ID",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Query type</p><p>Enumeration value:</p><ul><li>SIMPLE: A regular query with no subquery and UNION. Single table or ordinary JOIN is SIMPLE.</li></ul>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "SIMPLE",
+          "member": "string",
+          "name": "SelectType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Table name</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "stat_parti_new00",
+          "member": "string",
+          "name": "Table",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Partition</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "p2",
+          "member": "string",
+          "name": "Partitions",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Access type</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "const",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Possibly used indexes</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "PRIMARY",
+          "member": "string",
+          "name": "PossibleKeys",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Used Indexes</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "PRIMARY",
+          "member": "string",
+          "name": "Key",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Used Indexes length</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "4",
+          "member": "string",
+          "name": "KeyLen",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Column or constant to compare with the index</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "const",
+          "member": "string",
+          "name": "Ref",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Estimate the number of scanned rows</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "Rows",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Estimated percentage of remaining rows after conditional filtering</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100.00",
+          "member": "string",
+          "name": "Filtered",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Additional information, such as Using index, Using filesort</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NULL",
+          "member": "string",
+          "name": "Extra",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "InstanceFilter": {
       "document": "List filter criteria for instances",
@@ -5180,6 +5776,16 @@
           "output_required": false,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Analysis engine instance info</p>",
+          "example": "无",
+          "member": "AnalysisInstanceInfo",
+          "name": "AnalysisInstanceInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -5595,6 +6201,39 @@
       ],
       "usage": "out"
     },
+    "LogFilter": {
+      "document": "Slow log filtering",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Filter criterion name.\n\nFor example: sql - SQL command details\n\nhost - client IP\nuser - database account;\ndbName – Database name;\nsqlType - SQL type;\nError code\n\nexecTime - Execution time\nlockWaitTime - Lock waiting time\nioWaitTime - IO wait time\ntrxLivingTime - Transaction execution time\nCpu time\n\nthreadId - Thread ID\ntrxId - Transaction ID\ncheckRows - Number of scanned rows\naffectRows - Number of rows affected\nsentRows - Number of rows returned",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter condition match type. Supported:\nINC – Includes (multiple values are in a || relationship before).\nEXC - excluding (multiple values are in an && relationship)\nEQS – equal to (multiple values before are in a || relationship).\nNEQ – not equal to (multiple values are in && relationship)\n\nRG - Range;",
+          "example": "无",
+          "member": "string",
+          "name": "Compare",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter condition matching value. When Compare=RG, for example [\"1-100\",\"200-300\"].",
+          "example": "无",
+          "member": "string",
+          "name": "Value",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
     "MaintenanceWindowInfo": {
       "document": "Maintenance window configuration",
       "members": [
@@ -5697,6 +6336,52 @@
     "ModifyDBInstanceSecurityGroupsResponse": {
       "document": "ModifyDBInstanceSecurityGroups response structure.",
       "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceVPortRequest": {
+      "document": "ModifyDBInstanceVPort request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, such as tdsql3-5baee8df.",
+          "example": "tdsql3-de2a7fc5",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "New VPC port 3308",
+          "example": "3308",
+          "member": "int64",
+          "name": "Vport",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceVPortResponse": {
+      "document": "ModifyDBInstanceVPort response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Return the async task FlowId",
+          "example": "110",
+          "member": "int64",
+          "name": "FlowId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -5899,6 +6584,169 @@
     },
     "ModifyInstanceNameResponse": {
       "document": "ModifyInstanceName response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceNetworkRequest": {
+      "document": "ModifyInstanceNetwork request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "tdsql-jv8z8fhl",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "VpcId of the target VPC network",
+          "example": "vpc-xxxxxx",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Subnet ID of the target VPC network",
+          "example": "subnet-xxxxx",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "VIP retention duration, in hours, value ranges from 0 to 168. 0 means immediate release with a one-minute delay. Not specified, default is 24 hr for VIP release.",
+          "example": "168",
+          "member": "uint64",
+          "name": "VipReleaseDelay",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Assign vip modification. Leave blank for a random vip.",
+          "example": "9.138.100.231",
+          "member": "string",
+          "name": "Vip",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceNetworkResponse": {
+      "document": "ModifyInstanceNetwork response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceSSLStatusRequest": {
+      "document": "ModifyInstanceSSLStatus request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Instance ID.</p>",
+          "example": "tdsql3-6d3cbb0f",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable SSL.</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "Enabled",
+          "required": true,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceSSLStatusResponse": {
+      "document": "ModifyInstanceSSLStatus response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Async process ID.</p>",
+          "example": "42666",
+          "member": "int64",
+          "name": "FlowId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMaintenanceWindowRequest": {
+      "document": "ModifyMaintenanceWindow request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Instance ID.</p>",
+          "example": "tdsql3-99c63ac1",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Ops window start time</p><p>Parameter format: hh:mm:ss</p>",
+          "example": "04:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Ops window duration</p><p>Value ranges from 1 to 3</p><p>Unit: hour</p>",
+          "example": "3",
+          "member": "int64",
+          "name": "Duration",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Ops window date</p><p>Enumeration value:</p><ul><li>Monday: Monday</li><li>Tuesday: Tuesday</li><li>Wednesday: Wednesday</li><li>Thursday: Thursday</li><li>Friday: Friday</li><li>Saturday: Saturday</li><li>Sunday: Sunday</li></ul>",
+          "example": "[\"Friday\"]",
+          "member": "string",
+          "name": "WeekDays",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMaintenanceWindowResponse": {
+      "document": "ModifyMaintenanceWindow response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -6210,6 +7058,69 @@
       ],
       "usage": "out"
     },
+    "ResetUserPasswordRequest": {
+      "document": "ResetUserPassword request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Username.",
+          "example": "\"test_user\"",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "\"tdsql3-d8fffc3c\"",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Host IP, IP range ending with % to denote permission for all IPs in the range",
+          "example": "\"%\"",
+          "member": "string",
+          "name": "Host",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "New password, required length 8-32, include at least two of English, digits and symbols.",
+          "example": "\"my_passwd\"",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Encryption password",
+          "example": "\"EncryptedPassword\"",
+          "member": "string",
+          "name": "EncryptedPassword",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetUserPasswordResponse": {
+      "document": "ResetUserPassword response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ResourceTag": {
       "document": "tag parameter",
       "members": [
@@ -6426,6 +7337,192 @@
           "output_required": false,
           "type": "list",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SlowLogData": {
+      "document": "slow log information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Sql execution time</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2024-07-18 17:09:10",
+          "member": "string",
+          "name": "Timestamp",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sql execution duration (seconds)</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0.1",
+          "member": "float",
+          "name": "QueryTime",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sql statement</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "select * from test",
+          "member": "string",
+          "name": "SqlText",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Client IP address</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "127.0.0.1",
+          "member": "string",
+          "name": "UserHost",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Username.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test_user",
+          "member": "string",
+          "name": "UserName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Database name.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test_db",
+          "member": "string",
+          "name": "Database",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Lock duration (seconds)</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0.11",
+          "member": "float",
+          "name": "LockTime",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of scanned rows</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "12",
+          "member": "uint64",
+          "name": "RowsExamined",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Result set row count</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RowsSent",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Transaction ID</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "981639816396",
+          "member": "string",
+          "name": "TransactionId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>rpc duration</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0.000768",
+          "member": "float",
+          "name": "RpcTime",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>rpc duration for node interaction with storage</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0.000686",
+          "member": "float",
+          "name": "StorageRpcTime",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>rpc retry latency</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "float",
+          "name": "RpcRetryDelayTime",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>node Name</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "hybrid-0",
+          "member": "string",
+          "name": "NodeId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>rpc link tracing</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[[leader]]AcquireObjectLock count",
+          "member": "string",
+          "name": "RpcTrace",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>TDStore lock duration</p><p>Unit: seconds</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "float",
+          "name": "TDStoreLockTime",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Global ID</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "9890253121707125",
+          "member": "string",
+          "name": "TraceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Execution plan</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Explain",
+          "name": "Explain",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
