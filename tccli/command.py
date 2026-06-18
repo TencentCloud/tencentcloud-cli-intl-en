@@ -279,8 +279,15 @@ class ActionCommand(BaseCommand):
         elif parsed_args.help:
             remaining.append(parsed_args.help)
         if remaining:
-            raise UnknownArgumentError(
-                "Unknown options: %s" % ', '.join(remaining))
+            # On unknown options, try to combine self-reference truncation
+            # information to produce a targeted hint, so that users do not
+            # only see the generic "Unknown options" when drilling into
+            # a self-referencing type path.
+            hint = self._build_recursive_hint(remaining)
+            msg = "Unknown options: %s" % ', '.join(remaining)
+            if hint:
+                msg += "\n\n" + hint
+            raise UnknownArgumentError(msg)
 
         if self._call_mode == Options_define.GenerateCliSkeleton:
             return self.generate_cli_skeleton_argument.generate_skeleton(parsed_globals)
@@ -306,6 +313,68 @@ class ActionCommand(BaseCommand):
                 value = parsed_args[name]
                 argument_object.add_to_params(action_params, value)
         return action_params
+
+    def _build_recursive_hint(self, remaining):
+        """
+        In --cli-unfold-argument mode, detect the case where the user drills
+        into a placeholder leaf truncated by self-reference cycle detection,
+        and produce a targeted hint.
+
+        Example: AllocationRuleExpression.Children is self-referencing, so
+        argument expansion only registers up to
+        `--RuleList.RuleDetail.Children.0`. If the user further passes
+        `--RuleList.RuleDetail.Children.0.RuleValue ...`, that argument falls
+        into `remaining` here. Instead of just raising the generic
+        "Unknown options", we tell the user which argument hit which
+        self-referencing type, and the recommended alternative usages.
+        """
+        # Only meaningful in --cli-unfold-argument mode
+        if self._call_mode != Options_define.CliUnfoldArgument:
+            return ""
+        try:
+            unfold_params = self._cli_data.get_unfold_param_info(
+                self._service_name, self._version, self._action_name,
+                profile=self.profile, param_array=True)
+        except Exception:
+            return ""
+
+        # Collect all leaf prefixes truncated by self-reference detection, e.g.
+        #   "RuleList.RuleDetail.Children.0" -> "AllocationRuleExpression"
+        truncated = {
+            name: info.get("recursive_type") or ""
+            for name, info in unfold_params.items()
+            if info.get("recursive_truncated")
+        }
+        if not truncated:
+            return ""
+
+        matched = OrderedDict()  # offending option -> (truncated prefix, self-referencing type name)
+        for token in remaining:
+            if not isinstance(token, str) or not token.startswith("--"):
+                continue
+            key = token[2:]
+            for prefix, type_name in truncated.items():
+                # Strict prefix match: "RuleList.RuleDetail.Children.0.RuleValue"
+                # should be matched by "RuleList.RuleDetail.Children.0".
+                if key.startswith(prefix + "."):
+                    matched[token] = (prefix, type_name)
+                    break
+
+        if not matched:
+            return ""
+
+        lines = ["Hint: the following option(s) drill into a self-referencing type "
+                 "that --cli-unfold-argument cannot expand further:"]
+        seen_prefix = set()
+        for token, (prefix, type_name) in matched.items():
+            lines.append("  %s  (under --%s, self-referencing type: %s)"
+                         % (token, prefix, type_name or "unknown"))
+            seen_prefix.add((prefix, type_name))
+        lines.append("")
+        lines.append("To pass deeper nested values, please use --cli-input-json "
+                     "'<full-request-json>' (run with --generate-cli-skeleton "
+                     "to get a JSON template).")
+        return "\n".join(lines)
 
     def _get_profile(self, parsed_globals):
         if getattr(parsed_globals, Options_define.Profile):
