@@ -175,6 +175,15 @@ class ActionDocumentHandler(BaseDocumentHandler):
                     self.doc.write('[%s ...]' % (param_info["members"]))
                 else:
                     self.doc.doc_description('[%s ...]' % (param_info["members"]))
+            elif isinstance(param_info["members"], str):
+                # Self-reference truncation placeholder: members is a type name string
+                # (e.g. "AllocationRuleExpression"). Render as a RecursiveRef placeholder
+                # and stop expanding further.
+                placeholder = '[<RecursiveRef:%s> ...]' % param_info["members"]
+                if self.doc.style.indentation > 2:
+                    self.doc.write(placeholder)
+                else:
+                    self.doc.doc_description(placeholder)
             else:
                 self.doc.write('[') if self.doc.style.indentation > 2 \
                     else self.doc.doc_description('[')
@@ -187,8 +196,14 @@ class ActionDocumentHandler(BaseDocumentHandler):
                 self.doc.style.new_line()
                 self.doc.doc_description(']')
         else:
-            if param_info["members"] not in BASE_TYPE:
-                self._handle_object_members(param_info["members"], param_info["type"])
+            if param_info["members"] in BASE_TYPE:
+                return
+            if isinstance(param_info["members"], str):
+                # Self-reference truncation placeholder (non-Array form): members is a
+                # type name string. Render as a RecursiveRef placeholder.
+                self.doc.doc_description('<RecursiveRef:%s>' % param_info["members"])
+                return
+            self._handle_object_members(param_info["members"], param_info["type"])
 
     def _handle_object_members(self, param_info, param_type):
         if param_type == "Array" or self.doc.style.indentation == 2:
@@ -216,6 +231,10 @@ class ActionDocumentHandler(BaseDocumentHandler):
     def _unfold_complex_object(self, param_info):
         if not param_info["type"] == "Array" and param_info["members"] in BASE_TYPE:
             return
+        # Self-reference truncation placeholder: non-Array with members as a type
+        # name string has nothing to expand, skip directly.
+        if not param_info["type"] == "Array" and isinstance(param_info["members"], str):
+            return
 
         self.doc.style.new_line()
         self.doc.doc_title('JSON Syntax')
@@ -232,13 +251,20 @@ class ActionDocumentHandler(BaseDocumentHandler):
     def _complex_object_doc(self, param_info, option):
         if param_info["members"] in BASE_TYPE:
             return
+        # Self-reference truncation placeholder: members is a type name string,
+        # no sub-members to iterate, return directly.
+        if not isinstance(param_info["members"], dict):
+            return
         self.doc.style.indent()
         for sub_param, sub_param_info in param_info["members"].items():
             self.doc.style.new_line()
             self._doc_title(option, sub_param, sub_param_info)
             self.doc.doc_description('%s' % sub_param_info["document"])
             self.doc.style.new_line()
-            if sub_param_info["members"] not in BASE_TYPE:
+            # Recurse only when the sub-member's members is still a dict (i.e. not
+            # truncated and not a base type).
+            if sub_param_info["members"] not in BASE_TYPE \
+                    and isinstance(sub_param_info["members"], dict):
                 self._complex_object_doc(sub_param_info, option)
         self.doc.style.dedent()
         self.doc.style.new_line()

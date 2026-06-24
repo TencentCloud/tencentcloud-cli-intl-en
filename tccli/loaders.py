@@ -333,24 +333,43 @@ class Loader(object):
         param_info[para["name"]]["members"] = member
         return param_info
 
-    def _get_param_info(self, param_model, object_model):
+    def _get_param_info(self, param_model, object_model, visited=None, depth=0, max_depth=20):
+        # `visited` records compound types already expanded along the current DFS path,
+        # used to detect cycles caused by self/mutual references.
+        if visited is None:
+            visited = frozenset()
         param_info = {}
         for para in param_model:
+            member = para["member"]
+            # Hit a cycle or exceeded max depth: stop expanding and treat as a placeholder leaf.
+            recursive_hit = member not in BASE_TYPE and (member in visited or depth >= max_depth)
             if para["type"] == "list":
-                if para["member"] not in BASE_TYPE:
-                    self._filling_param_info(
-                        param_info, para, "list",
-                        [self._get_param_info(object_model[para["member"]]["members"], object_model)])
+                if member not in BASE_TYPE:
+                    if recursive_hit:
+                        self._filling_param_info(
+                            param_info, para, "list", [member])
+                    else:
+                        self._filling_param_info(
+                            param_info, para, "list",
+                            [self._get_param_info(
+                                object_model[member]["members"], object_model,
+                                visited | {member}, depth + 1, max_depth)])
                 else:
                     self._filling_param_info(
-                        param_info, para, "list", [para["member"]])
+                        param_info, para, "list", [member])
             else:
-                if para["member"] not in BASE_TYPE:
-                    param_info = self._filling_param_info(
-                        param_info, para, para["member"],
-                        self._get_param_info(object_model[para["member"]]["members"], object_model))
+                if member not in BASE_TYPE:
+                    if recursive_hit:
+                        param_info = self._filling_param_info(
+                            param_info, para, member, member)
+                    else:
+                        param_info = self._filling_param_info(
+                            param_info, para, member,
+                            self._get_param_info(
+                                object_model[member]["members"], object_model,
+                                visited | {member}, depth + 1, max_depth))
                 else:
-                    self._filling_param_info(param_info, para, para["member"], para["member"])
+                    self._filling_param_info(param_info, para, member, member)
         return param_info
 
     def get_param_info(self, service, version, action):
@@ -363,21 +382,39 @@ class Loader(object):
         param_model = service_model["objects"]
         return self._get_param_info(param_model[action + "Response"]["members"], param_model)
 
-    def _generate_param_skeleton(self, param_model, name):
+    def _generate_param_skeleton(self, param_model, name, visited=None, depth=0, max_depth=20):
+        # `visited` records compound types expanded along the path,
+        # used to detect infinite recursion from self-references.
+        if visited is None:
+            visited = frozenset()
         param_skeleton = {}
         for para in param_model:
+            member = para["member"]
+            recursive_hit = member not in BASE_TYPE and (member in visited or depth >= max_depth)
             if para["type"] == "list":
-                if para["member"] not in BASE_TYPE:
-                    param_skeleton[para["name"]] = \
-                        [self._generate_param_skeleton(name[para["member"]]["members"], name)]
+                if member not in BASE_TYPE:
+                    if recursive_hit:
+                        # Self-reference: use a placeholder string to indicate the value
+                        # should be passed as a whole JSON.
+                        param_skeleton[para["name"]] = ["RecursiveRef<%s>" % member]
+                    else:
+                        param_skeleton[para["name"]] = \
+                            [self._generate_param_skeleton(
+                                name[member]["members"], name,
+                                visited | {member}, depth + 1, max_depth)]
                 else:
-                    param_skeleton[para["name"]] = [PARAM_TYPE_MAP[para["member"]]]
+                    param_skeleton[para["name"]] = [PARAM_TYPE_MAP[member]]
             else:
-                if para["member"] not in BASE_TYPE:
-                    param_skeleton[para["name"]] = \
-                        self._generate_param_skeleton(name[para["member"]]["members"], name)
+                if member not in BASE_TYPE:
+                    if recursive_hit:
+                        param_skeleton[para["name"]] = "RecursiveRef<%s>" % member
+                    else:
+                        param_skeleton[para["name"]] = \
+                            self._generate_param_skeleton(
+                                name[member]["members"], name,
+                                visited | {member}, depth + 1, max_depth)
                 else:
-                    param_skeleton[para["name"]] = PARAM_TYPE_MAP[para["member"]]
+                    param_skeleton[para["name"]] = PARAM_TYPE_MAP[member]
         return param_skeleton
 
     def generate_param_skeleton(self, service, version, action):
@@ -396,7 +433,7 @@ class Loader(object):
         if param_array:
             all_param_list = self._add_array_item(all_param_list, profile)
 
-        return self._filling_unfold_param_info(all_param_list, service, version, action)
+        return self._filling_unfold_param_info(all_param_list, service, version, action, object_model)
 
     def _add_array_item(self, param_list, profile):
         is_conf_exist, conf_path = Utils.file_existed(os.path.join(os.path.expanduser("~"), ".tccli"),
@@ -415,19 +452,36 @@ class Loader(object):
                         all_param_list.append(tmp)
         return all_param_list
 
-    def _recur_get_unfold_param_info(self, param_model, object_model, return_param_list, param_list):
+    def _recur_get_unfold_param_info(self, param_model, object_model, return_param_list, param_list,
+                                     visited=None, depth=0, max_depth=20):
         for para in param_model:
-            self._get_unfold_param_info(object_model, return_param_list, param_list, para)
+            self._get_unfold_param_info(object_model, return_param_list, param_list, para,
+                                        visited, depth, max_depth)
         if param_list.pop().isdigit():
             param_list.pop()
 
-    def _get_unfold_param_info(self, object_model, return_param_list, param_list, para):
+    def _get_unfold_param_info(self, object_model, return_param_list, param_list, para,
+                               visited=None, depth=0, max_depth=20):
+        # `visited` is maintained along the path to detect self-referencing types
+        # (e.g. AllocationRuleExpression.Children).
+        if visited is None:
+            visited = frozenset()
         param_list.append(para["name"])
         if para["type"] == "list" and para["member"] not in BASE_TYPE:
             param_list.append('0')
-        if para["member"] not in BASE_TYPE:
-            self._recur_get_unfold_param_info(object_model[para["member"]]["members"],
-                                              object_model, return_param_list, param_list)
+        member = para["member"]
+        if member not in BASE_TYPE:
+            # Hit a cycle or exceeded max depth: register the current path as a
+            # placeholder leaf and stop expanding.
+            if member in visited or depth >= max_depth:
+                tmp = copy.deepcopy(param_list)
+                return_param_list.append(tmp)
+                if param_list.pop().isdigit():
+                    param_list.pop()
+                return
+            self._recur_get_unfold_param_info(object_model[member]["members"],
+                                              object_model, return_param_list, param_list,
+                                              visited | {member}, depth + 1, max_depth)
         else:
             tmp = copy.deepcopy(param_list)
             return_param_list.append(tmp)
@@ -435,7 +489,7 @@ class Loader(object):
             if param_list.pop().isdigit():
                 param_list.pop()
 
-    def _filling_unfold_param_info(self, param_list, service, version, action):
+    def _filling_unfold_param_info(self, param_list, service, version, action, object_model=None):
         unfold_param = {}
         param_info = self.get_param_info(service, version, action)
         for param in param_list:
@@ -448,12 +502,23 @@ class Loader(object):
             type_name = res["type_name"]
             required = res.get("required")
             document = res["document"]
+            recursive_truncated = False
+            recursive_type = None
 
             for idx, item in enumerate(tmp_param[1:]):
+                # Hit a self-reference truncation: current res["members"] is a
+                # placeholder string (type name) rather than a dict.
                 if res["type"] == "Array":
-                    res = res["members"][0][item]
+                    members_container = res["members"][0]
                 else:
-                    res = res["members"][item]
+                    members_container = res["members"]
+                if not isinstance(members_container, dict) or item not in members_container:
+                    # This leaf is a placeholder truncated by cycle detection; do not drill down further.
+                    recursive_truncated = True
+                    recursive_type = members_container if isinstance(members_container, str) \
+                        else (res.get("type_name") or "")
+                    break
+                res = members_container[item]
 
                 # ?? seriously ??
                 if required == "Required" and res["required"] == "Optional":
@@ -466,13 +531,49 @@ class Loader(object):
                     document = res["document"]
                     break
 
+            # Second check: after walking the path, see if this leaf itself is a compound
+            # type truncated by cycle detection (members is a placeholder).
+            if not recursive_truncated:
+                final_members = res.get("members")
+                if isinstance(final_members, list) and len(final_members) == 1 \
+                        and isinstance(final_members[0], str) \
+                        and final_members[0] not in BASE_TYPE \
+                        and final_members[0] not in CLI_BASE_TYPE:
+                    recursive_truncated = True
+                    recursive_type = final_members[0]
+                elif isinstance(final_members, str) \
+                        and final_members not in BASE_TYPE \
+                        and final_members not in CLI_BASE_TYPE:
+                    recursive_truncated = True
+                    recursive_type = final_members
+
             if len([item for item in param if item.isdigit() and int(item) > 0]) > 0:
                 required = "Optional"
+
+            if recursive_truncated:
+                # Mark self-reference truncation points uniformly as Object,
+                # hinting users to pass the whole JSON.
+                param_type = "Object"
+                type_name = recursive_type or "Object"
+                required = "Optional"
+                document = (document or "") + \
+                    ("\nNote: this field is a self-referencing type %s. "
+                     "--cli-unfold-argument only expands the first level. "
+                     "For deeper nesting, please use --cli-input-json to provide "
+                     "the full request as JSON. "
+                     "You can run the command with --generate-cli-skeleton to get a JSON template."
+                     % (recursive_type or ""))
 
             unfold_param[".".join(param)]["type"] = param_type
             unfold_param[".".join(param)]["type_name"] = type_name
             unfold_param[".".join(param)]["required"] = required
             unfold_param[".".join(param)]["document"] = document
+            # Stable fields: allow upper layers (e.g. command.py) to give a
+            # targeted hint when users drill into a self-referencing path and
+            # trigger "Unknown options", without parsing the document text.
+            if recursive_truncated:
+                unfold_param[".".join(param)]["recursive_truncated"] = True
+                unfold_param[".".join(param)]["recursive_type"] = recursive_type or ""
         return unfold_param
 
     def get_action_example_model(self, service, version, action):
