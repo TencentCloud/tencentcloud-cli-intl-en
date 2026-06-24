@@ -170,11 +170,11 @@
       "type": "object"
     },
     "FuseFaceReviewDetail": {
-      "document": "",
+      "document": "Facial Information of Inappropriate Content Detection in Face Fusion",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Reserved field",
           "example": "string",
           "member": "string",
           "name": "Field",
@@ -184,7 +184,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Label Names Matched by Content Moderation",
           "example": "string",
           "member": "string",
           "name": "Label",
@@ -194,7 +194,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Confidence score of the detection label. A higher score means a greater likelihood of violations.\n0-70: Suggestion = PASS\n70-80: Suggestion = REVIEW\n80-100: Suggestion = BLOCK",
           "example": "1",
           "member": "float",
           "name": "Confidence",
@@ -204,7 +204,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Moderation Conclusion for Detection Scenarios\nPASS: Normal\nREVIEW: Suspicious\nBLOCK: Violation",
           "example": "string",
           "member": "string",
           "name": "Suggestion",
@@ -216,11 +216,11 @@
       "usage": "out"
     },
     "FuseFaceReviewResult": {
-      "document": "",
+      "document": "Face Fusion Inappropriate Content Detection Response Parameter item",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Reserved field",
           "example": "Politics",
           "member": "string",
           "name": "Category",
@@ -230,7 +230,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Status code. 0 indicates successful processing; other values indicate failure.",
           "example": "0",
           "member": "string",
           "name": "Code",
@@ -240,7 +240,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Corresponding Status Code Description",
           "example": "OK",
           "member": "string",
           "name": "CodeDescription",
@@ -250,7 +250,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Reserved field",
           "example": "PASS",
           "member": "float",
           "name": "Confidence",
@@ -260,7 +260,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Reserved field",
           "example": "30",
           "member": "string",
           "name": "Suggestion",
@@ -270,7 +270,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Detailed Moderation Content",
           "example": "[{\"Label\": \"丁俊晖\",\"Confidence\": 30,\"Suggestion\": \"PASS\"}]",
           "member": "FuseFaceReviewDetail",
           "name": "DetailSet",

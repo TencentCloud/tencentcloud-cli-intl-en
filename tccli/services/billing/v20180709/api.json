@@ -4824,7 +4824,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing mode, which can be monthly subscription or pay-as-you-go.",
+          "document": "Billing mode, which can be yearly/monthly subscription or pay-as-you-go.",
           "example": "按量计费",
           "member": "string",
           "name": "PayModeName",
@@ -4884,7 +4884,7 @@
         },
         {
           "disabled": false,
-          "document": "Transaction type, which can be monthly subscription purchase, monthly subscription renewal, or pay-as-you-go deduction.",
+          "document": "Transaction type, which can be yearly/monthly subscription purchase, yearly/monthly subscription renewal, or pay-as-you-go deduction.",
           "example": "包年包月新购",
           "member": "string",
           "name": "ActionTypeName",
@@ -4894,7 +4894,7 @@
         },
         {
           "disabled": false,
-          "document": "Order ID: The sub-order number corresponding to the monthly subscription mode. In the postpaid billing model, the bill amount does not exist as an order concept, and this parameter can be ignored.\n",
+          "document": "Order ID: The sub-order number corresponding to the yearly/monthly subscription mode. In the postpaid billing model, the bill amount does not exist as an order concept, and this parameter can be ignored.\n",
           "example": "20211202400008418120371",
           "member": "string",
           "name": "OrderId",
@@ -6252,7 +6252,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing mode, which can be monthly subscription or pay-as-you-go.",
+          "document": "Billing mode, which can be yearly/monthly subscription or pay-as-you-go.",
           "example": "包年包月",
           "member": "string",
           "name": "PayModeName",
@@ -6312,7 +6312,7 @@
         },
         {
           "disabled": false,
-          "document": "Transaction type, which can be monthly subscription purchase, monthly subscription renewal, or pay-as-you-go deduction.",
+          "document": "Transaction type, which can be yearly/monthly subscription purchase, yearly/monthly subscription renewal, or pay-as-you-go deduction.",
           "example": "包年包月新购",
           "member": "string",
           "name": "ActionTypeName",
@@ -6322,7 +6322,7 @@
         },
         {
           "disabled": false,
-          "document": "Order ID: The order number for a monthly subscription purchase",
+          "document": "Order ID: The order number for a yearly/monthly subscription purchase",
           "example": "20210818400005559878881",
           "member": "string",
           "name": "OrderId",
@@ -15845,7 +15845,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing mode, which can be monthly subscription or pay-as-you-go.",
+          "document": "Billing mode, which can be yearly/monthly subscription or pay-as-you-go.",
           "example": "包年包月",
           "member": "string",
           "name": "PayModeName",
@@ -15875,7 +15875,7 @@
         },
         {
           "disabled": false,
-          "document": "Cash credit: The amount paid from the user’s cash balance",
+          "document": "Cash credit: The amount paid from the user's cash balance",
           "example": "0.00",
           "member": "string",
           "name": "CashPayAmount",
@@ -15885,7 +15885,7 @@
         },
         {
           "disabled": false,
-          "document": "Free credit: The amount paid with the user’s free credit",
+          "document": "Free credit: The amount paid with the user's free credit",
           "example": "0.00",
           "member": "string",
           "name": "IncentivePayAmount",
@@ -15905,7 +15905,7 @@
         },
         {
           "disabled": false,
-          "document": "Commission credit: The amount paid with the user’s commission credit.",
+          "document": "Commission credit: The amount paid with the user's commission credit.",
           "example": "0.00",
           "member": "string",
           "name": "TransferPayAmount",
