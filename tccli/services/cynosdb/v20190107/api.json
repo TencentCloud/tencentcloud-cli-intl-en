@@ -462,6 +462,13 @@
       "output": "DescribeClusterDetailDatabasesResponse",
       "status": "online"
     },
+    "DescribeClusterInstanceGroups": {
+      "document": "This API is used to query instance group info.",
+      "input": "DescribeClusterInstanceGroupsRequest",
+      "name": "Query a cluster instance group",
+      "output": "DescribeClusterInstanceGroupsResponse",
+      "status": "online"
+    },
     "DescribeClusterInstanceGrps": {
       "document": "This API is used to query instance groups.",
       "input": "DescribeClusterInstanceGrpsRequest",
@@ -9553,6 +9560,222 @@
       ],
       "usage": "out"
     },
+    "CynosdbInstanceGroup": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "251232125",
+          "member": "int64",
+          "name": "AppId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "cynosdbmysql-dkq0t36x",
+          "member": "string",
+          "name": "ClusterId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2024-12-02 10:59:44",
+          "member": "string",
+          "name": "CreatedTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2024-12-22 10:59:44",
+          "member": "string",
+          "name": "DeletedTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "cynosdbmysql-grp-nz02bc3j",
+          "member": "string",
+          "name": "InstanceGroupId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "running",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Type of the instance group (network). ha-ha group; ro - read-only group; proxy - proxy; singleRo - read-only instance exclusive.",
+          "example": "ha",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2024-12-20 19:24:22",
+          "member": "string",
+          "name": "UpdatedTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "172.16.0.194",
+          "member": "string",
+          "name": "Vip",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "3306",
+          "member": "int64",
+          "name": "Vport",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "qy-cynosdbmysql-grp-nz02bc3j.sql.tencentcdb.com",
+          "member": "string",
+          "name": "WanDomain",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "81.71.200.7",
+          "member": "string",
+          "name": "WanIP",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "8723",
+          "member": "int64",
+          "name": "WanPort",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "running",
+          "member": "string",
+          "name": "WanStatus",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "CynosdbInstance",
+          "name": "InstanceSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VPC ID",
+          "example": "vpc-95mugkpt",
+          "member": "string",
+          "name": "UniqVpcId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the subnet ID.",
+          "example": "subnet-6zu506da",
+          "member": "string",
+          "name": "UniqSubnetId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Recycling IP information.",
+          "example": "无",
+          "member": "OldAddrInfo",
+          "name": "OldAddrInfo",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "[\"taskSwitchVpc\"]",
+          "member": "string",
+          "name": "ProcessingTasks",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "ObjectTask",
+          "name": "Tasks",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "172346",
+          "member": "int64",
+          "name": "NetServiceId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "CynosdbInstanceGrp": {
       "document": "Instance group information",
       "members": [
@@ -12358,6 +12581,53 @@
           "name": "Detail",
           "output_required": true,
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterInstanceGroupsRequest": {
+      "document": "DescribeClusterInstanceGroups request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "cynosdbmysql-oib3wx0i",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterInstanceGroupsResponse": {
+      "document": "DescribeClusterInstanceGroups response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of instance groups",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance Group List",
+          "example": "无",
+          "member": "CynosdbInstanceGroup",
+          "name": "InstanceGroupInfoList",
+          "output_required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {

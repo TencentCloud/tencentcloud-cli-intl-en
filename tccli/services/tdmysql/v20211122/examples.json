@@ -386,6 +386,14 @@
         "title": "Resetting the User Encryption Password"
       }
     ],
+    "ResetUsersPassword": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResetUsersPassword\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql3-831053d8\",\n    \"Users\": [\n        {\n            \"UserName\": \"test1\",\n            \"Host\": \"%\",\n            \"Password\": \"tdstore@123\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 4295045724,\n        \"RequestId\": \"76fc6e35-0f49-40e5-90f2-2cc165841df7\"\n    }\n}",
+        "title": "Batch reset user password"
+      }
+    ],
     "RestartDBInstances": [
       {
         "document": "",

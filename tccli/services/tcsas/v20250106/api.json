@@ -4979,6 +4979,36 @@
           "output_required": false,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Team ID.",
+          "example": "1233456",
+          "member": "string",
+          "name": "TeamId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Team name.",
+          "example": "团队名称",
+          "member": "string",
+          "name": "TeamName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Team type ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "TeamTypeId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -7055,6 +7085,26 @@
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Team ID.",
+          "example": "3977181246",
+          "member": "string",
+          "name": "TeamId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.",
+          "example": "1",
+          "member": "int64",
+          "name": "TeamTypeId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -7535,6 +7585,16 @@
           "name": "I18nList",
           "output_required": false,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.",
+          "example": "1",
+          "member": "int64",
+          "name": "TeamTypeId",
+          "output_required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -10421,6 +10481,26 @@
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Team ID.",
+          "example": "132245",
+          "member": "string",
+          "name": "TeamId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.",
+          "example": "1",
+          "member": "int64",
+          "name": "TeamTypeId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -10901,6 +10981,16 @@
           "name": "I18nList",
           "output_required": false,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.",
+          "example": "1",
+          "member": "int64",
+          "name": "TeamTypeId",
+          "output_required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],

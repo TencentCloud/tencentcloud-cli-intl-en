@@ -7280,7 +7280,7 @@
         {
           "disabled": false,
           "document": "Cost trend",
-          "example": "0",
+          "example": "无",
           "member": "ConsumptionSummaryTrend",
           "name": "Trend",
           "output_required": true,
@@ -7396,7 +7396,7 @@
         {
           "disabled": false,
           "document": "Trend",
-          "example": "{\"Type\":\"upward\",\"Value\":\"5.81\"}",
+          "example": "无",
           "member": "ConsumptionSummaryTrend",
           "name": "Trend",
           "output_required": true,
@@ -7512,7 +7512,7 @@
         {
           "disabled": false,
           "document": "Trend",
-          "example": "{\"Type\":\"downward\",\"Value\":\"43.97\"}",
+          "example": "无",
           "member": "ConsumptionSummaryTrend",
           "name": "Trend",
           "output_required": true,
@@ -9078,7 +9078,7 @@
         },
         {
           "disabled": false,
-          "document": "Transaction type\n\nModify network mode adjust bandwidth mode.\nAdjust bandwidth size.\n`Refund`: refund.\ndowngrade.\nupgrade configuration.\nrenew.\npurchase.\npreMoveOut monthly subscription resource migration out.\npreMoveIn specifies the monthly subscription resources to migrate.\npreToPost specifies the prepaid to postpaid conversion.\npostMoveOut specifies the pay-as-you-go resources to be migrated out.\npostMoveIn specifies the pay-as-you-go resources for inbound migration.",
+          "document": "Transaction type\nModify network mode adjust bandwidth mode.\nAdjust bandwidth size.\nRefund: refund.\ndowngrade.\nupgrade configuration.\nrenew.\npurchase.\npreMoveOut yearly/monthly subscription resource migration out.\npreMoveIn specifies the yearly/monthly subscription resources to migrate.\npreToPost specifies the prepaid to postpaid conversion.\npostMoveOut specifies the pay-as-you-go resources to be migrated out.\npostMoveIn specifies the pay-as-you-go resources for inbound migration.",
           "example": "purchase",
           "member": "string",
           "name": "Action",
@@ -13593,7 +13593,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Start time \nExample :2016-01-01 00:00:00",
+          "document": "Start time \nExample :2016-01-01 00:00:00.",
           "example": "2016-01-01 00:00:00",
           "member": "datetime",
           "name": "StartTime",
@@ -13629,7 +13629,7 @@
         },
         {
           "disabled": false,
-          "document": "Order status, default is 4 (successful order)\nStatus of the order\n1: unpaid\n2: paid \n3: shipment in progress\n4: shipped\n5`: Shipment Failed\n6`: Refunded\n7`: Ticket closed\n8`: Order expired\n9`: Order invalid\n10: product invalidated\n11: third-party payment refused\n12: payment in process",
+          "document": "Order status, default is 4 (successful order)\nStatus of the order\n1: unpaid\n2: paid \n3: shipment in progress\n4: shipped\n5: Shipment Failed\n6: Refunded\n7: Ticket closed\n8: Order expired\n9: Order invalid\n10: product invalidated\n11: third-party payment refused\n12: payment in process",
           "example": "4",
           "member": "int64",
           "name": "Status",
