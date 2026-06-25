@@ -2,10 +2,10 @@
   "actions": {
     "CreateRabbitMQServerlessBinding": [
       {
-        "document": "Add a binding relationship",
-        "input": "POST / HTTP/1.1\nHost: trabbit.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRabbitMQServerlessBinding\n<Common request parameters>\n\n{\n    \"InstanceId\": \"amqp-slnatbyves\",\n    \"VirtualHost\": \"vhost\",\n    \"Source\": \"fanout-exchange-1061997075421934168\",\n    \"DestinationType\": \"queue\",\n    \"Destination\": \"queue-623992266636621729\"\n}",
-        "output": "{\n    \"Response\": {\n        \"BindingId\": 0,\n        \"InstanceId\": \"amqp-slnatbyves\",\n        \"RequestId\": \"1dd2c068-0d69-4ec4-a9e5-adce8cffa43b\",\n        \"VirtualHost\": \"vhost\"\n    }\n}",
-        "title": "Add a Binding Relationship"
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trabbit.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRabbitMQServerlessBinding\n<Common Request Parameter>\n\n{\n    \"InstanceId\": \"amqp-slranxpibb\",\n    \"VirtualHost\": \"/\",\n    \"Source\": \"ledou-test\",\n    \"DestinationType\": \"queue\",\n    \"Destination\": \"ledou-test\",\n    \"Arguments\": [\n        {\n            \"Key\": \"x-match\",\n            \"Value\": \"all\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"BindingId\": 0,\n        \"InstanceId\": \"amqp-slranxpibb\",\n        \"VirtualHost\": \"/\",\n        \"RequestId\": \"0964a348-9573-41d1-89e0-9f1b42cacdc4\"\n    }\n}",
+        "title": "Bind queues to Header-type Exchanges"
       }
     ],
     "CreateRabbitMQServerlessExchange": [
@@ -99,9 +99,9 @@
     "DescribeRabbitMQServerlessConnection": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: trabbit.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRabbitMQServerlessConnection\n<Common request parameters>\n\n{\n    \"InstanceId\": \"amqp-44w9928j\",\n    \"VirtualHost\": \"testVhost\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"dsfsdfs\",\n        \"Connections\": [],\n        \"TotalCount\": 0\n    }\n}",
-        "title": "Query RabbitMQ Connection List"
+        "input": "POST / HTTP/1.1\nHost: trabbit.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRabbitMQServerlessConnection\n<Common Request Parameter>\n\n{\n    \"InstanceId\": \"amqp-slbswcjhay\",\n    \"VirtualHost\": \"/\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Connections\": [\n            {\n                \"Channels\": 10,\n                \"ConnectionName\": \"11.141.232.162:2594 -> 21.63.172.58:5672\",\n                \"PeerHost\": \"11.141.232.162\",\n                \"Protocol\": \"AMQP 0-9-1\",\n                \"SSL\": false,\n                \"State\": \"running\",\n                \"User\": \"ledou\"\n            },\n            {\n                \"Channels\": 1,\n                \"ConnectionName\": \"11.151.193.8:35695 -> 21.63.172.58:5672\",\n                \"PeerHost\": \"11.151.193.8\",\n                \"Protocol\": \"AMQP 0-9-1\",\n                \"SSL\": false,\n                \"State\": \"running\",\n                \"User\": \"ledou\"\n            }\n        ],\n        \"RequestId\": \"8ea767cf-5895-4eda-985b-cf739d9074b5\",\n        \"TotalCount\": 2\n    }\n}",
+        "title": "Get connection list normally"
       }
     ],
     "DescribeRabbitMQServerlessConsumers": [

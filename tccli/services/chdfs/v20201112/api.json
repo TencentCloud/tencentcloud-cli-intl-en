@@ -216,60 +216,60 @@
         {
           "disabled": false,
           "document": "Permission group ID",
-          "example": "",
+          "example": "ag-gei2xxxx",
           "member": "string",
           "name": "AccessGroupId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Permission group name",
-          "example": "",
+          "example": "access-group-test",
           "member": "string",
           "name": "AccessGroupName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Permission group description",
-          "example": "",
+          "example": "create access group example",
           "member": "string",
           "name": "Description",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Creation time",
-          "example": "",
+          "example": "2024-12-24T20:00:47+08:00",
           "member": "datetime_iso",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "VPC type (1: CVM; 2: BM 1.0)",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "VpcType",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "VPC ID",
-          "example": "",
+          "example": "vpc-0q1xxxx",
           "member": "string",
           "name": "VpcId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -282,7 +282,7 @@
         {
           "disabled": false,
           "document": "Permission rule ID",
-          "example": "",
+          "example": "900",
           "member": "uint64",
           "name": "AccessRuleId",
           "required": false,
@@ -292,7 +292,7 @@
         {
           "disabled": false,
           "document": "Permission rule address (IP range or IP)",
-          "example": "",
+          "example": "10.0.0.0/24",
           "member": "string",
           "name": "Address",
           "required": false,
@@ -302,7 +302,7 @@
         {
           "disabled": false,
           "document": "Permission rule access mode (1: read-only; 2: read-write)",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "AccessMode",
           "required": false,
@@ -312,7 +312,7 @@
         {
           "disabled": false,
           "document": "Priority (value range: 1–100. The smaller the value, the higher the priority)",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "Priority",
           "required": false,
@@ -322,7 +322,7 @@
         {
           "disabled": false,
           "document": "Creation time",
-          "example": "",
+          "example": "2024-12-25T19:35:20+08:00",
           "member": "datetime_iso",
           "name": "CreateTime",
           "required": false,
@@ -374,7 +374,7 @@
         {
           "disabled": false,
           "document": "Permission group name",
-          "example": "test",
+          "example": "access-group-test",
           "member": "string",
           "name": "AccessGroupName",
           "required": true,
@@ -392,7 +392,7 @@
         {
           "disabled": false,
           "document": "VPC ID",
-          "example": "vpc-967aipkx",
+          "example": "vpc-0q1uxxxx",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -401,7 +401,7 @@
         {
           "disabled": false,
           "document": "Permission group description, which is an empty string by default",
-          "example": "test",
+          "example": "create access group example",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -419,6 +419,7 @@
           "example": "无",
           "member": "AccessGroup",
           "name": "AccessGroup",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -446,7 +447,7 @@
         {
           "disabled": false,
           "document": "Permission group ID",
-          "example": "ag-jwmfdcul",
+          "example": "ag-gei2xxxx",
           "member": "string",
           "name": "AccessGroupId",
           "required": true,
@@ -464,9 +465,9 @@
           "example": "无",
           "member": "AccessRule",
           "name": "AccessRules",
-          "required": true,
+          "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -483,20 +484,11 @@
         {
           "disabled": false,
           "document": "File system name",
-          "example": "test",
+          "example": "fs-test",
           "member": "string",
           "name": "FileSystemName",
           "required": true,
           "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "File system capacity (in bytes), which can range from 1 GB to 1 PB and must be an integer multiple of 1 GB",
-          "example": "1073741824",
-          "member": "uint64",
-          "name": "CapacityQuota",
-          "required": true,
-          "type": "int"
         },
         {
           "disabled": false,
@@ -510,11 +502,20 @@
         {
           "disabled": false,
           "document": "File system description, which is an empty string by default",
-          "example": "test",
+          "example": "create an example fs",
           "member": "string",
           "name": "Description",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "File system capacity (in bytes), which can range from 1 GB to 1 PB and must be an integer multiple of 1 GB",
+          "example": "1073741824",
+          "member": "uint64",
+          "name": "CapacityQuota",
+          "required": false,
+          "type": "int"
         },
         {
           "disabled": false,
@@ -582,6 +583,7 @@
           "example": "无",
           "member": "FileSystem",
           "name": "FileSystem",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -636,7 +638,7 @@
         {
           "disabled": false,
           "document": "Mount point name",
-          "example": "test",
+          "example": "mp-test",
           "member": "string",
           "name": "MountPointName",
           "required": true,
@@ -645,7 +647,7 @@
         {
           "disabled": false,
           "document": "File system ID",
-          "example": "f4mnvilzmdd",
+          "example": "f14mrrxxxxxx",
           "member": "string",
           "name": "FileSystemId",
           "required": true,
@@ -672,7 +674,7 @@
           "example": "无",
           "member": "MountPoint",
           "name": "MountPoint",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -880,7 +882,7 @@
           "example": "无",
           "member": "AccessGroup",
           "name": "AccessGroup",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -926,7 +928,7 @@
           "example": "无",
           "member": "AccessGroup",
           "name": "AccessGroups",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1000,7 +1002,7 @@
           "example": "无",
           "member": "FileSystem",
           "name": "FileSystem",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -1010,9 +1012,9 @@
           "example": "0",
           "member": "uint64",
           "name": "CapacityUsed",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1020,9 +1022,9 @@
           "example": "0",
           "member": "uint64",
           "name": "ArchiveCapacityUsed",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1030,9 +1032,9 @@
           "example": "0",
           "member": "uint64",
           "name": "StandardCapacityUsed",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1040,9 +1042,9 @@
           "example": "0",
           "member": "uint64",
           "name": "DegradeCapacityUsed",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1050,9 +1052,9 @@
           "example": "0",
           "member": "uint64",
           "name": "DeepArchiveCapacityUsed",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1060,9 +1062,9 @@
           "example": "0",
           "member": "uint64",
           "name": "IntelligentCapacityUsed",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -1075,7 +1077,17 @@
     },
     "DescribeFileSystemsRequest": {
       "document": "DescribeFileSystems request structure.",
-      "members": [],
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "f04maoxxxxxx",
+          "member": "string",
+          "name": "FileSystemIdMarker",
+          "required": false,
+          "type": "string"
+        }
+      ],
       "type": "object"
     },
     "DescribeFileSystemsResponse": {
@@ -1087,7 +1099,7 @@
           "example": "无",
           "member": "FileSystem",
           "name": "FileSystems",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1160,7 +1172,7 @@
           "example": "无",
           "member": "MountPoint",
           "name": "MountPoint",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -1215,7 +1227,7 @@
           "example": "无",
           "member": "MountPoint",
           "name": "MountPoints",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1289,7 +1301,7 @@
           "example": "无",
           "member": "RestoreTask",
           "name": "RestoreTasks",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1347,27 +1359,27 @@
           "example": "1000000",
           "member": "uint64",
           "name": "AppId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "File system name",
-          "example": "test",
+          "example": "fs-test",
           "member": "string",
           "name": "FileSystemName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "File system description",
-          "example": "test",
+          "example": "create an example fs",
           "member": "string",
           "name": "Description",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1377,17 +1389,17 @@
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "File system ID",
-          "example": "f4mhaqkciq0",
+          "example": "f14mrrxxxxxx",
           "member": "string",
           "name": "FileSystemId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1397,7 +1409,7 @@
           "example": "1629099694",
           "member": "datetime_iso",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1407,7 +1419,7 @@
           "example": "4194304",
           "member": "uint64",
           "name": "BlockSize",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1417,7 +1429,7 @@
           "example": "1073741824",
           "member": "uint64",
           "name": "CapacityQuota",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1427,7 +1439,7 @@
           "example": "2",
           "member": "uint64",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1437,7 +1449,7 @@
           "example": "[\"hadoop\"]",
           "member": "string",
           "name": "SuperUsers",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1447,7 +1459,7 @@
           "example": "true",
           "member": "bool",
           "name": "PosixAcl",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
@@ -1457,9 +1469,9 @@
           "example": "false",
           "member": "bool",
           "name": "EnableRanger",
-          "required": true,
+          "output_required": true,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1467,9 +1479,9 @@
           "example": "[\"127.0.0.1:8080\"]",
           "member": "string",
           "name": "RangerServiceAddresses",
-          "required": true,
+          "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1483,6 +1495,7 @@
           "example": "1",
           "member": "uint64",
           "name": "LifeCycleRuleId",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -1490,9 +1503,10 @@
         {
           "disabled": false,
           "document": "Lifecycle rule name",
-          "example": "test",
+          "example": "lc-delete",
           "member": "string",
           "name": "LifeCycleRuleName",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1500,9 +1514,10 @@
         {
           "disabled": false,
           "document": "Lifecycle rule path (directory or file)",
-          "example": "/test",
+          "example": "/delete_path",
           "member": "string",
           "name": "Path",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1513,6 +1528,7 @@
           "example": "无",
           "member": "Transition",
           "name": "Transitions",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": false
@@ -1523,6 +1539,7 @@
           "example": "1",
           "member": "uint64",
           "name": "Status",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -1533,6 +1550,7 @@
           "example": "2019-07-30T16:24:38+08:00",
           "member": "datetime_iso",
           "name": "CreateTime",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1543,6 +1561,7 @@
           "example": "无",
           "member": "Summary",
           "name": "Summary",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": false
@@ -1550,9 +1569,10 @@
         {
           "disabled": false,
           "document": "Update time of `Summary`",
-          "example": "无",
+          "example": "2019-07-30T16:34:38+08:00",
           "member": "datetime_iso",
           "name": "LastSummaryTime",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1575,7 +1595,7 @@
         {
           "disabled": false,
           "document": "Permission group name",
-          "example": "test",
+          "example": "access-group-test",
           "member": "string",
           "name": "AccessGroupName",
           "required": false,
@@ -1584,7 +1604,7 @@
         {
           "disabled": false,
           "document": "Permission group description",
-          "example": "test",
+          "example": "group-example",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -1647,7 +1667,7 @@
         {
           "disabled": false,
           "document": "File system name",
-          "example": "test",
+          "example": "fs-test",
           "member": "string",
           "name": "FileSystemName",
           "required": false,
@@ -1656,7 +1676,7 @@
         {
           "disabled": false,
           "document": "File system description",
-          "example": "test",
+          "example": "fs-example",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -1764,7 +1784,7 @@
         {
           "disabled": false,
           "document": "Mount point name",
-          "example": "test",
+          "example": "mp-test",
           "member": "string",
           "name": "MountPointName",
           "required": false,
@@ -1836,60 +1856,60 @@
         {
           "disabled": false,
           "document": "Mount point ID",
-          "example": "",
+          "example": "f14mrrxxxxxx-C1Yv",
           "member": "string",
           "name": "MountPointId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Mount point name",
-          "example": "",
+          "example": "mp-test",
           "member": "string",
           "name": "MountPointName",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "File system ID",
-          "example": "",
+          "example": "f14mrrxxxxxx",
           "member": "string",
           "name": "FileSystemId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Mount point status (1: enabled; 2: disabled)",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Creation time",
-          "example": "",
+          "example": "2024-12-25T19:15:28+08:00",
           "member": "datetime_iso",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of IDs of the bound permission groups",
-          "example": "",
+          "example": "[\"ag-pushxxxx\"]",
           "member": "string",
           "name": "AccessGroupIds",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -1905,6 +1925,7 @@
           "example": "1",
           "member": "uint64",
           "name": "RestoreTaskId",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -1915,6 +1936,7 @@
           "example": "/test/file0",
           "member": "string",
           "name": "FilePath",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1925,6 +1947,7 @@
           "example": "1",
           "member": "uint64",
           "name": "Type",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -1935,6 +1958,7 @@
           "example": "7",
           "member": "uint64",
           "name": "Days",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -1945,6 +1969,7 @@
           "example": "1",
           "member": "uint64",
           "name": "Status",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -1955,6 +1980,7 @@
           "example": "2019-07-30T16:24:38+08:00",
           "member": "datetime_iso",
           "name": "CreateTime",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1971,9 +1997,10 @@
           "example": "5",
           "member": "uint64",
           "name": "CapacityUsed",
-          "required": true,
+          "output_required": true,
+          "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1981,9 +2008,10 @@
           "example": "1",
           "member": "uint64",
           "name": "StandardCapacityUsed",
-          "required": true,
+          "output_required": true,
+          "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -1991,9 +2019,10 @@
           "example": "1",
           "member": "uint64",
           "name": "DegradeCapacityUsed",
+          "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2001,9 +2030,10 @@
           "example": "1",
           "member": "uint64",
           "name": "ArchiveCapacityUsed",
+          "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2011,9 +2041,10 @@
           "example": "1",
           "member": "uint64",
           "name": "DeepArchiveCapacityUsed",
+          "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2021,12 +2052,13 @@
           "example": "1",
           "member": "uint64",
           "name": "IntelligentCapacityUsed",
+          "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
-      "usage": "out"
+      "usage": "both"
     },
     "Tag": {
       "document": "Resource tag.",
@@ -2034,9 +2066,10 @@
         {
           "disabled": false,
           "document": "Tag key",
-          "example": "",
+          "example": "key-test",
           "member": "string",
           "name": "Key",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -2044,9 +2077,10 @@
         {
           "disabled": false,
           "document": "Tag value",
-          "example": "",
+          "example": "val-test",
           "member": "string",
           "name": "Value",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false

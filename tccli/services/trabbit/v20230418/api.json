@@ -266,6 +266,15 @@
           "name": "RoutingKey",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "RabbitMQServerlessKeyValuePair",
+          "name": "Arguments",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -1270,6 +1279,51 @@
           "name": "VirtualHost",
           "required": true,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sort by which field. Supported options: channel (channel count), incoming_bytes (inbound traffic size), outgoing_bytes (outbound traffic size)",
+          "example": "channel",
+          "member": "string",
+          "name": "SortElement",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sort order: ASC, DESC",
+          "example": "ASC",
+          "member": "string",
+          "name": "SortType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "10",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "156.23.76.13",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1324,7 +1378,7 @@
           "example": "testVhost",
           "member": "string",
           "name": "VirtualHost",
-          "required": true,
+          "required": false,
           "type": "string"
         },
         {
@@ -1333,7 +1387,7 @@
           "example": "testQueueName",
           "member": "string",
           "name": "QueueName",
-          "required": true,
+          "required": false,
           "type": "string"
         },
         {
@@ -2266,7 +2320,7 @@
         {
           "disabled": false,
           "document": "Sorting field.\nConsumerNumber: specifies the number of online consumers.\nMessageHeapCount specifies the number of message backlogs.\nMessageRateInOut specifies the total production and consumption rate.\nMessageRateIn specifies the production rate.\nMessageRateOut specifies the consumption rate.",
-          "example": "MessageHeapCount",
+          "example": "messages_ready",
           "member": "string",
           "name": "SortElement",
           "required": false,
@@ -2275,7 +2329,7 @@
         {
           "disabled": false,
           "document": "Sort order. valid values: ascend or descend.",
-          "example": "ascend",
+          "example": "asc",
           "member": "string",
           "name": "SortOrder",
           "required": false,
@@ -3503,7 +3557,7 @@
         {
           "disabled": false,
           "document": "Connection name.",
-          "example": "1.1.1.1:2340 -> 10.1.1.1:5672",
+          "example": "167.4.51.5",
           "member": "string",
           "name": "ConnectionName",
           "output_required": true,
@@ -4049,7 +4103,7 @@
         {
           "disabled": false,
           "document": "Public network domain.",
-          "example": "http://127.4.5.1",
+          "example": "127.4.5.1",
           "member": "string",
           "name": "PublicAccessEndpoint",
           "output_required": false,
@@ -4059,7 +4113,7 @@
         {
           "disabled": false,
           "document": "Public network status.",
-          "example": "on",
+          "example": "ON",
           "member": "string",
           "name": "PublicDataStreamStatus",
           "output_required": false,
@@ -4181,7 +4235,7 @@
         {
           "disabled": false,
           "document": "Instance status. 0 indicates creating in progress. 1 indicates normal. 2 indicates isolated. 3 indicates terminated. 4 indicates exception. 5 indicates delivery failed.",
-          "example": "集群状态",
+          "example": "0",
           "member": "int64",
           "name": "Status",
           "output_required": true,
@@ -4350,6 +4404,34 @@
         }
       ],
       "usage": "out"
+    },
+    "RabbitMQServerlessKeyValuePair": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "key",
+          "member": "string",
+          "name": "Key",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "someValue",
+          "member": "string",
+          "name": "Value",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "RabbitMQServerlessWhiteListInfo": {
       "document": "Public network allowlist information.",
