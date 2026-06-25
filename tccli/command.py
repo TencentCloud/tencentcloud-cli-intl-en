@@ -371,9 +371,28 @@ class ActionCommand(BaseCommand):
                          % (token, prefix, type_name or "unknown"))
             seen_prefix.add((prefix, type_name))
         lines.append("")
-        lines.append("To pass deeper nested values, please use --cli-input-json "
-                     "'<full-request-json>' (run with --generate-cli-skeleton "
-                     "to get a JSON template).")
+        # Collect the top-level field names from each matched prefix so we
+        # can suggest a normal-mode alternative.
+        top_fields = []
+        seen_top = set()
+        for prefix, _type_name in seen_prefix:
+            top = prefix.split(".")[0] if prefix else ""
+            if top and top not in seen_top:
+                seen_top.add(top)
+                top_fields.append(top)
+        lines.append("To pass deeper nested values, choose either of the following:")
+        if top_fields:
+            sample_field = top_fields[0]
+            lines.append("  (1) Drop --cli-unfold-argument and pass the whole top-level "
+                         "field as a JSON string, e.g. --%s '{\"...\":{...}}' "
+                         "(applies to: %s)." % (sample_field, ", ".join(top_fields)))
+        else:
+            lines.append("  (1) Drop --cli-unfold-argument and pass the affected "
+                         "top-level field as a JSON string.")
+        lines.append("  (2) Use --cli-input-json file://<path/to/request.json> "
+                     "to provide the entire request as a JSON file "
+                     "(the value must begin with 'file://'; raw JSON strings are not accepted; "
+                     "run with --generate-cli-skeleton to get a JSON template).")
         return "\n".join(lines)
 
     def _get_profile(self, parsed_globals):

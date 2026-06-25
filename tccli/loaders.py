@@ -556,13 +556,20 @@ class Loader(object):
                 param_type = "Object"
                 type_name = recursive_type or "Object"
                 required = "Optional"
+                # Capture the top-level field name of this truncated leaf so we
+                # can suggest a normal-mode alternative (passing it as a JSON string).
+                top_field = param[0] if param else ""
                 document = (document or "") + \
                     ("\nNote: this field is a self-referencing type %s. "
                      "--cli-unfold-argument only expands the first level. "
-                     "For deeper nesting, please use --cli-input-json to provide "
-                     "the full request as JSON. "
-                     "You can run the command with --generate-cli-skeleton to get a JSON template."
-                     % (recursive_type or ""))
+                     "For deeper nesting you can choose either of the following:\n"
+                     "  (1) Drop --cli-unfold-argument and pass the whole top-level "
+                     "field --%s as a JSON string, e.g. --%s '{\"...\":{...}}'.\n"
+                     "  (2) Use --cli-input-json file://<path/to/request.json> to "
+                     "provide the entire request as a JSON file (the value must "
+                     "begin with 'file://'; raw JSON strings are not accepted).\n"
+                     "Run the command with --generate-cli-skeleton to get a JSON template."
+                     % (recursive_type or "", top_field, top_field))
 
             unfold_param[".".join(param)]["type"] = param_type
             unfold_param[".".join(param)]["type_name"] = type_name
