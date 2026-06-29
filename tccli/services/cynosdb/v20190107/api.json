@@ -27713,21 +27713,12 @@
       "usage": "in"
     },
     "QueryFilter": {
-      "document": "Query filter",
+      "document": "Query filter. Filter criteria for the DescribeClusterAndInstances API.",
       "members": [
         {
           "disabled": false,
-          "document": "Search field. Valid values: \"InstanceId\", \"ProjectId\", \"InstanceName\", \"Vip\"",
-          "example": "[\"projectId\"]",
-          "member": "string",
-          "name": "Names",
-          "required": true,
-          "type": "list"
-        },
-        {
-          "disabled": false,
-          "document": "Search string",
-          "example": "[\"1723\"]",
+          "document": "Field value list, in one-to-one correspondence with Names. InstanceId/ClusterId uses exact matching, and InstanceName uses fuzzy matching by default.",
+          "example": "[\"cynosdbmysql-ins-abcd1234\"]",
           "member": "string",
           "name": "Values",
           "required": true,
@@ -27735,7 +27726,16 @@
         },
         {
           "disabled": false,
-          "document": "Whether to use exact match",
+          "document": "Search field name list, support the following 3 fields (case-insensitive, multiple values are OR relationship): ClusterId (filter by cluster ID, exact match), InstanceId (reverse-check cluster by instance ID), InstanceName (reverse-check cluster by instance name, default LIKE fuzzy matching, exact match when ExactMatch=true). Take the intersection when InstanceId and InstanceName are input at the same time (AND semantics).",
+          "example": "[\"InstanceId\"]",
+          "member": "string",
+          "name": "Names",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Exact match. Only applicable to InstanceName: true for exact matching, false (default) for LIKE fuzzy matching.",
           "example": "false",
           "member": "bool",
           "name": "ExactMatch",
@@ -27744,8 +27744,8 @@
         },
         {
           "disabled": false,
-          "document": "Search field",
-          "example": "projectId",
+          "document": "Search field name (single field mode, choose between this and Names). ClusterId, InstanceId, and InstanceName are supported.",
+          "example": "InstanceId",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -27753,8 +27753,8 @@
         },
         {
           "disabled": true,
-          "document": "Operator",
-          "example": "1000****4352",
+          "document": "Operator (reserved field, currently disabled). Available values: >, >=, !=, =, <, <=",
+          "example": "=",
           "member": "string",
           "name": "Operator",
           "required": false,
