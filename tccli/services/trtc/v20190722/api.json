@@ -2837,7 +2837,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "User SDKAppId (e.g., 1400xxxxxx)",
+          "document": "User SdkAppId (for example: 1400xxxxxx).",
           "example": "1400188366",
           "member": "string",
           "name": "SdkAppId",
@@ -2846,7 +2846,7 @@
         },
         {
           "disabled": false,
-          "document": "Query start time, format is YYYY-MM-DD. (The query time range depends on the monitoring dashboard function version, the premium edition can query up to 30 days)",
+          "document": "Query start time, and the format is YYYY-MM-DD. (query time range is based on the monitoring dashboard feature version. the basic version supports querying the last 30 days, and the advanced version supports querying the last 60 days).",
           "example": "2022-10-20",
           "member": "date",
           "name": "StartTime",
@@ -2855,7 +2855,7 @@
         },
         {
           "disabled": false,
-          "document": "Query end time, format is YYYY-MM-DD.",
+          "document": "Query end time in YYYY-MM-DD format.",
           "example": "2022-10-21",
           "member": "date",
           "name": "EndTime",
@@ -2864,12 +2864,21 @@
         },
         {
           "disabled": false,
-          "document": "The granularity of the returned data, which can be set to the following values:\nd: by day. This returns data for the entire UTC day of the query time range. \nh: by hour. This returns data for the entire UTC hour of the query time range.",
+          "document": "The granularity of returned data supports the following values:.\nd: day. at this time, return the data of UTC time at zero point within a specified time range.\nh: billed hourly. at this point, return the data of full hour UTC time within a specified time range.",
           "example": "\"d\"",
           "member": "string",
           "name": "Period",
           "required": true,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether the returned data is a decimal.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsFloat",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -2879,7 +2888,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "TRTC Data Dashboard output parameters",
+          "document": "TRTC monitoring data output parameters.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "TRTCDataResult",
           "name": "Data",
@@ -5702,7 +5711,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data value",
+          "document": "Data value.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[1659927600,399]",
           "member": "int64",
           "name": "RowValue",
@@ -5710,6 +5719,17 @@
           "required": false,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data value.",
+          "example": "",
+          "member": "float",
+          "name": "RowValueFloat",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -5826,7 +5846,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data columns",
+          "document": "Data column\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[\"time\",\"count(queryCount)\"]",
           "member": "string",
           "name": "Columns",
@@ -5836,7 +5856,7 @@
         },
         {
           "disabled": false,
-          "document": "Data values",
+          "document": "Data value.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1659927600,399]",
           "member": "RowValues",
           "name": "Values",
@@ -7061,7 +7081,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "StatementID value, fixed at 0 for Monitoring Dashboard.",
+          "document": "The StatementID value is fixed as 0 in the monitoring dashboard.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "StatementID",
@@ -7071,7 +7091,7 @@
         },
         {
           "disabled": false,
-          "document": "Query result data, returned in Columns-Values format.",
+          "document": "Query result data is returned in Columns-Values format.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "SeriesInfos",
           "name": "Series",
@@ -7081,7 +7101,7 @@
         },
         {
           "disabled": false,
-          "document": "Total value, fixed at 1 for Monitoring Dashboard.",
+          "document": "The Total value is fixed as 1 in the dashboard feature monitoring.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "Total",

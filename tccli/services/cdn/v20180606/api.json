@@ -21,13 +21,6 @@
       "output": "CreateClsLogTopicResponse",
       "status": "online"
     },
-    "CreateScdnFailedLogTask": {
-      "document": "This API is used to recreate a failed event log task.",
-      "input": "CreateScdnFailedLogTaskRequest",
-      "name": "Recreates an event log task",
-      "output": "CreateScdnFailedLogTaskResponse",
-      "status": "online"
-    },
     "DeleteCdnDomain": {
       "document": "This API is used to delete a specified acceleration domain name.",
       "input": "DeleteCdnDomainRequest",
@@ -64,16 +57,16 @@
       "status": "online"
     },
     "DescribeCdnIp": {
-      "document": "This API is used to query CDN IP ownership.",
+      "document": "This API is used to query CDN IP ownership.\nThis API is used to create and bind a policy. (Note: The API request frequency limit follows CDN's restriction: 200 requests/10 minutes).",
       "input": "DescribeCdnIpRequest",
       "name": "Queries IP ownership",
       "output": "DescribeCdnIpResponse",
       "status": "online"
     },
     "DescribeCdnOriginIp": {
-      "document": "This API is used to query the IP information of CDN intermediate nodes. Note: this API will be deactivated soon and no longer be maintained. Please call `DescribeIpStatus` instead.",
+      "document": "**This API is deprecated.**.\nThis API is used to query the IP information of CDN origin-pull nodes. (Note: The replace API is DescribeIpStatus.).",
       "input": "DescribeCdnOriginIpRequest",
-      "name": "Queries intermediate nodes",
+      "name": "Query an origin node (abandoned)",
       "output": "DescribeCdnOriginIpResponse",
       "status": "online"
     },
@@ -169,17 +162,10 @@
       "status": "online"
     },
     "DescribeUrlViolations": {
-      "document": "This API is used to query the list of domain name URLs containing regulation-violating content scanned and detected by the CDN system, and the current status of the URLs.\nIt corresponds to the **Pornography Detection** page on the CDN Console.",
+      "document": "This API is used to query the URL list with domain violations detected by the CDN system scan and their status.\nThis API is used to correspond to the content compliant webpage in the CDN console.",
       "input": "DescribeUrlViolationsRequest",
       "name": "Queries violation history.",
       "output": "DescribeUrlViolationsResponse",
-      "status": "online"
-    },
-    "DisableCaches": {
-      "document": "This API is used to block access to a specific URL on CDN. When a URL is blocked, error 403 will be returned for requests from the Chinese mainland. URL blocking is not permanent. Note that this API is only available to beta users now. ",
-      "input": "DisableCachesRequest",
-      "name": "Blocks URLs.",
-      "output": "DisableCachesResponse",
       "status": "online"
     },
     "DisableClsLogTopic": {
@@ -189,11 +175,11 @@
       "output": "DisableClsLogTopicResponse",
       "status": "online"
     },
-    "EnableCaches": {
-      "document": "This API (EnableCaches) is used to unblock manually blocked URLs. After a URL is successfully unblocked, it takes about 5 to 10 minutes to take effect across the entire network. (This API is during beta test and not fully available now.)",
-      "input": "EnableCachesRequest",
-      "name": "Unblocks URLs.",
-      "output": "EnableCachesResponse",
+    "DuplicateDomainConfig": {
+      "document": "This API is used to copy the configuration of a reference domain to a new domain name. Self-owned certificates and customization options are not currently supported.",
+      "input": "DuplicateDomainConfigRequest",
+      "name": "Copy a domain name",
+      "output": "DuplicateDomainConfigResponse",
       "status": "online"
     },
     "EnableClsLogTopic": {
@@ -201,13 +187,6 @@
       "input": "EnableClsLogTopicRequest",
       "name": "Starts publishing to log topic",
       "output": "EnableClsLogTopicResponse",
-      "status": "online"
-    },
-    "GetDisableRecords": {
-      "document": "This API is used to query the resource blocking history and the current URL status. (This API is in beta test and not generally available yet.)",
-      "input": "GetDisableRecordsRequest",
-      "name": "Queries history of blocking actions.",
-      "output": "GetDisableRecordsResponse",
       "status": "online"
     },
     "ListClsLogTopics": {
@@ -299,13 +278,6 @@
       "input": "UpdatePayTypeRequest",
       "name": "Modifies billing mode.",
       "output": "UpdatePayTypeResponse",
-      "status": "online"
-    },
-    "UpdateScdnDomain": {
-      "document": "This API is used to modify security configurations of SCDN acceleration domain names.",
-      "input": "UpdateScdnDomainRequest",
-      "name": "Updates SCDN domain name configuration",
-      "output": "UpdateScdnDomainResponse",
       "status": "online"
     }
   },
@@ -442,6 +414,15 @@
           "name": "Channel",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to inherit the domain name tag. default reservation is the value changed last time.",
+          "example": "true",
+          "member": "bool",
+          "name": "InheritDomainTags",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -881,20 +862,20 @@
         {
           "disabled": false,
           "document": "Advanced configuration name\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "edge",
           "member": "string",
           "name": "Name",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Whether to support advanced configuration\n`on`: Supported\n`off`: Not supported\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "on",
           "member": "string",
           "name": "Value",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         }
@@ -1526,102 +1507,6 @@
       ],
       "usage": "both"
     },
-    "AdvancedCCRules": {
-      "document": "SCDN custom CC rules",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Rule name",
-          "example": "无",
-          "member": "string",
-          "name": "RuleName",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Detection duration\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "uint64",
-          "name": "DetectionTime",
-          "required": false,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Detection frequency threshold\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "uint64",
-          "name": "FrequencyLimit",
-          "required": false,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Whether to enable IP blocking. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return·`null`, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "string",
-          "name": "PunishmentSwitch",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "IP penalty duration\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "uint64",
-          "name": "PunishmentTime",
-          "required": false,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Action. Valid values: `intercept` and `redirect`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "string",
-          "name": "Action",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "A redirection URL used when Action is `redirect`\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "string",
-          "name": "RedirectUrl",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Layer-7 rule configuration for CC frequency limiting\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "ScdnSevenLayerRules",
-          "name": "Configure",
-          "required": false,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Whether to enable custom CC rules. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return·`null`, indicating that no valid values can be obtained.",
-          "example": "on",
-          "member": "string",
-          "name": "Switch",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "both"
-    },
     "AdvancedCache": {
       "document": "(Disused) Advanced cache validity configuration. You can use `RuleCache` instead.",
       "members": [
@@ -1654,123 +1539,6 @@
           "required": true,
           "type": "string",
           "value_allowed_null": true
-        }
-      ],
-      "usage": "both"
-    },
-    "AdvancedScdnAclGroup": {
-      "document": "SCDN precise access control configuration",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Rule name",
-          "example": "无",
-          "member": "string",
-          "name": "RuleName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Specific configurations",
-          "example": "无",
-          "member": "AdvancedScdnAclRule",
-          "name": "Configure",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Action. Valid values: `intercept` and `redirect`.",
-          "example": "intercept",
-          "member": "string",
-          "name": "Result",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Whether the rule is activated. Valid values: `active` and `inactive`.",
-          "example": "active",
-          "member": "string",
-          "name": "Status",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Error page configuration",
-          "example": "无",
-          "member": "ScdnErrorPage",
-          "name": "ErrorPage",
-          "required": false,
-          "type": "object",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "both"
-    },
-    "AdvancedScdnAclRule": {
-      "document": "Precise access control rule",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Keyword. Valid values:\n`protocol`: HTTP protocol\n`httpVersion`: HTTP version\n`method`: request method\n`ip`: requester IP\n`ipAsn`: ASN of the requester IP\n`ipCountry`: country/region of the requester IP\n`ipArea`: region of the requester IP\n`xForwardFor`: X-Forward-For request header\n`directory`: Path\n`index`: Homepage\n`path`: Full path of a file\n`file`: File extension\n`param`: Request parameter\n`referer`: Referer request header\n`cookie`: Cookie request header\n`userAgent`: User-Agent request header\n`head`: Custom request header",
-          "example": "无",
-          "member": "string",
-          "name": "MatchKey",
-          "output_required": true,
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Logical operator. Valid values:\n`exclude`: The keyword is not included\n`include`: The keyword is included\n`notequal`: Not the same as the keyword\n`equal`: The same as the keyword\n`matching`: The prefix is matched\n`null`: Empty or does not exist",
-          "example": "无",
-          "member": "string",
-          "name": "LogicOperator",
-          "output_required": true,
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Matched value.\nWhen `MatchKey` is `protocol`,\nValues: `HTTP` and `HTTPS`.\n\nWhen `MatchKey` is `httpVersion`,\nValues: `HTTP/1.0`, `HTTP/1.1`, `HTTP/1.2`, `HTTP/2`, and `HTTP/3`.\n\nWhen `MatchKey` is `method`,\nValues: `HEAD`, `GET`, `POST`, `PUT`, `OPTIONS`, `TRACE`, `DELETE`, `PATCH` and `CONNECT`.\n\nWhen `MatchKey` is `ipCountry`, valid values include:\n`OTHER`: Other areas\n`VE`: Venezuela\n`UY`: Uruguay\n`SR`: Suriname\n`PY`: Paraguay\n`PE`: Peru\n`GY`: Guyana\n`EC`: Ecuador\n`CO`: Colombia\n`CL`: Chile\n`BR`: Brazil\n`BO`: Bolivia\n`AR`: Argentina\n`NZ`: New Zealand\n`WS`: Samoa\n`VU`: Vanuatu\n`TV`: Tuvalu\n`TO`: Tonga\n`TK`: Tokelau\n`PW`: Palau\n`NU`: Niue\n`NR`: Nauru\n`KI`: Kiribati\n`GU`: Guam\n`FM`: Micronesia\n`AU`: Australia\n`US`: United States\n`PR`: Puerto Rico\n`DO`: Dominican Republic\n`CR`: Costa Rica\n`AS`: American Samoa\n`AG`: Antigua and Barbuda\n`PA`: Panama\n`NI`: Nicaragua\n`MX`: Mexico\n`JM`: Jamaica\n`HT`: Haiti\n`HN`: Honduras\n`GT`: Guatemala\n`GP`: Guadeloupe\n`GL`: Greenland\n`GD`: Grenada\n`CU`: Cuba\n`CA`: Canada\n`BZ`: Belize\n`BS`: Bahamas\n`BM`: Bermuda\n`BB`: Barbados\n`AW`: Aruba\n`AI`: Anguilla\n`VA`: Vatican\n`SK`: Slovakia\n`GB`: United Kingdom\n`CZ`: Czech Republic\n`UA`: Ukraine\n`TR`: Türkiye\n`SI`: Slovenia\n`SE`: Sweden\n`RS`: Republic of Serbia\n`RO`: Romania\n`PT`: Portugal\n`PL`: Poland\n`NO`: Norway\n`NL`: Netherlands\n`MT`: Malta\n`MK`: Macedonia\n`ME`: Montenegro\n`MD`: Moldova\n`MC`: Monaco\n`LV`: Latvia\n`LU`: Luxembourg\n`LT`: Lithuania\n`LI`: Liechtenstein\n`KZ`: Kazakhstan\n`IT`: Italy\n`IS`: Iceland\n`IE`: Ireland\n`HU`: Hungary\n`HR`: Croatia\n`GR`: Greece\n`GI`: Gibraltar\n`GG`: Guernsey\n`GE`: Georgia\n`FR`: France\n`FI`: Finland\n`ES`: Spain\n`EE`: Estonia\n`DK`: Denmark\n`DE`: Germany\n`CY`: Cyprus\n`CH`: Switzerland\n`BY`: Belarus\n`BG`: Bulgaria\n`BE`: Belgium\n`AZ`: Azerbaijan\n`AT`: Austria\n`AM`: Armenia\n`AL`: Albania\n`AD`: Andorra\n`TL`: East Timor\n`SY`: Syria\n`SA`: Saudi Arabia\n`PS`: Palestine\n`LK`: Sri Lanka\n`LK`: Sri Lanka\n`KP`: North Korea\n`KG`: Kyrgyzstan\n`HK`: Hong Kong, China\n`BN`: Brunei\n`BD`: Bangladesh\n`AE`: United Arab Emirates\n`YE`: Yemen\n`VN`: Vietnam\n`UZ`: Uzbekistan\n`TW`: Taiwan, China\n`TM`: Turkmenistan\n`TJ`: Tajikistan\n`TH`: Thailand\n`SG`: Singapore\n`QA`: Qatar\n`PK`: Pakistan\n`PH`: Philippines\n`OM`: Oman\n`NP`: Nepal\n`MY`: Malaysia\n`MV`: Maldives\n`MO`: Macao, China\n`MN`: Mongolia\n`MM`: Myanmar\n`LB`: Lebanon\n`KW`: Kuwait\n`KR`: South Korea\n`KH`: Cambodia\n`JP`: Japan\n`JO`: Jordan\n`IR`: Iran\n`IQ`: Iraq\n`IN`: India\n`IL`: Israel\n`ID`: Indonesia\n`CN`: China\n`BT`: Bhutan\n`BH`: Bahrain\n`AF`: Afghanistan\n`LY`: Libya\n`CD`: Democratic Republic of the Congo\n`RE`: La Réunion\n`SZ`: Swaziland\n`ZW`: Zimbabwe\n`ZM`: Zambia\n`YT`: Mayotte\n`UG`: Uganda\n`TZ`: Tanzania\n`TN`: Tunisia\n`TG`: Togo\n`TD`: Chad\n`SO`: Somalia\n`SN`: Senegal\n`SD`: Sudan\n`SC`: Seychelles\n`RW`: Rwanda\n`NG`: Nigeria\n`NE`: Niger\n`NA`: Namibia\n`MZ`: Mozambique\n`MW`: Malawi\n`MU`: Mauritius\n`MR`: Mauritania\n`ML`: Mali\n`MG`: Madagascar\n`MA`: Morocco\n`LS`: Lesotho\n`LR`: Liberia\n`KM`: Comoros\n`KE`: Kenya\n`GN`: Guinea\n`GM`: Gambia\n`GH`: Ghana\n`GA`: Gabon\n`ET`: Ethiopia\n`ER`: Eritrea\n`EG`: Egypt\n`DZ`: Algeria\n`DJ`: Djibouti\n`CM`: Cameroon\n`CG`: Republic of the Congo\n`BW`: Botswana\n`BJ`: Benin\n`BI`: Burundi\n`AO`: Angola\n\nWhen MatchKey is `ipArea`, valid values include:\n`OTHER`: Other areas\n`AS`: Asia\n`EU`: Europe\n`AN`: Antarctica\n`AF`: Africa\n`OC`: Oceania\n`NA`: North America\n`SA`: South America\n\nWhen MatchKey is `index`,\nvalid value is `/;/index.html`.",
-          "example": "无",
-          "member": "string",
-          "name": "MatchValue",
-          "output_required": true,
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Whether to distinguish uppercase or lowercase letters. `true`: case sensitive; `false`: case insensitive.",
-          "example": "无",
-          "member": "bool",
-          "name": "CaseSensitive",
-          "output_required": true,
-          "required": false,
-          "type": "bool",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "This field is required when `MatchKey` is `param` or `cookie`. For `param`, it indicates a key value of the request parameter if MatchKey is `param`, while a key value of the Cookie request header if MatchKey is `cookie`.",
-          "example": "无",
-          "member": "string",
-          "name": "MatchKeyParam",
-          "output_required": true,
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -2187,6 +1955,17 @@
           "required": false,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "When the original image is avif and the client Accept header contains image/avif, return directly the original image.\nWhen the original image is in avif format and the client Accept header does not include image/avif but includes image/webp, convert avif to webp format and return. if the Accept header does not include image/webp, convert to jpeg and return.\n\nValid values:. \n- []\n- [\"webp\"]\n- [\"jpeg\"]\n- [\"webp\", \"jpeg\"]\n\n\"Webp\": whether avif to webp is enabled, \"jpeg\": whether avif to jpeg is enabled. if both webp and jpeg are enabled, webp must be before jpeg.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"webp\", \"jpeg\"]",
+          "member": "string",
+          "name": "FallbackFormats",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -2357,150 +2136,6 @@
       ],
       "usage": "both"
     },
-    "BotCookie": {
-      "document": "Bot cookie policy",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Whether to enable bot cookie policies. Values:\n`on`: Enable\n`off`: Disable",
-          "example": "off",
-          "member": "string",
-          "name": "Switch",
-          "output_required": true,
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Rule type, which can only be `all` currently.",
-          "example": "无",
-          "member": "string",
-          "name": "RuleType",
-          "output_required": true,
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Rule value. Valid value: `*`.",
-          "example": "无",
-          "member": "string",
-          "name": "RuleValue",
-          "output_required": true,
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Action. Valid values: `monitor`, `intercept`, `redirect`, and `captcha`.",
-          "example": "无",
-          "member": "string",
-          "name": "Action",
-          "output_required": true,
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Redirection target page\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "string",
-          "name": "RedirectUrl",
-          "output_required": true,
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Update time\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "datetime",
-          "name": "UpdateTime",
-          "output_required": true,
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "both"
-    },
-    "BotJavaScript": {
-      "document": "Bot JS policy",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Whether to enable bot JS policies. Values:\n`on`: Enable\n`off`: Disable",
-          "example": "off",
-          "member": "string",
-          "name": "Switch",
-          "output_required": true,
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Rule type, which can only be `file` currently.",
-          "example": "无",
-          "member": "string",
-          "name": "RuleType",
-          "output_required": true,
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Rule value. Valid values: `html` and `htm`.",
-          "example": "无",
-          "member": "string",
-          "name": "RuleValue",
-          "output_required": true,
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Action. Valid values: `monitor`, `intercept`, `redirect`, and `captcha`.",
-          "example": "无",
-          "member": "string",
-          "name": "Action",
-          "output_required": true,
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Redirection target page\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "string",
-          "name": "RedirectUrl",
-          "output_required": true,
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Update time\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "datetime",
-          "name": "UpdateTime",
-          "output_required": true,
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "both"
-    },
     "BriefDomain": {
       "document": "Basic domain configuration information, including CNAME, status, service type, acceleration region, creation time, last modified time, and origin server configuration.",
       "members": [
@@ -2510,7 +2145,7 @@
           "example": "cdn-123",
           "member": "string",
           "name": "ResourceId",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2520,7 +2155,7 @@
           "example": "1234567",
           "member": "int64",
           "name": "AppId",
-          "required": false,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2530,7 +2165,7 @@
           "example": "www.test.com",
           "member": "string",
           "name": "Domain",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2540,7 +2175,7 @@
           "example": "www.test.com.cdn.dnsv1.com",
           "member": "string",
           "name": "Cname",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2550,7 +2185,7 @@
           "example": "online",
           "member": "string",
           "name": "Status",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2560,7 +2195,7 @@
           "example": "0",
           "member": "int64",
           "name": "ProjectId",
-          "required": false,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2570,7 +2205,7 @@
           "example": "web",
           "member": "string",
           "name": "ServiceType",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2580,7 +2215,7 @@
           "example": "2021-04-01 00:00:00",
           "member": "datetime",
           "name": "CreateTime",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2590,7 +2225,7 @@
           "example": "2021-04-01 00:00:00",
           "member": "datetime",
           "name": "UpdateTime",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2600,7 +2235,7 @@
           "example": "8.8.8.8",
           "member": "Origin",
           "name": "Origin",
-          "required": false,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -2610,7 +2245,7 @@
           "example": "normal",
           "member": "string",
           "name": "Disable",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2620,7 +2255,7 @@
           "example": "mainland",
           "member": "string",
           "name": "Area",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2630,7 +2265,7 @@
           "example": "normal",
           "member": "string",
           "name": "Readonly",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2640,7 +2275,7 @@
           "example": "cdn",
           "member": "string",
           "name": "Product",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2650,7 +2285,7 @@
           "example": "cdn-123",
           "member": "string",
           "name": "ParentHost",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -2957,32 +2592,6 @@
       ],
       "usage": "both"
     },
-    "CacheOptResult": {
-      "document": "Result of blocking/unblocking URLs",
-      "members": [
-        {
-          "disabled": false,
-          "document": "List of succeeded URLs\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
-          "member": "string",
-          "name": "SuccessUrls",
-          "required": false,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "List of failed URLs\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
-          "member": "string",
-          "name": "FailUrls",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
     "CacheTagKey": {
       "document": "A part of `CacheKey`",
       "members": [
@@ -3092,60 +2701,60 @@
         {
           "disabled": false,
           "document": "IP to be queried",
-          "example": "",
+          "example": "10.0.0.1",
           "member": "string",
           "name": "Ip",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "IP ownership:\nyes: Tencent Cloud CDN node\nno: non-Tencent Cloud CDN node",
-          "example": "",
+          "example": "yes",
           "member": "string",
           "name": "Platform",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Node district/country\nunknown: unknown node location",
-          "example": "",
+          "example": "unknown",
           "member": "string",
           "name": "Location",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Activation and deactivation history of the node.",
-          "example": "",
+          "example": "无",
           "member": "CdnIpHistory",
           "name": "History",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Node region\n`mainland`: Acceleration nodes inside the Chinese mainland\n`overseas`: Acceleration nodes outside the Chinese mainland\n`unknown`: Service region unknown",
-          "example": "",
+          "example": "mainland",
           "member": "string",
           "name": "Area",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "City where the nodes reside\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "shanghai",
           "member": "string",
           "name": "City",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         }
@@ -3158,20 +2767,20 @@
         {
           "disabled": false,
           "document": "Operation type\n`online`: Nodes activated\n`offline`: Nodes deactivated",
-          "example": "",
+          "example": "online",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Operation time corresponding to operation type\nIf its value is `null`, it means there is no status change record.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "2023-06-28 16:13:27",
           "member": "datetime",
           "name": "Datetime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         }
@@ -3336,10 +2945,10 @@
         {
           "disabled": false,
           "document": "Compatibility flag status code.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "Code",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         }
@@ -3491,7 +3100,7 @@
         {
           "disabled": false,
           "document": "Log topic name",
-          "example": "test",
+          "example": "topic-name",
           "member": "string",
           "name": "TopicName",
           "required": true,
@@ -3523,6 +3132,15 @@
           "name": "DomainAreaConfigs",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to inherit the domain name tag. default false.",
+          "example": "true",
+          "member": "bool",
+          "name": "InheritDomainTags",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -3532,57 +3150,11 @@
       "members": [
         {
           "disabled": false,
-          "document": "Topic ID\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "123-456-789",
+          "document": "Topic ID",
+          "example": "2feewq3-g327-0457-a12m-2e22e5df1111",
           "member": "string",
           "name": "TopicId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateScdnFailedLogTaskRequest": {
-      "document": "CreateScdnFailedLogTask request structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "ID of the failed task to retry",
-          "example": "1111",
-          "member": "string",
-          "name": "TaskId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Region. Valid values: `mainland` and `overseas`.",
-          "example": "mainland",
-          "member": "string",
-          "name": "Area",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateScdnFailedLogTaskResponse": {
-      "document": "CreateScdnFailedLogTask response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Creation result. \n0: Creation succeeded",
-          "example": "0",
-          "member": "string",
-          "name": "Result",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3753,7 +3325,7 @@
         },
         {
           "disabled": false,
-          "document": "Specify the time zone for query time, default UTC+08:00",
+          "document": "",
           "example": "UTC+08:00",
           "member": "string",
           "name": "TimeZone",
@@ -3828,7 +3400,7 @@
         {
           "disabled": false,
           "document": "Specifies the list of domain names to be queried\nYou can specify one or more domain names.\nUp to 30 domain names can be queried in one request.\nIf this parameter is not specified, it means to query all domain names under the current account.",
-          "example": "无",
+          "example": "[\"qq.com\", \"tencent.com\"]",
           "member": "string",
           "name": "Domains",
           "required": false,
@@ -3854,7 +3426,7 @@
         },
         {
           "disabled": false,
-          "document": "The aggregate data for multiple domain names is returned by default (false) during a multi-domain-name query.\nYou can set it to true to return the details for each Domain (the statusCode metric is currently not supported).",
+          "document": "Queries multiple domain names and returns aggregated data by default (false).\nSpecifies as required to be true, returns detailed data for each Domain (statusCode, 2xx, 3xx, 4xx, 5xx metrics not currently supported).",
           "example": "false",
           "member": "bool",
           "name": "Detail",
@@ -3864,7 +3436,7 @@
         {
           "disabled": false,
           "document": "Specifies an ISP when you query the CDN data within the Chinese mainland. If this is left blank, all ISPs will be queried.\nTo view ISP codes, see [ISP Code Mappings](https://intl.cloud.tencent.com/document/product/228/6316?from_cn_redirect=1#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)\nNote that only one of `District`, `Isp` and `IpProtocol` can be specified.",
-          "example": "无",
+          "example": "2",
           "member": "int64",
           "name": "Isp",
           "required": false,
@@ -3873,7 +3445,7 @@
         {
           "disabled": false,
           "document": "Specifies a province when you query the CDN data within the Chinese mainland. If this is left blank, all provinces will be queried.\nSpecifies a country/region when you query the CDN data outside the Chinese mainland. If this is left blank, all countries/regions will be queried.\nTo view codes of provinces or countries/regions, see [Province Code Mappings](https://intl.cloud.tencent.com/document/product/228/6316?from_cn_redirect=1#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8).\nWhen `Area` is `mainland`, you can query by the province. Note that only one of `District`, `Isp` and `IpProtocol` can be specified.",
-          "example": "无",
+          "example": "4",
           "member": "int64",
           "name": "District",
           "required": false,
@@ -3882,7 +3454,7 @@
         {
           "disabled": false,
           "document": "Specifies the protocol to be queried; if you leave it blank, all protocols will be queried.\n`all`: All protocols\n`http`: Query HTTP data\n`https`: Query HTTPS data",
-          "example": "无",
+          "example": "all",
           "member": "string",
           "name": "Protocol",
           "required": false,
@@ -3891,7 +3463,7 @@
         {
           "disabled": false,
           "document": "Specifies the data source to be queried. It’s only open to beta users now. ",
-          "example": "无",
+          "example": "monitor",
           "member": "string",
           "name": "DataSource",
           "required": false,
@@ -3900,7 +3472,7 @@
         {
           "disabled": false,
           "document": "Specifies the IP protocol to be queried. If it’s not specified, data of all IP protocols are returned.\n`all`: All protocols\n`ipv4`: Query IPv4 data\n`ipv6`: Query IPv6 data\nIf `IpProtocol` is specified, `District` parameter can not be specified at the same time.\nNote: `ipv4` and `ipv6` are only available to beta users. ",
-          "example": "无",
+          "example": "ipv4",
           "member": "string",
           "name": "IpProtocol",
           "required": false,
@@ -3918,7 +3490,7 @@
         {
           "disabled": false,
           "document": "Specify whether to query by the region of the server or client. This parameter is valid only when `Area` is `overseas`.\n`server`: Query by the location of server (Tencent Cloud CDN nodes)\n`client`: Query by the location of the client (where the request devices are located)",
-          "example": "无",
+          "example": "server",
           "member": "string",
           "name": "AreaType",
           "required": false,
@@ -3991,7 +3563,7 @@
         },
         {
           "disabled": false,
-          "document": "Starting time, such as `2019-09-04 00:00:00`",
+          "document": "Start time.",
           "example": "2021-02-01 00:00:00",
           "member": "datetime",
           "name": "StartTime",
@@ -4000,7 +3572,7 @@
         },
         {
           "disabled": false,
-          "document": "End time, such as `2019-09-04 12:00:00`",
+          "document": "End time.",
           "example": "2021-02-01 01:00:00",
           "member": "datetime",
           "name": "EndTime",
@@ -4027,7 +3599,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies a region for the query.\n`mainland`: specifies to return the download link of logs on acceleration within Mainland China;\n`overseas`: specifies to return the download link of logs on acceleration outside Mainland China;\n`global`: specifies to return a download link of logs on acceleration within Mainland China and a link of logs on acceleration outside Mainland China.\nDefault value: `mainland`.",
+          "document": "Specifies the region for log download, defaults to mainland. valid values:.\n<li>mainland: specifies the download url for the domestic acceleration log package.</li>.\n<Li>Overseas: specifies the url for obtaining overseas acceleration logs package download.</li>.\n<li>global: simultaneously obtain domestic and overseas acceleration logs package download urls (separately packaged).</li>.",
           "example": "mainland",
           "member": "string",
           "name": "Area",
@@ -4036,7 +3608,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the type of logs to download (only access logs supported).\n`access`: Access logs.",
+          "document": "Specifies the type of logs to download. valid values:.\n<Li>Access: specifies the access log.</li>.",
           "example": "access",
           "member": "string",
           "name": "LogType",
@@ -4051,7 +3623,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Download link of the log package.\nYou can open the link to download a .gz log package that contains all log files without extension.",
+          "document": "Specifies the download url of the log package.\nDownload content is a compression package with the gz suffix. after decompression, it becomes a text file without an extension. link validity period is 1 day.",
           "example": "无",
           "member": "DomainLog",
           "name": "DomainLogs",
@@ -4083,7 +3655,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "List of IPs to be queried",
+          "document": "IP list you want to query. supports 1-20 ip inquiries at a time.",
           "example": "[\"1.1.1.1\"]",
           "member": "string",
           "name": "Ips",
@@ -4099,7 +3671,7 @@
         {
           "disabled": false,
           "document": "Node ownership details",
-          "example": "无",
+          "example": "[{\"Ip\": \"1.1.1.1\", \"Platform\": \"no\", \"Location\": \"unknown\", \"City\": \"unknown\", \"History\": [], \"Area\": \"unknown\" }]",
           "member": "CdnIp",
           "name": "Ips",
           "output_required": true,
@@ -4166,7 +3738,7 @@
         },
         {
           "disabled": false,
-          "document": "Managed certificate ID. `Cert` and `CertId` cannot be both empty. If they’re both filled in, `CerID` prevails.",
+          "document": "Managed certificate ID. Cert and CertId cannot both be empty. if both are filled in, CertId takes precedence.",
           "example": "证书ID",
           "member": "string",
           "name": "CertId",
@@ -4190,23 +3762,23 @@
       "members": [
         {
           "disabled": false,
-          "document": "List of domain names connected to CDN\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "List of domain names integrated with CDN.",
           "example": "\"\\u65e0\"",
           "member": "string",
           "name": "Domains",
-          "required": true,
+          "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "List of CDN domain names with certificates configured\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "List of CDN domain names with configured certificates.",
           "example": "\"\\u65e0\"",
           "member": "string",
           "name": "CertifiedDomains",
-          "required": true,
+          "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -4231,7 +3803,7 @@
         },
         {
           "disabled": false,
-          "document": "Limit on paginated queries. Default value: 100. Maximum value: 1000.",
+          "document": "Number limit of paginated query. default value: 100. maximum settable: 100.",
           "example": "1",
           "member": "int64",
           "name": "Limit",
@@ -4268,7 +3840,7 @@
           "example": "无",
           "member": "DetailDomain",
           "name": "Domains",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4278,7 +3850,7 @@
           "example": "201",
           "member": "int64",
           "name": "TotalNumber",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4472,7 +4044,7 @@
         {
           "disabled": false,
           "document": "Specifies the list of domain names to be queried; up to 30 domain names can be queried at a time.",
-          "example": "无",
+          "example": "qq.com",
           "member": "string",
           "name": "Domains",
           "required": false,
@@ -4508,7 +4080,7 @@
           "example": "5min",
           "member": "string",
           "name": "Interval",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4518,7 +4090,7 @@
           "example": "无",
           "member": "ResourceData",
           "name": "Data",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4621,7 +4193,7 @@
         {
           "disabled": false,
           "document": "Specifies the list of domain names to query. You can query up to 30 domain names at a time.",
-          "example": "无",
+          "example": "qq.com",
           "member": "string",
           "name": "Domains",
           "required": false,
@@ -4647,7 +4219,7 @@
         },
         {
           "disabled": false,
-          "document": "The aggregate data for multiple domain names is returned by default (false) when multiple `Domains` are passed in.\nYou can set it to true to return the details for each Domain (the statusCode metric is currently not supported)",
+          "document": "Domains specifies multiple domain names to import. default (false) indicates aggregated data for multiple domain names.\nSpecifies as required to be true, returns detailed data for each Domain (statusCode, 2xx, 3xx, 4xx, 5xx metrics not currently supported).",
           "example": "false",
           "member": "bool",
           "name": "Detail",
@@ -4811,7 +4383,6 @@
           "example": "无",
           "member": "Quota",
           "name": "UrlPurge",
-          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4821,7 +4392,6 @@
           "example": "无",
           "member": "Quota",
           "name": "PathPurge",
-          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4894,7 +4464,7 @@
         {
           "disabled": false,
           "document": "You can filter the results by domain name or a complete URL beginning with `http(s)://`",
-          "example": "无",
+          "example": " http(s)://abc.com/index.html",
           "member": "string",
           "name": "Keyword",
           "required": false,
@@ -4926,23 +4496,23 @@
       "members": [
         {
           "disabled": false,
-          "document": "Detailed purge record.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Specifies the detailed refresh record.",
           "example": "无",
           "member": "PurgeTask",
           "name": "PurgeLogs",
-          "required": true,
+          "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Total number of tasks, which is used for pagination.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Total number of tasks. for pagination.",
           "example": "1",
           "member": "int64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -4967,7 +4537,6 @@
           "example": "无",
           "member": "Quota",
           "name": "UrlPush",
-          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -5013,7 +4582,7 @@
         {
           "disabled": false,
           "document": "Specifies a keyword for your query. Please enter a domain name or a complete URL beginning with `http(s)://`",
-          "example": "无",
+          "example": " http(s)://abc.com/index.html",
           "member": "string",
           "name": "Keyword",
           "required": false,
@@ -5063,23 +4632,23 @@
       "members": [
         {
           "disabled": false,
-          "document": "Prefetch history\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Preheating history.",
           "example": "无",
           "member": "PushTask",
           "name": "PushLogs",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Total number of tasks, which is used for pagination.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Total number of tasks. for pagination.",
           "example": "1",
           "member": "uint64",
           "name": "TotalCount",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -5168,7 +4737,7 @@
           "example": "无",
           "member": "ReportData",
           "name": "DomainReport",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -5178,7 +4747,7 @@
           "example": "无",
           "member": "ReportData",
           "name": "ProjectReport",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -5215,7 +4784,7 @@
         {
           "disabled": false,
           "document": "Specified domain name query",
-          "example": "无",
+          "example": "qq.com",
           "member": "string",
           "name": "Domains",
           "required": false,
@@ -5233,7 +4802,7 @@
           "example": "无",
           "member": "ViolationUrl",
           "name": "UrlRecordList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -5243,7 +4812,7 @@
           "example": "10",
           "member": "int64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5272,7 +4841,7 @@
         {
           "disabled": false,
           "document": "Tencent Cloud account ID",
-          "example": "123456789",
+          "example": "100000001",
           "member": "int64",
           "name": "AppId",
           "output_required": true,
@@ -5872,7 +5441,7 @@
         {
           "disabled": false,
           "document": "Primary domain name\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "无",
+          "example": "qq.com",
           "member": "string",
           "name": "ParentHost",
           "output_required": true,
@@ -5918,56 +5487,29 @@
           "output_required": true,
           "type": "object",
           "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
-    "DisableCachesRequest": {
-      "document": "DisableCaches request structure.",
-      "members": [
+        },
         {
           "disabled": false,
-          "document": "List of URLs to be blocked (URLs must contain `http://` or `https://`).\nUp to 100 entries can be submitted at a time and 3,000 entries per day.",
-          "example": "http://www.test.com/1.txt",
-          "member": "string",
-          "name": "Urls",
-          "required": true,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "DisableCachesResponse": {
-      "document": "DisableCaches response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Submission result\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Specifies the blocklist parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
-          "member": "CacheOptResult",
-          "name": "CacheOptResult",
+          "member": "ParamFilter",
+          "name": "ParamFilter",
           "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Task ID\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "",
           "example": "无",
-          "member": "string",
-          "name": "TaskId",
+          "member": "AutoGuard",
+          "name": "AutoGuard",
           "output_required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
+          "type": "object",
+          "value_allowed_null": false
         }
       ],
-      "type": "object"
+      "usage": "out"
     },
     "DisableClsLogTopicRequest": {
       "document": "DisableClsLogTopic request structure.",
@@ -6020,9 +5562,10 @@
         {
           "disabled": false,
           "document": "Domain name",
-          "example": "",
+          "example": "qq.com",
           "member": "string",
           "name": "Domain",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -6030,9 +5573,10 @@
         {
           "disabled": false,
           "document": "Region list, where the element can be `mainland`/`overseas`",
-          "example": "",
+          "example": "mainland",
           "member": "string",
           "name": "Area",
+          "output_required": true,
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -6045,7 +5589,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Filter filter. Values:\n- `origin`: Primary origin server.\n- `domain`: Domain name.\n- `resourceId`: Domain name ID.\n- `status`: Domain name status. Values: `online`, `offline`, and `processing`.\n- `serviceType`: Service type. Values: `web`, `download`, `media`, `hybrid` and `dynamic`.\n- `projectId`: Project ID.\n- `domainType`: Primary origin type. Values: `cname` (customer origin), `COS` (COS origin), `third_party` (third-party object storage origin), and `igtm` (IGTM origin).\n- `fullUrlCache`: Whether to enable path cache. Values: `on`, `off`.\n- `https`: Whether to configure HTTPS. Values: `on`, `off` and `processing`.\n- `originPullProtocol`: Origin-pull protocol type. Value: `http`, `follow`, and `https`.\n- `tagKey`: Tag key.",
+          "document": "Filter field name. supported list as follows:.\n-`Origin`: specifies the primary origin server.\n-Domain name. specifies the domain name.\n-resourceId: domain id.\n-Status: specifies the domain name status. valid values: online, offline, processing, deleted.\n-serviceType: specifies the business type. valid values: web, download, media, hybrid, dynamic.\n-projectId: specifies the project ID.\n-domainType: specifies the primary origin server type. valid values: cname (self-owned origin), cos (cloud object storage integration), third_party (third-party object storage), igtm (igtm multi-active origin).\n-fullUrlCache. specifies full path cache. valid values: on, off.\n-Specifies whether to configure https. valid values: on, off, processing.\n-originPullProtocol: specifies the origin-pull protocol. valid values: http, follow, https.\n-tagKey: specifies the Tag key.",
           "example": "domainType",
           "member": "string",
           "name": "Name",
@@ -6054,7 +5598,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter field value.",
+          "document": "Specifies the filter field value. the default maximum is 5. when Name is origin/domain and Fuzzy is true, the maximum is 1.",
           "example": "cname",
           "member": "string",
           "name": "Value",
@@ -6079,60 +5623,60 @@
         {
           "disabled": false,
           "document": "Starting time of the log package",
-          "example": "无",
+          "example": "2025-03-25 12:00:00",
           "member": "datetime",
           "name": "StartTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "End time of the log package",
-          "example": "无",
+          "example": "2025-03-25 17:00:00",
           "member": "datetime",
           "name": "EndTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Log package download link",
-          "example": "无",
+          "example": "https://log-download.cdn.qcloud.com/20250325/19/2025032519-qq.com.gz",
           "member": "string",
           "name": "LogPath",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Acceleration region corresponding to the log package\n`mainland`: Within the Chinese mainland\n`overseas`: Outside the Chinese mainland",
-          "example": "无",
+          "example": "mainland",
           "member": "string",
           "name": "Area",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Log package filename",
-          "example": "无",
+          "example": "2025032519-qq.com-mainland",
           "member": "string",
           "name": "LogName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "File size, in bytes.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "1024",
           "member": "int64",
           "name": "FileSize",
-          "required": false,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         }
@@ -6167,53 +5711,33 @@
       ],
       "usage": "both"
     },
-    "EnableCachesRequest": {
-      "document": "EnableCaches request structure.",
+    "DuplicateDomainConfigRequest": {
+      "document": "DuplicateDomainConfig request structure.",
       "members": [
         {
           "disabled": false,
-          "document": "List of unblocked URLs",
-          "example": "[\"http:\\/\\/example.com\\/path\\/to.jpg\\r\\n\"]",
+          "document": "Adds a domain name.",
+          "example": "www.test.com",
           "member": "string",
-          "name": "Urls",
+          "name": "Domain",
           "required": true,
-          "type": "list"
+          "type": "string"
         },
         {
           "disabled": false,
-          "document": "URL blocking date",
-          "example": "2021-06-01",
-          "member": "date",
-          "name": "Date",
-          "required": false,
+          "document": "Specifies the configured domain name to be copied.",
+          "example": "www.test1.com",
+          "member": "string",
+          "name": "ReferenceDomain",
+          "required": true,
           "type": "string"
         }
       ],
       "type": "object"
     },
-    "EnableCachesResponse": {
-      "document": "EnableCaches response structure.",
+    "DuplicateDomainConfigResponse": {
+      "document": "DuplicateDomainConfig response structure.",
       "members": [
-        {
-          "disabled": false,
-          "document": "Result list\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "CacheOptResult",
-          "name": "CacheOptResult",
-          "output_required": true,
-          "type": "object",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Task ID\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "1632627566746100176",
-          "member": "string",
-          "name": "TaskId",
-          "output_required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -6475,107 +5999,6 @@
         }
       ],
       "usage": "both"
-    },
-    "GetDisableRecordsRequest": {
-      "document": "GetDisableRecords request structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Specifies the URL to be queried",
-          "example": "http://www.test.com/1.txt",
-          "member": "string",
-          "name": "Url",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Starting time, such as `2018-12-12 10:24:00`",
-          "example": "2021-02-01 00:00:00",
-          "member": "datetime",
-          "name": "StartTime",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "End time, such as `2018-12-14 10:24:00`",
-          "example": "2021-02-01 23:59:59",
-          "member": "datetime",
-          "name": "EndTime",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Current URL status\ndisable: The URL remains disabled, and accessing it will return an error 403\nenable: The URL is enabled (unblocked) and can be normally accessed",
-          "example": "disable",
-          "member": "string",
-          "name": "Status",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Offset for paginated queries. Default value: 0",
-          "example": "0",
-          "member": "int64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "Pagination limit. Default value: 20.",
-          "example": "100",
-          "member": "int64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "Task ID. The task ID and start time cannot be both left empty.",
-          "example": "364332106815435411",
-          "member": "string",
-          "name": "TaskId",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "GetDisableRecordsResponse": {
-      "document": "GetDisableRecords response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Blocking history\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "无",
-          "member": "UrlRecord",
-          "name": "UrlRecordList",
-          "output_required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Total number of tasks, which is used for pagination.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "1",
-          "member": "int64",
-          "name": "TotalCount",
-          "output_required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
     },
     "GuetzliAdapter": {
       "document": "Image optimization - `GuetzliAdapter` configuration",
@@ -7454,7 +6877,7 @@
           "example": "12345678901",
           "member": "uint64",
           "name": "AppId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -7464,7 +6887,7 @@
           "example": "cdn",
           "member": "string",
           "name": "Channel",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -7474,7 +6897,7 @@
           "example": "6d04373b-ba59-4a4f-a96e-9fe53b59a536",
           "member": "string",
           "name": "LogsetId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -7484,7 +6907,7 @@
           "example": "d2256449-c6ff-421b-93ef-aa3a7dde2de2",
           "member": "string",
           "name": "TopicId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -7494,29 +6917,39 @@
           "example": "无",
           "member": "DomainAreaConfig",
           "name": "DomainAreaConfigs",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Log topic name",
-          "example": "test",
+          "example": "topic-name",
           "member": "string",
           "name": "TopicName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Last modified time of log topic\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Latest update time of the log topic.",
           "example": "2020-09-22 00:00:00",
           "member": "datetime",
           "name": "UpdateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to inherit the domain name tag.",
+          "example": "true",
+          "member": "bool",
+          "name": "InheritDomainTags",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -7550,7 +6983,7 @@
         },
         {
           "disabled": false,
-          "document": "Objects to be sorted. Valid values:\n`url`: Sort by access URL (URLs carrying no parameters). Supported filters are `flux` and `request`.\n`district`: sorts provinces or countries/regions. Supported filters are `flux` and `request`.\n`isp`: sorts ISPs. Supported filters are `flux` and `request`.\n`host`: Sort by domain name access data. Supported filters are `flux`, `request`, `bandwidth`, `fluxHitRate`, and `statusCode` (2XX, 3XX, 4XX, 5XX).\n`originHost`: Sort by domain name origin-pull data. Supported filters are `flux`, `request`, `bandwidth`, and `OriginStatusCode` (origin_2XX, origin_3XX, origin_4XX, origin_5XX).",
+          "document": "Sorting object, which supports the following formats.\nurl: specifies the access url in alphabetical order (no parameters). supported filters: flux, request.\ndistrict: specifies the province or country/region sorting order. supported filters are flux and request.\nisp: specifies the carrier sorting order. supported filters are flux and request.\nhost: specifies the domain name data access sorting order. supported filters: flux, request, bandwidth, fluxHitRate, 2XX, 3XX, 4XX, 5XX, statusCode.   \noriginHost: specifies the domain name origin-pull data sort. supported filters: flux, request, bandwidth, origin_2XX, origin_3XX, origin_4XX, origin_5XX, OriginStatusCode.",
           "example": "host",
           "member": "string",
           "name": "Metric",
@@ -7647,7 +7080,7 @@
         {
           "disabled": false,
           "document": "Top access data details of each resource",
-          "example": "[]",
+          "example": "[{\"Resource\": \"www.test1.com\",\"DetailData\": [{\"Name\": \"www.test1.com/1.jpg?abc=123\",\"Value\": 13838}]}]",
           "member": "TopData",
           "name": "Data",
           "output_required": true,
@@ -8121,6 +7554,15 @@
           "name": "DomainAreaConfigs",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to inherit the domain name tag.",
+          "example": "true",
+          "member": "bool",
+          "name": "InheritDomainTags",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -8143,20 +7585,20 @@
         {
           "disabled": false,
           "document": "Object ID",
-          "example": "",
+          "example": "-1",
           "member": "int64",
           "name": "Id",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Object name",
-          "example": "",
+          "example": "海外",
           "member": "string",
           "name": "Name",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -8565,10 +8007,10 @@
         {
           "disabled": false,
           "document": "Intermediate IP range/intermediate IP. The IP range information is returned by default.",
-          "example": "",
+          "example": "1.1.1.1",
           "member": "string",
           "name": "Ip",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -9379,60 +8821,60 @@
         {
           "disabled": false,
           "document": "Purge task ID",
-          "example": "",
+          "example": "98547009889354471",
           "member": "string",
           "name": "TaskId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Purged URL",
-          "example": "",
+          "example": "https://qq.com/purge",
           "member": "string",
           "name": "Url",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Purge task status\n`fail`: Purge failed\n`done`: Purge succeeded\n`process`: Purge in progress",
-          "example": "",
+          "example": "done",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Purge type\n`url`: URL purge\n`path`: directory purge",
-          "example": "",
+          "example": "url",
           "member": "string",
           "name": "PurgeType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Purge method\n`flush`: purges updated resources; this type is available only for directory purges\n`delete`: Purge all resources",
-          "example": "",
+          "example": "flush",
           "member": "string",
           "name": "FlushType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Purge task submission time",
-          "example": "",
+          "example": "2023-06-28 16:13:27",
           "member": "datetime",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -9500,10 +8942,10 @@
         {
           "disabled": false,
           "document": "Prefetch task ID",
-          "example": "1234",
+          "example": "1000000001",
           "member": "string",
           "name": "TaskId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9513,7 +8955,7 @@
           "example": "http://www.test.com/1.txt",
           "member": "string",
           "name": "Url",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9523,7 +8965,7 @@
           "example": "done",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9533,7 +8975,7 @@
           "example": "100",
           "member": "int64",
           "name": "Percent",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -9543,7 +8985,7 @@
           "example": "2021-05-02 16:06:20",
           "member": "datetime",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9553,7 +8995,7 @@
           "example": "mainland",
           "member": "string",
           "name": "Area",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9563,7 +9005,7 @@
           "example": "2021-05-02 16:06:20",
           "member": "datetime",
           "name": "UpdateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         }
@@ -9781,40 +9223,40 @@
         {
           "disabled": false,
           "document": "Quota limit for one batch submission request.",
-          "example": "",
+          "example": "10",
           "member": "int64",
           "name": "Batch",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Daily submission quota limit.",
-          "example": "",
+          "example": "100",
           "member": "int64",
           "name": "Total",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Remaining daily submission quota.",
-          "example": "",
+          "example": "90",
           "member": "int64",
           "name": "Available",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Quota region.",
-          "example": "",
+          "example": "mainland",
           "member": "string",
           "name": "Area",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -10014,20 +9456,20 @@
         {
           "disabled": false,
           "document": "Region ID",
-          "example": "",
+          "example": "-20",
           "member": "int64",
           "name": "RegionId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of sub-region IDs",
-          "example": "",
+          "example": "-15,35",
           "member": "int64",
           "name": "SubRegionIdList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -10148,60 +9590,60 @@
         {
           "disabled": false,
           "document": "Project ID/domain name ID.",
-          "example": "",
+          "example": "cdn-jiayoucrr",
           "member": "string",
           "name": "ResourceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Project name/domain name.",
-          "example": "",
+          "example": "qq.com",
           "member": "string",
           "name": "Resource",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Total traffic/max bandwidth in bytes and bps, respectively.",
-          "example": "",
+          "example": "4024621",
           "member": "int64",
           "name": "Value",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Percentage of individual resource out of all resources.",
-          "example": "",
+          "example": "75.50",
           "member": "float",
           "name": "Percentage",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Total billable traffic/max billable bandwidth in bytes and bps, respectively.",
-          "example": "",
+          "example": "100",
           "member": "int64",
           "name": "BillingValue",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Percentage of billable amount out of total amount.",
-          "example": "",
+          "example": "75.50",
           "member": "float",
           "name": "BillingPercentage",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         }
@@ -10294,20 +9736,20 @@
         {
           "disabled": false,
           "document": "Resource name, which is classified as follows based on different query filters:\nA specific domain name: Details of the domain name\n`multiDomains`: Aggregated details of multiple domain names\nProject ID: ID of the specifically queried project\n`all`: Details at the account level",
-          "example": "",
+          "example": "qq.com",
           "member": "string",
           "name": "Resource",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Origin-pull data details",
-          "example": "",
+          "example": "无",
           "member": "CdnData",
           "name": "OriginData",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -10527,522 +9969,6 @@
       ],
       "usage": "both"
     },
-    "ScdnAclConfig": {
-      "document": "SCDN access control",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Whether to enable SCDN access. Values:\n`on`: Enable\n`off`: Disable",
-          "example": "on",
-          "member": "string",
-          "name": "Switch",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "This field is disused. Please use `AdvancedScriptData` instead.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "ScdnAclGroup",
-          "name": "ScriptData",
-          "required": false,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Error page configuration\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "ScdnErrorPage",
-          "name": "ErrorPage",
-          "required": false,
-          "type": "object",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "ACL rule group, which is required when the access control is on.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "无",
-          "member": "AdvancedScdnAclGroup",
-          "name": "AdvancedScriptData",
-          "required": false,
-          "type": "list",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "both"
-    },
-    "ScdnAclGroup": {
-      "document": "SCDN precise access control configuration",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Rule name",
-          "example": "123",
-          "member": "string",
-          "name": "RuleName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Specific configurations",
-          "example": "无",
-          "member": "ScdnAclRule",
-          "name": "Configure",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Action. Valid values: `intercept` and `redirect`.",
-          "example": "intercept",
-          "member": "string",
-          "name": "Result",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Whether the rule is activated. Valid values: `active` and `inactive`.",
-          "example": "active",
-          "member": "string",
-          "name": "Status",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Error page configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "无",
-          "member": "ScdnErrorPage",
-          "name": "ErrorPage",
-          "required": false,
-          "type": "object",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "both"
-    },
-    "ScdnAclRule": {
-      "document": "Precise access control match rule",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Keyword",
-          "example": "protocol",
-          "member": "string",
-          "name": "MatchKey",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Logical operator. Valid values:",
-          "example": "exclude",
-          "member": "string",
-          "name": "LogiOperator",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Matched value",
-          "example": "无",
-          "member": "string",
-          "name": "MatchValue",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "both"
-    },
-    "ScdnBotConfig": {
-      "document": "Bot configuration",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Whether to enable SCDN bot configuration. Values:\n`on`: Enable\n`off`: Disable",
-          "example": "无",
-          "member": "string",
-          "name": "Switch",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Bot cookie policy\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "BotCookie",
-          "name": "BotCookie",
-          "required": false,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Bot JS policy\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "BotJavaScript",
-          "name": "BotJavaScript",
-          "required": false,
-          "type": "list",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "both"
-    },
-    "ScdnCCRules": {
-      "document": "SCDN custom CC rules",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Rule types:\n`all`: effective for all files.\n`file`: Apply to files with the specified suffixes.\n`directory`: Apply to specified paths.\n`path`: Apply to specified absolute paths.\n`index`: effective for web homepages and root directories.",
-          "example": "无",
-          "member": "string",
-          "name": "RuleType",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Rule value (blocking condition)",
-          "example": "无",
-          "member": "string",
-          "name": "RuleValue",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "IP access limit rule",
-          "example": "无",
-          "member": "uint64",
-          "name": "Qps",
-          "required": false,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Detection granularity\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "uint64",
-          "name": "DetectionTime",
-          "required": false,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Frequency threshold\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "uint64",
-          "name": "FrequencyLimit",
-          "required": false,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Whether to enable IP blocking. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "string",
-          "name": "PunishmentSwitch",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Suspicious IP restriction duration\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "uint64",
-          "name": "PunishmentTime",
-          "required": false,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Action. Valid values: `intercept` and `redirect`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "string",
-          "name": "Action",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "The redirection target URL used when the `Action` is `redirect`\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "string",
-          "name": "RedirectUrl",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "both"
-    },
-    "ScdnConfig": {
-      "document": "CC attack defense configuration",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Whether to enable SCDN CC configuration. Values:\n`on`: Enable\n`off`: Disable",
-          "example": "on",
-          "member": "string",
-          "name": "Switch",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Custom CC attack defense rule\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "null",
-          "member": "ScdnCCRules",
-          "name": "Rules",
-          "required": false,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Advanced custom CC attack defense rule\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "null",
-          "member": "AdvancedCCRules",
-          "name": "AdvancedRules",
-          "required": false,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Global advanced CC protection rules\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "AdvancedCCRules",
-          "name": "GlobalAdvancedRules",
-          "required": false,
-          "type": "list",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "both"
-    },
-    "ScdnDdosConfig": {
-      "document": "DDoS configuration",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Whether to enable SCDN DDoS configuration. Values:\n`on`: Enable\n`off`: Disable",
-          "example": "无",
-          "member": "string",
-          "name": "Switch",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "both"
-    },
-    "ScdnErrorPage": {
-      "document": "ACL error page",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Status code\n`403` is passed in when the action is `intercept`.\n`301` is passed in when the action is `redirect`.",
-          "example": "301",
-          "member": "int64",
-          "name": "RedirectCode",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "URL to be redirected",
-          "example": "http://test.com/",
-          "member": "string",
-          "name": "RedirectUrl",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "both"
-    },
-    "ScdnSevenLayerRules": {
-      "document": "SCDN layer-7 rule configuration for CC frequency limiting",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Whether values are case sensitive",
-          "example": "true",
-          "member": "bool",
-          "name": "CaseSensitive",
-          "required": true,
-          "type": "bool",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Rule types:\n`protocol`: protocol. Valid values: `HTTP` and `HTTPS`.\n`method`: request method. Valid values: `HEAD`, `GET`, `POST`, `PUT`, `OPTIONS`, `TRACE`, `DELETE`, `PATCH` and `CONNECT`.\n`all`: domain name. The matching content is `*` and cannot be edited.\n`ip`: IP in CIDR format.\n`directory`: path starting with a slash (/). You can specify a directory or specific path using up to 128 characters.\n`index`: default homepage, which is specified by `/;/index.html` and cannot be edited.\n`path`: full path of the file, such as `/acb/test.png`. Wildcard is supported, such as `/abc/*.jpg`.\n`file`: file extension, such as `jpg`, `png` and `css`.\n`param`: request parameter. The value can contain up to 512 characters.\n`referer`: Referer. The value can contain up to 512 characters.\n`cookie`: Cookie. The value can contain up to 512 characters.\n`user-agent`: User-Agent. The value can contain up to 512 characters.\n`head`: custom header. The value can contain up to 512 characters. If the matching content is blank or does not exist, enter the matching parameter directly.",
-          "example": "all",
-          "member": "string",
-          "name": "RuleType",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Logical operator, which connects the relation between RuleType and RuleValue. Valid values:\n`exclude`: the rule value is not contained. \n`include`: the rule value is contained. \n`notequal`: the rule value is not equal to the specified rule type. \n`equal`: the rule value is equal to the specified rule type. \n`matching`: the rule value matches with the prefix of the specified rule type.\n`null`: the rule value is empty or does not exist.",
-          "example": "exclude",
-          "member": "string",
-          "name": "LogicOperator",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Rule value\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "string",
-          "name": "RuleValue",
-          "required": false,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Matched parameter. Only request parameters, Cookie, and custom request headers have a value.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "Accept",
-          "member": "string",
-          "name": "RuleParam",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "both"
-    },
-    "ScdnWafConfig": {
-      "document": "WAF configuration",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Whether to enable SCDN WAF configuration. Values:\n`on`: Enable\n`off`: Disable",
-          "example": "on",
-          "member": "string",
-          "name": "Switch",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "WAF protection mode. Valid values: `intercept` and `observe`. Default value: `intercept`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "intercept",
-          "member": "string",
-          "name": "Mode",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Redirection error page\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "见子类型",
-          "member": "ScdnErrorPage",
-          "name": "ErrorPage",
-          "required": false,
-          "type": "object",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Whether to enable webshell blocking. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "on",
-          "member": "string",
-          "name": "WebShellSwitch",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Attack blocking rules\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "见子类型",
-          "member": "ScdnWafRule",
-          "name": "Rules",
-          "required": false,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "WAF rule level. Valid values: 100, 200, and 300.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "100",
-          "member": "int64",
-          "name": "Level",
-          "required": false,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Whether to enable WAF sub-rules. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "见子类型",
-          "member": "WafSubRuleStatus",
-          "name": "SubRuleSwitch",
-          "required": false,
-          "type": "list",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "both"
-    },
-    "ScdnWafRule": {
-      "document": "WAF rule information",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Attack type",
-          "example": "",
-          "member": "string",
-          "name": "AttackType",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Defense action. Valid value: `observe`.",
-          "example": "",
-          "member": "string",
-          "name": "Operate",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "both"
-    },
     "SchemeKey": {
       "document": "A part of `CacheKey`",
       "members": [
@@ -11175,10 +10101,10 @@
         {
           "disabled": false,
           "document": "Whether to enable SCDN. Values:\n`on`: Enable\n`off`: Disable",
-          "example": "无",
+          "example": "on",
           "member": "string",
           "name": "Switch",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -11431,22 +10357,20 @@
         {
           "disabled": false,
           "document": "Fields that can be sorted. Currently supports:\n`createTime`: domain name creation time.\n`certExpireTime`: certificate expiration time.\nDefault value: createTime.",
-          "example": "",
+          "example": "createTime",
           "member": "string",
           "name": "Key",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "asc/desc. Default value: desc.",
-          "example": "",
+          "example": "asc",
           "member": "string",
           "name": "Sequence",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         }
       ],
       "usage": "in"
@@ -11726,9 +10650,10 @@
         {
           "disabled": false,
           "document": "Tag key\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "产品",
           "member": "string",
           "name": "TagKey",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -11736,9 +10661,10 @@
         {
           "disabled": false,
           "document": "Tag value\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "cdn",
           "member": "string",
           "name": "TagValue",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -11778,20 +10704,20 @@
         {
           "disabled": false,
           "document": "Resource name, which is classified as follows based on different query conditions:\nA specific domain name: This indicates the details of this domain name\nmultiDomains: This indicates the aggregate details of multiple domain names\nProject ID: This displays the ID of the specifically queried project\nall: This indicates the details at the account level",
-          "example": "",
+          "example": "qq.com",
           "member": "string",
           "name": "Resource",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Detailed sorting results",
-          "example": "",
+          "example": "无",
           "member": "TopDetailData",
           "name": "DetailData",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -11804,20 +10730,20 @@
         {
           "disabled": false,
           "document": "Datatype name",
-          "example": "",
+          "example": "qq.com",
           "member": "string",
           "name": "Name",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Data value",
-          "example": "",
+          "example": "10",
           "member": "float",
           "name": "Value",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         }
@@ -11830,10 +10756,10 @@
         {
           "disabled": false,
           "document": "Topic ID",
-          "example": "xxxx",
+          "example": "def811bf-867e-405c-bbc2-521crr2a3aea",
           "member": "string",
           "name": "TopicId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -11843,7 +10769,7 @@
           "example": "cdn-topic1",
           "member": "string",
           "name": "TopicName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -11853,7 +10779,7 @@
           "example": "1",
           "member": "int64",
           "name": "Enabled",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -11863,7 +10789,7 @@
           "example": "YYYY-MM-DD HH:mm:ss",
           "member": "datetime",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -11873,7 +10799,7 @@
           "example": "cdn",
           "member": "string",
           "name": "Channel",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -11883,7 +10809,7 @@
           "example": "no",
           "member": "string",
           "name": "Deleted",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         }
@@ -12420,133 +11346,6 @@
       ],
       "type": "object"
     },
-    "UpdateScdnDomainRequest": {
-      "document": "UpdateScdnDomain request structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Domain name",
-          "example": "www.test.com",
-          "member": "string",
-          "name": "Domain",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "WAF configuration",
-          "example": "无",
-          "member": "ScdnWafConfig",
-          "name": "Waf",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "disabled": false,
-          "document": "Custom defense policy configuration",
-          "example": "无",
-          "member": "ScdnAclConfig",
-          "name": "Acl",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "disabled": false,
-          "document": "CC attack defense configurations. CC attack defense is enabled by default.",
-          "example": "无",
-          "member": "ScdnConfig",
-          "name": "CC",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "disabled": false,
-          "document": "DDoS defense configuration. DDoS defense is enabled by default.",
-          "example": "无",
-          "member": "ScdnDdosConfig",
-          "name": "Ddos",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "disabled": false,
-          "document": "Bot defense configuration",
-          "example": "无",
-          "member": "ScdnBotConfig",
-          "name": "Bot",
-          "required": false,
-          "type": "object"
-        }
-      ],
-      "type": "object"
-    },
-    "UpdateScdnDomainResponse": {
-      "document": "UpdateScdnDomain response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Result of the request. `Success` indicates that the configurations are updated.",
-          "example": "Success",
-          "member": "string",
-          "name": "Result",
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "UrlRecord": {
-      "document": "Details of the blocked URLs",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Status. `disable`: Blocked; `enable`: Unblocked.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
-          "member": "string",
-          "name": "Status",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Corresponding URL\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
-          "member": "string",
-          "name": "RealUrl",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Creation time\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
-          "member": "string",
-          "name": "CreateTime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Update time.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
-          "member": "string",
-          "name": "UpdateTime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
     "UrlRedirect": {
       "document": "Configuration of URL rewriting",
       "members": [
@@ -12746,7 +11545,7 @@
         {
           "disabled": false,
           "document": "ID",
-          "example": "无",
+          "example": "1000001",
           "member": "int64",
           "name": "Id",
           "output_required": true,
@@ -12756,7 +11555,7 @@
         {
           "disabled": false,
           "document": "Origin access URL of the resource in violation",
-          "example": "无",
+          "example": "http:\\/\\/www.test.com\\/a.jpeg",
           "member": "string",
           "name": "RealUrl",
           "output_required": true,
@@ -12766,7 +11565,7 @@
         {
           "disabled": false,
           "document": "Snapshot path. This is used to display a snapshot of the content in violation on the console.",
-          "example": "无",
+          "example": "2019-11-18\\/2019-11-18-18-26-08-1794844604-29-21-a.jpeg",
           "member": "string",
           "name": "DownloadUrl",
           "output_required": true,
@@ -12776,7 +11575,7 @@
         {
           "disabled": false,
           "document": "Current status of non-compliant resource\n`forbid`: Blocked\n`release`: Unblocked\n`delay`: Processing delayed\n`reject`: Appeal dismissed. It is still in `forbid` status.\n`complain`: Appeal in process",
-          "example": "无",
+          "example": "forbid",
           "member": "string",
           "name": "UrlStatus",
           "output_required": true,
@@ -12786,7 +11585,7 @@
         {
           "disabled": false,
           "document": "Creation time",
-          "example": "无",
+          "example": "2019-11-17 18:25:47",
           "member": "datetime",
           "name": "CreateTime",
           "output_required": true,
@@ -12796,7 +11595,7 @@
         {
           "disabled": false,
           "document": "Update time",
-          "example": "无",
+          "example": "2019-11-18 18:06:47",
           "member": "datetime",
           "name": "UpdateTime",
           "output_required": true,
@@ -12805,32 +11604,6 @@
         }
       ],
       "usage": "out"
-    },
-    "WafSubRuleStatus": {
-      "document": "WAF sub-rule switch status",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Whether to enable WAF sub-rules. Values:\n`on`: Enable\n`off`: Disable",
-          "example": "on",
-          "member": "string",
-          "name": "Switch",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "List of rule IDs",
-          "example": "[1,2]",
-          "member": "int64",
-          "name": "SubIds",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        }
-      ],
-      "usage": "both"
     },
     "WebSocket": {
       "document": "WebSocket configuration.\nWebSocket is an ECDN feature. You can enable it in the ECDN domain name configuration.",

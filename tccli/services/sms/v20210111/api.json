@@ -155,7 +155,7 @@
         {
           "disabled": false,
           "document": "Signature name.\nNote: you cannot apply for an approved or pending signature again.",
-          "example": "test",
+          "example": "腾讯云",
           "member": "string",
           "name": "SignName",
           "required": true,
@@ -191,7 +191,7 @@
         {
           "disabled": false,
           "document": "Signature purpose:\n0: for personal use.\n1: for others.",
-          "example": "1",
+          "example": "0",
           "member": "uint64",
           "name": "SignPurpose",
           "required": true,
@@ -200,7 +200,7 @@
         {
           "disabled": false,
           "document": "You should Base64-encode the image of the identity certificate corresponding to the signature first, remove the prefix `data:image/jpeg;base64,` from the resulted string, and then use it as the value of this parameter.",
-          "example": "xxx",
+          "example": "base64",
           "member": "string",
           "name": "ProofImage",
           "required": true,
@@ -209,7 +209,7 @@
         {
           "disabled": false,
           "document": "Power of attorney, which should be submitted if `SignPurpose` is for use by others.\nYou should Base64-encode the image first, remove the prefix `data:image/jpeg;base64,` from the resulted string, and then use it as the value of this parameter.\nNote: this field will take effect only when `SignPurpose` is 1 (for user by others).",
-          "example": "xxx",
+          "example": "base64",
           "member": "string",
           "name": "CommissionImage",
           "required": false,
@@ -218,7 +218,7 @@
         {
           "disabled": false,
           "document": "Signature application remarks.",
-          "example": "xxx",
+          "example": "业务自用申请",
           "member": "string",
           "name": "Remark",
           "required": false,
@@ -233,10 +233,10 @@
         {
           "disabled": false,
           "document": "Signature addition response",
-          "example": "\"AddSignStatus\": {       \"SignId\": 1110,       \"SignApplyId\"",
+          "example": "无",
           "member": "AddSignStatus",
           "name": "AddSignStatus",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -513,9 +513,10 @@
         {
           "disabled": false,
           "document": "Deletion status information.",
-          "example": "",
+          "example": "return successfully!",
           "member": "string",
           "name": "DeleteStatus",
+          "output_required": false,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -523,9 +524,10 @@
         {
           "disabled": false,
           "document": "Deleted time in seconds in the format of UNIX timestamp.",
-          "example": "",
+          "example": "1578988506",
           "member": "uint64",
           "name": "DeleteTime",
+          "output_required": false,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -539,7 +541,7 @@
         {
           "disabled": false,
           "document": "ID of the signature to be deleted.",
-          "example": "12345",
+          "example": "1110",
           "member": "uint64",
           "name": "SignId",
           "required": true,
@@ -554,10 +556,10 @@
         {
           "disabled": false,
           "document": "Signature deletion response",
-          "example": " \"DeleteTemplateStatus\": {       \"DeleteTime\": 1578988506,   ",
+          "example": "{\"DeleteTime\":1578988506,\"DeleteStatus\":\"return successfully!\"}",
           "member": "DeleteSignStatus",
           "name": "DeleteSignStatus",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -576,7 +578,7 @@
         {
           "disabled": false,
           "document": "ID of the template to be deleted.",
-          "example": "1234",
+          "example": "1110",
           "member": "uint64",
           "name": "TemplateId",
           "required": true,
@@ -591,10 +593,10 @@
         {
           "disabled": false,
           "document": "Template deletion response",
-          "example": "  \"DeleteTemplateStatus\": {       \"DeleteTime\": 1578988506,     ",
+          "example": "{\"DeleteTime\":1578988506,\"DeleteStatus\":\"return successfully!\"}",
           "member": "DeleteTemplateStatus",
           "name": "DeleteTemplateStatus",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -613,20 +615,20 @@
         {
           "disabled": false,
           "document": "Deletion status information.",
-          "example": "",
+          "example": "return successfully!",
           "member": "string",
           "name": "DeleteStatus",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Deleted time in seconds in the format of UNIX timestamp.",
-          "example": "",
+          "example": "1578988506",
           "member": "uint64",
           "name": "DeleteTime",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -815,7 +817,7 @@
         {
           "disabled": false,
           "document": "Array of template IDs. If the array is empty, the template list information will be queried by default. You need to use the `Limit` and `Offset` fields to set the query range.\n<dx-alert infotype=\"notice\" title=\"Note\">The max array length is 100 by default.</dx-alert>",
-          "example": "1110",
+          "example": "[1110]",
           "member": "uint64",
           "name": "TemplateIdSet",
           "required": false,
@@ -848,10 +850,10 @@
         {
           "disabled": false,
           "document": "Response for getting SMS template information",
-          "example": "\"DescribeTemplateStatusSet\": [       {         \"TemplateId\":",
+          "example": "[{\"TemplateName\":\"验证码\",\"TemplateId\":1110,\"International\":0,\"ReviewReply\":\"\",\"CreateTime\":1617379200,\"TemplateContent\":\"您的验证码是{1}\",\"StatusCode\":0}]",
           "member": "DescribeTemplateListStatus",
           "name": "DescribeTemplateStatusSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -873,7 +875,7 @@
           "example": "1110",
           "member": "uint64",
           "name": "TemplateId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -883,7 +885,7 @@
           "example": "0",
           "member": "uint64",
           "name": "International",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -893,27 +895,27 @@
           "example": "0",
           "member": "int64",
           "name": "StatusCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Review reply, i.e., response given by the reviewer, which is usually the reason for rejection.",
-          "example": "xxx",
+          "example": "通过",
           "member": "string",
           "name": "ReviewReply",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Template name.",
-          "example": "xxx",
+          "example": "业务验证码",
           "member": "string",
           "name": "TemplateName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -923,7 +925,7 @@
           "example": "1620640474",
           "member": "uint64",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -933,7 +935,7 @@
           "example": "验证码是{1}",
           "member": "string",
           "name": "TemplateContent",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
