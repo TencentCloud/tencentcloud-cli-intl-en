@@ -24660,7 +24660,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Sort order: [ASC: ascending | DESC: descending]</p>",
+          "document": "<p>Sort order: [ASC: ascending, DESC: descending]</p>",
           "example": "DESC",
           "member": "string",
           "name": "Order",

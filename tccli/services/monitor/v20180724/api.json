@@ -742,6 +742,13 @@
       "output": "EnableSSOCamCheckResponse",
       "status": "online"
     },
+    "ExportPrometheusReadOnlyDynamicAPI": {
+      "document": "Prometheus internal read-only dynamic api proxy supports accessing native Prometheus APIs via cloud api format\nsupport the following APIs:\n\n| path | method | purpose |\n| - | - | - |\n/api/v1/query | GET, POST | point query\n/api/v1/query_range | GET, POST | Range query\n/api/v1/series | GET, POST | Query the series list\n/api/v1/labels | GET, POST | Query labels\n/api/v1/label/{label_name}/values | GET | Query label values.\n/api/v1/rules | GET | Query pre-aggregation and alert rules.\n/api/v1/user_limits | GET | Query prometheus instance limits\n /alertmanager/api/v2/alerts/groups | GET | Query current alarm information \n/alertmanager/api/v2/silences | GET | Query alert silences\n/alertmanager/api/v2/silence/{id} | GET | Query alert silence details",
+      "input": "ExportPrometheusReadOnlyDynamicAPIRequest",
+      "name": "Prometheus internal read-only api proxy",
+      "output": "ExportPrometheusReadOnlyDynamicAPIResponse",
+      "status": "online"
+    },
     "GetMonitorData": {
       "document": "This API is used to get the monitoring data of Tencent Cloud services except TKE. To pull TKE’s monitoring data, use the [DescribeStatisticData](https://www.tencentcloud.com/document/product/248/39481) API.\nYou can get the monitoring data of a Tencent Cloud service by passing in its namespace, object dimension description, and monitoring metrics.\nAPI call rate limit: 20 calls/second (1,200 calls/minute). A single request can get the data of up to 10 instances for up to 1,440 data points.\nIf you need to call a large number of APIs to pull metrics or objects at a time, some APIs may fail to be called due to the rate limit. We suggest you evenly arrange API calls at a time granularity.\n",
       "input": "GetMonitorDataRequest",
@@ -880,6 +887,13 @@
       "input": "ResumeGrafanaInstanceRequest",
       "name": "Restores a Grafana instance",
       "output": "ResumeGrafanaInstanceResponse",
+      "status": "online"
+    },
+    "RoutePrometheusDynamicAPI": {
+      "document": "Prometheus internal dynamics api proxy supports accessing Prometheus native APIs via cloud APIs.\nsupport the following APIs:\n \nIt is recommended to use the ExportPrometheusReadOnlyDynamicAPI call for Read API, supporting longer query latency and response size. Meanwhile, it makes permission management easy.\n\n| path | method | purpose |\n| - | - | - |\n/api/v1/query | GET, POST | point query\n/api/v1/query_range | GET, POST | Range query\n/api/v1/series | GET, POST | Query the series list\n/api/v1/labels | GET, POST | Query labels\n/api/v1/label/{label_name}/values | GET | Query label values.\n/api/v1/rules | GET | Query pre-aggregation and alert rules.\n/api/v1/user_limits | GET | Query prometheus instance limits\n /alertmanager/api/v2/alerts/groups | GET | Query current alarm information \n/alertmanager/api/v2/silences | GET, POST | Query, create, or modify alert silences\n/alertmanager/api/v2/silence/{id} | GET, DELETE | Query alert silence details, Delete alert silence",
+      "input": "RoutePrometheusDynamicAPIRequest",
+      "name": "Prometheus Internal Dynamics api Proxy",
+      "output": "RoutePrometheusDynamicAPIResponse",
       "status": "online"
     },
     "RunPrometheusInstance": {
@@ -12863,6 +12877,88 @@
       ],
       "usage": "out"
     },
+    "ExportPrometheusReadOnlyDynamicAPIRequest": {
+      "document": "ExportPrometheusReadOnlyDynamicAPI request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Prometheus Instance ID</p>",
+          "example": "prom-xxxxxxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>HTTP method name GET/POST/PUT/DELETE</p>",
+          "example": "GET",
+          "member": "string",
+          "name": "Method",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>HTTP path (including query string)</p>",
+          "example": "/api/v1/query?query=up",
+          "member": "string",
+          "name": "Path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>HTTP request body, any data</p>",
+          "example": "{\"key\": \"value\"}",
+          "member": "string",
+          "name": "RequestBody",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>HTTP headers</p>",
+          "example": "无",
+          "member": "PrometheusStringKeyValuePair",
+          "name": "Headers",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to request self-monitoring data. Self-monitoring is only supported for the /api/v1/query and /api/v1/query_range APIs.</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "SelfMonitor",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ExportPrometheusReadOnlyDynamicAPIResponse": {
+      "document": "ExportPrometheusReadOnlyDynamicAPI response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>HTTP response data</p>",
+          "example": "无",
+          "member": "PrometheusDynamicAPIResponseHTTP",
+          "name": "HTTP",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "Filter": {
       "document": "Query filter",
       "members": [
@@ -16962,6 +17058,32 @@
       ],
       "usage": "both"
     },
+    "PrometheusDynamicAPIResponseHTTP": {
+      "document": "TMP internal dynamics API agent response",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>HTTP status code</p>",
+          "example": "200",
+          "member": "int64",
+          "name": "StatusCode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>HTTP response body</p>",
+          "example": "\"{}\"",
+          "member": "string",
+          "name": "ResponseBody",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "PrometheusInstanceGrantInfo": {
       "document": "Instance authorization information",
       "members": [
@@ -17985,6 +18107,34 @@
       ],
       "usage": "out"
     },
+    "PrometheusStringKeyValuePair": {
+      "document": "TMP universal character string type KV",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Key</p>",
+          "example": "label-key",
+          "member": "string",
+          "name": "Key",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Value</p>",
+          "example": "label-value",
+          "member": "string",
+          "name": "Value",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "PrometheusTag": {
       "document": "TMP tag",
       "members": [
@@ -18620,6 +18770,79 @@
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RoutePrometheusDynamicAPIRequest": {
+      "document": "RoutePrometheusDynamicAPI request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Prometheus Instance ID</p>",
+          "example": "prom-xxxxxxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>HTTP method name GET/POST/PUT/DELETE</p>",
+          "example": "GET",
+          "member": "string",
+          "name": "Method",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>HTTP path (including query string)</p>",
+          "example": "/api/v1/query?query=up",
+          "member": "string",
+          "name": "Path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>HTTP request body, any data</p>",
+          "example": "{\"key\": \"value\"}",
+          "member": "string",
+          "name": "RequestBody",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>HTTP headers</p>",
+          "example": "无",
+          "member": "PrometheusStringKeyValuePair",
+          "name": "Headers",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "RoutePrometheusDynamicAPIResponse": {
+      "document": "RoutePrometheusDynamicAPI response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>HTTP response data</p>",
+          "example": "无",
+          "member": "PrometheusDynamicAPIResponseHTTP",
+          "name": "HTTP",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
