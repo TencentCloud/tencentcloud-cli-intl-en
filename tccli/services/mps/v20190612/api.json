@@ -1923,7 +1923,7 @@
         {
           "disabled": false,
           "document": "Subtitle name.\nNote: supports Chinese characters, letters, digits, spaces, underscores (_), hyphens (-), periods (.), and parentheses. Max 64 characters.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "字幕1",
+          "example": "外挂字幕",
           "member": "string",
           "name": "SubtitleName",
           "output_required": false,
@@ -32851,7 +32851,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Extended parameters in the format of a JSON string.</p><p><strong>synExt</strong>    Object    Extended text to speech parameter.<br>  <strong>duration</strong>    Float    Synthesized audio duration, in seconds. Example: 5.2.<br>  <strong>sampleRate</strong>    Integer    Synthesized audio sample rate. Default value: 16000. Valid values: [8000, 16000, 22050, 24000, 32000, 44100].<br>  <strong>pitch</strong>    Integer    Pitch. Default value: 0 (original voice output). Valid values: [-12, 12].<br><strong>cloneExt</strong>    Object    Extended voice cloning parameter.<br>  <strong>timeRanges</strong>    Float[][]    Specifies the time ranges for audio cloning. The default value is the first 20 seconds of the audio. Example: [[5.2, 10], [45, 59.8]].</p>",
+          "document": "<p>Extended parameters in the format of a JSON string.</p>\n<p>\n\n- <strong>synExt</strong>    Object;    Extended text to speech parameter.<br>\n- <strong>duration</strong>    Float;    Synthesized audio duration, in seconds. Example: 5.2.<br>\n- <strong>sampleRate</strong>    Integer;    Synthesized audio sample rate. Default value: 16000. Valid values: [8000, 16000, 22050, 24000, 32000, 44100].<br>\n- <strong>pitch</strong>    Integer;    Pitch. Default value: 0 (original voice output). Valid values: [-12, 12].<br>\n- <strong>cloneExt</strong>    Object;    Extended voice cloning parameter.<br>\n- <strong>timeRanges</strong>    Float;    Specifies the time ranges for audio cloning. The default value is the first 20 seconds of the audio. Example: [[5.2, 10], [45, 59.8]].\n\n</p>\n\n\n",
           "example": "{\n    \"synExt\": {\n        \"duration\": 10\n    }\n}",
           "member": "string",
           "name": "ExtParam",
