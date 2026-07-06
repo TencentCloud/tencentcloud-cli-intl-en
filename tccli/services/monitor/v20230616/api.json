@@ -1,0 +1,477 @@
+{
+  "actions": {
+    "DescribeAlarmNotifyHistories": {
+      "document": "Query alarm notification history as needed",
+      "input": "DescribeAlarmNotifyHistoriesRequest",
+      "name": "This API is used to query alarm notification history.",
+      "output": "DescribeAlarmNotifyHistoriesResponse",
+      "status": "online"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2023-06-16",
+    "serviceNameCN": "腾讯云可观测平台",
+    "serviceShortName": "monitor"
+  },
+  "objects": {
+    "AlarmLable": {
+      "document": "Alarming Label",
+      "members": [
+        {
+          "disabled": false,
+          "document": "label name",
+          "example": "key1",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "label value",
+          "example": "value1",
+          "member": "string",
+          "name": "Value",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AlarmNotifyHistory": {
+      "document": "Notification history for each alert",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique notification ID.",
+          "example": "d9729feb74992cc3482b350163a1a010_cdc",
+          "member": "string",
+          "name": "NotifyId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alert policy ID",
+          "example": "policy-123",
+          "member": "string",
+          "name": "PolicyId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alarm cycle iD",
+          "example": "r_ad-123",
+          "member": "string",
+          "name": "SessionId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Notification time in Unix timestamp (in seconds).",
+          "example": "1732802380",
+          "member": "int64",
+          "name": "NotifyTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Trigger time in Unix timestamp (in seconds).",
+          "example": "1732802380",
+          "member": "int64",
+          "name": "TriggerTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alarm severity level. Valid values: None, Note, Warn, and Serious.",
+          "example": "None",
+          "member": "string",
+          "name": "TriggerLevel",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "alert content",
+          "example": "content",
+          "member": "string",
+          "name": "AlarmContent",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alarm object",
+          "example": "object",
+          "member": "string",
+          "name": "AlarmObject",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alarm notification channel collection involved this time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"QCloudYehe_sms\"]",
+          "member": "string",
+          "name": "ChannelSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Recipient information of the channel",
+          "example": "无",
+          "member": "ChannelsReceivers",
+          "name": "ChannelsReceivers",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alarm policy name",
+          "example": "默认告警策略",
+          "member": "string",
+          "name": "PolicyName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Prometheus Instance ID, valid only when MT_PROME",
+          "example": "prom-123",
+          "member": "string",
+          "name": "PromeInstanceID",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region of the Prometheus Instance. Valid at that time only for MT_PROME.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "PromeInstanceRegion",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Notification template related configuration information",
+          "example": "无",
+          "member": "NotifyRelatedNotice",
+          "name": "Notices",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alarm trigger status. Valid values: Trigger and Recovery.",
+          "example": "Trigger",
+          "member": "string",
+          "name": "TriggerStatus",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Console page address related to the present Prometheus notification history, valid only when MR_PROME",
+          "example": "https://console.cloud.tencent.com/monitor/prometheus/detail/prom-h72esnds/alertRule?rid=19&policyId=alert-xx",
+          "member": "string",
+          "name": "PromeConsoleURL",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alarm label",
+          "example": "无",
+          "member": "AlarmLable",
+          "name": "Labels",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ChannelsReceivers": {
+      "document": "Receiver details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Notification channel name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "叮叮",
+          "member": "string",
+          "name": "ChannelName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Recipient.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[124,234]",
+          "member": "string",
+          "name": "Receivers",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Sending result. Valid values: 0, (invalid), 1 (successful), 2 (failed), and 3 (no sending required).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "string",
+          "name": "SendStatus",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "DescribeAlarmNotifyHistoriesRequest": {
+      "document": "DescribeAlarmNotifyHistories request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Monitoring type",
+          "example": "MT_PROME",
+          "member": "string",
+          "name": "MonitorType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time, used as a Unix timestamp in seconds.",
+          "example": "1732801290",
+          "member": "int64",
+          "name": "QueryBaseTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Period to query before QueryBaseTime, in seconds.",
+          "example": "1800",
+          "member": "int64",
+          "name": "QueryBeforeSeconds",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination parameter.",
+          "example": "无",
+          "member": "PageByNoParams",
+          "name": "PageParams",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Fill in when the monitoring type is MT_QCE. Namespace of the affiliation.",
+          "example": "qce/cvm",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Fill in when the monitoring type is MT_QCE. Alarm policy type",
+          "example": "cvm_device",
+          "member": "string",
+          "name": "ModelName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Query the notification history of a policy",
+          "example": "policy-123",
+          "member": "string",
+          "name": "PolicyId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAlarmNotifyHistoriesResponse": {
+      "document": "DescribeAlarmNotifyHistories response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Alarm history",
+          "example": "无",
+          "member": "AlarmNotifyHistory",
+          "name": "AlarmNotifyHistoryList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Pagination condition",
+          "example": "无",
+          "member": "PageByNoResult",
+          "name": "PageResult",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "NotifyRelatedNotice": {
+      "document": "Notification template information associated with notification history",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Notification template ID",
+          "example": "notice-123",
+          "member": "string",
+          "name": "NoticeId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Name of the notification template",
+          "example": "默认通知模板",
+          "member": "string",
+          "name": "NoticeName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "PageByNoParams": {
+      "document": "Pagination request parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of items per page.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "19",
+          "member": "int64",
+          "name": "PerPage",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Page number, starting from 1.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "PageNo",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "PageByNoResult": {
+      "document": "Pagination result parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total data.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "12",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Total number of pages.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "12",
+          "member": "int64",
+          "name": "TotalPage",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Current page number.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "CurrentPageNo",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": true,
+          "document": "[Deprecated] Whether it has reached the end.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsEnd",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether it has traversed to the end.",
+          "example": "0",
+          "member": "bool",
+          "name": "End",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    }
+  }
+}

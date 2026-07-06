@@ -1338,7 +1338,7 @@
       "status": "online"
     },
     "DescribeLoginTypeGlobalConf": {
-      "document": "Retrieve the global configuration for uninstall protection",
+      "document": "This API is used to obtain the global configuration for QR code login.",
       "input": "DescribeLoginTypeGlobalConfRequest",
       "name": "Retrieve the global configuration for QR code log-in",
       "output": "DescribeLoginTypeGlobalConfResponse",
@@ -24541,7 +24541,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>Whether uninstall protection is enabled <li>0: No</li> <li>1: Yes</li> <li>9: Not set, equivalent to 0 (disabled)</li></p>",
+          "document": "<p>Whether to enable QR code log-in <li>0 No</li> <li>1 Yes</li> <li>9 Not set, same as 0 means not enabled</li></p>",
           "example": "1",
           "member": "uint64",
           "name": "Enable",
