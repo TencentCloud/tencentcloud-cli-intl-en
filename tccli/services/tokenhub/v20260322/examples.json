@@ -1,5 +1,13 @@
 {
   "actions": {
+    "CreateApiKey": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tokenhub.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateApiKey\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c7fdc4d0-04d5-4c76-a55e-b8528047a782\"\n    }\n}",
+        "title": "CreateApiKey"
+      }
+    ],
     "CreateGlossary": [
       {
         "document": "",
@@ -14,6 +22,14 @@
         "input": "POST / HTTP/1.1\nHost: tokenhub.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateGlossaryEntries\n<Common request parameters>\n\n{\n    \"GlossaryId\": \"c5a3fa588af94ddaa50ca896ae6392e5\",\n    \"Entries\": [\n        {\n\"SourceTerm\": \"Cloud server\",\n            \"TargetTerm\": \"Cloud Server\"\n        },\n        {\n\"SourceTerm\": \"Cloud server 222\"\n            \"TargetTerm\": \"Cloud Server222\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"Entries\": [\n            {\n                \"EntryId\": \"bfbc15bbefa2dfcec068372c774ef45c\",\n\"SourceTerm\": \"Cloud server\",\n                \"TargetTerm\": \"Cloud Server\",\n                \"UpdatedAt\": 1779970384\n            },\n            {\n                \"EntryId\": \"b395853160e117177041f0dff7a56274\",\n\"SourceTerm\": \"Cloud server 222\"\n                \"TargetTerm\": \"Cloud Server222\",\n                \"UpdatedAt\": 1779970384\n            }\n        ],\n        \"RequestId\": \"04cfa4f3-68d1-4a85-9ae3-3e2bd6d46fbb\"\n    }\n}",
         "title": "CreateGlossaryEntries"
+      }
+    ],
+    "DeleteApiKey": [
+      {
+        "document": "Delete an API key",
+        "input": "POST / HTTP/1.1\nHost: tokenhub.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteApiKey\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"d35eb080-e39b-4c61-8f04-86f3c66ba533\"\n    }\n}",
+        "title": "Deleting an API Key"
       }
     ],
     "DeleteGlossary": [
@@ -46,6 +62,22 @@
         "input": "POST / HTTP/1.1\nHost: tokenhub.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeGlossaryEntries\n<Common request parameters>\n\n{\n    \"GlossaryId\": \"c5a3fa588af94ddaa50ca896ae6392e5\"\n}",
         "output": "{\n    \"Response\": {\n        \"Entries\": [\n            {\n                \"EntryId\": \"b395853160e117177041f0dff7a56274\",\n\"SourceTerm\": \"Cloud server 222\"\n                \"TargetTerm\": \"Cloud Server222\",\n                \"UpdatedAt\": 1779970384\n            },\n            {\n                \"EntryId\": \"bfbc15bbefa2dfcec068372c774ef45c\",\n\"SourceTerm\": \"Cloud server\",\n                \"TargetTerm\": \"Cloud Server\",\n                \"UpdatedAt\": 1779970384\n            }\n        ],\n        \"Page\": 1,\n        \"PageSize\": 20,\n        \"RequestId\": \"b32c2fcf-bbcc-40a0-8b6c-6af9a4e8a967\",\n        \"Total\": 2\n    }\n}",
         "title": "DescribeGlossaryEntries"
+      }
+    ],
+    "ModifyApiKeyInfo": [
+      {
+        "document": "Update the API key remark information to \"test-new-remark\".",
+        "input": "POST / HTTP/1.1\nHost: tokenhub.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyApiKeyInfo\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abcdaaab-2aa3-4e03-87fb-795cf37b2079\"\n    }\n}",
+        "title": "ModifyApiKeyInfo Update API Key Remark Information"
+      }
+    ],
+    "ModifyApiKeyStatus": [
+      {
+        "document": "Update the API key status to disabled",
+        "input": "POST / HTTP/1.1\nHost: tokenhub.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyApiKeyStatus\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"0f2e294c-6c10-4ff6-8165-c25b3c5d21e0\"\n    }\n}",
+        "title": "Updating API Key Status to Disabled"
       }
     ],
     "ModifyGlossaryEntries": [

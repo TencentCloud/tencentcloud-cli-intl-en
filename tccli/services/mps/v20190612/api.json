@@ -10559,6 +10559,15 @@
         },
         {
           "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "int64",
+          "name": "OutputImageCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
           "document": "<p>Additional parameters required for the model.</p>",
           "example": "无",
           "member": "AigcImageExtraParam",
