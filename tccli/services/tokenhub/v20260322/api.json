@@ -42,6 +42,20 @@
       "output": "DeleteGlossaryEntriesResponse",
       "status": "online"
     },
+    "DescribeApiKey": {
+      "document": "This API is used to query API Key details based on API Key ID or key value, and return the plaintext key. At least one of ApiKeyId and ApiKey must be input, with priority given to ApiKeyId.",
+      "input": "DescribeApiKeyRequest",
+      "name": "Query the details of the specified CMK",
+      "output": "DescribeApiKeyResponse",
+      "status": "online"
+    },
+    "DescribeApiKeyList": {
+      "document": "Query API key list.\n\nQuery the API key list of the current user with key values in masking display. Support pagination, filtering, and sorting.",
+      "input": "DescribeApiKeyListRequest",
+      "name": "Query the API key list",
+      "output": "DescribeApiKeyListResponse",
+      "status": "online"
+    },
     "DescribeGlossaries": {
       "document": "Query the terminology repository list.\n\nQuery the Termbase list under this application. Support paginate, filter, and sort.",
       "input": "DescribeGlossariesRequest",
@@ -84,6 +98,231 @@
     "serviceShortName": "tokenhub"
   },
   "objects": {
+    "ApiKeyDetail": {
+      "document": "Details of the specified API key",
+      "members": [
+        {
+          "disabled": false,
+          "document": "API Key ID.",
+          "example": "ak-20260320-a1b2c3d4",
+          "member": "string",
+          "name": "ApiKeyId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Name",
+          "example": "my-api-key",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "API key value. The API response contains the masking value.",
+          "example": "sk-abc***defg",
+          "member": "string",
+          "name": "ApiKey",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remarks.",
+          "example": "test api key",
+          "member": "string",
+          "name": "Remark",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Platform type. Currently supported values: maas.",
+          "example": "maas",
+          "member": "string",
+          "name": "Platform",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Root account.",
+          "example": "100000000001",
+          "member": "string",
+          "name": "Uin",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Sub-account.",
+          "example": "100000000002",
+          "member": "string",
+          "name": "SubUin",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Status. Valid values: enable, disable.",
+          "example": "enable",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Binding type. Value: all (all models and services), model_all_endpoint_custom (all models + custom service), model_custom_endpoint_all (custom model + all services), model_custom_endpoint_custom (custom model + custom service).",
+          "example": "all",
+          "member": "string",
+          "name": "BindType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time. Format: YYYY-MM-DD HH:mm:ss.",
+          "example": "2026-03-01 00:00:00",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last update time. Format: YYYY-MM-DD HH:mm:ss.",
+          "example": "2026-03-01 00:00:00",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "App ID.",
+          "example": "1300000001",
+          "member": "string",
+          "name": "AppId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is editable. true means editable, false means non-editable.",
+          "example": "true",
+          "member": "bool",
+          "name": "Editable",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of bound resources, case-sensitive for endpoint and model kind.",
+          "example": "无",
+          "member": "BindingItem",
+          "name": "BindingItems",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "IP allowlist. Supports IPv4 and CIDR format. Empty array indicates no restriction.",
+          "example": "[\"1.1.1.1\"]",
+          "member": "string",
+          "name": "IpWhitelist",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "This field is empty when Platform is maas.",
+          "example": "张三",
+          "member": "string",
+          "name": "Creator",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Multi-dimensional list of Token quota information. This field is not returned when unconfigured.",
+          "example": "无",
+          "member": "QuotaInfo",
+          "name": "QuotaSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Token quota status. An empty string means no configuration. active means configured with current availability. inactive means configured but quota exhausted.",
+          "example": "active",
+          "member": "string",
+          "name": "QuotaStatus",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BindingItem": {
+      "document": "Bind Resource",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Resource ID (model ID or service ID).",
+          "example": "ep-xxx",
+          "member": "string",
+          "name": "ResourceId",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Resource type. Value: endpoint (service), model (model).",
+          "example": "endpoint",
+          "member": "string",
+          "name": "ResourceType",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Resource status",
+          "example": "pre-offline",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "CreateApiKeyRequest": {
       "document": "CreateApiKey request structure.",
       "members": [],
@@ -317,6 +556,314 @@
     "DeleteGlossaryResponse": {
       "document": "DeleteGlossary response structure.",
       "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApiKeyListRequest": {
+      "document": "DescribeApiKeyList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Platform type. Currently supported values: maas.",
+          "example": "maas",
+          "member": "string",
+          "name": "Platform",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Number of returned results, defaults to 20, maximum value 100.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Offset. Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter condition list. Supported filter fields: apikeyId (API Key ID), apiKeyName (name), platform (platform type), status (status), bindType (binding type).",
+          "example": "无",
+          "member": "RequestFilter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting condition list. Supported sorting field: apiKeyName",
+          "example": "无",
+          "member": "RequestSort",
+          "name": "Sorts",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApiKeyListResponse": {
+      "document": "DescribeApiKeyList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "API Key List.",
+          "example": "无",
+          "member": "ApiKeyDetail",
+          "name": "ApiKeySet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of eligible API keys.",
+          "example": "50",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApiKeyRequest": {
+      "document": "DescribeApiKey request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Platform type. Currently supported values: maas.",
+          "example": "maas",
+          "member": "string",
+          "name": "Platform",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "API Key ID. At least one of this or ApiKey is required. Prioritize ApiKeyId.",
+          "example": "ak-20260320-a1b2c3d4",
+          "member": "string",
+          "name": "ApiKeyId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "API key plaintext. At least one of it and ApiKeyId must be imported.",
+          "example": "sk-xxx",
+          "member": "string",
+          "name": "ApiKey",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApiKeyResponse": {
+      "document": "DescribeApiKey response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "API Key ID.",
+          "example": "ak-20260320-a1b2c3d4",
+          "member": "string",
+          "name": "ApiKeyId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Name",
+          "example": "my-api-key",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "API Key value (plaintext).",
+          "example": "sk-abcdefghijklmnopqrstuvwxyz123456",
+          "member": "string",
+          "name": "ApiKey",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remarks.",
+          "example": "test api key",
+          "member": "string",
+          "name": "Remark",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Platform type. Enumerate: maas.",
+          "example": "maas",
+          "member": "string",
+          "name": "Platform",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Root account.",
+          "example": "100000000001",
+          "member": "string",
+          "name": "Uin",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Sub-account.",
+          "example": "100000000002",
+          "member": "string",
+          "name": "SubUin",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Status. Valid values: enable, disable.",
+          "example": "enable",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Binding type. Value: all (all models and access points), model_all_endpoint_custom (all models + custom access point), model_custom_endpoint_all (custom model + all access points), model_custom_endpoint_custom (custom model + custom access point).",
+          "example": "all",
+          "member": "string",
+          "name": "BindType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time. Format: YYYY-MM-DD HH:mm:ss.",
+          "example": "2026-03-01 00:00:00",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last update time. Format: YYYY-MM-DD HH:mm:ss.",
+          "example": "2026-03-01 00:00:00",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "App ID.",
+          "example": "1300000001",
+          "member": "string",
+          "name": "AppId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is editable. true means editable, false means non-editable.",
+          "example": "true",
+          "member": "bool",
+          "name": "Editable",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of bound resources, case-sensitive for endpoint and model kind.",
+          "example": "无",
+          "member": "BindingItem",
+          "name": "BindingItems",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "IP allowlist. Supports IPv4 and CIDR format. Empty array indicates no restriction.",
+          "example": "[\"1.1.1.1\"]",
+          "member": "string",
+          "name": "IpWhitelist",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "This field is empty when Platform is maas.",
+          "example": "张三",
+          "member": "string",
+          "name": "Creator",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Multi-dimensional information of Token quota. This field is not returned when unconfigured.",
+          "example": "无",
+          "member": "QuotaInfo",
+          "name": "QuotaSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Token quota status. An empty string means no configuration. active means configured with current availability. inactive means configured but quota exhausted.",
+          "example": "active",
+          "member": "string",
+          "name": "QuotaStatus",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -763,6 +1310,82 @@
         }
       ],
       "usage": "in"
+    },
+    "QuotaInfo": {
+      "document": "Token quota information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Quota package ID.",
+          "example": "limit-6xaznx2ke5",
+          "member": "string",
+          "name": "PkgId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Package status. Value: 1 (normal), 3 (exhausted), 4 (terminated).",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Quota period. Value: d (by day), m (monthly), lifetime (total quota, no reset).",
+          "example": "d",
+          "member": "string",
+          "name": "CycleUnit",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Dimensional quota total amount (number of tokens). Use string to avoid precision loss.",
+          "example": "1000",
+          "member": "string",
+          "name": "CycleCredits",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Dimensional used amount (number of tokens). Use string literal to avoid precision loss.",
+          "example": "0",
+          "member": "string",
+          "name": "CycleUsed",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Quota effective start time.",
+          "example": "2026-06-09T00:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "StartTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Quota expiration time.",
+          "example": "2046-06-09T21:12:17+08:00",
+          "member": "datetime_iso",
+          "name": "ExpireTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "RequestFilter": {
       "document": "Filter criteria",

@@ -1,0 +1,251 @@
+{
+  "actions": {
+    "DescribeDDoSBlockRecords": {
+      "document": "Query block unblock records and unblocking quota info.",
+      "input": "DescribeDDoSBlockRecordsRequest",
+      "name": "Query DDoS block and unblock list",
+      "output": "DescribeDDoSBlockRecordsResponse",
+      "status": "online"
+    },
+    "UnblockResources": {
+      "document": "Apply for unblocking resources. You can obtain the unblocking status of resources through the DescribeDDoSBlockRecords API.",
+      "input": "UnblockResourcesRequest",
+      "name": "Apply for unblocking a resource",
+      "output": "UnblockResourcesResponse",
+      "status": "online"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2025-09-03",
+    "serviceNameCN": "T-Sec-DDoS防护(Anti-DDoS)",
+    "serviceShortName": "antiddos"
+  },
+  "objects": {
+    "DDoSBlockRecord": {
+      "document": "Block history",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Blocked resources, public IP address, for example:</p><ul><li>Public IP address: 117.175.94.231.</li></ul>",
+          "example": "117.175.94.231",
+          "member": "string",
+          "name": "Resource",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>The time when it was blocked.</p>",
+          "example": "2026-02-04T11:30:00+08:00",
+          "member": "datetime_iso",
+          "name": "BlockTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Blocking and unblocking status.</p><p>Enumeration value:</p><ul><li>Blocked: Blocked;</li><li>Unblocking: Unblocking;</li><li>Unblocked: Unblocked.</li></ul>",
+          "example": "Blocked",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DDoSUnblockQuota": {
+      "document": "Unconsumed unblocking quota info of the current account. Users who purchase Anti-DDoS products have a default unblocking quota of 3 resources. The system will reset the unblocking quota count at zero point (UTC+8) time zone each day. Unused unblocking quota on the day will not accumulate to the next day. The unblocking quota for Anti-DDoS Package (Lite) is 3 resources per month and resets monthly.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total quota of the number of unblocking times.</p>",
+          "example": "3",
+          "member": "uint64",
+          "name": "TotalQuota",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total quota used.</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "UsedQuota",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Start time when the quota takes effect.</p>",
+          "example": "2026-02-04T00:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "QuotaStartTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>End time when the quota takes effect.</p>",
+          "example": "2026-02-05T00:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "QuotaEndTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeDDoSBlockRecordsRequest": {
+      "document": "DescribeDDoSBlockRecords request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Start time of the query. Support up to data query for the past one year.</p><p>Parameter format: 2026-02-04T11:30:00+08:00.</p>",
+          "example": "2026-01-05T11:30:00+08:00",
+          "member": "datetime_iso",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>End time of query. The query time range (EndTime - StartTime) must be less than or equal to 31 days.</p><p>Parameter format: 2026-03-04T11:30:00+08:00.</p>",
+          "example": "2026-02-05T11:30:00+08:00",
+          "member": "datetime_iso",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Filter criteria. The maximum number of Filters.Values is 20. If this parameter is left empty, return the current list of resources blocked under the appid. Detailed filter criteria:</p><ul><li> Resource: Filter by blocked IP or six-segment resource format;</li><li> Status: Filter by blocked resource status.</li></ul><p>When Filters.Name value is Status, Filters.Values valid values:</p><ul><li>Blocked: blocked;</li><li>Unblocking: unblocking;</li><li>Unblocked: unblocked.</li></ul>",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Paginated query limit count. Maximum value: 100.</p><p>Default value: 20</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Paginated query offset.</p><p>Default value: 0.</p>",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDDoSBlockRecordsResponse": {
+      "document": "DescribeDDoSBlockRecords response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total number of block and unblock records.</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Unblock record.</p>",
+          "example": "无",
+          "member": "DDoSBlockRecord",
+          "name": "BlockRecords",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Quota information of the number of unblocking times.</p>",
+          "example": "无",
+          "member": "DDoSUnblockQuota",
+          "name": "UnblockQuotaInfo",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Filter": {
+      "document": "Describe key-value pair filter, used for condition filtering query, such as filtering ID, name, status. When multiple Filters exist, the relationship between Filters is logical AND. When the same Filter has multiple Values, the relationship between Values under the same Filter is logical OR.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Fields to be filtered. Check corresponding API for specific available values.</p>",
+          "example": "Resource",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Field's filter value.</p>",
+          "example": "[\"139.199.192.153\"]",
+          "member": "string",
+          "name": "Values",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "UnblockResourcesRequest": {
+      "document": "UnblockResources request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>List of resources to apply for unblocking. Supports unblocking based on public IP. You can obtain detailed resource information of blocked resources through the DescribeDDoSBlockRecords API. Parameter example:</p><ul><li>Public IP: 117.175.94.230.</li></ul><p>Input parameter limit: Maximum list length is 10.</p>",
+          "example": "[\"117.175.94.230\"]",
+          "member": "string",
+          "name": "Resources",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "UnblockResourcesResponse": {
+      "document": "UnblockResources response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    }
+  }
+}

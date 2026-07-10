@@ -3574,6 +3574,24 @@
           "name": "EmailIdentity",
           "required": true,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The  DKIMOption parameter is effective or not",
+          "example": "false",
+          "member": "bool",
+          "name": "NewAPI",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "dkim option, 0: 1024, 1: 2048, 2: both",
+          "example": "0",
+          "member": "uint64",
+          "name": "DKIMOption",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -3609,6 +3627,16 @@
           "name": "Attributes",
           "output_required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "dkim option, 0: 1024, 1: 2048, 2: both",
+          "example": "0",
+          "member": "uint64",
+          "name": "DKIMOption",
+          "output_required": false,
+          "type": "int",
           "value_allowed_null": false
         },
         {
