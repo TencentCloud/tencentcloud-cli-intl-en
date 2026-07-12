@@ -4655,7 +4655,7 @@
         {
           "disabled": false,
           "document": "Chinese name\nNote: This field may return null, indicating that no valid values can be obtained.\n",
-          "example": "无",
+          "example": "王博",
           "member": "string",
           "name": "FullName",
           "output_required": false,
@@ -4666,7 +4666,7 @@
         {
           "disabled": false,
           "document": "Sex\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "男",
           "member": "string",
           "name": "Sex",
           "output_required": false,
@@ -4677,7 +4677,7 @@
         {
           "disabled": false,
           "document": "Nation\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "汉",
           "member": "string",
           "name": "Nation",
           "output_required": false,
@@ -4688,7 +4688,7 @@
         {
           "disabled": false,
           "document": "Birthday\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "1966/11/2",
           "member": "string",
           "name": "Birthday",
           "output_required": false,
@@ -4699,7 +4699,7 @@
         {
           "disabled": true,
           "document": "Address\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "**",
           "member": "string",
           "name": "Address",
           "output_required": false,
@@ -4710,7 +4710,7 @@
         {
           "disabled": false,
           "document": "License number\nNote: This field may return null, indicating that no valid values can be obtained.\n",
-          "example": "无",
+          "example": "652***********1234",
           "member": "string",
           "name": "LicenseNumber",
           "output_required": false,
@@ -4721,9 +4721,31 @@
         {
           "disabled": false,
           "document": "Address\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "西安市****",
           "member": "string",
           "name": "FormattedAddress",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Issuing authority\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "西安市***公安局",
+          "member": "string",
+          "name": "Authority",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Validity period\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2025.06.24-长期",
+          "member": "string",
+          "name": "ValidDate",
           "output_required": false,
           "required": false,
           "type": "string",
@@ -5772,7 +5794,7 @@
         {
           "disabled": false,
           "document": "<p>Base64 of the cropped ID image</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "/9j/4AAQS*******",
           "member": "string",
           "name": "CardCutImageBase64",
           "output_required": false,
@@ -5782,7 +5804,7 @@
         {
           "disabled": false,
           "document": "<p>Base64 of the cropped image of the back side of the ID</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "/9j/4AAQS*******",
           "member": "string",
           "name": "CardBackCutImageBase64",
           "output_required": false,
@@ -5805,6 +5827,16 @@
           "example": "{\\\"CnName\\\":\\\"李**\\\",\\\"EnName\\\":\\\"LEE**\\\",\\\"WarnCardInfos\\\":[-9101,-9104],\\\"RequestId\\\":\\\"946d***5e333d\\\"}",
           "member": "string",
           "name": "OriginalCardInfo",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Base64 of the cropped portrait image extracted from the identity document</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "/9j/4AAQS*******",
+          "member": "string",
+          "name": "HeadImageBase64",
           "output_required": false,
           "type": "string",
           "value_allowed_null": true

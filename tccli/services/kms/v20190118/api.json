@@ -3122,7 +3122,7 @@
         {
           "disabled": false,
           "document": "Whether the KMS service has been activated. true: activated",
-          "example": "1",
+          "example": "true",
           "member": "bool",
           "name": "ServiceEnabled",
           "output_required": true,
@@ -3232,7 +3232,7 @@
         {
           "disabled": false,
           "document": "Return dedicated cluster group.",
-          "example": "[{\"HsmClusterId\":\"cls-hsm-a1b2c3d4\",\"HsmClusterName\":\"cls-hsm-a1b2c3d4-name\"},{\"HsmClusterId\":\"cls-hsm-a1b2cd5\",\"HsmClusterName\":\"cls-hsm-a1b2c3d5-name\"}]",
+          "example": "无",
           "member": "ExclusiveHSM",
           "name": "ExclusiveHSMList",
           "output_required": false,
@@ -3242,7 +3242,7 @@
         {
           "disabled": false,
           "document": "Whether data key management is supported. valid values: 1 (supported), 0 (unsupported).",
-          "example": "0",
+          "example": "true",
           "member": "bool",
           "name": "IsAllowedDataKeyHosted",
           "output_required": false,
@@ -3435,7 +3435,7 @@
         {
           "disabled": false,
           "document": "Base64-encoded key material that encrypted with the `PublicKey` returned by `GetParametersForImport`. For the KMS of SM-CRYPTO version, the length of the key material should be 128 bits, while for KMS of FIPS-compliant version, the length should be 256 bits.",
-          "example": "YLbjnjPPIYjPb1XhyBYNmcr7yv1YMnfDmuHX8D0qCmUAP3Qi+2URkLJvZ/zCWuJK0Y23/QHX8a8lrKz4WVgUVuoleOriQMNx+AcRkjCegkcqkdJ8BNlaXsNJ67zjSZWDu9qI+bHXEqSIcXcz/l5jdBEum6tYViIDrNKIY6FaLC0Ex7y3eoN5A3YFhQoL7F7upNXZHhogP+YXqLqD7fKzsM8qgMW25qSddlhW4H1s1zOfwfobLAQDXofu9OAZ58Xf8KjnqEoA1Bn60kuJBoqqUV4BqOG3egTqCQaCdcn98oZFPTQpB/SVCE4hENncEV3tNihv2IwjFxSCjZHcJzhYuQ==",
+          "example": "YLbjnjPPIYjPb1XhyBYNmcr7yv1YMnfDmuHX8D0qCmUAP3Qi+2URkLJvZ/zCWuJK0Y23/QHX8a8lrKz4WVgUVuoleOriQMNx+AcRkjCegkcqkdJ8BNlaXsNJ67zjSZWDu9qI+bHXEqSIcXcz/l5jdBEum6tYViIDrNKIY6FaLC0Ex7y3eoN5A3YFhQoL7F7upNXZHhogP+YXqLqD7ofucJzhYuQ==",
           "member": "string",
           "name": "EncryptedKeyMaterial",
           "required": true,

@@ -3,9 +3,9 @@
     "CreateTaskFromAction": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: cfg.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateTaskFromAction\n<Common request parameters>\n\n\n\n\n\n\n\n\n\n{\n\t\"TaskActionId\": 127,\n\t\"TaskInstances\": [\n\t\t\"ins-87bfr32q\"\n\t]\n\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f0aee8ac-2ed3-4a7f-a25b-f0d7d228dd30\",\n        \"TaskId\": 50\n    }\n}",
-        "title": "Creating an Experiment with Actions"
+        "input": "POST / HTTP/1.1\nHost: cfg.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateTaskFromAction\n<Common Request Parameter>\n\n{\n    \"TaskActionId\": 12,\n    \"TaskInstances\": [\n        \"ins-jjphrwng\"\n    ],\n    \"TaskTitle\": \"No-op Operation for CVM Servers\",\n    \"TaskDescription\": \"Create drill test\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a3875789-7d89-4bf1-8763-e9b46c6459d7\",\n        \"TaskId\": 10959\n    }\n}",
+        "title": "Create Drill Based on Actions"
       }
     ],
     "CreateTaskFromTemplate": [
@@ -44,7 +44,7 @@
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: cfg.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeObjectTypeList\n<Common request parameters>\n\n\n\n{}",
-        "output": "{\n    \"Response\": {\n        \"ObjectTypeList\": [\n            {\n                \"ObjectTypeId\": 0,\n                \"ObjectTypeTitle\": \"abc\",\n                \"ObjectTypeLevelOne\": \"abc\",\n                \"ObjectTypeParams\": {\n                    \"Key\": \"abc\",\n                    \"Fields\": [\n                        {\n                            \"Key\": \"abc\",\n                            \"Header\": \"abc\",\n                            \"Transfer\": \"abc\",\n                            \"JsonParse\": \"abc\"\n                        }\n                    ]\n                },\n                \"ObjectTypeJsonParse\": {\n                    \"NameSpace\": \"abc\",\n                    \"WorkloadName\": \"abc\"\n                }\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"ObjectTypeList\": [\n            {\n                \"ObjectHasNewAction\": false,\n                \"ObjectTypeId\": 1,\n                \"ObjectTypeJsonParse\": null,\n                \"ObjectTypeLevelOne\": \"Compute\",\n                \"ObjectTypeParams\": {\n                    \"Fields\": [\n                        {\n                            \"Header\": \"Instance ID\",\n                            \"JsonParse\": null,\n                            \"Key\": \"InstanceId\",\n                            \"Transfer\": null\n                        },\n                        {\n                            \"Header\": \"Instance Name\",\n                            \"JsonParse\": null,\n                            \"Key\": \"InstanceName\",\n                            \"Transfer\": null\n                        },\n                        {\n                            \"Header\": \"Availability Zone\",\n                            \"JsonParse\": null,\n                            \"Key\": \"Placement.Zone\",\n                            \"Transfer\": \"{\\\"ap-seoul-1\\\": \\\"Seoul Zone 1\\\", \\\"ap-seoul-2\\\": \\\"Seoul Zone 2\\\"}\"\n                        },\n                        {\n                            \"Header\": \"Primary IPv4 Address\",\n                            \"JsonParse\": null,\n                            \"Key\": \"PrivateIpAddresses\",\n                            \"Transfer\": null\n                        },\n                        {\n                            \"Header\": \"VPC ID\",\n                            \"JsonParse\": null,\n                            \"Key\": \"VirtualPrivateCloud.VpcId\",\n                            \"Transfer\": null\n                        },\n                        {\n                            \"Header\": \"Subnet ID\",\n                            \"JsonParse\": null,\n                            \"Key\": \"VirtualPrivateCloud.SubnetId\",\n                            \"Transfer\": null\n                        }\n                    ],\n                    \"Key\": \"InstanceId\"\n                },\n                \"ObjectTypeTitle\": \"CVM\"\n            }\n        ],\n        \"RequestId\": \"fd1309c8-f198-4a6e-924c-89a80a274138\"\n    }\n}",
         "title": "Request object type list"
       }
     ],
@@ -83,7 +83,7 @@
         "document": "1",
         "input": "POST / HTTP/1.1\nHost: cfg.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTaskPolicyTriggerLog\n<Common request parameters>\n\n\n\n{\n    \"TaskId\": 5491,\n    \"Page\": 1,\n    \"PageSize\": 11\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1bba6839-682a-4123-9728-ec3fc141235b\",\n        \"TriggerLogs\": [\n            {\n                \"Content\": \"Trigger the guardrail testing content-recovery\",\n                \"CreatTime\": \"2023-11-14 12:51:33\",\n                \"Name\": \"Trigger the guardrail testing-recovery\",\n                \"TaskId\": 5491,\n                \"TriggerType\": 1\n            },\n            {\n                \"Content\": \"Trigger the guardrail testing content\",\n                \"CreatTime\": \"2023-11-14 12:37:20\",\n                \"Name\": \"Trigger the guardrail testing\",\n                \"TaskId\": 5491,\n                \"TriggerType\": 0\n            }\n        ]\n    }\n}",
-        "title": "1"
+        "title": "Example"
       }
     ],
     "DescribeTemplate": [
@@ -143,7 +143,7 @@
         "document": "1",
         "input": "POST / HTTP/1.1\nHost: cfg.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: TriggerPolicy\n<Common request parameters>\n\n\n\n{\n    \"TaskId\": 5491,\n    \"Name\": \"Trigger guardrail test\",\n    \"Content\": \"Trigger guardrail test content\",\n    \"TriggerType\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1050e4e3-ef1a-4e2f-b100-c68dfd38fc75\",\n        \"Success\": true,\n        \"TaskId\": 5491\n    }\n}",
-        "title": "1"
+        "title": "Example"
       }
     ]
   },
