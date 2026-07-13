@@ -21,6 +21,13 @@
       "output": "CreateAllocationUnitResponse",
       "status": "online"
     },
+    "CreateBudget": {
+      "document": "Create budget information",
+      "input": "CreateBudgetRequest",
+      "name": "Create a budget project",
+      "output": "CreateBudgetResponse",
+      "status": "online"
+    },
     "CreateGatherRule": {
       "document": "Create a collection rule.",
       "input": "CreateGatherRuleRequest",
@@ -54,6 +61,13 @@
       "input": "DeleteAllocationUnitRequest",
       "name": "Delete a cost allocation unit",
       "output": "DeleteAllocationUnitResponse",
+      "status": "online"
+    },
+    "DeleteBudget": {
+      "document": "Delete the corresponding budget project based on the budget ID",
+      "input": "DeleteBudgetRequest",
+      "name": "Delete a budget project",
+      "output": "DeleteBudgetResponse",
       "status": "online"
     },
     "DeleteGatherRule": {
@@ -252,6 +266,27 @@
       "output": "DescribeBillSummaryForOrganizationResponse",
       "status": "online"
     },
+    "DescribeBudget": {
+      "document": "Retrieve budget details",
+      "input": "DescribeBudgetRequest",
+      "name": "Retrieve budget details",
+      "output": "DescribeBudgetResponse",
+      "status": "online"
+    },
+    "DescribeBudgetOperationLog": {
+      "document": "Query budget modification records",
+      "input": "DescribeBudgetOperationLogRequest",
+      "name": "Query a budget modification record",
+      "output": "DescribeBudgetOperationLogResponse",
+      "status": "online"
+    },
+    "DescribeBudgetRemindRecordList": {
+      "document": "Return budget alert records, including budget period, detection time, notification time, reminder type, and content.",
+      "input": "DescribeBudgetRemindRecordListRequest",
+      "name": "Query budget alert records",
+      "output": "DescribeBudgetRemindRecordListResponse",
+      "status": "online"
+    },
     "DescribeCPQBillingMapping": {
       "document": "Query the four-layer matching relationship between the quoted product name and billing products",
       "input": "DescribeCPQBillingMappingRequest",
@@ -376,6 +411,13 @@
       "input": "ModifyAllocationUnitRequest",
       "name": "Modify a cost allocation unit",
       "output": "ModifyAllocationUnitResponse",
+      "status": "online"
+    },
+    "ModifyBudget": {
+      "document": "Refresh budget information",
+      "input": "ModifyBudgetRequest",
+      "name": "Refresh budget information",
+      "output": "ModifyBudgetResponse",
       "status": "online"
     },
     "ModifyGatherRule": {
@@ -6705,6 +6747,1039 @@
       ],
       "usage": "both"
     },
+    "BudgetConditionsForm": {
+      "document": "Budget management custom fee range parameter",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Product.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"p_cvm\"]",
+          "member": "string",
+          "name": "Business",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Billing mode</p><p>Enumeration value:</p><ul><li>prePay: Monthly Subscription</li><li>postPay: Pay-As-You-Go</li></ul>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"postPay\"]",
+          "member": "string",
+          "name": "PayMode",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subproduct</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"sp_cvm\"]",
+          "member": "string",
+          "name": "ProductCodes",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Component code</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"v_cpu\"]",
+          "member": "string",
+          "name": "ComponentCodes",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Region.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"10001\"]",
+          "member": "string",
+          "name": "ZoneIds",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>AZ.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"47\"]",
+          "member": "string",
+          "name": "RegionIds",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"0\"]",
+          "member": "string",
+          "name": "ProjectIds",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Transaction type</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"postpay_deduct_d\"]",
+          "member": "string",
+          "name": "ActionTypes",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Consumption type</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"prepay_purchase\"]",
+          "member": "string",
+          "name": "ConsumptionTypes",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Tag.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TagsForm",
+          "name": "Tags",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Leaf-level cost allocation unit</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"1197623846\"]",
+          "member": "string",
+          "name": "PayerUins",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Primary user Uin</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"1197623846\"]",
+          "member": "string",
+          "name": "OwnerUins",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Unique key of the leaf-level cost allocation unit</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"1197623846\"]",
+          "member": "string",
+          "name": "TreeNodeUniqKeys",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "BudgetExtend": {
+      "document": "Query returns complete budget information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Budget Name",
+          "example": "API创建预算计划",
+          "member": "string",
+          "name": "BudgetName",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Budget limit",
+          "example": "预算计划类型固定值时传定值, 预算计划类型不同值时传json",
+          "member": "string",
+          "name": "BudgetQuota",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "DAY, MONTH, QUARTER, YEAR",
+          "example": "DAY",
+          "member": "string",
+          "name": "CycleType",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "BILL System bill, CONSUMPTION Consumption bill",
+          "example": "BILL",
+          "member": "string",
+          "name": "BillType",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "COST Original price, REAL_COST Actual fee, CASH Cash, INCENTIVE Free credit, VOUCHER Voucher, TRANSFER Allocated fees (royalty amount), TAX Tax, AMOUNT_BEFORE_TAX Cash payment (before tax)",
+          "example": "COST",
+          "member": "string",
+          "name": "FeeType",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Validity start time 2025-01-01",
+          "example": "2025-01",
+          "member": "string",
+          "name": "PeriodBegin",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Validity end time 2025-12-01",
+          "example": "2025-12",
+          "member": "string",
+          "name": "PeriodEnd",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "COST,USAGE,RI,SP",
+          "example": "COST",
+          "member": "string",
+          "name": "Dimensions",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "FIX fixed value, CYCLE different value",
+          "example": "FIX",
+          "member": "string",
+          "name": "PlanType",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "threshold alert",
+          "example": "无",
+          "member": "BudgetWarn",
+          "name": "WarnJson",
+          "output_required": false,
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "User UIN",
+          "example": "38495",
+          "member": "uint64",
+          "name": "PayerUin",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "fluctuation alert",
+          "example": "无",
+          "member": "WaveThresholdForm",
+          "name": "WaveThresholdJson",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Budget remark",
+          "example": "使用api创建预算信息",
+          "member": "string",
+          "name": "BudgetNote",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Custom sending object information",
+          "example": "\" \"",
+          "member": "string",
+          "name": "SendDetail",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Default uin sent",
+          "example": "0",
+          "member": "int64",
+          "name": "DefaultMode",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "CUS custom budget, ZERO_COST zero-cost budget template, BY_MONTH monthly cost budget template\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "CUS",
+          "member": "string",
+          "name": "TemplateType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "(1, \"Not over budget\")\n(2, \"Overspend\")",
+          "example": "1",
+          "member": "int64",
+          "name": "MoneyStatus",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Reminder count",
+          "example": "0",
+          "member": "int64",
+          "name": "RemindTimes",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time",
+          "example": "2025-09-04 15:49:34",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Update budget time",
+          "example": "2025-09-04 15:49:34",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Associated Id of the budget",
+          "example": "12894",
+          "member": "string",
+          "name": "BudgetId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "NO_FORECAST (Not set)\nFORECAST_NO_DATA (Set up prediction but no data)\nFORECAST_HAS_DATA (Set up prediction with predictive data)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "NO_FORECAST",
+          "member": "string",
+          "name": "HasForecast",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "predicted fee\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1000",
+          "member": "string",
+          "name": "ForecastCost",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Projection progress\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "string",
+          "name": "ForecastProgress",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "actual fee",
+          "example": "30",
+          "member": "string",
+          "name": "RealCost",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Custom send",
+          "example": "无",
+          "member": "BudgetSendInfoDto",
+          "name": "BudgetSendInfoForm",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "current cycle",
+          "example": "2025-09-11",
+          "member": "string",
+          "name": "CurDateDesc",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "EXPIRED\nACTIVE\nUNACTIVATED Invalid\nACTIVATED To be effective",
+          "example": "EXPIRED",
+          "member": "string",
+          "name": "BudgetStatus",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Budget dimension range condition\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BudgetConditionsForm",
+          "name": "DimensionsRange",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Budget progress\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "string",
+          "name": "BudgetProgress",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Budget Type is set to budget planning and returns the budget limit\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BudgetPlan",
+          "name": "BudgetQuotaJson",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "BudgetInfoApiResponse": {
+      "document": "Return information after the budget operation",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Budget project id",
+          "example": "389284",
+          "member": "string",
+          "name": "BudgetId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Update budget time",
+          "example": "2025-07-22 09:59:21",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "BudgetInfoDiffEntity": {
+      "document": "Record change information for budget project related fields",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Modify properties",
+          "example": "warnType",
+          "member": "string",
+          "name": "Property",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Content before modification.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "FORECAST",
+          "member": "string",
+          "name": "Before",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Content after modification.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ACTUAL",
+          "member": "string",
+          "name": "After",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "BudgetOperationLogEntity": {
+      "document": "Budget modification record info",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Payer Uin",
+          "example": "15684",
+          "member": "uint64",
+          "name": "PayerUin",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "User Uin\n",
+          "example": "2789453",
+          "member": "uint64",
+          "name": "OwnerUin",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Operation user Uin",
+          "example": "3452657",
+          "member": "uint64",
+          "name": "OperateUin",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Date",
+          "example": "20250902",
+          "member": "uint64",
+          "name": "BillDay",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "month",
+          "example": "2025-09-01 00:00:00",
+          "member": "string",
+          "name": "BillMonth",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Modify type: ADD (add new), UPDATE (update), DELETE (delete)",
+          "example": "ADD",
+          "member": "string",
+          "name": "Action",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "modification information",
+          "example": "无",
+          "member": "BudgetInfoDiffEntity",
+          "name": "DiffValue",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.",
+          "example": "2025-09-02 18:00:48",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Modification time.",
+          "example": "2025-09-02 18:00:48",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Modify channel: CONSOLE/API",
+          "example": "API",
+          "member": "string",
+          "name": "OperationChannel",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Budget project id",
+          "example": "27383",
+          "member": "string",
+          "name": "BudgetId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "BudgetPlan": {
+      "document": "Budget computation for complex data type",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Frontend page date display\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DateDesc",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Budget limit\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Quota",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "BudgetRemindRecordList": {
+      "document": "Paginated data of budget management",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Optimize COUNT SQL automatically if encounter unresolved jSqlParser case, set the parameter to false\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "OptimizeCountSql",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Pagination\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Pages",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Sorting field information. When allowing frontend input, be aware of SQL injection issue. Use SqlInjectionUtils.check(...) to check the text.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "OrderDto",
+          "name": "Orders",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The statementId for a custom count query in xml can also be set without specifying it. Just add _mpCount after the pagination statementId. For example, for the pagination selectPageById, set the count query statementId to selectPageById_mpCount. The SQL execution can then be found by default.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CountId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Pagination size.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Size",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "total amount\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Total",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of items per page limit\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "MaxLimit",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Querying the data list\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BudgetRemindRecords",
+          "name": "Records",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Current Page\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Current",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to perform a count query. If you only want to query the list and do not query the total record count, set the parameter to false.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "bool",
+          "name": "SearchCount",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "BudgetRemindRecords": {
+      "document": "Budget History Details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "budget period",
+          "example": "无",
+          "member": "string",
+          "name": "DateDesc",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "actual fee",
+          "example": "无",
+          "member": "string",
+          "name": "RealCost",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Budget amount limit",
+          "example": "无",
+          "member": "string",
+          "name": "BudgetQuota",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Reminder type.\nEnumeration values:\nBUDGET reminder\nFluctuation alert\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "BUDGET",
+          "member": "string",
+          "name": "AlarmType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "message content\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "MessageContent",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Send time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "SendTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "BudgetSendInfoDto": {
+      "document": "Budget reminder",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Notification cycle, separated by commas.\nEnumeration values:\nMonday:1\nTuesday:2\nSunday: 7\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[1,2,3,4,5,6,7]",
+          "member": "uint64",
+          "name": "WeekDays",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Reception type.\nEnumeration values:\nUIN default mode\nUSER\nGROUP User group.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": " 无",
+          "member": "string",
+          "name": "ReceiverType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Sending and receiving window HH:mm:ss\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "“23:59:59\"",
+          "member": "string",
+          "name": "EndTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Budget configuration id (budget name)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "14633",
+          "member": "int64",
+          "name": "BudgetId",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "receiving channel, separated by commas\nEnumeration values:\nTITLE\nMessage Center\nmail\nSMS\nWECHAT\nVOICE\nWeCom\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"SITE\"]",
+          "member": "string",
+          "name": "NoticeWays",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Send start window HH:mm:ss\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"10:00:00\"",
+          "member": "string",
+          "name": "StartTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "id\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"ADoNrCzyuP\"",
+          "member": "string",
+          "name": "Id",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "user id, user group id\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[1]",
+          "member": "uint64",
+          "name": "ReceiverIds",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "BudgetWarn": {
+      "document": "Budget threshold notification",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ACTUAL amount\nFORECAST Amount",
+          "example": "ACTUAL",
+          "member": "string",
+          "name": "WarnType",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "PERCENTAGE Percentage of the budget amount, ABS Fixed value",
+          "example": "PERCENTAGE",
+          "member": "string",
+          "name": "CalType",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Threshold (greater than or equal to 0)",
+          "example": "100",
+          "member": "string",
+          "name": "ThresholdValue",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "BusinessSummaryInfo": {
       "document": "Detailed summary of products",
       "members": [
@@ -8652,6 +9727,162 @@
       ],
       "type": "object"
     },
+    "CreateBudgetRequest": {
+      "document": "CreateBudget request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Budget Name",
+          "example": "API创建预算计划",
+          "member": "string",
+          "name": "BudgetName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "DAY, MONTH, QUARTER, YEAR",
+          "example": "DAY",
+          "member": "string",
+          "name": "CycleType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Validity start time 2025-01-01 (Period: day) / 2025-01 (Period: month)",
+          "example": "2025-01-01",
+          "member": "string",
+          "name": "PeriodBegin",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Validity end time 2025-12-01 (Period: day) / 2025-12 (Cycle: month)",
+          "example": "2025-12-01",
+          "member": "string",
+          "name": "PeriodEnd",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "FIX Fixed Budget, CYCLE Budget Planning",
+          "example": "FIX",
+          "member": "string",
+          "name": "PlanType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Budget amount limit\nPass a fixed value when the schedule type is FIX (fixed budget).\nWhen the schedule type is CYCLE (budget planning), pass [{\"dateDesc\":\"2025-07\",\"quota\":\"1000\"},{\"dateDesc\":\"2025-08\",\"quota\":\"2000\"}].",
+          "example": "1000",
+          "member": "string",
+          "name": "BudgetQuota",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "BILL System bill, CONSUMPTION Consumption bill",
+          "example": "BILL",
+          "member": "string",
+          "name": "BillType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "COST Original price, REAL_COST Actual fee, CASH Cash, INCENTIVE Free credit, VOUCHER Voucher, TRANSFER Allocated fees (royalty amount), TAX Tax, AMOUNT_BEFORE_TAX Cash payment (before tax)",
+          "example": "COST",
+          "member": "string",
+          "name": "FeeType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Threshold alert",
+          "example": "无",
+          "member": "BudgetWarn",
+          "name": "WarnJson",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Budget remark",
+          "example": "使用api创建预算信息",
+          "member": "string",
+          "name": "BudgetNote",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Budget Dimension Range Condition",
+          "example": "无",
+          "member": "BudgetConditionsForm",
+          "name": "DimensionsRange",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Fluctuation alert",
+          "example": "无",
+          "member": "WaveThresholdForm",
+          "name": "WaveThresholdJson",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateBudgetResponse": {
+      "document": "CreateBudget response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Create budget return information",
+          "example": "无",
+          "member": "BudgetInfoApiResponse",
+          "name": "Data",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "create success",
+          "example": "信息提示",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Return code",
+          "example": "0",
+          "member": "int64",
+          "name": "Code",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateGatherRuleRequest": {
       "document": "CreateGatherRule request structure.",
       "members": [
@@ -8852,6 +10083,128 @@
         }
       ],
       "type": "object"
+    },
+    "DataForBudgetInfoPage": {
+      "document": "Paginated data of budget management basic information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Pagination",
+          "example": "1",
+          "member": "uint64",
+          "name": "Pages",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Pagination size.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Size",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "total amount",
+          "example": "20",
+          "member": "uint64",
+          "name": "Total",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Querying the data list\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BudgetExtend",
+          "name": "Records",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Current Page",
+          "example": "1",
+          "member": "uint64",
+          "name": "Current",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "DataForBudgetOperationLogPage": {
+      "document": "Paginated data of budget modification records",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Pagination",
+          "example": "10",
+          "member": "uint64",
+          "name": "Pages",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Pagination size.",
+          "example": "5",
+          "member": "uint64",
+          "name": "Size",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total amount",
+          "example": "20",
+          "member": "uint64",
+          "name": "Total",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Querying the data list\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BudgetOperationLogEntity",
+          "name": "Records",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Current Page",
+          "example": "3",
+          "member": "uint64",
+          "name": "Current",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "Deal": {
       "document": "Order data object",
@@ -9219,6 +10572,63 @@
     "DeleteAllocationUnitResponse": {
       "document": "DeleteAllocationUnit response structure.",
       "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteBudgetRequest": {
+      "document": "DeleteBudget request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Budget project id",
+          "example": "[\"1\"]",
+          "member": "string",
+          "name": "BudgetIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteBudgetResponse": {
+      "document": "DeleteBudget response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Return the deleted budget project id",
+          "example": "[\"128463\"]",
+          "member": "string",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Prompt",
+          "example": "delete success",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Return code",
+          "example": "0",
+          "member": "int64",
+          "name": "Code",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -12680,6 +14090,258 @@
       ],
       "type": "object"
     },
+    "DescribeBudgetOperationLogRequest": {
+      "document": "DescribeBudgetOperationLog request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Page number",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNo",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of Items per Page",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Budget project id",
+          "example": "25785",
+          "member": "string",
+          "name": "BudgetId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBudgetOperationLogResponse": {
+      "document": "DescribeBudgetOperationLog response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Budget modification record details",
+          "example": "无",
+          "member": "DataForBudgetOperationLogPage",
+          "name": "Data",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "prompt",
+          "example": "success",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Return code",
+          "example": "0",
+          "member": "int64",
+          "name": "Code",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBudgetRemindRecordListRequest": {
+      "document": "DescribeBudgetRemindRecordList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Page number, int",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNo",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of items per page, integer",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Budget base information association id",
+          "example": "234322431",
+          "member": "string",
+          "name": "BudgetId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBudgetRemindRecordListResponse": {
+      "document": "DescribeBudgetRemindRecordList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Budget configuration properties",
+          "example": "{\"Size\":10,\"Total\":0}",
+          "member": "BudgetRemindRecordList",
+          "name": "Data",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message prompt.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "fail",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Error response code",
+          "example": "0",
+          "member": "int64",
+          "name": "Code",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBudgetRequest": {
+      "document": "DescribeBudget request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Page number, int",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNo",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of items per page, integer",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Budget project id",
+          "example": "1231",
+          "member": "string",
+          "name": "BudgetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Budget Name",
+          "example": "1元-按日-固定-全产品-三个月",
+          "member": "string",
+          "name": "BudgetName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "EXPIRED, ACTIVE, ACTIVATED pending activation",
+          "example": "ACTIVE",
+          "member": "string",
+          "name": "BudgetStatus",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "DAY day MONTH monthly QUARTER quarter YEAR annual",
+          "example": "[\"DAY\"]",
+          "member": "string",
+          "name": "CycleTypes",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBudgetResponse": {
+      "document": "DescribeBudget response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Budget project detail",
+          "example": "无",
+          "member": "DataForBudgetInfoPage",
+          "name": "Data",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "prompt\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "query success",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Return code",
+          "example": "0",
+          "member": "int64",
+          "name": "Code",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeCPQBillingMappingRequest": {
       "document": "DescribeCPQBillingMapping request structure.",
       "members": [
@@ -15647,6 +17309,171 @@
       ],
       "type": "object"
     },
+    "ModifyBudgetRequest": {
+      "document": "ModifyBudget request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Budget project id",
+          "example": "1233456",
+          "member": "string",
+          "name": "BudgetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Budget Name",
+          "example": "API创建预算计划",
+          "member": "string",
+          "name": "BudgetName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "DAY, MONTH, QUARTER, YEAR",
+          "example": "DAY",
+          "member": "string",
+          "name": "CycleType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Validity start time 2025-01-01",
+          "example": "2025-01-01",
+          "member": "string",
+          "name": "PeriodBegin",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Validity End Time 2025-12-01",
+          "example": "2025-12-01",
+          "member": "string",
+          "name": "PeriodEnd",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "FIX fixed value, CYCLE different value",
+          "example": "FIX",
+          "member": "string",
+          "name": "PlanType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Budget amount limit \nSet as a fixed value when the schedule type is fixed budget.\nWhen the schedule type is CYCLE (budget planning), pass [{\"dateDesc\":\"2025-07\",\"quota\":\"1000\"},{\"dateDesc\":\"2025-08\",\"quota\":\"2000\"}].",
+          "example": "1200",
+          "member": "string",
+          "name": "BudgetQuota",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "BILL System bill, CONSUMPTION Consumption bill",
+          "example": "BILL",
+          "member": "string",
+          "name": "BillType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "COST Original price, REAL_COST Actual fee, CASH Cash, INCENTIVE Free credit, VOUCHER Voucher, TRANSFER Allocated fees (royalty amount), TAX Tax, AMOUNT_BEFORE_TAX Cash payment (pre-tax)",
+          "example": "COST",
+          "member": "string",
+          "name": "FeeType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "threshold alert",
+          "example": "无",
+          "member": "BudgetWarn",
+          "name": "WarnJson",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Budget remark",
+          "example": "使用api创建预算信息",
+          "member": "string",
+          "name": "BudgetNote",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Budget dimension range condition",
+          "example": "无",
+          "member": "BudgetConditionsForm",
+          "name": "DimensionsRange",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "fluctuation alert",
+          "example": "无",
+          "member": "WaveThresholdForm",
+          "name": "WaveThresholdJson",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyBudgetResponse": {
+      "document": "ModifyBudget response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Refresh budget return information",
+          "example": "无",
+          "member": "BudgetInfoApiResponse",
+          "name": "Data",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "update success\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "信息提示",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Return code",
+          "example": "0",
+          "member": "int64",
+          "name": "Code",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyGatherRuleRequest": {
       "document": "ModifyGatherRule request structure.",
       "members": [
@@ -15727,6 +17554,34 @@
         }
       ],
       "usage": "out"
+    },
+    "OrderDto": {
+      "document": "Field sorting",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Field\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "name",
+          "member": "string",
+          "name": "Column",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "whether in ascending order\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "Asc",
+          "output_required": false,
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "PayDealsRequest": {
       "document": "PayDeals request structure.",
@@ -16986,6 +18841,34 @@
       ],
       "usage": "out"
     },
+    "TagsForm": {
+      "document": "Budget management custom fee range, parameter tag",
+      "members": [
+        {
+          "disabled": false,
+          "document": "key\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TagKey",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "value\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TagValue",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "UinTempAmountModel": {
       "document": "Temporary limit details",
       "members": [
@@ -17349,6 +19232,56 @@
         }
       ],
       "usage": "out"
+    },
+    "WaveThresholdForm": {
+      "document": "Threshold fluctuation warning information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ACTUAL actual amount, FORECAST forecast amount\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ACTUAL",
+          "member": "string",
+          "name": "WarnType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Fluctuation threshold (equal to or greater than 0)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
+          "member": "string",
+          "name": "Threshold",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Alarm type: chain period-over-period, yoy year-over-year, fix fixed value\nSupported types: day-on-day comparison chain day, day-on-day comparison chain weekday, year-on-year comparison by month yoy day, daily fixed value fix day, month-on-month comparison chain month, fixed monthly value fix month\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "chain",
+          "member": "string",
+          "name": "MetaType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Alarm dimension: day, month, weekday\nSupported types: day-on-day comparison chain day, day-on-day comparison chain weekday, year-on-year comparison by month yoy day, daily fixed value fix day, month-on-month comparison chain month, fixed monthly value fix month\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "day",
+          "member": "string",
+          "name": "PeriodType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     }
   },
   "version": "1.0"

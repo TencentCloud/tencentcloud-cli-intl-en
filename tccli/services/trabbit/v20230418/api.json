@@ -215,7 +215,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID",
+          "document": "<p>Instance Id</p>",
           "example": "amqp-slrlpeddnr",
           "member": "string",
           "name": "InstanceId",
@@ -224,7 +224,7 @@
         },
         {
           "disabled": false,
-          "document": "Vhost parameter.",
+          "document": "<p>Vhost parameter</p>",
           "example": "testVhost",
           "member": "string",
           "name": "VirtualHost",
@@ -233,7 +233,7 @@
         },
         {
           "disabled": false,
-          "document": "Source exchange.",
+          "document": "<p>Source exchange</p>",
           "example": "source-exchange",
           "member": "string",
           "name": "Source",
@@ -242,7 +242,7 @@
         },
         {
           "disabled": false,
-          "document": "Target type. valid values: queue or exchange.",
+          "document": "<p>Target type, value queue or exchange</p>",
           "example": "queue",
           "member": "string",
           "name": "DestinationType",
@@ -251,7 +251,7 @@
         },
         {
           "disabled": false,
-          "document": "Target queue or exchange.",
+          "document": "<p>Target queue or switch</p>",
           "example": "des-queue",
           "member": "string",
           "name": "Destination",
@@ -260,7 +260,7 @@
         },
         {
           "disabled": false,
-          "document": "Binding key.",
+          "document": "<p>Bind key</p>",
           "example": "some-routing-key",
           "member": "string",
           "name": "RoutingKey",
@@ -269,7 +269,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>When creating a Binding for Header type Exchange, parameters can be passed in. No need to input for other types of Exchange.</p>",
           "example": "无",
           "member": "RabbitMQServerlessKeyValuePair",
           "name": "Arguments",
@@ -284,7 +284,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Queue name.",
+          "document": "<p>Queue name</p>",
           "example": "amqp-slrlpeddnr",
           "member": "string",
           "name": "InstanceId",
@@ -294,7 +294,7 @@
         },
         {
           "disabled": false,
-          "document": "vhost parameter.",
+          "document": "<p>vhost parameter</p>",
           "example": "testVhost",
           "member": "string",
           "name": "VirtualHost",
@@ -304,7 +304,7 @@
         },
         {
           "disabled": false,
-          "document": "binding Id.",
+          "document": "<p>Routing relationship Id</p>",
           "example": "1000012",
           "member": "int64",
           "name": "BindingId",
@@ -402,6 +402,15 @@
           "example": "alternative.exchange1",
           "member": "string",
           "name": "AlternateExchange",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "exchange type behind delay type, supports \"fanout\", \"direct\", \"topic\", \"headers\".",
+          "example": "direct",
+          "member": "string",
+          "name": "DelayedExchangeType",
           "required": false,
           "type": "string"
         }
@@ -1154,7 +1163,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID",
+          "document": "<p>Instance Id</p>",
           "example": "amqp-slrlpeddnr",
           "member": "string",
           "name": "InstanceId",
@@ -1163,7 +1172,7 @@
         },
         {
           "disabled": false,
-          "document": "Vhost parameter.",
+          "document": "<p>Vhost parameter</p>",
           "example": "testVhost",
           "member": "string",
           "name": "VirtualHost",
@@ -1172,7 +1181,7 @@
         },
         {
           "disabled": false,
-          "document": "Pagination Offset",
+          "document": "<p>Pagination offset</p>",
           "example": "0",
           "member": "int64",
           "name": "Offset",
@@ -1181,7 +1190,7 @@
         },
         {
           "disabled": false,
-          "document": "Pagination Limit",
+          "document": "<p>Pagination limit</p>",
           "example": "20",
           "member": "int64",
           "name": "Limit",
@@ -1190,7 +1199,7 @@
         },
         {
           "disabled": false,
-          "document": "Search keywords. do fuzzy search based on source exchange name, target resource name or binding key.",
+          "document": "<p>Search keywords, do fuzzy search based on source exchange name/target resource name</p>",
           "example": "testSearchWord",
           "member": "string",
           "name": "SearchWord",
@@ -1199,7 +1208,7 @@
         },
         {
           "disabled": false,
-          "document": "Search and filter precisely according to the source Exchange.",
+          "document": "<p>Precise search and filter based on source Exchange</p>",
           "example": "srcExchange",
           "member": "string",
           "name": "SourceExchange",
@@ -1208,7 +1217,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies precise search filter based on target QueueName. cannot set simultaneously with DestinationExchange filter.",
+          "document": "<p>Precise search filter based on target QueueName and DestinationExchange cannot be set both at the same time</p>",
           "example": "testQueueName",
           "member": "string",
           "name": "QueueName",
@@ -1217,7 +1226,7 @@
         },
         {
           "disabled": false,
-          "document": "Precise search filter based on target Exchange. cannot set it simultaneously with QueueName filter.",
+          "document": "<p>Precise search filter based on target Exchange and QueueName filter cannot be set both at the same time</p>",
           "example": "destExchange",
           "member": "string",
           "name": "DestinationExchange",
@@ -1232,7 +1241,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Route relationship list",
+          "document": "<p>Route relationship list</p>",
           "example": "无",
           "member": "RabbitMQBindingListInfo",
           "name": "BindingInfoList",
@@ -1242,7 +1251,7 @@
         },
         {
           "disabled": false,
-          "document": "Quantity",
+          "document": "<p>Quantity</p>",
           "example": "10",
           "member": "int64",
           "name": "TotalCount",
@@ -1282,7 +1291,7 @@
         },
         {
           "disabled": false,
-          "document": "Sort by which field. Supported options: channel (channel count), incoming_bytes (inbound traffic size), outgoing_bytes (outbound traffic size)",
+          "document": "Sort by which field. Supported values: channel (number of channels), incoming_bytes (inbound traffic volume), outgoing_bytes (outbound traffic volume).",
           "example": "channel",
           "member": "string",
           "name": "SortElement",
@@ -1291,7 +1300,7 @@
         },
         {
           "disabled": false,
-          "document": "Sort order: ASC, DESC",
+          "document": "Sorting method: ASC, DESC",
           "example": "ASC",
           "member": "string",
           "name": "SortType",
@@ -1300,7 +1309,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Pagination parameters, started from which data entry",
           "example": "10",
           "member": "int64",
           "name": "Offset",
@@ -1309,7 +1318,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Page size.",
           "example": "20",
           "member": "int64",
           "name": "Limit",
@@ -1318,7 +1327,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Connection name fuzzy search",
           "example": "156.23.76.13",
           "member": "string",
           "name": "Name",
@@ -1414,6 +1423,15 @@
           "example": "testSearchWord",
           "member": "string",
           "name": "SearchWord",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "channelId",
+          "example": "156.141.4.7",
+          "member": "string",
+          "name": "Channel",
           "required": false,
           "type": "string"
         }
@@ -2265,7 +2283,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID",
+          "document": "<p>Instance Id</p>",
           "example": "amqp-slrlpeddnr",
           "member": "string",
           "name": "InstanceId",
@@ -2274,7 +2292,7 @@
         },
         {
           "disabled": false,
-          "document": "Vhost parameter.",
+          "document": "<p>Vhost parameter</p>",
           "example": "testVhost",
           "member": "string",
           "name": "VirtualHost",
@@ -2283,7 +2301,7 @@
         },
         {
           "disabled": false,
-          "document": "Pagination offset",
+          "document": "<p>Pagination offset.</p>",
           "example": "0",
           "member": "int64",
           "name": "Offset",
@@ -2292,7 +2310,7 @@
         },
         {
           "disabled": false,
-          "document": "Pagination limit",
+          "document": "<p>Pagination limit.</p>",
           "example": "20",
           "member": "int64",
           "name": "Limit",
@@ -2301,7 +2319,7 @@
         },
         {
           "disabled": false,
-          "document": "Search keywords",
+          "document": "<p>Search keyword</p>",
           "example": "testSearchWord",
           "member": "string",
           "name": "SearchWord",
@@ -2310,7 +2328,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the queue type filter criteria. if it is left blank or set to \"all\", it indicates classic and quorum queues; if set to \"classic\", it filters classic queues; if set to \"quorum\", it filters quorum queues.",
+          "document": "<p>Queue type filter criteria. Leave blank or use \"all\" for classic and quorum queues; \"classic\" for classic queues; \"quorum\" for quorum queues.</p>",
           "example": "all",
           "member": "string",
           "name": "QueueType",
@@ -2319,7 +2337,7 @@
         },
         {
           "disabled": false,
-          "document": "Sorting field.\nConsumerNumber: specifies the number of online consumers.\nMessageHeapCount specifies the number of message backlogs.\nMessageRateInOut specifies the total production and consumption rate.\nMessageRateIn specifies the production rate.\nMessageRateOut specifies the consumption rate.",
+          "document": "<p>Sorting field:<br>messages_ready - message backlog;<br>publish - production rate;<br>deliver - consumption rate;<br>consumers - number of online consumers;</p>",
           "example": "messages_ready",
           "member": "string",
           "name": "SortElement",
@@ -2328,7 +2346,7 @@
         },
         {
           "disabled": false,
-          "document": "Sort order. valid values: ascend or descend.",
+          "document": "<p>Sort order, asc or desc</p>",
           "example": "asc",
           "member": "string",
           "name": "SortOrder",
@@ -2343,7 +2361,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Queue list information.",
+          "document": "<p>Queue list info</p>",
           "example": "无",
           "member": "RabbitMQQueueListInfo",
           "name": "QueueInfoList",
@@ -2353,7 +2371,7 @@
         },
         {
           "disabled": false,
-          "document": "Quantity",
+          "document": "<p>Quantity</p>",
           "example": "1",
           "member": "int64",
           "name": "TotalCount",
@@ -2716,6 +2734,15 @@
           "name": "Remark",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "standby switch",
+          "example": "alternate-exchange",
+          "member": "string",
+          "name": "AlternateExchange",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2780,6 +2807,33 @@
           "name": "TraceFlag",
           "required": false,
           "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Traffic throttling production consumption ratio",
+          "example": "0.5",
+          "member": "float",
+          "name": "SendReceiveRatio",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to delete all tags. Default value: false.",
+          "example": "false",
+          "member": "bool",
+          "name": "DeleteAllTags",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Modified instance tag list",
+          "example": "无",
+          "member": "RabbitMQServerlessTag",
+          "name": "InstanceTags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -2914,6 +2968,33 @@
           "example": "testRemark",
           "member": "string",
           "name": "Remark",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "MessageTTL parameter in milliseconds, dedicated to classic event type\t",
+          "example": "1000",
+          "member": "int64",
+          "name": "MessageTTL",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "DeadLetterExchange parameter. It specifies that expired or rejected messages can be delivered to the specified dead letter exchange.",
+          "example": "testDeadLetterExchange",
+          "member": "string",
+          "name": "DeadLetterExchange",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "DeadLetterRoutingKey parameter. The value can only contain letters, digits, periods (.), hyphens (-), at signs (@), and underscores (_).",
+          "example": "testDeadLetterRoutingKey",
+          "member": "string",
+          "name": "DeadLetterRoutingKey",
           "required": false,
           "type": "string"
         }
@@ -3108,7 +3189,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "binding id.",
+          "document": "<p>Routing relationship id</p>",
           "example": "127469",
           "member": "int64",
           "name": "BindingId",
@@ -3118,7 +3199,7 @@
         },
         {
           "disabled": false,
-          "document": "Vhost parameter.",
+          "document": "<p>Vhost parameter</p>",
           "example": "testVhost",
           "member": "string",
           "name": "VirtualHost",
@@ -3128,7 +3209,7 @@
         },
         {
           "disabled": false,
-          "document": "Source exchange name.",
+          "document": "<p>Source exchange name</p>",
           "example": "testSource",
           "member": "string",
           "name": "Source",
@@ -3138,7 +3219,7 @@
         },
         {
           "disabled": false,
-          "document": "Target type. valid values: queue or exchange.",
+          "document": "<p>Target type, queue or exchange</p>",
           "example": "queue",
           "member": "string",
           "name": "DestinationType",
@@ -3148,7 +3229,7 @@
         },
         {
           "disabled": false,
-          "document": "Target resource name.",
+          "document": "<p>Target resource name</p>",
           "example": "testDestination",
           "member": "string",
           "name": "Destination",
@@ -3158,7 +3239,7 @@
         },
         {
           "disabled": false,
-          "document": "Binding key.",
+          "document": "<p>Bind key</p>",
           "example": "testRoutingKey",
           "member": "string",
           "name": "RoutingKey",
@@ -3168,7 +3249,7 @@
         },
         {
           "disabled": false,
-          "document": "Source exchange type.",
+          "document": "<p>Source exchange type</p>",
           "example": "testSourceExchangeType",
           "member": "string",
           "name": "SourceExchangeType",
@@ -3178,7 +3259,7 @@
         },
         {
           "disabled": false,
-          "document": "Creation time",
+          "document": "<p>Creation time.</p>",
           "example": "2023-11-20 11:15:47.612",
           "member": "string",
           "name": "CreateTime",
@@ -3188,12 +3269,22 @@
         },
         {
           "disabled": false,
-          "document": "Modification time",
+          "document": "<p>Modification time.</p>",
           "example": "2023-11-20 11:15:47.612",
           "member": "string",
           "name": "ModifyTime",
           "output_required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Bind parameter. Parameters can be passed in during binding for header type Exchange. No need to input for other types of Exchange.</p>",
+          "example": "无",
+          "member": "RabbitMQServerlessKeyValuePair",
+          "name": "Arguments",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -3204,7 +3295,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Cluster ID",
+          "document": "<p>Cluster ID.</p>",
           "example": "amqp-slrlpeddnr",
           "member": "string",
           "name": "ClusterId",
@@ -3214,7 +3305,7 @@
         },
         {
           "disabled": false,
-          "document": "Cluster name.",
+          "document": "<p>Cluster name.</p>",
           "example": "测试集群",
           "member": "string",
           "name": "ClusterName",
@@ -3224,7 +3315,7 @@
         },
         {
           "disabled": false,
-          "document": "Region information",
+          "document": "<p>Regional information</p>",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
@@ -3234,7 +3325,7 @@
         },
         {
           "disabled": false,
-          "document": "Creation time, in milliseconds",
+          "document": "<p>Creation time in milliseconds</p>",
           "example": "1728907454000",
           "member": "uint64",
           "name": "CreateTime",
@@ -3244,7 +3335,7 @@
         },
         {
           "disabled": false,
-          "document": "Cluster description remark information",
+          "document": "<p>Cluster description information</p>",
           "example": "dev开发环境",
           "member": "string",
           "name": "Remark",
@@ -3254,7 +3345,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC and network information.",
+          "document": "<p>VPC and network info</p>",
           "example": "无",
           "member": "VpcEndpointInfo",
           "name": "Vpcs",
@@ -3264,7 +3355,7 @@
         },
         {
           "disabled": false,
-          "document": "Availability zone information",
+          "document": "<p>AZ information</p>",
           "example": "[190001]",
           "member": "int64",
           "name": "ZoneIds",
@@ -3274,7 +3365,7 @@
         },
         {
           "disabled": false,
-          "document": "number of virtual hosts.",
+          "document": "<p>Number of virtual hosts</p>",
           "example": "10",
           "member": "int64",
           "name": "VirtualHostNumber",
@@ -3284,7 +3375,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of queues",
+          "document": "<p>Number of queues</p>",
           "example": "10",
           "member": "int64",
           "name": "QueueNumber",
@@ -3294,7 +3385,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of messages produced per second (measurement unit: messages/second).",
+          "document": "<p>Number of messages produced per second Unit: messages/second</p>",
           "example": "2.3",
           "member": "float",
           "name": "MessagePublishRate",
@@ -3304,7 +3395,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of accumulated messages. valid values: pieces.",
+          "document": "<p>Number of accumulated messages Unit: unit</p>",
           "example": "5",
           "member": "int64",
           "name": "MessageStackNumber",
@@ -3314,7 +3405,7 @@
         },
         {
           "disabled": false,
-          "document": "Expiration time",
+          "document": "<p>Expiration time</p>",
           "example": "1666257531143",
           "member": "int64",
           "name": "ExpireTime",
@@ -3324,7 +3415,7 @@
         },
         {
           "disabled": false,
-          "document": "number of channels.",
+          "document": "<p>Number of channels</p>",
           "example": "10",
           "member": "int64",
           "name": "ChannelNumber",
@@ -3334,7 +3425,7 @@
         },
         {
           "disabled": false,
-          "document": "number of connections.",
+          "document": "<p>Number of connections</p>",
           "example": "10",
           "member": "int64",
           "name": "ConnectionNumber",
@@ -3344,7 +3435,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of consumers.",
+          "document": "<p>Number of consumers</p>",
           "example": "10",
           "member": "int64",
           "name": "ConsumerNumber",
@@ -3354,7 +3445,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of Exchanges.",
+          "document": "<p>Number of Exchanges</p>",
           "example": "10",
           "member": "int64",
           "name": "ExchangeNumber",
@@ -3364,7 +3455,7 @@
         },
         {
           "disabled": false,
-          "document": "Cluster exception information.",
+          "document": "<p>Cluster exception information</p>",
           "example": "异常信息",
           "member": "string",
           "name": "ExceptionInformation",
@@ -3374,7 +3465,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance status. 0 indicates creating in progress. 1 indicates normal. 2 indicates isolated. 3 indicates terminated. 4 indicates exception. 5 indicates delivery failed.",
+          "document": "<p>Instance status. 0 indicates creating in progress, 1 indicates normal, 2 indicates isolated, 3 indicates terminated, 4 - abnormal, 5 - delivery failed</p>",
           "example": "0",
           "member": "int64",
           "name": "ClusterStatus",
@@ -3384,7 +3475,7 @@
         },
         {
           "disabled": false,
-          "document": "Auto-renewal flag. 0 indicates the default status (If the default status is not configured, manual renewal is enabled), 1 indicates auto-renewal, and 2 indicates explicitly no auto-renewal (configured by the user).",
+          "document": "<p>Automatic renewal flag. 0: default status (initial status (that is manual renewal) if no status is set by the user); 1: automatic renewal; 2: no automatic renewal (set by the user).</p>",
           "example": "1",
           "member": "int64",
           "name": "AutoRenewFlag",
@@ -3394,7 +3485,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether the mirrored queue strategy is enabled. 1 indicates enabled, and 0 indicates not enabled.",
+          "document": "<p>Whether to enable the mirror queue policy. 1 means enabled, 0 means disabled.</p>",
           "example": "1",
           "member": "int64",
           "name": "MirrorQueuePolicyFlag",
@@ -3404,7 +3495,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of messages consumed per second (measurement unit: messages/second).",
+          "document": "<p>Number of messages consumed per second Unit: messages/second</p>",
           "example": "1.0",
           "member": "float",
           "name": "MessageConsumeRate",
@@ -3414,7 +3505,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the cluster version information.",
+          "document": "<p>Cluster version information</p>",
           "example": "3.8.30",
           "member": "string",
           "name": "ClusterVersion",
@@ -3424,7 +3515,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing mode. valid values: 0 (postpaid), 1 (prepaid).",
+          "document": "<p>Billing mode. 0 - Postpaid, 1 - Prepaid</p>",
           "example": "0",
           "member": "uint64",
           "name": "PayMode",
@@ -3434,7 +3525,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the cluster type.",
+          "document": "<p>Cluster type.</p>",
           "example": "1",
           "member": "uint64",
           "name": "InstanceType",
@@ -3444,10 +3535,80 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the message retention time, in hours.",
+          "document": "<p>Message retention period Unit: hour</p>",
           "example": "72",
           "member": "uint64",
           "name": "MessageRetainTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Traffic ratio of sending messages</p>",
+          "example": "0.5",
+          "member": "float",
+          "name": "SendReceiveRatio",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Message trace retention time in hours</p>",
+          "example": "72",
+          "member": "uint64",
+          "name": "TraceTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Instance tag list</p>",
+          "example": "无",
+          "member": "RabbitMQServerlessTag",
+          "name": "Tags",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Elastic scaling enabled tps</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "ElasticTpsFlag",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Elastic tps multiple, default is 1x</p>",
+          "example": "1",
+          "member": "float",
+          "name": "ElasticTpsRatio",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Maximum retry count</p>",
+          "example": "16",
+          "member": "uint64",
+          "name": "MaxRedeliverCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Consumption timeout period Unit: min</p>",
+          "example": "30",
+          "member": "uint64",
+          "name": "ConsumerTimeout",
           "output_required": false,
           "type": "int",
           "value_allowed_null": false
@@ -3547,6 +3708,16 @@
           "output_required": false,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Feature list corresponding to the instance, yes means supported, no means unsupported",
+          "example": "{\"billing\":true,\"monitor\":true}",
+          "member": "string",
+          "name": "Features",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -3623,6 +3794,56 @@
           "output_required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Inbound traffic volume in bytes",
+          "example": "50.4",
+          "member": "float",
+          "name": "IncomingBytes",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Outbound traffic volume in bytes",
+          "example": "189.0",
+          "member": "float",
+          "name": "OutgoingBytes",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Heartbeat interval. Default 60s.",
+          "example": "60",
+          "member": "uint64",
+          "name": "Heartbeat",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum number of channels per link. Default 1024.",
+          "example": "1024",
+          "member": "uint64",
+          "name": "MaxChannel",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Idle time point",
+          "example": "2025-05-01 12:10:40",
+          "member": "string",
+          "name": "IdleSince",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -3647,6 +3868,76 @@
           "member": "string",
           "name": "ConsumerTag",
           "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Consume target queue",
+          "example": "test-queue",
+          "member": "string",
+          "name": "QueueName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether required for the consumer to manually ack",
+          "example": "true",
+          "member": "bool",
+          "name": "AckRequired",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Consumer qos value",
+          "example": "500",
+          "member": "uint64",
+          "name": "PrefetchCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Consumer status",
+          "example": "up",
+          "member": "string",
+          "name": "Active",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Time of the last message submission",
+          "example": "2025-09-12 13:10:09",
+          "member": "string",
+          "name": "LastDeliveredTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of unconfirmed messages of the consumer",
+          "example": "100",
+          "member": "int64",
+          "name": "UnAckMsgCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "channel belonging to the consumer",
+          "example": "11.151.193.8:4316 -> 21.63.172.169:5672 (1)",
+          "member": "string",
+          "name": "ChannelName",
+          "output_required": false,
           "type": "string",
           "value_allowed_null": false
         }
@@ -4119,6 +4410,16 @@
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Public network CLB instance ID",
+          "example": "lb-abcd",
+          "member": "string",
+          "name": "PublicClbId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -4401,16 +4702,36 @@
           "output_required": false,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Serverless Extension Fields",
+          "example": "{\"tps\":\"2000\"}",
+          "member": "string",
+          "name": "ServerlessExt",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance tag list.",
+          "example": "无",
+          "member": "RabbitMQServerlessTag",
+          "name": "Tags",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
     },
     "RabbitMQServerlessKeyValuePair": {
-      "document": "",
+      "document": "Key-value pair",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Key.",
           "example": "key",
           "member": "string",
           "name": "Key",
@@ -4421,11 +4742,39 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Value.",
           "example": "someValue",
           "member": "string",
           "name": "Value",
           "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "RabbitMQServerlessTag": {
+      "document": "Tag.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Tag key.",
+          "example": "无",
+          "member": "string",
+          "name": "TagKey",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tag value.",
+          "example": "无",
+          "member": "string",
+          "name": "TagValue",
+          "output_required": false,
           "required": false,
           "type": "string",
           "value_allowed_null": false
