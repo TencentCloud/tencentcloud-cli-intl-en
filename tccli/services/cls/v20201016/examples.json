@@ -324,6 +324,14 @@
         "title": "Creating a Metric Pre-Aggregation Task Through a YAML File"
       }
     ],
+    "CreateRemoteWriteTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRemoteWriteTask\n<Common request parameters>\n\n{\n    \"TopicId\": \"xxx-xxx-xxx-xxx\",\n    \"Name\": \"test_name\",\n    \"Target\": \"prometheus\",\n    \"RemoteWriteURL\": \"\",\n    \"AuthType\": 0,\n    \"NetType\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"abc-dec-ff-ee\",\n        \"RequestId\": \"xxx-x-xx-xx\"\n    }\n}",
+        "title": "Creating a RemoteWrite Task"
+      }
+    ],
     "CreateScheduledSql": [
       {
         "document": "This example shows you how to create a scheduled SQL task.",
@@ -602,6 +610,14 @@
         "title": "Deleting a Pre-Aggregation Task Through a YAML File"
       }
     ],
+    "DeleteRemoteWriteTask": [
+      {
+        "document": "DeleteRemoteTask",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteRemoteWriteTask\n<Common request parameters>\n\n{\n    \"TaskId\": \"xxxx-xxxx-xxxx-xxxx\",\n    \"TopicId\": \"xxxx-xxxx-xxxx-xxxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxx-xxx-xxx-xxx\"\n    }\n}",
+        "title": "DeleteRemoteTask"
+      }
+    ],
     "DeleteScheduledSql": [
       {
         "document": " ",
@@ -685,8 +701,8 @@
     "DescribeCloudProductLogTasks": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\n      Host: xxx.tencentcloudapi.com\n      Content-Type: application/json\n      X-TC-Action: DescribeCloudProductLogTasks\n      <Common request parameters>\n      \n      {\n  \"Offset\": 0,\n  \"Limit\": 0,\n  \"Filters\": [\n    {\n      \"Key\": \"asummerName\",\n      \"Values\": [\n        \"cls\"\n      ]\n    }\n  ]\n}",
-        "output": "{\n    \"Response\": {\n        \"Tasks\": [\n            {\n                \"ClsRegion\": \"ap-guangzhou\",\n                \"InstanceId\": \"ins-r8hr2upy\",\n                \"LogsetId\": \"92cdd6d4-da98-4a6e-9494-175b44338680\",\n                \"TopicId\": \"92cdd6d4-da98-4a6e-9494-175b44338680\",\n                \"Extend\": \"\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"92cdd6d4-da98-4a6e-9494-175b44338680\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCloudProductLogTasks\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Key\": \"instanceId\",\n            \"Values\": [\n                \"cfs-48afd4bff\"\n            ]\n        }\n    ],\n    \"WithTags\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"Tasks\": [\n            {\n                \"ClsRegion\": \"ap-guangzhou-open\",\n                \"Extend\": \"rename\",\n                \"InstanceId\": \"cfs-48afd4bff\",\n                \"LogType\": \"han*****test\",\n                \"LogsetId\": \"29ccb4c0-ab2f-47ab-9dcd-31413b057812\",\n                \"LogsetTags\": [\n                    {\n                        \"Key\": \"name\",\n                        \"Value\": \"service B\"\n                    }\n                ],\n                \"Status\": 1,\n                \"TopicId\": \"c344124a-68c8-4d34-ac46-04676625065e\",\n                \"TopicTags\": [\n                    {\n                        \"Key\": \"name\",\n                        \"Value\": \"service B\"\n                    }\n                ]\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"5218cfeb-1810-477c-8ead-f3eadc6f71f9\"\n    }\n}",
         "title": "DescribeCloudProductLogTasks"
       }
     ],
@@ -941,8 +957,8 @@
     "DescribeMetricCorrectDimension": [
       {
         "document": "Metric Calibration Dimension Information",
-        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCorrectDimension\n<Common request parameters>\n\n{}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"7d9036c4-358a-46d3-bcef-f50e083efef7\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMetricCorrectDimension\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"44a7e88d-36d8-4544-b435-985e368c024f\"\n    }\n}",
         "title": "Metric Calibration Dimension Information"
       }
     ],
@@ -1016,6 +1032,14 @@
         "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRecordingRuleYamlTask\n<Common request parameters>\n\n{\n    \"TopicId\": \"539ba7bc-25e2-4696-bde5-0a5567164xxx\",\n    \"Offset\": 1,\n    \"Limit\": 1\n}",
         "output": "{\n    \"Response\": {\n        \"RecordingRuleYamlTaskInfos\": [],\n        \"RequestId\": \"76f39b5e-8476-4247-9331-9d415530d447\",\n        \"TotalCount\": 0\n    }\n}",
         "title": "Obtaining the Pre-Aggregation Task List Through a YAML File"
+      }
+    ],
+    "DescribeRemoteWriteTasks": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRemoteWriteTasks\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Infos\": [\n            {\n                \"AuthInfo\": null,\n                \"AuthType\": 0,\n                \"CreateTime\": \"2023-09-07 11:16:50\",\n                \"Enable\": 1,\n                \"LogsetId\": \"e1111113-e816-4ae8-a8f7-edde0e2fc963\",\n                \"Name\": \"111111111\",\n                \"NetType\": 1,\n                \"RemoteWriteURL\": \"http://10.2.10.27:8080/api/v1/write\",\n                \"Status\": 3,\n                \"Target\": \"Prometheus\",\n                \"TaskId\": \"a2d1111-afae-467e-8816-0bc405283bec\",\n                \"TopicId\": \"376011111-76e0-48c7-bfff-018afc9bca48\",\n                \"UpdateTime\": \"2024-10-30 21:01:35\",\n                \"VirtualGatewayType\": 0,\n                \"VpcId\": \"vpc-11111\"\n            }\n        ],\n        \"RequestId\": \"e02371b7-5ef0-4ae7-8a33-f703b9d5f564\",\n        \"TotalCount\": 6\n    }\n}",
+        "title": "This API is used to obtain the list of RemoteWrite shipping tasks."
       }
     ],
     "DescribeScheduledSqlInfo": [
@@ -1372,10 +1396,18 @@
         "title": "Modifying a Metric Pre-Aggregation Task Through a YAML File"
       }
     ],
+    "ModifyRemoteWriteTask": [
+      {
+        "document": "Modifying the Details of a RemoteWrite Task",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyRemoteWriteTask\n<Common request parameters>\n\n{\n    \"TaskId\": \"xxx-xxx-xxx-xxx\",\n    \"TopicId\": \"xxx-xxx-xxx-xxx\",\n    \"Enable\": 0,\n    \"Name\": \"test\",\n    \"NetType\": 1,\n    \"VpcId\": \"cls-xxxx\",\n    \"Target\": \"Prometheus\",\n    \"RemoteWriteURL\": \"http://127.0.0.1:80/api/v1/write\",\n    \"AuthType\": 1,\n    \"AuthInfo\": {\n        \"Username\": \"test\",\n        \"Password\": \"passwrod\",\n        \"Token\": \"\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxx-xxx-xxx-xxx\"\n    }\n}",
+        "title": "Modifying the Details of a RemoteWrite Task"
+      }
+    ],
     "ModifyScheduledSql": [
       {
         "document": "This example shows you how to modify a scheduled SQL task.",
-        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyScheduledSql\n<Common request parameters>\n\n{\n    \"EnableFlag\": 1,\n    \"TaskId\": \"6ef60bec-0242-43af-bb20-270359fxxxxx\",\n    \"DstResource\": {\n        \"TopicId\": \"6ef60bec-0242-43af-bb20-270359fxxxxx\",\n        \"Region\": \"ap-guangzhou\",\n        \"BizType\": 1,\n        \"MetricName\": \"pv\"\n    },\n    \"ProcessTimeWindow\": \"@m-15m,@m\",\n    \"ProcessPeriod\": 5,\n    \"ScheduledSqlContent\": \"* | select count(*) as pv\",\n    \"SrcTopicId\": \"6ef60bec-0242-43af-bb20-270359fbxxxx\",\n    \"ProcessDelay\": 0,\n    \"SrcTopicRegion\": \"ap-guangzhou\",\n    \"Name\": \"task\"\n}",
+        "input": "POST / HTTP/1.1\nHost: cls.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyScheduledSql\n<Common request parameters>\n\n{\n    \"EnableFlag\": 1,\n    \"TaskId\": \"6ef60bec-0242-43af-bb20-270359fxxxxx\",\n    \"DstResource\": {\n        \"TopicId\": \"6ef60bec-0242-43af-bb20-270359fxxxxx\",\n        \"Region\": \"ap-guangzhou\",\n        \"BizType\": 1,\n        \"MetricName\": \"pv\"\n    },\n    \"ProcessTimeWindow\": \"@m-15m,@m\",\n    \"ProcessPeriod\": 5,\n    \"ProcessPeriodUnit\": 1,\n    \"ScheduledSqlContent\": \"* | select count(*) as pv\",\n    \"SrcTopicId\": \"6ef60bec-0242-43af-bb20-270359fbxxxx\",\n    \"ProcessDelay\": 0,\n    \"SrcTopicRegion\": \"ap-guangzhou\",\n    \"Name\": \"task\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54ax\"\n    }\n}",
         "title": "Modifying a Scheduled SQL Task"
       }

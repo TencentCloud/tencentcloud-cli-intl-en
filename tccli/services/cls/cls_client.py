@@ -2411,7 +2411,7 @@ def doDeleteSplunkDeliver(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeConsoles(args, parsed_globals):
+def doDescribeClusterBaseMetricConfigs(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -2445,11 +2445,11 @@ def doDescribeConsoles(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.ClsClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeConsolesRequest()
+    model = models.DescribeClusterBaseMetricConfigsRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeConsoles(model)
+        rsp = client.DescribeClusterBaseMetricConfigs(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -3950,6 +3950,63 @@ def doDescribeKafkaRecharges(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDeleteRemoteWriteTask(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.ClsClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeleteRemoteWriteTaskRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DeleteRemoteWriteTask(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeAlarms(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -4976,7 +5033,7 @@ def doCloseKafkaConsumer(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeClusterBaseMetricConfigs(args, parsed_globals):
+def doCreateRemoteWriteTask(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -5010,11 +5067,68 @@ def doDescribeClusterBaseMetricConfigs(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.ClsClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeClusterBaseMetricConfigsRequest()
+    model = models.CreateRemoteWriteTaskRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeClusterBaseMetricConfigs(model)
+        rsp = client.CreateRemoteWriteTask(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeConsoles(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.ClsClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeConsolesRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeConsoles(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -5186,6 +5300,63 @@ def doDescribeRebuildIndexTasks(args, parsed_globals):
     start_time = time.time()
     while True:
         rsp = client.DescribeRebuildIndexTasks(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeRemoteWriteTasks(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.ClsClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeRemoteWriteTasksRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeRemoteWriteTasks(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -10455,6 +10626,63 @@ def doDescribeWebCallbacks(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doModifyRemoteWriteTask(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.ClsClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyRemoteWriteTaskRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.ModifyRemoteWriteTask(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 CLIENT_MAP = {
     "v20201016": cls_client_v20201016,
 
@@ -10508,7 +10736,7 @@ ACTION_MAP = {
     "ModifyAlarmNotice": doModifyAlarmNotice,
     "CreateExport": doCreateExport,
     "DeleteSplunkDeliver": doDeleteSplunkDeliver,
-    "DescribeConsoles": doDescribeConsoles,
+    "DescribeClusterBaseMetricConfigs": doDescribeClusterBaseMetricConfigs,
     "DescribeConsumerOffsets": doDescribeConsumerOffsets,
     "DescribeNetworkApplicationDetail": doDescribeNetworkApplicationDetail,
     "CreateCosRecharge": doCreateCosRecharge,
@@ -10535,6 +10763,7 @@ ACTION_MAP = {
     "DescribeKafkaConsumerGroupList": doDescribeKafkaConsumerGroupList,
     "DeleteNetworkApplication": doDeleteNetworkApplication,
     "DescribeKafkaRecharges": doDescribeKafkaRecharges,
+    "DeleteRemoteWriteTask": doDeleteRemoteWriteTask,
     "DescribeAlarms": doDescribeAlarms,
     "DescribeCosRecharges": doDescribeCosRecharges,
     "ApplyConfigToMachineGroup": doApplyConfigToMachineGroup,
@@ -10553,10 +10782,12 @@ ACTION_MAP = {
     "DeleteWebCallback": doDeleteWebCallback,
     "ModifyCosRecharge": doModifyCosRecharge,
     "CloseKafkaConsumer": doCloseKafkaConsumer,
-    "DescribeClusterBaseMetricConfigs": doDescribeClusterBaseMetricConfigs,
+    "CreateRemoteWriteTask": doCreateRemoteWriteTask,
+    "DescribeConsoles": doDescribeConsoles,
     "SearchDashboardSubscribe": doSearchDashboardSubscribe,
     "CreateHostMetricConfig": doCreateHostMetricConfig,
     "DescribeRebuildIndexTasks": doDescribeRebuildIndexTasks,
+    "DescribeRemoteWriteTasks": doDescribeRemoteWriteTasks,
     "DescribeAlarmShields": doDescribeAlarmShields,
     "ModifyScheduledSql": doModifyScheduledSql,
     "DeleteRecordingRuleTask": doDeleteRecordingRuleTask,
@@ -10649,6 +10880,7 @@ ACTION_MAP = {
     "DescribeKafkaConsumer": doDescribeKafkaConsumer,
     "CreateAlarm": doCreateAlarm,
     "DescribeWebCallbacks": doDescribeWebCallbacks,
+    "ModifyRemoteWriteTask": doModifyRemoteWriteTask,
 
 }
 

@@ -252,6 +252,13 @@
       "output": "CreateRecordingRuleYamlTaskResponse",
       "status": "online"
     },
+    "CreateRemoteWriteTask": {
+      "document": "This API is used to create a remote write delivery task.",
+      "input": "CreateRemoteWriteTaskRequest",
+      "name": "This API is used to create a RemoteWrite task.",
+      "output": "CreateRemoteWriteTaskResponse",
+      "status": "online"
+    },
     "CreateScheduledSql": {
       "document": "This API is used to create a scheduled SQL analysis task.",
       "input": "CreateScheduledSqlRequest",
@@ -488,6 +495,13 @@
       "input": "DeleteRecordingRuleYamlTaskRequest",
       "name": "This API is used to delete a pre-aggregation task through the YAML file.",
       "output": "DeleteRecordingRuleYamlTaskResponse",
+      "status": "online"
+    },
+    "DeleteRemoteWriteTask": {
+      "document": "This API is used to delete a RemoteWrite task.",
+      "input": "DeleteRemoteWriteTaskRequest",
+      "name": "This API is used to delete a RemoteWrite task.",
+      "output": "DeleteRemoteWriteTaskResponse",
       "status": "online"
     },
     "DeleteScheduledSql": {
@@ -854,6 +868,13 @@
       "output": "DescribeRecordingRuleYamlTaskResponse",
       "status": "online"
     },
+    "DescribeRemoteWriteTasks": {
+      "document": "This API is used to obtain the list of RemoteWrite delivery tasks.",
+      "input": "DescribeRemoteWriteTasksRequest",
+      "name": "This API is used to obtain the list of RemoteWrite shipping tasks.",
+      "output": "DescribeRemoteWriteTasksResponse",
+      "status": "online"
+    },
     "DescribeScheduledSqlInfo": {
       "document": "This API is used to access the scheduled SQL analysis task list.",
       "input": "DescribeScheduledSqlInfoRequest",
@@ -1146,6 +1167,13 @@
       "input": "ModifyRecordingRuleYamlTaskRequest",
       "name": "This API is used to modify a metric pre-aggregation task through the YAML file.",
       "output": "ModifyRecordingRuleYamlTaskResponse",
+      "status": "online"
+    },
+    "ModifyRemoteWriteTask": {
+      "document": "This API is used to modify a RemoteWrite task.",
+      "input": "ModifyRemoteWriteTaskRequest",
+      "name": "This API is used to modify a RemoteWrite task.",
+      "output": "ModifyRemoteWriteTaskResponse",
       "status": "online"
     },
     "ModifyScheduledSql": {
@@ -3222,7 +3250,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Service region",
+          "document": "<p>Log service region</p>",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "ClsRegion",
@@ -3232,7 +3260,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance ID.",
+          "document": "<p>Instance ID.</p>",
           "example": "ins-r8hr2upy",
           "member": "string",
           "name": "InstanceId",
@@ -3242,7 +3270,7 @@
         },
         {
           "disabled": false,
-          "document": "Logset ID",
+          "document": "<p>Logset ID</p>",
           "example": "92cdd6d4-da98-4a6e-9494-175b44338680",
           "member": "string",
           "name": "LogsetId",
@@ -3252,7 +3280,7 @@
         },
         {
           "disabled": false,
-          "document": "Log topic ID",
+          "document": "<p>Log topic ID.</p>",
           "example": "92cdd6d4-da98-4a6e-9494-175b44338680",
           "member": "string",
           "name": "TopicId",
@@ -3262,7 +3290,7 @@
         },
         {
           "disabled": false,
-          "document": "Log configuration extended information, generally used for storage of additional log delivery configuration",
+          "document": "<p>Extended information for logging configuration, generally used to store additional log delivery configuration</p>",
           "example": "{\"ServiceName\":[\"HDFS\",\"KNOX\",\"YARN\",\"ZOOKEEPER\"],\"Policy\":0}",
           "member": "string",
           "name": "Extend",
@@ -3272,7 +3300,7 @@
         },
         {
           "disabled": false,
-          "document": "Log type, support enumerate: CDS-AUDIT, CDS-RISK, CDB-AUDIT, TDSQL-C-AUDIT, MongoDB-AUDIT, MongoDB-SlowLog, MongoDB-ErrorLog, TDMYSQL-SLOW, DCDB-AUDIT, DCDB-SLOW, DCDB-ERROR, MariaDB-AUDIT, MariaDB-SLOW, MariaDB-ERROR, PostgreSQL-SLOW, PostgreSQL-ERROR, PostgreSQL-AUDIT, BH-FILELOG, BH-COMMANDLOG, APIS-ACCESS",
+          "document": "<p>Log type, supports enumeration: CDS-AUDIT, CDS-RISK, CDB-AUDIT, TDSQL-C-AUDIT, MongoDB-AUDIT, MongoDB-SlowLog, MongoDB-ErrorLog, TDMYSQL-SLOW, DCDB-AUDIT, DCDB-SLOW, DCDB-ERROR, MariaDB-AUDIT, MariaDB-SLOW, MariaDB-ERROR, PostgreSQL-SLOW, PostgreSQL-ERROR, PostgreSQL-AUDIT, BH-FILELOG, BH-COMMANDLOG, APIS-ACCESS</p>",
           "example": "CDB-AUDIT",
           "member": "string",
           "name": "LogType",
@@ -3282,12 +3310,32 @@
         },
         {
           "disabled": false,
-          "document": "Task status: 0 Creating, 1 Creation completed, 2 Deleting",
+          "document": "<p>Task status: 0 creating, 1 creation completed, 2 deleting</p>",
           "example": "1",
           "member": "int64",
           "name": "Status",
           "output_required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Tag information of the topic associated with the delivery task</p>",
+          "example": "无",
+          "member": "Tag",
+          "name": "TopicTags",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Tag information of the logset associated with the delivery task</p>",
+          "example": "无",
+          "member": "Tag",
+          "name": "LogsetTags",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -4727,7 +4775,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Cloud product identifier, support enumerate: CDS, CWP, CDB, TDSQL-C, MongoDB, TDStore, DCDB, MariaDB, PostgreSQL, BH, APIS</p>",
+          "document": "<p>Cloud product identifier. Support the following products</p><ul><li>APIS</li><li>BH</li><li>CDB</li><li>CDS</li><li>CFS</li><li>CLB</li><li>CSIP</li><li>CWP</li><li>DCDB</li><li>DNSPod</li><li>EMR</li><li>HTTPDNS</li><li>KHL</li><li>llmsgw</li><li>MariaDB</li><li>MDP</li><li>MongoDB</li><li>PostgreSQL</li><li>TCSS</li><li>TDSQL-C</li><li>TDStore</li><li>TencentDB-Redis</li><li>TEO</li><li>TokenHub</li><li>TSE</li></ul>",
           "example": "CDB",
           "member": "string",
           "name": "AssumerName",
@@ -4736,7 +4784,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Log type, supports enumerate: CDS-AUDIT, CDS-RISK, CDB-AUDIT, TDSQL-C-AUDIT, MongoDB-AUDIT, MongoDB-SlowLog, MongoDB-ErrorLog, TDMYSQL-SLOW, DCDB-AUDIT, DCDB-SLOW, DCDB-ERROR, MariaDB-AUDIT, MariaDB-SLOW, MariaDB-ERROR, PostgreSQL-SLOW, PostgreSQL-ERROR, PostgreSQL-AUDIT, BH-FILELOG, BH-COMMANDLOG, APIS-ACCESS</p>",
+          "document": "<p>Log types supported by each cloud product are as follows:</p><table><thead><tr><th>assumer_name</th><th>Supported log_type</th></tr></thead><tbody><tr><td>APIS</td><td>APIS-ACCESS</td></tr><tr><td>BH</td><td>BH-COMMANDLOG, BH-FILELOG</td></tr><tr><td>CDB</td><td>CDB-AUDIT</td></tr><tr><td>CDS</td><td>CDS-AUDIT, CDS-RISK</td></tr><tr><td>CFS</td><td>CFS-AUDIT</td></tr><tr><td>CLB</td><td>CMR-SPEND</td></tr><tr><td>CSIP</td><td>CSIP</td></tr><tr><td>CWP</td><td>CWP</td></tr><tr><td>DCDB</td><td>DCDB-AUDIT, DCDB-ERROR, DCDB-SLOW</td></tr><tr><td>DNSPod</td><td>DNSPod-RESOLVELOG</td></tr><tr><td>EMR</td><td>EMR-OPERATION</td></tr><tr><td>HTTPDNS</td><td>HTTPDNS-RESOLVELOG</td></tr><tr><td>MariaDB</td><td>MariaDB-AUDIT, MariaDB-ERROR, MariaDB-SLOW</td></tr><tr><td>MDP</td><td>MDP-SSAI</td></tr><tr><td>MongoDB</td><td>MongoDB-AUDIT, MongoDB-ErrorLog, MongoDB-OperationLog, MongoDB-SlowLog</td></tr><tr><td>PostgreSQL</td><td>PostgreSQL-AUDIT, PostgreSQL-ERROR, PostgreSQL-SLOW</td></tr><tr><td>TCSS</td><td>TCSS</td></tr><tr><td>TDSQL-C</td><td>TDSQL-C-AUDIT</td></tr><tr><td>TDStore</td><td>TDMYSQL-SLOW</td></tr><tr><td>TencentDB-Redis</td><td>Redis-AUDIT, Redis-ERROR, Redis-SLOW</td></tr><tr><td>TEO</td><td>TEO-INEFERENCE</td></tr><tr><td>llmsgw</td><td>llmsgw-mcp-security-alarm</td></tr></tbody></table>",
           "example": "CDB-AUDIT",
           "member": "string",
           "name": "LogType",
@@ -4745,7 +4793,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Product region. The input parameter format for regions varies by log type (LogType). Refer to the following example:</p><ul><li>All CDS log types: ap-guangzhou</li><li>CDB-AUDIT: gz</li><li>TDSQL-C-AUDIT: gz</li><li>MongoDB-AUDIT: gz</li><li>MongoDB-SlowLog: ap-guangzhou</li><li>MongoDB-ErrorLog: ap-guangzhou</li><li>TDMYSQL-SLOW: gz</li><li>All DCDB log types: gz</li><li>All MariaDB log types: gz</li><li>All PostgreSQL log types: gz</li><li>All BH log types: overseas-polaris (Hong Kong (China) and other)/fsi-polaris (financial district)/general-polaris (general zone)/intl-sg-prod (international site)</li><li>All APIS log types: gz</li></ul>",
+          "document": "<p>Product region. Different LogTypes have different input parameter formats:</p><p><strong>Format A: Short region code</strong> (gz / sh / bj …)</p><ul><li>All APIS log types: for example, <code>gz</code></li><li>CDB-AUDIT</li><li>TDSQL-C-AUDIT</li><li>TDMYSQL-SLOW</li><li>All DCDB log types</li><li>All MariaDB log types</li><li>All PostgreSQL log types</li><li>MongoDB-AUDIT (<strong>Note that this is different from SlowLog/ErrorLog/OperationLog</strong>)</li><li>All TencentDB-Redis log types</li><li>EMR-OPERATION</li></ul><p><strong>Format B: Long region code</strong> (ap-guangzhou / ap-shanghai / ap-singapore …)</p><ul><li>All CDS log types: for example, <code>ap-guangzhou</code></li><li>MongoDB-SlowLog / MongoDB-ErrorLog / MongoDB-OperationLog</li><li>DNSPod-RESOLVELOG</li><li>HTTPDNS-RESOLVELOG</li><li>MDP-SSAI</li><li>CFS-AUDIT</li><li>TEO-INEFERENCE</li><li>TokenHub-ActivityLog / TokenHub-AuditLog</li><li>llmsgw-mcp-security-alarm</li><li>CSIP / TCSS / TSE / CWP / KHL and others</li></ul><p><strong>Format C: Dedicated BH Polaris name</strong></p><ul><li>All BH log types: <code>overseas-polaris</code> (Hong Kong (China) and other overseas) / <code>fsi-polaris</code> (financial district) / <code>general-polaris</code> (general zone) / <code>intl-sg-prod</code> (international website)</li></ul>",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "CloudProductRegion",
@@ -5886,6 +5934,33 @@
           "name": "HasServicesLog",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Auto-create dlc field</p><p>Default value: false</p><p>When there are additional fields in your log, the system will automatically ship them to DLC.</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "AutoCreateField",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Store delivery failure logs in DLC tables</p>",
+          "example": "无",
+          "member": "DlcFailHandle",
+          "name": "DlcFailHandle",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Log pre-filtering - Perform pre-filtering on original data for data ingestion into Splunk</p>",
+          "example": "log_keep(op_str_eq(v(\"type\"), \"kibana_stats\"))",
+          "member": "string",
+          "name": "DSLFilter",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -7203,12 +7278,121 @@
       ],
       "type": "object"
     },
+    "CreateRemoteWriteTaskRequest": {
+      "document": "CreateRemoteWriteTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Log topic ID",
+          "example": "3b2e99eb-9665-4d67-ad52-e24dbd",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Task Name",
+          "example": "RemoteWrite任务",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Target service name.",
+          "example": "Prometheus",
+          "member": "string",
+          "name": "Target",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Destination address",
+          "example": "http://prometheus/api/v1/write",
+          "member": "string",
+          "name": "RemoteWriteURL",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Authentication type\n- 0: No authentication\n1: basic_auth \n2: token",
+          "example": "0",
+          "member": "uint64",
+          "name": "AuthType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Network type. Valid values: 1 private network; 2: public network.",
+          "example": "无",
+          "member": "uint64",
+          "name": "NetType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "VPC id",
+          "example": "vpc-xxxx",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Authentication information",
+          "example": "无",
+          "member": "RemoteWriteAuthInfo",
+          "name": "AuthInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Backend service type\n0 CVM\n1025 CLB",
+          "example": "无",
+          "member": "int64",
+          "name": "VirtualGatewayType",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRemoteWriteTaskResponse": {
+      "document": "CreateRemoteWriteTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "RemoteWrite task ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "3b2e99eb-9665-4d67-ad52-e24dbd",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateScheduledSqlRequest": {
       "document": "CreateScheduledSql request structure.",
       "members": [
         {
           "disabled": false,
-          "document": "Source log topic ID. Obtain the log topic Id through [Get Log Topic List](https://www.tencentcloud.com/document/product/614/56454?from_cn_redirect=1).",
+          "document": "<p>Source log topic ID - Obtain the log topic ID by <a href=\"https://www.tencentcloud.com/document/product/614/56454?from_cn_redirect=1\">searching the log topic list</a>.</p>",
           "example": "6ef60bec-0242-43af-bb20-270359fbxxx",
           "member": "string",
           "name": "SrcTopicId",
@@ -7217,7 +7401,7 @@
         },
         {
           "disabled": false,
-          "document": "Task name, 0-255 characters",
+          "document": "<p>Task name, 0-255 characters</p>",
           "example": "scheduler_sql_delete_task",
           "member": "string",
           "name": "Name",
@@ -7226,7 +7410,7 @@
         },
         {
           "disabled": false,
-          "document": "Task start status. 1: Enabled, 2: Disabled",
+          "document": "<p>Task start status. 1: Enabled, 2: Disabled</p>",
           "example": "1",
           "member": "int64",
           "name": "EnableFlag",
@@ -7235,7 +7419,7 @@
         },
         {
           "disabled": false,
-          "document": "Target log topic for scheduled SQL analysis",
+          "document": "<p>Target log topic for scheduled SQL analysis</p>",
           "example": "无",
           "member": "ScheduledSqlResouceInfo",
           "name": "DstResource",
@@ -7244,7 +7428,7 @@
         },
         {
           "disabled": false,
-          "document": "Query statement",
+          "document": "<p>Query statement</p>",
           "example": "* | select count(*)",
           "member": "string",
           "name": "ScheduledSqlContent",
@@ -7253,7 +7437,7 @@
         },
         {
           "disabled": false,
-          "document": "Schedule start time, Unix timestamp, in milliseconds",
+          "document": "<p>Schedule start time, Unix timestamp, in milliseconds</p>",
           "example": "1690515360000",
           "member": "uint64",
           "name": "ProcessStartTime",
@@ -7262,7 +7446,7 @@
         },
         {
           "disabled": false,
-          "document": "Schedule type: 1: Continuous running; 2: Specified time range",
+          "document": "<p>Schedule Type: 1 Continuous Running 2 Specified Time Range</p>",
           "example": "1",
           "member": "int64",
           "name": "ProcessType",
@@ -7271,7 +7455,7 @@
         },
         {
           "disabled": false,
-          "document": "Scheduling Interval (Minutes), 1-1440 minutes",
+          "document": "<p>Scheduling Interval (Minutes), 1-1440 minutes</p>",
           "example": "2",
           "member": "int64",
           "name": "ProcessPeriod",
@@ -7280,7 +7464,7 @@
         },
         {
           "disabled": false,
-          "document": "Time window for a single query. If your target topic is a metric topic, it is recommended that the size of this parameter not exceed 30 minutes, otherwise, metric conversion may fail.",
+          "document": "<p>Time window for a single query. If your target topic is a metric topic, it is recommended that the size of this parameter not exceed 30 minutes, otherwise, metric conversion may fail.</p>",
           "example": "@m-15m,@m",
           "member": "string",
           "name": "ProcessTimeWindow",
@@ -7289,7 +7473,7 @@
         },
         {
           "disabled": false,
-          "document": "Execution Delay (Seconds), 0-120 seconds, default 60 seconds",
+          "document": "<p>Execution delay (seconds), 0-120 seconds, default 60 seconds</p>",
           "example": "60",
           "member": "int64",
           "name": "ProcessDelay",
@@ -7298,7 +7482,7 @@
         },
         {
           "disabled": false,
-          "document": "Regional information of the source topicId. For supported regions, see the region list (https://www.tencentcloud.com/document/api/614/56474?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8) document.",
+          "document": "<p>Regional information of the source topicId. For supported regions, see the <a href=\"https://www.tencentcloud.com/document/api/614/56474?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8\">region list</a> document.</p>",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "SrcTopicRegion",
@@ -7307,7 +7491,16 @@
         },
         {
           "disabled": false,
-          "document": "Schedule end time. Required field when ProcessType=2, Unix timestamp, in milliseconds",
+          "document": "<p>Scheduling Time Unit</p><p>Value ranges from 1 to 2</p><p>Default value: 1</p><p>The default value is 1 (minute), and the additional value is 2 (second).</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "ProcessPeriodUnit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Schedule End Time, required when ProcessType=2, Unix timestamp, in milliseconds</p>",
           "example": "1690515440000",
           "member": "uint64",
           "name": "ProcessEndTime",
@@ -7316,10 +7509,28 @@
         },
         {
           "disabled": false,
-          "document": "Query syntax rules. Default value is 0. 0: Lucene syntax, 1: CQL syntax",
+          "document": "<p>Query syntax rules. Default value: 0. 0: Lucene syntax, 1: CQL syntax</p>",
           "example": "0",
           "member": "uint64",
           "name": "SyntaxRule",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable delivery service log. 1: Disabled, 2: Enabled.</p>",
+          "example": "2",
+          "member": "uint64",
+          "name": "HasServicesLog",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Full-text search tag. 1: Off, 2: On. Default: 1</p>",
+          "example": "2",
+          "member": "uint64",
+          "name": "FullQuery",
           "required": false,
           "type": "int"
         }
@@ -7331,7 +7542,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task ID",
+          "document": "<p>Task ID.</p>",
           "example": "6ef60bec-0242-43af-bb20-270359fxxxx",
           "member": "string",
           "name": "TaskId",
@@ -9764,6 +9975,42 @@
       ],
       "type": "object"
     },
+    "DeleteRemoteWriteTaskRequest": {
+      "document": "DeleteRemoteWriteTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "RemoteWrite import task ID",
+          "example": "无",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log topic ID",
+          "example": "无",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteRemoteWriteTaskResponse": {
+      "document": "DeleteRemoteWriteTask response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteScheduledSqlRequest": {
       "document": "DeleteScheduledSql request structure.",
       "members": [
@@ -10358,6 +10605,15 @@
           "name": "Filters",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to carry tag information of the topic and logset</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "WithTags",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -10383,6 +10639,16 @@
           "name": "TotalCount",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Additional information. For example, error in querying topic or logset tag information.</p>",
+          "example": "some tags may not be available due to permission or error",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -13164,6 +13430,71 @@
       ],
       "type": "object"
     },
+    "DescribeRemoteWriteTasksRequest": {
+      "document": "DescribeRemoteWriteTasks request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "- taskId\nFilter by [task ID].\nType: String\nRequired: No\n\n- topicId\nFilter by [Log topic].\nType: String\nRequired: No\n\n- taskStatus\nFilter by [task running status]. Supports `1`: running, `2`: stop, `3`: exception.\nType: String\nRequired: No\n\n- name\nFilter by [task name] using fuzzy filtering. \nType: String\nRequired: No\n\n\nEach request can have up to 10 Filters. The maximum of Filter.Values is 10.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Page offset. Default value: 0",
+          "example": "10",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Maximum number of entries per page. Default value: 20. Maximum value: 100.\t",
+          "example": "30",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRemoteWriteTasksResponse": {
+      "document": "DescribeRemoteWriteTasks response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "RemoteWrite information list.",
+          "example": "无",
+          "member": "RemoteWriteInfo",
+          "name": "Infos",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of RemoteWrite tasks.",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeScheduledSqlInfoRequest": {
       "document": "DescribeScheduledSqlInfo request structure.",
       "members": [
@@ -13907,7 +14238,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task ID.",
+          "document": "<p>Task id.</p>",
           "example": "111024e3-01b0-4aeb-91f5-ee9f46a4a13c",
           "member": "string",
           "name": "TaskId",
@@ -13917,7 +14248,7 @@
         },
         {
           "disabled": false,
-          "document": "Account id.",
+          "document": "<p>Account id.</p>",
           "example": "198644793323",
           "member": "uint64",
           "name": "Uin",
@@ -13927,7 +14258,7 @@
         },
         {
           "disabled": false,
-          "document": "Log topic ID.",
+          "document": "<p>Log topic id.</p>",
           "example": "715094e3-01b0-4aeb-91f5-ee9f46a4a13c",
           "member": "string",
           "name": "TopicId",
@@ -13937,7 +14268,7 @@
         },
         {
           "disabled": false,
-          "document": "Task name.",
+          "document": "<p>Task name.</p>",
           "example": "template_1",
           "member": "string",
           "name": "Name",
@@ -13947,7 +14278,7 @@
         },
         {
           "disabled": false,
-          "document": "Delivery Type. Valid values: 0: real-time delivery; 1: historic delivery.",
+          "document": "<p>Delivery Type, 0: real-time delivery, 1: history delivery</p>",
           "example": "0",
           "member": "uint64",
           "name": "DeliverType",
@@ -13957,7 +14288,7 @@
         },
         {
           "disabled": false,
-          "document": "Delivery file size in MB",
+          "document": "<p>Delivery file size, in MB.</p>",
           "example": "5",
           "member": "uint64",
           "name": "MaxSize",
@@ -13967,7 +14298,7 @@
         },
         {
           "disabled": false,
-          "document": "Delivery interval in seconds",
+          "document": "<p>Delivery interval in seconds</p>",
           "example": "300",
           "member": "uint64",
           "name": "Interval",
@@ -13977,7 +14308,7 @@
         },
         {
           "disabled": false,
-          "document": "Start time of the delivery time range",
+          "document": "<p>Start time of the delivery time range</p>",
           "example": "1741005340",
           "member": "uint64",
           "name": "StartTime",
@@ -13987,7 +14318,7 @@
         },
         {
           "disabled": false,
-          "document": "End time of the delivery time range",
+          "document": "<p>End time of the delivery time range</p>",
           "example": "1741006340",
           "member": "uint64",
           "name": "EndTime",
@@ -13997,7 +14328,7 @@
         },
         {
           "disabled": false,
-          "document": "dlc configuration message",
+          "document": "<p>dlc configuration message</p>",
           "example": "无",
           "member": "DlcInfo",
           "name": "DlcInfo",
@@ -14007,7 +14338,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable delivery service log. 1 for disabled, 2 for enabled",
+          "document": "<p>Whether to enable delivery service log. 1 Disabled, 2 Enabled</p>",
           "example": "2",
           "member": "uint64",
           "name": "HasServicesLog",
@@ -14017,7 +14348,7 @@
         },
         {
           "disabled": false,
-          "document": "Task status.",
+          "document": "<p>Task status.</p>",
           "example": "1",
           "member": "uint64",
           "name": "Status",
@@ -14027,7 +14358,7 @@
         },
         {
           "disabled": false,
-          "document": "Task progress. Historic delivery tasks take effect.",
+          "document": "<p>Task progress. Historic delivery tasks take effect.</p>",
           "example": "100",
           "member": "uint64",
           "name": "Progress",
@@ -14037,7 +14368,7 @@
         },
         {
           "disabled": false,
-          "document": "Topic type of logs. 0: standard topic; 1: metric topic.",
+          "document": "<p>Log topic type. 0: Standard topic, 1: Metric topic</p>",
           "example": "0",
           "member": "uint64",
           "name": "BizType",
@@ -14047,7 +14378,7 @@
         },
         {
           "disabled": false,
-          "document": "Task creation time.",
+          "document": "<p>Task creation time.</p>",
           "example": "1741005340",
           "member": "uint64",
           "name": "CreateTime",
@@ -14057,16 +14388,102 @@
         },
         {
           "disabled": false,
-          "document": "Task modification time.",
+          "document": "<p>Task last modified.</p>",
           "example": "1741006340",
           "member": "uint64",
           "name": "UpdateTime",
           "output_required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Auto-create dlc field</p><p>Default value: false</p><p>When there are additional fields in your log, the system will automatically ship them to DLC.</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "AutoCreateField",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Store logs with delivery failure in a DLC table</p>",
+          "example": "无",
+          "member": "DlcFailHandle",
+          "name": "DlcFailHandle",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Log pre-filtering - Perform pre-filtering process on the original data for data ingestion into Splunk.</p>",
+          "example": "log_keep(op_str_eq(v(\"type\"), \"kibana_stats\"))",
+          "member": "string",
+          "name": "DSLFilter",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
+    },
+    "DlcFailHandle": {
+      "document": "dlc delivery failure handling message",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Whether to store in DLC</p><p>Default value: false</p><p>Controls whether to enable storing delivery failure logs in DLC tables</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "StoreToDlc",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>DLC table information</p>",
+          "example": "无",
+          "member": "DlcFailTableInfo",
+          "name": "DlcFailTableInfo",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "DlcFailTableInfo": {
+      "document": "dlc failure log storage table information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>DLC table name</p>",
+          "example": "********_fail_table",
+          "member": "string",
+          "name": "TableName",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Field name in the table</p><p>Field type must be String type</p>",
+          "example": "fail",
+          "member": "string",
+          "name": "FieldName",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "DlcFiledInfo": {
       "document": "Data Lake Computing Service (Data Lake Compute, DLC) data field configuration message",
@@ -16064,6 +16481,56 @@
       ],
       "usage": "out"
     },
+    "JsonExpandInfo": {
+      "document": "**JsonExpandInfo data structure description**:\n```\nJSON nest unfold configuration\n```\n\n**Field description**:\n\n| Field | Description |\n|------|------|\nSwitch | Whether JSON nested unfold is enabled\nFields | Field list of JSON to unfold, 1-3\nDropOriginal | Whether to drop the raw field after unfolding, default true\n| ConflictPolicy | Field conflict policy. keep_outer: Keep the outer layer (default). keep_inner: Keep the inner-layer. |\n\n**LogRechargeRuleInfo add field**:\n\n| Field | Description |\n|------|------|\nJsonExpand | JSON nest unfold configuration. This parameter is valid only when RechargeType is json_log.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable the JSON nested unfold functionality. Once enabled, it will flatten and process the specified JSON field.</p><p>Default value: None (Required parameter)</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "Switch",
+          "output_required": true,
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of JSON field names to be unfolded, supporting 1 to 3 fields. Field names cannot be empty strings and cannot be repeated.</p><p>Input parameter limits: 1. Number of fields: 1 to 3. 2. Length of each field name not exceeding 128 characters. 3. Field names cannot be empty strings. 4. Field names cannot be repeated.</p><p>Default value: None (required parameter)</p><p>Value for reference: Value: message; Description: Example field name</p><p>Example: [\"message\", \"data\", \"content\"]</p>",
+          "example": "[\"message\"]",
+          "member": "string",
+          "name": "Fields",
+          "output_required": true,
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to discard the original nested field after unfolding. true: discard the original field and keep only the flattened field after unfolding; false: keep the original field and add the flattened field after unfolding.</p><p>Enumeration value:</p><ul><li>true / false: discard the original field / keep the original field</li></ul><p>Default value: true</p><p>Optional. Default is true if not provided.</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "DropOriginal",
+          "output_required": true,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Processing policy when the unfolded field conflicts with an existing field</p><p>Enumeration value:</p><ul><li>keep_outer / keep_inner: Keep the outer (existing) field / Keep the inner (newly unfolded) field</li></ul><p>Default value: keep_outer</p><p>Optional. Defaults to keep_outer if not passed.</p>",
+          "example": "keep_inner",
+          "member": "string",
+          "name": "ConflictPolicy",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "JsonInfo": {
       "document": "JSON type description",
       "members": [
@@ -16754,7 +17221,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Import type. Valid values: `json_log` (JSON logs), `minimalist_log` (single-line full text), and fullregex_log (single-line full regex)",
+          "document": "<p>Import type, support json_log: JSON logs, minimalist_log: single-line full-text log, fullregex_log: single-line full regular expression</p>",
           "example": "json_log",
           "member": "string",
           "name": "RechargeType",
@@ -16765,7 +17232,7 @@
         },
         {
           "disabled": false,
-          "document": "Encoding format. Valid values: 0 (default, UTF-8) and 1 GBK).",
+          "document": "<p>Parse encoding format. 0: UTF-8 (default value), 1: GBK</p>",
           "example": "0",
           "member": "uint64",
           "name": "EncodingFormat",
@@ -16776,7 +17243,7 @@
         },
         {
           "disabled": false,
-          "document": "Use default time status. true: when enabled, current system time or Kafka message timestamp will be used as log timestamp. false: when disabled, time field in the log will be used as log timestamp. Default: true.",
+          "document": "<p>Use default time status. true: once enabled, current system time or Kafka message timestamp will be used as log timestamp; false: when turned off, time field in the log will be used as log timestamp. Default: true</p>",
           "example": "true",
           "member": "bool",
           "name": "DefaultTimeSwitch",
@@ -16787,7 +17254,7 @@
         },
         {
           "disabled": false,
-          "document": "Full log matching rule. It is valid only when RechargeType is fullregex_log.",
+          "document": "<p>The whole log matching rule is valid only when RechargeType is fullregex_log.</p>",
           "example": "(\\\\w+).*",
           "member": "string",
           "name": "LogRegex",
@@ -16798,7 +17265,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to upload the logs that failed to be parsed. Valid values: `true` and `false`.",
+          "document": "<p>Whether to upload logs that failed to be parsed. true for upload, false for not uploading.</p>",
           "example": "true",
           "member": "bool",
           "name": "UnMatchLogSwitch",
@@ -16809,7 +17276,7 @@
         },
         {
           "disabled": false,
-          "document": "key name of parsing-failed logs",
+          "document": "<p>Key name of parsing-failed logs</p>",
           "example": "LogParseFailure",
           "member": "string",
           "name": "UnMatchLogKey",
@@ -16820,7 +17287,7 @@
         },
         {
           "disabled": false,
-          "document": "Time source for parsing failure logs. 0: current time of the system; 1: Kafka message timestamp.",
+          "document": "<p>Parsing failure log time source. 0: Current system time. 1: Kafka message timestamp.</p>",
           "example": "1",
           "member": "uint64",
           "name": "UnMatchLogTimeSrc",
@@ -16831,7 +17298,7 @@
         },
         {
           "disabled": false,
-          "document": "Default time source. 0: Current system time; 1: Kafka message timestamp.",
+          "document": "<p>Default time source. 0: Current system time, 1: Kafka message timestamp</p>",
           "example": "0",
           "member": "uint64",
           "name": "DefaultTimeSrc",
@@ -16842,7 +17309,7 @@
         },
         {
           "disabled": false,
-          "document": "Time field. Field name representing time in logs.\n\n-When DefaultTimeSwitch is false and RechargeType data extraction mode is `json_log` JSON file log or `fullregex_log` single-line full regex file log, TimeKey cannot be empty.",
+          "document": "<p>Time field. Field name that represents time in logs.</p><ul><li>When DefaultTimeSwitch is false and the RechargeType data extraction mode is <code>json_log</code> JSON-file log or <code>fullregex_log</code> single-line full regex-file log, the TimeKey cannot be empty.</li></ul>",
           "example": "__TIMESTAMP__",
           "member": "string",
           "name": "TimeKey",
@@ -16853,7 +17320,7 @@
         },
         {
           "disabled": false,
-          "document": "Time extraction regular expression.\n-When DefaultTimeSwitch is false and the data extraction mode of RechargeType is `minimalist_log` (single-line full text - file log), TimeRegex cannot be empty.\n-Only need to input the regular expression representing the time field in logs. If multiple fields are matched to, the first will be used.\nExample: The original log is \"message with time 2022-08-08 14:20:20\". You can set the retrieval time regex to \\d\\d\\d\\d-\\d\\d-\\d\\d \\d\\d:\\d\\d:\\d\\d.\n",
+          "document": "<p>Time extraction regular expression.</p><ul><li>When DefaultTimeSwitch is false and the RechargeType data extraction mode is <code>minimalist_log</code> single-line full text - file log, the TimeRegex cannot be empty.</li><li>Only need to input the regular expression for the field representing time in logs. If multiple fields are matched to, the first one will be used.<br> For example: If the original log is: message with time 2022-08-08 14:20:20, you can set the retrieval time regular expression to \\d\\d\\d\\d-\\d\\d-\\d\\d \\d\\d:\\d\\d:\\d\\d</li></ul>",
           "example": "(\\d{4})-(\\d{2})-(\\d{2}) (\\d{2}):(\\d{2}):(\\d{2})",
           "member": "string",
           "name": "TimeRegex",
@@ -16864,7 +17331,7 @@
         },
         {
           "disabled": false,
-          "document": "Time field format.\n-When DefaultTimeSwitch is false, TimeFormat cannot be empty.",
+          "document": "<p>Time field format.</p><ul><li>When DefaultTimeSwitch is false, TimeFormat cannot be empty.</li></ul>",
           "example": "%Y-%m-%d %H:%M:%S",
           "member": "string",
           "name": "TimeFormat",
@@ -16875,7 +17342,7 @@
         },
         {
           "disabled": false,
-          "document": "Time field time zone.\n-When DefaultTimeSwitch is false, TimeZone cannot be empty.\n-Time zone format rule\nPrefix: Use GMT or UTC as the time zone benchmark.\nOffset:\n-`-` indicates a western time zone (later than the benchmark time).\n-`+` means the east time zone (earlier than the benchmark time).\n-Format ±HH:MM (hr:min)\n\n-Currently supported:\n```\n\"GMT-12:00\" \n\"GMT-11:00\" \n\"GMT-10:00\" \n\"GMT-09:30\" \n\"GMT-09:00\" \n\"GMT-08:00\" \n\"GMT-07:00\" \n\"GMT-06:00\" \n\"GMT-05:00\" \n\"GMT-04:00\" \n\"GMT-03:30\" \n\"GMT-03:00\" \n\"GMT-02:00\" \n\"GMT-01:00\" \n\"GMT+00:00\"\n\"GMT+01:00\"\n\"GMT+02:00\"\n\"GMT+03:30\"\n\"GMT+04:00\"\n\"GMT+04:30\"\n\"GMT+05:00\"\n\"GMT+05:30\"\n\"GMT+05:45\"\n\"GMT+06:00\"\n\"GMT+06:30\"\n\"GMT+07:00\"\n\"GMT+08:00\"\n\"GMT+09:00\"\n\"GMT+09:30\"\n\"GMT+10:00\"\n\"GMT+10:30\"\n\"GMT+11:00\"\n\"GMT+11:30\"\n\"GMT+12:00\"\n\"GMT+12:45\"\n\"GMT+13:00\"\n\"GMT+14:00\"\n\"UTC-11:00\"\n\"UTC-10:00\"\n\"UTC-09:00\"\n\"UTC-08:00\"\n\"UTC-12:00\"\n\"UTC-07:00\"\n\"UTC-06:00\"\n\"UTC-05:00\"\n\"UTC-04:30\"\n\"UTC-04:00\"\n\"UTC-03:30\"\n\"UTC-03:00\"\n\"UTC-02:00\"\n\"UTC-01:00\"\n\"UTC+00:00\"\n\"UTC+01:00\"\n\"UTC+02:00\"\n\"UTC+03:00\"\n\"UTC+03:30\"\n\"UTC+04:00\"\n\"UTC+04:30\"\n\"UTC+05:00\"\n\"UTC+05:45\"\n\"UTC+06:00\"\n\"UTC+06:30\"\n\"UTC+07:00\"\n\"UTC+08:00\"\n\"UTC+09:00\"\n\"UTC+09:30\"\n\"UTC+10:00\"\n\"UTC+11:00\"\n\"UTC+12:00\"\n\"UTC+13:00\"\n```",
+          "document": "<p>Time field time zone.</p><ul><li><p>When DefaultTimeSwitch is false, TimeZone cannot be empty.</p></li><li><p>Time zone format rule<br>Prefix: Use GMT or UTC as the time zone benchmark<br>Offset:</p><ul><li><code>-</code> indicates a western time zone (later than the benchmark time)</li><li><code>+</code> indicates an eastern time zone (earlier than the benchmark time)</li><li>Format is ±HH:MM (hour:minute)</li></ul></li><li><p>Currently supported:<br><pre><code>&quot;GMT-12:00&quot; &quot;GMT-11:00&quot; &quot;GMT-10:00&quot; &quot;GMT-09:30&quot; &quot;GMT-09:00&quot; &quot;GMT-08:00&quot; &quot;GMT-07:00&quot; &quot;GMT-06:00&quot; &quot;GMT-05:00&quot; &quot;GMT-04:00&quot; &quot;GMT-03:30&quot; &quot;GMT-03:00&quot; &quot;GMT-02:00&quot; &quot;GMT-01:00&quot; &quot;GMT+00:00&quot;&quot;GMT+01:00&quot;&quot;GMT+02:00&quot;&quot;GMT+03:30&quot;&quot;GMT+04:00&quot;&quot;GMT+04:30&quot;&quot;GMT+05:00&quot;&quot;GMT+05:30&quot;&quot;GMT+05:45&quot;&quot;GMT+06:00&quot;&quot;GMT+06:30&quot;&quot;GMT+07:00&quot;&quot;GMT+08:00&quot;&quot;GMT+09:00&quot;&quot;GMT+09:30&quot;&quot;GMT+10:00&quot;&quot;GMT+10:30&quot;&quot;GMT+11:00&quot;&quot;GMT+11:30&quot;&quot;GMT+12:00&quot;&quot;GMT+12:45&quot;&quot;GMT+13:00&quot;&quot;GMT+14:00&quot;&quot;UTC-11:00&quot;&quot;UTC-10:00&quot;&quot;UTC-09:00&quot;&quot;UTC-08:00&quot;&quot;UTC-12:00&quot;&quot;UTC-07:00&quot;&quot;UTC-06:00&quot;&quot;UTC-05:00&quot;&quot;UTC-04:30&quot;&quot;UTC-04:00&quot;&quot;UTC-03:30&quot;&quot;UTC-03:00&quot;&quot;UTC-02:00&quot;&quot;UTC-01:00&quot;&quot;UTC+00:00&quot;&quot;UTC+01:00&quot;&quot;UTC+02:00&quot;&quot;UTC+03:00&quot;&quot;UTC+03:30&quot;&quot;UTC+04:00&quot;&quot;UTC+04:30&quot;&quot;UTC+05:00&quot;&quot;UTC+05:45&quot;&quot;UTC+06:00&quot;&quot;UTC+06:30&quot;&quot;UTC+07:00&quot;&quot;UTC+08:00&quot;&quot;UTC+09:00&quot;&quot;UTC+09:30&quot;&quot;UTC+10:00&quot;&quot;UTC+11:00&quot;&quot;UTC+12:00&quot;&quot;UTC+13:00&quot;</code></pre></p></li></ul>",
           "example": "UTC+08:00",
           "member": "string",
           "name": "TimeZone",
@@ -16886,7 +17353,7 @@
         },
         {
           "disabled": false,
-          "document": "Metadata information. Kafka import supports kafka_topic, kafka_partition, kafka_offset, and kafka_timestamp.",
+          "document": "<p>Metadata information, Kafka import supports kafka_topic, kafka_partition, kafka_offset, kafka_timestamp</p>",
           "example": "[\"kafka_topic\",\"kafka_partition\",\"kafka_offset\",\"kafka_timestamp\"]",
           "member": "string",
           "name": "Metadata",
@@ -16897,7 +17364,7 @@
         },
         {
           "disabled": false,
-          "document": "log Key list. It is required when RechargeType is full_regex_log or delimiter_log.",
+          "document": "<p>log Key list, required when RechargeType is full_regex_log or delimiter_log.</p>",
           "example": "[\"name\",\"address\"]",
           "member": "string",
           "name": "Keys",
@@ -16908,7 +17375,7 @@
         },
         {
           "disabled": false,
-          "document": "JSON parsing mode. The first-level data parsing is enabled.",
+          "document": "<p>json parsing mode, enable first level data parsing</p>",
           "example": "false",
           "member": "bool",
           "name": "ParseArray",
@@ -16919,13 +17386,24 @@
         },
         {
           "disabled": false,
-          "document": "Delimiter parsing mode - Separator\nThis field is required when the parsing format is delimiter extraction.",
+          "document": "<p>Delimiter parsing mode - Separator<br>This field is required when the parsing format is delimiter extraction.</p>",
           "example": ",",
           "member": "string",
           "name": "Delimiter",
           "output_required": false,
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>JSON nest unfold configuration. This parameter is valid only when RechargeType is json_log. If it is not passed, it is disabled.</p>",
+          "example": "无",
+          "member": "JsonExpandInfo",
+          "name": "JsonExpand",
+          "output_required": true,
+          "required": false,
+          "type": "object",
           "value_allowed_null": false
         }
       ],
@@ -18374,7 +18852,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID.",
+          "document": "<p>Instance ID.</p>",
           "example": "ins-r8hr2upy",
           "member": "string",
           "name": "InstanceId",
@@ -18383,7 +18861,7 @@
         },
         {
           "disabled": false,
-          "document": "Cloud product identifier, support enumerate: CDS, CWP, CDB, TDSQL-C, MongoDB, TDStore, DCDB, MariaDB, PostgreSQL, BH, APIS.",
+          "document": "<p>Cloud product identifier, supports enumerate: CDS, CWP, CDB, TDSQL-C, MongoDB, TDStore, DCDB, MariaDB, PostgreSQL, BH, APIS</p>",
           "example": "CDB",
           "member": "string",
           "name": "AssumerName",
@@ -18392,7 +18870,7 @@
         },
         {
           "disabled": false,
-          "document": "Log type, support enumerate: CDS-AUDIT, CDS-RISK, CDB-AUDIT, TDSQL-C-AUDIT, MongoDB-AUDIT, MongoDB-SlowLog, MongoDB-ErrorLog, TDMYSQL-SLOW, DCDB-AUDIT, DCDB-SLOW, DCDB-ERROR, MariaDB-AUDIT, MariaDB-SLOW, MariaDB-ERROR, PostgreSQL-SLOW, PostgreSQL-ERROR, PostgreSQL-AUDIT, BH-FILELOG, BH-COMMANDLOG, APIS-ACCESS",
+          "document": "<p>Log type. Supports enumeration: CDS-AUDIT, CDS-RISK, CDB-AUDIT, TDSQL-C-AUDIT, MongoDB-AUDIT, MongoDB-SlowLog, MongoDB  ErrorLog, TDMYSQL-SLOW, DCDB-AUDIT, DCDB-SLOW, DCDB-ERROR, MariaDB-AUDIT, MariaDB-SLOW, MariaDB-ERROR, PostgreSQL-SLOW, PostgreSQL-ERROR, PostgreSQL-AUDIT, BH-FILELOG, BH-COMMANDLOG, APIS-ACCESS</p>",
           "example": "CDB-AUDIT",
           "member": "string",
           "name": "LogType",
@@ -18401,7 +18879,7 @@
         },
         {
           "disabled": false,
-          "document": "Cloud product region. Data discrepancies exist in the format of region input parameters for different log types (LogType). Refer to the following example:\n-All log types of CDS: ap-guangzhou\n- CDB-AUDIT: gz\n- TDSQL-C-AUDIT: gz\n- MongoDB-AUDIT: gz\n- MongoDB-SlowLog:ap-guangzhou\n- MongoDB-ErrorLog:ap-guangzhou\n- TDMYSQL-SLOW:gz\n-All log types of DCDB: gz\n-All log types of MariaDB: gz\n-PostgreSQL all log types: gz\n-BH all log types: overseas-polaris (Hong Kong (China) and other)/fsi-polaris (financial district)/general-polaris (general zone)/intl-sg-prod (international site)\n-All log types of APIS: gz",
+          "document": "<p>Product region. Different log types have different region input formats. Refer to the following example:</p><ul><li>All CDS log types: ap-guangzhou</li><li>CDB-AUDIT: gz</li><li>TDSQL-C-AUDIT: gz</li><li>MongoDB-AUDIT: gz</li><li>MongoDB-SlowLog: ap-guangzhou</li><li>MongoDB-ErrorLog: ap-guangzhou</li><li>TDMYSQL-SLOW: gz</li><li>All DCDB log types: gz</li><li>All MariaDB log types: gz</li><li>All PostgreSQL log types: gz</li><li>All BH log types: overseas-polaris(Hong Kong (China) and other)/fsi-polaris(financial district)/general-polaris(general zone)/intl-sg-prod(international site)</li><li>All APIS log types: gz</li></ul>",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "CloudProductRegion",
@@ -18410,12 +18888,21 @@
         },
         {
           "disabled": false,
-          "document": "Logging configuration extended information, normally used to store additional log shipping configuration",
+          "document": "<p>Logging configuration extended information, generally used to store additional log delivery configuration</p>",
           "example": "{\"ServiceName\":[\"HDFS\",\"KNOX\",\"YARN\",\"ZOOKEEPER\"],\"Policy\":0}",
           "member": "string",
           "name": "Extend",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Description list of tags. By specifying this parameter, you can simultaneously bind tags to the appropriate logset and topic. Supports a maximum of 10 tag key-value pairs. The same resource can only be bound to the same tag key.</p>",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -18423,6 +18910,16 @@
     "ModifyCloudProductLogCollectionResponse": {
       "document": "ModifyCloudProductLogCollection response structure.",
       "members": [
+        {
+          "disabled": false,
+          "document": "<p>Additional information. For example, failed to modify the topic or logset tag.</p>",
+          "example": "tag modification partially failed: logset tags; topic tags",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -19317,6 +19814,33 @@
           "name": "Status",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Auto-create dlc field</p><p>Default value: false</p><p>When there are additional fields in your log, the system will automatically ship them to DLC.</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "AutoCreateField",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Store logs with delivery failure in a DLC table</p>",
+          "example": "无",
+          "member": "DlcFailHandle",
+          "name": "DlcFailHandle",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Log pre-filtering - Perform pre-filtering process on the original data for data ingestion into Splunk.</p>",
+          "example": "log_keep(op_str_eq(v(\"type\"), \"kibana_stats\"))",
+          "member": "string",
+          "name": "DSLFilter",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -20513,12 +21037,129 @@
       ],
       "type": "object"
     },
+    "ModifyRemoteWriteTaskRequest": {
+      "document": "ModifyRemoteWriteTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID",
+          "example": "3b2e99eb-9665-4d67-ad52-e24dbd",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log topic id",
+          "example": "3b2e99eb-9665-4d67-ad52-e24dbd",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Task status.\n0: disabled, 1: enabled.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Enable",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "RemoteWrite task name.",
+          "example": "RemoteWrite任务",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Valid values: 1: private network; 2: public network.",
+          "example": "无",
+          "member": "uint64",
+          "name": "NetType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "VPC id",
+          "example": "vpc-xxxx",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Target service name.",
+          "example": "Premotheus",
+          "member": "string",
+          "name": "Target",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Destination address",
+          "example": "无",
+          "member": "string",
+          "name": "RemoteWriteURL",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Valid values: 0: no authentication; 1: basic_auth; 2: token.\t",
+          "example": "无",
+          "member": "uint64",
+          "name": "AuthType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Authentication information",
+          "example": "无",
+          "member": "RemoteWriteAuthInfo",
+          "name": "AuthInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Backend service type\n-1 No\n0 CVM\n1025 CLB",
+          "example": "无",
+          "member": "int64",
+          "name": "VirtualGatewayType",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyRemoteWriteTaskResponse": {
+      "document": "ModifyRemoteWriteTask response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyScheduledSqlRequest": {
       "document": "ModifyScheduledSql request structure.",
       "members": [
         {
           "disabled": false,
-          "document": "Task ID, which can be obtained through [scheduled SQL analysis task list](https://www.tencentcloud.com/document/product/614/95519?from_cn_redirect=1).",
+          "document": "<p>Task ID, obtained by <a href=\"https://www.tencentcloud.com/document/product/614/95519?from_cn_redirect=1\">searching the scheduled SQL analysis task list</a>.</p>",
           "example": "6ef60bec-0242-43af-bb20-270359fxxxx",
           "member": "string",
           "name": "TaskId",
@@ -20527,7 +21168,7 @@
         },
         {
           "disabled": false,
-          "document": "Source log topic. Search the [scheduled SQL analysis task list](https://www.tencentcloud.com/document/product/614/95519?from_cn_redirect=1) to obtain it.",
+          "document": "<p>Source log topic, obtained via <a href=\"https://www.tencentcloud.com/document/product/614/95519?from_cn_redirect=1\">search scheduled SQL analysis task list</a></p>",
           "example": "xxxx-0889-4ec0-accc-xxxxxxx",
           "member": "string",
           "name": "SrcTopicId",
@@ -20536,7 +21177,7 @@
         },
         {
           "disabled": false,
-          "document": "Task start status. 1: Enabled, 2: Disabled",
+          "document": "<p>Task start status. 1: Enabled, 2: Disabled</p>",
           "example": "1",
           "member": "int64",
           "name": "EnableFlag",
@@ -20545,7 +21186,7 @@
         },
         {
           "disabled": false,
-          "document": "Target log topic for scheduled SQL analysis",
+          "document": "<p>Target log topic for scheduled SQL analysis</p>",
           "example": "无",
           "member": "ScheduledSqlResouceInfo",
           "name": "DstResource",
@@ -20554,7 +21195,7 @@
         },
         {
           "disabled": false,
-          "document": "Queries statements",
+          "document": "<p>Query statement</p>",
           "example": "* | select count(*)",
           "member": "string",
           "name": "ScheduledSqlContent",
@@ -20563,7 +21204,7 @@
         },
         {
           "disabled": false,
-          "document": "Scheduling cycle (minutes), 1-1440 minutes",
+          "document": "<p>Scheduling Interval (Minutes), 1-1440 minutes</p>",
           "example": "2",
           "member": "int64",
           "name": "ProcessPeriod",
@@ -20572,7 +21213,7 @@
         },
         {
           "disabled": false,
-          "document": "Time window for a single query. Example: last 15 minutes",
+          "document": "<p>Time window for a single query. Example: last 15 minutes</p>",
           "example": "@m-15m,@m",
           "member": "string",
           "name": "ProcessTimeWindow",
@@ -20581,7 +21222,7 @@
         },
         {
           "disabled": false,
-          "document": "Execution delay (seconds), 0-120 seconds, default 60",
+          "document": "<p>Execution delay (seconds), 0-120 seconds, default 60 seconds</p>",
           "example": "60",
           "member": "int64",
           "name": "ProcessDelay",
@@ -20590,7 +21231,7 @@
         },
         {
           "disabled": false,
-          "document": "Regional information of the source topicId. Supported regions are listed in the region list document (https://www.tencentcloud.com/document/api/614/56474?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8).",
+          "document": "<p>Regional information of the source topicId. For supported regions, see the <a href=\"https://www.tencentcloud.com/document/api/614/56474?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8\">region list</a> document.</p>",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "SrcTopicRegion",
@@ -20599,7 +21240,7 @@
         },
         {
           "disabled": false,
-          "document": "Task name, 0-255 characters",
+          "document": "<p>Task name, 0-255 characters</p>",
           "example": "scheduler_sql任务1",
           "member": "string",
           "name": "Name",
@@ -20608,10 +21249,37 @@
         },
         {
           "disabled": false,
-          "document": "Syntax rules. Default value: 0. 0: Lucene syntax, 1: CQL syntax",
+          "document": "<p>Syntax rules. Default value: 0. 0: Lucene syntax, 1: CQL syntax</p>",
           "example": "0",
           "member": "uint64",
           "name": "SyntaxRule",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable delivery service log. 1: Disabled, 2: Enabled.</p>",
+          "example": "2",
+          "member": "uint64",
+          "name": "HasServicesLog",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Full-text search query tag. 1: Off, 2: On.</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "FullQuery",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Scheduling period unit</p><p>Value ranges from 1 to 2</p><p>Default value: 1</p><p>Default value 1 (minute), other value 2 (second)</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "ProcessPeriodUnit",
           "required": false,
           "type": "int"
         }
@@ -23298,6 +23966,201 @@
       ],
       "usage": "both"
     },
+    "RemoteWriteAuthInfo": {
+      "document": "RemoteWrite authentication information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "basic auth username\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Username",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "basic auth password\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Password",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "basic auth token\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Token",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "RemoteWriteInfo": {
+      "document": "RemoteWrite configuration information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxxxxxxx",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Log topic ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx-xxx-xxx-xxx",
+          "member": "string",
+          "name": "TopicId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "RemoteWrite task name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx任务导入",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Network type.\nValid values: 1: private network\n2: Public network\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "NetType",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "VPC id\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "VpcId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task running status\n1: Running\n2: Suspend\n3: Failure\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-11-08 14:40:22",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Update time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-11-08 14:40:22",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Target service name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Target",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Destination address\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "RemoteWriteURL",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Authentication type\nValid values: 0: no authentication; 1: basic_auth; 2: token.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "AuthType",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Authentication information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "RemoteWriteAuthInfo",
+          "name": "AuthInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Logset\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LogsetId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task status.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Enable",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Backend service type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "VirtualGatewayType",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "RetryShipperTaskRequest": {
       "document": "RetryShipperTask request structure.",
       "members": [
@@ -23539,7 +24402,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ScheduledSql task id",
+          "document": "<p>ScheduledSql task id</p>",
           "example": "6ef60bec-0242-43af-bb20-270359fb5xxx",
           "member": "string",
           "name": "TaskId",
@@ -23549,7 +24412,7 @@
         },
         {
           "disabled": false,
-          "document": "ScheduledSql task name",
+          "document": "<p>ScheduledSql task name</p>",
           "example": "task",
           "member": "string",
           "name": "Name",
@@ -23559,7 +24422,7 @@
         },
         {
           "disabled": false,
-          "document": "Source Log Topic ID",
+          "document": "<p>Source log topic id.</p>",
           "example": "5237e8f4-0889-4ec0-accc-xxxxxxx",
           "member": "string",
           "name": "SrcTopicId",
@@ -23569,7 +24432,7 @@
         },
         {
           "disabled": false,
-          "document": "Source Log Topic Name",
+          "document": "<p>source log topic name</p>",
           "example": "test-topic",
           "member": "string",
           "name": "SrcTopicName",
@@ -23579,7 +24442,7 @@
         },
         {
           "disabled": false,
-          "document": "Scheduled SQL analysis of target topic",
+          "document": "<p>Scheduled SQL analysis target topic</p>",
           "example": "无",
           "member": "ScheduledSqlResouceInfo",
           "name": "DstResource",
@@ -23589,7 +24452,7 @@
         },
         {
           "disabled": false,
-          "document": "Task creation time. Format: yyyy-MM-dd HH:mm:ss",
+          "document": "<p>Task creation time. Format: yyyy-MM-dd HH:mm:ss</p>",
           "example": "2023-07-28 11:36:00",
           "member": "string",
           "name": "CreateTime",
@@ -23599,7 +24462,7 @@
         },
         {
           "disabled": false,
-          "document": "Task update time. Format: yyyy-MM-dd HH:mm:ss",
+          "document": "<p>Task update time. Format: yyyy-MM-dd HH:mm:ss</p>",
           "example": "2023-07-28 11:36:00",
           "member": "string",
           "name": "UpdateTime",
@@ -23609,7 +24472,7 @@
         },
         {
           "disabled": false,
-          "document": "Task status: 1: Running 2: Stop 3: Exception - Source log topic not found 4: Exception - target topic not found5: Access permission issue 6: Internal failure 7: Other faults",
+          "document": "<p>Task status, 1: Running 2: Stopped 3: Exception - Source log topic not found 4: Exception - Target topic not found</p><p>5: Access permission issue 6: Internal fault 7: Other faults</p>",
           "example": "2",
           "member": "int64",
           "name": "Status",
@@ -23619,7 +24482,7 @@
         },
         {
           "disabled": false,
-          "document": "Task status: 1 Enabled, 2 Disabled",
+          "document": "<p>Task status: 1 Enabled, 2 Disabled</p>",
           "example": "1",
           "member": "int64",
           "name": "EnableFlag",
@@ -23629,7 +24492,7 @@
         },
         {
           "disabled": false,
-          "document": "Queries statements",
+          "document": "<p>Query statement</p>",
           "example": "* | select count(*)",
           "member": "string",
           "name": "ScheduledSqlContent",
@@ -23639,7 +24502,7 @@
         },
         {
           "disabled": false,
-          "document": "Schedule start time. Format: yyyy-MM-dd HH:mm:ss",
+          "document": "<p>Schedule start time. Format: yyyy-MM-dd HH:mm:ss</p>",
           "example": "2023-07-28 11:36:00",
           "member": "string",
           "name": "ProcessStartTime",
@@ -23649,7 +24512,7 @@
         },
         {
           "disabled": false,
-          "document": "Schedule Type: 1 Continuous Running 2 Specified Time Range",
+          "document": "<p>Schedule Type: 1 Continuous Running 2 Specified Time Range</p>",
           "example": "1",
           "member": "int64",
           "name": "ProcessType",
@@ -23659,7 +24522,7 @@
         },
         {
           "disabled": false,
-          "document": "Schedule End Time, format: yyyy-MM-dd HH:mm:ss, required when process_type=2",
+          "document": "<p>Schedule End Time, format: yyyy-MM-dd HH:mm:ss, required when process_type=2</p>",
           "example": "2023-07-28 11:36:00",
           "member": "string",
           "name": "ProcessEndTime",
@@ -23669,7 +24532,7 @@
         },
         {
           "disabled": false,
-          "document": "Scheduling cycle (minutes), 1-1440 minutes",
+          "document": "<p>Scheduling Interval (Minutes), 1-1440 minutes</p>",
           "example": "5",
           "member": "int64",
           "name": "ProcessPeriod",
@@ -23679,7 +24542,7 @@
         },
         {
           "disabled": false,
-          "document": "Query Time Window. @m-15m, @m, meaning the last 15 minutes",
+          "document": "<p>Query Time Window. @m-15m, @m, meaning the last 15 minutes</p>",
           "example": "@m-15m, @m",
           "member": "string",
           "name": "ProcessTimeWindow",
@@ -23689,7 +24552,7 @@
         },
         {
           "disabled": false,
-          "document": "Execution delay (seconds), 0-120 seconds, default 60",
+          "document": "<p>Execution delay (seconds), 0-120 seconds, default 60 seconds</p>",
           "example": "5",
           "member": "int64",
           "name": "ProcessDelay",
@@ -23699,7 +24562,7 @@
         },
         {
           "disabled": false,
-          "document": "Regional information of the source topicId. Supported regions are listed in the region list document (https://www.tencentcloud.com/document/api/614/56474?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8).",
+          "document": "<p>Regional information of the source topicId. For supported regions, see the <a href=\"https://www.tencentcloud.com/document/api/614/56474?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8\">region list</a> document.</p>",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "SrcTopicRegion",
@@ -23709,7 +24572,7 @@
         },
         {
           "disabled": false,
-          "document": "Syntax rules. 0: Lucene syntax; 1: CQL syntax.",
+          "document": "<p>Syntax rules. 0: Lucene syntax, 1: CQL syntax</p>",
           "example": "0",
           "member": "uint64",
           "name": "SyntaxRule",
@@ -23719,7 +24582,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable service log shipping. Valid values: 1: disable; 2: enable.",
+          "document": "<p>Whether the delivery service log is enabled. 1: Turn off, 2: Turn on.</p>",
           "example": "1",
           "member": "uint64",
           "name": "HasServicesLog",
@@ -23729,10 +24592,20 @@
         },
         {
           "disabled": false,
-          "document": "Full-text search tag. 1: Off, 2: On.",
+          "document": "<p>Full-text search tag. 1: Off, 2: On.</p>",
           "example": "1",
           "member": "uint64",
           "name": "FullQuery",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Scheduling cycle time unit</p><p>Value ranges from 1 to 2</p><p>Default value: 1</p><p>Default value 1 (minute), other value 2 (second)</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "ProcessPeriodUnit",
           "output_required": false,
           "type": "int",
           "value_allowed_null": false
