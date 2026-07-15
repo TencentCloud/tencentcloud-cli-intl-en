@@ -29,9 +29,9 @@
       "status": "online"
     },
     "CreateAigcAudioTask": {
-      "document": "This API is used to create AIGC audio generation tasks.",
+      "document": "This API is used to create AI audio generation tasks.",
       "input": "CreateAigcAudioTaskRequest",
-      "name": "CreateAigcAudioTask",
+      "name": "Creates an AIGC audio generation task",
       "output": "CreateAigcAudioTaskResponse",
       "status": "online"
     },
@@ -379,9 +379,9 @@
       "status": "online"
     },
     "DescribeAigcAudioTask": {
-      "document": "This API is used to query the progress of AIGC audio generation tasks and obtain the generation results.",
+      "document": "This API is used to query the progress of AIGC video generation tasks and obtain the generation results.",
       "input": "DescribeAigcAudioTaskRequest",
-      "name": "DescribeAigcAudioTask",
+      "name": "Queries an AIGC audio generation task",
       "output": "DescribeAigcAudioTaskResponse",
       "status": "online"
     },
@@ -1564,7 +1564,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Adaptive dynamic streaming template ID.",
+          "document": "<p>Adaptive bitrate streaming template ID.</p>",
           "example": "10",
           "member": "uint64",
           "name": "Definition",
@@ -1575,7 +1575,7 @@
         },
         {
           "disabled": false,
-          "document": "Watermark list. Multiple image or text watermarks up to a maximum of 10 are supported.",
+          "document": "<p>Watermark list. Up to 10 image or text watermarks are supported.</p>",
           "example": "无",
           "member": "WatermarkInput",
           "name": "WatermarkSet",
@@ -1586,7 +1586,7 @@
         },
         {
           "disabled": false,
-          "document": "Digital watermark parameter.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Digital watermark parameter.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "BlindWatermarkInput",
           "name": "BlindWatermark",
@@ -1597,7 +1597,7 @@
         },
         {
           "disabled": false,
-          "document": "Target storage for files after adaptive dynamic streaming. If left blank, it inherits the upper-level OutputStorage value.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "<p>Target storage for files after adaptive bitrate streaming. If this is not specified, the upper-level OutputStorage value is used.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "TaskOutputStorage",
           "name": "OutputStorage",
@@ -1608,7 +1608,7 @@
         },
         {
           "disabled": false,
-          "document": "Output path for the manifest file after adaptive dynamic streaming. It can be either a relative path or an absolute path.\nIf you need to define an output path, the path must end with `.{format}`. Refer to [Filename Variable Description](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1) for variable names.\nExample of relative path:\n<li>filename_{variable name}.{format}</li>\n<li>filename.{format}</li>\nExample of absolute path:\n<li>/custom path/filename_{variable name}.{format}</li>\nIf not filled in, it is a relative path by default: {inputName}_adaptiveDynamicStreaming_{definition}.{format}.",
+          "document": "<p>Output path for the manifest file after adaptive bitrate streaming, which can be a relative or absolute path.<br>To define the output path, the path must end with <code>.{format}</code>. For variable names, see <a href=\"https://www.tencentcloud.com/document/product/862/37039?from_cn_redirect=1\">Filename Variables</a>.<br>Relative path example:</p><li>Filename_{variable name}.{format}</li><li>Filename.{format}</li>Absolute path example:<li>/custom path/Filename_{variable name}.{format}</li>If this is not specified, the default relative path is {inputName}_adaptiveDynamicStreaming_{definition}.{format}.",
           "example": "{inputName}_adaptiveDynamicStreaming_{definition}.{format}",
           "member": "string",
           "name": "OutputObjectPath",
@@ -1619,7 +1619,7 @@
         },
         {
           "disabled": false,
-          "document": "After adaptive dynamic streaming, the output path of substream files can only be a relative path. If not filled in, it is a relative path by default: `{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}.{format}`.",
+          "document": "<p>Output path for substream files after adaptive bitrate streaming, which can only be a relative path. If this is not specified, the default relative path is <code>{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}.{format}</code>.</p>",
           "example": "{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}.{format}",
           "member": "string",
           "name": "SubStreamObjectName",
@@ -1630,7 +1630,7 @@
         },
         {
           "disabled": false,
-          "document": "After adaptive dynamic streaming (for HLS only), the output path of segment files can only be a relative path. If not filled in, it is a relative path by default: `{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}`.",
+          "document": "<p>Output path for segment files after adaptive bitrate streaming (HLS only), which can only be a relative path. If this is not specified, the default relative path is <code>{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}</code>.</p>",
           "example": "{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}",
           "member": "string",
           "name": "SegmentObjectName",
@@ -1641,7 +1641,7 @@
         },
         {
           "disabled": false,
-          "document": "External subtitle feature specifies the subtitle file to be inserted.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "<p>External subtitle feature. Specifies the subtitle file to be inserted.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "AddOnSubtitle",
           "name": "AddOnSubtitles",
@@ -1652,7 +1652,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the Drm information.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "<p>DRM information.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DrmInfo",
           "name": "DrmInfo",
@@ -1663,7 +1663,7 @@
         },
         {
           "disabled": false,
-          "document": "Adaptive transcoding template type.\nCommon: audio/video type.\nPureAudio: audio-only.",
+          "document": "<p>Adaptive bitrate streaming template type. Valid values:<br>Common: audio and video.<br>PureAudio: audio only.</p>",
           "example": "Common",
           "member": "string",
           "name": "DefinitionType",
@@ -1674,7 +1674,7 @@
         },
         {
           "disabled": false,
-          "document": "Hard subtitle (suppression subtitle) feature, specify subtitles source, font size, position and other subtitle parameters.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "<p>Hard subtitle (burned-in subtitle) feature. Specifies the subtitle source, font size, location, and other subtitle parameters.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "SubtitleTemplate",
           "name": "SubtitleTemplate",
@@ -1685,7 +1685,7 @@
         },
         {
           "disabled": false,
-          "document": "Transcoding parameter extension field.",
+          "document": "<p>Extended transcoding parameter field.</p>",
           "example": "{\"audio_info\": {\"codec\": \"vivid\"}}",
           "member": "string",
           "name": "StdExtInfo",
@@ -1696,7 +1696,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the frame at the given pts time as a key frame and segments it. unit: milliseconds (relative deviation <=1ms is allowed). when gop and segment duration are specified simultaneously, they function together. note: enable RawPts, keep the frame rate as source, and ensure the passed-in pts time corresponds to a frame in the source.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Specifies frames at specified PTS times as keyframes and splits segments. Unit: milliseconds (relative deviation of up to 1 ms is allowed). When both GOP and segment duration are specified, they function together. Note that you need to enable RawPts, keep the frame rate as that of the source, and ensure the specified PTS time corresponds to a frame in the source.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[1000, 2000]",
           "member": "int64",
           "name": "KeyPTSList",
@@ -1704,6 +1704,17 @@
           "required": false,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>External audio feature. Specifies the audio files to be inserted.</p>",
+          "example": "无",
+          "member": "AddOnAudio",
+          "name": "AddOnAudios",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -1895,12 +1906,62 @@
       ],
       "usage": "both"
     },
+    "AddOnAudio": {
+      "document": "External audio.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Audio file input information. Note: (1) Supported audio stream encoding formats: AAC, AC3, EAC3, FLAC, Opus, and MP3. (2) If the segment type set in the adaptive bitrate streaming template is TS, the audio stream encoding format cannot be FLAC.</p>",
+          "example": "无",
+          "member": "MediaInputInfo",
+          "name": "InputInfo",
+          "output_required": false,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Audio track name, such as Chinese or English. Note: Only Chinese characters, letters, digits, spaces, underscores (_), hyphens (-), periods (.), and brackets are supported. The length cannot exceed 64 characters.</p>",
+          "example": "外挂音频",
+          "member": "string",
+          "name": "AudioName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Audio track language, such as chi or eng. This follows the ISO 639-2 standard.</p>",
+          "example": "chi",
+          "member": "string",
+          "name": "AudioLanguage",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Default audio track. When set to true, the current audio is designated as the default audio track. A maximum of 1 default audio track can be specified.</p><p>Default value: false.</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "DefaultTrack",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "AddOnSubtitle": {
       "document": "The information of the subtitles to add.",
       "members": [
         {
           "disabled": false,
-          "document": "The mode. Valid values:\n<li>`subtitle-stream`: Add a subtitle track.</li>\n<li>`close-caption-708`: Embed CEA-708 subtitles in SEI frames.</li>\n<li>`close-caption-608`: Embed CEA-608 subtitles in SEI frames.</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Insertion method. Valid values:</p><li>subtitle-stream: Inserts a subtitle track.</li><li>close-caption-708: Encodes CEA-708 subtitles into SEI frames.</li><li>close-caption-608: Encodes CEA-608 subtitles into SEI frames.</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "subtitle-stream",
           "member": "string",
           "name": "Type",
@@ -1911,7 +1972,7 @@
         },
         {
           "disabled": false,
-          "document": "The subtitle file.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Subtitle file.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "MediaInputInfo",
           "name": "Subtitle",
@@ -1922,7 +1983,7 @@
         },
         {
           "disabled": false,
-          "document": "Subtitle name.\nNote: supports Chinese characters, letters, digits, spaces, underscores (_), hyphens (-), periods (.), and parentheses. Max 64 characters.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "<p>Subtitle name.<br>Note: Only Chinese characters, letters, digits, spaces, underscores (_), hyphens (-), periods (.), and brackets are supported. The length cannot exceed 64 characters.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "外挂字幕",
           "member": "string",
           "name": "SubtitleName",
@@ -1933,7 +1994,18 @@
         },
         {
           "disabled": false,
-          "document": "Output format of the subtitle. valid values: \"WebVTT\", \"TTML\".\nDefault value: \"WebVTT\".",
+          "document": "<p>Subtitle language, such as eng.</p>",
+          "example": "eng",
+          "member": "string",
+          "name": "SubtitleLanguage",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subtitle output format. Valid values: {&quot;WebVTT&quot;,&quot;TTML&quot;}.<br>Default value: &quot;WebVTT&quot;.</p>",
           "example": "WebVTT",
           "member": "string",
           "name": "OutputFormat",
@@ -1944,7 +2016,7 @@
         },
         {
           "disabled": false,
-          "document": "Default subtitle track. specifies the current subtitle as the default track when true. a maximum of 1 default subtitle track can be specified.\nDefault value: `false`.",
+          "document": "<p>Default subtitle track. When set to true, the current subtitle is designated as the default subtitle track. A maximum of 1 default subtitle track can be specified.<br>Default value: false.</p>",
           "example": "false",
           "member": "bool",
           "name": "DefaultTrack",
@@ -4295,11 +4367,11 @@
       "usage": "out"
     },
     "AiPosterSuiteConfig": {
-      "document": "",
+      "document": "Intelligent image set configuration.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Image output mode.</p><p>Enumeration values:</p><ul><li>auto: fully automatic mode. CustomVariables can be passed in this mode.</li><li>modify: modification mode. The corresponding description needs to be provided in the AddOnParameter.ExtPrompt field in this mode. CustomVariables cannot be passed in this mode.</li></ul><p>Default value: auto.</p>",
           "example": "auto",
           "member": "string",
           "name": "Mode",
@@ -4310,7 +4382,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Ecommerce platform visual template ID.</p><p>If you need a personalized visual template, submit a ticket.</p>",
           "example": "30000",
           "member": "int64",
           "name": "Definition",
@@ -4321,7 +4393,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Sub-image configuration.</p>",
           "example": "无",
           "member": "RecipeItem",
           "name": "Recipe",
@@ -4332,7 +4404,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Sub-image text language.</p><p>Enumeration values:</p><ul><li>zh-CN: Simplified Chinese.</li><li>en-US: American English.</li></ul><p>Default value: zh-CN.</p><p>If you need more languages, submit a ticket.</p>",
           "example": "zh-CN",
           "member": "string",
           "name": "Language",
@@ -4343,7 +4415,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Sub-image aspect ratio.</p><p>Enumeration values:</p><ul><li>1:1: 1:1.</li><li>3:4: 3:4.</li><li>4:3: 4:3.</li><li>9:16: 9:16.</li><li>16:9: 16:9.</li></ul><p>Default value: 1:1.</p>",
           "example": "9:16",
           "member": "string",
           "name": "PanelRatio",
@@ -4354,7 +4426,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Sub-image resolution.</p><p>Enumeration values:</p><ul><li>720: 720.</li><li>1K: 1K.</li><li>2K: 2K.</li><li>4K: 4K.</li></ul><p>Default value: 1K.</p>",
           "example": "2K",
           "member": "string",
           "name": "PanelResolution",
@@ -4365,7 +4437,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>User-defined variable.</p>",
           "example": "无",
           "member": "CustomVariable",
           "name": "CustomVariables",
@@ -4376,7 +4448,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Model name.</p><p>Enumeration value:</p><ul><li>WAND-suite-1.0-flash: WAND-suite-1.0-flash.</li></ul>",
           "example": "WAND-suite-1.0-flash",
           "member": "string",
           "name": "Model",
@@ -7335,11 +7407,11 @@
       "usage": "in"
     },
     "AigcAudioExtraParam": {
-      "document": "",
+      "document": "Extended parameters for AIGC audio generation.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Resource ID. Specify this based on your needs.</p>",
           "example": "438910555_1",
           "member": "string",
           "name": "ResourceId",
@@ -7352,11 +7424,11 @@
       "usage": "both"
     },
     "AigcAudioOutputAudioInfo": {
-      "document": "",
+      "document": "Output audio information of the AIGC audio generation task.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Audio URL.</p>",
           "example": "https://***t*m*li*******d-effect-13114********s.*p-guangzhou.my*********m/template/template_cover_image/captain_america.***",
           "member": "string",
           "name": "Url",
@@ -7367,7 +7439,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Audio duration.</p>",
           "example": "8",
           "member": "int64",
           "name": "Duration",
@@ -7380,11 +7452,11 @@
       "usage": "both"
     },
     "AigcAudioOutputVideoInfo": {
-      "document": "",
+      "document": "Output video information of the AIGC audio generation task.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Video URL.</p>",
           "example": "https://syste***i****loud-effect-131**02***.co********ngzhou.my***o*d.com/tem**ate/template_cover_image/captain_america.mp4",
           "member": "string",
           "name": "Url",
@@ -7395,7 +7467,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Video duration.</p>",
           "example": "8",
           "member": "int64",
           "name": "Duration",
@@ -7408,11 +7480,11 @@
       "usage": "both"
     },
     "AigcAudioReferenceAudioInfo": {
-      "document": "",
+      "document": "Reference audio information.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Reference audio URL, which must be accessible from the public network.</p>",
           "example": "https://l****qcloud-tts-131140221*.cos.ap-**angzhou.myqcloud.c**********78_1513228070381297256.wav",
           "member": "string",
           "name": "AudioUrl",
@@ -7425,11 +7497,11 @@
       "usage": "both"
     },
     "AigcAudioReferenceVideoInfo": {
-      "document": "",
+      "document": "Reference video asset for AIGC video generation.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Reference video URL, which must be accessible from the public network.</p>",
           "example": "https://liv***cloud-tts-1****02212.co******u****hou.myqcloud.com/251006278_1513228070381297256.mp4",
           "member": "string",
           "name": "VideoUrl",
@@ -8368,6 +8440,39 @@
           "required": false,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Audio track language, such as chi or eng. Note: (1) This follows the ISO 639-2 standard. (2) This applies only to adaptive bitrate streaming templates. (3) The value \"source\" means that the source language is used.</p>",
+          "example": "eng",
+          "member": "string",
+          "name": "AudioLanguage",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Audio track name, such as Chinese or English. Note: (1) Only Chinese characters, letters, digits, spaces, underscores (_), hyphens (-), periods (.), and brackets are supported. The length cannot exceed 64 characters. (2) This applies only to adaptive bitrate streaming templates. (3) The value \"source\" means that the source name is used.</p>",
+          "example": "English",
+          "member": "string",
+          "name": "AudioName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Default audio track. When set to true, the current audio track is designated as the default audio track. A maximum of 1 default audio track can be specified.</p><p>Default value: false.</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "DefaultTrack",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -10369,7 +10474,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Model name. Currently supported models for music generation: GL, MinimaxMusic.Example value: MiniMaxMusic",
+          "document": "<p>Model name. Supported models for music generation: GL and MiniMaxMusic.</p>",
           "example": "Tme",
           "member": "string",
           "name": "ModelName",
@@ -10378,7 +10483,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the model version. By default, the system uses the supported stable version of the model.Supported versions for GL: 2.0, 3.0-clip, 3.0-pro.Supported versions for MinimaxMusic: 2.0, 2.5, 2.6.Example value: 2.0",
+          "document": "<p>Specifies the model version. By default, the system uses the supported stable version of the model.<br>Supported versions for GL: 3.0-clip and 3.0-pro.<br>Supported versions for MinimaxMusic: 2.0, 2.5, and 2.6.</p>",
           "example": "1.0",
           "member": "string",
           "name": "ModelVersion",
@@ -10387,7 +10492,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the audio generation scene. Music: music.Example value: music",
+          "document": "<p>Specifies the scenario for audio generation. Music: music.</p>",
           "example": "music",
           "member": "string",
           "name": "SceneType",
@@ -10396,7 +10501,7 @@
         },
         {
           "disabled": false,
-          "document": "Description of the generated audio. (Note: Supports up to 2000 characters.) This parameter is required when no reference image is passed in.Example value: generate a piece of music",
+          "document": "<p>Description of the generated video. (Note: A maximum of 2000 characters is supported.) This parameter is required when no reference image is specified.</p>",
           "example": "生成一段音乐",
           "member": "string",
           "name": "Prompt",
@@ -10405,7 +10510,7 @@
         },
         {
           "disabled": false,
-          "document": "Reference video information. Only supported by certain models.",
+          "document": "<p>Reference video information, which is supported by some models.</p>",
           "example": "无",
           "member": "AigcAudioReferenceVideoInfo",
           "name": "VideoInfos",
@@ -10414,7 +10519,7 @@
         },
         {
           "disabled": false,
-          "document": "Reference audio information.For example, this parameter is required when generating music from a reference audio.",
+          "document": "<p>Specify the reference audio information.</p><p>For example, this is required for music generation.</p>",
           "example": "无",
           "member": "AigcAudioReferenceAudioInfo",
           "name": "AudioInfos",
@@ -10423,7 +10528,7 @@
         },
         {
           "disabled": false,
-          "document": "Output audio format. Empty by default. Supported values: mp3, wav.Example value: wav",
+          "document": "<p>Output audio format. By default, this is not specified. Valid values: mp3 and wav.</p>",
           "example": "wav",
           "member": "string",
           "name": "OutputAudioFormat",
@@ -10432,7 +10537,7 @@
         },
         {
           "disabled": false,
-          "document": "COS bucket information for the file result. Note: COS is required and the MPS_QcsRole role needs to be created and authorized.",
+          "document": "<p>COS bucket information for the file result. Note: COS is required and the MPS_QcsRole role needs to be created and authorized.</p>",
           "example": "无",
           "member": "AigcStoreCosParam",
           "name": "StoreCosParam",
@@ -10441,7 +10546,7 @@
         },
         {
           "disabled": false,
-          "document": "Additional parameters required for the model.",
+          "document": "<p>Additional parameters required.</p>",
           "example": "无",
           "member": "AigcAudioExtraParam",
           "name": "ExtraParameters",
@@ -10450,7 +10555,7 @@
         },
         {
           "disabled": false,
-          "document": "Used to input some special scene parameters required by the model, serialized into a string in JSON format.Example: when passing lyrics to the MinimaxMusic model:{\"lyric\":{\"The pony runs happily, flowers are blooming\"}}Example value: {\"sequential_image_generation\":\"auto\"}",
+          "document": "<p>This is used to specify special scenario parameters required by the model, in the format of a serialized JSON string.<br>Example to specify lyrics for the MinimaxMusic model:<br>{\"lyric\":{\"The pony is running with joy. The flowers are blooming.\"}}</p>",
           "example": "{\"sequential_image_generation\":\"auto\"}",
           "member": "string",
           "name": "AdditionalParameters",
@@ -10459,7 +10564,7 @@
         },
         {
           "disabled": false,
-          "document": "API operator name.Example value: admin",
+          "document": "<p>API operator name.</p>",
           "example": "admin",
           "member": "string",
           "name": "Operator",
@@ -10474,7 +10579,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The task ID returned after the task is created successfully.Call the query API to poll for task progress and the generation result.Example value: 24*******AigcAudio-6a38**3a9f51468da5bfc25****9a462",
+          "document": "<p>Returned task ID after the task is created successfully.<br>The task progress and generation results can be obtained by calling the query API.</p>",
           "example": "24*******AigcAudio-6a38**3a9f51468da5bfc25****9a462",
           "member": "string",
           "name": "TaskId",
@@ -10559,7 +10664,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Specifies the number of output images. One image is supported by default.</p>",
           "example": "1",
           "member": "int64",
           "name": "OutputImageCount",
@@ -12576,11 +12681,11 @@
       "type": "object"
     },
     "CustomVariable": {
-      "document": "",
+      "document": "Custom description variable.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>User-defined variable type.</p><p>Parameter format: PascalCase format.</p><p>This cannot be UserPrompt. The default platform template is not adapted for custom content. Submit a ticket if needed.</p>",
           "example": "FobiddenDescription",
           "member": "string",
           "name": "Type",
@@ -12591,7 +12696,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Custom variable description.</p>",
           "example": "法律法规禁止使用的宣传词",
           "member": "string",
           "name": "Description",
@@ -13543,7 +13648,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The task ID returned when creating the AIGC audio generation task.Example value: 24000145-****d**-cb46b8040b684b539bbd46****e*e2fd",
+          "document": "<p>Task ID returned when the AIGC video generation task is created.</p>",
           "example": "24000145-******d**-cb46b8040b684b539bbd46****e*e2fd",
           "member": "string",
           "name": "TaskId",
@@ -13558,7 +13663,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Current task status. WAIT: waiting; RUN: running; FAIL: failed; DONE: successful.Example value: DONE",
+          "document": "<p>Current task status. WAIT: waiting. RUN: running. FAIL: failed. DONE: successful.</p>",
           "example": "DONE",
           "member": "string",
           "name": "Status",
@@ -13568,7 +13673,7 @@
         },
         {
           "disabled": false,
-          "document": "When the task status is FAIL, the failure information is returned.",
+          "document": "<p>If the task status is FAIL, the failure information is returned.</p>",
           "example": "tme audio url is empty",
           "member": "string",
           "name": "Message",
@@ -13578,7 +13683,7 @@
         },
         {
           "disabled": false,
-          "document": "Output audio information.",
+          "document": "<p>Output audio information.</p>",
           "example": "无",
           "member": "AigcAudioOutputAudioInfo",
           "name": "AudioInfos",
@@ -13588,7 +13693,7 @@
         },
         {
           "disabled": false,
-          "document": "Output video information. Only returned for scenarios such as video dubbing.",
+          "document": "<p>Output video information, which is only available for scenarios such as video dubbing.</p>",
           "example": "无",
           "member": "AigcAudioOutputVideoInfo",
           "name": "VideoInfos",
@@ -18881,7 +18986,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>AI image set configuration.</p>",
           "example": "无",
           "member": "AiPosterSuiteConfig",
           "name": "AiPosterSuiteConfig",
@@ -28157,11 +28262,11 @@
       "usage": "both"
     },
     "RecipeItem": {
-      "document": "",
+      "document": "Image set information.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Sub-image type.</p><p>Enumeration values:</p><ul><li>hero: product hero image.</li><li>detail: product details image.</li><li>selling: core selling point image.</li><li>atmosphere: scene atmosphere image.</li><li>angles: multiple-angle image.</li><li>scene: usage scenario image.</li></ul>",
           "example": "hero",
           "member": "string",
           "name": "Theme",
@@ -28172,7 +28277,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Number of corresponding sub-images.</p><p>Value range: 1 to 4.</p><p>Unit: image.</p><p>Each type can have up to 4 sub-images. The total number of sub-images must be within the range of 4 to 12.</p>",
           "example": "1",
           "member": "int64",
           "name": "Num",
@@ -30669,6 +30774,72 @@
       ],
       "usage": "out"
     },
+    "SmartSubtitleTaskFullTextSegmentItem": {
+      "document": "Smart subtitle recognition segment.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Confidence of the recognized segment. Value range: 0–100.</p>",
+          "example": "100.0",
+          "member": "float",
+          "name": "Confidence",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Start time offset of the recognized segment, in seconds.</p>",
+          "example": "3.204",
+          "member": "float",
+          "name": "StartTimeOffset",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>End time offset of the recognized segment, in seconds.</p>",
+          "example": "7.204",
+          "member": "float",
+          "name": "EndTimeOffset",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Recognized text.</p>",
+          "example": "腾讯云媒体处理",
+          "member": "string",
+          "name": "Text",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Translated text.</p>",
+          "example": "Tencent Cloud Media Processing",
+          "member": "string",
+          "name": "Trans",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Speaker ID.</p>",
+          "example": "女主",
+          "member": "string",
+          "name": "SpeakerId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "SmartSubtitleTaskResultInput": {
       "document": "Smart subtitle translation input.",
       "members": [
@@ -30708,6 +30879,16 @@
     "SmartSubtitleTaskTextResultOutput": {
       "document": "Smart subtitle recognition result.",
       "members": [
+        {
+          "disabled": false,
+          "document": "<p>List of segments for smart subtitle recognition.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "SmartSubtitleTaskFullTextSegmentItem",
+          "name": "SegmentSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
         {
           "disabled": false,
           "document": "<p>Subtitle recognition result</p>\nNote: This field may return null, indicating that no valid values can be obtained.",

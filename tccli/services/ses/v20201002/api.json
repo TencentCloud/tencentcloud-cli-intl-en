@@ -92,7 +92,7 @@
       "status": "online"
     },
     "DeleteEmailIdentity": {
-      "document": "This API is used to delete a sender domain. After deleted, the sender domain can no longer be used to send emails.",
+      "document": "**The delete interface for sending domain names is only available to corporate users.**\nDelete the sender domain name. Once deleted, that domain name cannot be used anymore to send email.",
       "input": "DeleteEmailIdentityRequest",
       "name": "Deletes a sender domain",
       "output": "DeleteEmailIdentityResponse",
@@ -264,7 +264,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Send time.",
+          "document": "<p>Send time</p>",
           "example": "2025-10-01 11:11:11",
           "member": "string",
           "name": "DeliverTime",
@@ -275,7 +275,7 @@
         },
         {
           "disabled": false,
-          "document": "Sender address.",
+          "document": "<p>Sender address</p>",
           "example": "example@qcloudmail.com",
           "member": "string",
           "name": "OriginalMailFrom",
@@ -286,7 +286,7 @@
         },
         {
           "disabled": false,
-          "document": "Receive email.",
+          "document": "<p>Receive email address</p>",
           "example": "example@gmail.com",
           "member": "string",
           "name": "OriginalRcptTo",
@@ -297,7 +297,7 @@
         },
         {
           "disabled": false,
-          "document": "Sender domain name.",
+          "document": "<p>Sender domain name</p>",
           "example": "qcloudmail.com",
           "member": "string",
           "name": "FromDomain",
@@ -308,7 +308,7 @@
         },
         {
           "disabled": false,
-          "document": "Complaint time.",
+          "document": "<p>Complaint time</p>",
           "example": "2025-10-01 11:11:11",
           "member": "string",
           "name": "ComplainTime",
@@ -319,7 +319,7 @@
         },
         {
           "disabled": false,
-          "document": "Recipient domain name.",
+          "document": "<p>Recipient domain name</p>",
           "example": "gmail.com",
           "member": "string",
           "name": "Mta",
@@ -330,7 +330,7 @@
         },
         {
           "disabled": false,
-          "document": "Source IP",
+          "document": "<p>Source ip</p>",
           "example": "198.0.0.1",
           "member": "string",
           "name": "SourceIp",
@@ -341,7 +341,7 @@
         },
         {
           "disabled": false,
-          "document": "Data time.",
+          "document": "<p>Data time</p>",
           "example": "2025-10-01 11:11:11",
           "member": "string",
           "name": "InsertTime",
@@ -352,7 +352,7 @@
         },
         {
           "disabled": false,
-          "document": "Template ID",
+          "document": "<p>Template ID</p>",
           "example": "100",
           "member": "string",
           "name": "TemplateId",
@@ -363,7 +363,7 @@
         },
         {
           "disabled": false,
-          "document": "bulkId",
+          "document": "<p>bulkId</p>",
           "example": "qcloudapi-xxx-xxx",
           "member": "string",
           "name": "BulkId",
@@ -374,7 +374,7 @@
         },
         {
           "disabled": false,
-          "document": "Message-Id in mail.",
+          "document": "<p>Message-Id of the mail</p>",
           "example": "xxx-xxx@example.com",
           "member": "string",
           "name": "MessageId",
@@ -385,7 +385,7 @@
         },
         {
           "disabled": false,
-          "document": "Complaint time.",
+          "document": "<p>Complaint time</p>",
           "example": "2025-10-01 11:11:11",
           "member": "string",
           "name": "AbuseTime",
@@ -396,7 +396,7 @@
         },
         {
           "disabled": false,
-          "document": "Email subject.",
+          "document": "<p>Email Subject</p>",
           "example": "abuse for example.com",
           "member": "string",
           "name": "Subject",
@@ -503,7 +503,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Email Subject</p>",
+          "document": "<p>Email Subject</p><p>When sending with templates, supports the use of template variable parameters for fill</p>",
           "example": "邮件主题",
           "member": "string",
           "name": "Subject",
@@ -880,7 +880,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Your sender domain. You are advised to use a third-level domain, for example, mail.qcloud.com.",
+          "document": "<p>For your sender domain name, recommend using a level 3 or higher domain name. Example: mail.qcloud.com.</p>",
           "example": "mail.qcloud.com",
           "member": "string",
           "name": "EmailIdentity",
@@ -889,7 +889,7 @@
         },
         {
           "disabled": false,
-          "document": "Generated dkim key length. valid values: 0 (1024), 1 (2048).",
+          "document": "<p>Generated dkim key length. 0:1024, 1:2048</p>",
           "example": "0",
           "member": "uint64",
           "name": "DKIMOption",
@@ -898,7 +898,7 @@
         },
         {
           "disabled": false,
-          "document": "tag.",
+          "document": "<p>tag</p>",
           "example": "无",
           "member": "TagList",
           "name": "TagList",
@@ -913,7 +913,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Verification type. The value is fixed to `DOMAIN`.",
+          "document": "<p>Validation type. Fixed value: DOMAIN</p>",
           "example": "DOMAIN",
           "member": "string",
           "name": "IdentityType",
@@ -923,7 +923,7 @@
         },
         {
           "disabled": false,
-          "document": "Verification passed or not.",
+          "document": "<p>Whether verified</p>",
           "example": "true",
           "member": "bool",
           "name": "VerifiedForSendingStatus",
@@ -933,12 +933,22 @@
         },
         {
           "disabled": false,
-          "document": "DNS information that needs to be configured.",
+          "document": "<p>DNS information needs to be configured</p>",
           "example": "无",
           "member": "DNSAttributes",
           "name": "Attributes",
           "output_required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>dkim digits</p><p>Enumeration value:</p><ul><li>0: 1024</li><li>1: 2048</li><li>2: Dual signature</li></ul>",
+          "example": "0",
+          "member": "uint64",
+          "name": "DKIMOption",
+          "output_required": false,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -1503,7 +1513,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Sender domain.",
+          "document": "<p>Sender domain name</p>",
           "example": "mail.qcloud.com",
           "member": "string",
           "name": "IdentityName",
@@ -1513,7 +1523,7 @@
         },
         {
           "disabled": false,
-          "document": "Verification type. The value is fixed to `DOMAIN`.",
+          "document": "<p>Validation type, fixed as DOMAIN</p>",
           "example": "DOMAIN",
           "member": "string",
           "name": "IdentityType",
@@ -1523,7 +1533,7 @@
         },
         {
           "disabled": false,
-          "document": "Verification passed or not.",
+          "document": "<p>Whether verified</p>",
           "example": "false",
           "member": "bool",
           "name": "SendingEnabled",
@@ -1533,7 +1543,7 @@
         },
         {
           "disabled": false,
-          "document": "Current reputation level",
+          "document": "<p>Current reputation level</p>",
           "example": "10",
           "member": "uint64",
           "name": "CurrentReputationLevel",
@@ -1543,7 +1553,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum number of messages sent per day",
+          "document": "<p>Maximum message sending capacity of the current day</p>",
           "example": "10000",
           "member": "uint64",
           "name": "DailyQuota",
@@ -1553,7 +1563,7 @@
         },
         {
           "disabled": false,
-          "document": "Independent ip for domain configuration.",
+          "document": "<p>Independent ip for domain configuration</p>",
           "example": "[\"0.0.0.0\",\"1.1.1.1\"]",
           "member": "string",
           "name": "SendIp",
@@ -1563,12 +1573,22 @@
         },
         {
           "disabled": false,
-          "document": "tag.",
+          "document": "<p>tag</p>",
           "example": "无",
           "member": "TagList",
           "name": "TagList",
           "output_required": false,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>dkim bit number</p><p>Enumeration value:</p><ul><li>0: 1024</li><li>1: 2048</li><li>2: Dual signature</li></ul><p>Default value: 0</p>",
+          "example": "0",
+          "member": "uint64",
+          "name": "DKIMOption",
+          "output_required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -1744,7 +1764,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Sender domain.",
+          "document": "<p>Sender domain name</p>",
           "example": "example.com",
           "member": "string",
           "name": "EmailIdentity",
@@ -1759,7 +1779,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Verification type. The value is fixed to `DOMAIN`.",
+          "document": "<p>Validation type. Fixed value: DOMAIN</p>",
           "example": "DOMAIN",
           "member": "string",
           "name": "IdentityType",
@@ -1769,7 +1789,7 @@
         },
         {
           "disabled": false,
-          "document": "Verification passed or not.",
+          "document": "<p>Whether verified</p>",
           "example": "true",
           "member": "bool",
           "name": "VerifiedForSendingStatus",
@@ -1779,11 +1799,31 @@
         },
         {
           "disabled": false,
-          "document": "DNS configuration details.",
+          "document": "<p>DNS configuration detail</p>",
           "example": "无",
           "member": "DNSAttributes",
           "name": "Attributes",
           "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>dkim key length</p><p>Enumeration value:</p><ul><li>0: 1024</li><li>1: 2048</li><li>2: both</li></ul>",
+          "example": "0",
+          "member": "uint64",
+          "name": "DKIMOption",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>tag</p>",
+          "example": "无",
+          "member": "TagList",
+          "name": "TagList",
+          "output_required": false,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2850,7 +2890,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Email Subject</p>",
+          "document": "<p>Email Subject</p><p>When using templates to send, support using template variable parameters for population.</p>",
           "example": "YourTestSubject",
           "member": "string",
           "name": "Subject",
@@ -3568,7 +3608,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Domain to be verified.",
+          "document": "<p>Domain name for request verification</p>",
           "example": "example.com",
           "member": "string",
           "name": "EmailIdentity",
@@ -3577,7 +3617,7 @@
         },
         {
           "disabled": false,
-          "document": "The  DKIMOption parameter is effective or not",
+          "document": "<p>Match the new and old APIs in the console</p>",
           "example": "false",
           "member": "bool",
           "name": "NewAPI",
@@ -3586,7 +3626,7 @@
         },
         {
           "disabled": false,
-          "document": "dkim option, 0: 1024, 1: 2048, 2: both",
+          "document": "<p>dkim digits</p><p>Enumeration value:</p><ul><li>0: 1024</li><li>1: 2048</li><li>2: Dual signature</li></ul>",
           "example": "0",
           "member": "uint64",
           "name": "DKIMOption",
@@ -3601,7 +3641,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Verification type. The value is fixed to `DOMAIN`.",
+          "document": "<p>Validation type. Fixed value: DOMAIN</p>",
           "example": "DOMAIN",
           "member": "string",
           "name": "IdentityType",
@@ -3611,7 +3651,7 @@
         },
         {
           "disabled": false,
-          "document": "Verification passed or not.",
+          "document": "<p>Whether verified</p>",
           "example": "true",
           "member": "bool",
           "name": "VerifiedForSendingStatus",
@@ -3621,7 +3661,7 @@
         },
         {
           "disabled": false,
-          "document": "DNS information that needs to be configured.",
+          "document": "<p>DNS information needs to be configured</p>",
           "example": "无",
           "member": "DNSAttributes",
           "name": "Attributes",
@@ -3631,7 +3671,7 @@
         },
         {
           "disabled": false,
-          "document": "dkim option, 0: 1024, 1: 2048, 2: both",
+          "document": "<p>dkim digits</p><p>Enumeration value:</p><ul><li>0: 1024</li><li>1: 2048</li><li>2: Dual signature</li></ul>",
           "example": "0",
           "member": "uint64",
           "name": "DKIMOption",
@@ -3734,7 +3774,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Date",
+          "document": "<p>Date</p>",
           "example": "2024-08-08",
           "member": "date",
           "name": "SendDate",
@@ -3744,7 +3784,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of email requests.",
+          "document": "<p>Request quantity by email</p>",
           "example": "2",
           "member": "uint64",
           "name": "RequestCount",
@@ -3754,7 +3794,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of email requests accepted by Tencent Cloud.",
+          "document": "<p>Tencent Cloud pass count</p>",
           "example": "1",
           "member": "uint64",
           "name": "AcceptedCount",
@@ -3764,7 +3804,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of delivered emails.",
+          "document": "<p>Delivery quantity</p>",
           "example": "1",
           "member": "uint64",
           "name": "DeliveredCount",
@@ -3774,7 +3814,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of users (deduplicated) who opened emails.",
+          "document": "<p>Total number of times emails were opened</p>",
           "example": "0",
           "member": "uint64",
           "name": "OpenedCount",
@@ -3784,7 +3824,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of recipients who clicked on links in emails.",
+          "document": "<p>Number of users who clicked the link in the mail</p>",
           "example": "0",
           "member": "uint64",
           "name": "ClickedCount",
@@ -3794,7 +3834,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of bounced emails.",
+          "document": "<p>Bounced count</p>",
           "example": "0",
           "member": "uint64",
           "name": "BounceCount",
@@ -3804,7 +3844,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of users for unsubscription.",
+          "document": "<p>Number of users for unsubscription</p>",
           "example": "0",
           "member": "uint64",
           "name": "UnsubscribeCount",
