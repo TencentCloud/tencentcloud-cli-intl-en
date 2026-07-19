@@ -7,6 +7,27 @@
       "output": "AddTeamMemberResponse",
       "status": "online"
     },
+    "ApproveMNPPaymentEnable": {
+      "document": "This API is used to allow the superapp to approve the activation of mini program payment.",
+      "input": "ApproveMNPPaymentEnableRequest",
+      "name": "Approves mini program payment activation",
+      "output": "ApproveMNPPaymentEnableResponse",
+      "status": "online"
+    },
+    "ApprovePaymentMerchantBinding": {
+      "document": "This API is used to allow the superapp to approve the payment merchant binding request of a mini program team.",
+      "input": "ApprovePaymentMerchantBindingRequest",
+      "name": "Approves payment merchant binding",
+      "output": "ApprovePaymentMerchantBindingResponse",
+      "status": "online"
+    },
+    "ChangePaymentBoundMerchant": {
+      "document": "This API is used to change the bound payment merchant.",
+      "input": "ChangePaymentBoundMerchantRequest",
+      "name": "Changes the bound payment merchant",
+      "output": "ChangePaymentBoundMerchantResponse",
+      "status": "online"
+    },
     "ConfigureMNGPreview": {
       "document": "This API is used to configure the preview of a mini game.",
       "input": "ConfigureMNGPreviewRequest",
@@ -658,6 +679,13 @@
       "output": "DescribeMNPPageAnalysisDetailResponse",
       "status": "online"
     },
+    "DescribeMNPPaymentApprovalInfo": {
+      "document": "This API is used to query the mini program payment approval information.",
+      "input": "DescribeMNPPaymentApprovalInfoRequest",
+      "name": "Queries the mini program payment approval status",
+      "output": "DescribeMNPPaymentApprovalInfoResponse",
+      "status": "online"
+    },
     "DescribeMNPPreview": {
       "document": "This API is used to query the mini program preview details.",
       "input": "DescribeMNPPreviewRequest",
@@ -826,6 +854,13 @@
       "output": "DisableApplicationSensitiveAPIResponse",
       "status": "online"
     },
+    "DisableMNPPayment": {
+      "document": "This API is used to allow the superapp to actively disable mini program payment.",
+      "input": "DisableMNPPaymentRequest",
+      "name": "Allows the superapp to actively disable mini program payment",
+      "output": "DisableMNPPaymentResponse",
+      "status": "online"
+    },
     "EnableApplicationSensitiveAPI": {
       "document": "This API is used to enable a superapp sensitive API.",
       "input": "EnableApplicationSensitiveAPIRequest",
@@ -931,6 +966,13 @@
       "output": "ProcessMNPSensitiveAPIPermissionApprovalResponse",
       "status": "online"
     },
+    "QueryMNPMerchantInfo": {
+      "document": "This API is used to query the merchant information of a mini program.",
+      "input": "QueryMNPMerchantInfoRequest",
+      "name": "Queries mini program merchant information",
+      "output": "QueryMNPMerchantInfoResponse",
+      "status": "online"
+    },
     "ReleaseMNGVersion": {
       "document": "This API is used to release a mini game version.",
       "input": "ReleaseMNGVersionRequest",
@@ -959,6 +1001,20 @@
       "output": "RemoveMNPResponse",
       "status": "online"
     },
+    "RequestPaymentEnable": {
+      "document": "This API is used to request the activation of mini program payment.",
+      "input": "RequestPaymentEnableRequest",
+      "name": "Requests mini program payment activation",
+      "output": "RequestPaymentEnableResponse",
+      "status": "online"
+    },
+    "RequestPaymentMerchantBinding": {
+      "document": "This API is used to request the binding of a payment merchant to a team.",
+      "input": "RequestPaymentMerchantBindingRequest",
+      "name": "Requests payment merchant binding",
+      "output": "RequestPaymentMerchantBindingResponse",
+      "status": "online"
+    },
     "ResetMNGAppSecret": {
       "document": "This API is used to reset a mini game secret key.",
       "input": "ResetMNGAppSecretRequest",
@@ -985,6 +1041,20 @@
       "input": "RollbackMNPVersionRequest",
       "name": "Rolls back the released version of a mini program to a specified version",
       "output": "RollbackMNPVersionResponse",
+      "status": "online"
+    },
+    "UnbindMNPPaymentMerchant": {
+      "document": "This API is used to allow a mini program team to actively unbind the payment merchant.",
+      "input": "UnbindMNPPaymentMerchantRequest",
+      "name": "Unbinds the mini program payment merchant",
+      "output": "UnbindMNPPaymentMerchantResponse",
+      "status": "online"
+    },
+    "UnbindPaymentMerchant": {
+      "document": "This API is used to allow the superapp to actively unbind the payment merchant.",
+      "input": "UnbindPaymentMerchantRequest",
+      "name": "Unbinds the payment merchant",
+      "output": "UnbindPaymentMerchantResponse",
       "status": "online"
     }
   },
@@ -1485,6 +1555,66 @@
       ],
       "usage": "out"
     },
+    "AgeRatingItem": {
+      "document": "Age rating information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Age rating standard.</p><p>Valid values:</p><ul><li>apple: Apple</li><li>iarc: Android.</li></ul>",
+          "example": "apple",
+          "member": "string",
+          "name": "StandardId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Applicable age for age rating.</p>",
+          "example": "9",
+          "member": "int64",
+          "name": "AgeRating",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Age rating label.</p>",
+          "example": "9+",
+          "member": "string",
+          "name": "Label",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AgeRatingItemReq": {
+      "document": "Age rating request.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Age rating standard.</p><p>Valid values:</p><ul><li>apple: Apple</li><li>iarc: Android.</li></ul>",
+          "example": "apple",
+          "member": "string",
+          "name": "StandardId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Applicable age for age rating.</p>",
+          "example": "17",
+          "member": "int64",
+          "name": "AgeRating",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "usage": "in"
+    },
     "AnalysisAdvertOverview": {
       "document": "Ad analysis data overview.",
       "members": [
@@ -1573,6 +1703,72 @@
       ],
       "usage": "out"
     },
+    "ApplyPaymentOpenDetailRes": {
+      "document": "Queries mini program payment approval status.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Approval status. Valid values: 0: In progress; 10: Approved; 20: Rejected.</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "ApprovalStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Application time.</p><p>Unit: Milliseconds.</p>",
+          "example": "1783509243",
+          "member": "int64",
+          "name": "ApplyTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approval time.</p><p>Unit: milliseconds.</p>",
+          "example": "1783509262",
+          "member": "int64",
+          "name": "ApprovalTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approval note.</p>",
+          "example": "test note",
+          "member": "string",
+          "name": "ApprovalNote",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Specifies whether to display the approval records. Valid values: 0: No; 1: Yes.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "ApprovalShow",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Specifies whether the activation of mini program payment can be requested again. Valid values: 0: No; 1: Yes.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "ApplyShow",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "ApprovalItem": {
       "document": "Mini program approval processing details.",
       "members": [
@@ -1605,6 +1801,206 @@
         }
       ],
       "usage": "in"
+    },
+    "ApprovalPaymentV2MerchantBindRes": {
+      "document": "Response parameters structure for the superapp approving the merchant binding of a mini program team.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>API response result. A value of true indicates that the operation succeeded.</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "Result",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>The unique merchant binding ID of the mini program team, used for the superapp to unbind the merchant.</p>",
+          "example": "0",
+          "member": "uint64",
+          "name": "ID",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ApproveMNPPaymentEnableRequest": {
+      "document": "ApproveMNPPaymentEnable request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T08123WM5791733VNCZ",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Superapp ID.</p>",
+          "example": "app-sb1uz0q9ce",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approval number.</p>",
+          "example": "AN0905143403D9243178350175329",
+          "member": "string",
+          "name": "ApprovalNo",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approval status. Valid values: 10: Approved; 20: Rejected.</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "ApprovalType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approval note.</p>",
+          "example": "测试拒绝",
+          "member": "string",
+          "name": "ApprovalNote",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ApproveMNPPaymentEnableResponse": {
+      "document": "ApproveMNPPaymentEnable response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Approval result.</p>",
+          "example": "无",
+          "member": "ApproveMNPPaymentOpenRes",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ApproveMNPPaymentOpenRes": {
+      "document": "Response parameters structure for the superapp approving the activation of mini program payment.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Execution result of the API operation. Valid values: true: Operation succeeded; false: Operation failed.</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "Result",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>The unique ID of the mini program payment activation. Used for the API where the superapp actively disables mini program payment.</p>",
+          "example": "2649",
+          "member": "uint64",
+          "name": "ID",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ApprovePaymentMerchantBindingRequest": {
+      "document": "ApprovePaymentMerchantBinding request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T08123WM5791733VNCZ",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Superapp ID.</p>",
+          "example": "app-sb1uz0q9ce",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approval number.</p>",
+          "example": "AN08057581F268124178350CC9837",
+          "member": "string",
+          "name": "ApprovalNo",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approval status. Valid values: 10: Approved; 20: Rejected.</p>",
+          "example": "10",
+          "member": "uint64",
+          "name": "ApprovalType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approval note.</p>",
+          "example": "test reject",
+          "member": "string",
+          "name": "ApprovalNote",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ApprovePaymentMerchantBindingResponse": {
+      "document": "ApprovePaymentMerchantBinding response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Approval result.</p>",
+          "example": "无",
+          "member": "ApprovalPaymentV2MerchantBindRes",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "BooleanInfo": {
       "document": "Used for Data object when no data is returned after a successful action.",
@@ -1683,6 +2079,98 @@
         }
       ],
       "usage": "out"
+    },
+    "ChangePaymentBoundMerchantRequest": {
+      "document": "ChangePaymentBoundMerchant request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T08123WM5791733VNCZ",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program appid.</p>",
+          "example": "8818371998",
+          "member": "string",
+          "name": "TeamId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Merchant ID.</p>",
+          "example": "openapi换绑商户号",
+          "member": "string",
+          "name": "MerchantID",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Merchant name.</p>",
+          "example": "openapi换绑商户号名称",
+          "member": "string",
+          "name": "MerchantName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ChangePaymentBoundMerchantResponse": {
+      "document": "ChangePaymentBoundMerchant response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Response parameters structure for changing the bound payment merchant. The returned approval number is required when calling the approval API.</p>",
+          "example": "无",
+          "member": "ChangePaymentV2BindMerchantRes",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ChangePaymentV2BindMerchantRes": {
+      "document": "Response parameters structure for changing the bound payment merchant.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>API response result. Valid values: true: Operation succeeded; false: Operation failed.</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "Result",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approval number. Used for the API where the superapp approves the merchant binding of a mini program team.</p>",
+          "example": "AN0905143403D9243178350175329",
+          "member": "string",
+          "name": "ApprovalNo",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "ConfigureMNGPreviewRequest": {
       "document": "ConfigureMNGPreview request structure.",
@@ -2532,6 +3020,15 @@
           "name": "I18nList",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Age rating information.</p>",
+          "example": "无",
+          "member": "AgeRatingItemReq",
+          "name": "AgeRatings",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -2745,7 +3242,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Version type. Valid values: 1: Debug; 2: Development. Default value: 2.</p>",
+          "document": "<p>Version type. Valid values: 1: Debug version; 2: Development version.</p> Default value: 2.</p>",
           "example": "2",
           "member": "int64",
           "name": "VersionType",
@@ -2754,7 +3251,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Compilation condition.</p>",
+          "document": "<p>Compilation conditions.</p>",
           "example": "condition",
           "member": "string",
           "name": "CompileCondition",
@@ -2772,7 +3269,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>CI/CD key ID.</p>",
+          "document": "<p>CICD ID</p>",
           "example": "202606111556252306706926",
           "member": "string",
           "name": "PipelineId",
@@ -3102,6 +3599,15 @@
           "name": "I18nList",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Age rating information.</p>",
+          "example": "无",
+          "member": "AgeRatingItemReq",
+          "name": "AgeRatings",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -3142,7 +3648,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Mini program appid.</p>",
+          "document": "<p>Mini program or mini game appid.</p>",
           "example": "mpjnms6wibvjj8dd",
           "member": "string",
           "name": "MNPId",
@@ -3151,7 +3657,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>CI/CD key ID.</p>",
+          "document": "<p>CICD ID</p>",
           "example": "202606111556252306706926",
           "member": "string",
           "name": "PipelineId",
@@ -3396,7 +3902,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Version type. Valid values: 1: Debug; 2: Development. Default value: 2.</p>",
+          "document": "<p>Version type. Valid values: 1: Debug version; 2: Development version. Default value: 2.</p>",
           "example": "2",
           "member": "int64",
           "name": "VersionType",
@@ -3405,7 +3911,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Compilation condition.</p>",
+          "document": "<p>Compilation conditions.</p>",
           "example": "condition",
           "member": "string",
           "name": "CompileCondition",
@@ -3423,7 +3929,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>CI/CD key ID.</p>",
+          "document": "<p>CICD ID</p>",
           "example": "202606111556252306706926",
           "member": "string",
           "name": "PipelineId",
@@ -4872,7 +5378,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Mini program or mini game appid.",
+          "document": "<p>Mini program or mini game appid.</p>",
           "example": "mgfpifiihi8i3bmj",
           "member": "string",
           "name": "MNPId",
@@ -4882,7 +5388,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program or mini game icon.",
+          "document": "<p>Mini program or mini game icon.</p>",
           "example": "https://example.com/f00943828b4178aab9b5a9fe116b97.jpeg",
           "member": "string",
           "name": "MNPIcon",
@@ -4892,7 +5398,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program or mini game name.",
+          "document": "<p>Mini program or mini game name.</p>",
           "example": "autotest_miniapp",
           "member": "string",
           "name": "MNPName",
@@ -4902,7 +5408,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program or mini game information.",
+          "document": "<p>Mini program or mini game introduction.</p>",
           "example": "this app light your screen",
           "member": "string",
           "name": "MNPIntro",
@@ -4912,7 +5418,7 @@
         },
         {
           "disabled": false,
-          "document": "Creator.",
+          "document": "<p>Creator.</p>",
           "example": "800001096389",
           "member": "string",
           "name": "CreateUser",
@@ -4922,7 +5428,7 @@
         },
         {
           "disabled": false,
-          "document": "Creation time.",
+          "document": "<p>Creation time.</p>",
           "example": "1767091467",
           "member": "string",
           "name": "CreateTime",
@@ -4932,7 +5438,7 @@
         },
         {
           "disabled": false,
-          "document": "Last modifier.",
+          "document": "<p>Last modifier.</p>",
           "example": "800001096389",
           "member": "string",
           "name": "UpdateUser",
@@ -4942,7 +5448,7 @@
         },
         {
           "disabled": false,
-          "document": "Last modified time.",
+          "document": "<p>Last modified time.</p>",
           "example": "1767091467",
           "member": "string",
           "name": "UpdateTime",
@@ -4952,7 +5458,7 @@
         },
         {
           "disabled": false,
-          "document": "Available status. Valid value: 0: Not available; 1 Available; 2: In canary release.",
+          "document": "<p>Available status. Valid value: 0: Not available; 1 Available; 2: In canary release.</p>",
           "example": "1",
           "member": "int64",
           "name": "OnlineStatus",
@@ -4962,7 +5468,7 @@
         },
         {
           "disabled": false,
-          "document": "Engine type. Specifies the runtime engine by product type. Valid values: 0: Mini program; 1: Mini game.",
+          "document": "<p>Engine type. Specifies the runtime engine by product type. Valid values: 0: Mini program; 1: Mini game.</p>",
           "example": "0",
           "member": "int64",
           "name": "EngineType",
@@ -4972,7 +5478,7 @@
         },
         {
           "disabled": false,
-          "document": "Category information.",
+          "document": "<p>Category information.</p>",
           "example": "无",
           "member": "CategoryInfo",
           "name": "CategoryList",
@@ -4982,7 +5488,7 @@
         },
         {
           "disabled": false,
-          "document": "Team ID.",
+          "document": "<p>Team ID.</p>",
           "example": "1233456",
           "member": "string",
           "name": "TeamId",
@@ -4992,7 +5498,7 @@
         },
         {
           "disabled": false,
-          "document": "Team name.",
+          "document": "<p>Team name.</p>",
           "example": "团队名称",
           "member": "string",
           "name": "TeamName",
@@ -5002,12 +5508,22 @@
         },
         {
           "disabled": false,
-          "document": "Team type ID.",
+          "document": "<p>Team type ID.</p>",
           "example": "1",
           "member": "int64",
           "name": "TeamTypeId",
           "output_required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Age rating information.</p>",
+          "example": "无",
+          "member": "AgeRatingItem",
+          "name": "AgeRatings",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -6726,6 +7242,16 @@
           "output_required": false,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Age rating information.</p>",
+          "example": "无",
+          "member": "AgeRatingItem",
+          "name": "AgeRatings",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -7088,7 +7614,7 @@
         },
         {
           "disabled": false,
-          "document": "Team ID.",
+          "document": "<p>Team ID.</p>",
           "example": "3977181246",
           "member": "string",
           "name": "TeamId",
@@ -7098,12 +7624,22 @@
         },
         {
           "disabled": false,
-          "document": "Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.",
+          "document": "<p>Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.</p>",
           "example": "1",
           "member": "int64",
           "name": "TeamTypeId",
           "output_required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Age rating information.</p>",
+          "example": "无",
+          "member": "AgeRatingItem",
+          "name": "AgeRatings",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -7589,12 +8125,32 @@
         },
         {
           "disabled": false,
-          "document": "Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.",
+          "document": "<p>Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.</p>",
           "example": "1",
           "member": "int64",
           "name": "TeamTypeId",
           "output_required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Age rating information.</p>",
+          "example": "无",
+          "member": "AgeRatingItem",
+          "name": "AgeRatings",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Merchant ID information bound to the team to which this mini program belongs.</p>",
+          "example": "mi16d7347ed5e8353caa79a93aeaf652",
+          "member": "string",
+          "name": "MerchantId",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -9460,7 +10016,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>CI/CD key ID.</p>",
+          "document": "<p>CICD ID</p>",
           "example": "202603161442339568552805",
           "member": "string",
           "name": "PipelineId",
@@ -9938,7 +10494,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Approval number.",
+          "document": "<p>Approval number.</p>",
           "example": "audenndhms24i27953",
           "member": "string",
           "name": "ApprovalNo",
@@ -9948,7 +10504,7 @@
         },
         {
           "disabled": false,
-          "document": "Superapp ID.",
+          "document": "<p>Superapp ID.</p>",
           "example": "app-or80bj0q46",
           "member": "string",
           "name": "ApplicationId",
@@ -9958,7 +10514,7 @@
         },
         {
           "disabled": false,
-          "document": "Approval status. Valid values: 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.",
+          "document": "<p>Approval status. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.</p>",
           "example": "0",
           "member": "int64",
           "name": "ApprovalStatus",
@@ -9968,7 +10524,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program appid.",
+          "document": "<p>Mini program appid.</p>",
           "example": "mp4b3ykyne0wain0",
           "member": "string",
           "name": "MNPId",
@@ -9978,7 +10534,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program version.",
+          "document": "<p>Mini program version.</p>",
           "example": "1.0.90",
           "member": "string",
           "name": "MNPVersion",
@@ -9988,7 +10544,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program version ID.",
+          "document": "<p>Mini program version ID.</p>",
           "example": "5845",
           "member": "int64",
           "name": "MNPVersionId",
@@ -9998,7 +10554,7 @@
         },
         {
           "disabled": false,
-          "document": "Applicant.",
+          "document": "<p>Applicant.</p>",
           "example": "800001096389",
           "member": "string",
           "name": "ApplyUser",
@@ -10008,7 +10564,7 @@
         },
         {
           "disabled": false,
-          "document": "Application time.",
+          "document": "<p>Application time.</p>",
           "example": "1741317601",
           "member": "string",
           "name": "ApplyTime",
@@ -10018,7 +10574,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program name.",
+          "document": "<p>Mini program name.</p>",
           "example": "autotest_miniapp",
           "member": "string",
           "name": "MNPName",
@@ -10028,7 +10584,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program icon.",
+          "document": "<p>Mini program icon.</p>",
           "example": "https://mp-d73d473dbe-1314481471.cos.accelerate.myqcloud.com/T03774IM9541735YJZV/tcmpp/b0468b7638d84b20b71f8b4f68a432f5.png",
           "member": "string",
           "name": "MNPIcon",
@@ -10038,7 +10594,7 @@
         },
         {
           "disabled": false,
-          "document": "Superapp name.",
+          "document": "<p>Superapp name.</p>",
           "example": "autotest_app",
           "member": "string",
           "name": "ApplicationName",
@@ -10048,7 +10604,7 @@
         },
         {
           "disabled": false,
-          "document": "Superapp icon.",
+          "document": "<p>Superapp icon.</p>",
           "example": "https://mp-d73d473dbe-1314481471.cos.accelerate.myqcloud.com/T03774IM9541735YJZV/tcmpp/b0468b7638d84b20b71f8b4f68a432f5.png",
           "member": "string",
           "name": "ApplicationLogo",
@@ -10058,7 +10614,7 @@
         },
         {
           "disabled": false,
-          "document": "Team ID.",
+          "document": "<p>Team ID.</p>",
           "example": "2666639703",
           "member": "string",
           "name": "TeamId",
@@ -10068,7 +10624,7 @@
         },
         {
           "disabled": false,
-          "document": "Team name.",
+          "document": "<p>Team name.</p>",
           "example": "autotest_mini_team",
           "member": "string",
           "name": "TeamName",
@@ -10078,7 +10634,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program approval QR code URL.",
+          "document": "<p>Mini program approval QR code URL.</p>",
           "example": "http://qrcode.com/sample",
           "member": "string",
           "name": "MNPQrCodeUrl",
@@ -10088,7 +10644,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program category.",
+          "document": "<p>Mini program category.</p>",
           "example": "IT tech-video",
           "member": "string",
           "name": "MNPType",
@@ -10098,7 +10654,7 @@
         },
         {
           "disabled": false,
-          "document": "Approver.",
+          "document": "<p>Approver.</p>",
           "example": "admin",
           "member": "string",
           "name": "ApprovalUser",
@@ -10108,7 +10664,7 @@
         },
         {
           "disabled": false,
-          "document": "Approval time.",
+          "document": "<p>Approval time.</p>",
           "example": "0",
           "member": "string",
           "name": "ApprovalTime",
@@ -10118,12 +10674,22 @@
         },
         {
           "disabled": false,
-          "document": "Approval note.",
+          "document": "<p>Approval note.</p>",
           "example": "demostration",
           "member": "string",
           "name": "ApprovalNote",
           "output_required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Age rating information.</p>",
+          "example": "无",
+          "member": "AgeRatingItem",
+          "name": "AgeRatings",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -10334,7 +10900,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Mini program appid.",
+          "document": "<p>Mini game appid.</p>",
           "example": "mp4b3ykyne0wain0",
           "member": "string",
           "name": "MNPId",
@@ -10344,7 +10910,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program icon.",
+          "document": "<p>Mini game icon.</p>",
           "example": "https://mp-d73d473dbe-1314481471.cos.accelerate.myqcloud.com/T03774IM9541735YJZV/tcmpp/b0468b7638d84b20b71f8b4f68a432f5.png",
           "member": "string",
           "name": "MNPIcon",
@@ -10354,7 +10920,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program name.",
+          "document": "<p>Mini game name.</p>",
           "example": "autotest_miniapp",
           "member": "string",
           "name": "MNPName",
@@ -10364,7 +10930,7 @@
         },
         {
           "disabled": false,
-          "document": "Team name. ",
+          "document": "<p>Team name.</p>",
           "example": "autotest_mini_team",
           "member": "string",
           "name": "TeamName",
@@ -10374,7 +10940,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program category.",
+          "document": "<p>Mini game category.</p>",
           "example": "Logistics Services->2_Search,Logistics Services->10_Postal Service",
           "member": "string",
           "name": "MNPType",
@@ -10384,7 +10950,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program available status. Valid values: 1: Available; 2: Removed.",
+          "document": "<p>Mini game available status. Valid values: 1: Available; 2: Not available.</p>",
           "example": "1",
           "member": "int64",
           "name": "Status",
@@ -10394,7 +10960,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program introduction.",
+          "document": "<p>Mini game introduction.</p>",
           "example": "for automation testing purposes",
           "member": "string",
           "name": "MNPIntro",
@@ -10404,7 +10970,7 @@
         },
         {
           "disabled": false,
-          "document": "Creator.",
+          "document": "<p>Creator.</p>",
           "example": "autotest_op",
           "member": "string",
           "name": "CreateUser",
@@ -10414,7 +10980,7 @@
         },
         {
           "disabled": false,
-          "document": "Creation time.",
+          "document": "<p>Creation time.</p>",
           "example": "1735544027",
           "member": "string",
           "name": "CreateTime",
@@ -10424,7 +10990,7 @@
         },
         {
           "disabled": false,
-          "document": "Last modifier.",
+          "document": "<p>Last modifier.</p>",
           "example": "800001096389",
           "member": "string",
           "name": "UpdateUser",
@@ -10434,7 +11000,7 @@
         },
         {
           "disabled": false,
-          "document": "Last modified time.",
+          "document": "<p>Last modified time.</p>",
           "example": "1741317602",
           "member": "string",
           "name": "UpdateTime",
@@ -10444,7 +11010,7 @@
         },
         {
           "disabled": false,
-          "document": "Superapp name.",
+          "document": "<p>Superapp name.</p>",
           "example": "autotest_app",
           "member": "string",
           "name": "ApplicationName",
@@ -10454,7 +11020,7 @@
         },
         {
           "disabled": false,
-          "document": "Binding effective status for the superapp. Valid values: 1: Not effective; 2: Effective.",
+          "document": "<p>Binding effective status for the superapp. Valid values: 1: Not effective; 2: Effective.</p>",
           "example": "2",
           "member": "int64",
           "name": "EffectStatus",
@@ -10464,7 +11030,7 @@
         },
         {
           "disabled": false,
-          "document": "Effective mini program version ID bound to the superapp. ",
+          "document": "<p>Effective mini program version ID bound to the superapp.</p>",
           "example": "4644",
           "member": "int64",
           "name": "EffectMNPVersionId",
@@ -10474,7 +11040,7 @@
         },
         {
           "disabled": false,
-          "document": "Effective mini program version number bound to the superapp. ",
+          "document": "<p>Effective mini program version number bound to the superapp.</p>",
           "example": "1.0.1",
           "member": "string",
           "name": "EffectMNPVersion",
@@ -10484,7 +11050,7 @@
         },
         {
           "disabled": false,
-          "document": "Team ID.",
+          "document": "<p>Team ID.</p>",
           "example": "132245",
           "member": "string",
           "name": "TeamId",
@@ -10494,12 +11060,22 @@
         },
         {
           "disabled": false,
-          "document": "Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.",
+          "document": "<p>Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.</p>",
           "example": "1",
           "member": "int64",
           "name": "TeamTypeId",
           "output_required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Age rating information.</p>",
+          "example": "无",
+          "member": "AgeRatingItem",
+          "name": "AgeRatings",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -10985,13 +11561,33 @@
         },
         {
           "disabled": false,
-          "document": "Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.",
+          "document": "<p>Team type ID. Valid values: 1: Mini program team; 2: Superapp team; 3: Service provider team.</p>",
           "example": "1",
           "member": "int64",
           "name": "TeamTypeId",
           "output_required": false,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Age rating information.</p>",
+          "example": "无",
+          "member": "AgeRatingItem",
+          "name": "AgeRatings",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Merchant ID bound to the team to which the mini program belongs.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "openapi换绑商户号",
+          "member": "string",
+          "name": "MerchantId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -11114,6 +11710,52 @@
           "output_required": false,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPPaymentApprovalInfoRequest": {
+      "document": "DescribeMNPPaymentApprovalInfo request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T08123WM5791733VNCZ",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program appid.</p>",
+          "example": "mpoabj40x69tbphn",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPPaymentApprovalInfoResponse": {
+      "document": "DescribeMNPPaymentApprovalInfo response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Queries the approval status of mini program payment activation.</p>",
+          "example": "无",
+          "member": "ApplyPaymentOpenDetailRes",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -12679,6 +13321,52 @@
       ],
       "type": "object"
     },
+    "DescribeMNPTeamMerchantInfoRes": {
+      "document": "Response parameters structure for querying bound merchant accounts of a mini program team.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Merchant ID.</p>",
+          "example": "openapi换绑商户号",
+          "member": "string",
+          "name": "MerchantID",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approval status. Valid values: 0: In progress; 10: Approved; 20: Rejected.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "ApprovalStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Merchant binding ID of the mini program team, used to unbind the merchant.</p>",
+          "example": "620",
+          "member": "string",
+          "name": "ID",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Merchant name.</p>",
+          "example": "openapi换绑商户号名称",
+          "member": "string",
+          "name": "MerchantName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "DescribeMNPVersionRequest": {
       "document": "DescribeMNPVersion request structure.",
       "members": [
@@ -12825,7 +13513,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Mini program appid.",
+          "document": "<p>Mini program appid.</p>",
           "example": "mp4b3ykyne0wain0",
           "member": "string",
           "name": "MNPId",
@@ -12835,7 +13523,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program version primary key ID.",
+          "document": "<p>Mini program version primary key ID.</p>",
           "example": "5845",
           "member": "int64",
           "name": "MNPVersionId",
@@ -12845,7 +13533,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program name.",
+          "document": "<p>Mini program name.</p>",
           "example": "autotest_miniapp",
           "member": "string",
           "name": "MNPName",
@@ -12855,7 +13543,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program icon.",
+          "document": "<p>Mini program icon.</p>",
           "example": "https://mp-d73d473dbe-1314481471.cos.accelerate.myqcloud.com/T03774IM9541735YJZV/tcmpp/b0468b7638d84b20b71f8b4f68a432f5.png",
           "member": "string",
           "name": "MNPIcon",
@@ -12865,7 +13553,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program category.",
+          "document": "<p>Mini program category.</p>",
           "example": "IT tech-tools",
           "member": "string",
           "name": "MNPType",
@@ -12875,7 +13563,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program introduction.",
+          "document": "<p>Mini program introduction.</p>",
           "example": "lighter",
           "member": "string",
           "name": "MNPIntro",
@@ -12885,7 +13573,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program description.",
+          "document": "<p>Mini program description.</p>",
           "example": "this app light your screen",
           "member": "string",
           "name": "MNPDesc",
@@ -12895,7 +13583,7 @@
         },
         {
           "disabled": false,
-          "document": "Creator.",
+          "document": "<p>Creator.</p>",
           "example": "800001096389",
           "member": "string",
           "name": "CreateUser",
@@ -12905,7 +13593,7 @@
         },
         {
           "disabled": false,
-          "document": "Creation time.",
+          "document": "<p>Creation time.</p>",
           "example": "1741317559",
           "member": "string",
           "name": "CreateTime",
@@ -12915,7 +13603,7 @@
         },
         {
           "disabled": false,
-          "document": "Mini program version number.",
+          "document": "<p>Mini program version.</p>",
           "example": "1.0.90",
           "member": "string",
           "name": "MNPVersion",
@@ -12925,7 +13613,7 @@
         },
         {
           "disabled": false,
-          "document": "Version introduction.",
+          "document": "<p>Version introduction.</p>",
           "example": "autotest_create",
           "member": "string",
           "name": "MNPVersionIntro",
@@ -12935,7 +13623,7 @@
         },
         {
           "disabled": false,
-          "document": "Phase: Valid values: Develop; Platform; Online.",
+          "document": "<p>Phase:  Valid values: Develop; Platform; Online.</p>",
           "example": "Develop",
           "member": "string",
           "name": "Phase",
@@ -12945,7 +13633,7 @@
         },
         {
           "disabled": false,
-          "document": "Approval status. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.",
+          "document": "<p>Approval status. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.</p>",
           "example": "3",
           "member": "int64",
           "name": "ApprovalStatus",
@@ -12955,7 +13643,7 @@
         },
         {
           "disabled": false,
-          "document": "Approval number.",
+          "document": "<p>Approval number.</p>",
           "example": "123451234123",
           "member": "string",
           "name": "ApprovalNo",
@@ -12965,7 +13653,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether this is a preview. Valid values: 0: No; 1: Yes.",
+          "document": "<p>Whether this is a preview. Valid values: 0: No; 1: Yes.</p>",
           "example": "0",
           "member": "int64",
           "name": "ShowCase",
@@ -12975,7 +13663,7 @@
         },
         {
           "disabled": false,
-          "document": "Rollback version number.",
+          "document": "<p>Rollback version number.</p>",
           "example": "5809",
           "member": "int64",
           "name": "RollbackVersion",
@@ -12985,7 +13673,7 @@
         },
         {
           "disabled": false,
-          "document": "Available status. Valid value: 0: All; 1 Available; 2: In canary release.",
+          "document": "<p>Available status. Valid value: 0: All; 1 Available; 2: In canary release.</p>",
           "example": "1",
           "member": "int64",
           "name": "Status",
@@ -12995,12 +13683,22 @@
         },
         {
           "disabled": false,
-          "document": "Current version approval status. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.",
+          "document": "<p>Current version approval status. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.</p>",
           "example": "0",
           "member": "int64",
           "name": "VersionCurrentStatus",
           "output_required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Age rating information.</p>",
+          "example": "无",
+          "member": "AgeRatingItem",
+          "name": "AgeRatings",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -14704,6 +15402,61 @@
       ],
       "type": "object"
     },
+    "DisableMNPPaymentRequest": {
+      "document": "DisableMNPPayment request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T08123WM5791733VNCZ",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Superapp ID.</p>",
+          "example": "app-sb1uz0q9ce",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Primary key ID, obtained from the API response of approving mini program payment activation.</p>",
+          "example": "1809",
+          "member": "uint64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DisableMNPPaymentResponse": {
+      "document": "DisableMNPPayment response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Response parameters structure for disabling mini program payment.</p>",
+          "example": "无",
+          "member": "BooleanInfo",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DownloadApplicationConfigResp": {
       "document": "Superapp configuration information.",
       "members": [
@@ -15851,7 +16604,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Package name.",
+          "document": "<p>Package name.</p>",
           "example": "wasmcode",
           "member": "string",
           "name": "Name",
@@ -15861,12 +16614,38 @@
         },
         {
           "disabled": false,
-          "document": "Package size. ",
+          "document": "<p>Package size.</p>",
           "example": "7497110",
           "member": "int64",
           "name": "Size",
           "output_required": false,
           "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "MerchantBindApprovalResp": {
+      "document": "Response parameters structure for requesting payment merchant binding.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Operation response result. A value of true indicates that the operation succeeded.</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "ApprovalResult",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approval number. Required as an input parameter when calling the API to approve merchant binding.</p>",
+          "example": "AN08057581F268124178350CC9837",
+          "member": "string",
+          "name": "ResourceId",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -16309,6 +17088,15 @@
           "name": "I18nList",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Age rating information.</p>",
+          "example": "无",
+          "member": "AgeRatingItemReq",
+          "name": "AgeRatings",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -16533,6 +17321,15 @@
           "example": "无",
           "member": "MNPI18NSyncDto",
           "name": "I18nList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Age rating information.</p>",
+          "example": "无",
+          "member": "AgeRatingItemReq",
+          "name": "AgeRatings",
           "required": false,
           "type": "list"
         }
@@ -17368,6 +18165,52 @@
       ],
       "usage": "out"
     },
+    "QueryMNPMerchantInfoRequest": {
+      "document": "QueryMNPMerchantInfo request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T08123WM5791733VNCZ",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program appid.</p>",
+          "example": "8818371998",
+          "member": "string",
+          "name": "QueryTeamID",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "QueryMNPMerchantInfoResponse": {
+      "document": "QueryMNPMerchantInfo response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Response parameters structure for querying the merchant approval status of a mini program team.</p>",
+          "example": "无",
+          "member": "DescribeMNPTeamMerchantInfoRes",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "QueryOnlineVersionResp": {
       "document": "Response for querying mini program released version IDs.",
       "members": [
@@ -17653,6 +18496,125 @@
         }
       ],
       "usage": "out"
+    },
+    "RequestPaymentEnableRequest": {
+      "document": "RequestPaymentEnable request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T08123WM5791733VNCZ",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program appid.</p>",
+          "example": "mpoabj40x69tbphn",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Note for requesting payment activation.</p>",
+          "example": "openapi小程序申请开通支付通过",
+          "member": "string",
+          "name": "ApplyNote",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RequestPaymentEnableResponse": {
+      "document": "RequestPaymentEnable response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Response parameters structure for mini program payment activation. The returned approval number is required when calling the API to approve payment activation.</p>",
+          "example": "无",
+          "member": "ChangePaymentV2BindMerchantRes",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RequestPaymentMerchantBindingRequest": {
+      "document": "RequestPaymentMerchantBinding request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T08123WM5791733VNCZ",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program appid.</p>",
+          "example": "8818371998",
+          "member": "string",
+          "name": "TeamId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Merchant ID.</p>",
+          "example": "openapimerchant",
+          "member": "string",
+          "name": "MerchantID",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Merchant name.</p>",
+          "example": "openapi商户号",
+          "member": "string",
+          "name": "MerchantName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RequestPaymentMerchantBindingResponse": {
+      "document": "RequestPaymentMerchantBinding response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Response parameters structure for the application of a mini program team to bind a merchant ID.</p>",
+          "example": "无",
+          "member": "MerchantBindApprovalResp",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ResetMNGAppSecretRequest": {
       "document": "ResetMNGAppSecret request structure.",
@@ -18186,6 +19148,116 @@
         }
       ],
       "usage": "out"
+    },
+    "UnbindMNPPaymentMerchantRequest": {
+      "document": "UnbindMNPPaymentMerchant request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T08123WM5791733VNCZ",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program team ID.</p>",
+          "example": "4627960768",
+          "member": "string",
+          "name": "TeamId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Primary key ID, obtained from the API response of approving the merchant binding of a mini program team.</p>",
+          "example": "687",
+          "member": "string",
+          "name": "ID",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UnbindMNPPaymentMerchantResponse": {
+      "document": "UnbindMNPPaymentMerchant response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Response parameters structure for the mini program team actively unbinding the merchant account.</p>",
+          "example": "无",
+          "member": "BooleanInfo",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UnbindPaymentMerchantRequest": {
+      "document": "UnbindPaymentMerchant request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T08123WM5791733VNCZ",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Superapp ID.</p>",
+          "example": "app-sb1uz0q9ce",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Primary key ID, obtained from the API response of approving the merchant binding of a mini program team.</p>",
+          "example": "619",
+          "member": "uint64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "UnbindPaymentMerchantResponse": {
+      "document": "UnbindPaymentMerchant response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Response parameters structure for the superapp actively unbinding the merchant account of a mini program team.</p>",
+          "example": "无",
+          "member": "BooleanInfo",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "UploadFileTempSecret": {
       "document": "Temporary credentials for file upload.",

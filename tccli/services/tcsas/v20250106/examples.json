@@ -8,6 +8,30 @@
         "title": "AddTeamMember"
       }
     ],
+    "ApproveMNPPaymentEnable": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ApproveMNPPaymentEnable\n<Common request parameters>\n\n{\n    \"PlatformId\": \"T08123WM5791733VNCZ\",\n    \"ApplicationId\": \"app-sb1uz0q9ce\",\n    \"ApprovalNo\": \"AN0905143403D9243178350175329\",\n    \"ApprovalType\": 10,\n    \"ApprovalNote\": \"\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"ID\": 2649,\n            \"Result\": true\n        },\n        \"RequestId\": \"f3e146af-212f-4173-961f-d2a17265b4eb\"\n    }\n}",
+        "title": "Approving Mini Program Payment Activation"
+      }
+    ],
+    "ApprovePaymentMerchantBinding": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ApprovePaymentMerchantBinding\n<Common request parameters>\n\n{\n    \"PlatformId\": \"T08123WM5791733VNCZ\",\n    \"ApplicationId\": \"app-sb1uz0q9ce\",\n    \"ApprovalNo\": \"AN08057581F268124178350CC9837\",\n    \"ApprovalType\": 10,\n    \"ApprovalNote\": \"\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"ID\": 619,\n            \"Result\": true\n        },\n        \"RequestId\": \"7fe74e9d-9dfa-4562-8857-e82243d7fde0\"\n    }\n}",
+        "title": "Approving the Merchant Binding Request of a Mini Program Team"
+      }
+    ],
+    "ChangePaymentBoundMerchant": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ChangePaymentBoundMerchant\n<Common request parameters>\n\n{\n    \"PlatformId\": \"T08123WM5791733VNCZ\",\n    \"TeamId\": \"8818371998\",\n    \"MerchantID\": \"openapi_changed_merchant_id\",\n    \"MerchantName\": \"OpenAPI Changed Merchant Name\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"ApprovalNo\": \"AN0805692F3F58596178350A5D1F1\",\n            \"Result\": true\n        },\n        \"RequestId\": \"8f0ee1dd-53e2-430a-bd51-8ddbe051cdc5\"\n    }\n}",
+        "title": "Requesting to Change the Bound Merchant"
+      }
+    ],
     "ConfigureMNGPreview": [
       {
         "document": "",
@@ -107,9 +131,9 @@
     "CreateMNGVersion": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateMNGVersion\n<Common request parameters>\n\n{\n    \"MNPId\": \"mgnabik60s10fe9e\",\n    \"MNPVersion\": \"1.0.0\",\n    \"FileUrl\": \"https://tcmpp-dev-renter-1258344699.cos.ap-guangzhou.myqcloud.com/T08123WM5791733VNCZ/mpp/920f5ae55293436e9f985230ec3768cc.zip\",\n    \"PlatformId\": \"T08123WM5791733VNCZ\",\n    \"MNPVersionIntro\": \"1.0.0\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"TaskId\": \"2026031714150054841\"\n        },\n        \"RequestId\": \"e47cf89a-1ded-4d02-ac55-fb626dc0d419\"\n    }\n}",
-        "title": "DEMO"
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateMNGVersion\n<Common request parameters>\n\n{\n    \"MNPId\": \"mggmlsubsh1ayswv\",\n    \"MNPVersion\": \"1.0.1\",\n    \"FileUrl\": \"https://mp-b699cbee82-**************.accelerate.myqcloud.com/*******************/tcmpp/41d44979966b438c8a60bacb2bc7476f.zip\",\n    \"PlatformId\": \"T09891LW9411772TWFN\",\n    \"MNPVersionIntro\": \"OpenApi Upload11\",\n    \"FileInnerUrl\": \"https://tcmpp-dev-renter-***********cos.ap-guangzhou.myqcloud.com/********************************3328409e94466d8615de7d55.zip\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"TaskId\": \"2026040811484225228\"\n        },\n        \"RequestId\": \"f4dd674a-d727-45f7-94c0-fa25b3abd400\"\n    }\n}",
+        "title": "Example"
       }
     ],
     "CreateMNP": [
@@ -171,8 +195,8 @@
     "CreateMNPVersion": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateMNPVersion\n<Common request parameters>\n\n{\n    \"MNPId\": \"mpg9yjc0qbpkelik\",\n    \"MNPVersion\": \"1.0.278\",\n    \"FileUrl\": \"http://127.0.0.1/T04257DS9431720WTAG/console/20240820163023-86c669ca06.zip\",\n    \"MNPVersionIntro\": \"autotest_create\",\n    \"PlatformId\": \"T04257DS9431720WTAG\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"TaskId\": \"2024082016302581955\"\n        },\n        \"RequestId\": \"b7bbff2d-fea5-471e-918f-c9684abf2fd3\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateMNPVersion\n<Common request parameters>\n\n{\n    \"MNPId\": \"mpekj3ynsy0x4b9d\",\n    \"MNPVersion\": \"1.0.19\",\n    \"FileUrl\": \"https://tcmpp-dev-renter-**********.cos.ap-guangzhou.myqcloud.com/*******************/tcmpp/f19c710fab5a42a583b09c3d17aca42f.zip\",\n    \"PlatformId\": \"T08123WM5791733VNCZ\",\n    \"MNPVersionIntro\": \"11\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"TaskId\": \"2026033116512731352\"\n        },\n        \"RequestId\": \"1d0843f1-c739-48a6-b031-402cc341b262\"\n    }\n}",
         "title": "CreateMNPVersion"
       }
     ],
@@ -752,6 +776,14 @@
         "title": "demo"
       }
     ],
+    "DescribeMNPPaymentApprovalInfo": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMNPPaymentApprovalInfo\n<Common request parameters>\n\n{\n    \"PlatformId\": \"T08123WM5791733VNCZ\",\n    \"MNPId\": \"mpoabj40x69tbphn\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"ApplyShow\": 0,\n            \"ApplyTime\": 1783509243,\n            \"ApprovalNote\": \"\",\n            \"ApprovalShow\": 1,\n            \"ApprovalStatus\": 10,\n            \"ApprovalTime\": 1783509262\n        },\n        \"RequestId\": \"cef4969a-ae5f-4c2c-9fb4-59b5535e5301\"\n    }\n}",
+        "title": "Querying Mini Program Payment Activation Approval Results"
+      }
+    ],
     "DescribeMNPPreview": [
       {
         "document": "",
@@ -944,6 +976,14 @@
         "title": "DisableApplicationSensitiveAPI"
       }
     ],
+    "DisableMNPPayment": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DisableMNPPayment\n<Common request parameters>\n\n{\n    \"PlatformId\": \"T08123WM5791733VNCZ\",\n    \"ApplicationId\": \"app-sb1uz0q9ce\",\n    \"ID\": 1809\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"Result\": true\n        },\n        \"RequestId\": \"d23327ae-e4df-4e75-9516-7b1e0790bcdb\"\n    }\n}",
+        "title": "Disabling Mini Program Payment by the Superapp"
+      }
+    ],
     "EnableApplicationSensitiveAPI": [
       {
         "document": "",
@@ -1064,6 +1104,14 @@
         "title": "ProcessMNPSensitiveAPIPermissionApproval"
       }
     ],
+    "QueryMNPMerchantInfo": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryMNPMerchantInfo\n<Common request parameters>\n\n{\n    \"PlatformId\": \"T08123WM5791733VNCZ\",\n    \"QueryTeamID\": \"8818371998\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"ApprovalStatus\": 1,\n            \"ID\": \"620\",\n            \"MerchantID\": \"openapi_changed_merchant_id\",\n            \"MerchantName\": \"OpenAPI Changed Merchant Name\"\n        },\n        \"RequestId\": \"eb60db56-e963-40e9-bd06-67d63c22c1c9\"\n    }\n}",
+        "title": "Querying the Payment Merchant Binding Approval Results of a Mini Program Team"
+      }
+    ],
     "ReleaseMNGVersion": [
       {
         "document": "",
@@ -1096,6 +1144,22 @@
         "title": "RemoveMNP"
       }
     ],
+    "RequestPaymentEnable": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RequestPaymentEnable\n<Common request parameters>\n\n{\n    \"PlatformId\": \"T08123WM5791733VNCZ\",\n    \"MNPId\": \"mpoabj40x69tbphn\",\n    \"ApplyNote\": \"OpenAPI mini program payment activation request approved.\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"ApprovalNo\": \"AN0905143403D9243178350175329\",\n            \"Result\": true\n        },\n        \"RequestId\": \"d0babd11-2797-441e-9606-84bca5b83f7a\"\n    }\n}",
+        "title": "Requesting Mini Program Payment Activation"
+      }
+    ],
+    "RequestPaymentMerchantBinding": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RequestPaymentMerchantBinding\n<Common request parameters>\n\n{\n    \"PlatformId\": \"T08123WM5791733VNCZ\",\n    \"TeamId\": \"8818371998\",\n    \"MerchantID\": \"openapimerchant\",\n    \"MerchantName\": \"OpenAPI Merchant\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"ApprovalResult\": true,\n            \"ResourceId\": \"AN08057581F268124178350CC9837\"\n        },\n        \"RequestId\": \"82477aac-36f4-49d9-9905-18e4bbbf0e10\"\n    }\n}",
+        "title": "Requesting Payment Merchant Binding by a Mini Program Team"
+      }
+    ],
     "ResetMNGAppSecret": [
       {
         "document": "",
@@ -1126,6 +1190,22 @@
         "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RollbackMNPVersion\n<Common request parameters>\n\n{\n    \"MNPId\": \"mp0sbz01tzh2du7n\",\n    \"MNPVersionId\": 2625,\n    \"MNPVersion\": \"1.0.1\",\n    \"PlatformId\": \"T04257DS9431720WTAG\"\n}",
         "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"Result\": true\n        },\n        \"RequestId\": \"29008657-86cf-4315-92a8-90095c9eca5d\"\n    }\n}",
         "title": "RollbackMNPVersion"
+      }
+    ],
+    "UnbindMNPPaymentMerchant": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UnbindMNPPaymentMerchant\n<Common request parameters>\n\n{\n    \"PlatformId\": \"T08123WM5791733VNCZ\",\n    \"TeamId\": \"4627960768\",\n    \"ID\": \"687\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"Result\": true\n        },\n        \"RequestId\": \"48b19b25-fd69-4dc8-afa5-d5f5e65091d7\"\n    }\n}",
+        "title": "Unbinding the Payment Merchant by a Mini Program Team"
+      }
+    ],
+    "UnbindPaymentMerchant": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tcsas.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UnbindPaymentMerchant\n<Common request parameters>\n\n{\n    \"PlatformId\": \"T08123WM5791733VNCZ\",\n    \"ApplicationId\": \"app-sb1uz0q9ce\",\n    \"ID\": 619\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"Result\": true\n        },\n        \"RequestId\": \"46bdec02-4045-4d76-a72c-04db540e22aa\"\n    }\n}",
+        "title": "Unbinding the Payment Merchant of a Mini Program Team by the Superapp"
       }
     ]
   },
