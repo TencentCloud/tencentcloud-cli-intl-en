@@ -2341,7 +2341,7 @@
         },
         {
           "disabled": false,
-          "document": "Card Warning Information\n\n-9101 Alarm for covered certificate,\n-9102 Alarm for photocopied certificate,\n-9103 Alarm for photographed certificate,\n-9104 Alarm for PS certificate,\n-9107 Alarm for reflective certificate,\n-9108 Alarm for blurry image,\n-9109 This capability is not enabled.",
+          "document": "Card Warning Information\n\n-9101 Alarm for covered certificate\n-9102 Alarm for photocopied certificate\n-9103 Alarm for photographed certificate\n-9104 Alarm for tamper certificate\n-9107 Alarm for reflective certificate\n-9108 Alarm for blurry certificate \n-9109 This capability is not enabled. Please contact customer support to activate the alert service.",
           "example": "[-9101]",
           "member": "int64",
           "name": "WarnCardInfos",
@@ -3077,7 +3077,7 @@
         },
         {
           "disabled": false,
-          "document": "Warning information for the document. This field is only valid for international site requests. \nWarning codes: \n-9102: photocopy warning; \n-9103: recapture warning; \n-9104: Photoshopped document warning; \n-9109: warning capability not enabled.",
+          "document": "Card Warning Information\n\n-9102 Alarm for photocopied certificate\n-9103 Alarm for photographed certificate\n-9104 Alarm for tamper certificate\n-9109 This capability is not enabled.This capability is not enabled. Please contact customer support to activate the alert service.",
           "example": "[-9104]",
           "member": "int64",
           "name": "WarnCardInfos",
@@ -3528,7 +3528,7 @@
         },
         {
           "disabled": false,
-          "document": "Warning information for the document. This field is only valid for international site requests. Warning codes:\n-9101: Incomplete card border warning\n-9102: Photocopied card warning\n-9103: Recaptured card warning\n-9104: Photoshopped card warning\n-9107: Reflective card warning\n-9108: Blurry image warning\n-9109: Warning capability not enabled",
+          "document": "Card Warning Information\n\n-9101 Alarm for covered certificate\n-9102 Alarm for photocopied certificate\n-9103 Alarm for photographed certificate\n-9104 Alarm for tamper certificate\n-9107 Alarm for reflective certificate\n-9108 Alarm for blurry certificate \n-9109 This capability is not enabled. Please contact customer support to activate the alert service.",
           "example": "[-9101]",
           "member": "int64",
           "name": "WarnCardInfos",
@@ -4818,7 +4818,7 @@
         },
         {
           "disabled": false,
-          "document": "Card Warning Information\n\n-9101 Alarm for covered certificate,\n-9102 Alarm for photocopied certificate,\n-9103 Alarm for photographed certificate,\n-9104 Alarm for PS certificate,\n-9107 Alarm for reflective certificate,\n-9108 Alarm for blurry image,\n-8101 Alarm for document information format verification,\n-8102 Alarm for document information consistency verification,\n-9109 This capability is not enabled.",
+          "document": "Card Warning Information\n\n-9101 Alarm for covered certificate\n-9102 Alarm for photocopied certificate\n-9103 Alarm for photographed certificate\n-9104 Alarm for tamper certificate\n-9107 Alarm for reflective certificate\n-9108 Alarm for blurry image\n-8101 Alarm for document information format verification\n-8102 Alarm for document information consistency verification\n-9109 This capability is not enabled. Please contact customer support to activate the alert service",
           "example": "[-9101]",
           "member": "int64",
           "name": "WarnCardInfos",
@@ -5214,7 +5214,7 @@
         },
         {
           "disabled": false,
-          "document": "Warning information for the ID card. Valid warning codes: \n-9101 (incomplete card border), \n-9102 (photocopied document), \n-9103 (re-photographed document), \n-9104 (PS-altered document), \n-9107 (reflective document), \n-9108 (blurry image), \n-9109 (warning capability not enabled).",
+          "document": "Card Warning Information\n\n-9101 Alarm for covered certificate\n-9102 Alarm for photocopied certificate\n-9103 Alarm for photographed certificate\n-9104 Alarm for tamper certificate\n-9107 Alarm for reflective certificate\n-9108 Alarm for blurry certificate \n-9109 This capability is not enabled. Please contact customer support to activate the alert service.",
           "example": "[-9109]",
           "member": "int64",
           "name": "WarnCardInfos",

@@ -1,0 +1,993 @@
+{
+  "actions": {
+    "ChunkDocument": {
+      "document": "Text segmentation is a technology that splits long text into short fragments for adapting to model input, improving processing efficiency, or information retrieval. It balances fragment length and semantic consistency, suitable for NLP and data analysis scenarios.\nThis API is used to slice text based on delimiter rules. It has a single-account call limit. If you need to increase the concurrent limit, please contact us (https://www.tencentcloud.com/act/event/Online_service?from_cn_redirect=1).",
+      "input": "ChunkDocumentRequest",
+      "name": "Slices online text",
+      "output": "ChunkDocumentResponse",
+      "status": "online"
+    },
+    "ChunkDocumentAsync": {
+      "document": "Text segmentation is a technology that splits long text into short clips for adapting to model input, improving processing efficiency, or information retrieval. It balances clip length and semantic consistency, suitable for NLP and data analysis scenarios.\nThis API is an async API with a model dimensional call limit. Each model has a qps limit of 5. If you need to increase the concurrent limit, please contact us (https://www.tencentcloud.com/act/event/Online_service?from_cn_redirect=1).",
+      "input": "ChunkDocumentAsyncRequest",
+      "name": "Document slicing (async)",
+      "output": "ChunkDocumentAsyncResponse",
+      "status": "online"
+    },
+    "GetDocumentChunkResult": {
+      "document": "Retrieve document slices",
+      "input": "GetDocumentChunkResultRequest",
+      "name": "Retrieves document slice results",
+      "output": "GetDocumentChunkResultResponse",
+      "status": "online"
+    },
+    "GetDocumentParseResult": {
+      "document": "This API is used to retrieve the asynchronous processing result of document parsing.",
+      "input": "GetDocumentParseResultRequest",
+      "name": "Retrieves document parsing results",
+      "output": "GetDocumentParseResultResponse",
+      "status": "online"
+    },
+    "GetMultiModalEmbedding": {
+      "document": "Embedding is a technology that maps high-dimensional data to a low-dimensional space, usually used for converting unstructured data such as text, images, or audio into vector representation, making it easier to input into machine models for processing, and the distance between vectors can reflect the similarity between objects. \nThis API has a model dimensional call limit. Each model has a qps limit of 10. If you need to increase the concurrent limit, please contact us (https://www.tencentcloud.com/act/event/Online_service?from_cn_redirect=1).",
+      "input": "GetMultiModalEmbeddingRequest",
+      "name": "Retrieve a multimodal feature vector",
+      "output": "GetMultiModalEmbeddingResponse",
+      "status": "online"
+    },
+    "GetTextEmbedding": {
+      "document": "Embedding is a technology that maps high-dimensional data to a low-dimensional space, usually used for converting unstructured data such as text, images, or audio into vector representation, making it easier to input into machine models for processing, and the distance between vectors can reflect the similarity between objects.\nThis API has a model dimensional call limit. Each model has a qps limit of 20. If you need to increase the concurrent limit, please contact us (https://www.tencentcloud.com/act/event/Online_service?from_cn_redirect=1).",
+      "input": "GetTextEmbeddingRequest",
+      "name": "Retrieve a feature vector",
+      "output": "GetTextEmbeddingResponse",
+      "status": "online"
+    },
+    "ParseDocument": {
+      "document": "This service can accurately convert various types of documents into a standard format to meet the requirements for building an enterprise knowledge base, migrating technical documentation, and structured storage for content platforms.\nThis API has a model dimensional call limit. Each model has a qps limit of 5. If you need to increase the concurrent limit, please contact us (https://www.tencentcloud.com/act/event/Online_service?from_cn_redirect=1).",
+      "input": "ParseDocumentRequest",
+      "name": "Real-time document parsing",
+      "output": "ParseDocumentResponse",
+      "status": "online"
+    },
+    "ParseDocumentAsync": {
+      "document": "This service accurately converts various format documents into standard format, meeting requirements for Enterprise Knowledge Base construction, technical documentation migration, and structured storage for content platforms.\nThis API is an async API with a model dimensional call limit. Each model has a qps limit of 5. If you need to increase the concurrent limit, please contact us (https://www.tencentcloud.com/act/event/Online_service?from_cn_redirect=1).",
+      "input": "ParseDocumentAsyncRequest",
+      "name": "Document parsing (async)",
+      "output": "ParseDocumentAsyncResponse",
+      "status": "online"
+    },
+    "RunRerank": {
+      "document": "Rearrangement refers to the process in RAG where, by assessing the relevance between documents and queries, the most relevant documents are placed at the front. This ensures that the language model prioritizes high-ranking context when generating responses, improving the accuracy and reliability of generated results. It can also be used for filtering to reduce large model costs.\nThis API has a single-account call limit. If you need to increase the concurrent limit, please contact us (https://www.tencentcloud.com/act/event/Online_service?from_cn_redirect=1).",
+      "input": "RunRerankRequest",
+      "name": "Reorder",
+      "output": "RunRerankResponse",
+      "status": "online"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2025-01-01",
+    "serviceNameCN": "Elasticsearch Service",
+    "serviceShortName": "es"
+  },
+  "objects": {
+    "Chunk": {
+      "document": "Slice object information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "chunk index. Slice sequence id.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Index",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "chunk content.",
+          "example": "今天天气很好",
+          "member": "string",
+          "name": "Content",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ChunkConfig": {
+      "document": "Document sharding configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "After splitting by the separator, the fragment length is validated. If it exceeds the maximum fragment length, it is split using the next-level separator. If there is no next-level separator, the original length is retained. Default value: 1000.",
+          "example": "4800",
+          "member": "uint64",
+          "name": "MaxChunkSize",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Separator list, separators positioned towards the front take precedence; when the file type is TXT, default value: [\"\\n\\n\", \"\\n\", \".\", \".\", \"?\", \",\", \"\"].",
+          "example": "[\"\\n\\n\", \"\\n\", \"。\", \"！\", \"？\", \"，\", \" \"]",
+          "member": "string",
+          "name": "Delimiters",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The number of overlapping characters between adjacent fragments must be less than the fragment length. Fragments that form completely redundant slices are automatically filtered. Default value: 0.2*MaxChunkSize",
+          "example": "1000",
+          "member": "uint64",
+          "name": "ChunkOverlap",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ChunkConfigAsync": {
+      "document": "Document slicing async task",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Maximum fragment length",
+          "example": "4800",
+          "member": "int64",
+          "name": "MaxChunkSize",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ChunkDocument": {
+      "document": "Document slice information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "File type, supports MD and TXT formats.",
+          "example": "TXT",
+          "member": "string",
+          "name": "FileType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Text original, use string format input.",
+          "example": "hello,world",
+          "member": "string",
+          "name": "FileContent",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ChunkDocumentAsyncRequest": {
+      "document": "ChunkDocumentAsync request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "File information.",
+          "example": "无",
+          "member": "Document",
+          "name": "Document",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Model name, selectable model list: doc-tree-chunk.",
+          "example": "doc-tree-chunk",
+          "member": "string",
+          "name": "ModelName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "File slice configuration.",
+          "example": "无",
+          "member": "ChunkConfigAsync",
+          "name": "Config",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ChunkDocumentAsyncResponse": {
+      "document": "ChunkDocumentAsync response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID",
+          "example": "acf20b7e-47b2-4cfd-8aba-d170dee34cfc",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ChunkDocumentRequest": {
+      "document": "ChunkDocument request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Slice file info.",
+          "example": "无",
+          "member": "ChunkDocument",
+          "name": "Document",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Model name, selectable model list: doc-chunk.",
+          "example": "doc-chunk",
+          "member": "string",
+          "name": "ModelName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "File slice configuration.",
+          "example": "无",
+          "member": "ChunkConfig",
+          "name": "Config",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ChunkDocumentResponse": {
+      "document": "ChunkDocument response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "None.",
+          "example": "无",
+          "member": "Chunk",
+          "name": "Chunks",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "token consumption",
+          "example": "无",
+          "member": "Usage",
+          "name": "Usage",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Document": {
+      "document": "Document Information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Supported file types: PDF, DOC, DOCX, PPT, PPTX, MD, TXT, XLS.\nXLSX,CSV,PNG,JPG,JPEG,BMP,GIF,WEBP,HEIC,EPS,ICNS,\nIM,PCX,PPM,TIFF,XBM,HEIF,JP2\n\nSupported file size for document parsing:\n-PDF, DOC, DOCX, PPT, PPTX support 100M.\n-MD, TXT, XLS, XLSX, CSV support 10M.\n-Other supports 20M\n\nSupported file size for text slicing:\n-Maximum PDF size: 300 MB\n-D0CX, D0C, PPT, PPTX maximum 200M\n-Maximum 10M for TXT, MD\n-Another maximum of 20M",
+          "example": "DOC",
+          "member": "string",
+          "name": "FileType",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File storage on Tencent Cloud's URL ensures higher download speed and stability by using Tencent Cloud COS file address.",
+          "example": "https://example.com/example.pdf",
+          "member": "string",
+          "name": "FileUrl",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "base64 value of the file, carrying the MineType prefix information. The encoded file is no more than 10M.\nSupported file size: The downloaded file is no more than 8M after Base64 encoding. File download time is not more than 3 seconds.\nSupported image pixel: Unilateral between 20-10000px.",
+          "example": "data:text/plain;base64,SGVsbG8sIFdvcmxkIQ==",
+          "member": "string",
+          "name": "FileContent",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File name, used when uploading with base64.",
+          "example": "example.txt",
+          "member": "string",
+          "name": "FileName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Starting page number of the document",
+          "example": "1",
+          "member": "int64",
+          "name": "FileStartPageNumber",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "End page number of the document",
+          "example": "1",
+          "member": "int64",
+          "name": "FileEndPageNumber",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "DocumentChunkUsage": {
+      "document": "Document slice amount",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Parse page count",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNumber",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "token consumption",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalTokens",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "DocumentParseConfig": {
+      "document": "Document parsing configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "0: Images are returned in link format\n1:Return the text content extracted from the image",
+          "example": "1",
+          "member": "uint64",
+          "name": "ImageResponseType",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "EmbeddingData": {
+      "document": "Vector content",
+      "members": [
+        {
+          "disabled": false,
+          "document": "embedding content\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[3.234,13.4556]",
+          "member": "float",
+          "name": "Embedding",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Index serial number\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "3",
+          "member": "int64",
+          "name": "Index",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "GetDocumentChunkResultRequest": {
+      "document": "GetDocumentChunkResult request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID",
+          "example": "3041d1dc-1072-4025-a3c2-f8baea25801b",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDocumentChunkResultResponse": {
+      "document": "GetDocumentChunkResult response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task status, -1: failure, 0: running, 1: success.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Document slice result file.",
+          "example": "https://ai-search-doc-bj-xxxxx.cos.ap-beijing.myqcloud.com/&2 F1257780094/2013/81e11a5472dd4288a0b998c032b4df26.zip",
+          "member": "string",
+          "name": "DocumentChunkResultUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Token amount.",
+          "example": "{\"TotalTokens\":12}",
+          "member": "DocumentChunkUsage",
+          "name": "Usage",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDocumentParseResultRequest": {
+      "document": "GetDocumentParseResult request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "10343124",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetDocumentParseResultResponse": {
+      "document": "GetDocumentParseResult response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task status, -1: failure, 0: running, 1: success.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Result file.",
+          "example": "https://ai-search-doc-bj-xxxxx.cos.ap-beijing.myqcloud.com/&2 F1257780094/2013/81e11a5472dd4288a0b998c032b4df26.zip",
+          "member": "string",
+          "name": "DocumentParseResultUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Failed page number.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[1,2]",
+          "member": "int64",
+          "name": "FailedPages",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Page number consumption",
+          "example": "无",
+          "member": "PageUsage",
+          "name": "Usage",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetMultiModalEmbeddingRequest": {
+      "document": "GetMultiModalEmbedding request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "GetMultiModalEmbeddingResponse": {
+      "document": "GetMultiModalEmbedding response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetTextEmbeddingRequest": {
+      "document": "GetTextEmbedding request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Model name, selectable model list: bge-base-zh-v1.5, bge-large-zh-v1.5, Conan-embedding-v1, bge-m3, KaLM-embedding-multilingual-mini-v1, Qwen3-Embedding-0.6B.",
+          "example": "bge-base-zh-v1.5",
+          "member": "string",
+          "name": "ModelName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Text set to be vectorized.",
+          "example": "[\"今天天气怎样\"]",
+          "member": "string",
+          "name": "Texts",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "GetTextEmbeddingResponse": {
+      "document": "GetTextEmbedding response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Result set.",
+          "example": "无",
+          "member": "EmbeddingData",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "token consumption for vectorization.",
+          "example": "无",
+          "member": "Usage",
+          "name": "Usage",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "PageUsage": {
+      "document": "Page number consumption",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of pages consumed",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalPages",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ParseDocument": {
+      "document": "Document Information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Supported file types: PDF, DOC, DOCX, PPT, PPTX, MD, TXT, XLS.\nXLSX,CSV,PNG,JPG,JPEG,BMP,GIF,WEBP,HEIC,EPS,ICNS,\nIM,PCX,PPM,TIFF,XBM,HEIF,JP2\n\nSupported file size for document parsing:\n-PDF, DOC, DOCX, PPT, PPTX support 100M.\n-MD, TXT, XLS, XLSX, CSV support 10M.\n-Another supports 20M\n\nSupported file size for text slicing:\n-Maximum PDF size: 300 MB\n-D0CX, D0C, PPT, PPTX maximum 200M\n-Maximum 10M for TXT, MD\n-Other maximum 20M",
+          "example": "PDF",
+          "member": "string",
+          "name": "FileType",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File storage on Tencent Cloud's URL ensures higher download speed and stability by using Tencent Cloud COS file address.",
+          "example": "https://example.com/example.pdf",
+          "member": "string",
+          "name": "FileUrl",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "base64 value of the file, carrying the MineType prefix information. The encoded file is no more than 10M.\nSupported file size: The downloaded file is no more than 8M after Base64 encoding. File download time is no more than 3 seconds.\nSupported image pixel: Unilateral between 20-10000px.\nEither FileUrl or FileContent of the file must be provided. If both are provided, only FileUrl is used.",
+          "example": "data:text/plain;base64,SGVsbG8sIFdvcmxkIQ==",
+          "member": "string",
+          "name": "FileContent",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Document parsing configuration",
+          "example": "无",
+          "member": "DocumentParseConfig",
+          "name": "DocumentParseConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Starting page number of the document",
+          "example": "1",
+          "member": "int64",
+          "name": "FileStartPageNumber",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "End page number of the document",
+          "example": "1",
+          "member": "int64",
+          "name": "FileEndPageNumber",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ParseDocumentAsyncRequest": {
+      "document": "ParseDocumentAsync request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "File information.",
+          "example": "无",
+          "member": "Document",
+          "name": "Document",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Model name, selectable model list: doc-llm.",
+          "example": "doc-llm",
+          "member": "string",
+          "name": "ModelName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ParseDocumentAsyncResponse": {
+      "document": "ParseDocumentAsync response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID",
+          "example": "6538a10a-18c5-4cba-a870-b02e78b46f71",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ParseDocumentRequest": {
+      "document": "ParseDocument request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "File Information",
+          "example": "无",
+          "member": "ParseDocument",
+          "name": "Document",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Model name, doc-llm.",
+          "example": "doc-llm",
+          "member": "string",
+          "name": "ModelName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ParseDocumentResponse": {
+      "document": "ParseDocument response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Progress: 0-100.",
+          "example": "100",
+          "member": "string",
+          "name": "Progress",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File parsing result.",
+          "example": "https://ai-search-doc-bj-xxxxx.cos.ap-beijing.myqcloud.com/&2 F1257780094/2013/81e11a5472dd4288a0b998c032b4df26.zip",
+          "member": "string",
+          "name": "DocumentParseResultUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Page number of the failure.",
+          "example": "[1]",
+          "member": "int64",
+          "name": "FailedPages",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Page number consumption",
+          "example": "无",
+          "member": "PageUsage",
+          "name": "Usage",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem. As a streaming response API, when the request is successfully completed, the RequestId will be placed in the Header \"X-TC-RequestId\" of the HTTP response.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RerankResult": {
+      "document": "Output result",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Location index value of the corresponding doc in the array of candidate docs\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "4",
+          "member": "int64",
+          "name": "Index",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Similarity score\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "43.2",
+          "member": "float",
+          "name": "RelevanceScore",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Document content\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "今天天气怎样",
+          "member": "string",
+          "name": "Document",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "RunRerankRequest": {
+      "document": "RunRerank request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Model name, selectable model list: bge-reranker-large, bge-reranker-v2-m3.",
+          "example": "bge-reranker-large",
+          "member": "string",
+          "name": "ModelName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Query text.",
+          "example": "今天天气怎样",
+          "member": "string",
+          "name": "Query",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of candidate docs to sort.",
+          "example": "[\"今天是晴天\"]",
+          "member": "string",
+          "name": "Documents",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Number of top documents returned in sorting order. If not specified, return all candidate docs. If the specified top_n value is larger than the number of input candidate docs, return all docs.",
+          "example": "5",
+          "member": "int64",
+          "name": "TopN",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to return the original document for each sorting result inside the result list. Default value: False.",
+          "example": "true",
+          "member": "bool",
+          "name": "ReturnDocuments",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "RunRerankResponse": {
+      "document": "RunRerank response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Output result set.",
+          "example": "无",
+          "member": "RerankResult",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "token consumption.",
+          "example": "224",
+          "member": "Usage",
+          "name": "Usage",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Usage": {
+      "document": "token consumption total count",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of tokens\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "32",
+          "member": "int64",
+          "name": "TotalTokens",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    }
+  },
+  "version": "1.0"
+}
