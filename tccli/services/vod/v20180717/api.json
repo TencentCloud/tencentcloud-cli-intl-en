@@ -21196,7 +21196,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p><b>Video-on-demand (VOD) <a href=\"/document/product/266/14574\">application</a> ID. For customers who activate on-demand services from December 25, 2023, to access resources in on-demand applications (whether the default application or a newly created application), you must fill this <b>field</b> with the application ID.</b></p>",
+          "document": "<p><b>Video-on-demand (VOD) <a href=\"/document/product/266/14574?from_cn_redirect=1\">application</a> ID. For customers who activate on-demand services from December 25, 2023, to access resources in on-demand applications (whether the default application or a newly created application), you must fill this <b>field</b> with the application ID.</b></p>",
           "example": "251006666",
           "member": "uint64",
           "name": "SubAppId",
@@ -31785,7 +31785,7 @@
         },
         {
           "disabled": false,
-          "document": "<p><b>Video-on-demand (VOD) <a href=\"/document/product/266/14574\">application</a> ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the app ID when accessing resources in on-demand applications (whether it is the default application or a newly created application).</b></p>",
+          "document": "<p><b>Video-on-demand (VOD) <a href=\"/document/product/266/14574?from_cn_redirect=1\">application</a> ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the app ID when accessing resources in on-demand applications (whether it is the default application or a newly created application).</b></p>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -31821,7 +31821,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the <a href=\"/document/product/266/31772\">Create Category</a> API.</p><li>Default value: 0, indicating other categories.</li>Valid at that time only when IsPersistence is 1.",
+          "document": "<p>Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the <a href=\"/document/product/266/31772?from_cn_redirect=1\">Create Category</a> API.</p><li>Default value: 0, indicating other categories.</li>Valid at that time only when IsPersistence is 1.",
           "example": "0",
           "member": "int64",
           "name": "ClassId",
@@ -31830,7 +31830,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Source context. This is used to pass user request information. The <a href=\"/document/product/266/7830\">upload completion callback</a> returns the value of this field. The maximum length is 250 characters. Valid only when IsPersistence is 1.</p>",
+          "document": "<p>Source context. This is used to pass user request information. The <a href=\"/document/product/266/7830?from_cn_redirect=1\">upload completion callback</a> returns the value of this field. The maximum length is 250 characters. Valid only when IsPersistence is 1.</p>",
           "example": "custom information for NewFileUpload",
           "member": "string",
           "name": "SourceContext",
@@ -31839,7 +31839,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Session context. This is used to pass through user request information. When specifying the Procedure parameter, the <a href=\"/document/product/266/9636\">task flow status change callback</a> returns the value of this field. The maximum length is 1000 characters. Valid only when IsPersistence is 1.</p>",
+          "document": "<p>Session context. This is used to pass through user request information. When specifying the Procedure parameter, the <a href=\"/document/product/266/9636?from_cn_redirect=1\">task flow status change callback</a> returns the value of this field. The maximum length is 1000 characters. Valid only when IsPersistence is 1.</p>",
           "example": "custom information for ProcedureStateChanged",
           "member": "string",
           "name": "SessionContext",
@@ -43779,7 +43779,7 @@
         },
         {
           "disabled": false,
-          "document": "<p><b>Video-on-demand (VOD) <a href=\"/document/product/266/14574\">application</a> ID. Customers who activate on-demand services after December 25, 2023 must fill this field with the app ID when accessing resources in on-demand applications (whether the default application or a newly created application).</b></p>",
+          "document": "<p><b>Video-on-demand (VOD) <a href=\"/document/product/266/14574?from_cn_redirect=1\">application</a> ID. Customers who activate on-demand services after December 25, 2023 must fill this field with the app ID when accessing resources in on-demand applications (whether the default application or a newly created application).</b></p>",
           "example": "220000",
           "member": "uint64",
           "name": "SubAppId",
@@ -43878,7 +43878,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Source context. This is used to pass through user request information. The <a href=\"/document/product/266/7830\">upload completion callback</a> returns the value of this field. The maximum length is 250 characters.</p>",
+          "document": "<p>Source context. This is used to pass through user request information. The <a href=\"/document/product/266/7830?from_cn_redirect=1\">upload completion callback</a> returns the value of this field. The maximum length is 250 characters.</p>",
           "example": "custom information for NewFileUpload",
           "member": "string",
           "name": "SourceContext",
@@ -49824,7 +49824,7 @@
         },
         {
           "disabled": false,
-          "document": "<p><b>Video-on-demand (VOD) <a href=\"/document/product/266/14574\">application</a> ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the app ID when accessing resources in on-demand applications (whether it is the default application or a newly created application).</b></p>",
+          "document": "<p><b>Video-on-demand (VOD) <a href=\"/document/product/266/14574?from_cn_redirect=1\">application</a> ID. Customers who activate on-demand services from December 25, 2023 must fill this field with the app ID when accessing resources in on-demand applications (whether it is the default application or a newly created application).</b></p>",
           "example": "1",
           "member": "uint64",
           "name": "SubAppId",
@@ -49878,7 +49878,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the <a href=\"/document/product/266/31772\">create category</a> API.</p><li>Default value: 0, indicating other categories.</li>Valid only when IsPersistence is 1.",
+          "document": "<p>Category ID, used to categorize and manage media. You can create a category and obtain the category ID via the <a href=\"/document/product/266/31772?from_cn_redirect=1\">create category</a> API.</p><li>Default value: 0, indicating other categories.</li>Valid only when IsPersistence is 1.",
           "example": "1",
           "member": "int64",
           "name": "ClassId",
@@ -49887,7 +49887,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Source context. This is used to pass through user request information. The <a href=\"/document/product/266/7830\">upload completion callback</a> returns the value of this field. The maximum length is 250 characters. Valid when IsPersistence is 1.</p>",
+          "document": "<p>Source context. This is used to pass through user request information. The <a href=\"/document/product/266/7830?from_cn_redirect=1\">upload completion callback</a> returns the value of this field. The maximum length is 250 characters. Valid when IsPersistence is 1.</p>",
           "example": "rtmp://86094.livepush****_mix_file",
           "member": "string",
           "name": "SourceContext",
@@ -49896,7 +49896,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Session context. This is used to pass through user request information. When specifying the Procedure parameter, the <a href=\"/document/product/266/9636\">task flow status change callback</a> returns the value of this field. The maximum length is 1000 characters. Valid only when IsPersistence is 1.</p>",
+          "document": "<p>Session context. This is used to pass through user request information. When specifying the Procedure parameter, the <a href=\"/document/product/266/9636?from_cn_redirect=1\">task flow status change callback</a> returns the value of this field. The maximum length is 1000 characters. Valid only when IsPersistence is 1.</p>",
           "example": "sessioncontext",
           "member": "string",
           "name": "SessionContext",
@@ -52679,7 +52679,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p><b>Video-on-demand (VOD) <a href=\"/document/product/266/14574\">application</a> ID. For customers who activate on-demand services from December 25, 2023, to access resources in on-demand applications (whether it is the default application or a newly created application), you must fill in this field with the application ID.</b></p>",
+          "document": "<p><b>Video-on-demand (VOD) <a href=\"/document/product/266/14574?from_cn_redirect=1\">application</a> ID. For customers who activate on-demand services from December 25, 2023, to access resources in on-demand applications (whether it is the default application or a newly created application), you must fill in this field with the application ID.</b></p>",
           "example": "251441341",
           "member": "uint64",
           "name": "SubAppId",
