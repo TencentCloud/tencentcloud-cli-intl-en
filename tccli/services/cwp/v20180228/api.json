@@ -32020,7 +32020,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Event ID",
+          "document": "<p>Event ID.</p>",
           "example": "[2265510]",
           "member": "uint64",
           "name": "Ids",
@@ -32035,7 +32035,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "skill information list",
+          "document": "<p>skill information list</p>",
           "example": "无",
           "member": "SkillInfo",
           "name": "SkillInfoList",

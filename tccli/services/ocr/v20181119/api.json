@@ -2863,7 +2863,7 @@
         },
         {
           "disabled": false,
-          "document": "Warning information for the document. This field applies only to international site requests and will return an empty array for domestic site requests. Valid warning codes: \n-9101 (incomplete card border), \n-9102 (photocopied document), \n-9103 (re-photographed document), -9104 (PS-altered document), \n-9107 (reflective document), \n-9108 (blurry image), \n-9109 (warning capability not enabled).",
+          "document": "Card Warning Information\n\n-9101 Alarm for covered certificate\n-9102 Alarm for photocopied certificate\n-9103 Alarm for photographed certificate\n-9104 Alarm for tamper certificate\n-9107 Alarm for reflective certificate\n-9108 Alarm for blurry certificate \n-9109 This capability is not enabled. Please contact customer support to activate the alert service.",
           "example": "[-9101]",
           "member": "int64",
           "name": "WarnCardInfos",
@@ -3235,11 +3235,11 @@
       "type": "object"
     },
     "PassportRecognizeInfos": {
-      "document": "",
+      "document": "Passport Information Page Content",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Document type, obtained from passport visual zone",
           "example": "\"PD\"",
           "member": "string",
           "name": "Type",
@@ -3249,7 +3249,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Issuing country, obtained from passport visual zone",
           "example": "\"IRN\"",
           "member": "string",
           "name": "IssuingCountry",
@@ -3259,7 +3259,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Unique serial number / identification number of the passport, obtained from passport visual zone",
           "example": "\"ROKNI\"",
           "member": "string",
           "name": "PassportID",
@@ -3269,7 +3269,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Last name, obtained from passport visual zone",
           "example": "\"ROKNI\"",
           "member": "string",
           "name": "Surname",
@@ -3279,7 +3279,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "First name, obtained from passport visual zone",
           "example": "\"SEYED HIRAD\"",
           "member": "string",
           "name": "GivenName",
@@ -3289,7 +3289,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Full name, obtained from passport visual zone",
           "example": "\"SEYED HIRAD\"",
           "member": "string",
           "name": "Name",
@@ -3299,7 +3299,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Nationality, obtained from passport visual zone",
           "example": "\"IRN\"",
           "member": "string",
           "name": "Nationality",
@@ -3309,7 +3309,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Date of birth, obtained from passport visual zone",
           "example": "\"21/09/1968\"",
           "member": "string",
           "name": "DateOfBirth",
@@ -3319,7 +3319,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Gender, obtained from passport visual zone",
           "example": "\"M\"",
           "member": "string",
           "name": "Sex",
@@ -3329,7 +3329,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Date of issue, obtained from passport visual zone",
           "example": "\"12/05/2023\"",
           "member": "string",
           "name": "DateOfIssuance",
@@ -3339,7 +3339,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Passport expiry date, obtained from passport visual zone",
           "example": "\"12/05/2028\"",
           "member": "string",
           "name": "DateOfExpiration",
@@ -3349,7 +3349,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Holder's signature, obtained from passport visual zone\n(Note: Only returned for PRC passport)",
           "example": "\"无\"",
           "member": "string",
           "name": "Signature",
@@ -3359,7 +3359,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Place of issue, obtained from passport visual zone\n(Note: Only returned for PRC passport)",
           "example": "\"TEHRAN\"",
           "member": "string",
           "name": "IssuePlace",
@@ -3369,7 +3369,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Issuing Authority, obtained from passport visual zone\n(Note: Only returned for PRC passport)\n",
           "example": "“无”",
           "member": "string",
           "name": "IssuingAuthority",
@@ -3379,10 +3379,70 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Place of birth, obtained from passport visual zone",
           "example": "\"TEHRAN\"",
           "member": "string",
           "name": "BirthPlace",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Passport flag, obtained from passport visual zone",
+          "example": "PASSPORT",
+          "member": "string",
+          "name": "PassportFlag",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Middle name, obtained from passport visual zone",
+          "example": "DEL ROSARIO",
+          "member": "string",
+          "name": "MiddleName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Father's name, obtained from passport visual zone",
+          "example": "CARLOS DE LUNA",
+          "member": "string",
+          "name": "FatherName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Mother's name, obtained from passport visual zone",
+          "example": "MARIA SANTOS",
+          "member": "string",
+          "name": "MotherName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Title, obtained from passport visual zone",
+          "example": "MS",
+          "member": "string",
+          "name": "Title",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Name suffix, obtained from passport visual zone",
+          "example": "JR",
+          "member": "string",
+          "name": "Postname",
           "output_required": false,
           "type": "string",
           "value_allowed_null": false

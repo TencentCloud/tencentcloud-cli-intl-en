@@ -63,6 +63,13 @@
       "output": "DescribeNodePoolsResponse",
       "status": "online"
     },
+    "ModifyClusterMachine": {
+      "document": "This API is used to modify a native node.",
+      "input": "ModifyClusterMachineRequest",
+      "name": "This API is used to modify a native node.",
+      "output": "ModifyClusterMachineResponse",
+      "status": "online"
+    },
     "ModifyHealthCheckPolicy": {
       "document": "This API is used to modify a health check policy.",
       "input": "ModifyHealthCheckPolicyRequest",
@@ -1090,16 +1097,18 @@
           "example": "CloudPremiumDiskType",
           "member": "string",
           "name": "DiskType",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Cloud disk size (GB)",
+          "document": "Cloud disk size (G)",
           "example": "50",
           "member": "int64",
           "name": "DiskSize",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -1110,6 +1119,7 @@
           "example": "true",
           "member": "bool",
           "name": "AutoFormatAndMount",
+          "output_required": true,
           "required": false,
           "type": "bool",
           "value_allowed_null": false
@@ -1120,6 +1130,7 @@
           "example": "xfs",
           "member": "string",
           "name": "FileSystem",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1130,9 +1141,43 @@
           "example": "/var/lib/containerd",
           "member": "string",
           "name": "MountTarget",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cloud disk ID\nNote: This field may return \"null\", indicating that no valid value can be obtained.",
+          "example": "disk-kped07j8",
+          "member": "string",
+          "name": "DiskId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Encrypt the system disk\nNote: This field may return \"null\", indicating that no valid value can be obtained.",
+          "example": "ENCRYPT",
+          "member": "string",
+          "name": "Encrypt",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Custom KMS ID\nNote: This field may return \"null\", indicating that no valid value can be obtained.",
+          "example": "65932f38-0106-11f1-bda4-5254008811d0",
+          "member": "string",
+          "name": "KmsKeyId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -1622,18 +1667,18 @@
       "members": [
         {
           "disabled": false,
-          "document": "Billing cycle of the pay-as-you-go mode (unit: month):\n1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60",
+          "document": "Billing cycle of the pay-as-you-go mode (unit: month):\n1,2,3,4,5,6,7, 8,9,10,11,12,24,36,48,60",
           "example": "1",
           "member": "uint64",
           "name": "Period",
           "output_required": true,
-          "required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Renewal method of the prepayment mode:\n- NOTIFY_AND_AUTO_RENEW: Notify the user of expiration and auto-renew (default)\n- NOTIFY_AND_MANUAL_RENEW: Notify the user of expiration but do not auto-renew\n- DISABLE_NOTIFY_AND_MANUAL_RENEW: Do not notify the user of expiration and do not auto-renew\n",
+          "document": "Renewal method of the prepayment mode:\n- NOTIFY_AND_AUTO_RENEW: Notify the user of expiration and auto-renew \n- NOTIFY_AND_MANUAL_RENEW: Notify the user of expiration but auto-renewal is not performed (default)\n- DISABLE_NOTIFY_AND_MANUAL_RENEW: Do not notify the user of expiration and do not auto-renew\n",
           "example": "NOTIFY_AND_AUTO_RENEW",
           "member": "string",
           "name": "RenewFlag",
@@ -1954,6 +1999,96 @@
         }
       ],
       "usage": "out"
+    },
+    "ModifyClusterMachineRequest": {
+      "document": "ModifyClusterMachine request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Cluster ID</p>",
+          "example": "cls-52mrjmcy",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Node name list.</p>",
+          "example": "[\"np-6tpr9q6e-2gt8l\"]",
+          "member": "string",
+          "name": "MachineNames",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>display name of the machine</p>",
+          "example": "tke-np-6tpr9q6e-1",
+          "member": "string",
+          "name": "DisplayName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>System disk C</p>",
+          "example": "无",
+          "member": "Disk",
+          "name": "SystemDisk",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Security group list</p>",
+          "example": "[\"sg-4h43fuxj\"]",
+          "member": "string",
+          "name": "SecurityGroupIDs",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Node prepayment information.</p>",
+          "example": "无",
+          "member": "InstanceChargePrepaid",
+          "name": "InstanceChargePrepaid",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Change node billing type</p><p>Enumeration value:</p><ul><li>POSTPAID_BY_HOUR: The targeted billing type is pay-as-you-go.</li><li>PREPAID: The targeted billing type is annual and monthly subscription.</li></ul>",
+          "example": "PREPAID",
+          "member": "string",
+          "name": "InstanceChargeType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to switch the billing mode of the elastic data cloud disk simultaneously. Value ranges from true to false: true indicates switching the billing mode of the elastic data cloud disk, false indicates not switching the billing mode of the elastic data cloud disk. Default value: true.</p><p>Default value: true</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "ModifyPortableDataDisk",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyClusterMachineResponse": {
+      "document": "ModifyClusterMachine response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ModifyHealthCheckPolicyRequest": {
       "document": "ModifyHealthCheckPolicy request structure.",
