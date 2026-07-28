@@ -4389,7 +4389,7 @@
         },
         {
           "disabled": false,
-          "document": "Fee type. Query fee type (please use fee type code input parameter). The input parameter enumeration is as follows:\ncashPayAmount: Cash \nincentivePayAmount: Bonus \nvoucherPayAmount: Coupon \ntax: tax. \ncostBeforeTax: pre-tax price",
+          "document": "Fee type. Query fee type (please use fee type code input parameter). The input parameter enumeration is as follows:\ncashPayAmount: Cash \nincentivePayAmount: Bonus \nvoucherPayAmount: Coupon \ntax: tax\namountBeforeTax: pre-tax price",
           "example": "cashPayAmount",
           "member": "string",
           "name": "FeeType",
