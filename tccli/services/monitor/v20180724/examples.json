@@ -534,6 +534,14 @@
         "title": "Querying the list of all callback URLs under an account"
       }
     ],
+    "DescribeAlarmNoticeOnCallUsersFromPrometheusAlertID": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAlarmNoticeOnCallUsersFromPrometheusAlertID\n<Common request parameters>\n\n{\n    \"AlertId\": \"alert-********\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Notices\": [\n            {\n                \"NoticeId\": \"notice-********\",\n                \"SendGroups\": [\n                    {\n                        \"ReceiverType\": \"GROUP\",\n                        \"Users\": [\n                            {\n                                \"UserId\": \"10***37\",\n                                \"UserName\": \"iv****ai\"\n                            }\n                        ]\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"a983a961-d495-4332-a438-29c3c895d136\"\n    }\n}",
+        "title": "Querying the current notifier of the policy via prometheus alarm group id"
+      }
+    ],
     "DescribeAlarmNotices": [
       {
         "document": "This example shows you how to query the notification template list.",
