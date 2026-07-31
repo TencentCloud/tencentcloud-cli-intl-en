@@ -1188,6 +1188,27 @@ def test_G7_unfold_equals_form_normalization():
         restore()
 
 
+def test_G8_unfold_single_rule_value_preserves_list_type():
+    """A single value for a list field below truncation must remain a list."""
+    if not _billing_schema_available():
+        pytest.skip("local billing api.json missing")
+    captured = {}
+    ac = _make_billing_action_command(captured)
+    restore = _patch_credentials()
+    try:
+        g = _make_globals(profile="default", cli_unfold_argument=True)
+        result = ac([
+            "--Id", "1490",
+            "--RuleList.RuleDetail.Children.0.RuleValue", "ESG",
+        ], g)
+
+        assert result == "ok"
+        leaf = _walk_to_leaf(captured["params"], 0)
+        assert leaf["RuleValue"] == ["ESG"]
+    finally:
+        restore()
+
+
 # I. _match_truncated_prefix longest-prefix match
 # ============================================================
 def test_I1_match_truncated_prefix_no_match():
@@ -1463,6 +1484,60 @@ def test_P7_extract_valueless_non_matching_key_kept():
     ac._cli_data = _Trunc()
     out = ac._extract_deep_nested_args(["--WhoAmI"], OrderedDict(), [])
     assert out == ["--WhoAmI"]
+
+
+def test_P8_extract_preserves_single_value_list_type_below_truncation():
+    ac = _make_action_command(call_mode=Options_define.CliUnfoldArgument)
+
+    class _Trunc(object):
+        def get_unfold_param_info(self, *a, **kw):
+            return {"Root.0": {"recursive_truncated": True,
+                               "recursive_type": "Node"}}
+
+        def get_service_model(self, *a, **kw):
+            return {"objects": {
+                "Node": {"members": [
+                    {"name": "Values", "type": "list", "member": "string"},
+                    {"name": "Name", "type": "string", "member": "string"},
+                ]},
+            }}
+
+    ac._cli_data = _Trunc()
+    extra = OrderedDict()
+    out = ac._extract_deep_nested_args([
+        "--Root.0.Values", "only-one",
+        "--Root.0.Name", "node-name",
+    ], extra, [])
+
+    assert out == []
+    assert extra == {
+        "Root.0.Values": ["only-one"],
+        "Root.0.Name": "node-name",
+    }
+
+
+def test_P9_extract_preserves_single_value_list_type_in_equals_form():
+    ac = _make_action_command(call_mode=Options_define.CliUnfoldArgument)
+
+    class _Trunc(object):
+        def get_unfold_param_info(self, *a, **kw):
+            return {"Root.0": {"recursive_truncated": True,
+                               "recursive_type": "Node"}}
+
+        def get_service_model(self, *a, **kw):
+            return {"objects": {
+                "Node": {"members": [
+                    {"name": "Values", "type": "list", "member": "string"},
+                ]},
+            }}
+
+    ac._cli_data = _Trunc()
+    extra = OrderedDict()
+    out = ac._extract_deep_nested_args(
+        ["--Root.0.Values=only-one"], extra, [])
+
+    assert out == []
+    assert extra == {"Root.0.Values": ["only-one"]}
 
 
 # ============================================================
