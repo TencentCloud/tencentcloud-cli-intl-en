@@ -454,6 +454,14 @@
         "title": "Querying the Data Backup List in the Safe"
       }
     ],
+    "DescribeBackupOverview": [
+      {
+        "document": "Describe Backup Overview",
+        "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBackupOverview\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cynosdbmysql-gfo7ejhl\"\n}",
+        "output": "{\n    \"Response\": {\n        \"BackupLogicVolume\": 0.009,\n        \"BackupSnapshotVolume\": 0.212,\n        \"BackupTotalVolume\": 0.222,\n        \"BackupVolumeInfos\": [\n            {\n                \"BackupMethod\": \"auto\",\n                \"BackupType\": \"snapshot\",\n                \"BackupVolume\": 0.002\n            },\n            {\n                \"BackupMethod\": \"manual\",\n                \"BackupType\": \"snapshot\",\n                \"BackupVolume\": 0.21\n            },\n            {\n                \"BackupMethod\": \"auto\",\n                \"BackupType\": \"logic\",\n                \"BackupVolume\": 0\n            },\n            {\n                \"BackupMethod\": \"manual\",\n                \"BackupType\": \"logic\",\n                \"BackupVolume\": 0.009\n            }\n        ],\n        \"CrossRegionBackupVolume\": 0,\n        \"CrossRegionBackupVolumeInfos\": [\n            {\n                \"BackupMethod\": \"auto\",\n                \"BackupType\": \"snapshot\",\n                \"BackupVolume\": 0\n            },\n            {\n                \"BackupMethod\": \"manual\",\n                \"BackupType\": \"snapshot\",\n                \"BackupVolume\": 0\n            },\n            {\n                \"BackupMethod\": \"auto\",\n                \"BackupType\": \"logic\",\n                \"BackupVolume\": 0\n            },\n            {\n                \"BackupMethod\": \"manual\",\n                \"BackupType\": \"logic\",\n                \"BackupVolume\": 0\n            }\n        ],\n        \"CrossRegionLogVolume\": 0,\n        \"CrossRegions\": [],\n        \"CrossTotalVolume\": 0,\n        \"LogBinlogVolume\": 5.834,\n        \"LogRedoLogVolume\": 7.466,\n        \"LogTotalVolume\": 13.3,\n        \"RequestId\": \"ccb664a6-5093-40fb-938d-b2d7318c078d\"\n    }\n}",
+        "title": "Backup Usage Overview"
+      }
+    ],
     "DescribeBinlogConfig": [
       {
         "document": "Query binlog configuration information",
@@ -1191,7 +1199,7 @@
     "ModifyBinlogSaveDays": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1Host: cynosdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: ModifyBinlogSaveDays<common request parameters>{    \"ClusterId\": \"cynosdb-xxxxxxxx\",    \"BinlogSaveDays\": 10}",
+        "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyBinlogSaveDays\n<common request parameters>\n\n{\n    \"ClusterId\": \"cynosdb-xxxxxxxx\",\n    \"BinlogSaveDays\": 10\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"9e56617c-c7cc-44e1-a967-6beb418ad5e7\"\n    }\n}",
         "title": "Modifying the Binlog retention period in days"
       }
@@ -1722,12 +1730,28 @@
         "title": "Switching network"
       }
     ],
+    "TransferClusterPrepayToPostpay": [
+      {
+        "document": "Prepaid Cluster to postpaid cluster",
+        "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddInstances\n<Common request parameters>\n\n{\n  \"ClusterId\": \"cynosdbmysql-3xazs3u5\"\n}\n\n",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Convert a Prepaid Cluster to a postpaid cluster"
+      }
+    ],
     "TransferClusterZone": [
       {
         "document": "Initiate cross-AZ migration",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: TransferClusterZone\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cynosdbmysql-ejccn17r\",\n    \"DstZone\": \"ap-guangzhou-4\",\n    \"MaxLag\": 10,\n    \"TransferType\": \"Immediate\"\n}",
         "output": "{\n    \"Response\": {\n        \"TaskId\": 1234,\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Initiate cross-AZ migration"
+      }
+    ],
+    "TransferStoragePrepayToPostpay": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: TransferStoragePrepayToPostpay\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1b28507e-ab37-49de-9b5b-0fb54d18863f\"\n    }\n}",
+        "title": "Store monthly subscription to pay-as-you-go"
       }
     ],
     "UnbindClusterResourcePackages": [

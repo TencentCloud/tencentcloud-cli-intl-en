@@ -461,6 +461,15 @@
           "name": "ReturnHeadImage",
           "required": false,
           "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Verification status callback URL. When set, this endpoint will be actively notified with the final verification result upon process completion. Leave blank to disable callbacks. Since callbacks are not fully reliable, a polling mechanism is advised to guarantee retrieval of the final status.",
+          "example": "https://liveness-test.qq.com/ocr/mock/customer-webhook",
+          "member": "string",
+          "name": "WebhookUrl",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"

@@ -392,6 +392,13 @@
       "output": "DescribeBackupListByVaultResponse",
       "status": "online"
     },
+    "DescribeBackupOverview": {
+      "document": "This API is used to query the backup usage overview.",
+      "input": "DescribeBackupOverviewRequest",
+      "name": "Backup usage overview",
+      "output": "DescribeBackupOverviewResponse",
+      "status": "online"
+    },
     "DescribeBinlogConfig": {
       "document": "This API is used to query binlog configurations.",
       "input": "DescribeBinlogConfigRequest",
@@ -1491,11 +1498,25 @@
       "output": "SwitchProxyVpcResponse",
       "status": "online"
     },
+    "TransferClusterPrepayToPostpay": {
+      "document": "This API is used to convert a Prepaid Cluster to a postpaid cluster.",
+      "input": "TransferClusterPrepayToPostpayRequest",
+      "name": "Convert a Prepaid Cluster to a postpaid cluster",
+      "output": "TransferClusterPrepayToPostpayResponse",
+      "status": "online"
+    },
     "TransferClusterZone": {
       "document": "This API is used to trigger cross-AZ migration.",
       "input": "TransferClusterZoneRequest",
       "name": "Migrate across AZs",
       "output": "TransferClusterZoneResponse",
+      "status": "online"
+    },
+    "TransferStoragePrepayToPostpay": {
+      "document": "This API is used to convert prepaid storage to postpaid storage.",
+      "input": "TransferStoragePrepayToPostpayRequest",
+      "name": "Switch prepaid storage to postpaid storage",
+      "output": "TransferStoragePrepayToPostpayResponse",
       "status": "online"
     },
     "UnbindClusterResourcePackages": {
@@ -2708,7 +2729,7 @@
           "type": "list"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Availability zone",
           "example": "ap-guangzhou-3",
           "member": "string",
@@ -3032,7 +3053,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "System automation time.",
+          "document": "<p>System automation time</p>",
           "example": "true",
           "member": "bool",
           "name": "BackupCustomAutoTime",
@@ -3043,7 +3064,7 @@
         },
         {
           "disabled": false,
-          "document": "Indicates the full backup start time. value range: [0-24*3600]. for example, 0:00, 1:00, and 2:00 are 0, 3600, and 7200 respectively.",
+          "document": "<p>Indicates the full backup start time, [0-24*3600]. For example, 0:00, 1:00, and 2:00 are 0, 3600, and 7200 respectively.</p>",
           "example": "0",
           "member": "uint64",
           "name": "BackupTimeBeg",
@@ -3054,7 +3075,7 @@
         },
         {
           "disabled": false,
-          "document": "Indicates the full backup end time. value range: [0-24*3600]. for example, 0:00, 1:00, and 2:00 are 0, 3600, and 7200 respectively.",
+          "document": "<p>Indicates the full backup end time, [0-24*3600]. For example, 0:00, 1:00, and 2:00 are 0, 3600, and 7200 respectively.</p>",
           "example": "0",
           "member": "uint64",
           "name": "BackupTimeEnd",
@@ -3065,7 +3086,7 @@
         },
         {
           "disabled": false,
-          "document": "Currently this parameter cannot be modified. no need to specify. backup frequency is an array of length 7, corresponding to the backup method from sunday to saturday, full for full backup and increment for incremental backup.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>This parameter currently does not support modification and is not required. Backup frequency is an array of length 7, corresponding to the backup method from Sunday to Saturday, full-full backup, increment-incremental backup.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[\"full\"]",
           "member": "string",
           "name": "BackupWeekDays",
@@ -3076,7 +3097,7 @@
         },
         {
           "disabled": false,
-          "document": "Interval.",
+          "document": "<p>Interval</p>",
           "example": "0",
           "member": "int64",
           "name": "BackupIntervalTime",
@@ -3087,7 +3108,7 @@
         },
         {
           "disabled": false,
-          "document": "Indicates the backup retention period in seconds. data will be cleaned up longer than this time. 7 days means 3600247=604800. the maximum is 158112000.",
+          "document": "<p>Indicates the backup retention period in seconds. Backups will be cleaned up longer than this time. 7 days means 3600*24*7=604800. The maximum value is 158112000.</p>",
           "example": "604800",
           "member": "uint64",
           "name": "ReserveDuration",
@@ -3098,7 +3119,7 @@
         },
         {
           "disabled": false,
-          "document": "Enable cross-region backup.\nEnable.\n0: disabled.",
+          "document": "<p>Cross-region backup enabled<br>yes-Enable<br>no-Disable</p>",
           "example": "OFF",
           "member": "string",
           "name": "CrossRegionsEnable",
@@ -3109,7 +3130,7 @@
         },
         {
           "disabled": false,
-          "document": "Cross-Regional backup region.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Cross-regional backup region</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[\"ap-chengdu\"]",
           "member": "string",
           "name": "CrossRegions",
@@ -3120,7 +3141,18 @@
         },
         {
           "disabled": false,
-          "document": "Automatic data backup trigger policy, periodically: automatic periodic backup, frequent: high-frequency backup",
+          "document": "<p>Cross-region backup retention period</p><p>Unit: Day</p>",
+          "example": "8",
+          "member": "int64",
+          "name": "CrossRegionSaveDays",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Automatic data backup trigger policy, periodically: automatic periodic backup, frequent: high frequency backup</p>",
           "example": "periodically",
           "member": "string",
           "name": "BackupTriggerStrategy",
@@ -3131,7 +3163,7 @@
         },
         {
           "disabled": false,
-          "document": "Backup delivery relationship",
+          "document": "<p>Backup delivery relationship</p>",
           "example": "无",
           "member": "CreateBackupVaultItem",
           "name": "AutoCopyVaults",
@@ -3462,6 +3494,42 @@
       ],
       "usage": "out"
     },
+    "BackupVolumeInfo": {
+      "document": "Backup Usage Info",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Backup usage",
+          "example": "1.0",
+          "member": "float",
+          "name": "BackupVolume",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Backup type",
+          "example": "logical",
+          "member": "string",
+          "name": "BackupType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Backup method",
+          "example": "manual",
+          "member": "string",
+          "name": "BackupMethod",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "BillingResourceInfo": {
       "document": "Billable resource information",
       "members": [
@@ -3585,7 +3653,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Specifies the retention time of binlogs.",
+          "document": "<p>binlog retention time</p>",
           "example": "7",
           "member": "int64",
           "name": "BinlogSaveDays",
@@ -3596,7 +3664,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether binlog cross-region backup is enabled.",
+          "document": "<p>Whether cross-region backup of binlog is enabled</p>",
           "example": "ON",
           "member": "string",
           "name": "BinlogCrossRegionsEnable",
@@ -3607,7 +3675,7 @@
         },
         {
           "disabled": false,
-          "document": "binlog in a different region.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>binlog cross-region</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[\"ap-guangzhou\"]",
           "member": "string",
           "name": "BinlogCrossRegions",
@@ -3618,7 +3686,18 @@
         },
         {
           "disabled": false,
-          "document": "Safe info",
+          "document": "<p>Cross-region backup retention period</p><p>Unit: Day</p>",
+          "example": "7",
+          "member": "int64",
+          "name": "BinlogCrossRegionSaveDays",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Safe info</p>",
           "example": "无",
           "member": "CreateBackupVaultItem",
           "name": "AutoCopyVaults",
@@ -3635,7 +3714,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Binlog filename",
+          "document": "<p>Binlog filename</p>",
           "example": "cynosdbmysql-xvgstw6s-backupfile-000001",
           "member": "string",
           "name": "FileName",
@@ -3645,7 +3724,7 @@
         },
         {
           "disabled": false,
-          "document": "File size in bytes",
+          "document": "<p>File size, measurement unit: byte</p>",
           "example": "23478236",
           "member": "int64",
           "name": "FileSize",
@@ -3655,7 +3734,7 @@
         },
         {
           "disabled": false,
-          "document": "Transaction start time",
+          "document": "<p>Earliest transaction time</p>",
           "example": "2024-10-01 00:00:00",
           "member": "string",
           "name": "StartTime",
@@ -3665,7 +3744,7 @@
         },
         {
           "disabled": false,
-          "document": "Transaction end time",
+          "document": "<p>Latest transaction time</p>",
           "example": "2024-10-10 00:00:00",
           "member": "string",
           "name": "FinishTime",
@@ -3675,7 +3754,7 @@
         },
         {
           "disabled": false,
-          "document": "Binlog file ID",
+          "document": "<p>Binlog file ID</p>",
           "example": "23467",
           "member": "int64",
           "name": "BinlogId",
@@ -3685,7 +3764,7 @@
         },
         {
           "disabled": false,
-          "document": "binlog cross-region coverage",
+          "document": "<p>Cross-regional binlog</p>",
           "example": "[\"ap-shanghai\"]",
           "member": "string",
           "name": "CrossRegions",
@@ -3695,7 +3774,7 @@
         },
         {
           "disabled": false,
-          "document": "Backup delivery status",
+          "document": "<p>Backup delivery status</p>",
           "example": "done",
           "member": "string",
           "name": "CopyStatus",
@@ -3705,7 +3784,7 @@
         },
         {
           "disabled": false,
-          "document": "Safe info",
+          "document": "<p>Safe information</p>",
           "example": "无",
           "member": "VaultInfo",
           "name": "VaultInfos",
@@ -3715,7 +3794,7 @@
         },
         {
           "disabled": false,
-          "document": "Encryption key",
+          "document": "<p>Encryption key</p>",
           "example": "1764ae22-72f0-11f0-8904-52540009df14",
           "member": "string",
           "name": "EncryptKeyId",
@@ -3725,12 +3804,48 @@
         },
         {
           "disabled": false,
-          "document": "Encrypt key region",
+          "document": "<p>Key region for encryption</p>",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "EncryptRegion",
           "output_required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Geographical distribution of backups</p>",
+          "example": "无",
+          "member": "BinlogRegionInfo",
+          "name": "ExistRegions",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BinlogRegionInfo": {
+      "document": "binlog retention info for each region",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Backup region</p>",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "BackupRegion",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Backup ID</p>",
+          "example": "854194",
+          "member": "int64",
+          "name": "BackupId",
+          "output_required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -10322,7 +10437,7 @@
         {
           "disabled": false,
           "document": "Cluster ID",
-          "example": "cynosdbmysql-ixgbd0di",
+          "example": "cynosdbmysql-i******i",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -11830,6 +11945,153 @@
           "member": "BackupFileInfo",
           "name": "BackupList",
           "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupOverviewRequest": {
+      "document": "DescribeBackupOverview request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID.",
+          "example": "cynosdbmysql-23fdf132",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupOverviewResponse": {
+      "document": "DescribeBackupOverview response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total Backup Capacity",
+          "example": "1.0",
+          "member": "float",
+          "name": "BackupTotalVolume",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Backup snapshot capacity",
+          "example": "1.0",
+          "member": "float",
+          "name": "BackupSnapshotVolume",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Backup logical capacity",
+          "example": "1.0",
+          "member": "float",
+          "name": "BackupLogicVolume",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total Log Capacity",
+          "example": "1.0",
+          "member": "float",
+          "name": "LogTotalVolume",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "binlog capacity",
+          "example": "1.0",
+          "member": "float",
+          "name": "LogBinlogVolume",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Redo log capacity",
+          "example": "1.0",
+          "member": "float",
+          "name": "LogRedoLogVolume",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total Cross-Region Backup Capacity",
+          "example": "1.0",
+          "member": "float",
+          "name": "CrossTotalVolume",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cross-Region Backup Capacity",
+          "example": "1.0",
+          "member": "float",
+          "name": "CrossRegionBackupVolume",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cross-regional log capacity",
+          "example": "1.0",
+          "member": "float",
+          "name": "CrossRegionLogVolume",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Backup capacity details",
+          "example": "无",
+          "member": "BackupVolumeInfo",
+          "name": "BackupVolumeInfos",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cross-region backup capacity details",
+          "example": "无",
+          "member": "BackupVolumeInfo",
+          "name": "CrossRegionBackupVolumeInfos",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cross-region information",
+          "example": "[\"ap-guangzhou\"]",
+          "member": "string",
+          "name": "CrossRegions",
+          "output_required": false,
           "type": "list",
           "value_allowed_null": false
         },
@@ -17385,7 +17647,7 @@
           "type": "list"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Availability zone.\nDescription: Please enter the primary AZ of the cluster location correctly. If you enter a non-primary AZ of the cluster location, the call may display success but the actual execution will fail.",
           "example": "ap-guangzhou-3",
           "member": "string",
@@ -18555,7 +18817,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "AZ",
+          "document": "<p>Availability zone, each region provision best practice</p>",
           "example": "ap-guangzhou-3",
           "member": "string",
           "name": "Zone",
@@ -18564,7 +18826,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of compute node to purchase",
+          "document": "<p>Number of compute nodes to purchase</p>",
           "example": "1",
           "member": "int64",
           "name": "GoodsNum",
@@ -18573,7 +18835,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance type for purchase. Valid values: `PREPAID`, `POSTPAID`, `SERVERLESS`.",
+          "document": "<p>Instance purchase type, optional values: PREPAID, POSTPAID, SERVERLESS</p>",
           "example": "PREPAID",
           "member": "string",
           "name": "InstancePayMode",
@@ -18582,7 +18844,7 @@
         },
         {
           "disabled": false,
-          "document": "Storage type for purchase. Valid values: `PREPAID`, `POSTPAID`.",
+          "document": "<p>Storage purchase type, optional values: PREPAID, POSTPAID</p>",
           "example": "POSTPAID",
           "member": "string",
           "name": "StoragePayMode",
@@ -18591,7 +18853,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance device type. Supported values are as follows:\n- common: indicates the general type\n- exclusive: indicates the exclusive type.",
+          "document": "<p>Instance device type. Supported values are as follows:</p><ul><li>common: refers to universal type</li><li>exclusive: refers to dedicated type</li></ul>",
           "example": "exclusive",
           "member": "string",
           "name": "DeviceType",
@@ -18600,7 +18862,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of CPU cores, which is required when `InstancePayMode` is `PREPAID` or `POSTPAID`.",
+          "document": "<p>Number of CPU cores. Required for PREPAID and POSTPAID instance types.</p>",
           "example": "1",
           "member": "int64",
           "name": "Cpu",
@@ -18609,7 +18871,7 @@
         },
         {
           "disabled": false,
-          "document": "Memory size in GB, which is required when `InstancePayMode` is `PREPAID` or `POSTPAID`.",
+          "document": "<p>Memory size in GB. Required for PREPAID and POSTPAID instance types.</p>",
           "example": "1",
           "member": "int64",
           "name": "Memory",
@@ -18618,7 +18880,7 @@
         },
         {
           "disabled": false,
-          "document": "CCU size, which is required when `InstancePayMode` is `SERVERLESS`.",
+          "document": "<p>Ccu size. Required for the serverless type.</p>",
           "example": "0.5",
           "member": "float",
           "name": "Ccu",
@@ -18627,7 +18889,7 @@
         },
         {
           "disabled": false,
-          "document": "Storage size, which is required when `StoragePayMode` is `PREPAID`.",
+          "document": "<p>Storage size. Required for PREPAID storage type</p>",
           "example": "10",
           "member": "int64",
           "name": "StorageLimit",
@@ -18636,7 +18898,7 @@
         },
         {
           "disabled": false,
-          "document": "Validity period, which is required when `InstancePayMode` is `PREPAID`.",
+          "document": "<p>Purchase period, required for PREPAID purchase type</p>",
           "example": "1",
           "member": "int64",
           "name": "TimeSpan",
@@ -18645,12 +18907,30 @@
         },
         {
           "disabled": false,
-          "document": "Duration unit, which is required when `InstancePayMode` is `PREPAID`. Valid values: `m` (month), `d` (day).",
+          "document": "<p>Duration unit. Optional values: m, d. Required for PREPAID purchase type.</p>",
           "example": "m",
           "member": "string",
           "name": "TimeUnit",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Storage architecture type. Enumeration value: 1.0/2.0 Default value: 1.0</p>",
+          "example": "1.0",
+          "member": "string",
+          "name": "StorageVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether storage spans AZs. Valid for storage architecture 2.0</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "IsMultiAz",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -18660,7 +18940,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance price",
+          "document": "<p>Instance price</p>",
           "example": "无",
           "member": "TradePrice",
           "name": "InstancePrice",
@@ -18670,7 +18950,7 @@
         },
         {
           "disabled": false,
-          "document": "Storage price",
+          "document": "<p>Storage price</p>",
           "example": "无",
           "member": "TradePrice",
           "name": "StoragePrice",
@@ -21796,7 +22076,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether automatic logical backup is enabled.",
+          "document": "<p>Whether automatic logical backup is enabled</p>",
           "example": "OFF",
           "member": "string",
           "name": "LogicBackupEnable",
@@ -21807,7 +22087,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the automatic logic backup start time.",
+          "document": "<p>Automatic logic backup start time</p>",
           "example": "2",
           "member": "uint64",
           "name": "LogicBackupTimeBeg",
@@ -21818,7 +22098,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the termination time of automatic logical backup.",
+          "document": "<p>Automated logic backup end time</p>",
           "example": "6",
           "member": "uint64",
           "name": "LogicBackupTimeEnd",
@@ -21829,7 +22109,7 @@
         },
         {
           "disabled": false,
-          "document": "Automatic logical backup retention time.\nUnit: seconds.",
+          "document": "<p>Automatic logical backup retention time<br>Unit: second</p>",
           "example": "7",
           "member": "uint64",
           "name": "LogicReserveDuration",
@@ -21840,7 +22120,7 @@
         },
         {
           "disabled": false,
-          "document": "Is cross-regional logical backup enabled?.\nValid values: ON/OFF.",
+          "document": "<p>Whether cross-regional logical backup is enabled<br>Available values: ON/OFF</p>",
           "example": "ON",
           "member": "string",
           "name": "LogicCrossRegionsEnable",
@@ -21851,7 +22131,7 @@
         },
         {
           "disabled": false,
-          "document": "Regions covered by logical backup.",
+          "document": "<p>Cross-regional logic backup</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[\"ap-guangzhou\"]",
           "member": "string",
           "name": "LogicCrossRegions",
@@ -21862,13 +22142,24 @@
         },
         {
           "disabled": false,
-          "document": "Backup delivery relationship",
+          "document": "<p>Backup delivery relationship</p>",
           "example": "无",
           "member": "CreateBackupVaultItem",
           "name": "AutoCopyVaults",
           "output_required": false,
           "required": false,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Day</p><p>Unit: Cross-regional logical backup retention time</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "LogicCrossRegionSaveDays",
+          "output_required": false,
+          "required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -22672,7 +22963,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Cluster ID",
+          "document": "<p>Cluster ID.</p>",
           "example": "cynosdb-123",
           "member": "string",
           "name": "ClusterId",
@@ -22681,11 +22972,20 @@
         },
         {
           "disabled": false,
-          "document": "Binlog retention period in days",
+          "document": "<p>Binlog retention days</p>",
           "example": "7",
           "member": "int64",
           "name": "BinlogSaveDays",
           "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Cross-region backup retention period</p><p>Unit: Day</p>",
+          "example": "8",
+          "member": "int64",
+          "name": "BinlogCrossRegionSaveDays",
+          "required": false,
           "type": "int"
         }
       ],
@@ -24561,7 +24861,7 @@
         {
           "disabled": false,
           "document": "<p>Delay of Cluster Auto-Pause in seconds, optional range [600,691200], default 600</p>",
-          "example": "100",
+          "example": "600",
           "member": "int64",
           "name": "AutoPauseDelay",
           "required": false,
@@ -24706,7 +25006,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Cluster ID",
+          "document": "<p>Cluster ID.</p>",
           "example": "cynosdbmysql-45knmnra",
           "member": "string",
           "name": "ClusterId",
@@ -24715,7 +25015,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether cross-region snapshot backup is enabled.",
+          "document": "<p>Whether cross-region snapshot backup is enabled ON/OFF</p>",
           "example": "ON",
           "member": "string",
           "name": "CrossRegionsEnable",
@@ -24724,12 +25024,21 @@
         },
         {
           "disabled": false,
-          "document": "Cross-Regional snapshot backup.",
+          "document": "<p>Cross-regional snapshot backup</p>",
           "example": "[\"ap-guangzhou\"]",
           "member": "string",
           "name": "CrossRegions",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Cross-region backup retention period</p><p>Unit: day</p>",
+          "example": "8",
+          "member": "int64",
+          "name": "CrossRegionSaveDays",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -24739,7 +25048,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task ID.",
+          "document": "<p>Task ID.</p>",
           "example": "234321",
           "member": "int64",
           "name": "TaskId",
@@ -27186,7 +27495,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Database proxy group ID",
+          "document": "<p>Database Proxy Group ID.</p>",
           "example": "cynosdbmysql-proxy-mdhg55su",
           "member": "string",
           "name": "ProxyGroupId",
@@ -27196,7 +27505,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of nodes in the proxy group",
+          "document": "<p>Number of database proxy group nodes</p>",
           "example": "3",
           "member": "int64",
           "name": "ProxyNodeCount",
@@ -27206,7 +27515,7 @@
         },
         {
           "disabled": false,
-          "document": "Database proxy group status",
+          "document": "<p>Database Proxy Group status</p>",
           "example": "running",
           "member": "string",
           "name": "Status",
@@ -27216,7 +27525,7 @@
         },
         {
           "disabled": false,
-          "document": "Region",
+          "document": "<p>Region.</p>",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
@@ -27226,7 +27535,7 @@
         },
         {
           "disabled": false,
-          "document": "AZ",
+          "document": "<p>AZ.</p>",
           "example": "ap-guangzhou-2",
           "member": "string",
           "name": "Zone",
@@ -27236,7 +27545,7 @@
         },
         {
           "disabled": false,
-          "document": "Current proxy version",
+          "document": "<p>Current proxy version</p>",
           "example": "1.3.11",
           "member": "string",
           "name": "CurrentProxyVersion",
@@ -27246,7 +27555,7 @@
         },
         {
           "disabled": false,
-          "document": "Cluster ID",
+          "document": "<p>Cluster ID.</p>",
           "example": "cynosdbmysql-i2weamox",
           "member": "string",
           "name": "ClusterId",
@@ -27256,7 +27565,7 @@
         },
         {
           "disabled": false,
-          "document": "User AppId",
+          "document": "<p>User AppId</p>",
           "example": "1772344699",
           "member": "int64",
           "name": "AppId",
@@ -27266,11 +27575,31 @@
         },
         {
           "disabled": false,
-          "document": "Specifies that a read-write node activates the database proxy.",
+          "document": "<p>Activate database proxy for RWNode</p>",
           "example": "yes",
           "member": "string",
           "name": "OpenRw",
           "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Creation time.</p>",
+          "example": "2026-06-12 11:30:50",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Update time.</p>",
+          "example": "2026-06-12 11:35:44",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": false,
           "type": "string",
           "value_allowed_null": false
         }
@@ -27525,7 +27854,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Database proxy node ID.",
+          "document": "<p>Database Proxy Node ID</p>",
           "example": "cynosdbmysql-proxyNode-pv4hg4na",
           "member": "string",
           "name": "ProxyNodeId",
@@ -27535,7 +27864,7 @@
         },
         {
           "disabled": false,
-          "document": "Current node connections, which is not returned by the `DescribeProxyNodes` API.",
+          "document": "<p>Current connection number of nodes. This field value does not return in the DescribeProxyNodes API.</p>",
           "example": "157",
           "member": "int64",
           "name": "ProxyNodeConnections",
@@ -27545,7 +27874,7 @@
         },
         {
           "disabled": false,
-          "document": "CPU of the database proxy node.",
+          "document": "<p>Database proxy node cpu</p>",
           "example": "2",
           "member": "int64",
           "name": "Cpu",
@@ -27555,7 +27884,7 @@
         },
         {
           "disabled": false,
-          "document": "Memory of the database proxy node.",
+          "document": "<p>Database proxy node memory</p>",
           "example": "4000",
           "member": "int64",
           "name": "Mem",
@@ -27565,7 +27894,7 @@
         },
         {
           "disabled": false,
-          "document": "Status of the database proxy node.",
+          "document": "<p>Database Proxy Node Status</p>",
           "example": "running",
           "member": "string",
           "name": "Status",
@@ -27575,7 +27904,7 @@
         },
         {
           "disabled": false,
-          "document": "Database proxy group ID.",
+          "document": "<p>Database Proxy Group ID</p>",
           "example": "cynosdbmysql-proxy-mdhg57su",
           "member": "string",
           "name": "ProxyGroupId",
@@ -27585,7 +27914,7 @@
         },
         {
           "disabled": false,
-          "document": "Cluster ID.",
+          "document": "<p>Cluster ID.</p>",
           "example": "cynosdbmysql-i2weamox",
           "member": "string",
           "name": "ClusterId",
@@ -27595,7 +27924,7 @@
         },
         {
           "disabled": false,
-          "document": "User AppID.",
+          "document": "<p>User AppID</p>",
           "example": "1772344699",
           "member": "int64",
           "name": "AppId",
@@ -27605,7 +27934,7 @@
         },
         {
           "disabled": false,
-          "document": "Region.",
+          "document": "<p>Region.</p>",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
@@ -27615,7 +27944,7 @@
         },
         {
           "disabled": false,
-          "document": "AZ.",
+          "document": "<p>AZ.</p>",
           "example": "ap-guangzhou-6",
           "member": "string",
           "name": "Zone",
@@ -27625,11 +27954,31 @@
         },
         {
           "disabled": false,
-          "document": "Database proxy node name.",
+          "document": "<p>Database Proxy Node Name</p>",
           "example": "cynosdbmysql-proxyNode-q52v1wp4",
           "member": "string",
           "name": "OssProxyNodeName",
           "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Creation time.</p>",
+          "example": "2026-06-12 11:30:50",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Update time.</p>",
+          "example": "2026-06-12 11:30:50",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": false,
           "type": "string",
           "value_allowed_null": false
         }
@@ -31989,6 +32338,23 @@
       ],
       "usage": "out"
     },
+    "TransferClusterPrepayToPostpayRequest": {
+      "document": "TransferClusterPrepayToPostpay request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "TransferClusterPrepayToPostpayResponse": {
+      "document": "TransferClusterPrepayToPostpay response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "TransferClusterZoneRequest": {
       "document": "TransferClusterZone request structure.",
       "members": [
@@ -32062,6 +32428,23 @@
           "type": "int",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TransferStoragePrepayToPostpayRequest": {
+      "document": "TransferStoragePrepayToPostpay request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "TransferStoragePrepayToPostpayResponse": {
+      "document": "TransferStoragePrepayToPostpay response structure.",
+      "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",

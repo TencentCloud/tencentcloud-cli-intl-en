@@ -1974,7 +1974,7 @@
         {
           "disabled": false,
           "document": "Data source service providers. COS: tencent cloud COS, OSS: alibaba cloud OSS, OBS: huawei cloud OBS.",
-          "example": "OSS",
+          "example": "COS",
           "member": "string",
           "name": "SrcService",
           "required": true,
@@ -2716,7 +2716,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "File system ID. obtain it by querying the file system interface (https://www.tencentcloud.com/document/api/582/38170?from_cn_redirect=1).",
+          "document": "File system ID. obtain it by querying the file system interface [DescribeCfsFileSystems\n](https://www.tencentcloud.com/zh/document/product/582/34514)",
           "example": "cfs-12345",
           "member": "string",
           "name": "FileSystemId",
@@ -3771,7 +3771,7 @@
         },
         {
           "disabled": false,
-          "document": "Availability zone name, such as ap-beijing-1. see the region and availability zone list in the description document (https://www.tencentcloud.com/document/api/582/38144?from_cn_redirect=1).",
+          "document": "Availability zone name, such as ap-beijing-1. see the region and availability zone list in the description [Introduction\n](https://www.tencentcloud.com/zh/document/product/582/50830)",
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "Zone",
@@ -4625,7 +4625,7 @@
         {
           "disabled": false,
           "document": "Creation time",
-          "example": "2023-01-09 15:03:57",
+          "example": "1753675581000",
           "member": "int64",
           "name": "CreateTime",
           "output_required": true,
@@ -4635,7 +4635,7 @@
         {
           "disabled": false,
           "document": "Completion/Termination time.",
-          "example": "2023-01-20 15:03:57",
+          "example": "1753675581000",
           "member": "int64",
           "name": "EndTime",
           "output_required": true,
@@ -5947,7 +5947,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "File system ID. obtain it by querying the file system interface (https://www.tencentcloud.com/document/api/582/38170?from_cn_redirect=1).",
+          "document": "File system ID. obtain it by querying the file system interface [DescribeCfsFileSystems\n](https://www.tencentcloud.com/zh/document/product/582/34514)",
           "example": "cfs-abc12345",
           "member": "string",
           "name": "FileSystemId",
@@ -6022,7 +6022,7 @@
         },
         {
           "disabled": false,
-          "document": "File system ID. obtain it by querying the file system interface (https://www.tencentcloud.com/document/api/582/38170?from_cn_redirect=1).",
+          "document": "File system ID. obtain it by querying the file system interface [DescribeCfsFileSystems\n](https://www.tencentcloud.com/zh/document/product/582/34514)",
           "example": "cfs-12345",
           "member": "string",
           "name": "FileSystemId",
