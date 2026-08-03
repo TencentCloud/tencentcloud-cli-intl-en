@@ -51,7 +51,7 @@
     "CreateDatahubTopic": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: ckafka.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDatahubTopic\n<Common request parameters>\n\n{\n    \"Name\": \"12345-test\",\n    \"PartitionNum\": \"1\",\n    \"RetentionMs\": \"3600000\"\n}",
+        "input": "POST / HTTP/1.1\nHost: ckafka.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDatahubTopic\n<Common request parameters>\n\n{\n    \"Name\": \"12345-test\",\n    \"PartitionNum\": 1,\n    \"RetentionMs\": 3600000\n}",
         "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"TopicName\": \"mytopic\",\n            \"TopicId\": \"topic-test\"\n        },\n        \"RequestId\": \"84770b4b-df34-4ccf-8e22-41d3b1d0fe0d\"\n    }\n}",
         "title": "Create topics."
       }
@@ -95,9 +95,9 @@
     "CreateRoute": [
       {
         "document": " ",
-        "input": "https://ckafka.tencentcloudapi.com/?Action=CreateRoute\n&InstanceId=ckafka-test\n&VipType=1\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: ckafka.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRoute\n<Common request parameters>\n\n{\n    \"InstanceId\": \"ckafka-test\",\n    \"VipType\": 1\n}",
         "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"ReturnCode\": \"0\",\n            \"ReturnMessage\": \"success\",\n            \"Data\": {\n                \"FlowId\": 111,\n                \"RouteDTO\": {\n                    \"RouteId\": 132321\n                }\n            }\n        },\n        \"RequestId\": \"36713f94-d07d-4b96-babf-42d139276f23\"\n    }\n}",
-        "title": "Successfully Request"
+        "title": "Request successfully"
       }
     ],
     "CreateTopic": [
@@ -196,14 +196,6 @@
         "title": "Deleting a Topic"
       }
     ],
-    "DeleteTopicIpWhiteList": [
-      {
-        "document": " ",
-        "input": "POST / HTTP/1.1\nHost: xxx.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteTopicIpWhiteList\n<Common request parameters>\n\n{\n    \"InstanceId\": \"ckafka-test\",\n    \"TopicName\": \"topic-abc\",\n    \"IpWhiteList\": [\n        \"10.1.1.4\"\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"ReturnCode\": \"0\",\n            \"ReturnMessage\": \"ok[apply success]\",\n            \"Data\": {\n                \"FlowId\": 0\n            }\n        },\n        \"RequestId\": \"b800c966-083a-40f5-8d54-44f40c6b364f\"\n    }\n}",
-        "title": "Deleting a Topic IP Allowlist"
-      }
-    ],
     "DeleteUser": [
       {
         "document": " ",
@@ -218,6 +210,14 @@
         "input": "https://ckafka.tencentcloudapi.com/?Action=DescribeACL\n&InstanceId=ckafka-test\n&ResourceType=2\n&ResourceName=resourcename\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"TotalCount\": 1,\n            \"AclList\": [\n                {\n                    \"ResourceType\": 2,\n                    \"ResourceName\": \"ResourcetTest\",\n                    \"Principal\": \"User:test\",\n                    \"Host\": \"10.1.2.4\",\n                    \"Operation\": 3,\n                    \"PermissionType\": 3\n                }\n            ]\n        },\n        \"RequestId\": \"62d589e0-53d5-47e0-95ff-237c48b8fb77\"\n    }\n}",
         "title": "Enumerating ACL"
+      }
+    ],
+    "DescribeAccessPolicy": [
+      {
+        "document": "View the public network IP allowlist configuration of an instance",
+        "input": "POST / HTTP/1.1\nHost: ckafka.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAccessPolicy\n<Common request parameters>\n\n{\n    \"InstanceId\": \"ckafka-ay3z77qe\",\n    \"RouteId\": 137946\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"IpWhitelist\": [\n                {\n                    \"CidrBlock\": \"127.0.0.1\",\n                    \"PolicyDescription\": \"test-description\"\n                }\n            ],\n            \"TotalCount\": 1\n        },\n        \"RequestId\": \"01fbfd54-f0ec-4bbf-ba21-211a845bfa3b\"\n    }\n}",
+        "title": "Viewing the public IP allowlist configuration of an instance"
       }
     ],
     "DescribeAclRule": [
@@ -468,6 +468,22 @@
         "title": "Instance Downsizing"
       }
     ],
+    "IsolatedInstancePre": [
+      {
+        "document": "Isolate a prepaid instance",
+        "input": "POST / HTTP/1.1\nHost: ckafka.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: IsolatedInstancePre\n<Common request parameters>\n\n{\n    \"InstanceId\": \"ckafka-zanbmvve\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e9ec1976-4b9b-4379-99e4-5a0158d01ffb\",\n        \"Result\": {\n            \"Data\": {\n                \"DealNames\": [\n                    \"20250117797002527434061\"\n                ],\n                \"FlowId\": 0,\n                \"InstanceId\": \"ckafka-zanbmvve\"\n            },\n            \"DeleteRouteTimestamp\": null,\n            \"ReturnCode\": \"0\",\n            \"ReturnMessage\": \"ok\"\n        }\n    }\n}",
+        "title": "Isolating a prepaid instance"
+      }
+    ],
+    "ModifyAccessPolicy": [
+      {
+        "document": "Modify the public IP allowlist configuration of an instance",
+        "input": "POST / HTTP/1.1\nHost: ckafka.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAccessPolicy\n<Common request parameters>\n\n{\n    \"InstanceId\": \"ckafka-ay3z77qe\",\n    \"RouteId\": 137946,\n    \"IpWhitelist\": [\n        {\n            \"CidrBlock\": \"127.0.0.1\",\n            \"PolicyDescription\": \"test-description\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"Succeed\",\n        \"RequestId\": \"0ca44380-3c17-4755-9564-f48de2e01760\"\n    }\n}",
+        "title": "Modifying the Public IP Allowlist Configuration of an Instance"
+      }
+    ],
     "ModifyAclRule": [
       {
         "document": "This example shows you how to modify ACL rules.",
@@ -479,9 +495,9 @@
     "ModifyDatahubTopic": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: ckafka.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDatahubTopic\n<Common request parameters>\n\n{\n    \"Note\": \"yournote\",\n    \"Name\": \"yourname\",\n    \"RetentionMs\": \"3600000\"\n}",
+        "input": "POST / HTTP/1.1\nHost: ckafka.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDatahubTopic\n<Common request parameters>\n\n{\n    \"Note\": \"note-test\",\n    \"Name\": \"appId-test\",\n    \"RetentionMs\": 3600000\n}",
         "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"ReturnCode\": \"0\",\n            \"ReturnMessage\": \"ok\",\n            \"Data\": {\n                \"FlowId\": 0,\n                \"RouteDTO\": {\n                    \"RouteId\": 0\n                }\n            }\n        },\n        \"RequestId\": \"84770b4b-df34-4ccf-8e22-41d3b1d0fe0d\"\n    }\n}",
-        "title": "Setting Topic Properties"
+        "title": "Setting Topic Attributes"
       }
     ],
     "ModifyGroupOffsets": [

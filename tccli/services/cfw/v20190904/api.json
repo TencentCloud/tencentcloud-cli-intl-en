@@ -7,6 +7,13 @@
       "output": "AddAcRuleResponse",
       "status": "online"
     },
+    "AddAclRule": {
+      "document": "Add one or more Internet Boundary Access Control Rules.",
+      "input": "AddAclRuleRequest",
+      "name": "Create an Internet Boundary Access Control Rule",
+      "output": "AddAclRuleResponse",
+      "status": "online"
+    },
     "AddEnterpriseSecurityGroupRules": {
       "document": "This API is used to create enterprise security group rules (new).",
       "input": "AddEnterpriseSecurityGroupRulesRequest",
@@ -117,6 +124,20 @@
       "input": "DescribeBlockStaticListRequest",
       "name": "Gets the most frequent attacker",
       "output": "DescribeBlockStaticListResponse",
+      "status": "online"
+    },
+    "DescribeCfwLogs": {
+      "document": "This API is used to query the firewall log of the current tenant. Only use HasMore/NextToken in Response.Data to paginate.",
+      "input": "DescribeCfwLogsRequest",
+      "name": "Query firewall logs",
+      "output": "DescribeCfwLogsResponse",
+      "status": "online"
+    },
+    "DescribeCfwStatusMonitor": {
+      "document": "Query status monitoring scenario. Op=describe_scene is used to detect available scenarios, metrics, perspectives, and secondary dropdown available_options. Op=fetch_scene is used to pull specific scenario snapshots, with results in the JSON string of Response.Data.",
+      "input": "DescribeCfwStatusMonitorRequest",
+      "name": "Query the firewall status monitoring scenario",
+      "output": "DescribeCfwStatusMonitorResponse",
       "status": "online"
     },
     "DescribeDefenseSwitch": {
@@ -706,6 +727,61 @@
       ],
       "type": "object"
     },
+    "AddAclRuleRequest": {
+      "document": "AddAclRule request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The list of Internet boundary rules to be added cannot be empty. Each rule must meet the requirements for direction, source and target, action, scope, protocol port, and template restrictions. The entire request must also comply with rule quota and effective rule count limitations. Account-related values must come from read-only queries: for address templates, call DescribeAddressTemplateList, filter the request with TemplateType=1 or 5, and confirm that the returned Data[].Type is 1 or 5. Write Data[].Uuid (with the mb_ prefix) to the corresponding Content, and do not use Data[].TemplateId (with the ip-/dm- prefix). For protocol port templates, filter the request with TemplateType=6, and write Data[].TemplateId (with the pp- prefix) to ParamTemplateId. For asset instances, call DescribeCfwAssets, parse the returned results, and use assets[].instance_id. For asset groups, call DescribeResourceGroupNew, pass QueryType=resource, GroupId=\"0\", ShowType=all, parse the returned results, and use GroupId. For resource tags, pass QueryType=tag, skip the \"all assets\" root node, and construct JSON using the first-level node GroupName as the Key and the selected second-level sub-node GroupName as the Value, without writing GroupId. For regions, call DescribeAclRegInfo: for Scope=serial, pass FwType=[\"SERIAL\"]; for Scope=side, pass FwType=[\"BYPASS\"]; for Scope=all, pass both items simultaneously, and use Data[].RegionCode. Do not use display names or manually concatenate values. The range for overwrite import is determined solely by the Direction of the first rule.",
+          "example": "无",
+          "member": "CreateRuleItem",
+          "name": "Rules",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>AI operation source</p><p>Enumeration value:</p><ul><li>console: console source value</li><li>wechat: WeChat</li></ul>",
+          "example": "console",
+          "member": "string",
+          "name": "CfwAiAgentOperationSource",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Add method. Omit or an empty string means ordinary addition; insert_rule means adding new at a specified position; batch_import means non-overwrite batch import; batch_import_cover means overwrite import, which deletes the existing operation rule corresponding to the first rule's Direction and then adds Rules. Deleted rules will not be restored if addition fails, with extremely high risk. The coverage area is only determined by the first rule. The caller must ensure the Directions of the Rules match. Only the above values are supported.",
+          "example": "batch_import",
+          "member": "string",
+          "name": "From",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddAclRuleResponse": {
+      "document": "AddAclRule response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ID list of the added rules, in the same sequence as Rules.",
+          "example": "[8888, 8889]",
+          "member": "int64",
+          "name": "RuleUuid",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "AddEnterpriseSecurityGroupRulesRequest": {
       "document": "AddEnterpriseSecurityGroupRules request structure.",
       "members": [
@@ -1149,6 +1225,45 @@
         }
       ],
       "usage": "in"
+    },
+    "CfwStatusMonitorFilter": {
+      "document": "Status monitoring filter condition.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Filter field name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Ip",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Filter value list, up to 10.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"1.1.1.1\"]",
+          "member": "string",
+          "name": "Values",
+          "output_required": false,
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Operator type, optional; only supported for backend permission types.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "OperatorType",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "CommonFilter": {
       "document": "Common filters for search",
@@ -1607,6 +1722,156 @@
           "required": false,
           "type": "string",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "in"
+    },
+    "CreateRuleItem": {
+      "document": "Complete content of the Internet Boundary Access Control Rule, shared for adding new and modification. When projects are added, default values are handled according to field descriptions; during modification, writable content is completely replaced, omitted writable fields do not inherit old values, and system management fields are unaffected.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Rule direction: 1 means inbound, 0 means outbound; other integers or omitted values result in verification failure. Direction also determines the available combinations of SourceType, TargetType, Scope, and Protocol.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Direction",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Rule order, required. Pass -1 to append to the end of the current direction; a positive serial number indicates insertion at the corresponding position and postponement of subsequent rules; treat 0 as 1, other negative numbers and out-of-scope values should not be used. When a new request contains multiple rules, Direction must be the same; pass all -1 for appending, pass consecutive incremental positive serial numbers in request order for insertion. A modify request accepts only one rule.",
+          "example": "1",
+          "member": "int64",
+          "name": "OrderIndex",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Destination port. Ignore this field and set it to an empty string when Protocol is ICMP. For other protocols, you must provide a parse string. You can enter a positive integer single port or a \"start/end\" range separated with commas. The starting value must not be larger than the end value. -1/-1 indicates all ports. FTP only accepts one positive integer. For domain or domain name template targets within the side or all scope, only -1/-1 or 0/65535 are accepted.",
+          "example": "-1/-1",
+          "member": "string",
+          "name": "Port",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Protocol, case-insensitive parsing. Layer-4 values TCP, UDP, ICMP, ICMPV6, ANY are normalized to uppercase. Application-layer values HTTP, HTTPS, HTTP/HTTPS, SMTP, SMTPS, SMTP/SMTPS, FTP, DNS, TLS/SSL and aliases domain, TLS, SSL are normalized to corresponding standard values. ANY means no protocol limitation, not an empty Protocol. It belongs to both parseable Layer-4 protocols and application protocols. domain, TLS, SSL are all normalized to TLS/SSL. The target for domain or domain name template accepts the above application-layer protocols and ANY, but does not accept FTP and other Layer-4 protocols. dnsparse and domainiptwoverify only accept TCP or UDP and only support serial. Other targets in the public cloud environment do not accept application-layer protocols outside of FTP and ANY. Under the side or all scope, inbound only accepts TCP, outbound only accepts TCP, HTTP/HTTPS, or TLS/SSL. When DNS is used for a non-domain target and the target is not *, the destination content must also be a rule list of valid non-IP domain names. When using a protocol port template, each group of protocol and port in the template also executes these integration validations.",
+          "example": "TCP",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Traffic processing actions are case-insensitive. accept means allow, drop means deny, and log means observe. isolateinaccept means allow access to allowlisted traffic for isolated assets, isolateindrop means block access to other traffic for isolated assets, isolateoutaccept means allow isolated assets to access allowlisted targets, and isolateoutdrop means block isolated assets from accessing other targets. drop and its deny alias also verify whether the current account has Internet boundary blocking capability.",
+          "example": "accept",
+          "member": "string",
+          "name": "RuleAction",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Access the source content. For ip or net, use a valid IP/CIDR list, with a maximum of 10 items in a regular list. For template, use a parseable address template identifier of the current account. When Direction=0, use the corresponding resource identifier for instance, group, and tag. Among them, the instance must be resolvable to a public IP, and the tag must exist with the format {\"Key\":\"tag key\",\"Value\":\"tag value\"}. When Direction=1, use a CSV of region codes for location, which must pass the verification of the new regional rules capability of the current account. For vendor, use a CSV of tencent, aliyun, aws, huawei, azure, or all. location and vendor are converted to region or manufacturer matchmaking information when saved.",
+          "example": "192.168.0.2",
+          "member": "string",
+          "name": "SourceContent",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Access source type, case-insensitive parsing. net and ip both indicate IP/CIDR, template refers to address template, instance refers to asset instance, group refers to asset group, tag refers to resource tag, location refers to region, vendor refers to cloud service provider. Direction=1 accepts ip, net, template, location, vendor; Direction=0 accepts ip, net, template, instance, group, tag. ip and net are handled as the same type.",
+          "example": "ip",
+          "member": "string",
+          "name": "SourceType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Access the destination content. For ip or net, use a valid IP/CIDR list. For domain, use a valid IP, standard domain name, or wildcard domain name list, and also accept a single *. The regular list supports up to 10 items, and wildcard domain names support up to 5 levels. When domain is used with the DNS protocol, IP is not accepted. For dnsparse, use a single valid domain name, wildcard domain name, or an mb_ domain name template that can be resolved by the current account. For domainiptwoverify, use a single valid domain name without wildcards or such a template. Both do not accept a single *, IP, comma-separated list, or wildcard domain names within the segment. For serial domain segments with wildcards and domainiptwoverify templates, the current environment must support the corresponding capacity. For template, use the address template identifier that can be resolved by the current account. For Direction=1, instance, group, and tag use the corresponding resource identifiers. The instance must be resolvable to a public network IP, and the tag must exist with the format {\"Key\":\"tag key\",\"Value\":\"tag value\"}. For Direction=0, location uses region code CSV, and vendor uses CSV of tencent, aliyun, aws, huawei, azure, or all. The standardized content has a maximum length of 1023.",
+          "example": "*.qq.com",
+          "member": "string",
+          "name": "TargetContent",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Access purpose type. Case-insensitive parsing. net and ip both indicate IP/CIDR, template indicates address template, instance indicates asset instance, group indicates asset group, tag indicates resource tag, location indicates region, vendor indicates cloud service provider, domain indicates FQDN matching (content can also be IP or *), dnsparse indicates loose matching: Host/SNI matches the domain name, or the destination IP belongs to the IP range of the current DNS resolution result of that domain name, hit if any condition is met; domainiptwoverify indicates strict matching: the above two conditions require simultaneous satisfaction. Direction=1 accepts ip, net, template, domain, instance, group, tag; Direction=0 accepts ip, net, template, domain, dnsparse, domainiptwoverify, location, or vendor.",
+          "example": "domain",
+          "member": "string",
+          "name": "TargetType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rule description, no more than 100 characters. When projects are added, save the requested value; when modified, replace fully, do not inherit old values.",
+          "example": "自定义描述",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Enable status. Non-empty values accept the string true or false in a case-insensitive manner and are normalized to enable or disable. When omitted or an empty string is input, the default enabled configuration for access control of the current account is read. If this configuration is unavailable, it is enabled by default. Existing rules are replaced without inheriting old values.",
+          "example": "true",
+          "member": "string",
+          "name": "Enable",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Associated alarm or source event ID. When projects are added, omit or input an empty string to indicate not associated. When modifying, import the rules[].log_id returned by DescribeCfwRules as is. If not returned, omit or input an empty string. The old value is not automatically inherited during replacement. When From=batch_import_cover, a non-empty value is also reused as the string literal identification for the rule after overwrite import.",
+          "example": "987c1bb3-f975-4055-a0f9-40beab3633da",
+          "member": "string",
+          "name": "LogId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Protocol port template ID. Omit or input an empty string to indicate no template is used. If not empty, it must point to an existing template in the current account with the content format \"protocol:port\", otherwise the request fails. The protocol and port in the template must meet the integration restrictions of Direction, TargetType, and Scope. Protocol and Port must still comply with their respective field rules, but are not required to be fixed as ANY, -1/-1, or serial.",
+          "example": "pp-1q2w3e4r",
+          "member": "string",
+          "name": "ParamTemplateId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rule source: 0 means General rule, 2 means isolated asset outgoing access rule. It can be omitted when projects are added, and omitted values are handled as 0. Only 0 or 2 are accepted for explicit input and modification, and the original rule value should be imported during modification.",
+          "example": "0",
+          "member": "int64",
+          "name": "RuleSource",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Effective scope. Case insensitivity: serial means only Internet boundary serial firewall, side means only Internet boundary bypass firewall, all means acting on both serial and bypass firewalls simultaneously. Omitted, empty string, or other values will result in verification failure. The international site environment will normalize valid user-submitted input to serial. For linkage restrictions on protocol, port, destination type, and protocol port templates, refer to Protocol, Port, and ParamTemplateId.",
+          "example": "serial",
+          "member": "string",
+          "name": "Scope",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rule numeric value ID. Ordinary new additions, user-specified location additions, and batch import ignore this field; positive integer ID is usable when From=batch_import_cover; must provide an existing and modifiable positive integer ID of the current account for modification, used for locating and fully replacing the original rule, omitted, non-positive integer, or non-existing IDs cause request failure.",
+          "example": "8888",
+          "member": "int64",
+          "name": "Uuid",
+          "required": false,
+          "type": "int"
         }
       ],
       "usage": "in"
@@ -2640,6 +2905,278 @@
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCfwLogsRequest": {
+      "document": "DescribeCfwLogs request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Log type. Required for the initial query; cannot be passed when using NextToken for continuation. cfw_netflow_border=Internet boundary traffic, cfw_netflow_vpc=VPC east-west traffic, cfw_netflow_nat=NAT firewall traffic, cfw_netflow_nta=NDR/NTA traffic, cfw_netflow_dns=DNS firewall log, cfw_rule_threatinfo=Intrusion defense/Threat Intelligence Alarm, cfw_rule_acl=Internet Boundary Access Control log, cfw_rule_vpc_acl=VPC access control log, cfw_rule_nat_acl=NAT access control log, cfw_ndr_subject_risk=NDR topic risk, cfw_ndr_dataleak_entry=NDR sensitive data leak, cfw_ndr_ai_audit=NDR AI application identification and Large Model Invocation audit, cfw_feature_collect=Statistical feature and baseline anomaly, cfw_behavior_collect=Beacon/DNS/port/cert/VPC mutual access behavior, operate_log_all=Operation audit log.",
+          "example": "cfw_netflow_border",
+          "member": "string",
+          "name": "LogType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log filter expression. Default * means no filtering; for example src_ip:1.1.1.1. Queryable fields vary with LogType. You should preferentially use the field name returned in the corresponding Items. Do not guess non-existing fields. It cannot be passed when using NextToken for continued query.",
+          "example": "src_ip:1.1.1.1",
+          "member": "string",
+          "name": "Query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Query start time. Supports RFC3339, YYYY-MM-DD HH:MM:SS, YYYY-MM-DD, or Unix timestamp. Input to query the TimeRange backward from this time. Cannot be imported when using NextToken for continued querying.",
+          "example": "2026-07-09T02:00:00Z",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Query time range. Default 1h; format is positive integer plus unit m/h/d, such as 5m, 1h, 24h, 7d; cannot be passed when using NextToken for continuation.",
+          "example": "1h",
+          "member": "string",
+          "name": "TimeRange",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Return limit. Selectable for initial query, default 100; value 1 to 1000; cannot be passed when using NextToken for continued query.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Previous page opaque continuation token returned by Response.Data. Not required for initial query; only required for continuation query with NextToken. Invalid, tampered, or mismatched tenant will be rejected.",
+          "example": "ezylgj87Z1uDirOl6dgt2xAt3siE3dyZDFsaZ7x3COpcgQ6hntYVSz2ZxhuL2DDUkpdn3DAbid1rqI242sSER3YmvUOGuoFy-QfzS30eeVCQBfQ98-OlUMxHOIsSu0XLw9BeOLh7VrlK7AmZMpF5g-AfRSoNu_-En2LSXGWMxWVaNNt56KDeCKfotoHRUGl_SGEUEVLCNq31UOGJMaeWiFBkXxQt_30aJa3PpLHUC2U48SmJb9_jsS7Yh6m9FB8c",
+          "member": "string",
+          "name": "NextToken",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCfwLogsResponse": {
+      "document": "DescribeCfwLogs response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Query result. UTF-8 JSON object string; the caller must parse Response.Data. Items is the log array of the current page, and fields vary with LogType. TotalCount is the return limit of the current page, Limit is the page size, and LogType and TimeWindow echo the query scope. When HasMore=true, NextToken must be saved and used as-is for continued querying. When HasMore=false, pagination ends.",
+          "example": "{\"HasMore\":false,\"IsAnalysis\":false,\"Items\":null,\"Limit\":10,\"LogType\":\"cfw_netflow_border\",\"Query\":\"src_ip:1.1.1.1\",\"TimeWindow\":{\"EndTime\":\"2026-07-09T13:40:00Z\",\"StartTime\":\"2026-07-09T12:40:00Z\"},\"TotalCount\":0}",
+          "member": "string",
+          "name": "Data",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCfwStatusMonitorRequest": {
+      "document": "DescribeCfwStatusMonitor request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Operation type. describe_scene means discovery of scenarios and secondary dropdown options; fetch_scene means acquisition of scenario-based snapshots. Required.",
+          "example": "describe_scene",
+          "member": "string",
+          "name": "Op",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Firewall scenario type. Supports internet_edge (Internet edge firewall), nat_cluster (NAT border firewall - cluster), nat_ha (NAT border firewall - primary/secondary), vpc_cluster (VPC boundary firewall - cluster), vpc_ha (VPC boundary firewall - primary/secondary). Required.",
+          "example": "internet_edge",
+          "member": "string",
+          "name": "FirewallType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Secondary dropdown option ID. fetch_scene is imported as needed, and the value comes from selection.available_options[].ID returned by describe_scene. internet_edge is the region, NAT is the instance ID, and VPC bandwidth scenario is the firewall group ID. The connections aggregation scenario for VPC_cluster ignores this parameter.",
+          "example": "cfwnat-c8b3fb7c",
+          "member": "string",
+          "name": "SelectionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Secondary dropdown display name. Can be used as an alternative to SelectionId for matching by name. The value comes from selection.available_options[].name returned by describe_scene.",
+          "example": "自动化",
+          "member": "string",
+          "name": "SelectionName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Engine instance ID. Mainly used in vpc ha scenarios where a firewall group corresponds to multiple instances. Preferentially use the selection.available_options[].instance_ID returned by describe_scene. If only instance_ids are available, select a string value from the array.",
+          "example": "cfwew-46cfffdc",
+          "member": "string",
+          "name": "SelectionInstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Metrics tab. fetch_scene can be passed; used when not passed, this scenario default value. Support bandwidth, connections.",
+          "example": "connections",
+          "member": "string",
+          "name": "Metric",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Perspective under the metric. fetch_scene is optional; the default value for this scenario is used when not provided. Supports ip, subnet, session, switch, and vpc. The actual usable composite is subject to the return from describe_scene.",
+          "example": "ip",
+          "member": "string",
+          "name": "Perspective",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "NAT primary/secondary number of connections IP perspective range. External means external IP, asset means Asset IP. Only nat_ha + connections + ip is used. Other group input will return InvalidParameter.",
+          "example": "external",
+          "member": "string",
+          "name": "IpScope",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Preset time range. Default 24h; used by fetch_scene. Supports 5m, 15m, 30m, 1h, 6h, 24h, 3d, 7d, 30d, today, yesterday, day before yesterday, this week, last week, this month.",
+          "example": "1h",
+          "member": "string",
+          "name": "TimePreset",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom start time. Format YYYY-MM-DD HH:MM:SS; must be specified together with EndTime, maximum span 30 days.",
+          "example": "2026-07-15 15:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom end time. Format YYYY-MM-DD HH:MM:SS; must be consistent with StartTime at the same time, maximum span 30 days.",
+          "example": "2026-07-15 17:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Page number, starting from 1. Default is 1; used for the fetch_scene list viewing angle.",
+          "example": "1",
+          "member": "int64",
+          "name": "Page",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Entries per page. Default 10, value 1 to 100; used for the viewing angle of the fetch_scene list.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to only get overview data. When true, fetch_scene only requests overview, skips table/detail, and is suitable for viewing scenario snapshot summary.",
+          "example": "true",
+          "member": "bool",
+          "name": "OverviewOnly",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Original offset coverage. Option, overwrites the calculation result of Page after input; value 0 to 10000.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting field. Option. InputMax and OutputMax are supported for the Internet boundary IP and NAT IP/subnet perspective. SwitchName is supported for the VPC switch perspective. FlowMax is supported for the VPC IP/VPC perspective. Do not pass other groups.",
+          "example": "InputMax",
+          "member": "string",
+          "name": "SortBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting order. Default desc; supports asc, desc.",
+          "example": "desc",
+          "member": "string",
+          "name": "SortOrder",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter condition list. Reserved.",
+          "example": "无",
+          "member": "CfwStatusMonitorFilter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCfwStatusMonitorResponse": {
+      "document": "DescribeCfwStatusMonitor response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Query result. UTF-8 JSON object string; the caller needs to parse Response.Data. The scene returned by describe_scene includes metric_options, perspective_options, default_metric, default_perspective, selection_required_by_metric, selection_kind_by_metric, and time_preset_options; selection.available_options returns options applicable to SelectionId, SelectionName, and SelectionInstanceId. fetch_scene returns a data snapshot of the selected scenario, which may contain overview, table, or detail. The example below is a section of the field structure, and the array only shows representative values.",
+          "example": "{\"op\":\"describe_scene\",\"name\":\"互联网边界防火墙\",\"type\":\"internet_edge\",\"metric\":\"bandwidth\",\"view\":\"ip\",\"select\":\"region?\",\"source\":\"DescribeEdgeIpFlowLists\",\"unit\":\"bps/1024\"}",
+          "member": "string",
+          "name": "Data",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"

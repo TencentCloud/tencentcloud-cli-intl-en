@@ -8,6 +8,62 @@
         "title": "Adds edge firewall rules"
       }
     ],
+    "AddAclRule": [
+      {
+        "document": "Add an outbound serial TCP observation rule using the RFC 5737 document address; explicitly specify the enable status, effective scope, rule source, and priority at the end.",
+        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddAclRule\n<Common request parameters>\n\n{\n    \"Rules\": [\n        {\n            \"SourceContent\": \"192.0.2.0/24\",\n            \"SourceType\": \"net\",\n            \"TargetContent\": \"198.51.100.10\",\n            \"TargetType\": \"net\",\n            \"Protocol\": \"TCP\",\n            \"RuleAction\": \"log\",\n            \"Port\": \"443\",\n            \"Direction\": 0,\n            \"OrderIndex\": -1,\n            \"Enable\": \"true\",\n\"Description\": \"Outbound TCP observation example\"\n            \"Scope\": \"serial\",\n            \"RuleSource\": 0\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RuleUuid\": [\n            100001\n        ],\n        \"RequestId\": \"00000000-0000-4000-8000-000000000001\"\n    }\n}",
+        "title": "Add an outbound Internet boundary monitoring rule"
+      },
+      {
+        "document": "Add an inbound serial TCP rule, with the source using region code; region code should be obtained through a read-only query, gd44 in the example is only used for display format.",
+        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddAclRule\n<Common request parameters>\n\n{\n    \"Rules\": [\n        {\n            \"SourceContent\": \"gd44\",\n            \"SourceType\": \"location\",\n            \"TargetContent\": \"198.51.100.0/24\",\n            \"TargetType\": \"net\",\n            \"Protocol\": \"TCP\",\n            \"RuleAction\": \"accept\",\n            \"Port\": \"443\",\n            \"Direction\": 1,\n            \"OrderIndex\": -1,\n            \"Enable\": \"true\",\n\"Description\": \"Allow region source to access HTTPS\"\n            \"Scope\": \"serial\",\n            \"RuleSource\": 0\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RuleUuid\": [\n            100002\n        ],\n        \"RequestId\": \"00000000-0000-4000-8000-000000000002\"\n    }\n}",
+        "title": "Add an inbound region source rule"
+      },
+      {
+        "document": "Use insert_rule to insert a disabled outbound bypass rule at a user-specified location. Before invocation, use DescribeCfwRules with RuleType=border, Direction=0, and ExpandNames=false, and write the rules[].sequence corresponding to the target location to OrderIndex.",
+        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddAclRule\n<Common request parameters>\n\n{\n    \"From\": \"insert_rule\",\n    \"Rules\": [\n        {\n            \"SourceContent\": \"192.0.2.0/24\",\n            \"SourceType\": \"net\",\n            \"TargetContent\": \"198.51.100.10\",\n            \"TargetType\": \"net\",\n            \"Protocol\": \"TCP\",\n            \"RuleAction\": \"log\",\n            \"Port\": \"443\",\n            \"Direction\": 0,\n            \"OrderIndex\": 3118,\n            \"Enable\": \"false\",\n\"Description\": \"Insert bypass monitoring rule\"\n            \"Scope\": \"side\",\n            \"RuleSource\": 0\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RuleUuid\": [\n            100003\n        ],\n        \"RequestId\": \"00000000-0000-4000-8000-000000000003\"\n    }\n}",
+        "title": "Insert a bypass Internet boundary rule"
+      },
+      {
+        "document": "Two rules use the same Direction and set the OrderIndex to consecutive positions 3 and 4 in request order.",
+        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddAclRule\n<Common request parameters>\n\n{\n    \"From\": \"insert_rule\",\n    \"Rules\": [\n        {\n            \"SourceContent\": \"192.0.2.31\",\n            \"SourceType\": \"net\",\n            \"TargetContent\": \"198.51.100.31\",\n            \"TargetType\": \"net\",\n            \"Protocol\": \"TCP\",\n            \"RuleAction\": \"log\",\n            \"Port\": \"443\",\n            \"Direction\": 0,\n            \"OrderIndex\": 3,\n            \"Enable\": \"false\",\n\"Description\": \"Batch insertion of consecutive positions example one\"\n            \"Scope\": \"serial\",\n            \"RuleSource\": 0\n        },\n        {\n            \"SourceContent\": \"192.0.2.32\",\n            \"SourceType\": \"net\",\n            \"TargetContent\": \"198.51.100.32\",\n            \"TargetType\": \"net\",\n            \"Protocol\": \"TCP\",\n            \"RuleAction\": \"log\",\n            \"Port\": \"8443\",\n            \"Direction\": 0,\n            \"OrderIndex\": 4,\n            \"Enable\": \"false\",\n\"Description\": \"Example II of batch insertion at consecutive positions\"\n            \"Scope\": \"serial\",\n            \"RuleSource\": 0\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RuleUuid\": [\n            100008,\n            100009\n        ],\n        \"RequestId\": \"00000000-0000-4000-8000-000000000008\"\n    }\n}",
+        "title": "Batch insert Internet boundary rules at consecutive locations"
+      },
+      {
+        "document": "Use a non-overwriting batch_import to add two disabled outbound global rules; this method will not delete existing rules.",
+        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddAclRule\n<Common request parameters>\n\n{\n    \"From\": \"batch_import\",\n    \"Rules\": [\n        {\n            \"SourceContent\": \"192.0.2.1\",\n            \"SourceType\": \"net\",\n            \"TargetContent\": \"198.51.100.31\",\n            \"TargetType\": \"net\",\n            \"Protocol\": \"TCP\",\n            \"RuleAction\": \"log\",\n            \"Port\": \"443\",\n            \"Direction\": 0,\n            \"OrderIndex\": -1,\n            \"Enable\": \"false\",\n\"Description\": \"Batch global rule 1\"\n            \"Scope\": \"all\",\n            \"RuleSource\": 0\n        },\n        {\n            \"SourceContent\": \"192.0.2.2\",\n            \"SourceType\": \"net\",\n            \"TargetContent\": \"198.51.100.32\",\n            \"TargetType\": \"net\",\n            \"Protocol\": \"TCP\",\n            \"RuleAction\": \"log\",\n            \"Port\": \"8443\",\n            \"Direction\": 0,\n            \"OrderIndex\": -1,\n            \"Enable\": \"false\",\n\"Description\": \"Batch global rule 2\"\n            \"Scope\": \"all\",\n            \"RuleSource\": 0\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RuleUuid\": [\n            100004,\n            100005\n        ],\n        \"RequestId\": \"00000000-0000-4000-8000-000000000004\"\n    }\n}",
+        "title": "Import two global Internet boundary rules in batches"
+      },
+      {
+        "document": "Add one Internet boundary rule using an address template.",
+        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddAclRule\n<Common request parameters>\n\n{\n    \"Rules\": [\n        {\n            \"SourceContent\": \"mb_xxxxx_xxxxx\",\n            \"SourceType\": \"template\",\n            \"TargetContent\": \"198.51.100.60\",\n            \"TargetType\": \"net\",\n            \"Protocol\": \"TCP\",\n            \"RuleAction\": \"log\",\n            \"Port\": \"443\",\n            \"Direction\": 0,\n            \"OrderIndex\": -1,\n            \"Enable\": \"false\",\n\"Description\": \"Address template observation rule\"\n            \"Scope\": \"serial\",\n            \"RuleSource\": 0\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RuleUuid\": [\n            100006\n        ],\n        \"RequestId\": \"00000000-0000-4000-8000-000000000005\"\n    }\n}",
+        "title": "Using address templates to add new Internet boundary rules"
+      },
+      {
+        "document": "Call DescribeResourceGroupNew with QueryType=tag, and construct an access source using the first-level node GroupName as the Key and the selected second-level sub-node GroupName as the Value.",
+        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddAclRule\n<Common request parameters>\n\n{\n    \"Rules\": [\n        {\n\"SourceContent\": \"{\\\"Key\\\":\\\"automatic test\\\",\\\"Value\\\":\\\"autotest\\\"}\"\n            \"SourceType\": \"tag\",\n            \"TargetContent\": \"198.51.100.60\",\n            \"TargetType\": \"net\",\n            \"Protocol\": \"TCP\",\n            \"RuleAction\": \"log\",\n            \"Port\": \"443\",\n            \"Direction\": 0,\n            \"OrderIndex\": -1,\n            \"Enable\": \"false\",\n\"Description\": \"Resource tag observation rule\"\n            \"Scope\": \"serial\",\n            \"RuleSource\": 0\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RuleUuid\": [\n            100007\n        ],\n        \"RequestId\": \"00000000-0000-4000-8000-000000000006\"\n    }\n}",
+        "title": "Adding new Internet boundary rules using resource tags"
+      },
+      {
+        "document": "When a user requires permission for Tencent Cloud source to access a specified asset, first call DescribeCfwAssets, select the target asset that has a public IP address and use assets[].instance_id; the cloud service provider uses the usage agreement value tencent, do not fill in the display name \"Tencent Cloud\".",
+        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddAclRule\n<Common request parameters>\n\n{\n    \"Rules\": [\n        {\n            \"SourceContent\": \"tencent\",\n            \"SourceType\": \"vendor\",\n            \"TargetContent\": \"ins-xxxxxxxx\",\n            \"TargetType\": \"instance\",\n            \"Protocol\": \"ANY\",\n            \"RuleAction\": \"log\",\n            \"Port\": \"-1/-1\",\n            \"Direction\": 1,\n            \"OrderIndex\": -1,\n            \"Enable\": \"false\",\n\"Description\": \"Monitor Tencent Cloud source access to specified asset\"\n            \"Scope\": \"serial\",\n            \"RuleSource\": 0\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RuleUuid\": [\n            100010\n        ],\n        \"RequestId\": \"00000000-0000-4000-8000-000000000010\"\n    }\n}",
+        "title": "Allow Tencent Cloud source to access specified asset"
+      },
+      {
+        "document": "When users require controlling outbound access based on domain name resolution results, they can add two rules in the same direction in batches: dnsparse hits when Host/SNI matches or the destination IP belongs to the current DNS resolution result, while domainiptwoverify requires both conditions to be satisfied simultaneously. Both rules use the precise domain name from queries or user confirmation, without using a separate *.",
+        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddAclRule\n<Common request parameters>\n\n{\n    \"Rules\": [\n        {\n            \"SourceContent\": \"192.0.2.0/24\",\n            \"SourceType\": \"net\",\n            \"TargetContent\": \"example.com\",\n            \"TargetType\": \"dnsparse\",\n            \"Protocol\": \"TCP\",\n            \"RuleAction\": \"log\",\n            \"Port\": \"443\",\n            \"Direction\": 0,\n            \"OrderIndex\": -1,\n            \"Enable\": \"false\",\n\"Description\": \"Monitor DNS loose match traffic\"\n            \"Scope\": \"serial\",\n            \"RuleSource\": 0\n        },\n        {\n            \"SourceContent\": \"192.0.2.0/24\",\n            \"SourceType\": \"net\",\n            \"TargetContent\": \"example.org\",\n            \"TargetType\": \"domainiptwoverify\",\n            \"Protocol\": \"TCP\",\n            \"RuleAction\": \"log\",\n            \"Port\": \"443\",\n            \"Direction\": 0,\n            \"OrderIndex\": -1,\n            \"Enable\": \"false\",\n\"Description\": \"Monitor DNS strict match traffic\"\n            \"Scope\": \"serial\",\n            \"RuleSource\": 0\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RuleUuid\": [\n            100011,\n            100012\n        ],\n        \"RequestId\": \"00000000-0000-4000-8000-000000000011\"\n    }\n}",
+        "title": "Add DNS loose and strict match rules"
+      }
+    ],
     "AddEnterpriseSecurityGroupRules": [
       {
         "document": "This example shows you how to create enterprise security group rules (new).",
@@ -146,6 +202,34 @@
         "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBlockStaticList\n<Common request parameters>\n\n{\n    \"Top\": 10,\n    \"EndTime\": \"xx\",\n    \"SearchValue\": \"xx\",\n    \"QueryType\": \"xx\",\n    \"StartTime\": \"xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"InsID\": \"xx\",\n                \"Ip\": \"xx\",\n                \"InsName\": \"xx\",\n                \"Num\": 0,\n                \"Address\": \"xx\",\n                \"Port\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "DescribeBlockStaticList"
+      }
+    ],
+    "DescribeCfwLogs": [
+      {
+        "document": "Initial query imports LogType. If Data.HasMore is true, save Data.NextToken for subsequent queries.",
+        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCfwLogs\n<Common request parameters>\n\n{\n    \"LogType\": \"cfw_netflow_border\",\n    \"Query\": \"src_ip:1.1.1.1\",\n    \"TimeRange\": \"1h\",\n    \"Limit\": 100\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": \"{\\\"Items\\\":[{\\\"src_ip\\\":\\\"1.1.1.1\\\"}],\\\"TotalCount\\\":1,\\\"Limit\\\":100,\\\"HasMore\\\":true,\\\"NextToken\\\":\\\"opaque-token\\\"}\",\n        \"RequestId\": \"4266525E-10C4-41E1-8A28-5CCE1FBF6A58\"\n    }\n}",
+        "title": "Initial query firewall log"
+      },
+      {
+        "document": "The continuation query only returns NextToken; the caller does not parse or construct a token.",
+        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCfwLogs\n<Common request parameters>\n\n{\n    \"NextToken\": \"opaque-token\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": \"{\\\"Items\\\":[],\\\"TotalCount\\\":0,\\\"Limit\\\":100,\\\"HasMore\\\":false}\",\n        \"RequestId\": \"4266525E-10C4-41E1-8A28-5CCE1FBF6A58\"\n    }\n}",
+        "title": "Using NextToken to continue the query"
+      }
+    ],
+    "DescribeCfwStatusMonitor": [
+      {
+        "document": "describe_scene is used to identify usable metric/perspective composites, default values, selection item sums, and secondary dropdown available_options; fetch_scene should use the discovery results as-is. The output is a section of the field structure, and the array only displays representative values.",
+        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCfwStatusMonitor\n<Common request parameters>\n\n{\n    \"Op\": \"describe_scene\",\n    \"FirewallType\": \"internet_edge\"\n}",
+        "output": "{\n    \"Response\": {\n\"Data\": \"{\\\"op\\\":\\\"describe_scene\\\",\\\"scene\\\":{\\\"firewall_type\\\":\\\"internet_edge\\\",\\\"metric_options\\\":[\\\"bandwidth\\\"],\\\"perspective_options\\\":{\\\"bandwidth\\\":[\\\"ip\\\"]},\\\"default_metric\\\":\\\"bandwidth\\\",\\\"default_perspective\\\":{\\\"bandwidth\\\":\\\"ip\\\"},\\\"selection_required_by_metric\\\":{\\\"bandwidth\\\":false},\\\"selection_kind_by_metric\\\":{\\\"bandwidth\\\":\\\"region\\\"},\\\"time_preset_options\\\":[\\\"1h\\\",\\\"24h\\\",\\\"7d\\\"]},\\\"selection\\\":{\\\"available_options\\\":[{\\\"id\\\":\\\"__all__\\\",\\\"name\\\":\\\"all regions\\\"},{\\\"id\\\":\\\"ap-guangzhou\\\",\\\"name\\\":\\\"Guangzhou\\\"}]}}\"\n        \"RequestId\": \"4266525E-10C4-41E1-8A28-5CCE1FBF6A58\"\n    }\n}",
+        "title": "Scenario Discovery and Secondary Drop-down List"
+      },
+      {
+        "document": "fetch_scene pulls a specific scenario snapshot. It is not just a metrics query, but also includes scenario selection, overview, and list/detail perspectives.",
+        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCfwStatusMonitor\n<Common request parameters>\n\n{\n    \"Op\": \"fetch_scene\",\n    \"FirewallType\": \"internet_edge\",\n    \"Metric\": \"bandwidth\",\n    \"Perspective\": \"ip\",\n    \"SelectionId\": \"ap-guangzhou\",\n    \"TimePreset\": \"24h\",\n    \"OverviewOnly\": true,\n    \"Limit\": 10\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": \"{\\\"op\\\":\\\"fetch_scene\\\",\\\"data\\\":{\\\"overview\\\":{\\\"InputMax\\\":1024}}}\",\n        \"RequestId\": \"4266525E-10C4-41E1-8A28-5CCE1FBF6A58\"\n    }\n}",
+        "title": "Pulling an Internet boundary status monitoring snapshot"
       }
     ],
     "DescribeDefenseSwitch": [

@@ -280,10 +280,10 @@
     ],
     "DeleteAccounts": [
       {
-        "document": "This example shows you how to delete a user account.",
-        "input": "https://cynosdb.tencentcloudapi.com/?Action=DeleteAccounts\n&ClusterId=cynosdbmysql-ixgbd0di\n&Accounts.0.AccountName=admin\n&Accounts.0.Host=myHost\n&<Common request parameters>",
+        "document": "Delete a user account",
+        "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteAccounts\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cynosdbmysql-i******i\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"120440\"\n    }\n}",
-        "title": "Deletes an account"
+        "title": "Delete a user account"
       }
     ],
     "DeleteAuditRuleTemplates": [

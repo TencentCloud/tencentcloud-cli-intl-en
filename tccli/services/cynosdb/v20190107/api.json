@@ -1619,7 +1619,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether secondary AZ is supported",
+          "document": "<p>Whether support from availability zone is supported</p>",
           "example": "yes",
           "member": "string",
           "name": "IsSupportSlaveZone",
@@ -1630,7 +1630,7 @@
         },
         {
           "disabled": false,
-          "document": "The causes for no support from an availability zone.",
+          "document": "<p>The causes for no support from availability zone</p>",
           "example": "cluster has proxy, does not support slave zone",
           "member": "string",
           "name": "NonsupportSlaveZoneReason",
@@ -1641,7 +1641,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether read-only instance is supported",
+          "document": "<p>Whether RO instance is supported</p>",
           "example": "yes",
           "member": "string",
           "name": "IsSupportRo",
@@ -1652,7 +1652,7 @@
         },
         {
           "disabled": false,
-          "document": "Reasons why RO instances are not supported.",
+          "document": "<p>Reason for unsupported RO instance</p>",
           "example": "cynos version must be greater or equal than 3.1.2",
           "member": "string",
           "name": "NonsupportRoReason",
@@ -1663,7 +1663,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether manual snapshot backup initiation is supported.",
+          "document": "<p>Whether manual snapshot backup initiation is supported</p>",
           "example": "yes",
           "member": "string",
           "name": "IsSupportManualSnapshot",
@@ -1674,7 +1674,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether transparent data encryption is supported.",
+          "document": "<p>Whether transparent data encryption is supported</p>",
           "example": "yes",
           "member": "string",
           "name": "IsSupportTransparentDataEncryption",
@@ -1685,7 +1685,7 @@
         },
         {
           "disabled": false,
-          "document": "Reasons for no support of transparent data encryption.",
+          "document": "<p>The causes for unsupported transparent data encryption</p>",
           "example": "mysql version 5.7 , >=2.1.12; Other versions are not supported",
           "member": "string",
           "name": "NoSupportTransparentDataEncryptionReason",
@@ -1696,7 +1696,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether manual initiation of logical backup is supported.",
+          "document": "<p>Whether manual initiation of logical backup is supported</p>",
           "example": "yes",
           "member": "string",
           "name": "IsSupportManualLogic",
@@ -1707,7 +1707,7 @@
         },
         {
           "disabled": false,
-          "document": "Enable global encryption.",
+          "document": "<p>Whether global encryption can be enabled</p>",
           "example": "yes",
           "member": "string",
           "name": "IsSupportGlobalEncryption",
@@ -1718,7 +1718,7 @@
         },
         {
           "disabled": false,
-          "document": "The causes for unsupported global encryption.",
+          "document": "<p>The causes for unsupported global encryption</p>",
           "example": "mysql version 8.0 , >= 3.1.15.005; Other versions are not supported",
           "member": "string",
           "name": "NoSupportGlobalEncryptionReason",
@@ -1729,7 +1729,7 @@
         },
         {
           "disabled": false,
-          "document": "Status code for unsupported tde reason.",
+          "document": "<p>Status code for unsupported transparent encryption reason</p>",
           "example": "InvalidDbVersion",
           "member": "string",
           "name": "NoSupportTransparentDataEncryptionReasonCode",
@@ -1740,7 +1740,7 @@
         },
         {
           "disabled": false,
-          "document": "Status code for unsupported global encryption.",
+          "document": "<p>Status code for unsupported global encryption reason</p>",
           "example": "NotInWhitelist",
           "member": "string",
           "name": "NoSupportGlobalEncryptionReasonCode",
@@ -1757,7 +1757,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Database account name",
+          "document": "<p>Database account name.</p>",
           "example": "andy",
           "member": "string",
           "name": "AccountName",
@@ -1767,7 +1767,7 @@
         },
         {
           "disabled": false,
-          "document": "Host",
+          "document": "<p>host</p>",
           "example": "%",
           "member": "string",
           "name": "Host",
@@ -1777,7 +1777,7 @@
         },
         {
           "disabled": false,
-          "document": "Database account description",
+          "document": "<p>Database account description.</p>",
           "example": "andyuse",
           "member": "string",
           "name": "Description",
@@ -1787,7 +1787,7 @@
         },
         {
           "disabled": false,
-          "document": "Creation time",
+          "document": "<p>Creation time.</p>",
           "example": "2024-11-21 11:58:25",
           "member": "datetime",
           "name": "CreateTime",
@@ -1797,7 +1797,7 @@
         },
         {
           "disabled": false,
-          "document": "Update time",
+          "document": "<p>Update time.</p>",
           "example": "2024-11-25 17:11:03",
           "member": "datetime",
           "name": "UpdateTime",
@@ -1807,7 +1807,7 @@
         },
         {
           "disabled": false,
-          "document": "The max connections",
+          "document": "<p>Maximum user connections</p>",
           "example": "3000",
           "member": "int64",
           "name": "MaxUserConnections",
@@ -1817,7 +1817,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether password rotation is enabled (0: turn off; 1: turn on)",
+          "document": "<p>Whether password rotation is enabled (0: turn off; 1: turn on)</p>",
           "example": "0",
           "member": "int64",
           "name": "PasswordRotation",
@@ -5386,7 +5386,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Cluster ID",
+          "document": "<p>Cluster ID.</p>",
           "example": "cynosdbmysql-asd45wwe",
           "member": "string",
           "name": "ClusterId",
@@ -5395,7 +5395,7 @@
         },
         {
           "disabled": false,
-          "document": "List of new accounts",
+          "document": "<p>New account list</p>",
           "example": "无",
           "member": "NewAccount",
           "name": "Accounts",
@@ -6179,6 +6179,24 @@
           "name": "CynosVersion",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Synchronization method. Value range: async, semisync, sync.</p>",
+          "example": "async",
+          "member": "string",
+          "name": "SyncWay",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Semi-sync timeout period, in milliseconds. To ensure business stability, semi-synchronous replication has a degradation logic. When the primary availability zone cluster waits for the secondary availability zone cluster to confirm a transaction, if the timeout period is exceeded, the replication method will degrade to asynchronous replication.</p><p>Value ranges from 1000 to 4294967295.</p><p>Unit: ms</p><p>Default value: 10000</p>",
+          "example": "10000",
+          "member": "int64",
+          "name": "SemiSyncTimeout",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -10436,7 +10454,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Cluster ID",
+          "document": "<p>Cluster ID.</p>",
           "example": "cynosdbmysql-i******i",
           "member": "string",
           "name": "ClusterId",
@@ -10445,7 +10463,7 @@
         },
         {
           "disabled": false,
-          "document": "Accounts in array, which contains `account` and `host`.",
+          "document": "<p>Account array, including account and host.</p>",
           "example": "无",
           "member": "InputAccount",
           "name": "Accounts",
@@ -25451,7 +25469,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Account name, which can contain 1-16 letters, digits, and underscores. It must begin with a letter and end with a letter or digit.",
+          "document": "<p>Account name, containing letters, digits, and underscores, starting with a letter, ending with a letter or digit, length 1-30</p>",
           "example": "0",
           "member": "string",
           "name": "AccountName",
@@ -25460,7 +25478,7 @@
         },
         {
           "disabled": false,
-          "document": "Host",
+          "document": "<p>host (% or ipv4 address)</p>",
           "example": "0",
           "member": "string",
           "name": "Host",
@@ -25469,7 +25487,7 @@
         },
         {
           "disabled": false,
-          "document": "Password, which can contain 8-64 characters.",
+          "document": "<p>Password. The length range is 8 to 64 characters.</p>",
           "example": "0",
           "member": "string",
           "name": "AccountPassword",
@@ -25478,7 +25496,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether password rotation is enabled (0: turn off; 1: turn on)",
+          "document": "<p>Whether password rotation is enabled (0: turn off; 1: turn on)</p>",
           "example": "0",
           "member": "int64",
           "name": "PasswordRotation",
@@ -25487,7 +25505,7 @@
         },
         {
           "disabled": false,
-          "document": "Description",
+          "document": "<p>Description.</p>",
           "example": "0",
           "member": "string",
           "name": "Description",
@@ -25496,7 +25514,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum number of user connections, which cannot be above 10,240.",
+          "document": "<p>Maximum user connections cannot be greater than 10240</p>",
           "example": "0",
           "member": "int64",
           "name": "MaxUserConnections",
@@ -30099,6 +30117,33 @@
           "name": "FromSaveBackup",
           "required": false,
           "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Synchronization method. Available values: async, semisync, sync. Async as a default.</p>",
+          "example": "async",
+          "member": "string",
+          "name": "SyncWay",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Semi-synchronous timeout period, in milliseconds. To ensure business stability, semi-synchronous replication has a degradation logic. When the primary availability zone cluster waits for the secondary availability zone cluster to confirm a transaction, if the timeout period is exceeded, the replication method will degrade to asynchronous replication.</p><p>Value ranges from 1000 to 4294967295.</p><p>Unit: ms</p><p>Default value: 10000</p>",
+          "example": "10000",
+          "member": "int64",
+          "name": "SemiSyncTimeout",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Standby availability zone</p>",
+          "example": "ap-guangzhou-5",
+          "member": "string",
+          "name": "SlaveZone",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
