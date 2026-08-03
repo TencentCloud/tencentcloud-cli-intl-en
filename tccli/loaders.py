@@ -15,7 +15,7 @@ from tccli.self_ref import is_action_self_referencing
 BASE_TYPE = ["int64", "uint64", "string", "float", "bool", "date", "datetime", "datetime_iso", "binary"]
 CLI_BASE_TYPE = ["Integer", "String", "Float", "Timestamp", "Boolean", "Binary"]
 
-# Maximum number of dot-separated segments (including numeric index segments) in a flat key under --cli-unfold-argument mode; exceeding it raises an error.
+# Maximum number of non-numeric segments in a flat key under --cli-unfold-argument mode; numeric index segments do not count.
 MAX_INPUT_DEPTH = 30
 
 # Unified hint text describing the alternative approach for self-reference truncation points / oversized inputs.

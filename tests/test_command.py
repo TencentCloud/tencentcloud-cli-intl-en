@@ -995,24 +995,13 @@ def test_F5_action_caller_is_invoked_in_normal_mode():
 #   * Legal + over-limit mixed scenario: the legal part can still be collected, but the over-limit-triggered overall error has higher priority.
 # ============================================================
 def _build_self_ref_path(num_layers):
-    """Based on the billing CreateGatherRule truncation prefix ``RuleList.RuleDetail.Children.0``,
-    build a flat parameter key with a total of ``D`` segments (numeric index segments included), for precise depth control.
-
-    :param num_layers: how many more ``Children.0`` layers to stack beyond the 4-segment truncation prefix,
-        then append 1 leaf segment ``RuleKey``.
-    :return: ``(key, depth)``, where ``depth = 4 + num_layers * 2 + 1``.
-
-    Examples:
-      * ``num_layers=0`` -> ``RuleList.RuleDetail.Children.0.RuleKey`` (D=5)
-      * ``num_layers=1`` -> ``RuleList.RuleDetail.Children.0.Children.0.RuleKey`` (D=7)
-      * ``num_layers=13`` -> 30 segments (D=30) -- boundary pass-through
-      * ``num_layers=14`` -> 32 segments (D=32) -- over the limit
-    """
+    """Build a recursive path ending in ``RuleKey`` and return its non-numeric depth."""
     base = ["RuleList", "RuleDetail", "Children", "0"]
     for _ in range(num_layers):
         base += ["Children", "0"]
     base.append("RuleKey")
-    return ".".join(base), len(base)
+    depth = sum(1 for segment in base if not segment.isdigit())
+    return ".".join(base), depth
 
 
 def _walk_to_leaf(params, num_layers):
@@ -1062,7 +1051,7 @@ def _patch_credentials():
 
 
 def test_G3_unfold_depth_30_passthrough_boundary():
-    """G3: D=30 (boundary value, strictly <= MAX_INPUT_DEPTH) should be passed through."""
+    """G3: a valid field key at non-numeric depth 30 should pass through."""
     if not _billing_schema_available():
         pytest.skip("local billing api.json missing")
     captured = {}
@@ -1070,32 +1059,21 @@ def test_G3_unfold_depth_30_passthrough_boundary():
     restore = _patch_credentials()
     try:
         parts = ["RuleList", "RuleDetail", "Children", "0"]
-        for _ in range(13):
+        for _ in range(26):
             parts += ["Children", "0"]
-        # 4 + 13*2 = 30 segments, the last segment is "0"
+        parts.append("RuleKey")
         key = ".".join(parts)
-        assert len(parts) == 30
+        depth = sum(1 for seg in parts if not seg.isdigit())
+        assert depth == 30
 
         g = _make_globals(profile="default", cli_unfold_argument=True)
         result = ac([
             "--Id", "1490",
-            "--" + key, "value_d30_pure",
+            "--" + key, "value_d30",
         ], g)
         assert result == "ok"
-        # RuleList is a dict (not a list in the schema, it has only one RuleDetail field).
-        # Enter along RuleList.RuleDetail.Children[0]; then 12 more consecutive Children[0];
-        # at the 13th Children list, the end list[0] is the scalar value "value_d30_pure".
-        cursor = captured["params"]["RuleList"]["RuleDetail"]["Children"]
-        assert isinstance(cursor, list) and len(cursor) == 1
-        cursor = cursor[0]
-        for _ in range(12):
-            cursor = cursor["Children"]
-            assert isinstance(cursor, list) and len(cursor) == 1
-            cursor = cursor[0]
-        # 13th: the Children list, whose end is the scalar value at list[0]
-        cursor = cursor["Children"]
-        assert isinstance(cursor, list) and len(cursor) == 1
-        assert cursor[0] == "value_d30_pure"
+        leaf = _walk_to_leaf(captured["params"], 26)
+        assert leaf == {"RuleKey": "value_d30"}
     finally:
         restore()
 
@@ -1174,7 +1152,7 @@ def test_G7_unfold_equals_form_normalization():
     restore = _patch_credentials()
     try:
         key, depth = _build_self_ref_path(0)
-        assert depth == 5
+        assert depth == 4
         g = _make_globals(profile="default", cli_unfold_argument=True)
         # use the = form
         result = ac([
@@ -1209,37 +1187,31 @@ def test_G8_unfold_single_rule_value_preserves_list_type():
         restore()
 
 
-# I. _match_truncated_prefix longest-prefix match
+# I. _is_recursive_key boolean prefix check
 # ============================================================
-def test_I1_match_truncated_prefix_no_match():
-    prefix, tname = ActionCommand._match_truncated_prefix(
-        "Foo.Bar", OrderedDict([("Root.0", "T")]))
-    assert prefix is None
-    assert tname == ""
+def test_I1_recursive_key_no_match():
+    assert ActionCommand._is_recursive_key(
+        "Foo.Bar", OrderedDict([("Root.0", "T")])) is False
 
 
-def test_I2_match_truncated_prefix_strict_dot_boundary():
+def test_I2_recursive_key_strict_dot_boundary():
     trunc = OrderedDict([("Root.0", "T")])
-    prefix, tname = ActionCommand._match_truncated_prefix("Root.0.Sub", trunc)
-    assert prefix == "Root.0"
-    assert tname == "T"
+    assert ActionCommand._is_recursive_key("Root.0.Sub", trunc) is True
+    assert ActionCommand._is_recursive_key("Root.01.Sub", trunc) is False
 
 
-def test_I3_match_truncated_prefix_longest_wins():
+def test_I3_recursive_key_any_prefix_match_is_enough():
     trunc = OrderedDict([
         ("A.0", "TA"),
         ("A.0.B.0", "TB"),
     ])
-    prefix, tname = ActionCommand._match_truncated_prefix("A.0.B.0.X", trunc)
-    assert prefix == "A.0.B.0"
-    assert tname == "TB"
+    assert ActionCommand._is_recursive_key("A.0.B.0.X", trunc) is True
 
 
-def test_I4_match_truncated_prefix_equal_no_dot_suffix_not_hit():
-    """A key exactly equal to the prefix does not count as a match (requires prefix + '.' as a strict prefix)."""
+def test_I4_recursive_key_equal_prefix_not_hit():
+    """A key exactly equal to the prefix is not a strict extension."""
     trunc = OrderedDict([("Root.0", "T")])
-    prefix, tname = ActionCommand._match_truncated_prefix("Root.0", trunc)
-    assert prefix is None
+    assert ActionCommand._is_recursive_key("Root.0", trunc) is False
 
 
 # ============================================================
@@ -1352,26 +1324,20 @@ def test_O1_oversized_hint_empty_returns_empty_str():
 
 def test_O2_oversized_hint_single_entry_full_text():
     ac = _make_action_command()
-    hint = ac._build_oversized_hint([("A.B.C", 31, "A.B", "T")])
+    hint = ac._build_oversized_hint([("A.B.C", 31)])
     assert "MAX_INPUT_DEPTH=30" in hint
     assert "depth=31" in hint
     assert "--A.B.C" in hint
-    assert "under --A.B" in hint
-    assert "type: T" in hint
+    assert "under --" not in hint
+    assert "type:" not in hint
     assert "Use --cli-input-json file://" in hint
 
 
-def test_O3_oversized_hint_missing_type_falls_back_to_unknown():
-    ac = _make_action_command()
-    hint = ac._build_oversized_hint([("A.X", 31, "A", "")])
-    assert "type: unknown" in hint
-
-
-def test_O4_oversized_hint_multiple_entries_each_on_own_line():
+def test_O3_oversized_hint_multiple_entries_each_on_own_line():
     ac = _make_action_command()
     hint = ac._build_oversized_hint([
-        ("A.X", 31, "A", "T1"),
-        ("B.Y", 32, "B", "T2"),
+        ("A.X", 31),
+        ("B.Y", 32),
     ])
     assert "--A.X" in hint
     assert "--B.Y" in hint
@@ -1419,8 +1385,8 @@ def test_P3_extract_no_truncated_returns_original():
     assert out == remaining
 
 
-def test_P4_extract_service_model_raises_still_works():
-    """A raise in get_service_model does not affect the main flow (collection still works when service_model=None)."""
+def test_P4_extract_service_model_raises_keeps_original():
+    """Do not guess a field type or consume input when the schema is unavailable."""
     ac = _make_action_command(call_mode=Options_define.CliUnfoldArgument)
 
     class _PartLoader(object):
@@ -1433,10 +1399,10 @@ def test_P4_extract_service_model_raises_still_works():
     ac._cli_data = _PartLoader()
     extra = OrderedDict()
     oversized = []
-    out = ac._extract_deep_nested_args(
-        ["--Root.0.Sub", "v"], extra, oversized)
-    assert out == []
-    assert extra == {"Root.0.Sub": "v"}
+    remaining = ["--Root.0.Sub", "v"]
+    out = ac._extract_deep_nested_args(remaining, extra, oversized)
+    assert out == remaining
+    assert extra == OrderedDict()
 
 
 def test_P5_extract_non_dash_token_kept_in_new_remaining():
@@ -1496,6 +1462,9 @@ def test_P8_extract_preserves_single_value_list_type_below_truncation():
 
         def get_service_model(self, *a, **kw):
             return {"objects": {
+                "CreateGatherRuleRequest": {"members": [
+                    {"name": "Root", "type": "list", "member": "Node"},
+                ]},
                 "Node": {"members": [
                     {"name": "Values", "type": "list", "member": "string"},
                     {"name": "Name", "type": "string", "member": "string"},
@@ -1526,6 +1495,9 @@ def test_P9_extract_preserves_single_value_list_type_in_equals_form():
 
         def get_service_model(self, *a, **kw):
             return {"objects": {
+                "CreateGatherRuleRequest": {"members": [
+                    {"name": "Root", "type": "list", "member": "Node"},
+                ]},
                 "Node": {"members": [
                     {"name": "Values", "type": "list", "member": "string"},
                 ]},
@@ -1538,6 +1510,134 @@ def test_P9_extract_preserves_single_value_list_type_in_equals_form():
 
     assert out == []
     assert extra == {"Root.0.Values": ["only-one"]}
+
+
+def test_P10_get_key_type_uses_complete_key_from_request_root():
+    objects = {
+        "Request": {"members": [
+            {"name": "Root", "type": "list", "member": "Node"},
+        ]},
+        "Node": {"members": [
+            {"name": "Children", "type": "list", "member": "Node"},
+            {"name": "Values", "type": "list", "member": "string"},
+            {"name": "Name", "type": "string", "member": "string"},
+        ]},
+    }
+
+    assert ActionCommand._get_key_type(
+        "Root.0.Children.1.Values", "Request", objects) == "list"
+    assert ActionCommand._get_key_type(
+        "Root.0.Children.1.Name", "Request", objects) == "scalar"
+    assert ActionCommand._get_key_type(
+        "Root.Children.0.Name", "Request", objects) is None
+    assert ActionCommand._get_key_type(
+        "Root.0.Missing", "Request", objects) is None
+    assert ActionCommand._get_key_type(
+        "Root.0.Children.0", "Request", objects) is None
+    assert ActionCommand._get_key_type(
+        "Root.0", "Request", objects) is None
+
+
+def test_P11_extract_matched_prefix_with_invalid_field_is_not_consumed():
+    ac = _make_action_command(call_mode=Options_define.CliUnfoldArgument)
+
+    class _Trunc(object):
+        def get_unfold_param_info(self, *a, **kw):
+            return {"Root.0": {"recursive_truncated": True,
+                               "recursive_type": "Node"}}
+
+        def get_service_model(self, *a, **kw):
+            return {"objects": {
+                "CreateGatherRuleRequest": {"members": [
+                    {"name": "Root", "type": "list", "member": "Node"},
+                ]},
+                "Node": {"members": [
+                    {"name": "Name", "type": "string", "member": "string"},
+                ]},
+            }}
+
+    ac._cli_data = _Trunc()
+    remaining = ["--Root.0.Missing", "value"]
+    extra = OrderedDict()
+    out = ac._extract_deep_nested_args(remaining, extra, [])
+
+    assert out == remaining
+    assert extra == OrderedDict()
+
+
+def test_P12_extract_scalar_with_multiple_values_is_not_consumed():
+    ac = _make_action_command(call_mode=Options_define.CliUnfoldArgument)
+
+    class _Trunc(object):
+        def get_unfold_param_info(self, *a, **kw):
+            return {"Root.0": {"recursive_truncated": True,
+                               "recursive_type": "Node"}}
+
+        def get_service_model(self, *a, **kw):
+            return {"objects": {
+                "CreateGatherRuleRequest": {"members": [
+                    {"name": "Root", "type": "list", "member": "Node"},
+                ]},
+                "Node": {"members": [
+                    {"name": "Name", "type": "string", "member": "string"},
+                ]},
+            }}
+
+    ac._cli_data = _Trunc()
+    remaining = ["--Root.0.Name", "first", "second"]
+    extra = OrderedDict()
+    out = ac._extract_deep_nested_args(remaining, extra, [])
+
+    assert out == remaining
+    assert extra == OrderedDict()
+
+
+def test_P13_extract_terminal_array_index_is_not_consumed():
+    ac = _make_action_command(call_mode=Options_define.CliUnfoldArgument)
+
+    class _Trunc(object):
+        def get_unfold_param_info(self, *a, **kw):
+            return {"Root.0": {"recursive_truncated": True,
+                               "recursive_type": "Node"}}
+
+        def get_service_model(self, *a, **kw):
+            return {"objects": {
+                "CreateGatherRuleRequest": {"members": [
+                    {"name": "Root", "type": "list", "member": "Node"},
+                ]},
+                "Node": {"members": [
+                    {"name": "Children", "type": "list", "member": "Node"},
+                ]},
+            }}
+
+    ac._cli_data = _Trunc()
+    remaining = ["--Root.0.Children.0", "value"]
+    extra = OrderedDict()
+    out = ac._extract_deep_nested_args(remaining, extra, [])
+
+    assert out == remaining
+    assert extra == OrderedDict()
+
+
+def test_P14_extract_checks_depth_before_loading_service_model():
+    ac = _make_action_command(call_mode=Options_define.CliUnfoldArgument)
+
+    class _Trunc(object):
+        def get_unfold_param_info(self, *a, **kw):
+            return {"Root.0": {"recursive_truncated": True,
+                               "recursive_type": "Node"}}
+
+        def get_service_model(self, *a, **kw):
+            raise AssertionError("oversized key must not load service model")
+
+    ac._cli_data = _Trunc()
+    key = "Root.0." + ".".join("Field%d" % i for i in range(30))
+    oversized = []
+    out = ac._extract_deep_nested_args(
+        ["--" + key, "value"], OrderedDict(), oversized)
+
+    assert out == []
+    assert oversized == [(key, 31)]
 
 
 # ============================================================

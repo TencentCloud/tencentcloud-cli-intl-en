@@ -326,7 +326,7 @@ class ActionCommand(BaseCommand):
                 remaining.append(parsed_args.help)
 
         extra_unfold_args = OrderedDict()
-        oversized_tokens = []  # [(key, depth, prefix, type_name)]
+        oversized_tokens = []  # [(key, depth)]
         if self._call_mode == Options_define.CliUnfoldArgument and remaining:
             remaining = self._extract_deep_nested_args(
                 remaining, extra_unfold_args, oversized_tokens)
@@ -342,7 +342,7 @@ class ActionCommand(BaseCommand):
                     "Input nesting depth exceeds MAX_INPUT_DEPTH=%d: %s"
                     % (MAX_INPUT_DEPTH,
                        ', '.join("--%s (depth=%d)" % (k, d)
-                                 for k, d, _p, _t in oversized_tokens)))
+                                 for k, d in oversized_tokens)))
             msg = "\n".join(error_parts)
             tail_hints = [h for h in (hint, oversized_hint) if h]
             if tail_hints:
@@ -432,11 +432,11 @@ class ActionCommand(BaseCommand):
         return truncated
 
     def _extract_deep_nested_args(self, remaining, extra_unfold_args, oversized_tokens):
-        """Extract flat options that hit a self-reference truncation prefix from ``remaining`` and route them by depth.
+        """Extract flat options below a self-reference truncation prefix and route them by depth.
 
         :param remaining: list of tokens not recognized by argparse.
         :param extra_unfold_args: output, ``OrderedDict[key, value]`` with depth <= MAX_INPUT_DEPTH.
-        :param oversized_tokens: output, ``List[(key, depth, prefix, type_name)]`` whose depth exceeds the limit.
+        :param oversized_tokens: output, ``List[(key, depth)]`` whose depth exceeds the limit.
         :return: the remaining unrecognized tokens after the consumed ones are removed.
         """
         if not remaining:
@@ -456,7 +456,7 @@ class ActionCommand(BaseCommand):
         i, n = 0, len(remaining)
         while i < n:
             tok = remaining[i]
-            # --- Inline token parsing: supports both --key=value and --key v1 v2 forms ---
+            # Parse both --key=value and --key v1 v2 forms.
             if not isinstance(tok, str) or not tok.startswith("--"):
                 new_remaining.append(tok)
                 i += 1
@@ -474,57 +474,71 @@ class ActionCommand(BaseCommand):
                     j += 1
                 has_eq, advance = False, 1 + len(paired)
 
-            # --- Longest-prefix match ---
-            prefix, type_name = self._match_truncated_prefix(key, truncated)
-            if prefix is None:
+            # The truncation prefix only determines whether the key may enter this fallback path.
+            if not self._is_recursive_key(key, truncated):
                 new_remaining.append(tok)
                 new_remaining.extend(paired)
                 i += advance
                 continue
 
-            # --- Take value ---
-            if has_eq:
-                value = eq_value
-            elif paired:
-                value = paired[0] if len(paired) == 1 else paired
-            else:
+            # Enforce the depth limit before loading or traversing the API schema.
+            depth = sum(1 for seg in key.split(".") if not seg.isdigit())
+            if depth > MAX_INPUT_DEPTH:
+                oversized_tokens.append((key, depth))
+                i += advance
+                continue
+
+            if not has_eq and not paired:
                 new_remaining.append(tok)
                 i += advance
                 continue
-            if not isinstance(value, list):
-                if object_model is None:
-                    try:
-                        service_model = self._cli_data.get_service_model(
-                            self._service_name, self._version)
-                        object_model = service_model.get("objects", {})
-                    except Exception:
-                        object_model = {}
-                if self._is_deep_list_parameter(
-                        key, prefix, type_name, object_model):
-                    value = [value]
 
-            # --- Depth check and routing ---
-            depth = sum(1 for seg in key.split(".") if not seg.isdigit())
-            if depth > MAX_INPUT_DEPTH:
-                oversized_tokens.append((key, depth, prefix, type_name))
+            if object_model is None:
+                try:
+                    service_model = self._cli_data.get_service_model(
+                        self._service_name, self._version)
+                    object_model = service_model.get("objects", {})
+                except Exception:
+                    object_model = {}
+            key_type = self._get_key_type(
+                key, self._action_name + "Request", object_model)
+            if key_type is None:
+                new_remaining.append(tok)
+                new_remaining.extend(paired)
+                i += advance
+                continue
+
+            if has_eq:
+                value = [eq_value] if key_type == "list" else eq_value
+            elif key_type == "list":
+                value = paired
+            elif len(paired) == 1:
+                value = paired[0]
             else:
-                extra_unfold_args[key] = value
+                # Scalar parameters accept one value only; keep invalid input for Unknown options.
+                new_remaining.append(tok)
+                new_remaining.extend(paired)
+                i += advance
+                continue
+
+            extra_unfold_args[key] = value
             i += advance
 
         return new_remaining
 
     @staticmethod
-    def _is_deep_list_parameter(key, prefix, type_name, object_model):
-        """Return whether a flat parameter below a truncation point maps to a list field."""
-        if not type_name or not object_model:
-            return False
-        suffix = key[len(prefix) + 1:].split(".")
-        current_type = type_name
-        for index, segment in enumerate(suffix):
+    def _get_key_type(key, root_type, object_model):
+        """Return ``list`` or ``scalar`` for a valid flat key, otherwise ``None``."""
+        if not key or not root_type or not object_model:
+            return None
+
+        segments = key.split(".")
+        current_type = root_type
+        index = 0
+        while index < len(segments):
+            segment = segments[index]
             if segment.isdigit():
-                if index == len(suffix) - 1:
-                    return False
-                continue
+                return None
 
             members = object_model.get(current_type, {}).get("members", [])
             if isinstance(members, dict):
@@ -533,27 +547,31 @@ class ActionCommand(BaseCommand):
                 member_info = next(
                     (item for item in members if item.get("name") == segment), None)
             if not member_info:
-                return False
+                return None
 
             member_type = str(member_info.get("type", "")).lower()
-            if index == len(suffix) - 1:
-                return member_type in ("list", "array")
-            if member_type not in ("list", "array", "object"):
-                return False
-            current_type = member_info.get("member")
-        return False
+            if index == len(segments) - 1:
+                return "list" if member_type in ("list", "array") else "scalar"
+
+            member = member_info.get("member")
+            if member_type in ("list", "array"):
+                index += 1
+                if index >= len(segments) or not segments[index].isdigit():
+                    return None
+                # An array index may only locate a nested field and cannot terminate the key.
+                if index == len(segments) - 1:
+                    return None
+
+            if member not in object_model:
+                return None
+            current_type = member
+            index += 1
+        return None
 
     @staticmethod
-    def _match_truncated_prefix(key, truncated):
-        """Match ``key`` against ``truncated`` by longest prefix, returning ``(prefix, type_name)`` or ``(None, "")``."""
-        best_prefix = None
-        best_type = ""
-        for prefix, type_name in truncated.items():
-            if key.startswith(prefix + ".") and \
-                    (best_prefix is None or len(prefix) > len(best_prefix)):
-                best_prefix = prefix
-                best_type = type_name
-        return best_prefix, best_type
+    def _is_recursive_key(key, truncated):
+        """Return whether ``key`` is strictly below any self-reference truncation prefix."""
+        return any(key.startswith(prefix + ".") for prefix in truncated)
 
     def _build_oversized_hint(self, oversized_tokens):
         """Build error hint text for over-depth items, pointing to --cli-input-json file://; returns an empty string for an empty list."""
@@ -561,10 +579,9 @@ class ActionCommand(BaseCommand):
             return ""
         lines = ["Hint: the following option(s) exceed --cli-unfold-argument's "
                  "supported nesting depth (MAX_INPUT_DEPTH=%d):" % MAX_INPUT_DEPTH]
-        for key, depth, prefix, type_name in oversized_tokens:
-            lines.append("  --%s  (depth=%d, exceeds MAX_INPUT_DEPTH=%d, "
-                         "under --%s, type: %s)"
-                         % (key, depth, MAX_INPUT_DEPTH, prefix, type_name or "unknown"))
+        for key, depth in oversized_tokens:
+            lines.append("  --%s  (depth=%d, exceeds MAX_INPUT_DEPTH=%d)"
+                         % (key, depth, MAX_INPUT_DEPTH))
         lines.append("")
         lines.append("To pass this request:")
         lines.append("  " + RECURSIVE_HINT_FILE_OPTION)
