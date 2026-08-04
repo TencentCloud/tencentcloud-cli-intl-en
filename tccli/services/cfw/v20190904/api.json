@@ -462,6 +462,13 @@
       "output": "RemoveNatAcRuleResponse",
       "status": "online"
     },
+    "SearchLog": {
+      "document": "This API is used to retrieve and analyze logs. Please note the following matters when using this API.\n1. Besides being subject to the default API request rate limit, for a single log topic, the number of concurrent queries must not exceed 15.\n2. For search syntax, it's recommended to use the dedicated CQL syntax rule for log service. Please use the SyntaxRule parameter and set its value to 1. The console uses this syntax rule by default.\n3. The API's return data packet maximum is 49MB. It is recommended to enable gzip compression (HTTP Request Header Accept-Encoding: gzip).",
+      "input": "SearchLogRequest",
+      "name": "Retrieving and Analyzing Logs",
+      "output": "SearchLogResponse",
+      "status": "online"
+    },
     "SetNatFwDnatRule": {
       "document": "This API is used to configure firewall DNAT rules.",
       "input": "SetNatFwDnatRuleRequest",
@@ -1264,6 +1271,32 @@
         }
       ],
       "usage": "both"
+    },
+    "Column": {
+      "document": "Log Analysis Column Attributes",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Column name",
+          "example": "_col0",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Column attribute",
+          "example": "json",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "CommonFilter": {
       "document": "Common filters for search",
@@ -5006,6 +5039,164 @@
       ],
       "usage": "out"
     },
+    "LogInfo": {
+      "document": "Log result information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Log time, in milliseconds",
+          "example": "1619162953000",
+          "member": "int64",
+          "name": "Time",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log topic ID",
+          "example": "cfw_netflow_border",
+          "member": "string",
+          "name": "TopicId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log topic name",
+          "example": "业务A日志主题",
+          "member": "string",
+          "name": "TopicName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log source IP address",
+          "example": "10.0.0.1",
+          "member": "string",
+          "name": "Source",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log file name",
+          "example": "/test/access.log",
+          "member": "string",
+          "name": "FileName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ID of Log Upload Request Packet",
+          "example": "0",
+          "member": "string",
+          "name": "PkgId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log ID in Request Packet",
+          "example": "0",
+          "member": "string",
+          "name": "PkgLogId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "JSON serialized string of the log content\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\\\\\"content\\\\\":\\\\\"test\\\\\"}",
+          "member": "string",
+          "name": "LogJson",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Log source host name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "hostName-1",
+          "member": "string",
+          "name": "HostName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Raw log (only available when there is an error in creating the log index).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\\\\\"content\\\\\":\\\\\"test\\\\\"}",
+          "member": "string",
+          "name": "RawLog",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Cause for log index creation exception. It has a value only when a log index creation exception occurs.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "IndexAllFail:fields like 'a' and 'a.b' can not appear in the same topic",
+          "member": "string",
+          "name": "IndexStatus",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "LogItem": {
+      "document": "KV pairs in logs",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Log key",
+          "example": "http_code",
+          "member": "string",
+          "name": "Key",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log Value",
+          "example": "200",
+          "member": "string",
+          "name": "Value",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "LogItems": {
+      "document": "LogItem array",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Key-Value Data Pair returned from analysis results",
+          "example": "无",
+          "member": "LogItem",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "ModifyAcRuleRequest": {
       "document": "ModifyAcRule request structure.",
       "members": [
@@ -6101,6 +6292,30 @@
       ],
       "type": "object"
     },
+    "MultiTopicSearchInformation": {
+      "document": "Multi-log topic retrieval related information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ID of the log topic to be searched and analyzed",
+          "example": "682d0718-07bb-4ec0-xxxx-f1e9a2767e0b",
+          "member": "string",
+          "name": "TopicId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Pass the Context value returned by the last API call to retrieve more subsequent logs. A total of up to 10,000 raw logs can be obtained, with a validity period of 1 hour.",
+          "example": "Y29udGV4dC04MjMzNWRkMi01YmMxLTQ4NGYtYjQ4MS04MDg0NzAwYjQ1NDUxNjcy",
+          "member": "string",
+          "name": "Context",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
     "NatFwFilter": {
       "document": "The filter list displayed by the NAT firewall instance",
       "members": [
@@ -6814,6 +7029,330 @@
           "required": true,
           "type": "bool",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SearchLogErrors": {
+      "document": "Error information for multi-log topic search",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Log topic ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cfw_netflow_border",
+          "member": "string",
+          "name": "TopicId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Error message\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "SyntaxError [field: xxx, can not search on this field, since it is not indexed] ",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Error code.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "FailedOperation.QueryError",
+          "member": "string",
+          "name": "ErrorCodeStr",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "SearchLogInfos": {
+      "document": "Multiple log topic search for topic information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Log topic ID",
+          "example": "cfw_netflow_border",
+          "member": "string",
+          "name": "TopicId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log storage lifetime",
+          "example": "30",
+          "member": "int64",
+          "name": "Period",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Pass through the Context value returned by this API, which can access more logs later, with an expiration time of 1 hour.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Y29udGV4dC04MjMzNWRkMi01YmMxLTQ4NGYtYjQ4MS04MDg0NzAwYjQ1NDUxNjcy",
+          "member": "string",
+          "name": "Context",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "SearchLogRequest": {
+      "document": "SearchLog request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Start time for logs to be searched and analyzed, which is a Unix timestamp in milliseconds</p>",
+          "example": "1608794854000",
+          "member": "int64",
+          "name": "From",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>End time for logs to be searched and analyzed, which is a Unix timestamp in milliseconds</p>",
+          "example": "1608794855000",
+          "member": "int64",
+          "name": "To",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The retrieval and analysis statement has a maximum length of 12 KB.<br>The statement consists of <a href=\"https://www.tencentcloud.com/document/product/614/47044?from_cn_redirect=1\" target=\"_blank\">[retrieval condition]</a> | <a href=\"https://www.tencentcloud.com/document/product/614/44061?from_cn_redirect=1\" target=\"_blank\">[SQL statement]</a>. When there is no need to perform statistical analysis on logs, the pipe character <code> | </code> and the SQL statement can be omitted.<br>Use * or an empty string to search all logs.</p>",
+          "example": "protocol:HTTP",
+          "member": "string",
+          "name": "Query",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Search syntax rules. Default value is 0. Recommended for use is 1.</p><ul><li>0: Lucene syntax</li><li>1: CQL syntax (dedicated retrieval syntax for CLS, also the default syntax rule used in the console).</li></ul><p>For details, see <a href=\"https://www.tencentcloud.com/document/product/614/47044?from_cn_redirect=1#RetrievesConditionalRules\" target=\"_blank\">Retrieval condition syntax rules</a></p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "SyntaxRule",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<ul><li>Log topic ID to be retrieved and analyzed. Only one log topic can be specified.</li><li>If needed, use the Topics parameter to retrieve multiple log topics.</li><li>The TopicId and Topics parameters cannot be used simultaneously. Only one can be selected in a single request.<br>The log topic IDs are as follows:<br>Access control - Internet boundary: cfw_rule_acl<br>Access control - NAT boundary: cfw_rule_nat_acl<br>Access control - VPC boundary: cfw_rule_vpc_acl<br>Access control - DNS switch: cfw_rule_dns_acl<br>Intrusion defense: cfw_rule_threatinfo<br>Full traffic detection and response logs - Traffic analysis: cfw_netflow_nta<br>Full traffic detection and response logs - Traffic alarm: cfw_rule_ndr_threatinfo<br>Zero trust operations and maintenance - Database logon: cfw_operate_db<br>Zero trust operations and maintenance - Server access: operate_remote_om<br>Zero trust operations and maintenance - Web service access: operate_web_access<br>Zero trust operations and maintenance - Behavioral audit: remoteom_commands<br>Traffic log - Internet boundary: cfw_netflow_border<br>Traffic log - NAT boundary: cfw_netflow_nat<br>Traffic log - VPC boundary: cfw_netflow_vpc<br>Traffic log - DNS switch: cfw_netflow_dns<br>Traffic log - Private network traffic: cfw_netflow_fl<br>Operation log: operate_log_all</li></ul>",
+          "example": "cfw_netflow_border",
+          "member": "string",
+          "name": "TopicId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<ul><li>Log topic list for retrieval and analysis, supports a maximum of 50 log topics.</li><li>Use TopicId to retrieve a single log topic.</li><li>TopicId and Topics cannot be used simultaneously. Only select one in a single request.</li></ul>",
+          "example": "无",
+          "member": "MultiTopicSearchInformation",
+          "name": "Topics",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether raw logs are returned in time sequence; value range: asc (ascending), desc (descending), default is desc<br>Note:</p><ul><li>Valid only when the search and analysis statement (Query) does not contain SQL</li><li>For SQL result sorting, refer to <a href=\"https://www.tencentcloud.com/document/product/614/58978?from_cn_redirect=1\" target=\"_blank\">SQL ORDER BY syntax</a></li></ul>",
+          "example": "asc",
+          "member": "string",
+          "name": "Sort",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of raw logs returned in a single query. Default value: 100. Maximum value: 1000.<br>Note:</p><ul><li>This parameter is valid only when the search and analysis statement (Query) does not contain SQL.</li><li>For the method for specifying SQL result count, see <a href=\"https://www.tencentcloud.com/document/product/614/58977?from_cn_redirect=1\" target=\"_blank\">SQL LIMIT syntax</a>.</li></ul><p>You can retrieve more logs in two ways:</p><ul><li>Context: Pass the Context value returned by the last API call to retrieve more logs. You can retrieve up to 10,000 entries of raw logs in total.</li><li>Offset: The offset indicates the line number from which to start returning raw logs. There is no log entry limit.</li></ul>",
+          "example": "100",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Query the offset of raw logs, indicating the line number from which to start returning raw logs. Default value is 0.<br>Note:</p><ul><li>Applicable only when the retrieval and analysis statement (Query) does not contain SQL.</li><li>Cannot be used with the Context parameter.</li><li>Applicable only for single log topic retrieval.</li></ul>",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Pass the Context value returned by the last API call to obtain more logs later. The total number of raw logs that can be obtained is up to 10,000 entries. The expiration time is 1 hour.<br>Note:</p><ul><li>When passing this parameter, do not modify other parameters.</li><li>Applicable only for single log topic retrieval. To retrieve multiple log topics, use the Context in Topics.</li><li>This is valid only when the search and analysis statement (Query) does not contain SQL. For obtaining subsequent results with SQL, refer to <a href=\"https://www.tencentcloud.com/document/product/614/58977?from_cn_redirect=1\" target=\"_blank\">SQL LIMIT syntax</a>.</li></ul>",
+          "example": "Y29udGV4dC04MjMzNWRkMi01YmMxLTQ4NGYtYjQ4MS04MDg0NzAwYjQ1NDUxNjcy",
+          "member": "string",
+          "name": "Context",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>When performing statistical analysis (SQL included in Query), whether to sample raw logs first and then perform statistical analysis.<br>0: Automatic sampling;<br>0–1: Sample at the specified sampling rate, for example 0.02;<br>1: Indicates no sampling, that is, precision analysis.<br>Default value: 1</p>",
+          "example": "0.1",
+          "member": "float",
+          "name": "SamplingRate",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "disabled": false,
+          "document": "<p>true means using the new retrieval result return method, and output parameters AnalysisRecords and Columns are valid.<br>false means using the old retrieval result return method, and output parameters AnalysisResults and ColNames are valid.<br>The two return methods have a slight difference in encoding format. It is recommended to use true.</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "UseNewAnalysis",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "SearchLogResponse": {
+      "document": "SearchLog response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Pass through the Context value returned by this API to obtain more logs later. The expiration time is 1 hour.<br>Note:</p><ul><li>Applicable only for single log topic retrieval. To retrieve multiple log topics, use the Context in Topics.</li></ul>",
+          "example": "Y29udGV4dC04MjMzNWRkMi01YmMxLTQ4NGYtYjQ4MS04MDg0NzAwYjQ1NDUxNjcy",
+          "member": "string",
+          "name": "Context",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether all logs meeting the retrieval criteria have been returned. If not, use Context parameter to retrieve more logs.<br>  <br>Note: This is only valid when the search and analysis statement (Query) does not contain SQL.</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "ListOver",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether the returned data is the SQL analysis result</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "Analysis",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Raw logs matching the retrieval criteria</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "LogInfo",
+          "name": "Results",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Column names of log statistics analysis results<br>This parameter is valid only when UseNewAnalysis is false.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"action\"]",
+          "member": "string",
+          "name": "ColNames",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Log statistics and analysis results<br>This parameter is valid only when UseNewAnalysis is false.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "LogItems",
+          "name": "AnalysisResults",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Log statistics and analysis results<br>This parameter is valid only when UseNewAnalysis is true.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"src_ip\",\"dst_ip\"]",
+          "member": "string",
+          "name": "AnalysisRecords",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Column attribute of the statistical analysis result<br>This parameter is valid only when UseNewAnalysis is true.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Column",
+          "name": "Columns",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sampling rate used for this statistical analysis</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0.1",
+          "member": "float",
+          "name": "SamplingRate",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>When multiple log topics are used for retrieval, basic information of each log topic, such as error message.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "SearchLogTopics",
+          "name": "Topics",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SearchLogTopics": {
+      "document": "Multi-topic search return information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Error information corresponding to multi-log topic retrieval\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "SearchLogErrors",
+          "name": "Errors",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Information for each log topic during multi-log topic retrieval\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "SearchLogInfos",
+          "name": "Infos",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"

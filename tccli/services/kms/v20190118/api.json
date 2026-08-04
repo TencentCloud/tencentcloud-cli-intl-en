@@ -413,6 +413,13 @@
       "output": "ReEncryptResponse",
       "status": "online"
     },
+    "RotateKey": {
+      "document": "Rotate the designated customer master key immediately. You can call DescribeKey to return the last rotation time and the next rotation time, and determine whether the rotation is successful.",
+      "input": "RotateKeyRequest",
+      "name": "Rotate the key immediately",
+      "output": "RotateKeyResponse",
+      "status": "online"
+    },
     "ScheduleDataKeyDeletion": {
       "document": "Schedule deletion for a data key.",
       "input": "ScheduleDataKeyDeletionRequest",
@@ -1127,7 +1134,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "DataKey globally unique id.",
+          "document": "<p>Globally unique ID of the DataKey</p>",
           "example": "93866e69-9755-11ef-8e65-52540089547t",
           "member": "string",
           "name": "DataKeyId",
@@ -1137,7 +1144,7 @@
         },
         {
           "disabled": false,
-          "document": "Globally unique id of the CMK.",
+          "document": "<p>Globally unique ID of the CMK.</p>",
           "example": "6cdf26d1-44ff-11eb-841c-5254006d0810",
           "member": "string",
           "name": "KeyId",
@@ -1147,7 +1154,7 @@
         },
         {
           "disabled": false,
-          "document": "CMK name.",
+          "document": "<p>CMK name</p>",
           "example": "测试根密钥",
           "member": "string",
           "name": "KeyName",
@@ -1157,7 +1164,7 @@
         },
         {
           "disabled": false,
-          "document": "Key name as a more recognizable and understandable data key.",
+          "document": "<p>Data key name that is easier to identify and understand as a key</p>",
           "example": "lzctest",
           "member": "string",
           "name": "DataKeyName",
@@ -1167,7 +1174,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the length of the data key in bytes.",
+          "document": "<p>Length of the data key, in bytes</p>",
           "example": "32",
           "member": "uint64",
           "name": "NumberOfBytes",
@@ -1177,7 +1184,7 @@
         },
         {
           "disabled": false,
-          "document": "Key key creation time.",
+          "document": "<p>Key creation time</p>",
           "example": "1730357927",
           "member": "uint64",
           "name": "CreateTime",
@@ -1187,7 +1194,7 @@
         },
         {
           "disabled": false,
-          "document": "DataKey description.",
+          "document": "<p>Description of DataKey</p>",
           "example": "desc",
           "member": "string",
           "name": "Description",
@@ -1197,7 +1204,7 @@
         },
         {
           "disabled": false,
-          "document": "DataKey status. valid values: Enabled, Disabled, PendingDelete.",
+          "document": "<p>DataKey state, value: Enabled | Disabled | PendingDelete</p>",
           "example": "PendingDelete",
           "member": "string",
           "name": "KeyState",
@@ -1207,7 +1214,7 @@
         },
         {
           "disabled": false,
-          "document": "Creator.",
+          "document": "<p>Creator.</p>",
           "example": "700001224410",
           "member": "uint64",
           "name": "CreatorUin",
@@ -1217,7 +1224,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the creator of the data key. valid values: user (user-created) or product name (auto-created by authorized cloud services).",
+          "document": "<p>Creator of the data key. For user-created keys, it is user; for keys automatically created by authorized cloud services, it is the corresponding product name.</p>",
           "example": "user",
           "member": "string",
           "name": "Owner",
@@ -1227,7 +1234,7 @@
         },
         {
           "disabled": false,
-          "document": "The time when schedule deletion.",
+          "document": "<p>Schedule deletion time</p>",
           "example": "0",
           "member": "uint64",
           "name": "DeletionDate",
@@ -1237,7 +1244,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the key material type of DataKey. valid values: TENCENT_KMS (created by KMS), EXTERNAL (user import).",
+          "document": "<p>DataKey key material type. For keys created by KMS: TENCENT_KMS. For keys of user import type: EXTERNAL.</p>",
           "example": "EXTERNAL",
           "member": "string",
           "name": "Origin",
@@ -1247,7 +1254,7 @@
         },
         {
           "disabled": false,
-          "document": "HSM cluster ID (only applicable to KMS exclusive/managed service instance).",
+          "document": "<p>HSM Cluster ID (only applicable to KMS exclusive edition/managed version service instances)</p>",
           "example": "cls-hsm-1a2b3c4d",
           "member": "string",
           "name": "HsmClusterId",
@@ -1257,7 +1264,7 @@
         },
         {
           "disabled": false,
-          "document": "Resource ID in the format of `creatorUin/$creatorUin/$dataKeyId`.",
+          "document": "<p>Resource ID, format: creatorUin/$creatorUin/$dataKeyId</p>",
           "example": "creatorUin/12345/6cdf26d1-44ff-11eb-841c-5254006d0810",
           "member": "string",
           "name": "ResourceId",
@@ -1267,7 +1274,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether the key is a primary replica. valid values: `0` (primary), `1` (synced replica).",
+          "document": "<p>Whether the key is a primary replica. 0: primary replica, 1: synced replica.</p>",
           "example": "0",
           "member": "int64",
           "name": "IsSyncReplica",
@@ -1277,7 +1284,7 @@
         },
         {
           "disabled": false,
-          "document": "Synchronous original region.",
+          "document": "<p>Synchronous original region</p>",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "SourceRegion",
@@ -1287,7 +1294,7 @@
         },
         {
           "disabled": false,
-          "document": "The state of key synchronization. valid values: 0 (unsynced), 1 (synchronization successful), 2 (synchronization failed), 3 (synchronizing).",
+          "document": "<p>Key synchronization status. 0: unsynced, 1: synchronization successful, 2: synchronization failure, 3: syncing.</p>",
           "example": "1",
           "member": "int64",
           "name": "SyncStatus",
@@ -1297,7 +1304,7 @@
         },
         {
           "disabled": false,
-          "document": "Sresult description}.",
+          "document": "<p>Synchronous result description</p>",
           "example": "success",
           "member": "string",
           "name": "SyncMessages",
@@ -1307,7 +1314,7 @@
         },
         {
           "disabled": false,
-          "document": "Start time of synchronization.",
+          "document": "<p>Start time of synchronization</p>",
           "example": "1730357927",
           "member": "uint64",
           "name": "SyncStartTime",
@@ -1317,7 +1324,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the synchronous end time.",
+          "document": "<p>Synchronous end time</p>",
           "example": "1730357927",
           "member": "uint64",
           "name": "SyncEndTime",
@@ -1327,7 +1334,7 @@
         },
         {
           "disabled": false,
-          "document": "Synchronous original cluster. if empty, it is a public cloud public cluster.",
+          "document": "<p>Synchronous primitive cluster. If empty, it is a public cloud public cluster.</p>",
           "example": "hsm-a1b2c3",
           "member": "string",
           "name": "SourceHsmClusterId",
@@ -1337,7 +1344,7 @@
         },
         {
           "disabled": false,
-          "document": "Member account appId.",
+          "document": "<p>Member account appId</p>",
           "example": "251002343",
           "member": "uint64",
           "name": "AccountAppId",
@@ -1347,7 +1354,7 @@
         },
         {
           "disabled": false,
-          "document": "Member account UIN",
+          "document": "<p>member account uin</p>",
           "example": "100000007998",
           "member": "uint64",
           "name": "AccountUin",
@@ -1357,10 +1364,20 @@
         },
         {
           "disabled": false,
-          "document": "Member account name.",
+          "document": "<p>Enter the member account name.</p>",
           "example": "加密组测试环境账号",
           "member": "string",
           "name": "AccountName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Creator UIN</p>",
+          "example": "100000007998",
+          "member": "string",
+          "name": "CreatorUinString",
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
@@ -3330,6 +3347,26 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
+          "document": "<p>Regional information of the resource</p>",
+          "example": "100001",
+          "member": "uint64",
+          "name": "ResourceZone",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Regional availability zone info of the resource</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "ResourceRegion",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -3808,6 +3845,16 @@
           "example": "kms-700002334915",
           "member": "string",
           "name": "AccountName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Creator UIN</p>",
+          "example": "700001801827",
+          "member": "string",
+          "name": "CreatorUinString",
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
@@ -4700,6 +4747,52 @@
         }
       ],
       "usage": "both"
+    },
+    "RotateKeyRequest": {
+      "document": "RotateKey request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Globally unique ID of the CMK.</p>",
+          "example": "6ce625e3-01a4-11f1-9481-525400faed4b",
+          "member": "string",
+          "name": "KeyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Member account information for multi-account scenarios</p>",
+          "example": "无",
+          "member": "MemberAccount",
+          "name": "MemberAccount",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "RotateKeyResponse": {
+      "document": "RotateKey response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID used to identify this rotation. You can call DescribeKey to return the last rotation time and next rotation time, and determine whether the rotation is successful.</p>",
+          "example": "3027e0ed-28f1-11f1-b397-525400796650",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ScheduleDataKeyDeletionRequest": {
       "document": "ScheduleDataKeyDeletion request structure.",

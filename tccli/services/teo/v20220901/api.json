@@ -147,6 +147,20 @@
       "output": "CreateFunctionRuleResponse",
       "status": "online"
     },
+    "CreateInferenceAPIToken": {
+      "document": "Create an inference API Token for authenticating access to the inference service. The Token content is returned only once when creating. Each site can create up to 100 tokens.",
+      "input": "CreateInferenceAPITokenRequest",
+      "name": "Creates a reasoning API Token",
+      "output": "CreateInferenceAPITokenResponse",
+      "status": "online"
+    },
+    "CreateInferenceService": {
+      "document": "This API is used to create an inference service. It allows setting the service name, listening port, container image configuration, and resource configuration. Once created successfully, an inference access address is provided.",
+      "input": "CreateInferenceServiceRequest",
+      "name": "Creates an inference service",
+      "output": "CreateInferenceServiceResponse",
+      "status": "online"
+    },
     "CreateJustInTimeTranscodeTemplate": {
       "document": "JIT transcoding already provides preset transcoding templates to meet most needs. If there are personalized transcoding requirements, you can create custom transcoding templates through this API, with up to 100 custom transcoding templates allowed.\nThis API is used to ensure the consistency of JIT transcoding effect, avoid video output exceptions caused by EO cache or M3U8 sharding template changes during the process, and templates cannot be modified after creation.\nThis API is used to learn about the detailed capacity of JIT transcoding. EdgeOne video instant processing function introduction (https://www.tencentcloud.com/document/product/1552/111927?from_cn_redirect=1).",
       "input": "CreateJustInTimeTranscodeTemplateRequest",
@@ -383,6 +397,13 @@
       "input": "DeleteFunctionRulesRequest",
       "name": "Deletes a trigger rule for an edge function",
       "output": "DeleteFunctionRulesResponse",
+      "status": "online"
+    },
+    "DeleteInferenceAPIToken": {
+      "document": "This API is used to delete an inference API Token. Once deleted, the Token will expire immediately, and requests for accessing the inference service using it will no longer be accessible.",
+      "input": "DeleteInferenceAPITokenRequest",
+      "name": "Deletes a reasoning API Token",
+      "output": "DeleteInferenceAPITokenResponse",
       "status": "online"
     },
     "DeleteJustInTimeTranscodeTemplates": {
@@ -705,6 +726,48 @@
       "input": "DescribeIdentificationsRequest",
       "name": "Queries the verification information of a site.",
       "output": "DescribeIdentificationsResponse",
+      "status": "online"
+    },
+    "DescribeInferenceAPITokens": {
+      "document": "This API is used to query the list of reasoning API Tokens, return the ID, name, content, and creation time of the Tokens, and support paging query.",
+      "input": "DescribeInferenceAPITokensRequest",
+      "name": "Query a reasoning API Token",
+      "output": "DescribeInferenceAPITokensResponse",
+      "status": "online"
+    },
+    "DescribeInferenceHardwareSpecifications": {
+      "document": "This API is used to query the reasoning hardware specification list, returning configurations such as CPU, memory, GPU, and memory for each specification. You can select the required specification during service creation.",
+      "input": "DescribeInferenceHardwareSpecificationsRequest",
+      "name": "Query reasoning hardware specification list",
+      "output": "DescribeInferenceHardwareSpecificationsResponse",
+      "status": "online"
+    },
+    "DescribeInferenceServiceDeploymentLogs": {
+      "document": "This API is used to query the logs of a designated deployment of an inference service, return log content and generation time, and support time-based range search, pagination, and sorting.",
+      "input": "DescribeInferenceServiceDeploymentLogsRequest",
+      "name": "Query the reasoning service deployment log",
+      "output": "DescribeInferenceServiceDeploymentLogsResponse",
+      "status": "online"
+    },
+    "DescribeInferenceServiceDeploymentRecords": {
+      "document": "This API is used to query the deployment history list of inference services, returning the operation type, status, duration, configuration snapshot, and whether it is the currently effective configuration for each deployment, with support for pagination and sorting.",
+      "input": "DescribeInferenceServiceDeploymentRecordsRequest",
+      "name": "Query the reasoning service deployment history list",
+      "output": "DescribeInferenceServiceDeploymentRecordsResponse",
+      "status": "online"
+    },
+    "DescribeInferenceServiceMonitorData": {
+      "document": "This API is used to query service monitoring data for reasoning, supporting indicators such as CPU, memory, GPU, video memory utilization, and instance count. You can specify the time range and aggregation granularity, and query data for up to the most recent 30 days.",
+      "input": "DescribeInferenceServiceMonitorDataRequest",
+      "name": "Query service monitoring data for reasoning",
+      "output": "DescribeInferenceServiceMonitorDataResponse",
+      "status": "online"
+    },
+    "DescribeInferenceServices": {
+      "document": "This API is used to query the service list for reasoning, supporting filtering by service name, service ID, and status. It returns information such as service configuration, running state, number of instances, and reasoning access address.",
+      "input": "DescribeInferenceServicesRequest",
+      "name": "Query an inference service",
+      "output": "DescribeInferenceServicesResponse",
       "status": "online"
     },
     "DescribeJustInTimeTranscodeTemplates": {
@@ -1260,6 +1323,13 @@
       "output": "ModifyHostsCertificateResponse",
       "status": "online"
     },
+    "ModifyInferenceService": {
+      "document": "This API is used to modify the inference service, supporting updates to the listening port, request path, container image, resource configuration, and description. Only the passed parameters are modified, while others remain unchanged.",
+      "input": "ModifyInferenceServiceRequest",
+      "name": "Modify an inference service",
+      "output": "ModifyInferenceServiceResponse",
+      "status": "online"
+    },
     "ModifyL4Proxy": {
       "document": "This API is used to modify the configuration of a Layer 4 proxy instance.",
       "input": "ModifyL4ProxyRequest",
@@ -1468,6 +1538,13 @@
       "input": "ModifyZoneWorkModeRequest",
       "name": "Modify site working mode",
       "output": "ModifyZoneWorkModeResponse",
+      "status": "online"
+    },
+    "OperateInferenceService": {
+      "document": "This API is used to operate an inference service, support stopping, starting up, and deleting the inference service. Once deleted, resources cannot be recovered.",
+      "input": "OperateInferenceServiceRequest",
+      "name": "Operate an inference service",
+      "output": "OperateInferenceServiceResponse",
       "status": "online"
     },
     "RefreshMultiPathGatewaySecretKey": {
@@ -7372,6 +7449,153 @@
       ],
       "type": "object"
     },
+    "CreateInferenceAPITokenRequest": {
+      "document": "CreateInferenceAPIToken request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-2***8ev000",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Name of the reasoning API Token, length limited to no more than 30 characters.",
+          "example": "MyInferenceAPIToken",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateInferenceAPITokenResponse": {
+      "document": "CreateInferenceAPIToken response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Reasoning API Token ID.",
+          "example": "deb88f89-92b***3f3466bbb59b",
+          "member": "string",
+          "name": "TokenId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Reasoning API Token content.",
+          "example": "j8UaDh0ZbjW***glcGsSEEYo",
+          "member": "string",
+          "name": "Content",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateInferenceServiceRequest": {
+      "document": "CreateInferenceService request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Site ID.</p>",
+          "example": "zone-3*********hx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Service name. Length limit is no more than 30 characters, only lowercase letters, digits, and hyphens are supported, must start with a letter, ends with a digit or letter, duplicates are not supported.</p>",
+          "example": "***-test-060202",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Ports monitored by the model service. Only integers between 1 and 65535 are supported.</p>",
+          "example": "5000",
+          "member": "int64",
+          "name": "ListenPort",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Container configuration of the inference service. Currently only support setting 1 container.</p>",
+          "example": "无",
+          "member": "InferenceContainerConfig",
+          "name": "Containers",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Resource configuration of the inference service.</p>",
+          "example": "无",
+          "member": "InferenceResourceConfig",
+          "name": "ResourceConfig",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Request path list for inference service. Supports up to 20 paths.</p>",
+          "example": "[\"/predictions\"]",
+          "member": "string",
+          "name": "RequestPaths",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Description. Length limit: no more than 60 characters.</p>",
+          "example": "Image inference based on ResNet50 model",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateInferenceServiceResponse": {
+      "document": "CreateInferenceService response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Service ID.</p>",
+          "example": "inf-xm*******fvt",
+          "member": "string",
+          "name": "ServiceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateJustInTimeTranscodeTemplateRequest": {
       "document": "CreateJustInTimeTranscodeTemplate request structure.",
       "members": [
@@ -10215,6 +10439,42 @@
     },
     "DeleteFunctionRulesResponse": {
       "document": "DeleteFunctionRules response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteInferenceAPITokenRequest": {
+      "document": "DeleteInferenceAPIToken request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-2***8ev000",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "ID of the reasoning API Token.",
+          "example": "deb88f89-92b***3f3466bbb59b",
+          "member": "string",
+          "name": "TokenId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteInferenceAPITokenResponse": {
+      "document": "DeleteInferenceAPIToken response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -13089,6 +13349,503 @@
           "member": "Identification",
           "name": "Identifications",
           "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInferenceAPITokensRequest": {
+      "document": "DescribeInferenceAPITokens request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Site ID.</p>",
+          "example": "zone-2***8ev000",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Paginated query offset. Default value: 0.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Paginated query limit. Default value: 20, maximum value: 100.</p>",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInferenceAPITokensResponse": {
+      "document": "DescribeInferenceAPITokens response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total number of tokens.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Token list.</p>",
+          "example": "无",
+          "member": "InferenceAPIToken",
+          "name": "Tokens",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInferenceHardwareSpecificationsRequest": {
+      "document": "DescribeInferenceHardwareSpecifications request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Site ID.</p>",
+          "example": "zone-1z***xx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInferenceHardwareSpecificationsResponse": {
+      "document": "DescribeInferenceHardwareSpecifications response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Hardware specifications list.</p>",
+          "example": "无",
+          "member": "InferenceHardwareSpecification",
+          "name": "HardwareSpecifications",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInferenceServiceDeploymentLogsRequest": {
+      "document": "DescribeInferenceServiceDeploymentLogs request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-3jxerasahh8l",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "ID of the inference service.",
+          "example": "inf-nm***s7c2xq4",
+          "member": "string",
+          "name": "ServiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Deployment record ID.",
+          "example": "inf-nmlxt***2xq4-lifm9n8c",
+          "member": "string",
+          "name": "RecordId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time for retrieving logs.",
+          "example": "2026-02-10T10:10:40Z",
+          "member": "datetime_iso",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time for retrieving logs. Default query time range (EndTime - StartTime) is the most recent 7 days.",
+          "example": "2026-02-11T16:40:50Z",
+          "member": "datetime_iso",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting field. Valid values: <li>timestamp: Log generation time.</li>Default value: timestamp.",
+          "example": "timestamp",
+          "member": "string",
+          "name": "SortBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sorting method. Valid values: <li>asc: ascending order;</li><li>desc: descending order.</li>Default value: desc.</p>",
+          "example": "asc",
+          "member": "string",
+          "name": "SortOrder",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination offset. Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of returned entries. Default value: 20. Maximum value: 1000.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInferenceServiceDeploymentLogsResponse": {
+      "document": "DescribeInferenceServiceDeploymentLogs response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of eligible deployment logs.",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deploy the log list.",
+          "example": "无",
+          "member": "InferenceServiceDeploymentLogInfo",
+          "name": "DeploymentLogInfoSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInferenceServiceDeploymentRecordsRequest": {
+      "document": "DescribeInferenceServiceDeploymentRecords request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Site ID.</p>",
+          "example": "zone-3jxerasahh8l",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>ID of the inference service.</p>",
+          "example": "inf-afmkinet8yh7",
+          "member": "string",
+          "name": "ServiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sorting field. Valid values: <li>create-time: Deployment creation time.</li>Default value: create-time.</p>",
+          "example": "create-time",
+          "member": "string",
+          "name": "SortBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sorting method. Valid values: <li>asc: ascending order;</li><li>desc: descending order.</li>Default value: desc.</p>",
+          "example": "desc",
+          "member": "string",
+          "name": "SortOrder",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Paging offset. Default value: 0.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of returned entries. Default value: 20. Maximum value: 100.</p>",
+          "example": "30",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInferenceServiceDeploymentRecordsResponse": {
+      "document": "DescribeInferenceServiceDeploymentRecords response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total number of deployment history.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>History list for reasoning service deployment.</p>",
+          "example": "无",
+          "member": "InferenceServiceDeploymentRecord",
+          "name": "RecordSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInferenceServiceMonitorDataRequest": {
+      "document": "DescribeInferenceServiceMonitorData request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Site ID.</p>",
+          "example": "zone-3lwrlet3u8bl",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>ID of the inference service. You can import up to 10 inference service IDs.</p>",
+          "example": "[\"inf-n40ehcni5jjx\"]",
+          "member": "string",
+          "name": "ServiceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Metric list, supports up to 10 metrics. Valid values: <li>cpu_usage_average: Average CPU utilization, unit: %, metric type: Float;</li><li>cpu_usage_max: Maximum CPU utilization, unit: %, metric type: Float;</li><li>gpu_usage_average: Average GPU utilization, unit: %, metric type: Float;</li><li>gpu_usage_max: Maximum GPU utilization, unit: %, metric type: Float;</li><li>instance_num_average: Average number of instances, unit: unit, metric type: Float;</li><li>instance_num_max: Maximum number of instances, unit: unit, metric type: Float;</li><li>gpu_memory_usage_max: Maximum GPU VRAM utilization, unit: %, metric type: Float;</li><li>memory_usage_average: Average memory utilization, unit: %, metric type: Float;</li><li>memory_usage_max: Maximum memory utilization, unit: %, metric type: Float;</li></p>",
+          "example": "[\"cpu_usage_average\"]",
+          "member": "string",
+          "name": "MetricNames",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Start time.</p>",
+          "example": "2026-02-26T15:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>End time. The query time range (<code>EndTime - StartTime</code>) must be less than or equal to 30 days.</p>",
+          "example": "2026-02-26T15:01:00+08:00",
+          "member": "datetime_iso",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Query time granularity. Valid values:</p><li>min: 1 minute, supports queries within a 1-day range.</li><li>5min: 5 minutes, supports queries within a 7-day range.</li><li>hour: 1 hour, supports queries within a 30-day range.</li><li>day: 1 day, supports queries within a 30-day range.</li>If this parameter is not input, the granularity will be automatically inferred based on the interval between the start time and end time. Specifically, data will be queried with a granularity of min, 5min, hour, and day respectively when the period is no more than 2 hours, no more than 2 days, no more than 7 days, and over 7 days.",
+          "example": "min",
+          "member": "string",
+          "name": "Interval",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInferenceServiceMonitorDataResponse": {
+      "document": "DescribeInferenceServiceMonitorData response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total number of entries in the query result.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Service monitoring data for reasoning.</p>",
+          "example": "无",
+          "member": "InferenceServiceMonitorRecord",
+          "name": "InferenceServiceMonitorRecords",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInferenceServicesRequest": {
+      "document": "DescribeInferenceServices request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Site ID.</p>",
+          "example": "zone-2***8ev000",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Filtering Conditions, maximum 20, multiple conditions have an AND relationship, the maximum for Filters.Values is 20. Detailed filter criteria are as follows: <li>service-name: filter by service name;</li><li>service-id: filter by service ID;</li><li>status: filter by service status.</li> Only the field named service-name supports filtering during a fuzzy query.</p>",
+          "example": "无",
+          "member": "AdvancedFilter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Paginated query offset. Default value: 0.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Paginated query limit. Default value: 20, maximum value: 200.</p>",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sort returned results based on this field. Valid values: <li>create-time: Creation time.</li>Default sorting order is by create-time if left empty.</p>",
+          "example": "create-time",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sorting order. If the field value is a number, sort based on its size; if the field value is text, sort based on ASCII code size. Valid values: <li>asc: sort in ascending order;</li><li>desc: sort in descending order.</li>Use default value if not specified.</p>",
+          "example": "desc",
+          "member": "string",
+          "name": "Direction",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInferenceServicesResponse": {
+      "document": "DescribeInferenceServices response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total number of eligible services.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Inference service list.</p>",
+          "example": "无",
+          "member": "InferenceService",
+          "name": "Services",
+          "output_required": false,
           "type": "list",
           "value_allowed_null": false
         },
@@ -20170,6 +20927,927 @@
       ],
       "type": "object"
     },
+    "InferenceAPIToken": {
+      "document": "Reasoning API Token information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Reasoning API Token ID.",
+          "example": "deb88f89-92b***3f3466bbb59b",
+          "member": "string",
+          "name": "TokenId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Reasoning API Token name.",
+          "example": "MyInferenceAPIToken",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Reasoning API Token content.",
+          "example": "j8UaDh0ZbjW***glcGsSEEYo",
+          "member": "string",
+          "name": "Content",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time in [ISO date format](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "2025-12-09T10:30:00Z",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InferenceAutoScalingConfig": {
+      "document": "Inference service auto scaling configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Minimum number of instances. When a scaling policy is configured and the policy is in the valid period, it will not take effect.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "MinInstanceCount",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Auto Scaling policy list. Supports up to 5 policies.</p>",
+          "example": "无",
+          "member": "InferenceScalingPolicy",
+          "name": "ScalingPolicies",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "InferenceContainerConfig": {
+      "document": "Container configuration of the inference service.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Image type. Valid values: <li>TCR: a Tencent Cloud container mirroring service image.</li>",
+          "example": "TCR",
+          "member": "string",
+          "name": "ImageType",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "TCR image repository information. Required when ImageType is TCR.\nNote: This field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "InferenceTCRRepositoryConfig",
+          "name": "TcrRepositoryConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Executed command at container startup. Uses the mirror's Entrypoint/CMD by default when left empty. Supports up to 1024 characters.",
+          "example": "python app.py",
+          "member": "string",
+          "name": "StartupCommand",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Environment variables of the container runtime. Supports up to 10 variables.",
+          "example": "无",
+          "member": "InferenceEnvironmentVariable",
+          "name": "EnvironmentVariables",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "InferenceContainerConfigForModify": {
+      "document": "Parameter modification of the configured inference service container.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Image type. Valid values: <li>TCR: a Tencent Cloud container mirroring service mirror.</li>",
+          "example": "TCR",
+          "member": "string",
+          "name": "ImageType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "TCR image repository information. Required when ImageType is TCR.",
+          "example": "无",
+          "member": "InferenceTCRRepositoryConfig",
+          "name": "TcrRepositoryConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Command executed at container startup. Uses the mirror's Entrypoint/CMD by default when left empty. Supports up to 1024 characters.",
+          "example": "python app.py",
+          "member": "string",
+          "name": "StartupCommand",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Environment variables of the container runtime. Supports up to 10 variables.",
+          "example": "无",
+          "member": "InferenceEnvironmentVariable",
+          "name": "EnvironmentVariables",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "InferenceEnvironmentVariable": {
+      "document": "Environment variable of the container runtime for reasoning.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Variable name  is limited to uppercase and lowercase letters, digits, and underscores, and must start with a letter or underscore. The length is limited to no more than 64 characters.",
+          "example": "MODEL_PATH",
+          "member": "string",
+          "name": "Key",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Variable value. Supports any visible characters such as letters, numbers, and symbols. Length limited to no more than 2048 characters.",
+          "example": "/models/resnet101",
+          "member": "string",
+          "name": "Value",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "InferenceHardwareSpecification": {
+      "document": "Reasoning hardware specifications.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specification flag.",
+          "example": "Beginner",
+          "member": "string",
+          "name": "Spec",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specification name.",
+          "example": "GPU 入门型",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of CPU cores.",
+          "example": "8",
+          "member": "float",
+          "name": "CPUNum",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Memory size. Unit: MB.",
+          "example": "65536",
+          "member": "int64",
+          "name": "MemSize",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of GPU cards.",
+          "example": "1",
+          "member": "float",
+          "name": "GPUNum",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "GPU VRAM size. Unit: MB.",
+          "example": "16384",
+          "member": "int64",
+          "name": "GPUMemSize",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InferenceManualInstanceConfig": {
+      "document": "Manual setting of inference service instance configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Fixed instance count.",
+          "example": "1",
+          "member": "int64",
+          "name": "FixedInstanceCount",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "InferenceResourceConfig": {
+      "document": "Resource configuration of the inference service.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Scaling way. Valid values: <li>Auto: Automatically adjust instance count according to request volume;</li><li>Manual: Manual setting of fixed number of resource instances.</li>",
+          "example": "Manual",
+          "member": "string",
+          "name": "ScalingMode",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Hardware specifications.",
+          "example": "Basic",
+          "member": "string",
+          "name": "HardwareSpec",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Inference service automatic scaling configuration. Required when ScalingMode is Auto.\nNote: This field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "InferenceAutoScalingConfig",
+          "name": "AutoScalingConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Manual setting of inference service instance configuration. Required when ScalingMode is Manual.\nNote: This field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "InferenceManualInstanceConfig",
+          "name": "ManualInstanceConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Single-instance concurrency. Default value is 1.",
+          "example": "10",
+          "member": "int64",
+          "name": "Concurrency",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "InferenceResourceConfigForModify": {
+      "document": "Parameter modification for inference service resource configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Scaling way. Valid values: <li>Auto: Automatically adjust instance count based on request volume;</li><li>Manual: Fixed number of resource instances via manual setting.</li>",
+          "example": "Manual",
+          "member": "string",
+          "name": "ScalingMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Inference service auto scaling configuration. Required when ScalingMode is Auto.",
+          "example": "无",
+          "member": "InferenceAutoScalingConfig",
+          "name": "AutoScalingConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Manual setting of inference service instance configuration. Required when ScalingMode is Manual.",
+          "example": "无",
+          "member": "InferenceManualInstanceConfig",
+          "name": "ManualInstanceConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Concurrency of a single instance. Default value is 1.",
+          "example": "10",
+          "member": "int64",
+          "name": "Concurrency",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "usage": "in"
+    },
+    "InferenceScalingPolicy": {
+      "document": "Edge reasoning auto scaling policy.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Policy Name. Length limit is 1-30 characters. Policy name must be unique within the same service.",
+          "example": "apolicy",
+          "member": "string",
+          "name": "PolicyName",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Policy type, cannot be modified after creation. Value: <li>ScheduledScaling: scheduled scaling.</li>",
+          "example": "ScheduledScaling",
+          "member": "string",
+          "name": "PolicyType",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Scheduled scaling configuration. This field is required when the PolicyType value is ScheduledScaling.",
+          "example": "无",
+          "member": "InferenceScheduledScalingPolicy",
+          "name": "ScheduledScalingPolicy",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "InferenceScheduledScalingAction": {
+      "document": "Edge reasoning scheduled scaling action configuration for description of a specific scheduled scaling action.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cron expression for description of scheduled scaling trigger time. Use 5-field standard cron format: minute hour date month week. No support for second and year fields.",
+          "example": "18 12 * * *",
+          "member": "string",
+          "name": "CronExpression",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "After hitting the scheduled scaling action, the minimum number of instances to which the inference service can be adjusted. If multiple scheduled scaling actions hit at the same time within the identical evaluation window, use the maximum MinInstanceCount.",
+          "example": "0",
+          "member": "int64",
+          "name": "MinInstanceCount",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "InferenceScheduledScalingEffectiveRange": {
+      "document": "Edge reasoning scheduled scaling validity period range configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Validity period type. Valid values: <li>LongTerm: Permanently valid;</li><li>Custom: Custom start and end date.</li></p>",
+          "example": "Custom",
+          "member": "string",
+          "name": "EffectiveType",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Start date of the valid period. Required when EffectiveType is Custom. Do not pass this field when EffectiveType is LongTerm.</p>",
+          "example": "2026-05-21T16:00:00Z",
+          "member": "datetime_iso",
+          "name": "StartDate",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Termination date of the valid period. Required when EffectiveType is Custom, and cannot be earlier than StartDate. Do not pass this field when EffectiveType is LongTerm.</p>",
+          "example": "2026-05-22T15:59:59Z",
+          "member": "datetime_iso",
+          "name": "EndDate",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "InferenceScheduledScalingPolicy": {
+      "document": "Edge reasoning scheduled scaling policy configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Scheduled scaling action list. Fill in at least 1, supports up to 10.",
+          "example": "无",
+          "member": "InferenceScheduledScalingAction",
+          "name": "ScheduledActions",
+          "output_required": true,
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Validity period range, for description of whether the scheduled scaling policy is permanently valid or valid only within a specified date range.",
+          "example": "无",
+          "member": "InferenceScheduledScalingEffectiveRange",
+          "name": "EffectiveRange",
+          "output_required": true,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Time zone, using [IANA time zone](https://www.iana.org/time-zones) to identify the trigger time in ScheduledActions, such as UTC, Asia/Shanghai, America/New_York, Europe/London, Asia/Kolkata. UTC is used by default if not specified.\n\n\n\n\n",
+          "example": "Asia/Shanghai",
+          "member": "string",
+          "name": "TimeZone",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "InferenceService": {
+      "document": "Inference service info.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ID of the inference service.",
+          "example": "inf-9f8***4a3210",
+          "member": "string",
+          "name": "ServiceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Reasoning service name.",
+          "example": "image-classification-service",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Description information.",
+          "example": "Image inference based on ResNet50 model",
+          "member": "string",
+          "name": "Description",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Ports monitored by the model service. Only integers between 1 and 65535 are supported.",
+          "example": "8080",
+          "member": "int64",
+          "name": "ListenPort",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Request path list for inference service. Supports up to 20 paths.",
+          "example": "[\"/predictions\"]",
+          "member": "string",
+          "name": "RequestPaths",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Container configuration of the inference service.",
+          "example": "无",
+          "member": "InferenceContainerConfig",
+          "name": "Containers",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Resource configuration of the inference service.",
+          "example": "无",
+          "member": "InferenceResourceConfig",
+          "name": "ResourceConfig",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Reasoning service status, which includes the following status: <li>Deploying: deployment in progress;</li><li>Running: running;</li><li>Stopping: stopping;</li><li>Stopped: stopped;</li><li>Exception: exception;</li><li>Banned: banned.</li>",
+          "example": "Running",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Scaling status. Valid values: <li>Normal: Stable operation, no scaling operation in progress;</li><li>ScalingOut: Scaling out;</li><li>ScalingIn: Scaling in.</li>",
+          "example": "Normal",
+          "member": "string",
+          "name": "ScalingStatus",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of running instances.",
+          "example": "0",
+          "member": "int64",
+          "name": "CurrentInstanceCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Reasoning access address, perform reasoning via links to access the underlying model.",
+          "example": "https://model-zone-***0300.edgeone-ai.com",
+          "member": "string",
+          "name": "InferenceURL",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time in [ISO date format](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "2025-12-09T10:00:00Z",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last modification time in [ISO date format](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "2025-12-09T10:30:00Z",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InferenceServiceConfig": {
+      "document": "Deployment configuration for a single inference service.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Ports monitored by the model service.",
+          "example": "8080",
+          "member": "int64",
+          "name": "ListenPort",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Request path list for inference service.",
+          "example": "[\"/predictions\"]",
+          "member": "string",
+          "name": "RequestPaths",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Container configuration of the inference service.",
+          "example": "无",
+          "member": "InferenceContainerConfig",
+          "name": "Containers",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Resource configuration of the inference service.",
+          "example": "无",
+          "member": "InferenceResourceConfig",
+          "name": "ResourceConfig",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InferenceServiceDeploymentLogInfo": {
+      "document": "Reasoning service deployment log information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Message content of log messages.",
+          "example": "Container image synchronization failed. Please verify the source image accessibility and registry credentials",
+          "member": "string",
+          "name": "LogMessage",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log generation time.",
+          "example": "2026-02-11T08:12:30Z",
+          "member": "datetime_iso",
+          "name": "Timestamp",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InferenceServiceDeploymentRecord": {
+      "document": "Service deployment history record for reasoning.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Deployment record ID.",
+          "example": "inf-afmkinet8yh7-3o67ljbz",
+          "member": "string",
+          "name": "RecordId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deployment operation type, value:\n<li>create: creation</li>\n<li>update: refresh;</li>\n<li>resume: enabled;</li>\n<li>stop: disable.</li>",
+          "example": "CREATE",
+          "member": "string",
+          "name": "Operation",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deployment state. Valid values:\n<li>processing: deployment in progress;</li>\n<li>succeeded: Deployment successful;</li>\n<li>failed: Deployment failed.</li>",
+          "example": "PROCESSING",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deployment duration, unit: second.",
+          "example": "146",
+          "member": "int64",
+          "name": "Duration",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Configuration for this service deployment.",
+          "example": "无",
+          "member": "InferenceServiceConfig",
+          "name": "InferenceServiceConfig",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deployment initiation time in [ISO date format](https://www.tencentcloud.com/document/product/266/11732?from_cn_redirect=1#I).",
+          "example": "2026-02-05T19:28:54+08:00",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether the deployment configuration is the effective configuration. Value:\n<li> active: effective configuration;</li>\n<li> inactive: earlier version or abnormal version configuration.</li>",
+          "example": "inactive",
+          "member": "string",
+          "name": "ActiveStatus",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InferenceServiceMonitorItem": {
+      "document": "Service monitoring data items for reasoning.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Corresponding time point of monitoring data.",
+          "example": "2026-03-17T16:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "Timestamp",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specific values.",
+          "example": "0.003724027934827303",
+          "member": "float",
+          "name": "Value",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InferenceServiceMonitorRecord": {
+      "document": "Service monitoring data record for reasoning.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ID of the inference service.",
+          "example": "inf-oy9e58rzbu7u",
+          "member": "string",
+          "name": "ServiceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Metric name.",
+          "example": "gpu_usage_average",
+          "member": "string",
+          "name": "MetricName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Detailed service monitoring data for reasoning.",
+          "example": "无",
+          "member": "InferenceServiceMonitorItem",
+          "name": "InferenceServiceMonitorItems",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InferenceTCRRepositoryConfig": {
+      "document": "TCR image repository configuration for reasoning.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>TCR service type. Valid values: <li>Personal: personal edition;</li><li>Enterprise: enterprise edition.</li></p>",
+          "example": "Personal",
+          "member": "string",
+          "name": "TCRType",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Image address.</p>",
+          "example": "c*****s.tencentyun.com/namespace/image:v1.0.0",
+          "member": "string",
+          "name": "Image",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>ID of the repository instance. Required when TCRType = Enterprise.</p>",
+          "example": "tcr-***4imq",
+          "member": "string",
+          "name": "RegistryId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Region name.</p>",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "RegionName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "IntelligenceRule": {
       "document": "Bot intelligence rules",
       "members": [
@@ -23031,6 +24709,87 @@
       ],
       "type": "object"
     },
+    "ModifyInferenceServiceRequest": {
+      "document": "ModifyInferenceService request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Site ID.</p>",
+          "example": "zone-3eox****5tad",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>ID of the inference service.</p>",
+          "example": "inf-lwdnt***rgss",
+          "member": "string",
+          "name": "ServiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Ports monitored by the model service. Only integers between 1 and 65535 are supported.</p>",
+          "example": "8080",
+          "member": "int64",
+          "name": "ListenPort",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Request path list for inference service. Supports up to 20 paths.</p>",
+          "example": "[\"/v1/predictions\"]",
+          "member": "string",
+          "name": "RequestPaths",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Container configuration of the inference service. Currently only support setting 1 container.</p>",
+          "example": "无",
+          "member": "InferenceContainerConfigForModify",
+          "name": "Containers",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Resource configuration of the inference service.</p>",
+          "example": "无",
+          "member": "InferenceResourceConfigForModify",
+          "name": "ResourceConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Description. The length is limited to 60 characters.</p>",
+          "example": "Image inference based on ResNet50 model",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInferenceServiceResponse": {
+      "document": "ModifyInferenceService response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyL4ProxyRequest": {
       "document": "ModifyL4Proxy request structure.",
       "members": [
@@ -25521,6 +27280,51 @@
         }
       ],
       "usage": "both"
+    },
+    "OperateInferenceServiceRequest": {
+      "document": "OperateInferenceService request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-2***8ev000",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "ID of the inference service.",
+          "example": "inf-9f8***4a3210",
+          "member": "string",
+          "name": "ServiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Operation type, including the following: <li>Stop: stop;</li><li>Resume: start up;</li><li>Delete: delete.</li>",
+          "example": "Delete",
+          "member": "string",
+          "name": "Operation",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "OperateInferenceServiceResponse": {
+      "document": "OperateInferenceService response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "Origin": {
       "document": "The origin server configuration.",

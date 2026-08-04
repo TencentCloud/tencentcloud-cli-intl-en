@@ -1467,7 +1467,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Playback URL, must be used with a signaling player. This field is only applicable to video generation mode\nNote: This field may return null, indicating that no valid value can be retrieved.\nExample value: http://replayurl",
           "example": "http://replayurl",
           "member": "string",
           "name": "ReplayUrl",
