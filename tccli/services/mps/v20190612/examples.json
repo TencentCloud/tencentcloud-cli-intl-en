@@ -8,6 +8,14 @@
         "title": "Initiating a Task"
       }
     ],
+    "CloneViral": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CloneViral\n<Common request parameters>\n\n{\n    \"VideoUrl\": \"https://ie-mps-1258344699.cos-internal.ap-nanjing.tencentcos.cn/common/lauriehuang/viral/test/mianmo-demo-720p.mp4\",\n    \"Product\": {\n        \"Images\": [\n            \"https://ie-mps-1258344699.cos-internal.ap-nanjing.tencentcos.cn/common/lauriehuang/viral/test/%E6%B4%97%E9%9D%A2%E5%A5%B6-1.png\"\n        ]\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"1300057393-ViralCloneAsync-bfea1147-48d4-418f-87b0-71ba350c38bc\",\n        \"RequestId\": \"bfea1147-48d4-418f-87b0-71ba350c38bc\"\n    }\n}",
+        "title": "Simplest Parameter Example"
+      }
+    ],
     "CreateAIAnalysisTemplate": [
       {
         "document": "This example shows you how to create a custom video content analysis template with all intelligent analysis tasks enabled.",
@@ -54,6 +62,14 @@
         "input": "https://mps.tencentcloudapi.com/?Action=CreateAdaptiveDynamicStreamingTemplate\n&Name=Adaptive Bitrate Streaming Template 1\n&Format=HLS\n&StreamInfos.0.Video.Codec=h264\n&StreamInfos.0.Video.Bitrate=2000\n&StreamInfos.0.Video.Fps=2000\n&StreamInfos.0.Audio.Codec=flac\n&StreamInfos.0.Audio.SampleRate=44100\n&StreamInfos.0.Audio.Bitrate=200\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Definition\": 30018,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Creating an Adaptive Bitrate Streaming Template"
+      }
+    ],
+    "CreateAiDramaTask": [
+      {
+        "document": "Creates an AI comic task",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAiDramaTask\n<Common request parameters>\n\n{\n    \"Input\": {\n        \"Script\": \"Once upon a time, there was a little rabbit that went up the mountain to pick mushrooms\",\n        \"Style\": \"chinese_ink_wash\",\n        \"Ratio\": \"16:9\",\n        \"Resolution\": \"1080p\"\n    },\n    \"CosInfo\": {\n        \"CosBucketRegion\": \"\",\n        \"CosBucketName\": \"\",\n        \"CosBucketPath\": \"\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"68459f79-bdce-52c8-4b86-5d446adbbee0\",\n        \"RequestId\": \"867c9447-772f-48f5-a41c-11fe3c665695\"\n    }\n}",
+        "title": "Creates an AI comic task"
       }
     ],
     "CreateAigcAudioTask": [
@@ -128,6 +144,14 @@
         "input": "https://mps.tencentcloudapi.com/?Action=CreateContentReviewTemplate\n&Name=Content Moderation Template\n&Comment=Template 2\n&PornConfigure.ImgReviewInfo.Switch=ON\n&PornConfigure.ImgReviewInfo.BlockConfidence=80\n&PornConfigure.ImgReviewInfo.ReviewConfidence=30\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Definition\": 33,\n        \"RequestId\": \"67aee3e9-2qd3-2395-9d4b-4390a96837a7\"\n    }\n}",
         "title": "Creating a Content Moderation Template to Detect Pornographic Content, and Specifying the Threshold and Frame Interception Interval"
+      }
+    ],
+    "CreateDocToVideoTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDocToVideoTask\n<Common request parameters>\n\n{\n    \"Input\": {\n        \"FileUrl\": [\n            \"https://aigc-test-image-1303333058.cos.ap-guangzhou.myqcloud***********************************************************6%96%AD-%E7%BB%84%E5%90%88%E6%8E%92%E5%88%971%E9%81%93.docx\"\n        ],\n        \"Prompt\": \"Help me generate a video to explain the content of the document in detail.\",\n        \"ModelName\": \"Wand\",\n        \"ModelVersion\": \"1.0\",\n        \"Ratio\": \"16:9\",\n        \"Language\": \"zh\",\n        \"EnableTTS\": true\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"e084efaa-d25************6b85e473c0e5\",\n        \"RequestId\": \"a2644899-acbf-4973-b8ea-1a93772be6f7\"\n    }\n}",
+        "title": "Test Sample"
       }
     ],
     "CreateImageSpriteTemplate": [
@@ -238,6 +262,14 @@
         "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateTranscodeTemplate\n<Common request parameters>\n\n{\n    \"RemoveVideo\": 0,\n    \"Container\": \"mp4\",\n    \"Name\": \"trans_test\",\n    \"AudioTemplate\": {\n        \"SampleRate\": 44100,\n        \"Codec\": \"aac\",\n        \"Bitrate\": 200\n    },\n    \"VideoTemplate\": {\n        \"Codec\": \"h264\",\n        \"Bitrate\": 256,\n        \"Fps\": 45\n    },\n    \"RemoveAudio\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"Definition\": 1008,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Creating a Transcoding Template"
+      }
+    ],
+    "CreateVideoRedrawTask": [
+      {
+        "document": "Creates an AIGC video redrawing task",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateVideoRedrawTask\n<Common request parameters>\n\n{\n    \"Input\": {\n        \"Url\": \"https://****************.cos.ap-guangzhou.myqcloud.com/fod_1.mp4\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"d6f9bb2a-d1cd-****-447a-a4842e4279c6\",\n        \"RequestId\": \"74ab0e9d-2b15-46ae-9c6c-042f360ae32b\"\n    }\n}",
+        "title": "Creates an AIGC video redrawing task"
       }
     ],
     "CreateWatermarkTemplate": [
@@ -520,6 +552,14 @@
         "title": "Request Example"
       }
     ],
+    "DescribeAigcTaskStatus": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAigcTaskStatus\n<Common request parameters>\n\n{\n    \"TaskId\": \"c50f6094-3b56-a1fa-e616-0eec386bfc36\"\n}",
+        "output": "{\n    \"Response\": {\n        \"CreateTime\": \"2026-06-01 20:40:50\",\n        \"FinishedTime\": \"2026-06-01 20:44:32\",\n        \"OutputUrl\": \"https://aigc-redraw-output-1326893053.cos.ap-guangzhou.myqcloud.com/aigc-c50f6094-3b56-a1fa-e616-0eec386bfc36-202606012044-0.mp4\",\n        \"RequestBody\": \"{\\\"Input\\\":{\\\"Script\\\":\\\"Once upon a time, there was a little rabbit that went up the mountain to pick mushrooms\\\",\\\"Style\\\":\\\"chinese_ink_wash\\\",\\\"Ratio\\\":\\\"16:9\\\",\\\"Resolution\\\":\\\"720p\\\"},\\\"Action\\\":\\\"CreateAiDramaTask\\\",\\\"RequestId\\\":\\\"afbd7d37-888c-4cf5-959f-959a10ff4af6\\\",\\\"RequestSource\\\":\\\"API\\\",\\\"Uin\\\":\\\"600000563781\\\",\\\"ApiModule\\\":\\\"mps\\\",\\\"Timestamp\\\":\\\"1780317650\\\",\\\"ClientIp\\\":\\\"30.174.178.116\\\",\\\"SubAccountUin\\\":\\\"600000563781\\\",\\\"Region\\\":\\\"\\\",\\\"RequestClient\\\":\\\"APIExplorer\\\",\\\"AppId\\\":1300057355}\",\n        \"ScheduledTime\": \"2026-06-01 20:40:51\",\n        \"TaskId\": \"c50f6094-3b56-a1fa-e616-0eec386bfc36\",\n        \"TaskStatus\": \"FINISHED\",\n        \"TaskType\": \"AIDrama\",\n        \"RequestId\": \"9ee02d10-a534-4a2d-842a-c4d084bcfbde\"\n    }\n}",
+        "title": "Obtain AIGC Scenario Task Details"
+      }
+    ],
     "DescribeAigcVideoTask": [
       {
         "document": "",
@@ -568,6 +608,14 @@
         "title": "Querying a User-Defined Digital Watermark Template"
       }
     ],
+    "DescribeCloneViralTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCloneViralTask\n<Common request parameters>\n\n{\n    \"TaskId\": \"24000191-ViralClone-92e56dab-2a5b-4537-b49f-854563d4903f\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Status\": \"DONE\",\n        \"VideoUrls\": [\n            \"https://laurie-tmp-1300828900.cos.ap-nanjing.myqcloud.com/viral_clone/20260720/24000191-ViralClone-92e56dab-2a5b-4537-b49f-854563d4903f/clip.mp4\"\n        ],\n        \"RequestId\": \"74aeda83-63cc-4404-9f10-e43e841d242c\"\n    }\n}",
+        "title": "Query result example"
+      }
+    ],
     "DescribeContentReviewTemplates": [
       {
         "document": "This example shows you how to obtain up to 10 intelligent auditing templates, including default ones, starting from the first record (offset = 0).",
@@ -610,6 +658,14 @@
         "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeImageTaskDetail\n<Common request parameters>\n\n{\n    \"TaskId\": \"24******-WorkflowTask-***************tt6\"\n}",
         "output": "{\n    \"Response\": {\n        \"CreateTime\": \"2026-04-30T06:26:49Z\",\n        \"ImageTask\": {},\n        \"InputInfo\": {\n            \"CosInputInfo\": {\n                \"Bucket\": \"\",\n                \"Object\": \"\",\n                \"Region\": \"\"\n            },\n            \"S3InputInfo\": null,\n            \"Type\": \"URL\",\n            \"UrlInputInfo\": {\n                \"Url\": \"http://***************.cos.ap-shanghai.tencentcos.cn/**********/01.jpeg\"\n            },\n            \"VODInputInfo\": null\n        },\n        \"Status\": \"PROCESSING\",\n        \"TaskType\": \"WorkflowTask\",\n        \"RequestId\": \"1610103f-dd39-44ca-90ea-e533219d9b53\"\n    }\n}",
         "title": "Querying an Image Processing Task"
+      }
+    ],
+    "DescribeImageTasks": [
+      {
+        "document": "Accesses image processing task list",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeImageTasks\n<Common request parameters>\n\n{\n    \"Status\": \"FINISH\",\n    \"Limit\": 20,\n    \"SubTaskHasFailed\": false,\n    \"ScrollToken\": \"********-WorkflowTask-********************************tt6\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ScrollToken\": \"********-WorkflowTask-********************************tt6\",\n        \"TaskSet\": [\n            {\n                \"BeginProcessTime\": \"2026-03-16T12:29:54Z\",\n                \"CreateTime\": \"2026-03-16T12:29:54Z\",\n                \"FinishTime\": \"2026-03-16T12:29:56Z\",\n                \"Status\": \"FINISH\",\n                \"SubTaskHasFailed\": false,\n                \"TaskId\": \"********-WorkflowTask-********************************tt6\"\n            }\n        ],\n        \"TotalCount\": 13,\n        \"RequestId\": \"f642575f-60b2-46ef-a1c1-5401b6e9ba33\"\n    }\n}",
+        "title": "Accesses image processing task list"
       }
     ],
     "DescribeLiveRecordTemplates": [
@@ -769,20 +825,20 @@
     "DescribeVoices": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeVoices\n<Common request parameters>\n\n{}",
-        "output": "{\n    \"Response\": {\n        \"ErrorCode\": 0,\n        \"Msg\": \"success\",\n        \"Voices\": [\n            {\n                \"AudioUrl\": \"https://ie-mps-1258344699.cos.ap-nanjing.myqcloud.com/common/lauriehuang/dubbing/voice/samples/s1_ffgIs_z6m.wav\",\n                \"Category\": \"system\",\n                \"Description\": \"A steady and reliable middle-aged male executive voice, in standard Mandarin, conveying a sense of trustworthiness.\",\n                \"Gender\": \"male\",\n                \"Labels\": [\n                    \"Steady\"\n                ],\n                \"Languages\": [\n                    \"zh\"\n                ],\n                \"Name\": \"Steady Executive\",\n                \"Scenes\": [\n                    \"General\"\n                ],\n                \"VoiceId\": \"s1_ffgIs/z6m/4N0fS1/MSotjeSxrtaVMTXMovoBjRATytSYVzhffFMWxq4pnx36Mq75Sh/v6d5smsJaA7z8w==\"\n            }\n        ],\n        \"RequestId\": \"885d40d0-328a-429c-8394-527111536784\"\n    }\n}",
-        "title": "Querying All Available Voices"
-      },
-      {
-        "document": "",
         "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeVoices\n<Common request parameters>\n\n{\n    \"VoiceType\": \"clone\"\n}",
         "output": "{\n    \"Response\": {\n        \"ErrorCode\": 0,\n        \"Msg\": \"success\",\n        \"Voices\": [\n            {\n                \"Age\": \"youth\",\n                \"Category\": \"clone\",\n                \"Description\": \"Cloning test\",\n                \"Gender\": \"male\",\n                \"Name\": \"Unnamed\",\n                \"VoiceId\": \"v1_+38rmmZflaNfzl9AMwUugfRJkBskigFnqJbzgo+k4HM/n8hw92Tgi4PsdUEtShj/DdM=\"\n            }\n        ],\n        \"RequestId\": \"f4d95f98-d817-4f9c-badb-753edf459d25\"\n    }\n}",
         "title": "Querying a Cloned Voice"
       },
       {
         "document": "",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeVoices\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"ErrorCode\": 0,\n        \"Msg\": \"success\",\n        \"Voices\": [\n            {\n                \"AudioUrl\": \"https://ie-mps-1258344699.cos.ap-nanjing.myqcloud.com/common/lauriehuang/dubbing/voice/samples/s1_ffgIs_z6m.wav\",\n                \"Category\": \"system\",\n                \"Description\": \"A steady and reliable middle-aged male executive voice, in standard Mandarin, conveying a sense of trustworthiness.\"\n                \"Gender\": \"male\",\n                \"Labels\": [\n                    \"Steady\"\n                ],\n                \"Languages\": [\n                    \"zh\"\n                ],\n                \"Name\": \"Steady Executive\",\n                \"Scenes\": [\n                    \"General\"\n                ],\n                \"VoiceId\": \"s1_ffgIs/z6m/4N0fS1/MSotjeSxrtaVMTXMovoBjRATytSYVzhffFMWxq4pnx36Mq75Sh/v6d5smsJaA7z8w==\"\n            }\n        ],\n        \"RequestId\": \"885d40d0-328a-429c-8394-527111536784\"\n    }\n}",
+        "title": "Querying All Available Voices"
+      },
+      {
+        "document": "",
         "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeVoices\n<Common request parameters>\n\n{\n    \"Labels\": [\n        \"Intellectual\"\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"ErrorCode\": 0,\n        \"Msg\": \"success\",\n        \"Voices\": [\n            {\n                \"Age\": \"middle_aged\",\n                \"AudioUrl\": \"https://ie-mps-1258344699.cos.ap-nanjing.myqcloud.com/common/lauriehuang/dubbing/voice/samples/s1_6jogxFovm.wav\",\n                \"Category\": \"system\",\n                \"Description\": \"A professional, middle-aged female news anchor with a broadcasting tone, in standard Mandarin.\"\n                \"Gender\": \"female\",\n                \"Labels\": [\n                    \"Intellectual\"\n                ],\n                \"Languages\": [\n                    \"zh\"\n                ],\n                \"Name\": \"News female voice\",\n                \"Scenes\": [\n                    \"Narration\"\n                ],\n                \"VoiceId\": \"s1_6jogxFovmuGaSPZKIG8rCm8bhAN8bOQhfsy/BCpaCz3SIK8Z+FrmhzH/I4xg2cX1OGy+g/yK\"\n            }\n        ],\n        \"RequestId\": \"7e2cf256-3631-4433-bb56-c14b6c35f28d\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorCode\": 0,\n        \"Msg\": \"success\",\n        \"Voices\": [\n            {\n                \"Age\": \"middle_aged\",\n                \"AudioUrl\": \"https://ie-mps-1258344699.cos.ap-nanjing.myqcloud.com/common/lauriehuang/dubbing/voice/samples/s1_6jogxFovm.wav\",\n                \"Category\": \"system\",\n                \"Description\": \"A professional, middle-aged female news anchor with a broadcasting tone, in standard Mandarin.\",\n                \"Gender\": \"female\",\n                \"Labels\": [\n                    \"Intellectual\"\n                ],\n                \"Languages\": [\n                    \"zh\"\n                ],\n                \"Name\": \"News female voice\",\n                \"Scenes\": [\n                    \"Narration\"\n                ],\n                \"VoiceId\": \"s1_6jogxFovmuGaSPZKIG8rCm8bhAN8bOQhfsy/BCpaCz3SIK8Z+FrmhzH/I4xg2cX1OGy+g/yK\"\n            }\n        ],\n        \"RequestId\": \"7e2cf256-3631-4433-bb56-c14b6c35f28d\"\n    }\n}",
         "title": "Querying Voices by Tag"
       }
     ],
@@ -904,6 +960,14 @@
         "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: EditMedia\n<Common request parameters>\n\n{\n    \"FileInfos\": [\n        {\n            \"Id\": \"vod\",\n            \"InputInfo\": {\n                \"Type\": \"URL\",\n                \"UrlInputInfo\": {\n                    \"Url\": \"https://.../video.mp4\"\n                }\n            }\n        }\n    ],\n    \"OutputStorage\": {\n        \"Type\": \"COS\",\n        \"CosOutputStorage\": {\n            \"Bucket\": \"your_bucket\",\n            \"Region\": \"your_bucket_region\"\n        }\n    },\n    \"OutputObjectPath\": \"/your/output/dir/\",\n    \"ComposeConfig\": {\n        \"Tracks\": [\n            {\n                \"Type\": \"Video\",\n                \"Items\": [\n                    {\n                        \"Type\": \"Video\",\n                        \"Video\": {\n                            \"SourceMedia\": {\n                                \"FileId\": \"vod\",\n                                \"StartTime\": \"10s\",\n                                \"EndTime\": \"20s\"\n                            },\n                            \"TrackTime\": {\n                                \"Duration\": \"5s\"\n                            }\n                        }\n                    }\n                ]\n            },\n            {\n                \"Type\": \"Video\",\n                \"Items\": [\n                    {\n                        \"Type\": \"Video\",\n                        \"Video\": {\n                            \"SourceMedia\": {\n                                \"FileId\": \"vod\",\n                                \"StartTime\": \"20s\",\n                                \"EndTime\": \"30s\"\n                            },\n                            \"TrackTime\": {\n                                \"Duration\": \"12.5s\"\n                            }\n                        }\n                    }\n                ]\n            }\n        ]\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx88-EditMedia-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
         "title": "[Compositing Task] Adjusting the Video Playback Speed"
+      }
+    ],
+    "EmbeddingData": [
+      {
+        "document": "For text embedding",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: EmbeddingData\n<Common request parameters>\n\n{\n    \"Model\": \"text_embedding_v1\",\n    \"Files\": [\n        {\n            \"Type\": \"text\",\n            \"Data\": \"The weather is nice today\"\n        }\n    ],\n    \"Prompt\": \"Instruct: Retrieve semantically similar text.\\\\nQuery:\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"Result\": [\n                    -0.0055236816\n                ]\n            }\n        ],\n        \"Usage\": {\n            \"InputTokens\": 15,\n            \"TotalTokens\": 15\n        },\n        \"RequestId\": \"f4de2dd4-bac4-47d8-a983-8ee3ffb92f26\"\n    }\n}",
+        "title": "text_embedding_v1 Model embedding"
       }
     ],
     "EnableSchedule": [

@@ -7,6 +7,13 @@
       "output": "BatchProcessMediaResponse",
       "status": "online"
     },
+    "CloneViral": {
+      "document": "Clone a hit product. Input a reference video of a hit product and a product image to generate a video with aligned style and pace.",
+      "input": "CloneViralRequest",
+      "name": "Clone a hit product",
+      "output": "CloneViralResponse",
+      "status": "online"
+    },
     "CreateAIAnalysisTemplate": {
       "document": "This API is used to create a custom content analysis template. Up to 50 templates can be created.",
       "input": "CreateAIAnalysisTemplateRequest",
@@ -26,6 +33,13 @@
       "input": "CreateAdaptiveDynamicStreamingTemplateRequest",
       "name": "Creates adaptive bitrate streaming templates",
       "output": "CreateAdaptiveDynamicStreamingTemplateResponse",
+      "status": "online"
+    },
+    "CreateAiDramaTask": {
+      "document": "AI comic workflow, input a playbook, automatically split scenes, generate an AI comic",
+      "input": "CreateAiDramaTaskRequest",
+      "name": "Creates an AI comic task",
+      "output": "CreateAiDramaTaskResponse",
       "status": "online"
     },
     "CreateAigcAudioTask": {
@@ -75,6 +89,13 @@
       "input": "CreateContentReviewTemplateRequest",
       "name": "Creates a content moderation template",
       "output": "CreateContentReviewTemplateResponse",
+      "status": "online"
+    },
+    "CreateDocToVideoTask": {
+      "document": "Creates an AIGC document-to-video task",
+      "input": "CreateDocToVideoTaskRequest",
+      "name": "Creates an AIGC document-to-video task",
+      "output": "CreateDocToVideoTaskResponse",
       "status": "online"
     },
     "CreateImageSpriteTemplate": {
@@ -166,6 +187,13 @@
       "input": "CreateTranscodeTemplateRequest",
       "name": "Creates a transcoding template",
       "output": "CreateTranscodeTemplateResponse",
+      "status": "online"
+    },
+    "CreateVideoRedrawTask": {
+      "document": "Creates an AIGC redrawing task",
+      "input": "CreateVideoRedrawTaskRequest",
+      "name": "Creates an AIGC video redrawing task",
+      "output": "CreateVideoRedrawTaskResponse",
       "status": "online"
     },
     "CreateWatermarkTemplate": {
@@ -392,6 +420,13 @@
       "output": "DescribeAigcImageTaskResponse",
       "status": "online"
     },
+    "DescribeAigcTaskStatus": {
+      "document": "Queries AIGC scenario task APIs",
+      "input": "DescribeAigcTaskStatusRequest",
+      "name": "Queries AIGC scenario task APIs",
+      "output": "DescribeAigcTaskStatusResponse",
+      "status": "online"
+    },
     "DescribeAigcVideoTask": {
       "document": "This API is used to query the progress of AIGC video generation tasks and obtain the generation results.",
       "input": "DescribeAigcVideoTaskRequest",
@@ -434,6 +469,13 @@
       "output": "DescribeBlindWatermarkTemplatesResponse",
       "status": "online"
     },
+    "DescribeCloneViralTask": {
+      "document": "Queries the results of a hit product clone task",
+      "input": "DescribeCloneViralTaskRequest",
+      "name": "Queries the results of a hit product clone task",
+      "output": "DescribeCloneViralTaskResponse",
+      "status": "online"
+    },
     "DescribeContentReviewTemplates": {
       "document": "This API is used to query content moderation templates by template ID. Both custom and preset templates that match the template IDs passed in will be returned.",
       "input": "DescribeContentReviewTemplatesRequest",
@@ -460,6 +502,13 @@
       "input": "DescribeImageTaskDetailRequest",
       "name": "Queries the image processing task details",
       "output": "DescribeImageTaskDetailResponse",
+      "status": "online"
+    },
+    "DescribeImageTasks": {
+      "document": "Image processing task query API.",
+      "input": "DescribeImageTasksRequest",
+      "name": "Queries image task list",
+      "output": "DescribeImageTasksResponse",
       "status": "online"
     },
     "DescribeLiveRecordTemplates": {
@@ -649,6 +698,13 @@
       "input": "EditMediaRequest",
       "name": "Edits video",
       "output": "EditMediaResponse",
+      "status": "online"
+    },
+    "EmbeddingData": {
+      "document": "Model embedding API",
+      "input": "EmbeddingDataRequest",
+      "name": "Embedding data",
+      "output": "EmbeddingDataResponse",
       "status": "online"
     },
     "EnableSchedule": {
@@ -848,7 +904,7 @@
       "status": "online"
     },
     "ProcessImage": {
-      "document": "This API is used to initiate image processing, with features including:\n1. Format conversion.\n2. Image enhancement.\n3. Image erasure.",
+      "document": "This API is used to initiate image processing. Its features include:\n1. Format conversion;\n2. Image enhancement;\n3. Image erasure;4. Digital watermark;\n5. Beauty filter;",
       "input": "ProcessImageRequest",
       "name": "Initiates image processing",
       "output": "ProcessImageResponse",
@@ -1711,6 +1767,17 @@
           "example": "无",
           "member": "AddOnAudio",
           "name": "AddOnAudios",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>When not empty, directly replace the StreamInfos field of the template. The field format is the same as the StreamInfos when creating an adaptive template.</p>",
+          "example": "无",
+          "member": "AdaptiveStreamTemplate",
+          "name": "StdExtStreamInfos",
           "output_required": false,
           "required": false,
           "type": "list",
@@ -2752,6 +2819,56 @@
           "output_required": false,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Result path of a video for removal only</p>",
+          "example": "/media/videos/delogo/20260303/delogo-022EE2B93FE8DD3E0AF882915F83C1B76A_1772763376700_erased.mp4",
+          "member": "string",
+          "name": "ErasedVideoPath",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Voice cloning editing information</p><p>Editing information for secondary modifications of voice cloning</p>",
+          "example": "https://ie-mps-1258344699.cos.ap-nanjing.myqcloud.com/common/smart_dub/edit_info/2026/05/27/24000022-WorkflowTask-0d342386c189df00e96584d7c78d0a0dtt110253_edit_info.json",
+          "member": "string",
+          "name": "DubbingEditInfoUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>FileId of a file after removal.</p>",
+          "example": "966263619047559782",
+          "member": "string",
+          "name": "FileId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>FileId of the subtitle file extracted from video.</p>",
+          "example": "966263619047559782",
+          "member": "string",
+          "name": "OriginSubtitleFileId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>FileId of a subtitle translation file extracted from a video.</p>",
+          "example": "966263619047559782",
+          "member": "string",
+          "name": "TranslateSubtitleFileId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2977,6 +3094,36 @@
           "name": "OutputStorage",
           "output_required": true,
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Additional results, currently including subtitle file result URLs</p>",
+          "example": "{\"subtitle_url\":\"https://ie-mps-12.cos.ap-nanjing.myqcloud.com/common/dubbing_1_en_20260529192802_en.vtt\"}",
+          "member": "string",
+          "name": "ExtraOutput",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>FileId of the dubbed video.</p>",
+          "example": "966263619047610987",
+          "member": "string",
+          "name": "VideoFileId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>FileId of the tag file.</p>",
+          "example": "966263619047611987",
+          "member": "string",
+          "name": "SpeakerFileId",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -4309,6 +4456,48 @@
         }
       ],
       "usage": "both"
+    },
+    "AiDramaInput": {
+      "document": "AI‑generated comic input",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>AI comic playbook.</p><p>Parameter format: None</p><p>Input parameter limitation: None</p>",
+          "example": "一个可爱的小兔子去山里采蘑菇，走到途中累了找到一个池塘喝水。",
+          "member": "string",
+          "name": "Script",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>AI comic style</p><p>Enumeration values: </p><ul><li>chinese_ink_wash: Chinese ink‑wash</li><li>fantasy_cyberpunk: fantasy cyberpunk</li><li>japanese_anime_2d: Japanese anime 2D</li></ul><p>Default value: chinese_ink_wash</p><p>Enumeration values: </p><ul><li>realistic_live_action: realistic live action</li><li>chinese_ink_wash: Chinese ink-wash</li><li>fantasy_cyberpunk: fantasy cyberpunk</li><li>japanese_anime_2d: Japanese anime 2D</li></ul><p>Default value: chinese_ink_wash</p>",
+          "example": "chinese_ink_wash",
+          "member": "string",
+          "name": "Style",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Aspect ratio</p><p>Enumeration values: </p><ul><li>16:9: 16:9</li><li>9:16: 9:16</li></ul><p>Default value: 16:9</p>",
+          "example": "16:9",
+          "member": "string",
+          "name": "Ratio",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Output video resolution</p><p>Enumeration values: </p><ul><li>720p: 720p</li><li>1080p: 1080p</li></ul><p>Default value: 720p</p>",
+          "example": "720p",
+          "member": "string",
+          "name": "Resolution",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
     },
     "AiParagraphInfo": {
       "document": "Segment information.",
@@ -5909,6 +6098,34 @@
         }
       ],
       "usage": "out"
+    },
+    "AiRestorationConfig": {
+      "document": "LLM repair",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Capability configuration switch</p><p>Enumeration values: </p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul><p>Default value: OFF</p>",
+          "example": "ON",
+          "member": "string",
+          "name": "Switch",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Strength type</p><p>Enumeration values: </p><ul><li>weak: Weak</li><li>normal: Medium</li><li>strong: Strong</li></ul><p>Default value: normal</p>\nAttention: This field may return null, indicating that no valid values can be obtained.",
+          "example": "strong",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "AiReviewPoliticalAsrTaskInput": {
       "document": "The input parameters for ASR-based detection of politically sensitive information.",
@@ -7702,6 +7919,23 @@
       ],
       "usage": "both"
     },
+    "AigcVideoReferenceAudioInfo": {
+      "document": "Reference audio information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Reference audio URL, which must be accessible from the public network.</p>",
+          "example": "https://g*******api.oss-cn-ha*****u.ali*******o*****eral/audios/2026/*6**0/5*e4*3b6f102442180af5691e7b20e09.mp3",
+          "member": "string",
+          "name": "AudioUrl",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "AigcVideoReferenceImageInfo": {
       "document": "Reference image information for AIGC video generation.",
       "members": [
@@ -9024,6 +9258,266 @@
         }
       ],
       "usage": "in"
+    },
+    "CloneViralAIGC": {
+      "document": "Hit product clone AIGC video parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Video duration</p><p>Range: [4, 15]</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "Duration",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Aspect ratio. Options: 16:9/4:3/1:1/3:4/9:16/21:9/adaptive</p>",
+          "example": "9:16",
+          "member": "string",
+          "name": "AspectRatio",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Resolution. Supports 720p (default)/1080p/2k/4k</p>",
+          "example": "720p",
+          "member": "string",
+          "name": "Resolution",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Model tier. flagship (default), standard</p>",
+          "example": "flagship",
+          "member": "string",
+          "name": "ModelTier",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "CloneViralContent": {
+      "document": "Content/style parameters of hit product clone",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Custom prompt describing requirements for video generation</p>",
+          "example": "在阳光明媚的公园场景中展示产品",
+          "member": "string",
+          "name": "UserPrompt",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Target language for video generation. Default: not specified. Supported values: zh / en / ja / ko / es / pt / instrumental (pure music without voiceover)</p>",
+          "example": "zh",
+          "member": "string",
+          "name": "Language",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Target market. Default: not specified. Supported values: north_america / europe / china / japan / korea / sea / brazil</p>",
+          "example": "China",
+          "member": "string",
+          "name": "Market",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Fission level. Values: exact/low/medium/high. Default: exact (1:1 clone)</p>",
+          "example": "exact",
+          "member": "string",
+          "name": "FissionLevel",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CloneViralPersona": {
+      "document": "Model appearance of hit product clone",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Model gender. Values: male/female/any</p>",
+          "example": "female",
+          "member": "string",
+          "name": "Gender",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Age segment. Values: teenager/youth/middle_aged/senior</p>",
+          "example": "youth",
+          "member": "string",
+          "name": "Age",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Appearance feature. Values: caucasian/asian/latino/african/middle_eastern</p>",
+          "example": "asian",
+          "member": "string",
+          "name": "Ethnicity",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Body type. Values: slim / standard / athletic / chubby</p>",
+          "example": "slim",
+          "member": "string",
+          "name": "BodyType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "CloneViralProduct": {
+      "document": "Product information of hit product clone",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Product image</p>",
+          "example": "[\"https://ie-mps-1258344699.cos-internal.ap-nanjing.tencentcos.cn/common/lauriehuang/viral/test/%E6%B4%97%E9%9D%A2%E5%A5%B6-1.png\"]",
+          "member": "string",
+          "name": "Images",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Product name</p>",
+          "example": "冰丝白裙",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Product description</p>",
+          "example": "凉感冰丝面料，速干透气，多色可选",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "CloneViralRequest": {
+      "document": "CloneViral request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Viral video Url</p>",
+          "example": "https://ie-mps-1258344699.cos-internal.ap-nanjing.tencentcos.cn/common/lauriehuang/viral/test/mianmo-demo-720p.mp4",
+          "member": "string",
+          "name": "VideoUrl",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Product information</p>",
+          "example": "无",
+          "member": "CloneViralProduct",
+          "name": "Product",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>AIGC video-related parameters</p>",
+          "example": "无",
+          "member": "CloneViralAIGC",
+          "name": "AIGCParam",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Content/style-related parameters</p>",
+          "example": "无",
+          "member": "CloneViralContent",
+          "name": "ContentParam",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Model appearance</p>",
+          "example": "无",
+          "member": "CloneViralPersona",
+          "name": "Persona",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CloneViralResponse": {
+      "document": "CloneViral response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task status. FAIL is returned on failure.</p>",
+          "example": "FAIL",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Error message is returned on failure</p>",
+          "example": "check request failed: AIGCParam.Duration must in [4, 15]",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Returned task ID after the task is created successfully. The task progress and generation results can be obtained by calling the query API.</p>",
+          "example": "1300057393-ViralCloneAsync-bfea1147-48d4-418f-87b0-71ba350c38bc",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ColorEnhanceConfig": {
       "document": "Color enhancement configuration.",
@@ -10469,6 +10963,52 @@
       ],
       "type": "object"
     },
+    "CreateAiDramaTaskRequest": {
+      "document": "CreateAiDramaTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>ai comic input</p>",
+          "example": "无",
+          "member": "AiDramaInput",
+          "name": "Input",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>User cos information</p>",
+          "example": "无",
+          "member": "VideoDramaCosInfo",
+          "name": "CosInfo",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAiDramaTaskResponse": {
+      "document": "CreateAiDramaTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "68459f79-bdce-52c8-4b86-5d446adbbee0",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateAigcAudioTaskRequest": {
       "document": "CreateAigcAudioTask request structure.",
       "members": [
@@ -10483,7 +11023,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Specifies the model version. By default, the system uses the supported stable version of the model.<br>Supported versions for GL: 3.0-clip and 3.0-pro.<br>Supported versions for MinimaxMusic: 2.0, 2.5, and 2.6.</p>",
+          "document": "<p>Specifies the model version. By default, the system uses the supported stable version of the model.<br>Supported versions for GL: 3.0-clip and 3.0-pro.<br>Supported versions for MiniMaxMusic: 2.0, 2.5, and 2.6.</p>",
           "example": "1.0",
           "member": "string",
           "name": "ModelVersion",
@@ -10555,7 +11095,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>This is used to specify special scenario parameters required by the model, in the format of a serialized JSON string.<br>Example to specify lyrics for the MinimaxMusic model:<br>{\"lyric\":{\"The pony is running with joy. The flowers are blooming.\"}}</p>",
+          "document": "<p>This is used to specify special scenario parameters required by the model, in the format of a serialized JSON string.<br>Example to specify lyrics for the MinimaxMusic model:<br>{\"lyric\":{\"The pony is running with joy. The flowers are blooming.\"}}</p><ol><li>Example for MiniMaxMusic instrumental music: &quot;AdditionalParameters&quot;:&quot;{\"is_instrumental\":true}&quot;</li></ol>",
           "example": "{\"sequential_image_generation\":\"auto\"}",
           "member": "string",
           "name": "AdditionalParameters",
@@ -10822,6 +11362,15 @@
           "example": "无",
           "member": "AigcVideoReferenceVideoInfo",
           "name": "VideoInfos",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Some models support reference audio input via URL.</p>",
+          "example": "无",
+          "member": "AigcVideoReferenceAudioInfo",
+          "name": "AudioInfos",
           "required": false,
           "type": "list"
         },
@@ -11221,6 +11770,52 @@
           "name": "Definition",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDocToVideoTaskRequest": {
+      "document": "CreateDocToVideoTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Input information for AIGC document‑to‑video generation</p>",
+          "example": "无",
+          "member": "DocToVideoInput",
+          "name": "Input",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>User cos information, used to store the generation result</p>",
+          "example": "无",
+          "member": "DocToVideoCosInfo",
+          "name": "CosInfo",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDocToVideoTaskResponse": {
+      "document": "CreateDocToVideoTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "e084efaa-d25************6b85e473c0e5",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -12396,6 +12991,61 @@
           "name": "Definition",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateVideoRedrawTaskRequest": {
+      "document": "CreateVideoRedrawTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Input the url information of the video to be redrawn</p>",
+          "example": "无",
+          "member": "VideoRedrawInput",
+          "name": "Input",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>User cos information, used to store the generation result</p>",
+          "example": "无",
+          "member": "VideoRedrawCosInfo",
+          "name": "CosInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>ai redrawing task information</p>",
+          "example": "无",
+          "member": "VideoRedrawTaskInfo",
+          "name": "TaskInfo",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateVideoRedrawTaskResponse": {
+      "document": "CreateVideoRedrawTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "d6f9bb2a-d1cd-****-447a-a4842e4279c6",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -13767,6 +14417,133 @@
       ],
       "type": "object"
     },
+    "DescribeAigcTaskStatusRequest": {
+      "document": "DescribeAigcTaskStatus request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "c50f6094-3b56-a1fa-e616-0eec386bfc36",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAigcTaskStatusResponse": {
+      "document": "DescribeAigcTaskStatus response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "c50f6094-3b56-a1fa-e616-0eec386bfc36",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task status description</p><p>Enumeration values: </p><ul><li>PENDING: Task waiting for scheduling</li><li>RUNNING: Task running</li><li>FINISHED: Task executed successfully</li><li>STOP: Task termination</li><li>FAILED: Task failure</li><li>TIMEOUT: Task timeout</li></ul>",
+          "example": "FINISHED",
+          "member": "string",
+          "name": "TaskStatus",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Output url</p>\nAttention: This field may return null, indicating that no valid values can be obtained.",
+          "example": "https://aigc-redraw-output-1326893053.cos.ap-guangzhou.myqcloud.com/aigc-c50f6094-3b56-a1fa-e616-0eec386bfc36-202606012044-0.mp4",
+          "member": "string",
+          "name": "OutputUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task creation time</p>",
+          "example": "2026-06-01 20:40:50",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task scheduling time</p>",
+          "example": "2026-06-01 20:40:51",
+          "member": "string",
+          "name": "ScheduledTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task completion time</p>",
+          "example": "2026-06-01 20:44:32",
+          "member": "string",
+          "name": "FinishedTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task error code</p>",
+          "example": "-401",
+          "member": "int64",
+          "name": "TaskResultCode",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task returned error message</p>",
+          "example": "Save to cos failed",
+          "member": "string",
+          "name": "TaskResultMsg",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Request structure</p>",
+          "example": "{\"Input\":{\"Url\":\"https://lewis-1302487817.cos.ap-guangzhou.myqcloud.com/replace-test/1s.mp4\"},\"Action\":\"CreateVideoRedrawTask\",\"RequestId\":\"5f4f34f0-f6eb-435f-8c2f-252fba384bf6\",\"Uin\":\"1129136604\",\"ApiModule\":\"mps\",\"Region\":\"\",\"AppId\":251006278}",
+          "member": "string",
+          "name": "RequestBody",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task type</p>",
+          "example": "AIDrama",
+          "member": "string",
+          "name": "TaskType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeAigcVideoTaskRequest": {
       "document": "DescribeAigcVideoTask request structure.",
       "members": [
@@ -14460,6 +15237,63 @@
       ],
       "type": "object"
     },
+    "DescribeCloneViralTaskRequest": {
+      "document": "DescribeCloneViralTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID returned from the hit product clone creation task request</p>",
+          "example": "24000191-ViralClone-92e56dab-2a5b-4537-b49f-854563d4903f",
+          "member": "string",
+          "name": "TaskId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCloneViralTaskResponse": {
+      "document": "DescribeCloneViralTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task status</p><p>Enumeration values: </p><ul><li>WAIT: Waiting</li><li>RUN: Executing</li><li>FAIL: Task failed</li><li>DONE: Task succeeded</li></ul>",
+          "example": "DONE",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Error message is returned on failure</p>",
+          "example": "success",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>When the task status is DONE, the list of video URLs is returned. The videos are stored for 24 hours.</p>",
+          "example": "[\"https://laurie-tmp-1300828900.cos.ap-nanjing.myqcloud.com/viral_clone/20260720/24000191-ViralClone-92e56dab-2a5b-4537-b49f-854563d4903f/clip.mp4\"]",
+          "member": "string",
+          "name": "VideoUrls",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeContentReviewTemplatesRequest": {
       "document": "DescribeContentReviewTemplates request structure.",
       "members": [
@@ -14839,6 +15673,108 @@
           "name": "InputInfo",
           "output_required": false,
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeImageTasksRequest": {
+      "document": "DescribeImageTasks request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task status filter condition.</p>",
+          "example": "FINISH",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of returned records.</p>",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Scrolling identifier which is used for pulling in batches. If a single request cannot pull all the data entries, the API will return `ScrollToken`, and if the next request carries it, the next pull will start from the next entry.</p>",
+          "example": "********-WorkflowTask-********************************tt6",
+          "member": "string",
+          "name": "ScrollToken",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task start time.</p><p>Parameter format: YYYY-MM-DDThh:mm:ssZ</p>",
+          "example": "2026-03-16T11:58:58Z",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task end time.</p><p>Parameter format: YYYY-MM-DDThh:mm:ssZ</p>",
+          "example": "2026-03-18T02:48:36Z",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Filter subtask status.</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "SubTaskHasFailed",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeImageTasksResponse": {
+      "document": "DescribeImageTasks response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total number of records that meet filter conditions.</p><p>Unit: entries</p>",
+          "example": "13",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Scrolling identifier. If a request does not return all the data entries, this field indicates the ID of the next entry. If this field is an empty string, there is no more data.</p>",
+          "example": "********-WorkflowTask-********************************tt6",
+          "member": "string",
+          "name": "ScrollToken",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Image task summary list.</p>",
+          "example": "无",
+          "member": "ImageTaskInfo",
+          "name": "TaskSet",
+          "output_required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -16515,6 +17451,16 @@
         },
         {
           "disabled": false,
+          "document": "<p>Total number of voices that meet the search criteria</p>",
+          "example": "1903",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
           "document": "<p>Available voice list.</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "VoiceInfo",
@@ -17145,6 +18091,126 @@
       ],
       "type": "object"
     },
+    "DocToVideoCosInfo": {
+      "document": "cos information. Stores user‑provided cos information for saving results",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>cos bucket region</p>",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "CosBucketRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>cos bucket name</p>",
+          "example": "mps-guangzhou-1-1326534690",
+          "member": "string",
+          "name": "CosBucketName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>cos bucket path</p>",
+          "example": "/sichun 测试",
+          "member": "string",
+          "name": "CosBucketPath",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "DocToVideoInput": {
+      "document": "AIGC document‑to‑video input",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Document link for video generation.</p><p>Supported document types: pdf, pptx, docx, png, jpg<br>Document count limit: 3<br>Document size limit: 10MB<br>Document page limit: 100</p>",
+          "example": "[\"https://aigc-test-image-1303333058.cos.ap-guangzhou.myqcloud.com/test_menglinli/doc2video/sample_min.docx\"]",
+          "member": "string",
+          "name": "FileUrl",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Prompt information for video generation.</p><p>Prompt length limit: 2,000 characters.</p>",
+          "example": "根据文档内容，帮我生成一个教学视频",
+          "member": "string",
+          "name": "Prompt",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Document-to-video model name</p><p>Default value: Wand</p>",
+          "example": "Wand",
+          "member": "string",
+          "name": "ModelName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Document-to-video model version number</p><p>Default value: 1.0</p>",
+          "example": "1.0",
+          "member": "string",
+          "name": "ModelVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Aspect ratio of the generated video.</p><p>Enumeration values: </p><ul><li>16:9: 16:9</li><li>9:16: 9:16</li><li>1:1: 1:1</li></ul><p>Default value: 16:9</p>",
+          "example": "1:1",
+          "member": "string",
+          "name": "Ratio",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Language of the generated video.</p><p>Enumeration values: </p><ul><li>zh: Chinese</li><li>en: English</li><li>ja: Japanese</li><li>ko: Korean</li><li>ru: Russian</li><li>fr: French</li><li>es: Spanish</li><li>de: German</li></ul><p>Default value: zh</p>",
+          "example": "zh",
+          "member": "string",
+          "name": "Language",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Video duration for reference.</p><p>This is not an exact duration; it serves as a reference for the LLM only.</p><p>Range: [15, 1200]</p><p>Unit: second</p>",
+          "example": "15",
+          "member": "int64",
+          "name": "ReferenceDuration",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether the AI dubbing feature is enabled.</p><p>Default value: false</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "EnableTTS",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Voice ID. Valid only when AI dubbing feature is enabled.</p>",
+          "example": "v1_shUQBcs3N6VrPd9RMTf50H7M5kxeZ1VHIiWGDzq5Q9pE0HoEQ959hpulWHGFZSp3v4w=",
+          "member": "string",
+          "name": "VoiceId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
     "DrmInfo": {
       "document": "The DRM encryption details.",
       "members": [
@@ -17483,6 +18549,111 @@
           "name": "Path",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "EmbeddingData": {
+      "document": "Embedding API input:\nType   Data type; currently only supports textData  Data content; currently only supports text strings",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Data type</p><p>Enumeration values:</p><ul><li>text: Text</li></ul>",
+          "example": "text",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Data content. When Type is text, it is a text string.</p>",
+          "example": "你好天气不错",
+          "member": "string",
+          "name": "Data",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "EmbeddingDataRequest": {
+      "document": "EmbeddingData request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Embedding model; currently only supports text_embedding_v1</p><p>Enumeration values: </p><ul><li>text_embedding_v1: The text embedding model. Prompt can be filled.</li></ul>",
+          "example": "text_embedding_v1",
+          "member": "string",
+          "name": "Model",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Embedding input</p>",
+          "example": "无",
+          "member": "EmbeddingData",
+          "name": "Files",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Prompt for embedding input</p>",
+          "example": "Instruct: Retrieve semantically similar text.\\nQuery:",
+          "member": "string",
+          "name": "Prompt",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EmbeddingDataResponse": {
+      "document": "EmbeddingData response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Embedding result</p>",
+          "example": "无",
+          "member": "EmbeddingResultItem",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Token usage of the embedding</p>",
+          "example": "无",
+          "member": "TokensUsage",
+          "name": "Usage",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EmbeddingResultItem": {
+      "document": "Embedding result",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Vector</p>",
+          "example": "[-0.008972168]",
+          "member": "float",
+          "name": "Result",
+          "output_required": true,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -18605,7 +19776,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Path of the output file.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "<p>Path of the output file.</p>\nAttention: This field may return null, indicating that no valid values can be obtained.",
           "example": "/output/test.jpeg",
           "member": "string",
           "name": "Path",
@@ -18615,7 +19786,7 @@
         },
         {
           "disabled": false,
-          "document": "Storage location of the output file.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "<p>Storage location of the output file.</p>\nAttention: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "TaskOutputStorage",
           "name": "OutputStorage",
@@ -18625,10 +19796,20 @@
         },
         {
           "disabled": false,
-          "document": "Processing result of the image-to-text task.",
+          "document": "<p>Processing result of the image-to-text task.</p>",
           "example": "\"图片中有一个美丽的女士\"",
           "member": "string",
           "name": "Content",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>VOD Standard Edition FileId</p>",
+          "example": "123162389179",
+          "member": "string",
+          "name": "FileId",
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
@@ -18947,6 +20128,89 @@
         }
       ],
       "usage": "out"
+    },
+    "ImageTaskInfo": {
+      "document": "Task overview for image processing.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>TaskId of the image processing task.</p>",
+          "example": "********-WorkflowTask-********************************tt6",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task status.</p><p>Enumeration values: </p><ul><li>FINISH: Task completion</li><li>PROCESSING: Task processing</li></ul>",
+          "example": "PROCESSING",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Input file.</p>",
+          "example": "http://****-*******-***********cos*********.ap-********.tencentcos.cn/*****/*********/*********.jpeg",
+          "member": "string",
+          "name": "Input",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Creation time.</p><p>Parameter format: YYYY-MM-DDThh:mm:ssZ</p>",
+          "example": "2026-03-18T03:40:43Z",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Processing start time.</p><p>Parameter format: YYYY-MM-DDThh:mm:ssZ</p>",
+          "example": "2026-03-18T03:40:43Z",
+          "member": "string",
+          "name": "BeginProcessTime",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>End time.</p><p>Parameter format: YYYY-MM-DDThh:mm:ssZ</p>",
+          "example": "2026-03-16T11:59:00Z",
+          "member": "string",
+          "name": "FinishTime",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subtask failure identifier.</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "SubTaskHasFailed",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "ImageTaskInput": {
       "document": "Image task input parameters",
@@ -26527,7 +27791,7 @@
           "example": "无",
           "member": "MediaInputInfo",
           "name": "InputInfo",
-          "required": true,
+          "required": false,
           "type": "object"
         },
         {
@@ -32427,6 +33691,17 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>FileId of the subtitle file.</p>",
+          "example": "966263619047610987",
+          "member": "string",
+          "name": "SubtitleFileId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -32844,6 +34119,16 @@
           "example": "/subtitles/1027/xxx.mp4",
           "member": "string",
           "name": "SubtitleEmbedPath",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>FileId of the subtitle file.</p>",
+          "example": "966263619047610987",
+          "member": "string",
+          "name": "SubtitleFileId",
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
@@ -34102,6 +35387,42 @@
       ],
       "usage": "both"
     },
+    "TokensUsage": {
+      "document": "token usage",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Input token count</p>",
+          "example": "15",
+          "member": "uint64",
+          "name": "InputTokens",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Output token count</p>",
+          "example": "0",
+          "member": "uint64",
+          "name": "OutputTokens",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total token count, generally input + output</p>",
+          "example": "15",
+          "member": "uint64",
+          "name": "TotalTokens",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "TrackInfo": {
       "document": "Audio track info.",
       "members": [
@@ -35171,11 +36492,11 @@
       "usage": "in"
     },
     "VODInputInfo": {
-      "document": "VOD Pro object information for MPS.",
+      "document": "Media processing VOD object information.",
       "members": [
         {
           "disabled": false,
-          "document": "Specifies the Bucket ID where the input file resides.",
+          "document": "<p><em>Bucket ID</em> where the media processing object file resides</p>",
           "example": "a00ehq6ocdmo0exn",
           "member": "string",
           "name": "Bucket",
@@ -35186,7 +36507,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the region where the input file's Bucket resides.",
+          "document": "<p>Region of the Bucket where the media processing object file resides</p>",
           "example": "ap-chongqing",
           "member": "string",
           "name": "Region",
@@ -35197,7 +36518,7 @@
         },
         {
           "disabled": false,
-          "document": "Path of the input file.",
+          "document": "<p>Input path of the media processing object file</p>",
           "example": "/movie/201907/WildAnimal.mov",
           "member": "string",
           "name": "Object",
@@ -35208,7 +36529,7 @@
         },
         {
           "disabled": false,
-          "document": "VOD Pro application Id.",
+          "document": "<p>VOD application ID.</p>",
           "example": "220762",
           "member": "uint64",
           "name": "SubAppId",
@@ -35216,16 +36537,38 @@
           "required": false,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to use VOD Standard Edition.<br>Attention: If left empty, VOD Pro Edition is used.</p><p>Enumeration values: </p><ul><li>Use VOD Pro Edition</li><li>Use VOD Standard Edition, allowing tasks to be initiated with FileId</li></ul><p>Default value: 0</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "VodBasic",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>VOD Standard Edition FileId</p>",
+          "example": "966263619047610987",
+          "member": "string",
+          "name": "FileId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
     },
     "VODOutputStorage": {
-      "document": "VOD Pro output object information for MPS.",
+      "document": "Media processing VOD output object information.",
       "members": [
         {
           "disabled": false,
-          "document": "Specifies the destination Bucket ID for the generated output file of MPS.",
+          "document": "<p>Target <em>Bucket ID</em> for the output file generated by media processing</p>",
           "example": "a00ehq6ocdmo0exn",
           "member": "string",
           "name": "Bucket",
@@ -35236,7 +36579,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the region of the target Bucket for the output.",
+          "document": "<p>Region of the target Bucket for the output file generated by media processing</p>",
           "example": "ap-chongqing",
           "member": "string",
           "name": "Region",
@@ -35247,10 +36590,21 @@
         },
         {
           "disabled": false,
-          "document": "VOD Pro application Id.",
+          "document": "<p>VOD application ID</p>",
           "example": "220762",
           "member": "uint64",
           "name": "SubAppId",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to use VOD Standard Edition.<br>Attention: If left empty, VOD Pro Edition is used.</p><p>Enumeration values: </p><ul><li>0: Do not use VOD Standard Edition</li><li>1: Use VOD Standard Edition</li></ul>",
+          "example": "1",
+          "member": "int64",
+          "name": "VodBasic",
           "output_required": false,
           "required": false,
           "type": "int",
@@ -35343,12 +36697,45 @@
       ],
       "usage": "both"
     },
+    "VideoDramaCosInfo": {
+      "document": "aigc cos information. Stores user‑provided cos information for saving results",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>cos bucket region</p>",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "CosBucketRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>cos bucket name</p>",
+          "example": "111-1251952100",
+          "member": "string",
+          "name": "CosBucketName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>cos bucket path</p>",
+          "example": "1",
+          "member": "string",
+          "name": "CosBucketPath",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
     "VideoEnhanceConfig": {
       "document": "Video enhancement configuration.",
       "members": [
         {
           "disabled": false,
-          "document": "Frame rate configuration (old) for the frame interpolation. New users are recommended to use FrameRateWithDen for configuring the frame rate of frame interpolation, which supports fractions and provides better results. Note that FrameRate and FrameRateWithDen are mutually exclusive; configuring both simultaneously may cause task failures. The configuration does not take effect if the source frame rate is greater than or equal to the target frame rate.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Frame rate configuration (old) for the frame interpolation. New users are recommended to use FrameRateWithDen for configuring the frame rate of frame interpolation, which supports fractions and provides better results. Note that FrameRate and FrameRateWithDen are mutually exclusive; configuring both simultaneously may cause task failures. The configuration does not take effect if the source frame rate is greater than or equal to the target frame rate.</p>\nAttention: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "FrameRateConfig",
           "name": "FrameRate",
@@ -35359,7 +36746,7 @@
         },
         {
           "disabled": false,
-          "document": "Super-resolution configuration. The video is not processed when the source resolution is higher than the target resolution. Note that it cannot be enabled simultaneously with Large Model enhancement.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Super-resolution configuration. The video is not processed when the source resolution is higher than the target resolution. Note that it cannot be enabled simultaneously with LLM enhancement.</p>\nAttention: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "SuperResolutionConfig",
           "name": "SuperResolution",
@@ -35370,7 +36757,7 @@
         },
         {
           "disabled": false,
-          "document": "HDR configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>HDR configuration.</p>\nAttention: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "HdrConfig",
           "name": "Hdr",
@@ -35381,7 +36768,7 @@
         },
         {
           "disabled": false,
-          "document": "Video noise reduction configuration. Note that it cannot be enabled simultaneously with LLM enhancement.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Video noise reduction configuration. Note that it cannot be enabled simultaneously with LLM enhancement.</p>\nAttention: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "VideoDenoiseConfig",
           "name": "Denoise",
@@ -35392,7 +36779,7 @@
         },
         {
           "disabled": false,
-          "document": "Comprehensive enhancement configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Comprehensive enhancement configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured.</p>\nAttention: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ImageQualityEnhanceConfig",
           "name": "ImageQualityEnhance",
@@ -35403,7 +36790,7 @@
         },
         {
           "disabled": false,
-          "document": "Color enhancement configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Color enhancement configuration.</p>Attention: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ColorEnhanceConfig",
           "name": "ColorEnhance",
@@ -35414,7 +36801,7 @@
         },
         {
           "disabled": false,
-          "document": "Low-light enhancement configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Low-light enhancement configuration.</p>Attention: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "LowLightEnhanceConfig",
           "name": "LowLightEnhance",
@@ -35425,7 +36812,7 @@
         },
         {
           "disabled": false,
-          "document": "Banding removal configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Scratch removal configuration.</p>Attention: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ScratchRepairConfig",
           "name": "ScratchRepair",
@@ -35436,7 +36823,7 @@
         },
         {
           "disabled": false,
-          "document": "Artifacts removal configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Artifacts removal configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured.</p>\nAttention: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ArtifactRepairConfig",
           "name": "ArtifactRepair",
@@ -35447,7 +36834,7 @@
         },
         {
           "disabled": false,
-          "document": "Enhancement scenario configuration. Valid values:\n<li>common: common enhancement parameters, which are basic optimization parameters suitable for various video types, enhancing overall image quality.</li>\n<li>AIGC: overall resolution enhancement. It uses AI technology to improve the overall video resolution and image clarity.</li>\n<li>short_play: enhance facial and subtitle details, emphasizing characters' facial expressions and subtitle clarity to improve the viewing experience.</li>\n<li>short_video: optimize complex and diverse image quality issues, tailoring quality enhancements for the complex scenarios such as short videos to address various visual issues.</li>\n<li>game: fix motion blur and enhance details, with a focus on enhancing the clarity of game details and restoring blurry areas during motions to make the image content during gaming clearer and richer.</li>\n<li>HD_movie_series: provide a smooth playback effect for UHD videos. Standard 4K HDR videos with an FPS of 60 are generated to meet the needs of broadcasting/OTT for UHD videos. Formats for broadcasting scenarios are supported.</li>\n<li>LQ_material: low-definition material/old video restoration. It enhances overall resolution, and solves issues of old videos, such as low resolution, blur, distortion, scratches, and color temperature due to their age.</li>\n<li>lecture: live shows, e-commerce, conferences, and lectures. It improves the face display effect and performs specific optimizations, including face region enhancement, noise reduction, and artifacts removal, for scenarios involving human explanation, such as live shows, e-commerce, conferences, and lectures.</li>\n<li>Input of a null string indicates that the enhancement scenario is not used.</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Enhancement scenario configuration. Valid values:</p><li>common: common enhancement parameters, which are basic optimization parameters suitable for various video types, enhancing overall image quality.</li><li>AIGC: overall resolution enhancement. It uses AI technology to improve the overall video resolution and image clarity.</li><li>short_play (short dramas &amp; AI human-like dramas): enhance facial and subtitle details, emphasizing characters' facial expressions and subtitle clarity to improve the viewing experience.</li><li>ai_comic: enhance details in comic-style visuals.</li><li>short_video: optimize complex and diverse image quality issues, tailoring quality enhancements for the complex scenarios such as short videos to address various visual issues.</li><li>game: fix motion blur and enhance details, with a focus on enhancing the clarity of game details and restoring blurry areas during motions to make the image content during gaming clearer and richer.</li><li>HD_movie_series: provide a smooth playback effect for UHD videos. Standard 4K HDR videos with an FPS of 60 are generated to meet the needs of broadcasting/OTT for UHD videos. Formats for broadcasting scenarios are supported.</li><li>LQ_material: low-definition material/old video restoration. It enhances overall resolution, and solves issues of old videos, such as low resolution, blur, distortion, scratches, and color temperature due to their age.</li><li>lecture: live shows, e-commerce, conferences, and lectures. It improves the face display effect and performs specific optimizations, including face region enhancement, noise reduction, and artifacts removal, for scenarios involving human explanation, such as live shows, e-commerce, conferences, and lectures.</li><li>Input of a null string indicates that the enhancement scenario is not used.</li>\nAttention: This field may return null, indicating that no valid values can be obtained.",
           "example": "common",
           "member": "string",
           "name": "EnhanceSceneType",
@@ -35458,7 +36845,7 @@
         },
         {
           "disabled": false,
-          "document": "Large Model enhancement configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured. It cannot be enabled simultaneously with super-resolution and noise reduction.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>LLM enhancement configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured. It cannot be enabled simultaneously with super-resolution and noise reduction.</p>Attention: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DiffusionEnhanceConfig",
           "name": "DiffusionEnhance",
@@ -35469,7 +36856,7 @@
         },
         {
           "disabled": false,
-          "document": "New frame rate configuration for the frame interpolation, which supports fractions. Note that it is mutually exclusive with FrameRate. The configuration does not take effect if the source frame rate is greater than or equal to the target frame rate.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>New frame rate configuration for the frame interpolation, which supports fractions. Note that it is mutually exclusive with FrameRate. The configuration does not take effect if the source frame rate is greater than or equal to the target frame rate.</p>Attention: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "FrameRateWithDenConfig",
           "name": "FrameRateWithDen",
@@ -35477,6 +36864,82 @@
           "required": false,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>LLM repair configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured. It cannot be enabled simultaneously with super-resolution and noise reduction.</p>Attention: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AiRestorationConfig",
+          "name": "AiRestoration",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "VideoRedrawCosInfo": {
+      "document": "aigc cos information. Stores user‑provided cos information for saving results",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>cos bucket region</p>",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "CosBucketRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>cos bucket name</p>",
+          "example": "111-1251952100",
+          "member": "string",
+          "name": "CosBucketName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>cos bucket path</p>",
+          "example": "/output",
+          "member": "string",
+          "name": "CosBucketPath",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "VideoRedrawInput": {
+      "document": "Input source for video redrawing",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Input the video URL to be redrawn</p>",
+          "example": "https://****************.cos.ap-guangzhou.myqcloud.com/fod_1.mp4",
+          "member": "string",
+          "name": "Url",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "VideoRedrawTaskInfo": {
+      "document": "AIGC redrawing and replacement task parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Convert the video style, such as anime, cyberpunk, and ink wash</p>",
+          "example": "粘土风",
+          "member": "string",
+          "name": "Style",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
