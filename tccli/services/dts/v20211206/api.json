@@ -2875,6 +2875,17 @@
         },
         {
           "disabled": false,
+          "document": "Table selection mode, which is required if `DBMode` is `Partial` for postgresql or sqlserver. Valid values: `All`, `Partial`. To sync an entire schema, set this parameter to `All`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Partial",
+          "member": "string",
+          "name": "SchemaMode",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
           "document": "Table selection mode, which is required if `DBMode` is `Partial`. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "All",
           "member": "string",
@@ -2963,7 +2974,7 @@
         },
         {
           "disabled": false,
-          "document": "Trigger sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`. Currently, the advanced object “trigger” is not supported for data sync.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Trigger sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`. Currently, the advanced object \"trigger\" is not supported for data sync.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "Partial",
           "member": "string",
           "name": "TriggerMode",
@@ -2985,7 +2996,7 @@
         },
         {
           "disabled": false,
-          "document": "Event sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`. Currently, the advanced object “event” is not supported for data sync.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Event sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`. Currently, the advanced object \"event\" is not supported for data sync.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "Partial",
           "member": "string",
           "name": "EventMode",
@@ -7658,6 +7669,17 @@
           "required": false,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "A redundant field that specifies the online DDL type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "OnlineDDL",
+          "name": "OnlineDDL",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -7687,6 +7709,23 @@
         }
       ],
       "usage": "out"
+    },
+    "OnlineDDL": {
+      "document": "Online DDL type",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ON",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "Options": {
       "document": "Data sync options",

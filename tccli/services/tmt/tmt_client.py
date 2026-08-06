@@ -17,7 +17,7 @@ from tencentcloud.tmt.v20180321 import models as models_v20180321
 from jmespath import search
 import time
 
-def doTextTranslate(args, parsed_globals):
+def doImageTranslateLLM(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -51,11 +51,11 @@ def doTextTranslate(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.TmtClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.TextTranslateRequest()
+    model = models.ImageTranslateLLMRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.TextTranslate(model)
+        rsp = client.ImageTranslateLLM(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -85,7 +85,7 @@ MODELS_MAP = {
 }
 
 ACTION_MAP = {
-    "TextTranslate": doTextTranslate,
+    "ImageTranslateLLM": doImageTranslateLLM,
 
 }
 

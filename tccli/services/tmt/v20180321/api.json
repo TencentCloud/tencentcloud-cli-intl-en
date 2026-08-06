@@ -1,10 +1,10 @@
 {
   "actions": {
-    "TextTranslate": {
-      "document": "This API is used to translate text in multiple language pairs, such as Chinese-English.<br />\nNote: We recommend that you simplify your development with the SDK integration mode. For how to use the SDK, see Section 5 \"Developer Resources\".",
-      "input": "TextTranslateRequest",
-      "name": "Translates text",
-      "output": "TextTranslateResponse",
+    "ImageTranslateLLM": {
+      "document": "This API is used to provide translation service for images in 18 languages. It can automatically recognize text content in images and translate it into the target language. The recognized text is translated line by line, and a version that supports paragraph translation will be offered subsequently.\n\n-Input image format: png, jpg, jpeg and other common image formats. gif animation is not supported.\n-Output image format: jpg.\n\nNotification: For general developers, we recommend prioritizing SDK integration to simplify development. For SDK usage introduction, directly view the 5. Developer Resources part.",
+      "input": "ImageTranslateLLMRequest",
+      "name": "End-to-end image translation",
+      "output": "ImageTranslateLLMResponse",
       "status": "online"
     }
   },
@@ -14,31 +14,96 @@
     "serviceShortName": "tmt"
   },
   "objects": {
-    "TextTranslateRequest": {
-      "document": "TextTranslate request structure.",
+    "BoundingBox": {
+      "document": "Paragraph text box location: x, y represent the top-left corner, width and height represent width and height.",
       "members": [
         {
           "disabled": false,
-          "document": "The texts to be translated, which must be encoded in UTF-8 and can contain up to 2,000 characters in a request. For non-pure texts such as those with HTML tags, the translation may fail.",
-          "example": "hello",
+          "document": "<p>x-coordinate of the top-left corner</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "X",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>y-coordinate of the top-left corner</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "Y",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Width.</p><p>Unit: px.</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "Width",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>High.</p><p>Unit: px.</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "Height",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Coord": {
+      "document": "Coordinate details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "X coordinate",
+          "example": "10",
+          "member": "int64",
+          "name": "X",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Y-axis coordinate",
+          "example": "10",
+          "member": "int64",
+          "name": "Y",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ImageTranslateLLMRequest": {
+      "document": "ImageTranslateLLM request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Base64 string of the image data, no more than 9M after Base64 encoding. A resolution of 600*800 or higher is recommended. PNG, JPG, and JPEG formats are supported.</p>",
+          "example": "/9j/4QlQaHR0c...N6a2M5ZCI",
           "member": "string",
-          "name": "SourceText",
+          "name": "Data",
           "required": true,
           "type": "string"
         },
         {
           "disabled": false,
-          "document": "Supported source languages:\nauto: Automatic language detection\nzh: Simplified Chinese\nzh_TW: Traditional Chinese\nen: English\nja: Japanese\nfr: French\nes: Spanish\nit: Italian\nde: German\ntr: Turkish\nru: Russian\npt: Portuguese\nvi: Vietnamese\nid: Bahasa Indonesian\nth: Thai\nms: Malay\nar: Arabic\nhi: Hindi",
+          "document": "<p>Target language, supported languages:</p><ul><li>Chinese: zh</li><li>Traditional (Taiwan): zh-TW</li><li>Traditional (Hong Kong (China)): zh-HK</li><li>English: en</li><li>Japanese: ja</li><li>Korean: ko</li><li>Thai: th</li><li>Vietnamese: vi</li><li>Russian: ru</li><li>German: de</li><li>French: fr</li><li>Arabic: ar</li><li>Spanish: es</li><li>Italian: it</li><li>Indonesian: id</li><li>Malay language: ms</li><li>Portuguese: pt</li><li>Turkish: tr<br>-</li></ul>",
           "example": "en",
-          "member": "string",
-          "name": "Source",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Supported target languages for the above source languages:\n\n<li>zh (Simplified Chinese): en (English), ja (Japanese), fr (French), es (Spanish), it (Italian), de (German), tr (Turkish), ru (Russian), pt (Portuguese), vi (Vietnamese), id (Bahasa Indonesian), th (Thai), and ms (Malay)</li>\n<li>zh-TW (Traditional Chinese): en (English), ja (Japanese), fr (French), es (Spanish), it (Italian), tr (Turkish), ru (Russian), pt (Portuguese), vi (Vietnamese), id (Bahasa Indonesian), th (Thai), and ms (Malay)</li>\n<li>en (English): zh (Simplified Chinese), zh-TW (Traditional Chinese), ja (Japanese), fr (French), es (Spanish), it (Italian), de (German), tr (Turkish), vi (Vietnamese), id (Bahasa Indonesian), th (Thai), ms (Malay), and hi (Hindi)</li>\n<li>fr (French): zh (Simplified Chinese), zh-TW (Traditional Chinese) and en (English)</li>\n<li>it (Italian): zh (Simplified Chinese), zh-TW (Traditional Chinese) and en (English)</li>\n<li>de (German): zh (Simplified Chinese), zh-TW (Traditional Chinese) and en (English)</li>\n<li>ru (Russian): zh (Simplified Chinese) and zh-TW (Traditional Chinese)</li>\n<li>tr (Turkish): zh (Simplified Chinese) and zh-TW (Traditional Chinese)</li>\n<li>pt (Portuguese): zh (Simplified Chinese) and tr (Turkish)</li>\n<li>es (Spanish): zh (Simplified Chinese), zh-TW (Traditional Chinese) and en (English)</li>\n<li>ja (Japanese): zh (Simplified Chinese), zh-TW (Traditional Chinese) and en (English)</li>\n<li>vi (Vietnamese): zh (Simplified Chinese), zh-TW (Traditional Chinese) and en (English)</li>\n<li>th (Thai): zh (Simplified Chinese) and en (English)</li>\n<li>id (Bahasa Indonesian): zh (Simplified Chinese), zh-TW (Traditional Chinese) and en (English)</li>\n<li>ms (Malay): zh (Simplified Chinese) and zh-TW (Traditional Chinese)</li>\n<li>ar (Arabic): en (English)</li>\n<li>hi (Hindi): en (English)</li>",
-          "example": "zh",
           "member": "string",
           "name": "Target",
           "required": true,
@@ -46,59 +111,41 @@
         },
         {
           "disabled": false,
-          "document": "The project ID, which can be obtained from **Console -> Account Center -> Project Management**. If no one is set, enter the default project ID `0`.",
-          "example": "0",
-          "member": "int64",
-          "name": "ProjectId",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "The parameter used to mark the text content that needs to remain untranslated, such as special symbols and names of people and places. You can set only one word for this parameter in each request. Only nouns (like names of people and places) are supported, and verbs or phrases may cause poor translation outcomes.",
-          "example": "John",
+          "document": "<p>Enter image Url. When using a Url, the Data parameter requires the input of \"\". Image restrictions: less than 10MB, resolution recommendation 600*800 or higher, format support jpg, jpeg, png.</p>",
+          "example": "https://xxx.com/image.jpg",
           "member": "string",
-          "name": "UntranslatedText",
+          "name": "Url",
           "required": false,
           "type": "string"
         },
         {
           "disabled": false,
-          "document": "Term base list to be used; obtain by creating your own term base via the [Term Base Operation Guide](https://cloud.tencent.com/document/product/551/107926).",
-          "example": "[\"144aed******************fc7321d4\"]",
-          "member": "string",
-          "name": "TermRepoIDList",
+          "document": "<p>Invocation method.</p><p>Enumeration value:</p><ul><li>0: End-to-end image translation large model pro version</li><li>1: End-to-end image translation large model lite version</li></ul><p>Default value: 0</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "Mode",
           "required": false,
-          "type": "list"
-        },
-        {
-          "disabled": false,
-          "document": "The list of example sentence libraries to be used; obtain by creating your own example sentence library via the [Example Sentence Library Operation Guide](https://cloud.tencent.com/document/product/551/107927).",
-          "example": "[\"b77f64******************6d88df30\"]",
-          "member": "string",
-          "name": "SentRepoIDList",
-          "required": false,
-          "type": "list"
+          "type": "int"
         }
       ],
       "type": "object"
     },
-    "TextTranslateResponse": {
-      "document": "TextTranslate response structure.",
+    "ImageTranslateLLMResponse": {
+      "document": "ImageTranslateLLM response structure.",
       "members": [
         {
           "disabled": false,
-          "document": "The translation outcome.",
-          "example": "你好",
+          "document": "<p>Base64 string of the image data. The output format is JPG.</p>",
+          "example": "iVBORw0KGgoAAAANSUhEUgAAAdkAAABPCAYAAACnD7%252FoAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAJ......CCyAAAAwCQgsgAAAMAkILIAAADAJCCyAAAAwCQgsgAAAMAkILIAAADAFJblX8%252F8oMOWYN6nAAAAAElFTkSuQmCC",
           "member": "string",
-          "name": "TargetText",
+          "name": "Data",
           "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The source language. See the request parameter `Source` for details.",
+          "document": "<p>Primary source language.</p>",
           "example": "en",
           "member": "string",
           "name": "Source",
@@ -108,12 +155,52 @@
         },
         {
           "disabled": false,
-          "document": "The target language. See the request parameter `Target` for details.",
+          "document": "<p>Target translation language.</p>",
           "example": "zh",
           "member": "string",
           "name": "Target",
           "output_required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>All original text in the image.</p>",
+          "example": "hello",
+          "member": "string",
+          "name": "SourceText",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>All translations in the image.</p>",
+          "example": "你好",
+          "member": "string",
+          "name": "TargetText",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Image angle counterclockwise, value range 0-359</p>",
+          "example": "90.0",
+          "member": "float",
+          "name": "Angle",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Translation detailed information</p>",
+          "example": "无",
+          "member": "TransDetail",
+          "name": "TransDetails",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -124,6 +211,121 @@
         }
       ],
       "type": "object"
+    },
+    "RotateParagraphRect": {
+      "document": "Paragraph text rotation information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Paragraph text coordinates",
+          "example": "无",
+          "member": "Coord",
+          "name": "Coord",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rotation angle",
+          "example": "1.0",
+          "member": "float",
+          "name": "TiltAngle",
+          "output_required": false,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether the paragraph text information is valid",
+          "example": "true",
+          "member": "bool",
+          "name": "Valid",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "TransDetail": {
+      "document": "Large model image translation detailed information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Original text of the current row</p>",
+          "example": "你好",
+          "member": "string",
+          "name": "SourceLineText",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Translation of the current row</p>",
+          "example": "hello",
+          "member": "string",
+          "name": "TargetLineText",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Paragraph text box location</p>",
+          "example": "无",
+          "member": "BoundingBox",
+          "name": "BoundingBox",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Row count</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "LinesCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Line height.</p><p>Unit: px.</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "LineHeight",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>The spam_code field is 0 in a normal paragraph; if the spam_code field exists and its value is above 0 (1: hit garbage check; 2: hit security policy; 3: another.), then the security check hit is filtered.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "SpamCode",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Rotation information of paragraph text. Coordinates are valid only when valid is true.</p>",
+          "example": "无",
+          "member": "RotateParagraphRect",
+          "name": "RotateParagraphRect",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     }
   },
   "version": "1.0"

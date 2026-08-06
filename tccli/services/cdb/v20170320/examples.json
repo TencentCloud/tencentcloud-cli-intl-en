@@ -1359,6 +1359,14 @@
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"AsyncRequestId\": \"d2baf2fb-cbae62df-7dd0d736-9cbd3e31\"\n    }\n}",
         "title": "Upgrading the version of a TencentDB instance"
       }
+    ],
+    "UpgradeRoGroup": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpgradeRoGroup\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdb-xxx\",\n    \"UniqRoGroupId\": \"cdbrg-xxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"AsyncRequestId\": \"256117ed-efa08b54-61784d44-91781bbd\"\n    }\n}",
+        "title": "Upgrading a read-only group to network forwarding mode"
+      }
     ]
   },
   "version": "1.0"

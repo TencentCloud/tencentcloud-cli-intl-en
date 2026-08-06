@@ -608,6 +608,39 @@
       ],
       "usage": "in"
     },
+    "CreateOutputRistSettings": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "LISTENER",
+          "member": "string",
+          "name": "Mode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "MAIN",
+          "member": "string",
+          "name": "Profile",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "120",
+          "member": "int64",
+          "name": "Buffer",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "usage": "in"
+    },
     "CreateOutputRtmpSettingsDestinations": {
       "document": "The RTMP destination address of the output to create.",
       "members": [
@@ -3715,6 +3748,24 @@
         },
         {
           "disabled": false,
+          "document": "Output Type: Internet/Tencent CSS/StreamLive",
+          "example": "TencentCSS",
+          "member": "string",
+          "name": "OutputType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Output module types include Pinpoint (single-point output, supporting up to four concurrent outputs) and MultiMesh (multi-output, supporting concurrent outputs exceeding four, currently capable of reaching 200 channels). The default type is Pinpoint output. For a single Flow, only one MultiMesh output can be assigned per region.",
+          "example": "Pinpoint",
+          "member": "string",
+          "name": "OutputKind",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
           "document": "The SRT relay configuration.",
           "example": "无",
           "member": "CreateOutputSrtSettings",
@@ -3766,6 +3817,42 @@
           "name": "SecurityGroupIds",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Availability Zone",
+          "example": "[\"ap-shanghai-01\"]",
+          "member": "string",
+          "name": "Zones",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Transfer the configuration of RIST.",
+          "example": "无",
+          "member": "CreateOutputRistSettings",
+          "name": "RISTSettings",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": true,
+          "document": "For streams containing multiple audio/video tracks, you can specify the tracks that need to be used",
+          "example": "无",
+          "member": "PidSelector",
+          "name": "PidSelector",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "For streams containing multiple audio/video tracks, you can specify the tracks that need to be used",
+          "example": "无",
+          "member": "StreamSelector",
+          "name": "StreamSelector",
+          "required": false,
+          "type": "object"
         }
       ],
       "usage": "in"
@@ -3937,6 +4024,34 @@
           "output_required": false,
           "required": true,
           "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "PidSelector": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "[123,124]",
+          "member": "int64",
+          "name": "AudioPID",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "[123,124]",
+          "member": "int64",
+          "name": "VideoPID",
+          "output_required": false,
+          "required": false,
+          "type": "list",
           "value_allowed_null": true
         }
       ],
@@ -4225,6 +4340,73 @@
         }
       ],
       "usage": "out"
+    },
+    "StreamSelector": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "PID",
+          "member": "string",
+          "name": "SelectorType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "PidSelector",
+          "name": "PidSelector",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "TrackSelector",
+          "name": "TrackSelector",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "TrackSelector": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "[1]",
+          "member": "int64",
+          "name": "VideoIndex",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "[1]",
+          "member": "int64",
+          "name": "AudioIndex",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     }
   },
   "version": "1.0"
