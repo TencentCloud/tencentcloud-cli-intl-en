@@ -751,7 +751,7 @@ def test_K1_get_service_default_version_uses_first():
         ver = ld.get_service_default_version("cvm")
         assert ver in avail["cvm"]
     finally:
-        _u.Utils.file_existed = saved
+        _u.Utils.file_existed = staticmethod(saved)
 
 
 def test_K2_get_service_all_version_actions_real_cvm():
@@ -827,7 +827,7 @@ def test_L1_add_array_item_expand_to_max():
         # Should not produce out-of-range "10"
         assert ["A", "10", "B"] not in out
     finally:
-        _u.Utils.file_existed = saved
+        _u.Utils.file_existed = staticmethod(saved)
 
 
 def test_L2_add_array_item_with_param_array_via_unfold():
@@ -846,7 +846,7 @@ def test_L2_add_array_item_with_param_array_via_unfold():
         non_zero = [k for k in unfold if k.startswith("Root.Children.") and not k.endswith(".0")]
         assert len(non_zero) > 0
     finally:
-        _u.Utils.file_existed = saved
+        _u.Utils.file_existed = staticmethod(saved)
 
 
 # ============================================================
@@ -895,7 +895,7 @@ def test_M2_filling_array_index_gt_zero_downgrades_required():
                 assert v["required"] == "Optional"
                 break
     finally:
-        _u.Utils.file_existed = saved
+        _u.Utils.file_existed = staticmethod(saved)
 
 
 def test_M3_filling_path_traverses_array_member_dict():
