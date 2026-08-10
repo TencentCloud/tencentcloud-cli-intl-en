@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 
 from tccli.loaders import Loader, BASE_TYPE, CLI_BASE_TYPE
-
+import six
 
 class BaseDocumentHandler(object):
     def __init__(self, doc):
@@ -175,7 +175,7 @@ class ActionDocumentHandler(BaseDocumentHandler):
                     self.doc.write('[%s ...]' % (param_info["members"]))
                 else:
                     self.doc.doc_description('[%s ...]' % (param_info["members"]))
-            elif isinstance(param_info["members"], str):
+            elif isinstance(param_info["members"], six.string_types):
                 # Self-reference truncation placeholder: members is a type-name string
                 # (e.g. "AllocationRuleExpression"); render the recursive hint placeholder
                 # directly and do not expand further.
@@ -198,7 +198,7 @@ class ActionDocumentHandler(BaseDocumentHandler):
         else:
             if param_info["members"] in BASE_TYPE:
                 return
-            if isinstance(param_info["members"], str):
+            if isinstance(param_info["members"], six.string_types):
                 # Self-reference truncation placeholder (non-Array form): members is a
                 # type-name string; render the recursive hint placeholder directly.
                 self.doc.doc_description(
@@ -234,7 +234,7 @@ class ActionDocumentHandler(BaseDocumentHandler):
             return
         # Self-reference truncation placeholder: non-Array and members is a type-name
         # string, so there is nothing to expand; skip directly.
-        if not param_info["type"] == "Array" and isinstance(param_info["members"], str):
+        if not param_info["type"] == "Array" and isinstance(param_info["members"], six.string_types):
             return
 
         self.doc.style.new_line()
