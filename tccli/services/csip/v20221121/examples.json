@@ -8,6 +8,14 @@
         "title": "This example shows you how to trigger a user addition notification."
       }
     ],
+    "AddVulWhitelist": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddVulWhitelist\n<Common request parameters>\n\n{\n    \"VulId\": [\n        5566\n    ],\n    \"KbId\": [\n        10\n    ],\n    \"MemberId\": [\n        \"mem-tencent-6f5795752f66e429\"\n    ],\n    \"Remark\": \"Remark 1\",\n    \"AssetList\": [\n        \"ins-m****iks\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ad8a5084-ce24-42c7-b582-ebac463687db\"\n    }\n}",
+        "title": "Adding a vulnerability allowlist"
+      }
+    ],
     "CreateAccessKeyCheckTask": [
       {
         "document": "",
@@ -30,6 +38,14 @@
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDomainAndIp\n<Common request parameters>\n\n{\n    \"MemberId\": [\n        \"mem-68b8087a65268000\"\n    ],\n    \"Content\": [\n        \"127.0.0.1\"\n    ],\n    \"Tags\": [\n        {\n            \"TagKey\": \"sec\",\n            \"TagValue\": \"sec\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"Data\": 0,\n        \"RequestId\": \"7cf2ba3d-87ad-4691-a374-fd92ec11d9c8\"\n    }\n}",
         "title": "Add asset"
+      }
+    ],
+    "CreateHostVulExportJob": [
+      {
+        "document": "Create a scan export task",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateHostVulExportJob\n<Common request parameters>\n\n{\n    \"BusinessAction\": \"RelateHostList\",\n    \"MemberId\": [\n        \"mem-tencent-6f5795752f66e429\"\n    ],\n    \"Filters\": [\n        {\n            \"Name\": \"KbID\",\n            \"Values\": [\n                \"791\"\n            ],\n            \"ExactMatch\": \"1\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"JobID\": \"921621a1-3f26-43f8-80c0-e5de3221d8db\",\n        \"RequestId\": \"50afc204-6d84-4bec-a9e4-006cac5d8358\"\n    }\n}",
+        "title": "Creating a scan export task"
       }
     ],
     "CreateIaCAccessToken": [
@@ -72,6 +88,46 @@
         "title": "Uploading Skill Trigger Detection"
       }
     ],
+    "CreateVulFixRetryTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateVulFixRetryTask\n<Common request parameters>\n\n{\n    \"TaskId\": 10001,\n    \"InstanceIds\": [\n        \"ins-a1b2c3d4\"\n    ],\n    \"MemberId\": [\n        \"mem-tencent-***********6e429\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": 10001,\n        \"RetryCount\": 1,\n        \"RequestId\": \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n    }\n}",
+        "title": "Retry a fix task"
+      }
+    ],
+    "CreateVulFixTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateVulFixTask\n<Common request parameters>\n\n{\n    \"FixItems\": [\n        {\n            \"VulId\": 10001,\n            \"InstanceIds\": [\n                \"ins-a1b2c3d4\"\n            ]\n        },\n        {\n            \"KBId\": 20001,\n            \"InstanceIds\": [\n                \"ins-e5f6g7h8\",\n                \"ins-i9j0k1l2\"\n            ]\n        }\n    ],\n    \"Timeout\": 3600,\n    \"CreateSnapshot\": false,\n    \"MemberId\": [\n        \"mem-tencent-6f**************\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": 10001,\n        \"RequestId\": \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n    }\n}",
+        "title": "Submit a vulnerability repair task"
+      }
+    ],
+    "CreateVulFixedExportJob": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateVulFixedExportJob\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Name\": \"Level\",\n            \"Values\": [\n                \"HIGH\",\n                \"CRITICAL\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"JobID\": \"export-job-12345\",\n        \"RequestId\": \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n    }\n}",
+        "title": "Creating a list export task for fixed vulnerabilities"
+      }
+    ],
+    "CreateVulReScan": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateVulReScan\n<Common request parameters>\n\n{\n    \"VulId\": [\n        102096\n    ],\n    \"MemberId\": [\n        \"mem-tencent-6f5795752f66e429\"\n    ],\n    \"AssetList\": [\n        \"eks-1a2**l*r\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"45774262-bcad-45be-a45c-06bd090c91ce\"\n    }\n}",
+        "title": "Creating a vulnerability rescan"
+      }
+    ],
+    "CreateVulScanManual": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateVulScanManual\n<Common request parameters>\n\n{\n    \"MemberId\": [\n        \"mem-tencent-6f5795752f66e429\"\n    ],\n    \"Timeout\": 3600,\n    \"VulCategory\": [\n        \"LINUX\"\n    ],\n    \"Level\": [\n        \"LOW\"\n    ],\n    \"Method\": [\n        \"VersionComparePOC\"\n    ],\n    \"AssetRange\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": 142,\n        \"RequestId\": \"2bc81c28-ac02-4624-a565-73c1a11bbb3a\"\n    }\n}",
+        "title": "Creating a vulnerability scanning (one-click scan)"
+      }
+    ],
     "DeleteDomainAndIp": [
       {
         "document": "This example shows you how to delete a public IP address/domain name.",
@@ -102,6 +158,14 @@
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteRiskScanTask\n<Common request parameters>\n\n{\n    \"MemberId\": [\n        \"mem-********\"\n    ],\n    \"TaskIdList\": [\n        {\n            \"TaskId\": \"rmis-****\",\n            \"TargetAppId\": \"135641233\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"7429061e-dabd-e1ee-e135-43364c7bb15d\"\n    }\n}",
         "title": "Delete Risk Center Scan Task"
+      }
+    ],
+    "DeleteVulWhitelist": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteVulWhitelist\n<Common request parameters>\n\n{\n    \"Id\": [\n        8\n    ],\n    \"MemberId\": [\n        \"mem-tencent-6f5795752f66e429\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c6eb1c5-2d6e-40c4-bc7f-3e01abd43ff3\"\n    }\n}",
+        "title": "Deleting a vulnerability allowlist"
       }
     ],
     "DescribeAIAgentAssetList": [
@@ -350,6 +414,30 @@
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeHighBaseLineRiskList\n<Common request parameters>\n\n{\n    \"CloudAccountID\": \"100014592178\",\n    \"Provider\": \"tencent\"\n}",
         "output": "{\n    \"Response\": {\n        \"HighBaseLineRiskList\": [\n            {\n                \"AssetID\": \"ins-xxs13fd\",\n                \"CloudAccountID\": \"123342644\",\n                \"CreateTime\": \"2024-12-26 21:28:51\",\n                \"FixAdvice\": \"\",\n\"InstanceName\": \"Host x Security Center (do not delete)\"\n                \"InstanceStatus\": \"active\",\n\"InstanceStatusName\": \"Running\",\n                \"RiskCategory\": \"4\",\n\"RiskCategoryName\": \"Weak password\"\n\"RiskDesc\": \"The system has weak password risks and can be easily guessed. Hackers can perform password brute force through brute force cracking and other methods, thereby obtain user passwords and system permission. This may lead to data leakage of files on the server or used as other attacks.\"\n                \"RiskLevel\": \"3\",\n\"RiskLevelName\": \"High risk\",\n\"RiskName\": \"Linux System Weak Password Detection\"\n\"RiskResult\": \"Weak password risks in the system: {\\\"testxxxx\\\": \\\"123******\\\"}\"\n                \"UpdateTime\": \"2025-04-22 10:32:19\"\n            }\n        ],\n        \"RequestId\": \"0a44ea12-dce32-46a13-8eb19-2ea7872bb96b\",\n        \"TotalCount\": 1\n    }\n}",
         "title": "Query the High-Risk Baseline Risk List of Host Nodes under the Cloud Boundary Analysis-Exposed Path"
+      }
+    ],
+    "DescribeHostVulItemVPRInfo": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeHostVulItemVPRInfo\n<Common request parameters>\n\n{\n    \"MemberId\": [\n        \"mem-tencent-6f5795752f66e429\"\n    ],\n    \"VulID\": 102837\n}",
+        "output": "{\n    \"Response\": {\n        \"Label\": [\n            {\n                \"Level\": \"CRITICAL\",\n\"Name\": \"Urgent Vulnerability\"\n\"Remark\": \"Manually marked with urgent vulnerability\"\n            }\n        ],\n        \"VRPRatingInfo\": {\n\"Remark\": \"This vulnerability has a priority of [critical]. It triggers a mandatory rule: marked with an emergency vulnerability. Primary judgment basis: No known exploitation information; technical exploitability requires further confirmation; hazard level is assessed based on the CVSS score. It is recommended to fix it within 72 hours.\"\n            \"Result\": \"URGENT\",\n            \"Stage\": [\n                {\n\"Result\": \"No known exploitation info\"\n\"Stage\": \"Threat Activity Level\"\n                }\n            ]\n        },\n        \"RequestId\": \"bcfe2512-b55d-4bf1-9e66-c3ccb4b46928\"\n    }\n}",
+        "title": "Search for vulnerability VPR information"
+      }
+    ],
+    "DescribeHostVulOverview": [
+      {
+        "document": "Obtain overview data",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeHostVulOverview\n<Common request parameters>\n\n{\n    \"MemberId\": [\n        \"mem-*******-******75*f******\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Overview\": {\n            \"AppVulCount\": 0,\n            \"CriticalRepairAppVulCount\": 0,\n            \"CriticalRepairCount\": 72,\n            \"CriticalRepairEmergencyCount\": 36,\n            \"CriticalRepairLinuxVulCount\": 36,\n            \"CriticalRepairWebCMSVulCount\": 0,\n            \"DefendHostCount\": 0,\n            \"EmergencyCount\": 0,\n            \"EnableTimingScan\": 1,\n            \"FixedVulCount\": 0,\n            \"LatestScanTime\": \"2026-06-14T22:05:18Z\",\n            \"LinuxVulCount\": 0,\n            \"TotalHostCount\": 0,\n            \"UrgentRepairCount\": 0,\n            \"VulItemCount\": 70080,\n            \"WebCMSVulCount\": 0,\n            \"WindowVulCount\": 0\n        },\n        \"RequestId\": \"32f2ac55-8e52-4566-b0ff-ca0885436c68\"\n    }\n}",
+        "title": "Obtain overview data"
+      }
+    ],
+    "DescribeHostVulRiskList": [
+      {
+        "document": "Retrieve the vulnerability risk list",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeHostVulRiskList\n<Common request parameters>\n\n{\n    \"MemberId\": [\n        \"mem-tencent-6f5795752f66e429\"\n    ],\n    \"Limit\": 10,\n    \"Offset\": 0,\n    \"Order\": \"desc\",\n    \"By\": \"LatestScanTime\"\n}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"Account\": [\n                    {\n                        \"AppID\": 260083796,\n                        \"Nick\": \"700002365149\",\n                        \"Uin\": \"700002365149\"\n                    }\n                ],\n                \"DefendStatus\": \"NOT_ENABLED\",\n                \"EffectHostCount\": 1,\n                \"LatestScanTime\": \"2026-06-12T08:15:45Z\",\n                \"RiskID\": 45230,\n                \"RiskStatus\": \"PENDING\",\n                \"VulDetail\": {\n                    \"AffectProduct\": [\n                        \"socat\"\n                    ],\n                    \"AffectVendor\": [\n                        \"dest-unreach\"\n                    ],\n                    \"CVEID\": \"CVE-2024-54661\",\n                    \"CVSSLevel\": \"LOW\",\n                    \"Category\": \"LINUX\",\n                    \"CheckMethod\": \"VersionCompare\",\n                    \"CvssScore\": 9.8,\n                    \"DefendHostCount\": 0,\n                    \"DefendStatus\": \"NOT_ENABLED\",\n                    \"EPSSScore\": 0.00164,\n\"FixSolution\": \"It is recommended to pay attention to vendor announcements or upgrade to the latest version.\"\n                    \"ID\": 45230,\n                    \"KVERecord\": false,\n                    \"KVERecordTime\": \"\",\n                    \"Label\": [],\n                    \"LatestScanTime\": \"\",\n                    \"LatestTrend\": [],\n                    \"Mechanism\": \"\",\n\"Name\": \"socat security vulnerability (CVE-2024-54661)\"\n                    \"NotDefendHostCount\": 0,\n                    \"Precondition\": \"\",\n                    \"PublishTime\": \"2024-12-04 13:15:00\",\n                    \"RefLink\": \"https://repo.or.cz/socat.git/blob/6ff391324d2d3b9f6bfb58e7d16a20be43b47af7:/readline.sh#l29\",\n                    \"Remark\": \"\",\n\"Summary\": \"socat is an open-source relay for bidirectional data transmission between two standalone channels. socat 1.8.0.1 and prior versions has a security vulnerability, which stems from readline.sh depend on the /tmp/$USER/stderr2 file.\"\n                    \"SupportFix\": true,\n                    \"VRPRatingInfo\": {\n                        \"Remark\": \"\",\n                        \"Result\": \"\",\n                        \"Stage\": [\n                            {\n                                \"Result\": \"\",\n\"Stage\": \"Threat Activity Level\"\n                            }\n                        ]\n                    },\n                    \"VulAffect\": []\n                }\n            }\n        ],\n        \"TotalCount\": 706,\n        \"RequestId\": \"d224b5c5-013c-427e-a7ea-0b2e780da55f\"\n    }\n}",
+        "title": "Retrieving the vulnerability risk list"
       }
     ],
     "DescribeIaCFileList": [
@@ -728,12 +816,132 @@
         "title": "Obtain VPC List"
       }
     ],
+    "DescribeVulComponentRelateHost": [
+      {
+        "document": "Get component of the host",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeVulComponentRelateHost\n<Common request parameters>\n\n{\n    \"VulID\": 45230,\n    \"Name\": \"socat\",\n    \"MemberId\": [\n        \"mem-*******-6f5795752f66e429\"\n    ],\n    \"Limit\": 10,\n    \"Offset\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"EffectVersion\": \"1.7.3.2-2.el7\",\n                \"FixCommand\": \"sudo yum update socat\\n\",\n                \"HostInfo\": {\n                    \"Account\": {\n                        \"AppID\": 260000006,\n                        \"Nick\": \"700002365149\",\n                        \"Uin\": \"700002365149\"\n                    },\n                    \"AgentStatus\": \"ONLINE\",\n                    \"CloudTag\": [],\n                    \"InstanceID\": \"ins-f9mhqqxa\",\n                    \"InstanceStatus\": \"RUNNING\",\n\"Name\": \"yancyw self-built cluster\"\n                    \"PrivateIP\": \"172.16.0.2\",\n                    \"PublicIP\": \"\",\n                    \"QUUID\": \"21fb6c0b-3d49-4529-bd32-7739ab4d9d7c\",\n                    \"TagItem\": [],\n                    \"UUID\": \"21fb6c0b-3d49-4529-bd32-7739ab4d9d7c\"\n                },\n                \"Name\": \"socat\",\n                \"Path\": \"/usr/bin/socat\",\n                \"ProcessID\": \"\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"655d8573-eadb-4ae6-8629-77dbf1da1006\"\n    }\n}",
+        "title": "Getting component of the host"
+      }
+    ],
+    "DescribeVulFixTaskDetail": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeVulFixTaskDetail\n<Common request parameters>\n\n{\n    \"TaskId\": 10001,\n    \"Offset\": 0,\n    \"Limit\": 10\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"Id\": 100001,\n                \"TaskId\": 10001,\n                \"VulId\": 20001,\n                \"KBId\": 0,\n                \"InstanceId\": \"ins-a1b2c3d4\",\n                \"MachineName\": \"web-server-01\",\n                \"MachineIp\": \"10.0.0.100\",\n                \"VulName\": \"CVE-2024-12345\",\n                \"Status\": 2,\n                \"FixStatus\": 1,\n                \"SnapshotStatus\": 2,\n                \"SnapshotCreateTime\": \"2025-06-26T02:00:00Z\",\n                \"SnapshotExpireTime\": \"2025-07-26T02:00:00Z\",\n                \"ExceptionMessage\": \"\",\n                \"StartTime\": \"2025-06-26T10:00:00+08:00\",\n                \"EndTime\": \"2025-06-26T10:05:00+08:00\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"TaskInfo\": {\n            \"Id\": 10001,\n            \"TaskId\": 10001,\n            \"FixStatus\": 2,\n            \"AssetCount\": 1,\n            \"SuccessCount\": 1,\n            \"FailCount\": 0,\n            \"FixingCount\": 0,\n            \"QueueCount\": 0,\n            \"Progress\": 100,\n            \"SuccessVulCount\": 1,\n            \"FailVulCount\": 0,\n            \"VulNames\": [\n                \"CVE-2024-12345\"\n            ],\n            \"VulFixStatusList\": [\n                {\n                    \"VulId\": 20001,\n                    \"KBId\": 0,\n                    \"VulName\": \"CVE-2024-12345\",\n                    \"FixStatus\": 1,\n                    \"HostCount\": 1,\n                    \"SuccessHostCount\": 1,\n                    \"FailHostCount\": 0\n                }\n            ],\n            \"StartTime\": \"2025-06-26T10:00:00+08:00\",\n            \"EndTime\": \"2025-06-26T10:05:00+08:00\"\n        },\n        \"RequestId\": \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n    }\n}",
+        "title": "Querying repair task detail"
+      }
+    ],
+    "DescribeVulFixTaskList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeVulFixTaskList\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"Id\": 1,\n                \"TaskId\": 10001,\n                \"VulIds\": [\n                    10001\n                ],\n                \"KBIds\": [],\n                \"AssetCount\": 5,\n                \"SuccessCount\": 3,\n                \"FailCount\": 1,\n                \"Progress\": 80,\n                \"TargetAppIdsCount\": 2,\n                \"FixStatus\": 1,\n                \"Timeout\": 600,\n                \"StartTime\": \"2025-06-26T10:00:00+08:00\",\n                \"EndTime\": \"2025-06-26T10:10:00+08:00\",\n                \"CreateTime\": \"2025-06-26T09:58:00+08:00\",\n                \"VulNames\": [\n                    \"CVE-2024-12345\"\n                ],\n                \"VulCategory\": [\n                    \"LINUX\"\n                ],\n                \"AppId\": 1251001234\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n    }\n}",
+        "title": "Querying repair task list"
+      }
+    ],
+    "DescribeVulFixableMachineList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeVulFixableMachineList\n<Common request parameters>\n\n{\n    \"VulIds\": [\n        10001,\n        10002\n    ],\n    \"Offset\": 0,\n    \"Limit\": 10\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"VulIds\": [\n                    10001\n                ],\n                \"InstanceId\": \"ins-a1b2c3d4\",\n                \"MachineName\": \"web-server-01\",\n                \"MachineIp\": \"10.0.0.100\",\n                \"PublicIp\": \"203.0.113.10\",\n                \"OsType\": \"linux\",\n                \"OsName\": \"CentOS 7.9\",\n                \"MachineStatus\": \"ONLINE\",\n                \"SupportAutoFix\": 1,\n                \"FixStatus\": 0,\n                \"LatestFixTime\": \"2025-06-25T15:00:00+08:00\",\n                \"NotFixableReason\": \"\",\n                \"FixCommands\": [\n                    \"sudo yum update zlib-devel zlib\"\n                ],\n                \"Components\": [\n                    \"zlib-devel\",\n                    \"zlib\"\n                ],\n                \"TagItems\": [],\n                \"AppId\": 1251234567,\n                \"PayVersion\": \"ULTIMATE\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"FixableCount\": 1,\n        \"NotFixableCount\": 0,\n        \"VulSummary\": [\n            {\n                \"VulId\": 10001,\n\"VulName\": \"OpenSSL remote code execution vulnerability\"\n                \"CveId\": \"CVE-2024-12345\",\n                \"AffectedCount\": 1,\n                \"NeedReboot\": false,\n                \"FixSwitch\": true\n            }\n        ],\n        \"RequestId\": \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n    }\n}",
+        "title": "Querying the list of repairable hosts"
+      }
+    ],
+    "DescribeVulFixedHostDetail": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeVulFixedHostDetail\n<Common request parameters>\n\n{\n    \"VulId\": 10001,\n    \"InstanceId\": \"ins-5ijxpaa6\",\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"MemberId\": [\n        \"mem-tencent-6f5******f*6*429\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n\"VulName\": \"OpenSSL remote code execution vulnerability\"\n        \"CveId\": \"CVE-2024-0727\",\n        \"VulCategory\": \"LINUX\",\n        \"FixTime\": \"2025-08-30T23:00:00+08:00\",\n        \"InstanceId\": \"ins-5ijxpaa6\",\n\"MachineName\": \"yuyinghan of the host\"\n        \"PublicIp\": \"118.24.71.134\",\n        \"PrivateIp\": \"172.27.0.139\",\n        \"ComponentDetails\": [\n            {\n                \"Name\": \"expat\",\n                \"Version\": \"2.2.0-12.el7\",\n                \"Path\": \"/usr/include/zconf.h, /usr/include/zlib.h\",\n                \"FixCommand\": \"sudo yum update expat\"\n            }\n        ],\n        \"TotalCount\": 49,\n        \"RequestId\": \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n    }\n}",
+        "title": "Querying repair details of the host with fixed vulnerabilities"
+      }
+    ],
+    "DescribeVulFixedList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeVulFixedList\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"MemberId\": [\n        \"mem-tencent-****************\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"VulId\": 10001,\n                \"VulName\": \"CVE-2024-12345\",\n                \"Level\": \"HIGH\",\n                \"VRPRatingInfo\": {\n                    \"Result\": \"URGENT\",\n\"Remark\": \"Vulnerability exists and is being exploited in the wild\"\n                    \"Stage\": [\n                        {\n\"Stage\": \"Threat Activity Level\"\n\"Result\": \"High\"\n                        }\n                    ]\n                },\n                \"VulCategory\": \"LINUX\",\n                \"CveId\": \"CVE-2024-12345\",\n                \"MachineName\": \"web-server-01\",\n                \"InstanceId\": \"ins-abc12345\",\n                \"ComponentCount\": 2,\n                \"Components\": [\n                    \"openssl 1.1.1 /usr/lib/libssl.so\",\n                    \"openssl 1.1.1 /usr/bin/openssl\"\n                ],\n                \"LatestFixTime\": \"2025-06-26T10:05:00+08:00\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n    }\n}",
+        "title": "Querying the list of fixed vulnerabilities"
+      }
+    ],
+    "DescribeVulHostRelateComponent": [
+      {
+        "document": "Query host-associated components",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeVulHostRelateComponent\n<Common request parameters>\n\n{\n    \"VulID\": 59720,\n    \"InstanceID\": \"ins-aurb6wi2\",\n    \"MemberId\": [\n        \"mem-tencent-6f5795752f66e429\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"EffectVersion\": \"3.6.8-21.tl2.3\",\n                \"FixCommand\": \"sudo yum update python3\\n\",\n                \"HostInfo\": {\n                    \"Account\": {\n                        \"AppID\": 260082268,\n\"Nick\": \"Member account\"\n                        \"Uin\": \"700002332361\"\n                    },\n                    \"AgentStatus\": \"ONLINE\",\n                    \"CloudTag\": [],\n                    \"InstanceID\": \"ins-aurb6wi2\",\n                    \"InstanceStatus\": \"RUNNING\",\n\"Name\": \"Automatic-TencentOS 2\"\n                    \"PrivateIP\": \"172.16.0.51\",\n                    \"PublicIP\": \"\",\n                    \"QUUID\": \"70fe263a-080e-4801-8954-10bfb437f9f1\",\n                    \"TagItem\": [],\n                    \"UUID\": \"70fe263a-080e-4801-8954-10bfb437f9f1\"\n                },\n                \"Name\": \"python3\",\n                \"Path\": \"/usr/bin/python3\",\n                \"ProcessID\": \"\"\n            }\n        ],\n        \"RequestId\": \"ba5e3ee7-c6ec-4b4d-b9ce-a0283463e032\"\n    }\n}",
+        "title": "Querying host-associated components"
+      }
+    ],
+    "DescribeVulIgnoreRuleList": [
+      {
+        "document": "Retrieve the ignored allowlist",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeVulIgnoreRuleList\n<Common request parameters>\n\n{\n    \"MemberId\": [\n        \"mem-tencent-6f5795752f66e429\"\n    ],\n    \"Limit\": 10,\n    \"Offset\": 0,\n    \"Order\": \"desc\",\n    \"By\": \"UpdateTime\"\n}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"AppId\": 260083796,\n                \"AssetList\": [],\n                \"AssetRange\": 0,\n                \"Id\": 10,\n\"Name\": \"Libvirt iptables rules permission and access control issues vulnerability (CVE-2010-2242)\"\n\"Remark\": \"Remark 1\",\n                \"Switch\": 1,\n                \"UpdateTime\": \"2026-06-12T07:42:01Z\"\n            }\n        ],\n        \"Total\": 2,\n        \"RequestId\": \"f100017b-0d6d-4693-b9e2-9d5baca191fb\"\n    }\n}",
+        "title": "Retrieve the ignored allowlist"
+      }
+    ],
+    "DescribeVulItemList": [
+      {
+        "document": "Retrieve the vulnerability detection item list",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeVulItemList\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"Offset\": 0,\n    \"Order\": \"desc\",\n    \"By\": \"PublishTime\"\n}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"AffectProduct\": [],\n                \"AffectVendor\": [],\n                \"CVEID\": \"CVE-2026-8863\",\n                \"CVSSLevel\": \"HIGH\",\n                \"Category\": \"WINDOWS\",\n                \"CheckMethod\": \"VersionCompare\",\n                \"CvssScore\": 7.8,\n                \"DefendHostCount\": 0,\n                \"DefendStatus\": \"NOT_ENABLED\",\n                \"EPSSScore\": 0,\n\"FixSolution\": \"1. Edition upgrade: Microsoft has released a security update to fix the vulnerability. Assess business impact and install the official Windows security patch as soon as possible to fix the UEFI Secure Boot protection mechanism defect.\"\n                \"ID\": 123044,\n                \"KVERecord\": false,\n                \"KVERecordTime\": \"\",\n                \"Label\": [],\n                \"LatestScanTime\": \"\",\n                \"LatestTrend\": [],\n                \"Mechanism\": \"\",\n\"Name\": \"Microsoft UEFI SHIM Secure Boot Bypass Vulnerability (CVE-2026-8863)\"\n                \"NotDefendHostCount\": 0,\n                \"Precondition\": \"\",\n                \"PublishTime\": \"2026-06-10 02:10:15\",\n                \"RefLink\": \"https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-8863,https://kb.cert.org/vuls/id/616257,https://nvd.nist.gov/vuln/detail/CVE-2026-8863,https://vuldb.com/vuln/369783,https://www.tenable.com/blog/microsofts-june-2026-patch-tuesday-addresses-198-cves-cve-2026-49160-cve-2026-50507,https://www.kb.cert.org/vuls/id/616257,https://github.com/advisories/GHSA-4hqv-6cp5-4rq9,https://exchange.xforce.ibmcloud.com/vulnerabilities/YX3srZ4BC7vCu9U8jfyM,https://www.wiz.io/vulnerability-database/cve/cve-2026-8863,https://msrc.microsoft.com/update-guide/en-us/vulnerability/CVE-2026-8863,https://www.tenable.com/cve/CVE-2026-8863\",\n                \"Remark\": \"\",\n\"Summary\": \"Multiple Microsoft-signed UEFI SHIM boot loaders have Secure Boot bypass vulnerabilities. Attackers with administrator permission or who can modify the boot process can leverage these vulnerable SHIM boot loaders to bypass Secure Boot protection and run arbitrary code before the operating system loads. Specific UEFI DBX (ban list) updates must be applied to prevent these vulnerable boot loaders.\"\n                \"SupportFix\": false,\n                \"VRPRatingInfo\": {\n                    \"Remark\": \"\",\n                    \"Result\": \"\",\n                    \"Stage\": []\n                },\n                \"VulAffect\": []\n            }\n        ],\n        \"TotalCount\": 70080,\n        \"RequestId\": \"2589e236-89fa-4379-882a-d5e675c2e8f7\"\n    }\n}",
+        "title": "Retrieving the Vulnerability Detection Item List"
+      }
+    ],
+    "DescribeVulLabelList": [
+      {
+        "document": "Obtains the vulnerability tag list",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeVulLabelList\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"Level\": \"CRITICAL\",\n\"Name\": \"Urgent Vulnerability\"\n\"Remark\": \"Manually marked with urgent vulnerability\"\n            }\n        ],\n        \"RequestId\": \"39b78e13-550d-4606-a957-f690ccd2b903\"\n    }\n}",
+        "title": "Obtains the vulnerability tag list"
+      }
+    ],
     "DescribeVulRiskList": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeVulRiskList\n<Common request parameters>\n\n{\n    \"CloudAccountID\": \"100010421111\",\n    \"Provider\": \"tencent\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"8df95ddb-cc28-489d-a37d-422e0d93fe4b\",\n        \"TotalCount\": 882,\n        \"VulRiskList\": [\n            {\n                \"AssetID\": \"ins-xxxx\",\n                \"CloudAccountID\": \"100010421111\",\n                \"ContainerID\": \"\",\n                \"CreateTime\": \"2025-05-15 01:18:44\",\n                \"CveID\": \"CVE-2025-32911\",\n\"Description\": \"libsoup is a GNOME HTTP client/server library from the GNOME project. libsoup has a security vulnerability that stems from a double free issue in the function soup_message_headers_get_content_disposition.\"\n\"Fix\": \"Software: libsoup2.4-1, Version: 2.70.0-1\\n\\nFix command\\nsudo apt-get -y install libsoup2.4-1 --only-upgrade\\n\"\n\"InstanceName\": \"Testing platform\",\n                \"InstanceStatus\": \"active\",\n                \"UpdateTime\": \"2025-05-21 01:22:30\",\n                \"VulCategory\": \"4\",\n\"VulCategoryName\": \"Linux software vulnerability\",\n                \"VulLevel\": \"4\",\n\"VulLevelName\": \"Serious\"\n\"VulName\": \"libsoup Security Vulnerability (CVE-2025-32911)\"\n\"InstanceStatusName\": \"Running\"\n            }\n        ]\n    }\n}",
         "title": "Query the List of Vulnerabilities of Host Nodes under the Exposed Path in Cloud Boundary Analysis"
+      }
+    ],
+    "DescribeVulRiskRelateComponent": [
+      {
+        "document": "Retrieve the associated component of a vulnerability",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeVulRiskRelateComponent\n<Common request parameters>\n\n{\n    \"VulID\": 38500,\n    \"MemberId\": [\n        \"mem-*******-6f5795752f66e429\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"Name\": \"libtiff\",\n                \"RelateHostCount\": 1\n            }\n        ],\n        \"RequestId\": \"0cf2d323-8cc5-4666-86e6-c79a255e9005\"\n    }\n}",
+        "title": "Retrieving the associated component of a vulnerability"
+      }
+    ],
+    "DescribeVulRiskRelateHost": [
+      {
+        "document": "Search for the associated host of a vulnerability",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeVulRiskRelateHost\n<Common request parameters>\n\n{\n    \"KBID\": 0,\n    \"VulID\": 45230,\n    \"MemberId\": [\n        \"mem-tencent-6f5795752f66e429\"\n    ],\n    \"Limit\": 10,\n    \"Offset\": 0,\n    \"Order\": \"desc\",\n    \"By\": \"LatestScanTime\"\n}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"Account\": {\n                    \"AppID\": 260083796,\n                    \"Nick\": \"700002365149\",\n                    \"Uin\": \"700002365149\"\n                },\n                \"AgentStatus\": \"ONLINE\",\n                \"CloudTag\": [],\n                \"DefendStatus\": \"NOT_ENABLED\",\n                \"DefendVersion\": \"BASIC\",\n                \"InstanceID\": \"ins-f9mhqqxa\",\n                \"InstanceStatus\": \"RUNNING\",\n\"Name\": \"yancyw self-built cluster\"\n                \"PrivateIP\": \"172.16.0.2\",\n                \"PublicIP\": \"\",\n                \"RiskStatus\": \"PENDING\",\n                \"TagItem\": [],\n                \"VPRRating\": {\n                    \"Remark\": \"\",\n                    \"Result\": \"\",\n                    \"Stage\": []\n                }\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"c5752296-cc49-4e64-bba5-62c19174239c\"\n    }\n}",
+        "title": "Searching for the vulnerability-associated host"
+      }
+    ],
+    "DescribeVulScanPeriodic": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeVulScanPeriodic\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"AssetList\": [\n            \"1****************************566****\"\n        ],\n        \"AssetRange\": 0,\n        \"CycleType\": 2,\n        \"CycleValue\": [\n            3\n        ],\n        \"EndTime\": \"03:00\",\n        \"Level\": [\n            \"MEDIUM\"\n        ],\n        \"Method\": \"VersionCompare\",\n        \"StartTime\": \"01:00\",\n        \"Status\": 0,\n        \"Timeout\": 3600,\n        \"VulCategory\": [\n            \"LINUX\"\n        ],\n        \"RequestId\": \"a9d0215e-0255-4b0a-8406-722d59c62f75\"\n    }\n}",
+        "title": "Retrieve vulnerability scan configuration (period scanning)"
+      }
+    ],
+    "DescribeVulScanTaskDetail": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeVulScanTaskDetail\n<Common request parameters>\n\n{\n    \"Id\": 127,\n    \"Filters\": [\n        {\n            \"Name\": \"InstanceId\",\n            \"Values\": [\n                \"ins-2f***t2k\"\n            ]\n        }\n    ],\n    \"Limit\": 2,\n    \"Offset\": 0,\n    \"Order\": \"DESC\",\n    \"By\": \"CreateTime\"\n}",
+        "output": "{\n    \"Response\": {\n        \"EndTime\": \"2026-06-10T13:33:00Z\",\n        \"Failed\": 24,\n        \"List\": [\n            {\n                \"AppId\": 260083796,\n                \"Description\": \"\",\n                \"EndTime\": \"2026-06-10T12:33:13Z\",\n                \"Id\": \"2346\",\n                \"InstanceId\": \"ins-2f****2k\",\n                \"InstanceName\": \"tke_cls-dqum4px0_master_etcd3\",\n                \"OS\": \"TencentOS Server 3.1 (Final)\",\n                \"PrivateIp\": \"172.16.0.108\",\n                \"PublicIp\": \"\",\n                \"StartTime\": \"2026-06-10T12:32:44Z\",\n                \"Status\": \"SUCCESS\",\n                \"Vuls\": 0\n            }\n        ],\n        \"Progress\": 100,\n        \"Risk\": 1,\n        \"Scanned\": 51,\n        \"StartTime\": \"2026-06-10T12:31:14Z\",\n        \"TaskExcel\": \"https://*****r*-1**8*4**99.cos.ap-guangzhou.myqcloud.com/vul*s*an**\",\n        \"TaskPdf\": \"https://*****r*-1**8*4**99.cos.ap-guangzhou.myqcloud.com/vul*s*an**\",\n        \"Total\": 1,\n        \"Vuls\": 1,\n        \"RequestId\": \"4df6736c-24d7-48e9-8876-dde3a615328b\"\n    }\n}",
+        "title": "Retrieve Vulnerability Scan Task Details"
+      }
+    ],
+    "DescribeVulScanTaskList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeVulScanTaskList\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Name\": \"JobId\",\n            \"Values\": [\n                \"198b38dc1f613b885036e0f78d141c83\"\n            ]\n        }\n    ],\n    \"Limit\": 2,\n    \"Offset\": 0,\n    \"Order\": \"DESC \",\n    \"By\": \"ScanTime\"\n}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"Account\": 3,\n                \"AppId\": 260083796,\n                \"Emergency\": 1,\n                \"EndTime\": \"2026-06-11T16:54:00Z\",\n                \"Id\": 134,\n                \"JobId\": \"198b38dc1f613b885036e0f78d141c83\",\n                \"KbName\": [],\n                \"Level\": [\n                    \"LOW\"\n                ],\n                \"Method\": [\n                    \"VersionCompare\"\n                ],\n                \"StartTime\": \"2026-06-11T15:51:02Z\",\n                \"Status\": \"SUCCESS\",\n                \"TaskType\": 0,\n                \"VulCategory\": [\n                    \"WEB_CMS\"\n                ],\n                \"VulName\": []\n            }\n        ],\n        \"Total\": 1,\n        \"RequestId\": \"9f4d3cfa-9941-4f5d-8115-b6f641c8275b\"\n    }\n}",
+        "title": "Retrieve vulnerability scanning task history"
       }
     ],
     "DescribeVulViewVulRiskList": [
@@ -782,6 +990,30 @@
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyUebaRuleSwitch\n<Common request parameters>\n\n{\n    \"MemberId\": [\n        \"mem-5b28e2010c18f07a\"\n    ],\n    \"RuleID\": \"rule-5s02db1\",\n    \"Status\": true\n}",
         "output": "{\n    \"Response\": {\n        \"Code\": 0,\n        \"Msg\": \"success\",\n        \"RequestId\": \"3cbf2d8f-c40a-452a-92ec-140f9b2d29a2\"\n    }\n}",
         "title": "test"
+      }
+    ],
+    "ModifyVulScanPeriodic": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyVulScanPeriodic\n<Common request parameters>\n\n{\n    \"Status\": 1,\n    \"VulCategory\": [\n        \"LINUX\"\n    ],\n    \"Level\": [\n        \"CRITICAL\"\n    ],\n    \"Method\": \"VersionComparePOC\",\n    \"StartTime\": \"03:50\",\n    \"EndTime\": \"05:50\",\n    \"AssetRange\": 0,\n    \"CycleType\": 2,\n    \"Timeout\": 3600,\n    \"CycleValue\": [\n        1\n    ],\n    \"MemberId\": [\n        \"mem-ten********7************\"\n    ],\n    \"AssetList\": [\n        \"ins-********\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"bcb33b18-dbc7-4685-aa41-1ad51d0f9a3d\"\n    }\n}",
+        "title": "Modifying vulnerability scan configuration (period scanning)"
+      }
+    ],
+    "ModifyVulWhitelistConfig": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyVulWhitelistConfig\n<Common request parameters>\n\n{\n    \"Id\": 8,\n\"Remark\": \"Remark\"\n    \"AssetRange\": 1,\n    \"AssetList\": [\n        \"ins-khz78apa\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"965d7001-779c-4549-9d9c-ed3bcce4c402\"\n    }\n}",
+        "title": "Modify vulnerability allowlist configuration"
+      }
+    ],
+    "ModifyVulWhitelistSwitch": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyVulWhitelistSwitch\n<Common request parameters>\n\n{\n    \"Id\": [\n        9\n    ],\n    \"MemberId\": [\n        \"mem-tencent-6f5795752f66e429\"\n    ],\n    \"Switch\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"cde1b8eb-8ea7-40ef-b1be-29b98633cc4b\"\n    }\n}",
+        "title": "Modify the vulnerability allowlist switch"
       }
     ],
     "StopRiskCenterTask": [

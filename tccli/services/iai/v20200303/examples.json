@@ -189,23 +189,15 @@
     "DetectFaceSimilarity": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: iai.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CompareFace\n<public parameter>\n\n{\n    \"UrlA\": \"http://test.image.myqcloud.com/testA.jpg\",\n    \"UrlB\": \"http://test.image.myqcloud.com/testB.jpg\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Score\": 0.999,\n        \"RequestId\": \"a8eb4545-a154-4f86-9510-57a8be9cae0c\"\n    }\n}",
-        "title": "Successful example of face similarity detection interface"
+        "input": "POST / HTTP/1.1\nHost: iai.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DetectFaceSimilarity\n<Common request parameters>\n\n{\n    \"UrlA\": \"http://test.image.myqcloud.com/testA.jpg\",\n    \"UrlB\": \"http://test.image.myqcloud.com/testB.jpg\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Error\": {\n            \"Code\": \"FailedOperation.FaceQualityNotQualified\",\n            \"Message\": \"Face image quality does not meet the requirement.\"\n        },\n        \"RequestId\": \"788270e8-91b7-4c59-bd00-1af257b1e482\"\n    }\n}",
+        "title": "Face Similarity Detection API Exception Example"
       },
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: iai.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CompareFace\n<public parameter>\n\n{\n    \"UrlA\": \"http://test.image.myqcloud.com/testA.jpg\",\n    \"UrlB\": \"http://test.image.myqcloud.com/testB.jpg\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Error\": {\n            \"Code\": \"FailedOperation.FaceQualityNotQualified\",\n            \"Message\": \"xxxxx\"\n        },\n        \"RequestId\": \"788270e8-91b7-4c59-bd00-1af257b1e482\"\n    }\n}",
-        "title": "Example of abnormality in face similarity detection interface"
-      }
-    ],
-    "DetectLiveFace": [
-      {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: iai.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DetectLiveFace\n<Common request parameters>\n\n{\n    \"Url\": \"http://test.image.myqcloud.com/testA.jpg\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Score\": 99,\n        \"IsLiveness\": true,\n        \"FaceModelVersion\": \"3.0\",\n        \"RequestId\": \"048a5eb3-f7a9-4c1f-a982-00e90b6b892c\"\n    }\n}",
-        "title": "Detecting the liveness of faces in images"
+        "input": "POST / HTTP/1.1\nHost: iai.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DetectFaceSimilarity\n<Common request parameters>\n\n{\n    \"UrlA\": \"http://test.image.myqcloud.com/testA.jpg\",\n    \"UrlB\": \"http://test.image.myqcloud.com/testB.jpg\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Score\": 0.999,\n        \"RequestId\": \"a8eb4545-a154-4f86-9510-57a8be9cae0c\"\n    }\n}",
+        "title": "Face Similarity Detection API Successful Example"
       }
     ],
     "DetectLiveFaceAccurate": [
