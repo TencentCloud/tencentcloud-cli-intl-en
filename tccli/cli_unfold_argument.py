@@ -16,7 +16,15 @@ class CliUnfoldArgument(CustomArgument):
     def __init__(self):
         super(CliUnfoldArgument, self).__init__(**self.ARG_DATA)
 
-    def build_action_parameters(self, args):
+    def build_action_parameters(self, args, extra_unfold_args=None):
+        """Build the request body from an argparse Namespace.
+
+        :param args: argparse Namespace with flat, unfolded parameters.
+        :param extra_unfold_args: optional extra flat ``{key: value}`` that is merged with the
+            Namespace and goes through ``convert_to_dict`` + ``handle_array`` together; when
+            ``None`` or empty this behaves exactly as before the change.
+        :return: the request body as a nested dict / list.
+        """
         parsed_args = vars(args)
         for key in list(parsed_args.keys()):
             if parsed_args[key] is None:
@@ -24,6 +32,11 @@ class CliUnfoldArgument(CustomArgument):
         params_set = {}
         for key, value in parsed_args.items():
             self.convert_to_dict(params_set, key, value)
+        if extra_unfold_args:
+            for key, value in extra_unfold_args.items():
+                if value is None:
+                    continue
+                self.convert_to_dict(params_set, key, value)
         return self.handle_array(params_set, "--")
 
     def convert_to_dict(self, params_set, key, value):
@@ -45,7 +58,7 @@ class CliUnfoldArgument(CustomArgument):
                 raise UnknownArgumentError(
                     "The index of the array parameter: %s must start from 0, "
                     "and the step size is 1" % parent_key)
-            params = list(params.values())
+            params = [params[k] for k in sorted(params.keys(), key=int)]
             for idx, item in enumerate(params):
                 prefix_param = parent_key+str(idx) if parent_key == "--" else parent_key+"."+str(idx)
                 params[idx] = self.handle_array(item, prefix_param)
