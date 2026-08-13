@@ -10,7 +10,7 @@
     "AssessDeviceRiskPro": {
       "document": "Device Risk Assessment - Basic",
       "input": "AssessDeviceRiskProRequest",
-      "name": "AssessDeviceRiskPro",
+      "name": "Device Risk Assessment - Basic",
       "output": "AssessDeviceRiskProResponse",
       "status": "online"
     },
@@ -42,7 +42,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>User client IP address(IPv4 or IPv6)</p>",
+          "document": "<p>User client IP address (IPv4 or IPv6)</p>",
           "example": "125.**.**.3",
           "member": "string",
           "name": "UserIp",
@@ -109,7 +109,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Basic IP environment information</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Basic IP environment information</p>",
           "example": "无",
           "member": "Environment",
           "name": "Environment",
@@ -134,7 +134,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>User client IP address(IPv4 or IPv6)</p>",
+          "document": "<p>User client IP address (IPv4 or IPv6)</p>",
           "example": "183.**.**.16",
           "member": "string",
           "name": "UserIp",
@@ -188,6 +188,16 @@
           "output_required": false,
           "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Basic IP environment information</p>",
+          "example": "无",
+          "member": "Environment",
+          "name": "Environment",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -277,6 +287,16 @@
           "output_required": false,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Comprehensive risk score.</p><p>Value ranges from 1 to 1000.</p><p>The larger the value, the larger the risk.</p>",
+          "example": "150",
+          "member": "int64",
+          "name": "RiskScore",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -293,6 +313,16 @@
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Decision action when a strategy is matched. Configurable in the console.</p>",
+          "example": "通过",
+          "member": "string",
+          "name": "Disposition",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -396,6 +426,26 @@
           "example": "200700",
           "member": "string",
           "name": "SdkBuildVersion",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Signature verification token. Please contact us to enable signature verification</p>",
+          "example": "-75016888***Ux8XhJzSTZI=",
+          "member": "string",
+          "name": "SignToken",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Token generation timestamp, in milliseconds</p>",
+          "example": "1785490616309",
+          "member": "string",
+          "name": "TokenTime",
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
