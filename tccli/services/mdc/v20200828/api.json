@@ -1213,7 +1213,17 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Available Zone Configuration: Under disaster recovery conditions, up to two are supported, corresponding to pipeline 0 and 1 in order. Otherwise, only one available zone is allowed.",
+          "example": "[\"guangzhou\"]",
+          "member": "string",
+          "name": "Zones",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The input RTMP_PULL configuration information.",
           "example": "无",
           "member": "DescribeInputRTMPPullSettings",
           "name": "RTMPPullSettings",
@@ -1223,7 +1233,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The RTSP_PULL configuration information entered.",
           "example": "无",
           "member": "DescribeInputRTSPPullSettings",
           "name": "RTSPPullSettings",
@@ -1233,7 +1243,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The input HLS-PULL configuration information.",
           "example": "无",
           "member": "DescribeInputHLSPullSettings",
           "name": "HLSPullSettings",
@@ -1243,7 +1253,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Extended smooth streaming configuration information.",
           "example": "无",
           "member": "ResilientStreamConf",
           "name": "ResilientStream",
@@ -1260,6 +1270,36 @@
           "output_required": false,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The input RIST configuration information.",
+          "example": "无",
+          "member": "DescribeInputRISTSettings",
+          "name": "RISTSettings",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Enter URL information related to module configuration, including the provided streaming address or the configured third-party source address",
+          "example": "无",
+          "member": "StreamUrlDetail",
+          "name": "StreamUrls",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Disaster recovery configuration items",
+          "example": "无",
+          "member": "FailOverOption",
+          "name": "FailOverOption",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1275,6 +1315,42 @@
           "name": "SourceAddresses",
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeInputRISTSettings": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "LISTENER",
+          "member": "string",
+          "name": "Mode",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "MAIN",
+          "member": "string",
+          "name": "Profile",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "120",
+          "member": "int64",
+          "name": "Buffer",
+          "output_required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -2588,6 +2664,23 @@
         }
       ],
       "type": "object"
+    },
+    "FailOverOption": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "HOTSTANDBY",
+          "member": "string",
+          "name": "FailOverType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "FlowAudio": {
       "document": "The audio data of the flow.",
@@ -4379,6 +4472,42 @@
         }
       ],
       "usage": "both"
+    },
+    "StreamUrlDetail": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "BGP",
+          "member": "string",
+          "name": "Label",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "URL ",
+          "example": "rtmp://example.com/live/live_channel",
+          "member": "string",
+          "name": "Url",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "Playback",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "TrackSelector": {
       "document": "",

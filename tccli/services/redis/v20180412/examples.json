@@ -42,18 +42,18 @@
     ],
     "ChangeMasterInstance": [
       {
-        "document": "This example shows you how to set a read-only instance in a replication group as a master instance.",
+        "document": "Set a read-only instance within the replication group as the primary instance",
         "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ChangeMasterInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-sa5****\",\n    \"GroupId\": \"crs-rpl-sa5****\",\n    \"ForceSwitch\": false\n}",
         "output": "{\n    \"Response\": {\n        \"TaskId\": 327,\n        \"RequestId\": \"e546784b-709c-401d-aba6-73037eb4e522\"\n    }\n}",
-        "title": "Sample request"
+        "title": "Request Example"
       }
     ],
     "ChangeReplicaToMaster": [
       {
-        "document": "This example shows you how to promote a replica to a master in single AZ or multiple AZs.",
-        "input": "POST / HTTP/1.1Host: redis.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: ChangeReplicaToMaster<Common request parameters>{    \"InstanceId\": \"crs-sa5****\",    \"GroupId\": 301524}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c4ed5948-d156-4931-b9c3-10133a0bb6c9\",\n        \"TaskId\": 10856\n    }\n}",
-        "title": "Sample request"
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ChangeReplicaToMaster\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-j7oyys27\",\n    \"GroupId\": 378132,\n    \"Emergency\": false\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": 2031393158,\n        \"RequestId\": \"93c2ebae-0295-4fdf-ba44-fc88badae439\"\n    }\n}",
+        "title": "Example"
       }
     ],
     "CleanUpInstance": [
@@ -74,10 +74,18 @@
     ],
     "CloneInstances": [
       {
-        "document": "This example shows you how to clone an instance.",
-        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CloneInstances\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-qddzg***\",\n    \"GoodsNum\": 1,\n    \"ZoneId\": 200005,\n    \"BillingMode\": 0,\n    \"Period\": 1,\n    \"SecurityGroupIdList\": [\n        \"sg-o0lb0***\"\n    ],\n    \"BackupId\": \"331006369-11071477-*******\",\n    \"VpcId\": \"vpc-c9v9o***\",\n    \"SubnetId\": \"subnet-7054l***\",\n    \"InstanceName\": \"InstanceName-redis-preversion\",\n    \"Password\": \"pwd**********\",\n    \"NodeSet\": [\n        {\n            \"NodeType\": 0,\n            \"ZoneName\": \"ap-shanghai-5\"\n        },\n        {\n            \"NodeType\": 1,\n            \"ZoneName\": \"ap-shanghai-2\"\n        }\n    ],\n    \"ProjectId\": 1,\n    \"ResourceTags\": [\n        {\n            \"TagKey\": \"key1\",\n            \"TagValue\": \"value2\"\n        }\n    ],\n    \"AlarmPolicyList\": [\n        \"policy-r7529***\"\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2a836c00-175f-11eb-aeb3-db134c8dXXXX\",\n        \"InstanceIds\": [\n            \"crs-kic3****\"\n        ],\n        \"DealId\": \"crs-qd3d3XXX\"\n    }\n}",
-        "title": "Request Example"
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CloneInstances\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-qbhudciv\",\n    \"GoodsNum\": 1,\n    \"ZoneId\": 10002,\n    \"BillingMode\": 0,\n    \"Period\": 1,\n    \"SecurityGroupIdList\": [\n        \"sg-bmadczm1\"\n    ],\n    \"BackupId\": \"154572601-1165734322-153705740\",\n    \"VpcId\": \"vpc-bmadczcc\",\n    \"SubnetId\": \"subnet-bmadczcc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"DealId\": \"20250825297021530591847\",\n        \"DealName\": \"20260407296022526727811\",\n        \"InstanceIds\": [\n            \"crs-lqz7y86j\"\n        ],\n        \"RequestId\": \"b841398d-94ea-42a1-ac2c-663853bcf5f9\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "CloseLog": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CloseLog\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-rc9ldwf9\",\n    \"LogType\": \"auditLog\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"958a31bd-3817-4cfc-8884-5c3d08174dee\"\n    }\n}",
+        "title": "Disable logs"
       }
     ],
     "CloseSSL": [
@@ -88,26 +96,28 @@
         "title": "Disabling SSL request"
       }
     ],
+    "CreateExportTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateExportTask\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-10fvqj29\",\n    \"LogType\": \"auditLog\",\n    \"StartTime\": \"2026-07-07 19:24:07\",\n    \"EndTime\": \"2026-07-08 19:24:07\"\n}",
+        "output": "{\n    \"Response\": {\n        \"FileName\": \"crs-10fvqj29_20260707-192407_to_20260708-192407_1783425093786.tar.gz\",\n        \"RequestId\": \"ac118908-1ceb-42fb-bf22-5f4d0ea603e3\"\n    }\n}",
+        "title": "CreateExportTask"
+      }
+    ],
     "CreateInstanceAccount": [
       {
         "document": " ",
-        "input": "https://redis.tencentcloudapi.com/?Action=CreateInstanceAccount\n&InstanceId=crs-evst****\n&AccountName=redis_dev\n&AccountPassword=c1evuh****\n&ReadonlyPolicy.0=master\n&Privilege=rw\n&Remark=\"Development account\"\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TaskId\": 123456,\n        \"RequestId\": \"0e728fa9-c2e5-4bf8-8d6b-c1c4fab7b6db\"\n    }\n}",
-        "title": "Sample Request"
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateInstanceAccount\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-n24q0sh7\",\n    \"AccountName\": \"********test\",\n    \"AccountPassword\": \"***********\",\n    \"ReadonlyPolicy\": [\n        \"master\"\n    ],\n    \"Privilege\": \"rw\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": 2031374330,\n        \"RequestId\": \"1b18b553-002f-4e71-95b8-2a7293286acf\"\n    }\n}",
+        "title": "Request Example"
       }
     ],
     "CreateInstances": [
       {
-        "document": "This example shows you how to purchase a monthly subscribed Redis 5.0 Memory Edition (cluster architecture) instance.",
-        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateInstances\n<Common request parameters>\n\n{\n    \"TypeId\": 9,\n    \"VpcId\": \"vpc-fmh*****\",\n    \"GoodsNum\": 1,\n    \"RedisShardNum\": 3,\n    \"Period\": 3,\n    \"BillingMode\": 1,\n    \"NoAuth\": \"true\",\n    \"MemSize\": 2048,\n    \"SubnetId\": \"subnet-680c****\",\n    \"RedisReplicasNum\": 1,\n    \"ZoneId\": 200002\n}",
-        "output": "{\n    \"Response\": {\n        \"DealId\": \"crs-7xij3fjf\",\n        \"InstanceIds\": [\n            \"crs-7xij3fjf\"\n        ],\n        \"RequestId\": \"a974649c-6776-45aa-ab24-7e450cccd275\"\n    }\n}",
-        "title": "Request Example 1"
-      },
-      {
-        "document": "This example shows you how to purchase a pay-as-you-go Redis 4.0 Memory Edition (standard architecture) instance.",
-        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateInstances\n<Common request parameters>\n\n{\n    \"TypeId\": 6,\n    \"Password\": \"**********\",\n    \"GoodsNum\": 1,\n    \"Period\": 1,\n    \"BillingMode\": 0,\n    \"MemSize\": 1024,\n    \"ZoneId\": 100002\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2a836c00-175f-11eb-aeb3-db134c8d8fec\",\n        \"InstanceIds\": [\n            \"crs-kic39axx\"\n        ],\n        \"DealId\": \"crs-kic39axx\"\n    }\n}",
-        "title": "Request Example 2"
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateInstances\n<Common request parameters>\n\n{\n    \"TypeId\": 18,\n    \"MemSize\": 1024,\n    \"GoodsNum\": 1,\n    \"Period\": 1,\n    \"BillingMode\": 0,\n    \"ZoneId\": 100002,\n    \"Password\": \"******MyP*ssword\",\n    \"VpcId\": \"vpc-pxyz****\",\n    \"SubnetId\": \"subnet-26qr****\",\n    \"RedisShardNum\": 3,\n    \"RedisReplicasNum\": 1,\n    \"NodeSet\": [\n        {\n            \"NodeId\": 675,\n            \"NodeType\": 0,\n            \"ZoneId\": 100002,\n            \"ZoneName\": \"ap-guangzhou-2\"\n        },\n        {\n            \"NodeId\": 676,\n            \"NodeType\": 1,\n            \"ZoneId\": 100003,\n            \"ZoneName\": \"ap-guangzhou-3\"\n        }\n    ],\n    \"ResourceTags\": [\n        {\n            \"TagKey\": null,\n            \"TagValue\": null\n        }\n    ],\n    \"DryRun\": false,\n    \"ConnectionMode\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"DealId\": \"20250825297021530591847\",\n        \"RequestId\": \"e546784b-709c-401d-aba6-73037eb4e522\",\n        \"InstanceIds\": [\n            \"crs-bzss****\"\n        ]\n    }\n}",
+        "title": "Creating an instance request"
       }
     ],
     "CreateParamTemplate": [
@@ -120,9 +130,17 @@
     ],
     "CreateReplicationGroup": [
       {
-        "document": "This example shows you how to create a replication group instance.",
+        "document": "This example shows you how to create a replication group.",
         "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateReplicationGroup\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-5qlr****\",\n    \"GroupName\": \"name\"\n}",
         "output": "{\n    \"Response\": {\n        \"TaskId\": 327,\n        \"GroupId\": \"crs-repl-eewq*****\",\n        \"RequestId\": \"e546784b-709c-401d-aba6-73037eb4e522\"\n    }\n}",
+        "title": "Request Example"
+      }
+    ],
+    "DeleteExportTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteExportTask\n<Common request parameters>\n\n{\n    \"LogType\": \"auditLog\",\n    \"FileName\": \"crs-hnio60jv_20260305-124239_to_20260305-164239_1772705315834.tar.gz\",\n    \"InstanceId\": \"crs-hnio****\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b75283c1-5eca-4a88-9b8e-5169e4110ca7\"\n    }\n}",
         "title": "Request Example"
       }
     ],
@@ -162,7 +180,7 @@
       {
         "document": "This example shows you how to query the backup information of a specified instance backup ID through this API.",
         "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBackupDetail\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-g9my5vt7\",\n    \"BackupId\": \"154571841-1165701309-438602494\"\n}",
-        "output": "{\n    \"Response\": {\n        \"BackupId\": \"154571841-1165701309-438602494\",\n        \"BackupSize\": 528,\n        \"BackupType\": \"0\",\n        \"EndTime\": \"2022-12-19 19:42:20\",\n        \"InstanceType\": 9,\n        \"Locked\": 0,\n        \"MemSize\": 2048,\n        \"Remark\": \"test005\",\n        \"ReplicasNum\": 1,\n        \"RequestId\": \"add15b91-8f3c-4ff3-ba52-7c64c9c435ba\",\n        \"ShardNum\": 3,\n        \"StartTime\": \"2022-12-19 19:41:42\",\n        \"Status\": 2\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"BackupId\": \"154571841-1165701309-438602494\",\n        \"BackupSize\": 528,\n        \"BackupType\": \"0\",\n        \"EndTime\": \"2022-12-19 19:42:20\",\n        \"InstanceType\": 9,\n        \"Locked\": 0,\n        \"MemSize\": 2048,\n        \"Remark\": \"test005\",\n        \"ReplicasNum\": 1,\n        \"RequestId\": \"add15b91-8f3c-4ff3-ba52-7c64c9c435ba\",\n        \"ShardNum\": 3,\n        \"StartTime\": \"2022-12-19 19:41:42\",\n        \"Status\": 2,\n        \"DecryptKey\": \"rFGxk4E**********************U/nWERxvFx+FAY=\",\n        \"KmsKeyId\": \"b2f531ee-****-****-b8b2-52540087****\"\n    }\n}",
         "title": "Querying Backup Information Details"
       }
     ],
@@ -206,6 +224,14 @@
         "title": "Sample request"
       }
     ],
+    "DescribeExportTasks": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeExportTasks\n<Common request parameters>\n\n{\n    \"LogType\": \"auditLog\",\n    \"Limit\": 10,\n    \"Offset\": 0,\n    \"InstanceId\": \"crs-f9o8****\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [],\n        \"TotalCount\": 0,\n        \"RequestId\": \"4f66033b-2ea9-406c-9228-57ddb0b2e01c\"\n    }\n}",
+        "title": "Request instance."
+      }
+    ],
     "DescribeGlobalReplicationArea": [
       {
         "document": "This example shows you how to query the supported regions for global replication.",
@@ -224,9 +250,9 @@
     ],
     "DescribeInstanceBackups": [
       {
-        "document": "This example shows you how to query the backup list of the crs-c7nuafdt instance through this API.",
-        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstanceBackups\n<Common request parameters>\n\n{\n    \"Status\": [\n        2\n    ],\n    \"InstanceId\": \"crs-c7nuafdt\",\n    \"Limit\": 10,\n    \"Offset\": 0\n}",
-        "output": "{\n    \"Response\": {\n        \"BackupSet\": [\n            {\n                \"BackupId\": \"154572601-1165734322-153731238\",\n                \"BackupSize\": 191,\n                \"BackupType\": \"0\",\n                \"EndTime\": \"2022-12-23 16:25:18\",\n                \"ExpireTime\": \"2022-12-30 16:24:41\",\n                \"FileType\": \"RDB-Redis 4.0\",\n                \"FullBackup\": 0,\n                \"InstanceId\": \"crs-c7nuafdt\",\n                \"InstanceName\": \"Backup test.\",\n                \"InstanceType\": 6,\n                \"Locked\": 0,\n                \"Region\": \"ap-guangzhou\",\n                \"Remark\": \"test001\",\n                \"StartTime\": \"2022-12-23 16:24:41\",\n                \"Status\": 2\n            }\n        ],\n        \"RequestId\": \"2a95bfa4-ac8c-43cd-b7b1-5a93817d8de2\",\n        \"TotalCount\": 1\n    }\n}",
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstanceBackups\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-ei43p3gr\"\n}",
+        "output": "{\n    \"Response\": {\n        \"BackupSet\": [\n            {\n                \"BackupId\": \"165706342-5832225-1641692389\",\n                \"BackupSize\": 537,\n                \"BackupType\": \"1\",\n                \"Encrypted\": false,\n                \"EndTime\": \"2026-06-01 02:01:09\",\n                \"ExpireTime\": \"2026-06-08 02:00:48\",\n                \"FileType\": \"RDB-Redis 6.2\",\n                \"FullBackup\": 0,\n                \"InstanceId\": \"crs-ei43p3gr\",\n                \"InstanceName\": \"testbackup\",\n                \"InstanceType\": 16,\n                \"Locked\": 0,\n                \"Region\": \"ap-guangzhou\",\n                \"Remark\": \"\",\n                \"StartTime\": \"2026-06-01 02:00:48\",\n                \"Status\": 2\n            }\n        ],\n        \"TotalCount\": 6,\n        \"RequestId\": \"66bb2e15-b864-46ea-894d-529885087fb8\"\n    }\n}",
         "title": "Example 1"
       }
     ],
@@ -362,15 +388,15 @@
       {
         "document": "This example shows you how to obtain the shard information of Cluster Edition instances.",
         "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstanceShards\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-7pon****\",\n    \"FilterSlave\": true\n}",
-        "output": "{\n    \"Response\": {\n        \"InstanceShards\": [\n            {\n                \"Connected\": 1,\n                \"Keys\": 0,\n                \"Role\": 0,\n                \"RunId\": \"562cbff8e8a393e2d3d7166f764125a37f5cXXX\",\n                \"Runid\": \"562cbff8e8a393e2d3d7166f764125a37f5cXXX\",\n                \"ShardId\": \"1\",\n                \"ShardName\": \"crs-kp52mXXX-001-01\",\n                \"Slots\": \"[\\\"0-16383\\\"]\",\n                \"Storage\": 36795120,\n                \"StorageSlope\": 0\n            }\n        ],\n        \"RequestId\": \"06be2b8b-23f4-473f-b0f8-423552ff7XXX\",\n        \"TotalCount\": 1\n    }\n}",
-        "title": "Request Sample"
+        "output": "{\n    \"Response\": {\n        \"InstanceShards\": [\n            {\n                \"Connected\": 1,\n                \"Keys\": 0,\n                \"ReplicasNodeId\": 10086,\n                \"Role\": 0,\n                \"RunId\": \"562cbff8e8a393e2d3d7166f764125a37f5cXXX\",\n                \"Runid\": \"562cbff8e8a393e2d3d7166f764125a37f5cXXX\",\n                \"ShardId\": \"1\",\n                \"ShardName\": \"crs-kp52mXXX-001-01\",\n                \"Slots\": \"[\\\"0-16383\\\"]\",\n                \"Storage\": 36795120,\n                \"StorageSlope\": 0,\n                \"ZoneId\": \"ap-shanghai-4\"\n            }\n        ],\n        \"RequestId\": \"06be2b8b-23f4-473f-b0f8-423552ff7XXX\",\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Request Example"
       }
     ],
     "DescribeInstanceSpecBandwidth": [
       {
         "document": "This example shows you how to query bandwidth specifications.",
-        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstanceSpecBandwidth\n<Common request parameters>\n\n{}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"4297c734-2f56-49d9-9c14-9d092fXXXXXX\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstanceSpecBandwidth\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-xjhsdj****\",\n    \"ShardSize\": 0,\n    \"ShardNum\": 0,\n    \"ReplicateNum\": 0,\n    \"ReadOnlyWeight\": 0,\n    \"Type\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"Bandwidth\": 0,\n        \"ClientLimit\": 0,\n        \"RequestId\": \"4297c734-2f56-49d9-9c14-9d092fXXXXXX\"\n    }\n}",
         "title": "Querying Bandwidth Specifications"
       }
     ],
@@ -394,7 +420,23 @@
       {
         "document": "This example shows you how to query the list of Redis instances.",
         "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstances\n<Common request parameters>\n\n{\n    \"Limit\": 2,\n    \"Offset\": 0,\n    \"OrderBy\": \"createtime \"\n}",
-        "output": "{\n    \"Response\": {\n        \"InstanceSet\": [\n            {\n                \"Appid\": 251223628,\n                \"AutoRenewFlag\": 0,\n                \"BillingMode\": 1,\n                \"ClientLimit\": 10000,\n                \"ClientLimitMax\": 40000,\n                \"ClientLimitMin\": 10000,\n                \"CloseTime\": \"0000-00-00 00:00:00\",\n                \"Createtime\": \"2023-04-17 11:32:18\",\n                \"CurrentProxyVersion\": \"5.8.0\",\n                \"CurrentRedisVersion\": \"6.0.0\",\n                \"DeadlineTime\": \"2023-05-17 11:32:18\",\n                \"DedicatedClusterId\": \"\",\n                \"DiskSize\": 0,\n                \"DtsStatus\": 0,\n                \"Engine\": \"Redis\",\n                \"InstanceId\": \"crs-4nmzc0ul\",\n                \"InstanceName\": \"Redis_automation_is_awesome\",\n                \"InstanceNode\": [],\n                \"InstanceTags\": [],\n                \"InstanceTitle\": \"Adding an instance\",\n                \"MonitorVersion\": \"5s\",\n                \"NetLimit\": 24,\n                \"NoAuth\": false,\n                \"NodeSet\": [\n                    {\n                        \"NodeId\": 336948,\n                        \"NodeType\": 0,\n                        \"ZoneId\": 100002,\n                        \"ZoneName\": \"\"\n                    },\n                    {\n                        \"NodeId\": 336946,\n                        \"NodeType\": 1,\n                        \"ZoneId\": 100003,\n                        \"ZoneName\": \"\"\n                    },\n                    {\n                        \"NodeId\": 336947,\n                        \"NodeType\": 1,\n                        \"ZoneId\": 100004,\n                        \"ZoneName\": \"\"\n                    }\n                ],\n                \"OfflineTime\": \"\",\n                \"PasswordFree\": 0,\n                \"PolarisServer\": \"\",\n                \"Port\": 6379,\n                \"PriceId\": 1000848,\n                \"ProductType\": \"standalone\",\n                \"ProductVersion\": \"local\",\n                \"ProjectId\": 0,\n                \"ProjectName\": \"Default project\",\n                \"ReadOnly\": 0,\n                \"RedisClusterId\": \"\",\n                \"RedisReplicasNum\": 2,\n                \"RedisShardNum\": 1,\n                \"RedisShardSize\": 4096,\n                \"Region\": \"ap-guangzhou\",\n                \"RegionId\": 1,\n                \"RemainBandwidthDuration\": \"\",\n                \"Size\": 4096,\n                \"SlaveReadWeight\": 0,\n                \"Status\": 1,\n                \"SubStatus\": 37,\n                \"SubnetId\": 2282634,\n                \"Tags\": [],\n                \"Type\": 15,\n                \"UniqSubnetId\": \"subnet-1ed4w7to\",\n                \"UniqVpcId\": \"vpc-mjwornzj\",\n                \"UpgradeProxyVersion\": \"\",\n                \"UpgradeRedisVersion\": \"\",\n                \"Vip6\": \"\",\n                \"VpcId\": 11133673,\n                \"WanAddress\": \"\",\n                \"WanIp\": \"10.0.1.61\",\n                \"ZoneId\": 100002\n            },\n            {\n                \"Appid\": 251223628,\n                \"AutoRenewFlag\": 0,\n                \"BillingMode\": 1,\n                \"ClientLimit\": 10000,\n                \"ClientLimitMax\": 40000,\n                \"ClientLimitMin\": 10000,\n                \"CloseTime\": \"0000-00-00 00:00:00\",\n                \"Createtime\": \"2023-04-17 11:47:02\",\n                \"CurrentProxyVersion\": \"5.5.0\",\n                \"CurrentRedisVersion\": \"92.0.0\",\n                \"DeadlineTime\": \"2023-05-17 11:47:01\",\n                \"DedicatedClusterId\": \"\",\n                \"DiskSize\": 0,\n                \"DtsStatus\": 0,\n                \"Engine\": \"Redis\",\n                \"InstanceId\": \"crs-46njvft9\",\n                \"InstanceName\": \"Redis_automation_is_awesome\",\n                \"InstanceNode\": [],\n                \"InstanceTags\": [],\n                \"InstanceTitle\": \"Running\",\n                \"MonitorVersion\": \"5s\",\n                \"NetLimit\": 24,\n                \"NoAuth\": false,\n                \"NodeSet\": [\n                    {\n                        \"NodeId\": 336951,\n                        \"NodeType\": 0,\n                        \"ZoneId\": 100002,\n                        \"ZoneName\": \"\"\n                    },\n                    {\n                        \"NodeId\": 336949,\n                        \"NodeType\": 1,\n                        \"ZoneId\": 100003,\n                        \"ZoneName\": \"\"\n                    },\n                    {\n                        \"NodeId\": 336950,\n                        \"NodeType\": 1,\n                        \"ZoneId\": 100004,\n                        \"ZoneName\": \"\"\n                    }\n                ],\n                \"OfflineTime\": \"\",\n                \"PasswordFree\": 0,\n                \"PolarisServer\": \"\",\n                \"Port\": 6379,\n                \"PriceId\": 1000848,\n                \"ProductType\": \"standalone\",\n                \"ProductVersion\": \"local\",\n                \"ProjectId\": 0,\n                \"ProjectName\": \"Default project\",\n                \"ReadOnly\": 0,\n                \"RedisClusterId\": \"\",\n                \"RedisReplicasNum\": 2,\n                \"RedisShardNum\": 1,\n                \"RedisShardSize\": 4096,\n                \"Region\": \"ap-guangzhou\",\n                \"RegionId\": 1,\n                \"RemainBandwidthDuration\": \"\",\n                \"Size\": 4096,\n                \"SizeUsed\": 0,\n                \"SlaveReadWeight\": 0,\n                \"Status\": 2,\n                \"SubStatus\": 19,\n                \"SubnetId\": 2282634,\n                \"Tags\": [],\n                \"Type\": 6,\n                \"UniqSubnetId\": \"subnet-1ed4w7to\",\n                \"UniqVpcId\": \"vpc-mjwornzj\",\n                \"UpgradeProxyVersion\": \"\",\n                \"UpgradeRedisVersion\": \"\",\n                \"Vip6\": \"\",\n                \"VpcId\": 11133673,\n                \"WanAddress\": \"\",\n                \"WanIp\": \"10.0.1.71\",\n                \"ZoneId\": 100002\n            }\n        ],\n        \"RequestId\": \"3fb5a4d2-680c-45a2-aa88-0213b76d1489\",\n        \"TotalCount\": 8\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"InstanceSet\": [\n            {\n                \"Appid\": 251223628,\n                \"ApplicationVersion\": \"6.3.0\",\n                \"AutoRenewFlag\": 0,\n                \"BillingMode\": 1,\n                \"ClientLimit\": 10000,\n                \"ClientLimitMax\": 40000,\n                \"ClientLimitMin\": 10000,\n                \"CloseTime\": \"0000-00-00 00:00:00\",\n                \"Createtime\": \"2023-04-17 11:32:18\",\n                \"CurrentProxyVersion\": \"5.8.0\",\n                \"CurrentRedisVersion\": \"6.0.0\",\n                \"DeadlineTime\": \"2023-05-17 11:32:18\",\n                \"DedicatedClusterId\": \"\",\n                \"DiskSize\": 0,\n                \"DtsStatus\": 0,\n                \"Engine\": \"Redis\",\n                \"InstanceId\": \"crs-4nmzc0ul\",\n                \"InstanceName\": \"Redis_automation_is_awesome\",\n                \"InstanceNode\": [],\n                \"InstanceTags\": [],\n\"InstanceTitle\": \"Adding an Instance\"\n                \"MonitorVersion\": \"5s\",\n                \"NetLimit\": 24,\n                \"NoAuth\": false,\n                \"NodeSet\": [\n                    {\n                        \"NodeId\": 336948,\n                        \"NodeType\": 0,\n                        \"ZoneId\": 100002,\n                        \"ZoneName\": \"\"\n                    },\n                    {\n                        \"NodeId\": 336946,\n                        \"NodeType\": 1,\n                        \"ZoneId\": 100003,\n                        \"ZoneName\": \"\"\n                    },\n                    {\n                        \"NodeId\": 336947,\n                        \"NodeType\": 1,\n                        \"ZoneId\": 100004,\n                        \"ZoneName\": \"\"\n                    }\n                ],\n                \"OfflineTime\": \"\",\n                \"PasswordFree\": 0,\n                \"PolarisServer\": \"\",\n                \"Port\": 6379,\n                \"PriceId\": 1000848,\n                \"ProductType\": \"standalone\",\n                \"ProductVersion\": \"local\",\n                \"ProjectId\": 0,\n\"ProjectName\": \"Default Project\",\n                \"ReadOnly\": 0,\n                \"RedisClusterId\": \"\",\n                \"RedisReplicasNum\": 2,\n                \"RedisShardNum\": 1,\n                \"RedisShardSize\": 4096,\n                \"Region\": \"ap-guangzhou\",\n                \"RegionId\": 1,\n                \"RemainBandwidthDuration\": \"\",\n                \"Size\": 4096,\n                \"SlaveReadWeight\": 0,\n                \"Status\": 1,\n                \"SubStatus\": 37,\n                \"SubnetId\": 2282634,\n                \"Tags\": [],\n                \"Type\": 15,\n                \"UniqSubnetId\": \"subnet-1ed4w7to\",\n                \"UniqVpcId\": \"vpc-mjwornzj\",\n                \"UpgradeProxyVersion\": \"\",\n                \"UpgradeRedisVersion\": \"\",\n                \"Vip6\": \"\",\n                \"VpcId\": 11133673,\n                \"WanAddress\": \"\",\n                \"WanIp\": \"10.0.1.61\",\n                \"ZoneId\": 100002\n            },\n            {\n                \"Appid\": 251223628,\n                \"ApplicationVersion\": \"92.0.0\",\n                \"AutoRenewFlag\": 0,\n                \"BillingMode\": 1,\n                \"ClientLimit\": 10000,\n                \"ClientLimitMax\": 40000,\n                \"ClientLimitMin\": 10000,\n                \"CloseTime\": \"0000-00-00 00:00:00\",\n                \"Createtime\": \"2023-04-17 11:47:02\",\n                \"CurrentProxyVersion\": \"5.5.0\",\n                \"CurrentRedisVersion\": \"92.0.0\",\n                \"DeadlineTime\": \"2023-05-17 11:47:01\",\n                \"DedicatedClusterId\": \"\",\n                \"DiskSize\": 0,\n                \"DtsStatus\": 0,\n                \"Engine\": \"Redis\",\n                \"InstanceId\": \"crs-46njvft9\",\n                \"InstanceName\": \"Redis_automation_is_awesome\",\n                \"InstanceNode\": [],\n                \"InstanceTags\": [],\n\"InstanceTitle\": \"Running\",\n                \"MonitorVersion\": \"5s\",\n                \"NetLimit\": 24,\n                \"NoAuth\": false,\n                \"NodeSet\": [\n                    {\n                        \"NodeId\": 336951,\n                        \"NodeType\": 0,\n                        \"ZoneId\": 100002,\n                        \"ZoneName\": \"\"\n                    },\n                    {\n                        \"NodeId\": 336949,\n                        \"NodeType\": 1,\n                        \"ZoneId\": 100003,\n                        \"ZoneName\": \"\"\n                    },\n                    {\n                        \"NodeId\": 336950,\n                        \"NodeType\": 1,\n                        \"ZoneId\": 100004,\n                        \"ZoneName\": \"\"\n                    }\n                ],\n                \"OfflineTime\": \"\",\n                \"PasswordFree\": 0,\n                \"PolarisServer\": \"\",\n                \"Port\": 6379,\n                \"PriceId\": 1000848,\n                \"ProductType\": \"standalone\",\n                \"ProductVersion\": \"local\",\n                \"ProjectId\": 0,\n\"ProjectName\": \"Default Project\",\n                \"ReadOnly\": 0,\n                \"RedisClusterId\": \"\",\n                \"RedisReplicasNum\": 2,\n                \"RedisShardNum\": 1,\n                \"RedisShardSize\": 4096,\n                \"Region\": \"ap-guangzhou\",\n                \"RegionId\": 1,\n                \"RemainBandwidthDuration\": \"\",\n                \"Size\": 4096,\n                \"SizeUsed\": 0,\n                \"SlaveReadWeight\": 0,\n                \"Status\": 2,\n                \"SubStatus\": 19,\n                \"SubnetId\": 2282634,\n                \"Tags\": [],\n                \"Type\": 6,\n                \"UniqSubnetId\": \"subnet-1ed4w7to\",\n                \"UniqVpcId\": \"vpc-mjwornzj\",\n                \"UpgradeProxyVersion\": \"\",\n                \"UpgradeRedisVersion\": \"\",\n                \"Vip6\": \"\",\n                \"VpcId\": 11133673,\n                \"WanAddress\": \"\",\n                \"WanIp\": \"10.0.1.71\",\n                \"ZoneId\": 100002\n            }\n        ],\n        \"RequestId\": \"3fb5a4d2-680c-45a2-aa88-0213b76d1489\",\n        \"TotalCount\": 8\n    }\n}",
+        "title": "Request Example"
+      }
+    ],
+    "DescribeLogInstanceList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLogInstanceList\n<Common request parameters>\n\n{\n    \"LogType\": \"auditLog\",\n    \"Limit\": 100,\n    \"Offset\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"CreateAt\": \"\",\n                \"Deliver\": \"\",\n                \"DeliverSummary\": null,\n                \"EnableQuery\": \"\",\n                \"HighLogExpireDay\": 0,\n                \"HighStorage\": 0,\n                \"InstanceId\": \"crs-d285tydf\",\n                \"InstanceInfo\": {\n                    \"DegradeStrategy\": 500,\n                    \"InstanceName\": \"test-redis-5.0-cluster-1s1r-2g\",\n                    \"InstanceTags\": [],\n                    \"ProjectId\": 0,\n                    \"Region\": \"ap-guangzhou\",\n                    \"Status\": 2,\n                    \"SubStatus\": 19,\n                    \"Type\": 9,\n                    \"Zone\": \"ap-guangzhou-2\"\n                },\n                \"LogExpireDay\": 0,\n                \"LogStorage\": 0,\n                \"LowLogExpireDay\": 0,\n                \"LowStorage\": 0,\n                \"Status\": \"\"\n            }\n        ],\n        \"TotalCount\": 3,\n        \"RequestId\": \"63a0297c-850a-40df-a897-939ec135438b\"\n    }\n}",
+        "title": "Request Example"
+      }
+    ],
+    "DescribeLogs": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLogs\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-k2vh****\",\n    \"StartTime\": \"2025-12-11 14:00:09\",\n    \"EndTime\": \"2025-12-11 14:50:09\",\n    \"LogType\": \"auditLog\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"CacheCode\": \"b606eeb\",\n                \"ClientAddr\": \"************:****\",\n                \"CommandDetail\": \"set ****-audit-test-*** 1\",\n                \"CommandLatency\": 1,\n                \"CommandType\": \"WRITE\",\n                \"Timestamp\": \"2025-12-11 14:49:40.815\",\n                \"DBId\": 0,\n                \"ErrMsg\": \"\",\n                \"UserName\": \"default\"\n            }\n        ],\n        \"TotalCount\": 10,\n        \"RequestId\": \"4f90d880-5c00-4e3c-a153-12b7f2e18226\"\n    }\n}",
         "title": "Request Example"
       }
     ],
@@ -494,10 +536,10 @@
     ],
     "DescribeSSLStatus": [
       {
-        "document": "This example shows you how to query the SSL authentication information of an instance.",
-        "input": "https://redis.tencentcloudapi.com/?Action=DescribeSSLStatus\n&InstanceId=crs-2btr9ryn\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"CertDownloadUrl\": \"https://tencentdb-user-crt-12XXXXXXX.cos.ap-nanjing.myqcloud.com/TencentDB-SSL-CA.zip\",\n        \"FeatureSupport\": true,\n        \"RequestId\": \"eda7856c-9985-4d11-b5b0-48f703XXXXXX\",\n        \"SSLConfig\": false,\n        \"Status\": 2,\n        \"UrlExpiredTime\": \"2042-06-16 20:29:32\"\n    }\n}",
-        "title": "Example 1"
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSSLStatus\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-81zzc9hn\"\n}",
+        "output": "{\n    \"Response\": {\n        \"AddressType\": -1,\n        \"CertDownloadUrl\": \"https://tencentdb-user-crt-1256375829.cos.ap-nanjing.myqcloud.com/TencentDB-SSL-CA.zip\",\n        \"EncryptAddress\": \"\",\n        \"FeatureSupport\": true,\n        \"SSLConfig\": false,\n        \"Status\": 2,\n        \"UrlExpiredTime\": \"2042-06-16 20:29:32\",\n        \"RequestId\": \"56dff940-433e-49df-b975-d97425cb6c33\"\n    }\n}",
+        "title": "Example"
       }
     ],
     "DescribeSecondLevelBackupInfo": [
@@ -564,8 +606,8 @@
       {
         "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=DestroyPrepaidInstance\n&InstanceId=crs-5a4py64p\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2d4387ee-2011-449e-a32b-87f9366f3ef4\",\n        \"DealId\": \"6977675\"\n    }\n}",
-        "title": "Returning monthly subscribed instance"
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2d4387ee-2011-449e-a32b-87f9366f3ef4\",\n        \"DealName\": \"20250825297021508048753\"\n    }\n}",
+        "title": "Refund a yearly/monthly subscription instance"
       }
     ],
     "DisableReplicaReadonly": [
@@ -573,7 +615,7 @@
         "document": " ",
         "input": "https://redis.tencentcloudapi.com/?Action=DisableReplicaReadonly\n&InstanceId=crs-5a4py64p\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2d4387ee-2011-449e-a32b-87f9366f3ef4\",\n        \"TaskId\": 15236\n    }\n}",
-        "title": "Disabling read/write separation"
+        "title": "Disabling Read-Write Separation"
       }
     ],
     "DisassociateSecurityGroups": [
@@ -595,25 +637,25 @@
     "InquiryPriceCreateInstance": [
       {
         "document": " ",
-        "input": "https://redis.tencentcloudapi.com/?Action=InquiryPriceCreateInstance\n&ZoneId=100002\n&TypeId=6\n&MemSize=4096\n&GoodsNum=1\n&Period=1\n&BillingMode=1\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Price\": 30400,\n        \"HighPrecisionPrice\": 30400.123,\n        \"Currency\": \"CNY\",\n        \"AmountUnit\": \"pent\",\n        \"RequestId\": \"0115d979-2c38-4ad2-b282-bec09d5b4c0b\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquiryPriceCreateInstance\n<Common request parameters>\n\n{\n    \"TypeId\": 9,\n    \"MemSize\": 4096,\n    \"GoodsNum\": 3,\n    \"Period\": 1,\n    \"BillingMode\": 0,\n    \"ZoneId\": 100002,\n    \"RedisShardNum\": 1,\n    \"RedisReplicasNum\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"AmountUnit\": \"pent\",\n        \"Currency\": \"CNY\",\n        \"HighPrecisionOriginalPrice\": 280.0224,\n        \"HighPrecisionPrice\": 280.0224,\n        \"OriginalPrice\": 280,\n        \"Price\": 280,\n        \"RequestId\": \"e250b8cf-6beb-462f-aa17-34b08ed6c164\"\n    }\n}",
         "title": "Example"
       }
     ],
     "InquiryPriceUpgradeInstance": [
       {
         "document": " ",
-        "input": "https://redis.tencentcloudapi.com/?Action=InquiryPriceUpgradeInstance\n&InstanceId=crs-xjhsdjcxjd\n&MemSize=4096\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Price\": 30400,\n        \"HighPrecisionPrice\": 30400.123,\n        \"Currency\": \"CNY\",\n        \"AmountUnit\": \"pent\",\n        \"RequestId\": \"0115d979-2c38-4ad2-b282-bec09d5b4c01\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquiryPriceUpgradeInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-i7flj4ir\",\n    \"MemSize\": 1024,\n    \"RedisShardNum\": 1,\n    \"RedisReplicasNum\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"AmountUnit\": \"pent\",\n        \"Currency\": \"CNY\",\n        \"HighPrecisionOriginalPrice\": 21.111112,\n        \"HighPrecisionPrice\": 21.111112,\n        \"OriginalPrice\": 21,\n        \"Price\": 21,\n        \"RequestId\": \"6b36919f-29e6-43cf-bf94-24af6b0c8c93\"\n    }\n}",
         "title": "Example"
       }
     ],
     "KillMasterGroup": [
       {
-        "document": "This example shows you how to simulate a failure.",
-        "input": "POST / HTTP/1.1Host: redis.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: KillMasterGroup<Common request parameters>{    \"InstanceId\": \"crs-joak5XXX\",    \"Password\": \"pwd@1234\",    \"ShardIds\": [        0    ]}",
+        "document": "Fault simulation",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: KillMasterGroup\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-joak5XXX\",\n    \"Password\": \"pwd@1234\",\n    \"ShardIds\": [\n        0\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"da6b0bea-7aab-4d4b-b819-d524f4c9eXXX\",\n        \"TaskId\": 1682324000\n    }\n}",
-        "title": "Sample request"
+        "title": "Request Example"
       }
     ],
     "ManualBackupInstance": [
@@ -637,7 +679,7 @@
         "document": "This example shows you how to configure automatic backup rules.",
         "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAutoBackupConfig\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-5a4py64p\",\n    \"AutoBackupType\": 1,\n    \"TimePeriod\": \"01:00-02:00\",\n    \"WeekDays\": [\n        \"Wednesday\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"BackupStorageDays\": 7,\n        \"AutoBackupType\": 1,\n        \"WeekDays\": [\n            \"Wednesday\"\n        ],\n        \"RequestId\": \"65e950b9-78e8-49b1-9200-0e62a1925554\",\n        \"TimePeriod\": \"00:00-01:00\"\n    }\n}",
-        "title": "Request Sample"
+        "title": "Request Example"
       }
     ],
     "ModifyBackupDownloadRestriction": [
@@ -675,8 +717,8 @@
     "ModifyInstanceAccount": [
       {
         "document": " ",
-        "input": "https://redis.tencentcloudapi.com/?Action=ModifyInstanceAccount\n&InstanceId=crs-********\n&AccountName=test_account\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TaskId\": 123456,\n        \"RequestId\": \"0e728fa9-c2e5-4bf8-8d6b-c1c4fab7b6db\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyInstanceAccount\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-azaq****\",\n    \"AccountName\": \"*e******test\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": 2031373742,\n        \"RequestId\": \"7575fa3d-bb9f-4cc0-a050-4e4e33ed5bb3\"\n    }\n}",
         "title": "Request Example"
       }
     ],
@@ -750,6 +792,14 @@
         "title": "Sample request"
       }
     ],
+    "ModifyLog": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyLog\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-kqqge823\",\n    \"LogType\": \"auditLog\",\n    \"LogSubType\": \"write\",\n    \"LogExpireDay\": 7,\n    \"HighLogExpireDay\": 7,\n    \"DegradeStrategy\": 600\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2feabd25-287c-4530-9612-173246e3ac50\"\n    }\n}",
+        "title": "Request Example"
+      }
+    ],
     "ModifyMaintenanceWindow": [
       {
         "document": " ",
@@ -782,12 +832,20 @@
         "title": "Modifying the Replication Group Information"
       }
     ],
+    "OpenLog": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: OpenLog\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-k2vhnkix\",\n    \"LogType\": \"auditLog\",\n    \"LogSubType\": \"write\",\n    \"LogExpireDay\": 7,\n    \"HighLogExpireDay\": 7,\n    \"DegradeStrategy\": 600\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8936d9b0-3819-479d-855e-919422cffdb9\"\n    }\n}",
+        "title": "Request Example"
+      }
+    ],
     "OpenSSL": [
       {
-        "document": " ",
-        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: OpenSSL\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-dvchdv5\"\n}",
-        "output": "{\n    \"Response\": {\n        \"TaskId\": 329,\n        \"RequestId\": \"e546784b-709c-401d-aba6-73037eb4e522\"\n    }\n}",
-        "title": "Example of Enabling SSL Requests"
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: OpenSSL\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-gcd7l17r\",\n    \"AddressType\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": -1,\n        \"RequestId\": \"8a82392e-13dd-4a44-8ab1-2cd977fdaf20\"\n    }\n}",
+        "title": "Example"
       }
     ],
     "ReleaseWanAddress": [
@@ -818,7 +876,7 @@
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RenewInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-5a4py64p\",\n    \"Period\": 12\n}",
-        "output": "{\n    \"Response\": {\n        \"DealId\": \"6954225\",\n        \"RequestId\": \"495d8e9f-61bf-465e-aa4e-14be54a9095a\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"DealName\": \"20250825297021530591847\",\n        \"RequestId\": \"495d8e9f-61bf-465e-aa4e-14be54a9095a\"\n    }\n}",
         "title": "Request Example"
       }
     ],
@@ -848,7 +906,7 @@
     ],
     "SwitchAccessNewInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SwitchAccessNewInstance\n<Common request parameters>\n{\n    \"InstanceId\": \"crs-kf******\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"dc7c5c1b-e0b4-4cbc-a1bf-b6fea3be9500\"\n    }\n}",
         "title": "Sample 1"
@@ -874,16 +932,16 @@
       {
         "document": "This example shows you how to modify the instance memory configuration.",
         "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpgradeInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-5qlr****\",\n    \"MemSize\": 4096\n}",
-        "output": "{\n    \"Response\": {\n        \"DealId\": \"6954227\",\n        \"RequestId\": \"4daddc97-0005-45d8-b5b8-38514ec1e97c\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"DealName\": \"20250825297021509398751\",\n        \"RequestId\": \"4daddc97-0005-45d8-b5b8-38514ec1e97c\"\n    }\n}",
         "title": "Changing Specifications"
       }
     ],
     "UpgradeInstanceVersion": [
       {
-        "document": "This example shows you how to upgrade the current instance to Redis 4.0 cluster architecture.",
+        "document": "Upgrade the current instance to Redis 4.0 cluster architecture",
         "input": "https://redis.tencentcloudapi.com/?Action=UpgradeInstanceVersion\n&InstanceId=crs-5qlr****\n&SwitchOption=2\n&TargetInstanceType=7\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"DealId\": \"6954227\",\n        \"RequestId\": \"4daddc97-0005-45d8-b5b8-38514ec1e97c\"\n    }\n}",
-        "title": "Sample"
+        "output": "{\n    \"Response\": {\n        \"DealName\": \"20250825297021820475193\",\n        \"RequestId\": \"4daddc97-0005-45d8-b5b8-38514ec1e97c\"\n    }\n}",
+        "title": "Example"
       }
     ],
     "UpgradeProxyVersion": [
