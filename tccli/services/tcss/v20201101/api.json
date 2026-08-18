@@ -16417,7 +16417,7 @@
         {
           "disabled": false,
           "document": "Unique repository ID",
-          "example": "sd23",
+          "example": "1",
           "member": "int64",
           "name": "RegistryId",
           "required": true,
@@ -16471,7 +16471,7 @@
         },
         {
           "disabled": false,
-          "document": "Repository type, which can be `harbor`.",
+          "document": "Repository type, which can be `harbor`",
           "example": "harbor",
           "member": "string",
           "name": "RegistryType",
@@ -16481,7 +16481,7 @@
         },
         {
           "disabled": false,
-          "document": "warehouse version",
+          "document": "Registry version",
           "example": "v1.x",
           "member": "string",
           "name": "RegistryVersion",
@@ -16491,7 +16491,7 @@
         },
         {
           "disabled": false,
-          "document": "Network type, which can be `public` (public network).",
+          "document": "Network type, which can be `public` (public network)",
           "example": "public",
           "member": "string",
           "name": "NetType",
@@ -16511,7 +16511,7 @@
         },
         {
           "disabled": false,
-          "document": "rate limiting",
+          "document": "Rate limiting",
           "example": "10",
           "member": "uint64",
           "name": "SpeedLimit",
@@ -16531,8 +16531,8 @@
         },
         {
           "disabled": false,
-          "document": "",
-          "example": "[{\"ConnDetectMessage\": \"\", \"ConnDetectStatus\": \"status_conne****\", \"FailReason\": \"\", \"Quuid\": \"backend\", \"Solution\": \"\", \"Uuid\": \"backend\"}]",
+          "document": "Connectivity test results",
+          "example": "无",
           "member": "RegistryConnDetectResult",
           "name": "ConnDetectDetail",
           "output_required": false,
@@ -16541,8 +16541,8 @@
         },
         {
           "disabled": false,
-          "document": "",
-          "example": "1",
+          "document": "TCR Instance ID",
+          "example": "tcr-xvz",
           "member": "string",
           "name": "InstanceID",
           "output_required": false,
@@ -16551,7 +16551,7 @@
         },
         {
           "disabled": false,
-          "document": "Synchronization method. 0: full synchronization; 1: incremental synchronization.",
+          "document": "Synchronization method. 0: full synchronization; 1: incremental synchronization",
           "example": "0",
           "member": "uint64",
           "name": "SyncMode",
@@ -16561,7 +16561,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether authorization and scanning are performed automatically. For full synchronization, only images of the latest version are involved. For incremental synchronization, all new images are involved.",
+          "document": "Whether authorization and scanning are performed automatically. For full synchronization, only images of the latest version are involved. For incremental synchronization, all new images are involved",
           "example": "true",
           "member": "bool",
           "name": "NeedScan",
@@ -16571,8 +16571,8 @@
         },
         {
           "disabled": false,
-          "document": "Webhook access address.",
-          "example": "http://up.yd.qcloud.com/tcss/registry/webhook_id\t",
+          "document": "Webhook access address",
+          "example": "http://up.yd.qcloud.com/tcss/registry/webhook_id",
           "member": "string",
           "name": "WebhookUrl",
           "output_required": false,
@@ -16581,7 +16581,7 @@
         },
         {
           "disabled": false,
-          "document": "Webhook access token.\t",
+          "document": "Webhook access token.",
           "example": "token",
           "member": "string",
           "name": "WebhookToken",

@@ -122,7 +122,7 @@
     "CreateDashboard": {
       "document": "This API is used to create a dashboard.",
       "input": "CreateDashboardRequest",
-      "name": "Create a dashboard",
+      "name": "Creates a dashboard",
       "output": "CreateDashboardResponse",
       "status": "online"
     },
@@ -381,7 +381,7 @@
     "DeleteDashboardSubscribe": {
       "document": "This API is used to delete dashboard subscriptions.",
       "input": "DeleteDashboardSubscribeRequest",
-      "name": "Delete a dashboard subscription",
+      "name": "Deletes a dashboard subscription",
       "output": "DeleteDashboardSubscribeResponse",
       "status": "online"
     },
@@ -663,6 +663,13 @@
       "input": "DescribeDashboardSubscribesRequest",
       "name": "Obtaining the Dashboard Subscription List",
       "output": "DescribeDashboardSubscribesResponse",
+      "status": "online"
+    },
+    "DescribeDashboards": {
+      "document": "This API is used to obtain the dashboard.",
+      "input": "DescribeDashboardsRequest",
+      "name": "Obtaining the Dashboard",
+      "output": "DescribeDashboardsResponse",
       "status": "online"
     },
     "DescribeDataTransformInfo": {
@@ -5486,7 +5493,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "dashboard name",
+          "document": "Dashboard name",
           "example": "xxxxxx-xx-xx-xx-xxxxxxxx",
           "member": "string",
           "name": "DashboardName",
@@ -5540,7 +5547,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Dashboard subscription name.\nInput limit:\n-Cannot be empty\n-Length cannot exceed 128 bytes\n-Cannot contain character '|'",
+          "document": "Dashboard subscription name.\nInput limit:\n-cannot be empty\n-Length cannot exceed 128 bytes.\n-Cannot contain the character '|'",
           "example": "仪表盘-CLS-日报",
           "member": "string",
           "name": "Name",
@@ -5549,7 +5556,7 @@
         },
         {
           "disabled": false,
-          "document": "Dashboard Id.\n-Get the dashboard Id by [searching for the dashboard](https://www.tencentcloud.com/document/product/614/95636?from_cn_redirect=1).",
+          "document": "Dashboard Id.\n-Get the dashboard Id by [searching for a dashboard](https://www.tencentcloud.com/document/product/614/95636?from_cn_redirect=1).",
           "example": "dashboard-0d954d68-xxxx-xxxx-95a6-f9eff0db370f",
           "member": "string",
           "name": "DashboardId",
@@ -5558,7 +5565,7 @@
         },
         {
           "disabled": false,
-          "document": "Subscription time cron expression, in format {seconds} {minutes} {hours} {date} {month} {weekday}; (valid data: {minutes} {hours} {date} {month} {weekday})\n-{seconds} Value ranges from 0 to 59. \n-{Minutes} Value ranges from 0 to 59. \n-Hour. Value ranges from 0 to 23. \n-{Date} value ranges from 1 to 31 AND (last day of month: L) \n-{Month} value ranges from 1 to 12. \n-Week value ranges from 0 to 6 [0:Sunday, 6:Saturday]",
+          "document": "Subscription time cron expression, in format {seconds} {minutes} {hours} {date} {month} {weekday}; (valid data: {minutes} {hours} {date} {month} {weekday})\n-{seconds} value ranges from 0 to 59. \n-{Minutes} Value ranges from 0 to 59. \n-Hour. Value ranges from 0 to 23. \n-{Date} value ranges from 1 to 31 AND (dayOfMonth last day: L) \n-{Month} value ranges from 1 to 12. \n-Week value ranges from 0 to 6 [0:Sunday, 6:Saturday].",
           "example": "\"0 40 20 * * ?\"",
           "member": "string",
           "name": "Cron",
@@ -8369,12 +8376,128 @@
       ],
       "usage": "both"
     },
+    "DashboardInfo": {
+      "document": "Dashboard information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Dashboard ID",
+          "example": "dashboard-c6125e52-xxxx-xxxx-a90f-d445a6e90327",
+          "member": "string",
+          "name": "DashboardId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Dashboard name",
+          "example": "topic流量趋势图",
+          "member": "string",
+          "name": "DashboardName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Dashboard data",
+          "example": "{\"panels\":[],\"time\":[\"now-h\",\"now\"]}",
+          "member": "string",
+          "name": "Data",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Time when the dashboard was created. Format: YYYY-MM-DD HH:MM:SS",
+          "example": "2021-12-22 16:11:27",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "If AssumerUin is not empty, it indicates the UIN of the service party that created the log topic.",
+          "example": "110111212",
+          "member": "uint64",
+          "name": "AssumerUin",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "If RoleName is not empty, it indicates the role of the service provider creating the log set.",
+          "example": "CLB_QcsRole",
+          "member": "string",
+          "name": "RoleName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "If AssumerName is not empty, it indicates the name of the service provider creating the log topic.",
+          "example": "CLS_business",
+          "member": "string",
+          "name": "AssumerName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Information of tag bound to log topic",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Dashboard region: For compatibility with old regions.",
+          "example": "ap-beijing",
+          "member": "string",
+          "name": "DashboardRegion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Modify dashboard time. Format: YYYY-MM-DD HH:MM:SS",
+          "example": "2021-12-22 16:11:27",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Topic-related information corresponding to the dashboard",
+          "example": "无",
+          "member": "DashboardTopicInfo",
+          "name": "DashboardTopicInfos",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "DashboardNoticeMode": {
       "document": "Dashboard subscription notification method",
       "members": [
         {
           "disabled": false,
-          "document": "Dashboard notification method.\n\n-Uin: Tencent Cloud user\n-Group: Tencent Cloud user group\n-WeCom: wecom callback\n-Email: Custom email\n-DingTalk\n-Lark",
+          "document": "Dashboard notification method.\n\n-Uin: Tencent Cloud user\n-Group: Tencent Cloud user group\n-WeCom: wecom callback\n-Email: Custom email\n- DingTalk: DingTalk\n-Lark",
           "example": "Uin",
           "member": "string",
           "name": "ReceiverType",
@@ -8385,7 +8508,7 @@
         },
         {
           "disabled": false,
-          "document": "Value of the known method.\n-When ReceiverType is `WeCom`, `DingTalk`, or `Lark`, Values must be empty and the Url field is required.\n-When ReceiverType is `Uin`, `Group`, or `Email`, the Values field is required and the Url field must be empty.\n-When ReceiverType is `Uin`, Values is the user id. Obtain the sub-user UID by [querying sub-users](https://www.tencentcloud.com/document/product/598/34587?from_cn_redirect=1).\n-When ReceiverType is `Group`, Values is the user Group id. Obtain user Group id by querying the user Group list (https://www.tencentcloud.com/document/product/598/34589?from_cn_redirect=1).\n-When ReceiverType is `Email`, Values is the user email info.",
+          "document": "Method corresponding value.\n-When ReceiverType is `WeCom`, `DingTalk`, or `Lark`, Values must be empty and the Url field is required.\n-When ReceiverType is `Uin`, `Group`, or `Email`, the Values field is required, and the Url field must be empty.\n-When ReceiverType is `Uin`, Values is the user id. Obtain the sub-user UID by pulling sub-users (https://www.tencentcloud.com/document/product/598/34587?from_cn_redirect=1).\n-When ReceiverType is `Group`, Values is the user Group id. Query the user Group list (https://www.tencentcloud.com/document/product/598/34589?from_cn_redirect=1) to obtain the user Group id.\n-When ReceiverType is `Email`, Values is the user email.",
           "example": "[\"168053\",\"1\"]",
           "member": "string",
           "name": "Values",
@@ -8396,7 +8519,7 @@
         },
         {
           "disabled": false,
-          "document": "Dashboard notification channel.\n\n-Support: [\"Email\",\"Sms\",\"WeChat\",\"Phone\"].\n-When ReceiverType is `Email` or `WeCom`, ReceiverChannels is invalid.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Dashboard notification channel.\n\n-Support: [\"Email\",\"Sms\",\"WeChat\",\"Phone\"].\n-   When ReceiverType is `Email` or `WeCom`, ReceiverChannels is unavailable.",
           "example": "[\"Email\",\"Sms\",\"WeChat\",\"Phone\"]",
           "member": "string",
           "name": "ReceiverChannels",
@@ -8407,7 +8530,7 @@
         },
         {
           "disabled": false,
-          "document": "Subscription method - Callback URL.\n-When ReceiverType is `WeCom`, `DingTalk`, or `Lark`, the Url field is required as the callback URL of each channel.\n-When the value is `WeCom`, the Url is the enterprise wechat callback address.\n-When the value is `DingTalk`, Url is the chatbot Webhook address.\n-When `Lark`, Url is the chatbot Webhook address.\n-When ReceiverType is `Uin`, `Group`, or `Email`, the Url field must be empty.",
+          "document": "Subscription method - Callback URL.\n-When ReceiverType is `WeCom`, `DingTalk`, or `Lark`, the Url field is required as the callback URL for each channel.\n-When it is `WeCom`, the Url is the enterprise wechat callback address.\n-For `DingTalk`, the Url is the chatbot Webhook address.\n-When it is `Lark`, the Url is the chatbot Webhook address.\n-When ReceiverType is `Uin`, `Group`, or `Email`, the Url field must be empty.",
           "example": "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=ctestea1a5-7xx9-4xx3-8xxb-w5fxxbd6",
           "member": "string",
           "name": "Url",
@@ -8435,7 +8558,7 @@
         },
         {
           "disabled": false,
-          "document": "Dashboard subscription time. If this field is empty, the dashboard default time is used.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Dashboard subscription time. If this field is empty, the dashboard default time is used.",
           "example": "[\"now-5m\",\"now\"]",
           "member": "string",
           "name": "DashboardTime",
@@ -8446,7 +8569,7 @@
         },
         {
           "disabled": false,
-          "document": "Dashboard subscription template variable.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Dashboard subscription template variable.",
           "example": "无",
           "member": "DashboardTemplateVariable",
           "name": "TemplateVariables",
@@ -8567,7 +8690,7 @@
         },
         {
           "disabled": false,
-          "document": "Dashboard subscription record update time. Format: `YYYY-MM-DD HH:MM:SS`",
+          "document": "Dashboard subscription record update time. Format: YYYY-MM-DD HH:MM:SS",
           "example": "2022-03-18 22:47:06",
           "member": "string",
           "name": "UpdateTime",
@@ -8577,7 +8700,7 @@
         },
         {
           "disabled": false,
-          "document": "Time sent successfully of dashboard subscription record. Format: `YYYY-MM-DD HH:MM:SS`",
+          "document": "Last time for successful sending of dashboard subscription record. Format: `YYYY-MM-DD HH:MM:SS`",
           "example": "2022-03-19 22:47:06",
           "member": "string",
           "name": "LastTime",
@@ -8641,6 +8764,34 @@
           "output_required": true,
           "required": true,
           "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "DashboardTopicInfo": {
+      "document": "Dashboard associated topic information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Topic ID",
+          "example": "b388dc72-xxxx-xxxx-9dbb-7d05fdff0376",
+          "member": "string",
+          "name": "TopicId",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region of the topic.\n- 1: Guangzhou\n-4: Shanghai\n- 5: Hong Kong (China)\n- 7: Shanghai Finance\n-8: Beijing\n-9: Singapore\n- 11: Shenzhen Finance\n- 15: Silicon Valley\n-16: Chengdu\n-17: Frankfurt\n- 18: Seoul\n- 19: Chongqing\n- 22: Virginia\n- 23: Bangkok\n- 25: Tokyo\n- 33: Nanjing\n- 36: Tianjin\n-39: Taipei (China)\n- 46: Beijing Finance\n-72: Jakarta\n-74: São Paulo\n-78: Shanghai Autonomous Driving Cloud",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "required": true,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -11323,7 +11474,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "dashboardId: Filter by [dashboard id]. Type: String. Required: No.\n\n-Dashboard id. Obtain DashboardId through the [Get Dashboard](https://www.tencentcloud.com/document/api/614/95636?from_cn_redirect=1) api.\n-Input parameter example: dashboard-522a5609-1f41-4b11-8086-5afd1d7574f5\n\nEach request can have up to 10 Filters. The upper limit of Filter.Values is 100.",
+          "document": "dashboardId: Filter by [dashboard id]. Type: String. Required: No.\n\n- Dashboard id. Obtain the DashboardId through the [Get Dashboard](https://www.tencentcloud.com/document/api/614/95636?from_cn_redirect=1) API.\n-Input parameter example: dashboard-522a5609-1f41-4b11-8086-5afd1d7574f5\n\nEach request can have up to 10 Filters. The upper limit of Filter.Values is 100.",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -11372,6 +11523,80 @@
           "name": "TotalCount",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDashboardsRequest": {
+      "document": "DescribeDashboards request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Page offset. Default value: 0",
+          "example": "1",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Maximum number of entries per page. Default value: 20. Maximum value: 100.",
+          "example": "5",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "-dashboardId filter by [dashboard id], type: String, required: No.\n-Example value: dashboard-522a5609-1f41-4b11-8086-5afd1d7574f5\n-dashboardName: Filter by fuzzy search as dashboard name. Type: String. Required: No.\n-Example value: Business dashboard\n-dashboardRegion filter by dashboard region (compatible with legacy dashboards). This property for dashboards created via cloud API, type: String, required: No.\n-See [Regions and Availability Zones](https://www.tencentcloud.com/document/product/614/18940?from_cn_redirect=1)\n-Example: ap-guangzhou\n- tagKey - String - Required: No - Filter by the tag key.\n-Example value:\n    ```\n    \"Filters\":[\n        {\n            \"Key\": \"tagKey\",\n            \"Values\": [\n                \"tag-key-test\"\n            ]\n        }\n    ]\n    ```\n\n-tag:tagKey Filter by [tag key-value pair]. Replace tagKey with a specific tag key. Type: String. Required: No.\n-Refer to [Example 1](https://www.tencentcloud.com/document/api/614/95636?from_cn_redirect=1#4.-.E7.A4.BA.E4.BE.8B) for usage.\n    ```\n    \"Filters\": [\n        {\n            \"Key\": \"tag:tag-key-test\",\n            \"Values\": [\n                \"12\"\n            ]\n        }\n    ]\n    ```\n\nEach request can have up to 10 Filters. The upper limit of Filter.Values is 100.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Filter is performed by topicId and regionId.\n-topicId: Log topic id.\n- Obtain the log topic Id through [Get Log Topic List](https://www.tencentcloud.com/document/product/614/56454?from_cn_redirect=1).\n-Example value: 439a5304-08f9-484b-9c4d-46ff57133816\n- regionId\n- 1: Guangzhou\n-4: Shanghai\n-5: Hong Kong (China)\n- 7: Shanghai Finance\n- 8: Beijing\n-9: Singapore\n- 11: Shenzhen Finance\n- 15: Silicon Valley\n- 16: Chengdu\n- 17: Frankfurt\n- 18: Seoul\n- 19: Chongqing\n- 22: Virginia\n- 23: Bangkok\n- 25: Tokyo\n- 33: Nanjing\n- 36: Tianjin\n-39: Taipei (China)\n- 46: Beijing Finance\n-72: Jakarta\n-74: São Paulo\n-78: Shanghai Autonomous Driving Cloud\n",
+          "example": "无",
+          "member": "TopicIdAndRegion",
+          "name": "TopicIdRegionFilter",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDashboardsResponse": {
+      "document": "DescribeDashboards response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of dashboards",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Dashboard details",
+          "example": "无",
+          "member": "DashboardInfo",
+          "name": "DashboardInfos",
+          "output_required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -15756,11 +15981,11 @@
       "usage": "both"
     },
     "Filter": {
-      "document": "Filter",
+      "document": "Filters",
       "members": [
         {
           "disabled": false,
-          "document": "Field to be filtered",
+          "document": "Fields that need to be filtered.",
           "example": "taskId",
           "member": "string",
           "name": "Key",
@@ -15769,7 +15994,7 @@
         },
         {
           "disabled": false,
-          "document": "Value to be filtered",
+          "document": "Values to be filtered",
           "example": "[\"fadcc986-xxxx-xxxx-b766-9ce9c193da32\"]",
           "member": "string",
           "name": "Values",
@@ -19484,7 +19709,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Dashboard id. Obtain the DashboardId through the [Get Dashboard](https://www.tencentcloud.com/document/api/614/95636?from_cn_redirect=1) API.",
+          "document": "Dashboard id. Obtain DashboardId through the [Get Dashboard](https://www.tencentcloud.com/document/api/614/95636?from_cn_redirect=1) API.",
           "example": "dashboard-e7497a78-667f-45ee-b785-4ac8fca05dc6",
           "member": "string",
           "name": "DashboardId",
@@ -19493,7 +19718,7 @@
         },
         {
           "disabled": false,
-          "document": "dashboard name",
+          "document": "Dashboard name",
           "example": "主机指标监控预制仪表盘",
           "member": "string",
           "name": "DashboardName",
@@ -19538,7 +19763,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Dashboard subscription id. Obtain the id through the [Get Dashboard Subscription List](https://www.tencentcloud.com/document/api/614/105779?from_cn_redirect=1) api.",
+          "document": "Dashboard subscription id. Obtain the Id through the [dashboard subscription list](https://www.tencentcloud.com/document/api/614/105779?from_cn_redirect=1) API.",
           "example": "21683",
           "member": "uint64",
           "name": "Id",
@@ -19547,7 +19772,7 @@
         },
         {
           "disabled": false,
-          "document": "Dashboard id. Obtain the DashboardId through the [Get Dashboard](https://www.tencentcloud.com/document/api/614/95636?from_cn_redirect=1) api.",
+          "document": "Dashboard id. Obtain DashboardId through the [Get Dashboard](https://www.tencentcloud.com/document/api/614/95636?from_cn_redirect=1) API.",
           "example": "dashboard-522a5609-1f41-4b11-8086-5afd1d7574f5",
           "member": "string",
           "name": "DashboardId",
@@ -24749,7 +24974,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Dashboard id. Obtain the DashboardId through the [Get Dashboard](https://www.tencentcloud.com/document/api/614/95636?from_cn_redirect=1) API.",
+          "document": "Dashboard id. Obtain the DashboardId through the [search for a dashboard.](https://www.tencentcloud.com/document/api/614/95636?from_cn_redirect=1) API.",
           "example": "dashboard-e7497a78-667f-45ee-b785-4ac8fca05dc6",
           "member": "string",
           "name": "DashboardId",
@@ -24767,7 +24992,7 @@
         },
         {
           "disabled": false,
-          "document": "Dashboard subscription Id. Obtain through the api [Dashboard subscription list](https://www.tencentcloud.com/document/api/614/105779?from_cn_redirect=1).",
+          "document": "Dashboard subscription Id. Obtain the Id through the [dashboard subscription list](https://www.tencentcloud.com/document/api/614/105779?from_cn_redirect=1) api.",
           "example": "10001",
           "member": "uint64",
           "name": "Id",
@@ -24776,7 +25001,7 @@
         },
         {
           "disabled": false,
-          "document": "Dashboard subscription Name. Obtain through the api [Dashboard subscription list](https://www.tencentcloud.com/document/api/614/105779?from_cn_redirect=1).",
+          "document": "Dashboard subscription name. Obtain the Name through the [dashboard subscription list](https://www.tencentcloud.com/document/api/614/105779?from_cn_redirect=1) API.",
           "example": "仪表盘-CLS-日报",
           "member": "string",
           "name": "Name",
@@ -25922,7 +26147,7 @@
       "usage": "out"
     },
     "Tag": {
-      "document": "Description of the tag pair bound to a resource instance when it is created",
+      "document": "Description of tag pairs bound at the time of resource instance creation",
       "members": [
         {
           "disabled": false,
@@ -26043,6 +26268,30 @@
         }
       ],
       "usage": "both"
+    },
+    "TopicIdAndRegion": {
+      "document": "Dashboard topic and region information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Log topic id",
+          "example": "xxx-xxx-xxx-xxx",
+          "member": "string",
+          "name": "TopicId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The ID of the region where the log topic ID is located.\n\nid, region, abbreviation information follows:\n- 1: Guangzhou, ap-guangzhou\n- 4: Shanghai, ap-shanghai\n-5, Hong Kong (China), ap-hongkong\n- 7: Shanghai Finance, ap-shanghai-fsi\n-8, Beijing, ap-beijing\n- 9, Singapore, ap-singapore\n- 11: Shenzhen Finance, ap-shenzhen-fsi\n-15, Silicon Valley, na-siliconvalley\n-16, Chengdu, ap-chengdu\n-17, Frankfurt, eu-frankfurt\n- 18, Seoul, ap-seoul\n- 19: Chongqing, ap-chongqing\n- 22, Virginia, na-ashburn\n- 23, Bangkok, ap-bangkok\n-25, Tokyo, ap-tokyo\n- 33, Nanjing, ap-nanjing\n-46, Beijing Finance, ap-beijing-fsi\n- 72, Jakarta, ap-jakarta\n-74, São Paulo, sa-saopaulo",
+          "example": "19",
+          "member": "uint64",
+          "name": "RegionId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "usage": "in"
     },
     "TopicInfo": {
       "document": "Basic Topic Information",
