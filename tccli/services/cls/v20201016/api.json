@@ -11566,7 +11566,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter is performed by topicId and regionId.\n-topicId: Log topic id.\n- Obtain the log topic Id through [Get Log Topic List](https://www.tencentcloud.com/document/product/614/56454?from_cn_redirect=1).\n-Example value: 439a5304-08f9-484b-9c4d-46ff57133816\n- regionId\n- 1: Guangzhou\n-4: Shanghai\n-5: Hong Kong (China)\n- 7: Shanghai Finance\n- 8: Beijing\n-9: Singapore\n- 11: Shenzhen Finance\n- 15: Silicon Valley\n- 16: Chengdu\n- 17: Frankfurt\n- 18: Seoul\n- 19: Chongqing\n- 22: Virginia\n- 23: Bangkok\n- 25: Tokyo\n- 33: Nanjing\n- 36: Tianjin\n-39: Taipei (China)\n- 46: Beijing Finance\n-72: Jakarta\n-74: São Paulo\n-78: Shanghai Autonomous Driving Cloud\n",
+          "document": "Filter is performed by topicId and regionId.\n-topicId: Log topic id.\n- Obtain the log topic Id through [Get Log Topic List](https://www.tencentcloud.com/document/api/614/42783).\n-Example value: 439a5304-08f9-484b-9c4d-46ff57133816\n- regionId\n- 1: Guangzhou\n-4: Shanghai\n-5: Hong Kong (China)\n- 7: Shanghai Finance\n- 8: Beijing\n-9: Singapore\n- 11: Shenzhen Finance\n- 15: Silicon Valley\n- 16: Chengdu\n- 17: Frankfurt\n- 18: Seoul\n- 19: Chongqing\n- 22: Virginia\n- 23: Bangkok\n- 25: Tokyo\n- 33: Nanjing\n- 36: Tianjin\n-39: Taipei (China)\n- 46: Beijing Finance\n-72: Jakarta\n-74: Sao Paulo\n-78: Shanghai Autonomous Driving Cloud\n",
           "example": "无",
           "member": "TopicIdAndRegion",
           "name": "TopicIdRegionFilter",
@@ -19709,7 +19709,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Dashboard id. Obtain DashboardId through the [Get Dashboard](https://www.tencentcloud.com/document/api/614/95636?from_cn_redirect=1) API.",
+          "document": "Dashboard id.",
           "example": "dashboard-e7497a78-667f-45ee-b785-4ac8fca05dc6",
           "member": "string",
           "name": "DashboardId",
