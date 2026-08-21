@@ -85,14 +85,14 @@
       "status": "online"
     },
     "PullSmsSendStatus": {
-      "document": "This API is used to pull SMS delivery status.\nCurrently, you can also [configure the callback](https://intl.cloud.tencent.com/document/product/382/37809?from_cn_redirect=1#.E8.AE.BE.E7.BD.AE.E4.BA.8B.E4.BB.B6.E5.9B.9E.E8.B0.83.E9.85.8D.E7.BD.AE) to get the delivery status.\n>- Note: you need to contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) to activate this API.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.\n",
+      "document": "This API is used to pull SMS delivery status.\nCurrently, you can also [configure the callback](https://www.tencentcloud.com/document/product/382/35469#38206134-503f-4344-b118-cfc7a72c4a9b) to get the delivery status.\n>- Note: you need to contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) to activate this API.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.",
       "input": "PullSmsSendStatusRequest",
       "name": "Pulls SMS delivery status",
       "output": "PullSmsSendStatusResponse",
       "status": "online"
     },
     "PullSmsSendStatusByPhoneNumber": {
-      "document": "This API is used to pull SMS delivery status for one single number.\nCurrently, you can also [configure the callback](https://intl.cloud.tencent.com/document/product/382/37809?from_cn_redirect=1#.E8.AE.BE.E7.BD.AE.E4.BA.8B.E4.BB.B6.E5.9B.9E.E8.B0.83.E9.85.8D.E7.BD.AE) to get the delivery status.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms) to eliminate the need to calculate signatures. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.\n",
+      "document": "This API is used to pull SMS delivery status for one single number.\nCurrently, you can also [configure the callback](https://www.tencentcloud.com/document/product/382/35469#38206134-503f-4344-b118-cfc7a72c4a9b) to get the delivery status.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms) to eliminate the need to calculate signatures. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.",
       "input": "PullSmsSendStatusByPhoneNumberRequest",
       "name": "Pulls SMS delivery status for one single number",
       "output": "PullSmsSendStatusByPhoneNumberResponse",
@@ -1225,7 +1225,7 @@
           "example": "Ok",
           "member": "string",
           "name": "Code",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1235,7 +1235,7 @@
           "example": "Describe success",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1245,27 +1245,27 @@
           "example": "86",
           "member": "string",
           "name": "NationCode",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Subscriber number in normal format such as 13711112222, without any prefix (country or region code).",
-          "example": "13711112222",
+          "example": "18501234444",
           "member": "string",
           "name": "SubscriberNumber",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The standardized mobile number in E.164 format after parsing, which is consistent with the parsed number for SMS message delivery. If the parsing fails, the original number will be returned.",
-          "example": "+8613711112222",
+          "example": "+8618501234444",
           "member": "string",
           "name": "PhoneNumber",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1275,17 +1275,17 @@
           "example": "CN",
           "member": "string",
           "name": "IsoCode",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Country code or region name such as China. For more information, see [Global SMS Price Overview](https://intl.cloud.tencent.com/document/product/382/18051?from_cn_redirect=1#.E6.97.A5.E7.BB.93.E5.90.8E.E4.BB.98.E8.B4.B9.3Ca-id.3D.22post-payment.22.3E.3C.2Fa.3E)",
+          "document": "Country code or region name such as China. For more information, see [Global SMS Price Overview](https://www.tencentcloud.com/document/product/382/8414?pg=#3c47bbea-5699-48a6-83d3-6b97cf2a23bc)",
           "example": "China",
           "member": "string",
           "name": "IsoName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -1505,7 +1505,7 @@
           "example": "1620734188",
           "member": "uint64",
           "name": "UserReceiveTime",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1515,37 +1515,37 @@
           "example": "86",
           "member": "string",
           "name": "CountryCode",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "User's mobile number in a common format such as 13711112222.",
-          "example": "13711112222",
+          "example": "18501234444",
           "member": "string",
           "name": "SubscriberNumber",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Mobile number in the E.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).",
-          "example": "+8613711112222",
+          "example": "+8618501234444",
           "member": "string",
           "name": "PhoneNumber",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "ID of the current delivery.",
-          "example": "14:19325917feb3914eb78b50d6182d7e452e",
+          "example": "5000:1045710669157053657849499619",
           "member": "string",
           "name": "SerialNo",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1555,7 +1555,7 @@
           "example": "SUCCESS",
           "member": "string",
           "name": "ReportStatus",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1565,19 +1565,19 @@
           "example": "DELIVRD",
           "member": "string",
           "name": "Description",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "User session content, which is the same as the `SessionContext` in the request and is empty by default. If you need to activate it, contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
+          "example": "outsid_1729495320_1011",
           "member": "string",
           "name": "SessionContext",
-          "required": true,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1615,7 +1615,7 @@
         {
           "disabled": false,
           "document": "Target mobile number in the E.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).",
-          "example": "+8615291996666",
+          "example": "+8618501234444",
           "member": "string",
           "name": "PhoneNumber",
           "required": true,
@@ -1624,7 +1624,7 @@
         {
           "disabled": false,
           "document": "The SMS `SdkAppId` generated after an application is added in the [SMS console](https://console.cloud.tencent.com/smsv2/app-manage), such as 1400006666.",
-          "example": "1400006874",
+          "example": "1400006666",
           "member": "string",
           "name": "SmsSdkAppId",
           "required": true,
@@ -1648,10 +1648,10 @@
         {
           "disabled": false,
           "document": "Delivery status response set.",
-          "example": "\"PullSmsSendStatusSet\": [       {         \"UserReceiveTime\": \"20",
+          "example": "无",
           "member": "PullSmsSendStatus",
           "name": "PullSmsSendStatusSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1670,7 +1670,7 @@
         {
           "disabled": false,
           "document": "Maximum number of pulled entries. Maximum value: 100.",
-          "example": "2",
+          "example": "100",
           "member": "uint64",
           "name": "Limit",
           "required": true,
@@ -1679,7 +1679,7 @@
         {
           "disabled": false,
           "document": "The SMS `SdkAppId` generated after an application is added in the [SMS console](https://console.cloud.tencent.com/smsv2/app-manage), such as 1400006666.",
-          "example": "1400006874",
+          "example": "1400006666",
           "member": "string",
           "name": "SmsSdkAppId",
           "required": true,
@@ -1694,10 +1694,10 @@
         {
           "disabled": false,
           "document": "Delivery status response set.",
-          "example": "\"PullSmsSendStatusSet\": [       {         \"UserReceiveTime\": \"20",
+          "example": "无",
           "member": "PullSmsSendStatus",
           "name": "PullSmsSendStatusSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },

@@ -296,6 +296,20 @@
         "title": "Modifying a Cloud Slicing Task"
       }
     ],
+    "QueryAIMessageList": [
+      {
+        "document": "Corresponding to cases with no contextual information",
+        "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryAIMessageList\n<Common Request Parameters>\n{\n  \"SdkAppId\": 1500000000\n  \"TaskId\": \"v2_20260818_xxxxxxxxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"MessageList\": [],\n        \"RequestId\": \"986fec91-200c-xxxx-xxxx-xxxxxxx\"\n    }\n}",
+        "title": "No context information is available for the input task ID."
+      },
+      {
+        "document": "Corresponds to contextual information.",
+        "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryAIMessageList\n<Common Request Parameters>\n{\n  \"SdkAppId\": 1500000000\n  \"TaskId\": \"v2_20260818_xxxxxxxxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"MessageList\": [\n            {\n                \"Content\": \"tell me a story\",\n                \"Role\": \"user\"\n            }\n        ],\n        \"Total\": 24,\n        \"RequestId\": \"xxx-xxx-xxx-xxx-xxxx\"\n    }\n}",
+        "title": "Contextual information is associated with the input task ID."
+      }
+    ],
     "RemoveUser": [
       {
         "document": "This example shows you how to remove users `test1` and `test2` from room `1234`.",

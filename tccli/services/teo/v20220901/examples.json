@@ -326,6 +326,14 @@
         "title": "Creating a LoadBalancer with Probe Disabled"
       }
     ],
+    "CreateLogAnalysisDownloadTask": [
+      {
+        "document": "Download the L7 access logs for the selected site with ID \"zone-2z55fgysdtmc\" in the Chinese mainland region between 2025-07-10 00:00:00 and 2025-07-11 00:00:00 UTC+8, sorted in reverse chronological order, in csv file format. \nLog match condition: request domain is \"www.example.com\" and hit status is \"hit\" or \"cache miss\".",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLogAnalysisDownloadTask\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-2z55fgysdtmc\",\n    \"Area\": \"mainland\",\n    \"StartTime\": \"2025-07-10T00:00:00+08:00\",\n    \"EndTime\": \"2025-07-11T00:00:00+08:00\",\n    \"LogType\": \"l7-access-logs\",\n    \"Condition\": \"${RequestHost} in ['www.example.com'] AND ${EdgeCacheStatus} in ['hit','miss']\",\n    \"Format\": \"csv\",\n    \"Sort\": \"desc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"88e4f1a4-ee44-42e9-8aa8-a9b1631ecc5e\",\n        \"TaskId\": \"task-1a4wdeq2wsda\"\n    }\n}",
+        "title": "Creating a log analytics log download task"
+      }
+    ],
     "CreateMultiPathGateway": [
       {
         "document": "This example shows you how to create a Cloud Gateway in the specified zone (ZoneId: zone-27q0p0bal192) in the Beijing region (RegionId: ap-beijing) with the port (GatewayPort) set to 8080.",

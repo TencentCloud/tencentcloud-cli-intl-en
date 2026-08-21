@@ -8711,6 +8711,26 @@
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Exceed limit enabled status</p><p>Enumeration value:</p><ul><li>yes: Exceed limit enabled</li><li>no: Exceed limit disabled</li></ul><p>Default value: no</p>",
+          "example": "yes",
+          "member": "string",
+          "name": "StorageOverUse",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Auto-scaling enabled status</p><p>Enumeration value:</p><ul><li>yes: On</li><li>no: Off</li></ul><p>Default value: no</p>",
+          "example": "no",
+          "member": "string",
+          "name": "StorageAutoExpand",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -29288,7 +29308,7 @@
           "example": "1",
           "member": "uint64",
           "name": "RollbackId",
-          "required": true,
+          "required": false,
           "type": "int"
         },
         {
