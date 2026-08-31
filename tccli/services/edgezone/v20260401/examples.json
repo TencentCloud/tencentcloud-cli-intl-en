@@ -14,6 +14,14 @@
         "title": "Apply for a public Ipv6"
       }
     ],
+    "CreateEdgeNodeService": [
+      {
+        "document": "Enable Billing Capability for edge physical machines in Guangzhou Zone 1.",
+        "input": "POST / HTTP/1.1\nHost: edgezone.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateEdgeNodeService\n<Common request parameters>\n\n{\n    \"Zone\": \"ap-guangzhou-1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e5f6a789-4c3d-5b2e-af01-8d7c6b5a4e3f\"\n    }\n}",
+        "title": "Enable Billing Capability for Edge Physical Machines in a Specified Availability Zone"
+      }
+    ],
     "CreateInstances": [
       {
         "document": "Create a physical machine instance in Guangzhou Zone 1, use the CentOS 7.9 mirror, and enable IPv6.",

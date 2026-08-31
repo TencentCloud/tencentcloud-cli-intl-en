@@ -2712,7 +2712,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Passport ID",
+          "document": "Parsed passport ID extracted from the MRZ (Machine-Readable Zone) of passport",
           "example": "E6918C",
           "member": "string",
           "name": "ID",
@@ -2722,7 +2722,7 @@
         },
         {
           "disabled": false,
-          "document": "Name",
+          "document": "Parsed full name extracted from the MRZ (Machine-Readable Zone) of passport",
           "example": "BROWN BENJAMIN",
           "member": "string",
           "name": "Name",
@@ -2732,7 +2732,7 @@
         },
         {
           "disabled": false,
-          "document": "Date of birth",
+          "document": "Parsed date of birth extracted from the MRZ (Machine-Readable Zone) of passport",
           "example": "20230415",
           "member": "string",
           "name": "DateOfBirth",
@@ -2742,7 +2742,7 @@
         },
         {
           "disabled": false,
-          "document": "Gender (F: female, M: male)",
+          "document": "Parsed gender extracted from the MRZ (Machine-Readable Zone) of passport",
           "example": "M",
           "member": "string",
           "name": "Sex",
@@ -2752,7 +2752,7 @@
         },
         {
           "disabled": false,
-          "document": "Expiration date",
+          "document": "Parsed expiry date extracted from the MRZ (Machine-Readable Zone) of passport",
           "example": "20230414",
           "member": "string",
           "name": "DateOfExpiration",
@@ -2762,7 +2762,7 @@
         },
         {
           "disabled": false,
-          "document": "Issuing country",
+          "document": "Parsed issuing country extracted from the MRZ (Machine-Readable Zone) of passport",
           "example": "SGP",
           "member": "string",
           "name": "IssuingCountry",
@@ -2772,7 +2772,7 @@
         },
         {
           "disabled": false,
-          "document": "Nationality code (MRZ field)",
+          "document": "Parsed country-region code extracted from the MRZ (Machine-Readable Zone) of passport",
           "example": "SGP",
           "member": "string",
           "name": "Nationality",
@@ -2812,7 +2812,7 @@
         },
         {
           "disabled": false,
-          "document": "The first row of the machine-readable zone (MRZ) at the bottom",
+          "document": "Parsed MRZ line 1 raw sequence extracted from the MRZ (Machine-Readable Zone) of passport",
           "example": "`P<CANBROWN<<BENJAMIN<<<<<<<<<<<<<<<<<<<<<<<<`",
           "member": "string",
           "name": "CodeSet",
@@ -2822,7 +2822,7 @@
         },
         {
           "disabled": false,
-          "document": "The second row of the MRZ at the bottom",
+          "document": "Parsed MRZ line 2 raw sequence extracted from the MRZ (Machine-Readable Zone) of passport",
           "example": "1357",
           "member": "string",
           "name": "CodeCrc",
@@ -2832,7 +2832,7 @@
         },
         {
           "disabled": false,
-          "document": "The surname.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Parsed surname extracted from the MRZ (Machine-Readable Zone) of passport",
           "example": "BROWN",
           "member": "string",
           "name": "Surname",
@@ -2842,7 +2842,7 @@
         },
         {
           "disabled": false,
-          "document": "The given name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Parsed given name extracted from the MRZ (Machine-Readable Zone) of passport",
           "example": "BENJAMIN",
           "member": "string",
           "name": "GivenName",
@@ -2852,7 +2852,7 @@
         },
         {
           "disabled": false,
-          "document": "Type (in Machine Readable Zone)",
+          "document": "Parsed document type extracted from the MRZ (Machine-Readable Zone) of passport",
           "example": "P",
           "member": "string",
           "name": "Type",
@@ -2872,7 +2872,7 @@
         },
         {
           "disabled": false,
-          "document": "Card Warning Information\n\n-9101 Alarm for covered certificate\n-9102 Alarm for photocopied certificate\n-9103 Alarm for photographed certificate\n-9104 Alarm for tamper certificate\n-9107 Alarm for reflective certificate\n-9108 Alarm for blurry certificate \n-9109 This capability is not enabled. Please contact customer support to activate the alert service.",
+          "document": "Card Warning Information\n\n-9101 Alarm for covered certificate\n-9102 Alarm for photocopied certificate\n-9103 Alarm for photographed certificate\n-9104 Alarm for PS certificate\n-9107 Alarm for reflective certificate\n-9108 Alarm for blurry certificate \n-9109 This capability is not enabled. Please contact customer support to activate the alert service.",
           "example": "[-9101]",
           "member": "int64",
           "name": "WarnCardInfos",
