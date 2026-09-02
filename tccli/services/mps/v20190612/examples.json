@@ -1326,6 +1326,14 @@
         "title": "Initiating a Transcoding Task"
       }
     ],
+    "QueryHunyuan3DTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryHunyuan3DTask\n<Common request parameters>\n\n{\n    \"TaskId\": \"4deda860-a9a0-47e3-81f1-00cadf02a44c\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorCode\": \"ResourceNotFound.TaskId\",\n        \"ErrorMessage\": \"task not found or expired\",\n        \"RequestId\": \"cec25a1e-0875-44f0-87da-2a1ebabee48b\"\n    }\n}",
+        "title": "The task does not exist"
+      }
+    ],
     "QueryProject": [
       {
         "document": "",
@@ -1348,6 +1356,14 @@
         "input": "https://mps.tencentcloudapi.com/?Action=ResetWorkflow\n&WorkflowId=2573\n&WorkflowName=trans-100020-100030-100040\n&Trigger.Type=CosFileUpload\n&Trigger.CosFileUploadTrigger.Bucket=TopRankVideo-125xxx88\n&Trigger.CosFileUploadTrigger.Region=ap-chongqing\n&Trigger.CosFileUploadTrigger.Dir=/movie/201907/\n&MediaProcessTask.TranscodeTaskSet.0.Definition=100020\n&MediaProcessTask.TranscodeTaskSet.0.WatermarkSet.0.Definition=12580\n&MediaProcessTask.TranscodeTaskSet.1.Definition=100030\n&MediaProcessTask.TranscodeTaskSet.1.WatermarkSet.0.Definition=12580\n&MediaProcessTask.TranscodeTaskSet.2.Definition=100040\n&MediaProcessTask.TranscodeTaskSet.2.WatermarkSet.0.Definition=12580\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\"\n    }\n}",
         "title": "Resetting a transcoding rule"
+      }
+    ],
+    "SubmitHunyuan3DTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SubmitHunyuan3DTask\n<Common request parameters>\n\n{\n    \"MultiViewImages\": [\n        {\n            \"ViewType\": \"front\",\n            \"ViewImageUrl\": \"https://hunyuan-base-test-1258344703.cos.ap-guangzhou.myqcloud.com/public/test/eba3542f-5e19-4862-b95d-c2d28e7ef91e-latent.png\"\n        }\n    ],\n    \"EnablePBR\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"r_fbdac9ac98c311f18af6166e9d240373\",\n        \"RequestId\": \"1a15321e-f92f-404e-8ccc-8b33d5359f14\"\n    }\n}",
+        "title": "Multi-Perspective Image-to-3D"
       }
     ],
     "SyncDubbing": [
