@@ -12,8 +12,8 @@ Configure
 .. code-block:: sh
 
     $  tccli configure
-    TencentCloud API secretId [*afcQ]:AKIDwLw1234MMfPRle2g9nR2OTI787aBCDP
-    TencentCloud API secretKey [*ArFd]:OxXj7khcV1234dQSSYNABcdCc1LiArFd
+    TencentCloud API secretId [*abcd]:<YOUR_SECRET_ID>
+    TencentCloud API secretKey [*abcd]:<YOUR_SECRET_KEY>
     region: ap-guangzhou
     output[json]:
 
