@@ -120,7 +120,7 @@
       "status": "online"
     },
     "SendStatusStatistics": {
-      "document": "This API is used to collect statistics on SMS messages sent by users.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.\n",
+      "document": "This API is used to collect statistics on SMS messages sent by users.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.",
       "input": "SendStatusStatisticsRequest",
       "name": "Collects statistics on SMS delivery",
       "output": "SendStatusStatisticsResponse",
@@ -2095,30 +2095,30 @@
         {
           "disabled": false,
           "document": "Billable SMS message quantity; for example, in 100 successfully submitted SMS messages, if 20 ones are long messages (over 80 characters) and split into two messages each, then the billable quantity will be 80 * 1 + 20 * 2 = 120.",
-          "example": "",
+          "example": "149",
           "member": "uint64",
           "name": "FeeCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Submitted SMS messages.",
-          "example": "",
+          "example": "150",
           "member": "uint64",
           "name": "RequestCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Successfully submitted SMS messages.",
-          "example": "",
+          "example": "149",
           "member": "uint64",
           "name": "RequestSuccessCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -2130,8 +2130,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Start time in the format of `yyyymmddhh` accurate to the hour, such as 2021050113 (13:00 on May 1, 2021).",
-          "example": "2016090800",
+          "document": "Start time in the format of `yyyymmddhh` accurate to the hour, such as 2021050113 (13:00 on May 1, 2021).Note: the statistical range includes the current hour.",
+          "example": "2024090800",
           "member": "string",
           "name": "BeginTime",
           "required": true,
@@ -2139,8 +2139,8 @@
         },
         {
           "disabled": false,
-          "document": "End time in the format of `yyyymmddhh` accurate to the hour, such as 2021050118 (18:00 on May 1, 2021).\nNote: `EndTime` must be after `BeginTime`.",
-          "example": "2016090823",
+          "document": "End time in the format of `yyyymmddhh` accurate to the hour, such as 2021050118 (18:00 on May 1, 2021).\nNote: `EndTime` must be after `BeginTime`, and the statistical range includes the current hour.",
+          "example": "2024090823",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -2149,7 +2149,7 @@
         {
           "disabled": false,
           "document": "The SMS `SdkAppId` generated after an application is added in the [SMS console](https://console.cloud.tencent.com/smsv2/app-manage), such as 1400006666.",
-          "example": "1400006874",
+          "example": "1400006666",
           "member": "string",
           "name": "SmsSdkAppId",
           "required": true,
@@ -2167,7 +2167,7 @@
         {
           "disabled": false,
           "document": "Offset.\nNote: this parameter is currently fixed at 0.",
-          "example": "1",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": true,
@@ -2182,10 +2182,10 @@
         {
           "disabled": false,
           "document": "Delivery statistics response body.",
-          "example": "\"SendStatusStatistics\": {       \"FeeCount\": 1880,       \"Requ",
+          "example": "{\"FeeCount\":1880,\"RequestCount\":1880,\"RequestSuccessCount\":1880}",
           "member": "SendStatusStatistics",
           "name": "SendStatusStatistics",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },

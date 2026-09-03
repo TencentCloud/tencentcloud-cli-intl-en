@@ -56,6 +56,20 @@
         "title": "Batch deletes users"
       }
     ],
+    "DescribeDBEngines": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBEngines\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"Description\": \"\",\n                \"Name\": \"\",\n                \"Type\": \"TDStore\",\n                \"Version\": \"r110d001\"\n            },\n            {\n                \"Description\": \"\",\n                \"Name\": \"\",\n                \"Type\": \"TDStore\",\n                \"Version\": \"r091d001\"\n            },\n            {\n                \"Description\": \"\",\n                \"Name\": \"\",\n                \"Type\": \"TDStore\",\n                \"Version\": \"r120d001\"\n            }\n        ],\n        \"RequestId\": \"6c72b90f-8ebd-4944-b62b-8107d66b814d\",\n        \"TotalCount\": 3\n    }\n}",
+        "title": "Query Engine"
+      },
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBEngines\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"a613aed0-7fb5-11ea-a6fe-525400542aa6\",\n        \"Items\": [\n            {\n                \"Version\": \"8.0\",\n                \"Type\": \"TDStore\",\n                \"Name\": \"11\",\n                \"Description\": \"11\"\n            }\n        ]\n    }\n}",
+        "title": "Query database engine info"
+      }
+    ],
     "DescribeDBInstanceDetail": [
       {
         "document": " ",
@@ -370,20 +384,6 @@
         "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyUserPrivileges\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql3-0b2f04e0\",\n    \"Users\": [\n        {\n            \"UserName\": \"mysql.sys\",\n            \"Host\": \"localhost\"\n        }\n    ],\n    \"GlobalPrivileges\": [\n        \"SELECT\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4c2c4b96-5807-4c63-b55c-78a93937d111\"\n    }\n}",
         "title": "Modify user permissions"
-      }
-    ],
-    "ResetUserPassword": [
-      {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResetUserPassword\n<Common request parameters>\n\n{\n    \"UserName\": \"test_user\",\n    \"InstanceId\": \"tdsql3-d8fffc3c\",\n    \"Host\": \"%\",\n    \"Password\": \"dasdfadasdf231!@\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a93d2900-ef72-11eb-ab93-0716f253da76\"\n    }\n}",
-        "title": "This API is used to reset user password"
-      },
-      {
-        "document": "Reset user password using encrypted password",
-        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResetUserPassword\n<Common request parameters>\n\n{\n    \"UserName\": \"test1234567\",\n    \"InstanceId\": \"tdsql3-f44c7c8e\",\n    \"Host\": \"%\",\n    \"EncryptedPassword\": \"lNepasen9UqXCGYFXc3kkT2GIa5Byc+8CcCOCkTxxTZ/Dow03USfrJrnTLB9cclK6k3RWruGAnP7CbogfauT2otyiIepAEfGK5fHgOZwZCfgrM3J6/K2nxTdYaYjtQP6cyMYbW+07/EdKpUSOpv+6MGw3nPDPrJFDNOvt8EjEbJ9+fU/zC+O4CNX7HdHNeWUtlMRtTEIeqXInjYb5M32aB01SrIEWSel6K2SMpjjzXsKqSVZl/nrHkWsXTd5Xn8ysuV/2Eu1dipXVbhR8lWQ1y57qopPIuz0v2ARODgVTPyY550g/hl3Tz7ScJxynJEL4AajBy7i8po0WA5Ctg1Eiw==\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"15636f30-1e3f-4d8b-887c-c1eae1a1cc78\"\n    }\n}",
-        "title": "Resetting the User Encryption Password"
       }
     ],
     "ResetUsersPassword": [

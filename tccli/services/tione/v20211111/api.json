@@ -1,5 +1,12 @@
 {
   "actions": {
+    "CreateTrainingTask": {
+      "document": "This API is used to create a model training task.",
+      "input": "CreateTrainingTaskRequest",
+      "name": "Creates a model training task",
+      "output": "CreateTrainingTaskResponse",
+      "status": "online"
+    },
     "DescribeModelServiceGroups": {
       "document": "This API is used to list online inference service groups.",
       "input": "DescribeModelServiceGroupsRequest",
@@ -59,7 +66,7 @@
         {
           "disabled": false,
           "document": "Token alias.",
-          "example": "这是 token 别名",
+          "example": "token别名",
           "member": "string",
           "name": "Name",
           "output_required": false,
@@ -70,7 +77,7 @@
         {
           "disabled": false,
           "document": "Token description.",
-          "example": "这是 token 描述",
+          "example": "token别名",
           "member": "string",
           "name": "Description",
           "output_required": false,
@@ -131,6 +138,23 @@
       ],
       "usage": "both"
     },
+    "CBSConfig": {
+      "document": "CBS storage configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Storage size.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "50",
+          "member": "int64",
+          "name": "VolumeSizeInGB",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "CFSConfig": {
       "document": "CFS storage configurations.",
       "members": [
@@ -177,6 +201,60 @@
           "required": false,
           "type": "string",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "CFSTurbo": {
+      "document": "Parameters for configuring CFSTurbo.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "CFSTurbo instance ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "d3dcc487",
+          "member": "string",
+          "name": "Id",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "CFSTurbo path.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "/turbo",
+          "member": "string",
+          "name": "Path",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "CodeRepoConfig": {
+      "document": "Code repository configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Code repository ID.",
+          "example": "cr-1000669213287070080",
+          "member": "string",
+          "name": "Id",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Target address for the code repository download.",
+          "example": "/opt/ml/code",
+          "member": "string",
+          "name": "TargetPath",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -331,6 +409,304 @@
       ],
       "usage": "both"
     },
+    "CreateTrainingTaskRequest": {
+      "document": "CreateTrainingTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Training task name. The name cannot exceed 60 characters in length, and can contain only Chinese characters, letters, digits, underscores (_), and hyphens (-). It must start with a Chinese character, letter, or digit.",
+          "example": "TaskName",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Billing mode. For example, PREPAID indicates yearly/monthly subscription (resource group).\nPOSTPAID_BY_HOUR indicates pay-as-you-go mode.",
+          "example": "PREPAID",
+          "member": "string",
+          "name": "ChargeType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Resource configuration. Specify the CVM instance specification ID and number of nodes. The API for querying the CVM instance specification ID is DescribeBillingSpecsPrice. For example, [{\"Role\":\"WORKER\", \"InstanceType\": \"TI.S.MEDIUM.POST\", \"InstanceNum\": 1}].",
+          "example": "无",
+          "member": "ResourceConfigInfo",
+          "name": "ResourceConfigInfos",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "TI Workspace ID. Used solely for the \"Workspace\" allowlist feature. To use this feature, please contact a TI administrator to enable allowlisting.",
+          "example": "0",
+          "member": "string",
+          "name": "TiProjectId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Training framework name, which can be queried via the DescribeTrainingFrameworks API. For example, SPARK, PYSPARK, TENSORFLOW, and PYTORCH.",
+          "example": "TENSORFLOW",
+          "member": "string",
+          "name": "FrameworkName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Training framework version, which can be queried via the DescribeTrainingFrameworks API. For example, 1.15 and 1.9.",
+          "example": "1.15",
+          "member": "string",
+          "name": "FrameworkVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Training framework environment, which can be queried via the DescribeTrainingFrameworks API. For example, tf1.15-py3.7-cpu and torch1.9-py3.8-cuda11.1-gpu.",
+          "example": "tf1.15-py3.7-cpu",
+          "member": "string",
+          "name": "FrameworkEnvironment",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "ID of the prepaid dedicated resource group, which can be queried via the DescribeBillingResourceGroups API.",
+          "example": "rsg-1368bcxs",
+          "member": "string",
+          "name": "ResourceGroupId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tag configuration.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Custom image information.",
+          "example": "无",
+          "member": "ImageInfo",
+          "name": "ImageInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "COS code package path.",
+          "example": "无",
+          "member": "CosPathInfo",
+          "name": "CodePackagePath",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Task startup command. Specify this parameter based on the task training mode. If the configuration fails due to special characters, use the EncodedStartCmdInfo parameter instead.",
+          "example": "无",
+          "member": "StartCmdInfo",
+          "name": "StartCmdInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Training mode, which can be queried via the DescribeTrainingFrameworks API. For example, PS_WORKER, DDP, MPI, and HOROVOD.",
+          "example": "PS_WORKER",
+          "member": "string",
+          "name": "TrainingMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Data configurations. This parameter depends on the DataSource field. The maximum number of configurations is 10.",
+          "example": "无",
+          "member": "DataConfig",
+          "name": "DataConfigs",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "VPC Id",
+          "example": "vpc-xxxxx",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Subnet ID.",
+          "example": "subnet-xxxx",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "COS training output path.",
+          "example": "无",
+          "member": "CosPathInfo",
+          "name": "Output",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "CLS logging configuration.",
+          "example": "无",
+          "member": "LogConfig",
+          "name": "LogConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Tuning parameters. The value of this parameter cannot exceed 2048 characters in length.",
+          "example": "{\"TrainMode\":\"DDP\"}",
+          "member": "string",
+          "name": "TuningParameters",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether to report logs.",
+          "example": "true",
+          "member": "bool",
+          "name": "LogEnable",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Remarks. The value of this parameter cannot exceed 1024 characters.",
+          "example": "\"Remark\"",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Data source. For example, DATASET, COS, CFS, CFSTurbo, HDFS, and GooseFSx.",
+          "example": "DATASET",
+          "member": "string",
+          "name": "DataSource",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Callback URL. This parameter is used for the asynchronous callback to create, start, or stop training tasks. For the callback format and content, see [[TI-ONE API Callback Description]](https://www.tencentcloud.com/document/product/851/84292?from_cn_redirect=1).",
+          "example": "http://callback.url",
+          "member": "string",
+          "name": "CallbackUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Encoded task startup command. If StartCmdInfo is also configured, only this parameter takes effect.",
+          "example": "无",
+          "member": "EncodedStartCmdInfo",
+          "name": "EncodedStartCmdInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Code repository configuration.",
+          "example": "无",
+          "member": "CodeRepoConfig",
+          "name": "CodeRepos",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Network exposure configuration.",
+          "example": "无",
+          "member": "ExposeNetworkConfig",
+          "name": "ExposeNetworkConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Environment Variables.",
+          "example": "无",
+          "member": "EnvVar",
+          "name": "Envs",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Train tool configuration.",
+          "example": "无",
+          "member": "TrainToolConfig",
+          "name": "TrainToolConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Training Diagnostic Tool Configuration.",
+          "example": "无",
+          "member": "ResourceSupplyAttribute",
+          "name": "ResourceSupplyAttribute",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Queue ID.",
+          "example": "[\"q-bj-2f0a9dca\"]",
+          "member": "string",
+          "name": "Queues",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTrainingTaskResponse": {
+      "document": "CreateTrainingTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Training task ID.",
+          "example": "train-13766824497408",
+          "member": "string",
+          "name": "Id",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CronScaleJob": {
       "document": "Scheduled scaling task.",
       "members": [
@@ -425,6 +801,171 @@
       ],
       "usage": "both"
     },
+    "DataConfig": {
+      "document": "Data configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Mapping path.",
+          "example": "/opt/ml/",
+          "member": "string",
+          "name": "MappingPath",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Storage purpose.\nValid values: BUILTIN_CODE, BUILTIN_DATA, BUILTIN_MODEL, USER_DATA, USER_CODE, USER_MODEL, OUTPUT, and OTHER.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "BUILTIN_CODE",
+          "member": "string",
+          "name": "DataSourceUsage",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "DATASET, COS, CFS, CFSTurbo, GooseFSx, HDFS, and WEDATA_HDFS\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "DATASET",
+          "member": "string",
+          "name": "DataSourceType",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data from the data set.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DataSetConfig",
+          "name": "DataSetSource",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data from COS.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CosPathInfo",
+          "name": "COSSource",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data from CFS.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CFSConfig",
+          "name": "CFSSource",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data from HDFS.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "HDFSConfig",
+          "name": "HDFSSource",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "GooseFS data.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "GooseFS",
+          "name": "GooseFSSource",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "TurboFS data.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CFSTurbo",
+          "name": "CFSTurboSource",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Information from local disks.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "LocalDisk",
+          "name": "LocalDiskSource",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "CBS configuration information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CBSConfig",
+          "name": "CBSSource",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Host path information.",
+          "example": "无",
+          "member": "HostPath",
+          "name": "HostPathSource",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "PublicDataSourceFS",
+          "name": "PublicDataSource",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "DataSetConfig": {
+      "document": "Data set structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data set ID.",
+          "example": "无",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "DescribeModelServiceGroupsRequest": {
       "document": "DescribeModelServiceGroups request structure.",
       "members": [
@@ -483,9 +1024,9 @@
           "type": "list"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Service classification.",
-          "example": "无",
+          "example": "Normal",
           "member": "string",
           "name": "ServiceCategory",
           "required": false,
@@ -526,6 +1067,21 @@
       ],
       "type": "object"
     },
+    "EncodedStartCmdInfo": {
+      "document": "Encoded startup command information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Startup command of the task, which is input in base64 format. Note that the complete input of {\"StartCmd\":\"\",\"PsStartCmd\":\"\",\"WorkerStartCmd\":\"\"} is required for conversion.",
+          "example": "无",
+          "member": "string",
+          "name": "StartCmdInfo",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
     "EnvVar": {
       "document": "Environment variables.",
       "members": [
@@ -565,6 +1121,84 @@
           "required": false,
           "type": "list",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ExposeNetworkConfig": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "SSHConfig",
+          "name": "SSHConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "ExposePortConfig",
+          "name": "ExposePortConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ExposePortConfig": {
+      "document": "Exposed port information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "false",
+          "member": "bool",
+          "name": "Enable",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "vpc-xxxxxxxx",
+          "member": "string",
+          "name": "VpcId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "lb-xxx",
+          "member": "string",
+          "name": "ClbId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "lb-xxx",
+          "member": "string",
+          "name": "ClbHost",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -614,6 +1248,56 @@
         }
       ],
       "usage": "in"
+    },
+    "GooseFS": {
+      "document": "GooseFS configuration parameters.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "GooseFS instance ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "goosefs-instance-id",
+          "member": "string",
+          "name": "Id",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "GooseFS type, including GooseFS and GooseFSx.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "GooseFSx",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Path to mount the GooseFSx instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "/test",
+          "member": "string",
+          "name": "Path",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "GooseFS namespace.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test-1318247806",
+          "member": "string",
+          "name": "NameSpace",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "GooseFSx": {
       "document": "GooseFSx configurations.",
@@ -667,6 +1351,32 @@
           "required": false,
           "type": "int",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "HDFSConfig": {
+      "document": "HDFS parameter configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster instance ID, such as emr-xxxxxxxx.",
+          "example": "emr-xxxxxxxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Path.",
+          "example": "/my/path",
+          "member": "string",
+          "name": "Path",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -799,6 +1509,23 @@
       ],
       "usage": "both"
     },
+    "HostPath": {
+      "document": "Host path mounting configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Host path to be mounted.",
+          "example": "/mnt",
+          "member": "string",
+          "name": "Path",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "ImageInfo": {
       "document": "Image description information.",
       "members": [
@@ -830,7 +1557,7 @@
           "example": "ap-beijiang",
           "member": "string",
           "name": "RegistryRegion",
-          "output_required": true,
+          "output_required": false,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -841,7 +1568,7 @@
           "example": "t-asfffasf",
           "member": "string",
           "name": "RegistryId",
-          "output_required": true,
+          "output_required": false,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -878,6 +1605,67 @@
           "required": false,
           "type": "bool",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "ImageSecret",
+          "name": "ImageSecret",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ImageSecret": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "9a3b93e2-0f68-11ef-9b3e-5254000fd567",
+          "member": "string",
+          "name": "KeyId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "test_user",
+          "member": "string",
+          "name": "Username",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "dGVzdF9wYXNzd29yZAo=",
+          "member": "string",
+          "name": "Password",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "100033215875_1000321732173_ap-guangzhou_NOTEBOOK_S7RkFublldbD",
+          "member": "string",
+          "name": "SecretId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -899,6 +1687,34 @@
       ],
       "usage": "both"
     },
+    "LocalDisk": {
+      "document": "Local disk information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Node ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Local path.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LocalPath",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "LogConfig": {
       "document": "Log configurations.",
       "members": [
@@ -908,6 +1724,7 @@
           "example": "cls-eeee",
           "member": "string",
           "name": "LogsetId",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -918,6 +1735,7 @@
           "example": "cls-topic-ccccc",
           "member": "string",
           "name": "TopicId",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -996,14 +1814,14 @@
         },
         {
           "disabled": false,
-          "document": "GooseFSx configurations, and is valid when ModelSource is GooseFSx.",
+          "document": "GooseFSx configuration. This parameter takes effect if ModelSource is GooseFSx.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "GooseFSx",
           "name": "GooseFSx",
           "output_required": false,
           "required": false,
           "type": "object",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
@@ -1203,7 +2021,7 @@
           "example": "无",
           "member": "Container",
           "name": "Containers",
-          "output_required": true,
+          "output_required": false,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -1316,6 +2134,45 @@
           "output_required": false,
           "required": false,
           "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "PodSSHInfo": {
+      "document": "Information about Pod access over SSH.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "IP address of the Pod.",
+          "example": "1.2.3.4",
+          "member": "string",
+          "name": "Host",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "SSH port of the Pod.",
+          "example": "22",
+          "member": "int64",
+          "name": "Port",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "SSH access command.",
+          "example": "ssh -p 22  root@1.2.3.4",
+          "member": "string",
+          "name": "LoginCommand",
+          "output_required": false,
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -1471,6 +2328,127 @@
       ],
       "usage": "both"
     },
+    "RDMAConfig": {
+      "document": "RDMA configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable RDMA.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "Enable",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ResourceConfigInfo": {
+      "document": "Resource configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Role. For example, PS, WORKER, DRIVER, and EXECUTOR.",
+          "example": "PS",
+          "member": "string",
+          "name": "Role",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of CPU cores, which is required to be configured when resource groups are used. Unit: 1/1000, where 1000 represents 1 core.",
+          "example": "1000",
+          "member": "uint64",
+          "name": "Cpu",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Memory size, in MB. This parameter needs to be configured when resource groups are used.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Memory",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "GPU card type, which is required to be configured when resource groups are used.",
+          "example": "V100",
+          "member": "string",
+          "name": "GpuType",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of GPU cards, which is required to be configured when resource groups are used. Unit: 1/100, where 100 represents 1 card.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Gpu",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "CVM instance specification ID.\nCVM instance specification (for postpaid billing). Valid values:\nTI.S.LARGE.POST: 4C8G \nTI.S.2XLARGE16.POST:  8C16G \nTI.S.2XLARGE32.POST:  8C32G \nTI.S.4XLARGE32.POST:  16C32G\nTI.S.4XLARGE64.POST:  16C64G\nTI.S.6XLARGE48.POST:  24C48G\nTI.S.6XLARGE96.POST:  24C96G\nTI.S.8XLARGE64.POST:  32C64G\nTI.S.8XLARGE128.POST : 32C128G\nTI.GN10.2XLARGE40.POST: 8C40G V100*1 \nTI.GN10.5XLARGE80.POST:  18C80G V100*2 \nTI.GN10.10XLARGE160.POST :  32C160G V100*4\nTI.GN10.20XLARGE320.POST :  72C320G V100*8\nTI.GN7.8XLARGE128.POST: 32C128G T4*1 \nTI.GN7.10XLARGE160.POST: 40C160G T4*2 \nTI.GN7.20XLARGE320.POST: 80C32",
+          "example": "TI.GN10.2XLARGE40",
+          "member": "string",
+          "name": "InstanceType",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of compute nodes.",
+          "example": "4",
+          "member": "uint64",
+          "name": "InstanceNum",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "CVM instance specification name.\nCVM instance specification (for postpaid billing). Valid values:\n4C8G \n8C16G \n8C32G \n16C32G\n6C64G\n24C48G\n24C96G\n32C64G\n32C128G\n8C40G V100*1 \n8C80G V100*2 \n32C160G V100*4\n72C320G V100*8\n32C128G T4*1 \n40C160G T4*2 \n80C32",
+          "example": "2核4G",
+          "member": "string",
+          "name": "InstanceTypeAlias",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "RDMA configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "RDMAConfig",
+          "name": "RDMAConfig",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "ResourceGroupInfo": {
       "document": "Summarized information structure for the serviced resource group while an online service is provided.",
       "members": [
@@ -1565,6 +2543,67 @@
           "required": false,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether to enable RDMA.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "EnableRDMA",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "100",
+          "member": "uint64",
+          "name": "RootDisk",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "200",
+          "member": "uint64",
+          "name": "DataDisk",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ResourceSupplyAttribute": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "TIDE",
+          "member": "string",
+          "name": "SupplyType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "THIRD",
+          "member": "string",
+          "name": "ClusterType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -1593,6 +2632,78 @@
           "required": false,
           "type": "object",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SSHConfig": {
+      "document": "Notebook SSH port configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable SSH.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "Enable",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Public key information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ssh-rsa AAAAB3**8NYTfO0=",
+          "member": "string",
+          "name": "PublicKey",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Port number.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "80",
+          "member": "int64",
+          "name": "Port",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Login command.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ssh root@127.0.0.1",
+          "member": "string",
+          "name": "LoginCommand",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to change the login address.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsAddressChanged",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Pod access information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "PodSSHInfo",
+          "name": "PodSSHInfo",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -1848,9 +2959,9 @@
           "example": "无",
           "member": "ServiceLimit",
           "name": "ServiceLimit",
-          "output_required": true,
+          "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": true,
@@ -1858,9 +2969,9 @@
           "example": "无",
           "member": "ScheduledAction",
           "name": "ScheduledAction",
-          "output_required": true,
+          "output_required": false,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2080,7 +3191,7 @@
         {
           "disabled": false,
           "document": "Creator.",
-          "example": "222222",
+          "example": "creater",
           "member": "string",
           "name": "CreatedBy",
           "output_required": true,
@@ -2353,10 +3464,10 @@
           "example": "TI.S.MEDIUM.POS",
           "member": "string",
           "name": "InstanceType",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2364,10 +3475,10 @@
           "example": "无",
           "member": "ModelInfo",
           "name": "ModelInfo",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2375,10 +3486,10 @@
           "example": "true",
           "member": "bool",
           "name": "LogEnable",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2386,10 +3497,10 @@
           "example": "无",
           "member": "LogConfig",
           "name": "LogConfig",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2397,10 +3508,10 @@
           "example": "true",
           "member": "bool",
           "name": "AuthorizationEnable",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2408,10 +3519,10 @@
           "example": "无",
           "member": "HorizontalPodAutoscaler",
           "name": "HorizontalPodAutoscaler",
-          "output_required": true,
+          "output_required": false,
           "required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2562,7 +3673,7 @@
           "example": "无",
           "member": "Pod",
           "name": "Pods",
-          "output_required": true,
+          "output_required": false,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -2785,6 +3896,42 @@
       ],
       "usage": "both"
     },
+    "StartCmdInfo": {
+      "document": "Startup command information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Startup command.",
+          "example": "无",
+          "member": "string",
+          "name": "StartCmd",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Startup command for ps nodes.",
+          "example": "无",
+          "member": "string",
+          "name": "PsStartCmd",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Startup command for Worker nodes.",
+          "example": "无",
+          "member": "string",
+          "name": "WorkerStartCmd",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "StatefulSetCondition": {
       "document": "Instance status.",
       "members": [
@@ -2926,6 +4073,45 @@
       ],
       "usage": "both"
     },
+    "TrainToolConfig": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableHangMonitor",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "[\"master-0\"]",
+          "member": "string",
+          "name": "HangMonitorNodes",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "3",
+          "member": "uint64",
+          "name": "LogHangTimeoutInMinute",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "VolumeMount": {
       "document": "External mounting information.",
       "members": [
@@ -2936,7 +4122,7 @@
           "member": "CFSConfig",
           "name": "CFSConfig",
           "output_required": true,
-          "required": true,
+          "required": false,
           "type": "object",
           "value_allowed_null": false
         },
@@ -3037,7 +4223,7 @@
         {
           "disabled": true,
           "document": "Workload status information.",
-          "example": "{}",
+          "example": "无",
           "member": "StatefulSetCondition",
           "name": "StatefulSetCondition",
           "output_required": true,
@@ -3048,7 +4234,7 @@
         {
           "disabled": false,
           "document": "Status information of workload history.",
-          "example": "[]",
+          "example": "无",
           "member": "StatefulSetCondition",
           "name": "Conditions",
           "output_required": true,
@@ -3059,7 +4245,7 @@
         {
           "disabled": false,
           "document": "Display the reason when the status is abnormal.Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": " reason",
           "member": "string",
           "name": "Reason",
           "output_required": true,

@@ -1,10 +1,171 @@
 {
   "actions": {
+    "CancelAIWorkbenchChat": {
+      "document": "Cancel dialogue execution",
+      "input": "CancelAIWorkbenchChatRequest",
+      "name": "Cancels dialogue execution",
+      "output": "CancelAIWorkbenchChatResponse",
+      "status": "online"
+    },
+    "CreateAIWorkbenchAgent": {
+      "document": "This API is used to create an Agent.",
+      "input": "CreateAIWorkbenchAgentRequest",
+      "name": "This API is used to create an Agent.",
+      "output": "CreateAIWorkbenchAgentResponse",
+      "status": "online"
+    },
+    "CreateAIWorkbenchTask": {
+      "document": "Create a task",
+      "input": "CreateAIWorkbenchTaskRequest",
+      "name": "Create a task",
+      "output": "CreateAIWorkbenchTaskResponse",
+      "status": "online"
+    },
+    "DeleteAIWorkbenchAgent": {
+      "document": "Delete Agent",
+      "input": "DeleteAIWorkbenchAgentRequest",
+      "name": "Deletes an Agent",
+      "output": "DeleteAIWorkbenchAgentResponse",
+      "status": "online"
+    },
+    "DeleteAIWorkbenchTask": {
+      "document": "This API is used to delete a task.",
+      "input": "DeleteAIWorkbenchTaskRequest",
+      "name": "Deletes a task",
+      "output": "DeleteAIWorkbenchTaskResponse",
+      "status": "online"
+    },
+    "DescribeAIWorkbenchAgent": {
+      "document": "Query Agent details.",
+      "input": "DescribeAIWorkbenchAgentRequest",
+      "name": "Query Agent details.",
+      "output": "DescribeAIWorkbenchAgentResponse",
+      "status": "online"
+    },
+    "DescribeAIWorkbenchArtifact": {
+      "document": "Query artifact details.",
+      "input": "DescribeAIWorkbenchArtifactRequest",
+      "name": "Query artifact details.",
+      "output": "DescribeAIWorkbenchArtifactResponse",
+      "status": "online"
+    },
+    "DescribeAIWorkbenchExecution": {
+      "document": "Query execution details.",
+      "input": "DescribeAIWorkbenchExecutionRequest",
+      "name": "Query execution details.",
+      "output": "DescribeAIWorkbenchExecutionResponse",
+      "status": "online"
+    },
+    "DescribeAIWorkbenchSession": {
+      "document": "Query session details",
+      "input": "DescribeAIWorkbenchSessionRequest",
+      "name": "Queries session details",
+      "output": "DescribeAIWorkbenchSessionResponse",
+      "status": "online"
+    },
+    "DescribeAIWorkbenchSkill": {
+      "document": "Query skill details",
+      "input": "DescribeAIWorkbenchSkillRequest",
+      "name": "Queries skill details",
+      "output": "DescribeAIWorkbenchSkillResponse",
+      "status": "online"
+    },
     "DescribeAlarmNotifyHistories": {
       "document": "Query alarm notification history as needed",
       "input": "DescribeAlarmNotifyHistoriesRequest",
       "name": "This API is used to query alarm notification history.",
       "output": "DescribeAlarmNotifyHistoriesResponse",
+      "status": "online"
+    },
+    "GetAIWorkbenchArtifactDownloadURL": {
+      "document": "Get the download URL of AI Workbench artifacts.",
+      "input": "GetAIWorkbenchArtifactDownloadURLRequest",
+      "name": "Obtains the download address of an AI workstation artifact",
+      "output": "GetAIWorkbenchArtifactDownloadURLResponse",
+      "status": "online"
+    },
+    "ListAIWorkbenchAgents": {
+      "document": "Query the Agent list.",
+      "input": "ListAIWorkbenchAgentsRequest",
+      "name": "Query the Agent list.",
+      "output": "ListAIWorkbenchAgentsResponse",
+      "status": "online"
+    },
+    "ListAIWorkbenchArtifacts": {
+      "document": "Query the product list",
+      "input": "ListAIWorkbenchArtifactsRequest",
+      "name": "Queries artifact list",
+      "output": "ListAIWorkbenchArtifactsResponse",
+      "status": "online"
+    },
+    "ListAIWorkbenchExecutions": {
+      "document": "Query the execution list",
+      "input": "ListAIWorkbenchExecutionsRequest",
+      "name": "Query the execution list",
+      "output": "ListAIWorkbenchExecutionsResponse",
+      "status": "online"
+    },
+    "ListAIWorkbenchMCPs": {
+      "document": "Query the MCP list.",
+      "input": "ListAIWorkbenchMCPsRequest",
+      "name": "Query the MCP list.",
+      "output": "ListAIWorkbenchMCPsResponse",
+      "status": "online"
+    },
+    "ListAIWorkbenchMessages": {
+      "document": "This API is used to query message list.",
+      "input": "ListAIWorkbenchMessagesRequest",
+      "name": "This API is used to query message list.",
+      "output": "ListAIWorkbenchMessagesResponse",
+      "status": "online"
+    },
+    "ListAIWorkbenchResourceInstances": {
+      "document": "List resource instances.",
+      "input": "ListAIWorkbenchResourceInstancesRequest",
+      "name": "List resource instances.",
+      "output": "ListAIWorkbenchResourceInstancesResponse",
+      "status": "online"
+    },
+    "ListAIWorkbenchResourceMaps": {
+      "document": "Query the list of resource maps",
+      "input": "ListAIWorkbenchResourceMapsRequest",
+      "name": "Queries the resource map list",
+      "output": "ListAIWorkbenchResourceMapsResponse",
+      "status": "online"
+    },
+    "ListAIWorkbenchSessions": {
+      "document": "Query session list",
+      "input": "ListAIWorkbenchSessionsRequest",
+      "name": "Query session list",
+      "output": "ListAIWorkbenchSessionsResponse",
+      "status": "online"
+    },
+    "ListAIWorkbenchSkills": {
+      "document": "Query the skill list",
+      "input": "ListAIWorkbenchSkillsRequest",
+      "name": "Query the skill list",
+      "output": "ListAIWorkbenchSkillsResponse",
+      "status": "online"
+    },
+    "ListAIWorkbenchTasks": {
+      "document": "This API is used to query the task list.",
+      "input": "ListAIWorkbenchTasksRequest",
+      "name": "Queries the task list",
+      "output": "ListAIWorkbenchTasksResponse",
+      "status": "online"
+    },
+    "TriggerAIWorkbenchTask": {
+      "document": "Manually trigger a task.",
+      "input": "TriggerAIWorkbenchTaskRequest",
+      "name": "Manually triggers a task",
+      "output": "TriggerAIWorkbenchTaskResponse",
+      "status": "online"
+    },
+    "UpdateAIWorkbenchAgent": {
+      "document": "Update an Agent",
+      "input": "UpdateAIWorkbenchAgentRequest",
+      "name": "Update an Agent",
+      "output": "UpdateAIWorkbenchAgentResponse",
       "status": "online"
     }
   },
@@ -14,6 +175,112 @@
     "serviceShortName": "monitor"
   },
   "objects": {
+    "AgentInfo": {
+      "document": "Agent information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Agent ID</p>",
+          "example": "agt-********",
+          "member": "string",
+          "name": "AgentId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Agent name</p>",
+          "example": "peter************",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Agent description</p>",
+          "example": "NewDesc",
+          "member": "string",
+          "name": "Description",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Agent Category.</p>",
+          "example": "monitor",
+          "member": "string",
+          "name": "Category",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Status: draft/configured/running/standby/disabled</p>",
+          "example": "running",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of associated skill IDs.</p>",
+          "example": "[\"skill-xx\"]",
+          "member": "string",
+          "name": "SkillIds",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Associated resource map ID.</p>",
+          "example": "map-id",
+          "member": "string",
+          "name": "ResourceMapId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Associated mcp id.</p>",
+          "example": "[\"mcp-xxx\"]",
+          "member": "string",
+          "name": "MCPIds",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Resource Tag.</p>",
+          "example": "无",
+          "member": "Tag",
+          "name": "CamTags",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Environment variables required by the agent at runtime</p>",
+          "example": "无",
+          "member": "EnvVar",
+          "name": "EnvVars",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "AlarmLable": {
       "document": "Alarming Label",
       "members": [
@@ -218,6 +485,139 @@
       ],
       "usage": "out"
     },
+    "ArtifactInfo": {
+      "document": "Product entity",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Product ID</p>",
+          "example": "a3***************************1b2",
+          "member": "string",
+          "name": "ArtifactId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Product name</p>",
+          "example": "c**********s.j**n",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Physical type</p>",
+          "example": "application/json",
+          "member": "string",
+          "name": "MimeType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>File size (byte)</p>",
+          "example": "646",
+          "member": "int64",
+          "name": "SizeBytes",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether it is public</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "IsGlobal",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Creation time (Unix timestamp in seconds).</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "CreatedAt",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Modification time.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "UpdatedAt",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Agent ID that generated the artifact</p>",
+          "example": "agt-********",
+          "member": "string",
+          "name": "AgentId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Skill ID that generates the artifact</p>",
+          "example": "skl-********",
+          "member": "string",
+          "name": "SkillId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>For parsing calls to the download API</p>",
+          "example": "sandbox_file://ses-************/******************-20260804.md",
+          "member": "string",
+          "name": "StoragePath",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "CancelAIWorkbenchChatRequest": {
+      "document": "CancelAIWorkbenchChat request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Session id.</p>",
+          "example": "ses-************",
+          "member": "string",
+          "name": "SessionId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CancelAIWorkbenchChatResponse": {
+      "document": "CancelAIWorkbenchChat response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ChannelsReceivers": {
       "document": "Receiver details",
       "members": [
@@ -256,6 +656,583 @@
         }
       ],
       "usage": "both"
+    },
+    "ContentBlockInfo": {
+      "document": "Each ContentBlockInfo corresponds to an AGUI event converted from a downstream ContentBlock.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Type.</p>",
+          "example": "TOOL_CALL_RESULT",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Data content.</p>",
+          "example": "{\"messageId\":\"ent-l0fj1miwg6ty\",\"role\":\"assistant\",\"timestamp\":1786516818000,\"type\":\"TEXT_MESSAGE_START\"}",
+          "member": "string",
+          "name": "Data",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CreateAIWorkbenchAgentRequest": {
+      "document": "CreateAIWorkbenchAgent request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Agent Name</p>",
+          "example": "资源巡检助手",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Agent description</p>",
+          "example": "用于协助进行资源地图的巡检",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Agent Category</p>",
+          "example": "monitor",
+          "member": "string",
+          "name": "Category",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Agent tag</p>",
+          "example": "[\"monitor\"]",
+          "member": "string",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Agent prompt content</p>",
+          "example": "无",
+          "member": "InstructionConfig",
+          "name": "Instruction",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of associated skill IDs.</p>",
+          "example": "[\"skill-cust-file-parser-002\"]",
+          "member": "string",
+          "name": "SkillIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Source: builtin / custom</p>",
+          "example": "custom",
+          "member": "string",
+          "name": "Source",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Map ID of the associated resource</p>",
+          "example": "coll-********",
+          "member": "string",
+          "name": "ResourceMapId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Associated mcp tool</p>",
+          "example": "[\"mcp-***\"]",
+          "member": "string",
+          "name": "MCPIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Resource tag</p>",
+          "example": "无",
+          "member": "Tag",
+          "name": "CamTags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>agent runtime environment variable</p>",
+          "example": "无",
+          "member": "EnvVar",
+          "name": "EnvVars",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAIWorkbenchAgentResponse": {
+      "document": "CreateAIWorkbenchAgent response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Agent ID</p>",
+          "example": "agt-********",
+          "member": "string",
+          "name": "AgentId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAIWorkbenchTaskRequest": {
+      "document": "CreateAIWorkbenchTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task Name</p>",
+          "example": "策略触发",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task description</p>",
+          "example": "用于测试任务创建",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Associated Agent ID</p>",
+          "example": "agt-********",
+          "member": "string",
+          "name": "AgentId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Prompt Template</p>",
+          "example": "任务目标：分析指定账号下近N天的告警历史分布情况，识别频繁告警的对象并进一步获取详细信息进行摘要分析，输出结构化告警分析报告",
+          "member": "string",
+          "name": "PromptTemplate",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Output format: markdown / json</p>",
+          "example": "markdown",
+          "member": "string",
+          "name": "OutputFormat",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Trigger type: manual / cron / webhook</p>",
+          "example": "cron",
+          "member": "string",
+          "name": "TriggerType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Cron expression</p>",
+          "example": "* * * * * ?",
+          "member": "string",
+          "name": "CronExpr",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Cron time zone</p>",
+          "example": "Asia/Shanghai",
+          "member": "string",
+          "name": "CronTimezone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Associated resource map ID</p>",
+          "example": "coll-********",
+          "member": "string",
+          "name": "ResourceMapId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Skill ID list</p>",
+          "example": "[\"skl-********\"]",
+          "member": "string",
+          "name": "SkillIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>MCP endpoint ID list</p>",
+          "example": "[\"mcp-********\"]",
+          "member": "string",
+          "name": "McpEndpointIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Timeout (seconds)</p>",
+          "example": "600",
+          "member": "int64",
+          "name": "TimeoutSec",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Retry count</p>",
+          "example": "4",
+          "member": "int64",
+          "name": "RetryCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "Enabled",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAIWorkbenchTaskResponse": {
+      "document": "CreateAIWorkbenchTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "tsk-********",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAIWorkbenchAgentRequest": {
+      "document": "DeleteAIWorkbenchAgent request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Agent ID</p>",
+          "example": "agt-********",
+          "member": "string",
+          "name": "AgentId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAIWorkbenchAgentResponse": {
+      "document": "DeleteAIWorkbenchAgent response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAIWorkbenchTaskRequest": {
+      "document": "DeleteAIWorkbenchTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "tsk-********",
+          "member": "string",
+          "name": "TaskId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAIWorkbenchTaskResponse": {
+      "document": "DeleteAIWorkbenchTask response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAIWorkbenchAgentRequest": {
+      "document": "DescribeAIWorkbenchAgent request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Agent ID</p>",
+          "example": "agt-********",
+          "member": "string",
+          "name": "AgentId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAIWorkbenchAgentResponse": {
+      "document": "DescribeAIWorkbenchAgent response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Agent Information</p>",
+          "example": "无",
+          "member": "AgentInfo",
+          "name": "Agent",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAIWorkbenchArtifactRequest": {
+      "document": "DescribeAIWorkbenchArtifact request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Product ID</p>",
+          "example": "a9***************************c86",
+          "member": "string",
+          "name": "ArtifactId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to download the URL</p><p><code>1</code> = required, <code>0</code> or not passed = not required</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "NeedDownloadURL",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAIWorkbenchArtifactResponse": {
+      "document": "DescribeAIWorkbenchArtifact response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Product information</p>",
+          "example": "无",
+          "member": "ArtifactInfo",
+          "name": "Artifact",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>COS pre-signed download URL</p>",
+          "example": "https://observability-*********",
+          "member": "string",
+          "name": "DownloadURL",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Download URL expiration time (in RFC3339 format)</p>",
+          "example": "2026-05-26T08:50:29Z",
+          "member": "string",
+          "name": "DownloadURLExpiredAt",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAIWorkbenchExecutionRequest": {
+      "document": "DescribeAIWorkbenchExecution request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Execution ID</p>",
+          "example": "exe-************",
+          "member": "string",
+          "name": "ExecutionId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAIWorkbenchExecutionResponse": {
+      "document": "DescribeAIWorkbenchExecution response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Execution Record</p>",
+          "example": "无",
+          "member": "ExecutionInfo",
+          "name": "Execution",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAIWorkbenchSessionRequest": {
+      "document": "DescribeAIWorkbenchSession request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Session ID</p>",
+          "example": "ses-************",
+          "member": "string",
+          "name": "SessionId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAIWorkbenchSessionResponse": {
+      "document": "DescribeAIWorkbenchSession response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Session information</p>",
+          "example": "无",
+          "member": "SessionInfo",
+          "name": "Session",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAIWorkbenchSkillRequest": {
+      "document": "DescribeAIWorkbenchSkill request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Skill ID</p>",
+          "example": "skl-********",
+          "member": "string",
+          "name": "SkillId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAIWorkbenchSkillResponse": {
+      "document": "DescribeAIWorkbenchSkill response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Skill information.</p>",
+          "example": "无",
+          "member": "SkillInfo",
+          "name": "Skill",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "DescribeAlarmNotifyHistoriesRequest": {
       "document": "DescribeAlarmNotifyHistories request structure.",
@@ -357,6 +1334,1342 @@
         }
       ],
       "type": "object"
+    },
+    "EnvEntry": {
+      "document": "Environment variable entry",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Environment variable value</p>",
+          "example": "sk-**********",
+          "member": "string",
+          "name": "Value",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to mask</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "Sensitive",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "EnvVar": {
+      "document": "Environment variables required by the agent at runtime",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Environment variable key</p>",
+          "example": "API_KEY",
+          "member": "string",
+          "name": "Key",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Environment variable value</p>",
+          "example": "无",
+          "member": "EnvEntry",
+          "name": "Value",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ExecutionInfo": {
+      "document": "Execution record entity",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task name</p>",
+          "example": "基础报告生成测试",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "tsk-********",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Execution ID</p>",
+          "example": "exe-************",
+          "member": "string",
+          "name": "ExecutionId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Agent ID</p>",
+          "example": "agt-********",
+          "member": "string",
+          "name": "AgentId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Session ID</p>",
+          "example": "ses-************",
+          "member": "string",
+          "name": "SessionId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Trigger type: manual / cron / webhook</p>",
+          "example": "manual",
+          "member": "string",
+          "name": "TriggerType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Status: pending/running/completed/failed/timeout/cancelled</p>",
+          "example": "completed",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Execution Abstract</p>",
+          "example": "任务为基于用户提供的固定内容生成每日APM告警分析报告。助手已确认任务要求，并等待用户提供报告正文内容，尚未生成最终报告。目前无异常，处于等待输入状态。",
+          "member": "string",
+          "name": "Summary",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Execution time (ms)</p>",
+          "example": "18948",
+          "member": "int64",
+          "name": "DurationMs",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "GetAIWorkbenchArtifactDownloadURLRequest": {
+      "document": "GetAIWorkbenchArtifactDownloadURL request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Session ID.</p>",
+          "example": "ses-************",
+          "member": "string",
+          "name": "SessionId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Artifact ID</p>",
+          "example": "08****************************05",
+          "member": "string",
+          "name": "ArtifactId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetAIWorkbenchArtifactDownloadURLResponse": {
+      "document": "GetAIWorkbenchArtifactDownloadURL response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>COS pre-signed HTTPS download URL</p>",
+          "example": "https://ob*****************************",
+          "member": "string",
+          "name": "DownloadURL",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>URL expiration time (RFC3339 format)</p>",
+          "example": "2026-06-02**********",
+          "member": "string",
+          "name": "ExpiredAt",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InstructionConfig": {
+      "document": "Clone prompt configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Role definition</p>",
+          "example": "腾讯云可观测平台用户的运维数字分身",
+          "member": "string",
+          "name": "RolePosition",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Core responsibility</p>",
+          "example": "线上故障应急响应：快速定位异常根因",
+          "member": "string",
+          "name": "CoreDuty",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Core principle</p>",
+          "example": "主动前置不被动：不等你追问，预判需求、提前行动",
+          "member": "string",
+          "name": "CoreTruths",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Style constraints</p>",
+          "example": "直白接地气：拒绝黑话堆砌",
+          "member": "string",
+          "name": "Vibe",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Notes</p>",
+          "example": "不擅自执行生产环境高危操作",
+          "member": "string",
+          "name": "Boundaries",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ListAIWorkbenchAgentsRequest": {
+      "document": "ListAIWorkbenchAgents request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Number of items per page</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "PerPage",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Page number.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNo",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Status filtering</p>",
+          "example": "active",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Category filtering</p>",
+          "example": "monitor",
+          "member": "string",
+          "name": "Category",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Search keyword</p>",
+          "example": "keyword",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Filter by source</p>",
+          "example": "custom",
+          "member": "string",
+          "name": "Source",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Agent ID list filtering</p>",
+          "example": "[\"agt-********\"]",
+          "member": "string",
+          "name": "AgentIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAIWorkbenchAgentsResponse": {
+      "document": "ListAIWorkbenchAgents response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Agent list</p>",
+          "example": "无",
+          "member": "AgentInfo",
+          "name": "Agents",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Pagination result</p>",
+          "example": "无",
+          "member": "PageByNumResult",
+          "name": "PageResult",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAIWorkbenchArtifactsRequest": {
+      "document": "ListAIWorkbenchArtifacts request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Number of items per page</p>",
+          "example": "20",
+          "member": "int64",
+          "name": "PerPage",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Page number.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNo",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Session ID.</p>",
+          "example": "[\"ses-************\"]",
+          "member": "string",
+          "name": "SessionIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Message content type</p>",
+          "example": "[\"application/json\"]",
+          "member": "string",
+          "name": "MimeTypes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sorting order</p><p>Enumeration values:</p><ul><li>ASC: ascending order</li><li>DESC: descending order</li></ul>",
+          "example": "DESC",
+          "member": "string",
+          "name": "OrderDirection",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAIWorkbenchArtifactsResponse": {
+      "document": "ListAIWorkbenchArtifacts response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Product list</p>",
+          "example": "无",
+          "member": "ArtifactInfo",
+          "name": "Artifacts",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Pagination result.</p>",
+          "example": "无",
+          "member": "PageByNumResult",
+          "name": "PageResult",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAIWorkbenchExecutionsRequest": {
+      "document": "ListAIWorkbenchExecutions request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Number of items per page</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "PerPage",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Page number.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNo",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Filter by Agent</p>",
+          "example": "agt-********",
+          "member": "string",
+          "name": "AgentId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Filter by status</p>",
+          "example": "completed",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Execution ID list filter</p>",
+          "example": "[\"exe-************\"]",
+          "member": "string",
+          "name": "ExecutionIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "[\"tsk-********\"]",
+          "member": "string",
+          "name": "TaskIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Trigger mode</p>",
+          "example": "manual",
+          "member": "string",
+          "name": "TriggerType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Key value</p>",
+          "example": "报告生成",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "Enabled",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAIWorkbenchExecutionsResponse": {
+      "document": "ListAIWorkbenchExecutions response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Execution list.</p>",
+          "example": "无",
+          "member": "ExecutionInfo",
+          "name": "Executions",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Pagination result.</p>",
+          "example": "无",
+          "member": "PageByNumResult",
+          "name": "PageResult",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAIWorkbenchMCPsRequest": {
+      "document": "ListAIWorkbenchMCPs request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Number of items per page</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "PerPage",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Page number.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNo",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Filter by transmission protocol</p>",
+          "example": "streamable_http",
+          "member": "string",
+          "name": "Transport",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Search keyword</p>",
+          "example": "tencent",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable filter</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "Enabled",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Associated mcp</p>",
+          "example": "[\"mcp-********\"]",
+          "member": "string",
+          "name": "MCPIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>MCP type (built-in/private)</p><p>Enumeration values:</p><ul><li>builtin: platform built-in</li><li>private: user-customized</li></ul>",
+          "example": "builtin",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAIWorkbenchMCPsResponse": {
+      "document": "ListAIWorkbenchMCPs response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>MCP list</p>",
+          "example": "无",
+          "member": "MCPInfo",
+          "name": "MCPs",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Pagination result.</p>",
+          "example": "无",
+          "member": "PageByNumResult",
+          "name": "PageResult",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAIWorkbenchMessagesRequest": {
+      "document": "ListAIWorkbenchMessages request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Conversation ID</p>",
+          "example": "ses-************",
+          "member": "string",
+          "name": "SessionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Tag for cursor pagination</p>",
+          "example": "ent-************",
+          "member": "string",
+          "name": "Cursor",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Window size</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Pull sequence</p>",
+          "example": "forward",
+          "member": "string",
+          "name": "Direction",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAIWorkbenchMessagesResponse": {
+      "document": "ListAIWorkbenchMessages response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Message list.</p>",
+          "example": "无",
+          "member": "MessageInfo",
+          "name": "Messages",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Next cursor</p>",
+          "example": "ent-************",
+          "member": "string",
+          "name": "NextCursor",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Is there a follow-up?</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "HasMore",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAIWorkbenchResourceInstancesRequest": {
+      "document": "ListAIWorkbenchResourceInstances request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Resource map ID</p>",
+          "example": "coll-********",
+          "member": "string",
+          "name": "ResourceMapId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Pagination parameters</p>",
+          "example": "无",
+          "member": "PageByNumParams",
+          "name": "PageParams",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAIWorkbenchResourceInstancesResponse": {
+      "document": "ListAIWorkbenchResourceInstances response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Resource instance list</p>",
+          "example": "无",
+          "member": "ResourceInstance",
+          "name": "Instances",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Pagination result</p>",
+          "example": "无",
+          "member": "PageByNumResult",
+          "name": "PageResult",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAIWorkbenchResourceMapsRequest": {
+      "document": "ListAIWorkbenchResourceMaps request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Number of items per page</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "PerPage",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Page number.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNo",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Search by name</p>",
+          "example": "sre",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAIWorkbenchResourceMapsResponse": {
+      "document": "ListAIWorkbenchResourceMaps response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Resource map list</p>",
+          "example": "无",
+          "member": "ResourceMapInfo",
+          "name": "ResourceMaps",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Pagination result.</p>",
+          "example": "无",
+          "member": "PageByNumResult",
+          "name": "PageResult",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAIWorkbenchSessionsRequest": {
+      "document": "ListAIWorkbenchSessions request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Number of items per page</p>",
+          "example": "20",
+          "member": "int64",
+          "name": "PerPage",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Page number.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNo",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Filter by Agent</p>",
+          "example": "agt-********",
+          "member": "string",
+          "name": "AgentId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Search keyword</p>",
+          "example": "keyword",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Session ID list filtering</p>",
+          "example": "[\"ses-************\"]",
+          "member": "string",
+          "name": "SessionIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAIWorkbenchSessionsResponse": {
+      "document": "ListAIWorkbenchSessions response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Session list</p>",
+          "example": "无",
+          "member": "SessionInfo",
+          "name": "Sessions",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Pagination result</p>",
+          "example": "无",
+          "member": "PageByNumResult",
+          "name": "PageResult",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAIWorkbenchSkillsRequest": {
+      "document": "ListAIWorkbenchSkills request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Number of items per page</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "PerPage",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Page number.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNo",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Filter by type</p>",
+          "example": "custom",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Search keyword</p>",
+          "example": "技能",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable filter</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "Enabled",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Skill ID list filter</p>",
+          "example": "[\"skl-********\"]",
+          "member": "string",
+          "name": "SkillIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAIWorkbenchSkillsResponse": {
+      "document": "ListAIWorkbenchSkills response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>List of skills</p>",
+          "example": "无",
+          "member": "SkillInfo",
+          "name": "Skills",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Pagination result</p>",
+          "example": "无",
+          "member": "PageByNumResult",
+          "name": "PageResult",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAIWorkbenchTasksRequest": {
+      "document": "ListAIWorkbenchTasks request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Number of items per page</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "PerPage",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Page number.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNo",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Filter by Agent</p>",
+          "example": "agt-********",
+          "member": "string",
+          "name": "AgentId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Filter by trigger type</p>",
+          "example": "manual",
+          "member": "string",
+          "name": "TriggerType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Search keyword</p>",
+          "example": "报告生成",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task ID list filter</p>",
+          "example": "[\"tsk-********\"]",
+          "member": "string",
+          "name": "TaskIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable filter criteria</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "Enabled",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAIWorkbenchTasksResponse": {
+      "document": "ListAIWorkbenchTasks response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task List</p>",
+          "example": "无",
+          "member": "TaskInfo",
+          "name": "Tasks",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Pagination result</p>",
+          "example": "无",
+          "member": "PageByNumResult",
+          "name": "PageResult",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "MCPInfo": {
+      "document": "MCP entity",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>mcp ID</p>",
+          "example": "mcp-********",
+          "member": "string",
+          "name": "MCPId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>MCP name</p>",
+          "example": "tcop-cls-mcp",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>MCP description</p>",
+          "example": "mcp的描述信息",
+          "member": "string",
+          "name": "Description",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>MCP URL</p>",
+          "example": "www.testmcp.com",
+          "member": "string",
+          "name": "Url",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Transport protocol: sse / streamable_http / stdio</p>",
+          "example": "streamable_http",
+          "member": "string",
+          "name": "Transport",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Authentication type: none / bearer / basic / api_key</p>",
+          "example": "aksk",
+          "member": "string",
+          "name": "AuthType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Authentication key (masked in the response)</p>",
+          "example": "***vfsz",
+          "member": "string",
+          "name": "AuthSecret",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Timeout (s)</p>",
+          "example": "20",
+          "member": "int64",
+          "name": "Timeout",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Retry count</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "RetryCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Request header JSON</p>",
+          "example": "***tX\"}",
+          "member": "string",
+          "name": "Headers",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "Enabled",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "MessageInfo": {
+      "document": "Message entity",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Entity id</p>",
+          "example": "ent-************",
+          "member": "string",
+          "name": "EntryId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Conversation ID</p>",
+          "example": "ses-************",
+          "member": "string",
+          "name": "SessionId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Role: user / assistant</p>",
+          "example": "user",
+          "member": "string",
+          "name": "Role",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Message content</p>",
+          "example": "分析云服务器最近三天的告警历史分布",
+          "member": "string",
+          "name": "Content",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Status.</p>",
+          "example": "completed",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Block content.</p>",
+          "example": "无",
+          "member": "ContentBlockInfo",
+          "name": "ContentBlocks",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "NotifyRelatedNotice": {
       "document": "Notification template information associated with notification history",
@@ -472,6 +2785,624 @@
         }
       ],
       "usage": "both"
+    },
+    "PageByNumParams": {
+      "document": "Input parameter for paginating by which page",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Number of items per page</p>",
+          "example": "20",
+          "member": "int64",
+          "name": "PerPage",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Page number, starting from 1</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNo",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "usage": "in"
+    },
+    "PageByNumResult": {
+      "document": "Pagination result parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total number of data</p>",
+          "example": "178",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total number of pages</p>",
+          "example": "20",
+          "member": "int64",
+          "name": "TotalPage",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Current page number</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "CurrentPageNo",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ResourceInstance": {
+      "document": "Resource instance",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Instance ID</p>",
+          "example": "doc-********",
+          "member": "string",
+          "name": "Id",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Service name</p>",
+          "example": "TCOP",
+          "member": "string",
+          "name": "Service",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Region.</p>",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Ready?</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "IsReady",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ResourceMapInfo": {
+      "document": "Resource map entity",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Resource map ID</p>",
+          "example": "coll-********",
+          "member": "string",
+          "name": "ResourceMapId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Resource map name</p>",
+          "example": "*****-test-******",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Resource map description</p>",
+          "example": "desc",
+          "member": "string",
+          "name": "Description",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total number of instances</p>",
+          "example": "42",
+          "member": "int64",
+          "name": "InstanceCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "SessionInfo": {
+      "document": "Session entity",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Session ID</p>",
+          "example": "ses-************",
+          "member": "string",
+          "name": "SessionId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Agent ID</p>",
+          "example": "agt-********",
+          "member": "string",
+          "name": "AgentId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Session title</p>",
+          "example": "任务目标：\n分析指定账号下近N天的告警历史分布情况，识别频繁告警的对象并进一步获取详细信息进行摘要分",
+          "member": "string",
+          "name": "Title",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Status: active / archived / deleted</p>",
+          "example": "active",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>If the session is triggered by a task, carry the task ID that triggers the session.</p>",
+          "example": "tsk-********",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "SkillInfo": {
+      "document": "Skill entity",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Skill ID</p>",
+          "example": "skl-********",
+          "member": "string",
+          "name": "SkillId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Skill name</p>",
+          "example": "tcop-prometheus",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Skill description.</p>",
+          "example": "腾讯云监控数据查询助手",
+          "member": "string",
+          "name": "Description",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "Enabled",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "Tag": {
+      "document": "Tag.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Tag key",
+          "example": "\"abc\"",
+          "member": "string",
+          "name": "Key",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tag value",
+          "example": "\"abc\"",
+          "member": "string",
+          "name": "Value",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "TaskInfo": {
+      "document": "Task entity",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "tsk-********",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task name</p>",
+          "example": "基础报告生成测试",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task description</p>",
+          "example": "每日定时生成一份APM告警分析报告，基于固定模板内容输出结构化报告。",
+          "member": "string",
+          "name": "Description",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Associated Agent ID</p>",
+          "example": "agt-********",
+          "member": "string",
+          "name": "AgentId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Prompt Template</p>",
+          "example": "任务目标：分析指定时间范围内的告警情况，包括告警概览统计、告警历史分布、关键实例告警详情，并生成包含问题诊断与优化建议的结构化告警分析报告。",
+          "member": "string",
+          "name": "PromptTemplate",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Output format: markdown / json</p>",
+          "example": "markdown",
+          "member": "string",
+          "name": "OutputFormat",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Trigger type: manual / cron / webhook</p>",
+          "example": "external",
+          "member": "string",
+          "name": "TriggerType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Cron expression</p>",
+          "example": "0 0 * * *",
+          "member": "string",
+          "name": "CronExpr",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Cron time zone</p>",
+          "example": "Asia/Shanghai",
+          "member": "string",
+          "name": "CronTimezone",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of associated skill IDs.</p>",
+          "example": "[\"skl-********\"]",
+          "member": "string",
+          "name": "SkillIds",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Associated MCP endpoint ID list</p>",
+          "example": "[\"mcp-********\"]",
+          "member": "string",
+          "name": "McpEndpointIds",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Timeout (seconds)</p>",
+          "example": "600",
+          "member": "int64",
+          "name": "TimeoutSec",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Retry count</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "RetryCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Notification id</p>",
+          "example": "[\"notice-********\"]",
+          "member": "string",
+          "name": "NotifyIds",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "Enabled",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TriggerAIWorkbenchTaskRequest": {
+      "document": "TriggerAIWorkbenchTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "tsk-********",
+          "member": "string",
+          "name": "TaskId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TriggerAIWorkbenchTaskResponse": {
+      "document": "TriggerAIWorkbenchTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Execution ID.</p>",
+          "example": "exe-************",
+          "member": "string",
+          "name": "ExecutionId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateAIWorkbenchAgentRequest": {
+      "document": "UpdateAIWorkbenchAgent request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Agent ID</p>",
+          "example": "agt-wolwtuoo",
+          "member": "string",
+          "name": "AgentId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Agent name</p>",
+          "example": "NewName",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Agent description</p>",
+          "example": "NewDesc",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Agent Category.</p>",
+          "example": "monitor",
+          "member": "string",
+          "name": "Category",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Agent Tag.</p>",
+          "example": "[\"monitor\"]",
+          "member": "string",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Agent prompt</p>",
+          "example": "无",
+          "member": "InstructionConfig",
+          "name": "Instruction",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of associated skill IDs.</p>",
+          "example": "[\"skill-xx\"]",
+          "member": "string",
+          "name": "SkillIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Source</p>",
+          "example": "custom",
+          "member": "string",
+          "name": "Source",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Status.</p>",
+          "example": "standby",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>ID of the associated resource map</p>",
+          "example": "map-id",
+          "member": "string",
+          "name": "ResourceMapId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Associated mcp</p>",
+          "example": "[\"mcp-xxx\"]",
+          "member": "string",
+          "name": "MCPIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Environment variables required by the agent at runtime</p>",
+          "example": "无",
+          "member": "EnvVar",
+          "name": "EnvVars",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateAIWorkbenchAgentResponse": {
+      "document": "UpdateAIWorkbenchAgent response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Agent information after the update</p>",
+          "example": "无",
+          "member": "AgentInfo",
+          "name": "Agent",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     }
   }
 }
