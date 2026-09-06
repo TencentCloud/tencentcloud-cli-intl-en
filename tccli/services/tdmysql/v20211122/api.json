@@ -1,5 +1,12 @@
 {
   "actions": {
+    "BreakStandbyDBInstanceRelation": {
+      "document": "This API is used to terminate the replication between the primary instance and the disaster recovery instance.",
+      "input": "BreakStandbyDBInstanceRelationRequest",
+      "name": "Terminating replication between the primary instance and the disaster recovery instance.",
+      "output": "BreakStandbyDBInstanceRelationResponse",
+      "status": "online"
+    },
     "CancelIsolateDBInstances": {
       "document": "This API is used to lift isolation for instances in batch.",
       "input": "CancelIsolateDBInstancesRequest",
@@ -28,6 +35,13 @@
       "output": "CreateDBSBackupResponse",
       "status": "online"
     },
+    "CreateStandbyDBInstance": {
+      "document": "This API is used to create disaster recovery instances in batches.",
+      "input": "CreateStandbyDBInstanceRequest",
+      "name": "Create disaster recovery instance",
+      "output": "CreateStandbyDBInstanceResponse",
+      "status": "online"
+    },
     "CreateUsers": {
       "document": "This API is used to create users in batches.",
       "input": "CreateUsersRequest",
@@ -47,6 +61,13 @@
       "input": "DeleteUsersRequest",
       "name": "Batch deletes users",
       "output": "DeleteUsersResponse",
+      "status": "online"
+    },
+    "DescribeDBCharsets": {
+      "document": "This API is used to query supported character sets.",
+      "input": "DescribeDBCharsetsRequest",
+      "name": "Queries supported character sets",
+      "output": "DescribeDBCharsetsResponse",
       "status": "online"
     },
     "DescribeDBEngines": {
@@ -154,6 +175,20 @@
       "output": "DescribeFlowResponse",
       "status": "online"
     },
+    "DescribeFlowTypes": {
+      "document": "This API is used to obtain all task types.",
+      "input": "DescribeFlowTypesRequest",
+      "name": "Queries the task type list",
+      "output": "DescribeFlowTypesResponse",
+      "status": "online"
+    },
+    "DescribeInstanceDataReservedSpace": {
+      "document": "This API is used to query the data retention space of an instance.",
+      "input": "DescribeInstanceDataReservedSpaceRequest",
+      "name": "Queries the data retention space of an instance",
+      "output": "DescribeInstanceDataReservedSpaceResponse",
+      "status": "online"
+    },
     "DescribeInstanceSSLStatus": {
       "document": "This API is used to query the SSL status of an instance.",
       "input": "DescribeInstanceSSLStatusRequest",
@@ -183,10 +218,17 @@
       "status": "online"
     },
     "DescribeSpecs": {
-      "document": "This API is used to list available component specifications.",
+      "document": "This API is used to query sales specifications.",
       "input": "DescribeSpecsRequest",
       "name": "Query component specifications for sale",
       "output": "DescribeSpecsResponse",
+      "status": "online"
+    },
+    "DescribeStandbyDBInstanceRelationDetail": {
+      "document": "This API is used to query disaster recovery connection relationships of an instance.",
+      "input": "DescribeStandbyDBInstanceRelationDetailRequest",
+      "name": "Retrieves the relationship details of a disaster recovery instance",
+      "output": "DescribeStandbyDBInstanceRelationDetailResponse",
       "status": "online"
     },
     "DescribeUserPrivileges": {
@@ -266,6 +308,13 @@
       "output": "ModifyDBSBackupSetCommentResponse",
       "status": "online"
     },
+    "ModifyInstanceDataReservedSpace": {
+      "document": "This API is used to modify the reserved space for instance data.",
+      "input": "ModifyInstanceDataReservedSpaceRequest",
+      "name": "Modifies the data retention space of an instance",
+      "output": "ModifyInstanceDataReservedSpaceResponse",
+      "status": "online"
+    },
     "ModifyInstanceName": {
       "document": "This API is used to modify instance name.",
       "input": "ModifyInstanceNameRequest",
@@ -299,6 +348,13 @@
       "input": "ModifyUserPrivilegesRequest",
       "name": "Modify user permissions",
       "output": "ModifyUserPrivilegesResponse",
+      "status": "online"
+    },
+    "ResetDbaAdminPrivileges": {
+      "document": "Reset the permissions of the dbaadmin account.",
+      "input": "ResetDbaAdminPrivilegesRequest",
+      "name": "Reset DbaAdmin permission",
+      "output": "ResetDbaAdminPrivilegesResponse",
       "status": "online"
     },
     "ResetUsersPassword": {
@@ -568,11 +624,11 @@
       "usage": "both"
     },
     "AutoScalingConfig": {
-      "document": "ccu range of a serverless instance",
+      "document": "",
       "members": [
         {
           "disabled": false,
-          "document": "<p>Minimum value of ccu</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "1",
           "member": "float",
           "name": "RangeMin",
@@ -583,7 +639,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Maximum value of ccu</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "16",
           "member": "float",
           "name": "RangeMax",
@@ -591,6 +647,17 @@
           "required": true,
           "type": "float",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "cpu",
+          "member": "string",
+          "name": "ResourceType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -1279,6 +1346,61 @@
         }
       ],
       "usage": "out"
+    },
+    "BreakStandbyDBInstanceRelationRequest": {
+      "document": "BreakStandbyDBInstanceRelation request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Disaster Recovery instance ID",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to force disconnection",
+          "example": "true",
+          "member": "bool",
+          "name": "IsForce",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Latency in seconds. 0 means do not check.",
+          "example": "10",
+          "member": "int64",
+          "name": "SyncDelay",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "BreakStandbyDBInstanceRelationResponse": {
+      "document": "BreakStandbyDBInstanceRelation response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID",
+          "example": "无",
+          "member": "int64",
+          "name": "FlowId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "CancelIsolateDBInstancesRequest": {
       "document": "CancelIsolateDBInstances request structure.",
@@ -1992,7 +2114,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>ccu configuration of the svls instance</p>",
+          "document": "",
           "example": "无",
           "member": "AutoScalingConfig",
           "name": "AutoScaleConfig",
@@ -2001,7 +2123,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Bind to security group list</p>",
+          "document": "<p>Security group binding list</p>",
           "example": "[\"sg-lpowk2a\"]",
           "member": "string",
           "name": "SecurityGroupIds",
@@ -2010,7 +2132,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>root userName. The default is dbaadmin in the current version. It will reset to dbaadmin even if a value is passed.</p>",
+          "document": "<p>root userName. It defaults to dbaadmin in the current version, and the passed value will be reset to dbaadmin</p>",
           "example": "dbaadmin",
           "member": "string",
           "name": "UserName",
@@ -2028,12 +2150,21 @@
         },
         {
           "disabled": false,
-          "document": "<p>Whether transparent data encryption is enabled. 0: not enabled; 1: enabled</p>",
+          "document": "<p>Whether transparent encryption is enabled. 0: not enabled. 1: enabled</p>",
           "example": "1",
           "member": "int64",
           "name": "EncryptionEnable",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "AutoScalingConfig",
+          "name": "AutoScaleConfigs",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -2133,6 +2264,278 @@
           "name": "IsSuccess",
           "output_required": false,
           "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateStandbyDBInstanceRequest": {
+      "document": "CreateStandbyDBInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Primary instance id</p>",
+          "example": "\"tdsql3-18b89f70\"",
+          "member": "string",
+          "name": "PrimaryInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Creating an Instance Region</p>",
+          "example": "\"ap-guangzhou-1\"",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Character type vpcid</p>",
+          "example": "“vpc-o7ssr1vx”",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Character type subnetid</p>",
+          "example": "\"subnet-s21doiba\"",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Purchase specification</p>",
+          "example": "\"mini\"",
+          "member": "string",
+          "name": "SpecCode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Node disk capacity (unit: GB)</p>",
+          "example": "200",
+          "member": "int64",
+          "name": "Disk",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of storage nodes</p>",
+          "example": "3",
+          "member": "int64",
+          "name": "StorageNodeNum",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of node replicas for storage, up to 5, must be an odd number</p>",
+          "example": "3",
+          "member": "int64",
+          "name": "Replications",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of replicas</p>",
+          "example": "3",
+          "member": "int64",
+          "name": "FullReplications",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Instance name. The required length is 1-60. It can contain Chinese characters, English case, digits, hyphens (-), and underscores (_).</p>",
+          "example": "\"my-instance\"",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Time unit. y: year, m: month, d: day</p>",
+          "example": "\"m\"",
+          "member": "string",
+          "name": "TimeUnit",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Commodity duration size</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "TimeSpan",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>CPU cores of the storage node</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "StorageNodeCpu",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Storage node memory size</p>",
+          "example": "2",
+          "member": "int64",
+          "name": "StorageNodeMem",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Payment mode. 0 means pay-as-you-go/postpaid, 1 means prepaid.</p>",
+          "example": "0",
+          "member": "string",
+          "name": "PayMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Custom port</p>",
+          "example": "3306",
+          "member": "int64",
+          "name": "Vport",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Multi-AZ availability zone list</p>",
+          "example": "[\"ap-chengdu-2\"]",
+          "member": "string",
+          "name": "Zones",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to use a coupon.</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "AutoVoucher",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Coupon list</p>",
+          "example": "[\"123fsase123\"]",
+          "member": "string",
+          "name": "VoucherIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Instance Architecture Type. \"hybrid\" is supported since v19.0.0</p>",
+          "example": "\"hybrid\"",
+          "member": "string",
+          "name": "InstanceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Disk Type, CLOUD_HSSD enhanced SSD, CLOUD_TCS local SSD disk</p>",
+          "example": "\"CLOUD_HSSD\"",
+          "member": "string",
+          "name": "StorageType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Tag key-value pair array</p>",
+          "example": "无",
+          "member": "ResourceTag",
+          "name": "ResourceTags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Region of the primary instance</p>",
+          "example": "\"ap-guangzhou\"",
+          "member": "string",
+          "name": "PrimaryInstanceRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Instance mode, normal: standard type; enhanced: enhanced</p>",
+          "example": "enhanced",
+          "member": "string",
+          "name": "InstanceMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>dbaadmin password</p>",
+          "example": "9#si1ol0",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Bind the security group id list</p>",
+          "example": "[\"sg-53stx92s\"]",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateStandbyDBInstanceResponse": {
+      "document": "CreateStandbyDBInstance response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Instance ID</p>",
+          "example": "\"tdsql3-267841d2\"",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "23",
+          "member": "int64",
+          "name": "FlowId",
+          "output_required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -2633,6 +3036,23 @@
       ],
       "type": "object"
     },
+    "DescribeDBCharsetsRequest": {
+      "document": "DescribeDBCharsets request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeDBCharsetsResponse": {
+      "document": "DescribeDBCharsets response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDBEnginesRequest": {
       "document": "DescribeDBEngines request structure.",
       "members": [],
@@ -2950,7 +3370,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Expiration time</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "\"2006-01-02 15:04:05\"",
           "member": "string",
           "name": "ExpireAt",
@@ -2960,7 +3380,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Isolation time</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "\"2006-01-02 15:04:05\"",
           "member": "string",
           "name": "IsolatedAt",
@@ -2970,7 +3390,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Instance Architecture Type, separate: decoupled architecture; hybrid: peer-to-peer architecture</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "\"hybrid\"",
           "member": "string",
           "name": "InstanceType",
@@ -2980,7 +3400,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Disk Type, CLOUD_HSSD enhanced SSD, CLOUD_TCS local SSD disk</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "CLOUD_HSSD",
           "member": "string",
           "name": "StorageType",
@@ -3000,7 +3420,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Disk usage of the largest node</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "100",
           "member": "int64",
           "name": "DiskUsage",
@@ -3280,7 +3700,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Whether transparent data encryption is enabled. 0: not enabled; 1: enabled</p>",
+          "document": "<p>Whether transparent encryption is enabled. 0: not enabled; 1: enabled</p>",
           "example": "0",
           "member": "int64",
           "name": "EncryptionEnable",
@@ -3290,12 +3710,22 @@
         },
         {
           "disabled": false,
-          "document": "<p>Real-use kms region for subsequent call to kms service</p>",
+          "document": "<p>Real use kms region for subsequent call to kms service</p>",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "EncryptionKmsRegion",
           "output_required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "AutoScalingConfig",
+          "name": "AutoScaleConfigs",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -3339,10 +3769,28 @@
         },
         {
           "disabled": false,
-          "document": "<p>Specified query engine type</p><p>Enumeration value:</p><ul><li>libra: Column storage engine</li></ul>",
+          "document": "<p>Specified query engine type</p><p>Enumeration value:</p><ul><li>libra: column storage engine</li></ul>",
           "example": "libra",
           "member": "string",
           "name": "EngineType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "CreateTime",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "DESC",
+          "member": "string",
+          "name": "OrderDirection",
           "required": false,
           "type": "string"
         }
@@ -3364,7 +3812,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Total number of conditions met</p>",
+          "document": "<p>Total number of items that meet the conditions.</p>",
           "example": "100",
           "member": "int64",
           "name": "TotalCount",
@@ -4330,6 +4778,110 @@
       ],
       "type": "object"
     },
+    "DescribeFlowTypesRequest": {
+      "document": "DescribeFlowTypes request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeFlowTypesResponse": {
+      "document": "DescribeFlowTypes response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task type information for frontend dropdown filtering</p>",
+          "example": "无",
+          "member": "FlowType",
+          "name": "FlowTypes",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceDataReservedSpaceRequest": {
+      "document": "DescribeInstanceDataReservedSpace request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Instance ID.</p>",
+          "example": "tdsql3-51780d0c",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceDataReservedSpaceResponse": {
+      "document": "DescribeInstanceDataReservedSpace response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Actual reserved ratio (%, per node)</p>",
+          "example": "2",
+          "member": "float",
+          "name": "ReservedRate",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Actual reserved space in GB (single node)</p><p>Unit: GB</p>",
+          "example": "1",
+          "member": "float",
+          "name": "ReservedSpaceGB",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Available user space in GB (per node)</p><p>Unit: GB</p>",
+          "example": "49",
+          "member": "float",
+          "name": "UsableSpaceGB",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>true=earlier version (&lt;21.6.4.0), value from the old parameter tdstore_enter_readonly_threshold; false=new version</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "IsLegacy",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Kernel version number</p>",
+          "example": "21.6.4.0",
+          "member": "string",
+          "name": "KernelVersion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeInstanceSSLStatusRequest": {
       "document": "DescribeInstanceSSLStatus request structure.",
       "members": [
@@ -4836,7 +5388,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>Purchasable specification list of peer nodes</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "无",
           "member": "StorageNodeSpec",
           "name": "HybridNodeSpecs",
@@ -4853,6 +5405,53 @@
           "output_required": false,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "ServerlessNodeNumSpec",
+          "name": "ServerlessNodeNumSpec",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStandbyDBInstanceRelationDetailRequest": {
+      "document": "DescribeStandbyDBInstanceRelationDetail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStandbyDBInstanceRelationDetailResponse": {
+      "document": "DescribeStandbyDBInstanceRelationDetail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Disaster recovery relationship",
+          "example": "无",
+          "member": "StandbyDBInstanceRelation",
+          "name": "RelationInfos",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -5258,6 +5857,32 @@
       ],
       "usage": "both"
     },
+    "FlowType": {
+      "document": "Task type information for frontend dropdown filtering",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task Type Name. Subsequently, you can filter FlowName in the output parameters of DescribeFlows.</p>",
+          "example": "FlowBatchCloneUsers",
+          "member": "string",
+          "name": "FlowName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Chinese description of the task type.</p>",
+          "example": "批量克隆用户",
+          "member": "string",
+          "name": "FlowDesc",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "InstanceFilter": {
       "document": "List filter criteria for instances",
       "members": [
@@ -5309,7 +5934,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Creating an Instance Version</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "\"0.0.1\"",
           "member": "string",
           "name": "CreateVersion",
@@ -5319,7 +5944,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Initialize instance parameter</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "无",
           "member": "InstanceParam",
           "name": "InitParams",
@@ -5359,7 +5984,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Instance tag information</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "无",
           "member": "ResourceTag",
           "name": "ResourceTags",
@@ -5369,7 +5994,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Instance name</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "\"实例名称\"",
           "member": "string",
           "name": "InstanceName",
@@ -5479,7 +6104,7 @@
         },
         {
           "disabled": true,
-          "document": "<p>CPU cores of the control node</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "1",
           "member": "int64",
           "name": "MCCpu",
@@ -5489,7 +6114,7 @@
         },
         {
           "disabled": true,
-          "document": "<p>CPU size of the control node</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "2",
           "member": "int64",
           "name": "MCMem",
@@ -5499,7 +6124,7 @@
         },
         {
           "disabled": true,
-          "document": "<p>CPU cores of the computing node</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "1",
           "member": "int64",
           "name": "ComputerNodeCpu",
@@ -5509,7 +6134,7 @@
         },
         {
           "disabled": true,
-          "document": "<p>Compute node memory size</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "2",
           "member": "int64",
           "name": "ComputerNodeMem",
@@ -5519,7 +6144,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>CPU cores of the storage node</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "1",
           "member": "int64",
           "name": "StorageNodeCpu",
@@ -5529,7 +6154,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Storage node memory size</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "2",
           "member": "int64",
           "name": "StorageNodeMem",
@@ -5539,7 +6164,7 @@
         },
         {
           "disabled": true,
-          "document": "<p>Number of control nodes</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "3",
           "member": "int64",
           "name": "MCNum",
@@ -5549,7 +6174,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Renewal flag</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "0",
           "member": "int64",
           "name": "RenewFlag",
@@ -5569,7 +6194,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>User tag, inner: internal user; external: external user</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "inner",
           "member": "string",
           "name": "AccountTag",
@@ -5579,7 +6204,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Instance Architecture Type, separate: decoupled architecture; hyper: peer-to-peer architecture</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "hyper",
           "member": "string",
           "name": "InstanceType",
@@ -5589,7 +6214,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Disk Type, CLOUD_HSSD enhanced SSD, CLOUD_TCS local SSD disk</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "CLOUD_HSSD",
           "member": "string",
           "name": "StorageType",
@@ -5599,7 +6224,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>&quot;0000-00-00 00:00:00&quot;</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>&quot;0000-00-00 00:00:00&quot;</p>",
           "example": "\"0000-00-00 00:00:00\"",
           "member": "string",
           "name": "DestroyedAt",
@@ -5609,7 +6234,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>&quot;0000-00-00 00:00:00&quot;</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>&quot;0000-00-00 00:00:00&quot;</p>",
           "example": "\"0000-00-00 00:00:00\"",
           "member": "string",
           "name": "ExpireAt",
@@ -5619,7 +6244,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>&quot;0000-00-00 00:00:00&quot;</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>&quot;0000-00-00 00:00:00&quot;</p>",
           "example": "\"0000-00-00 00:00:00\"",
           "member": "string",
           "name": "IsolatedAt",
@@ -5629,7 +6254,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>&quot;0000-00-00 00:00:00&quot;</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>&quot;0000-00-00 00:00:00&quot;</p>",
           "example": "\"0000-00-00 00:00:00\"",
           "member": "string",
           "name": "IsolatedFrom",
@@ -5639,7 +6264,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>1</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>1</p>",
           "example": "1",
           "member": "int64",
           "name": "Replications",
@@ -5659,7 +6284,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Account information</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "1",
           "member": "int64",
           "name": "AppId",
@@ -5669,7 +6294,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Account information</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "\"111111\"",
           "member": "string",
           "name": "SubAccountUin",
@@ -5679,7 +6304,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Account information</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "\"111111\"",
           "member": "string",
           "name": "Uin",
@@ -5689,7 +6314,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>AZ information</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "[\"ap-guangzhou-1\",\"ap-guangzhou-2\"]",
           "member": "string",
           "name": "Zones",
@@ -5699,7 +6324,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Instance node</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "无",
           "member": "InstanceNode",
           "name": "Nodes",
@@ -5749,7 +6374,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>az mode. 1: Single az, 2: Multi-az non-primary az mode, 3: Multi-az primary az mode</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "2",
           "member": "int64",
           "name": "AZMode",
@@ -5759,7 +6384,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Disaster recovery flag. 1: No disaster recovery relationship; 2: Primary instance for disaster recovery; 3: Disaster Recovery Standby Instance</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "1",
           "member": "int64",
           "name": "StandbyFlag",
@@ -5769,7 +6394,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Number of connected standby instances (Valid only when StandbyFlag == 2)</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "1",
           "member": "int64",
           "name": "StandbySecondaryNum",
@@ -5909,12 +6534,22 @@
         },
         {
           "disabled": false,
-          "document": "<p>Analysis engine instance info</p>",
+          "document": "<p>Analysis engine instance information</p>",
           "example": "无",
           "member": "AnalysisInstanceInfo",
           "name": "AnalysisInstanceInfo",
           "output_required": false,
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "AutoScalingConfig",
+          "name": "AutoScaleConfigs",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -5925,7 +6560,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Primary key\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "无",
           "member": "int64",
           "name": "ID",
@@ -5936,7 +6571,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "无",
           "member": "string",
           "name": "InstanceId",
@@ -5947,7 +6582,7 @@
         },
         {
           "disabled": false,
-          "document": "Node Id\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Node Id",
           "example": "无",
           "member": "string",
           "name": "NodeId",
@@ -5958,7 +6593,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance Ip\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "无",
           "member": "string",
           "name": "Ip",
@@ -5969,7 +6604,7 @@
         },
         {
           "disabled": false,
-          "document": "Eni IP of the instance\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "无",
           "member": "string",
           "name": "EniIp",
@@ -5980,7 +6615,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance Port\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "无",
           "member": "int64",
           "name": "Port",
@@ -5991,7 +6626,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance SpecCode\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "无",
           "member": "string",
           "name": "SpecCode",
@@ -6002,7 +6637,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance NodeName\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "无",
           "member": "string",
           "name": "NodeName",
@@ -6013,7 +6648,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance Cpu\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "无",
           "member": "int64",
           "name": "Cpu",
@@ -6024,7 +6659,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance memory\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "无",
           "member": "int64",
           "name": "Mem",
@@ -6035,7 +6670,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance Disk\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "无",
           "member": "int64",
           "name": "Disk",
@@ -6046,7 +6681,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "无",
           "member": "string",
           "name": "Type",
@@ -6057,7 +6692,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "无",
           "member": "string",
           "name": "Status",
@@ -6068,7 +6703,7 @@
         },
         {
           "disabled": false,
-          "document": "instance version\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "无",
           "member": "string",
           "name": "Version",
@@ -6079,7 +6714,7 @@
         },
         {
           "disabled": false,
-          "document": "Region\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "无",
           "member": "string",
           "name": "Zone",
@@ -6090,7 +6725,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance LocalDNS\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "无",
           "member": "string",
           "name": "LocalDNS",
@@ -6101,7 +6736,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance Region\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "无",
           "member": "string",
           "name": "Region",
@@ -6112,7 +6747,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance log disk\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "无",
           "member": "int64",
           "name": "LogDisk",
@@ -6123,7 +6758,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance data disk\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "无",
           "member": "int64",
           "name": "DataDisk",
@@ -6134,7 +6769,7 @@
         },
         {
           "disabled": false,
-          "document": "Zone ID of the instance\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "无",
           "member": "string",
           "name": "ZoneID",
@@ -6145,7 +6780,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance SpecName\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "无",
           "member": "string",
           "name": "SpecName",
@@ -6156,7 +6791,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance Replicas\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "无",
           "member": "int64",
           "name": "Replicas",
@@ -6167,7 +6802,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance Shards\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "无",
           "member": "int64",
           "name": "Shards",
@@ -6178,7 +6813,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance data replica\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "无",
           "member": "int64",
           "name": "DataReplicas",
@@ -6189,7 +6824,7 @@
         },
         {
           "disabled": false,
-          "document": "Initialize parameter\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "无",
           "member": "string",
           "name": "Params",
@@ -6200,7 +6835,7 @@
         },
         {
           "disabled": false,
-          "document": "Storage medium, CLOUD_PREMIUM: Premium Cloud Disk, CLOUD_SSD: SSD cloud disk, CLOUD_HSSD: HSSD cloud disk\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "无",
           "member": "string",
           "name": "StorageType",
@@ -6688,6 +7323,52 @@
       ],
       "type": "object"
     },
+    "ModifyInstanceDataReservedSpaceRequest": {
+      "document": "ModifyInstanceDataReservedSpace request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Instance ID.</p>",
+          "example": "tdsql3-51780d0c",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Target reserved space size to modify</p><p>Unit: GB</p>",
+          "example": "5",
+          "member": "float",
+          "name": "ReservedSpaceGB",
+          "required": true,
+          "type": "float"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceDataReservedSpaceResponse": {
+      "document": "ModifyInstanceDataReservedSpace response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Parameter delivery flow task ID (reusing the ModifyDBParameters link; asynchronous flow but takes effect within seconds)</p>",
+          "example": "75267",
+          "member": "int64",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyInstanceNameRequest": {
       "document": "ModifyInstanceName request structure.",
       "members": [
@@ -6955,7 +7636,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>Node IP information</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "\"9.166.11.37\"",
           "member": "string",
           "name": "IP",
@@ -6965,7 +7646,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Node types, such as sqlengine, tdstore, mc</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "\"sqlengine\"",
           "member": "string",
           "name": "Type",
@@ -6975,7 +7656,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Unique identifier of the node</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "\"tdsql3-e234db15-sqlengine-0\"",
           "member": "string",
           "name": "NodeId",
@@ -6985,7 +7666,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Node port information</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "3306",
           "member": "int64",
           "name": "Port",
@@ -6995,7 +7676,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Availability zone of the node</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "ap-guangzhou-4",
           "member": "string",
           "name": "Zone",
@@ -7005,7 +7686,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Machine ip of the node</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "10.0.0.1",
           "member": "string",
           "name": "Host",
@@ -7187,6 +7868,33 @@
         }
       ],
       "usage": "out"
+    },
+    "ResetDbaAdminPrivilegesRequest": {
+      "document": "ResetDbaAdminPrivileges request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Instance id</p>",
+          "example": "tdsql3-e0653a62",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetDbaAdminPrivilegesResponse": {
+      "document": "ResetDbaAdminPrivileges response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ResetUserPasswordInfo": {
       "document": "User type for password reset",
@@ -7477,17 +8185,17 @@
           "disabled": false,
           "document": "<p>ccu minimum value</p>",
           "example": "1",
-          "member": "int64",
+          "member": "float",
           "name": "MinCcu",
           "output_required": false,
-          "type": "int",
+          "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "<p>Maximum value of ccu</p>",
           "example": "[1]",
-          "member": "int64",
+          "member": "float",
           "name": "MaxCcu",
           "output_required": false,
           "type": "list",
@@ -7495,6 +8203,34 @@
         }
       ],
       "usage": "out"
+    },
+    "ServerlessNodeNumSpec": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2",
+          "member": "int64",
+          "name": "MinNodeNum",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "16",
+          "member": "int64",
+          "name": "MaxNodeNum",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "SlowLogData": {
       "document": "slow log information",
@@ -7682,12 +8418,238 @@
       ],
       "usage": "out"
     },
+    "StandbyDBInstanceRelation": {
+      "document": "Disaster recovery instance relationship",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Primary instance ID",
+          "example": "无",
+          "member": "string",
+          "name": "PrimaryInstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Primary instance name",
+          "example": "无",
+          "member": "string",
+          "name": "PrimaryInstanceName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Region of the primary instance",
+          "example": "无",
+          "member": "string",
+          "name": "PrimaryRegion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subnet IP of the primary instance",
+          "example": "无",
+          "member": "string",
+          "name": "PrimaryVip",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Port of the primary instance subnet",
+          "example": "无",
+          "member": "int64",
+          "name": "PrimaryVport",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Primary instance AZ",
+          "example": "无",
+          "member": "string",
+          "name": "PrimaryZones",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Primary instance running status",
+          "example": "无",
+          "member": "string",
+          "name": "PrimaryStatus",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Disaster Recovery instance ID",
+          "example": "无",
+          "member": "string",
+          "name": "SecondaryInstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Disaster Recovery instance name",
+          "example": "无",
+          "member": "string",
+          "name": "SecondaryInstanceName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Region of the standby instance",
+          "example": "无",
+          "member": "string",
+          "name": "SecondaryRegion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subnet IP of the Disaster Recovery instance",
+          "example": "无",
+          "member": "string",
+          "name": "SecondaryVip",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Port of the Disaster Recovery instance subnet",
+          "example": "无",
+          "member": "int64",
+          "name": "SecondaryVport",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Disaster Recovery instance availability zone",
+          "example": "无",
+          "member": "string",
+          "name": "SecondaryZones",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Disaster Recovery instance running status",
+          "example": "无",
+          "member": "string",
+          "name": "SecondaryStatus",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Connection type. Valid values: `log_service`, `raft`.",
+          "example": "无",
+          "member": "string",
+          "name": "ConnType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Synchronization type. Valid values: `sync` and `async`.",
+          "example": "无",
+          "member": "string",
+          "name": "SyncMode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Synchronization status. 1: synchronizing; 2: sync exception",
+          "example": "无",
+          "member": "int64",
+          "name": "SyncStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Synchronization status description. Error information when the synchronization status is abnormal.",
+          "example": "无",
+          "member": "string",
+          "name": "SyncStatusDesc",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Disaster recovery status description. Valid values: \"creating\", \"running\", \"modifying\". Empty if no disaster recovery relationship exists.",
+          "example": "无",
+          "member": "string",
+          "name": "StandbyStatus",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Primary instance version",
+          "example": "无",
+          "member": "string",
+          "name": "PrimaryCreateVersion",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Disaster Recovery instance version",
+          "example": "无",
+          "member": "string",
+          "name": "SecondaryCreateVersion",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Latency in seconds",
+          "example": "5",
+          "member": "int64",
+          "name": "SyncDelay",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "StorageNodeSpec": {
       "document": "Node specification for storage",
       "members": [
         {
           "disabled": false,
-          "document": "<p>Specification code</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "\"mini\"",
           "member": "string",
           "name": "SpecCode",
@@ -7757,7 +8719,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Disk Type, CLOUD_HSSD enhanced SSD, CLOUD_TCS local SSD disk</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "\"CLOUD_HSSD\"",
           "member": "string",
           "name": "StorageType",
@@ -7767,7 +8729,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Default disk size of storage node for frontend display</p>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "20",
           "member": "int64",
           "name": "StorageNodeDefaultDisk",

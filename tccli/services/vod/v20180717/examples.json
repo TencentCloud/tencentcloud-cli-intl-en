@@ -24,6 +24,22 @@
         "title": "Clone CDN Domin"
       }
     ],
+    "CloneVoiceAsync": [
+      {
+        "document": "Voice type clone",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CloneVoiceAsync\n<Common request parameters>\n\n{\n    \"SubAppId\": \"260***028\",\n    \"AudioUrl\": \"https://laurie-tmp-1300828900.cos.accelerate.m**********************************************136a4dea53b5db4493680d0d51bf33e2t-preview.mp3\",\n    \"LanguageBoost\": \"zh\",\n\"ExtParam\": \"{ \\\"model\\\":\\\"minimax-speech-02-hd\\\", \\\"text\\\": \\\"The seed stays silent in the soil for the thunder when it breaks through\\\" }\"\n    \"SessionId\": \"6bb56a09278***********6dab783efe\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"260085028-CloneVoiceAsync-d56011ff47099d4f1788e0b7f851c1e1t\",\n        \"RequestId\": \"ede949b5-2f8e-40e8-9fde-ee5cdb64d24b\"\n    }\n}",
+        "title": "Voice Type Clone"
+      }
+    ],
+    "CloneVoiceSync": [
+      {
+        "document": "Synchronize timbre clone",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CloneVoiceSync\n<Common request parameters>\n\n{\n    \"AudioFileId\": \"966263******778501\",\n    \"LanguageBoost\": \"zh\",\n    \"ExtParam\": \"{\\\"text\\\": \\\"The seed stays silent in the soil, waiting for the thunder when it breaks through the ground.\\\", \\\"tts_model\\\":\\\"minimax-speech-2.8-hd\\\"}\",\n    \"SubAppId\": \"221***\",\n    \"AudioUrl\": \"https://laurie-tmp-1300828900.cos.accelerate*******************************************Async-773ca8f1756ed5fd016988dccb91eaa9t.wav\"\n}",
+        "output": "{\n    \"Response\": {\n        \"DemoAudio\": \"https://laurie-tmp-1300828900.cos.acce**************************************c3-41db-aa7a-29931e416b5b-preview.mp3\",\n        \"ExtInfo\": \"{\\\"audio_length\\\":0,\\\"word_count\\\":34}\",\n        \"VoiceId\": \"minimax_9*********d39-40d7\",\n        \"RequestId\": \"60f2d5dc-2dc3-41db-aa7a-29931e416b5b\"\n    }\n}",
+        "title": "Synchronize timbre clone"
+      }
+    ],
     "CommitUpload": [
       {
         "document": " ",
@@ -808,6 +824,14 @@
         "title": "Deleting an acceleration domain name from VOD"
       }
     ],
+    "DeleteVoice": [
+      {
+        "document": "Deletes a voice",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteVoice\n<Common request parameters>\n\n{\n    \"VoiceId\": \"ttv-voice-20************26-qaFeULIp\",\n    \"SubAppId\": \"260***028\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3a7ec44e-7934-4ff4-8b6a-2030afea4a2a\"\n    }\n}",
+        "title": "Deletes a voice"
+      }
+    ],
     "DeleteWatermarkTemplate": [
       {
         "document": " ",
@@ -1352,6 +1376,14 @@
         "title": "Query All Domain Names"
       }
     ],
+    "DescribeVoices": [
+      {
+        "document": "Querying a Cloned Voice",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeVoices\n<Common request parameters>\n\n{\n    \"SubAppId\": \"260***028\",\n    \"VoiceType\": \"clone\",\n    \"VoiceId\": \"v1_aBbiY3aN7tm7ff3S1gBZa************************plXzQDwNTiJQp2aYilZGv0=\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Voices\": [\n            {\n                \"Age\": \"unknown\",\n                \"AudioUrl\": \"\",\n                \"Category\": \"clone\",\n\"Description\": \"Clone voice\",\n                \"Gender\": \"male\",\n                \"Labels\": [\nMagnetic\n                ],\n                \"Languages\": [\n                    \"zh\"\n                ],\n\"Name\": \"Clone Voice Type\",\n                \"Scenes\": [\ncommentate\n                ],\n                \"VoiceId\": \"v1_aBbiY3aN7tm7ff3S1gBZamsLQyEsQswXoEpreGEStjnx2plXzQDwNTiJQp2aYilZGv0=\"\n            }\n        ],\n        \"RequestId\": \"3e71a833-176c-418c-a515-c14a43b5f8b8\"\n    }\n}",
+        "title": "Querying a Cloned Voice"
+      }
+    ],
     "DescribeWatermarkTemplates": [
       {
         "document": " ",
@@ -1372,6 +1404,14 @@
         "input": "https://vod.tencentcloudapi.com/?Action=DescribeWordSamples\n&Usages.0=Recognition\n&Usages.1=Review.Ocr\n&Keywords.0=John Smith\n&Tags.0=Celebrity\n&Offset=0\n&Limit=20\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"WordSet\": [\n            {\n                \"Keyword\": \"John Smith\",\n                \"TagSet\": [\n                    \"Celebrity\",\n                    \"Artist\"\n                ],\n                \"UsageSet\": [\n                    \"Recognition.Ocr\",\n                    \"Recognition.Asr\"\n                ],\n                \"CreateTime\": \"2018-10-01T10:00:00Z\",\n                \"UpdateTime\": \"2018-10-01T10:00:00Z\"\n            }\n        ],\n        \"RequestId\": \"46311b39-10ce-47eb-b2b6-7ce82bb4476d\"\n    }\n}",
         "title": "Querying keyword samples - filters specified"
+      }
+    ],
+    "DesignVoiceAsync": [
+      {
+        "document": "Voice type design",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DesignVoiceAsync\n<Common request parameters>\n\n{\n    \"SubAppId\": \"221157\",\n    \"Prompt\": \"Serious female voice\",\n    \"VoiceSettings\": {\n        \"Name\": \"Timbre design\",\n        \"Description\": \"Timbre design description\",\n        \"Gender\": \"female\",\n        \"Age\": \"child\"\n    },\n    \"PreviewText\": \"API send requests are equivalent to real operations. Proceed with caution\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"221157-DesignVoiceAsync-7b6d025eb99dcdb9d4eeb6828c6847fdt\",\n        \"RequestId\": \"5524f480-7bf7-4816-a643-84c28a677c5a\"\n    }\n}",
+        "title": "Designing a Voice Type"
       }
     ],
     "EditMedia": [
@@ -2236,12 +2276,36 @@
         "title": "Start CDN Domain"
       }
     ],
+    "TextToSpeechAsync": [
+      {
+        "document": "Text to speech",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: TextToSpeechAsync\n<Common request parameters>\n\n{\n\"Text\": \"Text to Speech Test\"\n    \"VoiceId\": \"ttv-voice-20************26-qaFeULIp\",\n    \"SubAppId\": \"260***028\",\n    \"SessionId\": \"6bb56a09278***********6dab783eff\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"260085028-TextToSpeec********************5b37f06c0e0b890c60ct\",\n        \"RequestId\": \"e6dd5ca8-43f2-4bcd-9f4a-4e58e4cb4e19\"\n    }\n}",
+        "title": "Text to Speech"
+      }
+    ],
+    "TextToSpeechSync": [
+      {
+        "document": "Synchronous text to speech.",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: TextToSpeechSync\n<Common request parameters>\n\n{\n    \"SubAppId\": \"221***\",\n    \"Text\": \"I'm afraid I won't get a chance to say goodbye. Because I might never see you again. Tomorrow I'm leaving familiar places with you. My tears fall when I want to part. I will remember your face and cherish your thoughts. \",\n    \"LanguageBoost\": \"zh\",\n    \"VoiceId\": \"minimax_7*********c6c-495b\",\n    \"Output\": {\n        \"Type\": \"url\"\n    },\n    \"ExtParam\": \"{\\n  \\\"model\\\": \\\"minimax-speech-2.8-hd\\\",\\n  \\\"stream\\\": false,\\n  \\\"voice_setting\\\": {\\n    \\\"speed\\\": 1.5,\\n    \\\"vol\\\": 1.0,\\n    \\\"pitch\\\": 0,\\n    \\\"emotion\\\": \\\"calm\\\",\\n    \\\"text_normalization\\\": true,\\n    \\\"latex_read\\\": false\\n  },\\n  \\\"audio_setting\\\": {\\n    \\\"sample_rate\\\": 32000,\\n    \\\"bitrate\\\": 128000,\\n    \\\"format\\\": \\\"mp3\\\",\\n    \\\"channel\\\": 1,\\n    \\\"force_cbr\\\": false\\n  },\\n  \\\"voice_modify\\\": {\\n    \\\"pitch\\\": 0,\\n    \\\"intensity\\\": 0,\\n    \\\"timbre\\\": 0,\\n    \\\"sound_effects\\\": \\\"\\\"\\n  },\\n  \\\"timbre_weights\\\": [\\n    { \\\"voice_id\\\": \\\"ttv-voice-2026081010451926-MJGKXATq\\\", \\\"weight\\\": 100 }\\n   ],\\n  \\\"subtitle_enable\\\": true,\\n  \\\"subtitle_type\\\": \\\"srt\\\"\\n}\"\n}",
+        "output": "{\n    \"Response\": {\n        \"AudioData\": \"UklGRnxuAABXQVZFZm10IBAAAAABAAEAgD4AAAB9AAACABAATElTVF4EAABJTkZPSUNNVDwEAABBSUdDP********************************************************************************GIzZGFiODAwZjNlYzc4N2Q3MjZhMmQyNDYyIiwiUmVzZXJ2ZWRDb2RlMSI6IntcIlNlY3VyaXR5RGF0Y\",\n        \"AudioUrl\": \"https://tennyyang-test-1258344699.cos.ap-guangzh***********************************************-08-10/cda673d1-5bfb-4111-8572-1838b91ee267.mp3\",\n        \"ExtInfo\": \"{\\\"audio_length\\\":10188,\\\"audio_sample_rate\\\":32000,\\\"audio_size\\\":164724,\\\"bitrate\\\":128000,\\\"audio_format\\\":\\\"mp3\\\",\\\"audio_channel\\\":1,\\\"word_count\\\":66,\\\"invisible_character_ratio\\\":0,\\\"usage_characters\\\":75}\",\n        \"RequestId\": \"a40fdd09-c7dd-45d9-9621-800e6cefab1e\"\n    }\n}",
+        "title": "Synchronize text to speech"
+      }
+    ],
     "UpdateAigcApiToken": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateAigcApiToken\n<Common request parameters>\n\n{\n    \"SubAppId\": 251441341,\n    \"ApiToken\": \"D2JJ0DHJ********************rXFX\",\n    \"ActionType\": \"Merge\",\n    \"ExtInfo\": \"{\\\"ip\\\":{\\\"9.134.4.21\\\":true}}\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"96a1da82-7443-4765-82e4-c1065959f908\"\n    }\n}",
         "title": "Refresh ip restriction"
+      }
+    ],
+    "UpdateVoice": [
+      {
+        "document": "This API is used to update the voice information.",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateVoice\n<Common request parameters>\n\n{\n    \"SubAppId\": \"260***028\",\n    \"VoiceId\": \"v1_aBbiY3aN7tm7ff3S1gBZa************************plXzQDwNTiJQp2aYilZGv0=\",\n    \"VoiceFields\": {\n\"Name\": \"Voice type\",\n\"Description\": \"Voice description\",\n        \"Gender\": \"male\",\n        \"Age\": \"middle_aged\",\n        \"Languages\": [\n            \"zh\"\n        ],\n        \"Labels\": [\n\"Intellectual\"\n        ],\n        \"Scenes\": [\nGeneral\n        ],\n        \"AudioUrl\": \"https://laurie-tmp-1300828900.cos.ap-nanjing.myqcloud.com/sync_dubbing/27111c32-93e3-476e-8ab5-e7fb5838f994.wav\"\n    },\n    \"ExtParam\": \"{\\\"engine\\\": \\\"auto\\\"}\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Voice\": {\n            \"Age\": \"middle_aged\",\n            \"AudioUrl\": \"\",\n            \"Category\": \"clone\",\n\"Description\": \"Voice type description\"\n            \"Gender\": \"male\",\n            \"Labels\": [\nIntellectual\n            ],\n            \"Languages\": [\n                \"zh\"\n            ],\n\"Name\": \"Timbre\",\n            \"Scenes\": [\nGeneral\n            ],\n            \"VoiceId\": \"v1_aBbiY3aN7tm7ff3S1gBZamsLQyEsQswXoEpreGEStjnx2plXzQDwNTiJQp2aYilZGv0=\"\n        },\n        \"RequestId\": \"83593c53-3379-4359-a25b-815bb562bf37\"\n    }\n}",
+        "title": "This API is used to update the voice information."
       }
     ],
     "VerifyDomainRecord": [

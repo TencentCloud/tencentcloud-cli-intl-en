@@ -21,6 +21,20 @@
       "output": "CloneCDNDomainResponse",
       "status": "online"
     },
+    "CloneVoiceAsync": {
+      "document": "This API is used to initiate a voice cloning task. It generates an exclusive voice based on reference audio. The generated voice can be used for subsequent text to speech. Voice cloning is an asynchronous task. The voice ID and audio audition are generated after task completion.",
+      "input": "CloneVoiceAsyncRequest",
+      "name": "Asynchronously clones a voice",
+      "output": "CloneVoiceAsyncResponse",
+      "status": "online"
+    },
+    "CloneVoiceSync": {
+      "document": "This API is used to initiate a voice cloning task to clone an exclusive voice based on reference audio. The generated voice can be used for subsequent text to speech.",
+      "input": "CloneVoiceSyncRequest",
+      "name": "Clones voice synchronously",
+      "output": "CloneVoiceSyncResponse",
+      "status": "online"
+    },
     "CommitUpload": {
       "document": "This API is used to confirm the result of uploading a media file (and cover file) to VOD, store the media information, and return the playback address and ID of the file.",
       "input": "CommitUploadRequest",
@@ -602,6 +616,13 @@
       "output": "DeleteVodDomainResponse",
       "status": "online"
     },
+    "DeleteVoice": {
+      "document": "This API is used to delete a specified voice by voice ID. Deletion is irreversible and the voice cannot be used for subsequent APIs. It only supports deletion of voices for this account. System preset voices cannot be deleted.\n\nNote: Newly designed or cloned voice types cannot be deleted before activation (not found means non-operational). They are activated only after the newly created voice type is used for TTS once.",
+      "input": "DeleteVoiceRequest",
+      "name": "Deletes a voice",
+      "output": "DeleteVoiceResponse",
+      "status": "online"
+    },
     "DeleteWatermarkTemplate": {
       "document": "This API is used to delete a custom watermarking template.",
       "input": "DeleteWatermarkTemplateRequest",
@@ -1015,6 +1036,13 @@
       "output": "DescribeVodDomainsResponse",
       "status": "online"
     },
+    "DescribeVoices": {
+      "document": "Query the available timbre list under the current account. It supports filtering by optional conditions such as voice ID, kind, name, gender, age, language, tag, and scenario.\n\nNote: Newly designed or cloned voice types cannot be queried before activation. They are activated only after the newly created voice type is used for TTS once.",
+      "input": "DescribeVoicesRequest",
+      "name": "Queries available voices",
+      "output": "DescribeVoicesResponse",
+      "status": "online"
+    },
     "DescribeWatermarkTemplates": {
       "document": "This API is used to query custom watermarking templates and supports paged queries by filters.",
       "input": "DescribeWatermarkTemplatesRequest",
@@ -1027,6 +1055,13 @@
       "input": "DescribeWordSamplesRequest",
       "name": "Gets keyword sample list",
       "output": "DescribeWordSamplesResponse",
+      "status": "online"
+    },
+    "DesignVoiceAsync": {
+      "document": "This API is used to initiate a voice design task. It generates a custom voice based on a natural language description. You can also specify a voice profile, such as name, gender, age, language, tag, and scenario. If trial text is attached upon submission, an audio audition is generated after task completion. Voice design is an asynchronous task, and the voice ID is generated after task completion.",
+      "input": "DesignVoiceAsyncRequest",
+      "name": "Designs a voice asynchronously",
+      "output": "DesignVoiceAsyncResponse",
       "status": "online"
     },
     "EditMedia": {
@@ -1547,11 +1582,32 @@
       "output": "StartCDNDomainResponse",
       "status": "online"
     },
+    "TextToSpeechAsync": {
+      "document": "Initiate a speech synthesis task to convert text into speech, oriented towards long text scenarios (maximum 200,000 characters), supporting specified timbre and synthesis parameters such as speaking rate, volume, pitch, sampling rate, and output format. Speech synthesis is an asynchronous task, and audio results are generated upon completion.",
+      "input": "TextToSpeechAsyncRequest",
+      "name": "Converts text to speech asynchronously",
+      "output": "TextToSpeechAsyncResponse",
+      "status": "online"
+    },
+    "TextToSpeechSync": {
+      "document": "Initiate a speech synthesis task to convert text into speech.",
+      "input": "TextToSpeechSyncRequest",
+      "name": "Converts text to speech synchronously",
+      "output": "TextToSpeechSyncResponse",
+      "status": "online"
+    },
     "UpdateAigcApiToken": {
       "document": "This API is used to create a Token for invoking the AIGC API. After creation, data sync has a delay. It becomes queryable or deletable after about 30 seconds.",
       "input": "UpdateAigcApiTokenRequest",
       "name": "Refresh an AIGC API Token",
       "output": "UpdateAigcApiTokenResponse",
+      "status": "online"
+    },
+    "UpdateVoice": {
+      "document": "This API is used to update the profile of a voice by voice ID, including its name, description, gender, age, language, tags, and scenarios, and returns the complete voice information after the update. Only voices under this account can be updated. System preset voices do not support update.\n\nNote: Newly designed or cloned voice types cannot be updated before activation. They are activated only after the newly created voice type is used for TTS once.",
+      "input": "UpdateVoiceRequest",
+      "name": "Updates the voice information",
+      "output": "UpdateVoiceResponse",
       "status": "online"
     },
     "VerifyDomainRecord": {
@@ -12892,6 +12948,208 @@
       ],
       "type": "object"
     },
+    "CloneVoiceAsyncRequest": {
+      "document": "CloneVoiceAsync request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>VOD application ID. For customers who activate on-demand services on or after December 25, 2023, this field must be filled in with the app ID to access resources in VOD applications, whether in the default or a newly created application.</p>",
+          "example": "260***028",
+          "member": "string",
+          "name": "SubAppId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Base64-encoded audio for cloning.</p>",
+          "example": "SUQz****AAA",
+          "member": "string",
+          "name": "AudioData",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Cloning audio URL. Valid when AudioData is empty.</p>",
+          "example": "https://laurie-tmp-1300828900.cos.accelerate.m**********************************************136a4dea53b5db4493680d0d51bf33e2t-preview.mp3",
+          "member": "string",
+          "name": "AudioUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Clone file FileID. Valid when AudioData and AudioUrl are empty</p>",
+          "example": "966263******778429",
+          "member": "string",
+          "name": "AudioFileId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Language enhancement, such as \"zh\" \"en\" \"auto\", default \"auto\"</p>",
+          "example": "zh",
+          "member": "string",
+          "name": "LanguageBoost",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Timbre clone expansion parameters. Supported fields of <code>ExtParam</code>: </p><ul><li><code>text</code> (string): Text for audition synthesis, up to 1000 characters; do not return the audition audio when empty or not passed.</li></ul>",
+          "example": "{ \"tts_model\":\"minimax-speech-02-hd\", \"text\": \"种子在土里沉默是为了破土时的惊雷\" }",
+          "member": "string",
+          "name": "ExtParam",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Identifies the source context. This is used to pass user request information. The value of this field will be returned in callbacks and task flow status change callbacks. The maximum length is 1000 characters.</p>",
+          "example": "202410011901***tmsd",
+          "member": "string",
+          "name": "SessionContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Identification Code for Task Deduplication. If a request with the same identification code has been sent within the past 3 days, an error will be returned for the current request. The maximum length is 50 characters. If this is not specified or left empty, it indicates no deduplication.</p>",
+          "example": "6bb56a09278***********6dab783efe",
+          "member": "string",
+          "name": "SessionId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CloneVoiceAsyncResponse": {
+      "document": "CloneVoiceAsync response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID. Use this ID to query the result.</p>",
+          "example": "260085028-CloneVoiceAsync-d56011ff47099d4f1788e0b7f851c1e1t",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CloneVoiceSyncRequest": {
+      "document": "CloneVoiceSync request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>VOD application ID. Customers who activate on-demand services after December 25, 2023 must fill in this field with the app ID when accessing resources in VOD applications (whether the default application or a newly created application).</p>",
+          "example": "221***",
+          "member": "string",
+          "name": "SubAppId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Base64-encoded audio for cloning.</p>",
+          "example": "UklGRkZAAABXQVZFZm10IBAAAAABAAEAgD4AAAB9AAACABAATElTVBoAAA",
+          "member": "string",
+          "name": "AudioData",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Cloning audio URL. Valid when AudioData is empty.</p>",
+          "example": "https://laurie-tmp-1300828900.cos.accelerate*******************************************Async-773ca8f1756ed5fd016988dccb91eaa9t.wav",
+          "member": "string",
+          "name": "AudioUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>File ID for cloning. Valid when AudioData and AudioUrl are empty</p>",
+          "example": "966263******778501",
+          "member": "string",
+          "name": "AudioFileId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Language enhancement, such as \"zh\" \"en\" \"auto\", default \"auto\"</p>",
+          "example": "zh",
+          "member": "string",
+          "name": "LanguageBoost",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Expansion parameters for synchronous timbre clone. Supported fields of <code>ExtParam</code>:</p><ul>  <li><code>text</code> (string): Audition synthesis text, up to <code>1000</code> characters. If not empty, <code>tts_model</code> must be passed simultaneously. Returns the audition audio <code>DemoAudio</code> upon successful clone.</li>  <li><code>model</code> (string): Clone model. Default: <code>minimax-voice-clone</code>.</li>  <li><code>tts_model</code> (string): Model used to synthesize the audition audio. Options: <code>minimax-speech-2.8-hd</code>, <code>minimax-speech-2.8-turbo</code>, <code>minimax-speech-2.6-hd</code>, <code>minimax-speech-2.6-turbo</code>, <code>minimax-speech-02-hd</code>, <code>minimax-speech-02-turbo</code>. Required when <code>text</code> is not empty.</li>  <li><code>text_lang</code> (string): Audition text language.</li>  <li><code>voice_profile</code> (object): Timbre profile. Optional fields:    <ul>      <li><code>name</code> (string): Timbre name.</li>      <li><code>description</code> (string): Timbre description.</li>      <li><code>gender</code> (string): Gender. Options: <code>male</code> / <code>female</code> / <code>unknown</code>.</li>      <li><code>age</code> (string): Age segment. Options: <code>child</code> / <code>teenager</code> / <code>youth</code> / <code>middle_aged</code> / <code>senior</code> / <code>unknown</code>.</li>      <li><code>languages</code> (string[]): Supported languages, for example <code>[\"zh\", \"en\"]</code>.</li>      <li><code>labels</code> (string[]): Timbre tags, for example <code>[\"magnetic\"]</code>.</li>      <li><code>scenes</code> (string[]): Application scenarios, for example <code>[\"commentary\"]</code>.</li>    </ul>  </li></ul>",
+          "example": "{\"text\": \"种子在土里沉默，是为了破土时的惊雷。\", \"tts_model\":\"minimax-speech-2.8-hd\"}",
+          "member": "string",
+          "name": "ExtParam",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CloneVoiceSyncResponse": {
+      "document": "CloneVoiceSync response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Cloned timbre</p>",
+          "example": "minimax_9*********d39-40d7",
+          "member": "string",
+          "name": "VoiceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Audition audio.</p>",
+          "example": "https://laurie-tmp-1300828900.cos.acce**************************************c3-41db-aa7a-29931e416b5b-preview.mp3",
+          "member": "string",
+          "name": "DemoAudio",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended information.</p>",
+          "example": "{\"audio_length\":0,\"word_count\":34}",
+          "member": "string",
+          "name": "ExtInfo",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ColorEnhanceInfo": {
       "document": "Color enhancement configuration.",
       "members": [
@@ -20823,6 +21081,42 @@
       ],
       "type": "object"
     },
+    "DeleteVoiceRequest": {
+      "document": "DeleteVoice request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Voice ID.</p>",
+          "example": "ttv-voice-20************26-qaFeULIp",
+          "member": "string",
+          "name": "VoiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>VOD application ID. From December 25, 2023, customers who activate on-demand services must fill in this field with the app ID when accessing resources in on-demand applications, whether the default application or a newly created application.</p>",
+          "example": "260***028",
+          "member": "string",
+          "name": "SubAppId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteVoiceResponse": {
+      "document": "DeleteVoice response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteWatermarkTemplateRequest": {
       "document": "DeleteWatermarkTemplate request structure.",
       "members": [
@@ -25934,6 +26228,143 @@
       ],
       "type": "object"
     },
+    "DescribeVoicesRequest": {
+      "document": "DescribeVoices request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>VOD application ID. Starting from December 25, 2023, customers who activate on-demand services must set this field to the app ID when accessing resources in VOD applications (whether the default application or a newly created application).</p>",
+          "example": "260***028",
+          "member": "string",
+          "name": "SubAppId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Voice ID.</p>",
+          "example": "v1_aBbiY3aN7tm7ff3S1gBZa************************plXzQDwNTiJQp2aYilZGv0=",
+          "member": "string",
+          "name": "VoiceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Voice type.</p><p>Enumeration values:</p><ul><li>system: system audio.</li><li>clone: cloned audio.</li><li>design: designed audio.</li><li>all: All voices (default).</li></ul>",
+          "example": "clone",
+          "member": "string",
+          "name": "VoiceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Voice name.</p>",
+          "example": "音色",
+          "member": "string",
+          "name": "VoiceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Voice description.</p>",
+          "example": "音色",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Gender.</p><p>Enumeration values:</p><ul><li>male: male</li><li>female: female</li><li>unknown: unknown</li></ul>",
+          "example": "male",
+          "member": "string",
+          "name": "Gender",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Age.</p><p>Enumeration values:</p><ul><li>child: child</li><li>teenager: teenager</li><li>youth: youth</li><li>middle_aged: middle-aged</li><li>senior: senior</li><li>unknown: unknown</li></ul>",
+          "example": "child",
+          "member": "string",
+          "name": "Age",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Language.</p>",
+          "example": "[\"zh\"]",
+          "member": "string",
+          "name": "Languages",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Tag.</p>",
+          "example": "[\"磁性\"]",
+          "member": "string",
+          "name": "Labels",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Scenario.</p>",
+          "example": "[\"解说\"]",
+          "member": "string",
+          "name": "Scenes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended parameters in the format of a JSON string. </p><p>Other filter criteria:\nvoiceName (String): Voice name, fuzzy matching. labels (Array of String): Tags. Matches voices that contain these tags.</p>",
+          "example": "{ \"labels\": [\"温柔\"] }",
+          "member": "string",
+          "name": "ExtParam",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeVoicesResponse": {
+      "document": "DescribeVoices response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Available timbre list.</p>",
+          "example": "无",
+          "member": "VoiceInfo",
+          "name": "Voices",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total number of available voices</p>",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeWatermarkTemplatesRequest": {
       "document": "DescribeWatermarkTemplates request structure.",
       "members": [
@@ -26098,6 +26529,97 @@
           "name": "WordSet",
           "output_required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DesignVoiceAsyncRequest": {
+      "document": "DesignVoiceAsync request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Voice description.</p>",
+          "example": "严肃女声",
+          "member": "string",
+          "name": "Prompt",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>VOD application ID. For customers who activated on-demand services after December 25, 2023, this field must be set to the app ID when accessing resources in VOD applications, whether it is the default application or a newly created application.</p>",
+          "example": "221157",
+          "member": "string",
+          "name": "SubAppId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Voice settings</p>",
+          "example": "无",
+          "member": "VoiceSettings",
+          "name": "VoiceSettings",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Audition synthesis text. Maximum 500 characters.</p>",
+          "example": "种子在土里沉默，是为了破土时的惊雷。",
+          "member": "string",
+          "name": "PreviewText",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended parameters in the format of a JSON string.</p>",
+          "example": "{\"name\": \"abc\"}",
+          "member": "string",
+          "name": "ExtParam",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Identifies the source context. This is used to pass through user request information. The callback and task flow status change callback return the value of this field. The maximum length is 1000 characters.</p>",
+          "example": "202410011902***tmsd",
+          "member": "string",
+          "name": "SessionContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Identification Code for Task Deduplication. If a request with the same identification code has been made within the past 3 days, an error will be returned for the current request. The maximum length is 50 characters. Not specifying it or specifying an empty string means no deduplication.</p>",
+          "example": "6bb56a09278740bc80c5dc6dab783efa",
+          "member": "string",
+          "name": "SessionId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DesignVoiceAsyncResponse": {
+      "document": "DesignVoiceAsync response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID, used when querying a task.</p>",
+          "example": "221157-DesignVoiceAsync-7b6d025eb99dcdb9d4eeb6828c6847fdt",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -51989,6 +52511,242 @@
       ],
       "usage": "in"
     },
+    "TextToSpeechAsyncOutputOption": {
+      "document": "Output parameter setting for asynchronous dubbing.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Output type of the synthesis result. </p><p>Enumeration values: </p><ul><li>fileId: Generate a new VOD file ID</li><li>url: Audio URL, valid for 24 hours.</li></ul>",
+          "example": "fileId",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "TextToSpeechAsyncRequest": {
+      "document": "TextToSpeechAsync request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Text to convert to speech.</p>",
+          "example": "语音合成测试",
+          "member": "string",
+          "name": "Text",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Voice ID.</p>",
+          "example": "ttv-voice-20************26-qaFeULIp",
+          "member": "string",
+          "name": "VoiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>VOD application ID. For customers who activate on-demand services on or after December 25, 2023, this field must be set to the app ID when accessing resources in on-demand applications, whether in the default application or a newly created application.</p>",
+          "example": "260***028",
+          "member": "string",
+          "name": "SubAppId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Language enhancement, such as \"zh\" \"en\" \"auto\", default \"auto\"</p>",
+          "example": "zh",
+          "member": "string",
+          "name": "LanguageBoost",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended parameters for text-to-speech (async). Fields supported by ExtParam:</p><ul><li>model (string): Synthesis model. Options: minimax-speech-2.8-hd, minimax-speech-2.8-turbo, minimax-speech-2.6-hd, minimax-speech-2.6-turbo, minimax-speech-02-hd, minimax-speech-02-turbo. Default: minimax-speech-2.8-hd.</li><li>text_lang (string): Text language, for example zh / en. Synonymous with the input parameter LanguageBoost. If both are passed, ExtParam takes precedence.</li><li>audio_setting (object): Audio output and voice type fine-tuning parameters. Note: For the async API, speaking rate, volume, pitch, and emotion are all under audio_setting, different from the voice_setting of the synchronous API. Optional fields:<ul><li>speed (float): Speaking rate, [0.5, 2.0]. Default: 1.0.</li><li>vol (float): Volume, (0, 10]. Default: 1.0.</li><li>pitch (int): Pitch, [-12, 12]. Default: 0.</li><li>emotion (string): Emotion. Options: happy, sad, angry, fearful, disgusted, surprised, calm, fluent, whisper.</li><li>sample_rate (int): Sampling rate. Options: 8000, 16000, 22050, 24000, 32000, 44100. Default: 16000.</li><li>format (string): Audio format. Options: mp3, wav. Default: wav.</li><li>duration (float): Target duration in seconds.</li><li>cut_silence (bool): Whether to trim silent segments.</li></ul></li></ul>",
+          "example": "{\"model\":\"minimax-speech-2.8-turbo\",\"text_lang\":\"zh\",\"audio_setting\":{\"speed\":1.2,\"vol\":1.5,\"pitch\":2,\"emotion\":\"happy\",\"sample_rate\":32000,\"format\":\"mp3\",\"duration\":60,\"cut_silence\":false}}",
+          "member": "string",
+          "name": "ExtParam",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Output parameters.</p><p>Specifies the output format, etc. The default output audio url.</p>",
+          "example": "无",
+          "member": "TextToSpeechAsyncOutputOption",
+          "name": "Output",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Identifies the source context. This is used to pass user request information. The value of this field will be returned in callbacks and task flow status change callbacks. The maximum length is 1000 characters.</p>",
+          "example": "202410011900***tmsd",
+          "member": "string",
+          "name": "SessionContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Identification Code for Task Deduplication. If a request with the same identification code has been sent within the past 3 days, an error will be returned for the current request. The maximum length is 50 characters. If this is not specified or left empty, it indicates no deduplication.</p>",
+          "example": "6bb56a09278***********6dab783eff",
+          "member": "string",
+          "name": "SessionId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TextToSpeechAsyncResponse": {
+      "document": "TextToSpeechAsync response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID. Use this ID to query the result.</p>",
+          "example": "260085028-TextToSpeec********************5b37f06c0e0b890c60ct",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TextToSpeechSyncOutputOption": {
+      "document": "Output parameter setting for synchronous text to speech.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Output type of the synthesis result. </p><p>Enumeration values: </p><ul><li>hex: Audio base64 encoding, </li><li>url: Audio URL, valid for 24 hours.</li></ul>",
+          "example": "url",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "TextToSpeechSyncRequest": {
+      "document": "TextToSpeechSync request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Text for the synthesis. This is required for text to speech. The text cannot exceed 2000 bytes in length.</p>",
+          "example": "种子在土里沉默，是为了破土时的惊雷。",
+          "member": "string",
+          "name": "Text",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Voice Id. Fill in when synthesizing with a specified timbre. System, designed, and cloned timbres are supported.</p>",
+          "example": "minimax_7*********c6c-495b",
+          "member": "string",
+          "name": "VoiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>VOD application ID. Customers who activate on-demand services on or after December 25, 2023 must fill in this field with the application ID when accessing resources in VOD applications, whether in the default application or a newly created application.</p>",
+          "example": "221***",
+          "member": "string",
+          "name": "SubAppId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Language enhancement, such as \"zh\" \"en\" \"auto\", default \"auto\"</p>",
+          "example": "zh",
+          "member": "string",
+          "name": "LanguageBoost",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Output parameters.</p><p>Specifies the output format, etc. The default output audio format is base64.</p>",
+          "example": "无",
+          "member": "TextToSpeechSyncOutputOption",
+          "name": "Output",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Synchronous speech synthesis expansion parameters. Fields supported by <code>ExtParam</code>:</p><ul>  <li><code>model</code> (string): Synthesis model. Options: <code>minimax-speech-2.8-hd</code>, <code>minimax-speech-2.8-turbo</code>, <code>minimax-speech-2.6-hd</code>, <code>minimax-speech-2.6-turbo</code>, <code>minimax-speech-02-hd</code>, <code>minimax-speech-02-turbo</code>. Default: <code>minimax-speech-2.8-hd</code>.</li>  <li><code>voice_setting</code> (object): Fine adjustment of voice type. Optional fields:    <ul>      <li><code>speed</code> (float): Speech speed, <code>[0.5, 2.0]</code>. Default: <code>1.0</code>.</li>      <li><code>vol</code> (float): Volume, <code>(0, 10]</code>. Default: <code>1.0</code>.</li>      <li><code>pitch</code> (int): Pitch, <code>[-12, 12]</code>. Default: <code>0</code>.</li>      <li><code>emotion</code> (string): Emotion. Options: <code>happy</code> / <code>sad</code> / <code>angry</code> / <code>fearful</code> / <code>disgusted</code> / <code>surprised</code> / <code>calm</code> / <code>fluent</code> / <code>whisper</code>.</li>    </ul>  </li>  <li><code>audio_setting</code> (object): Audio output parameter. Optional fields:    <ul>      <li><code>sample_rate</code> (int): Sampling rate. Options: <code>8000</code> / <code>16000</code> / <code>22050</code> / <code>24000</code> / <code>32000</code> / <code>44100</code>. Default: <code>16000</code>.</li>      <li><code>format</code> (string): Audio format. Options: <code>mp3</code> / <code>wav</code>. Default: <code>wav</code>.</li>      <li><code>duration</code> (float): Target duration (seconds).</li>      <li><code>cut_silence</code> (bool): Whether to trim silence segments.</li>    </ul>  </li></ul>",
+          "example": "{     \"model\": \"minimax-speech-2.8-hd\",     \"stream\": false,     \"voice_setting\": {         \"speed\": 1.0,         \"vol\": 1.0,         \"pitch\": 0,         \"emotion\": \"calm\",         \"text_normalization\": true,         \"latex_read\": false     } }",
+          "member": "string",
+          "name": "ExtParam",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TextToSpeechSyncResponse": {
+      "document": "TextToSpeechSync response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>base64-encoded synthetic audio in wav format.</p>",
+          "example": "UklGRnxuAABXQVZFZm10IBAAAAABAAEAgD4AAAB9AAACABAATElTVF4EAABJTkZPSUNNVDwEAABBSUdDP********************************************************************************GIzZGFiODAwZjNlYzc4N2Q3MjZhMmQyNDYyIiwiUmVzZXJ2ZWRDb2RlMSI6IntcIlNlY3VyaXR5RGF0Y",
+          "member": "string",
+          "name": "AudioData",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Synthetic audio URL. It is valid for 24 hours.</p>",
+          "example": "https://tennyyang-test-1258344699.cos.ap-guangzh***********************************************-08-10/cda673d1-5bfb-4111-8572-1838b91ee267.mp3",
+          "member": "string",
+          "name": "AudioUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended information in the format of a JSON string. </p><p>duration: Duration of the resulting audio, in seconds.</p>",
+          "example": "{\"audio_length\":10188,\"audio_sample_rate\":32000,\"audio_size\":164724,\"bitrate\":128000,\"audio_format\":\"mp3\",\"audio_channel\":1,\"word_count\":66,\"invisible_character_ratio\":0,\"usage_characters\":75}",
+          "member": "string",
+          "name": "ExtInfo",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "TextWatermarkTemplateInput": {
       "document": "Text watermarking template",
       "members": [
@@ -52728,6 +53486,70 @@
     "UpdateAigcApiTokenResponse": {
       "document": "UpdateAigcApiToken response structure.",
       "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateVoiceRequest": {
+      "document": "UpdateVoice request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Voice ID.</p>",
+          "example": "v1_aBbiY3aN7tm7ff3S1gBZa************************plXzQDwNTiJQp2aYilZGv0=",
+          "member": "string",
+          "name": "VoiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Fields of the updated voice.</p>",
+          "example": "无",
+          "member": "VoiceUpdateFields",
+          "name": "VoiceFields",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>VOD application ID. From December 25, 2023, customers who activate on-demand services must fill in this field as the app ID when accessing resources in on-demand applications, whether in the default application or a newly created application.</p>",
+          "example": "260***028",
+          "member": "string",
+          "name": "SubAppId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended parameters in the format of a JSON string.</p>",
+          "example": "{\"engine\": \"auto\"}",
+          "member": "string",
+          "name": "ExtParam",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateVoiceResponse": {
+      "document": "UpdateVoice response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Voice information after the update.</p>",
+          "example": "无",
+          "member": "VoiceInfo",
+          "name": "Voice",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -54052,6 +54874,299 @@
         }
       ],
       "usage": "in"
+    },
+    "VoiceInfo": {
+      "document": "Voice information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Voice ID.</p>",
+          "example": "v1_aBbiY3aN7tm7ff3S1gBZa************************plXzQDwNTiJQp2aYilZGv0=",
+          "member": "string",
+          "name": "VoiceId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Voice name.</p>",
+          "example": "音色",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Voice description.</p>",
+          "example": "音色简介",
+          "member": "string",
+          "name": "Description",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Voice type.</p><p>Enumeration values:</p><ul><li>system: system audio.</li><li>clone: cloned audio.</li><li>design: designed audio.</li></ul>",
+          "example": "clone",
+          "member": "string",
+          "name": "Category",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Gender. </p><p>Enumeration values: </p><ul><li>male: Male, </li><li>female: Female.</li></ul>",
+          "example": "unknown",
+          "member": "string",
+          "name": "Gender",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Age.</p><p>Enumeration values:</p><ul><li>child: child</li><li>teenager: teenager</li><li>youth: youth</li><li>middle_aged: middle-aged</li><li>senior: senior</li><li>unknown: unknown</li></ul>",
+          "example": "unknown",
+          "member": "string",
+          "name": "Age",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of supported languages. </p><p>For example: en.</p>",
+          "example": "[\"zh\"]",
+          "member": "string",
+          "name": "Languages",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Audition audio URL.</p>",
+          "example": "https://laurie-tmp-1300828900.cos.accelerate.myqcloud.com/speech/260085028-DesignVoiceAsync-e81c527f2aa09e88d674a66404a0e518t-preview.mp3",
+          "member": "string",
+          "name": "AudioUrl",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of tags. </p><p>For example: gentle.</p>",
+          "example": "[\"知性\"]",
+          "member": "string",
+          "name": "Labels",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Recommended scenarios. </p><p>For example: education.</p>",
+          "example": "[\"通用\"]",
+          "member": "string",
+          "name": "Scenes",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "VoiceSettings": {
+      "document": "Voice attribute.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Voice name.</p>",
+          "example": "音色设计",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Voice description.</p>",
+          "example": "音色设计描述",
+          "member": "string",
+          "name": "Description",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Gender.</p><p>Enumeration values:</p><ul><li>male: male</li><li>female: female</li><li>unknown: unknown</li></ul>",
+          "example": "female",
+          "member": "string",
+          "name": "Gender",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Age.</p><p>Enumeration values:</p><ul><li>child: child</li><li>teenager: teenager</li><li>youth: youth</li><li>middle_aged: middle-aged</li><li>senior: senior</li><li>unknown: unknown</li></ul>",
+          "example": "child",
+          "member": "string",
+          "name": "Age",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Language. Supported languages:<br>zh Chinese<br>en English<br>ja Japanese<br>de German<br>fr French<br>ko Korean<br>ru Russian<br>uk Ukrainian<br>pt Portuguese<br>it Italian<br>es Spanish<br>id Indonesian<br>nl Dutch<br>tr Turkish<br>fil Filipino<br>ms Malay<br>el Greek<br>fi Finnish<br>hr Croatian<br>sk Slovak<br>pl Polish<br>sv Swedish<br>hi Hindi<br>bg Bulgarian<br>ro Romanian<br>ar Arabic<br>cs Czech<br>da Danish<br>ta Tamil<br>hun Hungarian<br>vi Vietnamese<br>no Norwegian<br>yue Cantonese<br>th Thai<br>he Hebrew<br>ca Catalan<br>nn Nynorsk<br>af Afrikaans<br>fa Persian<br>sl Slovenian</p>",
+          "example": "[\"zh\"]",
+          "member": "string",
+          "name": "Languages",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Tag.</p>",
+          "example": "[\"主持音\"]",
+          "member": "string",
+          "name": "Labels",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Scenario.</p>",
+          "example": "[\"通用\"]",
+          "member": "string",
+          "name": "Scenes",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "VoiceUpdateFields": {
+      "document": "Fields of the updated voice.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Voice name.</p>",
+          "example": "音色",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Voice description.</p>",
+          "example": "音色简介",
+          "member": "string",
+          "name": "Description",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Gender.</p><p>Enumeration values:</p><ul><li>male: male</li><li>female: female</li><li>unknown: unknown</li></ul>",
+          "example": "male",
+          "member": "string",
+          "name": "Gender",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Age.</p><p>Enumeration values:</p><ul><li>child: child</li><li>teenager: teenager</li><li>youth: youth</li><li>middle_aged: middle-aged</li><li>senior: senior</li><li>unknown: unknown</li></ul>",
+          "example": "middle_aged",
+          "member": "string",
+          "name": "Age",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Language.</p>",
+          "example": "[\"zh\"]",
+          "member": "string",
+          "name": "Languages",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Tag.</p>",
+          "example": "[\"知性\"]",
+          "member": "string",
+          "name": "Labels",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Scenario.</p>",
+          "example": "[\"通用\"]",
+          "member": "string",
+          "name": "Scenes",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Audition audio.</p>",
+          "example": "https://laurie-tmp-1300828900.cos.ap-*************************************11c32-93e3-476e-8ab5-e7fb5838f994.wav",
+          "member": "string",
+          "name": "AudioUrl",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "WatermarkConfigureData": {
       "document": "Just In Time transcoding watermark template configuration.",
