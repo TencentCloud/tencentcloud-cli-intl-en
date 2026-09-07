@@ -504,6 +504,13 @@
       "output": "DescribeClusterReadOnlyResponse",
       "status": "online"
     },
+    "DescribeClusterStorageAutoExpand": {
+      "document": "This API is used to query the automated storage expansion configuration.",
+      "input": "DescribeClusterStorageAutoExpandRequest",
+      "name": "View the auto-scaling configuration",
+      "output": "DescribeClusterStorageAutoExpandResponse",
+      "status": "online"
+    },
     "DescribeClusterTransparentEncryptInfo": {
       "document": "This API is used to query cluster transparent encryption information.",
       "input": "DescribeClusterTransparentEncryptInfoRequest",
@@ -1062,6 +1069,13 @@
       "input": "ModifyClusterGlobalEncryptionRequest",
       "name": "Enable global encryption",
       "output": "ModifyClusterGlobalEncryptionResponse",
+      "status": "online"
+    },
+    "ModifyClusterLevel": {
+      "document": "Modify cluster",
+      "input": "ModifyClusterLevelRequest",
+      "name": "Modify a cluster",
+      "output": "ModifyClusterLevelResponse",
       "status": "online"
     },
     "ModifyClusterName": {
@@ -2071,7 +2085,7 @@
         },
         {
           "disabled": true,
-          "document": "<p>Instance group ID, used when adding new instances to an existing RO group. If not passed, a new RO group will be created. The current version does not recommend transmitting this value.</p>",
+          "document": "<p>This field has been deprecated. The current version no longer transmits this value.</p>",
           "example": "cynosmysql-grp-xxxxxxxx",
           "member": "string",
           "name": "InstanceGrpId",
@@ -3300,6 +3314,16 @@
         },
         {
           "disabled": false,
+          "document": "<p>Region where backup files are located</p>",
+          "example": "无",
+          "member": "BackupRegionAndIds",
+          "name": "ExistRegions",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
           "document": "<p>Delivery status</p>",
           "example": "done",
           "member": "string",
@@ -3638,7 +3662,7 @@
         {
           "disabled": false,
           "document": "The instance ID under the bound cluster.",
-          "example": "[cynosdbmysql-ins-test]",
+          "example": "[\"cynosdbmysql-ins-test\"]",
           "member": "string",
           "name": "ExtendIds",
           "output_required": false,
@@ -8866,7 +8890,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Instance status</p>",
+          "document": "<p>Instance status</p><p>Enumeration values:</p><ul><li>creating: Under creation</li><li>running: Running</li><li>isolating: Isolating</li><li>isolated: Isolated</li><li>activating: Restoring from recycle bin</li><li>offlining: Offlining</li><li>offlined: Offline</li><li>deleting: Deleting</li><li>deleted: Deleted</li></ul>",
           "example": "running",
           "member": "string",
           "name": "Status",
@@ -11060,25 +11084,25 @@
         },
         {
           "disabled": false,
-          "document": "When the database name is “*”, the value specified in `Type` and `TableName` will be ignored, indicating that the user's global permissions are being modified.",
+          "document": "Database name. If it is `*`, Type/TableName are ignored, which means querying the user's global permission. If not passed, it defaults to `*`.",
           "example": "Db1",
           "member": "string",
           "name": "Db",
-          "required": true,
+          "required": false,
           "type": "string"
         },
         {
           "disabled": false,
-          "document": "Object type in a specified database. Valid values: `table`, `*`.",
+          "document": "Specific object types under the designated database. Options: \"table\", \"*\". Defaults to * if not specified. TableName must be specified when Type is table.",
           "example": "table",
           "member": "string",
           "name": "Type",
-          "required": true,
+          "required": false,
           "type": "string"
         },
         {
           "disabled": false,
-          "document": "The database name can be specified when `Type` is 'table'.",
+          "document": "When Type is \"table\", it is used to specify the table name. Required when Type is \"table\".",
           "example": "Table1",
           "member": "string",
           "name": "TableName",
@@ -12826,7 +12850,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Cluster ID",
+          "document": "<p>Cluster ID.</p>",
           "example": "cynosdbmysql-xxxxxxx",
           "member": "string",
           "name": "ClusterId",
@@ -12835,7 +12859,7 @@
         },
         {
           "disabled": false,
-          "document": "Offset. Default value: `0`.",
+          "document": "<p>Offset. Default value: 0.</p>",
           "example": "0",
           "member": "int64",
           "name": "Offset",
@@ -12844,7 +12868,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of returned results. Default value: `20`. Maximum value: `100`.",
+          "document": "<p>Number of returned results. Default: 20; maximum: 100</p>",
           "example": "20",
           "member": "int64",
           "name": "Limit",
@@ -12853,7 +12877,7 @@
         },
         {
           "disabled": false,
-          "document": "Database name",
+          "document": "<p>Database name. Perform substring match by this field.</p>",
           "example": "db1",
           "member": "string",
           "name": "DbName",
@@ -12868,8 +12892,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Database information",
-          "example": " [{\"Status\": \"running\", \"UserHostPrivileges\": [], \"UpdateTime\": \"0001-01-01T00:00:00Z\", \"Description\": \"\", \"DbId\": 0, \"CharacterSet\": \"\", \"ClusterId\": \"\", \"DbName\": \"mysql\", \"Uin\": \"\", \"AppId\": 0, \"CollateRule\": \"\", \"CreateTime\": \"0001-01-01T00:00:00Z\"}]",
+          "document": "<p>Database information.</p>",
+          "example": "无",
           "member": "DbInfo",
           "name": "DbInfos",
           "output_required": true,
@@ -12878,7 +12902,7 @@
         },
         {
           "disabled": false,
-          "document": "The total count",
+          "document": "<p>Total.</p>",
           "example": "1",
           "member": "int64",
           "name": "TotalCount",
@@ -13204,6 +13228,73 @@
           "name": "ClusterReadOnlyValues",
           "output_required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterStorageAutoExpandRequest": {
+      "document": "DescribeClusterStorageAutoExpand request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Cluster ID.</p>",
+          "example": "cynosdbmysql-kdyalkr6",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterStorageAutoExpandResponse": {
+      "document": "DescribeClusterStorageAutoExpand response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Storage utilization threshold</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "StorageUsageThreshold",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Scaling increment</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "ExpandStep",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Maximum storage capacity limit</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "MaxStorageLimit",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable: yes-enabled, no-disabled</p>",
+          "example": "no",
+          "member": "string",
+          "name": "StorageAutoExpand",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -13957,7 +14048,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Cluster level, optional. For example P0, P1</p>",
+          "document": "<p>Cluster level. For example, P0, P1. If no availability zone is specified, the query for non-affinity resources will be downgraded for availability zones that do not support affinity.</p>",
           "example": "P0",
           "member": "string",
           "name": "ClusterLevel",
@@ -16466,7 +16557,7 @@
         {
           "disabled": false,
           "document": "The unique ID of a resource pack",
-          "example": "package-aqmi9111",
+          "example": "[\"package-aqmi9111\"]",
           "member": "string",
           "name": "PackageId",
           "required": false,
@@ -16475,7 +16566,7 @@
         {
           "disabled": false,
           "document": "Resource pack name",
-          "example": "edison",
+          "example": "[\"edison\"]",
           "member": "string",
           "name": "PackageName",
           "required": false,
@@ -16484,7 +16575,7 @@
         {
           "disabled": false,
           "document": "Resource pack type. Valid values: `CCU` (compute resource pack), `DISK` (storage resource pack).",
-          "example": "CCU",
+          "example": "[\"CCU\"]",
           "member": "string",
           "name": "PackageType",
           "required": false,
@@ -16493,7 +16584,7 @@
         {
           "disabled": false,
           "document": "Region of the resource pack. Valid values: `China` (Chinese mainland), `overseas` (outside Chinese mainland).",
-          "example": "china",
+          "example": "[\"china\"]",
           "member": "string",
           "name": "PackageRegion",
           "required": false,
@@ -16502,7 +16593,7 @@
         {
           "disabled": false,
           "document": "Resource pack status. Valid values: `using`, `expired`, `normal_finish` (used up), `apply_refund` (requesting a refund), `refund` (refunded).",
-          "example": "using",
+          "example": "[\"using\"]",
           "member": "string",
           "name": "Status",
           "required": false,
@@ -16511,7 +16602,7 @@
         {
           "disabled": false,
           "document": "Sorting conditions. Valid values: `startTime` (effective time), `expireTime` (expiration date), `packageUsedSpec` (used capacity), `packageTotalSpec` (total storage capacity). \nSorting by array order",
-          "example": "packageUsedSpec",
+          "example": "[\"packageUsedSpec\"]",
           "member": "string",
           "name": "OrderBy",
           "required": false,
@@ -16563,7 +16654,7 @@
         {
           "disabled": false,
           "document": "Resource pack details.",
-          "example": "[{\"AppId\":1237111134,\"PackageId\":\"package-cbhsysss\",\"PackageName\":\"PackageName\",\"PackageType\":\"CCU\",\"PackageRegion\":\"chineseMainland\",\"Status\":\"using\",\"PackageTotalSpec\":10,\"PackageUsedSpec\":2,\"HasQuota\":true,\"BindInstanceInfos\":[]}]",
+          "example": "无",
           "member": "Package",
           "name": "Detail",
           "output_required": true,
@@ -23236,6 +23327,52 @@
       ],
       "type": "object"
     },
+    "ModifyClusterLevelRequest": {
+      "document": "ModifyClusterLevel request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Cluster ID.</p>",
+          "example": "cynosdbmysql-6g29wqnh",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Cluster level</p>",
+          "example": "L2",
+          "member": "string",
+          "name": "ClusterLevel",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyClusterLevelResponse": {
+      "document": "ModifyClusterLevel response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "41854",
+          "member": "int64",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyClusterNameRequest": {
       "document": "ModifyClusterName request structure.",
       "members": [
@@ -26365,6 +26502,16 @@
         },
         {
           "disabled": false,
+          "document": "Resource package edition\nbase - basic, common - general, enterprise - business",
+          "example": "common",
+          "member": "string",
+          "name": "PackageVersion",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
           "document": "Resource package region of use.\nChina - common in the chinese mainland. overseas - universally applicable in hong kong (china), macao (china), taiwan (china), and overseas.",
           "example": "china",
           "member": "string",
@@ -26386,7 +26533,7 @@
         {
           "disabled": false,
           "document": "Total resource package quantity.",
-          "example": "100",
+          "example": "100.0",
           "member": "float",
           "name": "PackageTotalSpec",
           "output_required": true,
@@ -26396,7 +26543,7 @@
         {
           "disabled": false,
           "document": "Used amount of resource package.",
-          "example": "29",
+          "example": "29.0",
           "member": "float",
           "name": "PackageUsedSpec",
           "output_required": true,
@@ -32445,12 +32592,72 @@
     },
     "TransferClusterPrepayToPostpayRequest": {
       "document": "TransferClusterPrepayToPostpay request structure.",
-      "members": [],
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Cluster ID.</p>",
+          "example": "cynosdbmysql-asw25d5t",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        }
+      ],
       "type": "object"
     },
     "TransferClusterPrepayToPostpayResponse": {
       "document": "TransferClusterPrepayToPostpay response structure.",
       "members": [
+        {
+          "disabled": false,
+          "document": "<p>Prepaid Total Order Number</p>",
+          "example": "[\"20260716554023189630411\"]",
+          "member": "string",
+          "name": "BigDealIds",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Frozen transaction</p>",
+          "example": "[\"20260716054021858214051\"]",
+          "member": "string",
+          "name": "TranId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Order ID.</p>",
+          "example": "[\"20260515988144840141851\"]",
+          "member": "string",
+          "name": "DealNames",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Resource id</p>",
+          "example": "[\"cynosdbmysql-asw25d5t\"]",
+          "member": "string",
+          "name": "ResourceIds",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Cluster ID.</p>",
+          "example": "[\"cynosdbmysql-asw25d5t\"]",
+          "member": "string",
+          "name": "ClusterIds",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",

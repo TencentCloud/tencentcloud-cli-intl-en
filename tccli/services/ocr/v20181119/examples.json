@@ -2,13 +2,13 @@
   "actions": {
     "ApplyCardVerificationExternal": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: ocr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ApplyCardVerificationExternal\n<Common request parameters>\n\n{\n    \"Nationality\": \"ARG\",\n    \"CardType\": \"PASSPORT\",\n    \"ImageBase64Front\": \"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD//9k=\"\n}",
         "output": "{\n    \"Response\": {\n        \"CardVerificationToken\": \"b76914c0-e1ca-4c36-aede-b64e418d2319\",\n        \"RequestId\": \"1dab853b-0f54-4479-94d8-e94dbd0c6aea\"\n    }\n}",
         "title": "Applying Card Verification External Sample Call"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: ocr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ApplyCardVerificationExternal\n<Common request parameters>\n\n{\n    \"Nationality\": \"PHL\",\n    \"CardType\": \"PASSPORT\",\n    \"ImageUrlFront\": \"http://demo/demo.jpg\"\n}",
         "output": "{\n    \"Response\": {\n        \"CardVerificationToken\": \"969af1aa-dbb3-49df-b661-6d952bfdce2d\",\n        \"RequestId\": \"74b25e14-27bc-48fd-a4f2-638066f16e83\"\n    }\n}",
         "title": "URL Call Example"

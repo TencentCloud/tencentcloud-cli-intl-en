@@ -450,7 +450,7 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBackupListByVault\n<Common request parameters>\n\n{\n    \"VaultId\": \"vault-a6ed23f2-f03e-4410-b946-624d1e7d9b5a\"\n}",
-        "output": "{\n    \"Response\": {\n        \"BackupList\": [\n            {\n                \"BackupFileInfo\": {\n                    \"BackupId\": 631,\n                    \"BackupMethod\": \"manual\",\n                    \"BackupName\": \"\",\n                    \"BackupStatus\": \"success\",\n                    \"BackupType\": \"snapshot\",\n                    \"CopyStatus\": \"done\",\n                    \"FileName\": \"backupT_202602021412_20260202150536\",\n                    \"FileSize\": 4183356,\n                    \"FinishTime\": \"2026-02-02 15:05:41\",\n                    \"SnapShotType\": \"full\",\n                    \"SnapshotId\": 631,\n                    \"SnapshotTime\": \"2026-02-02 14:47:38\",\n                    \"StartTime\": \"2026-02-02 15:05:36\"\n                },\n                \"ClusterId\": \"cynosdbmysql-h30xf5d7\",\n                \"ClusterName\": \"backupT_202602021412\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"805500d0-0399-4f8c-acaf-3d6de1d607d5\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"BackupList\": [\n            {\n                \"BackupFileInfo\": {\n                    \"BackupId\": 631,\n                    \"BackupMethod\": \"manual\",\n                    \"BackupName\": \"\",\n                    \"BackupStatus\": \"success\",\n                    \"BackupType\": \"snapshot\",\n                    \"CopyStatus\": \"done\",\n                    \"ExistRegions\": [\n                        {\n                            \"BackupId\": 631,\n                            \"BackupRegion\": \"ap-guangzhou\"\n                        }\n                    ],\n                    \"FileName\": \"backupT_202602021412_20260202150536\",\n                    \"FileSize\": 4183356,\n                    \"FinishTime\": \"2026-02-02 15:05:41\",\n                    \"SnapShotType\": \"full\",\n                    \"SnapshotId\": 631,\n                    \"SnapshotTime\": \"2026-02-02 14:47:38\",\n                    \"StartTime\": \"2026-02-02 15:05:36\"\n                },\n                \"ClusterId\": \"cynosdbmysql-h30xf5d7\",\n                \"ClusterName\": \"backupT_202602021412\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"805500d0-0399-4f8c-acaf-3d6de1d607d5\"\n    }\n}",
         "title": "Querying the List of Data Backups in a Safe"
       }
     ],
@@ -580,6 +580,14 @@
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeClusterReadOnly\n<Common request parameters>\n\n{\n    \"ClusterIds\": [\n        \"cynosdbmysql-jl17y89v\",\n        \"cynosdbmysql-2d9pq38h\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"ClusterReadOnlyValues\": [\n            {\n                \"ClusterId\": \"cynosdbmysql-jl17y89v\",\n                \"ReadOnlyValue\": \"ON\"\n            },\n            {\n                \"ClusterId\": \"cynosdbmysql-2d9pq38h\",\n                \"ReadOnlyValue\": \"ON\"\n            }\n        ],\n        \"RequestId\": \"48b7cd8a-f6dd-4e47-a78a-ssfff\"\n    }\n}",
         "title": "Query Cluster Read-Only Switch"
+      }
+    ],
+    "DescribeClusterStorageAutoExpand": [
+      {
+        "document": "Describe Cluster Storage Auto Expand",
+        "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeClusterStorageAutoExpand\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cynosdbmysql-kdyalkr6\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ExpandStep\": 0,\n        \"MaxStorageLimit\": 0,\n        \"StorageAutoExpand\": \"\",\n        \"StorageUsageThreshold\": 0,\n        \"RequestId\": \"208d25c1-09d2-4279-9ab1-e4f9edb7dc3e\"\n    }\n}",
+        "title": "Auto-scaling Configuration Detail"
       }
     ],
     "DescribeClusterTransparentEncryptInfo": [
@@ -894,10 +902,10 @@
     ],
     "DescribeResourcePackageList": [
       {
-        "document": "This example shows you how to inquiry the resource package list.\n",
-        "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSourcePackageList\n<Common request parameters>\n\n{\n    \"PackageId\": [\n        \"package-bst68sh3\"\n    ],\n    \"PackageName\": [\ncustom resource package name - 1\n    ],\n    \"PackageType\": [\n        \"CCU\"\n    ],\n    \"PackageRegion\": [\n        \"chineseMainland\"\n    ],\n    \"Status\": [\n        \"using\"\n    ],\n    \"OrderBy\": [\n        \"createTime\"\n    ],\n    \"OrderDirection\": \"desc\",\n    \"Offset\": 0,\n    \"Limit\": 20\n}",
-        "output": "{\n    \"Response\": {\n        \"Total\": 20,\n        \"Detail\": [\n            {\n                \"AppId\": 12387234,\n                \"PackageId\": \"package-cbhsyegx\",\n                \"PackageName\": \"MyPackageName\",\n                \"PackageType\": \"CCU\",\n                \"PackageRegion\": \"chineseMainland\",\n                \"Status\": \"using\",\n                \"PackageTotalSpec\": 10000000,\n                \"PackageUsedSpec\": 2394.3,\n                \"HasQuota\": true,\n                \"BindInstanceInfos\": [\n                    {\n                        \"InstanceId\": \"cynosdbpg-ins-bzkxxrmt\",\n                        \"InstanceRegion\": \"ap-guangzhou\",\n                        \"InstanceType\": \"cynosdb-serverless\"\n                    }\n                ],\n                \"StartTime\": \"2023-12-10 00:00:00\",\n                \"ExpireTime\": \"2025-11-10 00:00:00\"\n            }\n        ],\n        \"RequestId\": \"e0c28bb4-a0f2-4194-a646-b8bcf777b5ce\"\n    }\n}",
-        "title": "Query Resource Package List"
+        "document": "Query the resource package list\n",
+        "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSourcePackageList\n<Common request parameters>\n\n{\n    \"PackageId\": [\n        \"package-bst68sh3\"\n    ],\n    \"PackageName\": [\nCustom resource package name-1\n    ],\n    \"PackageType\": [\n        \"CCU\"\n    ],\n    \"PackageRegion\": [\n        \"chineseMainland\"\n    ],\n    \"Status\": [\n        \"using\"\n    ],\n    \"OrderBy\": [\n        \"createTime\"\n    ],\n    \"OrderDirection\": \"desc\",\n    \"Offset\": 0,\n    \"Limit\": 20\n}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 20,\n        \"Detail\": [\n            {\n                \"AppId\": 12387234,\n                \"PackageId\": \"package-cbhsyegx\",\n                \"PackageName\": \"MyPackageName\",\n                \"PackageType\": \"CCU\",\n                \"PackageRegion\": \"chineseMainland\",\n                \"Status\": \"using\",\n                \"PackageTotalSpec\": 10000000,\n                \"PackageUsedSpec\": 2394.3,\n                \"HasQuota\": true,\n                \"BindInstanceInfos\": [\n                    {\n                        \"InstanceId\": \"cynosdbpg-ins-bzkxxrmt\",\n                        \"InstanceRegion\": \"ap-guangzhou\",\n                        \"InstanceType\": \"cynosdb-serverless\"\n                    }\n                ],\n                \"StartTime\": \"2023-12-10 00:00:00\",\n                \"ExpireTime\": \"2025-11-10 00:00:00\",\n                \"PackageVersion\": \"common\"\n            }\n        ],\n        \"RequestId\": \"e0c28bb4-a0f2-4194-a646-b8bcf777b5ce\"\n    }\n}",
+        "title": "Query the resource package list"
       }
     ],
     "DescribeResourcePackageSaleSpec": [
@@ -1226,6 +1234,14 @@
         "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyClusterGlobalEncryption\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cynosdbmysql-xxxxxxxx\",\n    \"IsOpenGlobalEncryption\": false\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"22f221ae-40d7-4b73-84bb-ae2d090a3beb\",\n        \"TaskId\": 177736\n    }\n}",
         "title": "Disable global encryption"
+      }
+    ],
+    "ModifyClusterLevel": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyClusterLevel\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cynosdbmysql-6g29wqnh\",\n    \"ClusterLevel\": \"L2\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": 41854,\n        \"RequestId\": \"90e294d3-3e02-4854-bec4-cf80c39ae827\"\n    }\n}",
+        "title": "Modify cluster level"
       }
     ],
     "ModifyClusterName": [
@@ -1732,10 +1748,10 @@
     ],
     "TransferClusterPrepayToPostpay": [
       {
-        "document": "Prepaid Cluster to Postpaid Cluster",
-        "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddInstances\n<Common request parameters>\n\n{\n  \"ClusterId\": \"cynosdbmysql-3xazs3u5\"\n}\n\n",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
-        "title": "Prepaid Cluster to Postpaid Cluster"
+        "document": "Switch a prepaid cluster to postpaid",
+        "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddInstances\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cynosdbmysql-3xazs3u5\"\n}",
+        "output": "{\n    \"Response\": {\n        \"BigDealIds\": [\n            \"20260716054021858214051\"\n        ],\n        \"TranId\": \"20260716054021858214051\",\n        \"DealNames\": [\n            \"20260716054021858214051\"\n        ],\n        \"ResourceIds\": [\n            \"cynosdbmysql-3xazs3u5\"\n        ],\n        \"ClusterIds\": [\n            \"cynosdbmysql-3xazs3u5\"\n        ],\n        \"RequestId\": \"sjhkuyfa348969-fsfsdf\"\n    }\n}",
+        "title": "Converting a Prepaid Cluster to a Postpaid Cluster"
       }
     ],
     "TransferClusterZone": [
