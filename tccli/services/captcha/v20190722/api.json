@@ -1,10 +1,66 @@
 {
   "actions": {
+    "CreateCaptchaInfoInternational": {
+      "document": "Create a captcha: You can create multiple Captcha based on different business needs. Each verification has different client types and security policies. The limit for new Captcha is 50.",
+      "input": "CreateCaptchaInfoInternationalRequest",
+      "name": "Create a captcha",
+      "output": "CreateCaptchaInfoInternationalResponse",
+      "status": "online"
+    },
+    "CreateIpWhiteListInternational": {
+      "document": "Create an IP allowlist: You can create an IP allowlist based on different business needs.",
+      "input": "CreateIpWhiteListInternationalRequest",
+      "name": "Creates an IP allowlist for international access",
+      "output": "CreateIpWhiteListInternationalResponse",
+      "status": "online"
+    },
+    "DeleteIpWhiteListInternational": {
+      "document": "Delete an IP allowlist: You can delete an IP allowlist based on different business needs.",
+      "input": "DeleteIpWhiteListInternationalRequest",
+      "name": "Deletes an IP allowlist international",
+      "output": "DeleteIpWhiteListInternationalResponse",
+      "status": "online"
+    },
+    "DescribeCaptchaInfoListInternational": {
+      "document": "Query the Captcha list to obtain all verification CaptchaAppIds, verification names, and other information internationally.",
+      "input": "DescribeCaptchaInfoListInternationalRequest",
+      "name": "Query the captcha list",
+      "output": "DescribeCaptchaInfoListInternationalResponse",
+      "status": "online"
+    },
     "DescribeCaptchaResult": {
       "document": "This API is used to query the result of CAPTCHA ticket verification (web and app).",
       "input": "DescribeCaptchaResultRequest",
       "name": "Queries the result of CAPTCHA ticket verification (web and app).",
       "output": "DescribeCaptchaResultResponse",
+      "status": "online"
+    },
+    "DescribeIpWhiteListInternational": {
+      "document": "IP allowlist list: You can query the IP whitelist list based on different business needs.",
+      "input": "DescribeIpWhiteListInternationalRequest",
+      "name": "IP whitelist list international",
+      "output": "DescribeIpWhiteListInternationalResponse",
+      "status": "online"
+    },
+    "ModifyCaptchaInfoInternational": {
+      "document": "Change the captcha configuration, including basic, appearance, and security settings such as captcha name, prompt language, and validation type.",
+      "input": "ModifyCaptchaInfoInternationalRequest",
+      "name": "Modify the captcha configuration",
+      "output": "ModifyCaptchaInfoInternationalResponse",
+      "status": "online"
+    },
+    "ModifyIpWhiteListInternational": {
+      "document": "Edit IP allowlist: You can edit the IP allowlist based on different business needs.",
+      "input": "ModifyIpWhiteListInternationalRequest",
+      "name": "Edits an IP allowlist for international access",
+      "output": "ModifyIpWhiteListInternationalResponse",
+      "status": "online"
+    },
+    "RemoveCaptchaInfoInternational": {
+      "document": "Delete a captcha: once deleted, verification scenarios using this CaptchaAppId will fail to load the verification code on the frontend, and invoice verification will report an error on the backend. Proceed with caution.",
+      "input": "RemoveCaptchaInfoInternationalRequest",
+      "name": "Delete a captcha",
+      "output": "RemoveCaptchaInfoInternationalResponse",
       "status": "online"
     }
   },
@@ -14,6 +70,749 @@
     "serviceShortName": "captcha"
   },
   "objects": {
+    "CreateCaptchaInfoInternationalRequest": {
+      "document": "CreateCaptchaInfoInternational request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Captcha name</p>",
+          "example": "官网验证码",
+          "member": "string",
+          "name": "AppName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Client type</p><p>Enumeration values:</p><ul><li>web: For web scenario</li><li>android: For Android client</li><li>ios: For iOS client</li></ul><p>Default value: web</p>",
+          "example": "web",
+          "member": "string",
+          "name": "ChannelInfo",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Verification level</p><p>Enumeration values:</p><ul><li>1: Experience-oriented</li><li>2: Balanced</li><li>3: Security-focused</li></ul><p>Default value: 1</p>",
+          "example": "“1”",
+          "member": "string",
+          "name": "VerifyRank",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Validation type</p><p>Enumeration values:</p><ul><li>1: Invisible verification. UserSetCapType input 1, DisableInvisibleSwitch must be 2</li><li>2: Slide</li><li>8: Graphical</li><li>9: Voice</li></ul>",
+          "example": "“2”",
+          "member": "string",
+          "name": "UserSetCapType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Interception mode</p><p>Enumeration values:</p><ul><li>block: interception mode</li><li>notify: perception mode</li></ul><p>Default value: notify</p>",
+          "example": "“notify”",
+          "member": "string",
+          "name": "DefendMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Resource tag, key&amp;value format</p>",
+          "example": "[\"aaa&bbb\"]",
+          "member": "string",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Verification mechanism</p><p>Enumeration values:</p><ul><li>0: One-Click Verification</li><li>1: Always verify</li><li>2: Invisible verification. DisableInvisibleSwitch input 2, UserSetCapType must be 1</li></ul>",
+          "example": "\"0\"",
+          "member": "string",
+          "name": "DisableInvisibleSwitch",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>web domain name</p><p>Only valid when ChannelInfo is web</p>",
+          "example": "\"*******.com\"",
+          "member": "string",
+          "name": "VerifyDomain",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>app BundleId</p><p>Only valid when ChannelInfo is ios</p>",
+          "example": "\"com.*******",
+          "member": "string",
+          "name": "VerifyBundleId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>app package</p><p>Only valid when ChannelInfo is android</p>",
+          "example": "\"com.******\"",
+          "member": "string",
+          "name": "VerifyPackage",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable captcha encryption. 0: Off. 1: On</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "CheckAppidSwitch",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable non-repeating IV</p><p>Enumeration values:</p><ul><li>0: Off</li><li>1: On</li></ul><p>Input 1 is allowed only when CheckAppidSwitch is 1</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "CheckIvSwitch",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Checkbox display method</p><p>Enumeration values:</p><ul><li>0: simplified version</li><li>1: basic version</li><li>2: invisible version</li></ul>",
+          "example": "\"0\"",
+          "member": "string",
+          "name": "CheckBoxStyle",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCaptchaInfoInternationalResponse": {
+      "document": "CreateCaptchaInfoInternational response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Result data.</p>",
+          "example": "179000008",
+          "member": "int64",
+          "name": "Data",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Captcha status code</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "CaptchaCode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Captcha information</p>",
+          "example": "success",
+          "member": "string",
+          "name": "CaptchaMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateIpWhiteListInternationalRequest": {
+      "document": "CreateIpWhiteListInternational request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>ip allowlist name</p>",
+          "example": "内网测试",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Captcha appid</p>",
+          "example": "179000003",
+          "member": "int64",
+          "name": "CaptchaAppid",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>ip data</p>",
+          "example": "127.0.0.1",
+          "member": "string",
+          "name": "Ip",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Remark information.</p>",
+          "example": "内网测试ip加白",
+          "member": "string",
+          "name": "Comment",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateIpWhiteListInternationalResponse": {
+      "document": "CreateIpWhiteListInternational response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Result data</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "Data",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>IP allowlist resource id</p>",
+          "example": "[2100000000]",
+          "member": "int64",
+          "name": "IdList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Captcha status code</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "CaptchaCode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Captcha information</p>",
+          "example": "success",
+          "member": "string",
+          "name": "CaptchaMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteIpWhiteListInternationalRequest": {
+      "document": "DeleteIpWhiteListInternational request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Captcha appid</p>",
+          "example": "179000003",
+          "member": "int64",
+          "name": "CaptchaAppid",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Record number</p>",
+          "example": "2147504735",
+          "member": "int64",
+          "name": "Id",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteIpWhiteListInternationalResponse": {
+      "document": "DeleteIpWhiteListInternational response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Result data</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "Data",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Captcha status code</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "CaptchaCode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Captcha info</p>",
+          "example": "success",
+          "member": "string",
+          "name": "CaptchaMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCaptchaConsoleDataInternational": {
+      "document": "Paging query data result obj international",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Paginated data array.</p>",
+          "example": "无",
+          "member": "DescribeCaptchaConsoleSubDataInternational",
+          "name": "DataList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total pages</p>",
+          "example": "12",
+          "member": "int64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Current page</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "PageIndex",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeCaptchaConsoleSubDataInternational": {
+      "document": "Verification code console query API v2 international",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Verification code id</p>",
+          "example": "2049848951",
+          "member": "int64",
+          "name": "CaptchaAppId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Verification name</p>",
+          "example": "\"web-1\"",
+          "member": "string",
+          "name": "AppName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Separate domain names with commas</p>",
+          "example": "\"system\"",
+          "member": "string",
+          "name": "Domain",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Random key</p>",
+          "example": "\"AHYCI\"",
+          "member": "string",
+          "name": "EncryptKey",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Verification scenario</p><p>Enumeration values:</p><ul><li>1: Account</li><li>2: SMS</li><li>3: Promotion</li><li>4: Comment</li><li>5: Data protection</li><li>6: Other</li></ul>",
+          "example": "\"1\"",
+          "member": "string",
+          "name": "SceneType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Validation type</p><p>Enumeration values:</p><ul><li>1: Invisible verification. UserSetCapType input 1, DisableInvisibleSwitch must be 2</li><li>2: Sliding puzzle</li><li>8: Graphical point selection</li><li>9: Voice verification</li></ul>",
+          "example": "13",
+          "member": "int64",
+          "name": "UserSetCapType",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Intelligent verification-free</p><p>Enumeration values:</p><ul><li>0: disable</li><li>1: enable</li></ul>",
+          "example": "0",
+          "member": "int64",
+          "name": "NoVerifyRule",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Language</p><p>Enumeration values:</p><ul><li>1: Self adaptive</li><li>2052: Simplified</li><li>1028: Traditional</li><li>1033: English</li></ul>",
+          "example": "\"2052\"",
+          "member": "string",
+          "name": "CaptchaLanguage",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Verification level</p><p>Enumeration values:</p><ul><li>1: Experience-oriented</li><li>2: Balanced</li><li>3: Security-focused</li></ul><p>Default value: 1</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "VerifyRank",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Client type</p><p>Enumeration values:</p><ul><li>web: For web scenario usage</li><li>android: For Android client usage</li><li>ios: For iOS client usage</li></ul>",
+          "example": "\"web\"",
+          "member": "string",
+          "name": "ChannelInfo",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Interception mode</p><p>Enumeration values:</p><ul><li>block: interception mode</li><li>notify: perception mode</li></ul><p>Default value: notify</p>",
+          "example": "\"block\"",
+          "member": "string",
+          "name": "DefendMode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Creation time.</p>",
+          "example": "2023-03-03T19:51:56+08:00",
+          "member": "datetime_iso",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Update time.</p>",
+          "example": "2023-03-03T19:51:56+08:00",
+          "member": "datetime_iso",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable captchaAppid encryption</p><p>Enumeration values:</p><ul><li>0: Off</li><li>1: On</li></ul>",
+          "example": "0",
+          "member": "int64",
+          "name": "CheckAppidSwitch",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Resource tag.</p>",
+          "example": "[\"web&官网\"]",
+          "member": "string",
+          "name": "Tags",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable non-repeating IV</p><p>Enumeration values:</p><ul><li>0: Disabled</li><li>1: Enabled</li></ul>",
+          "example": "0",
+          "member": "int64",
+          "name": "CheckIvSwitch",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Verification mechanism</p><p>Enumeration values:</p><ul><li>0: One-Click Verification</li><li>1: Always verify</li><li>2: Invisible verification. DisableInvisibleSwitch input 2, UserSetCapType must be 1</li></ul>",
+          "example": "\"0\"",
+          "member": "string",
+          "name": "DisableInvisibleSwitch",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Web domain name</p><p>Valid only when ChannelInfo is web</p>",
+          "example": "\"www.abc.com\"",
+          "member": "string",
+          "name": "VerifyDomain",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>app BundleId</p><p>Valid only when ChannelInfo is ios</p>",
+          "example": "\"com.www.ss\"",
+          "member": "string",
+          "name": "VerifyBundleId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>app package</p><p>Only valid when ChannelInfo is android</p>",
+          "example": "\"com.www.ss\"",
+          "member": "string",
+          "name": "VerifyPackage",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Checkbox display method</p><p>Enumeration values:</p><ul><li>0: simplified version</li><li>1: basic version</li><li>2: invisible version</li></ul>",
+          "example": "\"0\"",
+          "member": "string",
+          "name": "CheckBoxStyle",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Customer type</p><p>Enumeration values:</p><ul><li>0: General user</li><li>1: waf</li><li>2: EO</li></ul>",
+          "example": "\"0\"",
+          "member": "string",
+          "name": "CustomerType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeCaptchaInfoListInternationalRequest": {
+      "document": "DescribeCaptchaInfoListInternational request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Pagination parameter - page number</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "PageIndex",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Pagination parameters - number of records per page</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Query parameter - Behavior verification type</p><p>Enumeration values:</p><ul><li>1: Invisible verification</li><li>2: Slide verification</li><li>8: Graphical verification</li><li>9: Voice verification</li></ul>",
+          "example": "[\"3\"]",
+          "member": "string",
+          "name": "UserSetCapTypeArr",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Query parameter - risk control level</p><p>Enumeration values:</p><ul><li>1: Experience-oriented</li><li>2: Balanced</li><li>3: Security-focused</li></ul>",
+          "example": "[\"1\"]",
+          "member": "string",
+          "name": "VerifyRankArr",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Query parameter - client multiple selection</p><p>Enumeration values:</p><ul><li>web:</li><li>ios </li><li>android</li></ul>",
+          "example": "[\"web\"]",
+          "member": "string",
+          "name": "ChannelInfoArr",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Query parameter -Captcha appid</p>",
+          "example": "179*****2",
+          "member": "string",
+          "name": "CaptchaAppId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Query parameter - Captcha name</p>",
+          "example": "官网使用",
+          "member": "string",
+          "name": "AppName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sorting parameter</p><p>Input limits: desc: in descending order by creation time; asc: in ascending order by creation time</p>",
+          "example": "无",
+          "member": "OrderByInternational",
+          "name": "OrderBy",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCaptchaInfoListInternationalResponse": {
+      "document": "DescribeCaptchaInfoListInternational response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Data block after paging query.</p>",
+          "example": "无",
+          "member": "DescribeCaptchaConsoleDataInternational",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Captcha response code</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "CaptchaCode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Captcha information</p>",
+          "example": "success",
+          "member": "string",
+          "name": "CaptchaMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCaptchaIpWhiteListDataNew": {
+      "document": "Ip allowlist paging query data result",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Data list.</p>",
+          "example": "无",
+          "member": "DescribeCaptchaWhiteListItem",
+          "name": "DataList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total number of records</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "Total",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Page number.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "PageIndex",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "DescribeCaptchaResultRequest": {
       "document": "DescribeCaptchaResult request structure.",
       "members": [
@@ -200,6 +999,524 @@
           "name": "Score",
           "output_required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCaptchaWhiteListItem": {
+      "document": "ip whitelist data sub-item in the verification code console",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>No.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "Id",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Allowlist name</p>",
+          "example": "运维部测试",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Bind captcha</p>",
+          "example": "170000000",
+          "member": "int64",
+          "name": "CaptchaAppid",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>ip address</p>",
+          "example": "127.0.0.1",
+          "member": "string",
+          "name": "Ip",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Status. 0: Ip allowlisted; 1: cancel allowlisting</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "Status",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Creation time.</p>",
+          "example": "2025-11-20T14:43:23+08:00",
+          "member": "datetime_iso",
+          "name": "CreatedTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Update time.</p>",
+          "example": "2025-11-23T13:29:29+08:00",
+          "member": "datetime_iso",
+          "name": "UpdatedTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Remarks.</p>",
+          "example": "运维部测试",
+          "member": "string",
+          "name": "Comment",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeIpWhiteListInternationalRequest": {
+      "document": "DescribeIpWhiteListInternational request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Page number.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "PageIndex",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Page length.</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Captcha appid</p>",
+          "example": "179000009",
+          "member": "int64",
+          "name": "CaptchaAppid",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Allowlist name</p>",
+          "example": "\"官网测试\"",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Ip address</p>",
+          "example": "127.0.0.1",
+          "member": "string",
+          "name": "Ip",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>IP Whitelist Configuration Status</p><p>Enumeration values:</p><ul><li>0: all</li><li>1: allowlisted</li><li>2: allowlisting canceled</li></ul><p>Default value: 0</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIpWhiteListInternationalResponse": {
+      "document": "DescribeIpWhiteListInternational response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Result data</p>",
+          "example": "无",
+          "member": "DescribeCaptchaIpWhiteListDataNew",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Captcha status code</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "CaptchaCode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Captcha information</p>",
+          "example": "success",
+          "member": "string",
+          "name": "CaptchaMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCaptchaInfoInternationalRequest": {
+      "document": "ModifyCaptchaInfoInternational request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Captcha appid</p>",
+          "example": "179****56",
+          "member": "string",
+          "name": "CaptchaAppId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Captcha name</p>",
+          "example": "官网验证码",
+          "member": "string",
+          "name": "AppName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Verification level</p><p>Enumeration values:</p><ul><li>1: Experience-oriented</li><li>2: Balanced</li><li>3: Security-focused</li></ul><p>Default value: 1</p>",
+          "example": "“1”",
+          "member": "string",
+          "name": "VerifyRank",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Verification method</p><p>Enumeration values:</p><ul><li>1: Invisible verification. UserSetCapType input 1, DisableInvisibleSwitch must</li><li>2: Slide verification</li><li>8: Graphical verification</li><li>9: Voice verification</li></ul>",
+          "example": "“1”",
+          "member": "string",
+          "name": "UserSetCapType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Interception mode</p><p>Enumeration values:</p><ul><li>notify: perception mode</li><li>block: interception mode</li></ul>",
+          "example": "”notify“",
+          "member": "string",
+          "name": "DefendMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable captcha encryption. 0: Off. 1: On</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "CheckAppidSwitch",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable Non-repeating IV</p><p>Enumeration values:</p><ul><li>0: Off</li><li>1: On</li></ul><p>Input 1 is allowed only when CheckAppidSwitch is 1</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "CheckIvSwitch",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Verification mechanism: '0' One-Click Verification, '1' Always verify, '2' Invisible verification</p><p>Enumeration values:</p><ul><li>0: One-Click Verification</li><li>1: Always verify</li><li>2: Invisible verification. DisableInvisibleSwitch input 2, UserSetCapType must be 1</li></ul>",
+          "example": "0",
+          "member": "string",
+          "name": "DisableInvisibleSwitch",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Web domain name</p><p>Only valid when ChannelInfo is web</p>",
+          "example": "“*******.com\"",
+          "member": "string",
+          "name": "VerifyDomain",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>app BundleId</p><p>Valid only when ChannelInfo is ios</p>",
+          "example": "\"com*******\"",
+          "member": "string",
+          "name": "VerifyBundleId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>app package</p><p>Valid only when ChannelInfo is android</p>",
+          "example": "com.*******",
+          "member": "string",
+          "name": "VerifyPackage",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Resource tag, key&amp;value format</p>",
+          "example": "[\"aaa&bbb\"]",
+          "member": "string",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Checkbox display method. '0': minimalist mode, '1': full mode, '2': not set</p>",
+          "example": "\"0\"",
+          "member": "string",
+          "name": "CheckBoxStyle",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCaptchaInfoInternationalResponse": {
+      "document": "ModifyCaptchaInfoInternational response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Result data</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "Data",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Captcha status code</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "CaptchaCode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Captcha information</p>",
+          "example": "success",
+          "member": "string",
+          "name": "CaptchaMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyIpWhiteListInternationalRequest": {
+      "document": "ModifyIpWhiteListInternational request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>ip allowlist name</p>",
+          "example": "内网测试",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Record number</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "Id",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Captcha appid</p>",
+          "example": "179980764",
+          "member": "int64",
+          "name": "CaptchaAppid",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>IP whitelist status</p><p>Enumeration values:</p><ul><li>0: enable</li><li>1: disable</li></ul>",
+          "example": "0",
+          "member": "int64",
+          "name": "Status",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Remark information.</p>",
+          "example": "内网测试加白",
+          "member": "string",
+          "name": "Comment",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyIpWhiteListInternationalResponse": {
+      "document": "ModifyIpWhiteListInternational response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Result data</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "Data",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Captcha status code</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "CaptchaCode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Captcha information</p>",
+          "example": "success",
+          "member": "string",
+          "name": "CaptchaMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "OrderByInternational": {
+      "document": "General international parameter used for front-end sorting and processing.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Sort by creation time",
+          "example": "\"desc\"",
+          "member": "string",
+          "name": "CreateTime",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "RemoveCaptchaInfoInternationalRequest": {
+      "document": "RemoveCaptchaInfoInternational request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Captcha AppId</p>",
+          "example": "179*****0",
+          "member": "string",
+          "name": "CaptchaAppId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RemoveCaptchaInfoInternationalResponse": {
+      "document": "RemoveCaptchaInfoInternational response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Result data</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "Data",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Captcha status code</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "CaptchaCode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Captcha information</p>",
+          "example": "success",
+          "member": "string",
+          "name": "CaptchaMsg",
+          "output_required": true,
+          "type": "string",
           "value_allowed_null": false
         },
         {

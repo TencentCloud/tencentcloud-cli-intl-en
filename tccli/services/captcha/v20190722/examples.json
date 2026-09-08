@@ -1,10 +1,74 @@
 {
   "actions": {
+    "CreateCaptchaInfoInternational": [
+      {
+        "document": "Create a verification code",
+        "input": "POST / HTTP/1.1\nHost: captcha.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCaptchaInfo\n<Common request parameters>\n\n{\n    \"UserSetCapType\": \"13\",\n    \"AppName\": \"aaa\",\n    \"VerifyRank\": \"3\",\n    \"ChannelInfo\": \"web\",\n    \"VerifyDomain\": \"\\\"*******.com\\\"\",\n    \"VerifyBundleId\": \"\\\"com.*******\",\n    \"VerifyPackage\": \"\\\"com.******\\\"\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"63ade1a9-eae8-49d4-b8be-bf803bfffdbe\",\n        \"Data\": 179000008,\n        \"CaptchaCode\": 11000,\n        \"CaptchaMsg\": \"\"\n    }\n}",
+        "title": "Request and return example"
+      }
+    ],
+    "CreateIpWhiteListInternational": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: captcha.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateIpWhiteList\n<Common request parameters>\n\n{\n    \"Name\": \"abc\",\n    \"CaptchaAppid\": 179000003,\n    \"Ip\": \"127.0.0.1\",\n    \"Comment\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": 0,\n        \"CaptchaCode\": 0,\n        \"CaptchaMsg\": \"\",\n        \"RequestId\": \"637bbeab-43c8-4074-96af-0d0e66f95ba0\",\n        \"IdList\": [\n            2100000000\n        ]\n    }\n}",
+        "title": "Adding an Ip Allowlist to the Console"
+      }
+    ],
+    "DeleteIpWhiteListInternational": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: captcha.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteIpWhiteList\n<Common request parameters>\n\n{\n    \"CaptchaAppid\": 179000003,\n    \"Id\": 210000992\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": 0,\n        \"CaptchaCode\": 0,\n        \"CaptchaMsg\": \"success\",\n        \"RequestId\": \"c634b435-7bfe-4f04-b447-b995a2dd8adb\"\n    }\n}",
+        "title": "Deleting an Ip Allowlist"
+      }
+    ],
+    "DescribeCaptchaInfoListInternational": [
+      {
+        "document": "Query the verification code list information",
+        "input": "POST / HTTP/1.1\nHost: captcha.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCaptchaInfoList\n<Common request parameters>\n\n{\n    \"CaptchaAppId\": \"179*****2\",\n    \"OrderBy\": {\n\"CreateTime\": \"string\"\n    },\n\"PageIndex\": \"int\",\n    \"UserSetCapTypeArr\": [\nString\n    ],\n    \"ChannelInfoArr\": [\nstring\n    ],\n\"PageSize\": \"int\"\n\"AppName\": \"string\",\n    \"VerifyRankArr\": [\nstring\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5b320902-54f3-4b70-8663-6e86e99dffff\",\n        \"Data\": {\n            \"DataList\": [],\n            \"Total\": 0,\n            \"PageIndex\": 0\n        },\n        \"CaptchaCode\": 0,\n        \"CaptchaMsg\": \"success\"\n    }\n}",
+        "title": "Request and Return Example"
+      }
+    ],
     "DescribeCaptchaResult": [
       {
         "document": "Invoice verification",
         "input": "POST / HTTP/1.1\nHost: captcha.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCaptchaResult\n<Common request parameters>\n\n{\n    \"CaptchaAppId\": 199999164,\n    \"CaptchaType\": 9,\n    \"NeedGetCaptchaTime\": 1,\n    \"Randstr\": \"@Vki\",\n    \"UserIp\": \"127.0.0.1\",\n    \"Ticket\": \"tr03XaCUZPAlPdIMqv17yvcfdXCzkqvLE09AbCA4ghlWfD8hkySfbU2TZVCyoOCjNI84pAYEMopKv7Uh8XwQDSE9DC0xJpXVC7kmlPENlbFINs_N937qkoEmU6Pl8e-9EkFQzvrrwsZOTKQ*\",\n    \"AppSecretKey\": \"E4kwK9AcXQMHkktiItyMEyQPn\"\n}",
         "output": "{\n    \"Response\": {\n        \"CaptchaCode\": 0,\n        \"CaptchaMsg\": \"not valid\",\n        \"EvilLevel\": 0,\n        \"GetCaptchaTime\": 1729583235,\n        \"SubmitCaptchaTime\": 1729583239,\n        \"EvilBitmap\": 0,\n        \"DeviceRiskCategory\": \"501\",\n        \"Score\": 60,\n        \"RequestId\": \"7c370964-7deb-4008-8b29-47e87e60c1e0\"\n    },\n    \"retcode\": 0,\n    \"retmsg\": \"success\"\n}",
+        "title": "Request and Return Example"
+      }
+    ],
+    "DescribeIpWhiteListInternational": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: captcha.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeIpWhiteList\n<Common request parameters>\n\n{\n    \"Name\": \"haha\",\n    \"PageIndex\": 1,\n    \"PageSize\": 10,\n    \"CaptchaAppid\": 179000009\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c634b435-7bfe-4f04-b447-b995a2dd8adb\",\n        \"Data\": {\n            \"DataList\": [\n                {\n                    \"Id\": 173,\n                    \"Name\": \"formdata\",\n                    \"CaptchaAppid\": 199999290,\n                    \"Ip\": \"93.26.59.11\",\n                    \"Status\": 0,\n                    \"CreatedTime\": \"2024-01-30T08:01:59+08:00\",\n                    \"UpdatedTime\": \"2024-01-30T08:19:16+08:00\",\n                    \"Comment\": \"\"\n                },\n                {\n                    \"Id\": 170,\n                    \"Name\": \"formdata\",\n                    \"CaptchaAppid\": 199999290,\n                    \"Ip\": \"127.0.0.1\",\n                    \"Status\": 0,\n                    \"CreatedTime\": \"2024-01-30T07:41:29+08:00\",\n                    \"UpdatedTime\": \"2024-01-30T08:19:16+08:00\",\n                    \"Comment\": \"\"\n                }\n            ],\n            \"Total\": 2,\n            \"PageIndex\": 1\n        },\n        \"CaptchaCode\": 0,\n        \"CaptchaMsg\": \"success\"\n    }\n}",
+        "title": "Ip Whitelist"
+      }
+    ],
+    "ModifyCaptchaInfoInternational": [
+      {
+        "document": "Modify verification code info",
+        "input": "POST / HTTP/1.1\nHost: captcha.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyCaptchaInfo\n<Common request parameters>\n\n{\n    \"CaptchaAppId\": \"179****56\",\n    \"NoVerifyRule\": \"\\\"1\\\"\",\n    \"Domain\": \"\\\"www.appid.com\\\"\",\n    \"UserSetCapType\": \"\\\"17\\\"\",\n    \"AppName\": \"\\\"web-1\\\"\",\n    \"VerifyRank\": \"\\\"3\\\"\",\n    \"SceneType\": \"\\\"6\\\"\",\n    \"CaptchaLanguage\": \"\\\"2052\\\"\",\n    \"VerifyDomain\": \"\"*******.com\\\"\",\n    \"VerifyBundleId\": \"\\\"com*******\\\"\",\n    \"VerifyPackage\": \"**\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b28640bd-7d81-4a6f-b659-be0a2a383f52\",\n        \"Data\": null,\n        \"CaptchaCode\": 11000,\n        \"CaptchaMsg\": \"\"\n    }\n}",
+        "title": "Request and return example"
+      }
+    ],
+    "ModifyIpWhiteListInternational": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: captcha.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyIpWhiteList\n<Common request parameters>\n\n{\n    \"Name\": \"Private Network Test\",\n    \"Status\": 1,\n    \"Id\": 1,\n    \"Comment\": \"Private network test\",\n    \"CaptchaAppid\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": 0,\n        \"CaptchaCode\": 0,\n        \"CaptchaMsg\": \"success\",\n        \"RequestId\": \"c634b435-7bfe-4f04-b447-b995a2dd8adb\"\n    }\n}",
+        "title": "Editing an Ip Allowlist"
+      }
+    ],
+    "RemoveCaptchaInfoInternational": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: captcha.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RemoveCaptchaInfo\n<Common request parameters>\n\n{\n    \"CaptchaAppId\": \"179*****0\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c60fbe4a-80bb-48bb-8bdc-1ab7e64758c7\",\n        \"Data\": null,\n        \"CaptchaCode\": 12000,\n        \"CaptchaMsg\": \"\"\n    }\n}",
         "title": "Request and Return Example"
       }
     ]
