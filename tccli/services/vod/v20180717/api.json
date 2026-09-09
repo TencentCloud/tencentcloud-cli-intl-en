@@ -52660,7 +52660,7 @@
         {
           "disabled": false,
           "document": "<p>Voice Id. Fill in when synthesizing with a specified timbre. System, designed, and cloned timbres are supported.</p>",
-          "example": "minimax_7*********c6c-495b",
+          "example": "minimax_5*********527-4dff",
           "member": "string",
           "name": "VoiceId",
           "required": true,
@@ -52686,7 +52686,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Output parameters.</p><p>Specifies the output format, etc. The default output audio format is base64.</p>",
+          "document": "<p>Output parameters.</p><p>Specifies the output format, etc. The default output audio format is URL.</p>",
           "example": "无",
           "member": "TextToSpeechSyncOutputOption",
           "name": "Output",
@@ -52696,7 +52696,7 @@
         {
           "disabled": false,
           "document": "<p>Synchronous speech synthesis expansion parameters. Fields supported by <code>ExtParam</code>:</p><ul>  <li><code>model</code> (string): Synthesis model. Options: <code>minimax-speech-2.8-hd</code>, <code>minimax-speech-2.8-turbo</code>, <code>minimax-speech-2.6-hd</code>, <code>minimax-speech-2.6-turbo</code>, <code>minimax-speech-02-hd</code>, <code>minimax-speech-02-turbo</code>. Default: <code>minimax-speech-2.8-hd</code>.</li>  <li><code>voice_setting</code> (object): Fine adjustment of voice type. Optional fields:    <ul>      <li><code>speed</code> (float): Speech speed, <code>[0.5, 2.0]</code>. Default: <code>1.0</code>.</li>      <li><code>vol</code> (float): Volume, <code>(0, 10]</code>. Default: <code>1.0</code>.</li>      <li><code>pitch</code> (int): Pitch, <code>[-12, 12]</code>. Default: <code>0</code>.</li>      <li><code>emotion</code> (string): Emotion. Options: <code>happy</code> / <code>sad</code> / <code>angry</code> / <code>fearful</code> / <code>disgusted</code> / <code>surprised</code> / <code>calm</code> / <code>fluent</code> / <code>whisper</code>.</li>    </ul>  </li>  <li><code>audio_setting</code> (object): Audio output parameter. Optional fields:    <ul>      <li><code>sample_rate</code> (int): Sampling rate. Options: <code>8000</code> / <code>16000</code> / <code>22050</code> / <code>24000</code> / <code>32000</code> / <code>44100</code>. Default: <code>16000</code>.</li>      <li><code>format</code> (string): Audio format. Options: <code>mp3</code> / <code>wav</code>. Default: <code>wav</code>.</li>      <li><code>duration</code> (float): Target duration (seconds).</li>      <li><code>cut_silence</code> (bool): Whether to trim silence segments.</li>    </ul>  </li></ul>",
-          "example": "{     \"model\": \"minimax-speech-2.8-hd\",     \"stream\": false,     \"voice_setting\": {         \"speed\": 1.0,         \"vol\": 1.0,         \"pitch\": 0,         \"emotion\": \"calm\",         \"text_normalization\": true,         \"latex_read\": false     } }",
+          "example": "{\"model\": \"minimax-speech-2.8-hd\", \"voice_setting\": {\"speed\": 2.0, \"vol\": 2.0}, \"audio_setting\": {\"sample_rate\": 32000, \"bitrate\": 128000, \"format\": \"mp3\"}}",
           "member": "string",
           "name": "ExtParam",
           "required": false,
@@ -52721,7 +52721,7 @@
         {
           "disabled": false,
           "document": "<p>Synthetic audio URL. It is valid for 24 hours.</p>",
-          "example": "https://tennyyang-test-1258344699.cos.ap-guangzh***********************************************-08-10/cda673d1-5bfb-4111-8572-1838b91ee267.mp3",
+          "example": "https://laurie-tmp-1300828900.cos.a***********************************b70-c745-4335-bbfc-b2f6c00ac0b2.mp3",
           "member": "string",
           "name": "AudioUrl",
           "output_required": false,
@@ -52731,7 +52731,7 @@
         {
           "disabled": false,
           "document": "<p>Extended information in the format of a JSON string. </p><p>duration: Duration of the resulting audio, in seconds.</p>",
-          "example": "{\"audio_length\":10188,\"audio_sample_rate\":32000,\"audio_size\":164724,\"bitrate\":128000,\"audio_format\":\"mp3\",\"audio_channel\":1,\"word_count\":66,\"invisible_character_ratio\":0,\"usage_characters\":75}",
+          "example": "{\"audio_format\":\"mp3\",\"audio_length\":1836,\"audio_sample_rate\":32000,\"audio_size\":0,\"word_count\":16}",
           "member": "string",
           "name": "ExtInfo",
           "output_required": false,
