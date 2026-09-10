@@ -1597,11 +1597,11 @@
   },
   "objects": {
     "AICrawlerDetection": {
-      "document": "AI crawler detection configuration.",
+      "document": "Specific configuration for AI crawler detection.",
       "members": [
         {
           "disabled": false,
-          "document": "Whether AI crawler detection is enabled. valid values:.\n<li>`on`: Enable;</li>\n<li>off: Disable.</li>\n",
+          "document": "Whether AI crawler detection is enabled. Valid values:\n<li>`on`: Enable;</li>\n<li>off: Disable.</li>\n",
           "example": "on",
           "member": "string",
           "name": "Enabled",
@@ -1612,7 +1612,7 @@
         },
         {
           "disabled": false,
-          "document": "AI crawler detection execution action. this field is required when Enabled is on. valid values for the Name parameter in SecurityAction:.\n<Li>Deny: block;</li>.\n<Li>Monitor: observation.</li>.\n<Li>Allow: pass;</li>.\n<li>Challenge: Challenge, where ChallengeOption in ChallengeActionParameters only supports JSChallenge and ManagedChallenge.</li>.",
+          "document": "Execution action of AI crawler detection. Required if Enabled is on. Name of SecurityAction only supports:\n<li>Deny: block;</li>\n<li>Monitor: observation;</li>\n<li>Allow: allow;</li>\n<li>Challenge: Among them, ChallengeOption in ChallengeActionParameters only supports JSChallenge and ManagedChallenge.</li>",
           "example": "无",
           "member": "SecurityAction",
           "name": "Action",

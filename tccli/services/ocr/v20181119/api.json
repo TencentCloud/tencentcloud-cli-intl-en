@@ -4674,7 +4674,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The Base64 value of the image. Supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. Supported image size: the downloaded image after Base64 encoding is no more than 7M. Image download time is not more than 3 seconds. Either ImageUrl or ImageBase64 must be provided. If both are provided, only use ImageUrl.",
+          "document": "The Base64 value of the image. Supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. Supported image size: the downloaded image after Base64 encoding is no more than 2M. Image download time is not more than 3 seconds. Either ImageUrl or ImageBase64 must be provided. If both are provided, only use ImageUrl.",
           "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "ImageBase64",
@@ -4683,7 +4683,7 @@
         },
         {
           "disabled": false,
-          "document": "The Url address of the image. \nSupported image formats: PNG, JPG, JPEG. GIF format is not currently supported. \nSupported image size: the downloaded image after Base64 encoding is no more than 7M. Image download time is no more than 3 seconds. \nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.\nFor a non-Tencent Cloud URL, the download speed and stability may be affected.",
+          "document": "The Url address of the image. \nSupported image formats: PNG, JPG, JPEG. GIF format is not currently supported. \nSupported image size: the downloaded image after Base64 encoding is no more than 2M. Image download time is no more than 3 seconds. \nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.\nFor a non-Tencent Cloud URL, the download speed and stability may be affected.",
           "example": "https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/***/fakeurl.jpg",
           "member": "string",
           "name": "ImageUrl",
@@ -4692,7 +4692,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to return the portrait photo.\nIf selected true, image restrictions are: Image size after encoding must not exceed 5M, jpg format long side pixel cannot exceed 4000, other formats image long edge pixel maximum of 2000. Short side pixel of all format images not less than 64.\nSupport PNG, jpg, JPEG, BMP, no support for GIF images.\nIf portrait matting fails, return an empty string.",
+          "document": "Whether to return the portrait photo.\nIf selected true, image restrictions are: Image size after encoding must not exceed 2M, jpg format long side pixel cannot exceed 4000, other formats image long edge pixel maximum of 2000. Short side pixel of all format images not less than 64.\nSupport PNG, jpg, JPEG, BMP, no support for GIF images.\nIf portrait matting fails, return an empty string.",
           "example": "true",
           "member": "bool",
           "name": "ReturnHeadImage",
@@ -4896,7 +4896,7 @@
         },
         {
           "disabled": false,
-          "document": "Card Warning Information\n\n-9101 Alarm for covered certificate\n-9102 Alarm for photocopied certificate\n-9103 Alarm for photographed certificate\n-9104 Alarm for tamper certificate\n-9107 Alarm for reflective certificate\n-9108 Alarm for blurry image\n-8101 Alarm for document information format verification\n-8102 Alarm for document information consistency verification\n-9109 This capability is not enabled. Please contact customer support to activate the alert service",
+          "document": "Card Warning Information\n\n-9101 Alarm for incomplete or covered certificate\n-9102 Alarm for photocopied certificate\n-9103 Alarm for photographed certificate\n-9104 Alarm for tamper certificate\n-9107 Alarm for reflective certificate\n-9108 Alarm for blurry image\n-8101 Alarm for document information format verification\n-8102 Alarm for document information consistency verification\n-9109 This capability is not enabled. Please contact customer support to activate the alert service",
           "example": "[-9101]",
           "member": "int64",
           "name": "WarnCardInfos",

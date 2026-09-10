@@ -1263,6 +1263,15 @@
           "name": "InvokeLLM",
           "required": false,
           "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Information passed through to the client",
+          "example": "无",
+          "member": "TransparentData",
+          "name": "TransparentData",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -5997,7 +6006,7 @@
         },
         {
           "disabled": false,
-          "document": "Defaults to 0. valid at that time only when Interrupt is false.\n-0 means drop messages with Interrupt set to false during the occurrence of interaction.\n-1 indicates that during the occurrence of an interaction, messages with Interrupt as false will not be dropped but cached, waiting to be processed when finished.\n\nNote: if DropMode is 1, multiple messages can be cached. if an interruption occurs subsequently, the cache of messages will be cleared.",
+          "document": "Defaults to 0. valid at that time only when Interrupt is false.\n<ul>\n<li>0 means drop messages with Interrupt set to false during the occurrence of interaction.</li>\n<li>1 indicates that during the occurrence of an interaction, messages with Interrupt as false will not be dropped but cached, waiting to be processed when finished.</li>\n</ul>\nNote: if DropMode is 1, multiple messages can be cached. if an interruption occurs subsequently, the cache of messages will be cleared.",
           "example": "0",
           "member": "uint64",
           "name": "DropMode",
@@ -6006,7 +6015,7 @@
         },
         {
           "disabled": false,
-          "document": "The message priority of ServerPushText. 0 means interruptible, 1 means not interruptible. currently only support 0. if you need to input 1, submit a ticket to contact us to grant permission.\nNote: after receiving a message with Priority=1, any other messages will be ignored (including messages with Priority=1) until the message processing of Priority=1 is complete. this field can be used together with the Interrupt and DropMode fields.\nExample:.\n-Priority=1, Interrupt=true, interrupts existing interaction and broadcasts immediately. the broadcast will not be interrupted during the process.\n-Priority=1, Interrupt=false, DropMode=1. wait for the current interaction to complete before broadcasting. the broadcast will not be interrupted during the process.\n",
+          "document": "The message priority of ServerPushText. 0 means interruptible, 1 means not interruptible. currently only support 0. if you need to input 1, submit a ticket to contact us to grant permission.\nNote: after receiving a message with Priority=1, any other messages will be ignored (including messages with Priority=1) until the message processing of Priority=1 is complete. this field can be used together with the Interrupt and DropMode fields.\nExample:.\n<ul>\n<li>Priority=1, Interrupt=true, interrupts existing interaction and broadcasts immediately. the broadcast will not be interrupted during the process.</li>\n<li>Priority=1, Interrupt=false, DropMode=1. wait for the current interaction to complete before broadcasting. the broadcast will not be interrupted during the process.</li>\n</ul>",
           "example": "0",
           "member": "uint64",
           "name": "Priority",
@@ -7975,6 +7984,21 @@
           "name": "Terminologies",
           "required": false,
           "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "TransparentData": {
+      "document": "Information passed through to the client",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Information passed through to the client",
+          "example": "hello world",
+          "member": "string",
+          "name": "Data",
+          "required": true,
+          "type": "string"
         }
       ],
       "usage": "in"
