@@ -42,6 +42,13 @@
       "output": "HKIDCardOCRResponse",
       "status": "online"
     },
+    "HmtResidentPermitOCR": {
+      "document": "This API recognizes the Residence Permit for Hong Kong, Macao, and Taiwan, China Residents. Its OCR feature supports content detection and recognition of all fields on both sides, including name, sex, date of birth, address, identity card number, issuing authority, validity period, number of issuances, and travel permit number (a key field). It can be applied to information recognition scenarios for Residence Permit for Hong Kong, Macao, and Taiwan, China Residents, such as bank account opening and user registration. \n\nDefault API request rate limit: 20 requests/second.",
+      "input": "HmtResidentPermitOCRRequest",
+      "name": "Recognizes residence permit for Hong Kong, Macao, or Taiwan residents",
+      "output": "HmtResidentPermitOCRResponse",
+      "status": "online"
+    },
     "MLIDCardOCR": {
       "document": "This API is used to recognize a Malaysian identity card, including identity card number, name, gender, and address. It is also used to crop identity photos and give alarms for photographed or photocopied certificates.\n\nThis API is not fully available for the time being. For more information, contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).",
       "input": "MLIDCardOCRRequest",
@@ -2387,6 +2394,226 @@
       ],
       "type": "object"
     },
+    "HmtResidentPermitOCRRequest": {
+      "document": "HmtResidentPermitOCR request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Base64 value of the image. Supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. Supported image size: no more than 7M after the downloaded image is Base64-encoded. The image download must complete within 3 seconds.Either ImageUrl or ImageBase64 must be provided. If both are provided, only ImageUrl is used.</p>",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Image URL.Supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. Supported image size: no more than 7M after Base64 encoding. Image download time no more than 3 seconds. URLs stored in Tencent Cloud guarantee higher download speed and stability. It is recommended to store images in Tencent Cloud. Speed and stability may be impacted for URLs not stored in Tencent Cloud.</p>",
+          "example": "https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/card/HmtResidentPermitOCR/HmtResidentPermitOCR1.png",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>FRONT: the side with a photo (portrait side),<br>BACK: the side without a photo (national emblem side),<br>if this parameter is left empty or incorrect, the front or back side is automatically determined for you.</p>",
+          "example": "FRONT",
+          "member": "string",
+          "name": "CardSide",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to return the portrait image and position coordinates",
+          "example": "false",
+          "member": "bool",
+          "name": "CropPortrait",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "HmtResidentPermitOCRResponse": {
+      "document": "HmtResidentPermitOCR response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Name on the document</p>",
+          "example": "李优优",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Gender</p>",
+          "example": "女",
+          "member": "string",
+          "name": "Sex",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Date of birth</p>",
+          "example": "1997/6/2",
+          "member": "string",
+          "name": "Birth",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Address</p>",
+          "example": "上海市徐汇区古美路1528号A1栋腾讯优图1号",
+          "member": "string",
+          "name": "Address",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Identity card number</p>",
+          "example": "830000199706020042",
+          "member": "string",
+          "name": "IdCardNo",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>0-Front<br>1-Back</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "CardType",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Document validity period</p>",
+          "example": "2018.09.06-2023.09.06",
+          "member": "string",
+          "name": "ValidDate",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Issuing authority</p>",
+          "example": "合肥市公安局高新分局",
+          "member": "string",
+          "name": "Authority",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of issuances</p>",
+          "example": "0",
+          "member": "string",
+          "name": "VisaNum",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Travel permit number",
+          "example": "0",
+          "member": "string",
+          "name": "PassNo",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Portrait image and coordinate information",
+          "example": "无",
+          "member": "PortraitImageInfo",
+          "name": "PortraitImageInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Card Warning Information\n\n-9102 Alarm for photocopied certificate\n-9103 Alarm for photographed certificate\n-9104 Alarm for tamper certificate\n-9109 This capability is not enabled. Please contact customer support to activate the alert service",
+          "example": "[-9104]",
+          "member": "int64",
+          "name": "WarnCardInfos",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ImageCoordinates": {
+      "document": "Avatar position coordinates",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Top-left horizontal coordinate of the avatar</p>",
+          "example": "20",
+          "member": "int64",
+          "name": "X",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Top-left vertical coordinate of the avatar</p>",
+          "example": "20",
+          "member": "int64",
+          "name": "Y",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Avatar frame width.</p><p>Unit: px.</p>",
+          "example": "480",
+          "member": "int64",
+          "name": "Width",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Avatar frame height.</p><p>Unit: px.</p>",
+          "example": "640",
+          "member": "int64",
+          "name": "Height",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "ItemCoord": {
       "document": "Pixel coordinates of the text line in the image after rotation correction, which is in the format of `(X-coordinate of top-left point, Y-coordinate of top-left point, width, height)`.",
       "members": [
@@ -3665,6 +3892,32 @@
           "output_required": true,
           "type": "object",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "PortraitImageInfo": {
+      "document": "Avatar photo and coordinates",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Avatar</p>",
+          "example": "/9j/2wCEAAgGBgcGBQgHBwcJCQgKDBQNDAsL",
+          "member": "string",
+          "name": "PortraitImage",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Avatar coordinate</p>",
+          "example": "无",
+          "member": "ImageCoordinates",
+          "name": "ImageCoordinates",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -6530,7 +6783,7 @@
         },
         {
           "disabled": false,
-          "document": "Card Warning Information\n\n-9101 Alarm for covered certificate,\n-9102 Alarm for photocopied certificate,\n-9103 Alarm for photographed certificate,\n-9104 Alarm for PS certificate,\n-9107 Alarm for reflective certificate,\n-9108 Alarm for blurry image,\n-9109 This capability is not enabled.",
+          "document": "Card Warning Information\n\n-9101 Alarm for covered certificate\n-9102 Alarm for photocopied certificate\n-9103 Alarm for photographed certificate\n-9104 Alarm for tamper certificate\n-9107 Alarm for reflective certificate\n-9108 Alarm for blurry certificate \n-9109 This capability is not enabled. Please contact customer support to activate the alert service",
           "example": "[-9101]",
           "member": "int64",
           "name": "WarnCardInfos",

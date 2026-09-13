@@ -78,9 +78,9 @@
       "status": "online"
     },
     "CreateMNGAppSecret": {
-      "document": "This API is used to generate a mini game secret key.",
+      "document": "This API is used to create a mini game secret key.",
       "input": "CreateMNGAppSecretRequest",
-      "name": "This API is used to generate a mini game secret key.",
+      "name": "Creates a mini game secret key",
       "output": "CreateMNGAppSecretResponse",
       "status": "online"
     },
@@ -267,9 +267,9 @@
       "status": "online"
     },
     "DescribeAPPDataDetailLineChart": {
-      "document": "This API is used to query the line chart data for selected superapp metrics.",
+      "document": "This API is used to query the time-series data for selected superapp metrics.",
       "input": "DescribeAPPDataDetailLineChartRequest",
-      "name": "Queries the line chart data for selected superapp metrics",
+      "name": "Queries the time-series data of a specified superapp metric",
       "output": "DescribeAPPDataDetailLineChartResponse",
       "status": "online"
     },
@@ -281,9 +281,9 @@
       "status": "online"
     },
     "DescribeAdvertisingLineChart": {
-      "document": "This API is used to query the advertising line chart data for a mini program within a specified date range.",
+      "document": "This API is used to query the time-series advertising data for a mini program within a specified date range.",
       "input": "DescribeAdvertisingLineChartRequest",
-      "name": "Queries the mini program advertisement line chart",
+      "name": "Queries the time-series advertising data of a mini program",
       "output": "DescribeAdvertisingLineChartResponse",
       "status": "online"
     },
@@ -372,9 +372,9 @@
       "status": "online"
     },
     "DescribeMNGAccessAnalysisLineChart": {
-      "document": "This API is used to query the mini game visit analysis line chart.",
+      "document": "This API is used to query the time-series visit data of a mini game.",
       "input": "DescribeMNGAccessAnalysisLineChartRequest",
-      "name": "Queries the mini game visit analysis line chart",
+      "name": "Queries the time-series visit data of a mini game",
       "output": "DescribeMNGAccessAnalysisLineChartResponse",
       "status": "online"
     },
@@ -400,9 +400,9 @@
       "status": "online"
     },
     "DescribeMNGAdvertisingLineChart": {
-      "document": "This API is used to query the mini game advertising data in a line chart format.",
+      "document": "This API is used to query the time-series advertising data of a mini game.",
       "input": "DescribeMNGAdvertisingLineChartRequest",
-      "name": "Queries the mini game advertising line chart",
+      "name": "Queries the time-series advertising data of a mini game",
       "output": "DescribeMNGAdvertisingLineChartResponse",
       "status": "online"
     },
@@ -456,9 +456,9 @@
       "status": "online"
     },
     "DescribeMNGMAULineChart": {
-      "document": "This API is used to query the mini game MAU line chart.",
+      "document": "This API is used to query the time-series MAU data of a mini game.",
       "input": "DescribeMNGMAULineChartRequest",
-      "name": "Queries the mini game MAU line chart",
+      "name": "Queries the time-series MAU data of a mini game",
       "output": "DescribeMNGMAULineChartResponse",
       "status": "online"
     },
@@ -477,9 +477,9 @@
       "status": "online"
     },
     "DescribeMNGPaymentLineChart": {
-      "document": "This API is used to query the mini game payment line chart.",
+      "document": "This API is used to query the time-series payment data of a mini game.",
       "input": "DescribeMNGPaymentLineChartRequest",
-      "name": "Queries the mini game payment line chart",
+      "name": "Queries the time-series payment data of a mini game",
       "output": "DescribeMNGPaymentLineChartResponse",
       "status": "online"
     },
@@ -574,6 +574,20 @@
       "output": "DescribeMNGVersionResponse",
       "status": "online"
     },
+    "DescribeMNGVersionAuditDetail": {
+      "document": "This API is used to query mini game version approval details.",
+      "input": "DescribeMNGVersionAuditDetailRequest",
+      "name": "Queries mini game version approval details",
+      "output": "DescribeMNGVersionAuditDetailResponse",
+      "status": "online"
+    },
+    "DescribeMNGVersionAuditList": {
+      "document": "This API is used to query mini game version approval records.",
+      "input": "DescribeMNGVersionAuditListRequest",
+      "name": "Queries mini game version approval list",
+      "output": "DescribeMNGVersionAuditListResponse",
+      "status": "online"
+    },
     "DescribeMNP": {
       "document": "This API is used to query the mini program details.",
       "input": "DescribeMNPRequest",
@@ -652,9 +666,9 @@
       "status": "online"
     },
     "DescribeMNPMAULineChart": {
-      "document": "This API is used to query the mini program monthly active user data in a line chart format.",
+      "document": "This API is used to query the time-series MAU data of a mini program.",
       "input": "DescribeMNPMAULineChartRequest",
-      "name": "Queries the mini program MAU line chart",
+      "name": "Queries the time-series MAU data of a mini program",
       "output": "DescribeMNPMAULineChartResponse",
       "status": "online"
     },
@@ -701,9 +715,9 @@
       "status": "online"
     },
     "DescribeMNPReportDataLineChart": {
-      "document": "This API is used to query the mini program visit analysis line chart within a given date range.",
+      "document": "This API is used to query the time-series visit data of a mini program within a given date range.",
       "input": "DescribeMNPReportDataLineChartRequest",
-      "name": "Queries the mini program visit analysis line chart",
+      "name": "Queries the time-series visit data of a mini program",
       "output": "DescribeMNPReportDataLineChartResponse",
       "status": "online"
     },
@@ -777,6 +791,20 @@
       "output": "DescribeMNPVersionResponse",
       "status": "online"
     },
+    "DescribeMNPVersionAuditDetail": {
+      "document": "This API is used to query mini program version approval details.",
+      "input": "DescribeMNPVersionAuditDetailRequest",
+      "name": "Queries mini program version approval details",
+      "output": "DescribeMNPVersionAuditDetailResponse",
+      "status": "online"
+    },
+    "DescribeMNPVersionAuditList": {
+      "document": "This API is used to query mini program version approval records.",
+      "input": "DescribeMNPVersionAuditListRequest",
+      "name": "Queries mini program version approval list",
+      "output": "DescribeMNPVersionAuditListResponse",
+      "status": "online"
+    },
     "DescribePaymentDataDetail": {
       "document": "This API is used to query the mini program payment data details within a specified date range.",
       "input": "DescribePaymentDataDetailRequest",
@@ -785,9 +813,9 @@
       "status": "online"
     },
     "DescribePaymentDataLineChart": {
-      "document": "This API is used to query the mini program payment line chart within a specified date range.",
+      "document": "This API is used to query the time-series payment data of a mini program.",
       "input": "DescribePaymentDataLineChartRequest",
-      "name": "Queries the mini program payment line chart",
+      "name": "Queries the time-series payment data of a mini program",
       "output": "DescribePaymentDataLineChartResponse",
       "status": "online"
     },
@@ -813,9 +841,9 @@
       "status": "online"
     },
     "DescribeTeamList": {
-      "document": "This API is used to query a list of teams.",
+      "document": "This API is used to query the teams.",
       "input": "DescribeTeamListRequest",
-      "name": "Queries a list of teams",
+      "name": "Queries teams",
       "output": "DescribeTeamListResponse",
       "status": "online"
     },
@@ -2003,11 +2031,11 @@
       "type": "object"
     },
     "BooleanInfo": {
-      "document": "Used for Data object when no data is returned after a successful action.",
+      "document": "Used for Data object when no data is returned after the a successful action.",
       "members": [
         {
           "disabled": false,
-          "document": "The Boolean response object. \nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The Boolean response object.",
           "example": "true、false",
           "member": "bool",
           "name": "Result",
@@ -4053,7 +4081,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Team name.",
+          "document": "<p>Team name.</p>",
           "example": "AT_team0305080426",
           "member": "string",
           "name": "TeamName",
@@ -4062,7 +4090,7 @@
         },
         {
           "disabled": false,
-          "document": "Admin name.",
+          "document": "<p>Administrator name.</p>",
           "example": "U20250211162022WMDVCK",
           "member": "string",
           "name": "AdminUserId",
@@ -4071,7 +4099,7 @@
         },
         {
           "disabled": false,
-          "document": "Team role type. Valid values: 1: Mini program; 2: Superapp (only one type is currently supported).",
+          "document": "<p>Team role type. Valid values: 1: Mini program; 2: Superapp (only one type is currently supported).</p>",
           "example": "[2]",
           "member": "int64",
           "name": "TeamRoleTypeList",
@@ -4080,7 +4108,7 @@
         },
         {
           "disabled": false,
-          "document": "Remark.",
+          "document": "<p>Remarks.</p>",
           "example": "remark",
           "member": "string",
           "name": "Remark",
@@ -4089,7 +4117,7 @@
         },
         {
           "disabled": false,
-          "document": "Platform ID, required for API call.",
+          "document": "<p>Platform ID, required for API call.</p>",
           "example": "T08123WM5791744VNCZ",
           "member": "string",
           "name": "PlatformId",
@@ -4098,12 +4126,30 @@
         },
         {
           "disabled": false,
-          "document": "Associated team ID.",
+          "document": "<p>Associated team ID.</p>",
           "example": "6889179250",
           "member": "string",
           "name": "RelatedTeamId",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Team expiration time as a Unix timestamp in seconds. 0 indicates no expiration. This parameter takes effect only when creating a mini program team.</p>",
+          "example": "1764322807",
+          "member": "int64",
+          "name": "ExpiryTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Administrator user IDs.</p>",
+          "example": "[\"U20260819152444LRABQT\"]",
+          "member": "string",
+          "name": "AdminUserIds",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -4745,7 +4791,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ReportDataResult",
           "name": "Data",
@@ -4800,7 +4846,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "APPOverview",
           "name": "Data",
@@ -4882,7 +4928,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "AdTrendChart",
           "name": "Data",
@@ -4964,7 +5010,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "MNPAdvertisingOverview",
           "name": "Data",
@@ -6399,7 +6445,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display at the top of the page.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "AccessAnalysisOverview",
           "name": "Data",
@@ -6463,7 +6509,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ReportDataResult",
           "name": "Data",
@@ -6545,7 +6591,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display at the top of the page.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "AccessAnalysisDetail",
           "name": "Data",
@@ -6618,7 +6664,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ReportDataResult",
           "name": "Data",
@@ -6700,7 +6746,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display at the top of the page.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "AccessAnalysisOverview",
           "name": "Data",
@@ -6773,7 +6819,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ReportDataResult",
           "name": "Data",
@@ -6855,7 +6901,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "OverviewDetail",
           "name": "Data",
@@ -6937,7 +6983,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "AdTrendChart",
           "name": "Data",
@@ -7019,7 +7065,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "AnalysisAdvertOverview",
           "name": "Data",
@@ -7349,6 +7395,148 @@
         }
       ],
       "type": "object"
+    },
+    "DescribeMNGAuditDetailAppAuditInfo": {
+      "document": "Superapp approval information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Approval number.</p>",
+          "example": "aud3e01i3u63elvod5",
+          "member": "string",
+          "name": "AuditNo",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Superapp ID.</p>",
+          "example": "app-ur970tjw1r",
+          "member": "string",
+          "name": "ApplicationId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Superapp name.</p>",
+          "example": "超级应用",
+          "member": "string",
+          "name": "ApplicationName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Superapp icon.</p>",
+          "example": "https://tcmpp-dev-renter-1258344699.cos.ap-guangzhou.myqcloud.com/T04914TJ0911724TSAK/tcmpp/4e28ceb5dca94e049b2b057cd280b657.png",
+          "member": "string",
+          "name": "ApplicationLogo",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approver.</p>",
+          "example": "superadmin_hjl",
+          "member": "string",
+          "name": "AuditUser",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approval time.</p>",
+          "example": "1782368659",
+          "member": "string",
+          "name": "AuditTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approval status. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.</p>",
+          "example": "3",
+          "member": "int64",
+          "name": "AuditStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approval note.</p>",
+          "example": "note",
+          "member": "string",
+          "name": "AuditNote",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Team ID.</p>",
+          "example": "5815321469",
+          "member": "string",
+          "name": "TeamId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Team name.</p>",
+          "example": "mma应用团队",
+          "member": "string",
+          "name": "TeamName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeMNGAuditListAppInfoResp": {
+      "document": "Superapp approval information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Superapp ID.</p>",
+          "example": "app-7uhahp9d36",
+          "member": "string",
+          "name": "ApplicationId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Superapp icon</p>",
+          "example": "https://tcmpp-dev-renter-1258344699.cos.ap-guangzhou.myqcloud.com/T04914TJ0911724TSAK/tcmpp/b7a7c10f3f6143078b8c7dff467ffbb2.png",
+          "member": "string",
+          "name": "ApplicationIcon",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Superapp name.</p>",
+          "example": "xiebin_app_data_test",
+          "member": "string",
+          "name": "ApplicationName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "DescribeMNGCategoryRequest": {
       "document": "DescribeMNGCategory request structure.",
@@ -7809,7 +7997,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "MAUDetail",
           "name": "Data",
@@ -7882,7 +8070,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display at the top of the page.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "MNGMAULineChartData",
           "name": "Data",
@@ -7973,7 +8161,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display at the top of the page.",
+          "document": "Response data.",
           "example": "无",
           "member": "MAUIndicatorCard",
           "name": "Data",
@@ -8249,7 +8437,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ReportDataResult",
           "name": "Data",
@@ -8331,7 +8519,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "MNGPaymentOverview",
           "name": "Data",
@@ -8413,7 +8601,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "MNGPaymentOverview",
           "name": "Data",
@@ -8495,7 +8683,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "PaymentActiveRetention",
           "name": "Data",
@@ -8810,7 +8998,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "RetentionData",
           "name": "Data",
@@ -9993,6 +10181,524 @@
       ],
       "type": "object"
     },
+    "DescribeMNGVersionAuditDetailRequest": {
+      "document": "DescribeMNGVersionAuditDetail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T04914TJ0911724TSAK",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approval number.</p>",
+          "example": "aud3e01i3u63elvod5",
+          "member": "string",
+          "name": "AuditNo",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGVersionAuditDetailResp": {
+      "document": "Mini game approval application details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Approval number.</p>",
+          "example": "aud44aw630uu0aweqs",
+          "member": "string",
+          "name": "AuditNo",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program or mini game appid.</p>",
+          "example": "mpdsteb1avwknpls",
+          "member": "string",
+          "name": "MNPId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program or mini game name.</p>",
+          "example": "i18n中文",
+          "member": "string",
+          "name": "MNPName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program icon.</p>",
+          "example": "https://tcmpp-dev-renter-1258344699.cos.ap-guangzhou.myqcloud.com/T04914TJ0911724TSAK/tcmpp/10f7400082c941a782ed5b0390ccce8a.png",
+          "member": "string",
+          "name": "MNPIcon",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program category.</p>",
+          "example": "物流服务->1_收件/派件",
+          "member": "string",
+          "name": "MNPType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program introduction.</p>",
+          "example": "i18n中文",
+          "member": "string",
+          "name": "MNPIntro",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program version.</p>",
+          "example": "1.0.0",
+          "member": "string",
+          "name": "MNPVersion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program version introduction.</p>",
+          "example": "1.0.0",
+          "member": "string",
+          "name": "MNPVersionIntro",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Applicant.</p>",
+          "example": "mma",
+          "member": "string",
+          "name": "ApplyUser",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Application time.</p>",
+          "example": "1776756547",
+          "member": "string",
+          "name": "ApplyTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approver.</p>",
+          "example": "mma",
+          "member": "string",
+          "name": "AuditUser",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Creation time.</p>",
+          "example": "1776756559",
+          "member": "string",
+          "name": "AuditTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approval status. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.</p>",
+          "example": "3",
+          "member": "int64",
+          "name": "AuditStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of associated superapps.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "MNPRelAppCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Information encoded in the mini program QR code.</p>",
+          "example": "tcmpp://applet/?appId=mpdsteb1avwknpls&businessId=vkpxhj8g1mx4ae8143u&timestamp=1776756410&type=3",
+          "member": "string",
+          "name": "QRCodeContent",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approval note.</p>",
+          "example": "note",
+          "member": "string",
+          "name": "AuditNote",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program version ID.</p>",
+          "example": "478",
+          "member": "int64",
+          "name": "MNPVersionId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Age rating information.</p>",
+          "example": "无",
+          "member": "AgeRatingItem",
+          "name": "AgeRatings",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Superapp approval information.</p>",
+          "example": "无",
+          "member": "DescribeMNGAuditDetailAppAuditInfo",
+          "name": "AppAuditList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeMNGVersionAuditDetailResponse": {
+      "document": "DescribeMNGVersionAuditDetail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Response data.</p>",
+          "example": "无",
+          "member": "DescribeMNGVersionAuditDetailResp",
+          "name": "Data",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGVersionAuditInfoResp": {
+      "document": "Mini game approval information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Approval number.</p>",
+          "example": "aud6meb6kttv32r9ui",
+          "member": "string",
+          "name": "AuditNo",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program appid.</p>",
+          "example": "mgcozy957r7iflwr",
+          "member": "string",
+          "name": "MNPId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program name.</p>",
+          "example": "minigame001",
+          "member": "string",
+          "name": "MNPName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program icon.</p>",
+          "example": "https://tcmpp-dev-renter-1258344699.cos.ap-guangzhou.myqcloud.com/T04914TJ0911724TSAK/tcmpp/c6ae74310ec848e5ab00f1b1ed9a1a90.png",
+          "member": "string",
+          "name": "MNPIcon",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program category.</p>",
+          "example": "其他->10129_其他",
+          "member": "string",
+          "name": "MNPType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Introduction.</p>",
+          "example": "2",
+          "member": "string",
+          "name": "MNPIntro",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program version.</p>",
+          "example": "1.0.0",
+          "member": "string",
+          "name": "MNPVersion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Version description.</p>",
+          "example": "1",
+          "member": "string",
+          "name": "MNPVersionIntro",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Applicant.</p>",
+          "example": "xiebin_app",
+          "member": "string",
+          "name": "ApplyUser",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Application time.</p>",
+          "example": "1770283164",
+          "member": "string",
+          "name": "ApplyTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approver.</p>",
+          "example": "xiebin_app",
+          "member": "string",
+          "name": "AuditUser",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approval time.</p>",
+          "example": "1770283176",
+          "member": "string",
+          "name": "AuditTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approval status. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.</p>",
+          "example": "3",
+          "member": "int64",
+          "name": "AuditStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of associated superapps.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "MNPRelAppCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Age rating information.</p>",
+          "example": "无",
+          "member": "AgeRatingItem",
+          "name": "AgeRatings",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Superapp approval information.</p>",
+          "example": "无",
+          "member": "DescribeMNGAuditListAppInfoResp",
+          "name": "AuditAppList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program version ID.</p>",
+          "example": "409",
+          "member": "int64",
+          "name": "MNPVersionId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether it is an auto approval. Valid values: 0 (No), 1 (Yes).</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "IsAutoAudit",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeMNGVersionAuditListRequest": {
+      "document": "DescribeMNGVersionAuditList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Pagination offset.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Pagination count</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T04914TJ0911724TSAK",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini game appid.</p>",
+          "example": "mgcozy957r7iflwr",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNGVersionAuditListResp": {
+      "document": "Mini game approval information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total number of entries.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>List data.</p>",
+          "example": "无",
+          "member": "DescribeMNGVersionAuditInfoResp",
+          "name": "DataList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeMNGVersionAuditListResponse": {
+      "document": "DescribeMNGVersionAuditList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Response data.</p>",
+          "example": "无",
+          "member": "DescribeMNGVersionAuditListResp",
+          "name": "Data",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeMNGVersionRequest": {
       "document": "DescribeMNGVersion request structure.",
       "members": [
@@ -10199,7 +10905,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display at the top of the page.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "AccessAnalysisOverview",
           "name": "Data",
@@ -10272,7 +10978,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ReportDataResult",
           "name": "Data",
@@ -10354,7 +11060,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "MAUDetailData",
           "name": "Data",
@@ -10812,6 +11518,148 @@
       ],
       "type": "object"
     },
+    "DescribeMNPAuditDetailAppAuditInfo": {
+      "document": "Superapp approval information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Approval number.</p>",
+          "example": "aud3e01i3u63elvod5",
+          "member": "string",
+          "name": "AuditNo",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Superapp ID.</p>",
+          "example": "app-ur970tjw1r",
+          "member": "string",
+          "name": "ApplicationId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Superapp name.</p>",
+          "example": "超级应用",
+          "member": "string",
+          "name": "ApplicationName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Superapp icon.</p>",
+          "example": "https://tcmpp-dev-renter-1258344699.cos.ap-guangzhou.myqcloud.com/T04914TJ0911724TSAK/tcmpp/4e28ceb5dca94e049b2b057cd280b657.png",
+          "member": "string",
+          "name": "ApplicationLogo",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approver.</p>",
+          "example": "superadmin_hjl",
+          "member": "string",
+          "name": "AuditUser",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Creation time.</p>",
+          "example": "1782368659",
+          "member": "string",
+          "name": "AuditTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approval status. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.</p>",
+          "example": "3",
+          "member": "int64",
+          "name": "AuditStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approval note.</p>",
+          "example": "note",
+          "member": "string",
+          "name": "AuditNote",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Team ID.</p>",
+          "example": "5815321469",
+          "member": "string",
+          "name": "TeamId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Team name.</p>",
+          "example": "mma应用团队",
+          "member": "string",
+          "name": "TeamName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeMNPAuditListAppInfoResp": {
+      "document": "Superapp approval information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Superapp ID.</p>",
+          "example": "app-ur970tjw1r",
+          "member": "string",
+          "name": "ApplicationId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Superapp icon</p>",
+          "example": "https://tcmpp-dev-renter-1258344699.cos.ap-guangzhou.myqcloud.com/T04914TJ0911724TSAK/tcmpp/4e28ceb5dca94e049b2b057cd280b657.png",
+          "member": "string",
+          "name": "ApplicationIcon",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Superapp name.</p>",
+          "example": "超级应用",
+          "member": "string",
+          "name": "ApplicationName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "DescribeMNPCategoryRequest": {
       "document": "DescribeMNPCategory request structure.",
       "members": [
@@ -11245,7 +12093,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "MAUDetail",
           "name": "Data",
@@ -11318,7 +12166,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "MAUChartData",
           "name": "Data",
@@ -11409,7 +12257,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display at the top of the page.",
+          "document": "Response data.",
           "example": "无",
           "member": "MAUIndicatorCard",
           "name": "Data",
@@ -11703,7 +12551,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "VisitData",
           "name": "Data",
@@ -12009,7 +12857,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ReportDataResult",
           "name": "Data",
@@ -12091,7 +12939,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display at the top of the page.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "AccessAnalysisDetail",
           "name": "Data",
@@ -12219,7 +13067,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "RetentionData",
           "name": "Data",
@@ -13367,6 +14215,524 @@
       ],
       "usage": "out"
     },
+    "DescribeMNPVersionAuditDetailRequest": {
+      "document": "DescribeMNPVersionAuditDetail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T04914TJ0911724TSAK",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approval number.</p>",
+          "example": "aud44aw630uu0aweqs",
+          "member": "string",
+          "name": "AuditNo",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPVersionAuditDetailResp": {
+      "document": "Mini program approval details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Approval number.</p>",
+          "example": "aud44aw630uu0aweqs",
+          "member": "string",
+          "name": "AuditNo",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program or mini game appid.</p>",
+          "example": "mpdsteb1avwknpls",
+          "member": "string",
+          "name": "MNPId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program or mini game name.</p>",
+          "example": "i18n中文",
+          "member": "string",
+          "name": "MNPName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program icon.</p>",
+          "example": "https://tcmpp-dev-renter-1258344699.cos.ap-guangzhou.myqcloud.com/T04914TJ0911724TSAK/tcmpp/10f7400082c941a782ed5b0390ccce8a.png",
+          "member": "string",
+          "name": "MNPIcon",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program category.</p>",
+          "example": "物流服务->1_收件/派件",
+          "member": "string",
+          "name": "MNPType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program introduction.</p>",
+          "example": "i18n中文",
+          "member": "string",
+          "name": "MNPIntro",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program version.</p>",
+          "example": "1.0.0",
+          "member": "string",
+          "name": "MNPVersion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program version introduction.</p>",
+          "example": "1.0.0",
+          "member": "string",
+          "name": "MNPVersionIntro",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Applicant.</p>",
+          "example": "mma",
+          "member": "string",
+          "name": "ApplyUser",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Application time.</p>",
+          "example": "1776756547",
+          "member": "string",
+          "name": "ApplyTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approver.</p>",
+          "example": "mma",
+          "member": "string",
+          "name": "AuditUser",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approval time.</p>",
+          "example": "1776756559",
+          "member": "string",
+          "name": "AuditTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approval status. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.</p>",
+          "example": "3",
+          "member": "int64",
+          "name": "AuditStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of associated superapps.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "MNPRelAppCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Information encoded in the mini program QR code.</p>",
+          "example": "tcmpp://applet/?appId=mpdsteb1avwknpls&businessId=vkpxhj8g1mx4ae8143u&timestamp=1776756410&type=3",
+          "member": "string",
+          "name": "QRCodeContent",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approval note.</p>",
+          "example": "note",
+          "member": "string",
+          "name": "AuditNote",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program version ID.</p>",
+          "example": "478",
+          "member": "int64",
+          "name": "MNPVersionId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Age rating information.</p>",
+          "example": "无",
+          "member": "AgeRatingItem",
+          "name": "AgeRatings",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Superapp approval information.</p>",
+          "example": "无",
+          "member": "DescribeMNPAuditDetailAppAuditInfo",
+          "name": "AppAuditList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeMNPVersionAuditDetailResponse": {
+      "document": "DescribeMNPVersionAuditDetail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Response data.</p>",
+          "example": "无",
+          "member": "DescribeMNPVersionAuditDetailResp",
+          "name": "Data",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPVersionAuditInfoResp": {
+      "document": "Mini program approval information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Approval number.</p>",
+          "example": "audw9jufs17lpwy1n1",
+          "member": "string",
+          "name": "AuditNo",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program appid.</p>",
+          "example": "mpdsteb1avwknpls",
+          "member": "string",
+          "name": "MNPId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program name.</p>",
+          "example": "i18n中文",
+          "member": "string",
+          "name": "MNPName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program icon.</p>",
+          "example": "https://tcmpp-dev-renter-1258344699.cos.ap-guangzhou.myqcloud.com/T04914TJ0911724TSAK/tcmpp/10f7400082c941a782ed5b0390ccce8a.png",
+          "member": "string",
+          "name": "MNPIcon",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program category.</p>",
+          "example": "物流服务->1_收件/派件,物流服务->10_邮政",
+          "member": "string",
+          "name": "MNPType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Introduction.</p>",
+          "example": "i18n中文",
+          "member": "string",
+          "name": "MNPIntro",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program version.</p>",
+          "example": "4.0.0",
+          "member": "string",
+          "name": "MNPVersion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Version description.</p>",
+          "example": "4.0.0",
+          "member": "string",
+          "name": "MNPVersionIntro",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Applicant.</p>",
+          "example": "superadmin_hjl",
+          "member": "string",
+          "name": "ApplyUser",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Application time.</p>",
+          "example": "1782368738",
+          "member": "string",
+          "name": "ApplyTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approver.</p>",
+          "example": "superadmin_hjl",
+          "member": "string",
+          "name": "AuditUser",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approval time.</p>",
+          "example": "0",
+          "member": "string",
+          "name": "AuditTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approval status. Valid values: 0: Pending; 1: Processing; 2: Rejected; 3: Approved; 4: Cancelled.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "AuditStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of associated superapps.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "MNPRelAppCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Age rating information.</p>",
+          "example": "无",
+          "member": "AgeRatingItem",
+          "name": "AgeRatings",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Superapp approval information.</p>",
+          "example": "无",
+          "member": "DescribeMNPAuditListAppInfoResp",
+          "name": "AuditAppList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program version ID.</p>",
+          "example": "532",
+          "member": "int64",
+          "name": "MNPVersionId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether it is an auto approval. Valid values: 0 (No), 1 (Yes).</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "IsAutoAudit",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeMNPVersionAuditListRequest": {
+      "document": "DescribeMNPVersionAuditList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Pagination offset.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Pagination count</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Platform ID.</p>",
+          "example": "T04914TJ0911724TSAK",
+          "member": "string",
+          "name": "PlatformId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Mini program appid.</p>",
+          "example": "mpdsteb1avwknpls",
+          "member": "string",
+          "name": "MNPId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMNPVersionAuditListResp": {
+      "document": "Mini program approval information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total number of entries.</p>",
+          "example": "7",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>List data.</p>",
+          "example": "无",
+          "member": "DescribeMNPVersionAuditInfoResp",
+          "name": "DataList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeMNPVersionAuditListResponse": {
+      "document": "DescribeMNPVersionAuditList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Response data.</p>",
+          "example": "无",
+          "member": "DescribeMNPVersionAuditListResp",
+          "name": "Data",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeMNPVersionRequest": {
       "document": "DescribeMNPVersion request structure.",
       "members": [
@@ -13769,7 +15135,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "PaymentDetail",
           "name": "Data",
@@ -13833,7 +15199,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ReportDataResult",
           "name": "Data",
@@ -13915,7 +15281,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data display.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Response data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "MNPPaymentOverview",
           "name": "Data",
@@ -14458,7 +15824,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Team name.",
+          "document": "<p>Team name.</p>",
           "example": "autotest_mini_team",
           "member": "string",
           "name": "TeamName",
@@ -14468,7 +15834,7 @@
         },
         {
           "disabled": false,
-          "document": "Team role type. Valid values: 1: Mini program team; 2: Superapp team.",
+          "document": "<p>Team role type. Valid values: 1: Mini program team; 2: Superapp team.</p>",
           "example": "1",
           "member": "int64",
           "name": "TeamRoleType",
@@ -14478,7 +15844,7 @@
         },
         {
           "disabled": false,
-          "document": "Admin account.",
+          "document": "<p>Administrator account.</p>",
           "example": "autotest_op",
           "member": "string",
           "name": "AdminUserAccount",
@@ -14488,7 +15854,7 @@
         },
         {
           "disabled": false,
-          "document": "Creator.",
+          "document": "<p>Creator.</p>",
           "example": "autotest_admin_admin_admin_admin",
           "member": "string",
           "name": "CreateUser",
@@ -14498,7 +15864,7 @@
         },
         {
           "disabled": false,
-          "document": "Creation time.",
+          "document": "<p>Creation time.</p>",
           "example": "1735544017",
           "member": "string",
           "name": "CreateTime",
@@ -14508,7 +15874,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of team members.",
+          "document": "<p>Number of team members.</p>",
           "example": "1",
           "member": "int64",
           "name": "MemberCount",
@@ -14518,7 +15884,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of bound mini program teams.",
+          "document": "<p>Number of bound mini program teams.</p>",
           "example": "0",
           "member": "int64",
           "name": "BindMiniTeamCount",
@@ -14528,7 +15894,7 @@
         },
         {
           "disabled": false,
-          "document": "Name of the bound team.",
+          "document": "<p>Team name.</p>",
           "example": "autotest_app_team",
           "member": "string",
           "name": "BindTeamName",
@@ -14538,7 +15904,7 @@
         },
         {
           "disabled": false,
-          "document": "Team registration link.",
+          "document": "<p>Team registration link.</p>",
           "example": "http://sample.com/register",
           "member": "string",
           "name": "RegisterLink",
@@ -14548,7 +15914,7 @@
         },
         {
           "disabled": false,
-          "document": "Superapp name. Only returned for mini program teams.",
+          "document": "<p>Superapp name. Only returned for querying details of mini program teams.</p>",
           "example": "autotest_app",
           "member": "string",
           "name": "ApplicationName",
@@ -14558,7 +15924,7 @@
         },
         {
           "disabled": false,
-          "document": "Team expiration time. 0 indicates no expiration. ",
+          "document": "<p>Team expiration time. 0 indicates no expiration.</p>",
           "example": "1761032238",
           "member": "int64",
           "name": "ExpireTime",
@@ -14568,23 +15934,33 @@
         },
         {
           "disabled": false,
-          "document": "Team status. Valid values: 1: Active; 2: Disabled; 3: Expired. ",
+          "document": "<p>Team status. Valid values: 1: Active; 2: Disabled; 3: Expired.</p>",
           "example": "1",
           "member": "int64",
           "name": "Status",
           "output_required": false,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Administrator name.</p>",
+          "example": "cc",
+          "member": "string",
+          "name": "AdminUserName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
     },
     "DescribeTeamListInfoResp": {
-      "document": "Team list information.",
+      "document": "Information of teams.",
       "members": [
         {
           "disabled": false,
-          "document": "Team ID.",
+          "document": "<p>Team ID.</p>",
           "example": "5527683491",
           "member": "string",
           "name": "TeamId",
@@ -14594,7 +15970,7 @@
         },
         {
           "disabled": false,
-          "document": "Team name.",
+          "document": "<p>Team name.</p>",
           "example": "app_team",
           "member": "string",
           "name": "TeamName",
@@ -14604,7 +15980,7 @@
         },
         {
           "disabled": false,
-          "document": "Admin user ID.",
+          "document": "<p>Admin user ID.</p>",
           "example": "U20250305141811KMSUKK",
           "member": "string",
           "name": "AdminUserId",
@@ -14614,7 +15990,7 @@
         },
         {
           "disabled": false,
-          "document": "Admin account.",
+          "document": "<p>Admin account.</p>",
           "example": "xinyu",
           "member": "string",
           "name": "AdminUserAccount",
@@ -14624,7 +16000,7 @@
         },
         {
           "disabled": false,
-          "document": "Admin username.",
+          "document": "<p>Admin username.</p>",
           "example": "xinyu",
           "member": "string",
           "name": "AdminUserName",
@@ -14634,7 +16010,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of team members.",
+          "document": "<p>Number of team members.</p>",
           "example": "1",
           "member": "int64",
           "name": "MemberCount",
@@ -14644,7 +16020,7 @@
         },
         {
           "disabled": false,
-          "document": "Team registration link.",
+          "document": "<p>Team registration link.</p>",
           "example": "https://t05304jw9141741rlrn.console.tcmppcloud.com/team-register/ae2b5accadfd788eefaf3e5409ccbc57",
           "member": "string",
           "name": "RegisterLink",
@@ -14654,7 +16030,7 @@
         },
         {
           "disabled": false,
-          "document": "Team role types. ",
+          "document": "<p>Team role types.</p>",
           "example": "[2]",
           "member": "int64",
           "name": "TeamRoleTypeList",
@@ -14664,7 +16040,7 @@
         },
         {
           "disabled": false,
-          "document": "Associated team ID.",
+          "document": "<p>Associated team ID.</p>",
           "example": "0",
           "member": "int64",
           "name": "RelatedTeamId",
@@ -14674,7 +16050,7 @@
         },
         {
           "disabled": false,
-          "document": "Team expiration time. 0 indicates no expiration.",
+          "document": "<p>Team expiration time. 0 indicates no expiration.</p>",
           "example": "1761032238",
           "member": "int64",
           "name": "ExpireTime",
@@ -14684,12 +16060,22 @@
         },
         {
           "disabled": false,
-          "document": "Team status. Valid values: 1: Active; 2: Disabled; 3: Expired. ",
+          "document": "<p>Team status. Valid values: 1: Active; 2: Disabled; 3: Expired.</p>",
           "example": "1",
           "member": "int64",
           "name": "Status",
           "output_required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Information of multiple team admin users.</p>",
+          "example": "无",
+          "member": "TeamAdminUserInfo",
+          "name": "AdminUsers",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -14700,7 +16086,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Pagination offset.",
+          "document": "<p>Pagination offset.</p>",
           "example": "0",
           "member": "int64",
           "name": "Offset",
@@ -14709,7 +16095,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of entries per page.",
+          "document": "<p>Pagination count.</p>",
           "example": "10",
           "member": "int64",
           "name": "Limit",
@@ -14718,7 +16104,7 @@
         },
         {
           "disabled": false,
-          "document": "Platform ID.",
+          "document": "<p>Platform ID.</p>",
           "example": "T08123WM5791733VNCZ",
           "member": "string",
           "name": "PlatformId",
@@ -14727,7 +16113,7 @@
         },
         {
           "disabled": false,
-          "document": "Search keyword (team name).",
+          "document": "<p>Team name.</p>",
           "example": "name",
           "member": "string",
           "name": "Keyword",
@@ -14742,7 +16128,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Response data.",
+          "document": "<p>Response data.</p>",
           "example": "无",
           "member": "DescribeTeamPageResp",
           "name": "Data",
@@ -14954,7 +16340,7 @@
       "type": "object"
     },
     "DescribeTeamPageResp": {
-      "document": "Paginated team list.",
+      "document": "Paged information of teams",
       "members": [
         {
           "disabled": false,
@@ -14984,7 +16370,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Team ID.",
+          "document": "Team ID",
           "example": "1151697965",
           "member": "string",
           "name": "TeamId",
@@ -14993,7 +16379,7 @@
         },
         {
           "disabled": false,
-          "document": "Platform ID.",
+          "document": "Platform ID",
           "example": "T08123WM5791733VNCZ",
           "member": "string",
           "name": "PlatformId",
@@ -15578,7 +16964,7 @@
       "usage": "out"
     },
     "MAUChartData": {
-      "document": "MAU line chart data.",
+      "document": "Time-series MAU data.",
       "members": [
         {
           "disabled": false,
@@ -15782,7 +17168,7 @@
       "usage": "out"
     },
     "MAULineChartData": {
-      "document": "Line chart data.",
+      "document": "Time-series data.",
       "members": [
         {
           "disabled": false,
@@ -15808,7 +17194,7 @@
       "usage": "out"
     },
     "MNGMAULineChartData": {
-      "document": "Mini game MAU line chart data.",
+      "document": "Time-series MAU data of a mini game.",
       "members": [
         {
           "disabled": false,
@@ -17427,7 +18813,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Team ID.",
+          "document": "<p>Team ID.</p>",
           "example": "1151697965",
           "member": "string",
           "name": "TeamId",
@@ -17436,7 +18822,7 @@
         },
         {
           "disabled": false,
-          "document": "Team name.",
+          "document": "<p>Team name.</p>",
           "example": "AT_team0305080426",
           "member": "string",
           "name": "TeamName",
@@ -17445,7 +18831,7 @@
         },
         {
           "disabled": false,
-          "document": "Platform ID.",
+          "document": "<p>Platform ID.</p>",
           "example": "T08123WM5791772VNCZ",
           "member": "string",
           "name": "PlatformId",
@@ -17454,12 +18840,21 @@
         },
         {
           "disabled": false,
-          "document": "Team administrator.",
+          "document": "<p>Team admin.</p>",
           "example": "U20250211162022WMDVCK",
           "member": "string",
           "name": "AdminUserId",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Team admin user IDs.</p>",
+          "example": "[\"U20250317195616MJXBGA\"]",
+          "member": "string",
+          "name": "AdminUserIds",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -17469,7 +18864,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Response data.",
+          "document": "<p>Response data.</p>",
           "example": "无",
           "member": "BooleanInfo",
           "name": "Data",
@@ -18599,7 +19994,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>Response parameters structure for the application of a mini program team to bind a merchant ID.</p>",
+          "document": "<p>Response parameters structure for requesting payment merchant binding by a mini program team.</p>",
           "example": "无",
           "member": "MerchantBindApprovalResp",
           "name": "Data",
@@ -19144,6 +20539,42 @@
           "name": "I18nList",
           "output_required": false,
           "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TeamAdminUserInfo": {
+      "document": "Team admin information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Admin user ID.</p>",
+          "example": "U20260616103409SEPMYO",
+          "member": "string",
+          "name": "AdminUserId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Admin user account.</p>",
+          "example": "murphypeng_all",
+          "member": "string",
+          "name": "AdminUserAccount",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Admin username.</p>",
+          "example": "murphypeng_all_name",
+          "member": "string",
+          "name": "AdminUserName",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],

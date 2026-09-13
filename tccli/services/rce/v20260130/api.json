@@ -20,6 +20,13 @@
       "name": "AssessEnvironmentRisk",
       "output": "AssessEnvironmentRiskResponse",
       "status": "online"
+    },
+    "ReportEvent": {
+      "document": "Used to report events that do not require real-time decision-making in your business. Our engine will perform computations and apply machine learning to mine risk features from these events, which are then used to support real-time event risk assessment.",
+      "input": "ReportEventRequest",
+      "name": "ReportEvent",
+      "output": "ReportEventResponse",
+      "status": "online"
     }
   },
   "metadata": {
@@ -28,6 +35,264 @@
     "serviceShortName": "rce"
   },
   "objects": {
+    "AddPromotionEvent": {
+      "document": "AddPromotion event details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The ID of the promotion</p>",
+          "example": "pro*************01",
+          "member": "string",
+          "name": "PromotionId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The name of the promotion</p>",
+          "example": "双十一购物节大促活动",
+          "member": "string",
+          "name": "PromotionName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The description of the promotion</p>",
+          "example": "年度最大促销活动，全场商品享受优惠",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The ID of the inviter</p>",
+          "example": "b5********a2",
+          "member": "string",
+          "name": "InviterUserId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The coupon associated with the promotion</p>",
+          "example": "无",
+          "member": "Coupon",
+          "name": "Coupon",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The point associated with the promotion</p>",
+          "example": "无",
+          "member": "CreditPoint",
+          "name": "Point",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The result of participating the promotion</p>",
+          "example": "无",
+          "member": "Result",
+          "name": "Result",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The custom parameters agreed with RCE. An array of objects in K:V format. e.g.[{\"Key\": \"ApproverName\", \"Value\": \"bob\"},{\"Key\":\"ApproverPhone\",\"Value\": \"+86131***85678\"}]</p>",
+          "example": "无",
+          "member": "Cust",
+          "name": "Cust",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "Address": {
+      "document": "Address",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Country</p><p>Parameter format: Compliant with the ISO 3166 standard</p>",
+          "example": "US",
+          "member": "string",
+          "name": "Country",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Province</p>",
+          "example": "NY",
+          "member": "string",
+          "name": "Region",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>City</p>",
+          "example": "New York",
+          "member": "string",
+          "name": "City",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Region</p>",
+          "example": "Manhattan",
+          "member": "string",
+          "name": "District",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Detailed address</p>",
+          "example": "456 Broadway",
+          "member": "string",
+          "name": "Detail",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Postal code</p>",
+          "example": "10001",
+          "member": "string",
+          "name": "ZipCode",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "Amount": {
+      "document": "Amount",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Currency code</p><p>Parameter format: Compliant with the ISO 4217 standard</p>",
+          "example": "USD",
+          "member": "string",
+          "name": "Currency",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Original amount in currency</p>",
+          "example": "299.99",
+          "member": "float",
+          "name": "OriginalAmount",
+          "required": true,
+          "type": "float"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Current exchange rate of base currency converted to USD</p>",
+          "example": "1",
+          "member": "float",
+          "name": "ExchangeRateUSD",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Current exchange rate of base currency converted to CNY</p>",
+          "example": "7.0413",
+          "member": "float",
+          "name": "ExchangeRateCNY",
+          "required": false,
+          "type": "float"
+        }
+      ],
+      "usage": "in"
+    },
+    "App": {
+      "document": "The details of the app, os and device",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The operating system your application is running on</p>",
+          "example": "ios",
+          "member": "string",
+          "name": "OS",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The operating system version  your application is running on</p>",
+          "example": "16.0",
+          "member": "string",
+          "name": "OSVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The manufacturer of  the device your application is running on</p>",
+          "example": "Apple",
+          "member": "string",
+          "name": "DeviceManufacturer",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The model of the device your application is running on</p>",
+          "example": "iPhone 14 Pro",
+          "member": "string",
+          "name": "DeviceModel",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The ID of the device your application is running on</p>",
+          "example": "de*************23",
+          "member": "string",
+          "name": "DeviceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The name of your application</p>",
+          "example": "MyShoppingApp",
+          "member": "string",
+          "name": "AppName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The version of your application</p>",
+          "example": "3.2.1",
+          "member": "string",
+          "name": "AppVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The language of your application</p>",
+          "example": "zh-CN",
+          "member": "string",
+          "name": "ClientLanguage",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
     "AssessDeviceRiskPremiumProRequest": {
       "document": "AssessDeviceRiskPremiumPro request structure.",
       "members": [
@@ -265,6 +530,616 @@
       ],
       "usage": "out"
     },
+    "Billing": {
+      "document": "Bill information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The billing address associated with this user</p>",
+          "example": "无",
+          "member": "Address",
+          "name": "Address",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The phone number associated with the bill</p><p>Parameter format: Complies with the E.164 standard, using the format with \"+\", region code, and number</p>",
+          "example": "+86131********",
+          "member": "string",
+          "name": "Phone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The email associated with the bill</p>",
+          "example": "***************.com",
+          "member": "string",
+          "name": "Email",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The name of the receiver associated with the bill</p>",
+          "example": "Zh******n",
+          "member": "string",
+          "name": "Recipient",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "BrowseEvent": {
+      "document": "Browse event details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Current page type such as home page, search page</p>",
+          "example": "主页",
+          "member": "string",
+          "name": "PageType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Currently page URL</p>",
+          "example": "http://*********.com",
+          "member": "string",
+          "name": "PageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Browsing duration</p><p>Measurement unit: ms</p>",
+          "example": "50",
+          "member": "int64",
+          "name": "Duration",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The type of the content in current page such as ad, video, article</p>",
+          "example": "文章",
+          "member": "string",
+          "name": "ContentType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The ID of the content in current page</p>",
+          "example": "550e8400-****-****-****-446655440000",
+          "member": "string",
+          "name": "ContentId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Previous page type such as home page, search page</p>",
+          "example": "搜索页",
+          "member": "string",
+          "name": "ReferPageType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Previous page URL</p>",
+          "example": "http://****.com",
+          "member": "string",
+          "name": "ReferPageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The ID of the user as guest</p>",
+          "example": "oUp*******************6o",
+          "member": "string",
+          "name": "GuestId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The custom parameters agreed with RCE. An array of objects in K:V format. e.g.[{\"Key\": \"ApproverName\", \"Value\": \"bob\"},{\"Key\":\"ApproverPhone\",\"Value\": \"+86131****5678\"}]</p>",
+          "example": "无",
+          "member": "Cust",
+          "name": "Cust",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "Browser": {
+      "document": "Browser information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The user agent of the browser that interacts with the website</p>",
+          "example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+          "member": "string",
+          "name": "UserAgent",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The language(s) that the client prefers</p><p>Parameter format: Complies with the ISO 3166 standard</p>",
+          "example": "zh-CN,zh;q=0.9,en;q=0.8",
+          "member": "string",
+          "name": "AcceptLanguage",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The language(s) intended for the audience</p><p>Parameter format: Compliant with ISO 3166 standard</p>",
+          "example": "zh-CN",
+          "member": "string",
+          "name": "ContentLanguage",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "Card": {
+      "document": "The details of the card",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Bank identification number.The first six or eight digits of the card number</p><p>Parameter format: Compliant with the ISO 13616-1 standard</p>",
+          "example": "C*****",
+          "member": "string",
+          "name": "CardBin",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The last four digits of the card number</p><p>Parameter format: Compliant with ISO 13616-1 standard</p>",
+          "example": "1**2",
+          "member": "string",
+          "name": "LastFourDigits",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The country where the card issued</p>",
+          "example": "US",
+          "member": "string",
+          "name": "Country",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The bank that issued card</p>",
+          "example": "Chase Bank",
+          "member": "string",
+          "name": "Bank",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>the type of the card</p><p>Enumeration value:</p><ul><li>credit: Credit card</li><li>debit: Debit card</li><li>charge: Charge card</li></ul>",
+          "example": "credit",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The brand of the card</p>",
+          "example": "Visa",
+          "member": "string",
+          "name": "Brand",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The level of the card that the bank defined</p>",
+          "example": "Platinum",
+          "member": "string",
+          "name": "Level",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The full name of the person who hold the card</p>",
+          "example": "ZH******",
+          "member": "string",
+          "name": "HolderName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The expiration date of the card</p><p>Parameter format: YYYY-MM-DD.</p>",
+          "example": "2028-12-31",
+          "member": "string",
+          "name": "ExpireTime",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "ChargeBackEvent": {
+      "document": "ChargeBack event details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The ID of the transaction</p>",
+          "example": "tr**************01",
+          "member": "string",
+          "name": "TransactionId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The ID(s) of the order associated with the transaction</p>",
+          "example": "[\"13********34\"]",
+          "member": "string",
+          "name": "OrderId",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The code of the chargeback defined by the card organization, for example: 10.1, 13.1, 4870, 4871</p>",
+          "example": "4871",
+          "member": "string",
+          "name": "ChargeBackCode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The reason of the chargeback defined by the card organization, for example: non-receipt of goods, fraud</p>",
+          "example": "fraud",
+          "member": "string",
+          "name": "ChargeBackReason",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The process of the chargeback defined by the card organization</p><p>Enumeration values:</p><ul><li>need_response: Merchant needs to respond</li><li>information_supplied: Merchant has provided information</li><li>chargeback_reversed: Chargeback has been canceled</li><li>chargeback_sustained: Chargeback has been established</li></ul>",
+          "example": "need_response",
+          "member": "string",
+          "name": "ChargeBackProcess",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The amount of the chargeback</p>",
+          "example": "无",
+          "member": "Amount",
+          "name": "ChargeBackAmount",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The custom parameters agreed with RCE. An array of objects in K:V format. e.g.[{\"Key\": \"ApproverName\", \"Value\": \"bob\"},{\"Key\":\"ApproverPhone\",\"Value\": \"+86131****5678\"}]</p>",
+          "example": "无",
+          "member": "Cust",
+          "name": "Cust",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "ClaimRedPacketEvent": {
+      "document": "ClaimRedPacket event details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The ID of the promotion</p>",
+          "example": "CA**********86",
+          "member": "string",
+          "name": "PromotionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The Name of the promotion</p>",
+          "example": "夏日狂欢邀新领红包",
+          "member": "string",
+          "name": "PromotionName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The description of the promotion</p>",
+          "example": "邀请好友完成首单，双方各得红包奖励",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The ID of the inviter</p>",
+          "example": "U******27",
+          "member": "string",
+          "name": "InviterUserId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The ID of the red packet</p>",
+          "example": "RP********5",
+          "member": "string",
+          "name": "RedPacketId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The type of red packet, for example, random amount, passcode, standard</p>",
+          "example": "均分红包",
+          "member": "string",
+          "name": "RedPacketType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The amount  in the red packet</p>",
+          "example": "无",
+          "member": "Amount",
+          "name": "RedPacketAmount",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The custom parameters agreed with RCE. An array of objects in K:V format. e.g.[{\"Key\": \"ApproverName\", \"Value\": \"bob\"},{\"Key\":\"ApproverPhone\",\"Value\": \"+86131****5678\"}]</p>",
+          "example": "无",
+          "member": "Cust",
+          "name": "Cust",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "Coupon": {
+      "document": "The details of the coupon",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The unique ID of each coupon</p>",
+          "example": "C*********01",
+          "member": "string",
+          "name": "CouponId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The name of the coupon</p>",
+          "example": "全场八折优惠券",
+          "member": "string",
+          "name": "CouponName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The start time of the coupon</p><p>Parameter format: Millisecond-level time with UTC time zone compliant with ISO 8601.</p>",
+          "example": "2026-01-01T00:00:00.000+08:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The expiration time of the coupon</p><p>Parameter format: Millisecond-level time with UTC time zone compliant with ISO 8601 standard</p>",
+          "example": "2026-01-01T23:59:59.999+08:00",
+          "member": "string",
+          "name": "ExpireTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The percentage rate of the coupon. If discount off is 10%,please send 0.1</p>",
+          "example": "0.2",
+          "member": "float",
+          "name": "PercentageRate",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The discount amount of the coupon</p>",
+          "example": "无",
+          "member": "Amount",
+          "name": "DiscountAmount",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The threshold amount of the coupon</p>",
+          "example": "300",
+          "member": "float",
+          "name": "Threshold",
+          "required": false,
+          "type": "float"
+        }
+      ],
+      "usage": "in"
+    },
+    "CreateOrderEvent": {
+      "document": "CreateOrder event details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The ID of the order</p>",
+          "example": "OI*********th",
+          "member": "string",
+          "name": "OrderId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The amount of the order</p>",
+          "example": "无",
+          "member": "Amount",
+          "name": "Amount",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The detail information of the merchant associated with the order</p>",
+          "example": "无",
+          "member": "Merchant",
+          "name": "Merchant",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The detail information of the bill associated with the order</p>",
+          "example": "无",
+          "member": "Billing",
+          "name": "Billing",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The detail information of the items in the order</p>",
+          "example": "无",
+          "member": "Item",
+          "name": "Items",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The detail information of the delivery associated with the order</p>",
+          "example": "无",
+          "member": "Delivery",
+          "name": "Delivery",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The promotion(s) associated with the order</p>",
+          "example": "无",
+          "member": "Promotion",
+          "name": "Promotions",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The custom parameters agreed with RCE. An array of objects in K:V format. e.g.[{\"Key\": \"ApproverName\", \"Value\": \"bob\"},{\"Key\":\"ApproverPhone\",\"Value\": \"+86131****5678\"}]</p>",
+          "example": "无",
+          "member": "Cust",
+          "name": "Cust",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "CreditPoint": {
+      "document": "The details of the point",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The value of the point</p>",
+          "example": "10",
+          "member": "float",
+          "name": "Point",
+          "required": true,
+          "type": "float"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The type of the point</p>",
+          "example": "credit_point",
+          "member": "string",
+          "name": "PointType",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "Cust": {
+      "document": "Customization parameters agreed with RCE, object array in K:V format",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Key</p>",
+          "example": "registration_channel",
+          "member": "string",
+          "name": "Key",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Value</p>",
+          "example": "web",
+          "member": "string",
+          "name": "Value",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "CustEvent": {
+      "document": "Custom event",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The custom parameters agreed with RCE. An array of objects in K:V format. e.g.[{\"Key\": \"ApproverName\", \"Value\": \"bob\"},{\"Key\":\"ApproverPhone\",\"Value\": \"+86131****5678\"}]</p>",
+          "example": "无",
+          "member": "Cust",
+          "name": "Cust",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
     "DataScore": {
       "document": "Risk score information",
       "members": [
@@ -326,6 +1201,93 @@
         }
       ],
       "usage": "out"
+    },
+    "Delivery": {
+      "document": "Delivery information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The method of the delivery</p><ul><li>physical</li><li>electronic</li></ul>",
+          "example": "physical",
+          "member": "string",
+          "name": "DeliveryMethod",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The fee of the delivery</p>",
+          "example": "无",
+          "member": "Amount",
+          "name": "DeliveryAmount",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The address of the delivery</p>",
+          "example": "无",
+          "member": "Address",
+          "name": "DeliveryAddress",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Phone number of the consignee</p><p>parameter format: format with \"+\", region code, and number that complies with the E.164 standard</p>",
+          "example": "+86131********",
+          "member": "string",
+          "name": "ConsigneePhone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Email of the consignee</p>",
+          "example": "***************.com",
+          "member": "string",
+          "name": "ConsigneeEmail",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Full name of the consignee</p>",
+          "example": "李*",
+          "member": "string",
+          "name": "ConsigneeName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p> Whether is the delivery expedited</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "Expedited",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The carrier of the delivery, usually a logistics company</p>",
+          "example": "顺丰速运",
+          "member": "string",
+          "name": "DeliveryCarrier",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The number(s) used to track the delivery</p>",
+          "example": "SF12******90",
+          "member": "string",
+          "name": "DeliveryTracking",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
     },
     "Device": {
       "document": "The basic infomation of the device",
@@ -453,6 +1415,48 @@
       ],
       "usage": "out"
     },
+    "DigitalOrder": {
+      "document": "The details of the digital order",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The name of the asset</p>",
+          "example": "BTC",
+          "member": "string",
+          "name": "DigitalAsset",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The type of the asset</p><p>Enumeration value:</p><ul><li>coin</li><li>commodity</li><li>crypto</li><li>fiat</li><li>token</li><li>stock</li><li>bond</li></ul>",
+          "example": "crypto",
+          "member": "string",
+          "name": "AssetType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The type of trade being made</p><p>Enumeration value:</p><ul><li>limit: Limit order</li><li>market: Market order</li><li>stop_limit: Stop-limit order</li><li>stop_loss: Stop-loss order</li><li>take_profit: Take-profit order</li><li>take_profit_limit: Take-profit limit order</li></ul>",
+          "example": "limit",
+          "member": "string",
+          "name": "OrderType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The quantity of the digital asset</p>",
+          "example": "0.5",
+          "member": "float",
+          "name": "Volume",
+          "required": false,
+          "type": "float"
+        }
+      ],
+      "usage": "in"
+    },
     "Environment": {
       "document": "The basic information of the IP environment",
       "members": [
@@ -478,6 +1482,192 @@
         }
       ],
       "usage": "out"
+    },
+    "EventDetail": {
+      "document": "Event details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Login</p>",
+          "example": "无",
+          "member": "LoginEvent",
+          "name": "Login",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Registration</p>",
+          "example": "无",
+          "member": "RegisterEvent",
+          "name": "Register",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Create an order</p>",
+          "example": "无",
+          "member": "CreateOrderEvent",
+          "name": "CreateOrder",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Transaction</p>",
+          "example": "无",
+          "member": "TransactionEvent",
+          "name": "Transaction",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>SMS</p>",
+          "example": "无",
+          "member": "SMSEvent",
+          "name": "Sms",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Chargeback</p>",
+          "example": "无",
+          "member": "ChargeBackEvent",
+          "name": "ChargeBack",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Logout</p>",
+          "example": "无",
+          "member": "LogoutEvent",
+          "name": "Logout",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Modify account</p>",
+          "example": "无",
+          "member": "ModifyAccountEvent",
+          "name": "ModifyAccount",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Modify password</p>",
+          "example": "无",
+          "member": "ModifyPasswordEvent",
+          "name": "ModifyPassword",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Security verification</p>",
+          "example": "无",
+          "member": "SecurityVerificationEvent",
+          "name": "SecurityVerification",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Participate in promotion activities</p>",
+          "example": "无",
+          "member": "AddPromotionEvent",
+          "name": "AddPromotion",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Redeem a prize</p>",
+          "example": "无",
+          "member": "RedeemEvent",
+          "name": "Redeem",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Withdrawal</p>",
+          "example": "无",
+          "member": "WithdrawEvent",
+          "name": "Withdraw",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Custom event</p>",
+          "example": "无",
+          "member": "CustEvent",
+          "name": "CustEvent",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Scan the QR code</p>",
+          "example": "无",
+          "member": "ScanCodeEvent",
+          "name": "ScanCode",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Lucky draw</p>",
+          "example": "无",
+          "member": "LuckyDrawEvent",
+          "name": "LuckyDraw",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Perform a task</p>",
+          "example": "无",
+          "member": "TaskEvent",
+          "name": "Task",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Invitation</p>",
+          "example": "无",
+          "member": "InvitationEvent",
+          "name": "Invitation",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Receive a red packet</p>",
+          "example": "无",
+          "member": "ClaimRedPacketEvent",
+          "name": "ClaimRedPacket",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Browse</p>",
+          "example": "无",
+          "member": "BrowseEvent",
+          "name": "Browse",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "usage": "in"
     },
     "IPLocation": {
       "document": "The geographical location of the IP address",
@@ -741,6 +1931,1185 @@
       ],
       "usage": "out"
     },
+    "InvitationEvent": {
+      "document": "Invitation event details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The ID of the invitee</p>",
+          "example": "U*********04",
+          "member": "string",
+          "name": "InviteeUserId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The ID of the promotion</p>",
+          "example": "CA**********86",
+          "member": "string",
+          "name": "PromotionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The name of the promotion</p>",
+          "example": "夏日狂欢老带新立减20元",
+          "member": "string",
+          "name": "PromotionName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The description of the promotion</p>",
+          "example": "邀请好友完成首单，邀请人可得20元无门槛优惠券",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The phone number of the invitee</p><p>Parameter format: Complies with the E.164 standard format, which includes \"+\", region code, and number.</p>",
+          "example": "+86138********",
+          "member": "string",
+          "name": "InviteePhone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The code that the inviter sent to the user</p>",
+          "example": "IN*********2P",
+          "member": "string",
+          "name": "InvitationCode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The url that the inviter sent to the user</p>",
+          "example": "https://*******************************2P",
+          "member": "string",
+          "name": "InvitationUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The channel that inviter used to invite the user </p>",
+          "example": "WeChat",
+          "member": "string",
+          "name": "InvitationChannel",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The custom parameters agreed with RCE. An array of objects in K:V format. e.g.[{\"Key\": \"ApproverName\", \"Value\": \"bob\"},{\"Key\":\"ApproverPhone\",\"Value\": \"+86131****5678\"}]</p>",
+          "example": "无",
+          "member": "Cust",
+          "name": "Cust",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "Inviter": {
+      "document": "Inviter information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The ID of the inviter</p>",
+          "example": "ub****x",
+          "member": "string",
+          "name": "InviterUserId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The phone number of the inviter</p><p>Parameter format: Complies with the E.164 standard format, which includes \"+\", region code, and number.</p>",
+          "example": "+86131********",
+          "member": "string",
+          "name": "InviterPhone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The code that the inviter sent to the user</p>",
+          "example": "INV*****4",
+          "member": "string",
+          "name": "InviteCode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The channel that inviter used to invite the user</p>",
+          "example": "微信好友",
+          "member": "string",
+          "name": "InviteChannel",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "Item": {
+      "document": "The details of the item",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The unique ID of the item</p>",
+          "example": "c509************************20dc",
+          "member": "string",
+          "name": "ItemId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The name of the item</p>",
+          "example": "Bear doll",
+          "member": "string",
+          "name": "ItemName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The category of the item</p>",
+          "example": "toy",
+          "member": "string",
+          "name": "Category",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The price of the item</p>",
+          "example": "无",
+          "member": "Amount",
+          "name": "Price",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>If the item has a UPC (Universal Product Code), please provide it here.</p>",
+          "example": "96782361357",
+          "member": "string",
+          "name": "UPC",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>If the item has an EAN (European Article Number), please provide it here.</p>",
+          "example": "12345231953",
+          "member": "string",
+          "name": "EAN",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>If the item has an SKU (Stock Keeping Unit), please provide it here.</p>",
+          "example": "TOY-BLACK-1554",
+          "member": "string",
+          "name": "SKU",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>If the item has an ISBN (International Standard Book Number), please provide it here.</p>",
+          "example": "1425546",
+          "member": "string",
+          "name": "ISBN",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The brand of the item</p>",
+          "example": "July",
+          "member": "string",
+          "name": "Brand",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The quantity of the item</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "Quantity",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The manufacture of the item</p>",
+          "example": "Ford Toy Company",
+          "member": "string",
+          "name": "Manufacturer",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The tags of the item in your system</p>",
+          "example": "funny,doll",
+          "member": "string",
+          "name": "Tags",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "LoginEvent": {
+      "document": "Login event detail",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Basic user information</p>",
+          "example": "无",
+          "member": "User",
+          "name": "UserInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The user name entered when the user logged in</p>",
+          "example": "u_dscv",
+          "member": "string",
+          "name": "UserLoginName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Login result</p>",
+          "example": "无",
+          "member": "Result",
+          "name": "LoginResult",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The custom parameters agreed with RCE. An array of objects in K:V format. e.g.[{\"Key\": \"ApproverName\", \"Value\": \"bob\"},{\"Key\":\"ApproverPhone\",\"Value\": \"+86131****5678\"}]</p>",
+          "example": "无",
+          "member": "Cust",
+          "name": "Cust",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "LogoutEvent": {
+      "document": "Logout event details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The detail information of the user</p>",
+          "example": "无",
+          "member": "User",
+          "name": "UserInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The user name entered when the user logged in</p>",
+          "example": "zh*********90",
+          "member": "string",
+          "name": "UserLoginName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The custom parameters agreed with RCE. An array of objects in K:V format. e.g.[{\"Key\": \"ApproverName\", \"Value\": \"bob\"},{\"Key\":\"ApproverPhone\",\"Value\": \"+86131****5678\"}]</p>",
+          "example": "无",
+          "member": "Cust",
+          "name": "Cust",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "LuckyDrawEvent": {
+      "document": "LuckyDraw event details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The ID of the promotion</p>",
+          "example": "CA**********86",
+          "member": "string",
+          "name": "PromotionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The name of the promotion</p>",
+          "example": "夏日狂欢幸运大转盘",
+          "member": "string",
+          "name": "PromotionName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The description of the promotion</p>",
+          "example": "完成每日任务即可获得抽奖机会",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The ID of the inviter</p>",
+          "example": "U*******7",
+          "member": "string",
+          "name": "InviterUserId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of lucky draw</p><p>Unit: count</p>",
+          "example": "3",
+          "member": "int64",
+          "name": "LuckyDrawCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Type of lucky draw</p>",
+          "example": "TURN_TABLE",
+          "member": "string",
+          "name": "LuckyDrawType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The custom parameters agreed with RCE. An array of objects in K:V format. e.g.[{\"Key\": \"ApproverName\", \"Value\": \"bob\"},{\"Key\":\"ApproverPhone\",\"Value\": \"+86131****5678\"}]</p>",
+          "example": "无",
+          "member": "Cust",
+          "name": "Cust",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "Merchant": {
+      "document": "The details of the merchant",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The ID of the merchant</p>",
+          "example": "M****",
+          "member": "string",
+          "name": "MerchantId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The name of the merchant</p>",
+          "example": "July's Toy",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Merchant registration time</p><p>Parameter format: Millisecond-level time with UTC time zone compliant with ISO 8601</p>",
+          "example": "2023-01-01T10:00:00.000+08:00",
+          "member": "string",
+          "name": "RegisterTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Merchant category code</p><p>Parameter format: 4-digit No. compliant with ISO 18245</p>",
+          "example": "5945",
+          "member": "string",
+          "name": "Category",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The phone number of the merchant</p><p>parameter format: format with \"+\", region code, and number that complies with the E.164 standard</p>",
+          "example": "+86131********",
+          "member": "string",
+          "name": "Phone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The email of the merchant</p>",
+          "example": "****************.com",
+          "member": "string",
+          "name": "Email",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The url of the merchant shop on the website</p>",
+          "example": "https://julytoy.com",
+          "member": "string",
+          "name": "URL",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The address of the merchant</p>",
+          "example": "无",
+          "member": "Address",
+          "name": "Address",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The level of the merchant</p>",
+          "example": "金牌商家",
+          "member": "string",
+          "name": "Level",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The type of the merchant</p><p>Enumeration value:</p><ul><li>person: Person</li><li>company: Company</li></ul>",
+          "example": "person",
+          "member": "string",
+          "name": "BusinessType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The volume of goods on sale of the merchant</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "GoodsQuantity",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The historical sales volume of the merchant</p>",
+          "example": "500",
+          "member": "int64",
+          "name": "HistoricSalesQuantity",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The historical sales amount of the merchant</p>",
+          "example": "无",
+          "member": "Amount",
+          "name": "HistoricSalesAmount",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "usage": "in"
+    },
+    "ModifyAccountEvent": {
+      "document": "ModifyAccount event details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The detail information of the user</p>",
+          "example": "无",
+          "member": "User",
+          "name": "UserInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The personal information of the account when registered</p>",
+          "example": "无",
+          "member": "Person",
+          "name": "Person",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The billing address the user provided when registered</p>",
+          "example": "无",
+          "member": "Address",
+          "name": "BillingAddress",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The delivery address the user provided when registered</p>",
+          "example": "无",
+          "member": "Address",
+          "name": "DeliveryAddress",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The custom parameters agreed with RCE. An array of objects in K:V format. e.g.[{\"Key\": \"ApproverName\", \"Value\": \"bob\"},{\"Key\":\"ApproverPhone\",\"Value\": \"+86131****5678\"}]</p>",
+          "example": "无",
+          "member": "Cust",
+          "name": "Cust",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "ModifyPasswordEvent": {
+      "document": "ModifyPassword event details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The reason why the password was updated</p><p>Enumeration value:</p><ul><li>user_modify: User self-initiated modification</li><li>forgot_password: Forget password</li><li>forced_reset: System forcing reset</li></ul>",
+          "example": "user_modify",
+          "member": "string",
+          "name": "Reason",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The custom parameters agreed with RCE. An array of objects in K:V format. e.g.[{\"Key\": \"ApproverName\", \"Value\": \"bob\"},{\"Key\":\"ApproverPhone\",\"Value\": \"+86131****5678\"}]</p>",
+          "example": "无",
+          "member": "Cust",
+          "name": "Cust",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "Order": {
+      "document": "The details of the order",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The ID of the order</p>",
+          "example": "20*************01",
+          "member": "string",
+          "name": "OrderId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The amount of the order</p>",
+          "example": "无",
+          "member": "Amount",
+          "name": "Amount",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The detail information of the items in the order</p>",
+          "example": "无",
+          "member": "Item",
+          "name": "Items",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The detail information of the delivery associated with the order</p>",
+          "example": "无",
+          "member": "Delivery",
+          "name": "Delivery",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "usage": "in"
+    },
+    "PaymentMethod": {
+      "document": "Payment method",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Payment method</p><p>Enumeration value:</p><ul><li>cash</li><li>check</li><li>credit_card</li><li>debit_card</li><li>crypto_currency</li><li>digital_wallet</li><li>gift_card</li><li>points</li><li>in_app_purchase</li><li>electronic_fund_transfer</li><li>financing</li><li>invoice</li><li>prepaid_card</li><li>sepa_credit</li></ul>",
+          "example": "credit_card",
+          "member": "string",
+          "name": "PaymentType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The channel of the payment</p>",
+          "example": "stripe",
+          "member": "string",
+          "name": "PaymentChannel",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The details of the card.Required while PaymentMethod is \"credit_card\",\"debit_card\"</p>",
+          "example": "无",
+          "member": "Card",
+          "name": "Card",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>SEPA direct debit mandate</p><p>Enumeration value:</p><ul><li>true: Yes</li><li>false: No</li></ul>",
+          "example": "true",
+          "member": "bool",
+          "name": "SEPADirectDebitMandate",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The details of the digital wallet when involved digital trade</p>",
+          "example": "无",
+          "member": "Wallet",
+          "name": "DigitalWallet",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "usage": "in"
+    },
+    "PaymentResult": {
+      "document": "Payment result",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The status of the payment</p><p>Enumeration values: </p><ul><li>success: Success, </li><li>failure: Failure.</li></ul>",
+          "example": "failure",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The reason why the payment has been declined. e.g.card_declined</p>",
+          "example": "交易被拒",
+          "member": "string",
+          "name": "FailureReason",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether the 3DS has been used in the payment,  enumeration value:</p><ul><li>Yes: true</li><li>No: false</li></ul>",
+          "example": "true",
+          "member": "bool",
+          "name": "ThreeDomainSecure",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The ECI code returned when 3DS used</p>",
+          "example": "05",
+          "member": "string",
+          "name": "ECICode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Response code from the AVS used for address verification</p>",
+          "example": "Y",
+          "member": "string",
+          "name": "AVSCode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Response code from the CVC used for payment authenticity</p>",
+          "example": "M",
+          "member": "string",
+          "name": "CVCCode",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "Person": {
+      "document": "Personal information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The full name of the user if provided</p>",
+          "example": "Tom Smith",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The gender of the user if provided</p>",
+          "example": "male",
+          "member": "string",
+          "name": "Gender",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The birthday of the user if provided</p><p>Parameter format: YYYY-MM-DD.</p>",
+          "example": "1990-10-01",
+          "member": "string",
+          "name": "Birthday",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The degree of the user if provided</p>",
+          "example": "bachelor",
+          "member": "string",
+          "name": "Degree",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The occupation of the user if provided</p>",
+          "example": "engineer",
+          "member": "string",
+          "name": "Occupation",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "Promotion": {
+      "document": "The details of the promotion",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The ID of the promotion</p>",
+          "example": "p******01",
+          "member": "string",
+          "name": "PromotionId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The name of the promotion</p>",
+          "example": "注册福利",
+          "member": "string",
+          "name": "PromotionName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The description of the promotion</p>",
+          "example": "2026新用户注册福利",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The ID of the inviter</p>",
+          "example": "e0*****b",
+          "member": "string",
+          "name": "InviterUserId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The coupon(s) associated with the promotion</p>",
+          "example": "无",
+          "member": "Coupon",
+          "name": "Coupon",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The point(s) associated with the promotion</p>",
+          "example": "无",
+          "member": "CreditPoint",
+          "name": "CreditPoint",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "usage": "in"
+    },
+    "PromotionCode": {
+      "document": "The details of the promotion code",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The ID of the promotion code</p>",
+          "example": "A8******M5",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The type of the promotion code, for example: qrcode, barcode, miniprogram code</p>",
+          "example": "qrcode",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The url or hyperlink to the image</p>",
+          "example": "https://********************************",
+          "member": "string",
+          "name": "ImageLink",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The address where the promotion code worked</p>",
+          "example": "无",
+          "member": "Address",
+          "name": "Address",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The item(s) associated with the promotion code</p>",
+          "example": "无",
+          "member": "Item",
+          "name": "Items",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "RedeemEvent": {
+      "document": "Redeem event details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The ID of the promotion</p>",
+          "example": "pro*************01",
+          "member": "string",
+          "name": "PromotionId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The name of the promotion</p>",
+          "example": "双十一购物节大促活动",
+          "member": "string",
+          "name": "PromotionName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The description of the promotion</p>",
+          "example": "年度最大促销活动，全场商品享受优惠",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The ID of the inviter</p>",
+          "example": "b5********a2",
+          "member": "string",
+          "name": "InviterUserId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Order information associated with the redemption</p>",
+          "example": "无",
+          "member": "Order",
+          "name": "Order",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The result of redemption</p>",
+          "example": "无",
+          "member": "Result",
+          "name": "Result",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The custom parameters agreed with RCE. An array of objects in K:V format. e.g.[{\"Key\": \"ApproverName\", \"Value\": \"bob\"},{\"Key\":\"ApproverPhone\",\"Value\": \"+86131****5678\"}]</p>",
+          "example": "无",
+          "member": "Cust",
+          "name": "Cust",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "RegisterEvent": {
+      "document": "Register event details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The result of the register</p>",
+          "example": "无",
+          "member": "Result",
+          "name": "RegisterResult",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The detail information of the user</p>",
+          "example": "无",
+          "member": "User",
+          "name": "UserInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The personal information of the account when registered</p>",
+          "example": "无",
+          "member": "Person",
+          "name": "Person",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The billing address the user provided when registered</p>",
+          "example": "无",
+          "member": "Address",
+          "name": "BillingAddress",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The delivery address the user provided when registered</p>",
+          "example": "无",
+          "member": "Address",
+          "name": "DeliveryAddress",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The detail information of the inviter who invited the user to your business</p>",
+          "example": "无",
+          "member": "Inviter",
+          "name": "Inviter",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The custom parameters agreed with RCE. An array of objects in K:V format. e.g.[{\"Key\": \"ApproverName\", \"Value\": \"bob\"},{\"Key\":\"ApproverPhone\",\"Value\": \"+86131****5678\"}]</p>",
+          "example": "无",
+          "member": "Cust",
+          "name": "Cust",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "ReportEventRequest": {
+      "document": "ReportEvent request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Event code. Used to specify the scenario node for business access.</p><p> Standard events under the account protection product include:</p><ul><li> login: Log in<p></p></li> <li>register: Register </li><li>sms: SMS </li><li>logout: Log out </li><li>modify_account: Modify account </li><li>modify_password: Modify password </li><li>security_verification: Security verification</li></ul><p>Standard events under the payment protection product include:</p><ul><li>create_order: Create an order</li><li>transaction: Transaction</li><li>charge_back: Chargeback</li></ul><p>Standard events under the promotion protection product include:</p><ul><li>add_promotion: Participate in promotions </li><li>redeem: Redeem a prize </li><li>withdraw: Withdraw</li><li>cust_event: Custom event, cust_xxx </li><li>scan_code: Scan a code </li><li>lucky_draw: Lucky draw </li><li>task: Complete a task </li><li>invitation: Invitation </li><li>claim_red_packet: Receive a red packet </li><li>browse: Browse</li></ul><p>Custom events can be evaluated for risk based on an agreement with RCE</p>",
+          "example": "login",
+          "member": "string",
+          "name": "EventCode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The time when the event occurred</p><p>Parameter format: Millisecond-level time with UTC time zone compliant with the ISO 8601 standard</p>",
+          "example": "2026-07-07T15:16:31.000+08:00",
+          "member": "string",
+          "name": "EventTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The user's current session ID used to associate with the actions before and after logging in. If UserId is not passed, SessionId is required. If missing, an empty string can be filled.</p>",
+          "example": "se****************56",
+          "member": "string",
+          "name": "SessionId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The token provided by the SDK integrated in your web site or application</p>",
+          "example": "v3:**********************************************************************************************bzxeC9FTtHon0Vq+zEB0iKhM5OGvG",
+          "member": "string",
+          "name": "DeviceToken",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>User client IP address (IPv4 or IPv6)</p>",
+          "example": "192.***.*.100",
+          "member": "string",
+          "name": "UserIp",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Event details, import corresponding event information based on the event code you input</p>",
+          "example": "无",
+          "member": "EventDetail",
+          "name": "EventDetail",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The user's account ID in your system</p>",
+          "example": "u*******56",
+          "member": "string",
+          "name": "UserId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Email of the user</p>",
+          "example": "u***********.com",
+          "member": "string",
+          "name": "UserEmail",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Phone number of the user</p><p>Parameter format: Complies with the E.164 standard format, which includes \"+\", region code, and number</p>",
+          "example": "+86138********",
+          "member": "string",
+          "name": "UserPhone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The details of the browser. If you've already integrated our device SDK, this field is not required</p>",
+          "example": "无",
+          "member": "Browser",
+          "name": "Browser",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The details of the app, os and device.If you've already integrated our device SDK, this field is not required</p>",
+          "example": "无",
+          "member": "App",
+          "name": "App",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ReportEventResponse": {
+      "document": "ReportEvent response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Result": {
+      "document": "Event result",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Actual completion status</p><p>Enumeration values:</p><ul><li>success: Success,</li><li>failure: Failure.</li></ul>",
+          "example": "failure",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Failure reason</p>",
+          "example": "登录用户名或密码错误",
+          "member": "string",
+          "name": "FailureReason",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
     "RiskLabel": {
       "document": "Risk label",
       "members": [
@@ -766,6 +3135,540 @@
         }
       ],
       "usage": "out"
+    },
+    "SMSEvent": {
+      "document": "SMS event details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The detail information of the user</p>",
+          "example": "无",
+          "member": "User",
+          "name": "UserInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The unique ID of the sms</p>",
+          "example": "sms_***********01",
+          "member": "string",
+          "name": "SMSId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The time that the user received the sms</p><p>Parameter format: Millisecond-level time with UTC time zone compliant with ISO 8601 standard</p>",
+          "example": "2026-07-07T11:07:31.000+08:00",
+          "member": "string",
+          "name": "ReceivedTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The action of the user after receiving the sms</p><ul><li>no_action: No action from the user</li><li>safe: User confirmation of the correct person's action</li><li>compromised: Feedback from real users indicates third-party action</li></ul>",
+          "example": "no_action",
+          "member": "string",
+          "name": "Action",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The result of the sms</p>",
+          "example": "无",
+          "member": "Result",
+          "name": "SMSResult",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The custom parameters agreed with RCE. An array of objects in K:V format. e.g.[{\"Key\": \"ApproverName\", \"Value\": \"bob\"},{\"Key\":\"ApproverPhone\",\"Value\": \"+86131****5678\"}]</p>",
+          "example": "无",
+          "member": "Cust",
+          "name": "Cust",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "ScanCodeEvent": {
+      "document": "ScanCode event details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Promotion code information</p>",
+          "example": "无",
+          "member": "PromotionCode",
+          "name": "PromotionCode",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The ID of the promotion</p>",
+          "example": "CA**********86",
+          "member": "string",
+          "name": "PromotionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The name of the promotion</p>",
+          "example": "夏日狂欢老带新立减20元",
+          "member": "string",
+          "name": "PromotionName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The description of the promotion</p>",
+          "example": "邀请好友完成首单，邀请人可得20元无门槛优惠券",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The ID of the inviter</p>",
+          "example": "U*******7",
+          "member": "string",
+          "name": "InviterUserId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The custom parameters agreed with RCE. An array of objects in K:V format. e.g.[{\"Key\": \"ApproverName\", \"Value\": \"bob\"},{\"Key\":\"ApproverPhone\",\"Value\": \"+86131****5678\"}]</p>",
+          "example": "无",
+          "member": "Cust",
+          "name": "Cust",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "SecurityVerificationEvent": {
+      "document": "SecurityVerification event details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The event type being verified</p><p>Enumeration values:</p><ul><li>register</li><li>login</li><li>modify_account</li><li>modify_password</li><li>create_order</li><li>transaction</li><li>modify_order</li><li>withdraw</li><li>add_promotion</li><li>redeem</li></ul>",
+          "example": "add_promotion",
+          "member": "string",
+          "name": "VerificationEvent",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The type of security verification: sms, phone call, email, captcha, shared knowledge, human face, fingerprint, etc</p>",
+          "example": "sms",
+          "member": "string",
+          "name": "VerificationType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The content of the security verifcation.This value should be passed when the verification type is set to sms, phone_call, email captcha or shared_knowledge</p>",
+          "example": "+86138********",
+          "member": "string",
+          "name": "VerificationContent",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The result of security verification</p>",
+          "example": "无",
+          "member": "Result",
+          "name": "VerificationResult",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The custom parameters agreed with RCE. An array of objects in K:V format. e.g.[{\"Key\": \"ApproverName\", \"Value\": \"bob\"},{\"Key\":\"ApproverPhone\",\"Value\": \"+86131****5678\"}]</p>",
+          "example": "无",
+          "member": "Cust",
+          "name": "Cust",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "TaskEvent": {
+      "document": "Task event details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The ID of the promotion</p>",
+          "example": "CA**********86",
+          "member": "string",
+          "name": "PromotionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The name of the promotion</p>",
+          "example": "夏日狂欢积分大放送",
+          "member": "string",
+          "name": "PromotionName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The description of the promotion</p>",
+          "example": "完成指定任务可获得双倍积分",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The ID of the inviter</p>",
+          "example": "U*******7",
+          "member": "string",
+          "name": "InviterUserId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The ID of the task</p>",
+          "example": "TA******12",
+          "member": "string",
+          "name": "TaskId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The name of the task</p>",
+          "example": "每日签到打卡",
+          "member": "string",
+          "name": "TaskName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task type, such as daily check-in, ad viewing, or step accumulation</p>",
+          "example": "签到打卡",
+          "member": "string",
+          "name": "TaskType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task completed duration</p><p>Measurement unit: ms</p>",
+          "example": "5000",
+          "member": "int64",
+          "name": "TaskCostTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The custom parameters agreed with RCE. An array of objects in K:V format. e.g.[{\"Key\": \"ApproverName\", \"Value\": \"bob\"},{\"Key\":\"ApproverPhone\",\"Value\": \"+86131****5678\"}]</p>",
+          "example": "无",
+          "member": "Cust",
+          "name": "Cust",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "TransactionEvent": {
+      "document": "Transaction event details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The unique ID of the transaction</p>",
+          "example": "tx******************01",
+          "member": "string",
+          "name": "TransactionId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The ID(s) of the order associated with the transaction</p>",
+          "example": "[\"OI**********h\"]",
+          "member": "string",
+          "name": "OrderId",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The amount of the transaction</p>",
+          "example": "无",
+          "member": "Amount",
+          "name": "PaymentAmount",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The detail information of the payment method associated with the transaction</p>",
+          "example": "无",
+          "member": "PaymentMethod",
+          "name": "PaymentMethod",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Transaction type</p><p>Enumeration value:</p><ul><li>sale: One-time authorization and deduction (most common)</li><li>authorize: Authorization only (frozen amount)</li><li>capture: Execute deduction (after authorization)</li><li>void: Cancel pending authorization or deduction</li><li>refund: Refund (part or all)</li><li>deposit: Deposit to account</li><li>withdrawal: Withdrawal from account</li><li>transfer: Fund transfer between accounts</li><li>buy: Purchase asset (for example, crypto currency)</li><li>sell: Sell asset</li><li>send: Send fund/asset (for example, cross-wallet transfer)</li><li>receive: Receive fund/asset</li></ul><p>Default value: sale</p>",
+          "example": "sale",
+          "member": "string",
+          "name": "TransactionType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Bill information</p>",
+          "example": "无",
+          "member": "Billing",
+          "name": "Billing",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Delivery information</p>",
+          "example": "无",
+          "member": "Delivery",
+          "name": "Delivery",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Merchant information</p>",
+          "example": "无",
+          "member": "Merchant",
+          "name": "Merchant",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Payment result</p>",
+          "example": "无",
+          "member": "PaymentResult",
+          "name": "PaymentResult",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The ID of the recipent in transfer transaction</p>",
+          "example": "re*************89",
+          "member": "string",
+          "name": "TransferRecipientUserId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The address of the sender in transfer transaction</p>",
+          "example": "无",
+          "member": "Address",
+          "name": "TransferSentAddress",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Physical address of the recipient, applicable to the transfer transaction type.</p>",
+          "example": "无",
+          "member": "Address",
+          "name": "TransferReceivedAddress",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The digital order(s) associated with the transaction</p>",
+          "example": "无",
+          "member": "DigitalOrder",
+          "name": "DigitalOrders",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Wallet to receive crypto currency</p>",
+          "example": "无",
+          "member": "Wallet",
+          "name": "ReceiverWallet",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The custom parameters agreed with RCE. An array of objects in K:V format. e.g.[{\"Key\": \"ApproverName\", \"Value\": \"bob\"},{\"Key\":\"ApproverPhone\",\"Value\": \"+86131****5678\"}]</p>",
+          "example": "无",
+          "member": "Cust",
+          "name": "Cust",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "User": {
+      "document": "The detail information of the user",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The level of the user in your system</p>",
+          "example": "golden",
+          "member": "string",
+          "name": "UserLevel",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The point of the user in your system</p>",
+          "example": "无",
+          "member": "CreditPoint",
+          "name": "UserPoint",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The type of the user in your system</p>",
+          "example": "person",
+          "member": "string",
+          "name": "UserType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "Wallet": {
+      "document": "The details of the digital wallet",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Wallet type</p><p>Enumeration value:</p><ul><li>crypto: Crypto currency</li><li>digital: Digital currency</li><li>fiat: Fiat currency</li></ul>",
+          "example": "crypto",
+          "member": "string",
+          "name": "WalletType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The address of the wallet.Usually it is the ID of the wallet.</p>",
+          "example": "0x74******************c1",
+          "member": "string",
+          "name": "WalletAddress",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The full name of the person who holds  the wallet</p>",
+          "example": "Li**",
+          "member": "string",
+          "name": "WalletHolderName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The provider of the wallet, such as wechat, alipay, paypal</p>",
+          "example": "metamask",
+          "member": "string",
+          "name": "WalletProvider",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "WithdrawEvent": {
+      "document": "Withdraw event details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The amount of the withdraw</p>",
+          "example": "无",
+          "member": "Amount",
+          "name": "Amount",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The method of the withdraw</p><p>Enumeration value:</p><ul><li>card: bank card</li><li>wallet: digital wallet</li></ul>",
+          "example": "card",
+          "member": "string",
+          "name": "Method",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The detail information of the card withdrawn to.Required while the withdraw method is card</p>",
+          "example": "无",
+          "member": "Card",
+          "name": "Card",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The detail information of the wallet withdrawn to.Required while the withdraw method is wallet</p>",
+          "example": "无",
+          "member": "Wallet",
+          "name": "Wallet",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Withdraw result</p>",
+          "example": "无",
+          "member": "Result",
+          "name": "Result",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The custom parameters agreed with RCE. An array of objects in K:V format. e.g.[{\"Key\": \"ApproverName\", \"Value\": \"bob\"},{\"Key\":\"ApproverPhone\",\"Value\": \"+86131****5678\"}]</p>",
+          "example": "无",
+          "member": "Cust",
+          "name": "Cust",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
     }
   }
 }
