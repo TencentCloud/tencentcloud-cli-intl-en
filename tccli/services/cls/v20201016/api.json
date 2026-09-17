@@ -77,6 +77,13 @@
       "output": "CreateAlarmShieldResponse",
       "status": "online"
     },
+    "CreateCLSDeliverTask": {
+      "document": "Create a CLS shipping task",
+      "input": "CreateCLSDeliverTaskRequest",
+      "name": "Create a CLS shipping task",
+      "output": "CreateCLSDeliverTaskResponse",
+      "status": "online"
+    },
     "CreateCloudProductLogCollection": {
       "document": "Cloud product integration uses internal APIs",
       "input": "CreateCloudProductLogCollectionRequest",
@@ -320,6 +327,13 @@
       "input": "DeleteAlarmShieldRequest",
       "name": "Deletes an alarm blocking rule",
       "output": "DeleteAlarmShieldResponse",
+      "status": "online"
+    },
+    "DeleteCLSDeliverTask": {
+      "document": "Delete a CLS shipping task",
+      "input": "DeleteCLSDeliverTaskRequest",
+      "name": "Deletes a CLS delivery task",
+      "output": "DeleteCLSDeliverTaskResponse",
       "status": "online"
     },
     "DeleteCloudProductLogCollection": {
@@ -572,6 +586,13 @@
       "input": "DescribeAlertRecordHistoryRequest",
       "name": "Gets alarm records",
       "output": "DescribeAlertRecordHistoryResponse",
+      "status": "online"
+    },
+    "DescribeCLSDeliverTasks": {
+      "document": "This API is used to get the CLS delivery task list.",
+      "input": "DescribeCLSDeliverTasksRequest",
+      "name": "This API is used to get the CLS delivery task list.",
+      "output": "DescribeCLSDeliverTasksResponse",
       "status": "online"
     },
     "DescribeCloudProductLogTasks": {
@@ -1006,6 +1027,13 @@
       "input": "ModifyAlarmShieldRequest",
       "name": "Modifies alarm blocking rules",
       "output": "ModifyAlarmShieldResponse",
+      "status": "online"
+    },
+    "ModifyCLSDeliverTask": {
+      "document": "Modify a CLS shipping task",
+      "input": "ModifyCLSDeliverTaskRequest",
+      "name": "Modify a CLS shipping task",
+      "output": "ModifyCLSDeliverTaskResponse",
       "status": "online"
     },
     "ModifyCloudProductLogCollection": {
@@ -2755,6 +2783,142 @@
         }
       ],
       "usage": "both"
+    },
+    "CLSDeliverTaskInfo": {
+      "document": "Delivery task information across different accounts",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "37bba0da-c899-460b-9831-925c7978602e",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task name</p>",
+          "example": "b*******_test1",
+          "member": "string",
+          "name": "TaskName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Main account id</p>",
+          "example": "100001001014",
+          "member": "uint64",
+          "name": "Uin",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Source topic information</p>",
+          "example": "无",
+          "member": "SourceTopicConfig",
+          "name": "SourceTopicConfig",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Target topic information</p>",
+          "example": "无",
+          "member": "TargetTopicConfig",
+          "name": "TargetTopicConfig",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Shipping Rule</p>",
+          "example": "无",
+          "member": "DeliverRule",
+          "name": "DeliverRule",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Compliance guarantee</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "Compliance",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task status.</p><p>Enumeration values: </p><ul><li>0: Running, </li><li>1: Paused, </li><li>2: Completed, </li><li>3: Exception.</li></ul>",
+          "example": "0",
+          "member": "uint64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Status.</p><p>Enumeration values: </p><ul><li>0: Running, </li><li>1: Suspended.</li></ul>",
+          "example": "1",
+          "member": "uint64",
+          "name": "Enable",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task progress percentage</p>",
+          "example": "0",
+          "member": "uint64",
+          "name": "Progress",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether delivery service log is enabled.</p><p>Enumeration values:</p><ul><li>1: Disabled</li><li>2: Enabled</li></ul>",
+          "example": "2",
+          "member": "uint64",
+          "name": "HasServicesLog",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Creation time.</p><p>Unit: unix second-level timestamp</p>",
+          "example": "1776743933",
+          "member": "uint64",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Update time</p><p>Unit: unix second-level timestamp</p>",
+          "example": "1776915747",
+          "member": "uint64",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "CallBackInfo": {
       "document": "Callback configuration",
@@ -4753,6 +4917,88 @@
           "disabled": false,
           "document": "Blocking Rule ID",
           "example": "cb37f589-6232-431a-xxxx-e2b61fb375d1",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCLSDeliverTaskRequest": {
+      "document": "CreateCLSDeliverTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task name</p><p>Parameter format: <code>^[a-zA-Z0-9_-]{1,64}$</code></p>",
+          "example": "b*******_test_ap-tokyo_cross",
+          "member": "string",
+          "name": "TaskName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Source topic information</p>",
+          "example": "无",
+          "member": "SourceTopicConfig",
+          "name": "SourceTopicConfig",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Target topic information</p>",
+          "example": "无",
+          "member": "TargetTopicConfig",
+          "name": "TargetTopicConfig",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Shipping Rule</p>",
+          "example": "无",
+          "member": "DeliverRule",
+          "name": "DeliverRule",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Compliance commitment.</p><p>Enumeration values:</p><ul><li>1: Agree to the cross-border data transmission clause</li></ul>",
+          "example": "1",
+          "member": "uint64",
+          "name": "Compliance",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable delivery service log.</p><p>Enumeration values:</p><ul><li>1: Disabled</li><li>2: Enabled</li></ul><p>Default value: 2</p>",
+          "example": "2",
+          "member": "uint64",
+          "name": "HasServicesLog",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCLSDeliverTaskResponse": {
+      "document": "CreateCLSDeliverTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "5c1f1002-ceb1-4b45-a2f9-bcfc1fbd23ed",
           "member": "string",
           "name": "TaskId",
           "output_required": true,
@@ -9288,6 +9534,33 @@
       ],
       "type": "object"
     },
+    "DeleteCLSDeliverTaskRequest": {
+      "document": "DeleteCLSDeliverTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "986d9c8a-a274-4ea6-81cf-bbcae096f19e",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteCLSDeliverTaskResponse": {
+      "document": "DeleteCLSDeliverTask response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteCloudProductLogCollectionRequest": {
       "document": "DeleteCloudProductLogCollection request structure.",
       "members": [
@@ -10381,6 +10654,23 @@
       ],
       "usage": "both"
     },
+    "DeliverRule": {
+      "document": "Shipping Rule",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Data delivery range.</p><p>Enumeration values:</p><ul><li>1: History + newly added data</li><li>2: Custom time range</li><li>3: New additions only</li></ul><p>This time, only 3 newly added data is supported. Subsequent support: 2 custom time range and 1 history + newly added data</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "DataScope",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "Delta": {
       "document": "Returned content.",
       "members": [
@@ -10716,6 +11006,71 @@
           "name": "Records",
           "output_required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCLSDeliverTasksRequest": {
+      "document": "DescribeCLSDeliverTasks request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<ul><li>taskId Filter by task id. Type: String. Required: No.  </li><li>taskName Filter by task name. Type: String. Required: No.  </li><li>sourceLogsetId Filter by source logset. Type: String. Required: No.  </li><li>targetLogsetId Filter by destination log set. Type: String. Required: No.<br>The maximum number of Filters per request is 10, and the maximum number of Filter.Values is 10.</li></ul>",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Pagination offset. Default value: 0.</p>",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of entries per page. Default value: 20. Maximum value: 100.</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCLSDeliverTasksResponse": {
+      "document": "DescribeCLSDeliverTasks response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Delivery task information list</p>",
+          "example": "无",
+          "member": "CLSDeliverTaskInfo",
+          "name": "Infos",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total number of qualified tasks.</p>",
+          "example": "7",
+          "member": "uint64",
+          "name": "Total",
+          "output_required": false,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -19072,6 +19427,87 @@
       ],
       "type": "object"
     },
+    "ModifyCLSDeliverTaskRequest": {
+      "document": "ModifyCLSDeliverTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "3f2cdda9-263e-47fe-8bde-bb3c541e45e6",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task name</p><p>Parameter format: <code>^[a-zA-Z0-9_-]{1,64}$</code></p>",
+          "example": "b*******_update",
+          "member": "string",
+          "name": "TaskName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Source topic information</p>",
+          "example": "无",
+          "member": "SourceTopicConfig",
+          "name": "SourceTopicConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Target topic information</p>",
+          "example": "无",
+          "member": "TargetTopicConfig",
+          "name": "TargetTopicConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Shipping Rule</p>",
+          "example": "无",
+          "member": "DeliverRule",
+          "name": "DeliverRule",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Status.</p><p>Enumeration values: </p><ul><li>0: Running, </li><li>1: Suspension.</li></ul>",
+          "example": "0",
+          "member": "uint64",
+          "name": "Enable",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether delivery service log is enabled.</p><p>Enumeration values:</p><ul><li>1: Disabled</li><li>2: Enabled</li></ul>",
+          "example": "2",
+          "member": "uint64",
+          "name": "HasServicesLog",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCLSDeliverTaskResponse": {
+      "document": "ModifyCLSDeliverTask response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyCloudProductLogCollectionRequest": {
       "document": "ModifyCloudProductLogCollection request structure.",
       "members": [
@@ -25896,6 +26332,62 @@
       ],
       "usage": "out"
     },
+    "SourceTopicConfig": {
+      "document": "Source log topic configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Log topic filtering method.</p><p>Enumeration values:</p><ul><li>1: Static selection</li></ul>",
+          "example": "1",
+          "member": "uint64",
+          "name": "TopicFilterType",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Source logset id</p>",
+          "example": "f42a1c8d-2112-4710-aca5-404eba0b1b1a",
+          "member": "string",
+          "name": "LogsetId",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Source log topic list</p><p>Required when TopicFilterType=1</p>",
+          "example": "无",
+          "member": "SourceTopicInfo",
+          "name": "Topics",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SourceTopicInfo": {
+      "document": "Source log topic information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Log topic id.</p>",
+          "example": "7a15b60f-d44e-4880-a77a-86863196d041",
+          "member": "string",
+          "name": "TopicId",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "SplitPartitionRequest": {
       "document": "SplitPartition request structure.",
       "members": [
@@ -26168,6 +26660,78 @@
           "name": "Value",
           "output_required": true,
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "TargetTopicConfig": {
+      "document": "Target topic configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Target account type.</p><p>Enumeration values:</p><ul><li>1: Current root account</li><li>2: Other root account</li></ul>",
+          "example": "2",
+          "member": "uint64",
+          "name": "AccountType",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Target region</p><p>Parameter format: ap-guangzhou</p>",
+          "example": "ap-tokyo",
+          "member": "string",
+          "name": "Region",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Target logset id</p>",
+          "example": "1c1a172e-1f54-4d04-a4ca-aab9b68a93ee",
+          "member": "string",
+          "name": "LogsetId",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Target log topic id.</p>",
+          "example": "8aae17a5-ee8d-474c-a88f-931900ff621c",
+          "member": "string",
+          "name": "TopicId",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Role ARN</p><p>Required when AccountType=2</p>",
+          "example": "qcs::cam::uin/1***0***7**9:roleName/b****************a2b_test_1********************_1234567890",
+          "member": "string",
+          "name": "RoleArn",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>External ID</p><p>Required when AccountType=2</p>",
+          "example": "ExternalID_asdfghjkl",
+          "member": "string",
+          "name": "ExternalId",
+          "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         }

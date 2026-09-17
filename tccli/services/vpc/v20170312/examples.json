@@ -238,6 +238,14 @@
         "title": "Checking secondary CIDR block conflicts-2"
       }
     ],
+    "CheckGatewayFlowMonitor": [
+      {
+        "document": " ",
+        "input": "https://vpc.tencentcloudapi.com/?Action=CheckGatewayFlowMonitor\n&GatewayId=vpngw-4je9dgin\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Enabled\": true,\n        \"Bandwidth\": 5,\n        \"RequestId\": \"5cf1a813-d4f8-4e0c-8f90-c155a84a3ea1\"\n    }\n}",
+        "title": "Example 1 Querying Whether Gateway Traffic Control Is Enabled for a VPN Gateway"
+      }
+    ],
     "CheckNetDetectState": [
       {
         "document": " ",
@@ -737,9 +745,9 @@
     "DeleteNatGateway": [
       {
         "document": " ",
-        "input": "https://vpc.tencentcloudapi.com/?Action=DeleteNatGateway\n&NatGatewayId=nat-ig8xpno8\n&<common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"dbffc3f0-1807-4683-89ee-2d2b96425ee1\"\n    }\n}",
-        "title": "Deleting a NAT gateway"
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteNatGateway\n<Common request parameters>\n\n{\n    \"NatGatewayId\": \"nat-3nptcfvp\",\n    \"IgnoreOperationRisk\": false\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"12345678-1234-1234-1234-123456789012\"\n    }\n}",
+        "title": "Deleting a NAT Gateway"
       }
     ],
     "DeleteNatGatewayDestinationIpPortTranslationNatRule": [
@@ -1326,12 +1334,28 @@
         "title": "Querying the information of the routes of a NAT gateway"
       }
     ],
+    "DescribeNatGatewayFlowMonitorDetail": [
+      {
+        "document": "This example shows you how to query the traffic monitoring details of a standard NAT gateway.",
+        "input": "https://vpc.tencentcloudapi.com/?Action=DescribeNatGatewayFlowMonitorDetail\n&TimePoint=2021-12-10T09:02:01+08:00\n&NatGatewayId=nat-lz6rjk7n\n&OrderField=OutTraffic\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"NatGatewayFlowMonitorDetailSet\": [\n            {\n                \"OutTraffic\": 15925824,\n                \"PrivateIpAddress\": \"2.2.2.188\",\n                \"InPkg\": 71466,\n                \"OutPkg\": 57276,\n                \"InTraffic\": 13526553,\n                \"ConcurrentConnectionCount\": 999,\n                \"NewConnectionRate\": 888\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"d9b0cd80-3b86-4e03-8fc9-bc7de311bc73\"\n    }\n}",
+        "title": "Querying the Traffic Monitoring Details of a Standard NAT Gateway"
+      }
+    ],
     "DescribeNatGatewaySourceIpTranslationNatRules": [
       {
         "document": "This example shows you how to use the Filter array to obtain the SNAT forwarding rules of a NAT gateway.",
         "input": "https://vpc.tencentcloudapi.com/?Action=DescribeNatGatewaySourceIpTranslationNatRules\n&NatGatewayId=nat-3isn9hr0\n&Filters.0.Name=resource-id\n&Filters.0.Values.0=subnet-0yi4hekt\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"SourceIpTranslationNatRuleSet\": [\n            {\n                \"NatGatewaySnatId\": \"subnet-0yi4hekt\",\n                \"ResourceId\": \"subnet-0yi4hekt\",\n                \"ResourceType\": \"SUBNET\",\n                \"PublicIpAddresses\": [\n                    \"139.199.232.238\"\n                ],\n                \"PrivateIpAddress\": \"10.80.80.0/24\",\n                \"Description\": \"test_snat\",\n                \"CreatedTime\": \"2019-05-04 13:42:11\",\n                \"NatGatewayId\": \"nat-3isn9hr0\",\n                \"VpcId\": \"vpc-0yi4hekt\"\n            }\n        ],\n        \"RequestId\": \"eb203971-a7a0-45c1-9c72-36ad86688590\"\n    }\n}",
         "title": "Querying the SNAT forwarding rules of a NAT gateway"
+      }
+    ],
+    "DescribeNatGatewayZones": [
+      {
+        "document": " ",
+        "input": "https://vpc.tencentcloudapi.com/?Action=DescribeNatGatewayZones\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"ZoneSet\": [\n            {\n                \"Zone\": \"ap-guangzhou-1\",\n                \"ZoneId\": 100001\n            },\n            {\n                \"Zone\": \"ap-guangzhou-2\",\n                \"ZoneId\": 100002\n            }\n        ],\n        \"RequestId\": \"6f2a42cf-2905-4fa5-af49-0f01612550de\"\n    }\n}",
+        "title": "Querying the Information of Saleable AZs for NAT Gateways"
       }
     ],
     "DescribeNatGateways": [
@@ -2487,15 +2511,15 @@
     "RefreshDirectConnectGatewayRouteToNatGateway": [
       {
         "document": "This example shows you how to refresh routes.",
-        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RefreshDirectConnectGatewayRouteToNatGateway\n<Common request parameters>\n\n{\n    \"VpcId\": \"vpc-3m6kvgrx\",\n    \"NatGatewayId\": \"nat-2jd1e1rm\",\n    \"DryRun\": \"False\"\n}",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RefreshDirectConnectGatewayRouteToNatGateway\n<Common request parameters>\n\n{\n    \"VpcId\": \"vpc-3m6kvgrx\",\n    \"NatGatewayId\": \"nat-2jd1e1rm\",\n    \"DryRun\": false\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"b2b08cbc-c0dc-4346-bc55-a9b17a7a2a03\",\n        \"DirectConnectSubnetSet\": [\n            {\n                \"DirectConnectGatewayId\": \"dcg-71awizmv\",\n                \"CidrBlock\": \"99.99.99.77/32\"\n            }\n        ]\n    }\n}",
-        "title": "Refreshing routes"
+        "title": "Refreshing Routes"
       },
       {
-        "document": "This example shows you how to do a dry run of route refreshing. In this case, only the IDC IP range is returned.",
-        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RefreshDirectConnectGatewayRouteToNatGateway\n<Common request parameters>\n\n{\n    \"VpcId\": \"vpc-3m6kvgrx\",\n    \"NatGatewayId\": \"nat-2jd1e1rm\",\n    \"DryRun\": \"True\",\n}",
+        "document": "This example shows you how to do a dry run of route refreshing. In this case, only the IDC CIDR block is returned.",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RefreshDirectConnectGatewayRouteToNatGateway\n<Common request parameters>\n\n{\n    \"VpcId\": \"vpc-3m6kvgrx\",\n    \"NatGatewayId\": \"nat-2jd1e1rm\",\n    \"DryRun\": true\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"928d1513-d3fa-4c4e-b8fd-077cebbc3118\",\n        \"DirectConnectSubnetSet\": [\n            {\n                \"DirectConnectGatewayId\": \"dcg-71awizmv\",\n                \"CidrBlock\": \"99.99.99.77/32\"\n            }\n        ]\n    }\n}",
-        "title": "Performing a dry run before refreshing the routes"
+        "title": "Performing a Dry Run Before Refreshing Routes"
       }
     ],
     "RejectAttachCcnInstances": [

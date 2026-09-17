@@ -584,7 +584,7 @@
     "DescribeMNGVersionAuditList": {
       "document": "This API is used to query mini game version approval records.",
       "input": "DescribeMNGVersionAuditListRequest",
-      "name": "Queries mini game version approval list",
+      "name": "Queries mini game version approval records",
       "output": "DescribeMNGVersionAuditListResponse",
       "status": "online"
     },
@@ -801,7 +801,7 @@
     "DescribeMNPVersionAuditList": {
       "document": "This API is used to query mini program version approval records.",
       "input": "DescribeMNPVersionAuditListRequest",
-      "name": "Queries mini program version approval list",
+      "name": "Queries mini program version approval records",
       "output": "DescribeMNPVersionAuditListResponse",
       "status": "online"
     },
@@ -14208,6 +14208,16 @@
           "example": "openapi换绑商户号名称",
           "member": "string",
           "name": "MerchantName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Payment currency.</p>",
+          "example": "USD",
+          "member": "string",
+          "name": "Currency",
           "output_required": false,
           "type": "string",
           "value_allowed_null": false

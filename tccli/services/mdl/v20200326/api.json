@@ -906,7 +906,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Picture in picture configuration",
           "example": "无",
           "member": "PipSetting",
           "name": "PipSetting",
@@ -917,7 +917,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Circular setting",
           "example": "无",
           "member": "BorderFrameSetting",
           "name": "BorderFrameSetting",
@@ -1475,7 +1475,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Live streaming source layout configuration",
           "example": "无",
           "member": "SourceLayout",
           "name": "LiveSourceLayout",
@@ -1486,7 +1486,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Background image URL, starting with http/https and ending in jpg/jpeg/png, (only required for UPLOAD_CREATIVES)",
           "example": "https://example.com/border-background.png",
           "member": "string",
           "name": "BackgroundImgUrl",
@@ -5128,7 +5128,7 @@
       "usage": "both"
     },
     "LSqueezeSetting": {
-      "document": "",
+      "document": "Compression Recovery Configuration",
       "members": [
         {
           "disabled": false,
@@ -5177,7 +5177,7 @@
         {
           "disabled": false,
           "document": "Compress time. Unit ms, default value 2000, range: 500-10000, SqueezeInPeriod+SqueezeOutPeriod cannot be greater than duration, included in duration",
-          "example": "2000",
+          "example": "500",
           "member": "uint64",
           "name": "SqueezeInPeriod",
           "output_required": false,
@@ -5188,7 +5188,7 @@
         {
           "disabled": false,
           "document": "Restore to full screen time. Unit ms, default value 2000, range 500-10000, SqueezeInPeriod+SqueezeOutPeriod cannot be greater than duration, included in duration",
-          "example": "2000",
+          "example": "500",
           "member": "uint64",
           "name": "SqueezeOutPeriod",
           "output_required": false,
@@ -5563,7 +5563,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "AB watermark configuration.",
           "example": "无",
           "member": "AbWatermarkSettingsReq",
           "name": "AbWatermarkSettings",
@@ -5586,12 +5586,12 @@
       "type": "object"
     },
     "MotionGraphicsActivateSetting": {
-      "document": "",
+      "document": "Dynamic graphic information.",
       "members": [
         {
           "disabled": false,
           "document": "Duration in ms, valid when MOTION_Graphics_ACTIVATE, required; An integer in the range of 0-86400000, where 0 represents the duration until the end of the live stream.",
-          "example": "无",
+          "example": "10",
           "member": "int64",
           "name": "Duration",
           "output_required": false,
@@ -5602,7 +5602,7 @@
         {
           "disabled": false,
           "document": "The address of HTML5 needs to comply with the format specification of http/https.",
-          "example": "无",
+          "example": "https://www.tencent.com",
           "member": "string",
           "name": "Url",
           "output_required": false,
@@ -5691,7 +5691,7 @@
         {
           "disabled": false,
           "document": "The used subtitle template is only valid for merge template.",
-          "example": "[\"caption0]",
+          "example": "[\"caption0\"]",
           "member": "string",
           "name": "CaptionTemplateNames",
           "output_required": false,
@@ -5762,11 +5762,11 @@
       "usage": "out"
     },
     "PipSetting": {
-      "document": "",
+      "document": "Picture in Picture Settings",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Audio selection: LIVE_SOURCE or AD_SOURCE",
           "example": "LIVE_SOURCE",
           "member": "string",
           "name": "AudioSelection",
@@ -5777,7 +5777,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Live streaming source layout configuration",
           "example": "无",
           "member": "SourceLayout",
           "name": "LiveSourceLayout",
@@ -5788,7 +5788,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Advertisement source layout configuration",
           "example": "无",
           "member": "SourceLayout",
           "name": "AdSourceLayout",
@@ -5799,7 +5799,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Background image URL, starting with http/https and ending in jpg/jpeg/png (only required for UPLOAD_CREATIVES)",
           "example": "https://exam***kground.jpg",
           "member": "string",
           "name": "BackgroundImgUrl",
@@ -5810,7 +5810,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Advertisement video URL, starting with http/https and ending in mp4 (only required for UPLOAD_CREATIVES)",
           "example": "https://ww***m/test.mp4",
           "member": "string",
           "name": "AdSourceUrl",
@@ -6514,7 +6514,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Left margin offset percentage, picture in picture range 0-99, left offset+right offset<100; Return range 0-50, left offset+right offset<100",
           "example": "10",
           "member": "uint64",
           "name": "LeftOffset",
@@ -6525,7 +6525,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The offset percentage of the right margin, picture in picture range 0-99, left offset+right offset<100; Return range 0-50, left offset+right offset<100",
           "example": "10",
           "member": "uint64",
           "name": "RightOffset",
@@ -6536,7 +6536,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Offset percentage of bottom margin, range 0-50",
           "example": "20",
           "member": "uint64",
           "name": "BottomOffset",
@@ -7481,7 +7481,7 @@
         {
           "disabled": false,
           "document": "Font color, represented by 6 characters in hexadecimal RGB.",
-          "example": "FFFFFF",
+          "example": "FFFEFF",
           "member": "string",
           "name": "TextColor",
           "output_required": false,
@@ -7492,7 +7492,7 @@
         {
           "disabled": false,
           "document": "Background color, represented by 6 characters in hexadecimal RGB.",
-          "example": "FFFFFF",
+          "example": "FFFEFF",
           "member": "string",
           "name": "BackgroundColor",
           "output_required": false,
@@ -8295,7 +8295,7 @@
         {
           "disabled": false,
           "document": "The position of the text box, default value AUTO, can be empty; it represents the percentage of video height and supports integers from 0 to 100.",
-          "example": "AUTO",
+          "example": "1",
           "member": "string",
           "name": "Line",
           "output_required": false,
@@ -8317,7 +8317,7 @@
         {
           "disabled": false,
           "document": "The position of the text box in another direction is a percentage of the video width or height, defaults to AUTO, and can be empty.",
-          "example": "AUTO",
+          "example": "1",
           "member": "string",
           "name": "Position",
           "output_required": false,
@@ -8328,7 +8328,7 @@
         {
           "disabled": false,
           "document": "The alignment mode of the text box on Position. Available values: LINE_LEFT, LINE_RIGHT, CENTER, AUTO. Default value: AUTO. Can be empty.",
-          "example": "AUTO",
+          "example": "CENTER",
           "member": "string",
           "name": "PositionAlignment",
           "output_required": false,
@@ -8339,7 +8339,7 @@
         {
           "disabled": false,
           "document": "The size of the text box, a percentage of video width/height, value (0, 100], default AUTO, can be empty.",
-          "example": "AUTO",
+          "example": "1",
           "member": "string",
           "name": "CueSize",
           "output_required": false,

@@ -21,6 +21,13 @@
       "output": "AssessEnvironmentRiskResponse",
       "status": "online"
     },
+    "AssessRisk": {
+      "document": "Used to obtain real-time risk information for events. It evaluates and returns risk decision results, risk scores, and risk tags based on device risk, environmental risk, account risk, behavioral risk, and historical reported event data for critical events in your business.",
+      "input": "AssessRiskRequest",
+      "name": "AssessRisk",
+      "output": "AssessRiskResponse",
+      "status": "online"
+    },
     "ReportEvent": {
       "document": "Used to report events that do not require real-time decision-making in your business. Our engine will perform computations and apply machine learning to mine risk features from these events, which are then used to support real-time event risk assessment.",
       "input": "ReportEventRequest",
@@ -526,6 +533,169 @@
           "output_required": false,
           "type": "object",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AssessRiskRequest": {
+      "document": "AssessRisk request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Event code. Used to specify the scenario node for business access.</p><p>Standard events under the account protection product include:</p><ul><li> login: Log in<p></p></li> <li>register: Register </li><li>sms: SMS </li><li>logout: Log out </li><li>modify_account: Modify account </li><li>modify_password: Modify password </li><li>security_verification: Security verification</li></ul><p>Standard events under the payment protection product include:</p><ul><li>create_order: Create an order </li><li>transaction: Transaction</li><li>charge_back: Chargeback</li></ul><p>Standard events under the promotion protection product include:</p><ul><li>add_promotion: Participate in promotions</li><li>redeem: Redeem a prize </li><li>withdraw: Withdraw</li><li>cust_event: Custom event, cust_xxx </li><li>scan_code: Scan a code </li><li>lucky_draw: Lucky draw </li><li>task: Complete a task </li><li>invitation: Invitation </li><li>claim_red_packet: Receive a red packet </li><li>browse: Browse</li></ul><p>Custom events can be evaluated for risk based on an agreement with RCE</p>",
+          "example": "login",
+          "member": "string",
+          "name": "EventCode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The time when the event occurred</p><p>Parameter format: Millisecond-level time with UTC time zone compliant with the ISO 8601 standard</p>",
+          "example": "2026-07-08T15:56:31.000+08:00",
+          "member": "string",
+          "name": "EventTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The user's current session ID used to associate with the actions before and after logging in. If UserId is not passed, SessionId is required. If missing, an empty string can be filled.</p>",
+          "example": "se****************56",
+          "member": "string",
+          "name": "SessionId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Device fingerprint token, obtained after integration of the device fingerprint SDK into your website or application</p>",
+          "example": "v3:******************************************************************bzxeC9FTtHon0Vq+zEB0iKhM5OGvG",
+          "member": "string",
+          "name": "DeviceToken",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Client IP address (IPv4 or IPv6)</p>",
+          "example": "192.***.*.100",
+          "member": "string",
+          "name": "UserIp",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Event details. The event information is imported based on the event code you input.</p>",
+          "example": "无",
+          "member": "EventDetail",
+          "name": "EventDetail",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The user's account ID in your system</p>",
+          "example": "u********6",
+          "member": "string",
+          "name": "UserId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Email of the user</p>",
+          "example": "u***********.com",
+          "member": "string",
+          "name": "UserEmail",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Phone number of the user.</p><p>Parameter format: Complies with the E.164 standard format, which includes \"+\", region code, and number</p>",
+          "example": "+86138********",
+          "member": "string",
+          "name": "UserPhone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The details of the browser. If you've already integrated our device SDK, this field is not required</p>",
+          "example": "无",
+          "member": "Browser",
+          "name": "Browser",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The details of the app, os and device.If you've already integrated our device SDK, this field is not required</p>",
+          "example": "无",
+          "member": "App",
+          "name": "App",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "AssessRiskResponse": {
+      "document": "AssessRisk response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The results of AssessRisk</p>",
+          "example": "无",
+          "member": "AssessRiskRsp",
+          "name": "Data",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AssessRiskRsp": {
+      "document": "The results of AssessRisk",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Decision information</p>",
+          "example": "无",
+          "member": "Decision",
+          "name": "Decision",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Risk score, a scoring result calculated based on the product services you have enabled</p>",
+          "example": "无",
+          "member": "Score",
+          "name": "Score",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended information</p>",
+          "example": "无",
+          "member": "Cust",
+          "name": "ExtraInfo",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -3255,6 +3425,32 @@
         }
       ],
       "usage": "in"
+    },
+    "Score": {
+      "document": "Risk score",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Risk score. Range: 1–1000. The higher the score indicates the higher risk</p>",
+          "example": "20",
+          "member": "int64",
+          "name": "RiskScore",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Risk label</p>",
+          "example": "无",
+          "member": "RiskLabel",
+          "name": "RiskLabels",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "SecurityVerificationEvent": {
       "document": "SecurityVerification event details",

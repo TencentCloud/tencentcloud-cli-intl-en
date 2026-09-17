@@ -1,10 +1,311 @@
 {
   "actions": {
+    "CreateAccelerateAreas": {
+      "document": "This API is used to create an acceleration region.",
+      "input": "CreateAccelerateAreasRequest",
+      "name": "Creates an acceleration region",
+      "output": "CreateAccelerateAreasResponse",
+      "status": "online"
+    },
+    "CreateEndpointGroup": {
+      "document": "This API is used to create a terminal node group.",
+      "input": "CreateEndpointGroupRequest",
+      "name": "Creates a terminal node group",
+      "output": "CreateEndpointGroupResponse",
+      "status": "online"
+    },
+    "CreateForwardingPolicy": {
+      "document": "Create a layer-7 forwarding policy.",
+      "input": "CreateForwardingPolicyRequest",
+      "name": "Creates a layer-7 forwarding policy",
+      "output": "CreateForwardingPolicyResponse",
+      "status": "online"
+    },
+    "CreateForwardingRule": {
+      "document": "Create a Layer 7 forwarding rule",
+      "input": "CreateForwardingRuleRequest",
+      "name": "Creates a Layer 7 forwarding rule",
+      "output": "CreateForwardingRuleResponse",
+      "status": "online"
+    },
+    "CreateGlobalAccelerator": {
+      "document": "This API is used to create a global acceleration instance.",
+      "input": "CreateGlobalAcceleratorRequest",
+      "name": "Creates a global acceleration instance",
+      "output": "CreateGlobalAcceleratorResponse",
+      "status": "online"
+    },
+    "CreateGlobalAcceleratorAccessLog": {
+      "document": "Create a GA access log",
+      "input": "CreateGlobalAcceleratorAccessLogRequest",
+      "name": "Creates an access log",
+      "output": "CreateGlobalAcceleratorAccessLogResponse",
+      "status": "online"
+    },
+    "CreateGlobalAcceleratorAclPolicy": {
+      "document": "Create access control policy",
+      "input": "CreateGlobalAcceleratorAclPolicyRequest",
+      "name": "Create access control policy",
+      "output": "CreateGlobalAcceleratorAclPolicyResponse",
+      "status": "online"
+    },
+    "CreateGlobalAcceleratorAclRule": {
+      "document": "Create an ACL rule",
+      "input": "CreateGlobalAcceleratorAclRuleRequest",
+      "name": "Create an ACL rule",
+      "output": "CreateGlobalAcceleratorAclRuleResponse",
+      "status": "online"
+    },
+    "CreateListener": {
+      "document": "This API is used to create a listener.",
+      "input": "CreateListenerRequest",
+      "name": "Creates a listener",
+      "output": "CreateListenerResponse",
+      "status": "online"
+    },
+    "CreateListenerAdditionalCert": {
+      "document": "Add an extension certificate.",
+      "input": "CreateListenerAdditionalCertRequest",
+      "name": "Adds an extension certificate",
+      "output": "CreateListenerAdditionalCertResponse",
+      "status": "online"
+    },
+    "DeleteAccelerateAreas": {
+      "document": "Delete an acceleration region",
+      "input": "DeleteAccelerateAreasRequest",
+      "name": "Deletes an acceleration region",
+      "output": "DeleteAccelerateAreasResponse",
+      "status": "online"
+    },
+    "DeleteEndpointGroups": {
+      "document": "Delete a terminal node group.",
+      "input": "DeleteEndpointGroupsRequest",
+      "name": "Deletes a terminal node group",
+      "output": "DeleteEndpointGroupsResponse",
+      "status": "online"
+    },
+    "DeleteForwardingPolicy": {
+      "document": "Delete a layer-7 forwarding policy.",
+      "input": "DeleteForwardingPolicyRequest",
+      "name": "Deletes a layer-7 forwarding policy",
+      "output": "DeleteForwardingPolicyResponse",
+      "status": "online"
+    },
+    "DeleteForwardingRule": {
+      "document": "Delete a Layer 7 forwarding rule",
+      "input": "DeleteForwardingRuleRequest",
+      "name": "Delete a Layer 7 forwarding rule",
+      "output": "DeleteForwardingRuleResponse",
+      "status": "online"
+    },
+    "DeleteGlobalAccelerator": {
+      "document": "Deletes a global acceleration instance",
+      "input": "DeleteGlobalAcceleratorRequest",
+      "name": "Deletes a global acceleration instance",
+      "output": "DeleteGlobalAcceleratorResponse",
+      "status": "online"
+    },
+    "DeleteGlobalAcceleratorAccessLog": {
+      "document": "This API is used to delete a GA log task.",
+      "input": "DeleteGlobalAcceleratorAccessLogRequest",
+      "name": "Deletes a log task",
+      "output": "DeleteGlobalAcceleratorAccessLogResponse",
+      "status": "online"
+    },
+    "DeleteGlobalAcceleratorAclPolicy": {
+      "document": "Delete access control policy",
+      "input": "DeleteGlobalAcceleratorAclPolicyRequest",
+      "name": "Deletes an access control policy",
+      "output": "DeleteGlobalAcceleratorAclPolicyResponse",
+      "status": "online"
+    },
+    "DeleteGlobalAcceleratorAclRule": {
+      "document": "Delete ACL rule",
+      "input": "DeleteGlobalAcceleratorAclRuleRequest",
+      "name": "Deletes an ACL rule",
+      "output": "DeleteGlobalAcceleratorAclRuleResponse",
+      "status": "online"
+    },
+    "DeleteListener": {
+      "document": "This API is used to delete a listener.",
+      "input": "DeleteListenerRequest",
+      "name": "Deletes a listener",
+      "output": "DeleteListenerResponse",
+      "status": "online"
+    },
+    "DeleteListenerAdditionalCert": {
+      "document": "Delete the extension certificate.",
+      "input": "DeleteListenerAdditionalCertRequest",
+      "name": "Deletes an expansion certificate",
+      "output": "DeleteListenerAdditionalCertResponse",
+      "status": "online"
+    },
+    "DescribeAccelerateAreas": {
+      "document": "Queries acceleration regions",
+      "input": "DescribeAccelerateAreasRequest",
+      "name": "Queries acceleration regions",
+      "output": "DescribeAccelerateAreasResponse",
+      "status": "online"
+    },
+    "DescribeAccelerateRegions": {
+      "document": "Queries selectable acceleration regions.",
+      "input": "DescribeAccelerateRegionsRequest",
+      "name": "Queries selectable acceleration regions",
+      "output": "DescribeAccelerateRegionsResponse",
+      "status": "online"
+    },
+    "DescribeAccessLogParam": {
+      "document": "View access log reporting parameters",
+      "input": "DescribeAccessLogParamRequest",
+      "name": "View access log reporting parameters",
+      "output": "DescribeAccessLogParamResponse",
+      "status": "online"
+    },
+    "DescribeCrossBorderSettlement": {
+      "document": "Querying Cross-Border Bills",
+      "input": "DescribeCrossBorderSettlementRequest",
+      "name": "Querying Cross-Border Bills",
+      "output": "DescribeCrossBorderSettlementResponse",
+      "status": "online"
+    },
+    "DescribeEndpointGroups": {
+      "document": "Query a terminal node group.",
+      "input": "DescribeEndpointGroupsRequest",
+      "name": "Queries terminal node groups",
+      "output": "DescribeEndpointGroupsResponse",
+      "status": "online"
+    },
+    "DescribeForwardingPolicy": {
+      "document": "View a layer-7 forwarding policy",
+      "input": "DescribeForwardingPolicyRequest",
+      "name": "Views a layer-7 forwarding policy",
+      "output": "DescribeForwardingPolicyResponse",
+      "status": "online"
+    },
+    "DescribeForwardingRule": {
+      "document": "View a Layer 7 forwarding rule",
+      "input": "DescribeForwardingRuleRequest",
+      "name": "Views Layer 7 forwarding rules",
+      "output": "DescribeForwardingRuleResponse",
+      "status": "online"
+    },
+    "DescribeGlobalAcceleratorAccessLog": {
+      "document": "Query log tasks",
+      "input": "DescribeGlobalAcceleratorAccessLogRequest",
+      "name": "Query access logs",
+      "output": "DescribeGlobalAcceleratorAccessLogResponse",
+      "status": "online"
+    },
+    "DescribeGlobalAcceleratorAclPolicies": {
+      "document": "View the access control policy",
+      "input": "DescribeGlobalAcceleratorAclPoliciesRequest",
+      "name": "Views access control policies",
+      "output": "DescribeGlobalAcceleratorAclPoliciesResponse",
+      "status": "online"
+    },
+    "DescribeGlobalAcceleratorAclRules": {
+      "document": "View ACL rules",
+      "input": "DescribeGlobalAcceleratorAclRulesRequest",
+      "name": "Queries ACL rules",
+      "output": "DescribeGlobalAcceleratorAclRulesResponse",
+      "status": "online"
+    },
+    "DescribeGlobalAccelerators": {
+      "document": "Modify a global acceleration instance",
+      "input": "DescribeGlobalAcceleratorsRequest",
+      "name": "Queries global acceleration instances",
+      "output": "DescribeGlobalAcceleratorsResponse",
+      "status": "online"
+    },
+    "DescribeListeners": {
+      "document": "This API is used to query listeners.",
+      "input": "DescribeListenersRequest",
+      "name": "Queries a listener",
+      "output": "DescribeListenersResponse",
+      "status": "online"
+    },
     "DescribeTaskResult": {
       "document": "Query asynchronous task result",
       "input": "DescribeTaskResultRequest",
       "name": "Queries asynchronous task result",
       "output": "DescribeTaskResultResponse",
+      "status": "online"
+    },
+    "ModifyAccelerateAreas": {
+      "document": "Modify acceleration region",
+      "input": "ModifyAccelerateAreasRequest",
+      "name": "Modifies acceleration region",
+      "output": "ModifyAccelerateAreasResponse",
+      "status": "online"
+    },
+    "ModifyAccessLogStatus": {
+      "document": "Modify the status of a log task",
+      "input": "ModifyAccessLogStatusRequest",
+      "name": "Modifies the task status in the change log",
+      "output": "ModifyAccessLogStatusResponse",
+      "status": "online"
+    },
+    "ModifyEndpointGroup": {
+      "document": "This API is used to modify a terminal node group.",
+      "input": "ModifyEndpointGroupRequest",
+      "name": "Modifies a terminal node group",
+      "output": "ModifyEndpointGroupResponse",
+      "status": "online"
+    },
+    "ModifyForwardingPolicy": {
+      "document": "Modify a layer-7 forwarding policy",
+      "input": "ModifyForwardingPolicyRequest",
+      "name": "Modify a layer-7 forwarding policy",
+      "output": "ModifyForwardingPolicyResponse",
+      "status": "online"
+    },
+    "ModifyForwardingRule": {
+      "document": "This API is used to modify a Layer 7 forwarding rule.",
+      "input": "ModifyForwardingRuleRequest",
+      "name": "Modifies a Layer 7 forwarding rule",
+      "output": "ModifyForwardingRuleResponse",
+      "status": "online"
+    },
+    "ModifyGlobalAccelerator": {
+      "document": "Modify a global acceleration instance",
+      "input": "ModifyGlobalAcceleratorRequest",
+      "name": "Modifies a global acceleration instance",
+      "output": "ModifyGlobalAcceleratorResponse",
+      "status": "online"
+    },
+    "ModifyGlobalAcceleratorAccessLog": {
+      "document": "Modify GA access logs",
+      "input": "ModifyGlobalAcceleratorAccessLogRequest",
+      "name": "Modifies the access log",
+      "output": "ModifyGlobalAcceleratorAccessLogResponse",
+      "status": "online"
+    },
+    "ModifyGlobalAcceleratorAclPolicy": {
+      "document": "Modify the status of an access control policy",
+      "input": "ModifyGlobalAcceleratorAclPolicyRequest",
+      "name": "Modify access control policy",
+      "output": "ModifyGlobalAcceleratorAclPolicyResponse",
+      "status": "online"
+    },
+    "ModifyGlobalAcceleratorAclRule": {
+      "document": "Modify ACL rules",
+      "input": "ModifyGlobalAcceleratorAclRuleRequest",
+      "name": "Modifies ACL rules",
+      "output": "ModifyGlobalAcceleratorAclRuleResponse",
+      "status": "online"
+    },
+    "ModifyListener": {
+      "document": "Modify a listener",
+      "input": "ModifyListenerRequest",
+      "name": "Modifies a listener",
+      "output": "ModifyListenerResponse",
+      "status": "online"
+    },
+    "ReplaceListenerAdditionalCert": {
+      "document": "Replace the extension certificate.",
+      "input": "ReplaceListenerAdditionalCertRequest",
+      "name": "Replaces an extended cert",
+      "output": "ReplaceListenerAdditionalCertResponse",
       "status": "online"
     }
   },
@@ -14,6 +315,2369 @@
     "serviceShortName": "ga2"
   },
   "objects": {
+    "AcceleratorAreas": {
+      "document": "Acceleration region information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Acceleration region.</p>",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "AccelerateRegion",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Bandwidth.</p>",
+          "example": "10",
+          "member": "uint64",
+          "name": "Bandwidth",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Supports &#39;BGP&#39;, &#39;QUALITY_BGP&#39;, and &#39;STATIC_IP&#39;. Default: BGP.</p><p>Enumeration values:</p><ul><li>BGP: BGP</li><li>STATIC_IP: triple-network</li><li>QUALITY_BGP: dedicated BGP</li></ul>",
+          "example": "BGP",
+          "member": "string",
+          "name": "IspType",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Only IPv4 is supported, and IPv4 is selected by default.</p>",
+          "example": "IPv4",
+          "member": "string",
+          "name": "IpVersion",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Acceleration region ID.</p>",
+          "example": "area-np7tkvgs",
+          "member": "string",
+          "name": "AcceleratorAreaId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>IP.</p>",
+          "example": "[\"154.8.187.136\"]",
+          "member": "string",
+          "name": "IpAddress",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>IP information.</p>",
+          "example": "无",
+          "member": "IpAddressInfoSet",
+          "name": "IpAddressInfoSet",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "AcceleratorRegionSet": {
+      "document": "Acceleration region info",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Chinese Name of Region.</p>",
+          "example": "广州",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether available; 0: unavailable, 1: available.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "IsAvailable",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Regional information.</p>",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Zone name.</p>",
+          "example": "中国大陆",
+          "member": "string",
+          "name": "AreaName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether it is a China region.</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "IsChinaMainland",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Support the IspType type.</p>",
+          "example": "[\"BGP\"]",
+          "member": "string",
+          "name": "SupportIspType",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether it is a Tencent region.</p>",
+          "example": "0",
+          "member": "uint64",
+          "name": "IsTencentRegion",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AclEntries": {
+      "document": "Acl information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Protocol.</p><p>Input limits: supports configuration of 'TCP', 'UDP', 'ALL';</p>",
+          "example": "TCP",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Port.</p>",
+          "example": "10",
+          "member": "string",
+          "name": "Port",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>IP range.</p>",
+          "example": "10.0.0.0/16",
+          "member": "string",
+          "name": "SourceCidrBlock",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Execute action.</p><p>Input parameter limit: can be configured with 'ACCEPT' and 'DROP';</p>",
+          "example": "ACCEPT",
+          "member": "string",
+          "name": "Policy",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Description. Maximum length cannot exceed 100 bytes.</p>",
+          "example": "description",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "CreateAccelerateAreasRequest": {
+      "document": "CreateAccelerateAreas request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Global acceleration instance ID.</p>",
+          "example": "ga-fkp17vr8",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Acceleration region info. Up to 10 acceleration region groups can be created at a time.</p>",
+          "example": "无",
+          "member": "AcceleratorAreas",
+          "name": "AcceleratorAreas",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAccelerateAreasResponse": {
+      "document": "CreateAccelerateAreas response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Asynchronous task ID.</p>",
+          "example": "4b995c0a-98f2-4dbc-84cc-71b1a63642e5",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateEndpointGroupRequest": {
+      "document": "CreateEndpointGroup request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Global acceleration instance ID.</p>",
+          "example": "ga-ask56kjh",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Listener ID.</p>",
+          "example": "[\"listener-ask56kjh\"]",
+          "member": "string",
+          "name": "ListenerId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Node group type.</p><p>Enumeration values:</p><ul><li>VIRTUAL: custom endpoint node group</li><li>DEFAULT: default terminal node group</li></ul>",
+          "example": "VIRTUAL",
+          "member": "string",
+          "name": "EndpointGroupType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Terminal node group configuration.</p>",
+          "example": "无",
+          "member": "EndpointGroupConfiguration",
+          "name": "EndpointGroupConfiguration",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateEndpointGroupResponse": {
+      "document": "CreateEndpointGroup response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "4b995c0a-98f2-4dbc-84cc-71b1a63642e5",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Instance ID of the terminal node group.</p>",
+          "example": "epg-agq25w5q",
+          "member": "string",
+          "name": "EndpointGroupId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateForwardingPolicyRequest": {
+      "document": "CreateForwardingPolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Global acceleration instance ID.</p>",
+          "example": "ga-ask56kjh",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Listener ID.</p>",
+          "example": "lsr-kzjzfs7n",
+          "member": "string",
+          "name": "ListenerId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Domain name.</p><p>Parameter format: format, must meet the regular expression: ^(<a href=\"?:[a-z0-9-]{0,61}[a-z0-9]\">a-z0-9</a>?.)+[a-z]{2,}$</p><p>Input limit: length range is 1-80.</p>",
+          "example": "www.bbc.com",
+          "member": "string",
+          "name": "Host",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateForwardingPolicyResponse": {
+      "document": "CreateForwardingPolicy response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Asynchronous task ID.</p>",
+          "example": "e1326769-29a9-43d5-8fbb-6af2e7165328",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Layer-7 forwarding policy ID.</p>",
+          "example": "dm-3vfx7nnq",
+          "member": "string",
+          "name": "ForwardingPolicyId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateForwardingRuleRequest": {
+      "document": "CreateForwardingRule request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Global acceleration instance ID.</p>",
+          "example": "ga-ask56kjh",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Listener ID.</p>",
+          "example": "lsr-kzjzfs7n",
+          "member": "string",
+          "name": "ListenerId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Policy ID.</p>",
+          "example": "dm-dz058e4q",
+          "member": "string",
+          "name": "ForwardingPolicyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Layer 7 forwarding rule conditional information.</p><p>Array length cannot exceed 1.</p>",
+          "example": "无",
+          "member": "RuleCondition",
+          "name": "RuleConditions",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Layer 7 forwarding rule behavior information.</p><p>The length of the array cannot exceed 1.</p>",
+          "example": "无",
+          "member": "RuleAction",
+          "name": "RuleActions",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Origin-pull Header information.</p><p>The maximum length of the array cannot exceed 5. This field is required when RuleActions.RuleActionType is ForwardGroup.</p>",
+          "example": "无",
+          "member": "OriginHeader",
+          "name": "OriginHeaders",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether origin-pull sni is enabled.</p><p>Default value: False</p><p>This field is required when RuleActions.RuleActionType is ForwardGroup.</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableOriginSni",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Origin sni.</p><p>Input parameter limit: length cannot exceed 80.</p><p>This field is required when EnableOriginSni is True. This field is required when RuleActions.RuleActionType is ForwardGroup.</p>",
+          "example": "/sfsed",
+          "member": "string",
+          "name": "OriginSni",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Origin-pull host.</p><p>Input parameter limit: length not exceeding 80.</p><p>This field is required when RuleActions.RuleActionType is ForwardGroup.</p>",
+          "example": "www.ddd.com",
+          "member": "string",
+          "name": "OriginHost",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Origin response headers</p><p>Array length not exceeding 5. An empty array can be passed, representing configuration clearing.</p>",
+          "example": "无",
+          "member": "ResponseHeaders",
+          "name": "ResponseHeaders",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Delete origin server response headers</p><p>Array length not exceeding 5. An empty array can be passed, representing configuration clearing.</p>",
+          "example": "无",
+          "member": "HideResponseHeaders",
+          "name": "HideResponseHeaders",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateForwardingRuleResponse": {
+      "document": "CreateForwardingRule response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Asynchronous task ID.</p>",
+          "example": "e1326769-29a9-43d5-8fbb-6af2e7165328",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Layer 7 forwarding rule ID.</p>",
+          "example": "rule-kfn3oc78",
+          "member": "string",
+          "name": "ForwardingRuleId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateGlobalAcceleratorAccessLogRequest": {
+      "document": "CreateGlobalAcceleratorAccessLog request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Unique Id of the sample GA</p>",
+          "example": "ga-8sreohed",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Listener Id</p>",
+          "example": "lsr-4afw0c06",
+          "member": "string",
+          "name": "ListenerId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Terminal node group Id</p>",
+          "example": "epg-du8oqpy5",
+          "member": "string",
+          "name": "EndpointGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Logset region</p>",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "CloudRegion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Log topic Id</p>",
+          "example": "61f7ee4c-4704-4669-82fe-2c191f8f200b",
+          "member": "string",
+          "name": "CloudLogId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Log Set Id</p>",
+          "example": "81217ea2-f578-451a-946e-f31e2131a9ac",
+          "member": "string",
+          "name": "CloudLogSetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Specify data collection fields</p><p>Enumeration values:</p><ul><li>session_time: Layer 4, session duration</li><li>upstream_bytes_received: Layer 4 and Layer 7, number of bytes received from the terminal node</li><li>upstream_bytes_sent: Layer 4 and Layer 7, number of bytes sent to the terminal node</li><li>request_method: Layer 7, GET/POST</li><li>scheme: Layer 7, http/https</li><li>request_uri: Layer 7, uri of the client's raw request</li><li>uri: Layer 7, uri of the current request</li><li>host: Layer 7, domain name accessed by the client (Layer 7)</li><li>remote_user: Layer 7, userName for basic authentication (\"-\" when unauthenticated)</li><li>http_user_agent: Layer 7, client browser identification</li><li>http_referer: Layer 7, request source URL (\"-\" when accessed directly from the address bar)</li><li>http_x_forwarded_for: Layer 7, records the client's original IP and the proxy server IP chain it transited</li><li>content_type: Layer 7, content_type</li><li>body_bytes_sent: Layer 7, http body size sent to the client, excluding the header</li><li>request_time: Layer 7, total time from receiving the first byte of the client request to sending the last byte of the response (unit: seconds)</li><li>sent_http_content_type: Layer 7, response content type</li><li>upstream_header_time: Layer 7, arrival time of the terminal node's response header</li><li>upstream_response_length: Layer 7, length of the response body returned by the terminal node</li><li>upstream_response_time: Layer 7, complete response time of the terminal node</li><li>upstream_status: Layer 7, http status code returned by the terminal node</li></ul>",
+          "example": "[\"request_method\"]",
+          "member": "string",
+          "name": "FieldKeys",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Log description</p>",
+          "example": "ga_log_test_http",
+          "member": "string",
+          "name": "FlowLogDescription",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateGlobalAcceleratorAccessLogResponse": {
+      "document": "CreateGlobalAcceleratorAccessLog response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Log Task Unique Id</p>",
+          "example": "galog-gv9duwet",
+          "member": "string",
+          "name": "LogPushTaskId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateGlobalAcceleratorAclPolicyRequest": {
+      "document": "CreateGlobalAcceleratorAclPolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Global acceleration instance ID.</p>",
+          "example": "ga-ask56kjh",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Default behavior.</p><p>Enumeration values:</p><ul><li>ACCEPT: Permit all traffic on the access channel by default</li><li>DROP: Deny all traffic on the access channel by default</li></ul>",
+          "example": "ACCEPT",
+          "member": "string",
+          "name": "DefaultAction",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateGlobalAcceleratorAclPolicyResponse": {
+      "document": "CreateGlobalAcceleratorAclPolicy response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Asynchronous task ID.</p>",
+          "example": "fd3bf857-9ee2-4534-826f-fbca65c9e324",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Access control policy ID.</p>",
+          "example": "sp-fkp17zpx",
+          "member": "string",
+          "name": "GlobalAcceleratorAclPolicyId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateGlobalAcceleratorAclRuleRequest": {
+      "document": "CreateGlobalAcceleratorAclRule request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Global acceleration instance ID.",
+          "example": "ga-ask56kjh",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Security policy ID",
+          "example": "sp-14835a2cd",
+          "member": "string",
+          "name": "GlobalAcceleratorAclPolicyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Acl information.",
+          "example": "无",
+          "member": "AclEntries",
+          "name": "AclEntries",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateGlobalAcceleratorAclRuleResponse": {
+      "document": "CreateGlobalAcceleratorAclRule response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Asynchronous task ID.",
+          "example": "e1326769-29a9-43d5-8fbb-6af2e7165328",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ACL rule ID.",
+          "example": "[\"sr-n28npbjx\"]",
+          "member": "string",
+          "name": "GlobalAcceleratorAclRuleIds",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateGlobalAcceleratorRequest": {
+      "document": "CreateGlobalAccelerator request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Name.</p><p>Parameter format: starting with a letter or Chinese characters, 2–128 characters in length, supporting letters, digits, Chinese characters, . - _</p>",
+          "example": "ga-name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Billing mode. PREPAID: prepaid mode, i.e., Monthly Subscription. POSTPAID: postpaid, i.e., pay-as-you-go. Default: POSTPAID. Currently, only pay-as-you-go is supported.</p>",
+          "example": "POSTPAID",
+          "member": "string",
+          "name": "InstanceChargeType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Description.</p><p>Parameter format: should not exceed 100 characters.</p>",
+          "example": "description",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Cross-border type; HighQuality: dedicated BGP-IP cross-border; Unicom: China Unicom Direct Connect cross-border.</p>",
+          "example": "HighQuality",
+          "member": "string",
+          "name": "CrossBorderType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>This Flag represents signing the cross-border service commitment. When using cross-border service, this field is required. True: represents signed.</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "CrossBorderPromiseFlag",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Tag information.</p>",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateGlobalAcceleratorResponse": {
+      "document": "CreateGlobalAccelerator response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "37f82c4e-a9b3-4c05-bf21-9c5492f9f856",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Global acceleration instance ID.</p>",
+          "example": "ga-5lkgru6k",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateListenerAdditionalCertRequest": {
+      "document": "CreateListenerAdditionalCert request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Global acceleration instance ID.</p>",
+          "example": "ga-ask56kjh",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Listener ID.</p>",
+          "example": "[\"listener-ask56kjh\"]",
+          "member": "string",
+          "name": "ListenerId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Certificate ID.</p><p>Currently, only server certificates can be added.</p>",
+          "example": "[\"7KwVvXcD\"]",
+          "member": "string",
+          "name": "AdditionalCertificates",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateListenerAdditionalCertResponse": {
+      "document": "CreateListenerAdditionalCert response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "4b995c0a-98f2-4dbc-84cc-71b1a63642e5",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateListenerRequest": {
+      "document": "CreateListener request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Global acceleration instance ID.</p>",
+          "example": "ga-sfg45k23",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Name.</p><p>Parameter format: starting with a letter or Chinese characters, 2–128 characters in length, supporting letters, digits, Chinese characters, . - _</p>",
+          "example": "name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Port range.</p>",
+          "example": "无",
+          "member": "PortRanges",
+          "name": "PortRanges",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Description. Maximum length cannot exceed 100 characters.</p>",
+          "example": "description",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Listening type, defaults to smart routing.</p><p>Enumeration values:</p><ul><li>Standard: Smart routing.</li></ul>",
+          "example": "Standard",
+          "member": "string",
+          "name": "ListenerType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Protocol. Default value: TCP. Supports configuration of 'TCP', 'UDP', 'HTTP', and 'HTTPS'.</p>",
+          "example": "TCP",
+          "member": "string",
+          "name": "Protocol",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Connection idle wait time.</p><p>1. For HTTP/HTTPS listener, the default value is 15, with a supported range of 1-60.<br>2. For TCP listener, the default value is 900, with a supported range of 10-900.<br>3. For UDP listener, the default value is 20, with a supported range of 10-20.</p>",
+          "example": "3",
+          "member": "uint64",
+          "name": "IdleTimeout",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Layer-4 source IP retrieval mode. Supports 'TOA', 'ProxyProtocol', and 'ProxyProtocolV2'.</p><p>This parameter can be filled in only when the Layer-4 source IP retrieval mode is enabled.</p>",
+          "example": "TOA",
+          "member": "string",
+          "name": "GetRealIpType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable session persistence. Supports configuration of 'Open' and 'Close'.</p><p>Enumeration values:</p><ul><li>Open: enable.</li><li>Close: disable.</li></ul><p>Only supported for layer-4 listeners. For layer-7 listeners, modification is not supported.</p>",
+          "example": "Open",
+          "member": "string",
+          "name": "ClientAffinity",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Request timeout.</p><p>Value range: [1, 180]</p><p>Default value: 60</p><p>This parameter is configurable only for HTTPS listeners.</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "RequestTimeout",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable layer-7 source IP retrieval mode.</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "XForwardedForRealIp",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Parsing method.</p><p>Enumeration values:</p><ul><li>UNIDIRECTIONAL: two-way.</li><li>U: one-way.</li></ul><p>For an HTTPS listener, this field is required.</p>",
+          "example": "UNIDIRECTIONAL",
+          "member": "string",
+          "name": "CertificationType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Encryption algorithm kit. Supports configuration of 'tls_policy_1.0-2', 'tls_policy_1.1-2', 'tls_policy_1.2', 'tls_policy_1.2_strict', 'tls_policy_1.2_strict-1.3'.</p>",
+          "example": "tls_cipher_policy_1_0",
+          "member": "string",
+          "name": "CipherPolicyId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Server certificate.</p><p>Input limit: currently only support importing one cert; to use multiple certs, use the cert api CreateListenerAdditionalCert to add other certs.</p><p>This field is required for HTTPS listeners.</p>",
+          "example": "[\"LBNUH4N3\"]",
+          "member": "string",
+          "name": "ServerCertificates",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Client certificate.</p><p>Input limit: 1. Currently only support importing one cert. To use multiple certs, use the cert api CreateListenerAdditionalCert to add other certs. 2. The cert must be a CA certificate.</p><p>This field is required when HTTPS listener and mutual authentication are enabled.</p>",
+          "example": "[\"LBNUH4N3\"]",
+          "member": "string",
+          "name": "ClientCaCertificates",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>HTTPS listener supports version selection</p><p>Enumeration values:</p><ul><li>HTTP/1.1: HTTP/1.1</li><li>HTTP/2: HTTP/2</li></ul>",
+          "example": "HTTP/2",
+          "member": "string",
+          "name": "HttpVersion",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateListenerResponse": {
+      "document": "CreateListener response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "0a162e80-c98e-47eb-a145-d2015fd490fb",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Listener ID.</p>",
+          "example": "lsr-00048c4x",
+          "member": "string",
+          "name": "ListenerId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAccelerateAreasRequest": {
+      "document": "DeleteAccelerateAreas request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Global acceleration instance ID.",
+          "example": "ga-fkp17vr8",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Acceleration region ID.",
+          "example": "[\"area-cy6397ye\"]",
+          "member": "string",
+          "name": "AcceleratorAreaIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAccelerateAreasResponse": {
+      "document": "DeleteAccelerateAreas response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Asynchronous task ID.",
+          "example": "4b995c0a-98f2-4dbc-84cc-71b1a63642e5",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteEndpointGroupsRequest": {
+      "document": "DeleteEndpointGroups request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Global acceleration instance ID.",
+          "example": "ga-ask56kjh",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Listener ID.",
+          "example": "listener-ask56kjh",
+          "member": "string",
+          "name": "ListenerId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Terminal node group ID.",
+          "example": "[\"epg-ask56kjh\"]",
+          "member": "string",
+          "name": "EndpointGroupIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteEndpointGroupsResponse": {
+      "document": "DeleteEndpointGroups response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "4b995c0a-98f2-4dbc-84cc-71b1a63642e5",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteForwardingPolicyRequest": {
+      "document": "DeleteForwardingPolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Global acceleration instance ID.",
+          "example": "ga-ask56kjh",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Listener ID.",
+          "example": "lsr-kzjzfs7n",
+          "member": "string",
+          "name": "ListenerId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Policy ID.",
+          "example": "dm-dz058e4q",
+          "member": "string",
+          "name": "ForwardingPolicyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteForwardingPolicyResponse": {
+      "document": "DeleteForwardingPolicy response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Asynchronous task ID.",
+          "example": "e1326769-29a9-43d5-8fbb-6af2e7165328",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteForwardingRuleRequest": {
+      "document": "DeleteForwardingRule request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Global acceleration instance ID.",
+          "example": "ga-ask56kjh",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Listener ID.",
+          "example": "lsr-kzjzfs7n",
+          "member": "string",
+          "name": "ListenerId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Policy ID.",
+          "example": "dm-dz058e4q",
+          "member": "string",
+          "name": "ForwardingPolicyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Layer 7 forwarding rule ID.",
+          "example": "rule-ioi42kxy",
+          "member": "string",
+          "name": "ForwardingRuleId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteForwardingRuleResponse": {
+      "document": "DeleteForwardingRule response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Asynchronous task ID.",
+          "example": "e1326769-29a9-43d5-8fbb-6af2e7165328",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteGlobalAcceleratorAccessLogRequest": {
+      "document": "DeleteGlobalAcceleratorAccessLog request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Log Unique Id</p>",
+          "example": "galog-8agteyy6",
+          "member": "string",
+          "name": "LogPushTaskId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Unique Id of the GA instance</p>",
+          "example": "ga-rs4cpp5u",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteGlobalAcceleratorAccessLogResponse": {
+      "document": "DeleteGlobalAcceleratorAccessLog response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteGlobalAcceleratorAclPolicyRequest": {
+      "document": "DeleteGlobalAcceleratorAclPolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Global acceleration instance ID.",
+          "example": "ga-ask56kjh",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Access control policy ID.",
+          "example": "sp-io46vtlf",
+          "member": "string",
+          "name": "GlobalAcceleratorAclPolicyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteGlobalAcceleratorAclPolicyResponse": {
+      "document": "DeleteGlobalAcceleratorAclPolicy response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Asynchronous task ID.",
+          "example": "fd3bf857-9ee2-4534-826f-fbca65c9e324",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteGlobalAcceleratorAclRuleRequest": {
+      "document": "DeleteGlobalAcceleratorAclRule request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Global acceleration instance ID.",
+          "example": "ga-ask56kjh",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Security policy ID",
+          "example": "sp-1234abcd",
+          "member": "string",
+          "name": "GlobalAcceleratorAclPolicyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Acl rule ID.",
+          "example": "无",
+          "member": "string",
+          "name": "GlobalAcceleratorAclRuleIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteGlobalAcceleratorAclRuleResponse": {
+      "document": "DeleteGlobalAcceleratorAclRule response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Asynchronous task ID.",
+          "example": "e1326769-29a9-43d5-8fbb-6af2e7165328",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteGlobalAcceleratorRequest": {
+      "document": "DeleteGlobalAccelerator request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Global acceleration instance ID.",
+          "example": "ga-1sdfg526",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteGlobalAcceleratorResponse": {
+      "document": "DeleteGlobalAccelerator response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "b901f5cb-e808-4e77-ac7b-fc11b6753f17",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteListenerAdditionalCertRequest": {
+      "document": "DeleteListenerAdditionalCert request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Global acceleration instance ID.",
+          "example": "ga-ask56kjh",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Listener ID.",
+          "example": "[\"listener-ask56kjh\"]",
+          "member": "string",
+          "name": "ListenerId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Certificate ID.",
+          "example": "[\"7KwVvXcD\"]",
+          "member": "string",
+          "name": "AdditionalCertificates",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteListenerAdditionalCertResponse": {
+      "document": "DeleteListenerAdditionalCert response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "4b995c0a-98f2-4dbc-84cc-71b1a63642e5",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteListenerRequest": {
+      "document": "DeleteListener request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Global acceleration instance ID.",
+          "example": "ga-ask56kjh",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Listener ID.",
+          "example": "lsr-ask56kjh",
+          "member": "string",
+          "name": "ListenerId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteListenerResponse": {
+      "document": "DeleteListener response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "0a162e80-c98e-47eb-a145-d2015fd490f",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccelerateAreasRequest": {
+      "document": "DescribeAccelerateAreas request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Global acceleration instance ID.</p>",
+          "example": "ga-fkp17vr8",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Offset. The default is 0.</p>",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of instances meeting conditions. Default value: 20. Maximum: 200.</p>",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Filter criteria. accelerate-region - String - (Filter criterion) Terminal node group region.</p>",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccelerateAreasResponse": {
+      "document": "DescribeAccelerateAreas response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Acceleration region information.</p>",
+          "example": "无",
+          "member": "AcceleratorAreas",
+          "name": "AccelerateAreaSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of instances.</p>",
+          "example": "10",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccelerateRegionsRequest": {
+      "document": "DescribeAccelerateRegions request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeAccelerateRegionsResponse": {
+      "document": "DescribeAccelerateRegions response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Acceleration region information.",
+          "example": "无",
+          "member": "AcceleratorRegionSet",
+          "name": "AcceleratorRegionSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccessLogParamRequest": {
+      "document": "DescribeAccessLogParam request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "ga-ee9hwx13",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAccessLogParamResponse": {
+      "document": "DescribeAccessLogParam response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Layer-7 optional parameter.</p>",
+          "example": "[\"request_method\"]",
+          "member": "string",
+          "name": "L7Param",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>L4 optional parameter</p>",
+          "example": "[\"session_time\"]",
+          "member": "string",
+          "name": "L4Param",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCrossBorderSettlementRequest": {
+      "document": "DescribeCrossBorderSettlement request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Global acceleration instance ID.",
+          "example": "ga-d2w2zbzc",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Acceleration region.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "AccelerateRegion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Region of the terminal node group.",
+          "example": "ap-singapore",
+          "member": "string",
+          "name": "EndpointGroupRegion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Bill year and month time.",
+          "example": "202510",
+          "member": "uint64",
+          "name": "SettlementMonth",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCrossBorderSettlementResponse": {
+      "document": "DescribeCrossBorderSettlement response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Traffic amount in GB; precision is reserved to 6 decimal places.",
+          "example": "65.036000",
+          "member": "float",
+          "name": "Traffic",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeEndpointGroupsRequest": {
+      "document": "DescribeEndpointGroups request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Global acceleration instance ID.</p>",
+          "example": "ga-ask56kjh",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Offset. Default value: 0.</p>",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of returns. Default value: 10. Maximum value: 10.</p>",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Filter criteria. endpoint-group-id - String - (Filter criterion) Terminal node group instance ID. endpoint-group-type - String - (Filter criterion) Terminal node group instance type.</p>",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeEndpointGroupsResponse": {
+      "document": "DescribeEndpointGroups response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Eligible terminal node group.</p>",
+          "example": "无",
+          "member": "EndpointGroupConfigurationSet",
+          "name": "EndpointGroupConfigurationSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of instances that meet the criteria.</p>",
+          "example": "10",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeForwardingPolicyRequest": {
+      "document": "DescribeForwardingPolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Global acceleration instance ID.",
+          "example": "ga-dz058gbb",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Listener ID.",
+          "example": "lsr-dz058gbb",
+          "member": "string",
+          "name": "ListenerId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Offset. Default value: 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of returns. Default value: 20. Maximum value: 100.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeForwardingPolicyResponse": {
+      "document": "DescribeForwardingPolicy response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Policy information that meets the conditions.",
+          "example": "无",
+          "member": "ForwardingPolicySet",
+          "name": "ForwardingPolicySet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of instances that meet the criteria.",
+          "example": "10",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeForwardingRuleRequest": {
+      "document": "DescribeForwardingRule request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Global acceleration instance ID.",
+          "example": "ga-dz058gbb",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Listener ID.",
+          "example": "lsr-dz058gbb",
+          "member": "string",
+          "name": "ListenerId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Layer 7 forwarding rule ID.",
+          "example": "dm-io46vpu6",
+          "member": "string",
+          "name": "ForwardingPolicyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Offset. Default value: 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of returns. Default value: 20. Maximum value: 100.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeForwardingRuleResponse": {
+      "document": "DescribeForwardingRule response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Rule information that meets the conditions.",
+          "example": "无",
+          "member": "ForwardingRuleSet",
+          "name": "ForwardingRuleSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of instances that meet the criteria.",
+          "example": "10",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGlobalAcceleratorAccessLogRequest": {
+      "document": "DescribeGlobalAcceleratorAccessLog request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Unique Id of the ga instance</p>",
+          "example": "ga-rs4cpp5u",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Query filter parameters. { &quot;Name&quot;: &quot;listener-id&quot;, &quot;Values&quot;: [&quot;listener unique id&quot;] },{ &quot;Name&quot;: &quot;endpoint-group-id&quot;, &quot;Values&quot;: [&quot;Terminal node group unique id&quot;] },{ &quot;Name&quot;: &quot;access_log_id&quot;, &quot;Values&quot;: [&quot;log unique id&quot;] }</p>",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Offset. Default value: 0.</p>",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of returned results.</p><p>Value range: [0, 200]</p>",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGlobalAcceleratorAccessLogResponse": {
+      "document": "DescribeGlobalAcceleratorAccessLog response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Return log task detail</p>",
+          "example": "无",
+          "member": "GlobalAcceleratorAccessLog",
+          "name": "GlobalAcceleratorAccessLog",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of log task entries.</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGlobalAcceleratorAclPoliciesRequest": {
+      "document": "DescribeGlobalAcceleratorAclPolicies request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Global acceleration instance ID.</p>",
+          "example": "ga-ask56kjh",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Offset. Default value: 0.</p>",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of returns. Default value: 20. Maximum value: 200.</p>",
+          "example": "10",
+          "member": "string",
+          "name": "Limit",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGlobalAcceleratorAclPoliciesResponse": {
+      "document": "DescribeGlobalAcceleratorAclPolicies response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Access control policy information.</p>",
+          "example": "无",
+          "member": "GlobalAcceleratorAclPolicies",
+          "name": "GlobalAcceleratorAclPolicySet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total number of instances that meet the criteria.</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGlobalAcceleratorAclRulesRequest": {
+      "document": "DescribeGlobalAcceleratorAclRules request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Access control policy ID.</p>",
+          "example": "sp-dz058gbb",
+          "member": "string",
+          "name": "GlobalAcceleratorAclPolicyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Offset. Default value: 0.</p>",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of returned results.</p><p>Value range: [1, 200]</p><p>Default value: 20</p>",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGlobalAcceleratorAclRulesResponse": {
+      "document": "DescribeGlobalAcceleratorAclRules response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Eligible Acl rule instance.</p>",
+          "example": "无",
+          "member": "GlobalAcceleratorAclRuleSet",
+          "name": "GlobalAcceleratorAclRuleSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of instances that meet the criteria.</p>",
+          "example": "10",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGlobalAcceleratorsRequest": {
+      "document": "DescribeGlobalAccelerators request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Offset. Default value: 0.</p>",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of returned results.</p><p>Value range: [1, 200]</p><p>Default value: 20</p>",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Filter criteria. <li>global-accelerator-id - String - (Filter condition) Global acceleration instance ID.</li> <li>global-accelerator-state - String - (Filter condition) Global acceleration instance status.</li></p>",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGlobalAcceleratorsResponse": {
+      "document": "DescribeGlobalAccelerators response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Eligible global acceleration instances.</p>",
+          "example": "无",
+          "member": "GlobalAcceleratorSet",
+          "name": "GlobalAcceleratorSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of instances that meet the criteria.</p>",
+          "example": "10",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeListenersRequest": {
+      "document": "DescribeListeners request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Global acceleration instance ID.",
+          "example": "ga-ask56kjh",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Offset. Default value: 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of returns. Default value: 20. Maximum value: 100.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter criteria. listener-id - String - (Filter criteria) Listener instance ID.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeListenersResponse": {
+      "document": "DescribeListeners response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Eligible listener instance.",
+          "example": "无",
+          "member": "ListenerSet",
+          "name": "ListenerSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of instances that meet the criteria.",
+          "example": "12",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeTaskResultRequest": {
       "document": "DescribeTaskResult request structure.",
       "members": [
@@ -50,6 +2714,2657 @@
         }
       ],
       "type": "object"
+    },
+    "EndpointConfigurations": {
+      "document": "Terminal node configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Domain type. Available values: 'Domain', 'PublicIp'.</p>",
+          "example": "Domain",
+          "member": "string",
+          "name": "EndpointType",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Domain name.</p>",
+          "example": "www.test.com",
+          "member": "string",
+          "name": "EndpointService",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Weight.</p>",
+          "example": "10",
+          "member": "uint64",
+          "name": "Weight",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Health check status; HEALTH: healthy; UNHEALTH: unhealthy.</p>",
+          "example": "HEALTH",
+          "member": "string",
+          "name": "HealthCheckStatus",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "EndpointGroupConfiguration": {
+      "document": "Terminal node group configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Terminal node group name.</p><p>Parameter format: starting with a letter or Chinese characters, 2–128 characters in length, supporting letters, digits, Chinese characters, . - _</p>",
+          "example": "name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Region of the terminal node group.</p>",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "EndpointGroupRegion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Terminal node configuration.</p>",
+          "example": "无",
+          "member": "EndpointConfigurations",
+          "name": "EndpointConfigurations",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Check protocol. Supports configuration of 'TCP', 'HTTP', 'PING', and 'CUSTOM'.</p><p>Enumeration values:</p><ul><li>TCP: When the CLB listener protocol where the terminal node group resides is TCP, choose TCP as the check protocol.</li><li>HTTP: When the CLB listener protocol where the terminal node group resides is HTTP or HTTPS, choose HTTP as the check protocol.</li><li>PING: When the CLB listener protocol where the terminal node group resides is UDP, choose PING as the check protocol.</li><li>CUSTOM: When the CLB listener protocol where the terminal node group resides is UDP or TCP, choose CUSTOM as the check protocol.</li></ul><p>This field is required when health check is enabled.</p>",
+          "example": "TCP",
+          "member": "string",
+          "name": "CheckType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Description.</p><p>Default value: empty by default, representing no configuration description.</p><p>Maximum length: 100 bytes.</p>",
+          "example": "description",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Check port.</p><p>Input limit: range 1-65535.</p><p>This field is required when CheckType is CUSTOM.</p>",
+          "example": "10",
+          "member": "string",
+          "name": "CheckPort",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Check content. Supports configuration 'TEXT'.</p><p>Enumeration values:</p><ul><li>TEXT: Text content.</li></ul><p>This field is required when CheckType is CUSTOM.</p>",
+          "example": "check_type_test",
+          "member": "string",
+          "name": "ContextType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Check request.</p><p>Input parameter limit: The byte length must be within 1-500.</p><p>This field is required when CheckType is CUSTOM.</p>",
+          "example": "check_send_context_test",
+          "member": "string",
+          "name": "CheckSendContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Check returned results.</p><p>Input parameter limit: The byte length must be within 1-500.</p><p>When CheckType is CUSTOM, this field is required.</p>",
+          "example": "check_recv_context_test",
+          "member": "string",
+          "name": "CheckRecvContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable health check.</p><p>Default value: False</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableHealthCheck",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Response timeout.</p><p>Value range: [1, 100]</p><p>Default value: 2</p><p>This field is required when health check is enabled.</p>",
+          "example": "10",
+          "member": "uint64",
+          "name": "ConnectTimeout",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Health check interval.</p><p>Value range: [5, 300].</p><p>Default value: 30.</p><p>This field is required when health check is enabled.</p>",
+          "example": "10",
+          "member": "uint64",
+          "name": "HealthCheckInterval",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Unhealthy threshold.</p><p>Value range: [1, 10]</p><p>Default value: 3</p><p>This field is required when health check is enabled.</p>",
+          "example": "10",
+          "member": "uint64",
+          "name": "UnhealthyThreshold",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Health threshold.</p><p>Value range: [1, 10]</p><p>Default value: 3</p><p>This field is required when health check is enabled.</p>",
+          "example": "10",
+          "member": "uint64",
+          "name": "HealthyThreshold",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Origin-pull protocol. HTTP and HTTPS can be configured.</p><p>Enumeration values:</p><ul><li>HTTP: HTTP origin-pull. HTTP can be configured when the listener protocol where the terminal node group resides is HTTP or HTTPS.</li><li>HTTPS: HTTPS origin-pull. HTTPS can be configured when the listener protocol where the terminal node group resides is HTTPS.</li></ul><p>This field is required when the listener protocol where the terminal node group resides is HTTP or HTTPS.</p>",
+          "example": "HTTP",
+          "member": "string",
+          "name": "ForwardProtocol",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Check domain name.</p><p>Input parameter limit: The byte length range is 3-80.</p><p>This field is required when CheckType is HTTP.</p>",
+          "example": "www.ccc.com",
+          "member": "string",
+          "name": "CheckDomain",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Check the URL.</p><p>Parameter format: must match the regular expression: ^[a-zA-Z0-9_.\\-\\/]{1,80}$</p><p>This field is required when CheckType is HTTP.</p>",
+          "example": "/path",
+          "member": "string",
+          "name": "CheckPath",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Request method. Supports configuration of 'GET' and 'HEAD'.</p><p>Enumeration values:</p><ul><li>GET: The request method is GET.</li><li>HEAD: The request method is HEAD.</li></ul><p>When CheckType is HTTP, this field is required.</p>",
+          "example": "GET",
+          "member": "string",
+          "name": "CheckMethod",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Status check code. Supports configuring 'http_2xx', 'http_3xx', 'http_4xx', 'http_5xx'.</p><p>Enumeration values:</p><ul><li>http_2xx: HTTP codes beginning with 2.</li><li>http_3xx: HTTP codes beginning with 3.</li><li>http_4xx: HTTP codes beginning with 4.</li><li>http_5xx: HTTP codes beginning with 5.</li></ul><p>This field is required when CheckType is HTTP.</p>",
+          "example": "[\"http_2xx\"]",
+          "member": "string",
+          "name": "StatusMask",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Port mapping.</p><p>Input limits: Layer 7 supports 1 port mapping, and Layer 4 supports up to 30 port mappings.</p>",
+          "example": "无",
+          "member": "PortOverride",
+          "name": "PortOverrides",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Operator type. Supports configuration 'CMCC', 'CTCC', 'CUCC'.</p><p>Enumeration values:</p><ul><li>CMCC: China Mobile</li><li>CUCC: China Unicom</li><li>CTCC: China Telecom</li></ul><p>This field is required when the terminal node group region is a triple-network region.</p>",
+          "example": "CMCC",
+          "member": "string",
+          "name": "IspType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>HPPTS encryption algorithm suite; supports configuration 'tls_policy_1.0-2', 'tls_policy_1.1-2', 'tls_policy_1.2', 'tls_policy_1.2_strict', 'tls_policy_1.2_strict-1.3';</p><p>Enumeration values:</p><ul><li>tls_policy_1.0-2: encryption algorithm suite.</li><li>tls_policy_1.1-2: encryption algorithm suite.</li><li>tls_policy_1.2: encryption algorithm suite.</li><li>tls_policy_1.2_strict: encryption algorithm suite.</li><li>tls_policy_1.2_strict-1.3: encryption algorithm suite.</li></ul><p>This field is required when the origin-pull protocol is HTTPS.</p>",
+          "example": "tls_policy_1.0-2",
+          "member": "string",
+          "name": "CipherPolicyId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Origin-pull protocol. Supports configuration of 'HTTP/1.1' and 'HTTP/2'.</p><p>Enumeration values:</p><ul><li>HTTP/1.1: version HTTP/1.1</li><li>HTTP/2: version HTTP/2</li></ul><p>This field is required when the origin-pull protocol is HTTPS.</p>",
+          "example": "HTTP/2",
+          "member": "string",
+          "name": "HttpVersion",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "EndpointGroupConfigurationSet": {
+      "document": "Terminal node group information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Global acceleration instance ID.</p>",
+          "example": "ga-shj492kj",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Listener instance ID.</p>",
+          "example": "listener-shj492kj",
+          "member": "string",
+          "name": "ListenerId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Terminal node group ID.</p>",
+          "example": "epg-shj492kj",
+          "member": "string",
+          "name": "EndpointGroupId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Name.</p>",
+          "example": "name",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Region.</p>",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "EndpointGroupRegion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Description.</p>",
+          "example": "description",
+          "member": "string",
+          "name": "Description",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Endpoint information.</p>",
+          "example": "无",
+          "member": "EndpointConfigurations",
+          "name": "EndpointConfigurations",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable health check.</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableHealthCheck",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Response timeout.</p>",
+          "example": "10",
+          "member": "uint64",
+          "name": "ConnectTimeout",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Health check interval.</p>",
+          "example": "12",
+          "member": "uint64",
+          "name": "HealthCheckInterval",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Unhealthy threshold.</p>",
+          "example": "12",
+          "member": "uint64",
+          "name": "UnhealthyThreshold",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Health threshold.</p>",
+          "example": "12",
+          "member": "uint64",
+          "name": "HealthyThreshold",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Select the protocol.</p>",
+          "example": "TCP",
+          "member": "string",
+          "name": "CheckType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Check port.</p>",
+          "example": "12",
+          "member": "uint64",
+          "name": "CheckPort",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Check content.</p>",
+          "example": "asdg12",
+          "member": "string",
+          "name": "ContextType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Check request.</p>",
+          "example": "sdjsd",
+          "member": "string",
+          "name": "CheckSendContext",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Check returned results.</p>",
+          "example": "/sdjsd",
+          "member": "string",
+          "name": "CheckRecvContext",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Check domain name.</p>",
+          "example": "/asld",
+          "member": "string",
+          "name": "CheckDomain",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Check the URL.</p>",
+          "example": "/asld",
+          "member": "string",
+          "name": "CheckPath",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Request method.</p>",
+          "example": "GET",
+          "member": "string",
+          "name": "CheckMethod",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Status check code.</p>",
+          "example": "[\"http_2xx\"]",
+          "member": "string",
+          "name": "StatusMask",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Terminal node group type.</p>",
+          "example": "DEFAULT",
+          "member": "string",
+          "name": "EndpointGroupType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Origin-pull protocol.</p>",
+          "example": "HTTP",
+          "member": "string",
+          "name": "ForwardProtocol",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Port mapping info.</p>",
+          "example": "无",
+          "member": "PortOverride",
+          "name": "PortOverrides",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether the custom endpoint group is bound to a Layer 7 forwarding rule.</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "VirtualExistForwardingRuleFlag",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Public IP address of the egress terminal node group.</p>",
+          "example": "[\"101.42.53.111\"]",
+          "member": "string",
+          "name": "OriginPublicIps",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Operator type. China Mobile (CMCC), China Unicom (CUCC), China Telecom (CTCC).</p>",
+          "example": "CMCC",
+          "member": "string",
+          "name": "IspType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>HPPTS encryption algorithm kit</p>",
+          "example": "tls_policy_1.1-2",
+          "member": "string",
+          "name": "CipherPolicyId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Only the HTTPS back-to-source protocol supports selecting ['HTTP/1.1', 'HTTP/2']</p><p>Enumeration values:</p><ul><li>HTTP/1.1: Version HTTP/1.1</li><li>HTTP/2: Version HTTP/2</li></ul>",
+          "example": "HTTP/2",
+          "member": "string",
+          "name": "HttpVersion",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Filter": {
+      "document": "Filter.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Attribute name. If more than one Filter exists, the logical relation between these Filters is `AND`.",
+          "example": "ga-name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Attribute value. If a filter has multiple values, the relationship among the values under the same filter is logical OR (OR). When the value type is boolean, it can be directly set to the string \"TRUE\" or \"FALSE\".",
+          "example": "[\"ga-A\"]",
+          "member": "string",
+          "name": "Values",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "ForwardingPolicySet": {
+      "document": "Layer-7 forwarding policy information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Global acceleration instance ID.",
+          "example": "ga-dz058dxi",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Listener ID.",
+          "example": "lsr-io48ae1d",
+          "member": "string",
+          "name": "ListenerId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Policy ID.",
+          "example": "dm-00000ju6",
+          "member": "string",
+          "name": "ForwardingPolicyId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Domain name.",
+          "example": "www.979137.com",
+          "member": "string",
+          "name": "Host",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is the default domain name.",
+          "example": "True",
+          "member": "bool",
+          "name": "DefaultHostFlag",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ForwardingRuleSet": {
+      "document": "Layer-7 forwarding rule information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Conditional information of Layer 7 forwarding rules.</p>",
+          "example": "无",
+          "member": "RuleCondition",
+          "name": "RuleCondition",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Behavior information of the Layer 7 forwarding rule.</p>",
+          "example": "无",
+          "member": "RuleAction",
+          "name": "RuleAction",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable origin-pull Sni.</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableOriginSni",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Origin-pull Sni.</p>",
+          "example": "21dsf",
+          "member": "string",
+          "name": "OriginSni",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Origin-pull Header information.</p>",
+          "example": "无",
+          "member": "OriginHeader",
+          "name": "OriginHeaders",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Origin-pull Host.</p>",
+          "example": "12.12.12.1",
+          "member": "string",
+          "name": "OriginHost",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Global acceleration instance ID.</p>",
+          "example": "ga-80bzejka",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Listener ID.</p>",
+          "example": "lsr-nd3qmz7h",
+          "member": "string",
+          "name": "ListenerId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Layer-7 forwarding policy ID.</p>",
+          "example": "dm-kzk3neks",
+          "member": "string",
+          "name": "ForwardingPolicyId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Layer 7 forwarding rule ID.</p>",
+          "example": "rule-5lybgwaw",
+          "member": "string",
+          "name": "ForwardingRuleId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Origin server response header</p>",
+          "example": "无",
+          "member": "HideResponseHeaders",
+          "name": "HideResponseHeaders",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Delete origin server response headers</p>",
+          "example": "无",
+          "member": "ResponseHeaders",
+          "name": "ResponseHeaders",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "GlobalAcceleratorAccessLog": {
+      "document": "GA access log",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Log Unique Id</p>",
+          "example": "galog-8agteyy6",
+          "member": "string",
+          "name": "LogPushTaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Unique Id of the GA instance.</p>",
+          "example": "ga-rs4cpp5u",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Unique Id of the listener</p>",
+          "example": "lsr-3c7xwnq3",
+          "member": "string",
+          "name": "ListenerId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Unique Id of the terminal node group</p>",
+          "example": "epg-pg931p4y",
+          "member": "string",
+          "name": "EndpointGroupId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Log task description</p>",
+          "example": "wick-测试创建日志任务-修改",
+          "member": "string",
+          "name": "FlowLogDescription",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Region where the logs are located.</p>",
+          "example": "ap-beijing",
+          "member": "string",
+          "name": "CloudRegion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Log topic Id</p>",
+          "example": "8b82e387-a213-41f7-aaa3-2fd6d02265d8",
+          "member": "string",
+          "name": "CloudLogId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Log Set Id</p>",
+          "example": "b18a3982-b759-4809-9f59-17a0b971f223",
+          "member": "string",
+          "name": "CloudLogSetId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Select log data collection field</p>",
+          "example": "[\"upstream_bytes_received\"]",
+          "member": "string",
+          "name": "FieldKeys",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Log task status</p><p>Enumeration values:</p><ul><li>active: Running</li><li>stopped: Suspended</li></ul>",
+          "example": "active",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "GlobalAcceleratorAclPolicies": {
+      "document": "Access control policy",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Access control policy ID.",
+          "example": "sp-io46vtlf",
+          "member": "string",
+          "name": "GlobalAcceleratorAclPolicyId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Default action.",
+          "example": "ACCEPT",
+          "member": "string",
+          "name": "DefaultAction",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Status.",
+          "example": "OPEN",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "GlobalAcceleratorAclRuleSet": {
+      "document": "Acl rule information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Access control policy ID.",
+          "example": "无",
+          "member": "string",
+          "name": "GlobalAcceleratorPolicyId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Acl rule ID.",
+          "example": "无",
+          "member": "string",
+          "name": "GlobalAcceleratorAclRuleId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Protocol.",
+          "example": "TCP",
+          "member": "string",
+          "name": "Protocol",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Port.",
+          "example": "10",
+          "member": "string",
+          "name": "Port",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "IP range.",
+          "example": "10.0.0.0/16",
+          "member": "string",
+          "name": "SourceCidrBlock",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Action.",
+          "example": "Allow",
+          "member": "string",
+          "name": "Policy",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Description.",
+          "example": "description",
+          "member": "string",
+          "name": "Description",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "GlobalAcceleratorSet": {
+      "document": "Global acceleration instance information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Global acceleration instance ID.</p>",
+          "example": "ga-xfg498km",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Global acceleration instance name.</p>",
+          "example": "name",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Global acceleration instance description.</p>",
+          "example": "description",
+          "member": "string",
+          "name": "Description",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Instance creation time of the global acceleration instance.</p>",
+          "example": "2025-01-12 17:16:52",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Global acceleration instance status.</p>",
+          "example": "ACTIVE",
+          "member": "string",
+          "name": "State",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Billing type of a global acceleration instance.</p>",
+          "example": "POSTPAID",
+          "member": "string",
+          "name": "InstanceChargeType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>DDoS ID of the global acceleration instance.</p>",
+          "example": "xfg498km",
+          "member": "string",
+          "name": "DdosId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of listeners of the associated acceleration instance.</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "ListenerCounts",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Count of acceleration regions belonging to the acceleration instance.</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "AcceleratorAreaCounts",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Global acceleration instance status.</p>",
+          "example": "ACTIVE",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Domain name.</p>",
+          "example": "a-cr2dpapy-dev.gaapacc020.com.cn",
+          "member": "string",
+          "name": "Cname",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Cross-border type; HighQuality (high-quality cross-border), Unicom (China Unicom cross-border), NotAvailable (not enabled).</p>",
+          "example": "HighQuality",
+          "member": "string",
+          "name": "CrossBorderType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Tag information.</p>",
+          "example": "无",
+          "member": "Tag",
+          "name": "TagSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "HideResponseHeaders": {
+      "document": "Hide Header",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>key</p><p>Parameter format: 1. The string only contain printable ASCII characters. 2. Cannot contain these characters ()&lt;&gt;@,;:\\&quot;/[ ]?={ }</p><p>Input limit: Length 1-40.</p>",
+          "example": "key-2",
+          "member": "string",
+          "name": "Key",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>value</p><p>Currently only support inputting an empty string \"\"</p>",
+          "example": "value-2",
+          "member": "string",
+          "name": "Value",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "IpAddressInfoSet": {
+      "document": "Public IP information in the acceleration region",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>IP address.</p>",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "IpAddress",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>IP type.</p>",
+          "example": "BGP",
+          "member": "string",
+          "name": "IspType",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Ddos type</p>",
+          "example": "Basic",
+          "member": "string",
+          "name": "DdosProtectionType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ListenerSet": {
+      "document": "Listener information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Global acceleration instance ID.",
+          "example": "ga-sjk45jnn",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Listener ID.",
+          "example": "listener-sjk45jnn",
+          "member": "string",
+          "name": "ListenerId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Listener name.",
+          "example": "name",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Listener description.",
+          "example": "description",
+          "member": "string",
+          "name": "Description",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Protocol.",
+          "example": "TCP",
+          "member": "string",
+          "name": "Protocol",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Port range.",
+          "example": "无",
+          "member": "PortRanges",
+          "name": "PortRanges",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable layer-7 access to source IP mode.",
+          "example": "true",
+          "member": "bool",
+          "name": "XForwardedForRealIp",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Enable session persistence.",
+          "example": "Open",
+          "member": "string",
+          "name": "ClientAffinity",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Session persistence time.",
+          "example": "10",
+          "member": "uint64",
+          "name": "ClientAffinityTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "SSL decryption method.",
+          "example": "UNIDIRECTIONAL",
+          "member": "string",
+          "name": "CertificationType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Server certificate.",
+          "example": "[\"Zy7jVcqp\"]",
+          "member": "string",
+          "name": "ServerCertificates",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Client certificate.",
+          "example": "[\"W6aH2tOc\"]",
+          "member": "string",
+          "name": "ClientCaCertificates",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "TLS password suite package.",
+          "example": "tls_cipher_policy_1_0",
+          "member": "string",
+          "name": "CipherPolicyId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "HTTP version.",
+          "example": "HTTP3",
+          "member": "string",
+          "name": "HttpVersion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Request timeout.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RequestTimeout",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.",
+          "example": "2025-03-09 17:48:54",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Listener routing type.",
+          "example": "Standard",
+          "member": "string",
+          "name": "ListenerType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Listener status.",
+          "example": "ACTIVE",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of terminal node groups belonging to the listener.",
+          "example": "2",
+          "member": "uint64",
+          "name": "EndpointGroupCounts",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Method for obtaining the source IP at Layer 4.",
+          "example": "ProxyProtocol",
+          "member": "string",
+          "name": "GetRealIpType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Connection timeout.",
+          "example": "15",
+          "member": "uint64",
+          "name": "IdleTimeout",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ModifyAccelerateAreasRequest": {
+      "document": "ModifyAccelerateAreas request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Global acceleration instance ID.</p>",
+          "example": "ga-fkp17vr8",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Acceleration region info.</p><p>Input limit: array length cannot exceed 10.</p>",
+          "example": "无",
+          "member": "AcceleratorAreas",
+          "name": "AcceleratorAreas",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAccelerateAreasResponse": {
+      "document": "ModifyAccelerateAreas response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Asynchronous task ID.</p>",
+          "example": "4b995c0a-98f2-4dbc-84cc-71b1a63642e5",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAccessLogStatusRequest": {
+      "document": "ModifyAccessLogStatus request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Log Unique Id</p>",
+          "example": "galog-8ezkdjm9",
+          "member": "string",
+          "name": "LogPushTaskId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Status (Start START, Stop STOP)</p><p>Enumeration values:</p><ul><li>START: Start</li><li>STOP: Stop</li></ul>",
+          "example": "START",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Unique Id of the GA instance.</p>",
+          "example": "ga-8sreohed",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAccessLogStatusResponse": {
+      "document": "ModifyAccessLogStatus response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyEndpointGroupRequest": {
+      "document": "ModifyEndpointGroup request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Global acceleration instance ID.</p>",
+          "example": "ga-ask56kjh",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Listener ID.</p>",
+          "example": "listener-ask56kjh",
+          "member": "string",
+          "name": "ListenerId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Terminal node group ID.</p>",
+          "example": "epg-ask56kjh",
+          "member": "string",
+          "name": "EndpointGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Terminal node configuration.</p>",
+          "example": "无",
+          "member": "EndpointConfigurations",
+          "name": "EndpointConfigurations",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Name.</p><p>Parameter format: starting with a letter or Chinese characters, 2–128 characters in length, supporting letters, digits, Chinese characters, . - _</p>",
+          "example": "name",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Description.</p><p>Input limit: maximum length cannot exceed 100 bytes.</p>",
+          "example": "description",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable health check.</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableHealthCheck",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Response timeout.</p><p>Value range: [1, 100]</p><p>This parameter is required when health check is enabled.</p>",
+          "example": "3",
+          "member": "uint64",
+          "name": "ConnectTimeout",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Health check interval.</p><p>Value range: [5, 300].</p><p>This parameter is required when health check is enabled.</p>",
+          "example": "3",
+          "member": "uint64",
+          "name": "HealthCheckInterval",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Unhealthy threshold.</p><p>Value range: [1, 10]</p><p>This field is required when health check is enabled.</p>",
+          "example": "3",
+          "member": "uint64",
+          "name": "UnhealthyThreshold",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Health threshold.</p><p>Value range: [1, 10]</p><p>This field is required when health check is enabled.</p>",
+          "example": "3",
+          "member": "uint64",
+          "name": "HealthyThreshold",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Select the protocol.</p><p>Input parameter limits: support filling in: 'TCP', 'HTTP', 'PING', 'CUSTOM'.</p><p>1. When the listener is TCP, you can choose CUSTOM+TCP.<br>2. When the listener is UDP, you can choose PING+CUSTOM.<br>3. When the listener is HTTP or HTTPS, you can choose HTTP.</p>",
+          "example": "TCP",
+          "member": "string",
+          "name": "CheckType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Check port.</p><p>Value range: [1, 65535]</p><p>This field is required when CheckType is CUSTOM.</p>",
+          "example": "3",
+          "member": "uint64",
+          "name": "CheckPort",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Check content.</p><p>Input parameter limit: Only TEXT is supported.</p><p>This field is required when CheckType is CUSTOM.</p>",
+          "example": "TEXT",
+          "member": "string",
+          "name": "ContextType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Check request.</p><p>Input parameter limit: The length range is 1-500.</p><p>This field is required when CheckType is CUSTOM.</p>",
+          "example": "check_context",
+          "member": "string",
+          "name": "CheckSendContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Check returned results.</p><p>Input parameter limit: length range is 1-500.</p><p>When CheckType is CUSTOM, this field is required.</p>",
+          "example": "check_recv_context",
+          "member": "string",
+          "name": "CheckRecvContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Check domain name.</p><p>Input parameter limit: The length range is 3-80.</p><p>This field is required when CheckType is HTTP.</p>",
+          "example": "www.test.com",
+          "member": "string",
+          "name": "CheckDomain",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Check the URL.</p><p>Input parameter limit: length range 3-80.</p><p>This field is required when CheckType is HTTP.</p>",
+          "example": "/test",
+          "member": "string",
+          "name": "CheckPath",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Request method.</p><p>Input parameter limit: support filling in 'GET', 'HEAD'.</p><p>This field is required when CheckType is HTTP.</p>",
+          "example": "GET",
+          "member": "string",
+          "name": "CheckMethod",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Status check code.</p><p>Input parameter limits: support selecting 'http_2xx', 'http_3xx', 'http_4xx', 'http_5xx'.</p><p>This field is required when CheckType is HTTP.</p>",
+          "example": "[\"http_2xx\"]",
+          "member": "string",
+          "name": "StatusMask",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Origin-pull protocol.</p><p>Input parameter limits. Supported values: 'HTTP', 'HTTPS'.</p><p>When the CLB listener protocol is HTTP, only HTTP can be configured. When it is HTTPS, HTTP or HTTPS can be configured.</p>",
+          "example": "HTTP",
+          "member": "string",
+          "name": "ForwardProtocol",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Port mapping.</p><p>When the CLB listener protocol is HTTP or HTTPS, one pair can be configured. When the CLB listener protocol is UDP or TCP, up to 30 pairs can be configured.</p>",
+          "example": "无",
+          "member": "PortOverride",
+          "name": "PortOverrides",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>HPPTS encryption algorithm kit</p><p>Input parameter limit: support selecting 'tls_policy_1.0-2', 'tls_policy_1.1-2', 'tls_policy_1.2', 'tls_policy_1.2_strict', 'tls_policy_1.2_strict-1.3'.</p><p>This parameter can be modified only when the CLB listener protocol is HTTPS.</p>",
+          "example": "tls_policy_1.0-2",
+          "member": "string",
+          "name": "CipherPolicyId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Only the HTTPS back-to-source protocol supports selecting ['HTTP/1.1', 'HTTP/2']</p><p>Enumeration values:</p><ul><li>HTTP/1.1: version HTTP/1.1</li><li>HTTP/2: version HTTP/2</li></ul>",
+          "example": "HTTP/2",
+          "member": "string",
+          "name": "HttpVersion",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyEndpointGroupResponse": {
+      "document": "ModifyEndpointGroup response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "b83b144d-a14d-45fb-91ec-04649d3c7537",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyForwardingPolicyRequest": {
+      "document": "ModifyForwardingPolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Global acceleration instance ID.</p>",
+          "example": "ga-ask56kjh",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Listener ID.</p>",
+          "example": "lsr-kzjzfs7n",
+          "member": "string",
+          "name": "ListenerId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Policy ID.</p>",
+          "example": "dm-dz058e4q",
+          "member": "string",
+          "name": "ForwardingPolicyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Domain name.</p><p>Input limit: length range is 1-80.</p><p>The format must meet the regular expression: ^(<a href=\"?:[a-z0-9-]{0,61}[a-z0-9]\">a-z0-9</a>?.)+[a-z]{2,}$</p>",
+          "example": "www.bbc.com",
+          "member": "string",
+          "name": "Host",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyForwardingPolicyResponse": {
+      "document": "ModifyForwardingPolicy response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Asynchronous task ID.</p>",
+          "example": "e1326769-29a9-43d5-8fbb-6af2e7165328",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyForwardingRuleRequest": {
+      "document": "ModifyForwardingRule request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Global acceleration instance ID.</p>",
+          "example": "ga-ask56kjh",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Listener ID.</p>",
+          "example": "lsr-kzjzfs7n",
+          "member": "string",
+          "name": "ListenerId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Policy ID.</p>",
+          "example": "dm-dz058e4q",
+          "member": "string",
+          "name": "ForwardingPolicyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Layer 7 forwarding rule ID.</p>",
+          "example": "rule-ioi42kxy",
+          "member": "string",
+          "name": "ForwardingRuleId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Conditional information of Layer 7 forwarding rules.</p><p>Input parameter limit: The array length cannot exceed 1.</p>",
+          "example": "无",
+          "member": "RuleCondition",
+          "name": "RuleConditions",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Layer 7 forwarding rule behavior information.</p><p>Input parameter limit: array length cannot exceed 1.</p>",
+          "example": "无",
+          "member": "RuleAction",
+          "name": "RuleActions",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Origin-pull Header information.</p><p>Input limitation: The length of the array is between 1 and 5.</p>",
+          "example": "无",
+          "member": "OriginHeader",
+          "name": "OriginHeaders",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable origin-pull sni.</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableOriginSni",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Origin sni.</p><p>Input parameter limit: length cannot exceed 80.</p><p>This field is required when origin sni is enabled.</p>",
+          "example": "hjk136",
+          "member": "string",
+          "name": "OriginSni",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Origin-pull host.</p><p>Input parameter limit: length cannot exceed 80.</p><p>This field is required when origin-pull sni is enabled.</p>",
+          "example": "www.aaa.com",
+          "member": "string",
+          "name": "OriginHost",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Origin server response headers</p><p>Input limitation: The array length cannot exceed 5.</p>",
+          "example": "无",
+          "member": "ResponseHeaders",
+          "name": "ResponseHeaders",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Delete origin response headers</p><p>Input parameter limit: array length cannot exceed 5.</p>",
+          "example": "无",
+          "member": "HideResponseHeaders",
+          "name": "HideResponseHeaders",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyForwardingRuleResponse": {
+      "document": "ModifyForwardingRule response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Asynchronous task ID.</p>",
+          "example": "e1326769-29a9-43d5-8fbb-6af2e7165328",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyGlobalAcceleratorAccessLogRequest": {
+      "document": "ModifyGlobalAcceleratorAccessLog request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Unique Id of the log</p>",
+          "example": "galog-5nz8egdx",
+          "member": "string",
+          "name": "LogPushTaskId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Unique Id of a GA instance.</p>",
+          "example": "ga-8sreohed",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Log topic Id</p>",
+          "example": "ce5aa025-1c29-4d8b-8f84-d960e22acb3f",
+          "member": "string",
+          "name": "CloudLogId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Log Set Id</p>",
+          "example": "81217ea2-f578-451a-946e-f31e2131a9ac",
+          "member": "string",
+          "name": "CloudLogSetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>user-selectable log listening fields</p><p>Enumeration values:</p><ul><li>session_time: Layer 4, session duration</li><li>upstream_bytes_received: Layer 4 and Layer 7, number of bytes received from the terminal node</li><li>upstream_bytes_sent: Layer 4 and Layer 7, number of bytes sent to the terminal node</li><li>request_method: Layer 7, GET/POST</li><li>scheme: Layer 7, http/https</li><li>request_uri: Layer 7, uri of the client's original request</li><li>uri: Layer 7, uri of the current request</li><li>host: Layer 7, domain name accessed by the client (Layer 7)</li><li>remote_user: Layer 7, username for basic authentication (\"-\" if unauthenticated)</li><li>http_user_agent: Layer 7, client browser identification</li><li>http_referer: Layer 7, request source URL (\"-\" when accessed directly from the address bar)</li><li>http_x_forwarded_for: Layer 7, records the client's original IP and the chain of proxy server IPs it transited</li><li>content_type: Layer 7, content_type</li><li>body_bytes_sent: Layer 7, http body size sent to the client, excluding the header</li><li>request_time: Layer 7, total time from receiving the first byte of the client request to sending the last byte of the response (unit: seconds)</li><li>sent_http_content_type: Layer 7, response content type</li><li>upstream_header_time: Layer 7, arrival time of the response header from the terminal node</li><li>upstream_response_length: Layer 7, response body length returned by the terminal node</li><li>upstream_response_time: Layer 7, full response time of the terminal node</li><li>upstream_status: Layer 7, http status code returned by the terminal node</li></ul>",
+          "example": "[\"session_time\"]",
+          "member": "string",
+          "name": "FieldKeys",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Log description</p>",
+          "example": "****-测试创建日志任务-修改",
+          "member": "string",
+          "name": "FlowLogDescription",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyGlobalAcceleratorAccessLogResponse": {
+      "document": "ModifyGlobalAcceleratorAccessLog response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyGlobalAcceleratorAclPolicyRequest": {
+      "document": "ModifyGlobalAcceleratorAclPolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Global acceleration instance ID.</p>",
+          "example": "ga-ask56kjh",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Access control policy ID.</p>",
+          "example": "sp-io46vtlf",
+          "member": "string",
+          "name": "GlobalAcceleratorAclPolicyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Access control policy status.</p><p>Enumeration values:</p><ul><li>OPEN: On.</li><li>CLOSE: Off.</li></ul>",
+          "example": "OPEN",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyGlobalAcceleratorAclPolicyResponse": {
+      "document": "ModifyGlobalAcceleratorAclPolicy response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Asynchronous task ID.</p>",
+          "example": "fd3bf857-9ee2-4534-826f-fbca65c9e324",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyGlobalAcceleratorAclRuleRequest": {
+      "document": "ModifyGlobalAcceleratorAclRule request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Global acceleration instance ID.</p>",
+          "example": "ga-ask56kjh",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Security policy ID</p>",
+          "example": "sp-183247cd",
+          "member": "string",
+          "name": "GlobalAcceleratorAclPolicyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Acl rule ID.</p>",
+          "example": "sr-00000msx",
+          "member": "string",
+          "name": "GlobalAcceleratorAclRuleId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Protocol.</p><p>Input parameter limit: support selecting 'TCP', 'UDP'.</p>",
+          "example": "TCP",
+          "member": "string",
+          "name": "Protocol",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Port.</p>",
+          "example": "10",
+          "member": "string",
+          "name": "Port",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>IP range.</p>",
+          "example": "10.0.0.0/16",
+          "member": "string",
+          "name": "SourceCidrBlock",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Action.</p><p>Input parameter limit: support selecting 'ACCEPT', 'DROP'.</p><p>Enumeration values:</p><ul><li>ACCEPT: permission.</li><li>DROP: deny.</li></ul>",
+          "example": "Allow",
+          "member": "string",
+          "name": "Policy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Description. Maximum length cannot exceed 100 bytes.</p>",
+          "example": "description",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyGlobalAcceleratorAclRuleResponse": {
+      "document": "ModifyGlobalAcceleratorAclRule response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Asynchronous task ID.</p>",
+          "example": "e1326769-29a9-43d5-8fbb-6af2e7165328",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyGlobalAcceleratorRequest": {
+      "document": "ModifyGlobalAccelerator request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Global acceleration instance ID.</p>",
+          "example": "ga-1sdfg526",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Name.</p><p>Parameter format: starting with a letter or Chinese characters, 2–128 characters in length, supporting letters, digits, Chinese characters, . - _</p>",
+          "example": "name",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Description.</p><p>Parameter format: should not exceed 100 characters.</p>",
+          "example": "description",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Cross-border type.</p><p>Enumeration values:</p><ul><li>HighQuality: high-quality cross-border.</li><li>Unicom: China Unicom cross-border.</li></ul>",
+          "example": "HighQuality",
+          "member": "string",
+          "name": "CrossBorderType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Indicates whether to complete the cross-border service commitment.</p><p>When CrossBorderType is passed in, this field must be set to true, indicating the cross-border commitment is completed.</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "CrossBorderPromiseFlag",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyGlobalAcceleratorResponse": {
+      "document": "ModifyGlobalAccelerator response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Asynchronous task ID.</p>",
+          "example": "1d026850-b4f4-4c21-b871-2f7fd9fb0ecc",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyListenerRequest": {
+      "document": "ModifyListener request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Global acceleration instance ID.</p>",
+          "example": "ga-sfg45k23",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Listener ID.</p>",
+          "example": "lsr-00048c4x",
+          "member": "string",
+          "name": "ListenerId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Name.</p><p>Parameter format: starting with a letter or Chinese characters, 2–128 characters in length, supporting letters, digits, Chinese characters, . - _</p>",
+          "example": "name",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Description. Maximum length cannot exceed 100 bytes.</p>",
+          "example": "description",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Connection idle wait time.</p><p>1. For HTTP/HTTPS listener, the supported range is 1-60. 2. For TCP listener, the supported range is 10-900. 3. For UDP listener, the supported range is 10-20.</p>",
+          "example": "3",
+          "member": "uint64",
+          "name": "IdleTimeout",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable session persistence.</p><p>Enumeration values:</p><ul><li>Open: on.</li><li>Close: off.</li></ul><p>TCP/UDP listeners support modification of this parameter.</p>",
+          "example": "Open",
+          "member": "string",
+          "name": "ClientAffinity",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Session persistence duration.</p><p>Value range: [60, 3600]</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "ClientAffinityTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Request timeout.</p><p>Value range: [1, 180]</p><p>This parameter can be modified only for HTTPS listeners.</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "RequestTimeout",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable the layer 7 method of obtaining the client IP.</p><p>This parameter modification is supported only for HTTPS/HTTP listeners.</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "XForwardedForRealIp",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Parsing method.</p><p>Enumeration values:</p><ul><li>UNIDIRECTIONAL: two-way.</li><li>MUTUAL: one-way.</li></ul><p>Only HTTPS/HTTP listeners support modifying this parameter.</p>",
+          "example": "UNIDIRECTIONAL",
+          "member": "string",
+          "name": "CertificationType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Encryption algorithm kit.</p><p>Input limits: support selecting tls_policy_1.0-2', 'tls_policy_1.1-2', 'tls_policy_1.2', 'tls_policy_1.2_strict', 'tls_policy_1.2_strict-1.3'.</p><p>Only HTTPS listeners support modifying this parameter.</p>",
+          "example": "tls_cipher_policy_1_0",
+          "member": "string",
+          "name": "CipherPolicyId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Server certificate.</p><p>Input limit: currently only support importing one cert; to use multiple certs, use the cert api CreateListenerAdditionalCert to add other certs.</p><p>Only HTTPS listeners support modification of this parameter.</p>",
+          "example": "[\"LBNUH4N3\"]",
+          "member": "string",
+          "name": "ServerCertificates",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Client certificate.</p><p>Input limitations: 1. Currently only support importing one certificate; to use multiple certificates, use the certificate api CreateListenerAdditionalCert to add other certificates. 2. The certificate must be a CA certificate.</p><p>Only HTTPS listeners support modification of this parameter, and mutual authentication must be enabled.</p>",
+          "example": "[\"KVfO6PUQ\"]",
+          "member": "string",
+          "name": "ClientCaCertificates",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Method of obtaining the source IP.</p><p>Input parameter limits: support selecting 'ProxyProtocol', 'Close', 'ProxyProtocolV2', 'TOA'.</p><p>Only TCP listeners support modification of this parameter.</p>",
+          "example": "ProxyProtocol",
+          "member": "string",
+          "name": "GetRealIpType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyListenerResponse": {
+      "document": "ModifyListener response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "0a162e80-c98e-47eb-a145-d2015fd490fb",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "OriginHeader": {
+      "document": "Origin-pull Header information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Key.</p><p>Parameter format: 1. The string literal only contains printable ASCII characters. 2. Cannot contain these characters ()&lt;&gt;@,;:\\&quot;/[ ]?={ }</p><p>Input parameter limitation: length 1-40.</p>",
+          "example": "key",
+          "member": "string",
+          "name": "Key",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Value.</p><p>Input parameter limit: length cannot exceed 128.</p><p>If the string contains $, you can only configure '$remote_addr', '$remote_port'; otherwise, it is not supported.</p>",
+          "example": "value",
+          "member": "string",
+          "name": "Value",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "PortOverride": {
+      "document": "Port mapping",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Listening port.",
+          "example": "12",
+          "member": "uint64",
+          "name": "ListenerPort",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Mapping port.",
+          "example": "13",
+          "member": "uint64",
+          "name": "EndpointPort",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "PortRanges": {
+      "document": "Port range",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start port.",
+          "example": "12",
+          "member": "uint64",
+          "name": "FromPort",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Destination port.",
+          "example": "21",
+          "member": "uint64",
+          "name": "ToPort",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ReplaceListenerAdditionalCertRequest": {
+      "document": "ReplaceListenerAdditionalCert request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Global acceleration instance ID.",
+          "example": "ga-ask56kjh",
+          "member": "string",
+          "name": "GlobalAcceleratorId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Listener ID.",
+          "example": "[\"listener-ask56kjh\"]",
+          "member": "string",
+          "name": "ListenerId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Certificate ID.",
+          "example": "7KwVvXcD",
+          "member": "string",
+          "name": "AdditionalCertificate",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Old certificate ID.",
+          "example": "7KwVvXcD",
+          "member": "string",
+          "name": "OldCertificate",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ReplaceListenerAdditionalCertResponse": {
+      "document": "ReplaceListenerAdditionalCert response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "4b995c0a-98f2-4dbc-84cc-71b1a63642e5",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResponseHeaders": {
+      "document": "Header",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>key</p><p>Parameter format: 1. The string only contain printable ASCII characters. 2. Cannot contain these characters ()&lt;&gt;@,;:\\&quot;/[ ]?={ }</p><p>Input limit: Length 1-40.</p>",
+          "example": "key-1",
+          "member": "string",
+          "name": "Key",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>value</p><p>Input limit: length cannot exceed 128</p><p>If the string contains $, you can only configure '$remote_addr' and '$remote_port'. Otherwise, it is not supported.</p>",
+          "example": "value-1",
+          "member": "string",
+          "name": "Value",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "RuleAction": {
+      "document": "Behavior information of Layer 7 forwarding rules",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Behavior type of the Layer 7 forwarding rule</p><p>Enumeration values:</p><ul><li>ForwardGroup: The forwarding policy forwards to a terminal node group.</li><li>Drop: The forwarding policy drops the request.</li></ul>",
+          "example": "Drop",
+          "member": "string",
+          "name": "RuleActionType",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Layer 7 forwarding rule action value</p><p>This field is not required to input when RuleActionType is Drop. This field is required when RuleActionType is ForwardGroup, which requires filling in the custom terminal node group ID. The default terminal node group cannot be configured.</p>",
+          "example": "epg-80c0umq4",
+          "member": "string",
+          "name": "RuleActionValue",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "RuleCondition": {
+      "document": "Conditional information of Layer 7 forwarding rules",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Condition type of Layer 7 forwarding rule</p><p>Enumeration values:</p><ul><li>Path: Path</li></ul>",
+          "example": "Path",
+          "member": "string",
+          "name": "RuleConditionType",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Layer 7 forwarding rule condition value</p><p>Parameter format: The format must match the regular expression: ^[a-zA-Z0-9_.-/]{1,80}$</p><p>The array length cannot exceed 1.</p>",
+          "example": "[\"/a\"]",
+          "member": "string",
+          "name": "RuleConditionValue",
+          "output_required": true,
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "Tag": {
+      "document": "Tag key-value pair.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Tag key.",
+          "example": "tag-key",
+          "member": "string",
+          "name": "Key",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tag value.",
+          "example": "tag-value",
+          "member": "string",
+          "name": "Value",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     }
   }
 }

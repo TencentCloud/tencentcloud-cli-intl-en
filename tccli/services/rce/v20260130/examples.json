@@ -24,6 +24,14 @@
         "title": "Example of AssessEnvironmentRisk"
       }
     ],
+    "AssessRisk": [
+      {
+        "document": "  ",
+        "input": "POST / HTTP/1.1\nHost: rce.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AssessRisk\n<Common request parameters>\n\n{\n    \"EventCode\": \"login\",\n    \"EventTime\": \"2026-07-08T15:56:31.000+08:00\",\n    \"SessionId\": \"se****************56\",\n    \"DeviceToken\": \"v3:******************************************************************bzxeC9FTtHon0Vq+zEB0iKhM5OGvG\",\n    \"UserIp\": \"192.***.*.100\",\n    \"EventDetail\": {\n        \"Login\": {\n            \"UserInfo\": {\n                \"UserLevel\": \"golden\",\n                \"UserPoint\": {\n                    \"Point\": 10,\n                    \"PointType\": \"credit_point\"\n                },\n                \"UserType\": \"person\"\n            },\n            \"UserLoginName\": \"u_dscv\",\n            \"LoginResult\": {\n                \"Status\": \"success\"\n            },\n            \"Cust\": [\n                {\n                    \"Key\": \"registration_channel\",\n                    \"Value\": \"web\"\n                }\n            ]\n        }\n    },\n    \"UserId\": \"u********6\",\n    \"UserEmail\": \"u***********.com\",\n    \"UserPhone\": \"+86138********\",\n    \"Browser\": {\n        \"UserAgent\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36\",\n        \"AcceptLanguage\": \"zh-CN,zh;q=0.9,en;q=0.8\",\n        \"ContentLanguage\": \"zh-CN\"\n    },\n    \"App\": {\n        \"OS\": \"iOS\",\n        \"OSVersion\": \"16.0\",\n        \"DeviceManufacturer\": \"Apple\",\n        \"DeviceModel\": \"iPhone 14 Pro\",\n        \"DeviceId\": \"de**************3\",\n        \"AppName\": \"MyShoppingApp\",\n        \"AppVersion\": \"3.2.1\",\n        \"ClientLanguage\": \"zh-CN\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"Decision\": {\n                \"DecisionResult\": \"reject\"\n            },\n            \"ExtraInfo\": [\n                {\n                    \"Key\": \"DeviceId\",\n                    \"Value\": \"weffdsdffdff\"\n                }\n            ],\n            \"Score\": {\n                \"RiskLabels\": [],\n                \"RiskScore\": 20\n            }\n        },\n        \"RequestId\": \"65af642d-f2df-4e03-b93d-8c7820f4deda\"\n    }\n}",
+        "title": "Example of Login event"
+      }
+    ],
     "ReportEvent": [
       {
         "document": " ",

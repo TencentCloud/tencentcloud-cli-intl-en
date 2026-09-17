@@ -92,9 +92,9 @@
       "status": "online"
     },
     "DescribeZones": {
-      "document": "Cross-regional aggregate query returns the AZ list for the specified AppId in ALL configured regions. The local region directly performs a database query, while remote regions send HTTP requests to each region's DescribeAppZones API and merge the results.",
+      "document": "This API is used to perform a cross-regional aggregate query of the AZ list under all configured regions. It supports filtering by account through the FilterByAppId parameter: by default, only AZs associated with the account are returned. When set to False, all AZs are returned. The local region queries the database directly, while remote regions send concurrent HTTP requests and merge the results before returning.",
       "input": "DescribeZonesRequest",
-      "name": "Query edge physical machine AZ list",
+      "name": "Queries all region availability zone lists",
       "output": "DescribeZonesResponse",
       "status": "online"
     },
@@ -227,7 +227,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Availability zone code, such as ap-guangzhou-1.",
+          "document": "<p>Availability zone code, such as ap-guangzhou-1.</p>",
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "Zone",
@@ -236,7 +236,7 @@
         },
         {
           "disabled": false,
-          "document": "Model specifications, such as BMS5.MEDIUM8.",
+          "document": "<p>Model specifications, such as BMS5.MEDIUM8.</p>",
           "example": "BMS5.MEDIUM8",
           "member": "string",
           "name": "InstanceType",
@@ -245,16 +245,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance name.",
-          "example": "my-epm-instance",
-          "member": "string",
-          "name": "InstanceName",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Private network instance ID in the format of net-xxx.",
+          "document": "<p>Private network instance ID in the format of net-xxx.</p>",
           "example": "net-private-001",
           "member": "string",
           "name": "PrivateNetworkId",
@@ -263,7 +254,7 @@
         },
         {
           "disabled": false,
-          "document": "Public network instance ID, in the format of net-xxx.",
+          "document": "<p>Public network instance ID, in the format of net-xxx.</p>",
           "example": "net-public-001",
           "member": "string",
           "name": "PublicNetworkId",
@@ -272,7 +263,16 @@
         },
         {
           "disabled": false,
-          "document": "Image ID, for example img-centos-7.9.",
+          "document": "<p>Instance name.</p>",
+          "example": "my-epm-instance",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Image ID, for example img-centos-7.9.</p>",
           "example": "img-centos-7.9",
           "member": "string",
           "name": "ImageId",
@@ -281,7 +281,7 @@
         },
         {
           "disabled": false,
-          "document": "Specify the quantity. Default is 1. Maximum is 50.",
+          "document": "<p>Specify the quantity. Default is 1. Maximum is 50.</p>",
           "example": "1",
           "member": "uint64",
           "name": "InstanceCount",
@@ -290,7 +290,25 @@
         },
         {
           "disabled": false,
-          "document": "Image version number. Only public images have the concept of version.",
+          "document": "<p>Login password. Either it or SSHKey is required.</p>",
+          "example": "Tencent@epm1",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Public key string of the SSH key. Either this parameter or Password must be specified.</p>",
+          "example": "AAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZWb3BlbnNzaC1rZXktdjEAAAAABG5vbmU TsC85sqFfWw9JxFT3j9ul582QAAAJj6oDbs+qA2QyNTUxOQAAACC5aPbeBgxRy7Be3cl6S",
+          "member": "string",
+          "name": "SSHKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": true,
+          "document": "<p>Image version number. Only public images have the concept of version.</p>",
           "example": "7.9.2009",
           "member": "string",
           "name": "VersionNumber",
@@ -298,8 +316,8 @@
           "type": "string"
         },
         {
-          "disabled": false,
-          "document": "Whether to enable public IPv6, default false. Enabled, the system will allocate an additional IPv6 address after assigning an IPv4 address.",
+          "disabled": true,
+          "document": "<p>Whether to enable public IPv6, default false. Enabled, the system will allocate an additional IPv6 address after assigning an IPv4 address.</p>",
           "example": "false",
           "member": "bool",
           "name": "EnableIpv6",
@@ -314,7 +332,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "List of successfully created instance IDs.",
+          "document": "<p>List of successfully created instance IDs.</p>",
           "example": "[\"ins-abcd1234\"]",
           "member": "string",
           "name": "InstanceIdSet",
@@ -324,7 +342,7 @@
         },
         {
           "disabled": false,
-          "document": "Count of failed instances. This field is returned only when partially failed, not returned when all successful.",
+          "document": "<p>Count of failed instances. This field is returned only when partially failed, not returned when all successful.</p>",
           "example": "1",
           "member": "uint64",
           "name": "FailedCount",
@@ -543,6 +561,24 @@
           "name": "Zone",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination offset. Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination size. Default value: 20. Maximum value: 100.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -584,8 +620,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID list for filtering by instance ID",
-          "example": "[\"bms-abcd1234\"]",
+          "document": "<p>Instance ID list for filtering by instance ID</p>",
+          "example": "[\"epm-abcd1234\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": false,
@@ -593,7 +629,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance name, supports fuzzy matching",
+          "document": "<p>Instance name, supports fuzzy matching.</p>",
           "example": "my-instance",
           "member": "string",
           "name": "InstanceName",
@@ -602,7 +638,7 @@
         },
         {
           "disabled": false,
-          "document": "Availability zone code for filtering instances in the specified availability zone",
+          "document": "<p>Availability zone code for filtering instances in the specified availability zone</p>",
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "Zone",
@@ -611,7 +647,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance status list for status filtering. Available values: allocating, running, isolating, isolated, terminating, error.",
+          "document": "<p>Instance status list for status filtering. Available values: allocating, running, isolating, isolated, terminating, error.</p>",
           "example": "[\"running\"]",
           "member": "string",
           "name": "InstanceStatus",
@@ -620,7 +656,25 @@
         },
         {
           "disabled": false,
-          "document": "Public IPv4 address list, used for filtering instances by public IP address",
+          "document": "<p>Public network ID.</p>",
+          "example": "epn-223dedd6",
+          "member": "string",
+          "name": "PublicNetworkId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>VPC ID.</p>",
+          "example": "ein-5df44fef",
+          "member": "string",
+          "name": "PrivateNetworkId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Public IPv4 address list, used for filtering instances by public IP address</p>",
           "example": "[\"203.0.113.10\"]",
           "member": "string",
           "name": "PublicIps",
@@ -629,7 +683,7 @@
         },
         {
           "disabled": false,
-          "document": "Offset. Default value: 0",
+          "document": "<p>Offset. Default value: 0.</p>",
           "example": "0",
           "member": "uint64",
           "name": "Offset",
@@ -638,7 +692,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of returned results. Default 20. Maximum 100.",
+          "document": "<p>Number of returned results. Default 20. Maximum 100.</p>",
           "example": "20",
           "member": "uint64",
           "name": "Limit",
@@ -653,7 +707,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance detail list",
+          "document": "<p>Instance detail list</p>",
           "example": "无",
           "member": "Instance",
           "name": "InstanceSet",
@@ -663,7 +717,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of Eligible Instances",
+          "document": "<p>Number of eligible instances.</p>",
           "example": "10",
           "member": "int64",
           "name": "TotalCount",
@@ -1039,7 +1093,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Availability zone list of all regions.",
+          "document": "<p>AZ list of all regions.</p>",
           "example": "无",
           "member": "ZoneInfo",
           "name": "ZoneSet",
@@ -1049,7 +1103,7 @@
         },
         {
           "disabled": false,
-          "document": "Total number of availability zones.",
+          "document": "<p>Total number of availability zones.</p>",
           "example": "2",
           "member": "uint64",
           "name": "TotalCount",
@@ -1092,7 +1146,7 @@
         {
           "disabled": false,
           "document": "Error message.",
-          "example": "Instance bms-abcd1234 is not in running status",
+          "example": "Instance bms-abcd1234 operate status is normal, cannot start",
           "member": "string",
           "name": "ErrorMessage",
           "output_required": false,
@@ -1107,7 +1161,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID.",
+          "document": "<p>Instance ID.</p>",
           "example": "bms-abcd1234",
           "member": "string",
           "name": "InstanceId",
@@ -1117,7 +1171,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance name.",
+          "document": "<p>Instance name.</p>",
           "example": "my-epm-instance",
           "member": "string",
           "name": "InstanceName",
@@ -1127,7 +1181,7 @@
         },
         {
           "disabled": false,
-          "document": "Bound Physical Machine ID",
+          "document": "<p>Bound Physical Machine ID</p>",
           "example": "srv-abcd1234",
           "member": "string",
           "name": "MachineId",
@@ -1137,7 +1191,7 @@
         },
         {
           "disabled": false,
-          "document": "Model specifications",
+          "document": "<p>Model specifications</p>",
           "example": "BM.S5.LARGE8",
           "member": "string",
           "name": "InstanceType",
@@ -1147,7 +1201,7 @@
         },
         {
           "disabled": false,
-          "document": "Availability zone code",
+          "document": "<p>Availability zone code</p>",
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "Zone",
@@ -1157,7 +1211,7 @@
         },
         {
           "disabled": false,
-          "document": "Image ID",
+          "document": "<p>Image ID.</p>",
           "example": "img-centos-7.9",
           "member": "string",
           "name": "ImageId",
@@ -1166,8 +1220,8 @@
           "value_allowed_null": false
         },
         {
-          "disabled": false,
-          "document": "Image version number",
+          "disabled": true,
+          "document": "<p>Image version number</p>",
           "example": "7.9.2009",
           "member": "string",
           "name": "VersionNumber",
@@ -1177,7 +1231,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance status, value range: allocating, running, isolating, isolated, terminating, error.",
+          "document": "<p>Instance status, value range: allocating, running, isolating, isolated, terminating, error.</p>",
           "example": "running",
           "member": "string",
           "name": "InstanceStatus",
@@ -1187,7 +1241,7 @@
         },
         {
           "disabled": false,
-          "document": "Operation status: normal, starting, stopping, stopped, rebooting.",
+          "document": "<p>Operation status: normal, starting, stopping, stopped, rebooting.</p>",
           "example": "normal",
           "member": "string",
           "name": "OperateStatus",
@@ -1197,7 +1251,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC ID",
+          "document": "<p>VPC ID.</p>",
           "example": "net-private-001",
           "member": "string",
           "name": "PrivateNetworkId",
@@ -1207,7 +1261,7 @@
         },
         {
           "disabled": false,
-          "document": "private IPv4 address",
+          "document": "<p>Private IPv4 address</p>",
           "example": "10.0.0.1",
           "member": "string",
           "name": "PrivateIp",
@@ -1217,7 +1271,7 @@
         },
         {
           "disabled": false,
-          "document": "private IPv6 address",
+          "document": "<p>Private IPv6 address</p>",
           "example": "fd00::1",
           "member": "string",
           "name": "PrivateIpV6",
@@ -1227,7 +1281,7 @@
         },
         {
           "disabled": false,
-          "document": "Public network ID",
+          "document": "<p>Public network ID.</p>",
           "example": "net-public-001",
           "member": "string",
           "name": "PublicNetworkId",
@@ -1237,7 +1291,7 @@
         },
         {
           "disabled": false,
-          "document": "Public IPv4 address",
+          "document": "<p>Public IPv4 address</p>",
           "example": "203.0.113.10",
           "member": "string",
           "name": "PublicIp",
@@ -1247,7 +1301,7 @@
         },
         {
           "disabled": false,
-          "document": "Public IPv6 address",
+          "document": "<p>Public IPv6 address</p>",
           "example": "2001:db8::1",
           "member": "string",
           "name": "PublicIpV6",
@@ -1257,12 +1311,72 @@
         },
         {
           "disabled": false,
-          "document": "Creation time, expressed according to the ISO8601 standard and using the UTC time. The format is YYYY-MM-DDThh:mm:ssZ.",
+          "document": "<p>File System Type</p>",
+          "example": "ext3",
+          "member": "string",
+          "name": "FileSystemType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Creation time, in the ISO 8601 standard format, using UTC time. Format: YYYY-MM-DDThh:mm:ssZ.</p>",
           "example": "2026-01-13T10:00:00Z",
           "member": "datetime_iso",
           "name": "CreatedTime",
           "output_required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Instance family flag</p>",
+          "example": "S",
+          "member": "string",
+          "name": "InstanceFamily",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Model Family Name</p>",
+          "example": "标准型S5",
+          "member": "string",
+          "name": "InstanceFamilyName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>CPU Model</p>",
+          "example": "Intel Xeon Platinum 8255C",
+          "member": "string",
+          "name": "CpuType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>CPU cores.</p>",
+          "example": "8",
+          "member": "int64",
+          "name": "Cpu",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Memory size.</p>",
+          "example": "32",
+          "member": "int64",
+          "name": "Memory",
+          "output_required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -1297,6 +1411,16 @@
           "example": "BM.S5",
           "member": "string",
           "name": "InstanceFamily",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Model family name",
+          "example": "标准型",
+          "member": "string",
+          "name": "InstanceFamilyName",
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1393,6 +1517,36 @@
         },
         {
           "disabled": false,
+          "document": "Second set of data disk types",
+          "example": "SSD",
+          "member": "string",
+          "name": "SecondaryDataDiskType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Data disk size of the second group (GB)",
+          "example": "10",
+          "member": "int64",
+          "name": "SecondaryDataDiskSize",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of data disks in the second set",
+          "example": "2",
+          "member": "int64",
+          "name": "SecondaryDataDiskCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
           "document": "Disk description string (backward compatibility).",
           "example": "SSD-480G*2, SSD-960G*4",
           "member": "string",
@@ -1423,7 +1577,7 @@
         },
         {
           "disabled": false,
-          "document": "Quota quantity. 0 indicates no restriction.",
+          "document": "Quota quantity",
           "example": "10",
           "member": "uint64",
           "name": "Quota",
@@ -1539,7 +1693,7 @@
           "type": "string"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "New public IP address (select from available IP addresses of the public network instance bound to the instance). Provide at least one of this or InstanceName.",
           "example": "203.0.113.20",
           "member": "string",
@@ -1548,7 +1702,7 @@
           "type": "string"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "IP type, ipv4 or ipv6. Default is ipv4. Valid only when NewPublicIp is specified.",
           "example": "ipv4",
           "member": "string",
@@ -1977,8 +2131,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID list. Maximum number of IDs: 100.",
-          "example": "[\"bms-mnop3456\"]",
+          "document": "<p>Instance ID list. Maximum number of IDs: 100.</p>",
+          "example": "[\"epm-mnop3456\"]",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -1992,8 +2146,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "List of instance IDs successfully terminated.",
-          "example": "[\"bms-mnop3456\"]",
+          "document": "<p>List of instance IDs successfully terminated.</p>",
+          "example": "[\"epm-mnop3456\"]",
           "member": "string",
           "name": "InstanceIdSet",
           "output_required": false,
@@ -2002,7 +2156,7 @@
         },
         {
           "disabled": false,
-          "document": "List of instances with termination failed (returned when partially successful).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>List of instances with termination failed (returned when partially successful).</p>",
           "example": "无",
           "member": "FailedInstance",
           "name": "FailedInstanceSet",
@@ -2074,7 +2228,7 @@
         },
         {
           "disabled": false,
-          "document": "Area code",
+          "document": "Area code.",
           "example": "asia_pacific_1",
           "member": "string",
           "name": "Location",
@@ -2084,7 +2238,7 @@
         },
         {
           "disabled": false,
-          "document": "Zone Name",
+          "document": "Region name.",
           "example": "亚太1",
           "member": "string",
           "name": "LocationName",
