@@ -8,7 +8,7 @@
       "status": "online"
     },
     "ExtractDocMulti": {
-      "document": "This API supports identifying and extracting field information in structured scenarios such as complex scenarios and multiple formats. Key scenarios include: finance, health care, transportation, travel, insurance. Click [experience now](https://ocrdemo.cloud.tencent.com/).\n\nThis API is used to set the alias SmartStructuralPro.\n\nThe default API request rate limit is 5 requests per second.",
+      "document": "This API supports identifying and extracting field information in structured scenarios such as complex scenarios and multiple formats. Key scenarios include: finance, health care, transportation, travel, insurance. Click [experience now](https://ocrdemo.cloud.tencent.com/).\nThis API is used to set the alias SmartStructuralPro.\n\nThe default API request rate limit is 5 requests per second.",
       "input": "ExtractDocMultiRequest",
       "name": "Extract a document (multimodal)",
       "output": "ExtractDocMultiResponse",
@@ -1383,6 +1383,24 @@
           "name": "OutputLanguage",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom extraction field configuration, specify the custom extracted field name, field type and field prompt.",
+          "example": "无",
+          "member": "ItemNames",
+          "name": "NewItemNames",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "The algorithm model version used by the multimodal document extraction recognition service. Valid values are '1.0' and '2.0'. Starting from July 20, 2026, the default is '2.0'. Accounts using this interface before that date default to '1.0' when the parameter is omitted. Accounts activated after July 20, 2026 only support '2.0'. Different versions adopt different extraction algorithms; the new version delivers better overall recognition result, and '2.0' is recommended.",
+          "example": "2.0",
+          "member": "string",
+          "name": "MultiModelVersion",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2685,6 +2703,57 @@
         }
       ],
       "usage": "out"
+    },
+    "ItemNames": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "姓名",
+          "member": "string",
+          "name": "KeyName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "int64",
+          "name": "KeyType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "提示词",
+          "member": "string",
+          "name": "KeyPrompt",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "张三",
+          "member": "string",
+          "name": "KeyExpectedValue",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "字符需要完全匹配则审核返回正确",
+          "member": "string",
+          "name": "KeyAuditPrompt",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
     },
     "Key": {
       "document": "Key information",
@@ -7290,7 +7359,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The Base64-encoded value of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nEither `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` is used.",
+          "document": "The Base64-encoded value of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 10 MB. The download time of the image cannot exceed 3s.\nEither `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` is used.",
           "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "ImageBase64",
@@ -7299,7 +7368,7 @@
         },
         {
           "disabled": false,
-          "document": "The URL of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
+          "document": "The URL of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 10 MB. The download time of the image cannot exceed 3s.\nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
           "example": "https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/vehicle/VinOCR/VinOCR1.jpg",
           "member": "string",
           "name": "ImageUrl",
