@@ -384,7 +384,7 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateAMLOngoingScreeningStatus\n<Common request parameters>\n\n{\n    \"UniqueCustomerID\": \"USER_20260904_001\",\n    \"EnableOngoingScreening\": false\n}",
-        "output": "{\n    \"Response\": {\n\"Description\": \"Success\"\n        \"EnableOngoingScreening\": false,\n        \"Result\": \"Success\",\n        \"UniqueCustomerID\": \"USER_20260904_001\",\n        \"RequestId\": \"84f22af4-9167-4e49-9d5f-db2987116bed\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n\"Description\": \"success\"\n        \"EnableOngoingScreening\": false,\n        \"Result\": \"Success\",\n        \"UniqueCustomerID\": \"USER_20260904_001\",\n        \"RequestId\": \"84f22af4-9167-4e49-9d5f-db2987116bed\"\n    }\n}",
         "title": "Calling the API"
       }
     ],
