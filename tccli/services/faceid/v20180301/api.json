@@ -246,7 +246,7 @@
       "status": "online"
     },
     "UpdateEKYCWebhook": {
-      "document": "This API updates the Webhook configuration.",
+      "document": "This API is used to update Webhook configurations.",
       "input": "UpdateEKYCWebhookRequest",
       "name": "Updates EKYC Webhook configuration",
       "output": "UpdateEKYCWebhookResponse",
@@ -2082,6 +2082,24 @@
           "name": "WebhookURL",
           "required": true,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Business scenario. Default if not passed: AML_SCREENING_RESULT_CHANGE. For parameter values, see the enumeration below.</p><p>Enumeration values:</p><ul><li>AML_SCREENING_RESULT_CHANGE: AML anti-money laundering screening result change notification (default value)    </li><li>NONDOC_VERIFICATION_RESULT: Non-document (NonDoc) verification result notification</li></ul>",
+          "example": "AML_SCREENING_RESULT_CHANGE",
+          "member": "string",
+          "name": "Scene",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Callback signature key, up to 128 characters. Used for HMAC-SHA256 signature verification of subsequent callback messages. If not passed, signature is not enabled. We recommend using OpenSSL random bytes to generate the key. Recommended command: openssl rand -base64 32</p><blockquote><p>Our side uses your configured <code>SignatureKey</code> to calculate an HMAC-SHA256 signature over \"timestamp (<code>X-Webhook-Timestamp</code>) + <code>.</code> + request body\", and puts the hexadecimal result in the request header <code>X-Webhook-Signature</code>. The message itself is unencrypted and transmitted over HTTPS. Use the same key to recalculate and compare the signature by the same rule to confirm that the notification source is trustworthy and the content has not been tampered with.</p></blockquote>",
+          "example": "aSQsvw7cUSV+4gYt4XIwOwVkWZ7jrA2BiWPA+qj2qv8=",
+          "member": "string",
+          "name": "SignatureKey",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2111,7 +2129,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to add a secret key. Default value: false.",
+          "document": "<p>Whether to add a callback signature key</p><p>Default value: false</p>",
           "example": "false",
           "member": "bool",
           "name": "HasSignatureKey",
@@ -2121,8 +2139,8 @@
         },
         {
           "disabled": false,
-          "document": "<p>Callback secret key</p>",
-          "example": "asdasdasdsss",
+          "document": "<p>Callback signature key</p>",
+          "example": "aSQsvw7cUSV+4gYt4XIwOwVkWZ7jrA2BiWPA+qj2qv8=",
           "member": "string",
           "name": "SignatureKey",
           "output_required": false,
@@ -7735,11 +7753,20 @@
         },
         {
           "disabled": false,
-          "document": "New callback URL, which must use the HTTPS protocol.",
+          "document": "<p>New callback URL, must be HTTPS protocol</p>",
           "example": "https://www.baidu.com",
           "member": "string",
           "name": "WebhookURL",
           "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Callback signature key, up to 128 characters. Used for HMAC-SHA256 signature verification of subsequent callback messages. If not provided, signature is not enabled. We recommend using OpenSSL random bytes to generate the key. Recommended command: openssl rand -base64 32    </p><blockquote><p>Our side uses your configured <code>SignatureKey</code> to calculate the HMAC-SHA256 signature over \"timestamp (<code>X-Webhook-Timestamp</code>) + <code>.</code> + request body\", and puts the hexadecimal result in the request header <code>X-Webhook-Signature</code>. The message itself is unencrypted and transmitted over HTTPS. Use the same key to recalculate and compare the signature following the same rule to confirm that the notification source is trustworthy and the content has not been tampered with.</p></blockquote>",
+          "example": "aSQsvw7cUSV+4gYt4XIwOwVkWZ7jrA2BiWPA+qj2qv8=",
+          "member": "string",
+          "name": "SignatureKey",
+          "required": false,
           "type": "string"
         }
       ],
@@ -7750,7 +7777,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>ID of the updated Webhook configuration</p>",
+          "document": "<p>ID of the Webhook configuration to be updated</p>",
           "example": "50",
           "member": "uint64",
           "name": "WebhookId",
@@ -7760,7 +7787,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Modification time after update, format YYYY-MM-DD HH:mm:ss</p>",
+          "document": "<p>Modification time after the update, in the format YYYY-MM-DD HH:mm:ss</p>",
           "example": "2026-05-26 10:28:46",
           "member": "string",
           "name": "ModTime",
@@ -8180,7 +8207,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Callback URL name</p>",
+          "document": "<p>Callback address name</p>",
           "example": "WebhooK-03",
           "member": "string",
           "name": "WebhookName",
@@ -8235,8 +8262,8 @@
         },
         {
           "disabled": false,
-          "document": "<p>Callback request key</p>",
-          "example": "asdasdsdsdsdsd",
+          "document": "<p>Callback signature key, up to 128 characters.</p>",
+          "example": "aSQs******qv8=",
           "member": "string",
           "name": "SignatureKey",
           "output_required": false,
@@ -8246,7 +8273,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Existence of callback API key</p>",
+          "document": "<p>Existence of callback signature key</p>",
           "example": "true",
           "member": "bool",
           "name": "HasSignatureKey",
