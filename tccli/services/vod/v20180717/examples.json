@@ -5,7 +5,7 @@
         "document": "Successful application upload examples.",
         "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ApplyUpload\n<Common request parameters>\n\n{\n    \"SubAppId\": 123456,\n    \"MediaType\": \"mp4\"\n}",
         "output": "{\n    \"Response\": {\n        \"CoverStoragePath\": \"/dir/cover.xx\",\n        \"RequestId\": \"880f3005-a8c9-4bba-8c87-74e216a17a0b\",\n        \"StorageBucket\": \"xadacq111211-100922\",\n        \"StorageRegion\": \"ap-chongqing\",\n        \"MediaStoragePath\": \"/dir/name.xx\",\n        \"VodSessionKey\": \"VodSessionKey\",\n        \"TempCertificate\": {\n            \"SecretId\": \"xxxxxxx\",\n            \"SecretKey\": \"xxxxxxxx\",\n            \"Token\": \"xxxxxxxx\",\n            \"ExpiredTime\": 182823331\n        }\n    }\n}",
-        "title": "Apply for upload success example"
+        "title": "Example of a successful upload application"
       }
     ],
     "AttachMediaSubtitles": [
@@ -1562,7 +1562,7 @@
     ],
     "ExtractTraceWatermark": [
       {
-        "document": "Used to extract traceability watermarks.",
+        "document": "Used to extract traceability watermark.",
         "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ExtractTraceWatermark\n<Common request parameters>\n\n{\n    \"Url\": \"http://example.com/path/file.mp4\",\n    \"FileId\": \"123422\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-procedurev2-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
         "title": "Extract Traceability Watermark"
@@ -1630,16 +1630,16 @@
     ],
     "LiveRealTimeClip": [
       {
-        "document": "This example shows you how to trigger instant clipping for a live stream with the live stream code `record-stream` and domain name `example.com`, with the start time `2018-09-20T10:00:00Z` and end time `2018-09-20T11:00:00Z`, without solidification. Suppose the live stream was interrupted from `2018-09-20T10:30:00Z` to `2018-09-20T10:40:00Z`, with a duration of 10 minutes. Then the output parameter `SegmentSet` will contain two segment information entries, and the actual duration of the trimmed video is 50 minutes.",
+        "document": "Trigger instant clipping for a live stream with the live stream code `record-stream` and domain name `example.com`. The start time is 2018-09-20T10:00:00Z, the end time is 2018-09-20T11:00:00Z, and no solidification is applied. Suppose the live stream was interrupted from 2018-09-20T10:30:00Z to 2018-09-20T10:40:00Z, with a duration of 10 minutes. Then the output parameter `SegmentSet` will contain two segment information entries, and the actual duration of the video after trimming is 50 minutes.",
         "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: LiveRealTimeClip\n<Common request parameters>\n\n{\n    \"Host\": \"example.com\",\n    \"EndTime\": \"2018-09-20T11:00:00Z\",\n    \"StartTime\": \"2018-09-20T10:00:00Z\",\n    \"StreamId\": \"record-stream\"\n}",
         "output": "{\n    \"Response\": {\n        \"Url\": \"http://example.com/playlist.m3u8\",\n        \"FileId\": \"\",\n        \"VodTaskId\": \"\",\n        \"MetaData\": null,\n        \"SegmentSet\": [\n            {\n                \"StartTime\": \"2018-09-20T10:00:00Z\",\n                \"EndTime\": \"2018-09-20T10:30:00Z\"\n            },\n            {\n                \"StartTime\": \"2018-09-20T10:40:00Z\",\n                \"EndTime\": \"2018-09-20T11:00:00Z\"\n            }\n        ],\n        \"RequestId\": \"6ca31e3a-6b8e-xxxx-9256-fdc700064ef3\"\n    }\n}",
         "title": "Instant editing is not solidified"
       },
       {
-        "document": "This example shows you how to trigger instant clipping for a live stream with the live stream code `record-stream` and domain name `example.com`, with a start time of 2018-09-20T12:00:00Z and an end time of 2018-09-20T13:00:00Z, and perform persistence and trigger task flow processing.",
+        "document": "This example shows you how to trigger instant clipping for a live stream with the live stream code `record-stream` and domain name `example.com`, with a start time of 2018-09-20T12:00:00Z and an end time of 2018-09-20T13:00:00Z, and then process it for persistence and task flow initiation.",
         "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: LiveRealTimeClip\n<Common request parameters>\n\n{\n    \"IsPersistence\": 1,\n    \"Host\": \"example.com\",\n    \"StartTime\": \"2018-09-20T12:00:00Z\",\n    \"StreamId\": \"record-stream\",\n    \"EndTime\": \"2018-09-20T13:00:00Z\",\n    \"Procedure\": \"SomeProcedure\"\n}",
         "output": "{\n    \"Response\": {\n        \"Url\": \"http://example.com/playlist.m3u8\",\n        \"FileId\": \"5285890xxxxxx199336\",\n        \"VodTaskId\": \"125xxxx65-procedurev2-bffb15f07530b57bc1aabb01fac74bca\",\n        \"MetaData\": null,\n        \"SegmentSet\": [\n            {\n                \"StartTime\": \"2018-09-20T12:00:00Z\",\n                \"EndTime\": \"2018-09-20T13:00:00Z\"\n            }\n        ],\n        \"RequestId\": \"6ca31e3a-6b8e-xxxx-9256-fdc700064ef3\"\n    }\n}",
-        "title": "Real-time Clipping and Solidification"
+        "title": "Real-time clipping and solidification"
       }
     ],
     "ManageTask": [
@@ -2003,7 +2003,7 @@
         "document": " ",
         "input": "https://vod.tencentcloudapi.com/?Action=ModifyVodDomainAccelerateConfig\n&Domain=myexample.com\n&Area=Chinese Mainland\n&Status=Enabled\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4551-9d4b-5594145287e1\"\n    }\n}",
-        "title": "Domain name activation for domestic acceleration in China."
+        "title": "Domain name activation accelerates within the Chinese mainland."
       }
     ],
     "ModifyVodDomainConfig": [
