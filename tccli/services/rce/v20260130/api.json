@@ -15,7 +15,7 @@
       "status": "online"
     },
     "AssessEnvironmentRisk": {
-      "document": "Environment Risk Assessment",
+      "document": "Performs risk identification based on the client IP provided as input. Provides environmental risk assessment (including risk level and risk labels), along with IP geolocation and network information.",
       "input": "AssessEnvironmentRiskRequest",
       "name": "AssessEnvironmentRisk",
       "output": "AssessEnvironmentRiskResponse",
@@ -1335,7 +1335,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Comprehensive risk score.</p><p>Value ranges from 1 to 1000.</p><p>The larger the value, the larger the risk.</p>",
+          "document": "<p>Comprehensive risk score.</p><p>Value ranges from 1 to 1000.</p><p>The larger the value, the higher the risk.</p>",
           "example": "150",
           "member": "int64",
           "name": "RiskScore",

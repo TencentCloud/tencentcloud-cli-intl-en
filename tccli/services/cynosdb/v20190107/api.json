@@ -1976,7 +1976,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Cluster ID.",
+          "document": "<p>Cluster ID.</p>",
           "example": "cynosdbmysql-xxxxxxx",
           "member": "string",
           "name": "ClusterId",
@@ -1985,7 +1985,7 @@
         },
         {
           "disabled": false,
-          "document": "Replica AZ.",
+          "document": "<p>Secondary AZ</p>",
           "example": "ap-guangzhou-4",
           "member": "string",
           "name": "SlaveZone",
@@ -1994,7 +1994,7 @@
         },
         {
           "disabled": false,
-          "document": "Binlog sync mode. Default value: async. Optional values: sync, semisync, async.",
+          "document": "<p>binlog synchronization mode. Default value: async. Available values: sync, semisync, async</p>",
           "example": "async",
           "member": "string",
           "name": "BinlogSyncWay",
@@ -2003,7 +2003,7 @@
         },
         {
           "disabled": false,
-          "document": "Semi-sync timeout period in milliseconds. To ensure business stability, semi-sync replication has a degradation logic. When the primary availability zone cluster waits for the secondary availability zone cluster to confirm a transaction and exceeds the timeout period, the replication method will degrade to asynchronous replication. The minimum value is set to 1000 ms, support up to 4294967295 ms, and defaults to 10000 ms.",
+          "document": "<p>Semi-sync timeout period, in milliseconds. To ensure business stability, semi-synchronous replication has a degradation logic. If the primary availability zone cluster exceeds this timeout period while waiting for the standby availability zone cluster to confirm a transaction, the replication method will degrade to asynchronous replication. The minimum is set to 1000 ms, with support up to 4294967295 ms. Default is 10000 ms.</p>",
           "example": "10000",
           "member": "int64",
           "name": "SemiSyncTimeout",
@@ -2018,7 +2018,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Async FlowId.",
+          "document": "<p>Async FlowId</p>",
           "example": "147184",
           "member": "int64",
           "name": "FlowId",
@@ -9763,6 +9763,36 @@
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Actual availability zone of the instance</p>",
+          "example": "ap-guangzhou-3",
+          "member": "string",
+          "name": "RealZone",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of standby availability zones</p>",
+          "example": "[\"ap-guangzhou-5\"]",
+          "member": "string",
+          "name": "SlaveZones",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Storage edition</p><p>Enumeration values:</p><ul><li>1.0: 1.0 storage</li><li>2.0: 2.0 storage</li></ul>",
+          "example": "1.0",
+          "member": "string",
+          "name": "StorageVersion",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -14052,6 +14082,15 @@
           "example": "P0",
           "member": "string",
           "name": "ClusterLevel",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>AZ.</p>",
+          "example": "ap-guangzhou-3",
+          "member": "string",
+          "name": "Zone",
           "required": false,
           "type": "string"
         }
@@ -23615,7 +23654,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Cluster ID",
+          "document": "<p>Cluster Id.</p>",
           "example": "cynosdbmysql-xxxxxxx",
           "member": "string",
           "name": "ClusterId",
@@ -23624,7 +23663,7 @@
         },
         {
           "disabled": false,
-          "document": "Old replica AZ",
+          "document": "<p>Old secondary AZ</p>",
           "example": "ap-guangzhou-2",
           "member": "string",
           "name": "OldSlaveZone",
@@ -23633,7 +23672,7 @@
         },
         {
           "disabled": false,
-          "document": "New replica AZ",
+          "document": "<p>New secondary AZ</p>",
           "example": "ap-guangzhou-3",
           "member": "string",
           "name": "NewSlaveZone",
@@ -23642,7 +23681,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the binlog synchronization mode. the default value is async. valid values are sync, semisync, and async.",
+          "document": "<p>binlog synchronization mode. Default value: async. Available values: sync, semisync, async</p>",
           "example": "async",
           "member": "string",
           "name": "BinlogSyncWay",
@@ -23651,7 +23690,7 @@
         },
         {
           "disabled": false,
-          "document": "Semi-sync timeout in ms. To ensure business stability, semi-synchronous replication has a degradation logic. When the primary availability zone cluster waits for the secondary availability zone cluster to confirm a transaction, if the timeout period is exceeded, the replication method will degrade to asynchronous replication. The minimum is set to 1000 ms, supporting up to 4294967295 ms, with a default of 10000 ms.",
+          "document": "<p>Semi-sync timeout period, in milliseconds. To ensure business stability, semi-sync replication has a degradation logic. If the primary AZ cluster exceeds this timeout period while waiting for the standby AZ cluster to confirm a transaction, the replication method degrades to asynchronous replication. The minimum is set to 1000 ms, with support up to 4294967295 ms. Default: 10000 ms.</p>",
           "example": "10000",
           "member": "int64",
           "name": "SemiSyncTimeout",
@@ -23666,7 +23705,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Async FlowId",
+          "document": "<p>Async FlowId</p>",
           "example": "147285",
           "member": "int64",
           "name": "FlowId",
@@ -23760,7 +23799,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Version before modification.",
+          "document": "<p>Version before modification</p>",
           "example": "3.1.11",
           "member": "string",
           "name": "OldVersion",
@@ -23770,7 +23809,7 @@
         },
         {
           "disabled": false,
-          "document": "Version after modification.",
+          "document": "<p>Modified version</p>",
           "example": "3.1.13",
           "member": "string",
           "name": "NewVersion",
@@ -23780,7 +23819,7 @@
         },
         {
           "disabled": false,
-          "document": "Upgrade method.",
+          "document": "<p>Upgrade method</p>",
           "example": "upgradeInMaintain",
           "member": "string",
           "name": "UpgradeType",
@@ -28733,7 +28772,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Cluster ID",
+          "document": "<p>Cluster ID.</p>",
           "example": "cynosdbmysql-bdcl1n11",
           "member": "string",
           "name": "ClusterId",
@@ -28742,7 +28781,7 @@
         },
         {
           "disabled": false,
-          "document": "Replica AZ",
+          "document": "<p>Secondary AZ</p>",
           "example": "ap-guangzhou-4",
           "member": "string",
           "name": "SlaveZone",
@@ -28757,7 +28796,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Async FlowId",
+          "document": "<p>Async FlowId</p>",
           "example": "147264",
           "member": "int64",
           "name": "FlowId",
@@ -32903,7 +32942,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Cluster ID",
+          "document": "<p>Cluster ID.</p>",
           "example": "cynosdbmysql-asdf54qw",
           "member": "string",
           "name": "ClusterId",
@@ -32912,7 +32951,7 @@
         },
         {
           "disabled": false,
-          "document": "Kernel version",
+          "document": "<p>Kernel version</p>",
           "example": "2.1.10",
           "member": "string",
           "name": "CynosVersion",
@@ -32921,7 +32960,7 @@
         },
         {
           "disabled": false,
-          "document": "Upgrade time type. Valid values: `upgradeImmediate`, `upgradeInMaintain`.",
+          "document": "<p>Upgrade time type. Options: upgradeImmediate, upgradeInMaintain</p>",
           "example": "upgradeImmediate",
           "member": "string",
           "name": "UpgradeType",
@@ -32936,11 +32975,21 @@
       "members": [
         {
           "disabled": false,
-          "document": "Async task ID",
+          "document": "<p>Async task id</p>",
           "example": "1472831",
           "member": "int64",
           "name": "FlowId",
           "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "123",
+          "member": "int64",
+          "name": "TaskId",
+          "output_required": false,
           "type": "int",
           "value_allowed_null": false
         },
