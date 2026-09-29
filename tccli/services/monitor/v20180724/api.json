@@ -14,13 +14,6 @@
       "output": "BindingPolicyObjectResponse",
       "status": "online"
     },
-    "CheckIsPrometheusNewUser": {
-      "document": "This API is used to determine whether the user is new to TMP, that is, whether the user has never created a TMP instance in any region.",
-      "input": "CheckIsPrometheusNewUserRequest",
-      "name": "Determines whether the user is new to TMP",
-      "output": "CheckIsPrometheusNewUserResponse",
-      "status": "online"
-    },
     "CleanGrafanaInstance": {
       "document": "This API is used to forcibly terminate a Grafana instance.",
       "input": "CleanGrafanaInstanceRequest",
@@ -173,13 +166,6 @@
       "input": "CreateSSOAccountRequest",
       "name": "Authorizes another Tencent Cloud user",
       "output": "CreateSSOAccountResponse",
-      "status": "online"
-    },
-    "CreateServiceDiscovery": {
-      "document": "This API is used to create a Prometheus scrape configuration in TKE.\n<p>Note: The prerequisite is that the corresponding TKE service has been integrated through the Prometheus console. For more information, see\n<a href=\"https://intl.cloud.tencent.com/document/product/248/48859?from_cn_redirect=1\" target=\"_blank\">Agent Management</a>.</p>",
-      "input": "CreateServiceDiscoveryRequest",
-      "name": "Creates a scrape configuration",
-      "output": "CreateServiceDiscoveryResponse",
       "status": "online"
     },
     "DeleteAlarmNotices": {
@@ -644,13 +630,6 @@
       "output": "DescribePrometheusInstancesOverviewResponse",
       "status": "online"
     },
-    "DescribePrometheusRecordRuleYaml": {
-      "document": "This API is used to get the YAML list of Prometheus recording rules.",
-      "input": "DescribePrometheusRecordRuleYamlRequest",
-      "name": "Gets the YAML list of Prometheus recording rules",
-      "output": "DescribePrometheusRecordRuleYamlResponse",
-      "status": "online"
-    },
     "DescribePrometheusRecordRules": {
       "document": "This API is used to get the list of recording rules, including those created by CRD resources in the associated cluster.",
       "input": "DescribePrometheusRecordRulesRequest",
@@ -705,13 +684,6 @@
       "input": "DescribeSSOAccountRequest",
       "name": "Lists authorized accounts",
       "output": "DescribeSSOAccountResponse",
-      "status": "online"
-    },
-    "DescribeServiceDiscovery": {
-      "document": "This API is used to list Prometheus scrape configurations in TKE.\n<p>Note: The prerequisite is that the corresponding TKE service has been integrated through the Prometheus console. For more information, see\n<a href=\"https://intl.cloud.tencent.com/document/product/248/48859?from_cn_redirect=1\" target=\"_blank\">Agent Management</a>.</p>",
-      "input": "DescribeServiceDiscoveryRequest",
-      "name": "Lists scrape configurations",
-      "output": "DescribeServiceDiscoveryResponse",
       "status": "online"
     },
     "DescribeStatisticData": {
@@ -908,13 +880,6 @@
       "input": "RunPrometheusInstanceRequest",
       "name": "Initializes a TMP instance",
       "output": "RunPrometheusInstanceResponse",
-      "status": "online"
-    },
-    "SendCustomAlarmMsg": {
-      "document": "This API is used to send a custom alarm notification.",
-      "input": "SendCustomAlarmMsgRequest",
-      "name": "Sends a custom alarm notification.",
-      "output": "SendCustomAlarmMsgResponse",
       "status": "online"
     },
     "SetDefaultAlarmPolicy": {
@@ -2599,23 +2564,6 @@
         }
       ],
       "usage": "both"
-    },
-    "CheckIsPrometheusNewUserRequest": {
-      "document": "CheckIsPrometheusNewUser request structure.",
-      "members": [],
-      "type": "object"
-    },
-    "CheckIsPrometheusNewUserResponse": {
-      "document": "CheckIsPrometheusNewUser response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
     },
     "CleanGrafanaInstanceRequest": {
       "document": "CleanGrafanaInstance request structure.",
@@ -4776,72 +4724,6 @@
           "name": "UserId",
           "required": true,
           "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateServiceDiscoveryRequest": {
-      "document": "CreateServiceDiscovery request structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Prometheus instance ID",
-          "member": "string",
-          "name": "InstanceId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "<li>TKE: ID of the integrated TKE cluster</li>",
-          "member": "string",
-          "name": "KubeClusterId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Kubernetes cluster type:\n<li> 1 = TKE </li>",
-          "member": "int64",
-          "name": "KubeType",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "Scrape configuration type. Valid values:\n<li> 1 = ServiceMonitor</li>\n<li> 2 = PodMonitor</li>\n<li> 3 = JobMonitor</li>",
-          "member": "int64",
-          "name": "Type",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "Scrape configuration information",
-          "member": "string",
-          "name": "Yaml",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateServiceDiscoveryResponse": {
-      "document": "CreateServiceDiscovery response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "The scrape configuration information returned after successful creation",
-          "member": "ServiceDiscoveryItem",
-          "name": "ServiceDiscovery",
-          "type": "object",
           "value_allowed_null": false
         },
         {
@@ -11860,60 +11742,6 @@
       ],
       "type": "object"
     },
-    "DescribePrometheusRecordRuleYamlRequest": {
-      "document": "DescribePrometheusRecordRuleYaml request structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Instance ID",
-          "example": "xxx",
-          "member": "string",
-          "name": "InstanceId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Page offset",
-          "example": "1",
-          "member": "uint64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "Number of results per page",
-          "example": "10",
-          "member": "uint64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "Filter. Valid values:\n`Name`: Name\n`Values`: List of target names",
-          "example": "xxx",
-          "member": "Filter",
-          "name": "Filters",
-          "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribePrometheusRecordRuleYamlResponse": {
-      "document": "DescribePrometheusRecordRuleYaml response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DescribePrometheusRecordRulesRequest": {
       "document": "DescribePrometheusRecordRules request structure.",
       "members": [
@@ -12402,56 +12230,6 @@
           "member": "GrafanaAccountInfo",
           "name": "AccountSet",
           "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeServiceDiscoveryRequest": {
-      "document": "DescribeServiceDiscovery request structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Prometheus instance ID",
-          "member": "string",
-          "name": "InstanceId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "<li>TKE: ID of the integrated TKE cluster</li>",
-          "member": "string",
-          "name": "KubeClusterId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Kubernetes cluster type:\n<li> 1 = TKE </li>",
-          "member": "int64",
-          "name": "KubeType",
-          "required": true,
-          "type": "int"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeServiceDiscoveryResponse": {
-      "document": "DescribeServiceDiscovery response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "List of returned scrape configurations\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "member": "ServiceDiscoveryItem",
-          "name": "ServiceDiscoverySet",
           "type": "list",
           "value_allowed_null": true
         },
@@ -15472,7 +15250,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID",
+          "document": "<p>Instance ID</p>",
           "example": "prom-2rsas2",
           "member": "string",
           "name": "InstanceId",
@@ -15481,7 +15259,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance name",
+          "document": "<p>Instance name.</p>",
           "example": "my-prom-gg",
           "member": "string",
           "name": "InstanceName",
@@ -15490,7 +15268,7 @@
         },
         {
           "disabled": false,
-          "document": "Storage period. Valid values: 15, 30, 45. This parameter is not applicable to yearly/monthly subscribed instances.",
+          "document": "<p>Data retention period (in days). The limit value is one of 15, 30, 45, 90, 180, 365, 730</p>",
           "example": "15",
           "member": "int64",
           "name": "DataRetentionTime",
@@ -15499,7 +15277,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Flag for special attributes of a prom instance</p><p>Archive storage duration (days):<br>key: LongTermStorageRetentionTime<br>value: 60-730</p>",
           "example": "无",
           "member": "PrometheusRuleKV",
           "name": "InstanceAttributes",
@@ -18093,7 +17871,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Key",
+          "document": "<p>Key</p>",
           "example": "AllowChangeAlertmanagerRouteConfig",
           "member": "string",
           "name": "Key",
@@ -18103,7 +17881,7 @@
         },
         {
           "disabled": false,
-          "document": "Value",
+          "document": "<p>Value.</p>",
           "example": "true",
           "member": "string",
           "name": "Value",
@@ -19050,120 +18828,6 @@
         }
       ],
       "type": "object"
-    },
-    "SendCustomAlarmMsgRequest": {
-      "document": "SendCustomAlarmMsg request structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "API component name. The value for the current API is monitor.",
-          "example": "monitor",
-          "member": "string",
-          "name": "Module",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Message policy ID, which is configured on the custom message page.",
-          "example": "cm-04rhwvwg",
-          "member": "string",
-          "name": "PolicyId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Custom message content that a user wants to send.",
-          "example": "xxx",
-          "member": "string",
-          "name": "Msg",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "SendCustomAlarmMsgResponse": {
-      "document": "SendCustomAlarmMsg response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ServiceDiscoveryItem": {
-      "document": "Prometheus scrape configuration information",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Scrape configuration name",
-          "member": "string",
-          "name": "Name",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Namespace of the scrape configuration",
-          "member": "string",
-          "name": "Namespace",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Scrape configuration type: ServiceMonitor/PodMonitor",
-          "member": "string",
-          "name": "Kind",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Namespace selection method\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "NamespaceSelector",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Label selection method\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "Selector",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "`Endpoints` information (PodMonitor does not have this parameter)",
-          "member": "string",
-          "name": "Endpoints",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Scrape configuration information\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "member": "string",
-          "name": "Yaml",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
     },
     "SetDefaultAlarmPolicyRequest": {
       "document": "SetDefaultAlarmPolicy request structure.",

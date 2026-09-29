@@ -16,14 +16,6 @@
         "title": "Binding a policy object"
       }
     ],
-    "CheckIsPrometheusNewUser": [
-      {
-        "document": "This example shows you how to determine whether the user is a new user.",
-        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CheckIsPrometheusNewUser\n<Common request parameters>\n\n{}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Determining whether the user is a new user"
-      }
-    ],
     "CleanGrafanaInstance": [
       {
         "document": "This example shows you how to forcibly terminate a TencentCloud Managed Service for Grafana (TCMG) instance.",
@@ -318,14 +310,6 @@
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSSOAccount\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-abcdefgh\",\n    \"UserId\": \"100000000\",\n    \"Role\": [\n        {\n            \"Organization\": \"Org\",\n            \"Role\": \"Admin\"\n        }\n    ],\n    \"Notes\": \"Authorize this user\"\n}",
         "output": "{\n    \"Response\": {\n        \"UserId\": \"xx\",\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Authorizing another Tencent Cloud user"
-      }
-    ],
-    "CreateServiceDiscovery": [
-      {
-        "document": " ",
-        "input": "https://monitor.tencentcloudapi.com/?Action=CreateServiceDiscovery\n&InstanceId=prom-sdfk2342a\n&KubeClusterId=cls-pwerf3k3\n&KubeType=1\n&Type=1\n&Yaml=yaml\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"ServiceDiscovery\": {\n            \"Kind\": \"ServiceMonitor\",\n            \"Name\": \"name\",\n            \"Namespace\": \"namespace\",\n            \"Selector\": \"{\\\"matchLabels\\\":{\\\"k8sapp\\\":\\\"mysql-exporter\\\"}}\",\n            \"Yaml\": \"apiVersion: monitoring.coreos.com...\",\n            \"NamespaceSelector\": \"{\\\"matchNames\\\":[\\\"demo-ns\\\"]}\",\n            \"Endpoints\": \"[{\\\"port\\\":\\\"tcp-port\\\",\\\"path\\\":\\\"/metrics\\\",\\\"interval\\\":\\\"30s\\\",\\\"bearerTokenSecret\\\":{\\\"key\\\":\\\"\\\"}}]\"\n        },\n        \"RequestId\": \"nrtlca1qmunlpf51noe13qp5vyvg7mq5\"\n    }\n}",
-        "title": "Creating a scrape configuration"
       }
     ],
     "DeleteAlarmNotices": [
@@ -880,14 +864,6 @@
         "title": "Obtaining the instance list"
       }
     ],
-    "DescribePrometheusRecordRuleYaml": [
-      {
-        "document": "This example shows you how to get the list of recording rules.",
-        "input": "https://monitor.tencentcloudapi.com/?Action=DescribePrometheusRecordRuleYaml\n&InstanceId=prom-xxx\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
-        "title": "Getting the list of recording rules"
-      }
-    ],
     "DescribePrometheusRecordRules": [
       {
         "document": "This example shows you how to pull recording rules.",
@@ -950,14 +926,6 @@
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSSOAccount\n<Common request parameters>\n\n{\n    \"InstanceId\": \"grafana-abcdefgh\"\n}",
         "output": "{\n    \"Response\": {\n        \"AccountSet\": [\n            {\n                \"UserId\": \"100000000\",\n                \"Role\": [\n                    {\n                        \"Organization\": \"org\",\n                        \"Role\": \"Admin\"\n                    }\n                ],\n                \"Notes\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"qmunlpf51noe13qp5vyvg7mq5t4t4w6u\"\n    }\n}",
         "title": "DescribeSSOAccount"
-      }
-    ],
-    "DescribeServiceDiscovery": [
-      {
-        "document": " ",
-        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeServiceDiscovery\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-sdfk2342a\",\n    \"KubeClusterId\": \"cls-pwerf3k3\",\n    \"KubeType\": 1\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"0523dedd-1235-428d-885c-9443cf9175d1\",\n        \"ServiceDiscoverySet\": [\n            {\n                \"Kind\": \"ServiceMonitor\",\n                \"Name\": \"name\",\n                \"Namespace\": \"namespace\",\n                \"Selector\": \"{\\\"matchLabels\\\":{\\\"k8sapp\\\":\\\"mysql-exporter\\\"}}\",\n                \"Yaml\": \"apiVersion: monitoring.coreos.com...\",\n                \"NamespaceSelector\": \"{\\\"matchNames\\\":[\\\"demo-ns\\\"]}\",\n                \"Endpoints\": \"[{\\\"port\\\":\\\"tcp-port\\\",\\\"path\\\":\\\"/metrics\\\",\\\"interval\\\":\\\"30s\\\",\\\"bearerTokenSecret\\\":{\\\"key\\\":\\\"\\\"}}]\"\n            }\n        ]\n    }\n}",
-        "title": "Listing scrape configurations"
       }
     ],
     "DescribeStatisticData": [
@@ -1150,10 +1118,16 @@
     ],
     "ModifyPrometheusInstanceAttributes": [
       {
-        "document": " ",
+        "document": "",
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyPrometheusInstanceAttributes\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-2rsas2\",\n    \"InstanceName\": \"my-prom-gg\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3e0dff9d-9ed5-47c3-beb2-a42c1d69e1cc\"\n    }\n}",
-        "title": "Modifying the attributes of a Prometheus instance"
+        "title": "This API is used to modify relevant properties of a Prometheus instance."
+      },
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyPrometheusInstanceAttributes\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-2rsas2\",\n    \"DataRetentionTime\": 30,\n    \"InstanceAttributes\": [\n        {\n            \"Key\": \"LongTermStorageRetentionTime\",\n            \"Value\": \"90\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3e0dff9d-9ed5-47c3-beb2-a42c1d69e1cc\"\n    }\n}",
+        "title": "Modify the storage duration and archive storage duration of a Prometheus instance"
       }
     ],
     "ModifyPrometheusRecordRuleYaml": [
@@ -1224,14 +1198,6 @@
         "input": "POST / HTTP/1.1\nHost: monitor.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RunPrometheusInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"prom-xxx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxx\"\n    }\n}",
         "title": "Initializing an instance"
-      }
-    ],
-    "SendCustomAlarmMsg": [
-      {
-        "document": "This example shows you how to send a custom alarm notification.",
-        "input": "https://monitor.tencentcloudapi.com/?Action=SendCustomAlarmMsg\r\n&Module=monitor\r\n&PolicyId=cm-04rhwvwg\r\n&Msg=XXXX\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"9q1zxtmzw6xqyqriu8run9jf6fnnkdbn\"\n    }\n}",
-        "title": "Sending custom alarm notification"
       }
     ],
     "SetDefaultAlarmPolicy": [
