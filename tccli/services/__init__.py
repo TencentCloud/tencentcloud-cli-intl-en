@@ -147,6 +147,9 @@ SERVICE_VERSIONS = {
     "cynosdb": [
         "2019-01-07"
     ],
+    "databuddy": [
+        "2026-07-15"
+    ],
     "dataintegration": [
         "2022-06-13"
     ],

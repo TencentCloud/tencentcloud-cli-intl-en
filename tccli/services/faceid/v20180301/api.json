@@ -441,7 +441,7 @@
         {
           "disabled": false,
           "document": "The Base64-encoded value of the photo to compare, which is required only when `CheckMode` is set to `2`.",
-          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
+          "example": "/9j/4AAQSkZRg.....s97n//2Q==",
           "member": "string",
           "name": "CompareImage",
           "required": false,
@@ -602,12 +602,30 @@
         },
         {
           "disabled": false,
-          "document": "<p>Whether to enable Bank of Thailand-specific background detection.<br>This parameter requires whitelist activation; please contact us to request access before it can take effect.</p><p>Default value: false</p>\n",
+          "document": "<p>Whether to enable Bank of Thailand-specific background detection.<br>This parameter requires whitelist activation; please contact us to request access before it can take effect.</p><p>Default value: false\n",
           "example": "false",
           "member": "bool",
           "name": "EnableBotBgDetection",
           "required": false,
           "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "OCR Auto Capture Mode Timeout (ms)\nValue Range: [5000, 180000]\nDefault Value: 20000\nValues less than 5000 will be clamped to 5000; values greater than 180000 will be clamped to 180000",
+          "example": "20000",
+          "member": "int64",
+          "name": "OcrAutoDetectTimeout",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "OCR Capture Mode\nEnum Values:\n<li>OCR_DETECT_MANUAL: Manual capture mode. Recognition starts after the user taps to take a photo.</li>\n<li>OCR_DETECT_AUTO_MANUAL: Auto recognition mode. The system performs automatic recognition; fallback to manual photo capture is available upon recognition timeout.</li>\n<li>OCR_DETECT_AUTO: Auto-only recognition mode. The system performs automatic recognition; no fallback to manual photo capture upon recognition timeout.</li>\n<li>OCR_DETECT_AUTO_MULTI: Multi-shot auto-only recognition mode. The system automatically captures multiple document images with flash enabled.\nDefault Value: OCR_DETECT_AUTO_MANUAL",
+          "example": "OCR_DETECT_AUTO_MANUAL",
+          "member": "string",
+          "name": "OcrModeType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"

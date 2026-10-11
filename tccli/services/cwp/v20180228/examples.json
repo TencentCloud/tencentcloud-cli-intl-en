@@ -8,6 +8,14 @@
         "title": "Adding Cross-Region Log-in Allowlists in Batches"
       }
     ],
+    "AddVulIgnoreRule": [
+      {
+        "document": "This API is used to add vulnerability ignore rules.",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddVulIgnoreRule\n<Common request parameters>\n\n{\n    \"RuleDetailList\": [\n        {\n            \"VulID\": 50,\n            \"AssetScopeType\": 0,\n            \"Remark\": \"test1\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"300d942e-df84-48b8-b7ee-bc0000852863\"\n    }\n}",
+        "title": "This API is used to add vulnerability ignore rules."
+      }
+    ],
     "ChangeRuleEventsIgnoreStatus": [
       {
         "document": "This example shows you how to perform batch ignore operations based on detection item ID or event ID.",
@@ -152,6 +160,14 @@
         "title": "Creating a Network Attack Allowlist"
       }
     ],
+    "CreateProtectServer": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateProtectServer\n<Common request parameters>\n\n{\n    \"ProtectDir\": \"/tmp\",\n    \"ProtectHostConfig\": [\n        {\n            \"Quuid\": \"quuid\",\n            \"ProtectSwitch\": 1,\n            \"AutoRecovery\": 1\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6c251fae-8254-42d8-bd2c-17f54dac1275\"\n    }\n}",
+        "title": "Adding a Website Protection Server"
+      }
+    ],
     "CreateRansomDefenseStrategy": [
       {
         "document": " ",
@@ -224,12 +240,36 @@
         "title": "Deleting a Policy"
       }
     ],
+    "DeleteBaselineRule": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteBaselineRule\n<Common request parameters>\n\n{\n    \"RuleId\": \"35184372088862\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a2c42036-e5c2-4ace-af66-7348922b5bbe\"\n    }\n}",
+        "title": "Delete a rule"
+      }
+    ],
+    "DeleteBaselineRuleIgnore": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteBaselineRuleIgnore\n<Common request parameters>\n\n{\n    \"RuleIds\": [\n        \"125\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"0cfbf290-f12e-430a-a867-682429cf1310\"\n    }\n}",
+        "title": "Deleting Ignoring Rules"
+      }
+    ],
     "DeleteBaselineStrategy": [
       {
         "document": "This example shows you how to delete the baseline policy based on the baseline policy ID.",
         "input": "https://cwp.tencentcloudapi.com/?Action=DeleteBaselineStrategy\n&StrategyId=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"354f4ac3-8546-4516-8c8a-69e3ab73aa8a\"\n    }\n}",
         "title": "Deleting Baseline Policy APIs"
+      }
+    ],
+    "DeleteBaselineWeakPassword": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteBaselineWeakPassword\n<Common request parameters>\n\n{\n    \"PasswordIds\": [\n        \"3433\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"4618e64b-6ca2-4506-88b4-95084de25534\"\n    }\n}",
+        "title": "Deleting a Weak Password"
       }
     ],
     "DeleteBashEvents": [
@@ -392,6 +432,14 @@
         "title": "Deleting Local Privilege Escalation Rules"
       }
     ],
+    "DeleteProtectDir": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteProtectDir\n<Common request parameters>\n\n{\n    \"Ids\": [\n        \"/data\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"08a38c5a-721e-4310-a595-b38e1f6ef8d9\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
     "DeleteRaspRules": [
       {
         "document": "Deleting Entries from the Vulnerability Defense Allowlist",
@@ -478,6 +526,14 @@
         "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteWebHookRule\n<Common request parameters>\n\n{\n    \"Ids\": [\n        10001\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"747c393e-f771-47ca-af0a-cc36b88f107a\"\n    }\n}",
         "title": "Delete Enterprise WeChat Robot Rule"
+      }
+    ],
+    "DeleteWebPageEventLog": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteWebPageEventLog\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"d9506441-52bc-4d14-a767-7e1251ed3ce5\"\n    }\n}",
+        "title": "Example"
       }
     ],
     "DescribeABTestConfig": [
@@ -990,6 +1046,14 @@
         "title": "Obtaining the Blocking Allowlist"
       }
     ],
+    "DescribeBaselineAnalysisData": [
+      {
+        "document": "This example shows you how to query the baseline policy overview statistics based on baseline policy IDs.",
+        "input": "https://cwp.tencentcloudapi.com/?Action=DescribeBaselineAnalysisData\n&StrategyId=1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f1dd9f5e-4ac0-48a7-9410-c86d24656d9a\",\n        \"LatestScanTime\": \"2019-12-25 11:57:15\",\n        \"IsGlobal\": 1,\n        \"ScanHostCount\": 170,\n        \"ScanRuleCount\": 25,\n        \"IfFirstScan\": 1\n    }\n}",
+        "title": "Querying the Statistical Data of the Security Baseline Policy Overview"
+      }
+    ],
     "DescribeBaselineBasicInfo": [
       {
         "document": "This example shows you how to query the list of basic baseline information.",
@@ -1014,6 +1078,30 @@
         "title": "Querying Baseline Details"
       }
     ],
+    "DescribeBaselineDetectList": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBaselineDetectList\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"PolicyId\": 172,\n                \"TaskId\": 2290,\n                \"HostCount\": 48,\n                \"StartTime\": \"2022-08-16 15:41:07\",\n                \"FinishTime\": \"2022-08-16 15:44:25\",\n                \"PolicyName\": \"Pro edition host weak password + Ultimate edition\",\n                \"SuccessCount\": 0,\n                \"FailedCount\": 0,\n                \"TimeoutCount\": 0,\n                \"PolicyDetectStatus\": 2\n            },\n            {\n                \"PolicyId\": 172,\n                \"TaskId\": 2307,\n                \"HostCount\": 48,\n                \"StartTime\": \"2022-08-16 17:54:39\",\n                \"FinishTime\": \"2022-08-16 17:55:19\",\n                \"PolicyName\": \"Pro Edition host weak password + Flagship Edition\",\n                \"SuccessCount\": 0,\n                \"FailedCount\": 0,\n                \"TimeoutCount\": 0,\n                \"PolicyDetectStatus\": 2\n            },\n            {\n                \"PolicyId\": 168,\n                \"TaskId\": 2298,\n                \"HostCount\": 48,\n                \"StartTime\": \"2022-08-16 17:06:08\",\n                \"FinishTime\": \"2022-08-16 17:15:23\",\n                \"PolicyName\": \"All\",\n                \"SuccessCount\": 0,\n                \"FailedCount\": 0,\n                \"TimeoutCount\": 0,\n                \"PolicyDetectStatus\": 2\n            },\n            {\n                \"PolicyId\": 172,\n                \"TaskId\": 2295,\n                \"HostCount\": 48,\n                \"StartTime\": \"2022-08-16 16:56:35\",\n                \"FinishTime\": \"2022-08-16 16:58:39\",\n                \"PolicyName\": \"Pro Edition host weak password + Flagship edition\",\n                \"SuccessCount\": 0,\n                \"FailedCount\": 0,\n                \"TimeoutCount\": 0,\n                \"PolicyDetectStatus\": 2\n            },\n            {\n                \"PolicyId\": 172,\n                \"TaskId\": 2294,\n                \"HostCount\": 48,\n                \"StartTime\": \"2022-08-16 16:47:52\",\n                \"FinishTime\": \"2022-08-16 16:48:48\",\n                \"PolicyName\": \"Pro Edition host weak password + Flagship Edition\",\n                \"SuccessCount\": 0,\n                \"FailedCount\": 0,\n                \"TimeoutCount\": 0,\n                \"PolicyDetectStatus\": 2\n            },\n            {\n                \"PolicyId\": 172,\n                \"TaskId\": 2288,\n                \"HostCount\": 48,\n                \"StartTime\": \"2022-08-16 15:02:40\",\n                \"FinishTime\": \"2022-08-16 15:04:43\",\n                \"PolicyName\": \"Pro Edition host weak password + Flagship Edition\",\n                \"SuccessCount\": 0,\n                \"FailedCount\": 0,\n                \"TimeoutCount\": 0,\n                \"PolicyDetectStatus\": 2\n            },\n            {\n                \"PolicyId\": 168,\n                \"TaskId\": 2297,\n                \"HostCount\": 48,\n                \"StartTime\": \"2022-08-16 17:05:33\",\n                \"FinishTime\": \"2022-08-16 17:10:58\",\n                \"PolicyName\": \"All\",\n                \"SuccessCount\": 0,\n                \"FailedCount\": 0,\n                \"TimeoutCount\": 0,\n                \"PolicyDetectStatus\": 2\n            },\n            {\n                \"PolicyId\": 172,\n                \"TaskId\": 2289,\n                \"HostCount\": 48,\n                \"StartTime\": \"2022-08-16 15:06:38\",\n                \"FinishTime\": \"2022-08-16 15:08:20\",\n                \"PolicyName\": \"Pro Edition host weak password + Flagship Edition\",\n                \"SuccessCount\": 0,\n                \"FailedCount\": 0,\n                \"TimeoutCount\": 0,\n                \"PolicyDetectStatus\": 2\n            },\n            {\n                \"PolicyId\": 255,\n                \"TaskId\": 2305,\n                \"HostCount\": 48,\n                \"StartTime\": \"2022-08-16 17:13:52\",\n                \"FinishTime\": \"2022-08-16 17:14:21\",\n                \"PolicyName\": \"Custom\",\n                \"SuccessCount\": 0,\n                \"FailedCount\": 0,\n                \"TimeoutCount\": 0,\n                \"PolicyDetectStatus\": 2\n            },\n            {\n                \"PolicyId\": 257,\n                \"TaskId\": 2351,\n                \"HostCount\": 47,\n                \"StartTime\": \"2022-08-19 00:00:00\",\n                \"FinishTime\": \"2022-08-19 00:17:15\",\n                \"PolicyName\": \"Pro Edition host weak password + Flagship Edition\",\n                \"SuccessCount\": 0,\n                \"FailedCount\": 0,\n                \"TimeoutCount\": 0,\n                \"PolicyDetectStatus\": 2\n            }\n        ],\n        \"RequestId\": \"48f973be-b1f0-4f58-aa9e-7a813655ee43\",\n        \"Total\": 110\n    }\n}",
+        "title": "Obtaining the Baseline Detection Details"
+      }
+    ],
+    "DescribeBaselineDetectOverview": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBaselineDetectOverview\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"LatestPassCount\": 0,\n        \"HostCount\": 8,\n        \"LatestNotPassCount\": 0,\n        \"PolicyCount\": 18,\n        \"PassRate\": 0,\n        \"RequestId\": \"935e27b1-d675-4509-80bf-96fbf0764237\",\n        \"ItemCount\": 2955\n    }\n}",
+        "title": "Obtaining the Baseline Detection Overview"
+      }
+    ],
+    "DescribeBaselineDownloadList": [
+      {
+        "document": "This API is used to obtain the baseline download list.",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBaselineDownloadList\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"TaskId\": 1,\n                \"TaskName\": \"taskName01\",\n                \"Status\": 0,\n                \"StartTime\": \"0001-01-01 00:00:00\",\n                \"EndTime\": \"0001-01-01 00:00:00\",\n                \"DownloadUrl\": \"http://www.a.b.c\"\n            }\n        ],\n        \"RequestId\": \"b0596030-57ec-42aa-8e0f-738a6a07e2d0\",\n        \"Total\": 1\n    }\n}",
+        "title": "Obtaining the List of All Downloaded Baselines"
+      }
+    ],
     "DescribeBaselineEffectHostList": [
       {
         "document": "This example shows you how to query the list of hosts affected by a baseline based on baseline ID.",
@@ -1022,12 +1110,36 @@
         "title": "Querying List of Hosts Affected by Baseline"
       }
     ],
+    "DescribeBaselineFixList": [
+      {
+        "document": "Obtaining the List of All Fixed Baselines",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBaselineFixList\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"MachineExtraInfo\": {\n                    \"HostName\": \"demo-instance\",\n                    \"InstanceID\": \"ins-1002\",\n                    \"NetworkName\": \"vpc-1002\",\n                    \"NetworkType\": 1,\n                    \"PrivateIP\": \"1.1.1.1\",\n                    \"WanIP\": \"1.1.1.1\"\n                },\n                \"Id\": 334525,\n\"ItemName\": \"Memcached UDP port can be exploited for DDOS amplification attacks\"\n                \"HostIp\": \"172.16.64.15\",\n                \"CreateTime\": \"2022-05-18 00:12:20\",\n                \"ModifyTime\": \"2022-07-28 15:02:32\",\n                \"FixTime\": \"2022-06-13 16:00:03\"\n            },\n            {\n                \"MachineExtraInfo\": {\n                    \"HostName\": \"demo-instance\",\n                    \"InstanceID\": \"ins-1002\",\n                    \"NetworkName\": \"vpc-1002\",\n                    \"NetworkType\": 1,\n                    \"PrivateIP\": \"1.1.1.1\",\n                    \"WanIP\": \"1.1.1.1\"\n                },\n                \"Id\": 335549,\n\"ItemName\": \"Ensure that the nodev option is set on the /tmp partition\",\n                \"HostIp\": \"10.0.22.10\",\n                \"CreateTime\": \"2022-05-26 16:14:51\",\n                \"ModifyTime\": \"2022-07-28 15:02:32\",\n                \"FixTime\": \"2022-06-15 17:02:55\"\n            }\n        ],\n        \"RequestId\": \"8a667d00-bc48-4ab7-8725-cd6728e121ca\",\n        \"Total\": 1402\n    }\n}",
+        "title": "Obtaining the List of All Fixed Baselines"
+      }
+    ],
     "DescribeBaselineHostDetectList": [
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBaselineHostDetectList\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"HostId\": \"a0770b41-9697-4a1d-8150-b8fa247b6189\",\n                \"HostIp\": \"172.23.16.10\",\n\"HostName\": \"Functional test ubuntu20 vulnerability fix v_txmitan\"\n                \"WanIp\": \"10.104.9.1\",\n                \"DetectStatus\": 0,\n                \"PassedItemCount\": 188,\n                \"NotPassedItemCount\": 202,\n                \"ItemCount\": 390,\n                \"FirstTime\": \"2022-05-11 17:11:32\",\n                \"LastTime\": \"2022-08-23 14:28:51\",\n                \"MachineExtraInfo\": {\n                    \"WanIP\": \"146.56.21****\",\n                    \"PrivateIP\": \"10.206****\",\n                    \"NetworkType\": 0,\n                    \"NetworkName\": \"vpc-3gov****\",\n                    \"InstanceID\": \"ins-bask****\",\n                    \"HostName\": \"demo_****\"\n                },\n                \"Uuid\": \"a0770b41-9697-4a1d-8150-b8fa247b6189\"\n            }\n        ],\n        \"RequestId\": \"fca17381-b0fa-45c4-8568-82c186be9dc0\",\n        \"Total\": 36\n    }\n}",
         "title": "Obtaining Result List of Detection on Hosts"
+      }
+    ],
+    "DescribeBaselineHostIgnoreList": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBaselineHostIgnoreList\n<Common request parameters>\n\n{\n    \"RuleID\": \"126\"\n}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"MachineExtraInfo\": {\n                    \"HostName\": \"demo-instance\",\n                    \"InstanceID\": \"ins-1002\",\n                    \"NetworkName\": \"vpc-1002\",\n                    \"NetworkType\": 1,\n                    \"PrivateIP\": \"1.1.1.1\",\n                    \"WanIP\": \"1.1.1.1\"\n                },\n                \"HostId\": \"d8feb20e-dcdd-461b-9b37-336c42d48657\",\n                \"HostName\": \"Many feature test software_ivon\",\n                \"HostTag\": \"tag***\",\n                \"HostIp\": \"172.16.0.49\",\n                \"WanIp\": \"10.104.9.1\"\n            }\n        ],\n        \"RequestId\": \"0eb82ff4-667a-4525-82b5-e304aee952ee\",\n        \"Total\": 1\n    }\n}",
+        "title": "Obtaining the List of Hosts Associated with Ignoring Rules"
+      }
+    ],
+    "DescribeBaselineHostRiskTop": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBaselineHostRiskTop\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"HostRiskTop5\": [\n            {\n                \"HostId\": \"36a78a1e-7711-4e7f-9fbe-c7afab78cd78\",\n\"HostName\": \"jaryzhou - coding test\",\n                \"SeriousCount\": 0,\n                \"HighCount\": 32,\n                \"MediumCount\": 126,\n                \"LowCount\": 45\n            },\n            {\n                \"HostId\": \"a0770b41-9697-4a1d-8150-b8fa247b6189\",\n\"HostName\": \"functional test ubuntu20 vulnerability fix v_txmitan\",\n                \"SeriousCount\": 0,\n                \"HighCount\": 33,\n                \"MediumCount\": 125,\n                \"LowCount\": 44\n            },\n            {\n                \"HostId\": \"cc0e8a25-7169-4b5c-a929-2b4cccbfce10\",\n\"HostName\": \"Functional test ubuntu18 vulnerability fix v_txmitan\"\n                \"SeriousCount\": 0,\n                \"HighCount\": 17,\n                \"MediumCount\": \"0\",\n                \"LowCount\": 43\n            },\n            {\n                \"HostId\": \"69796250-2a3a-40ef-b418-676e677019a4\",\n                \"HostName\": \"piperpeng\",\n                \"SeriousCount\": 0,\n                \"HighCount\": 25,\n                \"MediumCount\": 116,\n                \"LowCount\": 23\n            },\n            {\n                \"HostId\": \"dbf3dcd4-179a-4bc6-86e4-15439f4cc898\",\n\"HostName\": \"Vulnerability yhvs compilation machine-linux\",\n                \"SeriousCount\": 0,\n                \"HighCount\": 25,\n                \"MediumCount\": 117,\n                \"LowCount\": 21\n            }\n        ],\n        \"RequestId\": \"fc13bcdc-464f-4f94-a985-239e499d0bc0\"\n    }\n}",
+        "title": "Obtaining Top 5 Host Risks"
       }
     ],
     "DescribeBaselineHostTop": [
@@ -1046,12 +1158,42 @@
         "title": "Obtaining the Baseline Check Item List"
       }
     ],
+    "DescribeBaselineItemIgnoreList": [
+      {
+        "document": "Adding a Check Item to Be Ignored to the List",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBaselineItemIgnoreList\n<Common request parameters>\n\n{\n    \"RuleID\": 125\n}",
+        "output": "{\n    \"Response\": {\n        \"List\": [],\n        \"RequestId\": \"529a6a2c-91ef-44e3-a822-953846e0e596\",\n        \"Total\": 0\n    }\n}",
+        "title": "Adding a Check Item to Be Ignored to the List"
+      },
+      {
+        "document": "Detection Item List",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBaselineItemIgnoreList\n<Common request parameters>\n\n{\n    \"RuleID\": 125\n}",
+        "output": "{\n    \"Response\": {\n        \"List\": [],\n        \"RequestId\": \"529a6a2c-91ef-44e3-a822-953846e0e596\",\n        \"Total\": 0\n    }\n}",
+        "title": "Detection Item List"
+      }
+    ],
+    "DescribeBaselineItemInfo": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBaselineItemInfo\n<Common request parameters>\n\n{\n    \"Limit\": \"1\",\n    \"Offset\": \"1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"ItemId\": 1001,\n\"ItemName\": \"Kubelet unauthorized access\",\n                \"RuleId\": 74,\n\"ItemDesc\": \"Kubelet does not restrict access sources and is not configured with any authentication, allowing attackers to execute arbitrary code in any Pod. This can also lead to Pod leakage, resulting in the leakage of sensitive information.\",\n\"FixMethod\": \"1. Kubelet listens locally:\\n--address=127.0.0.1\\n\\n2. The Kubelet server prohibits anonymous access:\\n--anonymous-auth=false\\n\\nIf access to the port has been restricted through firewalls or other methods, please ignore this step.\\n\\n3. Configure certificates:\\n--client-ca-file=path/to/ca\\n--kubelet-client-certificate\\n--kubelet-client-key\"\n\"RuleName\": \"Kubelet unauthorized access\"\n                \"Level\": 3,\n                \"SysRuleId\": 74,\n                \"RelatedCustomRuleInfo\": []\n            }\n        ],\n        \"RequestId\": \"90344239-519c-4f7f-8a71-1820d38e163c\",\n        \"Total\": 2955\n    }\n}",
+        "title": "Detection Item Information"
+      }
+    ],
     "DescribeBaselineItemList": [
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBaselineItemList\n<Common request parameters>\n\n{\n    \"Limit\": \"1\",\n    \"Offset\": \"1\"\n}",
         "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"ItemId\": 3077,\n\"ItemName\": \"Ensure that DNS service is not enabled.\"\n                \"CategoryId\": 19,\n\"ItemDesc\": \"The Domain Name System (DNS) is a hierarchical naming system that maps names to IP addresses for computers connected to the network, services, and other resources.\\n\",\n\"FixMethod\": \"Run the following command to disable named:\\n# systemctl disable bind9.\"\n\"RuleName\": \"International standard-Ubuntu 16 security baseline check Level1\"\n                \"DetectResultDesc\": \"idesc\",\n                \"Level\": 2,\n                \"CanBeFixed\": 0,\n                \"DetectStatus\": 3,\n\"HostName\": \"ubuntu16 vulnerability fix for functional testing v_txmitan\"\n                \"HostIp\": \"172.23.16.14\",\n                \"HostId\": \"044889f8-d6a2-4fc3-a8a8-c114b6f5266b\",\n                \"WanIp\": \"10.104.9.1\",\n                \"LastTime\": \"2022-08-22 09:48:42\",\n                \"FirstTime\": \"2022-08-06 09:43:07\",\n                \"MachineExtraInfo\": {\n                    \"WanIP\": \"146.56.21****\",\n                    \"PrivateIP\": \"10.206****\",\n                    \"NetworkType\": 0,\n                    \"NetworkName\": \"vpc-3gov****\",\n                    \"InstanceID\": \"ins-bask****\",\n                    \"HostName\": \"demo_****\"\n                },\n                \"Uuid\": \"044889f8-d6a2-4fc3-a8a8-c114b6f5266b\"\n            }\n        ],\n        \"RequestId\": \"3a2b20bc-2e93-46b3-8bb7-b655aa249c00\",\n        \"Total\": 8412\n    }\n}",
         "title": "Detection Item Results"
+      }
+    ],
+    "DescribeBaselineItemRiskTop": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBaselineItemRiskTop\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"718b3dda-c0a7-409c-84bd-712411880bbe\",\n        \"RiskItemTop5\": [\n            {\n                \"ItemId\": 1505,\n\"ItemName\": \"Maximum validity days policy of the account after Linux password expires\",\n                \"Level\": 2,\n                \"HostCount\": 31\n            },\n            {\n                \"ItemId\": 1509,\n\"ItemName\": \"Restrict remote log-in of users with root permission.\",\n                \"Level\": 2,\n                \"HostCount\": 31\n            },\n            {\n                \"ItemId\": 1500,\n\"ItemName\": \"SSH listens on the default port\"\n                \"Level\": 1,\n                \"HostCount\": 31\n            },\n            {\n                \"ItemId\": 5275,\n\"ItemName\": \"Check whether root user login over SSH is disabled\"\n                \"Level\": 3,\n                \"HostCount\": 22\n            },\n            {\n                \"ItemId\": 5273,\n\"ItemName\": \"Check account timeout auto-logout settings\",\n                \"Level\": 2,\n                \"HostCount\": 22\n            }\n        ]\n    }\n}",
+        "title": "Obtaining Top 5 Baseline Detection Items"
       }
     ],
     "DescribeBaselineList": [
@@ -1076,6 +1218,38 @@
         "input": "https://cwp.tencentcloudapi.com/?Action=DescribeBaselineRule\n&BaselineId=100441\n&Level.0=1\n&Status=0\n&Quuid=\"8c8a-69e3ab73aa8a\"\n&Uuid=\"asdasd123-124sfas\"\n&Limit=10\n&Offset=0\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"354f4ac3-8546-4516-8c8a-69e3ab73aa8a\",\n        \"TotalCount\": 21,\n        \"ShowRuleRemark\": true,\n        \"BaselineRuleList\": [\n            {\n                \"RuleName\": \"Security detection item 1\",\n                \"Description\": \"Security detection item 1 description\",\n                \"FixMessage\": \"Restart the service\",\n                \"Level\": 1,\n                \"Status\": 0,\n                \"RuleId\": 1,\n                \"RuleRemark\": \"Integration test\",\n                \"LastScanAt\": \"2020-09-16 :00:00:00\",\n                \"EventId\": 1,\n                \"Uuid\": \"Uuid\"\n            }\n        ]\n    }\n}",
         "title": "Querying Baseline Detection Item Information"
+      }
+    ],
+    "DescribeBaselineRuleCategoryList": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBaselineRuleCategoryList\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"CategoryId\": 1,\n                \"ParentCategoryId\": 0,\n                \"CategoryName\": \"Cybersecurity Classified Protection Compliance\"\n            },\n            {\n                \"CategoryId\": 3,\n                \"ParentCategoryId\": 0,\n                \"CategoryName\": \"Unauthorized access\"\n            },\n            {\n                \"CategoryId\": 4,\n                \"ParentCategoryId\": 0,\n                \"CategoryName\": \"Weak password\"\n            },\n            {\n                \"CategoryId\": 5,\n                \"ParentCategoryId\": 0,\n                \"CategoryName\": \"Remote code execution\"\n            },\n            {\n                \"CategoryId\": 6,\n                \"ParentCategoryId\": 0,\n                \"CategoryName\": \"Other\"\n            },\n            {\n                \"CategoryId\": 7,\n                \"ParentCategoryId\": 0,\n                \"CategoryName\": \"Tencent Cloud security standard\"\n            }\n        ],\n        \"RequestId\": \"0be3d997-550d-4762-8a6e-243994719407\"\n    }\n}",
+        "title": "Obtaining the Baseline Category List"
+      }
+    ],
+    "DescribeBaselineRuleDetectList": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBaselineRuleDetectList\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"RuleId\": 125,\n\"RuleName\": \"Information leakage baseline check\",\n\"RuleDesc\": \"Information leakage baseline check\"\n                \"ItemCount\": 5,\n                \"HostCount\": 36,\n                \"FirstTime\": \"2022-05-11 01:03:35\",\n                \"LastTime\": \"2022-08-23 09:48:19\",\n                \"DetectStatus\": 0,\n                \"ItemIds\": [\n                    1900,\n                    1901,\n                    1902,\n                    1903,\n                    1904\n                ]\n            },\n            {\n                \"RuleId\": 124,\n\"RuleName\": \"Nginx security baseline check\",\n\"RuleDesc\": \"Nginx security baseline check\"\n                \"ItemCount\": 6,\n                \"HostCount\": 36,\n                \"FirstTime\": \"2022-05-11 01:03:35\",\n                \"LastTime\": \"2022-08-23 10:48:36\",\n                \"DetectStatus\": 0,\n                \"ItemIds\": [\n                    1800,\n                    1801,\n                    1802,\n                    1803,\n                    1804,\n                    1805\n                ]\n            },\n            {\n                \"RuleId\": 120,\n\"RuleName\": \"MongoDB security baseline check\",\n\"RuleDesc\": \"MongoDB security baseline check\",\n                \"ItemCount\": 4,\n                \"HostCount\": 36,\n                \"FirstTime\": \"2022-05-11 01:03:35\",\n                \"LastTime\": \"2022-08-23 09:48:19\",\n                \"DetectStatus\": 3,\n                \"ItemIds\": [\n                    1400,\n                    1401,\n                    1402,\n                    1403\n                ]\n            },\n            {\n                \"RuleId\": 74,\n\"RuleName\": \"Kubelet unauthorized access\"\n\"RuleDesc\": \"Kubelet unauthorized access\"\n                \"ItemCount\": 1,\n                \"HostCount\": 34,\n                \"FirstTime\": \"2022-05-11 17:07:31\",\n                \"LastTime\": \"2022-08-23 09:48:19\",\n                \"DetectStatus\": 3,\n                \"ItemIds\": [\n                    1001\n                ]\n            },\n            {\n                \"RuleId\": 51,\n\"RuleName\": \"MySQL Weak Password Detection\"\n\"RuleDesc\": \"MySQL weak password detection\",\n                \"ItemCount\": 1,\n                \"HostCount\": 34,\n                \"FirstTime\": \"2022-05-11 01:03:35\",\n                \"LastTime\": \"2022-08-23 09:48:19\",\n                \"DetectStatus\": 0,\n                \"ItemIds\": [\n                    1103\n                ]\n            },\n            {\n                \"RuleId\": 52,\n\"RuleName\": \"Tomcat weak password detection\",\n\"RuleDesc\": \"Tomcat weak password detection\",\n                \"ItemCount\": 1,\n                \"HostCount\": 34,\n                \"FirstTime\": \"2022-05-11 01:03:35\",\n                \"LastTime\": \"2022-08-23 09:48:19\",\n                \"DetectStatus\": 3,\n                \"ItemIds\": [\n                    1101\n                ]\n            },\n            {\n                \"RuleId\": 70,\n\"RuleName\": \"CouchDB unauthorized access\"\n\"RuleDesc\": \"CouchDB unauthorized access\"\n                \"ItemCount\": 1,\n                \"HostCount\": 34,\n                \"FirstTime\": \"2022-05-11 17:07:31\",\n                \"LastTime\": \"2022-08-23 09:48:19\",\n                \"DetectStatus\": 3,\n                \"ItemIds\": [\n                    1005\n                ]\n            },\n            {\n                \"RuleId\": 71,\n\"RuleName\": \"Elasticsearch unauthorized access\"\n\"RuleDesc\": \"Elasticsearch unauthorized access\"\n                \"ItemCount\": 1,\n                \"HostCount\": 34,\n                \"FirstTime\": \"2022-05-11 17:07:31\",\n                \"LastTime\": \"2022-08-23 09:48:19\",\n                \"DetectStatus\": 3,\n                \"ItemIds\": [\n                    1004\n                ]\n            },\n            {\n                \"RuleId\": 58,\n\"RuleName\": \"ActiveMQ baseline compliance detection\",\n\"RuleDesc\": \"ActiveMQ baseline compliance detection\"\n                \"ItemCount\": 1,\n                \"HostCount\": 34,\n                \"FirstTime\": \"2022-05-11 01:03:35\",\n                \"LastTime\": \"2022-08-23 09:48:19\",\n                \"DetectStatus\": 3,\n                \"ItemIds\": [\n                    1108\n                ]\n            },\n            {\n                \"RuleId\": 72,\n\"RuleName\": \"MongoDB unauthorized access\"\n\"RuleDesc\": \"MongoDB unauthorized access\"\n                \"ItemCount\": 1,\n                \"HostCount\": 33,\n                \"FirstTime\": \"2022-05-11 17:07:31\",\n                \"LastTime\": \"2022-08-23 09:48:19\",\n                \"DetectStatus\": 3,\n                \"ItemIds\": [\n                    1003\n                ]\n            }\n        ],\n        \"RequestId\": \"55a2919d-7bd6-4220-b347-cb9cfca9dd6c\",\n        \"Total\": 70\n    }\n}",
+        "title": "Detection Rule Perspective"
+      }
+    ],
+    "DescribeBaselineRuleIgnoreList": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBaselineRuleIgnoreList\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"AssetType\": \"1\",\n                \"HostIds\": [\n                    \"d99a1b46-cc2d-4633-a11f-4a7663d2523e\"\n                ],\n                \"RuleName\": \"high level\",\n                \"CategoryId\": -1,\n                \"RuleDesc\": \"ignore rule\",\n                \"Items\": [\n                    {\n                        \"ItemId\": 1002,\n                        \"ItemName\": \"itemname\",\n                        \"CustomItemValues\": [\n                            100\n                        ],\n                        \"CategoryId\": 50\n                    }\n                ],\n                \"RuleId\": 125,\n                \"RuleType\": 1,\n                \"HostCount\": 0,\n                \"HostIps\": [\n                    \"127.0.0.1\"\n                ]\n            }\n        ],\n        \"RequestId\": \"aaddca9b-8634-47c5-bdf3-add2f36ad7a9\",\n        \"Total\": 1\n    }\n}",
+        "title": "Obtaining the List of Ignoring Policies"
+      }
+    ],
+    "DescribeBaselineRuleList": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBaselineRuleList\n<Common request parameters>\n\n{\n    \"Limit\": \"10\",\n    \"Filters\": [\n        {\n            \"Values\": [\n                \"auto_****\"\n            ],\n            \"Name\": \"RuleName\"\n        }\n    ],\n    \"Offset\": \"0\"\n}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"HostIds\": [\n                    \"d99a1b46-cc2d-4633-a11f-4a7663d25***\"\n                ],\n                \"HostIps\": [\n                    \"176.1.1.**\"\n                ],\n                \"AssetType\": \"1\",\n                \"RuleName\": \"ruleName01\",\n                \"CategoryId\": -1,\n                \"RuleDesc\": \"rule desc\",\n                \"Items\": [\n                    {\n                        \"ItemName\": \"name***\",\n                        \"ItemId\": 1000\n                    }\n                ],\n                \"RuleId\": 35184372088862,\n                \"RuleType\": 1,\n                \"HostCount\": 0\n            }\n        ],\n        \"RequestId\": \"8d445426-dfea-459c-9a13-1c1a3141353d\",\n        \"Total\": 1\n    }\n}",
+        "title": "List of rules"
       }
     ],
     "DescribeBaselineScanSchedule": [
@@ -1374,6 +1548,14 @@
         "title": "Obtaining the List of Hosts Affected by Ignored Check Items"
       }
     ],
+    "DescribeImportMachineInfo": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeImportMachineInfo\n<Common request parameters>\n\n{\n    \"MachineList\": [\n        \"0.0.0.0\"\n    ],\n    \"ImportType\": \"Ip\",\n    \"IsQueryProMachine\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"EffectiveMachineInfoList\": [\n            {\n                \"MachineName\": \"tke-np-ol06goby-worker\",\n                \"MachinePublicIp\": \"10.0.1.92\",\n                \"MachinePrivateIp\": \"172.17.2.23\",\n                \"MachineTag\": [\n                    {\n                        \"Rid\": 10,\n                        \"Name\": \"dev\",\n                        \"TagId\": 10021\n                    }\n                ],\n                \"CloudTags\": [\n                    {\n                        \"TagKey\": \"cwp\",\n                        \"TagValue\": \"dev\"\n                    }\n                ],\n                \"Quuid\": \"a9fe0359-04d9-417f-ab6d-4941891d6c4b\",\n                \"Uuid\": \"a9fe0359-04d9-417f-ab6d-4941891d6c4b\",\n                \"KernelVersion\": \"5.4.241-19-0017.1_plus\",\n                \"MachineStatus\": \"OFFLINE\",\n                \"LicenseOrder\": {\n                    \"LicenseId\": 136621,\n                    \"LicenseType\": 2,\n                    \"SourceType\": 1,\n                    \"ResourceId\": \"white_883011a2fb7a2ce8f032025ec0437f52\",\n                    \"Status\": 1\n                },\n                \"VulNum\": 0,\n                \"InstanceID\": \"eks-h847trlg\"\n            }\n        ],\n        \"InvalidMachineList\": [\n            \"a9fe0359-04d9-417f-ab6d-****\"\n        ],\n        \"RequestId\": \"633204c8-383a-4dbb-940b-2e92d0674529\"\n    }\n}",
+        "title": "Querying the Machine Information Imported in Batches"
+      }
+    ],
     "DescribeInjectRiskyServiceSwitch": [
       {
         "document": "Checking Whether Injection into Risky Services Is Enabled",
@@ -1628,6 +1810,14 @@
         "title": "Example"
       }
     ],
+    "DescribeMachineList": [
+      {
+        "document": "This example shows you how to get the regional host list by the API (DescribeMachines).",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMachineList\n<Common request parameters>\n\n{\n    \"MachineType\": \"CVM\",\n    \"MachineRegion\": \"ap-guangzhou\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Machines\": [\n            {\n                \"MachineName\": \"stone\",\n                \"MachineOs\": \"Windows\",\n                \"MachineStatus\": \"ONLINE\",\n                \"Uuid\": \"fbd6ea2c-1894-47b0-bf3e-095c78138f76\",\n                \"Quuid\": \"fbd6ea2c-1894-47b0-bf3e-095c78138f76\",\n                \"VulNum\": 0,\n                \"MachineIp\": \"172.16.20.1\",\n                \"IsProVersion\": true,\n                \"MachineWanIp\": \"1.2.2.3\",\n                \"PayMode\": \"PREPAY\",\n                \"MalwareNum\": 0,\n                \"Tag\": [\n                    {\n                        \"Rid\": 0,\n                        \"Name\": \"tag1\",\n                        \"TagId\": 1\n                    }\n                ],\n                \"BaselineNum\": 0,\n                \"CyberAttackNum\": 0,\n                \"SecurityStatus\": \"SAFE\",\n                \"InvasionNum\": 0,\n                \"RegionInfo\": {\n                    \"RegionCode\": \"gz\",\n                    \"Region\": \"ap-guangzhuo\",\n                    \"RegionId\": 1,\n                    \"RegionName\": \"Guangzhou\",\n                    \"RegionNameEn\": \"chine guangzhou\"\n                },\n                \"InstanceState\": \"TERMINATED_PRO_VERSION\",\n                \"LicenseStatus\": 1,\n                \"ProjectId\": 0,\n                \"HasAssetScan\": 1,\n                \"MachineType\": \"CVM\",\n                \"KernelVersion\": \"6.4\",\n                \"ProtectType\": \"BASIC_VERSION\",\n                \"CloudTags\": [\n                    {\n                        \"TagKey\": \"tag1\",\n                        \"TagValue\": \"tag2\"\n                    }\n                ],\n                \"IsAddedOnTheFifteen\": 1,\n                \"IpList\": \"1.2.3.4\",\n                \"VpcId\": \"vpc-intc\",\n                \"MachineExtraInfo\": {\n                    \"WanIP\": \"49.233.15.7\",\n                    \"PrivateIP\": \"172.18.16.41\",\n                    \"NetworkType\": 0,\n                    \"NetworkName\": \"vpc-9m7rhl6w\",\n                    \"InstanceID\": \"ins-7m0suost\",\n                    \"HostName\": \"txy-app-pre-node1\"\n                },\n                \"InstanceId\": \"vpc-intc\",\n                \"Remark\": \"remark\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"fbd6ea2c-1894-47b0-bf3e-095c78138f76\"\n    }\n}",
+        "title": "Obtaining the List of Hosts in a Specific Region"
+      }
+    ],
     "DescribeMachineOsList": [
       {
         "document": "",
@@ -1820,6 +2010,14 @@
         "title": "Queries local privilege escalation details"
       }
     ],
+    "DescribePrivilegeEvents": [
+      {
+        "document": "This example shows you how to obtain the list of local privilege escalation events.",
+        "input": "https://cwp.tencentcloudapi.com/?Action=DescribePrivilegeEvents\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 22,\n        \"List\": [\n            {\n                \"Pid\": 1,\n                \"MachineExtraInfo\": {\n                    \"HostName\": \"demo-instance\",\n                    \"InstanceID\": \"ins-1002\",\n                    \"NetworkName\": \"vpc-1002\",\n                    \"NetworkType\": 1,\n                    \"PrivateIP\": \"1.*.*.1\",\n                    \"WanIP\": \"1.*.*.1\"\n                },\n                \"Id\": 22,\n                \"Uuid\": \"cf59e3c0-b1cc-****-baac-525400ca96ee\",\n                \"Quuid\": \"b9821ff5-75f0-****-b21f-13c8d36a725c\",\n                \"Hostip\": \"10.*.*.125\",\n                \"ProcessName\": \"nginx\",\n                \"FullPath\": \"/home/ubuntu/a\",\n                \"CmdLine\": \"./a \",\n                \"UserName\": \"root\",\n                \"UserGroup\": \"ubuntu\",\n                \"ProcFilePrivilege\": \"-rwsr-xr-x\",\n                \"ParentProcName\": \"bash\",\n                \"ParentProcUser\": \"ubuntu\",\n                \"ParentProcGroup\": \"ubuntu\",\n                \"ParentProcPath\": \"/bin/bash\",\n                \"ProcTree\": \"a(root),bash(ubuntu),sshd(ubuntu),sshd(root),sshd(root),init(root)\",\n                \"Status\": 0,\n                \"CreateTime\": \"2019-08-15 15:27:52\",\n                \"MachineName\": \"test machine_Linux_4\"\n            }\n        ],\n        \"RequestId\": \"bd9aa8c8-36b6-4991-8e42-d08e80313616\"\n    }\n}",
+        "title": "This example shows you how to obtain the list of local privilege escalation events."
+      }
+    ],
     "DescribePrivilegeRules": [
       {
         "document": "This example shows you how to get local privilege escalation rule list.",
@@ -1857,6 +2055,22 @@
         "document": "This example shows you the API for the product trial status query.",
         "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeProductStatus\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"ReturnCode\": 1,\n        \"ReturnMsg\": \"msg\",\n        \"Data\": {\n            \"FWUserStatus\": 1,\n            \"CanApplyTrial\": true,\n            \"CanNotApplyReason\": \"reason\",\n            \"LastTrialTime\": \" 2019-12-25 11:57:15\"\n        },\n        \"RequestId\": \"acdd5474-6360-4fd4-bfc7-843162cb8116\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "DescribeProtectDirList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeProtectDirList\n<Common request parameters>\n\n{\n    \"Limit\": 1,\n    \"Offset\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"List\": [\n            {\n                \"DirName\": \"sdfdsf\",\n                \"DirPath\": \"/home/te****\",\n                \"RelatedServerNum\": 1,\n                \"ProtectServerNum\": 1,\n                \"NoProtectServerNum\": 1,\n                \"Id\": \"/home/te****\",\n                \"ProtectStatus\": 1,\n                \"ProtectException\": 1,\n                \"AutoRestoreSwitchStatus\": 1,\n                \"FirstProtectTime\": \"2020-11-21 15:16:00\",\n                \"LatestProtectTime\": \"2020-11-21 15:16:00\",\n                \"ProtectFileType\": \".php;.js\",\n                \"ProtectFilesCount\": 0\n            }\n        ],\n        \"RequestId\": \"2eedad67-5a4c-4746-82d2-52a8e5d91c6a\"\n    }\n}",
+        "title": "Querying the List of Webpage Anti-Tampering Protection Directories"
+      }
+    ],
+    "DescribeProtectDirRelatedServer": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeProtectDirRelatedServer\n<Common request parameters>\n\n{\n    \"Id\": \"/tmp\",\n    \"Limit\": 10,\n    \"Offset\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"MachineExtraInfo\": {\n                    \"HostName\": \"demo-instance\",\n                    \"InstanceID\": \"ins-1002\",\n                    \"NetworkName\": \"vpc-1002\",\n                    \"NetworkType\": 1,\n                    \"PrivateIP\": \"1.1.1.1\",\n                    \"WanIP\": \"1.1.1.1\"\n                },\n                \"Id\": \"/temp\",\n                \"AutoRestoreSwitchStatus\": 1,\n\"HostName\": \"Directory Name 1\",\n                \"HostIp\": \"10.0.0.1\",\n                \"MachineOs\": \"Linux\",\n                \"RelateDirNum\": 1,\n                \"ProtectSwitch\": 1,\n                \"ProtectStatus\": 1,\n\"Quuid\": \"Server unique ID\"\n                \"Authorization\": true,\n                \"Exception\": 0,\n                \"Progress\": 10,\n\"ExceptionMessage\": \"starting\"\n            }\n        ],\n        \"RequestId\": \"7eb47586-e1e9-40eb-a3e1-bc73cf1e475f\",\n        \"TotalCount\": 1,\n        \"ProtectServerCount\": 1\n    }\n}",
         "title": "Example"
       }
     ],
@@ -2356,6 +2570,14 @@
         "title": "Obtaining Statistics Data on Security Events"
       }
     ],
+    "DescribeServerRelatedDirInfo": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeServerRelatedDirInfo\n<Common request parameters>\n\n{\n    \"Id\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"HostIp\": \"10.0.0.1\",\n        \"HostName\": \"Server 1\",\n        \"ProtectDirNum\": 1,\n        \"ProtectFileNum\": 1,\n        \"ProtectTamperNum\": 1,\n        \"ProtectLinkNum\": 1,\n        \"RequestId\": \"ee02ffee-8682-4b28-aae3-561274d68bdd\"\n    }\n}",
+        "title": "Querying the Details of a Directory Associated with a Service Zone"
+      }
+    ],
     "DescribeServersAndRiskAndFirstInfo": [
       {
         "document": " ",
@@ -2736,6 +2958,38 @@
         "title": "Obtaining the List of WeCom Chatbot Rules"
       }
     ],
+    "DescribeWebPageEventList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeWebPageEventList\n<Common request parameters>\n\n{\n    \"By\": \"CreateTime\",\n    \"Order\": 1,\n    \"Filters\": [\n        {\n            \"Name\": \"IpOrAlias\",\n            \"Values\": [\n                \"HostName or HostIp\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"HostName\": \"DataHub\",\n                \"HostIp\": \"1.2.3.4\",\n                \"Quuid\": \"1c26308c-5493-4eaf-a817-112ec25f499e\",\n                \"EventDir\": \"/root/csipdata/virus/php/1.php\",\n                \"EventType\": 4,\n                \"EventStatus\": 1,\n                \"CreateTime\": \"2024-08-16 11:49:11\",\n                \"RestoreTime\": \"2024-09-12 18:09:57\",\n                \"Id\": 423826,\n                \"FileType\": 0,\n                \"MachineExtraInfo\": {\n                    \"WanIP\": \"1.2.3.4\",\n                    \"PrivateIP\": \"192.168.10.10\",\n                    \"NetworkType\": 0,\n                    \"NetworkName\": \"name\",\n                    \"InstanceID\": \"ins-ac13d\",\n                    \"HostName\": \"dataHub\"\n                }\n            }\n        ],\n        \"RequestId\": \"d9506441-52bc-4d14-a767-7e1251ed3ced\",\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Querying the List of Tampering Events"
+      }
+    ],
+    "DescribeWebPageGeneralize": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeWebPageGeneralize\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"ProtectDirNum\": 1,\n        \"ProtectFileNum\": 1,\n        \"ProtectHostNum\": 1,\n        \"ProtectMonitor\": 0,\n        \"ProtectToday\": 1,\n        \"RequestId\": \"a0ef4f15-b686-4e47-a4b5-89ad00232ad3\",\n        \"TamperFileNum\": 1,\n        \"TamperNum\": 1\n    }\n}",
+        "title": "Querying the Webpage Anti-Tampering Protection Overview Information"
+      }
+    ],
+    "DescribeWebPageProtectStat": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeWebPageProtectStat\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"FileTamperNum\": [\n            {\n                \"Name\": \"/tmp\",\n                \"Num\": 56\n            },\n            {\n                \"Name\": \"/data\",\n                \"Num\": 1\n            },\n            {\n                \"Name\": \"/var\",\n                \"Num\": 6\n            },\n            {\n                \"Name\": \"/root\",\n                \"Num\": 4\n            },\n            {\n                \"Name\": \"/dev\",\n                \"Num\": 33\n            }\n        ],\n        \"ProtectFileType\": [\n            {\n                \"Name\": \"boot\",\n                \"Num\": 1\n            },\n            {\n                \"Name\": \"start\",\n                \"Num\": 2\n            },\n            {\n                \"Name\": \"stop\",\n                \"Num\": 3\n            },\n            {\n                \"Name\": \"php\",\n                \"Num\": 10\n            }\n        ],\n        \"RequestId\": \"36c8cea5-7be7-4b61-8212-1ceb63330a5c\"\n    }\n}",
+        "title": "Querying Webpage Anti-Tampering Protection Statistics"
+      }
+    ],
+    "DescribeWebPageServiceInfo": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeWebPageServiceInfo\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"g54f4ac3-8546-4516-8c8a-69e3ab73aa8a\",\n        \"Status\": true,\n        \"UsedNum\": 2,\n        \"ResidueNum\": 0,\n        \"BuyNum\": 2,\n        \"ExpireNum\": 1,\n        \"ExpiredNum\": 1,\n        \"ProtectDirNum\": 1,\n        \"AllAuthorizedMachines\": [\n            {\n                \"HostName\": \"Machine 1\",\n                \"HostIp\": \"1.0.0.1\",\n                \"CreateTime\": \"2020-10-10 10:10:00\",\n                \"ExpireTime\": \"2021-10-10 10:10:00\"\n            }\n        ],\n        \"ExpireAuthorizedMachines\": [\n            {\n                \"HostName\": \"Machine 2\",\n                \"HostIp\": \"1.0.0.2\",\n                \"SafeguardDirNum\": 1\n            }\n        ]\n    }\n}",
+        "title": "Querying the Website Anti-Tampering Protection Service Information"
+      }
+    ],
     "DescribeWindowsPatchList": [
       {
         "document": "Query the Windows patch risk list",
@@ -2976,12 +3230,36 @@
         "title": "Exporting Detection Item Perspective"
       }
     ],
+    "ExportBaselineItemList": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ExportBaselineItemList\n<Common request parameters>\n\n{\n    \"ExportAll\": \"1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3f5dcb2a-6f3e-4f10-9eee-e47a51255cbb\"\n    }\n}",
+        "title": "Export Detection Results"
+      }
+    ],
     "ExportBaselineList": [
       {
         "document": "This example shows you how to export the list of baseline check item.",
         "input": "https://cwp.tencentcloudapi.com/?Action=ExportBaselineList\n&IfDetail=1\n&<Common request parameters> \n{\n    \"Filter\": [\n        {\n            \"Name\": \"TaskId\",\n            \"Value\": [\n                \"10001\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"DownloadUrl\": \"https://cwp-1258344***.cos.ap-guangzhou.myqcloud.com/file.txt\",\n        \"RequestId\": \"935e27b1-d675-4509-80bf-96fbf0764237\",\n        \"TaskId\": \"1\"\n    }\n}",
         "title": "Exporting the Baseline Check Item List"
+      }
+    ],
+    "ExportBaselineRuleDetectList": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ExportBaselineRuleDetectList\n<Common request parameters>\n\n{\n    \"ExportAll\": \"1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"cbc912a7-c030-4a80-8d76-6e938a930fa1\"\n    }\n}",
+        "title": "Exporting Rule Perspectives"
+      }
+    ],
+    "ExportBaselineWeakPasswordList": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ExportBaselineWeakPasswordList\n<Common request parameters>\n\n{\n    \"ExportAll\": \"1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"7540ea91-97fa-436d-ba58-39005176a063\"\n    }\n}",
+        "title": "Exporting Custom Weak Passwords"
       }
     ],
     "ExportBashEvents": [
@@ -3116,6 +3394,14 @@
         "input": "https://cwp.tencentcloudapi.com/?Action=ExportPrivilegeEvents\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"354f4ac3-8546-4516-8c8a-69e3ab73aa8a\",\n        \"DownloadUrl\": \"https://cwp-1258344***.cos.ap-guangzhou.myqcloud.com/file.txt\",\n        \"TaskId\": \"1596595610\"\n    }\n}",
         "title": "Exporting Local Privilege Escalation Events"
+      }
+    ],
+    "ExportProtectDirList": [
+      {
+        "document": "This example shows you how to export.",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ExportProtectDirList\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"F00A8503-6233-452E-913E-DAFEE9******\",\n        \"TaskId\": \"173042****\"\n    }\n}",
+        "title": "Example"
       }
     ],
     "ExportRansomDefenseBackupList": [
@@ -3278,12 +3564,28 @@
         "title": "Exporting the Vulnerability List Data and Obtaining Download URLs"
       }
     ],
+    "ExportWebPageEventList": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ExportWebPageEventList\n<Common request parameters>\n\n{\n    \"By\": \"CreateTime\",\n    \"Order\": 1,\n    \"Filters\": [\n        {\n            \"Name\": \"IpOrAlias\",\n            \"Values\": [\n                \"HostName or HostIp\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"d9506441-52bc-4d14-a767-7e1251ed3ced\",\n        \"TaskId\": \"173042****\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
     "ExportWindowsPatchList": [
       {
         "document": "Export Windows patch list",
         "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ExportWindowsPatchList\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c1ad0e14-11e9-4ec2-aaae-10dc63d6187d\",\n        \"TaskId\": \"1753945081\"\n    }\n}",
         "title": "Export Windows Patch List"
+      }
+    ],
+    "FixBaselineDetect": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: FixBaselineDetect\n<Common request parameters>\n\n{\n    \"ItemId\": \"1100\",\n    \"HostId\": \"a0770b41-9697-4a1d-8150-b8fa247b6189\",\n    \"Data\": [\n        \"977\",\n        \"e7c153cd9e70120a1d9f3610db0a15d0\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"898d14bd-2334-4b8d-9240-6ad77e48df45\"\n    }\n}",
+        "title": "Repair"
       }
     ],
     "GetLocalStorageItem": [
@@ -3340,6 +3642,44 @@
         "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyBaselinePolicy\n<Common request parameters>\n\n{\n    \"Data\": {\n        \"DetectTime\": \"03:00:00\",\n        \"PolicyName\": \"Policy 1111\",\n        \"DetectInterval\": \"1\",\n        \"AssetType\": \"0\",\n        \"IsEnabled\": \"1\",\n        \"PolicyId\": \"1\",\n        \"RuleIds\": [\n            \"4611686018427387909\",\n            \"128\"\n        ]\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"07c4d170-f547-4a44-be2e-7f992d483f26\"\n    }\n}",
         "title": "Adding Custom and System Rules"
+      }
+    ],
+    "ModifyBaselinePolicyState": [
+      {
+        "document": "Enabling a Policy",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyBaselinePolicyState\n<Common request parameters>\n\n{\n    \"IsEnabled\": \"0\",\n    \"PolicyId\": \"259\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ca6e6339-34ba-4c0d-90ac-3c4a6ea6d383\"\n    }\n}",
+        "title": "Enabling a Policy"
+      },
+      {
+        "document": "Disable a detection policy",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyBaselinePolicyState\n<Common request parameters>\n\n{\n    \"IsEnabled\": \"0\",\n    \"PolicyId\": \"259\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c4306e95-f45b-408b-aff0-b3cc16f673e1\"\n    }\n}",
+        "title": "Disable a Detection Policy"
+      }
+    ],
+    "ModifyBaselineRule": [
+      {
+        "document": "Create custom rules",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyBaselineRule\n<Common request parameters>\n\n{\n    \"Data\": {\n        \"Items\": [\n            {\n                \"ItemId\": \"1000\",\n                \"ItemName\": \"Redis baseline compliance check\"\n            }\n        ],\n        \"RuleDesc\": \"rule desc\",\n        \"RuleName\": \"rule name1\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"0358f7f9-d07c-4db8-96ba-eed1bcbd947d\"\n    }\n}",
+        "title": "Creating a Custom Rule"
+      }
+    ],
+    "ModifyBaselineRuleIgnore": [
+      {
+        "document": "This example shows you how to add an ignoring rule.",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyBaselineRuleIgnore\n<Common request parameters>\n\n{\n    \"AssetType\": \"0\",\n    \"ItemIds\": [\n        \"1002\"\n    ],\n    \"RuleName\": \"auto_173042751****\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5cbf3ee7-0e7c-4190-aae8-95254726c7f2\"\n    }\n}",
+        "title": "This example shows you how to add an ignoring rule."
+      }
+    ],
+    "ModifyBaselineWeakPassword": [
+      {
+        "document": "Modifying Weak Password Configurations",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyBaselineWeakPassword\n<Common request parameters>\n\n{\n    \"Data\": [\n        {\n            \"PasswordId\": \"3432\",\n            \"WeakPassword\": \"1002passwd\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ee20febc-b59d-45ab-97f6-d55efdfa57b7\"\n    }\n}",
+        "title": "Modifying Weak Password Configurations"
       }
     ],
     "ModifyBashPolicy": [
@@ -3436,6 +3776,14 @@
         "title": "Editing an Order"
       }
     ],
+    "ModifyLicenseUnBinds": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyLicenseUnBinds\n<Common request parameters>\n\n{\n    \"ResourceId\": \"a11d268f-1601-4f63-9131-0382537b9e55\",\n    \"LicenseType\": 0,\n    \"IsAll\": true,\n    \"QuuidList\": []\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a11d268f-1601-4f63-9131-0382537b9e55\",\n        \"ErrMsg\": []\n    }\n}",
+        "title": "Example"
+      }
+    ],
     "ModifyLogKafkaAccess": [
       {
         "document": " ",
@@ -3492,6 +3840,14 @@
         "title": "Example"
       }
     ],
+    "ModifyMachineRemark": [
+      {
+        "document": "Modify Host Remark Information",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyMachineRemark\n<Common request parameters>\n\n{\n    \"Remark\": \"remark for host1\",\n    \"Quuid\": \"5a540076-d38a-4078-aa98-e7c86371d322\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8564b09e-0e04-4516-bb59-db09742503c2\"\n    }\n}",
+        "title": "Modify Host Remark Information"
+      }
+    ],
     "ModifyMaliciousRequestWhiteList": [
       {
         "document": " ",
@@ -3530,6 +3886,14 @@
         "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyNetAttackWhiteList\n<Common request parameters>\n\n{\n    \"QuuidList\": [\n        \"05f0bcab-726c-4ea4-8109-bcd03d5598f7\"\n    ],\n    \"Scope\": 0,\n    \"SrcIp\": [\n        \"1.2.3.5\",\n        \"1.1.1.2-1.1.1.4\",\n        \"1.2.3.0/24\"\n    ],\n    \"DealOldEvents\": 0,\n    \"Description\": \"API testing, do not delete\",\n    \"Id\": 10001\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1a07706f-368e-49e5-8967-594826f43d0d\"\n    }\n}",
         "title": "Editing the Network Attack Allowlist"
+      }
+    ],
+    "ModifyOrderAttribute": [
+      {
+        "document": "This API is used to modify the order attributes.",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyOrderAttribute\n<Common request parameters>\n\n{\n    \"LicenseType\": 1,\n    \"ResourceId\": \"resource_id\",\n    \"AttrName\": \"alias\",\n    \"AttrValue\": \"Resource alias\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"d09cfcae-fab2-4cb7-a41e-5fd4c12d69f4\"\n    }\n}",
+        "title": "Example"
       }
     ],
     "ModifyRansomDefenseEventsStatus": [
@@ -3676,6 +4040,22 @@
         "title": "Modify Enterprise WeChat Robot Rule Status"
       }
     ],
+    "ModifyWebPageProtectDir": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyWebPageProtectDir\n<Common request parameters>\n\n{\n    \"ProtectDirAddr\": \"/data/www/\",\n    \"ProtectDirName\": \"Website root directory\",\n    \"ProtectFileType\": \".php;.html;.js\",\n    \"HostConfig\": [\n        {\n            \"Quuid\": \"Machine QUUID\",\n            \"ProtectSwitch\": 1,\n            \"AutoRecovery\": 1\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"g54f4ac3-8546-4516-8c8a-69e3ab73aa8a\"\n    }\n}",
+        "title": "Creating or Modifying a Website Protection Directory"
+      }
+    ],
+    "ModifyWebPageProtectSetting": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyWebPageProtectSetting\n<Common request parameters>\n\n{\n    \"ModifyType\": 1,\n    \"Value\": \"Website name 1\",\n    \"Id\": \"var\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c741a4fd-776f-499b-85a2-7bc70fd5b92s\"\n    }\n}",
+        "title": "Modifying Website Protection Settings"
+      }
+    ],
     "ModifyWebPageProtectSwitch": [
       {
         "document": " ",
@@ -3738,6 +4118,14 @@
         "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RetryVulFix\n<Common request parameters>\n\n{\n    \"VulId\": 1,\n    \"Quuid\": \"1c26308c-5493-4eaf-a817-112ec25f499e\",\n    \"FixId\": 1\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"f14ce73f-50d7-4c36-af1d-fc33dae510c4\"\n    }\n}",
         "title": "Example"
+      }
+    ],
+    "ScanAsset": [
+      {
+        "document": "This example shows you how to start asset fingerprint scanning.",
+        "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ScanAsset\n<Common request parameters>\n\n{\n    \"AssetTypeIds\": [\n        1\n    ],\n    \"Quuids\": [\n        \"6cf3c132-aaa-bbbb-b08d-98be9421372a\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8564b09e-0e04-4516-bb59-db09742503c2\",\n        \"TaskId\": 1\n    }\n}",
+        "title": "Starting Asset Fingerprint Scanning"
       }
     ],
     "ScanBaseline": [

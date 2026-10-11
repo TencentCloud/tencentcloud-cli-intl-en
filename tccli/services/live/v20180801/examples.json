@@ -472,14 +472,6 @@
         "title": "Querying the domain name list"
       }
     ],
-    "DescribeLiveForbidStreamList": [
-      {
-        "document": " ",
-        "input": "https://live.tencentcloudapi.com/?Action=DescribeLiveForbidStreamList\r\n&PageNum=1\r\n&PageSize=10\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"ForbidStreamList\": [\n            {\n                \"StreamName\": \"5000_abcdefg\",\n                \"CreateTime\": \"2019-01-16T12:00:00Z\",\n                \"ExpireTime\": \"2019-04-16T12:00:00Z\"\n            }\n        ],\n        \"TotalNum\": 1,\n        \"TotalPage\": 1,\n        \"PageNum\": 1,\n        \"PageSize\": 10,\n        \"RequestId\": \"8e50cdb5-56dc-408b-89b0-31818958d424\"\n    }\n}",
-        "title": "Sample request"
-      }
-    ],
     "DescribeLivePlayAuthKey": [
       {
         "document": " ",
@@ -678,6 +670,14 @@
         "input": "https://live.tencentcloudapi.com/?Action=DescribeLiveWatermarks\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\",\n        \"TotalNum\": 1,\n        \"WatermarkList\": [\n            {\n                \"WatermarkId\": 123,\n                \"PictureUrl\": \"http://watermark.myqcloud.com/watermark_img_Alogo1.png\",\n                \"XPosition\": 80,\n                \"YPosition\": 10,\n                \"Width\": 0,\n                \"Height\": 0,\n                \"WatermarkName\": \"logo\",\n                \"Status\": 1,\n                \"CreateTime\": \"2018-09-07T15:55:23Z\"\n            }\n        ]\n    }\n}",
         "title": "Sample request"
+      }
+    ],
+    "DescribeOriginWhiteIpList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: live.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOriginWhiteIpList\n<Common request parameters>\n\n{\n    \"Domain\": \"aaa.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"de1bc736-5284-488b-b0ce-126e871df8b8\"\n    }\n}",
+        "title": "Example"
       }
     ],
     "DescribePlayErrorCodeDetailInfoList": [

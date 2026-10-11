@@ -392,13 +392,6 @@
       "output": "DescribeLiveDomainsResponse",
       "status": "online"
     },
-    "DescribeLiveForbidStreamList": {
-      "document": "This API is used to get the list of disabled streams.\n\nNote: this API is used for query only and should not be relied too much upon in important business scenarios.",
-      "input": "DescribeLiveForbidStreamListRequest",
-      "name": "Gets the list of forbidden streams.",
-      "output": "DescribeLiveForbidStreamListResponse",
-      "status": "online"
-    },
     "DescribeLivePlayAuthKey": {
       "document": "This API is used to query the playback authentication key.",
       "input": "DescribeLivePlayAuthKeyRequest",
@@ -572,6 +565,13 @@
       "input": "DescribeLiveWatermarksRequest",
       "name": "Queries watermark list",
       "output": "DescribeLiveWatermarksResponse",
+      "status": "online"
+    },
+    "DescribeOriginWhiteIpList": {
+      "document": "This API is used to obtain the pull stream IP whitelist list of the origin server.",
+      "input": "DescribeOriginWhiteIpListRequest",
+      "name": "Queries whitelist information of the live streaming origin server",
+      "output": "DescribeOriginWhiteIpListResponse",
       "status": "online"
     },
     "DescribePlayErrorCodeDetailInfoList": {
@@ -5349,96 +5349,6 @@
       ],
       "type": "object"
     },
-    "DescribeLiveForbidStreamListRequest": {
-      "document": "DescribeLiveForbidStreamList request structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Page number to get. Default value: 1.",
-          "example": "1",
-          "member": "int64",
-          "name": "PageNum",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "Number of entries per page. Maximum value: 100. \nValue: any integer between 1 and 100.\nDefault value: 10.",
-          "example": "10",
-          "member": "int64",
-          "name": "PageSize",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "Stream name for query",
-          "example": "stream_2021",
-          "member": "string",
-          "name": "StreamName",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeLiveForbidStreamListResponse": {
-      "document": "DescribeLiveForbidStreamList response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Total number of eligible ones.",
-          "example": "",
-          "member": "int64",
-          "name": "TotalNum",
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Total number of pages.",
-          "example": "",
-          "member": "int64",
-          "name": "TotalPage",
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Page number.",
-          "example": "",
-          "member": "int64",
-          "name": "PageNum",
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Number of entries displayed per page.",
-          "example": "",
-          "member": "int64",
-          "name": "PageSize",
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "List of forbidden streams.",
-          "example": "",
-          "member": "ForbidStreamInfo",
-          "name": "ForbidStreamList",
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DescribeLivePlayAuthKeyRequest": {
       "document": "DescribeLivePlayAuthKey request structure.",
       "members": [
@@ -6843,6 +6753,33 @@
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOriginWhiteIpListRequest": {
+      "document": "DescribeOriginWhiteIpList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Playback domain</p>",
+          "example": "aaa.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeOriginWhiteIpListResponse": {
+      "document": "DescribeOriginWhiteIpList response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -8865,62 +8802,6 @@
         }
       ],
       "type": "object"
-    },
-    "ForbidStreamInfo": {
-      "document": "List of forbidden streams",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Stream name.",
-          "example": "test",
-          "member": "string",
-          "name": "StreamName",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "The creation time.\nNote: Beijing time (UTC+8) is used.",
-          "example": "2020-01-01 12:12:12",
-          "member": "string",
-          "name": "CreateTime",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "The end time.\nNote: Beijing time (UTC+8) is used.",
-          "example": "2020-01-01 12:12:12",
-          "member": "string",
-          "name": "ExpireTime",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "The push path.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "string",
-          "name": "AppName",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "The push domain name.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "string",
-          "name": "DomainName",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
     },
     "GroupProIspDataInfo": {
       "document": "Bandwidth, traffic, number of requests, and number of concurrent connections of an ISP in a district.",
