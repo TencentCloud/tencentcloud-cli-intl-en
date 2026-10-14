@@ -3,44 +3,16 @@
 """
 distutils/setuptools install script.
 """
-import sys
-import os
 from setuptools import setup, find_packages
 from tccli import __version__
-ROOT = os.path.dirname(__file__)
-PACKAGE = 'tccli'
-VERSION = __import__(PACKAGE).__version__
-SDK_VERSION = None
-try:
-     from tencentcloud import __version__ as sdk_version
-     SDK_VERSION = sdk_version
-except ImportError as err:
-        SDK_VERSION = None
-
-PY2 = sys.version_info[0] == 2
 
 
 def main():
-    vinput = None
-    if not PY2:
-        vinput = input
-    else:
-        vinput = raw_input
-    cli_version = __version__.rsplit(".", 1)[0]
-    dep_sdk = "tencentcloud-sdk-python-intl-en >= %s" % cli_version
-    if SDK_VERSION is not None:
-        if int(SDK_VERSION.split(".")[-1]) < int(cli_version.split(".")[-1]):
-            answer = None
-            prompt = ("The current python sdk version (%s) is "
-                      "too low and we will update to %s(yes/no):") % (SDK_VERSION, cli_version)
-            answer = vinput(prompt)
-            if answer not in ["yes", "YES", "Yes"]:
-                print("tccli install failed")
-                return
+    dep_sdk = "tencentcloud-sdk-python-common >= 3.1.180"
     setup(
         name='tccli-intl-en',
         install_requires=[dep_sdk, "jmespath>=0.10.0", "six>=1.16.0"],
-        version=VERSION,
+        version=__version__,
         description='Universal Command Line Environment for Tencent Cloud',
         long_description=open('README.rst').read(),
         author='Tencent Cloud',
