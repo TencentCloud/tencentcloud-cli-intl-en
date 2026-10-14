@@ -21,6 +21,41 @@ SecretId: Cloud API key SecretId. SecretIKey: Cloud API key SecretKey. Region: T
 
 Note: if the environment variable defines the relevant configuration, it takes precedence over the configuration file. They are TENCENTCLOUD. \_ SECRET \_ ID,TENCENTCLOUD \_ SECRET \_ KEY,TENCENTCLOUD \_ REGION .
 
+OAuth Login
+===========
+
+Obtain temporary credentials via browser authorization, no need to configure keys manually.
+
+.. code-block:: sh
+
+    tccli auth login
+
+On a machine without a browser, open the URL printed in the terminal on another device and enter the verification code:
+
+.. code-block:: sh
+
+    tccli auth login --browser no
+
+Verify with ``tccli cvm DescribeRegions`` afterwards. See `Obtaining Credentials Through Browser Authorization <https://intl.cloud.tencent.com/document/product/1013/64709>`_.
+
+SSO Login
+=========
+
+After obtaining the Identity Center user login URL, configure and log in:
+
+.. code-block:: sh
+
+    tccli sso configure --url <user-login-url>
+    tccli sso login
+
+Specify account and role with ``--uin`` / ``--rolename``, or isolate credentials with ``--profile <name>``:
+
+.. code-block:: sh
+
+    tccli sso login --uin <account-id> --rolename <role-name> --profile <name>
+
+See `Log in using TCCLI <https://www.tencentcloud.com/document/product/1031/67855>`_.
+
 Usage
 =====
 
