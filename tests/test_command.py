@@ -784,7 +784,7 @@ def _make_service_command_in_memory():
     """Build a ServiceCommand that touches no real SDK / disk.
 
     Inject an in-memory service_model (with 1 self-referencing action + 1 normal action),
-    and mock Services.action_caller to avoid importing the real tencentcloud SDK module.
+    and use GenericActionCaller without invoking the real Tencent Cloud API.
     """
     sc = object.__new__(ServiceCommand)
     sc._service_name = "svc"
@@ -814,38 +814,24 @@ def _make_service_command_in_memory():
 
 def test_E4_servicecommand_get_command_map_lazy():
     """E4: _get_command_map lazy-loads and injects the _is_self_ref marker for self-referencing actions."""
-    import tccli.services as _Services
-    saved = _Services.action_caller
-    _Services.action_caller = lambda service: (lambda: {
-        "Tree": (lambda *a, **kw: None), "Flat": (lambda *a, **kw: None)})
-    try:
-        sc = _make_service_command_in_memory()
-        cmap1 = sc._get_command_map()
-        cmap2 = sc._get_command_map()
-        assert cmap1 is cmap2  # lazy-load: same object
-        assert set(cmap1.keys()) == {"Tree", "Flat"}
-        # This change: self-referencing actions are marked, normal actions are not
-        assert cmap1["Tree"]._is_self_ref is True
-        assert cmap1["Flat"]._is_self_ref is False
-    finally:
-        _Services.action_caller = saved
+    sc = _make_service_command_in_memory()
+    cmap1 = sc._get_command_map()
+    cmap2 = sc._get_command_map()
+    assert cmap1 is cmap2  # lazy-load: same object
+    assert set(cmap1.keys()) == {"Tree", "Flat"}
+    # This change: self-referencing actions are marked, normal actions are not
+    assert cmap1["Tree"]._is_self_ref is True
+    assert cmap1["Flat"]._is_self_ref is False
 
 
 def test_E5_servicecommand_create_parser_returns_action_parser():
     """E5: _create_parser returns an ActionArgParser instance + injects help."""
     from tccli.argparser import ActionArgParser
-    import tccli.services as _Services
-    saved = _Services.action_caller
-    _Services.action_caller = lambda service: (lambda: {
-        "Tree": (lambda *a, **kw: None), "Flat": (lambda *a, **kw: None)})
-    try:
-        sc = _make_service_command_in_memory()
-        cmap = sc._get_command_map()
-        parser = sc._create_parser(cmap)
-        assert isinstance(parser, ActionArgParser)
-        assert "help" in cmap
-    finally:
-        _Services.action_caller = saved
+    sc = _make_service_command_in_memory()
+    cmap = sc._get_command_map()
+    parser = sc._create_parser(cmap)
+    assert isinstance(parser, ActionArgParser)
+    assert "help" in cmap
 
 
 def test_E6_servicecommand_create_help_command():
