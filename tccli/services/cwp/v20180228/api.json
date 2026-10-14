@@ -51432,7 +51432,7 @@
         },
         {
           "disabled": false,
-          "document": "Website protection directory name",
+          "document": "Name of the website protection directory",
           "example": "www防护",
           "member": "string",
           "name": "ProtectDirName",
@@ -53759,11 +53759,11 @@
       "usage": "out"
     },
     "ProtectHostConfig": {
-      "document": "",
+      "document": "Machine protection information",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Unique host ID.",
           "example": "15c76928-e4e1-4f0d-8a2a-46c7de78****",
           "member": "string",
           "name": "Quuid",
@@ -53774,7 +53774,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Protection switch: 0 - off; 1 - on",
           "example": "0",
           "member": "uint64",
           "name": "ProtectSwitch",
@@ -53785,7 +53785,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Auto recovery switch. 0: disabled. 1: enabled.",
           "example": "0",
           "member": "uint64",
           "name": "AutoRecovery",

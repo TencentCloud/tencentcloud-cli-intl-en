@@ -10,18 +10,18 @@
     ],
     "CreateIndex": [
       {
-        "document": " ",
-        "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateIndex\n<Common request parameters>\n\n{\n    \"Username\": \"xx\",\n    \"IndexName\": \"xx\",\n    \"IndexType\": \"xx\",\n    \"InstanceId\": \"xx\",\n    \"IndexMetaJson\": \"xx\",\n    \"Password\": \"xx\"\n}",
+        "document": "Create an autonomous index",
+        "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateIndex\n<Common request parameters>\n\n{\n    \"Username\": \"elastic\",\n    \"IndexName\": \"index_name\",\n    \"IndexType\": \"normal\",\n    \"InstanceId\": \"es-abcdefgh\",\n    \"IndexMetaJson\": \"\",\n    \"Password\": \"G7j#kL9p$2w\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c96a110c-7493-452d-a99b-683d07xxxxxx\"\n    }\n}",
-        "title": "Creating an automated index"
+        "title": "Creating an Autonomous Index"
       }
     ],
     "CreateInstance": [
       {
-        "document": "This example shows you how to create an ES cluster instance based on the input parameters.",
-        "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateInstance\n<Common request parameters>\n\n{\n    \"EsVersion\": \"6.4.3\",\n    \"VpcId\": \"vpc-xxxxxx\",\n    \"NodeInfoList\": [\n        {\n            \"NodeType\": \"ES.S1.SMALL2\",\n            \"NodeNum\": \"3\",\n            \"Type\": \"dedicatedMaster\"\n        },\n        {\n            \"DiskSize\": \"100\",\n            \"NodeType\": \"ES.S1.SMALL2\",\n            \"NodeNum\": \"2\",\n            \"Type\": \"hotData\",\n            \"DiskType\": \"CLOUD_SSD\"\n        }\n    ],\n    \"Zone\": \"ap-guangzhou-3\",\n    \"ChargeType\": \"POSTPAID_BY_HOUR\",\n    \"SubnetId\": \"subnet-xxxxxx\",\n    \"Password\": \"xxxxxx\",\n    \"InstanceName\": \"es_test\"\n}",
-        "output": "{\n    \"Response\": {\n        \"InstanceId\": \"xx\",\n        \"RequestId\": \"xx\",\n        \"DealName\": \"xx\"\n    }\n}",
-        "title": "Creating an ES cluster instance"
+        "document": "Create an ES cluster instance based on the input parameters.",
+        "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateInstance\n<Common request parameters>\n\n{\n    \"EsVersion\": \"6.4.3\",\n    \"VpcId\": \"vpc-xxxxxx\",\n    \"NodeInfoList\": [\n        {\n            \"NodeType\": \"ES.S1.SMALL2\",\n            \"NodeNum\": 3,\n            \"Type\": \"dedicatedMaster\"\n        },\n        {\n            \"DiskSize\": 100,\n            \"NodeType\": \"ES.S1.SMALL2\",\n            \"NodeNum\": 2,\n            \"Type\": \"hotData\",\n            \"DiskType\": \"CLOUD_SSD\"\n        }\n    ],\n    \"Zone\": \"ap-guangzhou-3\",\n    \"ChargeType\": \"POSTPAID_BY_HOUR\",\n    \"SubnetId\": \"subnet-xxxxxx\",\n    \"Password\": \"ascq23***********cjaw\",\n    \"InstanceName\": \"es_test\"\n}",
+        "output": "{\n    \"Response\": {\n        \"InstanceId\": \"es-abc234\",\n        \"RequestId\": \"ab\",\n        \"DealName\": \"ab\"\n    }\n}",
+        "title": "Create an ES cluster instance"
       }
     ],
     "DeleteAutoBackUpStrategy": [
@@ -34,18 +34,18 @@
     ],
     "DeleteIndex": [
       {
-        "document": " ",
-        "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteIndex\n<Common request parameters>\n\n{\n    \"Username\": \"xx\",\n    \"IndexName\": \"xx\",\n    \"IndexType\": \"xx\",\n    \"InstanceId\": \"xx\",\n    \"BackingIndexName\": \"xx\",\n    \"Password\": \"xx\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Deleting an automated index"
+        "document": "Delete an autonomous index",
+        "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteIndex\n<Common request parameters>\n\n{\n    \"Username\": \"1\",\n    \"IndexName\": \"1\",\n    \"IndexType\": \"1\",\n    \"InstanceId\": \"1\",\n    \"BackingIndexName\": \"1\",\n    \"Password\": \"1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1\"\n    }\n}",
+        "title": "Delete an autonomous index"
       }
     ],
     "DeleteInstance": [
       {
-        "document": "This example shows you how to delete a cluster instance with the specified ID.",
+        "document": "Delete a cluster instance with a specified ID",
         "input": "https://es.tencentcloudapi.com/?Action=DeleteInstance\n&InstanceId=es-xxxxxxxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6eb5c3b2-0bba-4f73-bafb-bd21esxxxxxx\"\n    }\n}",
-        "title": "Deleting an ES cluster instance"
+        "title": "Delete an ES cluster instance"
       }
     ],
     "DescribeAutoBackUpStrategy": [
@@ -58,58 +58,58 @@
     ],
     "DescribeIndexList": [
       {
-        "document": " ",
-        "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeIndexList\n<Common request parameters>\n\n{\n    \"Username\": \"xx\",\n    \"IndexName\": \"xx\",\n    \"IndexType\": \"xx\",\n    \"InstanceId\": \"xx\",\n    \"Limit\": 0,\n    \"Offset\": 0,\n    \"Password\": \"xx\"\n}",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"RequestId\": \"xx\",\n        \"IndexMetaFields\": [\n            {\n                \"BackingIndices\": [\n                    {\n                        \"IndexPhrase\": \"xx\",\n                        \"IndexStatus\": \"xx\",\n                        \"IndexStorage\": 0,\n                        \"IndexName\": \"xx\",\n                        \"IndexCreateTime\": \"xx\"\n                    }\n                ],\n                \"IndexOptionsField\": {\n                    \"WriteMode\": \"xx\",\n                    \"RolloverMaxAge\": \"xx\",\n                    \"ExpireMaxAge\": \"xx\",\n                    \"RolloverDynamic\": \"xx\",\n                    \"ExpireMaxSize\": \"xx\",\n                    \"ShardNumDynamic\": \"xx\",\n                    \"TimestampField\": \"xx\"\n                },\n                \"IndexName\": \"xx\",\n                \"IndexType\": \"xx\",\n                \"IndexPolicyField\": {\n                    \"WarmEnable\": \"xx\",\n                    \"WarmMinAge\": \"xx\",\n                    \"ColdMinAge\": \"xx\",\n                    \"FrozenEnable\": \"xx\",\n                    \"FrozenMinAge\": \"xx\",\n                    \"ColdEnable\": \"xx\"\n                },\n                \"ClusterName\": \"xx\",\n                \"IndexStatus\": \"xx\",\n                \"ClusterId\": \"xx\",\n                \"IndexCreateTime\": \"xx\",\n                \"ClusterVersion\": \"xx\",\n                \"IndexStorage\": 0\n            }\n        ]\n    }\n}",
-        "title": "Obtaining index list"
+        "document": "Get index metadata",
+        "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeIndexList\n<Common request parameters>\n\n{\n    \"Username\": \"elastic\",\n    \"IndexName\": \"index_test\",\n    \"IndexType\": \"auto\",\n    \"InstanceId\": \"es-abcdefgh\",\n    \"Limit\": 0,\n    \"Offset\": 10,\n    \"Password\": \"ascq23***********cjaw\"\n}",
+        "output": "{\n    \"Response\": {\n        \"IndexMetaFields\": [\n            {\n                \"IndexType\": \"auto\",\n                \"IndexName\": \"index_test\",\n                \"IndexMetaJson\": \"{\\\"f1\\\":52}\",\n                \"IndexStatus\": \"green\",\n                \"IndexStorage\": 0,\n                \"IndexCreateTime\": \"2024-12-05 17:22:44\",\n                \"BackingIndices\": [\n                    {\n                        \"IndexName\": \"index_test0\",\n                        \"IndexStatus\": \"green\",\n                        \"IndexStorage\": 0,\n                        \"IndexPhrase\": \"data_hot\",\n                        \"IndexCreateTime\": \"2024-12-05 17:22:44\"\n                    }\n                ],\n                \"ClusterId\": \"es-hhio223\",\n                \"ClusterName\": \"test-cluster\",\n                \"ClusterVersion\": \"7.14.0\",\n                \"IndexPolicyField\": {\n                    \"WarmEnable\": \"true\",\n                    \"WarmMinAge\": \"16\",\n                    \"ColdEnable\": \"true\",\n                    \"ColdMinAge\": \"8\",\n                    \"FrozenEnable\": \"false\",\n                    \"FrozenMinAge\": \"0\",\n                    \"ColdAction\": \"migrate\"\n                },\n                \"IndexOptionsField\": {\n                    \"ExpireMaxAge\": \"1d\",\n                    \"ExpireMaxSize\": \"1024\",\n                    \"RolloverMaxAge\": \"1d\",\n                    \"RolloverDynamic\": \"true\",\n                    \"ShardNumDynamic\": \"true\",\n                    \"TimestampField\": \"TIMESTAMP\",\n                    \"WriteMode\": \"append_only\"\n                },\n                \"IndexSettingsField\": {\n                    \"NumberOfShards\": \"2\",\n                    \"NumberOfReplicas\": \"1\",\n                    \"RefreshInterval\": \"30s\"\n                },\n                \"AppId\": 1,\n                \"IndexDocs\": 1\n            }\n        ],\n        \"TotalCount\": 0,\n        \"RequestId\": \"ah782-j*************c-ih89\"\n    }\n}",
+        "title": "Get index metadata"
       }
     ],
     "DescribeIndexMeta": [
       {
-        "document": " ",
-        "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeIndexMeta\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"Username\": \"xx\",\n    \"Password\": \"xx\",\n    \"IndexName\": \"xx\",\n    \"IndexType\": \"xx\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"IndexMetaField\": {\n            \"BackingIndices\": [\n                {\n                    \"IndexPhrase\": \"xx\",\n                    \"IndexStatus\": \"xx\",\n                    \"IndexStorage\": 0,\n                    \"IndexName\": \"xx\",\n                    \"IndexCreateTime\": \"xx\"\n                }\n            ],\n            \"IndexOptionsField\": {\n                \"WriteMode\": \"xx\",\n                \"RolloverMaxAge\": \"xx\",\n                \"ExpireMaxAge\": \"xx\",\n                \"RolloverDynamic\": \"xx\",\n                \"ExpireMaxSize\": \"xx\",\n                \"ShardNumDynamic\": \"xx\",\n                \"TimestampField\": \"xx\"\n            },\n            \"IndexName\": \"xx\",\n            \"IndexType\": \"xx\",\n            \"IndexPolicyField\": {\n                \"WarmEnable\": \"xx\",\n                \"WarmMinAge\": \"xx\",\n                \"ColdMinAge\": \"xx\",\n                \"FrozenEnable\": \"xx\",\n                \"FrozenMinAge\": \"xx\",\n                \"ColdEnable\": \"xx\"\n            },\n            \"ClusterName\": \"xx\",\n            \"IndexStatus\": \"xx\",\n            \"ClusterId\": \"xx\",\n            \"IndexCreateTime\": \"xx\",\n            \"ClusterVersion\": \"xx\",\n            \"IndexStorage\": 0,\n            \"IndexSettingsField\": {\n                \"NumberOfShards\": \"xx\",\n                \"NumberOfReplicas\": \"xx\",\n                \"RefreshInterval\": \"xx\"\n            }\n        }\n    }\n}",
-        "title": "Obtaining index metadata"
+        "document": "Get index metadata",
+        "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeIndexMeta\n<Common request parameters>\n\n{\n    \"InstanceId\": \"es-ikbe4ku1\",\n    \"Username\": \"elastic\",\n    \"Password\": \"G7j#kL9p$2w\",\n    \"IndexName\": \"log_xxx\",\n    \"IndexType\": \"auto\"\n}",
+        "output": "{\n    \"Response\": {\n        \"IndexMetaField\": {\n            \"AppId\": 1256050235,\n            \"ClusterId\": \"es-ikbe4ku1\",\n            \"ClusterName\": \"AT-ES index test\",\n            \"ClusterVersion\": \"7.14.2\",\n            \"IndexType\": \"normal\",\n            \"IndexName\": \"at-20250306061507\",\n            \"IndexMetaJson\": \"{\\\"mappings\\\":{\\\"properties\\\":{\\\"at_field_20250306062058\\\":{\\\"analyzer\\\":\\\"ik_max_word\\\",\\\"type\\\":\\\"text\\\"},\\\"charge\\\":{\\\"type\\\":\\\"keyword\\\"},\\\"codea\\\":{\\\"type\\\":\\\"keyword\\\"},\\\"lat\\\":{\\\"type\\\":\\\"keyword\\\"},\\\"level\\\":{\\\"type\\\":\\\"keyword\\\"},\\\"location\\\":{\\\"type\\\":\\\"keyword\\\"},\\\"log\\\":{\\\"type\\\":\\\"keyword\\\"},\\\"name\\\":{\\\"type\\\":\\\"keyword\\\"},\\\"prov\\\":{\\\"type\\\":\\\"keyword\\\"},\\\"remark\\\":{\\\"type\\\":\\\"keyword\\\"}}},\\\"settings\\\":{\\\"index.number_of_replicas\\\":\\\"2\\\",\\\"index.number_of_shards\\\":\\\"1\\\",\\\"index.refresh_interval\\\":\\\"1m\\\"}}\",\n            \"IndexStatus\": \"green\",\n            \"IndexStorage\": 366412,\n            \"IndexCreateTime\": \"2025-03-06 06:15:07\",\n            \"IndexDocs\": 348,\n            \"IndexSettingsField\": {\n                \"NumberOfShards\": \"1\",\n                \"NumberOfReplicas\": \"2\",\n                \"RefreshInterval\": \"1m\"\n            },\n            \"IndexAliasesField\": [],\n            \"IndexPolicyField\": {\n                \"WarmEnable\": \"true\",\n                \"WarmMinAge\": \"16\",\n                \"ColdEnable\": \"true\",\n                \"ColdMinAge\": \"8\",\n                \"FrozenEnable\": \"false\",\n                \"FrozenMinAge\": \"0\",\n                \"ColdAction\": \"migrate\"\n            },\n            \"IndexOptionsField\": {\n                \"ExpireMaxAge\": \"1d\",\n                \"ExpireMaxSize\": \"1024\",\n                \"RolloverMaxAge\": \"1d\",\n                \"RolloverDynamic\": \"true\",\n                \"ShardNumDynamic\": \"true\",\n                \"TimestampField\": \"TIMESTAMP\",\n                \"WriteMode\": \"append_only\"\n            },\n            \"BackingIndices\": [\n                {\n                    \"IndexName\": \"index_test0\",\n                    \"IndexStatus\": \"green\",\n                    \"IndexStorage\": 0,\n                    \"IndexPhrase\": \"data_hot\",\n                    \"IndexCreateTime\": \"2024-12-05 17:22:44\"\n                }\n            ]\n        },\n        \"RequestId\": \"8b051ef0-5802-49cd-a73f-efe0e68662cf\"\n    }\n}",
+        "title": "Get index metadata"
       }
     ],
     "DescribeInstanceLogs": [
       {
-        "document": "This example shows you how to query the latest primary logs of a cluster.",
+        "document": "Query the latest master log of an instance",
         "input": "https://es.tencentcloudapi.com/?Action=DescribeInstanceLogs\r\n&InstanceId=es-f5mwm28u\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 71633,\n        \"InstanceLogList\": [\n            {\n                \"Time\": \"2019-01-22T10:45:36.220+08:00\",\n                \"Ip\": \"10.0.128.65\",\n                \"Level\": \"INFO\",\n                \"Message\": \"[o.e.p.o.OPackActionFilter] [1547723102001286009] forbidden request: { ID:cdc62072721547678872c0448c1ecaf9, TYP:MainRequest, USR:null, BRS:false, ACT:cluster:monitor/main, OA:10.0.128.43, IDX:, MET:GET, PTH:/, CNT:<OMITTED, LENGTH=0>, HDR:content-length, EFF:0 } Reason: null\"\n            },\n            {\n                \"Time\": \"2019-01-22T10:45:35.730+08:00\",\n                \"Ip\": \"10.0.128.65\",\n                \"Level\": \"INFO\",\n                \"Message\": \"[o.e.p.o.OPackActionFilter] [1547723102001286009] forbidden request: { ID:1a8a5b7ea41a485ebdd769586c1dcdf6, TYP:MainRequest, USR:null, BRS:false, ACT:cluster:monitor/main, OA:10.0.128.73, IDX:, MET:GET, PTH:/, CNT:<OMITTED, LENGTH=0>, HDR:content-length, EFF:0 } Reason: null\"\n            }\n        ],\n        \"RequestId\": \"783d9290-dc60-4862-9340-10b632605374\"\n    }\n}",
-        "title": "Querying ES cluster logs"
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 71633,\n        \"InstanceLogList\": [\n            {\n                \"Time\": \"2019-01-22T10:45:36.220+08:00\",\n                \"Ip\": \"10.0.128.65\",\n                \"NodeID\": \"2131414141414\",\n                \"Level\": \"INFO\",\n                \"Message\": \"[o.e.p.o.OPackActionFilter] [1547723102001286009] forbidden request: { ID:cdcxxxabc, TYP:MainRequest, USR:null, BRS:false, ACT:cluster:monitor/main, OA:10.0.128.43, IDX:, MET:GET, PTH:/, CNT:<OMITTED, LENGTH=0>, HDR:content-length, EFF:0 } Reason: null\"\n            },\n            {\n                \"Time\": \"2019-01-22T10:45:35.730+08:00\",\n                \"Ip\": \"10.0.128.65\",\n                \"NodeID\": \"2131414141414\",\n                \"Level\": \"INFO\",\n                \"Message\": \"[o.e.p.o.OPackActionFilter] [1547723102001286009] forbidden request: { ID:1a8axxxabc, TYP:MainRequest, USR:null, BRS:false, ACT:cluster:monitor/main, OA:10.0.128.73, IDX:, MET:GET, PTH:/, CNT:<OMITTED, LENGTH=0>, HDR:content-length, EFF:0 } Reason: null\"\n            }\n        ],\n        \"RequestId\": \"783d9290-dc60-4862-9340-10b632605374\"\n    }\n}",
+        "title": "Query ES cluster logs"
       }
     ],
     "DescribeInstanceOperations": [
       {
-        "document": " ",
+        "document": "Query ES cluster instance operation records",
         "input": "https://es.tencentcloudapi.com/?Action=DescribeInstanceOperations\r\n&InstanceId=es-f5mwm28u\r\n&StartTime=2019-01-30 20:18:03\r\n&EndTime=2019-03-30 20:18:03\r\n&Offset=0\r\n&Limit=30\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Operations\": [\n            {\n                \"Id\": 6173,\n                \"StartTime\": \"2019-03-07 16:30:39\",\n                \"Type\": \"CreateInstance\",\n                \"Detail\": {\n                    \"OldInfo\": [],\n                    \"NewInfo\": []\n                },\n                \"Result\": \"completed\",\n                \"Tasks\": [\n                    {\n                        \"Name\": \"prepareResource\",\n                        \"Progress\": 1,\n                        \"FinishTime\": \"2019-03-07 16:31:11\",\n                        \"SubTasks\": []\n                    },\n                    {\n                        \"Name\": \"deployESCluster\",\n                        \"Progress\": 1,\n                        \"FinishTime\": \"2019-03-07 16:34:32\",\n                        \"SubTasks\": []\n                    },\n                    {\n                        \"Name\": \"deployKibana\",\n                        \"Progress\": 1,\n                        \"FinishTime\": \"2019-03-07 16:35:13\",\n                        \"SubTasks\": []\n                    },\n                    {\n                        \"Name\": \"configLB\",\n                        \"Progress\": 1,\n                        \"FinishTime\": \"2019-03-07 16:35:15\",\n                        \"SubTasks\": []\n                    }\n                ],\n                \"Progress\": 1\n            }\n        ],\n        \"RequestId\": \"870dd618-b1ae-40cc-a5a9-22b867367ed7\"\n    }\n}",
-        "title": "Querying the operation history of ES cluster instance"
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Operations\": [\n            {\n                \"Id\": 6173,\n                \"StartTime\": \"2019-03-07 16:30:39\",\n                \"Type\": \"CreateInstance\",\n                \"Detail\": {\n                    \"OldInfo\": [],\n                    \"NewInfo\": []\n                },\n                \"Result\": \"completed\",\n                \"Tasks\": [\n                    {\n                        \"Name\": \"prepareResource\",\n                        \"Progress\": 1,\n                        \"FinishTime\": \"2019-03-07 16:31:11\",\n                        \"SubTasks\": [],\n                        \"ElapsedTime\": 0\n                    },\n                    {\n                        \"Name\": \"deployESCluster\",\n                        \"Progress\": 1,\n                        \"FinishTime\": \"2019-03-07 16:34:32\",\n                        \"SubTasks\": [],\n                        \"ElapsedTime\": 0\n                    },\n                    {\n                        \"Name\": \"deployKibana\",\n                        \"Progress\": 1,\n                        \"FinishTime\": \"2019-03-07 16:35:13\",\n                        \"SubTasks\": [],\n                        \"ElapsedTime\": 0\n                    },\n                    {\n                        \"Name\": \"configLB\",\n                        \"Progress\": 1,\n                        \"FinishTime\": \"2019-03-07 16:35:15\",\n                        \"SubTasks\": [],\n                        \"ElapsedTime\": 0\n                    }\n                ],\n                \"Progress\": 1\n            }\n        ],\n        \"RequestId\": \"870dd618-b1ae-40cc-a5a9-22b867367ed7\"\n    }\n}",
+        "title": "Querying ES Cluster Instance Operation Records"
       }
     ],
     "DescribeInstances": [
       {
-        "document": "This example shows you how to query ES cluster instances according to the given criteria and return their details.",
+        "document": "Query an ES cluster instance",
         "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstances\n<Common request parameters>\n\n{}",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"InstanceList\": [\n            {\n                \"InstanceId\": \"es-7sy7efoi\",\n                \"InstanceName\": \"_some_name_\",\n                \"InstanceType\": 2,\n                \"Region\": \"ap-guangzhou\",\n                \"Zone\": \"ap-guangzhou-3\",\n                \"AppId\": 130000000,\n                \"Uin\": \"100000000\",\n                \"VpcUid\": \"vpc-xxxxxx\",\n                \"SubnetUid\": \"subnet-xxxxxx\",\n                \"Status\": 1,\n                \"ChargeType\": \"POSTPAID_BY_HOUR\",\n                \"ChargePeriod\": 0,\n                \"RenewFlag\": \"\",\n                \"NodeInfoList\": [\n                    {\n                        \"Type\": \"hotData\",\n                        \"NodeNum\": 3,\n                        \"NodeType\": \"ES.SA2.MEDIUM4\",\n                        \"DiskType\": \"CLOUD_SSD\",\n                        \"DiskSize\": 20,\n                        \"DiskEncrypt\": 0,\n                        \"DiskCount\": 1,\n                        \"LocalDiskInfo\": null\n                    }\n                ],\n                \"NodeType\": \"ES.SA2.MEDIUM4\",\n                \"NodeNum\": 3,\n                \"CpuNum\": 2,\n                \"MemSize\": 4,\n                \"DiskType\": \"CLOUD_SSD\",\n                \"AutoIndexEnabled\": true,\n                \"DiskSize\": 20,\n                \"EnableHotWarmMode\": false,\n                \"WarmNodeType\": \"\",\n                \"WarmNodeNum\": 0,\n                \"WarmCpuNum\": 0,\n                \"WarmMemSize\": 0,\n                \"WarmDiskType\": \"\",\n                \"WarmDiskSize\": 0,\n                \"ColdNodeType\": \"\",\n                \"ColdNodeNum\": 0,\n                \"ColdCpuNum\": 0,\n                \"ColdMemSize\": 0,\n                \"ColdDiskType\": \"\",\n                \"ColdDiskSize\": 0,\n                \"FrozenNodeType\": \"\",\n                \"FrozenNodeNum\": 0,\n                \"FrozenCpuNum\": 0,\n                \"FrozenMemSize\": 0,\n                \"FrozenDiskType\": \"\",\n                \"FrozenDiskSize\": 0,\n                \"MasterNodeInfo\": {\n                    \"EnableDedicatedMaster\": false,\n                    \"MasterNodeType\": \"\",\n                    \"MasterNodeNum\": 0,\n                    \"MasterNodeCpuNum\": 0,\n                    \"MasterNodeMemSize\": 0,\n                    \"MasterNodeDiskType\": \"\",\n                    \"MasterNodeDiskSize\": 0\n                },\n                \"KibanaNodeInfo\": {\n                    \"KibanaNodeType\": \"ES.SA2.SMALL2\",\n                    \"KibanaNodeNum\": 1,\n                    \"KibanaNodeCpuNum\": 1,\n                    \"KibanaNodeMemSize\": 2,\n                    \"KibanaNodeDiskType\": \"CLOUD_PREMIUM\",\n                    \"KibanaNodeDiskSize\": 50\n                },\n                \"EsDomain\": \"es-7sy7efoi.myelasticsearch.com\",\n                \"EsPrivateDomain\": \"es-7sy7efoi-esinternal.kibana.myelasticsearch.com\",\n                \"EsVip\": \"{vip}\",\n                \"EsPort\": 9200,\n                \"KibanaUrl\": \"https://es-7sy7efoi.kibana.myelasticsearch.com:5601\",\n                \"KibanaPrivateUrl\": \"\",\n                \"PublicAccess\": \"CLOSE\",\n                \"KibanaPublicAccess\": \"OPEN\",\n                \"KibanaPrivateAccess\": \"CLOSE\",\n                \"KibanaAlteringPublicAccess\": \"CLOSE\",\n                \"Protocol\": \"\",\n                \"SecurityGroups\": [],\n                \"EsPublicUrl\": \"\",\n                \"EsPrivateUrl\": \"https://es-7sy7efoi-esinternal.kibana.myelasticsearch.com:9200\",\n                \"EsVersion\": \"7.14.2\",\n                \"EsConfig\": \"{}\",\n                \"EsConfigSets\": [],\n                \"KibanaConfig\": \"\",\n                \"EsAcl\": {\n                    \"WhiteIpList\": [\n                        \"127.0.0.1\"\n                    ],\n                    \"BlackIpList\": []\n                },\n                \"EsPublicAcl\": {\n                    \"WhiteIpList\": [],\n                    \"BlackIpList\": []\n                },\n                \"IkConfig\": {\n                    \"UpdateType\": \"\",\n                    \"MainDict\": [],\n                    \"Stopwords\": [],\n                    \"Synonym\": [],\n                    \"QQDict\": []\n                },\n                \"AllowCosBackup\": true,\n                \"CosBackup\": {\n                    \"IsAutoBackup\": false,\n                    \"BackupTime\": \"\"\n                },\n                \"DeployMode\": 0,\n                \"MultiZoneInfo\": [\n                    {\n                        \"Zone\": \"ap-guangzhou-3\",\n                        \"SubnetId\": \"subnet-q29llw8g\"\n                    }\n                ],\n                \"TagList\": [],\n                \"HealthStatus\": 0,\n                \"SecurityType\": 2,\n                \"LicenseType\": \"platinum\",\n                \"SceneType\": 1,\n                \"Jdk\": \"kona\",\n                \"WebNodeTypeInfo\": {\n                    \"NodeNum\": 1,\n                    \"NodeType\": \"ES.SA2.SMALL2\"\n                },\n                \"CreateTime\": \"2022-07-06 20:52:48\",\n                \"UpdateTime\": \"2022-07-07 17:35:29\",\n                \"Deadline\": \"2017-12-04 00:00:00\",\n                \"OperationDuration\": null,\n                \"OptionalWebServiceInfos\": [\n                    {\n                        \"Status\": 0,\n                        \"PrivateAccess\": \"xx\",\n                        \"PublicAccess\": \"xx\",\n                        \"PrivateUrl\": \"xx\",\n                        \"Version\": \"xx\",\n                        \"Type\": \"xx\",\n                        \"PublicUrl\": \"xx\"\n                    }\n                ],\n                \"ProcessPercent\": 0.5,\n                \"EnableHybridStorage\": true\n            }\n        ],\n        \"RequestId\": \"xxxx\"\n    }\n}",
-        "title": "Querying an ES cluster instance"
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"InstanceList\": [\n            {\n                \"InstanceId\": \"es-7sy7efoi\",\n                \"InstanceName\": \"_some_name_\",\n                \"InstanceType\": 2,\n                \"Region\": \"ap-guangzhou\",\n                \"Zone\": \"ap-guangzhou-3\",\n                \"AppId\": 130000000,\n                \"Uin\": \"100000000\",\n                \"VpcUid\": \"vpc-xxxxxx\",\n                \"SubnetUid\": \"subnet-xxxxxx\",\n                \"CdcId\": \"cluster-xxxxxxxx\",\n                \"Status\": 1,\n                \"ChargeType\": \"POSTPAID_BY_HOUR\",\n                \"ChargePeriod\": 0,\n                \"RenewFlag\": \"\",\n                \"NodeInfoList\": [\n                    {\n                        \"Type\": \"hotData\",\n                        \"NodeNum\": 3,\n                        \"NodeType\": \"ES.SA2.MEDIUM4\",\n                        \"CpuNum\": 0,\n                        \"MemSize\": 0,\n                        \"DiskType\": \"CLOUD_SSD\",\n                        \"DiskSize\": 20,\n                        \"DiskEnhance\": 0,\n                        \"DiskEncrypt\": 0,\n                        \"DiskCount\": 1,\n                        \"LocalDiskInfo\": null\n                    }\n                ],\n                \"NodeType\": \"ES.SA2.MEDIUM4\",\n                \"NodeNum\": 3,\n                \"CpuNum\": 2,\n                \"MemSize\": 4,\n                \"DiskType\": \"CLOUD_SSD\",\n                \"AutoIndexEnabled\": true,\n                \"DiskSize\": 20,\n                \"EnableHotWarmMode\": false,\n                \"WarmNodeType\": \"\",\n                \"WarmNodeNum\": 0,\n                \"WarmCpuNum\": 0,\n                \"WarmMemSize\": 0,\n                \"WarmDiskType\": \"\",\n                \"WarmDiskSize\": 0,\n                \"ColdNodeType\": \"\",\n                \"ColdNodeNum\": 0,\n                \"ColdCpuNum\": 0,\n                \"ColdMemSize\": 0,\n                \"ColdDiskType\": \"\",\n                \"ColdDiskSize\": 0,\n                \"FrozenNodeType\": \"\",\n                \"FrozenNodeNum\": 0,\n                \"FrozenCpuNum\": 0,\n                \"FrozenMemSize\": 0,\n                \"FrozenDiskType\": \"\",\n                \"FrozenDiskSize\": 0,\n                \"MasterNodeInfo\": {\n                    \"EnableDedicatedMaster\": false,\n                    \"MasterNodeType\": \"\",\n                    \"MasterNodeNum\": 0,\n                    \"MasterNodeCpuNum\": 0,\n                    \"MasterNodeMemSize\": 0,\n                    \"MasterNodeDiskType\": \"\",\n                    \"MasterNodeDiskSize\": 0\n                },\n                \"KibanaNodeInfo\": {\n                    \"KibanaNodeType\": \"ES.SA2.SMALL2\",\n                    \"KibanaNodeNum\": 1,\n                    \"KibanaNodeCpuNum\": 1,\n                    \"KibanaNodeMemSize\": 2,\n                    \"KibanaNodeDiskType\": \"CLOUD_PREMIUM\",\n                    \"KibanaNodeDiskSize\": 50\n                },\n                \"EsDomain\": \"es-7sy7efoi.myelasticsearch.com\",\n                \"EsPrivateDomain\": \"es-7sy7efoi-esinternal.kibana.myelasticsearch.com\",\n                \"EsVip\": \"{vip}\",\n                \"EsPort\": 9200,\n                \"KibanaUrl\": \"https://es-7sy7efoi.kibana.myelasticsearch.com:5601\",\n                \"KibanaPrivateUrl\": \"\",\n                \"PublicAccess\": \"CLOSE\",\n                \"KibanaPublicAccess\": \"OPEN\",\n                \"KibanaPrivateAccess\": \"CLOSE\",\n                \"KibanaAlteringPublicAccess\": \"CLOSE\",\n                \"Protocol\": \"\",\n                \"SecurityGroups\": [],\n                \"EsPublicUrl\": \"\",\n                \"EsPrivateUrl\": \"https://es-7sy7efoi-esinternal.kibana.myelasticsearch.com:9200\",\n                \"EsVersion\": \"7.14.2\",\n                \"EsConfig\": \"{\\\"http.cors.allow-methods\\\":\\\"OPTIONS,HEAD,GET,POST,PUT,DELETE\\\"}\",\n                \"EsConfigSets\": [],\n                \"KibanaConfig\": \"\",\n                \"EsAcl\": {\n                    \"WhiteIpList\": [\n                        \"127.0.0.1\"\n                    ],\n                    \"BlackIpList\": []\n                },\n                \"EsPublicAcl\": {\n                    \"WhiteIpList\": [],\n                    \"BlackIpList\": []\n                },\n                \"IkConfig\": {\n                    \"UpdateType\": \"\",\n                    \"MainDict\": [],\n                    \"Stopwords\": [],\n                    \"Synonym\": [],\n                    \"QQDict\": []\n                },\n                \"AllowCosBackup\": true,\n                \"CosBackup\": {\n                    \"IsAutoBackup\": false,\n                    \"BackupTime\": \"\"\n                },\n                \"DeployMode\": 0,\n                \"MultiZoneInfo\": [\n                    {\n                        \"Zone\": \"ap-guangzhou-3\",\n                        \"SubnetId\": \"subnet-q29llw8g\"\n                    }\n                ],\n                \"TagList\": [],\n                \"HealthStatus\": 0,\n                \"SecurityType\": 2,\n                \"LicenseType\": \"platinum\",\n                \"SceneType\": 1,\n                \"Jdk\": \"kona\",\n                \"WebNodeTypeInfo\": {\n                    \"NodeNum\": 1,\n                    \"NodeType\": \"ES.SA2.SMALL2\"\n                },\n                \"CreateTime\": \"2022-07-06 20:52:48\",\n                \"UpdateTime\": \"2022-07-07 17:35:29\",\n                \"Deadline\": \"2017-12-04 00:00:00\",\n                \"OperationDuration\": null,\n                \"OptionalWebServiceInfos\": [\n                    {\n                        \"Status\": 0,\n                        \"PrivateAccess\": \"CLOSE\",\n                        \"PublicAccess\": \"CLOSE\",\n                        \"PrivateUrl\": \"http://es-xxxxxxxx.internal.cerebro.tencentelasticsearch.com:9000\",\n                        \"Version\": \"0.9.4\",\n                        \"Type\": \"cerebro\",\n                        \"PublicUrl\": \"https://es-xxxxxxxx.cerebro.tencentelasticsearch.com:9000\"\n                    }\n                ],\n                \"ProcessPercent\": 0.5,\n                \"EnableHybridStorage\": true,\n                \"HasKernelUpgrade\": true,\n                \"SubProductCode\": \"sp_es_platium\"\n            }\n        ],\n        \"RequestId\": \"c1689946-7206-447c-9ee7-33b1cc0360a1\"\n    }\n}",
+        "title": "Query an ES cluster instance"
       }
     ],
     "DescribeViews": [
       {
-        "document": " ",
+        "document": "Query the cluster view",
         "input": "https://es.tencentcloudapi.com/?Action=DescribeViews\n&InstanceId=es-xxxxxxxx\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"NodesView\": [\n            {\n                \"CpuNum\": 0,\n                \"MemUsage\": 0.0,\n                \"NodeId\": \"xx\",\n                \"CpuUsage\": 0.0,\n                \"Break\": 0.0,\n                \"Visible\": 0.0,\n                \"DiskSize\": 0,\n                \"MemSize\": 0,\n                \"NodeIp\": \"xx\",\n                \"DiskUsage\": 0.0\n            }\n        ],\n        \"ClusterView\": {\n            \"TargetNodeTypes\": [\n                \"xx\"\n            ],\n            \"AvgCpuUsage\": 0.0,\n            \"AvgMemUsage\": 0.0,\n            \"Break\": 0.0,\n            \"Visible\": 0.0,\n            \"AvgDiskUsage\": 0.0,\n            \"Health\": 0.0,\n            \"TotalDiskSize\": 1\n        },\n        \"RequestId\": \"xx\",\n        \"KibanasView\": [\n            {\n                \"MemUsage\": 0.0,\n                \"Ip\": \"xx\",\n                \"CpuUsage\": 0.0,\n                \"CpuNum\": 0,\n                \"DiskSize\": 0,\n                \"MemSize\": 0,\n                \"DiskUsage\": 0.0\n            }\n        ]\n    }\n}",
-        "title": "Querying cluster views"
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6127baed-bc4c-4c0d-b52d-6463a722795b\",\n        \"ClusterView\": {\n            \"Health\": 0,\n            \"NodeNum\": 3,\n            \"TotalNodeNum\": 3,\n            \"DataNodeNum\": 3,\n            \"IndexNum\": 121,\n            \"DocNum\": 68195345,\n            \"DiskUsedInBytes\": 27909384217,\n            \"ShardNum\": 1033,\n            \"PrimaryShardNum\": 516,\n            \"RelocatingShardNum\": 0,\n            \"InitializingShardNum\": 0,\n            \"UnassignedShardNum\": 0,\n            \"Visible\": 1,\n            \"Break\": 0,\n            \"AvgDiskUsage\": 0.075802238966579,\n            \"AvgMemUsage\": 0.82355177962355,\n            \"AvgCpuUsage\": 0.0097774027927309,\n            \"TotalDiskSize\": 600,\n            \"TotalCosStorage\": 0,\n            \"SearchableSnapshotCosBucket\": \"\",\n            \"SearchableSnapshotCosAppId\": \"\",\n            \"TargetNodeTypes\": [\n                \"data\"\n            ]\n        },\n        \"NodesView\": [\n            {\n                \"NodeId\": \"1739331190000739932\",\n                \"NodeIp\": \"9.29.48.61\",\n                \"NodeHttpIp\": \"9.29.48.61\",\n                \"Zone\": \"ap-hongkong-3\",\n                \"Hidden\": false,\n                \"NodeRole\": \"hotData\",\n                \"Visible\": 1,\n                \"Break\": 0,\n                \"DiskSize\": 200,\n                \"DiskUsage\": 0.075739699850416,\n                \"MemSize\": 8,\n                \"MemUsage\": 0.82319480451571,\n                \"JvmMemUsage\": 0.6,\n                \"CpuNum\": 4,\n                \"CpuUsage\": 0.0048451231329569,\n                \"ShardNum\": 345,\n                \"DiskIds\": [\n                    \"disk-6eur8xxx\"\n                ],\n                \"IsCoordinationNode\": true,\n                \"CVMStatus\": \"RUNNING\",\n                \"CVMDisasterRecoverGroupId\": \"\",\n                \"CVMDisasterRecoverGroupStatus\": 0\n            },\n            {\n                \"NodeId\": \"1739331190000740032\",\n                \"NodeIp\": \"9.29.50.27\",\n                \"NodeHttpIp\": \"9.29.50.27\",\n                \"Zone\": \"ap-hongkong-3\",\n                \"Hidden\": false,\n                \"NodeRole\": \"hotData\",\n                \"Visible\": 1,\n                \"Break\": 0,\n                \"DiskSize\": 200,\n                \"DiskUsage\": 0.076343043587719,\n                \"MemSize\": 8,\n                \"MemUsage\": 0.82361871962329,\n                \"JvmMemUsage\": 0.34,\n                \"CpuNum\": 4,\n                \"CpuUsage\": 0.0048869730840559,\n                \"ShardNum\": 344,\n                \"DiskIds\": [\n                    \"disk-0pwecycm\"\n                ],\n                \"IsCoordinationNode\": true,\n                \"CVMStatus\": \"RUNNING\",\n                \"CVMDisasterRecoverGroupId\": \"\",\n                \"CVMDisasterRecoverGroupStatus\": 0\n            },\n            {\n                \"NodeId\": \"1739331190000739832\",\n                \"NodeIp\": \"9.29.51.17\",\n                \"NodeHttpIp\": \"9.29.51.17\",\n                \"Zone\": \"ap-hongkong-3\",\n                \"Hidden\": false,\n                \"NodeRole\": \"hotData\",\n                \"Visible\": 1,\n                \"Break\": 0,\n                \"DiskSize\": 200,\n                \"DiskUsage\": 0.07533630210082,\n                \"MemSize\": 8,\n                \"MemUsage\": 0.8215642493271,\n                \"JvmMemUsage\": 0.62,\n                \"CpuNum\": 4,\n                \"CpuUsage\": 0.0041350619841615,\n                \"ShardNum\": 344,\n                \"DiskIds\": [\n                    \"disk-2xtqdaju\"\n                ],\n                \"IsCoordinationNode\": true,\n                \"CVMStatus\": \"RUNNING\",\n                \"CVMDisasterRecoverGroupId\": \"\",\n                \"CVMDisasterRecoverGroupStatus\": 0\n            }\n        ],\n        \"KibanasView\": [\n            {\n                \"Ip\": \"9.29.49.38\",\n                \"NodeId\": \"1739331190000739832\",\n                \"Zone\": \"ap-hongkong-3\",\n                \"DiskSize\": 50,\n                \"DiskUsage\": 0.19899999999999998,\n                \"MemSize\": 2,\n                \"MemUsage\": 0.76055485347424,\n                \"CpuNum\": 1,\n                \"CpuUsage\": 0.029833333333333\n            }\n        ]\n    }\n}",
+        "title": "Query the cluster view"
       }
     ],
     "GetRequestTargetNodeTypes": [
       {
-        "document": "This example shows you how to get the node types used to receive client requests in a cluster with a hot-warm architecture.",
+        "document": "For a cluster with hot/cold separation, use this API to obtain the node type used by the current cluster to receive client requests.",
         "input": "https://es.tencentcloudapi.com/?Action=GetRequestTargetNodeTypes\n&InstanceId=es-xxxxxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"8fd57721-808b-4f21-8f6b-51bca79ff1xx\",\n        \"TargetNodeTypes\": [\n            \"hot\",\n            \"warm\"\n        ]\n    }\n}",
-        "title": "Getting the node types used to receive client requests"
+        "title": "Get the node type for receiving client requests"
       }
     ],
     "ModifyAutoBackUpCommonInfo": [
@@ -130,112 +130,112 @@
     ],
     "RestartInstance": [
       {
-        "document": "This example shows you how to perform operations such as version update.",
+        "document": "For version update.",
         "input": "https://es.tencentcloudapi.com/?Action=RestartInstance\n&InstanceId=es-xxxxxxxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"7f0e35a7-e03b-42cd-aa4f-0c1471xxxxxx\"\n    }\n}",
-        "title": "Restarting an ES cluster instance"
+        "title": "Restarting ES Cluster Instance"
       }
     ],
     "RestartKibana": [
       {
-        "document": "This example shows you how to restart Kibana.",
+        "document": "Restart Kibana",
         "input": "https://es.tencentcloudapi.com/?Action=RestartKibana\n&InstanceId=es-xxxxxxxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"7f0e35a7-e03b-42cd-aa4f-0c1471xxxxxx\"\n    }\n}",
-        "title": "Restarting Kibana"
+        "title": "Restart Kibana"
       }
     ],
     "RestartNodes": [
       {
-        "document": " ",
+        "document": "This example shows you how to restart a cluster node.",
         "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RestartNodes\n<Common request parameters>\n\n{\n    \"InstanceId\": \"es-xxxxxxxx\",\n    \"NodeNames\": [\n        \"159229897700074xxxx\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c96a110c-7493-452d-a99b-683d07xxxxxx\"\n    }\n}",
-        "title": "Restarting cluster nodes"
+        "title": "Restarting a Cluster Node"
       }
     ],
     "UpdateDictionaries": [
       {
-        "document": " ",
-        "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateDictionaries\n<Common request parameters>\n\n{\n    \"IkStopwords\": [\n        \"xx\"\n    ],\n    \"Synonym\": [\n        \"xx\"\n    ],\n    \"InstanceId\": \"xx\",\n    \"UpdateType\": 0,\n    \"ForceRestart\": true,\n    \"QQDict\": [\n        \"xx\"\n    ],\n    \"IkMainDicts\": [\n        \"xx\"\n    ]\n}",
+        "document": "Update ES cluster dictionary",
+        "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateDictionaries\n<Common request parameters>\n\n{\n    \"IkStopwords\": [\n        \"stop\"\n    ],\n    \"Synonym\": [\n        \"syno\"\n    ],\n    \"InstanceId\": \"es-esadfeas\",\n    \"UpdateType\": 0,\n    \"ForceRestart\": true,\n    \"QQDict\": [\n        \"qqDict\"\n    ],\n    \"IkMainDicts\": [\n        \"mainDict\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c96a110c-7493-452d-a99b-683d07xxxxxx\"\n    }\n}",
-        "title": "Updating ES cluster dictionaries"
+        "title": "Update ES Cluster Dictionary"
       }
     ],
     "UpdateIndex": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateIndex\n<Common Request Parameter>\n\n{\n    \"InstanceId\": \"es-h3pzdpd6\",\n    \"IndexName\": \"asd\",\n    \"IndexType\": \"normal\",\n    \"UpdateMetaJson\": \"{\\\"mappings\\\":{\\\"properties\\\":{\\\"aa\\\":{\\\"analyzer\\\":\\\"standard\\\",\\\"index\\\":true,\\\"type\\\":\\\"text\\\"}}},\\\"settings\\\":{}}\"\n}",
+        "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateIndex\n<Common request parameters>\n\n{\n    \"InstanceId\": \"es-h3pzdpd6\",\n    \"IndexName\": \"asd\",\n    \"IndexType\": \"normal\",\n    \"UpdateMetaJson\": \"{\\\"mappings\\\":{\\\"properties\\\":{\\\"aa\\\":{\\\"analyzer\\\":\\\"standard\\\",\\\"index\\\":true,\\\"type\\\":\\\"text\\\"}}},\\\"settings\\\":{}}\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6cf36e17-abdf-4a75-a95a-78a0e59fc959\"\n    }\n}",
-        "title": "Update Index"
+        "title": "Updating an Index"
       }
     ],
     "UpdateInstance": [
       {
-        "document": "This example shows you how to scale up/down a cluster in terms of its node spec (number of cores, memory size) and disk size.",
-        "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"es-xxxxxxxx\",\n    \"DiskSize\": \"150\",\n    \"NodeType\": \"ES.S1.MEDIUM4\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"DealName\": \"xx\"\n    }\n}",
-        "title": "Scaling up/down an ES cluster"
+        "document": "Used to perform shard scaling on the node specification (cores, memory size) and disk capacity of a cluster (currently only support vertical scale-out).",
+        "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"es-xxxxxxxx\",\n    \"DiskSize\": 150,\n    \"NodeType\": \"ES.S1.MEDIUM4\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1\",\n        \"DealName\": \"1\"\n    }\n}",
+        "title": "Vertically Scale an ES Cluster"
       },
       {
-        "document": "This example shows you how to scale out/in or scale up/down an ES cluster instance or a dedicated master node, or to add a dedicated master node. `NodeInfoList` must contain the information of all target nodes to be passed in.",
-        "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"es-xxxxxx\",\n    \"NodeInfoList\": [\n        {\n            \"NodeType\": \"ES.S1.SMALL2\",\n            \"NodeNum\": \"3\",\n            \"Type\": \"dedicatedMaster\"\n        },\n        {\n            \"DiskSize\": \"100\",\n            \"NodeType\": \"ES.S1.SMALL2\",\n            \"NodeNum\": \"2\",\n            \"Type\": \"hotData\",\n            \"DiskType\": \"CLOUD_SSD\"\n        }\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"DealName\": \"xx\"\n    }\n}",
-        "title": "Modifying the node specification of an ES cluster"
+        "document": "This is used to horizontally scale, vertically scale, add dedicated master nodes, horizontally scale dedicated master nodes, and vertically scale dedicated master nodes for a specified ES cluster instance. NodeInfoList should transmit the information of all target nodes.",
+        "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"es-xxxxxx\",\n    \"NodeInfoList\": [\n        {\n            \"NodeType\": \"ES.S1.SMALL2\",\n            \"NodeNum\": 3,\n            \"Type\": \"dedicatedMaster\"\n        },\n        {\n            \"DiskSize\": 100,\n            \"NodeType\": \"ES.S1.SMALL2\",\n            \"NodeNum\": 2,\n            \"Type\": \"hotData\",\n            \"DiskType\": \"CLOUD_SSD\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1\",\n        \"DealName\": \"1\"\n    }\n}",
+        "title": "Node specification change for ES cluster"
       },
       {
-        "document": "This example shows you how to rename an ES cluster instance.",
+        "document": "Used to modify the name of a specified ES cluster instance.",
         "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"es-xxxxxx\",\n    \"InstanceName\": \"newName\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"DealName\": \"xx\"\n    }\n}",
-        "title": "Renaming an ES cluster instance"
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1\",\n        \"DealName\": \"1\"\n    }\n}",
+        "title": "Modifying the Name of an ES Cluster Instance"
       },
       {
-        "document": "This example shows you how to modify the configuration of an ES cluster instance.",
+        "document": "Used to make modifications to the configuration of a specified ES cluster instance.",
         "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"es-xxxxxxxx\",\n    \"EsConfig\": \"{\\\"action.destructive_requires_name\\\":\\\"true\\\"}\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"DealName\": \"xx\"\n    }\n}",
-        "title": "Modifying the configuration of an ES cluster instance"
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1\",\n        \"DealName\": \"1\"\n    }\n}",
+        "title": "Modifying ES Cluster Instance Configuration"
       },
       {
-        "document": "This example shows you how to reset the Kibana password of an ES cluster instance.",
+        "document": "Reset the Kibana password of a specified ES cluster instance.",
         "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"es-xxxxxxxx\",\n    \"Password\": \"newPwd_123\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"DealName\": \"xx\"\n    }\n}",
-        "title": "Resetting the Kibana password"
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1\",\n        \"DealName\": \"1\"\n    }\n}",
+        "title": "Reset the Kibana password"
       }
     ],
     "UpdatePlugins": [
       {
-        "document": " ",
+        "document": "Batch uninstall plug-ins",
         "input": "https://es.tencentcloudapi.com/?Action=UpdatePlugins\n&InstanceId=es-xxxxxxxx\n&RemovePluginList.0=analysis-qq\n&RemovePluginList.1=sql\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c96a110c-7493-452d-a99b-683d07xxxxxx\"\n    }\n}",
-        "title": "Uninstalling plugins in batches"
+        "title": "Batch uninstall plug-ins"
       },
       {
-        "document": " ",
+        "document": "Install plugins in batches",
         "input": "https://es.tencentcloudapi.com/?Action=UpdatePlugins\n&InstanceId=es-xxxxxxxx\n&InstallPluginList.0=analysis-qq\n&InstallPluginList.1=sql\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c96a110c-7493-452d-a99b-683d07xxxxxx\"\n    }\n}",
-        "title": "Installing plugins in batches"
+        "title": "Install Plugins in Batches"
       }
     ],
     "UpdateRequestTargetNodeTypes": [
       {
-        "document": "For clusters with a hot-warm architecture, you can assign requests from clients only to hot nodes when warm nodes have relatively low specifications. In this case, only the hot nodes work as coordinators.",
+        "document": "For a hot/cold separation cluster, when the temperature node specification is small, client requests can be sent only to hot nodes, letting only hot nodes take on the coordinator node function.",
         "input": "https://es.tencentcloudapi.com/?Action=UpdateRequestTargetNodeTypes\n&InstanceId=es-xxxxxx\n&TargetNodeTypes.0=hot\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"8fd57721-808b-4f21-8f6b-51bca79ff1xx\"\n    }\n}",
-        "title": "Updating the node types used to receive client requests"
+        "title": "Update the node type for receiving client requests"
       }
     ],
     "UpgradeInstance": [
       {
-        "document": " ",
+        "document": "Upgrade ES cluster edition",
         "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpgradeInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"es-xxxxxxxx\",\n    \"EsVersion\": \"6.4.3\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c96a110c-7493-452d-a99b-683d07xxxxxx\"\n    }\n}",
-        "title": "Upgrading ES cluster version"
+        "title": "Upgrade ES Cluster Edition"
       }
     ],
     "UpgradeLicense": [
       {
-        "document": " ",
-        "input": "https://es.tencentcloudapi.com/?Action=UpgradeLicense\n&InstanceId=es-xxxxxxxx\n&LicenseType=platinum\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"DealName\": \"xx\"\n    }\n}",
-        "title": "Upgrading ES X-Pack features"
+        "document": "Upgrade ES commercial features",
+        "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpgradeLicense\n<Common request parameters>\n\n{\n    \"InstanceId\": \"es-xxxxxxxx\",\n    \"LicenseType\": \"platinum\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1\",\n        \"DealName\": \"1\"\n    }\n}",
+        "title": "Upgrade ES Commercial Features"
       }
     ]
   },

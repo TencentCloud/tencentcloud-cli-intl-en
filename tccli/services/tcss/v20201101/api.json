@@ -15,9 +15,9 @@
       "status": "deprecated"
     },
     "AddAssetImageRegistryRegistryDetail": {
-      "document": "This API is used to add the details of an image repository.",
+      "document": "This example shows you how to add details for an image repository.",
       "input": "AddAssetImageRegistryRegistryDetailRequest",
-      "name": "Adds the details of an image repository",
+      "name": "This example shows you how to add details for an image repository.",
       "output": "AddAssetImageRegistryRegistryDetailResponse",
       "status": "online"
     },
@@ -169,9 +169,9 @@
       "status": "online"
     },
     "CreateAssetImageRegistryScanTaskOneKey": {
-      "document": "This API is used to create a quick image scan task for an image repository.",
+      "document": "Creating a Task to Scan Images in an Image Repository with One Click",
       "input": "CreateAssetImageRegistryScanTaskOneKeyRequest",
-      "name": "Creates a quick image scan task for an image repository",
+      "name": "Creating a Task to Scan Images in an Image Repository with One Click",
       "output": "CreateAssetImageRegistryScanTaskOneKeyResponse",
       "status": "online"
     },
@@ -715,9 +715,9 @@
       "status": "online"
     },
     "DescribeAssetHostDetail": {
-      "document": "This API is used to query the details of a server.",
+      "document": "This example shows you how to query host details.",
       "input": "DescribeAssetHostDetailRequest",
-      "name": "Queries the details of a server",
+      "name": "Queries host information",
       "output": "DescribeAssetHostDetailResponse",
       "status": "online"
     },
@@ -820,9 +820,9 @@
       "status": "online"
     },
     "DescribeAssetImageRegistrySummary": {
-      "document": "This API is used to query the image statistics of an image repository.",
+      "document": "Querying the Image Statistics of an Image Repository",
       "input": "DescribeAssetImageRegistrySummaryRequest",
-      "name": "Queries the image statistics of an image repository.",
+      "name": "Querying the Image Statistics of an Image Repository",
       "output": "DescribeAssetImageRegistrySummaryResponse",
       "status": "online"
     },
@@ -946,9 +946,9 @@
       "status": "online"
     },
     "DescribeAssetSyncLastTime": {
-      "document": "This API is used to query the last asset sync time.",
+      "document": "Query the latest time for asset synchronization.",
       "input": "DescribeAssetSyncLastTimeRequest",
-      "name": "Queries the last asset sync time",
+      "name": "Query the latest time for asset synchronization.",
       "output": "DescribeAssetSyncLastTimeResponse",
       "status": "online"
     },
@@ -1163,9 +1163,9 @@
       "status": "online"
     },
     "DescribeImageAuthorizedInfo": {
-      "document": "This API is used to query the image licensing information.",
+      "document": "This API is used to query image authorization info.",
       "input": "DescribeImageAuthorizedInfoRequest",
-      "name": "Queries the image licensing information",
+      "name": "Querying the Image Authorization Information",
       "output": "DescribeImageAuthorizedInfoResponse",
       "status": "online"
     },
@@ -1177,9 +1177,9 @@
       "status": "online"
     },
     "DescribeImageAutoAuthorizedRule": {
-      "document": "This API is used to query an automatic licensing rule for local images.",
+      "document": "Query local image auto-authorization rules.",
       "input": "DescribeImageAutoAuthorizedRuleRequest",
-      "name": "Queries an automatic licensing rule for local images",
+      "name": "Query local image auto-authorization rules.",
       "output": "DescribeImageAutoAuthorizedRuleResponse",
       "status": "online"
     },
@@ -1464,9 +1464,9 @@
       "status": "online"
     },
     "DescribePurchaseStateInfo": {
-      "document": "This API is used to check whether TCSS is purchased.",
+      "document": "This API is used to query the purchase information on the container security service.",
       "input": "DescribePurchaseStateInfoRequest",
-      "name": "Checks whether TCSS is purchased",
+      "name": "Querying the Purchase Information on TCSS",
       "output": "DescribePurchaseStateInfoResponse",
       "status": "online"
     },
@@ -2423,9 +2423,9 @@
       "status": "online"
     },
     "UpdateImageRegistryTimingScanTask": {
-      "document": "This API is used to update a scheduled task for an image repository.",
+      "document": "Update scheduled tasks in the mirror repository",
       "input": "UpdateImageRegistryTimingScanTaskRequest",
-      "name": "Updates a scheduled task for an image repository",
+      "name": "Updates a scheduled task in the mirror repository",
       "output": "UpdateImageRegistryTimingScanTaskResponse",
       "status": "online"
     },
@@ -4358,7 +4358,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Repository name",
+          "document": "Repository Name",
           "example": "tcr2",
           "member": "string",
           "name": "Name",
@@ -4367,7 +4367,7 @@
         },
         {
           "disabled": false,
-          "document": "Username",
+          "document": "Username.",
           "example": "admin",
           "member": "string",
           "name": "Username",
@@ -4376,7 +4376,7 @@
         },
         {
           "disabled": false,
-          "document": "Password",
+          "document": "Password.",
           "example": "passwd",
           "member": "string",
           "name": "Password",
@@ -4385,7 +4385,7 @@
         },
         {
           "disabled": false,
-          "document": "Repository URL",
+          "document": "Warehouse url",
           "example": "http://good.com.cn",
           "member": "string",
           "name": "Url",
@@ -4403,7 +4403,7 @@
         },
         {
           "disabled": false,
-          "document": "Network type, which can be `public` (public network).",
+          "document": "Network type. List: public",
           "example": "public",
           "member": "string",
           "name": "NetType",
@@ -4412,7 +4412,7 @@
         },
         {
           "disabled": false,
-          "document": "Repository version",
+          "document": "Warehouse version",
           "example": "v1.x",
           "member": "string",
           "name": "RegistryVersion",
@@ -4421,7 +4421,7 @@
         },
         {
           "disabled": false,
-          "document": "Region. Default value: `default`.",
+          "document": "Region, list: default.",
           "example": "default",
           "member": "string",
           "name": "RegistryRegion",
@@ -4439,7 +4439,7 @@
         },
         {
           "disabled": false,
-          "document": "Valid values: `0` (secure mode with certificate verification, which is the default value); `1` (unsecure mode that skips certificate verification).",
+          "document": "0: Secure Mode (Certificate Verification) (Default); 1: Insecure Mode (Skip Certificate Verification)",
           "example": "0",
           "member": "uint64",
           "name": "Insecure",
@@ -4448,7 +4448,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Record ID of Connectivity Check",
           "example": "{ \"Quuid\":\"5a540076-d38a-4078-aa98-e7c86371d322\", \"Uuid\":\"5a540076-d38a-4078-aa98-e7c86371d322\" }",
           "member": "ConnDetectConfig",
           "name": "ConnDetectConfig",
@@ -4508,7 +4508,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Connection error message",
+          "document": "Connection error information",
           "example": "\"connect closed\"",
           "member": "string",
           "name": "HealthCheckErr",
@@ -4518,7 +4518,7 @@
         },
         {
           "disabled": false,
-          "document": "Error message of the name",
+          "document": "Incorrect name message",
           "example": "\"name repeat err\"",
           "member": "string",
           "name": "NameRepeatErr",
@@ -5583,11 +5583,11 @@
       "usage": "out"
     },
     "AssetFilters": {
-      "document": "TCSS\nKey-value pair filter for conditional filtering queries, such as filter ID, name, and status\nIf more than one filter exists, the logical relationship between these filters is `AND`.\nIf multiple values exist in one filter, the logical relationship between these values is `OR`.",
+      "document": "Container security\nDescription key-value pair filter, which is used for conditional filtering queries. For example, filter by ID, name, and status.\nIf there are multiple Filters, the logical relationship between them is AND.\nIf there are multiple Values in the same Filter, the logical relationship between the Values under the same Filter is OR.",
       "members": [
         {
           "disabled": false,
-          "document": "Filter name",
+          "document": "Name of the filter key",
           "example": "ImageAssetIds",
           "member": "string",
           "name": "Name",
@@ -8589,11 +8589,11 @@
       "type": "object"
     },
     "ConnDetectConfig": {
-      "document": "",
+      "document": "Connectivity Check Configuration",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Host QUUID",
           "example": "09c315fc-161d-42c7-bb74-d86d943e4685",
           "member": "string",
           "name": "Quuid",
@@ -8602,7 +8602,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Host UUID",
           "example": "09c315fc-161d-42c7-bb74-d86d943e4685",
           "member": "string",
           "name": "Uuid",
@@ -9223,7 +9223,7 @@
       "members": [
         {
           "disabled": true,
-          "document": "Whether to scan all images",
+          "document": "Scan All Images (Deprecated)",
           "example": "true",
           "member": "bool",
           "name": "All",
@@ -9232,7 +9232,7 @@
         },
         {
           "disabled": false,
-          "document": "List of scanned images",
+          "document": "Scanned Image List",
           "example": "无",
           "member": "ImageInfo",
           "name": "Images",
@@ -9241,7 +9241,7 @@
         },
         {
           "disabled": false,
-          "document": "Array of scan types",
+          "document": "Type Array for scanning",
           "example": "[\"CVE\"]",
           "member": "string",
           "name": "ScanType",
@@ -9250,7 +9250,7 @@
         },
         {
           "disabled": false,
-          "document": "List of IDs of scanned images",
+          "document": "Scanned Image List ID",
           "example": "[53462]",
           "member": "uint64",
           "name": "Id",
@@ -9268,7 +9268,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether the Latest Image",
           "example": "false",
           "member": "bool",
           "name": "IsLatest",
@@ -9277,7 +9277,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Scan Scope. 0: All Images; 1: Custom Images; 2: Recommended Scan Images",
           "example": "1",
           "member": "uint64",
           "name": "ScanScope",
@@ -9286,7 +9286,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Repository type",
           "example": "[\"harbor\"]",
           "member": "string",
           "name": "RegistryType",
@@ -9295,7 +9295,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Namespace",
           "example": "[\"name1\"]",
           "member": "string",
           "name": "Namespace",
@@ -9304,7 +9304,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether There Are Running Containers",
           "example": "true",
           "member": "bool",
           "name": "ContainerRunning",
@@ -9313,7 +9313,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Task Timeout Duration Unit (s)",
           "example": "10",
           "member": "uint64",
           "name": "Timeout",
@@ -9328,7 +9328,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The task id ",
+          "document": "Scan Task ID",
           "example": "1",
           "member": "uint64",
           "name": "TaskID",
@@ -14791,7 +14791,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Server ID",
+          "document": "Host ID",
           "example": "46a0eb27-838a-4a86-a03b-a51220b2****",
           "member": "string",
           "name": "HostId",
@@ -14806,7 +14806,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "TCSS UUID",
+          "document": "Container Security UUID",
           "example": "46a0eb27-838a-4a86-a03b-a51220b2****",
           "member": "string",
           "name": "UUID",
@@ -14816,7 +14816,7 @@
         },
         {
           "disabled": false,
-          "document": "Update time",
+          "document": "Update time.",
           "example": "2024-10-31 22:3****",
           "member": "string",
           "name": "UpdateTime",
@@ -14826,7 +14826,7 @@
         },
         {
           "disabled": false,
-          "document": "Server name",
+          "document": "Host name",
           "example": "cluster-node-1****",
           "member": "string",
           "name": "HostName",
@@ -14836,7 +14836,7 @@
         },
         {
           "disabled": false,
-          "document": "Server group",
+          "document": "Host grouping",
           "example": "root",
           "member": "string",
           "name": "Group",
@@ -14846,7 +14846,7 @@
         },
         {
           "disabled": false,
-          "document": "Server IP",
+          "document": "Host IP address",
           "example": "10.255****",
           "member": "string",
           "name": "HostIP",
@@ -14856,7 +14856,7 @@
         },
         {
           "disabled": false,
-          "document": "OS",
+          "document": "Operating system.",
           "example": "TencentOS Server release 3.1 ",
           "member": "string",
           "name": "OsName",
@@ -14886,7 +14886,7 @@
         },
         {
           "disabled": false,
-          "document": "Docker version",
+          "document": "docker version",
           "example": "v1.6.9-t****",
           "member": "string",
           "name": "DockerVersion",
@@ -14896,7 +14896,7 @@
         },
         {
           "disabled": false,
-          "document": "Docker API version",
+          "document": "docker api version",
           "example": "v1.6.9-t****",
           "member": "string",
           "name": "DockerAPIVersion",
@@ -14906,7 +14906,7 @@
         },
         {
           "disabled": false,
-          "document": "Docker version for Go",
+          "document": "docker go version",
           "example": "1.18",
           "member": "string",
           "name": "DockerGoVersion",
@@ -14916,7 +14916,7 @@
         },
         {
           "disabled": false,
-          "document": "Docker file system type",
+          "document": "docker file system type",
           "example": "overlay",
           "member": "string",
           "name": "DockerFileSystemDriver",
@@ -14926,7 +14926,7 @@
         },
         {
           "disabled": false,
-          "document": "Docker root directory",
+          "document": "docker root directory",
           "example": "/var/lib/contai****",
           "member": "string",
           "name": "DockerRootDir",
@@ -14936,7 +14936,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of images",
+          "document": "Image count",
           "example": "20",
           "member": "uint64",
           "name": "ImageCnt",
@@ -14956,7 +14956,7 @@
         },
         {
           "disabled": false,
-          "document": "K8s IP",
+          "document": "k8s IP",
           "example": "10.0.1****",
           "member": "string",
           "name": "K8sMasterIP",
@@ -14966,7 +14966,7 @@
         },
         {
           "disabled": false,
-          "document": "K8s version",
+          "document": "k8s version",
           "example": "1.0.1",
           "member": "string",
           "name": "K8sVersion",
@@ -14986,7 +14986,7 @@
         },
         {
           "disabled": false,
-          "document": "Valid values: `UNINSTALL` (not installed); `OFFLINE` (offline); `ONLINE` (defended).",
+          "document": "\"UNINSTALL\": Not Installed; \"OFFLINE\": Offline; \"ONLINE\": Protected",
           "example": "ONLINE",
           "member": "string",
           "name": "Status",
@@ -14996,7 +14996,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether it is Containerd",
+          "document": "Is Containerd",
           "example": "True",
           "member": "bool",
           "name": "IsContainerd",
@@ -15006,7 +15006,7 @@
         },
         {
           "disabled": false,
-          "document": "Server source. Valid values: `TENCENTCLOUD` (Tencent Cloud instance); `OTHERCLOUD` (non-Tencent Cloud instance).",
+          "document": "Host Source. \"TENCENTCLOUD\": \"Tencent Cloud Servers\"; \"OTHERCLOUD\": \"Non-Tencent Cloud Servers\"",
           "example": "CVM",
           "member": "string",
           "name": "MachineType",
@@ -15016,7 +15016,7 @@
         },
         {
           "disabled": false,
-          "document": "Public IP",
+          "document": "Public IP address",
           "example": "106.52.96****",
           "member": "string",
           "name": "PublicIp",
@@ -15026,7 +15026,7 @@
         },
         {
           "disabled": false,
-          "document": "Server instance ID",
+          "document": "Host instance ID",
           "example": "ins-mlyx****",
           "member": "string",
           "name": "InstanceID",
@@ -15036,7 +15036,7 @@
         },
         {
           "disabled": false,
-          "document": "Region ID",
+          "document": "Region ID.",
           "example": "1",
           "member": "int64",
           "name": "RegionID",
@@ -15046,7 +15046,7 @@
         },
         {
           "disabled": false,
-          "document": "Project",
+          "document": "Associated project",
           "example": "{\"ProjectID\": 0, \"ProjectName\": \"\\u9ed8\\u8ba4\\u9879\\u76ee\"}",
           "member": "ProjectInfo",
           "name": "Project",
@@ -15056,7 +15056,7 @@
         },
         {
           "disabled": false,
-          "document": "Tags",
+          "document": "Tag.",
           "example": "[{\"TagKey\": \"\\u81ea\\u52a8\\u5316\\u6d4b\\u8bd5\", \"TagValue\": \"\\u6570\\u636e\\u52ff\\u52a8\"}]",
           "member": "TagInfo",
           "name": "Tags",
@@ -15066,7 +15066,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Cluster ID",
           "example": "cls-6q97****",
           "member": "string",
           "name": "ClusterID",
@@ -15076,7 +15076,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Cluster name.",
           "example": "cluster-1****",
           "member": "string",
           "name": "ClusterName",
@@ -15086,7 +15086,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Cluster Access Status",
           "example": "AccessedDefe****",
           "member": "string",
           "name": "ClusterAccessedStatus",
@@ -17004,7 +17004,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Filter fields",
           "example": "[{Name: \"OnlyShowLatest\", ExactMatch: true, Values: [\"1\"]}]",
           "member": "AssetFilters",
           "name": "Filters",
@@ -18696,7 +18696,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Last asset sync time",
+          "document": "Last Synchronization Time of Assets",
           "example": "2024-10-31 21:3****",
           "member": "string",
           "name": "AssetSyncLastTime",
@@ -18706,7 +18706,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Task status.\nPENDING: pending.\nPROCESSING: Processing\nPROCESSED: Completed",
           "example": "PROCE****",
           "member": "string",
           "name": "TaskStatus",
@@ -18716,7 +18716,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Task Progress (Percentage)",
           "example": "100",
           "member": "int64",
           "name": "TaskProcess",
@@ -21180,7 +21180,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total number of valid image licenses",
+          "document": "Total number of effective image licenses.",
           "example": "1023",
           "member": "uint64",
           "name": "TotalAuthorizedCnt",
@@ -21190,7 +21190,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of used image licenses",
+          "document": "Used image licenses",
           "example": "29",
           "member": "uint64",
           "name": "UsedAuthorizedCnt",
@@ -21200,7 +21200,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of images with scan enabled",
+          "document": "Scan image count enabled",
           "example": "23",
           "member": "uint64",
           "name": "ScannedImageCnt",
@@ -21210,7 +21210,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of images with scan not enabled",
+          "document": "Scan image count when not enabled",
           "example": "103",
           "member": "uint64",
           "name": "NotScannedImageCnt",
@@ -21220,7 +21220,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of local images with scan not enabled",
+          "document": "Number of Local Images with Scans Not Enabled",
           "example": "143",
           "member": "uint64",
           "name": "NotScannedLocalImageCnt",
@@ -21230,7 +21230,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Number of licensed trial images.",
           "example": "41",
           "member": "uint64",
           "name": "TrialAuthorizedCnt",
@@ -21240,7 +21240,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Number of licensed trial images that have been used.",
           "example": "153",
           "member": "uint64",
           "name": "UsedTrialAuthorizedCnt",
@@ -21250,7 +21250,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Number of purchased image authorizations",
           "example": "155",
           "member": "uint64",
           "name": "PurchasedAuthorizedCnt",
@@ -21260,7 +21260,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Number of purchased licensed images that have been used.",
           "example": "92",
           "member": "uint64",
           "name": "UsedPurchasedAuthorizedCnt",
@@ -21270,7 +21270,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether the free image licenses can be collected.",
           "example": "false",
           "member": "bool",
           "name": "CanApplyFreeImageAuthorize",
@@ -21409,7 +21409,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether the rule takes effect. Valid values: `0` (no); `1` (yes).",
+          "document": "Whether the Rule Is Effective. 0: Not Effective; 1: Effective",
           "example": "1",
           "member": "int64",
           "name": "IsEnabled",
@@ -21459,7 +21459,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Auto-Scan Switch. 0: Off; 1: On",
           "example": "0",
           "member": "int64",
           "name": "AutoScanEnabled",
@@ -21469,7 +21469,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Auto-Scan Range",
           "example": "[\"ALL\"]",
           "member": "string",
           "name": "ScanType",
@@ -24887,7 +24887,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Valid values: `0` (available for trial and purchase); `1` (available for purchase only after failed trial review or trial expiration); `2` (trial effective); `3` (Pro Edition effective); `4` (Pro Edition expired).",
+          "document": "<p>0: available for trial application and purchase; 1: purchase only (including failed trial review and expired trial); 2: trial active; 3: Pro Edition active; 4: Pro Edition expired</p>",
           "example": "0",
           "member": "int64",
           "name": "State",
@@ -24897,7 +24897,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Total resource cores = total protected cores + unprotected cores</p>",
           "example": "10",
           "member": "uint64",
           "name": "AllCoresCnt",
@@ -24907,7 +24907,7 @@
         },
         {
           "disabled": false,
-          "document": "Total number of protected cores. It is the sum of the number of purchased cores, the number of free trial cores, and the number of elastic billing cores.",
+          "document": "<p>Total protected cores = purchased cores + trial granted cores + elastic billing cores</p>",
           "example": "164",
           "member": "uint64",
           "name": "CoresCnt",
@@ -24917,7 +24917,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Unprotected cores (number of resource cores with protection not enabled)</p>",
           "example": "10",
           "member": "uint64",
           "name": "UndefendCoresCnt",
@@ -24927,7 +24927,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of purchased cores",
+          "document": "<p>Number of purchased cores</p>",
           "example": "15",
           "member": "uint64",
           "name": "AuthorizedCoresCnt",
@@ -24937,7 +24937,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of free trial cores for Pro Edition.",
+          "document": "<p>Trial giveaway of Pro Edition cores</p>",
           "example": "10",
           "member": "int64",
           "name": "GivenAuthorizedCoresCnt",
@@ -24947,7 +24947,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Current number of elastic billing cores</p>",
           "example": "10",
           "member": "uint64",
           "name": "CurrentFlexibleCoresCnt",
@@ -24957,7 +24957,7 @@
         },
         {
           "disabled": false,
-          "document": "Image count",
+          "document": "<p>Number of images.</p>",
           "example": "164",
           "member": "uint64",
           "name": "ImageCnt",
@@ -24967,7 +24967,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of licensed images",
+          "document": "<p>Number of licensed images</p>",
           "example": "12",
           "member": "uint64",
           "name": "AuthorizedImageCnt",
@@ -24977,7 +24977,7 @@
         },
         {
           "disabled": false,
-          "document": "Expiration time",
+          "document": "<p>Expiration time.</p>",
           "example": "2021-05-28 00:00:00",
           "member": "string",
           "name": "ExpirationTime",
@@ -24987,7 +24987,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of purchased image licenses",
+          "document": "<p>Number of purchased image licenses</p>",
           "example": "143",
           "member": "uint64",
           "name": "PurchasedAuthorizedCnt",
@@ -24997,7 +24997,7 @@
         },
         {
           "disabled": false,
-          "document": "0 indicates the default status (it has not been set by the user, namely the initial status); 1 indicates automatic renewal; 2 indicates explicit non-automatic renewal (it has been set by the user).",
+          "document": "<p>0 indicates the default state (not set by the user, i.e., the initial state), 1 indicates auto-renewal, and 2 indicates explicitly no auto-renewal (set by the user).</p>",
           "example": "0",
           "member": "int64",
           "name": "AutomaticRenewal",
@@ -25007,7 +25007,7 @@
         },
         {
           "disabled": false,
-          "document": "Complimentary image licenses during the trial period may expire.",
+          "document": "<p>Complimentary image licenses during the trial period may expire.</p>",
           "example": "500",
           "member": "uint64",
           "name": "GivenAuthorizedCnt",
@@ -25017,7 +25017,7 @@
         },
         {
           "disabled": false,
-          "document": "Start time.",
+          "document": "<p>Start time</p>",
           "example": "2021-05-28 00:00:00",
           "member": "string",
           "name": "BeginTime",
@@ -25027,7 +25027,7 @@
         },
         {
           "disabled": false,
-          "document": "Substatus (specific meaning depending on the State field)\nValid values when State is 4: ISOLATE, TERMINATED.",
+          "document": "<p>Sub-status (specific meaning depending on the State field)<br>When State is 4, valid values: ISOLATE (isolated) DESTROED (terminated)</p>",
           "example": "DESTROED",
           "member": "string",
           "name": "SubState",
@@ -25037,7 +25037,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing key.",
+          "document": "<p>Billing key</p>",
           "example": "sv_yunjing_css_pem",
           "member": "string",
           "name": "InquireKey",
@@ -25047,7 +25047,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Protection policy</p>",
           "example": "Part",
           "member": "string",
           "name": "DefendPolicy",
@@ -25057,7 +25057,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Upper limit of elastic billing cores</p>",
           "example": "5000",
           "member": "uint64",
           "name": "FlexibleCoresLimit",
@@ -25067,7 +25067,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Number of cores in the protected cluster</p>",
           "example": "48",
           "member": "uint64",
           "name": "DefendClusterCoresCnt",
@@ -25077,7 +25077,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Protected host cores</p>",
           "example": "22",
           "member": "uint64",
           "name": "DefendHostCoresCnt",
@@ -25087,10 +25087,20 @@
         },
         {
           "disabled": false,
-          "document": "Number of trial cores for Pro Edition.",
+          "document": "<p>Number of cores of the Pro Edition for trial use</p>",
           "example": "0",
           "member": "uint64",
           "name": "TrialCoresCnt",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of machines with zero protection containers.</p>",
+          "example": "0",
+          "member": "uint64",
+          "name": "NoContainerCoresCnt",
           "output_required": false,
           "type": "int",
           "value_allowed_null": false
@@ -33405,11 +33415,11 @@
       "usage": "out"
     },
     "ImageInfo": {
-      "document": "Basic image information",
+      "document": "Basic mirror information",
       "members": [
         {
           "disabled": false,
-          "document": "Instance name",
+          "document": "Instance name.",
           "example": "instanceName-01",
           "member": "string",
           "name": "InstanceName",
@@ -33431,7 +33441,7 @@
         },
         {
           "disabled": false,
-          "document": "Image name",
+          "document": "Image name.",
           "example": "imageName-01",
           "member": "string",
           "name": "ImageName",
@@ -33453,7 +33463,7 @@
         },
         {
           "disabled": false,
-          "document": "Forced scan",
+          "document": "Force scan",
           "example": "true",
           "member": "string",
           "name": "Force",
@@ -33464,7 +33474,7 @@
         },
         {
           "disabled": false,
-          "document": "Image ID",
+          "document": "Image id",
           "example": "sha256:1319b1eaa0b7bcebae63af321fa67559b9517e8494060403d083bb3508fe52c8",
           "member": "string",
           "name": "ImageDigest",
@@ -33497,7 +33507,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance ID",
+          "document": "Instance ID.",
           "example": "instanceid-01",
           "member": "string",
           "name": "InstanceId",
@@ -34466,7 +34476,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Billing item",
+          "document": "Billing item.",
           "example": "sv_yunjing_cssil_image",
           "member": "string",
           "name": "InquireKey",
@@ -34476,7 +34486,7 @@
         },
         {
           "disabled": false,
-          "document": "Total Capacity",
+          "document": "Total capacity",
           "example": "1",
           "member": "uint64",
           "name": "Capcity",
@@ -34506,7 +34516,7 @@
         },
         {
           "disabled": false,
-          "document": "End time",
+          "document": "End time.",
           "example": "2024-12-24 13:01:18",
           "member": "string",
           "name": "EndTime",
@@ -34516,7 +34526,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing status\nPending purchase\nNormal: Normal.\nIsolate",
+          "document": "Billing status\nPending: To be purchased\nNormal: normal.\nIsolate",
           "example": "Normal",
           "member": "string",
           "name": "PurchaseStatus",
@@ -39719,11 +39729,11 @@
       "usage": "out"
     },
     "ProjectInfo": {
-      "document": "The project to which the host belongs",
+      "document": "Host Project Ownership",
       "members": [
         {
           "disabled": false,
-          "document": "Project name",
+          "document": "Project name.",
           "example": "myproj",
           "member": "string",
           "name": "ProjectName",
@@ -39733,7 +39743,7 @@
         },
         {
           "disabled": false,
-          "document": "Project ID",
+          "document": "Project ID.",
           "example": "1307260",
           "member": "int64",
           "name": "ProjectID",
@@ -43252,11 +43262,11 @@
       "type": "object"
     },
     "TagInfo": {
-      "document": "Host tag information",
+      "document": "Host Tag Information",
       "members": [
         {
           "disabled": false,
-          "document": "Tag key",
+          "document": "Tag key.",
           "example": "tag-key",
           "member": "string",
           "name": "TagKey",
@@ -43266,7 +43276,7 @@
         },
         {
           "disabled": false,
-          "document": "Tag value",
+          "document": "Tag value.",
           "example": "tag-value",
           "member": "string",
           "name": "TagValue",
@@ -43720,7 +43730,7 @@
         },
         {
           "disabled": false,
-          "document": "Scheduled scan time",
+          "document": "The time for scheduled scan",
           "example": "18:10",
           "member": "string",
           "name": "ScanTime",
@@ -43729,7 +43739,7 @@
         },
         {
           "disabled": false,
-          "document": "Array of the scanned trojan types",
+          "document": "Array of Trojan horse types to scan",
           "example": "[   \"CVE\",   \"VIRUS\",   \"RISK\" ]",
           "member": "string",
           "name": "ScanType",
@@ -43738,7 +43748,7 @@
         },
         {
           "disabled": false,
-          "document": "Scanned image",
+          "document": "Scan image",
           "example": "[\"sha256:80beff5ff34259ceb7fbe9cd10b2d94912618f5b5595f23434*****\n\"]",
           "member": "ImageInfo",
           "name": "Images",
@@ -43756,7 +43766,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of the image to be scanned",
+          "document": "Scan Image ID",
           "example": "124",
           "member": "uint64",
           "name": "Id",
@@ -43765,7 +43775,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to scan for the latest version",
+          "document": "Whether to Scan the Latest Version",
           "example": "false",
           "member": "bool",
           "name": "Latest",
@@ -43774,7 +43784,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether There Are Running Containers",
           "example": "false",
           "member": "bool",
           "name": "ContainerRunning",
@@ -43783,7 +43793,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Scan end time",
           "example": "20:00",
           "member": "string",
           "name": "ScanEndTime",
@@ -43792,7 +43802,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Scan Scope. 0: All Images; 1: Custom Images; 2: Recommended Scan Images",
           "example": "1",
           "member": "uint64",
           "name": "ScanScope",
@@ -43801,7 +43811,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Repository Type: tcr, ccr, harbor",
           "example": "tcr",
           "member": "string",
           "name": "RegistryType",
@@ -43810,10 +43820,19 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Namespace",
           "example": "tke-images",
           "member": "string",
           "name": "Namespace",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "IDs of excluded image assets.",
+          "example": "121",
+          "member": "uint64",
+          "name": "ExcludeImageAssetIds",
           "required": false,
           "type": "list"
         }

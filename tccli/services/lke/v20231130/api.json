@@ -610,11 +610,11 @@
   },
   "objects": {
     "AICallConfig": {
-      "document": "",
+      "document": "Intelligent call",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Enable the voice interaction feature",
           "example": "false",
           "member": "bool",
           "name": "EnableVoiceInteract",
@@ -625,7 +625,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Enable voice call",
           "example": "false",
           "member": "bool",
           "name": "EnableVoiceCall",
@@ -636,7 +636,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Enable digital human",
           "example": "false",
           "member": "bool",
           "name": "EnableDigitalHuman",
@@ -647,7 +647,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Voice type configuration",
           "example": " ",
           "member": "VoiceConfig",
           "name": "Voice",
@@ -658,7 +658,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Digital human configuration",
           "example": " ",
           "member": "DigitalHumanConfig",
           "name": "DigitalHuman",
@@ -671,11 +671,11 @@
       "usage": "both"
     },
     "AgentDebugInfo": {
-      "document": "",
+      "document": "Agent debugging information",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Input information of the tool and large model, json",
           "example": "输入",
           "member": "string",
           "name": "Input",
@@ -686,7 +686,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Output information of tools and large models, in json format",
           "example": "输出",
           "member": "string",
           "name": "Output",
@@ -697,7 +697,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Model name.",
           "example": "模型名",
           "member": "string",
           "name": "ModelName",
@@ -1080,11 +1080,11 @@
       "usage": "both"
     },
     "AgentTask": {
-      "document": "",
+      "document": "Intelligent Agent task information",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Task serial number</p>",
           "example": "1",
           "member": "int64",
           "name": "Index",
@@ -1095,7 +1095,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Task content</p>",
           "example": "搜索信息",
           "member": "string",
           "name": "Content",
@@ -1106,7 +1106,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Task status.</p>",
           "example": "success",
           "member": "string",
           "name": "Status",
@@ -2278,11 +2278,11 @@
       "usage": "both"
     },
     "Content": {
-      "document": "",
+      "document": "Dialogue record content details",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Message content type<br>text: text<br>image: image<br>file: file<br>option_cards: tabs<br>custom_params: custom business parameters<br>sandbox: cloud desktop<br>custom_variables: custom input parameters<br>web_search: web search content<br>file_collection: file collection information<br>widget: widget info<br>widget_action: client-side widget action information</p>",
           "example": "text",
           "member": "string",
           "name": "Type",
@@ -2293,7 +2293,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Text content</p>",
           "example": "你好",
           "member": "string",
           "name": "Text",
@@ -2304,7 +2304,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Reference info.</p>",
           "example": "无",
           "member": "QuoteInfo",
           "name": "QuoteInfos",
@@ -2315,7 +2315,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Reference information</p>",
           "example": "无",
           "member": "ContentReference",
           "name": "References",
@@ -2326,7 +2326,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Image information.</p>",
           "example": "无",
           "member": "ImageInfoContent",
           "name": "Image",
@@ -2337,7 +2337,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>File information</p>",
           "example": "无",
           "member": "FileInfoContent",
           "name": "File",
@@ -2348,7 +2348,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Tab info.</p>",
           "example": "[\"选项1\",\"选项2\"]",
           "member": "string",
           "name": "OptionCards",
@@ -2359,7 +2359,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>User-customized business parameter information.</p>",
           "example": "[\"{\\\"name\\\":\\\"test\\\"}\"]",
           "member": "string",
           "name": "CustomParams",
@@ -2370,7 +2370,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Custom Variable</p>",
           "example": "[\"{\\\"name\\\":\\\"test\\\"}\"]",
           "member": "string",
           "name": "CustomVariables",
@@ -2381,7 +2381,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Sandbox information</p>",
           "example": "无",
           "member": "SandboxContent",
           "name": "Sandbox",
@@ -2392,7 +2392,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Web page search content</p>",
           "example": "无",
           "member": "WebSearchContent",
           "name": "WebSearch",
@@ -2403,7 +2403,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>File information collection</p>",
           "example": "无",
           "member": "FileCollection",
           "name": "FileCollection",
@@ -2414,7 +2414,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Widget information.</p>",
           "example": "无",
           "member": "Widget",
           "name": "Widget",
@@ -2425,7 +2425,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Widget action information</p>",
           "example": "无",
           "member": "WidgetAction",
           "name": "WidgetAction",
@@ -2436,7 +2436,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Task List</p>",
           "example": "无",
           "member": "AgentTask",
           "name": "Tasks",
@@ -2447,7 +2447,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Questionnaire information</p>",
           "example": "无",
           "member": "Questionnaire",
           "name": "Questionnaire",
@@ -2458,7 +2458,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Tab mode</p>",
           "example": "1",
           "member": "int64",
           "name": "OptionMode",
@@ -2466,16 +2466,38 @@
           "required": false,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>MCP APP information returned</p>",
+          "example": "无",
+          "member": "ConversationMcpApp",
+          "name": "McpApp",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Application or workflow resource product</p>",
+          "example": "无",
+          "member": "ConversationResourceArtifact",
+          "name": "Resource",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
     },
     "ContentReference": {
-      "document": "",
+      "document": "Session content reference information",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Source index ID",
           "example": "0",
           "member": "int64",
           "name": "Index",
@@ -2486,7 +2508,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Reference source name",
           "example": "示例引文",
           "member": "string",
           "name": "Name",
@@ -2497,7 +2519,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Reference source type\n1: QA\n2: Document fragment\n4: Online retrieved content",
           "example": "1",
           "member": "int64",
           "name": "Type",
@@ -2508,7 +2530,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Document fragment reference",
           "example": "无",
           "member": "DocReference",
           "name": "DocRefer",
@@ -2519,7 +2541,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "QA reference",
           "example": "无",
           "member": "QaReference",
           "name": "QaRefer",
@@ -2530,7 +2552,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Reference information for online retrieval content",
           "example": "无",
           "member": "WebSearchReference",
           "name": "WebSearchRefer",
@@ -2617,6 +2639,206 @@
         }
       ],
       "usage": "out"
+    },
+    "ConversationAppArtifact": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "https://******************/static/adp/appavatar/default.png",
+          "member": "string",
+          "name": "AppAvatar",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "209*************216",
+          "member": "string",
+          "name": "AppId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "4",
+          "member": "int64",
+          "name": "AppPattern",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "****助手",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "Vf****lv",
+          "member": "string",
+          "name": "SpaceId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ConversationMcpApp": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "86866d29-3c28-4d41-9b5b-b86a72c62ccb",
+          "member": "string",
+          "name": "PluginId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "ui://pd/query-records-v1.0.0",
+          "member": "string",
+          "name": "ResourceUri",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "73251347-32c8-49a1-bea5-32a6aeb82ebc",
+          "member": "string",
+          "name": "ThreadId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "{\"_meta\":{\"viewUUID\":\"400db013-2eb3-480e-9d94-356715c3d989\"},\"content\":[{\"text\":\"已打开加班申请表单，请员工在表单中核对并补全信息，然后点击「确认提交」。表单",
+          "member": "string",
+          "name": "ToolResult",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ConversationResourceArtifact": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "ConversationAppArtifact",
+          "name": "App",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2",
+          "member": "int64",
+          "name": "Type",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "ConversationWorkflowArtifact",
+          "name": "Workflow",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ConversationWorkflowArtifact": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "209*************680",
+          "member": "string",
+          "name": "AppId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "****工作流",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "Vf****lv",
+          "member": "string",
+          "name": "SpaceId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "28c*****-d**3-4**6-8**5-*********510",
+          "member": "string",
+          "name": "WorkflowId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "CreateAppRequest": {
       "document": "CreateApp request structure.",
@@ -5884,11 +6106,11 @@
       "type": "object"
     },
     "DigitalHumanConfig": {
-      "document": "",
+      "document": "Digital human configuration",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Digital human asset key",
           "example": "qPfqrKkXGihmCqbJM2mZgkZGvKG1dFdvsLplgctolz4=",
           "member": "string",
           "name": "AssetKey",
@@ -5899,7 +6121,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Digital human name",
           "example": "呦呦",
           "member": "string",
           "name": "Name",
@@ -5910,7 +6132,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "image",
           "example": "https://xxxx.png",
           "member": "string",
           "name": "Avatar",
@@ -5921,7 +6143,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Preview image",
           "example": "https://xxxx.png",
           "member": "string",
           "name": "PreviewUrl",
@@ -5934,11 +6156,11 @@
       "usage": "both"
     },
     "DocFilterFlag": {
-      "document": "",
+      "document": "Filter flag bit for the document list",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Identifier bit",
           "example": "is_created_qa",
           "member": "string",
           "name": "Flag",
@@ -5947,7 +6169,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Identifier value",
           "example": "true",
           "member": "bool",
           "name": "Value",
@@ -5958,33 +6180,33 @@
       "usage": "in"
     },
     "DocReference": {
-      "document": "",
+      "document": "Documentation reference source info",
       "members": [
         {
           "disabled": false,
-          "document": "",
-          "example": "1982108829427482944",
-          "member": "uint64",
+          "document": "<p>Document business ID</p>",
+          "example": "2066875267954053952",
+          "member": "string",
           "name": "DocBizId",
           "output_required": false,
           "required": false,
-          "type": "int",
+          "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "",
-          "example": "1999472789655812224",
-          "member": "uint64",
+          "document": "<p>Document fragment reference ID</p>",
+          "example": "2066875420232454976",
+          "member": "string",
           "name": "ReferBizId",
           "output_required": false,
           "required": false,
-          "type": "int",
+          "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Document name</p>",
           "example": "讲师资料.txt",
           "member": "string",
           "name": "DocName",
@@ -5995,18 +6217,18 @@
         },
         {
           "disabled": false,
-          "document": "",
-          "example": "1999472789655812224",
-          "member": "uint64",
+          "document": "<p>Business ID of the knowledge base where the document resides</p>",
+          "example": "2066582300093965632",
+          "member": "string",
           "name": "KnowledgeBizId",
           "output_required": false,
           "required": false,
-          "type": "int",
+          "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Name of the knowledge base where the document resides</p>",
           "example": "默认知识库",
           "member": "string",
           "name": "KnowledgeName",
@@ -6017,7 +6239,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Document Access Address</p>",
           "example": "https://",
           "member": "string",
           "name": "Url",
@@ -6136,11 +6358,11 @@
       "usage": "out"
     },
     "DuplicateFileHandle": {
-      "document": "",
+      "document": "Processing method for duplicate documents",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Document repetition judgment method. 1: Judge whether to repeat by document content, that is, the cos_hash field.",
           "example": "1",
           "member": "uint64",
           "name": "CheckType",
@@ -6149,7 +6371,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Duplicate document processing method. 1: return an error. 2: skip and return the business ID of the duplicate document.",
           "example": "1",
           "member": "uint64",
           "name": "HandleType",
@@ -6341,11 +6563,11 @@
       "type": "object"
     },
     "ExtraInfo": {
-      "document": "",
+      "document": "Extension Information",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "ECharts information",
           "example": "[\"ECharts\"]",
           "member": "string",
           "name": "EChartsInfo",
@@ -6358,11 +6580,11 @@
       "usage": "both"
     },
     "FileCollection": {
-      "document": "",
+      "document": "File collection information",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Maximum number of files to be uploaded",
           "example": "10",
           "member": "int64",
           "name": "MaxFileCount",
@@ -6373,7 +6595,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Supported upload file types",
           "example": "[\"pnd\",\"txt\"]",
           "member": "string",
           "name": "SupportedFileTypes",
@@ -6452,11 +6674,11 @@
       "usage": "out"
     },
     "FileInfoContent": {
-      "document": "",
+      "document": "File information content",
       "members": [
         {
           "disabled": true,
-          "document": "",
+          "document": "<p>DocBizId returned by the real-time document parsing API</p>",
           "example": "0",
           "member": "string",
           "name": "DocBizId",
@@ -6467,7 +6689,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>File name.</p>",
           "example": "讲师资料.txt",
           "member": "string",
           "name": "FileName",
@@ -6478,7 +6700,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>File type</p>",
           "example": "txt",
           "member": "string",
           "name": "FileType",
@@ -6489,7 +6711,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>File size in bytes</p>",
           "example": "100",
           "member": "string",
           "name": "FileSize",
@@ -6500,7 +6722,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>File URL</p>",
           "example": "http://sample.com",
           "member": "string",
           "name": "FileUrl",
@@ -6511,7 +6733,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>doc_id returned by the real-time document parsing API.</p>",
           "example": "77778856",
           "member": "string",
           "name": "DocId",
@@ -6522,7 +6744,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>File creation time</p>",
           "example": "1775528923977",
           "member": "string",
           "name": "CreateTime",
@@ -6530,16 +6752,38 @@
           "required": false,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Local path of the file in the sandbox</p>",
+          "example": "/workdir/123.txt",
+          "member": "string",
+          "name": "LocalPath",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>File moderation status</p><p>Enumeration values:</p><ul><li>1: under review</li><li>2: pass review</li><li>3: fail review</li></ul>",
+          "example": "2",
+          "member": "uint64",
+          "name": "AuditStatus",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
     },
     "FilterItem": {
-      "document": "",
+      "document": "Filter criteria.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Filter the content.\nFor example, you can use \"AuditStatus\" to filter by review status.",
           "example": "AuditStatus",
           "member": "string",
           "name": "FilterKey",
@@ -6548,7 +6792,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Filtering criteria.\nFor example, for the filter content \"AuditStatus\", use the following filtering conditions:\n\"ContentFailed\": \"Content review failed\"\n\"PictureFailed\": \"Image review failed\",\n\"ContentAndPictureFailed\": \"Image and content review failed\",",
           "example": "[\"ContentFailed\",\"PictureFailed\",\"ContentAndPictureFailed\"]",
           "member": "string",
           "name": "FilterValue",
@@ -7721,11 +7965,11 @@
       "usage": "both"
     },
     "IntentAchievement": {
-      "document": "",
+      "document": "Method to attain the intent",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Intent attainment method. `qa`: QA reply, `doc`: document reply, `workflow`: workflow reply, `llm`: large model reply.",
           "example": "qa",
           "member": "string",
           "name": "Name",
@@ -7736,7 +7980,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Description of the method to attain the intent",
           "example": "问答回复",
           "member": "string",
           "name": "Desc",
@@ -12754,44 +12998,44 @@
       "usage": "in"
     },
     "QaReference": {
-      "document": "",
+      "document": "Reference information of the Q&A pair",
       "members": [
         {
           "disabled": false,
-          "document": "",
-          "example": "1982108829427482944",
-          "member": "uint64",
+          "document": "<p>QA business ID</p>",
+          "example": "2066875267954053952",
+          "member": "string",
           "name": "QaBizId",
           "output_required": false,
           "required": false,
-          "type": "int",
+          "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "",
-          "example": "1999472789655812224",
-          "member": "uint64",
+          "document": "<p>Document fragment reference ID</p>",
+          "example": "2066875420232454976",
+          "member": "string",
           "name": "ReferBizId",
           "output_required": false,
           "required": false,
-          "type": "int",
+          "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "",
-          "example": "1972219265921606848",
-          "member": "uint64",
+          "document": "<p>Business ID of the knowledge base where the QA resides</p>",
+          "example": "2066582300093965632",
+          "member": "string",
           "name": "KnowledgeBizId",
           "output_required": false,
           "required": false,
-          "type": "int",
+          "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Name of the knowledge base where the QA resides</p>",
           "example": "默认知识库",
           "member": "string",
           "name": "KnowledgeName",
@@ -12804,11 +13048,11 @@
       "usage": "both"
     },
     "QuestionOption": {
-      "document": "",
+      "document": "Optional issue",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Tag of the option</p>",
           "example": "确认并开始执行",
           "member": "string",
           "name": "Label",
@@ -12819,7 +13063,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Description of the option.</p>",
           "example": "按上述3个步骤执行：搜索新闻→整理内容→创建Word文档",
           "member": "string",
           "name": "Description",
@@ -12832,11 +13076,11 @@
       "usage": "both"
     },
     "Questionnaire": {
-      "document": "",
+      "document": "Questionnaire information",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Questionnaire title</p>",
           "example": "任务确认",
           "member": "string",
           "name": "Title",
@@ -12847,7 +13091,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Question list of the questionnaire</p>",
           "example": "无",
           "member": "QuestionnaireQuestion",
           "name": "Questions",
@@ -12858,7 +13102,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>List of answers to the questionnaire</p>",
           "example": "无",
           "member": "QuestionnaireQuestionAnswer",
           "name": "Answers",
@@ -12871,11 +13115,11 @@
       "usage": "both"
     },
     "QuestionnaireQuestion": {
-      "document": "",
+      "document": "Question of the questionnaire",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Serial number of the issue</p>",
           "example": "0",
           "member": "int64",
           "name": "Index",
@@ -12886,7 +13130,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Content of the issue</p>",
           "example": "请确认以下任务步骤是否符合您的需求",
           "member": "string",
           "name": "Question",
@@ -12897,7 +13141,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Problem type</p>",
           "example": "1",
           "member": "int64",
           "name": "Type",
@@ -12908,7 +13152,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Required or optional</p>",
           "example": "true",
           "member": "bool",
           "name": "Required",
@@ -12919,7 +13163,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Options for the question</p>",
           "example": "无",
           "member": "QuestionOption",
           "name": "Options",
@@ -12932,11 +13176,11 @@
       "usage": "both"
     },
     "QuestionnaireQuestionAnswer": {
-      "document": "",
+      "document": "Answer to the questionnaire question",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Issue.</p>",
           "example": "请确认以下任务步骤是否符合您的需求",
           "member": "string",
           "name": "Question",
@@ -12947,7 +13191,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Selected answer tag.</p>",
           "example": "[\"确认并开始执行\"]",
           "member": "string",
           "name": "SelectedLabels",
@@ -13839,11 +14083,11 @@
       "usage": "both"
     },
     "SandboxContent": {
-      "document": "",
+      "document": "Sandbox information content",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "URL address of the sandbox",
           "example": "http://sample.com",
           "member": "string",
           "name": "Url",
@@ -13854,7 +14098,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "URL address for opening the sandbox through a browser",
           "example": "http://sample.com",
           "member": "string",
           "name": "DisplayUrl",
@@ -13865,7 +14109,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Sandbox output content",
           "example": "{\"content\":\"test\"}",
           "member": "string",
           "name": "Content",
@@ -14828,11 +15072,11 @@
       "usage": "out"
     },
     "UpdatePeriodInfo": {
-      "document": "",
+      "document": "Update time policy",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Document update frequency type: 0 does not update. -H 1-hour granularity. Currently only support 24 (1 day), 72 (3 days), and 168 (7 days). Only valid for the Tencent document type when source=2.",
           "example": "0",
           "member": "uint64",
           "name": "UpdatePeriodH",
@@ -15104,11 +15348,11 @@
       "type": "object"
     },
     "VoiceConfig": {
-      "document": "",
+      "document": "Timbre parameters",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Public cloud timbre id",
           "example": "501001",
           "member": "uint64",
           "name": "VoiceType",
@@ -15119,7 +15363,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Timbre key",
           "example": "tts_timbre_yuehua",
           "member": "string",
           "name": "TimbreKey",
@@ -15130,7 +15374,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Timbre name.",
           "example": "月华",
           "member": "string",
           "name": "VoiceName",
@@ -15143,11 +15387,11 @@
       "usage": "both"
     },
     "WebSearchContent": {
-      "document": "",
+      "document": "Web page search content",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Web search result, a string in json format",
           "example": "[{\"title\":\"测试页面\",\"link\":\"https://sample.com\",\"snippet\":\"这是一个测试页面\",\"position\":1}]",
           "member": "string",
           "name": "Content",
@@ -15160,11 +15404,11 @@
       "usage": "both"
     },
     "WebSearchReference": {
-      "document": "",
+      "document": "Online retrieval content reference details",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Webpage URL",
           "example": "http://sample.com",
           "member": "string",
           "name": "Url",
@@ -15177,11 +15421,11 @@
       "usage": "both"
     },
     "Widget": {
-      "document": "",
+      "document": "Widget structure of the dialogue side",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Widget configuration ID\n",
           "example": "96317cc9-9628-82d5-8cb2-6232635d4ef2\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
           "member": "string",
           "name": "WidgetId",
@@ -15192,7 +15436,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Widget instance ID",
           "example": "210b4ce2-680a-87c7-eb40-2f3c9d49c456\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
           "member": "string",
           "name": "WidgetRunId",
@@ -15203,7 +15447,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Widget display data",
           "example": "",
           "member": "string",
           "name": "View",
@@ -15214,7 +15458,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Widget status information",
           "example": "{\"message\":\"widget\"}",
           "member": "string",
           "name": "State",
@@ -15225,7 +15469,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Widget position",
           "example": "10",
           "member": "int64",
           "name": "Position",
@@ -15236,7 +15480,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Base64-encoded Widget information.",
           "example": "eyJpZCI6ImU3Y2VmZjE3LTlhODEtNDJkZS05N2Q",
           "member": "string",
           "name": "EncodedWidget",
@@ -15247,7 +15491,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "payload of the user's last submission",
           "example": "{\"message\":\"widget\"}",
           "member": "string",
           "name": "Payload",
@@ -15260,11 +15504,11 @@
       "usage": "both"
     },
     "WidgetAction": {
-      "document": "",
+      "document": "Widget action submission structure for the dialogue side",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Widget configuration ID",
           "example": "96317cc9-9628-82d5-8cb2-6232635d4ef2",
           "member": "string",
           "name": "WidgetId",
@@ -15275,7 +15519,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Widget instance ID",
           "example": "210b4ce2-680a-87c7-eb40-2f3c9d49c456",
           "member": "string",
           "name": "WidgetRunId",
@@ -15286,7 +15530,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Widget action",
           "example": "sys.chat",
           "member": "string",
           "name": "ActionType",
@@ -15297,7 +15541,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Data submitted by the Widget action",
           "example": "{\"message\":\"widget\"}",
           "member": "string",
           "name": "Payload",
@@ -15393,11 +15637,11 @@
       "usage": "both"
     },
     "WorkflowInfo": {
-      "document": "",
+      "document": "Workflow information.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Workflow ID</p>",
           "example": "07d859ac-ec6a-0387-3121-a5ca6514e880",
           "member": "string",
           "name": "WorkflowId",
@@ -15408,7 +15652,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Workflow name.</p>",
           "example": "挂号工作流",
           "member": "string",
           "name": "WorkflowName",
@@ -15419,7 +15663,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Workflow run ID</p>",
           "example": "07d859ac-ec6a-0387-3121-a5ca6514e880",
           "member": "string",
           "name": "WorkflowRunId",
@@ -15430,7 +15674,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Tab</p>",
           "example": "[\"选项A\",\"选项B\"]",
           "member": "string",
           "name": "OptionCards",
@@ -15441,7 +15685,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Output result of multiple bubbles</p>",
           "example": "[\"是的\",\"请稍等，正在为您查询\"]",
           "member": "string",
           "name": "Outputs",
@@ -15452,7 +15696,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Workflow release time, unix timestamp.</p>",
           "example": "1746800121",
           "member": "string",
           "name": "WorkflowReleaseTime",
@@ -15463,7 +15707,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Workflow multi-bubble output</p>",
           "example": "无",
           "member": "Content",
           "name": "Contents",
@@ -15474,7 +15718,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Flag indicating whether the tab is single-selection or dual-selection</p><p>Enumeration values:</p><ul><li>0: single selection</li><li>1: multiple selection</li></ul>",
           "example": "0",
           "member": "int64",
           "name": "OptionMode",

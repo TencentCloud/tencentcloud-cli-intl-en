@@ -7,6 +7,13 @@
       "output": "ApplyCardVerificationExternalResponse",
       "status": "online"
     },
+    "ApplyOcrToken": {
+      "document": "This API retrieves a token before each call to the OCR SDK verification service. Save the token to initiate the verification process and retrieve the verification result after the process completes.",
+      "input": "ApplyOcrTokenRequest",
+      "name": "Applies for an OCR-SDK authentication token",
+      "output": "ApplyOcrTokenResponse",
+      "status": "online"
+    },
     "ExtractDocMulti": {
       "document": "This API supports identifying and extracting field information in structured scenarios such as complex scenarios and multiple formats. Key scenarios include: finance, health care, transportation, travel, insurance. Click [experience now](https://ocrdemo.cloud.tencent.com/).\nThis API is used to set the alias SmartStructuralPro.\n\nThe default API request rate limit is 5 requests per second.",
       "input": "ExtractDocMultiRequest",
@@ -33,6 +40,13 @@
       "input": "GetCardVerificationExternalResultRequest",
       "name": "Retrieve the card recognition result",
       "output": "GetCardVerificationExternalResultResponse",
+      "status": "online"
+    },
+    "GetOcrVerificationResult": {
+      "document": "This API retrieves the SDK verification result.",
+      "input": "GetOcrVerificationResultRequest",
+      "name": "Obtains the SDK verification result",
+      "output": "GetOcrVerificationResultResponse",
       "status": "online"
     },
     "HKIDCardOCR": {
@@ -197,9 +211,9 @@
       "status": "online"
     },
     "RecognizeThaiIDCardOCR": {
-      "document": "This API is used to recognize the fields on a Thai identity card, including name in Thai, name in English, address, date of birth, identification number, date of issue, and date of expiry.\n\nA maximum of 10 requests can be initiated per second for this API.",
+      "document": "Domain name for API request: ocr.intl.tencentcloudapi.com.\n\nThis API is used to recognize the fields on a Thai identity card, including name in Thai, name in English, address, date of birth, identification number, date of issue, and date of expiry.\n\nA maximum of 10 requests can be initiated per second for this API.",
       "input": "RecognizeThaiIDCardOCRRequest",
-      "name": "Recognizes a Thai identity card",
+      "name": "RecognizeThaiIDCardOCR",
       "output": "RecognizeThaiIDCardOCRResponse",
       "status": "online"
     },
@@ -232,11 +246,11 @@
   },
   "objects": {
     "AddressInfo": {
-      "document": "Overseas document recognition address information.",
+      "document": "Overseas document recognition address information",
       "members": [
         {
           "disabled": false,
-          "document": "Country.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Country</p>",
           "example": "中国",
           "member": "string",
           "name": "Country",
@@ -246,7 +260,7 @@
         },
         {
           "disabled": false,
-          "document": "Postal code.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Postal code</p>",
           "example": "7****0",
           "member": "string",
           "name": "PostalCode",
@@ -256,7 +270,7 @@
         },
         {
           "disabled": false,
-          "document": "Sub-region or state/province.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Sub-region</p>",
           "example": "**省",
           "member": "string",
           "name": "Subdivision",
@@ -266,7 +280,7 @@
         },
         {
           "disabled": false,
-          "document": "District or county.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>District</p>",
           "example": "**区",
           "member": "string",
           "name": "District",
@@ -276,7 +290,7 @@
         },
         {
           "disabled": false,
-          "document": "City name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>City</p>",
           "example": "西安",
           "member": "string",
           "name": "City",
@@ -286,7 +300,7 @@
         },
         {
           "disabled": false,
-          "document": "Subdistrict or township.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Sub-district office</p>",
           "example": "xx办事处",
           "member": "string",
           "name": "Subdistrict",
@@ -296,7 +310,7 @@
         },
         {
           "disabled": false,
-          "document": "Formatted complete address.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Complete address</p>",
           "example": "中国xx省xx市xx区xx办事处",
           "member": "string",
           "name": "FormattedAddress",
@@ -306,7 +320,7 @@
         },
         {
           "disabled": false,
-          "document": "First line of the address bar.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>First line of the address bar</p>",
           "example": "中国",
           "member": "string",
           "name": "LineOne",
@@ -316,7 +330,7 @@
         },
         {
           "disabled": false,
-          "document": "Second line of the address bar.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Second line of the address bar</p>",
           "example": "xx省",
           "member": "string",
           "name": "LineTwo",
@@ -326,7 +340,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the third line of the address bar.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Third line of the address bar</p>",
           "example": "xx市",
           "member": "string",
           "name": "LineThree",
@@ -336,7 +350,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the fourth line of the address bar.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Fourth line of the address bar</p>",
           "example": "xx区",
           "member": "string",
           "name": "LineFour",
@@ -346,7 +360,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the fifth line of the address bar.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Fifth line of the address bar</p>",
           "example": "xx办事处",
           "member": "string",
           "name": "LineFive",
@@ -490,6 +504,134 @@
           "example": "88ed374d-cfa7-4391-bcde-66b49f2f192b",
           "member": "string",
           "name": "CardVerificationToken",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ApplyOcrTokenRequest": {
+      "document": "ApplyOcrToken request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Country code. ISO 3166-1 Alpha-3 country/region code standard.",
+          "example": "HKG",
+          "member": "string",
+          "name": "Nationality",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Supported countries/regions and document types:\n\nMainland China: ID_CARD, PERMIT\nHong Kong: ID_CARD\nMacao: ID_CARD\nHong Kong/Macao/Taiwan: MAINLAND_PERMIT, HMT_RESIDENT_PERMIT\nThailand: ID_CARD, THA_PINK_CARD\nIndonesia: ID_CARD\nMalaysia: ID_CARD\nSingapore: ID_CARD\nPhilippines: PHL_UMID, PHL_VOTE_ID, PHL_TIN_ID, PHL_SSS_ID, DRIVING_LICENSE\nAny country/region: PASSPORT",
+          "example": "ID_CARD",
+          "member": "string",
+          "name": "CardType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "SDK-generated device-related encryption configuration information.",
+          "example": "xx2",
+          "member": "string",
+          "name": "EncryptedConfig",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to extract the portrait image from the document. false by default</p><p>Default value: false</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "ReturnHeadImage",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Maximum number of token retries</p><p>Value range: [1, 5]</p><p>Default value: 3</p>",
+          "example": "3",
+          "member": "int64",
+          "name": "RetryLimit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>SDK capture mode</p><p>Enumeration values:</p><ul><li>OCR_DETECT_MANUAL: Photo recognition mode. The system performs recognition after you tap to take a photo.</li><li>OCR_DETECT_AUTO_MANUAL: Automatic recognition mode. The system recognizes automatically, and you can switch to photo recognition after a recognition timeout.</li><li>OCR_DETECT_AUTO: Pure automatic recognition mode. The system recognizes automatically, and you cannot switch to photo recognition after a recognition timeout.</li><li>OCR_DETECT_AUTO_MULTI: Pure automatic recognition mode (multiple images). The system turns on the flash and automatically collects multiple document photos.</li></ul><p>Default value: OCR_DETECT_AUTO_MANUAL</p>",
+          "example": "OCR_DETECT_AUTO",
+          "member": "string",
+          "name": "OcrModeType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to allow uploading gallery images for recognition.</p><p>Default value: true</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "AllowUploadPhoto",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable ID card photo cropping (remove extra edges outside the document and automatically correct the shooting angle). It is false by default and only applicable to Mainland ID cards.</p><p>Default value: false</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "CropIdCard",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>SDK-supported recognition version mode</p><p>Enumeration values:</p><ul><li>BASIC: Basic version</li><li>ENHANCED: Enhanced version</li></ul><p>Default value: BASIC</p>",
+          "example": "ENHANCED",
+          "member": "string",
+          "name": "SdkVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "OCR automatic capture mode timeout (ms).\nValue range: [5000, 180000].\nDefault value: 20000.\nIf the value is below 5000, it is set to 5000; if above 180000, it is set to 180000.",
+          "example": "20000",
+          "member": "int64",
+          "name": "OcrAutoDetectTimeout",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ApplyOcrTokenResponse": {
+      "document": "ApplyOcrToken response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Token that identifies an SDK verification process. It is valid for 10 minutes. After the process completes, use this token to obtain the verification result information.",
+          "example": "8197EF936E23344018A8005538C7E739DB4",
+          "member": "string",
+          "name": "SdkToken",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Encryption configuration generated on the server side.",
+          "example": "xx1",
+          "member": "string",
+          "name": "EncryptedConfig",
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1700,11 +1842,11 @@
       "type": "object"
     },
     "GeneralCard": {
-      "document": "General card certificate information.",
+      "document": "General card certificate information",
       "members": [
         {
           "disabled": false,
-          "document": "ID number.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>ID number</p>",
           "example": "F8*****(9)",
           "member": "string",
           "name": "LicenseNumber",
@@ -1714,7 +1856,7 @@
         },
         {
           "disabled": false,
-          "document": "Personal number. \nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Personal number, returned when the identity document type is passport</p>",
           "example": "1***-****-*****4",
           "member": "string",
           "name": "PersonalNumber",
@@ -1724,7 +1866,7 @@
         },
         {
           "disabled": false,
-          "document": "Full name on the document.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Name</p>",
           "example": "A****** ******H",
           "member": "string",
           "name": "FullName",
@@ -1734,7 +1876,7 @@
         },
         {
           "disabled": false,
-          "document": "Full name in local language.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Localized name</p>",
           "example": "A****** ******H",
           "member": "string",
           "name": "FullNameLocal",
@@ -1744,7 +1886,7 @@
         },
         {
           "disabled": false,
-          "document": "First name or given name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Name</p>",
           "example": "R**A*S*",
           "member": "string",
           "name": "FirstName",
@@ -1754,7 +1896,7 @@
         },
         {
           "disabled": false,
-          "document": "First name in local language.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Localized name</p>",
           "example": "******H",
           "member": "string",
           "name": "FirstNameLocal",
@@ -1764,7 +1906,7 @@
         },
         {
           "disabled": false,
-          "document": "Middle name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Middle name</p>",
           "example": "R**A*S*",
           "member": "string",
           "name": "MiddleName",
@@ -1774,7 +1916,7 @@
         },
         {
           "disabled": false,
-          "document": "Middle name in local language.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Localized middle name</p>",
           "example": "******H",
           "member": "string",
           "name": "MiddleNameLocal",
@@ -1784,7 +1926,7 @@
         },
         {
           "disabled": false,
-          "document": "Last name or surname.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Last name</p>",
           "example": "A******",
           "member": "string",
           "name": "LastName",
@@ -1794,7 +1936,7 @@
         },
         {
           "disabled": false,
-          "document": "Last name in local language.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Localized last name</p>",
           "example": "A******",
           "member": "string",
           "name": "LastNameLocal",
@@ -1804,7 +1946,7 @@
         },
         {
           "disabled": false,
-          "document": "Gender on the document.\n- M: man.\n- F: woman.\n- X: other gender identity.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Gender on the document</p><ul><li>M: man</li><li>F: woman</li><li>X: other gender identity</li></ul>",
           "example": "M",
           "member": "string",
           "name": "Sex",
@@ -1814,7 +1956,7 @@
         },
         {
           "disabled": false,
-          "document": "Date of birth.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Date of birth</p>",
           "example": "1993-06-29",
           "member": "string",
           "name": "Birthday",
@@ -1824,7 +1966,7 @@
         },
         {
           "disabled": false,
-          "document": "Birth place.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Birth place</p>",
           "example": "K****E",
           "member": "string",
           "name": "BirthPlace",
@@ -1834,7 +1976,7 @@
         },
         {
           "disabled": false,
-          "document": "Issue date.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Issue date, in YYYY-MM-DD format</p>",
           "example": "2025-07-04",
           "member": "string",
           "name": "IssuedDate",
@@ -1844,7 +1986,7 @@
         },
         {
           "disabled": false,
-          "document": "Issuing authority.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Issuing authority</p>",
           "example": "Maldives",
           "member": "string",
           "name": "IssuedAuthority",
@@ -1854,7 +1996,7 @@
         },
         {
           "disabled": false,
-          "document": "Place of issue.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Place where the specified file is issued</p>",
           "example": "Beijing",
           "member": "string",
           "name": "IssuedPlace",
@@ -1864,7 +2006,7 @@
         },
         {
           "disabled": false,
-          "document": "Issuing country.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Issuing country</p>",
           "example": "CHN",
           "member": "string",
           "name": "IssuedCountry",
@@ -1874,7 +2016,7 @@
         },
         {
           "disabled": false,
-          "document": "Country code of issue, ISO Alpha-3 format.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Country code of the country that issued the file, ISO ALPHA-3 country/region code</p>",
           "example": "CHN",
           "member": "string",
           "name": "IssuedCountryCode",
@@ -1884,7 +2026,7 @@
         },
         {
           "disabled": false,
-          "document": "Expiry date.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Expiration date, in YYYY-MM-DD format</p>",
           "example": "2028-07-04",
           "member": "string",
           "name": "ExpirationDate",
@@ -1894,7 +2036,7 @@
         },
         {
           "disabled": false,
-          "document": "First line of the Machine Readable Zone (MRZ).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Content of the single-line machine-readable zone (MRZ) on the document. The number represents the order in which the line appears in the MRZ</p>",
           "example": "P<CHNZH**<<ZH**<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
           "member": "string",
           "name": "MRZLine1",
@@ -1904,7 +2046,7 @@
         },
         {
           "disabled": false,
-          "document": "Second line of the Machine Readable Zone (MRZ).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Content of the single-line machine-readable zone (MRZ) on the document. The number represents the line count in the order of the MRZ</p>",
           "example": "E******83CHN9907158M3507142<<<<<<<<<<<<<<08",
           "member": "string",
           "name": "MRZLine2",
@@ -1914,7 +2056,7 @@
         },
         {
           "disabled": false,
-          "document": "Document nationality, following ISO 3166 country coding specification.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Document nationality, returned following the ISO 3166 country coding specification</p>",
           "example": "MDV",
           "member": "string",
           "name": "Nationality",
@@ -1924,7 +2066,7 @@
         },
         {
           "disabled": false,
-          "document": "Address information on the document.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Address information on the document</p>",
           "example": "无",
           "member": "AddressInfo",
           "name": "Address",
@@ -1934,7 +2076,7 @@
         },
         {
           "disabled": false,
-          "document": "Religion (if displayed on the document).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Religious belief</p>",
           "example": "x x",
           "member": "string",
           "name": "Religion",
@@ -1944,7 +2086,7 @@
         },
         {
           "disabled": false,
-          "document": "Type of document.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Document type</p>",
           "example": "PR",
           "member": "string",
           "name": "Type",
@@ -1954,7 +2096,7 @@
         },
         {
           "disabled": false,
-          "document": "Blood type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Blood type</p>",
           "example": "O",
           "member": "string",
           "name": "BloodType",
@@ -1964,7 +2106,7 @@
         },
         {
           "disabled": false,
-          "document": "Height.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Height</p>",
           "example": "178",
           "member": "string",
           "name": "Height",
@@ -1974,7 +2116,7 @@
         },
         {
           "disabled": false,
-          "document": "Weight.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Weight</p>",
           "example": "70",
           "member": "string",
           "name": "Weight",
@@ -1984,7 +2126,7 @@
         },
         {
           "disabled": false,
-          "document": "Vehicle class authorized on the driver license (e.g., A, B, C).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Driver's license vehicle type (for example, A/B/C)</p>",
           "example": "A",
           "member": "string",
           "name": "VehicleClass",
@@ -1994,7 +2136,7 @@
         },
         {
           "disabled": false,
-          "document": "Restrictions on the driver license.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Driver's license restriction condition</p>",
           "example": "**",
           "member": "string",
           "name": "Restrictions",
@@ -2004,7 +2146,7 @@
         },
         {
           "disabled": false,
-          "document": "Endorsements or additional records on the driver license.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Driver's license extra records</p>",
           "example": "**",
           "member": "string",
           "name": "Endorsement",
@@ -2014,7 +2156,7 @@
         },
         {
           "disabled": false,
-          "document": "Supplementary fields (varies by document type).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Additional field</p>",
           "example": "{\"optionalData1\":\"*** AZ\",\"optionalData2\":null,\"side\":\"front\",\"dobDay\":\"26\",\"dobMonth\":\"10\",\"dobYear\":\"2002\",\"issueDay\":\"28\",\"issueMonth\":\"11\",\"issueYear\":\"2020\",\"daysFromIssue\":\"2032\",\"internalId\":\"329\",\"issuerCountryIso3\":\"HKG\",\"genderLocal\":\"M\"}",
           "member": "string",
           "name": "Others",
@@ -2024,7 +2166,7 @@
         },
         {
           "disabled": true,
-          "document": "First line of the passport MRZ (Machine Readable Zone).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>MRZ line 1 of the passport</p>",
           "example": "P**********A<R*****H<<<<<<<<<<<<<<<<<<<<<<<<",
           "member": "string",
           "name": "PassportCodeFirst",
@@ -2034,7 +2176,7 @@
         },
         {
           "disabled": true,
-          "document": "Second line of the passport MRZ (Machine Readable Zone).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>MRZ line 2 of the passport</p>",
           "example": "L**********************************<<<&&<<*4",
           "member": "string",
           "name": "PassportCodeSecond",
@@ -2044,7 +2186,7 @@
         },
         {
           "disabled": true,
-          "document": "Expiry date.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Validity date, in YYYY-MM-DD format</p>",
           "example": "2028-07-04",
           "member": "string",
           "name": "DueDate",
@@ -2054,7 +2196,7 @@
         },
         {
           "disabled": true,
-          "document": "Age. 0 means no valid info.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Age. 0 means no valid info is obtained</p>",
           "example": "0",
           "member": "string",
           "name": "Age",
@@ -2064,7 +2206,7 @@
         },
         {
           "disabled": true,
-          "document": "Registration number.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Registration number</p>",
           "example": "F8*****(9)",
           "member": "string",
           "name": "RegistrationNumber",
@@ -2162,6 +2304,133 @@
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetOcrVerificationResultRequest": {
+      "document": "GetOcrVerificationResult request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Token that identifies an SDK verification process. It is valid for 10 minutes. After the process completes, use this token to obtain the verification result information.",
+          "example": "92BB3D0FA02A24E001F8AC569771237D02D",
+          "member": "string",
+          "name": "SdkToken",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetOcrVerificationResultResponse": {
+      "document": "GetOcrVerificationResult response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Indicates the completion status of an SDK verification process.</p><p>Enumeration values: </p><ul><li>PROCESSING: PROCESSING.</li><li>COMPLETE: Completed.</li></ul>",
+          "example": "COMPLETE",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Front image of the card.",
+          "example": "https://ekyc-card-test-12583",
+          "member": "string",
+          "name": "CardImage",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Back image of the card.",
+          "example": "https://ekyc-card-test-12583",
+          "member": "string",
+          "name": "CardImageBack",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Portrait image on the front of the card.",
+          "example": "https://ekyc-card-test-125834",
+          "member": "string",
+          "name": "HeadImage",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Result code of this verification.",
+          "example": "Success",
+          "member": "string",
+          "name": "ResultCode",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Indicates the risk level of the device from which the current request is sent. There are four levels:\n1 - Safe.\n2 - Low risk.\n3 - Medium risk.\n4 - High risk.\nEmpty - The risk level is not obtained.\nReturned only in the enhanced version. Empty by default.",
+          "example": "1",
+          "member": "string",
+          "name": "DeviceInfoLevel",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Card recognition result. The latest result is taken as the valid one.",
+          "example": "无",
+          "member": "GeneralCard",
+          "name": "CardInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Recognition result on the back of the card.",
+          "example": "无",
+          "member": "GeneralCard",
+          "name": "BackCardInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Authenticity check. Valid values:\n0: Unable to determine (caused by blur, incompleteness, glare, or low brightness).\n1: Fake.\n2: Genuine.\nOnly effective for Hong Kong, China ID card recognition. This field is gradually being phased out.",
+          "example": "1",
+          "member": "int64",
+          "name": "FakeDetectResult",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Card Warning Information\n\n-9101 Alarm for covered certificate\n-9102 Alarm for photocopied certificate\n-9103 Alarm for photographed certificate\n-9104 Alarm for tamper certificate\n-9107 Alarm for reflective certificate\n-9108 Alarm for blurry certificate \n-9109 This capability is not enabled. Please contact customer support to activate the alert service.",
+          "example": "[-9108]",
+          "member": "int64",
+          "name": "WarnCardInfos",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -5874,8 +6143,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "The Base64-encoded identity photo.",
-          "example": "请参考数据结构示例",
+          "document": "Base64 encoded result of portrait photo.",
+          "example": "无",
           "member": "TextDetectionResult",
           "name": "HeadPortrait",
           "output_required": true,
@@ -5885,7 +6154,7 @@
         {
           "disabled": false,
           "document": "Full name of the license holder.",
-          "example": "请参考数据结构示例",
+          "example": "无",
           "member": "TextDetectionResult",
           "name": "Name",
           "output_required": true,
@@ -5895,7 +6164,7 @@
         {
           "disabled": false,
           "document": "Last name / surname of the license holder.",
-          "example": "请参考数据结构示例",
+          "example": "无",
           "member": "TextDetectionResult",
           "name": "LastName",
           "output_required": true,
@@ -5905,7 +6174,7 @@
         {
           "disabled": false,
           "document": "First name of the license holder.",
-          "example": "请参考数据结构示例",
+          "example": "无",
           "member": "TextDetectionResult",
           "name": "FirstName",
           "output_required": true,
@@ -5915,7 +6184,7 @@
         {
           "disabled": false,
           "document": "Middle name of the license holder.",
-          "example": "请参考数据结构示例",
+          "example": "无",
           "member": "TextDetectionResult",
           "name": "MiddleName",
           "output_required": true,
@@ -5925,7 +6194,7 @@
         {
           "disabled": false,
           "document": "Nationality of the license holder.",
-          "example": "请参考数据结构示例",
+          "example": "无",
           "member": "TextDetectionResult",
           "name": "Nationality",
           "output_required": true,
@@ -5934,8 +6203,8 @@
         },
         {
           "disabled": false,
-          "document": "Gender",
-          "example": "请参考数据结构示例",
+          "document": "Gender.",
+          "example": "无",
           "member": "TextDetectionResult",
           "name": "Sex",
           "output_required": true,
@@ -5945,7 +6214,7 @@
         {
           "disabled": false,
           "document": "Address of the license holder.",
-          "example": "请参考数据结构示例",
+          "example": "无",
           "member": "TextDetectionResult",
           "name": "Address",
           "output_required": true,
@@ -5955,7 +6224,7 @@
         {
           "disabled": false,
           "document": "Driver's license number.",
-          "example": "请参考数据结构示例",
+          "example": "无",
           "member": "TextDetectionResult",
           "name": "LicenseNo",
           "output_required": true,
@@ -5965,7 +6234,7 @@
         {
           "disabled": false,
           "document": "Expiration date of the driver's license.",
-          "example": "请参考数据结构示例",
+          "example": "无",
           "member": "TextDetectionResult",
           "name": "ExpiresDate",
           "output_required": true,
@@ -5975,7 +6244,7 @@
         {
           "disabled": false,
           "document": "Code of the issuing agency.",
-          "example": "请参考数据结构示例",
+          "example": "无",
           "member": "TextDetectionResult",
           "name": "AgencyCode",
           "output_required": true,
@@ -5985,9 +6254,79 @@
         {
           "disabled": false,
           "document": "Date of birth of the license holder.",
-          "example": "请参考数据结构示例",
+          "example": "无",
           "member": "TextDetectionResult",
           "name": "Birthday",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Blood type of the  license holder.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "BloodType",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Height of the license holder, in metres as printed on the card (e.g. 1.69).",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "Height",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Weight of the license holder, in kilograms (e.g. 65).",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "Weight",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Eye color of the license holder (e.g. BLACK).",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "EyeColor",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Driver's license codes indicating the vehicle categories the license holder is authorized to operate (e.g. A, A1, B, B1, B2, C, D, BE, CE).",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "DLCodes",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Restrictions that limit the license holder's driving privileges, such as transmission type (AT / MT) or vehicle-class limits.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "Restrictions",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Driving conditions of the license holder (e.g. A = must wear glasses, D = daytime driving only).",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "Conditions",
           "output_required": true,
           "type": "object",
           "value_allowed_null": false
@@ -6006,7 +6345,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether to return the identity photo.",
+          "document": "Whether to return the portrait photo.",
           "example": "true",
           "member": "bool",
           "name": "ReturnHeadImage",
@@ -6039,8 +6378,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "The Base64-encoded identity photo.",
-          "example": "{\"Polygon\":[{\"X\":16,\"Y\":47},{\"X\":81,\"Y\":47},{\"X\":81,\"Y\":124},{\"X\":16,\"Y\":124}],\"Value\":\"/9j/4AAQSkZJRg.....s97n//2Q==\"}",
+          "document": "Base64 encoded result of portrait photo.",
+          "example": "无",
           "member": "TextDetectionResult",
           "name": "HeadPortrait",
           "output_required": true,
@@ -6050,7 +6389,7 @@
         {
           "disabled": false,
           "document": "The license number (SSSID number).",
-          "example": "{\"Polygon\":[{\"X\":82,\"Y\":85},{\"X\":187,\"Y\":85},{\"X\":187,\"Y\":99},{\"X\":82,\"Y\":99}],\"Value\":\"04-0751449-0\"}",
+          "example": "无",
           "member": "TextDetectionResult",
           "name": "LicenseNumber",
           "output_required": true,
@@ -6060,7 +6399,7 @@
         {
           "disabled": false,
           "document": "The full name.",
-          "example": "{\"Polygon\":[{\"X\":82,\"Y\":55},{\"X\":195,\"Y\":55},{\"X\":195,\"Y\":67},{\"X\":82,\"Y\":67}],\"Value\":\"PAMELAL OCAMPO\"}",
+          "example": "无",
           "member": "TextDetectionResult",
           "name": "FullName",
           "output_required": true,
@@ -6070,9 +6409,39 @@
         {
           "disabled": false,
           "document": "The date of birth.",
-          "example": "{\"Polygon\":[{\"X\":222,\"Y\":245},{\"X\":400,\"Y\":245},{\"X\":400,\"Y\":273},{\"X\":222,\"Y\":273}],\"Value\":\"\"}",
+          "example": "无",
           "member": "TextDetectionResult",
           "name": "Birthday",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "First name (given name) of the cardholder.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "GivenName",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Family name (surname) of the cardholder.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "Surname",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Middle name of the cardholder.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "MiddleName",
           "output_required": true,
           "type": "object",
           "value_allowed_null": false
@@ -6124,7 +6493,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The Base64-encoded identity photo.",
+          "document": "Base64 encoded result of portrait photo.",
           "example": "无",
           "member": "TextDetectionResult",
           "name": "HeadPortrait",
@@ -6144,7 +6513,7 @@
         },
         {
           "disabled": false,
-          "document": "The full name.",
+          "document": "Full name of the taxpayer.",
           "example": "无",
           "member": "TextDetectionResult",
           "name": "FullName",
@@ -6178,6 +6547,46 @@
           "example": "无",
           "member": "TextDetectionResult",
           "name": "IssueDate",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Given name of the taxpayer.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "GivenName",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last name of the taxpayer.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "LastName",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Middle name of the taxpayer.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "MiddleName",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Revenue district office where the taxpayer is registered.",
+          "example": "无",
+          "member": "TextDetectionResult",
+          "name": "RDO",
           "output_required": true,
           "type": "object",
           "value_allowed_null": false
@@ -6321,7 +6730,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether to return the identity photo.",
+          "document": "Whether to return the portrait photo.",
           "example": "false",
           "member": "bool",
           "name": "ReturnHeadImage",
@@ -6354,7 +6763,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The Base64-encoded identity photo.",
+          "document": "Base64 encoded result of portrait photo.",
           "example": "无",
           "member": "TextDetectionResult",
           "name": "HeadPortrait",
@@ -6394,7 +6803,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The middle name.",
           "example": "无",
           "member": "TextDetectionResult",
           "name": "MiddleName",
@@ -6651,7 +7060,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The Base64-encoded value of an image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.\nEither `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, `ImageUrl` is used.",
+          "document": "The Base64-encoded value of an image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.\nEither ImageUrl or ImageBase64 of the image must be provided. If both are provided, ImageUrl is used.",
           "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "ImageBase64",
@@ -6687,7 +7096,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to crop the profile photo. The default value is `false`, meaning not to return the Base64-encoded value of the profile photo on the Thai identity card.\nWhen this parameter is set to `true`, the Base64-encoded value of the profile photo on the Thai identity card after rotation correction is returned.",
+          "document": "Whether to crop the profile photo. The default value is false, meaning not to return the Base64-encoded value of the profile photo on the Thai identity card.\nWhen this parameter is set to true, the Base64-encoded value of the profile photo on the Thai identity card after rotation correction is returned.",
           "example": "false",
           "member": "bool",
           "name": "CropPortrait",
@@ -6832,7 +7241,7 @@
         },
         {
           "disabled": false,
-          "document": "Laser ID on the back of the card.",
+          "document": "Laser ID on the back of the card",
           "example": "JC4-1841713-14",
           "member": "string",
           "name": "LaserID",
@@ -6852,7 +7261,7 @@
         },
         {
           "disabled": false,
-          "document": "Card Warning Information\n\n-9101 Alarm for covered certificate\n-9102 Alarm for photocopied certificate\n-9103 Alarm for photographed certificate\n-9104 Alarm for tamper certificate\n-9107 Alarm for reflective certificate\n-9108 Alarm for blurry certificate \n-9109 This capability is not enabled. Please contact customer support to activate the alert service",
+          "document": "Card Warning Information\n\n-9101 Alarm for covered certificate\n-9102 Alarm for photocopied certificate\n-9103 Alarm for photographed certificate\n-9104 Alarm for tamper certificate\n-9107 Alarm for reflective certificate\n-9108 Alarm for blurry certificate\n-9109 This capability is not enabled. Please contact customer support to activate the alert service",
           "example": "[-9101]",
           "member": "int64",
           "name": "WarnCardInfos",
@@ -6862,7 +7271,7 @@
         },
         {
           "disabled": true,
-          "document": "This field is deprecated and will always return \"1\". Usage is not recommended.",
+          "document": "<p>This field is deprecated and will always return \"1\". It is not recommended for use.</p>",
           "example": "{\"ID\":{\"Confidence\":\"0.9500\"},\"ThaiName\":{\"Confidence\":\"0.9500\"}}",
           "member": "string",
           "name": "AdvancedInfo",
@@ -6888,6 +7297,26 @@
           "name": "IsComplete",
           "output_required": false,
           "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "First name in Thai",
+          "example": "ธนกฤต",
+          "member": "string",
+          "name": "ThaiFirstName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last name in Thai",
+          "example": "บุญโญปกรุณ์",
+          "member": "string",
+          "name": "ThaiLastName",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         },
         {
