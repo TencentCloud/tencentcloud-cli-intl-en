@@ -336,6 +336,38 @@
         "title": "Create a compliance standard and clause aggregation risk export task"
       }
     ],
+    "CreateCosAssetSyncTask": [
+      {
+        "document": "Create an asset synchronization task",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCosAssetSyncTask\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"task-1qazxsw2\",\n        \"RequestId\": \"6a625df7-dea0-4ba2-9942-97303d13d23e\"\n    }\n}",
+        "title": "CreateCosAssetSyncTask"
+      }
+    ],
+    "CreateCosObjectScanTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCosObjectScanTask\n<Common request parameters>\n\n{\n    \"TaskType\": 1,\n    \"MemberId\": [\n        \"mem-1edsada\"\n    ],\n    \"BucketSet\": [\n        \"brainzhao-test-251002343\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"79078187-7aa0-446e-9c05-6c85f91a928b\"\n    }\n}",
+        "title": "Create a cos Cloud Object Storage Scan Task"
+      }
+    ],
+    "CreateCosPolicy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCosPolicy\n<Common request parameters>\n\n{\n    \"CosPolicyInfo\": {\n        \"PolicyName\": \"custom-bucket-read-policy\",\n        \"PolicyType\": 1,\n        \"PolicySource\": 2,\n        \"PolicyAbnormalType\": 1,\n        \"RiskLevel\": 1,\n        \"PolicyContent\": \"e1wiVmVyc2lvblwiOlwiMi4wXCIsXCJTdGF0ZW1lbnRcIjpbe1wiRWZmZWN0XCI6XCJBbGxvd1wiLFwiUHJpbmNpcGFsXCI6e1wicWNzXCI6W1wicWNzOjpjYW06OnVpbi8xMDAwMTIzNDU2Nzg6dWluLzEwMDAxMjM0NTY3OFwiXX0sXCJBY3Rpb25cIjpbXCJjb3M6R2V0T2JqZWN0XCIsXCJjb3M6R2V0T2JqZWN0VmVyc2lvblwiXSxcIlJlc291cmNlXCI6W1wicWNzOjpjb3M6YXAtZ3Vhbmd6aG91OnVpZC8xMDAwMTIzNDU2Nzg6bXktYnVja2V0LypcIl19XX0=\",\n        \"PolicyStatus\": 1\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6a625df7-dea0-4ba2-9942-97303d13d23e\"\n    }\n}",
+        "title": "Add a cos alarm policy"
+      }
+    ],
+    "CreateCosRiskScanTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCosRiskScanTask\n<Common request parameters>\n\n{\n    \"BucketNameSet\": [\n        {\n            \"AppId\": 214244555,\n            \"BucketName\": \"brain-231241444\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6a625df7-dea0-4ba2-9942-97303d13d23e\"\n    }\n}",
+        "title": "Create a Risk Monitor Task"
+      }
+    ],
     "CreateDomainAndIp": [
       {
         "document": "",
@@ -349,7 +381,7 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDspmAccessExportJob\n<Common request parameters>\n\n{\n    \"View\": \"ip\"\n}",
         "output": "{\n    \"Response\": {\n        \"JobID\": \"job-21c491y9\",\n        \"RequestId\": \"cf839eee-b651-4ff3-9b49-173f9f55733f\"\n    }\n}",
-        "title": "Create a Dspm Access Record Export Task"
+        "title": "Create a Dspm access record export task"
       }
     ],
     "CreateDspmApplyOrder": [
@@ -869,7 +901,7 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateVulRisksExportJob\n<Common request parameters>\n\n{\n    \"CloudAccountID\": \"100010427547\",\n    \"Provider\": \"tencent\"\n}",
         "output": "{\n    \"Response\": {\n        \"JobId\": \"73114db8-dce5-49e8-a13a-820b2b775014\",\n        \"RequestId\": \"c826cdab-48c2-40c6-be27-f503dd92c141\"\n    }\n}",
-        "title": "Creating a Vulnerability Risk Export Task"
+        "title": "Create a vulnerability risk export task"
       }
     ],
     "CreateVulScanManual": [
@@ -934,6 +966,22 @@
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteCluster\n<Common request parameters>\n\n{\n    \"MemberId\": [\n        \"mem-a6df317cb6a8c424\"\n    ],\n    \"OperatedMemberId\": [\n        \"mem-a6df317cb6a8c424\"\n    ],\n    \"ClusterAssetIds\": [\n        \"86693c5bf9e9fbdce993d557b1038f77\"\n    ],\n    \"ClusterCaMD5List\": [\n        \"af9570***********************859\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"f87cec9b-57b7-4c31-8945-debcfb44aaed\"\n    }\n}",
         "title": "Calling the API"
+      }
+    ],
+    "DeleteCosAkAsset": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteCosAkAsset\n<Common request parameters>\n\n{\n    \"CosAkSet\": [\n        {\n            \"AppId\": 1378282892,\n            \"AkNameSet\": [\n                \"AK1yuwiijdkqwke423fkkdqwk\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6a625df7-dea0-4ba2-9942-97303d13d23e\"\n    }\n}",
+        "title": "Delete deleted COSAK assets"
+      }
+    ],
+    "DeleteCosPolicy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteCosPolicy\n<Common request parameters>\n\n{\n    \"IsDeleteAll\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6a625df7-dea0-4ba2-9942-97303d13d23e\"\n    }\n}",
+        "title": "This API is used to delete alarm policies."
       }
     ],
     "DeleteDomainAndIp": [
@@ -1340,7 +1388,7 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAIScheduleList\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"Status\": 0,\n    \"ScheduleId\": \"a156***************************29702\"\n}",
-        "output": "{\n    \"Response\": {\n        \"ScheduleSet\": [\n            {\n                \"CreateTime\": 1776841342887,\n                \"CurrentFireCount\": 0,\n                \"EndTime\": 0,\n                \"Identity\": {\n                    \"AppId\": 260083796,\n                    \"BotId\": \"aibn2Vz1_iZ1R2B5mGjZ5o9ph3SmfjdLEQO\",\n                    \"Channel\": \"wecom\",\n                    \"ChatId\": \"T70030002A\",\n                    \"SubUin\": \"\",\n                    \"Uin\": \"700002365149\",\n                    \"UserId\": \"T70030002A\"\n                },\n                \"MaxFireCount\": 0,\n\"Name\": \"CSIP weekly report scheduled sending\"\n\"Prompts\": \"Generate a CSC weekly report, compile it into PDF and PPT, and send it to rainewang@tencent.com via the email skill\",\n                \"ScheduleId\": \"586ecd9e-d140-45bb-889e-3476efaa4b50\",\n                \"StartTime\": 0,\n                \"Status\": 1,\n                \"Triggers\": [\n                    {\n                        \"CronConfig\": {\n                            \"CronExpression\": \"10 15 * * 3\"\n                        },\n                        \"TriggerId\": \"8a09c63b-a324-4707-a0e5-3a6722c20da1\",\n                        \"TriggerType\": 1\n                    }\n                ],\n                \"UpdateTime\": 1776841342887\n            }\n        ],\n        \"TotalCount\": 7,\n        \"RequestId\": \"666d1958-ca82-47a4-b3d9-dd49b2caa6c8\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"ScheduleSet\": [\n            {\n                \"CreateTime\": 1776841342887,\n                \"CurrentFireCount\": 0,\n                \"EndTime\": 0,\n                \"Identity\": {\n                    \"AppId\": 260083796,\n                    \"BotId\": \"aibn2Vz1_iZ1R2B5mGjZ5o9ph3SmfjdLEQO\",\n                    \"Channel\": \"wecom\",\n                    \"ChatId\": \"T70030002A\",\n                    \"SubUin\": \"\",\n                    \"Uin\": \"700002365149\",\n                    \"UserId\": \"T70030002A\"\n                },\n                \"MaxFireCount\": 0,\n\"Name\": \"Scheduled sending of CSIP weekly report\"\n\"Prompts\": \"Generate a CSC weekly report, organize it into PDF and PPT, and send it to rainewang@tencent.com via the email skill\",\n                \"ScheduleId\": \"586ecd9e-d140-45bb-889e-3476efaa4b50\",\n                \"StartTime\": 0,\n                \"Status\": 1,\n                \"Triggers\": [\n                    {\n                        \"CronConfig\": {\n                            \"CronExpression\": \"10 15 * * 3\"\n                        },\n                        \"TriggerId\": \"8a09c63b-a324-4707-a0e5-3a6722c20da1\",\n                        \"TriggerType\": 1\n                    }\n                ],\n                \"UpdateTime\": 1776841342887\n            }\n        ],\n        \"TotalCount\": 7,\n        \"RequestId\": \"666d1958-ca82-47a4-b3d9-dd49b2caa6c8\"\n    }\n}",
         "title": "1"
       }
     ],
@@ -1624,6 +1672,14 @@
         "title": "Obtain Vulnerability Risk List from Asset's Perspective"
       }
     ],
+    "DescribeAssumeRole": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAssumeRole\n<Common request parameters>\n\n{\n    \"RoleName\": \"TencentCloudRoleName\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Bind\": 1,\n        \"RequestId\": \"cf839eee-b651-4ff3-9b49-173f9f55733f\"\n    }\n}",
+        "title": "Query whether a role is bound"
+      }
+    ],
     "DescribeBackendScanEngineRegionList": [
       {
         "document": "",
@@ -1806,6 +1862,14 @@
         "title": "Obtaining Brute-Force Cracking Rules"
       }
     ],
+    "DescribeBucketInvokeIpList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBucketInvokeIpList\n<Common request parameters>\n\n{\n    \"RelAppId\": 17223414,\n    \"BucketName\": \"brain-17223414\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {}\n        ],\n        \"Total\": 156,\n        \"RequestId\": \"6a625df7-dea0-4ba2-9942-97303d13d23e\"\n    }\n}",
+        "title": "View the source ip list of bucket calls"
+      }
+    ],
     "DescribeCFGRiskReportStatistics": [
       {
         "document": "",
@@ -1903,13 +1967,13 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCSPMPayInfo\n<Common request parameters>\n\n{\n    \"MemberId\": [\n        \"mem-68b8087a611258000\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"AppID\": 12117826,\n        \"AutoRenew\": 1,\n        \"BeginTime\": \"2025-04-10 10:37:02\",\n        \"BetaEndTime\": \"2025-05-10 10:37:02\",\n        \"CSPMNum\": 15000,\n        \"EndTime\": \"2025-05-10 10:37:02\",\n        \"GrantedCSPMNum\": 5000,\n        \"IsSelfBuy\": 2,\n        \"IsShareToOther\": 1,\n        \"NickName\": \"Sheng Sheng Oolong\",\n        \"OrderStatus\": 1,\n        \"PayMode\": 1,\n        \"RequestId\": \"5b8e1c47-0671-4021-9a11-8aeb1c03e461\",\n        \"ResourceId\": \"csip-cspm-241\",\n        \"TimeNow\": \"2025-05-10 10:37:02\",\n        \"TimeSpan\": 1,\n        \"TimeUnit\": \"m\",\n        \"Uin\": \"100011132178\",\n        \"UsedCount\": 3200\n    }\n}",
-        "title": "Query purchased CSPM order information"
+        "title": "Get purchased CSPM order information"
       },
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCSPMPayInfo\n<Common request parameters>\n\n{\n    \"MemberId\": [\n        \"mem-6def087a65268000\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"AppID\": 0,\n        \"AutoRenew\": 0,\n        \"BeginTime\": \"\",\n        \"BetaEndTime\": \"2025-05-06 12:00:00\",\n        \"CSPMNum\": 0,\n        \"EndTime\": \"\",\n        \"GrantedCSPMNum\": 0,\n        \"IsSelfBuy\": 0,\n        \"IsShareToOther\": 0,\n        \"NickName\": \"\",\n        \"OrderStatus\": 0,\n        \"PayMode\": 0,\n        \"RequestId\": \"6014aa34-c145-47c7-b039-14ee95b0e737\",\n        \"ResourceId\": \"\",\n        \"TimeNow\": \"2025-05-23 10:49:55\",\n        \"TimeSpan\": 0,\n        \"TimeUnit\": \"\",\n        \"Uin\": \"\",\n        \"UsedCount\": 0\n    }\n}",
-        "title": "Retrieve CSPM info for accounts not purchased"
+        "title": "Retrieving CSPM info of accounts without purchase"
       }
     ],
     "DescribeCVMAssetInfo": [
@@ -2141,7 +2205,7 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeClusterContainerWebServiceList\n<Common request parameters>\n\n{\n    \"ContainerId\": \"abc123def456\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"List\": [\n            {\n                \"Type\": \"nginx\",\n                \"Version\": \"1.24.0\",\n                \"RunAs\": \"nginx\",\n                \"ExePath\": \"/usr/sbin/nginx\",\n                \"ConfigPath\": \"/etc/nginx/conf.d/default.conf\"\n            }\n        ],\n        \"RequestId\": \"5cd96106-1d72-466c-9bcf-9876543210ab\"\n    }\n}",
-        "title": "Example of Querying the Web Service List Associated with a Container"
+        "title": "Example of querying the Web Service List associated with a container"
       }
     ],
     "DescribeClusterDetail": [
@@ -2264,6 +2328,230 @@
         "title": "Example of cloud resource configuration risk rule list"
       }
     ],
+    "DescribeCosAccessPermission": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCosAccessPermission\n<Common request parameters>\n\n\n\n\n\n{\n   \"RelAppId\":17326141245,\n   \"BucketName\":\"brain-17326141245\",\n   \"RelUin\":\"2141241255\"\n\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"req-123456789\",\n        \"Total\": 10,\n        \"Data\": [\n            {\n                \"PermissionSource\": \"CAM\",\n                \"PermissionContent\": \"{\\\"Version\\\":\\\"2.0\\\",\\\"Statement\\\":[{\\\"Effect\\\":\\\"Allow\\\",\\\"Principal\\\":{\\\"QCS\\\":[\\\"qcs::cam::uin/100000000001:uin/100000000001\\\"]},\\\"Action\\\":[\\\"name/cos:GetObject\\\",\\\"name/cos:PutObject\\\"],\\\"Resource\\\":[\\\"qcs::cos:ap-beijing:uid/100000000001:my-bucket/*\\\"]}]}\",\n                \"GrantResource\": \"qcs::cos:ap-beijing:uid/100000000001:my-bucket/*\",\n                \"GrantAction\": \"name/cos:GetObject,name/cos:PutObject\",\n                \"GrantCondition\": \"{\\\"StringEquals\\\":{\\\"cos:prefix\\\":\\\"example/\\\"}}\"\n            }\n        ]\n    }\n}",
+        "title": "View cos bucket access permission information"
+      }
+    ],
+    "DescribeCosAccessPermissions": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCosAccessPermissions\n<Common request parameters>\n\n{\n    \"RelAppId\": 183479120,\n    \"BucketName\": \"brain-183479120\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6a625df7-dea0-4ba2-9942-97303d13d23e\",\n        \"Data\": [\n            {\n                \"AccessUin\": \"100000000001\",\n                \"NickName\": \"test user\",\n                \"Identity\": 1,\n                \"MainNickName\": \"Root account\",\n                \"AkList\": [\n                    \"AKID1234567890abcdef,AKID0987654321fedcba\"\n                ],\n                \"CamPolicyCount\": 3,\n                \"UpdateTime\": 1705293000\n            },\n            {\n                \"AccessUin\": \"100000000002\",\n                \"NickName\": \"Production user\",\n                \"Identity\": 2,\n                \"MainNickName\": \"Root account\",\n                \"AkList\": [\n                    \"AKIDabcdef1234567890\"\n                ],\n                \"CamPolicyCount\": 1,\n                \"UpdateTime\": 1705296000\n            },\n            {\n                \"AccessUin\": \"100000000003\",\n                \"NickName\": \"sub-account user\",\n                \"Identity\": 3,\n                \"MainNickName\": \"Root account\",\n                \"AkList\": [\n                    \"AKIDfedcba0987654321\"\n                ],\n                \"CamPolicyCount\": 2,\n                \"UpdateTime\": 1705299000\n            }\n        ],\n        \"Total\": 3\n    }\n}",
+        "title": "View the access privilege list of object storage"
+      }
+    ],
+    "DescribeCosActionList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCosActionList\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"req-123456789\",\n        \"Data\": [\n            {\n                \"ActionName\": \"GetObject\",\n\"ActionNameCn\": \"Get object\",\n\"ActionDescription\": \"Retrieve the content of a specified object in a bucket\"\n            },\n            {\n                \"ActionName\": \"PutObject\",\n\"ActionNameCn\": \"Upload object\",\n\"ActionDescription\": \"Upload an object to the specified bucket\"\n            },\n            {\n                \"ActionName\": \"DeleteObject\",\n\"ActionNameCn\": \"Delete Object\",\n\"ActionDescription\": \"Delete specified object from a bucket\"\n            },\n            {\n                \"ActionName\": \"ListObjects\",\n\"ActionNameCn\": \"List objects\",\n\"ActionDescription\": \"List objects in a bucket\"\n            },\n            {\n                \"ActionName\": \"GetBucketAcl\",\n\"ActionNameCn\": \"Get bucket access control list\",\n\"ActionDescription\": \"Get the ACL configuration of the bucket\"\n            },\n            {\n                \"ActionName\": \"PutBucketAcl\",\n\"ActionNameCn\": \"Set bucket access control list\",\n\"ActionDescription\": \"Set the ACL of the bucket\"\n            },\n            {\n                \"ActionName\": \"GetBucketPolicy\",\n\"ActionNameCn\": \"Obtain bucket policy\",\n\"ActionDescription\": \"Obtain the policy configuration of a bucket\"\n            },\n            {\n                \"ActionName\": \"PutBucketPolicy\",\n\"ActionNameCn\": \"Setting a bucket policy\",\n\"ActionDescription\": \"Set the bucket policy configuration\"\n            },\n            {\n                \"ActionName\": \"GetBucketVersioning\",\n\"ActionNameCn\": \"Obtain bucket version control\",\n\"ActionDescription\": \"Get the versioning configuration of the bucket\"\n            },\n            {\n                \"ActionName\": \"PutBucketVersioning\",\n\"ActionNameCn\": \"Set Bucket Version Control\",\n\"ActionDescription\": \"Set versioning of the bucket\"\n            },\n            {\n                \"ActionName\": \"GetBucketLifecycle\",\n\"ActionNameCn\": \"Get bucket lifecycle\",\n\"ActionDescription\": \"Obtain the lifecycle configuration of a bucket\"\n            },\n            {\n                \"ActionName\": \"PutBucketLifecycle\",\n\"ActionNameCn\": \"Set bucket lifecycle\",\n\"ActionDescription\": \"Set the lifecycle rule for the bucket\"\n            },\n            {\n                \"ActionName\": \"GetBucketEncryption\",\n\"ActionNameCn\": \"Obtain bucket encryption\"\n\"ActionDescription\": \"Get the encryption configuration of the bucket\"\n            },\n            {\n                \"ActionName\": \"PutBucketEncryption\",\n\"ActionNameCn\": \"Configure bucket encryption\"\n\"ActionDescription\": \"Set the encryption configuration of the bucket\"\n            },\n            {\n                \"ActionName\": \"GetBucketReplication\",\n\"ActionNameCn\": \"Obtain bucket replication\",\n\"ActionDescription\": \"Obtain the replication configuration of a bucket\"\n            },\n            {\n                \"ActionName\": \"PutBucketReplication\",\n\"ActionNameCn\": \"Set Bucket Replication\"\n\"ActionDescription\": \"Set the replication rule for the bucket\"\n            },\n            {\n                \"ActionName\": \"GetBucketNotification\",\n\"ActionNameCn\": \"Obtain bucket notification\",\n\"ActionDescription\": \"Obtain the notification configuration of a bucket\"\n            },\n            {\n                \"ActionName\": \"PutBucketNotification\",\n\"ActionNameCn\": \"Set Bucket Notification\",\n\"ActionDescription\": \"Set the bucket notification configuration\"\n            },\n            {\n                \"ActionName\": \"GetBucketTagging\",\n\"ActionNameCn\": \"Obtain bucket tag\",\n\"ActionDescription\": \"Obtain the tag configuration of a bucket\"\n            },\n            {\n                \"ActionName\": \"PutBucketTagging\",\n\"ActionNameCn\": \"Set the bucket tag\",\n\"ActionDescription\": \"Set the tag of the bucket\"\n            }\n        ]\n    }\n}",
+        "title": "Viewing the COS API List"
+      }
+    ],
+    "DescribeCosAkAsset": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCosAkAsset\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 10,\n        \"RequestId\": \"6a625df7-dea0-4ba2-9942-97303d13d23e\"\n    }\n}",
+        "title": "View asset information of the ak associated with cos"
+      }
+    ],
+    "DescribeCosAkInvokeIpList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCosAkInvokeIpList\n<Common request parameters>\n\n{\n    \"RelAppId\": 1378281929,\n    \"Ak\": \"AKIwtemp\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 10,\n        \"RequestId\": \"6a625df7-dea0-4ba2-9942-97303d13d23e\"\n    }\n}",
+        "title": "View the source ip list of cos ak calls"
+      }
+    ],
+    "DescribeCosAlarmList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCosAlarmList\n<Common request parameters>\n\n{\n    \"Filter\": {\n        \"Limit\": 10,\n        \"Offset\": 0,\n        \"Filters\": [\n            {\n                \"Name\": \"BucketName\",\n                \"Values\": [\n                    \"brainzhao-test-251002343\"\n                ],\n                \"OperatorType\": 9\n            }\n        ],\n        \"StartTime\": \"2026-03-10 00:00:00\",\n        \"EndTime\": \"2026-03-14 00:00:00\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"AccountIdentify\": 1,\n                \"AccountMainNickName\": \"\",\n\"AccountNickName\": \"Testing environment account\",\n                \"AccountUin\": \"100000007008\",\n                \"AlarmId\": 8523,\n                \"AlarmTimestamp\": 1773374151000,\n                \"AppId\": 251002343,\n                \"BucketAccessWay\": \"specify\",\n                \"BucketMarker\": \"\",\n                \"BucketName\": \"test-251002111\",\n\"BucketRegion\": \"Guangdong Guangzhou\",\n                \"BucketRegionCode\": \"ap-guangzhou\",\n                \"BucketTagInfo\": \"null\",\n                \"CategoryDetails\": [\n                    {\n                        \"CategoryId\": 356,\n\"CategoryName\": \"Personal Information\",\n                        \"RuleSet\": [\n                            {\n                                \"LevelId\": 10,\n\"LevelName\": \"General\",\n                                \"LevelScore\": 1,\n                                \"RuleId\": 6600,\n\"RuleName\": \"Name\"\n                            }\n                        ]\n                    }\n                ],\n                \"HandleStatus\": 0,\n                \"PolicyAbnormalType\": 1,\n\"PolicyDescription\": \"Anonymous policy to obtain a bucket or object. Return value: 200\"\n                \"PolicyId\": 2281,\n\"PolicyName\": \"wx alarm-202511062129\",\n                \"PolicyRiskLevel\": 3\n            }\n        ],\n        \"Total\": 18,\n        \"RequestId\": \"b6a18fec-7234-49e5-b82c-e75461e29d18\"\n    }\n}",
+        "title": "View Alarm List"
+      }
+    ],
+    "DescribeCosAlarmTrendData": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCosAlarmTrendData\n<Common request parameters>\n\n{\n    \"LastDays\": 30\n}",
+        "output": "{\n    \"Response\": {\n        \"CosAlarmTrendInfo\": [\n            {\n                \"CurrentDateStr\": \"2024-01-31\",\n                \"CurrentDayCount\": 23,\n                \"CurrentDayOverView\": [\n                    {\n                        \"PolicyType\": 1,\n                        \"PolicyTypeName\": \"\",\n                        \"PolicyCount\": 10\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"6a625df7-dea0-4ba2-9942-97303d13d23e\"\n    }\n}",
+        "title": "Daily Alerts Newly Added Data"
+      }
+    ],
+    "DescribeCosAsset": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCosAsset\n<Common request parameters>\n\n{\n    \"Filter\": {\n        \"Limit\": 10,\n        \"Filters\": [\n            {\n                \"Name\": \"BucketName\",\n                \"Values\": [\n                    \"brainzhao-test-1302396215\"\n                ],\n                \"OperatorType\": 9\n            }\n        ]\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"AppId\": 1302396215,\n                \"BucketAccessWay\": {\n                    \"AccessAkCount\": 0,\n                    \"AccessRoleCount\": 31,\n                    \"AccessType\": \"specify\",\n                    \"AccessUserCount\": 43\n                },\n                \"BucketAlarmList\": [],\n                \"BucketId\": 0,\n                \"BucketInvokeSourceIpCount\": 0,\n                \"BucketMarker\": \"\",\n                \"BucketName\": \"brainzhao-test-1302396215\",\n                \"BucketOwnerNickName\": \"Sheng Sheng Oolong\",\n                \"BucketOwnerUin\": \"100014592178\",\n                \"BucketRegion\": \"Guangdong Guangzhou\",\n                \"BucketRegionCode\": \"ap-guangzhou\",\n                \"BucketRiskList\": [\n                    {\n                        \"PolicyCount\": 3,\n                        \"PolicyType\": 2,\n                        \"PolicyTypeName\": \"Excessive permissions\"\n                    }\n                ],\n                \"BucketSecuritySuggestion\": 2,\n                \"BucketTagInfo\": \"[{\\\"Key\\\":\\\"tke-lb-serviceuuid\\\",\\\"Value\\\":\\\"935e9f8f-0ed3-4b3a-b374-087538cc57eb\\\"}]\",\n                \"CreateTime\": 1754639424000,\n                \"DataScanInfo\": {\n                    \"CategoryDetails\": [\n                        {\n                            \"CategoryId\": 356,\n                            \"CategoryName\": \"Personal Information\",\n                            \"RuleSet\": [\n                                {\n                                    \"LevelId\": 10,\n                                    \"LevelName\": \"General\",\n                                    \"LevelScore\": 1,\n                                    \"RuleId\": 5802,\n                                    \"RuleName\": \"birthday\"\n                                }\n                            ]\n                        }\n                    ],\n                    \"ErrorInfo\": \"\",\n                    \"LatestScanTime\": \"2026-02-26 12:00:00\",\n                    \"Status\": 2\n                },\n                \"LastAccessTime\": 0,\n                \"MonitorStatus\": 1\n            }\n        ],\n        \"Total\": 1,\n        \"RequestId\": \"b701d18d-f68f-44f7-a46a-8b62efa20bea\"\n    }\n}",
+        "title": "Viewing COS asset list"
+      }
+    ],
+    "DescribeCosAssetSyncTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCosAssetSyncTask\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [],\n        \"RequestId\": \"6a625df7-dea0-4ba2-9942-97303d13d23e\"\n    }\n}",
+        "title": "Get Object Storage Asset Sync Task"
+      }
+    ],
+    "DescribeCosAuditAppIdList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCosAuditAppIdList\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            2712414112\n        ],\n        \"RequestId\": \"6a625df7-dea0-4ba2-9942-97303d13d23e\"\n    }\n}",
+        "title": "View purchased appid sets under this appid"
+      }
+    ],
+    "DescribeCosAuditDictionaryList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCosAuditDictionaryList\n<Common request parameters>\n\n{\n    \"DictType\": \"IdentifyRule\"\n}",
+        "output": "{\n    \"Response\": {\n        \"DataSet\": [\n            {\n                \"DictId\": 5800,\n                \"DictName\": \"Name\"\n            }\n        ],\n        \"RequestId\": \"ad346878-e03e-4945-9e90-7fd5e08fe677\"\n    }\n}",
+        "title": "Query cos audit dictionary values"
+      }
+    ],
+    "DescribeCosAuditPayInfo": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCosAuditPayInfo\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"CosAuditPayInfo\": {\n            \"AppId\": 1302396215,\n            \"AutoRenew\": 0,\n            \"BeginTime\": 1974533233000,\n            \"BetaEndTime\": 1974533233000,\n            \"EndTime\": 1974533233000,\n            \"IsSelfBuy\": 1,\n            \"IsShareToOther\": 1,\n            \"BucketNum\": 358,\n            \"NickName\": \"Sheng Sheng Oolong\",\n            \"OrderStatus\": 1,\n            \"PayMode\": 1,\n            \"ResourceId\": \"cos-audit-wedr4yu7\",\n            \"TimeNow\": 1974533233000,\n            \"TimeSpan\": 1,\n            \"TimeUnit\": \"m\",\n            \"Uin\": \"100014592178\"\n        },\n        \"RequestId\": \"68d816ed-cf60-427f-b38a-8ac2a10a0acd\"\n    }\n}",
+        "title": "Retrieving Audit Payment Information"
+      }
+    ],
+    "DescribeCosBucketBillingInfo": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCosBucketBillingInfo\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 0,\n        \"RequestId\": \"6a625df7-dea0-4ba2-9942-97303d13d23e\"\n    }\n}",
+        "title": "Obtaining Bucket Billing Information"
+      }
+    ],
+    "DescribeCosBucketList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCosBucketList\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"RequestId\": \"6a625df7-dea0-4ba2-9942-97303d13d23e\"\n    }\n}",
+        "title": "Get bucket information"
+      }
+    ],
+    "DescribeCosBucketRisk": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCosBucketRisk\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"req-123456789\",\n        \"Data\": [\n            {\n                \"RiskId\": 10,\n                \"AppId\": 123456789,\n                \"BucketName\": \"test-bucket\",\n                \"BucketRegion\": \"ap-guangzhou\",\n                \"BucketMarker\": \"Test bucket\",\n                \"BucketAccessWay\": \"specify\",\n                \"BucketUin\": \"100000000003\",\n                \"BucketNickName\": \"Sub-account user\",\n                \"BucketMainNickName\": \"Root account\",\n                \"BucketTagInfo\": \"[{\\\"Key\\\":\\\"Value\\\"}]\",\n                \"BucketIdentify\": 3,\n                \"LastScanTimestamp\": 1705299000,\n                \"HandleStatus\": 0,\n                \"PolicyName\": \"COS Anomaly Access Detection\",\n                \"PolicyType\": 3,\n                \"PolicyId\": 1,\n                \"PolicyLevel\": 1,\n                \"PolicyDescription\": \"Risk issue hit\"\n            }\n        ],\n        \"Total\": 5\n    }\n}",
+        "title": "View the risk asset perspective"
+      }
+    ],
+    "DescribeCosIdentifyFileList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCosIdentifyFileList\n<Common request parameters>\n\n{\n    \"BucketName\": \"brainzhao-test-1302396215\",\n    \"MemberId\": [\n        \"mem-68b8087a65268000\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"DataSet\": [\n            {\n                \"CategoryDetails\": [\n                    {\n                        \"CategoryId\": 356,\n                        \"CategoryName\": \"Personal Information\",\n                        \"RuleSet\": [\n                            {\n                                \"LevelId\": 10,\n                                \"LevelName\": \"General\",\n                                \"LevelScore\": 1,\n                                \"RuleId\": 5813,\n                                \"RuleName\": \"License plate number\"\n                            }\n                        ]\n                    }\n                ],\n                \"DirName\": \"\",\n                \"FileName\": \"Sensitive_data_data.csv\"\n            }\n        ],\n        \"TotalCount\": 2,\n        \"RequestId\": \"e0a254a4-18d5-4c7c-9766-23ed2e790925\"\n    }\n}",
+        "title": "Querying the list of cos Data recognition results"
+      }
+    ],
+    "DescribeCosInvokeUa": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCosInvokeUa\n<Common request parameters>\n\n{\n    \"RelAppId\": 1382781291\n}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 3,\n        \"Data\": [\n            \"file1\",\n            \"file2\",\n            \"file3\"\n        ],\n        \"RequestId\": \"6a625df7-dea0-4ba2-9942-97303d13d23e\"\n    }\n}",
+        "title": "View cos call ua"
+      }
+    ],
+    "DescribeCosIpInvokeLog": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCosIpInvokeLog\n<Common request parameters>\n\n{\n    \"RelAppId\": 1372819291\n}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 0,\n        \"RequestId\": \"6a625df7-dea0-4ba2-9942-97303d13d23e\"\n    }\n}",
+        "title": "View call record logs"
+      }
+    ],
+    "DescribeCosIpInvokeRecordFile": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCosIpInvokeRecordFile\n<Common request parameters>\n\n{\n    \"RelAppId\": 251002343,\n    \"Filter\": {\n        \"Limit\": 10,\n        \"Offset\": 0,\n        \"Filters\": [\n            {\n                \"Name\": \"CategoryId\",\n                \"Values\": [\n                    \"355\"\n                ],\n                \"OperatorType\": 7\n            }\n        ],\n        \"StartTime\": \"2026-03-13 11:19:17\",\n        \"EndTime\": \"2026-03-13 11:55:51\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            \"Sensitive_data_data.txt\"\n        ],\n        \"DataSet\": [\n            {\n                \"CategoryDetails\": [\n                    {\n                        \"CategoryId\": 355,\n                        \"CategoryName\": \"Personal sensitive information\",\n                        \"RuleSet\": [\n                            {\n                                \"LevelId\": 8,\n                                \"LevelName\": \"Sensitive\",\n                                \"LevelScore\": 10,\n                                \"RuleId\": 6662,\n                                \"RuleName\": \"Marital status\"\n                            }\n                        ]\n                    }\n                ],\n                \"DirName\": \"\",\n                \"FileName\": \"Sensitive_data_data.txt\"\n            }\n        ],\n        \"Total\": 1,\n        \"RequestId\": \"bf11ccc9-2a5b-4d9c-9b69-e118192cbf5b\"\n    }\n}",
+        "title": "View the cos call record file list"
+      }
+    ],
+    "DescribeCosObjectScanTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCosObjectScanTask\n<Common request parameters>\n\n{\n    \"TaskType\": 2,\n    \"MemberId\": [\n        \"mem-a6df317cb6a8c424\"\n    ],\n    \"BucketSet\": [\n        \"0313-vtanakwang-260082268\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"MemberTaskIdSet\": [\n            {\n                \"AppId\": 251002343,\n                \"LastScanTime\": 0,\n                \"TaskId\": \"\"\n            }\n        ],\n        \"RequestId\": \"daea542d-c4a7-48ca-84a2-4e4e255b29c6\"\n    }\n}",
+        "title": "View cos Cloud Object Storage Scan Task"
+      }
+    ],
+    "DescribeCosOverview": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCosOverview\n<Common request parameters>\n\n{\n    \"Filter\": {\n        \"Filters\": [],\n        \"Offset\": 0,\n        \"Limit\": 10,\n        \"Order\": \"desc\",\n        \"By\": \"CreateTime\",\n        \"StartTime\": \"2024-01-24 00:00:00\",\n        \"EndTime\": \"2024-01-31 23:59:59\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"CosOverview\": {\n            \"AssetCount\": 1256,\n            \"AlarmAssetCount\": 89,\n            \"RiskAssetCount\": 34,\n            \"AlarmCount\": 156,\n            \"IncrementAlarmCount\": 12,\n            \"RiskCount\": 67,\n            \"IncrementRiskCount\": 5,\n            \"RiskTop\": [\n                {\n                    \"PolicyType\": 1,\n                    \"PolicyTypeName\": \"Public read access risk\",\n                    \"PolicyCount\": 23\n                }\n            ]\n        },\n        \"RequestId\": \"6a625df7-dea0-4ba2-9942-97303d13d23e\"\n    }\n}",
+        "title": "cos overview information"
+      }
+    ],
+    "DescribeCosPolicy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCosPolicy\n<Common request parameters>\n\n{\n    \"Filter\": {\n        \"Filters\": [\n            {\n                \"Name\": \"PolicyName\",\n                \"Values\": [\n                    \"bucket-*-policy\"\n                ],\n                \"OperatorType\": 9\n            },\n            {\n                \"Name\": \"PolicyType\",\n                \"Values\": [\n                    \"1\",\n                    \"2\"\n                ],\n                \"OperatorType\": 7\n            },\n            {\n                \"Name\": \"PolicySource\",\n                \"Values\": [\n                    \"system\"\n                ],\n                \"OperatorType\": 1\n            },\n            {\n                \"Name\": \"PolicyStatus\",\n                \"Values\": [\n                    \"1\"\n                ],\n                \"OperatorType\": 1\n            }\n        ],\n        \"Offset\": 0,\n        \"Limit\": 20,\n        \"Order\": \"desc\",\n        \"By\": \"PolicyName\",\n        \"StartTime\": \"2024-01-01 00:00:00\",\n        \"EndTime\": \"2024-01-31 23:59:59\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"PolicyId\": 1,\n                \"PolicyName\": \"bucket-public-read-policy\",\n                \"PolicyType\": 1,\n                \"PolicyContent\": \"{\\\"Version\\\":\\\"2.0\\\",\\\"Statement\\\":[{\\\"Effect\\\":\\\"Allow\\\",\\\"Principal\\\":{\\\"qcs\\\":[\\\"qcs::cam::anyone:anyone\\\"]},\\\"Action\\\":[\\\"cos:GetObject\\\"],\\\"Resource\\\":[\\\"qcs::cos:ap-guangzhou:uid/100012345678:bucket-001/*\\\"]}]}\",\n                \"PolicyStatus\": 1,\n                \"PolicyDescription\": \"\",\n                \"PolicyAbnormalType\": 1,\n                \"RiskLevel\": 1,\n                \"PolicySource\": 1,\n                \"PolicyHitCount\": 10,\n                \"PolicyCreateTime\": 173147231,\n                \"PolicyUpdateTime\": 173147231,\n                \"PolicyContentHash\": \"529fd413763fdcc00e2dae6c55c0a0fe\",\n                \"RelAccountCount\": 10,\n                \"RelAccountUin\": \"\",\n                \"RelAccountName\": \"\"\n            }\n        ],\n        \"Total\": 156,\n        \"RequestId\": \"6a625df7-dea0-4ba2-9942-97303d13d23e\"\n    }\n}",
+        "title": "Retrieving policy list information"
+      }
+    ],
+    "DescribeCosRiskActionList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCosRiskActionList\n<Common request parameters>\n\n{\n    \"RelAppId\": 1372183813,\n    \"BucketName\": \"brain-13712132323\",\n    \"PolicyId\": 34\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"req-123456789\",\n        \"Data\": [\n            {\n                \"ActionName\": \"GetObject\",\n                \"ActionNameCn\": \"Get object\",\n                \"ActionAccessTime\": 172814214,\n                \"InvokeCount\": 1250\n            }\n        ],\n        \"Total\": 10\n    }\n}",
+        "title": "Risk interface information list"
+      }
+    ],
+    "DescribeCosRiskEvidence": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCosRiskEvidence\n<Common request parameters>\n\n{\n    \"RelAppId\": 122321414,\n    \"PolicyId\": 1,\n    \"BucketName\": \"brain-122321414\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"req-123456789\",\n        \"Total\": 1,\n        \"Evidences\": [\n            {\n                \"PermissionSource\": \"CAM\",\n                \"PermissionContent\": \"{\\\"Version\\\":\\\"2.0\\\",\\\"Statement\\\":[{\\\"Effect\\\":\\\"Allow\\\",\\\"Principal\\\":{\\\"QCS\\\":[\\\"qcs::cam::uin/100000000001:uin/100000000001\\\"]},\\\"Action\\\":[\\\"name/cos:GetObject\\\",\\\"name/cos:PutObject\\\"],\\\"Resource\\\":[\\\"qcs::cos:ap-beijing:uid/100000000001:my-bucket/*\\\"]}]}\",\n                \"GrantResource\": \"qcs::cos:ap-beijing:uid/100000000001:my-bucket/*\",\n                \"GrantAction\": \"name/cos:GetObject,name/cos:PutObject\",\n                \"GrantCondition\": \"{\\\"StringEquals\\\":{\\\"cos:prefix\\\":\\\"example/\\\"}}\"\n            },\n            {\n                \"PermissionSource\": \"Bucket Policy\",\n                \"PermissionContent\": \"{\\\"Version\\\":\\\"2012-10-17\\\",\\\"Statement\\\":[{\\\"Sid\\\":\\\"PublicReadGetObject\\\",\\\"Effect\\\":\\\"Allow\\\",\\\"Principal\\\":\\\"*\\\",\\\"Action\\\":\\\"s3:GetObject\\\",\\\"Resource\\\":\\\"arn:aws:s3:::my-bucket/*\\\"}]}\",\n                \"GrantResource\": \"arn:aws:s3:::my-bucket/*\",\n                \"GrantAction\": \"s3:GetObject\",\n                \"GrantCondition\": \"{\\\"StringEquals\\\":{\\\"aws:Referer\\\":\\\"https://example.com\\\"}}\"\n            },\n            {\n                \"PermissionSource\": \"ACL\",\n                \"PermissionContent\": \"{\\\"Owner\\\":{\\\"ID\\\":\\\"qcs::cam::uin/100000000001:uin/100000000001\\\"},\\\"Grants\\\":[{\\\"Grantee\\\":{\\\"Type\\\":\\\"Group\\\",\\\"URI\\\":\\\"http://acs.amazonaws.com/groups/global/AllUsers\\\"},\\\"Permission\\\":\\\"READ\\\"}]}\",\n                \"GrantResource\": \"my-bucket\",\n                \"GrantAction\": \"READ\",\n                \"GrantCondition\": \"\"\n            },\n            {\n                \"PermissionSource\": \"CAM\",\n                \"PermissionContent\": \"{\\\"Version\\\":\\\"2.0\\\",\\\"Statement\\\":[{\\\"Effect\\\":\\\"Allow\\\",\\\"Principal\\\":{\\\"QCS\\\":[\\\"qcs::cam::uin/100000000002:uin/100000000002\\\"]},\\\"Action\\\":[\\\"name/cos:DeleteObject\\\"],\\\"Resource\\\":[\\\"qcs::cos:ap-shanghai:uid/100000000002:prod-bucket/*\\\"]}]}\",\n                \"GrantResource\": \"qcs::cos:ap-shanghai:uid/100000000002:prod-bucket/*\",\n                \"GrantAction\": \"name/cos:DeleteObject\",\n                \"GrantCondition\": \"{\\\"StringEquals\\\":{\\\"cos:prefix\\\":\\\"temp/\\\"}}\"\n            },\n            {\n                \"PermissionSource\": \"Bucket Policy\",\n                \"PermissionContent\": \"{\\\"Version\\\":\\\"2012-10-17\\\",\\\"Statement\\\":[{\\\"Sid\\\":\\\"FullAccess\\\",\\\"Effect\\\":\\\"Allow\\\",\\\"Principal\\\":{\\\"AWS\\\":\\\"arn:aws:iam::123456789012:user/test-user\\\"},\\\"Action\\\":\\\"s3:*\\\",\\\"Resource\\\":[\\\"arn:aws:s3:::prod-bucket\\\",\\\"arn:aws:s3:::prod-bucket/*\\\"]}]}\",\n                \"GrantResource\": \"arn:aws:s3:::prod-bucket/*\",\n                \"GrantAction\": \"s3:*\",\n                \"GrantCondition\": \"{\\\"StringEquals\\\":{\\\"aws:SourceIp\\\":\\\"192.168.1.0/24\\\"}}\"\n            }\n        ]\n    }\n}",
+        "title": "View Risk Evidence and Description"
+      }
+    ],
+    "DescribeCosRiskScanTask": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCosRiskScanTask\n<Common request parameters>\n\n{\n    \"BucketInfoSet\": [\n        {\n            \"AppId\": 134567888,\n            \"BucketName\": \"brain-134525356\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"BucketTaskInfoSet\": [\n            {\n                \"AppId\": 134567888,\n                \"BucketName\": \"brain-134525356\",\n                \"TaskId\": \"task-1qazsxsw\"\n            }\n        ],\n        \"RequestId\": \"6a625df7-dea0-4ba2-9942-97303d13d23e\"\n    }\n}",
+        "title": "View bucket scan task details"
+      }
+    ],
+    "DescribeCosRoleAccessPermission": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCosRoleAccessPermission\n<Common request parameters>\n\n{\n   \"RelAppId\":137812939,\n   \"RelRoleId\":\"role-1we2344\",\n   \"BucketName\":\"bucket-137812939\"\n\n}\n",
+        "output": "{\n    \"Response\": {\n        \"Total\": 0,\n        \"RequestId\": \"6a625df7-dea0-4ba2-9942-97303d13d23e\"\n    }\n}",
+        "title": "View the list of access permissions for a role"
+      }
+    ],
+    "DescribeCosRoleAccessPermissions": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCosRoleAccessPermissions\n<Common request parameters>\n\n{\n    \"RelAppId\":1373829129,\n    \"BucketName\":\"bucket-1373829129\"\n\n}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 0,\n        \"RequestId\": \"6a625df7-dea0-4ba2-9942-97303d13d23e\"\n    }\n}",
+        "title": "View cos bucket role-related permissions"
+      }
+    ],
+    "DescribeCosSourceIp": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCosSourceIp\n<Common request parameters>\n\n{\n    \"Filter\": {\n        \"Filters\": [\n            {\n                \"Name\": \"IpType\",\n                \"Values\": [\n                    \"2\"\n                ],\n                \"OperatorType\": 1\n            }\n        ],\n        \"Offset\": 0,\n        \"Limit\": 20,\n        \"Order\": \"desc\",\n        \"By\": \"LastAccessTime\",\n        \"StartTime\": \"2024-01-01 00:00:00\",\n        \"EndTime\": \"2024-01-31 23:59:59\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"UA\": [\n                    \"cos-console\"\n                ]\n            }\n        ],\n        \"Total\": 156,\n        \"RequestId\": \"6a625df7-dea0-4ba2-9942-97303d13d23e\"\n    }\n}",
+        "title": "Source ip list for calls"
+      }
+    ],
     "DescribeCspmShardConfig": [
       {
         "document": "",
@@ -2341,7 +2629,7 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDspmAccessTopologyAccounts\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"Items\": [\n            \"\"\n        ],\n        \"RequestId\": \"cf839eee-b651-4ff3-9b49-173f9f55733f\"\n    }\n}",
-        "title": "Querying the Dspm access topology account list"
+        "title": "Query the Dspm access topology account list"
       }
     ],
     "DescribeDspmAccessTopologyAssets": [
@@ -2436,8 +2724,8 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDspmAssetDatabaseList\n<Common request parameters>\n\n{\n    \"AssetId\": \"cdb-l8hhoqwd\"\n}",
-        "output": "{\n    \"Response\": {\n        \"DataSet\": [\n            {\n                \"AssetId\": \"cdb-l8hhoqwd\",\n                \"CategoryDetails\": [\n                    {\n                        \"CategoryId\": 356,\n\"CategoryName\": \"Personal Info\",\n                        \"RuleSet\": [\n                            {\n                                \"LevelId\": 10,\n                                \"LevelScore\": 1,\n                                \"RuleId\": 5836,\n                                \"RuleName\": \"QQ\"\n                            }\n                        ]\n                    }\n                ],\n                \"CategoryIds\": [\n                    355\n                ],\n                \"CategoryNames\": [\npersonal sensitive information\n                ],\n                \"DbName\": \"dspm01\",\n                \"RuleIds\": [\n                    5800\n                ],\n                \"RuleNames\": [\nName\n                ],\n                \"SensitiveTableCount\": 1,\n                \"TableCount\": 1\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"cac6252a-7788-4606-8431-ab7e57432f72\"\n    }\n}",
-        "title": "Query the asset database information"
+        "output": "{\n    \"Response\": {\n        \"DataSet\": [\n            {\n                \"AssetId\": \"cdb-l8hhoqwd\",\n                \"CategoryDetails\": [\n                    {\n                        \"CategoryId\": 356,\n\"CategoryName\": \"Personal Information\",\n                        \"RuleSet\": [\n                            {\n                                \"LevelId\": 10,\n                                \"LevelScore\": 1,\n                                \"RuleId\": 5836,\n                                \"RuleName\": \"QQ\"\n                            }\n                        ]\n                    }\n                ],\n                \"CategoryIds\": [\n                    355\n                ],\n                \"CategoryNames\": [\npersonal sensitive information\n                ],\n                \"DbName\": \"dspm01\",\n                \"RuleIds\": [\n                    5800\n                ],\n                \"RuleNames\": [\nname\n                ],\n                \"SensitiveTableCount\": 1,\n                \"TableCount\": 1\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"cac6252a-7788-4606-8431-ab7e57432f72\"\n    }\n}",
+        "title": "Query asset database information"
       }
     ],
     "DescribeDspmAssetDatabases": [
@@ -2604,7 +2892,7 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDspmIdentifyComplianceGroupList\n<Common request parameters>\n\n{\n    \"MemberId\": [\n        \"mem-12313131\"\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"DataSet\": [\n            {\n                \"ApplyStatus\": 1,\n                \"Description\": \"2\",\n                \"Id\": 10001,\n\"Name\": \"kyrie modify\"\n                \"Status\": 1,\n                \"Type\": 1,\n                \"UpdateTime\": \"2026-05-18 18:10:45\"\n            }\n        ],\n        \"TotalCount\": 3,\n        \"RequestId\": \"8a813e5e-1440-45ba-b9d3-54154c815204\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"DataSet\": [\n            {\n                \"ApplyStatus\": 1,\n                \"Description\": \"2\",\n                \"Id\": 10001,\n\"Name\": \"kyrie modification\"\n                \"Status\": 1,\n                \"Type\": 1,\n                \"UpdateTime\": \"2026-05-18 18:10:45\"\n            }\n        ],\n        \"TotalCount\": 3,\n        \"RequestId\": \"8a813e5e-1440-45ba-b9d3-54154c815204\"\n    }\n}",
         "title": "DescribeDspmIdentifyComplianceGroupList"
       }
     ],
@@ -2733,7 +3021,7 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDspmPersonApplyHistory\n<Common request parameters>\n\n{\n    \"Subject\": \"100000\",\n    \"AssetId\": \"cdb-c2thbt00\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"ApplySet\": [],\n        \"RequestId\": \"cf839eee-b651-4ff3-9b49-173f9f55733f\"\n    }\n}",
-        "title": "Query Dspm visitor application records"
+        "title": "Querying Dspm visitor application history"
       }
     ],
     "DescribeDspmPersonalIdentifyList": [
@@ -2789,7 +3077,7 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDspmRiskTendency\n<Common request parameters>\n\n{\n    \"StartDate\": \"2025-03-01\",\n    \"EndDate\": \"2025-03-03\"\n}",
         "output": "{\n    \"Response\": {\n        \"RiskTendencySet\": [],\n        \"RequestId\": \"cf839eee-b651-4ff3-9b49-173f9f55733f\"\n    }\n}",
-        "title": "Query Dspm risk trends"
+        "title": "Querying Dspm risk trends"
       }
     ],
     "DescribeDspmSessionList": [
@@ -2860,7 +3148,7 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeEDRRuleList\n<Common request parameters>\n\n{}",
-        "output": "{\n    \"Response\": {\n        \"AttackStageCounts\": [\n            {\n                \"AttackStage\": \"TA0002\",\n                \"Count\": 218\n            }\n        ],\n        \"DetectTypeCounts\": [\n            {\n                \"Count\": 688,\n                \"DetectType\": 0\n            }\n        ],\n        \"List\": [\n            {\n                \"Action\": 0,\n                \"AttackStage\": \"TA0009\",\n                \"CWPScope\": 1,\n                \"Confidence\": 1,\n                \"ContentType\": \"cmdline\",\n                \"CreateTime\": \"2026-03-02T15:11:09+08:00\",\n\"Description\": \"Detect the behavior of using commands such as cat, head, tail, tac, less, more, vi, vim, nano, getent, vipw, and vigr in yapi applications to view sensitive files in /etc, such as /etc/passwd and /etc/shadow, or user authentication files like authorized_keys and bash_history\"\n                \"DetectMode\": 0,\n                \"DetectType\": 0,\n                \"ExcludeImageIDs\": [],\n                \"ExcludeQUUIDS\": [],\n                \"ImageIDs\": [],\n                \"ImageNamesRegex\": \"\",\n                \"Level\": 2,\n                \"ModifyTime\": \"2026-03-02T15:11:09+08:00\",\n\"Name\": \"View sensitive files in the yapi application\"\n                \"QUUIDS\": [],\n                \"RuleID\": \"383\",\n                \"RuleType\": 0,\n                \"Status\": 0,\n                \"SupportBlock\": 0,\n                \"TCSSScope\": 1,\n                \"ClusterIDs\": [\n                    \"cls-8c5v0u8k\"\n                ],\n                \"ExcludeClusterIDs\": []\n            }\n        ],\n        \"TotalCount\": 688,\n        \"RequestId\": \"de366fc1-5524-4d68-a1fa-ab3ecebb6c02\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"AttackStageCounts\": [\n            {\n                \"AttackStage\": \"TA0002\",\n                \"Count\": 218\n            }\n        ],\n        \"DetectTypeCounts\": [\n            {\n                \"Count\": 688,\n                \"DetectType\": 0\n            }\n        ],\n        \"List\": [\n            {\n                \"Action\": 0,\n                \"AttackStage\": \"TA0009\",\n                \"CWPScope\": 1,\n                \"Confidence\": 1,\n                \"ContentType\": \"cmdline\",\n                \"CreateTime\": \"2026-03-02T15:11:09+08:00\",\n\"Description\": \"Detect behavior in yapi applications that uses commands such as cat, head, tail, tac, less, more, vi, vim, nano, getent, vipw, vigr to view sensitive files in /etc, for example /etc/passwd and /etc/shadow, or user authentication files such as authorized_keys and bash_history\"\n                \"DetectMode\": 0,\n                \"DetectType\": 0,\n                \"ExcludeImageIDs\": [],\n                \"ExcludeQUUIDS\": [],\n                \"ImageIDs\": [],\n                \"ImageNamesRegex\": \"\",\n                \"Level\": 2,\n                \"ModifyTime\": \"2026-03-02T15:11:09+08:00\",\n\"Name\": \"yapi app views sensitive files\"\n                \"QUUIDS\": [],\n                \"RuleID\": \"383\",\n                \"RuleType\": 0,\n                \"Status\": 0,\n                \"SupportBlock\": 0,\n                \"TCSSScope\": 1,\n                \"ClusterIDs\": [\n                    \"cls-8c5v0u8k\"\n                ],\n                \"ExcludeClusterIDs\": []\n            }\n        ],\n        \"TotalCount\": 688,\n        \"RequestId\": \"de366fc1-5524-4d68-a1fa-ab3ecebb6c02\"\n    }\n}",
         "title": "edr Policy List"
       }
     ],
@@ -3336,6 +3624,22 @@
         "title": "Inquire About the Container Image Vulnerability Allowlist"
       }
     ],
+    "DescribeIpInvokeRecord": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeIpInvokeRecord\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6a625df7-dea0-4ba2-9942-97303d13d23e\"\n    }\n}",
+        "title": "Object storage anomaly detection call record information"
+      }
+    ],
+    "DescribeIpInvokeRecordDetail": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeIpInvokeRecordDetail\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6a625df7-dea0-4ba2-9942-97303d13d23e\",\n        \"InvokeDetailInfo\": [\n            {\n                \"InvokeTimestamp\": 1705293000,\n                \"InvokeRequestId\": \"req-123456789\",\n                \"InvokeContent\": \"{\\\"Action\\\":\\\"GetObject\\\",\\\"Bucket\\\":\\\"my-bucket\\\",\\\"Key\\\":\\\"example/file.txt\\\",\\\"VersionId\\\":\\\"null\\\"}\"\n            },\n            {\n                \"InvokeTimestamp\": 1705296000,\n                \"InvokeRequestId\": \"req-123456790\",\n                \"InvokeContent\": \"{\\\"Action\\\":\\\"PutObject\\\",\\\"Bucket\\\":\\\"my-bucket\\\",\\\"Key\\\":\\\"example/upload.txt\\\",\\\"Content-Length\\\":\\\"1024\\\"}\"\n            },\n            {\n                \"InvokeTimestamp\": 1705299000,\n                \"InvokeRequestId\": \"req-123456791\",\n                \"InvokeContent\": \"{\\\"Action\\\":\\\"ListObjects\\\",\\\"Bucket\\\":\\\"my-bucket\\\",\\\"Prefix\\\":\\\"example/\\\",\\\"MaxKeys\\\":\\\"1000\\\"}\"\n            }\n        ],\n        \"InvokePermission\": [\n            {\n                \"PermissionSource\": \"CAM\",\n                \"PermissionContent\": \"{\\\"Version\\\":\\\"2.0\\\",\\\"Statement\\\":[{\\\"Effect\\\":\\\"Allow\\\",\\\"Principal\\\":{\\\"QCS\\\":[\\\"qcs::cam::uin/100000000001:uin/100000000001\\\"]},\\\"Action\\\":[\\\"name/cos:GetObject\\\"],\\\"Resource\\\":[\\\"qcs::cos:ap-beijing:uid/100000000001:my-bucket/*\\\"]}]}\",\n                \"GrantResource\": \"qcs::cos:ap-beijing:uid/100000000001:my-bucket/*\",\n                \"GrantAction\": \"name/cos:GetObject\",\n                \"GrantCondition\": \"{\\\"StringEquals\\\":{\\\"cos:prefix\\\":\\\"example/\\\"}}\"\n            },\n            {\n                \"PermissionSource\": \"Bucket Policy\",\n                \"PermissionContent\": \"{\\\"Version\\\":\\\"2012-10-17\\\",\\\"Statement\\\":[{\\\"Sid\\\":\\\"PublicReadGetObject\\\",\\\"Effect\\\":\\\"Allow\\\",\\\"Principal\\\":\\\"*\\\",\\\"Action\\\":\\\"s3:GetObject\\\",\\\"Resource\\\":\\\"arn:aws:s3:::my-bucket/*\\\"}]}\",\n                \"GrantResource\": \"arn:aws:s3:::my-bucket/*\",\n                \"GrantAction\": \"s3:GetObject\",\n                \"GrantCondition\": \"{\\\"StringEquals\\\":{\\\"aws:Referer\\\":\\\"https://example.com\\\"}}\"\n            },\n            {\n                \"PermissionSource\": \"ACL\",\n                \"PermissionContent\": \"{\\\"Owner\\\":{\\\"ID\\\":\\\"qcs::cam::uin/100000000001:uin/100000000001\\\"},\\\"Grants\\\":[{\\\"Grantee\\\":{\\\"Type\\\":\\\"Group\\\",\\\"URI\\\":\\\"http://acs.amazonaws.com/groups/global/AllUsers\\\"},\\\"Permission\\\":\\\"READ\\\"}]}\",\n                \"GrantResource\": \"my-bucket\",\n                \"GrantAction\": \"READ\",\n                \"GrantCondition\": \"\"\n            }\n        ]\n    }\n}",
+        "title": "ip access list details information"
+      }
+    ],
     "DescribeKBDetail": [
       {
         "document": "",
@@ -3606,6 +3910,14 @@
         "title": "Query the container list associated with a Pod"
       }
     ],
+    "DescribePolicyHitData": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePolicyHitData\n<Common request parameters>\n\n{\n    \"IndexTimestamp\": 173841676\n}",
+        "output": "{\n    \"Response\": {\n        \"PolicyHitDetail\": [],\n        \"RequestId\": \"6a625df7-dea0-4ba2-9942-97303d13d23e\"\n    }\n}",
+        "title": "View Policy Hit Details by Date"
+      }
+    ],
     "DescribePortDetectList": [
       {
         "document": "Port detection list",
@@ -3619,7 +3931,7 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePortScanTaskCount\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"PortScanTaskCount\": 1,\n        \"RequestId\": \"b15fef5a-a47e-49a9-9fb4-eb4a18a1a66e\"\n    }\n}",
-        "title": "Query the port scan task count under the current account"
+        "title": "Query the number of port scanning tasks under the current account"
       }
     ],
     "DescribePreventUninstallGlobalConf": [
@@ -3664,8 +3976,8 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePublicCloudAssets\n<Common request parameters>\n\n{\n    \"MemberId\": [\n        \"mem-0acb1**2**a**aee\"\n    ],\n    \"Limit\": 1,\n    \"Offset\": 0,\n    \"Order\": \"UpdateTime\",\n    \"By\": \"Desc\"\n}",
-        "output": "{\n    \"Response\": {\n        \"AssetTypeList\": [\n            {\n\"Text\": \"Tencent Cloud - Load Balancing\"\n                \"Value\": \"tencent-clb_instance\"\n            }\n        ],\n        \"Assets\": [\n            {\n                \"Address\": \"1**.17*.1*8.7*\",\n                \"AddressType\": \"ipv4\",\n                \"AlarmCount\": 0,\n                \"AppID\": 1300448058,\n                \"AssetID\": \"ins-n**s2b*a\",\n\"AssetName\": \"gl test automatic synchronization\",\n                \"AssetRID\": \"bb7*7*9*6*c68*2ff48aa1a*7*4***9*\",\n                \"AssetType\": \"cvm_instance\",\n\"AssetTypeName\": \"CVM\",\n                \"CloudAccountID\": \"10**11**6*46\",\n\"CloudAccountName\": \"Blue Sky\",\n                \"CreatedAt\": \"2026-01-13T09:17:39+08:00\",\n                \"CriticalRiskCount\": 0,\n                \"CustomTags\": [\n                    {\n                        \"TagColor\": \"red\",\n                        \"TagID\": 1,\n\"TagKey\": \"Core\",\n\"TagValue\": \"core\"\n                    }\n                ],\n                \"FirstSyncTime\": \"2026-01-21T20:04:56+08:00\",\n                \"HighRiskCount\": 0,\n                \"LowRiskCount\": 0,\n                \"MediumRiskCount\": 0,\n                \"ProtectStatus\": 1,\n                \"Provider\": \"tencent\",\n\"ProviderName\": \"Tencent Cloud\",\n\"Region\": \"South China (Guangzhou)\",\n                \"ResolvedAddress\": [],\n                \"RiskCount\": 0,\n                \"Tags\": [\n                    {\n\"TagKey\": \"Tag product\",\n                        \"TagValue\": \"dsad\"\n                    }\n                ],\n                \"UpdateTime\": \"2026-02-05T16:09:06+08:00\"\n            }\n        ],\n        \"RegionList\": [\n            {\n\"Text\": \"North China (Beijing)\",\n                \"Value\": \"ap-beijing\"\n            }\n        ],\n        \"TotalCount\": 56,\n        \"RequestId\": \"2ce2a61e-56b2-4837-a88c-c0819dd14e5d\"\n    }\n}",
-        "title": "Public Network Asset"
+        "output": "{\n    \"Response\": {\n        \"AssetTypeList\": [\n            {\n\"Text\": \"Tencent Cloud - Load Balancing\"\n                \"Value\": \"tencent-clb_instance\"\n            }\n        ],\n        \"Assets\": [\n            {\n                \"Address\": \"1**.17*.1*8.7*\",\n                \"AddressType\": \"ipv4\",\n                \"AlarmCount\": 0,\n                \"AppID\": 1300448058,\n                \"AssetID\": \"ins-n**s2b*a\",\n\"AssetName\": \"gl test automatic synchronization\"\n                \"AssetRID\": \"bb7*7*9*6*c68*2ff48aa1a*7*4***9*\",\n                \"AssetType\": \"cvm_instance\",\n\"AssetTypeName\": \"CVM\",\n                \"CloudAccountID\": \"10**11**6*46\",\n\"CloudAccountName\": \"Blue Sky\",\n                \"CreatedAt\": \"2026-01-13T09:17:39+08:00\",\n                \"CriticalRiskCount\": 0,\n                \"CustomTags\": [\n                    {\n                        \"TagColor\": \"red\",\n                        \"TagID\": 1,\n\"TagKey\": \"Core\",\n\"TagValue\": \"Core\"\n                    }\n                ],\n                \"FirstSyncTime\": \"2026-01-21T20:04:56+08:00\",\n                \"HighRiskCount\": 0,\n                \"LowRiskCount\": 0,\n                \"MediumRiskCount\": 0,\n                \"ProtectStatus\": 1,\n                \"Provider\": \"tencent\",\n\"ProviderName\": \"Tencent Cloud\",\n\"Region\": \"South China (Guangzhou)\",\n                \"ResolvedAddress\": [],\n                \"RiskCount\": 0,\n                \"Tags\": [\n                    {\n\"TagKey\": \"Tag product\",\n                        \"TagValue\": \"dsad\"\n                    }\n                ],\n                \"UpdateTime\": \"2026-02-05T16:09:06+08:00\"\n            }\n        ],\n        \"RegionList\": [\n            {\n\"Text\": \"North China (Beijing)\",\n                \"Value\": \"ap-beijing\"\n            }\n        ],\n        \"TotalCount\": 56,\n        \"RequestId\": \"2ce2a61e-56b2-4837-a88c-c0819dd14e5d\"\n    }\n}",
+        "title": "Public Network Assets"
       }
     ],
     "DescribePublicIpAssets": [
@@ -3714,6 +4026,14 @@
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeReverseShellSystemPolicyConfig\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"CWPScope\": 0,\n        \"ClusterIDs\": [],\n        \"ExcludeClusterIDs\": [],\n        \"ExcludeInstanceIDs\": [],\n        \"InnerIPShow\": false,\n        \"InnerNetAlarmShow\": true,\n        \"InstanceIDs\": [],\n        \"TCSSScope\": 0,\n        \"TagIDs\": [\n            \"1\"\n        ],\n        \"RequestId\": \"61dc9a84-23ee-4a60-8127-5fe1141746a6\"\n    }\n}",
         "title": "Querying"
+      }
+    ],
+    "DescribeRiskBucketList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRiskBucketList\n<Common request parameters>\n\n{\n    \"RelAppId\": 137182812,\n    \"PolicyId\": \"rule-1qazxsw2\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"req-123456789\",\n        \"Data\": [\n            {\n                \"AppId\": 123456789,\n                \"BucketName\": \"my-bucket\",\n                \"BucketRegion\": \"ap-beijing\",\n                \"BucketUin\": \"100000000001\",\n\"BucketNickName\": \"test user\",\n\"BucketMainNickName\": \"Root account\",\n                \"BucketIdentify\": 1,\n                \"LastScanTimestamp\": 1705293000,\n                \"HandleStatus\": 0\n            },\n            {\n                \"AppId\": 123456789,\n                \"BucketName\": \"prod-bucket\",\n                \"BucketRegion\": \"ap-shanghai\",\n                \"BucketUin\": \"100000000002\",\n\"BucketNickName\": \"production user\"\n\"BucketMainNickName\": \"Root account\",\n                \"BucketIdentify\": 2,\n                \"LastScanTimestamp\": 1705296000,\n                \"HandleStatus\": 1\n            },\n            {\n                \"AppId\": 123456789,\n                \"BucketName\": \"test-bucket\",\n                \"BucketRegion\": \"ap-guangzhou\",\n                \"BucketUin\": \"100000000003\",\n\"BucketNickName\": \"Sub-account user\",\n\"BucketMainNickName\": \"Root account\",\n                \"BucketIdentify\": 3,\n                \"LastScanTimestamp\": 1705299000,\n                \"HandleStatus\": 0\n            },\n            {\n                \"AppId\": 123456789,\n                \"BucketName\": \"backup-bucket\",\n                \"BucketRegion\": \"ap-chengdu\",\n                \"BucketUin\": \"100000000004\",\n\"BucketNickName\": \"Backup user\",\n\"BucketMainNickName\": \"Root account\",\n                \"BucketIdentify\": 1,\n                \"LastScanTimestamp\": 1705302000,\n                \"HandleStatus\": 2\n            }\n        ],\n        \"Total\": 4\n    }\n}",
+        "title": "View Risk Associated Bucket Info"
       }
     ],
     "DescribeRiskCallRecord": [
@@ -3812,6 +4132,14 @@
         "title": "Risk Detail List"
       }
     ],
+    "DescribeRiskItemList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRiskItemList\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"req-123456789\",\n        \"Data\": [\n            {\n                \"AppId\": 123456789,\n                \"PolicyName\": \"COS public access detection\",\n                \"PolicyId\": \"policy-001\",\n                \"PolicyType\": 1,\n                \"PolicyRiskLevel\": 3,\n                \"HandleBucketCount\": 5,\n                \"LastScanTimestamp\": 1705293000\n            },\n            {\n                \"AppId\": 123456789,\n                \"PolicyName\": \"COS sensitive data detection\",\n                \"PolicyId\": \"policy-002\",\n                \"PolicyType\": 2,\n                \"PolicyRiskLevel\": 4,\n                \"HandleBucketCount\": 3,\n                \"LastScanTimestamp\": 1705296000\n            },\n            {\n                \"AppId\": 123456789,\n                \"PolicyName\": \"COS Anomaly Access Detection\",\n                \"PolicyId\": \"policy-003\",\n                \"PolicyType\": 3,\n                \"PolicyRiskLevel\": 2,\n                \"HandleBucketCount\": 8,\n                \"LastScanTimestamp\": 1705299000\n            },\n            {\n                \"AppId\": 123456789,\n                \"PolicyName\": \"COS permission configuration check\",\n                \"PolicyId\": \"policy-004\",\n                \"PolicyType\": 4,\n                \"PolicyRiskLevel\": 3,\n                \"HandleBucketCount\": 2,\n                \"LastScanTimestamp\": 1705302000\n            },\n            {\n                \"AppId\": 123456789,\n                \"PolicyName\": \"COS data encryption detection\",\n                \"PolicyId\": \"policy-005\",\n                \"PolicyType\": 5,\n                \"PolicyRiskLevel\": 2,\n                \"HandleBucketCount\": 6,\n                \"LastScanTimestamp\": 1705305000\n            }\n        ],\n        \"Total\": 5\n    }\n}",
+        "title": "List risk item perspectives"
+      }
+    ],
     "DescribeRiskRuleDetail": [
       {
         "document": "",
@@ -3834,6 +4162,14 @@
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRiskScanCronConfig\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"CronConfig\": {\n            \"AddRuleEnableStatus\": true,\n            \"CreateAppID\": 1302396215,\n            \"CronStatus\": 0,\n            \"PlanContent\": \"0 0 16 * * 1,2,**4,5,6,7 *\",\n            \"ScanPlanTimezone\": \"Asia/Shanghai\"\n        },\n        \"RequestId\": \"687dbdee-2a3e-4668-b3d9-6eac3be03e27\"\n    }\n}",
         "title": "Creating a User Periodic Scanning Plan"
+      }
+    ],
+    "DescribeRiskTrendData": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRiskTrendData\n<Common request parameters>\n\n{\n    \"LastDays\": 14\n}",
+        "output": "{\n    \"Response\": {\n        \"CosRiskTrendData\": [\n            {\n                \"CurrentDateStr\": \"2024-01-31\",\n                \"RiskDataSet\": [\n                    {\n                        \"PolicyType\": 1,\n                        \"PolicyTypeName\": \"Public read permission risk\",\n                        \"PolicyCount\": 15\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"6a625df7-dea0-4ba2-9942-97303d13d23e\"\n    }\n}",
+        "title": "View the risk trend chart"
       }
     ],
     "DescribeSCFAliasList": [
@@ -3865,7 +4201,7 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSCFNamespaceList\n<Common request parameters>\n\n{\n    \"SCFRegion\": \"ap-guangzhou\",\n    \"Limit\": 20,\n    \"Offset\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"Name\": \"default\",\n                \"Type\": \"Default\"\n            },\n            {\n                \"Name\": \"notify-ns\",\n                \"Type\": \"Default\"\n            }\n        ],\n        \"TotalCount\": 2,\n        \"RequestId\": \"d3b7c5a1-6e4f-2d8a-9c1b-f5e3a7d2b8c6\"\n    }\n}",
-        "title": "Query an SCF namespace in the Guangzhou region"
+        "title": "Querying SCF Namespace in Guangzhou Region"
       }
     ],
     "DescribeSandboxACLAlertList": [
@@ -3968,7 +4304,7 @@
       {
         "document": "This API is used to query the task list.",
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeScanTaskList\n<Common request parameters>\n\n{\n    \"MemberId\": [\n        \"mem-68b8087a65268000\",\n        \"mem-tencent-522badef8ad96a4d\"\n    ],\n    \"Filter\": {\n        \"Limit\": 1\n    }\n}",
-        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"AppId\": \"1302396215\",\n                \"AssetNumber\": 1,\n                \"Assets\": [\n                    {\n                        \"Asset\": \"ins-0cl9wvfx\",\n                        \"AssetName\": \"kevan-**\",\n                        \"AssetType\": \"Instance\",\n                        \"InstanceType\": \"CVM\",\n                        \"Region\": \"ap-shanghai\"\n                    }\n                ],\n                \"CSPMTaskId\": \"CspmTaskId-fa844539-e15c-4e29-9981-2e632477addf\",\n                \"CSPMTaskProcess\": 100,\n                \"CWPBlId\": \"cwpblt_oxrasjb6\",\n                \"CWPBlProcess\": 100,\n                \"CWPPOCId\": \"1\",\n                \"CWPPOCProcess\": 0,\n                \"CompleteAssetNumber\": 1,\n                \"CompleteNumber\": 1,\n                \"EndTime\": \"2024-10-30 11:23:50\",\n                \"ErrorCode\": 0,\n                \"ErrorInfo\": \"ok\",\n                \"Frequency\": 0,\n                \"InsertTime\": \"2024-10-30 11:18:09\",\n                \"IsDelete\": 1,\n                \"IsEdit\": 0,\n                \"IsFree\": 0,\n                \"Percent\": 100,\n                \"PredictEndTime\": \"2024-10-30 11:18:09\",\n                \"PredictTime\": 6,\n                \"ReportNumber\": 1,\n                \"RiskCount\": 0,\n                \"ScanAssetType\": 1,\n                \"ScanFrom\": \"csip\",\n                \"ScanItem\": \"port,poc,weakpass,configrisk,exposedserver\",\n                \"ScanPlanContent\": \"59 59 23 */1 * * *\",\n                \"ScanStatus\": 2,\n                \"SelfDefiningAssets\": [\n                    \"1.1.1.1\"\n                ],\n                \"SourceType\": 0,\n                \"StartDay\": -1,\n                \"StartTime\": \"2024-10-30 11:18:09\",\n                \"TaskId\": \"rmis-sv6we7ol\",\n                \"TaskMode\": 2,\n                \"TaskName\": \"advance_select_csip\",\n                \"TaskType\": 1,\n                \"UIN\": \"100014592178\",\n\"UserName\": \"Shengsheng Oolong\",\n                \"VSSTaskId\": \"mis-****\",\n                \"VSSTaskProcess\": 0\n            }\n        ],\n        \"RequestId\": \"d32ed248-d824-4893-9cda-9530eced4bd1\",\n        \"TaskModeList\": [\n            {\nStandard health check\n                \"Value\": \"0\"\n            },\n            {\n\"Text\": \"Quick health check\"\n                \"Value\": \"1\"\n            },\n            {\nAdvanced health check\n                \"Value\": \"2\"\n            }\n        ],\n        \"TotalCount\": 229,\n        \"UINList\": [\n            \"100011949846\",\n            \"100014592178\"\n        ]\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"AppId\": \"1302396215\",\n                \"AssetNumber\": 1,\n                \"Assets\": [\n                    {\n                        \"Asset\": \"ins-0cl9wvfx\",\n                        \"AssetName\": \"kevan-**\",\n                        \"AssetType\": \"Instance\",\n                        \"InstanceType\": \"CVM\",\n                        \"Region\": \"ap-shanghai\"\n                    }\n                ],\n                \"CSPMTaskId\": \"CspmTaskId-fa844539-e15c-4e29-9981-2e632477addf\",\n                \"CSPMTaskProcess\": 100,\n                \"CWPBlId\": \"cwpblt_oxrasjb6\",\n                \"CWPBlProcess\": 100,\n                \"CWPPOCId\": \"1\",\n                \"CWPPOCProcess\": 0,\n                \"CompleteAssetNumber\": 1,\n                \"CompleteNumber\": 1,\n                \"EndTime\": \"2024-10-30 11:23:50\",\n                \"ErrorCode\": 0,\n                \"ErrorInfo\": \"ok\",\n                \"Frequency\": 0,\n                \"InsertTime\": \"2024-10-30 11:18:09\",\n                \"IsDelete\": 1,\n                \"IsEdit\": 0,\n                \"IsFree\": 0,\n                \"Percent\": 100,\n                \"PredictEndTime\": \"2024-10-30 11:18:09\",\n                \"PredictTime\": 6,\n                \"ReportNumber\": 1,\n                \"RiskCount\": 0,\n                \"ScanAssetType\": 1,\n                \"ScanFrom\": \"csip\",\n                \"ScanItem\": \"port,poc,weakpass,configrisk,exposedserver\",\n                \"ScanPlanContent\": \"59 59 23 */1 * * *\",\n                \"ScanStatus\": 2,\n                \"SelfDefiningAssets\": [\n                    \"1.1.1.1\"\n                ],\n                \"SourceType\": 0,\n                \"StartDay\": -1,\n                \"StartTime\": \"2024-10-30 11:18:09\",\n                \"TaskId\": \"rmis-sv6we7ol\",\n                \"TaskMode\": 2,\n                \"TaskName\": \"advance_select_csip\",\n                \"TaskType\": 1,\n                \"UIN\": \"100014592178\",\n\"UserName\": \"Sheng Sheng Wu Long\",\n                \"VSSTaskId\": \"mis-****\",\n                \"VSSTaskProcess\": 0\n            }\n        ],\n        \"RequestId\": \"d32ed248-d824-4893-9cda-9530eced4bd1\",\n        \"TaskModeList\": [\n            {\nStandard health check\n                \"Value\": \"0\"\n            },\n            {\n\"Text\": \"Quick health check\"\n                \"Value\": \"1\"\n            },\n            {\nAdvanced health check\n                \"Value\": \"2\"\n            }\n        ],\n        \"TotalCount\": 229,\n        \"UINList\": [\n            \"100011949846\",\n            \"100014592178\"\n        ]\n    }\n}",
         "title": "This API is used to query the task list."
       }
     ],
@@ -4170,7 +4506,7 @@
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeUebaRule\n<Common request parameters>\n\n{\n    \"Filter\": {\n        \"Filters\": [\n            {\n                \"Name\": \"RuleType\",\n                \"Values\": [\n                    \"0\"\n                ],\n                \"OperatorType\": 7\n            }\n        ],\n        \"Limit\": 10,\n        \"Offset\": 0\n    },\n    \"MemberId\": [\n        \"mem-e5d75d512c934d2c\"\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"AlterType\": [\n            {\nUser abnormal behavior\n                \"Value\": \"AbnormalUserBehavior\"\n            }\n        ],\n        \"Data\": [\n            {\n                \"RuleID\": \"rule-k23p01f\",\n                \"RuleName\": \"11\",\n                \"RuleType\": 1,\n                \"RuleLevel\": 4,\n\"RuleContent\": \"Type of user: Cloud user  Log type: AWS log (CloudAudit)\\nLogical expression: (account_id equal to 10) \\nStatistical conditions: Not based on statistical testing\"\n                \"RuleStatus\": true,\n                \"HitCount\": 0,\n                \"AppID\": \"79254734186\",\n                \"Uin\": \"arn:aws-cn:iam::792***4186:user/TC_20240510_nZFQ\",\n                \"MemberID\": \"mem-aws-b****e82cb251dd\",\n                \"Nickname\": \"TC_20240510_nZFQ\",\n                \"CloudType\": 0,\n                \"CustomRuleDetail\": {\n                    \"RuleName\": \"11\",\n                    \"UserType\": 1,\n                    \"LogType\": \"8_3\",\n\"LogTypeStr\": \"AWS log (CloudAudit)\"\n                    \"TimeInterval\": 1,\n                    \"EventContent\": {\n                        \"EventType\": 2,\n                        \"Content\": \"zero**\",\n                        \"Filters\": [\n                            {\n                                \"Name\": \"account_id\",\n                                \"Values\": [\n                                    \"10\"\n                                ],\n                                \"OperatorType\": 0\n                            }\n                        ]\n                    },\n                    \"AlertName\": \"AbnormalUserBehavior\",\n                    \"AlterLevel\": 4,\n                    \"Operator\": [\n                        \"account_id\",\n                        \"action_type\"\n                    ],\n                    \"OperateObject\": [\n                        \"account_id\"\n                    ],\n                    \"OperateMethod\": [\n                        \"account_id\"\n                    ]\n                }\n            }\n        ],\n        \"RequestId\": \"7da0af7a-c1c7-4739-8961-1492d37d693a\",\n        \"TotalCount\": 76\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"AlterType\": [\n            {\nUser abnormal behavior\n                \"Value\": \"AbnormalUserBehavior\"\n            }\n        ],\n        \"Data\": [\n            {\n                \"RuleID\": \"rule-k23p01f\",\n                \"RuleName\": \"11\",\n                \"RuleType\": 1,\n                \"RuleLevel\": 4,\n\"RuleContent\": \"Type of user: cloud user  Log type: AWS log (CloudAudit)\\nLogical expression: (account_id equal 10) \\nStatistical condition: not based on statistical testing\"\n                \"RuleStatus\": true,\n                \"HitCount\": 0,\n                \"AppID\": \"79254734186\",\n                \"Uin\": \"arn:aws-cn:iam::792***4186:user/TC_20240510_nZFQ\",\n                \"MemberID\": \"mem-aws-b****e82cb251dd\",\n                \"Nickname\": \"TC_20240510_nZFQ\",\n                \"CloudType\": 0,\n                \"CustomRuleDetail\": {\n                    \"RuleName\": \"11\",\n                    \"UserType\": 1,\n                    \"LogType\": \"8_3\",\n\"LogTypeStr\": \"AWS logs (CloudAudit)\"\n                    \"TimeInterval\": 1,\n                    \"EventContent\": {\n                        \"EventType\": 2,\n                        \"Content\": \"zero**\",\n                        \"Filters\": [\n                            {\n                                \"Name\": \"account_id\",\n                                \"Values\": [\n                                    \"10\"\n                                ],\n                                \"OperatorType\": 0\n                            }\n                        ]\n                    },\n                    \"AlertName\": \"AbnormalUserBehavior\",\n                    \"AlterLevel\": 4,\n                    \"Operator\": [\n                        \"account_id\",\n                        \"action_type\"\n                    ],\n                    \"OperateObject\": [\n                        \"account_id\"\n                    ],\n                    \"OperateMethod\": [\n                        \"account_id\"\n                    ]\n                }\n            }\n        ],\n        \"RequestId\": \"7da0af7a-c1c7-4739-8961-1492d37d693a\",\n        \"TotalCount\": 76\n    }\n}",
         "title": "test"
       }
     ],
@@ -4187,7 +4523,7 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeUserAKInfoList\n<Common request parameters>\n\n{\n    \"MemberId\": [\n        \"mem-68b808aa14568000\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"Count\": 1,\n        \"List\": [\n            {\n                \"AKNum\": 12,\n                \"AppID\": 1302114615,\n                \"IsSelfBuy\": 2,\n                \"IsShared\": 2,\n                \"NickName\": \"Sheng Sheng Oolong\",\n                \"ShareFromAppID\": 0,\n                \"Uin\": \"100011132178\"\n            }\n        ],\n        \"RequestId\": \"7e6e0b47-0671-4021-9a11-8aeb1c03e459\",\n        \"SelectedAKNum\": 0\n    }\n}",
-        "title": "Retrieving Multi-Account AK Data"
+        "title": "Retrieving multi-account AK data"
       }
     ],
     "DescribeUserCSPMInfoList": [
@@ -4242,8 +4578,8 @@
       {
         "document": "Retrieve vulnerability display details",
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeVULRiskDetail\n<Common request parameters>\n\n{\n    \"PCMGRId\": \"pcmgr-33429\"\n}",
-        "output": "{\n    \"Response\": {\n        \"QuestionId\": \"id-21b41oi\",\n        \"RequestId\": \"46d36ab9-84d0-4ad1-bc9f-284742f231b9\",\n        \"ServiceSupport\": [\n            {\n                \"IsSupport\": false,\n                \"ServiceName\": \"cfw_waf_virtual\",\n                \"SupportHandledCount\": 0,\n                \"SupportTotalCount\": 0\n            },\n            {\n                \"IsSupport\": false,\n                \"ServiceName\": \"cwp_detect\",\n                \"SupportHandledCount\": 0,\n                \"SupportTotalCount\": 0\n            },\n            {\n                \"IsSupport\": false,\n                \"ServiceName\": \"cwp_defense\",\n                \"SupportHandledCount\": 0,\n                \"SupportTotalCount\": 0\n            },\n            {\n                \"IsSupport\": false,\n                \"ServiceName\": \"cwp_fix\",\n                \"SupportHandledCount\": 0,\n                \"SupportTotalCount\": 0\n            }\n        ],\n        \"SessionId\": \"12040124\",\n        \"VulData\": {\n            \"Describe\": \"Vim has an input validation vulnerability. Since escape characters are not correctly filtered, Vim 3.0 from 7.2.010 to 7.x cannot properly escape characters, which allows user-assisted attackers to (1) execute arbitrary shell commands by entering the K keystroke on a line containing \\\";\\\" (semicolon) followed by a command, or execute arbitrary Ex commands by entering arguments after (2) the \\\"Ctrl-]\\\" (control parenthesis) or (3) \\\"g]\\\" (g parenthesis) keystroke sequence, which is a different issue from CVE-2008-2712.\",\n            \"Fix\": \" It is recommended to update the current system or software to the latest version to complete the vulnerability fix. Reference link: https://www.vim.org/download.php\",\n            \"ImpactComponent\": [\n                {\n                    \"Component\": \"vim\",\n                    \"Version\": \"1.0.1\"\n                }\n            ],\n            \"References\": \"http://ftp.vim.org/pub/vim/patches/7.2/7.2.010,http://groups.google.com/group/vim_dev/attach/9290f26f9bc11b33/K-arbitrary-command-execution.patch.v3?part=2,http://groups.google.com/group/vim_dev/attach/dd32ad3a84f36bb2/K-arbitrary-command-execution.patch?part=2,http://groups.google.com/group/vim_dev/browse_thread/thread/1434d0812b5c817e/6ad2d5b50a96668e,http://groups.google.com/group/vim_dev/msg/9290f26f9bc11b33,http://lists.apple.com/archives/security-announce/2008/Oct/msg00001.html,http://lists.apple.com/archives/security-announce/2010//Mar/msg00001.html,http://secunia.com/advisories/31592,http://secunia.com/advisories/32222,http://secunia.com/advisories/32858,http://secunia.com/advisories/32864,http://secunia.com/advisories/33410,http://support.apple.com/kb/HT3216,http://support.apple.com/kb/HT4077,http://support.avaya.com/elmodocs2/security/ASA-2008-457.htm,http://support.avaya.com/elmodocs2/security/ASA-2009-001.htm,http://www.mandriva.com/security/advisories?name=MDVSA-2008:236,http://www.openwall.com/lists/oss-security/2008/09/11/3,http://www.openwall.com/lists/oss-security/2008/09/11/4,http://www.openwall.com/lists/oss-security/2008/09/16/5,http://www.openwall.com/lists/oss-security/2008/09/16/6,http://www.rdancer.org/vulnerablevim-K.html,http://www.redhat.com/support/errata/RHSA-2008-0580.html,http://www.redhat.com/support/errata/RHSA-2008-0617.html,http://www.redhat.com/support/errata/RHSA-2008-0618.html,http://www.securityfocus.com/archive/1/495662,http://www.securityfocus.com/archive/1/495703,http://www.securityfocus.com/archive/1/502322/100/0/threaded,http://www.securityfocus.com/bid/30795,http://www.securityfocus.com/bid/31681,http://www.ubuntu.com/usn/USN-712-1,http://www.vmware.com/security/advisories/VMSA-2009-0004.html,http://www.vupen.com/english/advisories/2008/2780,http://www.vupen.com/english/advisories/2009/0033,http://www.vupen.com/english/advisories/2009/0904,https://bugzilla.redhat.com/show_bug.cgi?id=461927,https://exchange.xforce.ibmcloud.com/vulnerabilities/44626,https://oval.cisecurity.org/repository/search/definition/oval%3Aorg.mitre.oval%3Adef%3A10894,https://oval.cisecurity.org/repository/search/definition/oval%3Aorg.mitre.oval%3Adef%3A5812\"\n        },\n        \"VulTrend\": [\n            {\n                \"AffectAssetCount\": 0,\n                \"AffectUserCount\": 0,\n                \"AttackCount\": 0,\n                \"Date\": \"2023-12-05\"\n            },\n            {\n                \"AffectAssetCount\": 0,\n                \"AffectUserCount\": 0,\n                \"AttackCount\": 0,\n                \"Date\": \"2023-12-06\"\n            },\n            {\n                \"AffectAssetCount\": 0,\n                \"AffectUserCount\": 0,\n                \"AttackCount\": 0,\n                \"Date\": \"2023-12-07\"\n            },\n            {\n                \"AffectAssetCount\": 0,\n                \"AffectUserCount\": 0,\n                \"AttackCount\": 0,\n                \"Date\": \"2023-12-08\"\n            },\n            {\n                \"AffectAssetCount\": 0,\n                \"AffectUserCount\": 0,\n                \"AttackCount\": 0,\n                \"Date\": \"2023-12-09\"\n            },\n            {\n                \"AffectAssetCount\": 0,\n                \"AffectUserCount\": 0,\n                \"AttackCount\": 0,\n                \"Date\": \"2023-12-10\"\n            },\n            {\n                \"AffectAssetCount\": 0,\n                \"AffectUserCount\": 0,\n                \"AttackCount\": 0,\n                \"Date\": \"2023-12-11\"\n            }\n        ]\n    }\n}",
-        "title": "Retrieve vulnerability display details"
+        "output": "{\n    \"Response\": {\n        \"QuestionId\": \"id-21b41oi\",\n        \"RequestId\": \"46d36ab9-84d0-4ad1-bc9f-284742f231b9\",\n        \"ServiceSupport\": [\n            {\n                \"IsSupport\": false,\n                \"ServiceName\": \"cfw_waf_virtual\",\n                \"SupportHandledCount\": 0,\n                \"SupportTotalCount\": 0\n            },\n            {\n                \"IsSupport\": false,\n                \"ServiceName\": \"cwp_detect\",\n                \"SupportHandledCount\": 0,\n                \"SupportTotalCount\": 0\n            },\n            {\n                \"IsSupport\": false,\n                \"ServiceName\": \"cwp_defense\",\n                \"SupportHandledCount\": 0,\n                \"SupportTotalCount\": 0\n            },\n            {\n                \"IsSupport\": false,\n                \"ServiceName\": \"cwp_fix\",\n                \"SupportHandledCount\": 0,\n                \"SupportTotalCount\": 0\n            }\n        ],\n        \"SessionId\": \"12040124\",\n        \"VulData\": {\n            \"Describe\": \"Vim has an input validation vulnerability. Since escape characters are not properly filtered, Vim 3.0 from 7.2.010 to 7.x cannot correctly escape characters, which allows user-assisted attackers to (1) execute arbitrary shell commands by entering the K keystroke on a line containing a \\\";\\\" (semicolon) followed by a command, or execute arbitrary Ex commands by entering arguments after the (2) \\\"Ctrl-]\\\" (control parenthesis) or (3) \\\"g]\\\" (g parenthesis) keystroke sequence, which is a different issue from CVE-2008-2712.\",\n            \"Fix\": \" You are advised to update the current system or software to the latest version to fix vulnerabilities. Reference link: https://www.vim.org/download.php\",\n            \"ImpactComponent\": [\n                {\n                    \"Component\": \"vim\",\n                    \"Version\": \"1.0.1\"\n                }\n            ],\n            \"References\": \"http://ftp.vim.org/pub/vim/patches/7.2/7.2.010,http://groups.google.com/group/vim_dev/attach/9290f26f9bc11b33/K-arbitrary-command-execution.patch.v3?part=2,http://groups.google.com/group/vim_dev/attach/dd32ad3a84f36bb2/K-arbitrary-command-execution.patch?part=2,http://groups.google.com/group/vim_dev/browse_thread/thread/1434d0812b5c817e/6ad2d5b50a96668e,http://groups.google.com/group/vim_dev/msg/9290f26f9bc11b33,http://lists.apple.com/archives/security-announce/2008/Oct/msg00001.html,http://lists.apple.com/archives/security-announce/2010//Mar/msg00001.html,http://secunia.com/advisories/31592,http://secunia.com/advisories/32222,http://secunia.com/advisories/32858,http://secunia.com/advisories/32864,http://secunia.com/advisories/33410,http://support.apple.com/kb/HT3216,http://support.apple.com/kb/HT4077,http://support.avaya.com/elmodocs2/security/ASA-2008-457.htm,http://support.avaya.com/elmodocs2/security/ASA-2009-001.htm,http://www.mandriva.com/security/advisories?name=MDVSA-2008:236,http://www.openwall.com/lists/oss-security/2008/09/11/3,http://www.openwall.com/lists/oss-security/2008/09/11/4,http://www.openwall.com/lists/oss-security/2008/09/16/5,http://www.openwall.com/lists/oss-security/2008/09/16/6,http://www.rdancer.org/vulnerablevim-K.html,http://www.redhat.com/support/errata/RHSA-2008-0580.html,http://www.redhat.com/support/errata/RHSA-2008-0617.html,http://www.redhat.com/support/errata/RHSA-2008-0618.html,http://www.securityfocus.com/archive/1/495662,http://www.securityfocus.com/archive/1/495703,http://www.securityfocus.com/archive/1/502322/100/0/threaded,http://www.securityfocus.com/bid/30795,http://www.securityfocus.com/bid/31681,http://www.ubuntu.com/usn/USN-712-1,http://www.vmware.com/security/advisories/VMSA-2009-0004.html,http://www.vupen.com/english/advisories/2008/2780,http://www.vupen.com/english/advisories/2009/0033,http://www.vupen.com/english/advisories/2009/0904,https://bugzilla.redhat.com/show_bug.cgi?id=461927,https://exchange.xforce.ibmcloud.com/vulnerabilities/44626,https://oval.cisecurity.org/repository/search/definition/oval%3Aorg.mitre.oval%3Adef%3A10894,https://oval.cisecurity.org/repository/search/definition/oval%3Aorg.mitre.oval%3Adef%3A5812\"\n        },\n        \"VulTrend\": [\n            {\n                \"AffectAssetCount\": 0,\n                \"AffectUserCount\": 0,\n                \"AttackCount\": 0,\n                \"Date\": \"2023-12-05\"\n            },\n            {\n                \"AffectAssetCount\": 0,\n                \"AffectUserCount\": 0,\n                \"AttackCount\": 0,\n                \"Date\": \"2023-12-06\"\n            },\n            {\n                \"AffectAssetCount\": 0,\n                \"AffectUserCount\": 0,\n                \"AttackCount\": 0,\n                \"Date\": \"2023-12-07\"\n            },\n            {\n                \"AffectAssetCount\": 0,\n                \"AffectUserCount\": 0,\n                \"AttackCount\": 0,\n                \"Date\": \"2023-12-08\"\n            },\n            {\n                \"AffectAssetCount\": 0,\n                \"AffectUserCount\": 0,\n                \"AttackCount\": 0,\n                \"Date\": \"2023-12-09\"\n            },\n            {\n                \"AffectAssetCount\": 0,\n                \"AffectUserCount\": 0,\n                \"AttackCount\": 0,\n                \"Date\": \"2023-12-10\"\n            },\n            {\n                \"AffectAssetCount\": 0,\n                \"AffectUserCount\": 0,\n                \"AttackCount\": 0,\n                \"Date\": \"2023-12-11\"\n            }\n        ]\n    }\n}",
+        "title": "Retrieve Vulnerability Display Details"
       }
     ],
     "DescribeVdbAndPocInfo": [
@@ -4548,6 +4884,14 @@
         "title": "Settings"
       }
     ],
+    "ModifyAlarmRiskStatus": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAlarmRiskStatus\n<Common request parameters>\n\n{\n    \"AlarmRiskIdSet\": [\n        {\n            \"AlarmRiskId\": 1001,\n            \"AppId\": 123456789\n        },\n        {\n            \"AlarmRiskId\": 1002,\n            \"AppId\": 123456789\n        },\n        {\n            \"AlarmRiskId\": 1003,\n            \"AppId\": 123456789\n        }\n    ],\n    \"HandleStatus\": 1,\n    \"AlarmRiskType\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6a625df7-dea0-4ba2-9942-97303d13d23e\"\n    }\n}",
+        "title": "Modify or change the handling status"
+      }
+    ],
     "ModifyAssetCoreAttribute": [
       {
         "document": "",
@@ -4698,6 +5042,38 @@
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyCosAuditBucketMonitorStatus\n<Common request parameters>\n\n{\n    \"BucketNameSet\": [\n        \"cos-1793609143\"\n    ],\n    \"MonitorStatus\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6a625df7-dea0-4ba2-9942-97303d13d23e\"\n    }\n}",
         "title": "Modifying Bucket Monitoring Status"
+      }
+    ],
+    "ModifyCosAuditMonitorAccount": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyCosAuditMonitorAccount\n<Common request parameters>\n\n{\n    \"ResourceId\": \"cos-audit-1qweds123\",\n    \"MonitorAppIdSet\": [\n        1754092892\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6a625df7-dea0-4ba2-9942-97303d13d23e\"\n    }\n}",
+        "title": "Modify the cos audit monitoring account"
+      }
+    ],
+    "ModifyCosAuditObjectIdentifyStatus": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyCosAuditObjectIdentifyStatus\n<Common request parameters>\n\n{\n    \"ResourceId\": \"cos-audit-757d9973\",\n    \"TextIdentifyStatus\": 1,\n    \"ImageIdentifyStatus\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"dfa48ae2-857d-460f-b194-ad4f267f6050\"\n    }\n}",
+        "title": "Modifying Object Storage Recognition Switch State"
+      }
+    ],
+    "ModifyCosAuditObjectSampleRate": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyCosAuditObjectSampleRate\n<Common request parameters>\n\n{\n    \"BucketIdSet\": [\n        1346438\n    ],\n    \"SampleRateSet\": [\n        0.5\n    ],\n    \"TargetAppId\": 260209268,\n    \"DefaultSampleRate\": 0.01\n}",
+        "output": "{\n    \"Response\": {\n        \"DefaultSampleRate\": 0.01,\n        \"DefaultSampleRateUpdated\": true,\n        \"RequestId\": \"466d34ac-169a-4b5e-b194-9541b0871a66\",\n        \"UpdatedBucketCount\": 1\n    }\n}",
+        "title": "Modifying COS Audit Sampling Rate"
+      }
+    ],
+    "ModifyCosMarkInfo": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyCosMarkInfo\n<Common request parameters>\n\n{\n    \"BucketNameSet\": [\n        {\n            \"AppId\": 1357673452,\n            \"BucketName\": \"brainzs-1357673452\"\n        }\n    ],\n    \"MarkInfo\": \"Security Center\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6a625df7-dea0-4ba2-9942-97303d13d23e\"\n    }\n}",
+        "title": "Modify the remark of an object storage"
       }
     ],
     "ModifyCspmShardConfig": [
@@ -4881,7 +5257,7 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDspmIdentifyRule\n<Common request parameters>\n\n{\n    \"Id\": 10357,\n\"Name\": \"Custom Mobile Phone Number Recognition\"\n    \"MemberId\": [\n        \"mem-12e13wd1\"\n    ],\n    \"Status\": 1,\n    \"StructuredRule\": \"{\\\"NodeType\\\":\\\"operator\\\",\\\"OptType\\\":\\\"and\\\",\\\"Nodes\\\":[{\\\"NodeType\\\":\\\"operator\\\",\\\"OptType\\\":\\\"and\\\",\\\"RuleInfos\\\":[{\\\"DataSourceType\\\":\\\"field_value\\\",\\\"RuleMethod\\\":\\\"match\\\",\\\"RuleType\\\":\\\"keyword\\\",\\\"RuleContent\\\":\\\"phone\\\",\\\"Parameters\\\":{\\\"IsIgnoreCase\\\":\\\"true\\\"}}],\\\"Nodes\\\":[]}]}\",\n    \"UnStructuredRule\": \"{\\\"RegexRule\\\":{\\\"Operator\\\":\\\"or\\\",\\\"Contents\\\":[{\\\"RuleContent\\\":\\\"(?<=\\\\\\\\D)(13[0-9]|14[014-9]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\\\\\\\\d{8}(?=\\\\\\\\D)\\\",\\\"IsIgnoreCase\\\":true}]},\\\"MaxMatchRule\\\":{\\\"Length\\\":100}}\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"7cb25fcd-6d28-4514-8b30-2585163ab240\"\n    }\n}",
-        "title": "Modifying a dspm data identification data item"
+        "title": "Modifying a dspm Data Identification Data Item"
       }
     ],
     "ModifyDspmIdentifyRuleStatus": [
@@ -5224,6 +5600,14 @@
         "title": "Disable automatic scaling for the host"
       }
     ],
+    "ModifyPolicyStatus": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyPolicyStatus\n<Common request parameters>\n\n{\n    \"PolicyIdSet\": [\n        1,\n        3,\n        7\n    ],\n    \"Status\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1qazxxsw221r353425\"\n    }\n}",
+        "title": "Modify Policy Status"
+      }
+    ],
     "ModifyProtectionSetting": [
       {
         "document": "",
@@ -5309,7 +5693,7 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifySandboxDLPRuleStatus\n<Common request parameters>\n\n{\n    \"IDList\": [\n        4001,\n        4002\n    ],\n    \"Status\": \"ON\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\"\n    }\n}",
-        "title": "Example of batch enabling DLP rules"
+        "title": "Batch enable DLP rule sample code"
       }
     ],
     "ModifySandboxFileRule": [
@@ -5403,9 +5787,9 @@
     "ModifyVulWhitelistConfig": [
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyVulWhitelistConfig\n<Common request parameters>\n\n{\n    \"Id\": 8,\n\"Remark\": \"Remark\"\n    \"AssetRange\": 1,\n    \"AssetList\": [\n        \"ins-khz78apa\"\n    ]\n}",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyVulWhitelistConfig\n<Common request parameters>\n\n{\n    \"Id\": 8,\n    \"Remark\": \"Remark\",\n    \"AssetRange\": 1,\n    \"AssetList\": [\n        \"ins-khz78apa\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"965d7001-779c-4549-9d9c-ed3bcce4c402\"\n    }\n}",
-        "title": "Modify vulnerability allowlist configuration"
+        "title": "Modifying Vulnerability Allowlist Configuration"
       }
     ],
     "ModifyVulWhitelistSwitch": [

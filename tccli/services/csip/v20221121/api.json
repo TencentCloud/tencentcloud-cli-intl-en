@@ -294,6 +294,34 @@
       "output": "CreateComplianceRiskExportJobResponse",
       "status": "online"
     },
+    "CreateCosAssetSyncTask": {
+      "document": "Creates an asset sync task",
+      "input": "CreateCosAssetSyncTaskRequest",
+      "name": "Creates an object storage asset sync task",
+      "output": "CreateCosAssetSyncTaskResponse",
+      "status": "online"
+    },
+    "CreateCosObjectScanTask": {
+      "document": "This API is used to create cos virus scan and sensitive data identification tasks.",
+      "input": "CreateCosObjectScanTaskRequest",
+      "name": "Creates a cos file content scan task",
+      "output": "CreateCosObjectScanTaskResponse",
+      "status": "online"
+    },
+    "CreateCosPolicy": {
+      "document": "Add a cos alarm policy",
+      "input": "CreateCosPolicyRequest",
+      "name": "Creates a cos policy",
+      "output": "CreateCosPolicyResponse",
+      "status": "online"
+    },
+    "CreateCosRiskScanTask": {
+      "document": "This API is used to create a risk monitor task.",
+      "input": "CreateCosRiskScanTaskRequest",
+      "name": "Creates an object storage risk monitor task",
+      "output": "CreateCosRiskScanTaskResponse",
+      "status": "online"
+    },
     "CreateDomainAndIp": {
       "document": "Create Domain and IP Information",
       "input": "CreateDomainAndIpRequest",
@@ -819,6 +847,20 @@
       "output": "DeleteClusterResponse",
       "status": "online"
     },
+    "DeleteCosAkAsset": {
+      "document": "Delete deleted cos ak assets.",
+      "input": "DeleteCosAkAssetRequest",
+      "name": "Deletes a cosak asset",
+      "output": "DeleteCosAkAssetResponse",
+      "status": "online"
+    },
+    "DeleteCosPolicy": {
+      "document": "Deleting a Policy",
+      "input": "DeleteCosPolicyRequest",
+      "name": "Deletes a cos policy",
+      "output": "DeleteCosPolicyResponse",
+      "status": "online"
+    },
     "DeleteDomainAndIp": {
       "document": "Delete Domain and IP Request",
       "input": "DeleteDomainAndIpRequest",
@@ -1172,7 +1214,7 @@
     "DescribeAIScheduleList": {
       "document": "Query the list of AI scheduled tasks.\n\nSupports paging query and status filtering, and returns the scheduled task list and total number of entries.",
       "input": "DescribeAIScheduleListRequest",
-      "name": "Queries the list of AI scheduled tasks",
+      "name": "Queries the scheduled AI task list",
       "output": "DescribeAIScheduleListResponse",
       "status": "online"
     },
@@ -1421,6 +1463,13 @@
       "output": "DescribeAssetViewVulRiskListResponse",
       "status": "online"
     },
+    "DescribeAssumeRole": {
+      "document": "Query whether it is bound to a role",
+      "input": "DescribeAssumeRoleRequest",
+      "name": "Query whether it is bound to a role",
+      "output": "DescribeAssumeRoleResponse",
+      "status": "online"
+    },
     "DescribeBackendScanEngineRegionList": {
       "document": "This API is used to query the region list of the backend scanning engine.",
       "input": "DescribeBackendScanEngineRegionListRequest",
@@ -1501,7 +1550,7 @@
     "DescribeBaselineOverview": {
       "document": "Retrieve header data of the baseline overview page, including the total count of failed detection items, the number of fixes in the past one year, the last scan time, and whether period scanning is currently enabled.",
       "input": "DescribeBaselineOverviewRequest",
-      "name": "Obtains baseline overview data",
+      "name": "Gets baseline overview data",
       "output": "DescribeBaselineOverviewResponse",
       "status": "online"
     },
@@ -1573,6 +1622,13 @@
       "input": "DescribeBruteAttackRulesRequest",
       "name": "Obtains brute force cracking rules",
       "output": "DescribeBruteAttackRulesResponse",
+      "status": "online"
+    },
+    "DescribeBucketInvokeIpList": {
+      "document": "This API is used to view the bucket call source ip list.",
+      "input": "DescribeBucketInvokeIpListRequest",
+      "name": "This API is used to view the bucket call source ip list.",
+      "output": "DescribeBucketInvokeIpListResponse",
       "status": "online"
     },
     "DescribeCFGRiskReportStatistics": {
@@ -1648,7 +1704,7 @@
     "DescribeCSPMPayInfo": {
       "document": "This API is used to obtain purchased CSPM order information.",
       "input": "DescribeCSPMPayInfoRequest",
-      "name": "Gets the information of purchased CSPM orders",
+      "name": "Retrieves the information of purchased CSPM orders",
       "output": "DescribeCSPMPayInfoResponse",
       "status": "online"
     },
@@ -1851,7 +1907,7 @@
     "DescribeClusterContainerWebServiceList": {
       "document": "This API is used to query the associated Web Service List of a container. It retrieves associated web service information by container ID and supports pagination.",
       "input": "DescribeClusterContainerWebServiceListRequest",
-      "name": "Queries the Web Service List associated with a container",
+      "name": "Queries the Web service list associated with a container",
       "output": "DescribeClusterContainerWebServiceListResponse",
       "status": "online"
     },
@@ -1960,6 +2016,202 @@
       "output": "DescribeConfigCheckRulesResponse",
       "status": "online"
     },
+    "DescribeCosAccessPermission": {
+      "document": "View cos bucket access permission information",
+      "input": "DescribeCosAccessPermissionRequest",
+      "name": "Views the access privilege list",
+      "output": "DescribeCosAccessPermissionResponse",
+      "status": "online"
+    },
+    "DescribeCosAccessPermissions": {
+      "document": "View the access privilege list of object storage",
+      "input": "DescribeCosAccessPermissionsRequest",
+      "name": "Access privilege list",
+      "output": "DescribeCosAccessPermissionsResponse",
+      "status": "online"
+    },
+    "DescribeCosActionList": {
+      "document": "View the COS API list",
+      "input": "DescribeCosActionListRequest",
+      "name": "Views the cos operation name list",
+      "output": "DescribeCosActionListResponse",
+      "status": "online"
+    },
+    "DescribeCosAkAsset": {
+      "document": "View the ak asset information list",
+      "input": "DescribeCosAkAssetRequest",
+      "name": "Views asset information of the ak associated with cos",
+      "output": "DescribeCosAkAssetResponse",
+      "status": "online"
+    },
+    "DescribeCosAkInvokeIpList": {
+      "document": "View the source ip list of bucket calls",
+      "input": "DescribeCosAkInvokeIpListRequest",
+      "name": "Views the source ip list of cos ak calls",
+      "output": "DescribeCosAkInvokeIpListResponse",
+      "status": "online"
+    },
+    "DescribeCosAlarmList": {
+      "document": "View alarm list",
+      "input": "DescribeCosAlarmListRequest",
+      "name": "Views the cos alarm list",
+      "output": "DescribeCosAlarmListResponse",
+      "status": "online"
+    },
+    "DescribeCosAlarmTrendData": {
+      "document": "Daily alerts newly added data",
+      "input": "DescribeCosAlarmTrendDataRequest",
+      "name": "Views cos alarm trend chart",
+      "output": "DescribeCosAlarmTrendDataResponse",
+      "status": "online"
+    },
+    "DescribeCosAsset": {
+      "document": "Views the cos asset list",
+      "input": "DescribeCosAssetRequest",
+      "name": "Views the cos asset list",
+      "output": "DescribeCosAssetResponse",
+      "status": "online"
+    },
+    "DescribeCosAssetSyncTask": {
+      "document": "Get the taskid currently being scanned for the corresponding appid.",
+      "input": "DescribeCosAssetSyncTaskRequest",
+      "name": "Views object storage asset sync tasks",
+      "output": "DescribeCosAssetSyncTaskResponse",
+      "status": "online"
+    },
+    "DescribeCosAuditAppIdList": {
+      "document": "View the purchased appid collection under this appid.",
+      "input": "DescribeCosAuditAppIdListRequest",
+      "name": "View the purchased appid collection under this appid.",
+      "output": "DescribeCosAuditAppIdListResponse",
+      "status": "online"
+    },
+    "DescribeCosAuditDictionaryList": {
+      "document": "Query the cos audit dictionary information list.",
+      "input": "DescribeCosAuditDictionaryListRequest",
+      "name": "Queries the cos audit dictionary information list",
+      "output": "DescribeCosAuditDictionaryListResponse",
+      "status": "online"
+    },
+    "DescribeCosAuditPayInfo": {
+      "document": "This API is used to obtain audit payment information.",
+      "input": "DescribeCosAuditPayInfoRequest",
+      "name": "Views the audit payment information of object storage",
+      "output": "DescribeCosAuditPayInfoResponse",
+      "status": "online"
+    },
+    "DescribeCosBucketBillingInfo": {
+      "document": "This API is used to obtain the billing information of a bucket.",
+      "input": "DescribeCosBucketBillingInfoRequest",
+      "name": "Obtains the billing information of a bucket",
+      "output": "DescribeCosBucketBillingInfoResponse",
+      "status": "online"
+    },
+    "DescribeCosBucketList": {
+      "document": "This API is used to obtain bucket information.",
+      "input": "DescribeCosBucketListRequest",
+      "name": "Queries the cos bucket list",
+      "output": "DescribeCosBucketListResponse",
+      "status": "online"
+    },
+    "DescribeCosBucketRisk": {
+      "document": "Views the risk asset perspective",
+      "input": "DescribeCosBucketRiskRequest",
+      "name": "Views risk information of a bucket",
+      "output": "DescribeCosBucketRiskResponse",
+      "status": "online"
+    },
+    "DescribeCosIdentifyFileList": {
+      "document": "Queries the list of cos file data identification results.",
+      "input": "DescribeCosIdentifyFileListRequest",
+      "name": "Queries the cos file data identification result list",
+      "output": "DescribeCosIdentifyFileListResponse",
+      "status": "online"
+    },
+    "DescribeCosInvokeUa": {
+      "document": "View file information associated with call records",
+      "input": "DescribeCosInvokeUaRequest",
+      "name": "Views cos calls ua",
+      "output": "DescribeCosInvokeUaResponse",
+      "status": "online"
+    },
+    "DescribeCosIpInvokeLog": {
+      "document": "Views the cos call log.",
+      "input": "DescribeCosIpInvokeLogRequest",
+      "name": "Views call record logs",
+      "output": "DescribeCosIpInvokeLogResponse",
+      "status": "online"
+    },
+    "DescribeCosIpInvokeRecordFile": {
+      "document": "View file information associated with the call record",
+      "input": "DescribeCosIpInvokeRecordFileRequest",
+      "name": "Views the cos call record file list",
+      "output": "DescribeCosIpInvokeRecordFileResponse",
+      "status": "online"
+    },
+    "DescribeCosObjectScanTask": {
+      "document": "Query cos risk file scan tasks",
+      "input": "DescribeCosObjectScanTaskRequest",
+      "name": "Views the status of a cos scan task",
+      "output": "DescribeCosObjectScanTaskResponse",
+      "status": "online"
+    },
+    "DescribeCosOverview": {
+      "document": "cos overview information",
+      "input": "DescribeCosOverviewRequest",
+      "name": "Views cos statistical overview",
+      "output": "DescribeCosOverviewResponse",
+      "status": "online"
+    },
+    "DescribeCosPolicy": {
+      "document": "Gets policy list information",
+      "input": "DescribeCosPolicyRequest",
+      "name": "Alarm policy list",
+      "output": "DescribeCosPolicyResponse",
+      "status": "online"
+    },
+    "DescribeCosRiskActionList": {
+      "document": "Risk API information list",
+      "input": "DescribeCosRiskActionListRequest",
+      "name": "Lists bucket risk APIs",
+      "output": "DescribeCosRiskActionListResponse",
+      "status": "online"
+    },
+    "DescribeCosRiskEvidence": {
+      "document": "View risk evidence and description.",
+      "input": "DescribeCosRiskEvidenceRequest",
+      "name": "View risk evidence info",
+      "output": "DescribeCosRiskEvidenceResponse",
+      "status": "online"
+    },
+    "DescribeCosRiskScanTask": {
+      "document": "View bucket scan task details",
+      "input": "DescribeCosRiskScanTaskRequest",
+      "name": "Views a cos risk monitoring task",
+      "output": "DescribeCosRiskScanTaskResponse",
+      "status": "online"
+    },
+    "DescribeCosRoleAccessPermission": {
+      "document": "Views cos bucket access permission information",
+      "input": "DescribeCosRoleAccessPermissionRequest",
+      "name": "Views the role's access privilege list",
+      "output": "DescribeCosRoleAccessPermissionResponse",
+      "status": "online"
+    },
+    "DescribeCosRoleAccessPermissions": {
+      "document": "This API is used to obtain the role permission list of a bucket.",
+      "input": "DescribeCosRoleAccessPermissionsRequest",
+      "name": "Views cos bucket role-based permissions",
+      "output": "DescribeCosRoleAccessPermissionsResponse",
+      "status": "online"
+    },
+    "DescribeCosSourceIp": {
+      "document": "Source ip list for calls",
+      "input": "DescribeCosSourceIpRequest",
+      "name": "Retrieves the call source ip list",
+      "output": "DescribeCosSourceIpResponse",
+      "status": "online"
+    },
     "DescribeCspmShardConfig": {
       "document": "This API is used to query the CSPM auto quota shared configuration.",
       "input": "DescribeCspmShardConfigRequest",
@@ -2026,7 +2278,7 @@
     "DescribeDspmAccessTopologyAccounts": {
       "document": "Queries the Dspm access topology account list",
       "input": "DescribeDspmAccessTopologyAccountsRequest",
-      "name": "Queries the Dspm access topology account list",
+      "name": "Queries the list of Dspm access topology accounts",
       "output": "DescribeDspmAccessTopologyAccountsResponse",
       "status": "online"
     },
@@ -2348,7 +2600,7 @@
     "DescribeDspmPersonApplyHistory": {
       "document": "Queries Dspm visitor application records.",
       "input": "DescribeDspmPersonApplyHistoryRequest",
-      "name": "Queries Dspm Visitor Application Records",
+      "name": "Queries Dspm visitor application history",
       "output": "DescribeDspmPersonApplyHistoryResponse",
       "status": "online"
     },
@@ -2397,7 +2649,7 @@
     "DescribeDspmRiskTendency": {
       "document": "Query Dspm risk trends.",
       "input": "DescribeDspmRiskTendencyRequest",
-      "name": "Query Dspm risk trends.",
+      "name": "Queries Dspm risk trends",
       "output": "DescribeDspmRiskTendencyResponse",
       "status": "online"
     },
@@ -2877,6 +3129,20 @@
       "output": "DescribeImageVulWhitelistResponse",
       "status": "online"
     },
+    "DescribeIpInvokeRecord": {
+      "document": "Object Storage Anomaly Detection call record information",
+      "input": "DescribeIpInvokeRecordRequest",
+      "name": "Check ip call record details",
+      "output": "DescribeIpInvokeRecordResponse",
+      "status": "online"
+    },
+    "DescribeIpInvokeRecordDetail": {
+      "document": "ip access list details information",
+      "input": "DescribeIpInvokeRecordDetailRequest",
+      "name": "Details of the call record",
+      "output": "DescribeIpInvokeRecordDetailResponse",
+      "status": "online"
+    },
     "DescribeKBDetail": {
       "document": "Query the details of a single Windows KB patch based on the user's input KB internal ID, and return the basic KB info, release time, whether restart is required, as well as the list of vulnerabilities associated with the KB.",
       "input": "DescribeKBDetailRequest",
@@ -3048,7 +3314,7 @@
     "DescribeNotifyAgentOfflineDuration": {
       "document": "Query client offline duration",
       "input": "DescribeNotifyAgentOfflineDurationRequest",
-      "name": "Query client offline duration",
+      "name": "Queries client offline duration",
       "output": "DescribeNotifyAgentOfflineDurationResponse",
       "status": "online"
     },
@@ -3108,6 +3374,13 @@
       "output": "DescribePodContainerListResponse",
       "status": "online"
     },
+    "DescribePolicyHitData": {
+      "document": "View policy hit details by date",
+      "input": "DescribePolicyHitDataRequest",
+      "name": "Views risk trend chart data details",
+      "output": "DescribePolicyHitDataResponse",
+      "status": "online"
+    },
     "DescribePortDetectList": {
       "document": "Port detection list",
       "input": "DescribePortDetectListRequest",
@@ -3118,7 +3391,7 @@
     "DescribePortScanTaskCount": {
       "document": "Query the number of port scanning tasks under the current account.",
       "input": "DescribePortScanTaskCountRequest",
-      "name": "Queries the port scan attempts under the current account",
+      "name": "Queries port scan attempts under the current account",
       "output": "DescribePortScanTaskCountResponse",
       "status": "online"
     },
@@ -3153,7 +3426,7 @@
     "DescribePublicCloudAssets": {
       "document": "Public network asset",
       "input": "DescribePublicCloudAssetsRequest",
-      "name": "List of public network assets",
+      "name": "Public network asset list",
       "output": "DescribePublicCloudAssetsResponse",
       "status": "online"
     },
@@ -3197,6 +3470,13 @@
       "input": "DescribeReverseShellSystemPolicyConfigRequest",
       "name": "Queries the system policy configuration for rebound Shell",
       "output": "DescribeReverseShellSystemPolicyConfigResponse",
+      "status": "online"
+    },
+    "DescribeRiskBucketList": {
+      "document": "View risk-associated bucket info",
+      "input": "DescribeRiskBucketListRequest",
+      "name": "Views the affected bucket list",
+      "output": "DescribeRiskBucketListResponse",
       "status": "online"
     },
     "DescribeRiskCallRecord": {
@@ -3283,6 +3563,13 @@
       "output": "DescribeRiskDetailListResponse",
       "status": "online"
     },
+    "DescribeRiskItemList": {
+      "document": "Get Risk Item Perspective List",
+      "input": "DescribeRiskItemListRequest",
+      "name": "Views the risk item perspective list",
+      "output": "DescribeRiskItemListResponse",
+      "status": "online"
+    },
     "DescribeRiskRuleDetail": {
       "document": "Sample code for querying risk rule details",
       "input": "DescribeRiskRuleDetailRequest",
@@ -3302,6 +3589,13 @@
       "input": "DescribeRiskScanCronConfigRequest",
       "name": "Gets the risk scan periodic schedule configuration",
       "output": "DescribeRiskScanCronConfigResponse",
+      "status": "online"
+    },
+    "DescribeRiskTrendData": {
+      "document": "View the risk trend chart.",
+      "input": "DescribeRiskTrendDataRequest",
+      "name": "View risk trend chart info",
+      "output": "DescribeRiskTrendDataResponse",
       "status": "online"
     },
     "DescribeSCFAliasList": {
@@ -3468,7 +3762,7 @@
     "DescribeSecurityScoreRule": {
       "document": "Retrieve the security scoring rules for the current account. If no custom rules exist, return the built-in default.",
       "input": "DescribeSecurityScoreRuleRequest",
-      "name": "Gets the security scoring rule",
+      "name": "Queries a security scoring rule",
       "output": "DescribeSecurityScoreRuleResponse",
       "status": "online"
     },
@@ -3580,7 +3874,7 @@
     "DescribeUebaRule": {
       "document": "Query the list of user behavior analysis policies",
       "input": "DescribeUebaRuleRequest",
-      "name": "Query the list of user behavior analysis policies",
+      "name": "Queries the list of user behavior analysis policies",
       "output": "DescribeUebaRuleResponse",
       "status": "online"
     },
@@ -3643,7 +3937,7 @@
     "DescribeVULRiskDetail": {
       "document": "Retrieve vulnerability details",
       "input": "DescribeVULRiskDetailRequest",
-      "name": "Vulnerability management - Vulnerability details",
+      "name": "Vulnerability management - vulnerability details",
       "output": "DescribeVULRiskDetailResponse",
       "status": "online"
     },
@@ -3906,6 +4200,13 @@
       "output": "ModifyAgentRunPolicyResponse",
       "status": "online"
     },
+    "ModifyAlarmRiskStatus": {
+      "document": "Modify or change the handling status.",
+      "input": "ModifyAlarmRiskStatusRequest",
+      "name": "Risk or alarm handling",
+      "output": "ModifyAlarmRiskStatusResponse",
+      "status": "online"
+    },
     "ModifyAssetCoreAttribute": {
       "document": "Tag an asset as core or not.",
       "input": "ModifyAssetCoreAttributeRequest",
@@ -4037,6 +4338,34 @@
       "input": "ModifyCosAuditBucketMonitorStatusRequest",
       "name": "Modify the bucket monitoring status.",
       "output": "ModifyCosAuditBucketMonitorStatusResponse",
+      "status": "online"
+    },
+    "ModifyCosAuditMonitorAccount": {
+      "document": "Modify the cos audit monitoring account.",
+      "input": "ModifyCosAuditMonitorAccountRequest",
+      "name": "Modify the cos audit monitoring account.",
+      "output": "ModifyCosAuditMonitorAccountResponse",
+      "status": "online"
+    },
+    "ModifyCosAuditObjectIdentifyStatus": {
+      "document": "Modify the object storage recognition switch",
+      "input": "ModifyCosAuditObjectIdentifyStatusRequest",
+      "name": "Modifies the cos cloud object storage recognition status",
+      "output": "ModifyCosAuditObjectIdentifyStatusResponse",
+      "status": "online"
+    },
+    "ModifyCosAuditObjectSampleRate": {
+      "document": "Set the sampling rate for object storage scan.",
+      "input": "ModifyCosAuditObjectSampleRateRequest",
+      "name": "Sets the sampling rate for object storage content recognition",
+      "output": "ModifyCosAuditObjectSampleRateResponse",
+      "status": "online"
+    },
+    "ModifyCosMarkInfo": {
+      "document": "This API is used to modify the object storage remark.",
+      "input": "ModifyCosMarkInfoRequest",
+      "name": "Modifies the remark information of an object",
+      "output": "ModifyCosMarkInfoResponse",
       "status": "online"
     },
     "ModifyCspmShardConfig": {
@@ -4196,7 +4525,7 @@
     "ModifyDspmIdentifyRule": {
       "document": "Modify a dspm identification data item",
       "input": "ModifyDspmIdentifyRuleRequest",
-      "name": "Modify a dspm identification data item",
+      "name": "Modifies a dspm data identification data item",
       "output": "ModifyDspmIdentifyRuleResponse",
       "status": "online"
     },
@@ -4487,6 +4816,13 @@
       "output": "ModifyPayConfigResponse",
       "status": "online"
     },
+    "ModifyPolicyStatus": {
+      "document": "Modifies policy status",
+      "input": "ModifyPolicyStatusRequest",
+      "name": "Modifies policy status",
+      "output": "ModifyPolicyStatusResponse",
+      "status": "online"
+    },
     "ModifyProtectionSetting": {
       "document": "This API is used to configure protection settings for the major event protection package.",
       "input": "ModifyProtectionSettingRequest",
@@ -4560,7 +4896,7 @@
     "ModifySandboxDLPRuleStatus": {
       "document": "Batch switch the enable/disable status of DLP user rules. If any rule does not exist, belongs to another tenant, or has been deleted, an error is returned for the entirety.",
       "input": "ModifySandboxDLPRuleStatusRequest",
-      "name": "Enables or disables DLP rules in batches",
+      "name": "Batch enables or disables DLP rules",
       "output": "ModifySandboxDLPRuleStatusResponse",
       "status": "online"
     },
@@ -4642,9 +4978,9 @@
       "status": "online"
     },
     "ModifyVulWhitelistConfig": {
-      "document": "This API is used to modify the vulnerability allowlist configuration.",
+      "document": "Modifies the vulnerability allowlist configuration.",
       "input": "ModifyVulWhitelistConfigRequest",
-      "name": "Modify the vulnerability allowlist configuration",
+      "name": "Modifies vulnerability allowlist configurations",
       "output": "ModifyVulWhitelistConfigResponse",
       "status": "online"
     },
@@ -21777,6 +22113,2872 @@
       ],
       "type": "object"
     },
+    "CosAccessInfo": {
+      "document": "cos access permission information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Access account uin",
+          "example": "12324244",
+          "member": "string",
+          "name": "AccessUin",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Accessible account uid",
+          "example": "",
+          "member": "string",
+          "name": "AccessUid",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Nickname",
+          "example": "brainzha",
+          "member": "string",
+          "name": "NickName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Identifier \n1 Root account\n2 Sub-account",
+          "example": "1",
+          "member": "int64",
+          "name": "Identity",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Root Account Name",
+          "example": "brainzha",
+          "member": "string",
+          "name": "MainNickName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of accessible AKs",
+          "example": "[\"AK232dweqr23r23r23r\"]",
+          "member": "string",
+          "name": "AkList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of accessible permissions",
+          "example": "10",
+          "member": "int64",
+          "name": "CamPolicyCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last modified Unix timestamp in milliseconds",
+          "example": "1758163142000",
+          "member": "int64",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CosActionInfo": {
+      "document": "cos command information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Api name",
+          "example": "GetService",
+          "member": "string",
+          "name": "ActionName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Interface Chinese name",
+          "example": "获取存储桶列表",
+          "member": "string",
+          "name": "ActionNameCn",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "This API is used to describe APIs.",
+          "example": "获取存储桶列表信息",
+          "member": "string",
+          "name": "ActionDescription",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CosAkAssetInfo": {
+      "document": "cos-associated ak asset information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "appid",
+          "example": "",
+          "member": "uint64",
+          "name": "AppId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ak id",
+          "example": "",
+          "member": "string",
+          "name": "AkId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ak name",
+          "example": "",
+          "member": "string",
+          "name": "AkName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ak remark",
+          "example": "",
+          "member": "string",
+          "name": "AkRemark",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "uin associated with the ak",
+          "example": "",
+          "member": "string",
+          "name": "AkOwnerUin",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ak type. 1: primary. 2: sub",
+          "example": "",
+          "member": "int64",
+          "name": "AkOwnerType",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ak account name",
+          "example": "",
+          "member": "string",
+          "name": "AkOwnerName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ak main account name",
+          "example": "",
+          "member": "string",
+          "name": "AkMainOwnerName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ak-associated bucket collection",
+          "example": "",
+          "member": "string",
+          "name": "AkRelBucketSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ak associated alarm collection",
+          "example": "",
+          "member": "CosRiskInfo",
+          "name": "AkRelAlarmSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of IPs associated with Ak",
+          "example": "",
+          "member": "uint64",
+          "name": "AkRelIpCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ak status. 0: disabled. 1: enabled.",
+          "example": "",
+          "member": "int64",
+          "name": "AkStatus",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.",
+          "example": "",
+          "member": "uint64",
+          "name": "CreateTimestamp",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last access time",
+          "example": "",
+          "member": "uint64",
+          "name": "LastAccessTimestamp",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CosAkSet": {
+      "document": "cos ak collection",
+      "members": [
+        {
+          "disabled": false,
+          "document": "App ID of the ak",
+          "example": "",
+          "member": "uint64",
+          "name": "AppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Collection of ak names",
+          "example": "",
+          "member": "string",
+          "name": "AkNameSet",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "CosAlarmInfo": {
+      "document": "Object storage alarm info",
+      "members": [
+        {
+          "disabled": false,
+          "document": "appid\n",
+          "example": "1378219944",
+          "member": "int64",
+          "name": "AppId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Policy ID",
+          "example": "12",
+          "member": "int64",
+          "name": "PolicyId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Policy name.",
+          "example": "恶意文件下载",
+          "member": "string",
+          "name": "PolicyName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Policy type. 0: Unknown rule category; 1: abnormal behavior; 2: excessive permissions; 3: resource enumeration; 4: anonymous access.\n",
+          "example": "1",
+          "member": "int64",
+          "name": "PolicyAbnormalType",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Risk level: 0: Normal, 1: Tip, 2: Low, 3: Middle, 4: High, 5: Critical",
+          "example": "1",
+          "member": "int64",
+          "name": "PolicyRiskLevel",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Policy information description",
+          "example": "风险策略描述",
+          "member": "string",
+          "name": "PolicyDescription",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Bucket name",
+          "example": "brainzh-13782991",
+          "member": "string",
+          "name": "BucketName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Bucket region.",
+          "example": "广东广州",
+          "member": "string",
+          "name": "BucketRegion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Bucket remarks.",
+          "example": "生产",
+          "member": "string",
+          "name": "BucketMarker",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Bucket tag information",
+          "example": "[{\"Key\":\"Value\"}]",
+          "member": "string",
+          "name": "BucketTagInfo",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Bucket accessible property",
+          "example": "specify",
+          "member": "string",
+          "name": "BucketAccessWay",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Account uin",
+          "example": "1213214555",
+          "member": "string",
+          "name": "AccountUin",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Account nickname",
+          "example": "rainhao",
+          "member": "string",
+          "name": "AccountNickName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Identity of the associated account. 1 - Main account. 2 - Sub-account",
+          "example": "1",
+          "member": "int64",
+          "name": "AccountIdentify",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Nickname of the main account to which the sub-account belongs",
+          "example": "admin",
+          "member": "string",
+          "name": "AccountMainNickName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alarm timestamp in Unix time in milliseconds",
+          "example": "13412245512000",
+          "member": "int64",
+          "name": "AlarmTimestamp",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Handling status. 0: unprocessed. 1: tag disposal. 2: marked as ignored.",
+          "example": "0",
+          "member": "int64",
+          "name": "HandleStatus",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alarm object id",
+          "example": "1",
+          "member": "int64",
+          "name": "AlarmId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Bucket region code value",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "BucketRegionCode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Data identification and categorization details",
+          "example": "无",
+          "member": "CosIdentifyCategoryDetail",
+          "name": "CategoryDetails",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CosAlarmRiskIdInfo": {
+      "document": "Alarm or risk id information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Alarm id",
+          "example": "1",
+          "member": "int64",
+          "name": "AlarmRiskId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Tenant ID",
+          "example": "1379873245",
+          "member": "int64",
+          "name": "AppId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "usage": "in"
+    },
+    "CosAlarmTrendInfo": {
+      "document": "cos daily alerts/risk information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Current date in string format",
+          "example": "06-09",
+          "member": "string",
+          "name": "CurrentDateStr",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total count for the current date",
+          "example": "100",
+          "member": "int64",
+          "name": "CurrentDayCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alarm category details on the day",
+          "example": "无",
+          "member": "CosRiskInfo",
+          "name": "CurrentDayOverView",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CosAssetDataScanDetail": {
+      "document": "cos audit asset data identification details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Recognition task status. 0: unrecognized; 1: in process; 2: terminated; 3: successful; 4: failed.</p>",
+          "example": "4",
+          "member": "uint64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Recognition progress</p>",
+          "example": "100",
+          "member": "float",
+          "name": "Progress",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Last scan time.</p>",
+          "example": "1775045033216",
+          "member": "uint64",
+          "name": "LatestScanTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Recognition failed information.</p>",
+          "example": "identify scan failed",
+          "member": "string",
+          "name": "ErrorInfo",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Recognition result category details</p>",
+          "example": "无",
+          "member": "CosIdentifyCategoryDetail",
+          "name": "CategoryDetails",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>None.</p>",
+          "example": "无",
+          "member": "CosIdentifyRuleDetail",
+          "name": "RuleDetails",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>None.</p>",
+          "example": "无",
+          "member": "CosIdentifyLevelDetail",
+          "name": "LevelDetails",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether a full scan has been initiated</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "IsFullScanned",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CosAssetFileIdentifyInfo": {
+      "document": "Object storage audit file data recognition information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>File name.</p>",
+          "example": "files.7z",
+          "member": "string",
+          "name": "FileName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>File path</p>",
+          "example": "/files.7z/files",
+          "member": "string",
+          "name": "DirName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Details of categorical data items</p>",
+          "example": "无",
+          "member": "CosIdentifyCategoryDetail",
+          "name": "CategoryDetails",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Bucket information</p>",
+          "example": "无",
+          "member": "CosBucketInfo",
+          "name": "BucketInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Last scan time</p>",
+          "example": "1786507230962",
+          "member": "uint64",
+          "name": "LastScanTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Handling status</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "HandleStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Result unique ID</p>",
+          "example": "0362837584100982790",
+          "member": "string",
+          "name": "ResultId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Rule details</p>",
+          "example": "无",
+          "member": "CosIdentifyRuleDetail",
+          "name": "RuleDetails",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Level details</p>",
+          "example": "无",
+          "member": "CosIdentifyLevelDetail",
+          "name": "LevelDetails",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Template ID.</p>",
+          "example": "9050",
+          "member": "int64",
+          "name": "ComplianceId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CosAssetInfo": {
+      "document": "Cos asset information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>appid</p>",
+          "example": "1332535553",
+          "member": "int64",
+          "name": "AppId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>cos bucket name</p>",
+          "example": "cos-134137551",
+          "member": "string",
+          "name": "BucketName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>cos region name</p>",
+          "example": "广东广州",
+          "member": "string",
+          "name": "BucketRegion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Region code value</p>",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "BucketRegionCode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>cos bucket remark</p>",
+          "example": "备注",
+          "member": "string",
+          "name": "BucketMarker",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Owner of the cos bucket root account</p>",
+          "example": "brainzhao",
+          "member": "string",
+          "name": "BucketOwnerUin",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Nickname of the cos root account owner</p>",
+          "example": "brainzhao",
+          "member": "string",
+          "name": "BucketOwnerNickName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>cos bucket tag detail</p>",
+          "example": "[{\"Key\":\"测试1\",\"Value\":\"brainzhao\"},{\"Key\":\"测试2\",\"Value\":\"brainzhao1\"}]",
+          "member": "string",
+          "name": "BucketTagInfo",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Security advice<br>1 No abnormality detected<br>2 Hardening recommended<br>3 Process now</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "BucketSecuritySuggestion",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>alarm list</p>",
+          "example": "无",
+          "member": "CosRiskAlarmInfo",
+          "name": "BucketAlarmList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Risk list</p>",
+          "example": "无",
+          "member": "CosRiskAlarmInfo",
+          "name": "BucketRiskList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of source IPs for calls</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "BucketInvokeSourceIpCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Access policy</p>",
+          "example": "无",
+          "member": "CosBucketAccessWay",
+          "name": "BucketAccessWay",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Creation time Unix timestamp in milliseconds</p>",
+          "example": "134423122000",
+          "member": "int64",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Last access time in Unix timestamp in milliseconds</p>",
+          "example": "121323233000",
+          "member": "int64",
+          "name": "LastAccessTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Bucket id</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "BucketId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>0 Off<br>1 On</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "MonitorStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Data identification scan information.</p>",
+          "example": "无",
+          "member": "CosAssetDataScanDetail",
+          "name": "DataScanInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Bucket Az type</p><p>Enumeration values:</p><ul><li>MAZ: Multi-Az</li><li>SAZ: Single-Az</li></ul>",
+          "example": "MAZ",
+          "member": "string",
+          "name": "BucketAzType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Bucket storage size</p><p>Default value: 0</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "BucketStorageSize",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Bucket object count</p><p>Default value: 0</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "BucketObjectCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Bucket sensitive identification sampling rate</p><p>Value range: [0, 1]</p><p>Default value: 0</p>",
+          "example": "0",
+          "member": "float",
+          "name": "IdentifySampleRate",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CosAssetSyncTaskInfo": {
+      "document": "cos asset synchronization task information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "appid",
+          "example": "123444212",
+          "member": "int64",
+          "name": "AppId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Synchronization task ID.",
+          "example": "task-1qazxs2",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last scanning time.",
+          "example": "",
+          "member": "int64",
+          "name": "LastScanTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CosAuditPayInfo": {
+      "document": "cos audit payment information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>APPID</p>",
+          "example": "212451270",
+          "member": "uint64",
+          "name": "AppId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Order status. 0: Not purchased; 1: Normal; 2: Isolated; 3: Terminated; 6: In trial; 7: Expired</p>",
+          "example": "0",
+          "member": "uint64",
+          "name": "OrderStatus",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>The number of purchased object storage entries</p>",
+          "example": "100",
+          "member": "uint64",
+          "name": "BucketNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Payment mode. 0: postpaid. 1: prepaid.</p>",
+          "example": "0",
+          "member": "uint64",
+          "name": "PayMode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to purchase separately. 1: purchase separately; 2: shared by other accounts</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "IsSelfBuy",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Order start time.</p>",
+          "example": "1367645323",
+          "member": "string",
+          "name": "BeginTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Order expiration time</p>",
+          "example": "1367645323",
+          "member": "string",
+          "name": "EndTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>0: not set by the user, 1: set to auto-renew by the user, 2: set not to auto-renew by the user</p>",
+          "example": "0",
+          "member": "uint64",
+          "name": "AutoRenew",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Order duration</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "TimeSpan",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Duration unit</p>",
+          "example": "m",
+          "member": "string",
+          "name": "TimeUnit",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Resource id</p>",
+          "example": "casb-audit-1w34r31",
+          "member": "string",
+          "name": "ResourceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Open beta end time</p>",
+          "example": "1367645323",
+          "member": "string",
+          "name": "BetaEndTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Current system time.</p>",
+          "example": "1367645323",
+          "member": "string",
+          "name": "TimeNow",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to share with other accounts. 1: yes; 2: no</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "IsShareToOther",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>uin</p>",
+          "example": "173526917380",
+          "member": "string",
+          "name": "Uin",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Nickname</p>",
+          "example": "brain",
+          "member": "string",
+          "name": "NickName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Shared bucketIdSet</p>",
+          "example": "无",
+          "member": "CosBucketId",
+          "name": "BindBucket",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Shared appid</p>",
+          "example": "[1]",
+          "member": "uint64",
+          "name": "SharedAppIdSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether pay-as-you-go is enabled</p>",
+          "example": "0",
+          "member": "uint64",
+          "name": "PostPayStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>0: No trial use yet   1: Trial use completed</p>",
+          "example": "0",
+          "member": "uint64",
+          "name": "IsTestUser",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Remaining available quantity</p>",
+          "example": "0",
+          "member": "uint64",
+          "name": "AvailableBucketNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of buckets with monitoring on</p>",
+          "example": "10",
+          "member": "uint64",
+          "name": "MonitorBucketNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total number of buckets</p>",
+          "example": "100",
+          "member": "uint64",
+          "name": "TotalBucketNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Postpaid product switch state</p>",
+          "example": "[0]",
+          "member": "uint64",
+          "name": "PostProductStatusList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Purchase status of postpaid products.</p>",
+          "example": "[1]",
+          "member": "uint64",
+          "name": "PostProductBuyStatusList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>New postpaid resource ID</p>",
+          "example": "cos-audit-910ad184",
+          "member": "string",
+          "name": "NewPostPayResourceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CosBucketAccessWay": {
+      "document": "cos risk identification bucket access rule",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Access methods:\nspecify users\nanonymous access allowed",
+          "example": "specify",
+          "member": "string",
+          "name": "AccessType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of users",
+          "example": "1",
+          "member": "int64",
+          "name": "AccessUserCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of AKs",
+          "example": "1",
+          "member": "int64",
+          "name": "AccessAkCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of roles",
+          "example": "",
+          "member": "int64",
+          "name": "AccessRoleCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CosBucketBillingInfo": {
+      "document": "Number of Buckets",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>appid</p>",
+          "example": "17369246190",
+          "member": "uint64",
+          "name": "AppId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>uin</p>",
+          "example": "17369246190",
+          "member": "string",
+          "name": "OwnerUin",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Nickname</p>",
+          "example": "brain",
+          "member": "string",
+          "name": "OwnerNickName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of buckets</p>",
+          "example": "21",
+          "member": "uint64",
+          "name": "BucketCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>0 Not purchased 1 Purchased separately 2 Shared</p>",
+          "example": "0",
+          "member": "uint64",
+          "name": "BuyStatus",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Shared account appid.</p>",
+          "example": "17369246190",
+          "member": "uint64",
+          "name": "ShareFromAppId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>uin of the shared account</p>",
+          "example": "17369246190",
+          "member": "string",
+          "name": "ShareFromUin",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Shared account nickname</p>",
+          "example": "brain",
+          "member": "string",
+          "name": "ShareFromNickName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of monitored buckets</p>",
+          "example": "100",
+          "member": "uint64",
+          "name": "MonitorBucketCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>0: disable; 1: enable</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "IsAutoMonitor",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable the allowlist log feature</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "LogFeatureWhitelist",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Existence of new postpaid orders</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "IsHaveNewPostOrder",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Existence of legacy postpaid orders</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "IsHaveOldPostOrder",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Postpaid Product List</p>",
+          "example": "[0]",
+          "member": "int64",
+          "name": "PostProductList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Default sampling rate for newly-added buckets under this AppId, unit: ratio from 0 to 1</p><p>Value range: [0.001, 1]</p>",
+          "example": "0.5",
+          "member": "float",
+          "name": "DefaultSampleRate",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether it is a whitelist, used only to control the frontend range and accuracy</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "BucketSamplingRateWhitelist",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CosBucketId": {
+      "document": "Bucket id",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>appid</p>",
+          "example": "173582910",
+          "member": "string",
+          "name": "AppId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to monitor automatically</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "IsAutoMonitor",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>bucket id set</p>",
+          "example": "[\"1\",\"3\"]",
+          "member": "string",
+          "name": "BucketIdSet",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CosBucketInfo": {
+      "document": "cos bucket details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "App ID information",
+          "example": "12412432523",
+          "member": "int64",
+          "name": "AppId",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Bucket name.",
+          "example": "[\"brain-13718212\"]",
+          "member": "string",
+          "name": "BucketName",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Region information",
+          "example": "广东 广州",
+          "member": "string",
+          "name": "BucketRegion",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region code value",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "BucketRegionCode",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remarks.",
+          "example": "备注",
+          "member": "string",
+          "name": "BucketMarker",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CosBucketTaskInfo": {
+      "document": "cos storage bucket task information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>appid</p>",
+          "example": "13124124",
+          "member": "int64",
+          "name": "AppId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Bucket name</p>",
+          "example": "braun-121413555",
+          "member": "string",
+          "name": "BucketName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "task-11waddqwe",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Last scan time</p>",
+          "example": "1787554104433",
+          "member": "int64",
+          "name": "LastScanTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of recognized files</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "IdentifyFileCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of sensitive files</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "SensitiveFileCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CosDictionary": {
+      "document": "cos dictionary information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Dictionary id.</p>",
+          "example": "5815",
+          "member": "uint64",
+          "name": "DictId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Dictionary name</p>",
+          "example": "驾驶证",
+          "member": "string",
+          "name": "DictName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CosIdentifyCategoryDetail": {
+      "document": "cos Data recognition result category details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Category id</p>",
+          "example": "356",
+          "member": "uint64",
+          "name": "CategoryId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Category name</p>",
+          "example": "个人信息",
+          "member": "string",
+          "name": "CategoryName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": true,
+          "document": "<p>Data item collection.</p>",
+          "example": "无",
+          "member": "CosIdentifyRuleDetail",
+          "name": "RuleSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CosIdentifyLevelDetail": {
+      "document": "cos audit level result item",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Level id</p>",
+          "example": "8",
+          "member": "uint64",
+          "name": "LevelId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Level name.</p>",
+          "example": "敏感",
+          "member": "string",
+          "name": "LevelName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Level sensitivity</p>",
+          "example": "10",
+          "member": "uint64",
+          "name": "LevelScore",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CosIdentifyRuleDetail": {
+      "document": "cos data item details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data item id",
+          "example": "6657",
+          "member": "uint64",
+          "name": "RuleId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Data item name",
+          "example": "银行卡",
+          "member": "string",
+          "name": "RuleName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Sensitivity level id",
+          "example": "10",
+          "member": "uint64",
+          "name": "LevelId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Sensitivity level name",
+          "example": "一般",
+          "member": "string",
+          "name": "LevelName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Sensitivity",
+          "example": "1",
+          "member": "uint64",
+          "name": "LevelScore",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CosInvokeDetailInfo": {
+      "document": "cos call detailed information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Call time.",
+          "example": "13784355222",
+          "member": "int64",
+          "name": "InvokeTimestamp",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Request ID",
+          "example": "req-2ssfq31e32",
+          "member": "string",
+          "name": "InvokeRequestId",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Call content",
+          "example": "{\"staement\":[]}",
+          "member": "string",
+          "name": "InvokeContent",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CosInvokeIpVpcInfo": {
+      "document": "Source ip vpc information for cos calls",
+      "members": [
+        {
+          "disabled": false,
+          "document": "uin of the account to which the vpc belongs",
+          "example": "",
+          "member": "string",
+          "name": "Uin",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "App ID of the VPC.",
+          "example": "",
+          "member": "int64",
+          "name": "AppId",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Nickname.",
+          "example": "",
+          "member": "string",
+          "name": "NickName",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VPC ID information",
+          "example": "",
+          "member": "string",
+          "name": "VpcId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VPC name",
+          "example": "",
+          "member": "string",
+          "name": "VpcName",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CosInvokeLog": {
+      "document": "cos call log",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Call timestamp",
+          "example": "",
+          "member": "uint64",
+          "name": "InvokeTimestamp",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Request ID",
+          "example": "",
+          "member": "string",
+          "name": "RequestId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Request content in base64 json structure",
+          "example": "",
+          "member": "string",
+          "name": "RequestContent",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CosOverview": {
+      "document": "Data structure of the COS audit overview page",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total number of assets</p>",
+          "example": "100",
+          "member": "int64",
+          "name": "AssetCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of assets that need to be processed immediately</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "AlarmAssetCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of assets to be hardened</p>",
+          "example": "99",
+          "member": "int64",
+          "name": "RiskAssetCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total number of alarms</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "AlarmCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total number of new alarms on the day</p>",
+          "example": "2",
+          "member": "int64",
+          "name": "IncrementAlarmCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total number of risks</p>",
+          "example": "4",
+          "member": "int64",
+          "name": "RiskCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total number of new alarms on the day</p>",
+          "example": "7",
+          "member": "int64",
+          "name": "IncrementRiskCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Risk top details</p>",
+          "example": "无",
+          "member": "CosRiskInfo",
+          "name": "RiskTop",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>top alarm risks</p>",
+          "example": "无",
+          "member": "CosRiskInfo",
+          "name": "AlarmTop",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of high-level sensitive files</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "HighLevelSensitiveFileCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CosPermissionInfo": {
+      "document": "cos permission information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Permission source",
+          "example": "Policy",
+          "member": "string",
+          "name": "PermissionSource",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Permission content",
+          "example": "policyId:12431455",
+          "member": "string",
+          "name": "PermissionContent",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Authorize resources",
+          "example": "csip-auto-test-123414/*",
+          "member": "string",
+          "name": "GrantResource",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Authorize the action",
+          "example": "读操作",
+          "member": "string",
+          "name": "GrantAction",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Authorization conditions",
+          "example": "ip==1.1.1.1",
+          "member": "string",
+          "name": "GrantCondition",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CosPolicyInfo": {
+      "document": "cos policy information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Policy name.",
+          "example": "告警策略",
+          "member": "string",
+          "name": "PolicyName",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Policy type\nPolicyType: 1 alarm policy 2 risk policy 3 allowlist policy 4 ip hiding policy",
+          "example": "1",
+          "member": "int64",
+          "name": "PolicyType",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "system: system built-in user: user-customized",
+          "example": "1",
+          "member": "int64",
+          "name": "PolicySource",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Policy content",
+          "example": "{\"PolicyName\":\"risk\"}",
+          "member": "string",
+          "name": "PolicyContent",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "0: disabled\n1: enabled.",
+          "example": "1",
+          "member": "int64",
+          "name": "PolicyStatus",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Policy classification",
+          "example": "1",
+          "member": "int64",
+          "name": "PolicyAbnormalType",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Risk level",
+          "example": "1",
+          "member": "int64",
+          "name": "RiskLevel",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Policy ID",
+          "example": "1",
+          "member": "int64",
+          "name": "PolicyId",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.",
+          "example": "13213244213",
+          "member": "int64",
+          "name": "PolicyCreateTime",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Update time.",
+          "example": "13213244213",
+          "member": "int64",
+          "name": "PolicyUpdateTime",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of policy hits in the last 7 days",
+          "example": "1",
+          "member": "int64",
+          "name": "PolicyHitCount",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alarm content hash",
+          "example": "1wr3e1r23re",
+          "member": "string",
+          "name": "PolicyContentHash",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of associated accounts.",
+          "example": "10",
+          "member": "int64",
+          "name": "RelAccountCount",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Associated account UIN",
+          "example": "1752835621",
+          "member": "string",
+          "name": "RelAccountUin",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Name of the associated account",
+          "example": "brainzhao",
+          "member": "string",
+          "name": "RelAccountName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Description information",
+          "example": "policy",
+          "member": "string",
+          "name": "PolicyDescription",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remarks",
+          "example": "marker",
+          "member": "string",
+          "name": "PolicyMarker",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "appid",
+          "example": "13795326",
+          "member": "int64",
+          "name": "AppId",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "id set in a multi-account scenario",
+          "example": "[1,5,7]",
+          "member": "int64",
+          "name": "PolicyIdSet",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to dispose of historical data status. 0: no disposal required. 1: disposal required. 2: processed",
+          "example": "",
+          "member": "uint64",
+          "name": "PolicyHistoryHandleStatus",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "System policy edit status",
+          "example": "",
+          "member": "int64",
+          "name": "SystemPolicyEditStatus",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CosRiskActionInfo": {
+      "document": "Risk API status",
+      "members": [
+        {
+          "disabled": false,
+          "document": "API name",
+          "example": "GetService",
+          "member": "string",
+          "name": "ActionName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Chinese api name",
+          "example": "获取cos桶列表",
+          "member": "string",
+          "name": "ActionNameCn",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of calls.",
+          "example": "1",
+          "member": "int64",
+          "name": "InvokeCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last access time in Unix timestamp in milliseconds.",
+          "example": "174324441000",
+          "member": "int64",
+          "name": "ActionAccessTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CosRiskAlarmInfo": {
+      "document": "cos risk alert information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Enumeration value of the policy type",
+          "example": "1",
+          "member": "int64",
+          "name": "PolicyType",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Policy name",
+          "example": "异常访问",
+          "member": "string",
+          "name": "PolicyTypeName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of policies corresponding to the policy type",
+          "example": "1",
+          "member": "int64",
+          "name": "PolicyCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CosRiskBucketInfo": {
+      "document": "Affected bucket information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "appid",
+          "example": "1378345521",
+          "member": "int64",
+          "name": "AppId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Bucket name",
+          "example": "test-1378345521",
+          "member": "string",
+          "name": "BucketName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Bucket region.",
+          "example": "广东 广州",
+          "member": "string",
+          "name": "BucketRegion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Bucket remark information",
+          "example": "生产桶",
+          "member": "string",
+          "name": "BucketMarker",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Bucket uin",
+          "example": "1342561214",
+          "member": "string",
+          "name": "BucketUin",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "uin nickname",
+          "example": "brain",
+          "member": "string",
+          "name": "BucketNickName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "uin root account nickname",
+          "example": "brainzhai",
+          "member": "string",
+          "name": "BucketMainNickName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "uin identity",
+          "example": "1",
+          "member": "int64",
+          "name": "BucketIdentify",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Risk detection time in Unix timestamp in milliseconds",
+          "example": "13783452524000",
+          "member": "int64",
+          "name": "LastScanTimestamp",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Status Information",
+          "example": "1",
+          "member": "int64",
+          "name": "HandleStatus",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Risk name",
+          "example": "不改拥有高权限",
+          "member": "string",
+          "name": "PolicyName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Risk type",
+          "example": "1",
+          "member": "int64",
+          "name": "PolicyType",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Policy ID",
+          "example": "1",
+          "member": "int64",
+          "name": "PolicyId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Policy level",
+          "example": "1",
+          "member": "int64",
+          "name": "PolicyLevel",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Policy description",
+          "example": "适应策略",
+          "member": "string",
+          "name": "PolicyDescription",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Access method",
+          "example": "specify",
+          "member": "string",
+          "name": "BucketAccessWay",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tag information.",
+          "example": "\"Key\":\"ru\"",
+          "member": "string",
+          "name": "BucketTagInfo",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Risk id",
+          "example": "1",
+          "member": "int64",
+          "name": "RiskId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "cos region code value",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "BucketRegionCode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether automatic monitoring is enabled. 0: disabled. 1: enabled.",
+          "example": "",
+          "member": "uint64",
+          "name": "BucketMonitorStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CosRiskInfo": {
+      "document": "cos risk details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Policy type code",
+          "example": "1",
+          "member": "int64",
+          "name": "PolicyType",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Policy classification name",
+          "example": "权限过大",
+          "member": "string",
+          "name": "PolicyTypeName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total hit policies",
+          "example": "1",
+          "member": "int64",
+          "name": "PolicyCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CosRiskTrendInfo": {
+      "document": "Object Storage risk trend chart",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Current date.",
+          "example": "06-01",
+          "member": "string",
+          "name": "CurrentDateStr",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Risk data information",
+          "example": "[{\"权限过大\":100}]",
+          "member": "CosRiskInfo",
+          "name": "RiskDataSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CosRiskViewInfo": {
+      "document": "Risk list from the risk perspective",
+      "members": [
+        {
+          "disabled": false,
+          "document": "appid",
+          "example": "137545632",
+          "member": "int64",
+          "name": "AppId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Policy name.",
+          "example": "不应该拥有高权限预设策略",
+          "member": "string",
+          "name": "PolicyName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Policy ID",
+          "example": "rule-1qazxsw2",
+          "member": "string",
+          "name": "PolicyId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Policy classification",
+          "example": "1",
+          "member": "int64",
+          "name": "PolicyType",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Policy risk level",
+          "example": "1",
+          "member": "int64",
+          "name": "PolicyRiskLevel",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Policy description",
+          "example": "不能拥有高权限的账号",
+          "member": "string",
+          "name": "PolicyDescription",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of buckets to be processed",
+          "example": "1",
+          "member": "int64",
+          "name": "HandleBucketCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Most recent risk detection time in Unix timestamp in milliseconds",
+          "example": "1758163142000",
+          "member": "int64",
+          "name": "LastScanTimestamp",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CosRoleAccessInfo": {
+      "document": "List of roles associated with the Cos bucket",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Role ID",
+          "example": "",
+          "member": "string",
+          "name": "RoleId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Role name.",
+          "example": "",
+          "member": "string",
+          "name": "RoleName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Role description",
+          "example": "",
+          "member": "string",
+          "name": "RoleDescription",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Accessible permission count",
+          "example": "",
+          "member": "uint64",
+          "name": "PermissionCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Policy creation time.",
+          "example": "",
+          "member": "uint64",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CosSourceIpInfo": {
+      "document": "Source ip information of COS calls",
+      "members": [
+        {
+          "disabled": false,
+          "document": "UA call",
+          "example": "[\"cos-console\"]",
+          "member": "string",
+          "name": "UA",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "API call for vpc information",
+          "example": "",
+          "member": "CosInvokeIpVpcInfo",
+          "name": "VpcInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "CreateAIScheduleRequest": {
       "document": "CreateAISchedule request structure.",
       "members": [
@@ -23669,6 +26871,215 @@
           "type": "string",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCosAssetSyncTaskRequest": {
+      "document": "CreateCosAssetSyncTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Group Account Member ID",
+          "example": "[\"mem-6wfo0fzks3\",\"mem-85fo0fzks4\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "1 Sync all 2 Sync asset count only",
+          "example": "1",
+          "member": "int64",
+          "name": "SyncType",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCosAssetSyncTaskResponse": {
+      "document": "CreateCosAssetSyncTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Synchronization task ID.",
+          "example": "task-1qazxsw2",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCosObjectScanTaskRequest": {
+      "document": "CreateCosObjectScanTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>1: Sensitive data identification 2: Malicious file scanning 3: Batch scan sensitive data</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "TaskType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Group account member id</p>",
+          "example": "[\"mem-1edsada\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Bucket list</p>",
+          "example": "[\"brainzhao-test-251002343\"]",
+          "member": "string",
+          "name": "BucketSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task parameter</p>",
+          "example": "{\"SampleRateType\":\"total\",SampleRate:0.2}",
+          "member": "string",
+          "name": "TaskArgs",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to scan all</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "IsScanAll",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Buckets to remove during scanning</p>",
+          "example": "[\"auto-test-251002343\"]",
+          "member": "string",
+          "name": "DeleteBucketSet",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCosObjectScanTaskResponse": {
+      "document": "CreateCosObjectScanTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "task-8ee7fc4d",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCosPolicyRequest": {
+      "document": "CreateCosPolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Policy information.",
+          "example": "无",
+          "member": "CosPolicyInfo",
+          "name": "CosPolicyInfo",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Group Account Member ID",
+          "example": "[\"mem-6wfo0fzks3\",\"mem-85fo0fzks4\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCosPolicyResponse": {
+      "document": "CreateCosPolicy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCosRiskScanTaskRequest": {
+      "document": "CreateCosRiskScanTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Group Account Member ID",
+          "example": "",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Bucket list to scan",
+          "example": "无",
+          "member": "CosBucketInfo",
+          "name": "BucketNameSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to scan all buckets",
+          "example": "true",
+          "member": "bool",
+          "name": "IsScanAllBucket",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCosRiskScanTaskResponse": {
+      "document": "CreateCosRiskScanTask response structure.",
+      "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -30380,6 +33791,69 @@
       ],
       "type": "object"
     },
+    "DeleteCosAkAssetRequest": {
+      "document": "DeleteCosAkAsset request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Collection of cos AKs to delete",
+          "example": "",
+          "member": "CosAkSet",
+          "name": "CosAkSet",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteCosAkAssetResponse": {
+      "document": "DeleteCosAkAsset response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteCosPolicyRequest": {
+      "document": "DeleteCosPolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Collection of policies to delete",
+          "example": "[1,3,7]",
+          "member": "int64",
+          "name": "PolicyIdSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Delete all or not",
+          "example": "1",
+          "member": "int64",
+          "name": "IsDeleteAll",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteCosPolicyResponse": {
+      "document": "DeleteCosPolicy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteDomainAndIpRequest": {
       "document": "DeleteDomainAndIp request structure.",
       "members": [
@@ -35253,6 +38727,43 @@
       ],
       "type": "object"
     },
+    "DescribeAssumeRoleRequest": {
+      "document": "DescribeAssumeRole request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Role name.",
+          "example": "无",
+          "member": "string",
+          "name": "RoleName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAssumeRoleResponse": {
+      "document": "DescribeAssumeRole response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether a role is bound. 0: not bound, 1: bound",
+          "example": "0",
+          "member": "int64",
+          "name": "Bind",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeBackendScanEngineRegionListRequest": {
       "document": "DescribeBackendScanEngineRegionList request structure.",
       "members": [
@@ -36753,6 +40264,71 @@
           "name": "Rules",
           "output_required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBucketInvokeIpListRequest": {
+      "document": "DescribeBucketInvokeIpList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "appid",
+          "example": "1739321522",
+          "member": "int64",
+          "name": "RelAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Bucket name",
+          "example": "brain-1739321522",
+          "member": "string",
+          "name": "BucketName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter criteria.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBucketInvokeIpListResponse": {
+      "document": "DescribeBucketInvokeIpList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "IP information",
+          "example": "无",
+          "member": "CosSourceIpInfo",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "10",
+          "member": "int64",
+          "name": "Total",
+          "output_required": false,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -42804,6 +46380,1556 @@
           "name": "CheckTypeList",
           "output_required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosAccessPermissionRequest": {
+      "document": "DescribeCosAccessPermission request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Associated appid",
+          "example": "137976213",
+          "member": "int64",
+          "name": "RelAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Bucket name",
+          "example": "brain-137976213",
+          "member": "string",
+          "name": "BucketName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "uin to view",
+          "example": "3623891832",
+          "member": "string",
+          "name": "RelUin",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosAccessPermissionResponse": {
+      "document": "DescribeCosAccessPermission response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "cos permission information",
+          "example": "无",
+          "member": "CosPermissionInfo",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "0",
+          "member": "int64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosAccessPermissionsRequest": {
+      "document": "DescribeCosAccessPermissions request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "appid",
+          "example": "173578213",
+          "member": "int64",
+          "name": "RelAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Bucket name",
+          "example": "brain-173578213",
+          "member": "string",
+          "name": "BucketName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter criteria.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosAccessPermissionsResponse": {
+      "document": "DescribeCosAccessPermissions response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Returned data list",
+          "example": "无",
+          "member": "CosAccessInfo",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "0",
+          "member": "int64",
+          "name": "Total",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosActionListRequest": {
+      "document": "DescribeCosActionList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Filter.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosActionListResponse": {
+      "document": "DescribeCosActionList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List",
+          "example": "无",
+          "member": "CosActionInfo",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosAkAssetRequest": {
+      "document": "DescribeCosAkAsset request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Group Account Member ID",
+          "example": "",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Query filter.",
+          "example": "",
+          "member": "Filter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosAkAssetResponse": {
+      "document": "DescribeCosAkAsset response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "",
+          "member": "uint64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ak asset list",
+          "example": "",
+          "member": "CosAkAssetInfo",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosAkInvokeIpListRequest": {
+      "document": "DescribeCosAkInvokeIpList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "appid",
+          "example": "",
+          "member": "int64",
+          "name": "RelAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "ak",
+          "example": "",
+          "member": "string",
+          "name": "Ak",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter criteria.",
+          "example": "",
+          "member": "Filter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosAkInvokeIpListResponse": {
+      "document": "DescribeCosAkInvokeIpList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "IP information",
+          "example": "",
+          "member": "CosSourceIpInfo",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "",
+          "member": "int64",
+          "name": "Total",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosAlarmListRequest": {
+      "document": "DescribeCosAlarmList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Group Account Member ID",
+          "example": "[\"mem-6wfo0fzks3\",\"mem-85fo0fzks4\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Filter.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosAlarmListResponse": {
+      "document": "DescribeCosAlarmList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "10",
+          "member": "int64",
+          "name": "Total",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alarm list",
+          "example": "无",
+          "member": "CosAlarmInfo",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosAlarmTrendDataRequest": {
+      "document": "DescribeCosAlarmTrendData request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Group Account Member ID",
+          "example": "[\"mem-6wfo0fzks3\",\"mem-85fo0fzks4\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "How long you want to view",
+          "example": "10",
+          "member": "int64",
+          "name": "LastDays",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosAlarmTrendDataResponse": {
+      "document": "DescribeCosAlarmTrendData response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Alarm trend information",
+          "example": "无",
+          "member": "CosAlarmTrendInfo",
+          "name": "CosAlarmTrendInfo",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosAssetRequest": {
+      "document": "DescribeCosAsset request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Request filter",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filter",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Group Account Member ID",
+          "example": "[\"mem-6wfo0fzks3\",\"mem-85fo0fzks4\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosAssetResponse": {
+      "document": "DescribeCosAsset response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "10",
+          "member": "int64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Bucket information.",
+          "example": "无",
+          "member": "CosAssetInfo",
+          "name": "Data",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosAssetSyncTaskRequest": {
+      "document": "DescribeCosAssetSyncTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Group Account Member ID",
+          "example": "[\"mem-6wfo0fzks3\",\"mem-85fo0fzks4\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosAssetSyncTaskResponse": {
+      "document": "DescribeCosAssetSyncTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data information",
+          "example": "[{\"AppId\":1222123,\"TaskId\":\"task-1qazxswe\"}]",
+          "member": "CosAssetSyncTaskInfo",
+          "name": "Data",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosAuditAppIdListRequest": {
+      "document": "DescribeCosAuditAppIdList request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeCosAuditAppIdListResponse": {
+      "document": "DescribeCosAuditAppIdList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Purchased appid set",
+          "example": "[1342134155]",
+          "member": "int64",
+          "name": "Data",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosAuditDictionaryListRequest": {
+      "document": "DescribeCosAuditDictionaryList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Dictionary type (RootCategory: level-1 category, IdentifyRule: sensitive identification data item)</p>",
+          "example": "IdentifyRule",
+          "member": "string",
+          "name": "DictType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Filtering criteria</p>",
+          "example": "无",
+          "member": "WhereFilter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosAuditDictionaryListResponse": {
+      "document": "DescribeCosAuditDictionaryList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Result set</p>",
+          "example": "无",
+          "member": "CosDictionary",
+          "name": "DataSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosAuditPayInfoRequest": {
+      "document": "DescribeCosAuditPayInfo request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeCosAuditPayInfoResponse": {
+      "document": "DescribeCosAuditPayInfo response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "cos audit payment information",
+          "example": "无",
+          "member": "CosAuditPayInfo",
+          "name": "CosAuditPayInfo",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosBucketBillingInfoRequest": {
+      "document": "DescribeCosBucketBillingInfo request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Group account member id</p>",
+          "example": "[\"mem-6wfo0fzks3\",\"mem-85fo0fzks4\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosBucketBillingInfoResponse": {
+      "document": "DescribeCosBucketBillingInfo response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Bucket billing information",
+          "example": "无",
+          "member": "CosBucketBillingInfo",
+          "name": "CosBucketBillingInfoSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Total",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosBucketListRequest": {
+      "document": "DescribeCosBucketList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Group account member id</p>",
+          "example": "[\"mem-6wfo0fzks3\",\"mem-85fo0fzks4\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Filter criteria.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosBucketListResponse": {
+      "document": "DescribeCosBucketList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "1",
+          "member": "int64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Asset information",
+          "example": "无",
+          "member": "CosAssetInfo",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosBucketRiskRequest": {
+      "document": "DescribeCosBucketRisk request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Group Account Member ID",
+          "example": "[\"mem-6wfo0fzks3\",\"mem-85fo0fzks4\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Filter.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosBucketRiskResponse": {
+      "document": "DescribeCosBucketRisk response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "10",
+          "member": "int64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List",
+          "example": "无",
+          "member": "CosRiskBucketInfo",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosIdentifyFileListRequest": {
+      "document": "DescribeCosIdentifyFileList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Bucket name</p>",
+          "example": "brainzhao-test-1302396215",
+          "member": "string",
+          "name": "BucketName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Group Account Member ID",
+          "example": "[\"mem-68b8087a65268000\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Filter item</p>",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>0: No recognition result. 1: Recognition result available.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "ResultStatus",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosIdentifyFileListResponse": {
+      "document": "DescribeCosIdentifyFileList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total.</p>",
+          "example": "2",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Result set</p>",
+          "example": "无",
+          "member": "CosAssetFileIdentifyInfo",
+          "name": "DataSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosInvokeUaRequest": {
+      "document": "DescribeCosInvokeUa request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "appid",
+          "example": "",
+          "member": "uint64",
+          "name": "RelAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter.",
+          "example": "",
+          "member": "Filter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosInvokeUaResponse": {
+      "document": "DescribeCosInvokeUa response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "",
+          "member": "uint64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File list.",
+          "example": "",
+          "member": "string",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosIpInvokeLogRequest": {
+      "document": "DescribeCosIpInvokeLog request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "appid",
+          "example": "",
+          "member": "uint64",
+          "name": "RelAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter.",
+          "example": "",
+          "member": "Filter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosIpInvokeLogResponse": {
+      "document": "DescribeCosIpInvokeLog response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "",
+          "member": "uint64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Request log data",
+          "example": "",
+          "member": "CosInvokeLog",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosIpInvokeRecordFileRequest": {
+      "document": "DescribeCosIpInvokeRecordFile request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "appid",
+          "example": "251002343",
+          "member": "uint64",
+          "name": "RelAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosIpInvokeRecordFileResponse": {
+      "document": "DescribeCosIpInvokeRecordFile response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "2",
+          "member": "uint64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": true,
+          "document": "File list.",
+          "example": "[\"Sensitive_data_data.txt\"]",
+          "member": "string",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File list details",
+          "example": "无",
+          "member": "CosAssetFileIdentifyInfo",
+          "name": "DataSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosObjectScanTaskRequest": {
+      "document": "DescribeCosObjectScanTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>1: sensitive data identification 2: malicious file scanning</p>",
+          "example": "2",
+          "member": "int64",
+          "name": "TaskType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Group account member id</p>",
+          "example": "[\"mem-a6df317cb6a8c424\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Bucket list</p>",
+          "example": "[\"0313-vtanakwang-260082268\"]",
+          "member": "string",
+          "name": "BucketSet",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosObjectScanTaskResponse": {
+      "document": "DescribeCosObjectScanTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Bucket task detail</p>",
+          "example": "无",
+          "member": "CosBucketTaskInfo",
+          "name": "BucketTaskIdSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task List by appid dimension</p>",
+          "example": "无",
+          "member": "CosAssetSyncTaskInfo",
+          "name": "MemberTaskIdSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosOverviewRequest": {
+      "document": "DescribeCosOverview request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Group Account Member ID",
+          "example": "[\"mem-6wfo0fzks3\",\"mem-85fo0fzks4\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Filter information.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosOverviewResponse": {
+      "document": "DescribeCosOverview response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "cos overview",
+          "example": "无",
+          "member": "CosOverview",
+          "name": "CosOverview",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosPolicyRequest": {
+      "document": "DescribeCosPolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Group Account Member ID",
+          "example": "[\"mem-6wfo0fzks3\",\"mem-85fo0fzks4\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Filter criteria.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosPolicyResponse": {
+      "document": "DescribeCosPolicy response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of policies",
+          "example": "0",
+          "member": "int64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Policy information.",
+          "example": "无",
+          "member": "CosPolicyInfo",
+          "name": "Data",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosRiskActionListRequest": {
+      "document": "DescribeCosRiskActionList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "appid",
+          "example": "173773711",
+          "member": "int64",
+          "name": "RelAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Policy ID",
+          "example": "1",
+          "member": "int64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Bucket name",
+          "example": "brain-173773711",
+          "member": "string",
+          "name": "BucketName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosRiskActionListResponse": {
+      "document": "DescribeCosRiskActionList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "1",
+          "member": "int64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List",
+          "example": "无",
+          "member": "CosRiskActionInfo",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosRiskEvidenceRequest": {
+      "document": "DescribeCosRiskEvidence request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "appid",
+          "example": "1377132213",
+          "member": "int64",
+          "name": "RelAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Policy ID",
+          "example": "1",
+          "member": "int64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Bucket name.",
+          "example": "brain-1377132213",
+          "member": "string",
+          "name": "BucketName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosRiskEvidenceResponse": {
+      "document": "DescribeCosRiskEvidence response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Evidence information",
+          "example": "无",
+          "member": "CosPermissionInfo",
+          "name": "Evidences",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "1",
+          "member": "int64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosRiskScanTaskRequest": {
+      "document": "DescribeCosRiskScanTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Bucket details to view",
+          "example": "无",
+          "member": "CosBucketInfo",
+          "name": "BucketInfoSet",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosRiskScanTaskResponse": {
+      "document": "DescribeCosRiskScanTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "cos bucket task detail",
+          "example": "无",
+          "member": "CosBucketTaskInfo",
+          "name": "BucketTaskInfoSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosRoleAccessPermissionRequest": {
+      "document": "DescribeCosRoleAccessPermission request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Associated appid",
+          "example": "",
+          "member": "int64",
+          "name": "RelAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Role id to view",
+          "example": "",
+          "member": "string",
+          "name": "RelRoleId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Bucket name",
+          "example": "",
+          "member": "string",
+          "name": "BucketName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter.",
+          "example": "",
+          "member": "Filter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosRoleAccessPermissionResponse": {
+      "document": "DescribeCosRoleAccessPermission response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "cos permission information",
+          "example": "",
+          "member": "CosPermissionInfo",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "",
+          "member": "int64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosRoleAccessPermissionsRequest": {
+      "document": "DescribeCosRoleAccessPermissions request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "App ID of the bucket",
+          "example": "",
+          "member": "uint64",
+          "name": "RelAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Bucket name.",
+          "example": "",
+          "member": "string",
+          "name": "BucketName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter criteria.",
+          "example": "",
+          "member": "Filter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosRoleAccessPermissionsResponse": {
+      "document": "DescribeCosRoleAccessPermissions response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "",
+          "member": "uint64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Role details",
+          "example": "",
+          "member": "CosRoleAccessInfo",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosSourceIpRequest": {
+      "document": "DescribeCosSourceIp request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Group Account Member ID",
+          "example": "[\"mem-6wfo0fzks3\",\"mem-85fo0fzks4\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Filter criteria.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosSourceIpResponse": {
+      "document": "DescribeCosSourceIp response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List information",
+          "example": "无",
+          "member": "CosSourceIpInfo",
+          "name": "Data",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "0",
+          "member": "int64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -52587,6 +57713,80 @@
       ],
       "type": "object"
     },
+    "DescribeIpInvokeRecordDetailRequest": {
+      "document": "DescribeIpInvokeRecordDetail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Filter.",
+          "example": "{\"Order\":\"ip\"}",
+          "member": "Filter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIpInvokeRecordDetailResponse": {
+      "document": "DescribeIpInvokeRecordDetail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Call details",
+          "example": "[{}]",
+          "member": "CosInvokeDetailInfo",
+          "name": "InvokeDetailInfo",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Call permission related",
+          "example": "[{}]",
+          "member": "CosPermissionInfo",
+          "name": "InvokePermission",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIpInvokeRecordRequest": {
+      "document": "DescribeIpInvokeRecord request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Filter criteria.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIpInvokeRecordResponse": {
+      "document": "DescribeIpInvokeRecord response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeKBDetailRequest": {
       "document": "DescribeKBDetail request structure.",
       "members": [
@@ -55236,6 +60436,52 @@
       ],
       "type": "object"
     },
+    "DescribePolicyHitDataRequest": {
+      "document": "DescribePolicyHitData request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Timestamp of the date and time to view",
+          "example": "12345678908",
+          "member": "int64",
+          "name": "IndexTimestamp",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Group Account Member ID",
+          "example": "[\"mem-6wfo0fzks3\",\"mem-85fo0fzks4\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePolicyHitDataResponse": {
+      "document": "DescribePolicyHitData response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Policy hit details",
+          "example": "无",
+          "member": "CosRiskInfo",
+          "name": "PolicyHitDetail",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribePortDetectListRequest": {
       "document": "DescribePortDetectList request structure.",
       "members": [
@@ -56339,6 +61585,71 @@
           "example": "[\"cls-051zf14m\"]",
           "member": "string",
           "name": "ExcludeClusterIDs",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRiskBucketListRequest": {
+      "document": "DescribeRiskBucketList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Associated appid",
+          "example": "1373242354",
+          "member": "int64",
+          "name": "RelAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Rule ID",
+          "example": "rule-1qazxsw2",
+          "member": "string",
+          "name": "PolicyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter.",
+          "example": "{\"Order\":\"scan_time\"}",
+          "member": "Filter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRiskBucketListResponse": {
+      "document": "DescribeRiskBucketList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "10",
+          "member": "int64",
+          "name": "Total",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Affected bucket",
+          "example": "[{\"BucketName\":\"brain-1371923\"}]",
+          "member": "CosRiskBucketInfo",
+          "name": "Data",
           "output_required": false,
           "type": "list",
           "value_allowed_null": false
@@ -57539,6 +62850,62 @@
       ],
       "type": "object"
     },
+    "DescribeRiskItemListRequest": {
+      "document": "DescribeRiskItemList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Group Account Member ID",
+          "example": "[\"mem-6wfo0fzks3\",\"mem-85fo0fzks4\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Filter.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRiskItemListResponse": {
+      "document": "DescribeRiskItemList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List information",
+          "example": "无",
+          "member": "CosRiskViewInfo",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number.",
+          "example": "10",
+          "member": "int64",
+          "name": "Total",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeRiskRuleDetailRequest": {
       "document": "DescribeRiskRuleDetail request structure.",
       "members": [
@@ -57744,6 +63111,52 @@
           "name": "CronConfig",
           "output_required": true,
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRiskTrendDataRequest": {
+      "document": "DescribeRiskTrendData request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Group Account Member ID",
+          "example": "[\"mem-6wfo0fzks3\",\"mem-85fo0fzks4\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Specified date.",
+          "example": "10",
+          "member": "int64",
+          "name": "LastDays",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRiskTrendDataResponse": {
+      "document": "DescribeRiskTrendData response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Risk trend data",
+          "example": "无",
+          "member": "CosRiskTrendInfo",
+          "name": "CosRiskTrendData",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -83475,6 +88888,51 @@
       ],
       "type": "object"
     },
+    "ModifyAlarmRiskStatusRequest": {
+      "document": "ModifyAlarmRiskStatus request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Alarm or risk id",
+          "example": "无",
+          "member": "CosAlarmRiskIdInfo",
+          "name": "AlarmRiskIdSet",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Risk or alarm status. 1: alarm, 2: risk",
+          "example": "1",
+          "member": "int64",
+          "name": "AlarmRiskType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Handling status",
+          "example": "1",
+          "member": "int64",
+          "name": "HandleStatus",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAlarmRiskStatusResponse": {
+      "document": "ModifyAlarmRiskStatus response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyAssetCoreAttributeRequest": {
       "document": "ModifyAssetCoreAttribute request structure.",
       "members": [
@@ -84582,6 +90040,216 @@
     },
     "ModifyCosAuditBucketMonitorStatusResponse": {
       "document": "ModifyCosAuditBucketMonitorStatus response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCosAuditMonitorAccountRequest": {
+      "document": "ModifyCosAuditMonitorAccount request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Resource ID",
+          "example": "cos-audit-1wtu3sgt",
+          "member": "string",
+          "name": "ResourceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "appid information to monitor",
+          "example": "[1378925190]",
+          "member": "uint64",
+          "name": "MonitorAppIdSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Select a bucket mapping relationship",
+          "example": "无",
+          "member": "CosBucketId",
+          "name": "BindBucket",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCosAuditMonitorAccountResponse": {
+      "document": "ModifyCosAuditMonitorAccount response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCosAuditObjectIdentifyStatusRequest": {
+      "document": "ModifyCosAuditObjectIdentifyStatus request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Resource id</p>",
+          "example": "cos-audit-757d9973",
+          "member": "string",
+          "name": "ResourceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Text recognition status</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "TextIdentifyStatus",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Image recognition status</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "ImageIdentifyStatus",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCosAuditObjectIdentifyStatusResponse": {
+      "document": "ModifyCosAuditObjectIdentifyStatus response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCosAuditObjectSampleRateRequest": {
+      "document": "ModifyCosAuditObjectSampleRate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Bucket asset id set</p>",
+          "example": "[1346438]",
+          "member": "uint64",
+          "name": "BucketIdSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sampling rate collection</p>",
+          "example": "[0.5]",
+          "member": "float",
+          "name": "SampleRateSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>appid; required when passing DefaultSampleRate; selectable when only modifying existing buckets</p>",
+          "example": "260209268",
+          "member": "uint64",
+          "name": "TargetAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Modify the default value of the newly-added bucket for TargetAppId when passed in; do not modify the default value when not passed in</p><p>Value range: [0.001, 1]</p>",
+          "example": "0.01",
+          "member": "float",
+          "name": "DefaultSampleRate",
+          "required": false,
+          "type": "float"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCosAuditObjectSampleRateResponse": {
+      "document": "ModifyCosAuditObjectSampleRate response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Whether the default sampling rate was actually submitted this time</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "DefaultSampleRateUpdated",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>When DefaultSampleRateUpdated=true, the value after modification is returned</p>",
+          "example": "0.01",
+          "member": "float",
+          "name": "DefaultSampleRate",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of existing buckets successfully submitted this time</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "UpdatedBucketCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCosMarkInfoRequest": {
+      "document": "ModifyCosMarkInfo request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Bucket list that needs to be modified",
+          "example": "[{}]",
+          "member": "CosBucketInfo",
+          "name": "BucketNameSet",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Remarks",
+          "example": "生产桶",
+          "member": "string",
+          "name": "MarkInfo",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCosMarkInfoResponse": {
+      "document": "ModifyCosMarkInfo response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -89176,6 +94844,42 @@
       ],
       "type": "object"
     },
+    "ModifyPolicyStatusRequest": {
+      "document": "ModifyPolicyStatus request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Policy id set",
+          "example": "[1,4,10]",
+          "member": "int64",
+          "name": "PolicyIdSet",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Status value",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyPolicyStatusResponse": {
+      "document": "ModifyPolicyStatus response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyProtectionSetting": {
       "document": "Protection settings object.",
       "members": [
@@ -90933,7 +96637,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>id list</",
+          "document": "<p>id list</p>",
           "example": "8",
           "member": "uint64",
           "name": "Id",
@@ -90960,7 +96664,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Asset scope</p><p>Enumeration value:</p><ul><li>0: All assets</li><li>1: Custom assets</li><li>2: Select all remove asset</li></ul>",
+          "document": "<p>Asset scope</p><p>Enumeration values:</p><ul><li>0: all assets</li><li>1: Custom assets</li><li>2: Select all and remove assets</li></ul>",
           "example": "1",
           "member": "uint64",
           "name": "AssetRange",

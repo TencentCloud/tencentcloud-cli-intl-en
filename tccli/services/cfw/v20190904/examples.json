@@ -1,13 +1,5 @@
 {
   "actions": {
-    "AddAcRule": [
-      {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddAcRule\n<Common request parameters>\n\n{\n    \"OrderIndex\": \"-1\",\n    \"Description\": \"api test1\",\n    \"SourceType\": \"location\",\n    \"SourceContent\": \"cq50,sh31,tj12,bj11\",\n    \"DestType\": \"net\",\n    \"DestContent\": \"0.0.0.0/0\",\n    \"Enable\": \"true\",\n    \"Direction\": \"in\",\n    \"RuleAction\": \"accept\",\n    \"Port\": \"-1/-1\",\n    \"Protocol\": \"tcp\",\n    \"ApplicationName\": \"\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RuleUuid\": 8888,\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\",\n        \"ReturnCode\": 0,\n        \"ReturnMsg\": \"success\"\n    }\n}",
-        "title": "Adds edge firewall rules"
-      }
-    ],
     "AddAclRule": [
       {
         "document": "Add an outbound serial TCP observation rule using the RFC 5737 document address; explicitly specify the enable status, effective scope, rule source, and priority at the end.",
@@ -132,14 +124,6 @@
         "title": "Deleting rules"
       }
     ],
-    "DeleteAllAccessControlRule": [
-      {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteAllAccessControlRule\n<Common request parameters>\n\n{\n    \"Area\": \"\",\n    \"EdgeId\": \"\",\n    \"Direction\": \"0\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Status\": 0,\n        \"Info\": 0,\n        \"RequestId\": \"b21d7f7c-3191-41a2-bd13-9a5f6d86ab44\"\n    }\n}",
-        "title": "Deleting all rules"
-      }
-    ],
     "DeleteResourceGroup": [
       {
         "document": "",
@@ -154,14 +138,6 @@
         "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteSecurityGroupRule\nX-TC-Language: zh-CN\n<Common request parameters>\n\n{\n    \"Id\": 1,\n    \"Area\": \"ap-guangzhou\",\n    \"Direction\": 0,\n    \"IsDelReverse\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"Status\": 0,\n        \"Info\": \"\",\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Deleting security group rules"
-      }
-    ],
-    "DeleteVpcInstance": [
-      {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteVpcInstance\n<Common request parameters>\n\n{}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
-        "title": "Creating and selecting VPC"
       }
     ],
     "DescribeAcLists": [
@@ -398,6 +374,14 @@
         "title": "Query Inter-VPC rules Filter IP"
       }
     ],
+    "DescribeVpcFwIpStat": [
+      {
+        "document": "Traffic sample code",
+        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeVpcFwIpStat\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"Offset\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"Ip\": \"192.168.1.1\",\n                \"InstanceId\": \"ins - a0eksp50\",\n\"InstanceName\": \"andy's instance\",\n                \"VpcId\": \"vpc - a0eksp50\",\n\"VpcName\": \"VPC name\"\n                \"FlowMax\": 11,\n                \"FlowAvg\": 2222,\n                \"TcRuleStatus\": 1,\n                \"FwInsId\": \"cfwew - a0eksp50\",\n                \"IpVersion\": 1\n            }\n        ],\n        \"RequestId\": \"128c5a96-3656-45a3-968b-14d35529e18e\",\n        \"Total\": 0\n    }\n}",
+        "title": "Traffic example"
+      }
+    ],
     "ExpandCfwVertical": [
       {
         "document": "",
@@ -428,14 +412,6 @@
         "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAllRuleStatus\n<Common request parameters>\n\n{\n    \"EdgeId\": \"\",\n    \"Status\": 1,\n    \"Direction\": 1,\n    \"Area\": \"\"\n}",
         "output": "{\n    \"Response\": {\n        \"Status\": 0,\n        \"RequestId\": \"b21d7f7c-3191-41a2-bd13-9a5f6d86ab44\"\n    }\n}",
         "title": "Enabling or disabling all rules"
-      }
-    ],
-    "ModifyAllVPCSwitchStatus": [
-      {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAllVPCSwitchStatus\n<Common request parameters>\n\n{\n    \"FireWallVpcIds\": [],\n    \"Status\": 0\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
-        "title": "Enabling or disabling one or multiple firewalls"
       }
     ],
     "ModifyAssetScan": [
@@ -528,14 +504,6 @@
         "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyNatSequenceRules\n<Common request parameters>\n\n{\n    \"RuleChangeItems\": [\n        {\n            \"OrderIndex\": 0,\n            \"NewOrderIndex\": 0\n        }\n    ],\n    \"Direction\": 1\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Changing the sequence number of NAT firewall rules"
-      }
-    ],
-    "ModifyPublicIPSwitchStatus": [
-      {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: cfw.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyPublicIPSwitchStatus\n<Common request parameters>\n\n{\n    \"FireWallPublicIP\": \"1.2.3.4\",\n    \"Status\": 1\n}",
-        "output": "{\n    \"Response\": {\n        \"ReturnCode\": 0,\n        \"ReturnMsg\": \"success\",\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
-        "title": "Enabling or disabling a firewall"
       }
     ],
     "ModifyResourceGroup": [

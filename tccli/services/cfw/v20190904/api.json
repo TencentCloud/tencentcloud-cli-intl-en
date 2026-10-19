@@ -1,12 +1,5 @@
 {
   "actions": {
-    "AddAcRule": {
-      "document": "This API is used to add edge firewall rules.",
-      "input": "AddAcRuleRequest",
-      "name": "Adds edge firewall rules",
-      "output": "AddAcRuleResponse",
-      "status": "online"
-    },
     "AddAclRule": {
       "document": "Add one or more Internet Boundary Access Control Rules.",
       "input": "AddAclRuleRequest",
@@ -63,13 +56,6 @@
       "output": "DeleteAcRuleResponse",
       "status": "online"
     },
-    "DeleteAllAccessControlRule": {
-      "document": "This API is used to delete all rules.",
-      "input": "DeleteAllAccessControlRuleRequest",
-      "name": "Deletes all rules",
-      "output": "DeleteAllAccessControlRuleResponse",
-      "status": "online"
-    },
     "DeleteResourceGroup": {
       "document": "This API is used to delete asset groups in Asset Management.",
       "input": "DeleteResourceGroupRequest",
@@ -82,13 +68,6 @@
       "input": "DeleteSecurityGroupRuleRequest",
       "name": "Deletes security group rules",
       "output": "DeleteSecurityGroupRuleResponse",
-      "status": "online"
-    },
-    "DeleteVpcInstance": {
-      "document": "This API is used to delete firewall instance.",
-      "input": "DeleteVpcInstanceRequest",
-      "name": "Deletes firewall instance",
-      "output": "DeleteVpcInstanceResponse",
       "status": "online"
     },
     "DescribeAcLists": {
@@ -280,6 +259,13 @@
       "output": "DescribeVpcAcRuleResponse",
       "status": "online"
     },
+    "DescribeVpcFwIpStat": {
+      "document": "This API is used to query the traffic statistics under VPC firewalls at the single IP granularity.",
+      "input": "DescribeVpcFwIpStatRequest",
+      "name": "This API is used to query the traffic statistics under VPC firewalls at the single IP granularity.",
+      "output": "DescribeVpcFwIpStatResponse",
+      "status": "online"
+    },
     "ExpandCfwVertical": {
       "document": "This API is used to increase the firewall bandwidth.",
       "input": "ExpandCfwVerticalRequest",
@@ -306,13 +292,6 @@
       "input": "ModifyAllRuleStatusRequest",
       "name": "Enables or disables all rules",
       "output": "ModifyAllRuleStatusResponse",
-      "status": "online"
-    },
-    "ModifyAllVPCSwitchStatus": {
-      "document": "This API is used to enable or disable one or multiple VPC firewalls.",
-      "input": "ModifyAllVPCSwitchStatusRequest",
-      "name": "Enables or disables one or multiple VPC firewalls",
-      "output": "ModifyAllVPCSwitchStatusResponse",
       "status": "online"
     },
     "ModifyAssetScan": {
@@ -383,13 +362,6 @@
       "input": "ModifyNatSequenceRulesRequest",
       "name": "Change the sequence number of NAT firewall rules",
       "output": "ModifyNatSequenceRulesResponse",
-      "status": "online"
-    },
-    "ModifyPublicIPSwitchStatus": {
-      "document": "This API is used to enable or disable an edge firewall.",
-      "input": "ModifyPublicIPSwitchStatusRequest",
-      "name": "Enables or disables an edge firewall",
-      "output": "ModifyPublicIPSwitchStatusResponse",
       "status": "online"
     },
     "ModifyResourceGroup": {
@@ -592,147 +564,6 @@
         }
       ],
       "usage": "out"
-    },
-    "AddAcRuleRequest": {
-      "document": "AddAcRule request structure.",
-      "members": [
-        {
-          "document": "-1: lowest priority; 1: highest priority",
-          "example": "-1",
-          "member": "string",
-          "name": "OrderIndex",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "document": "The action that Cloud Firewall performs on the traffic. Valid values:\naccept: allow\ndrop: deny\nlog: observe",
-          "example": "accept",
-          "member": "string",
-          "name": "RuleAction",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "document": "The traffic direction for access control rules. Valid values:\nin: incoming traffic access control\nout: outgoing traffic access control",
-          "example": "in",
-          "member": "string",
-          "name": "Direction",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "document": "The description of access control rules.",
-          "example": "默认拒绝所有流量",
-          "member": "string",
-          "name": "Description",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "document": "The type of source address in access control rules. Valid values:\nnet: source IP or range (IP or CIDR)\nlocation: source region\ntemplate: CFW address template\ninstance: instance ID\nvendor: Cloud vendor",
-          "example": "net",
-          "member": "string",
-          "name": "SourceType",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "document": "The source address in the access control policy. \nWhen `SourceType` is `net`, `SourceContent` is the source IP or CIDR block.\nFor example: 1.1.1.0/24\n\nWhen `SourceType` is `template`, `SourceContent` must be the source address template ID.\n\nWhen `SourceType` is `location`, `SourceContent` is the source region. \nFor example, [\"BJ11\", \"ZB\"]\n\nWhen `SourceType` is `instance`, `SourceContent` is the public IP of the instance.\nFor example, ins-xxxxx\n\nWhen `SourceType` is `vendor`, `SourceContent` is the cloud service provider.\nValues: `aws`, `huawei`, `tencent`, `aliyun`, `azure` and `all`. ",
-          "example": "1.1.1.1",
-          "member": "string",
-          "name": "SourceContent",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "document": "The type of destination address in access control rules. Valid values:\nnet: destination IP or range (IP or CIDR)\nlocation: source region\ntemplate: CFW address template\ninstance: instance ID\nvendor: Cloud vendor\ndomain: Domain name or IP.",
-          "example": "domain",
-          "member": "string",
-          "name": "DestType",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "document": "The destination address in the access control policy. \nWhen `DestType` is `net`, `DestContent` is the destination IP or CIDR block.\nFor example: 1.1.1.0/24\n\nWhen `DestType` is `template`, `DestContent` is the destination address template ID.\n\nWhen `DestType` is `location`, `DestContent` is the destination region. \nFor example, [\"BJ11\", \"ZB\"]\n\nWhen `DestType` is `instance`, `DestContent` is the public IP of the instance.\nFor example, ins-xxxxx\n\nWhen `DestType` is `domain`, `DestContent` is the domain name associated with the instance.\nFor example, *.qq.com\n\nWhen `DestType`, `DestContent` is the selected cloud service provider.\nValues: `aws`, `huawei`, `tencent`, `aliyun`, `azure` and `all`. ",
-          "example": "*.qq.com",
-          "member": "string",
-          "name": "DestContent",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "document": "The port to apply access control rules. Valid values:\n-1/-1: all ports\n80,443: 80 or 443",
-          "example": "-1/-1",
-          "member": "string",
-          "name": "Port",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "document": "The protocol type of traffic in access control rules. Valid value: TCP. Only TCP is supported for edge firewall rules. If this parameter is not specified, it defaults to TCP.",
-          "example": "TCP",
-          "member": "string",
-          "name": "Protocol",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "document": "The Layer 7 protocol. Valid values:\nHTTP/HTTPS\nTLS/SSL",
-          "example": "HTTP",
-          "member": "string",
-          "name": "ApplicationName",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "document": "Indicates whether to enable the rules. Default: enable. Valid values:\ntrue: enable; false: disable",
-          "example": "true",
-          "member": "string",
-          "name": "Enable",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "AddAcRuleResponse": {
-      "document": "AddAcRule response structure.",
-      "members": [
-        {
-          "document": "UUID of the new rule",
-          "example": "8888",
-          "member": "int64",
-          "name": "RuleUuid",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "0: operation successful; -1: operation failed",
-          "example": "0",
-          "member": "int64",
-          "name": "ReturnCode",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "success: operation successful; failed: operation failed",
-          "example": "success",
-          "member": "string",
-          "name": "ReturnMsg",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
     },
     "AddAclRuleRequest": {
       "document": "AddAclRule request structure.",
@@ -1312,21 +1143,21 @@
         },
         {
           "disabled": false,
-          "document": "Search values.",
-          "example": "[\"109.24.115.11\",\"83.24.11.24\"]",
-          "member": "string",
-          "name": "Values",
-          "required": true,
-          "type": "list"
-        },
-        {
-          "disabled": false,
-          "document": "Enum of integers that represent relations between Name and Values.\nenum FilterOperatorType {\n    // Invalid\n    FILTER_OPERATOR_TYPE_INVALID = 0;\n    // Equal to\n    FILTER_OPERATOR_TYPE_EQUAL = 1;\n    // Greater than\n    FILTER_OPERATOR_TYPE_GREATER = 2;\n    // Less than\n    FILTER_OPERATOR_TYPE_LESS = 3;\n    // Greater than or equal to\n    FILTER_OPERATOR_TYPE_GREATER_EQ = 4;\n    // Less than or equal to\n    FILTER_OPERATOR_TYPE_LESS_EQ = 5;\n    // Not equal to\n    FILTER_OPERATOR_TYPE_NO_EQ = 6;\n    // In (contained in the array)\n    FILTER_OPERATOR_TYPE_IN = 7;\n    // Not in\n    FILTER_OPERATOR_TYPE_NOT_IN = 8;\n    // Fuzzily matched\n    FILTER_OPERATOR_TYPE_FUZZINESS = 9;\n    // Existing\n    FILTER_OPERATOR_TYPE_EXIST = 10;\n    // Not existing\n    FILTER_OPERATOR_TYPE_NOT_EXIST = 11;\n    // Regular\n    FILTER_OPERATOR_TYPE_REGULAR = 12;\n}",
+          "document": "Enumeration type, representing the matching relationship between Name and Values.\nenum FilterOperatorType {\nequal\n    FILTER_OPERATOR_TYPE_EQUAL = 1;\nAbove\n    FILTER_OPERATOR_TYPE_GREATER = 2;\nless than\n    FILTER_OPERATOR_TYPE_LESS = 3;\n>=\n    FILTER_OPERATOR_TYPE_GREATER_EQ = 4;\n<=\n    FILTER_OPERATOR_TYPE_LESS_EQ = 5;\nneq\n    FILTER_OPERATOR_TYPE_NO_EQ = 6;\n    //not in\n    FILTER_OPERATOR_TYPE_NOT_IN = 8;\nFuzzy matching\n    FILTER_OPERATOR_TYPE_FUZZINESS = 9;\n}",
           "example": "1",
           "member": "int64",
           "name": "OperatorType",
           "required": true,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Search values, with an OR relationship between each search value.",
+          "example": "[\"109.24.115.11\",\"83.24.11.24\"]",
+          "member": "string",
+          "name": "Values",
+          "required": true,
+          "type": "list"
         }
       ],
       "usage": "in"
@@ -2036,66 +1867,6 @@
       ],
       "type": "object"
     },
-    "DeleteAllAccessControlRuleRequest": {
-      "document": "DeleteAllAccessControlRule request structure.",
-      "members": [
-        {
-          "document": "Direction. 0: outbound; 1: inbound. 0 by default",
-          "example": "0",
-          "member": "uint64",
-          "name": "Direction",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "document": "Deletes all the access control rules for inter-VPC firewall toggles associated with the EdgeId. It is empty by default. Enter either EdgeId or Area.",
-          "example": "1",
-          "member": "string",
-          "name": "EdgeId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "document": "Deletes all the access control rules for NAT firewalls of this region. It is empty by default. Enter either EdgeId or Area.",
-          "example": "name",
-          "member": "string",
-          "name": "Area",
-          "required": false,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DeleteAllAccessControlRuleResponse": {
-      "document": "DeleteAllAccessControlRule response structure.",
-      "members": [
-        {
-          "document": "Status of the task. `0`: Modified successfully; Others: Modification failed",
-          "example": "0",
-          "member": "int64",
-          "name": "Status",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "Number of access control rules deleted.\nNote: This field may return `null`, indicating that no valid value was found.",
-          "example": "0",
-          "member": "int64",
-          "name": "Info",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "DeleteResourceGroupRequest": {
       "document": "DeleteResourceGroup request structure.",
       "members": [
@@ -2181,23 +1952,6 @@
           "type": "string",
           "value_allowed_null": true
         },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DeleteVpcInstanceRequest": {
-      "document": "DeleteVpcInstance request structure.",
-      "members": [],
-      "type": "object"
-    },
-    "DeleteVpcInstanceResponse": {
-      "document": "DeleteVpcInstance response structure.",
-      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -4701,6 +4455,144 @@
       ],
       "type": "object"
     },
+    "DescribeVpcFwIpStatRequest": {
+      "document": "DescribeVpcFwIpStat request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Entries per page</p>",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Offset value</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Firewall group ID</p>",
+          "example": "cfwg-11223344",
+          "member": "string",
+          "name": "FwGroupId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Instance id of the firewall</p>",
+          "example": "cfwnat-e69ad806",
+          "member": "string",
+          "name": "FwInsId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Selected time interval 1: within an hour, 2: 24 hours, 3: 7 days, 4: 1 month</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "TimeType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Filter condition composite</p>",
+          "example": "无",
+          "member": "CommonFilter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Start time of retrieval. Can be omitted.</p>",
+          "example": "2022-07-27 16:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>End time of retrieval. Can be omitted.</p>",
+          "example": "2022-07-27 16:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>desc: descending order; asc: ascending order. Sort by the value of the By field. If any parameters are loaded, by must have a value.</p>",
+          "example": "desc",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Fields used for sorting</p>",
+          "example": "Ip",
+          "member": "string",
+          "name": "By",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeVpcFwIpStatResponse": {
+      "document": "DescribeVpcFwIpStat response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Peak bandwidth statistics list for a single cvm</p>",
+          "example": "无",
+          "member": "FwGroupIpFlowStat",
+          "name": "Data",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total number of lines</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "Total",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Asynchronously query status. 1 indicates query execution in progress, and 0 indicates query stopped.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DnsVpcSwitch": {
       "document": "Sets the VPC DNS toggle of the NAT firewall ",
       "members": [
@@ -4799,6 +4691,112 @@
         }
       ],
       "usage": "in"
+    },
+    "FwGroupIpFlowStat": {
+      "document": "VPC firewall status monitoring diagram",
+      "members": [
+        {
+          "disabled": false,
+          "document": "IP",
+          "example": "192.168.1.1",
+          "member": "string",
+          "name": "Ip",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "ins-a0eksp50",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance name.",
+          "example": "andy的实例 ",
+          "member": "string",
+          "name": "InstanceName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "VPCID",
+          "example": "vpc-a0eksp50",
+          "member": "string",
+          "name": "VpcId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "VPC name",
+          "example": "私有网络名称",
+          "member": "string",
+          "name": "VpcName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Peak traffic",
+          "example": "1120",
+          "member": "int64",
+          "name": "FlowMax",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Average bandwidth",
+          "example": "210",
+          "member": "float",
+          "name": "FlowAvg",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Rate limiting status",
+          "example": "1",
+          "member": "int64",
+          "name": "TcRuleStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Firewall ID.",
+          "example": "cfwew-a0eksp50",
+          "member": "string",
+          "name": "FwInsId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "0 IPV4 , 1 IPV6",
+          "example": "1",
+          "member": "int64",
+          "name": "IpVersion",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "FwVpcCidr": {
       "document": "Firewall IP range of the VPC",
@@ -5376,40 +5374,6 @@
       ],
       "type": "object"
     },
-    "ModifyAllVPCSwitchStatusRequest": {
-      "document": "ModifyAllVPCSwitchStatus request structure.",
-      "members": [
-        {
-          "document": "Status. 0: off; 1: on",
-          "example": "0",
-          "member": "int64",
-          "name": "Status",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "document": "ID of the selected firewall toggle",
-          "example": "[]",
-          "member": "string",
-          "name": "FireWallVpcIds",
-          "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyAllVPCSwitchStatusResponse": {
-      "document": "ModifyAllVPCSwitchStatus response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "ModifyAssetScanRequest": {
       "document": "ModifyAssetScan request structure.",
       "members": [
@@ -5925,58 +5889,6 @@
     "ModifyNatSequenceRulesResponse": {
       "document": "ModifyNatSequenceRules response structure.",
       "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyPublicIPSwitchStatusRequest": {
-      "document": "ModifyPublicIPSwitchStatus request structure.",
-      "members": [
-        {
-          "document": "Public IP",
-          "example": "1.2.3.4",
-          "member": "string",
-          "name": "FireWallPublicIP",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "document": "Status value. 0: off; 1: on",
-          "example": "1",
-          "member": "int64",
-          "name": "Status",
-          "required": true,
-          "type": "int"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyPublicIPSwitchStatusResponse": {
-      "document": "ModifyPublicIPSwitchStatus response structure.",
-      "members": [
-        {
-          "document": "Return message\nNote: This field may return `null`, indicating that no valid value was found.",
-          "example": "scuess",
-          "member": "string",
-          "name": "ReturnMsg",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "document": "Error code. 0: success; non-0: failed",
-          "example": "0",
-          "member": "int64",
-          "name": "ReturnCode",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",

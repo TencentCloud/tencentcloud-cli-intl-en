@@ -390,6 +390,26 @@
         "title": "Obtaining the Audit Instance List"
       }
     ],
+    "DescribeAuditLogs": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAuditLogs\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cynosdbmysql-ins-qwerasdf\",\n    \"StartTime\": \"2023-08-01 00:00:00\",\n    \"EndTime\": \"2023-08-07 00:00:00\",\n    \"Limit\": 20,\n    \"LogFilter\": [\n        {\n            \"Type\": \"sql\",\n            \"Compare\": \"WINC\",\n            \"Value\": [\n                \"select\"\n            ]\n        },\n        {\n            \"Type\": \"sql\",\n            \"Compare\": \"WINC\",\n            \"Value\": [\n                \"test_db\"\n            ]\n        },\n        {\n            \"Type\": \"host\",\n            \"Compare\": \"NEQ\",\n            \"Value\": [\n                \"10.0.0.1\",\n                \"100.0.0.1\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": null,\n        \"RequestId\": \"90d90456-2a5b-4015-81b8-9e2fca52012b\",\n        \"TotalCount\": 0\n    }\n}",
+        "title": "Query records within the xx time range where the sql contains select and test_db, and the source IP is not equal to 10.0.0.1 and not equal to 100.0.0.1"
+      },
+      {
+        "document": "sql sample: select * from test_db limit 1;\nsql INC SELECT can search for results.\nUnable to find a sample for sql WINC select.",
+        "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAuditLogs\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cynosdbmysql-ins-qwerasdf\",\n    \"StartTime\": \"2023-08-01 00:00:00\",\n    \"EndTime\": \"2023-08-07 00:00:00\",\n    \"Limit\": 20,\n    \"LogFilter\": [\n        {\n            \"Type\": \"sql\",\n            \"Compare\": \"INC\",\n            \"Value\": [\n                \"selec\",\n                \"up\"\n            ]\n        },\n        {\n            \"Type\": \"host\",\n            \"Compare\": \"INC\",\n            \"Value\": [\n                \"10.0.\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": null,\n        \"RequestId\": \"90d90456-2a5b-4015-81b8-9e2fca52012b\",\n        \"TotalCount\": 0\n    }\n}",
+        "title": "Query records within the xx time range where the sql contains selec or upda and the source IP address contains 10.0."
+      },
+      {
+        "document": "This API is used to query an audit log.",
+        "input": "POST / HTTP/1.1\nHost: cynosdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAuditLogs\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cynosdbmysql-ins-qwerasdf\",\n    \"StartTime\": \"2017-07-12 10:29:20\",\n    \"EndTime\": \"2017-07-13 10:29:20\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"TotalCount\": 1,\n        \"Items\": [\n            {\n                \"PolicyName\": \"sys_default\",\n                \"ExecTime\": 0,\n                \"Timestamp\": \"2023-06-26 10:32:36.000\",\n                \"AffectRows\": 0,\n                \"ThreadId\": 0,\n                \"TableName\": \"\",\n                \"ErrCode\": 0,\n                \"Host\": \"10.0.0.1\",\n                \"SentRows\": 0,\n                \"User\": \"andy\",\n                \"Sql\": \"SELECT * FROM test LIMIT 1;\",\n                \"SqlType\": \"SELECT\",\n                \"InstanceName\": \"cynosdbandy\",\n                \"DBName\": \"db1\"\n            }\n        ]\n    }\n}",
+        "title": "This API is used to query an audit log."
+      }
+    ],
     "DescribeAuditRuleTemplates": [
       {
         "document": "This example shows you how to query audit rule template information.",

@@ -88,6 +88,20 @@
         "title": "Example 1"
       }
     ],
+    "DescribeAccessPointList": [
+      {
+        "document": "This scenario shows you how to query all access points.",
+        "input": "POST / HTTP/1.1\nHost: mna.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAccessPointList\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"AccessPointList\": [\n            {\n                \"Available\": true,\n                \"BigArea\": \"CN\",\n                \"GwGroupId\": \"devGrp-2evt2qy*****\",\n                \"PublicAddr\": \"49.233.112.***:443\",\n                \"Region\": \"ap-beijing\",\n                \"Vendor\": \"CHINA_TELECOM\"\n            }\n        ],\n        \"RequestId\": \"4957c0d9-ddc6-460c-9ee2-a56f9e4f7173\"\n    }\n}",
+        "title": "Query All Access Point List"
+      },
+      {
+        "document": "This example shows you how to query specified regional access point list",
+        "input": "POST / HTTP/1.1\nHost: mna.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAccessPointList\n<Common request parameters>\n\n{\n    \"Regions\": [\n        \"ap-beijing\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"AccessPointList\": [\n            {\n                \"Available\": true,\n                \"BigArea\": \"CN\",\n                \"GwGroupId\": \"devGrp-2evt2qyd****\",\n                \"PublicAddr\": \"49.233.112.***:443\",\n                \"Region\": \"ap-beijing\",\n                \"Vendor\": \"CHINA_TELECOM\"\n            }\n        ],\n        \"RequestId\": \"5883dde6-d0ef-4519-b6a2-6875457f3120\"\n    }\n}",
+        "title": "Querying Specified Regional Access Point List"
+      }
+    ],
     "DescribeAccessRegions": [
       {
         "document": "",

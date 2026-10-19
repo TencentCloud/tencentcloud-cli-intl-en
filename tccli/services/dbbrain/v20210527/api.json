@@ -105,6 +105,13 @@
       "output": "DescribeAuditInstanceListResponse",
       "status": "online"
     },
+    "DescribeDBAuditLogs": {
+      "document": "Queries the audit log details of a specified instance within a time window, support by SQL type, execution time, error code, keyword, and other multi-condition filtering. Currently only support dcdb and mariadb products (cdb and cynosdb have been migrated to the central platform). Note that Filter.MultiSql and Filter.ExcludeMultiSql need to be transmitted as a JSON string in the form of a two-dimensional array, for example, [[\"a\",\"b\"]] means (a OR b), and the server will automatically parse it.",
+      "input": "DescribeDBAuditLogsRequest",
+      "name": "Searches for database audit logs",
+      "output": "DescribeDBAuditLogsResponse",
+      "status": "online"
+    },
     "DescribeDBDiagEvent": {
       "document": "This API is used to get the details of an instance exception diagnosis event.",
       "input": "DescribeDBDiagEventRequest",
@@ -356,6 +363,302 @@
       ],
       "type": "object"
     },
+    "AuditDBLogItem": {
+      "document": "A single audit log detail at the DB layer. The fields are output by DruidCommonUtil#changeLogsTdsqlDB and BusinessCodeUtils. When LogType=All, FlowTime is added.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Time point of SQL execution (format string, yyyy-MM-dd HH:mm:ss).</p>",
+          "example": "2024-10-10 10:00:00",
+          "member": "string",
+          "name": "Timestamp",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Cluster ID.</p>",
+          "example": "tdsqlxrdaw-xawf",
+          "member": "string",
+          "name": "ClusterId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of affected rows.</p>",
+          "example": "100",
+          "member": "int64",
+          "name": "AffectRows",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of scanned rows.</p>",
+          "example": "100",
+          "member": "int64",
+          "name": "CheckRows",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>CPU time (µs).</p>",
+          "example": "21",
+          "member": "int64",
+          "name": "CpuTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Backend Set Host (source field dbHost).</p>",
+          "example": "299",
+          "member": "string",
+          "name": "SetHost",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Database name where the SQL is executed.</p>",
+          "example": "1232",
+          "member": "string",
+          "name": "DBName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Error code returned by SQL execution. 0 indicates success.</p>",
+          "example": "200",
+          "member": "string",
+          "name": "ErrCode",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>SQL execution time (µs).</p>",
+          "example": "100",
+          "member": "int64",
+          "name": "ExecTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Client source IP.</p>",
+          "example": "21.4.5.1",
+          "member": "string",
+          "name": "Host",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Set Name (source field instanceId).</p>",
+          "example": "tdsqldawfw-fawfaw",
+          "member": "string",
+          "name": "SetName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>IO wait time (µs).</p>",
+          "example": "231",
+          "member": "int64",
+          "name": "IoWaitTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Lock waiting time (µs).</p>",
+          "example": "122",
+          "member": "int64",
+          "name": "LockWaitTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>SQL start time (nanosecond timestamp).</p>",
+          "example": "2345432",
+          "member": "int64",
+          "name": "SqlStartTimeNs",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Query ID (used for join queries).</p>",
+          "example": "121",
+          "member": "string",
+          "name": "QueryId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Serial number for queries (serial number of SQL in the same transaction).</p>",
+          "example": "121",
+          "member": "int64",
+          "name": "QueryNo",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of rows returned (rows in the scanning result set).</p>",
+          "example": "100",
+          "member": "int64",
+          "name": "SentRows",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Original executed SQL statement.</p>",
+          "example": "select * from iordwe;",
+          "member": "string",
+          "name": "Sql",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>SQL Template ID.</p>",
+          "example": "1023432321",
+          "member": "string",
+          "name": "SqlTemplateId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>SQL type (for example, Select, Insert, Update, Delete).</p>",
+          "example": "Select",
+          "member": "string",
+          "name": "SqlType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Tables involved.</p>",
+          "example": "iordwe",
+          "member": "string",
+          "name": "Tables",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Thread ID.</p>",
+          "example": "1001",
+          "member": "string",
+          "name": "ThreadId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>SQL start time (millisecond-level timestamp).</p>",
+          "example": "10234323211",
+          "member": "int64",
+          "name": "SqlStartTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Transaction time to live (µs).</p>",
+          "example": "10234323211",
+          "member": "int64",
+          "name": "TrxLivingTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Database username that executes the SQL.</p>",
+          "example": "root",
+          "member": "string",
+          "name": "User",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Transaction ID.</p>",
+          "example": "1011",
+          "member": "string",
+          "name": "TrxId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Internal XID.</p>",
+          "example": "1422",
+          "member": "string",
+          "name": "InternalXId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Business code (extracted from i/o/p and other KV in business-side SQL annotations).</p>",
+          "example": "101",
+          "member": "string",
+          "name": "BusinessCode",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Gateway circulation duration (ms). It is returned only when LogType=All after gateway log association. When LogType=DB, this field is not delivered.</p>",
+          "example": "2364",
+          "member": "int64",
+          "name": "FlowTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "AuditInstance": {
       "document": "Instance details",
       "members": [
@@ -568,6 +871,529 @@
           "output_required": true,
           "type": "list",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AuditLogQueryFilter": {
+      "document": "Collection of query filter criteria for audit logs. All fields are selectable. Note: MultiSql and ExcludeMultiSql carry a two-dimensional array as a JSON string (the cloud API platform does not support two-dimensional arrays). For example, [[a,b]] means (a OR b).",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>SQL type list, with values such as SELECT, INSERT, UPDATE, and DELETE.</p>",
+          "example": "[\"SELECT\"]",
+          "member": "string",
+          "name": "SqlType",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Execution duration range (ms), an array of length 2: [minimum value, maximum value].</p>",
+          "example": "[12121]",
+          "member": "int64",
+          "name": "ExecTime",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>IO waiting duration range (ms), an array with a length of 2.</p>",
+          "example": "[122]",
+          "member": "int64",
+          "name": "IoWaitTime",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>CPU duration range (ms), an array of length 2.</p>",
+          "example": "[112]",
+          "member": "int64",
+          "name": "CpuTime",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Lock wait time range (ms), an array with a length of 2.</p>",
+          "example": "[234]",
+          "member": "int64",
+          "name": "LockWaitTime",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>SQL execution error code. For example, 0 indicates success.</p>",
+          "example": "0",
+          "member": "string",
+          "name": "ErrCode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Error message.</p>",
+          "example": "Wrong",
+          "member": "string",
+          "name": "ErrInfo",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Database name list.</p>",
+          "example": "[\"information_schema\"]",
+          "member": "string",
+          "name": "DBName",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Username list.</p>",
+          "example": "[\"shine\"]",
+          "member": "string",
+          "name": "User",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Source IP list.</p>",
+          "example": "[\"9.130.154.56\"]",
+          "member": "string",
+          "name": "Host",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of thread IDs.</p>",
+          "example": "[\"728799049\"]",
+          "member": "string",
+          "name": "ThreadId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of proxy node hosts.</p>",
+          "example": "[\"30.122.175.73:24717\"]",
+          "member": "string",
+          "name": "ProxyHostList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Backend Set Host list.</p>",
+          "example": "[\"12.23.1.2\"]",
+          "member": "string",
+          "name": "SetHostList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Backend Set ID list.</p>",
+          "example": "[\"12\"]",
+          "member": "string",
+          "name": "SetIdList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Multiple SQL keyword conditions, JSON string, internally a two-dimensional array: level 1 is AND, the second level is OR. Note that the cloud API platform does not support two-dimensional arrays. Here, a string is used to carry it, and the server automatically parses it.</p>",
+          "example": "[[\"show\"], [\"tables\"]]",
+          "member": "string",
+          "name": "MultiSql",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Excluded multiple SQL keyword conditions, JSON string, with the same structure as MultiSql.</p>",
+          "example": "[\"1231\"]",
+          "member": "string",
+          "name": "ExcludeMultiSql",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>SQL Template ID.</p>",
+          "example": "-89754391074401398071",
+          "member": "string",
+          "name": "SqlTemplateId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>SQL start time, for example: 2026-10-10 11:05:06.002211</p><p>Parameter format: YYYY-MM-DD hh:mm:ss.SSSSSS</p>",
+          "example": "2026-10-10 18:18:22.222233",
+          "member": "string",
+          "name": "SqlStartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Query ID, used for join queries (required when LogType=All).</p>",
+          "example": "11",
+          "member": "string",
+          "name": "QueryId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "AuditProxyLogItem": {
+      "document": "A single audit log detail at the proxy layer. The fields are output by DruidCommonUtil#changeLogsTdsqlProxy and BusinessCodeUtils.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Time point of SQL execution (format string, yyyy-MM-dd HH:mm:ss).</p>",
+          "example": "2026-10-10 19:21:45",
+          "member": "string",
+          "name": "Timestamp",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Cluster ID (dcdb/mariadb cluster identifier, same as InstanceId).</p>",
+          "example": "tdsqlshard-garh4omb",
+          "member": "string",
+          "name": "ClusterId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of affected rows.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "AffectRows",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to autocommit. 1 means enabling, and 0 means disabling.</p>",
+          "example": "1",
+          "member": "string",
+          "name": "Autocommit",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>MySQL network protocol command types (such as COM_QUERY and COM_CONNECT).</p>",
+          "example": "COM_QUERY",
+          "member": "string",
+          "name": "ComType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Duration of creating a connection.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "ConnTc",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Backend DB instance address (multiple entries are separated by commas).</p>",
+          "example": "11.52.172.35:4222",
+          "member": "string",
+          "name": "DBHost",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Database name where the SQL is executed.</p>",
+          "example": "information_schema",
+          "member": "string",
+          "name": "DBName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Error code returned by SQL execution. 0 indicates success.</p>",
+          "example": "1044",
+          "member": "string",
+          "name": "ErrCode",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Error message.</p>",
+          "example": "Access denied for user 'shine'@'%' to database 'test'",
+          "member": "string",
+          "name": "ErrInfo",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>SQL execution time (µs).</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "ExecTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of connections still occupied after request ends (typically 0 for non-transaction requests).</p>",
+          "example": "2",
+          "member": "string",
+          "name": "HoldConns",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Client source IP.</p>",
+          "example": "9.131.27.125",
+          "member": "string",
+          "name": "Host",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable global consistency read (0: no, 1: yes).</p>",
+          "example": "0",
+          "member": "string",
+          "name": "Mc",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>SQL start time (microsecond portion in microsecond precision).</p>",
+          "example": "45876",
+          "member": "int64",
+          "name": "SqlStartTimeUs",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of connections created in the current request.</p>",
+          "example": "2",
+          "member": "int64",
+          "name": "NewConnNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Proxy node address.</p>",
+          "example": "11.52.172.35:24221",
+          "member": "string",
+          "name": "ProxyHost",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Proxy ID.</p>",
+          "example": "12342",
+          "member": "string",
+          "name": "ProxyId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Query ID (used for join queries).</p>",
+          "example": "4568366-1791631301-1",
+          "member": "string",
+          "name": "QueryId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of rows returned (rows in the scanning result set).</p>",
+          "example": "108",
+          "member": "int64",
+          "name": "SentRows",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether it is a query rewritten by Proxy: 0 original query, 1 rewritten query.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "Splited",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Original executed SQL statement.</p>",
+          "example": "SELECT @@max_allowed_packet",
+          "member": "string",
+          "name": "Sql",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>SQL template.</p>",
+          "example": "select table_name from information_schema.tables where table_schema = ? and table_type = ? and table_name like ? limit ? offset ?",
+          "member": "string",
+          "name": "SqlTemplate",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>SQL Template ID.</p>",
+          "example": "11",
+          "member": "string",
+          "name": "SqlTemplateId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>SQL type (for example, Select, Insert, Create, Login, Set).</p>",
+          "example": "Show",
+          "member": "string",
+          "name": "SqlType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Tables involved (separated by commas for multiple tables).</p>",
+          "example": "information_schema.tables",
+          "member": "string",
+          "name": "Tables",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Thread ID.</p>",
+          "example": "1310703804",
+          "member": "string",
+          "name": "ThreadId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>SQL start time (millisecond-level timestamp).</p>",
+          "example": "1791631305045",
+          "member": "int64",
+          "name": "SqlStartTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Database username that executes the SQL.</p>",
+          "example": "shine",
+          "member": "string",
+          "name": "User",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>HostPort of the client connection.</p>",
+          "example": "3306",
+          "member": "string",
+          "name": "HostPort",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Proxy Node processing thread ID.</p>",
+          "example": "60224",
+          "member": "string",
+          "name": "ProxyThread",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of backend DB hosts.</p>",
+          "example": "0",
+          "member": "string",
+          "name": "DbHostNum",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Business code (extracted from i/o/p and other KV in business-side SQL annotations).</p>",
+          "example": "i=121ea724,o=100047808302,p=dmc",
+          "member": "string",
+          "name": "BusinessCode",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Business tag (completed post based on the business code).</p>",
+          "example": "101",
+          "member": "string",
+          "name": "BusinessTag",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1538,6 +2364,172 @@
           "member": "AuditInstance",
           "name": "Items",
           "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBAuditLogsRequest": {
+      "document": "DescribeDBAuditLogs request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Service product type. Currently, Cloud API only supports: dcdb, mariadb (cdb and cynosdb have been migrated to the central platform).</p>",
+          "example": "mariadb",
+          "member": "string",
+          "name": "Product",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Start time, format yyyy-MM-dd HH:mm:ss.</p>",
+          "example": "2026-10-10 18:19:21",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>End time, format: yyyy-MM-dd HH:mm:ss.</p>",
+          "example": "2026-10-10 18:20:21",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Instance ID, required. In dcdb and mariadb scenarios, query audit logs by instance dimension.</p>",
+          "example": "tdsql-1zsrqfdkh4",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Log type: Proxy log, DB database log, All.</p>",
+          "example": "Proxy",
+          "member": "string",
+          "name": "LogType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sorting field. Default: Timestamp.</p>",
+          "example": "Timestamp",
+          "member": "string",
+          "name": "SortBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sorting method: ASC for ascending order, DESC for descending order. Default: DESC.</p>",
+          "example": "DESC",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Offset. Default value: 0.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of returned results. Default: 20. Maximum: 100.</p>",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>SQL start time (millisecond-level timestamp), used when performing a join query by QueryId.</p>",
+          "example": "123454323",
+          "member": "int64",
+          "name": "SqlStartTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>A collection of query filter criteria for audit logs.</p>",
+          "example": "无",
+          "member": "AuditLogQueryFilter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Cluster ID. Query audit logs for the dcdb product at the cluster level</p>",
+          "example": "tdsqlshard-garh4omb",
+          "member": "string",
+          "name": "ClusterId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBAuditLogsResponse": {
+      "document": "DescribeDBAuditLogs response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total number of eligible entries.</p>",
+          "example": "3",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of records after filtering.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "FilteredRecords",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Proxy layer audit log list. Returned when LogType=Proxy or All. For field structure, see AuditProxyLogItem.</p>",
+          "example": "无",
+          "member": "AuditProxyLogItem",
+          "name": "ProxyLogs",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>DB layer audit log list. Returned when LogType is DB or All. For the field structure, see AuditDBLogItem.</p>",
+          "example": "无",
+          "member": "AuditDBLogItem",
+          "name": "DBLogs",
+          "output_required": false,
           "type": "list",
           "value_allowed_null": false
         },
