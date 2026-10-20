@@ -3608,7 +3608,7 @@
         {
           "disabled": false,
           "document": "<p>Matting model selection. This parameter is optional.</p><p>Enumeration values:</p><ul><li>auto: automatically choose an appropriate model</li><li>WAND-cutout-1.0-lite: standard version, fastest speed</li><li>WAND-cutout-2.0-lite: enhanced version, faster speed</li><li>WAND-cutout-2.0-flash: enhanced version, quality-speed balance</li><li>WAND-cutout-3.0-lite: enhanced version, faster speed</li><li>WAND-cutout-3.0-flash: enhanced version, quality-speed balance</li></ul>",
-          "example": "WAND-cutout-3.0-lite",
+          "example": "cutout-1.0-lite",
           "member": "string",
           "name": "Model",
           "output_required": false,
@@ -14862,7 +14862,7 @@
       "usage": "out"
     },
     "ConcatTask2017": {
-      "document": "Video splicing task information. This structure is only used for tasks initiated via the 2017 [video splicing](https://www.tencentcloud.com/document/product/266/7821?from_cn_redirect=1) API.",
+      "document": "Video splicing task information. This structure is only used for tasks initiated via the 2017 video splicing API.",
       "members": [
         {
           "disabled": false,
@@ -18726,7 +18726,7 @@
       "type": "object"
     },
     "CreateImageSpriteTask2017": {
-      "document": "Video image sprite task. This structure is only used for tasks initiated by the 2017 [capture CSS sprites](https://www.tencentcloud.com/document/product/266/8101?from_cn_redirect=1) API.",
+      "document": "Video image sprite task. This structure is only used for tasks initiated by the 2017 capture CSS sprites API.",
       "members": [
         {
           "disabled": false,
@@ -56581,7 +56581,7 @@
       "usage": "out"
     },
     "TranscodeTask2017": {
-      "document": "Video transcoding task information. This structure is only used for tasks initiated via the 2017 [video transcoding](https://www.tencentcloud.com/document/product/266/7822?from_cn_redirect=1) API.",
+      "document": "Video transcoding task information. This structure is only used for tasks initiated via the 2017 video transcoding API.",
       "members": [
         {
           "disabled": false,

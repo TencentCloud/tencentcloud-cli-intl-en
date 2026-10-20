@@ -15,16 +15,16 @@
       "status": "online"
     },
     "CreateNamespace": {
-      "document": "This API is used to create a namespace based on the input parameters.",
+      "document": "This API is used to create a namespace based on the passed parameters.",
       "input": "CreateNamespaceRequest",
       "name": "Creates a namespace",
       "output": "CreateNamespaceResponse",
       "status": "online"
     },
     "CreateTrigger": {
-      "document": "This API is used to create a trigger based on the input parameters.",
+      "document": "This API is used to set up alarms for the new trigger mode based on parameters.",
       "input": "CreateTriggerRequest",
-      "name": "Creates a function trigger",
+      "name": "Sets the function trigger method",
       "output": "CreateTriggerResponse",
       "status": "online"
     },
@@ -71,9 +71,9 @@
       "status": "online"
     },
     "DeleteTrigger": {
-      "document": "This API is used to delete an existing trigger based on the input parameters.",
+      "document": "This API is used to delete existing trigger modes based on parameters.",
       "input": "DeleteTriggerRequest",
-      "name": "Deletes a trigger",
+      "name": "Delete the trigger.",
       "output": "DeleteTriggerResponse",
       "status": "online"
     },
@@ -113,9 +113,9 @@
       "status": "online"
     },
     "GetFunctionLogs": {
-      "document": "This API returns function running logs according to the specified conditions. Note that this API has been disused. You can use [GetRequestStatus](https://intl.cloud.tencent.com/document/product/583/65348?from_cn_redirect=1) instead. See also [Retrieving Logs](https://intl.cloud.tencent.com/document/product/583/52637?from_cn_redirect=1).",
+      "document": "This API returns function running logs based on the specified log query conditions. This API is offline. To query the returned information of function request running, please use [GetRequestStatus](https://www.tencentcloud.com/document/product/583/65348?from_cn_redirect=1). To query function running logs, see [Log Search Guide](https://www.tencentcloud.com/document/product/583/52637?from_cn_redirect=1).",
       "input": "GetFunctionLogsRequest",
-      "name": "Obtains a function running log",
+      "name": "Retrieves function execution log",
       "output": "GetFunctionLogsResponse",
       "status": "online"
     },
@@ -274,9 +274,9 @@
       "status": "online"
     },
     "UpdateFunctionConfiguration": {
-      "document": "This API is used to update the function configuration based on the input parameters.",
+      "document": "This API is used to update function configurations based on input parameters.",
       "input": "UpdateFunctionConfigurationRequest",
-      "name": "Updates the function configuration",
+      "name": "Updates function configuration",
       "output": "UpdateFunctionConfigurationResponse",
       "status": "online"
     },
@@ -495,11 +495,11 @@
       "usage": "both"
     },
     "CfsConfig": {
-      "document": "File system (CFS) configuration description",
+      "document": "Configuration description of the file system (cfs)",
       "members": [
         {
           "disabled": false,
-          "document": "File system information list",
+          "document": "List of file system information",
           "example": "",
           "member": "CfsInsInfo",
           "name": "CfsInsList",
@@ -511,7 +511,7 @@
       "usage": "both"
     },
     "CfsInsInfo": {
-      "document": "Configuration information of the CFS instance associated with function",
+      "document": "cfs configuration message associated with the SCF",
       "members": [
         {
           "disabled": false,
@@ -526,7 +526,7 @@
         },
         {
           "disabled": false,
-          "document": "User group ID",
+          "document": "User group id.",
           "example": "10000",
           "member": "string",
           "name": "UserGroupId",
@@ -537,7 +537,7 @@
         },
         {
           "disabled": false,
-          "document": "CFS instance ID",
+          "document": "File system instance id",
           "example": "cfs-xxxxxxxx",
           "member": "string",
           "name": "CfsId",
@@ -548,7 +548,7 @@
         },
         {
           "disabled": false,
-          "document": "File system mount target ID",
+          "document": "File system mount point id",
           "example": "cfs-xxxxxxxx",
           "member": "string",
           "name": "MountInsId",
@@ -559,7 +559,7 @@
         },
         {
           "disabled": false,
-          "document": "Local mount target",
+          "document": "Local mount point",
           "example": "/mnt/",
           "member": "string",
           "name": "LocalMountDir",
@@ -570,7 +570,7 @@
         },
         {
           "disabled": false,
-          "document": "Remote mount target",
+          "document": "Remote mount point.",
           "example": "/remotedir",
           "member": "string",
           "name": "RemoteMountDir",
@@ -581,7 +581,7 @@
         },
         {
           "disabled": false,
-          "document": "File system IP, which is not required when you configure CFS.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "File system ip. No need to specify when configuring cfs.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "10.0.0.3",
           "member": "string",
           "name": "IpAddress",
@@ -592,7 +592,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC ID of file system, which is not required when you configure CFS.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "VPC id where the file system is located. Not required when configuring cfs.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "vpc-xxxxxxxx",
           "member": "string",
           "name": "MountVpcId",
@@ -603,7 +603,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC subnet ID of file system, which is not required when you configure CFS.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Subnet id of the private network where the file system resides. Not required when configuring cfs.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "subnet-xxxxxxxx",
           "member": "string",
           "name": "MountSubnetId",
@@ -950,7 +950,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Resource pool configuration",
           "example": "无",
           "member": "NamespaceResourceEnv",
           "name": "ResourceEnv",
@@ -977,7 +977,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Name of the function bound to the new trigger",
+          "document": "Function name bound to the created trigger",
           "example": "FunctionName",
           "member": "string",
           "name": "FunctionName",
@@ -986,7 +986,7 @@
         },
         {
           "disabled": false,
-          "document": "Name of a new trigger. For a timer trigger, the name can contain up to 100 letters, digits, dashes, and underscores; for a COS trigger, it should be an access domain name of the corresponding COS bucket applicable to the XML API (e.g., 5401-5ff414-12345.cos.ap-shanghai.myqcloud.com); for other triggers, please see the descriptions of parameters bound to the specific trigger.",
+          "document": "Name of the trigger to create. If it is a scheduled trigger, the name supports English letters, digits, hyphens, and underscores, up to 100 characters. If it is a COS trigger, it must be the access domain of the corresponding COS storage bucket suitable for the XML API (for example, 5401-5ff414-12345.cos.ap-shanghai.myqcloud.com). For other triggers, see the parameter description of the specific trigger binding.",
           "example": "TriggerName",
           "member": "string",
           "name": "TriggerName",
@@ -995,7 +995,7 @@
         },
         {
           "disabled": false,
-          "document": "Type of trigger. Values: `cos`, `cmq`, `timer`, `ckafka`, `http`. \nTo create Function URL please refer to [Creating a Function URL](https://www.tencentcloud.com/document/product/583/69492?lang=en&pg=)\nTo create a CLS trigger, please refer to [Create Deliver CloudFunction (SCF)](https://www.tencentcloud.com/zh/document/product/614/59903).",
+          "document": "Trigger type. Currently supports cos, cls, timer, ckafka, and http types. To create a function URL, please use the http type. See [Creating a Function URL](https://www.tencentcloud.com/document/product/583/100227?from_cn_redirect=1#33bbbda4-9131-48a6-ac37-ac62ffe01424). To create a cls trigger, see CLS Creating Delivery SCF Task.",
           "example": "timer",
           "member": "string",
           "name": "Type",
@@ -1004,7 +1004,7 @@
         },
         {
           "disabled": false,
-          "document": "For parameters of triggers, see [Trigger Description](https://intl.cloud.tencent.com/document/product/583/39901?from_cn_redirect=1)",
+          "document": "Parameters corresponding to the trigger. For details, see [Trigger Description](https://www.tencentcloud.com/document/product/583/39901?from_cn_redirect=1).",
           "example": "*/2****",
           "member": "string",
           "name": "TriggerDesc",
@@ -1013,7 +1013,7 @@
         },
         {
           "disabled": false,
-          "document": "Function namespace",
+          "document": "Namespace of the function",
           "example": "default",
           "member": "string",
           "name": "Namespace",
@@ -1022,7 +1022,7 @@
         },
         {
           "disabled": false,
-          "document": "Function version. It defaults to `$LATEST`. It's recommended to use [$DEFAULT](https://www.tencentcloud.com/document/product/583/37458?lang=en&pg=) for canary release.",
+          "document": "Version or alias that the trigger takes effect on. It is recommended to fill in $DEFAULT for future grayscale release. Default value: $LATEST.",
           "example": "$DEFAULT",
           "member": "string",
           "name": "Qualifier",
@@ -1031,7 +1031,7 @@
         },
         {
           "disabled": false,
-          "document": "Initial enabling status of the trigger. `OPEN` indicates enabled, and `CLOSE` indicates disabled.",
+          "document": "Initial status of the trigger. OPEN means enabling, and CLOSE means disabling.",
           "example": "1",
           "member": "string",
           "name": "Enable",
@@ -1040,7 +1040,7 @@
         },
         {
           "disabled": false,
-          "document": "Custom argument, supporting only the timer trigger.",
+          "document": "User-defined parameter. Only timer triggers are supported.",
           "example": "CustomArgument",
           "member": "string",
           "name": "CustomArgument",
@@ -1049,7 +1049,7 @@
         },
         {
           "disabled": false,
-          "document": "Trigger description",
+          "document": "Trigger description.",
           "example": "A trigger",
           "member": "string",
           "name": "Description",
@@ -1064,7 +1064,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Trigger information",
+          "document": "Trigger information.",
           "example": "{ \t\"AddTime\": \"2021-06-09 16:07:18\", \t\"AvailableStatus\": \"Availa",
           "member": "Trigger",
           "name": "TriggerInfo",
@@ -1108,7 +1108,7 @@
         },
         {
           "disabled": false,
-          "document": "Tag form of a dead letter queue topic mode",
+          "document": "Tag format of the DLQ topic model",
           "example": "暂无使用",
           "member": "string",
           "name": "FilterType",
@@ -1359,7 +1359,7 @@
         },
         {
           "disabled": false,
-          "document": "Name of the trigger to be deleted",
+          "document": "Trigger name to delete",
           "example": "trigger_name",
           "member": "string",
           "name": "TriggerName",
@@ -1368,7 +1368,7 @@
         },
         {
           "disabled": false,
-          "document": "Type of the trigger to be deleted. Currently, COS, CMQ, timer, and ckafka triggers are supported.",
+          "document": "Trigger type to delete. Currently only `timer`, `ckafka`, `apigw`, `cls`, `cos`, `cmq`, and `http` are supported.",
           "example": "timer",
           "member": "string",
           "name": "Type",
@@ -1377,7 +1377,7 @@
         },
         {
           "disabled": false,
-          "document": "Function namespace",
+          "document": "Namespace of the function",
           "example": "default",
           "member": "string",
           "name": "Namespace",
@@ -1386,7 +1386,7 @@
         },
         {
           "disabled": false,
-          "document": "This field is required if a COS trigger is to be deleted. It stores the data {\"event\":\"cos:ObjectCreated:*\"} in the JSON format. The data content of this field is in the same format as that of SetTrigger. This field is optional if a scheduled trigger or CMQ trigger is to be deleted.",
+          "document": "If the trigger type to delete is COS trigger, this field must be specified, storing data in JSON format {\"event\":\"cos:ObjectCreated:*\"}. The data content is in the same format as this field in the SetTrigger API. If the trigger type to delete is scheduled trigger or CMQ trigger, this field can be unspecified.",
           "example": "{\"event\":\"cos:ObjectCreated:*\"}",
           "member": "string",
           "name": "TriggerDesc",
@@ -1395,7 +1395,7 @@
         },
         {
           "disabled": false,
-          "document": "Function version. It defaults to `$LATEST`. It's recommended to use `[$DEFAULT](https://www.tencentcloud.com/document/product/583/37458#glossary)` for canary release.",
+          "document": "The version or alias that the trigger to be deleted actually points to. Default value: $LATEST.",
           "example": "$LATEST",
           "member": "string",
           "name": "Qualifier",
@@ -1418,11 +1418,11 @@
       "type": "object"
     },
     "EipConfigIn": {
-      "document": "Fixed IP configuration for public network access",
+      "document": "Public network access fixed ip configuration",
       "members": [
         {
           "disabled": false,
-          "document": "Status of the EIP. Values: ['ENABLE','DISABLE']",
+          "document": "Eip status. Valid values: `ENABLE` and `DISABLE`",
           "example": "DISABLE",
           "member": "string",
           "name": "EipStatus",
@@ -1433,7 +1433,7 @@
       "usage": "in"
     },
     "Environment": {
-      "document": "Environment variable parameter of the function",
+      "document": "Environment variable parameters of the function",
       "members": [
         {
           "disabled": false,
@@ -1645,7 +1645,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Function name",
+          "document": "Function name.",
           "example": "function-demo",
           "member": "string",
           "name": "FunctionName",
@@ -1655,7 +1655,7 @@
         },
         {
           "disabled": false,
-          "document": "Return value after the function is executed",
+          "document": "Returned value after function execution",
           "example": " \\\"Hello World\\\"",
           "member": "string",
           "name": "RetMsg",
@@ -1665,7 +1665,7 @@
         },
         {
           "disabled": false,
-          "document": "RequestId corresponding to the executed function",
+          "document": "requestId for executing the function",
           "example": "633934da-c2b6-11ef-87ca-5254007bbe22",
           "member": "string",
           "name": "RequestId",
@@ -1675,7 +1675,7 @@
         },
         {
           "disabled": false,
-          "document": "Start time of the function execution",
+          "document": "Time point when the function starts execution",
           "example": "2024-12-25 19:50:07",
           "member": "string",
           "name": "StartTime",
@@ -1685,7 +1685,7 @@
         },
         {
           "disabled": false,
-          "document": "Function execution result. `0` indicates successful execution and other values indicate failure.",
+          "document": "Function execution result. 0 indicates successful execution, 2 indicates the function is running, 3 indicates an execution interrupt, and other values indicate failure.",
           "example": "0",
           "member": "int64",
           "name": "RetCode",
@@ -1695,7 +1695,7 @@
         },
         {
           "disabled": false,
-          "document": "It specifies whether the function invocation is finished. `1` indicates execution completion and other values indicate that exceptions occurred during the invocation.",
+          "document": "Whether the function call ends. If so, 1 means execution ended, and additional values indicate a call exception.",
           "example": "1",
           "member": "int64",
           "name": "InvokeFinished",
@@ -1705,7 +1705,7 @@
         },
         {
           "disabled": false,
-          "document": "Duration of the function execution. The unit is millisecond (ms).",
+          "document": "Function execution duration in milliseconds.",
           "example": "8",
           "member": "float",
           "name": "Duration",
@@ -1715,7 +1715,7 @@
         },
         {
           "disabled": false,
-          "document": "Function billing duration. The unit is millisecond (ms). The value is rounded up to a multiple of 100 ms.",
+          "document": "Billing duration of a function. It is rounded up to the nearest 100 ms based on the duration, in ms.",
           "example": "8",
           "member": "int64",
           "name": "BillDuration",
@@ -1725,7 +1725,7 @@
         },
         {
           "disabled": false,
-          "document": "Actual memory size used during the function execution. The unit is byte.",
+          "document": "Memory size actually consumed during function execution, in bytes.",
           "example": "8253440",
           "member": "int64",
           "name": "MemUsage",
@@ -1735,7 +1735,7 @@
         },
         {
           "disabled": false,
-          "document": "Function execution logs",
+          "document": "Log output during function execution",
           "example": "START RequestId: 633934da-c2b6-11ef-87ca-5254007bbe22",
           "member": "string",
           "name": "Log",
@@ -1745,7 +1745,7 @@
         },
         {
           "disabled": true,
-          "document": "Log level",
+          "document": "Log level.",
           "example": "无",
           "member": "string",
           "name": "Level",
@@ -1765,7 +1765,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of retries",
+          "document": "Number of retries.",
           "example": "0",
           "member": "uint64",
           "name": "RetryNum",
@@ -2114,7 +2114,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Function name.\n- To ensure the compatibility of the [`GetFunctionLogs`](https://intl.cloud.tencent.com/document/product/583/18583) API, the input parameter `FunctionName` is optional, but we recommend you enter it; otherwise, log acquisition may fail.\n- After the function is connected to CLS, we recommend you use the [related CLS API](https://intl.cloud.tencent.com/document/product/614/16875) to get the best log retrieval experience.",
+          "document": "Function name.\n-To ensure compatibility of the [retrieve function execution log](https://www.tencentcloud.com/document/product/583/18583?from_cn_redirect=1) API `GetFunctionLogs`, the input parameter `FunctionName` remains an optional field, but it is recommended to fill in this parameter. Otherwise, log acquisition failure may occur.\n- After associating a function with CLS, it is recommended to use the relevant CLS APIs (https://www.tencentcloud.com/document/product/614/16875?from_cn_redirect=1) to get the best log retrieval experience.",
           "example": "helloworld-demo",
           "member": "string",
           "name": "FunctionName",
@@ -2123,7 +2123,7 @@
         },
         {
           "disabled": false,
-          "document": "Data offset. The addition of `Offset` and `Limit` cannot exceed 10,000.",
+          "document": "Offset of the data. Offset + Limit cannot be greater than 10000.",
           "example": "0",
           "member": "int64",
           "name": "Offset",
@@ -2132,7 +2132,7 @@
         },
         {
           "disabled": false,
-          "document": "Length of the return data. The addition of `Offset` and `Limit` cannot exceed 10,000.",
+          "document": "Length of the returned data. Offset + Limit cannot be greater than 10000.",
           "example": "20",
           "member": "int64",
           "name": "Limit",
@@ -2141,7 +2141,7 @@
         },
         {
           "disabled": false,
-          "document": "It specifies whether to sort the logs in an ascending or descending order. The value is `desc` or `asc`.",
+          "document": "Whether to sort logs in descending or ascending order. Available values: `desc` and `asc`.",
           "example": "desc",
           "member": "string",
           "name": "Order",
@@ -2150,7 +2150,7 @@
         },
         {
           "disabled": false,
-          "document": "It specifies the sorting order of the logs based on a specified field, such as `function_name`, `duration`, `mem_usage`, and `start_time`.",
+          "document": "Sort logs by a certain field. The following fields are supported: function_name, duration, mem_usage, start_time",
           "example": "function_name",
           "member": "string",
           "name": "OrderBy",
@@ -2159,7 +2159,7 @@
         },
         {
           "disabled": false,
-          "document": "Log filter used to identify whether to return logs of successful or failed requests. `filter.RetCode=not0` indicates that only the logs of failed requests will be returned. `filter.RetCode=is0` indicates that only the logs of successful requests will be returned. If this parameter is left blank, all logs will be returned. ",
+          "document": "Log filter criteria. It can be used to distinguish correct and error logs. filter.RetCode=not0 means only return error logs, filter.RetCode=is0 means only return correct logs. If not passed, all logs are returned.",
           "example": "not0",
           "member": "LogFilter",
           "name": "Filter",
@@ -2168,7 +2168,7 @@
         },
         {
           "disabled": false,
-          "document": "Function namespace",
+          "document": "Namespace of the function",
           "example": "default",
           "member": "string",
           "name": "Namespace",
@@ -2186,7 +2186,7 @@
         },
         {
           "disabled": false,
-          "document": "RequestId corresponding to the executed function",
+          "document": "Request ID for executing the function",
           "example": "d1922633-55cf-443a-a6cc-0788ce93df06",
           "member": "string",
           "name": "FunctionRequestId",
@@ -2195,7 +2195,7 @@
         },
         {
           "disabled": false,
-          "document": "Query date, for example, 2017-05-16 20:00:00. The date must be within one day of the end time.",
+          "document": "Specific date of the query, for example: 2017-05-16 20:00:00. It must differ from endtime by no more than one day.",
           "example": "2017-05-16 20:00:00",
           "member": "datetime",
           "name": "StartTime",
@@ -2204,7 +2204,7 @@
         },
         {
           "disabled": false,
-          "document": "Query date, for example, 2017-05-16 20:59:59. The date must be within one day of the start time.",
+          "document": "Specific date of the query, for example: 2017-05-16 20:59:59. It must differ from startTime by no more than one day.",
           "example": "2017-05-16 20:59:59",
           "member": "datetime",
           "name": "EndTime",
@@ -2213,7 +2213,7 @@
         },
         {
           "disabled": false,
-          "document": "This field is disused.",
+          "document": "This field is offline.",
           "example": "无",
           "member": "LogSearchContext",
           "name": "SearchContext",
@@ -2248,7 +2248,7 @@
         },
         {
           "disabled": false,
-          "document": "This field is disused.",
+          "document": "This field is offline.",
           "example": "无",
           "member": "LogSearchContext",
           "name": "SearchContext",
@@ -2653,6 +2653,93 @@
       ],
       "usage": "both"
     },
+    "InstanceConcurrencyConfig": {
+      "document": "Configuration description for multiple concurrent executions",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether intelligent dynamic concurrency is enabled. If set to `FALSE`, static concurrency is used. If set to `''`, the multi-concurrency configuration is canceled.",
+          "example": "'FALSE'",
+          "member": "string",
+          "name": "DynamicEnabled",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Maximum number of concurrent requests per instance. Value range: [1,100]",
+          "example": "1",
+          "member": "uint64",
+          "name": "MaxConcurrency",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Safety isolation switch",
+          "example": "'FALSE'",
+          "member": "string",
+          "name": "InstanceIsolationEnabled",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Session-Based or Request-Based. Choose one.",
+          "example": "Session-Based",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Dynamic concurrency parameter",
+          "example": "无",
+          "member": "MixNodeConfig",
+          "name": "MixNodeConfig",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Session configuration parameters",
+          "example": "无",
+          "member": "SessionConfig",
+          "name": "SessionConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "IntranetConfigIn": {
+      "document": "Private network configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether a fixed private IP address is enabled\nENABLE: enable\nDISABLE means not enabled.\n",
+          "example": "ENABLE",
+          "member": "string",
+          "name": "IpFixed",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
     "InvokeFunctionRequest": {
       "document": "InvokeFunction request structure.",
       "members": [
@@ -2829,7 +2916,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Name of the label",
           "example": "labelkey",
           "member": "string",
           "name": "Key",
@@ -2839,7 +2926,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Value of the label",
           "example": "labelvalue",
           "member": "string",
           "name": "Value",
@@ -2851,11 +2938,11 @@
       "usage": "both"
     },
     "K8SToleration": {
-      "document": "",
+      "document": "Kubernetes taint and toleration. Please note the supported fields for your Kubernetes version during use.\nSee https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Matched taint name",
           "example": "key1",
           "member": "string",
           "name": "Key",
@@ -2866,7 +2953,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Match mode. Default value: Equal.",
           "example": "Equal",
           "member": "string",
           "name": "Operator",
@@ -2877,7 +2964,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Execution policy",
           "example": "NoExecute",
           "member": "string",
           "name": "Effect",
@@ -2888,7 +2975,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Taint value to match. Required when Operator is Equal.",
           "example": "value1",
           "member": "string",
           "name": "Value",
@@ -2899,7 +2986,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "How long a Pod can still run on a node when the taint is not tolerated",
           "example": "3600",
           "member": "uint64",
           "name": "TolerationSeconds",
@@ -2998,11 +3085,11 @@
       "usage": "out"
     },
     "LayerVersionSimple": {
-      "document": "Specifies a layer version",
+      "document": "Specify a Layer version",
       "members": [
         {
           "disabled": false,
-          "document": "Name of the layer to bind. Leave it blank if you want to unbind layers",
+          "document": "Name of the bound layer. Pass an empty string to unbind the layer.",
           "example": "layername",
           "member": "string",
           "name": "LayerName",
@@ -3012,7 +3099,7 @@
         },
         {
           "disabled": false,
-          "document": "Version ID f the layer to bind/unbind. If the layer version to unbind is the only layer version of the function version, enter `0`.",
+          "document": "Bind or unbind a layer version. To unbind the last layer version associated with a function version, set LayerVersion to 0.",
           "example": "1",
           "member": "int64",
           "name": "LayerVersion",
@@ -3740,11 +3827,11 @@
       "type": "object"
     },
     "LogFilter": {
-      "document": "Log filtering criteria, which is for distinguishing between logs of successful and failed execution",
+      "document": "Log filter criteria, used to distinguish between correct and error logs",
       "members": [
         {
           "disabled": false,
-          "document": "Values of `filter.RetCode` include:\nnot0, indicating that only logs of failed execution will be returned.\nis0, indicating that only logs of successful execution will be returned.\nTimeLimitExceeded, indicating that logs of function invocations which timed out will be returned.\nResourceLimitExceeded, indicating that logs of function invocations during which resources exceeded the upper limit will be returned.\nUserCodeException, indicating that logs of function invocations during which a user code error occurred will be returned.\nBlank, indicating that all logs will be returned.",
+          "document": "Valid values of filter.RetCode:\nnot0 means only error logs are returned.\nis0 means only return correct logs.\nTimeLimitExceeded returns the logs of function call timed out.\nResourceLimitExceeded returns the logs of resource limit exceeded during function calls.\nUserCodeException returns the logs of user code errors in function calls.\nIf there is no input, all logs are returned.",
           "example": "is0",
           "member": "string",
           "name": "RetCode",
@@ -3770,7 +3857,7 @@
         },
         {
           "disabled": false,
-          "document": "Log record number",
+          "document": "Number of logs.",
           "example": "100",
           "member": "uint64",
           "name": "Limit",
@@ -3792,13 +3879,41 @@
         },
         {
           "disabled": false,
-          "document": "Log type. The value is `Application` (default) or `Platform`.",
+          "document": "Log type. Valid values: `Application`, `Platform`. Default value: `Application`.",
           "example": "Application",
           "member": "string",
           "name": "Type",
           "output_required": true,
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "MixNodeConfig": {
+      "document": "Dynamic concurrency configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "GPU model name",
+          "example": "gpu-dsdfsd",
+          "member": "string",
+          "name": "NodeSpec",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of concurrencies",
+          "example": "1",
+          "member": "uint64",
+          "name": "Num",
+          "output_required": false,
+          "required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -3952,11 +4067,11 @@
       "usage": "out"
     },
     "NamespaceResourceEnv": {
-      "document": "",
+      "document": "Namespace resource pool configuration",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Resource pool based on a TKE cluster",
           "example": "x",
           "member": "NamespaceResourceEnvTKE",
           "name": "TKE",
@@ -3967,7 +4082,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Namespace of the near-offline computing type",
           "example": "true",
           "member": "bool",
           "name": "OFFLINE",
@@ -3980,11 +4095,11 @@
       "usage": "both"
     },
     "NamespaceResourceEnvTKE": {
-      "document": "",
+      "document": "Resource pool options based on TKE",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Cluster ID",
           "example": "cls-xxxx",
           "member": "string",
           "name": "ClusterID",
@@ -3995,7 +4110,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Subnet ID.",
           "example": "subnet-xx",
           "member": "string",
           "name": "SubnetID",
@@ -4006,7 +4121,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Namespace",
           "example": "kube-system",
           "member": "string",
           "name": "Namespace",
@@ -4017,7 +4132,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Data storage address",
           "example": "/var/lib/scf",
           "member": "string",
           "name": "DataPath",
@@ -4028,7 +4143,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "node selector",
           "example": "Key0=a,Value0=x",
           "member": "K8SLabel",
           "name": "NodeSelector",
@@ -4039,7 +4154,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Taint and toleration",
           "example": "Key: \"key1\"   Operator: \"Exists\"",
           "member": "K8SToleration",
           "name": "Tolerations",
@@ -4050,7 +4165,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Starting node port number occupied by the scf component",
           "example": "38002",
           "member": "uint64",
           "name": "Port",
@@ -4061,7 +4176,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "pod patch content in yaml format, for example\nmetadata:\n  labels:\n    key: value",
           "example": "metadata:   labels:     key: value",
           "member": "string",
           "name": "PodTemplatePatch",
@@ -4140,11 +4255,11 @@
       "usage": "out"
     },
     "ProtocolParams": {
-      "document": "Parameters of the protocol",
+      "document": "Parameters for HTTP function support of other access protocols",
       "members": [
         {
           "disabled": false,
-          "document": "Parameters of WebSockets protocol\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Supported parameters of the WebSockets protocol",
           "example": "{             IdleTimeOut: 15     }",
           "member": "WSParams",
           "name": "WSParams",
@@ -4160,7 +4275,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether to enable public network access. Valid values: ['DISABLE', 'ENABLE']",
+          "document": "Whether to enable public network access. Valid values: DISABLE, ENABLE.",
           "example": "DISABLE",
           "member": "string",
           "name": "PublicNetStatus",
@@ -4169,7 +4284,7 @@
         },
         {
           "disabled": false,
-          "document": "EIP configuration",
+          "document": "Eip configuration",
           "example": "{\"EipStatus\":\"DISABLE\"}",
           "member": "EipConfigIn",
           "name": "EipConfig",
@@ -4772,6 +4887,89 @@
       ],
       "usage": "in"
     },
+    "SessionConfig": {
+      "document": "Session parameter",
+      "members": [
+        {
+          "disabled": false,
+          "document": "session source. Valid values: 'HEADER', 'COOKIE', 'QUERY_STRING'",
+          "example": "HEADER",
+          "member": "string",
+          "name": "SessionSource",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "session name. It must start with a letter. Other characters can consist of digits, letters, underscores, and hyphens. Length: 5-40 characters.",
+          "example": "x-test-",
+          "member": "string",
+          "name": "SessionName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum concurrent sessions",
+          "example": "1",
+          "member": "uint64",
+          "name": "MaximumConcurrencySessionPerInstance",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Lifecycle",
+          "example": "1800",
+          "member": "uint64",
+          "name": "MaximumTTLInSeconds",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Idle duration",
+          "example": "1800",
+          "member": "uint64",
+          "name": "MaximumIdleTimeInSeconds",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Path information corresponding to the session",
+          "example": "/mcp",
+          "member": "string",
+          "name": "SessionPath",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Automatically destroy FATAL and auto-pause PAUSE. This only occurs when security isolation is started.",
+          "example": "FATAL",
+          "member": "string",
+          "name": "IdleTimeoutStrategy",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "StatusReason": {
       "document": "State reason description",
       "members": [
@@ -4903,7 +5101,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Latest modification time of the trigger",
+          "document": "Last modification time of the trigger",
           "example": " 2024-12-20 11:27:07",
           "member": "datetime",
           "name": "ModTime",
@@ -4923,7 +5121,7 @@
         },
         {
           "disabled": false,
-          "document": "Detailed trigger configuration",
+          "document": "Trigger detailed configuration",
           "example": "{\\\"cron\\\":\\\"0 0 0 */1 * * *\\\"}",
           "member": "string",
           "name": "TriggerDesc",
@@ -4933,7 +5131,7 @@
         },
         {
           "disabled": false,
-          "document": "Trigger name",
+          "document": "Trigger name.",
           "example": "SCF-timer-1734665224",
           "member": "string",
           "name": "TriggerName",
@@ -4943,7 +5141,7 @@
         },
         {
           "disabled": false,
-          "document": "Creation time of the trigger",
+          "document": "Trigger creation time",
           "example": " 2024-12-20 11:27:07",
           "member": "datetime",
           "name": "AddTime",
@@ -4953,7 +5151,7 @@
         },
         {
           "disabled": false,
-          "document": "Enabling switch",
+          "document": "Enable switch",
           "example": "1",
           "member": "int64",
           "name": "Enable",
@@ -4963,7 +5161,7 @@
         },
         {
           "disabled": false,
-          "document": "Custom parameter",
+          "document": "Customer custom parameter",
           "example": "\" \"",
           "member": "string",
           "name": "CustomArgument",
@@ -4983,7 +5181,7 @@
         },
         {
           "disabled": true,
-          "document": "Minimum resource ID of trigger",
+          "document": "Minimum resource ID of the trigger",
           "example": "无",
           "member": "string",
           "name": "ResourceId",
@@ -4993,7 +5191,7 @@
         },
         {
           "disabled": true,
-          "document": "Trigger-Function binding status",
+          "document": "Binding status of the trigger and SCF",
           "example": "无",
           "member": "string",
           "name": "BindStatus",
@@ -5003,7 +5201,7 @@
         },
         {
           "disabled": true,
-          "document": "Trigger type. Two-way means that the trigger can be manipulated in both consoles, while one-way means that the trigger can be created only in the SCF Console",
+          "document": "Trigger type. Two-way means both the left and right consoles can operate. One-way means only the SCF console can create.",
           "example": "无",
           "member": "string",
           "name": "TriggerAttribute",
@@ -5013,7 +5211,7 @@
         },
         {
           "disabled": false,
-          "document": "The alias or version bound with the trigger",
+          "document": "Alias name or version bound to the trigger",
           "example": "$DEFAULT",
           "member": "string",
           "name": "Qualifier",
@@ -5023,7 +5221,7 @@
         },
         {
           "disabled": false,
-          "document": "Trigger description",
+          "document": "Trigger description.",
           "example": "this is a timer trigger",
           "member": "string",
           "name": "Description",
@@ -5539,7 +5737,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Name of the function to be modified",
+          "document": "The function name to be modified",
           "example": "<FunctionName>",
           "member": "string",
           "name": "FunctionName",
@@ -5548,7 +5746,7 @@
         },
         {
           "disabled": false,
-          "document": "Function description. It can contain up to 1,000 characters, including letters, digits, spaces, commas (,), periods (.), and Chinese characters.",
+          "document": "Function description. Supports up to 1,000 English letters, digits, spaces, commas, and periods. Chinese is supported.",
           "example": "<Description>",
           "member": "string",
           "name": "Description",
@@ -5557,7 +5755,7 @@
         },
         {
           "disabled": false,
-          "document": "Memory size available for function during execution. Default value: 128 MB. Value range: 64 or 128-3,072 MB in increments of 128 MB.",
+          "document": "Memory size of the function runtime. Default value: 128 MB. Selectable range: 64 MB, or 128 MB to 3072 MB in 128 MB increments.",
           "example": "128",
           "member": "int64",
           "name": "MemorySize",
@@ -5566,7 +5764,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum execution duration of function in seconds. Value range: 1-900 seconds. Default value: 3 seconds",
+          "document": "Maximum execution time of the function, in seconds. Value range: 1-900 seconds. Default value: 3 seconds.",
           "example": "3",
           "member": "int64",
           "name": "Timeout",
@@ -5575,7 +5773,7 @@
         },
         {
           "disabled": false,
-          "document": "Function runtime environment. Valid values: Python2.7, Python3.6, Nodejs6.10, Nodejs8.9, Nodejs10.15, Nodejs12.16, PHP5, PHP7, Go1, Java8, CustomRuntime",
+          "document": "Runtime environment. It is specified upon creation and currently does not support modification.",
           "example": "Python3.6",
           "member": "string",
           "name": "Runtime",
@@ -5584,7 +5782,7 @@
         },
         {
           "disabled": false,
-          "document": "Function environment variable",
+          "document": "Environment variable of the function",
           "example": "无",
           "member": "Environment",
           "name": "Environment",
@@ -5593,7 +5791,7 @@
         },
         {
           "disabled": false,
-          "document": "Function namespace",
+          "document": "Namespace of the function\nDefault value: default",
           "example": "default",
           "member": "string",
           "name": "Namespace",
@@ -5602,7 +5800,7 @@
         },
         {
           "disabled": false,
-          "document": "Function VPC configuration",
+          "document": "VPC configuration of the function",
           "example": "无",
           "member": "VpcConfig",
           "name": "VpcConfig",
@@ -5611,7 +5809,7 @@
         },
         {
           "disabled": false,
-          "document": "Role bound to the function",
+          "document": "Role bound to a function",
           "example": "SCF_ExecuteRole",
           "member": "string",
           "name": "Role",
@@ -5620,7 +5818,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies whether to [install dependency online](https://intl.cloud.tencent.com/document/product/583/37920?from_cn_redirect=1). `TRUE`: yes. Default to `FALSE`. It is only available for Node.js functions.",
+          "document": "[Install dependency online](https://www.tencentcloud.com/document/product/583/37920?from_cn_redirect=1). TRUE indicates installation. Default value: FALSE. Only supported for Node.js functions.",
           "example": "FALSE",
           "member": "string",
           "name": "InstallDependency",
@@ -5629,7 +5827,7 @@
         },
         {
           "disabled": false,
-          "document": "CLS logset ID to which logs are shipped",
+          "document": "ID of the cls Log Set for log delivery",
           "example": "fsdfs-sfdsdfsd-sdfsdf",
           "member": "string",
           "name": "ClsLogsetId",
@@ -5638,7 +5836,7 @@
         },
         {
           "disabled": false,
-          "document": "CLS Topic ID to which logs are shipped",
+          "document": "cls Topic ID for log delivery",
           "example": "fsdfs-sfdsdfsd-sdfsdf",
           "member": "string",
           "name": "ClsTopicId",
@@ -5647,7 +5845,7 @@
         },
         {
           "disabled": false,
-          "document": "It specifies whether to synchronously publish a new version during the update. The default value is `FALSE`, indicating not to publish a new version",
+          "document": "Whether to release a new version synchronously when updating. Default value: FALSE, which means no new version is released.",
           "example": "FALSE",
           "member": "string",
           "name": "Publish",
@@ -5656,7 +5854,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable L5 access. TRUE: enable; FALSE: not enable",
+          "document": "Whether L5 access capability is enabled. TRUE to enable, FALSE to shutdown.",
           "example": "FALSE",
           "member": "string",
           "name": "L5Enable",
@@ -5665,7 +5863,7 @@
         },
         {
           "disabled": false,
-          "document": "List of layer versions that bound with the function. Files with the same name will be overridden by the bound layer versions according to the ascending order in the list. ",
+          "document": "List of layer versions to associate with the function. The layer versions overwrite each other sequentially in the order in the list.",
           "example": "无",
           "member": "LayerVersionSimple",
           "name": "Layers",
@@ -5674,7 +5872,7 @@
         },
         {
           "disabled": false,
-          "document": "Information of a dead letter queue associated with a function",
+          "document": "Dead letter queue information associated with the function",
           "example": "无",
           "member": "DeadLetterConfig",
           "name": "DeadLetterConfig",
@@ -5692,7 +5890,7 @@
         },
         {
           "disabled": false,
-          "document": "File system configuration input parameter, which is used for the function to bind the CFS file system",
+          "document": "File system configuration parameters for binding a CFS file system in SCF",
           "example": "无",
           "member": "CfsConfig",
           "name": "CfsConfig",
@@ -5701,7 +5899,7 @@
         },
         {
           "disabled": false,
-          "document": "The function initialization timeout period",
+          "document": "Function initialization timeout period",
           "example": "15",
           "member": "int64",
           "name": "InitTimeout",
@@ -5710,12 +5908,48 @@
         },
         {
           "disabled": false,
-          "document": "Parameters of the specified protocol",
+          "document": "Configure ProtocolType access protocol for an HTTP function. Parameters configurable for the current protocol.",
           "example": "无",
           "member": "ProtocolParams",
           "name": "ProtocolParams",
           "required": false,
           "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Single-instance multi-concurrency configuration. Supports only Web functions.",
+          "example": "无",
+          "member": "InstanceConcurrencyConfig",
+          "name": "InstanceConcurrencyConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Whether the Dns caching capability is enabled. Supports only the EVENT function. Defaults to FALSE. TRUE to enable, FALSE to shutdown.",
+          "example": "FALSE",
+          "member": "string",
+          "name": "DnsCache",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Private network access configuration",
+          "example": "无",
+          "member": "IntranetConfigIn",
+          "name": "IntranetConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Ignorable system log reporting",
+          "example": "false",
+          "member": "bool",
+          "name": "IgnoreSysLog",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -5944,11 +6178,11 @@
       "usage": "out"
     },
     "Variable": {
-      "document": "Variable parameter",
+      "document": "Variable parameters",
       "members": [
         {
           "disabled": false,
-          "document": "Variable name",
+          "document": "Variable name. Cannot be empty.",
           "example": "testKey",
           "member": "string",
           "name": "Key",
@@ -5959,7 +6193,7 @@
         },
         {
           "disabled": false,
-          "document": "Variable value",
+          "document": "Variable value. Cannot be empty.",
           "example": "testValue",
           "member": "string",
           "name": "Value",
@@ -6104,11 +6338,11 @@
       "usage": "both"
     },
     "VpcConfig": {
-      "document": "VPC parameter configuration",
+      "document": "Private network parameter configuration",
       "members": [
         {
           "disabled": false,
-          "document": "VPC ID",
+          "document": "Id of the private network",
           "example": "vpc-xxxxxxxx",
           "member": "string",
           "name": "VpcId",
@@ -6119,7 +6353,7 @@
         },
         {
           "disabled": false,
-          "document": "Subnet ID",
+          "document": "Subnet Id",
           "example": "subnet-xxxxxxx",
           "member": "string",
           "name": "SubnetId",
@@ -6132,11 +6366,11 @@
       "usage": "both"
     },
     "WSParams": {
-      "document": "Parameters of the specified protocol",
+      "document": "Parameters for accessing an HTTP function over the WebSockets protocol",
       "members": [
         {
           "disabled": false,
-          "document": "Idle timeout period in seconds. Default: 15; range: 1 to 1800\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Idle timeout in seconds. Default value: 15s. Configurable range: 1-1800s.",
           "example": "15",
           "member": "uint64",
           "name": "IdleTimeOut",

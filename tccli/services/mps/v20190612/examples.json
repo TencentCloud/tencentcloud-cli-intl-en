@@ -600,7 +600,7 @@
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAigcTaskStatus\n<Common request parameters>\n\n{\n    \"TaskId\": \"c50f6094-3b56-a1fa-e616-0eec386bfc36\"\n}",
-        "output": "{\n    \"Response\": {\n        \"CreateTime\": \"2026-06-01 20:40:50\",\n        \"FinishedTime\": \"2026-06-01 20:44:32\",\n        \"OutputUrl\": \"https://aigc-redraw-output-1326893053.cos.ap-guangzhou.myqcloud.com/aigc-c50f6094-3b56-a1fa-e616-0eec386bfc36-202606012044-0.mp4\",\n        \"RequestBody\": \"{\\\"Input\\\":{\\\"Script\\\":\\\"Once upon a time, there was a little rabbit who went up the mountain to pick mushrooms\\\",\\\"Style\\\":\\\"chinese_ink_wash\\\",\\\"Ratio\\\":\\\"16:9\\\",\\\"Resolution\\\":\\\"720p\\\"},\\\"Action\\\":\\\"CreateAiDramaTask\\\",\\\"RequestId\\\":\\\"afbd7d37-888c-4cf5-959f-959a10ff4af6\\\",\\\"RequestSource\\\":\\\"API\\\",\\\"Uin\\\":\\\"600000563781\\\",\\\"ApiModule\\\":\\\"mps\\\",\\\"Timestamp\\\":\\\"1780317650\\\",\\\"ClientIp\\\":\\\"30.174.178.116\\\",\\\"SubAccountUin\\\":\\\"600000563781\\\",\\\"Region\\\":\\\"\\\",\\\"RequestClient\\\":\\\"APIExplorer\\\",\\\"AppId\\\":1300057355}\",\n        \"ScheduledTime\": \"2026-06-01 20:40:51\",\n        \"TaskId\": \"c50f6094-3b56-a1fa-e616-0eec386bfc36\",\n        \"TaskStatus\": \"FINISHED\",\n        \"TaskType\": \"AIDrama\",\n        \"RequestId\": \"9ee02d10-a534-4a2d-842a-c4d084bcfbde\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"CreateTime\": \"2026-06-01 20:40:50\",\n        \"FinishedTime\": \"2026-06-01 20:44:32\",\n        \"OutputUrl\": \"https://aigc-redraw-output-1326893053.cos.ap-guangzhou.myqcloud.com/aigc-c50f6094-3b56-a1fa-e616-0eec386bfc36-202606012044-0.mp4\",\n        \"RequestBody\": \"{\\\"Input\\\":{\\\"Script\\\":\\\"Once upon a time, a little rabbit went up the mountain to pick mushrooms\\\",\\\"Style\\\":\\\"chinese_ink_wash\\\",\\\"Ratio\\\":\\\"16:9\\\",\\\"Resolution\\\":\\\"720p\\\"},\\\"Action\\\":\\\"CreateAiDramaTask\\\",\\\"RequestId\\\":\\\"afbd7d37-888c-4cf5-959f-959a10ff4af6\\\",\\\"RequestSource\\\":\\\"API\\\",\\\"Uin\\\":\\\"600000563781\\\",\\\"ApiModule\\\":\\\"mps\\\",\\\"Timestamp\\\":\\\"1780317650\\\",\\\"ClientIp\\\":\\\"30.174.178.116\\\",\\\"SubAccountUin\\\":\\\"600000563781\\\",\\\"Region\\\":\\\"\\\",\\\"RequestClient\\\":\\\"APIExplorer\\\",\\\"AppId\\\":1300057355}\",\n        \"ScheduledTime\": \"2026-06-01 20:40:51\",\n        \"TaskId\": \"c50f6094-3b56-a1fa-e616-0eec386bfc36\",\n        \"TaskStatus\": \"FINISHED\",\n        \"TaskType\": \"AIDrama\",\n        \"RequestId\": \"9ee02d10-a534-4a2d-842a-c4d084bcfbde\"\n    }\n}",
         "title": "Obtain AIGC Scenario Task Details"
       }
     ],
@@ -1286,10 +1286,10 @@
     ],
     "ParseLiveStreamProcessNotification": [
       {
-        "document": "Callback body description",
+        "document": "Callback packet description",
         "input": "https://mps.tencentcloudapi.com/?Action=ParseLiveStreamProcessNotification\n&Content={\"NotificationType\":\"AiReviewResult\",XXX\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"NotificationType\": \"AiReviewResult\",\n        \"TaskId\": \"2459149217-procedure-live-xxx51da009t0\",\n        \"ProcessEofInfo\": null,\n        \"AiReviewResultInfo\": {\n            \"ResultSet\": [\n                {\n                    \"Type\": \"VoicePorn\",\n                    \"ImagePornResultSet\": [],\n                    \"ImageTerrorismResultSet\": [],\n                    \"ImagePoliticalResultSet\": [],\n                    \"VoicePornResultSet\": [\n                        {\n                            \"StartPtsTime\": 0.266,\n                            \"EndPtsTime\": 4.146,\n                            \"Confidence\": 98,\n                            \"Suggestion\": \"block\",\n                            \"Label\": \"sexual_moan\"\n                        }\n                    ]\n                }\n            ]\n        },\n        \"AiRecognitionResultInfo\": null,\n        \"AiAnalysisResultInfo\": null,\n        \"AiQualityControlResultInfo\": null,\n        \"SessionId\": \"\",\n        \"SessionContext\": \"\",\n        \"RequestId\": \"335bdaa3-db0e-46ce-9946-51941d9cb0f5\"\n    }\n}",
-        "title": "Parsing Live Stream Event Notification Content"
+        "title": "Parse live stream event notification content"
       }
     ],
     "ParseNotification": [
@@ -1397,7 +1397,7 @@
       },
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SyncDubbing\n<Common request parameters>\n\n{\n    \"AudioUrl\": \"https://ie-mps-1258344699.cos-internal.ap-nanjing.tencentcos.cn/common/lauriehuang/dubbing/test/leleqihang/AI_voice.mp4\",\n    \"VoiceProfile\": {\n        \"Name\": \"clone-test\",\n\"Description\": \"This is a cloned voice type.\"\n        \"Gender\": \"female\",\n        \"Age\": \"middle_aged\",\n        \"Labels\": [\nIntellectual\n        ],\n        \"Scenes\": [\nTeaching\n        ]\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SyncDubbing\n<Common request parameters>\n\n{\n    \"AudioUrl\": \"https://ie-mps-1258344699.cos-internal.ap-nanjing.tencentcos.cn/common/lauriehuang/dubbing/test/leleqihang/AI_voice.mp4\",\n    \"VoiceProfile\": {\n        \"Name\": \"clone-test\",\n\"Description\": \"This is a cloned voice.\"\n        \"Gender\": \"female\",\n        \"Age\": \"middle_aged\",\n        \"Labels\": [\nIntellectual\n        ],\n        \"Scenes\": [\nteaching\n        ]\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"ErrorCode\": 0,\n        \"ExtInfo\": \"null\",\n        \"Msg\": \"success\",\n        \"VoiceId\": \"v1_25JMFPakWxb29UltZPWDnhjH4ZiBC7oIixVjas4PyllVSYvI8Be2oPHtNgR3kSou9BM=\",\n        \"RequestId\": \"7accf8cc-8645-4fc7-b45f-1b0f24fccef5\"\n    }\n}",
         "title": "Using a Custom Attribute for Voice Cloning"
       }

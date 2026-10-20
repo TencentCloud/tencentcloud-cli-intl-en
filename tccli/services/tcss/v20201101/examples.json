@@ -206,10 +206,10 @@
     ],
     "CreateAssetImageRegistryScanTaskOneKey": [
       {
-        "document": " ",
+        "document": "Creating a Task to Scan Images in an Image Repository with One Click",
         "input": "POST / HTTP/1.1\nHost: tcss.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAssetImageRegistryScanTaskOneKey\n<Common request parameters>\n\n{\n    \"All\": true,\n    \"ScanType\": [\n        \"CVE\",\n        \"RISK\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"68d5d49c-4b6b-46af-b060-46f521db0400\"\n    }\n}",
-        "title": "Creating a quick image scan task for an image repository"
+        "title": "Creating a Task to Scan Images in an Image Repository with One Click"
       }
     ],
     "CreateAssetImageScanSetting": [
@@ -868,7 +868,7 @@
       {
         "document": "This example shows you how to query host details.",
         "input": "POST / HTTP/1.1\nHost: tcss.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAssetHostDetail\n<Common request parameters>\n\n{\n    \"HostId\": \"dskaldjskld\"\n}",
-        "output": "{\n    \"Response\": {\n        \"AgentVersion\": \"5.2.1.105\",\n        \"ClusterAccessedStatus\": \"AccessedNone\",\n        \"ClusterID\": \"cls-dfw3e***\",\n        \"ClusterName\": \"clsfoo***\",\n        \"ContainerCnt\": 1,\n        \"DockerAPIVersion\": \"1.43\",\n        \"DockerFileSystemDriver\": \"overlay2\",\n        \"DockerGoVersion\": \"go1.20.7\",\n        \"DockerRootDir\": \"/var/lib/docker\",\n        \"DockerVersion\": \"24.0.6\",\n        \"Group\": \"root\",\n        \"HostIP\": \"1.1.1.1\",\n        \"HostName\": \"machine name\",\n        \"ImageCnt\": 10,\n        \"InstanceID\": \"ins-8bc803fd\",\n        \"IsContainerd\": false,\n        \"K8sMasterIP\": \"10.0.1.92\",\n        \"K8sVersion\": \"1.0.1\",\n        \"KernelVersion\": \"3.10.0-1160.102.1.el7.x86_64\",\n        \"KubeProxyVersion\": \"1.0.1\",\n        \"MachineType\": \"CVM\",\n        \"OsName\": \"CentOS Linux release 7.9.2009 (Core)\",\n        \"Project\": {\n            \"ProjectID\": 0,\n            \"ProjectName\": \"Default Project\"\n        },\n        \"PublicIp\": \"1.1.1.1\",\n        \"RegionID\": 1,\n        \"RequestId\": \"342475fc-76eb-4199-998f-780f9921a5f2\",\n        \"Status\": \"ONLINE\",\n        \"Tags\": [],\n        \"UUID\": \"8bc803fd-d85d-47b8-9e2b-9644674be677\",\n        \"UpdateTime\": \"2024-10-30 10:26:52\",\n        \"AssetSyncTime\": \"2024-10-30 10:26:52\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"AgentVersion\": \"5.2.1.105\",\n        \"ClusterAccessedStatus\": \"AccessedNone\",\n        \"ClusterID\": \"cls-dfw3e***\",\n        \"ClusterName\": \"clsfoo***\",\n        \"ContainerCnt\": 1,\n        \"DockerAPIVersion\": \"1.43\",\n        \"DockerFileSystemDriver\": \"overlay2\",\n        \"DockerGoVersion\": \"go1.20.7\",\n        \"DockerRootDir\": \"/var/lib/docker\",\n        \"DockerVersion\": \"24.0.6\",\n        \"Group\": \"root\",\n        \"HostIP\": \"1.1.1.1\",\n\"HostName\": \"Machine name\"\n        \"ImageCnt\": 10,\n        \"InstanceID\": \"ins-8bc803fd\",\n        \"IsContainerd\": false,\n        \"K8sMasterIP\": \"10.0.1.92\",\n        \"K8sVersion\": \"1.0.1\",\n        \"KernelVersion\": \"3.10.0-1160.102.1.el7.x86_64\",\n        \"KubeProxyVersion\": \"1.0.1\",\n        \"MachineType\": \"CVM\",\n        \"OsName\": \"CentOS Linux release 7.9.2009 (Core)\",\n        \"Project\": {\n            \"ProjectID\": 0,\n\"ProjectName\": \"Default Project\"\n        },\n        \"PublicIp\": \"1.1.1.1\",\n        \"RegionID\": 1,\n        \"RequestId\": \"342475fc-76eb-4199-998f-780f9921a5f2\",\n        \"Status\": \"ONLINE\",\n        \"Tags\": [],\n        \"UUID\": \"8bc803fd-d85d-47b8-9e2b-9644674be677\",\n        \"UpdateTime\": \"2024-10-30 10:26:52\",\n        \"AssetSyncTime\": \"2024-10-30 10:26:52\"\n    }\n}",
         "title": "This example shows you how to query host details."
       }
     ],
@@ -2855,7 +2855,7 @@
     "UpdateImageRegistryTimingScanTask": [
       {
         "document": "This example shows you how to scan all authorized latest images for vulnerabilities.",
-        "input": "POST / HTTP/1.1\nHost: tcss.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateImageRegistryTimingScanTask\n<Common request parameters>\n\n{\n    \"Enable\": true,\n    \"ScanPeriod\": 1,\n    \"ScanTime\": \"18:10\",\n    \"ScanEndTime\": \"20:00\",\n    \"ScanScope\": 2,\n    \"ContainerRunning\": false,\n    \"Id\": [],\n    \"Namespace\": [\n        \"tke-images\"\n    ],\n    \"RegistryType\": [\n        \"ccr\"\n    ],\n    \"Latest\": true,\n    \"ScanType\": [\n        \"CVE\",\n        \"VIRUS\",\n        \"RISK\"\n    ]\n}",
+        "input": "POST / HTTP/1.1\nHost: tcss.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateImageRegistryTimingScanTask\n<Common request parameters>\n\n{\n    \"Enable\": true,\n    \"ScanPeriod\": 1,\n    \"ScanTime\": \"18:10\",\n    \"ScanEndTime\": \"20:00\",\n    \"ScanScope\": 2,\n    \"ContainerRunning\": false,\n    \"Id\": [],\n    \"Namespace\": [\n        \"tke-images\"\n    ],\n    \"RegistryType\": [\n        \"ccr\"\n    ],\n    \"Latest\": true,\n    \"ScanType\": [\n        \"CVE\",\n        \"VIRUS\",\n        \"RISK\"\n    ],\n    \"ExcludeImageAssetIds\": []\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5f2acb2d-2775-4ef4-8230-03df2762b1d1\"\n    }\n}",
         "title": "Scanning All Latest Authorized Images as Scheduled"
       }

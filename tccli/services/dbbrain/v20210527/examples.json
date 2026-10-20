@@ -120,6 +120,14 @@
         "title": "Querying the instance list"
       }
     ],
+    "DescribeDBAuditLogs": [
+      {
+        "document": "This example shows you how to query the Proxy audit log of a mariadb instance. MultiSql uses a JSON string to carry a two-dimensional array.",
+        "input": "POST / HTTP/1.1\nHost: dbbrain.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBAuditLogs\n<Common request parameters>\n\n{\n    \"Product\": \"mariadb\",\n    \"InstanceId\": \"tdsql-1zsrqfdkh4\",\n    \"LogType\": \"Proxy\",\n    \"StartTime\": \"2026-10-10 11:05:06\",\n    \"EndTime\": \"2026-10-10 12:05:06\",\n    \"Limit\": 20,\n    \"Offset\": 0,\n    \"Filter\": {\n        \"SqlType\": [\n            \"SELECT\",\n            \"INSERT\"\n        ],\n        \"ExecTime\": [\n            100,\n            200\n        ],\n        \"ErrCode\": \"0\",\n        \"MultiSql\": \"[[\\\"a\\\",\\\"b\\\"]]\",\n        \"DBName\": [\n            \"da\"\n        ],\n        \"User\": [\n            \"dfg\"\n        ],\n        \"Host\": [\n            \"123.1.1.1\"\n        ],\n        \"ThreadId\": [\n            \"12301\"\n        ]\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ed279d8b-a9d9-48d6-9429-e0fde000994a\",\n        \"TotalCount\": 1,\n        \"FilteredRecords\": 0,\n        \"ProxyLogs\": [\n            {\n                \"Timestamp\": \"2026-10-10 18:19:39\",\n                \"ClusterId\": \"tdsql-1zsrqfdkh4\",\n                \"User\": \"shine\",\n                \"Host\": \"11.161.84.21\",\n                \"DBName\": \"\",\n                \"Sql\": \"/*p=dmc,o=100047808302,i=121ea724*/ CREATE DATABASE `test` DEFAULT CHARACTER SET = utf8mb4 DEFAULT COLLATE = utf8mb4_0900_ai_ci;\",\n                \"SqlType\": \"Create\",\n                \"SqlTemplate\": \"Create\",\n                \"SqlTemplateId\": \"2026540316\",\n                \"ComType\": \"COM_QUERY\",\n                \"ExecTime\": 255,\n                \"SqlStartTime\": 1791627579927,\n                \"SqlStartTimeUs\": 927490,\n                \"ThreadId\": \"513208377\",\n                \"ProxyHost\": \"30.122.175.73:24717\",\n                \"ProxyThread\": \"57875\",\n                \"Autocommit\": \"1\",\n                \"HoldConns\": \"1\",\n                \"NewConnNum\": 0,\n                \"AffectRows\": 0,\n                \"SentRows\": 0,\n                \"ErrCode\": \"1044\",\n                \"ErrInfo\": \"Access denied for user 'shine'@'%' to database 'test'\",\n                \"BusinessCode\": \"i=121ea724,o=100047808302,p=dmc\",\n                \"BusinessTag\": \"\"\n            }\n        ]\n    }\n}",
+        "title": "Querying mariadb Proxy Audit Logs"
+      }
+    ],
     "DescribeDBDiagEvent": [
       {
         "document": " ",

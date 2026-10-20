@@ -458,7 +458,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to forbid the modification of the OCR result by users. Default value: `false` (modification allowed). (Currently, this parameter is not applied.)",
+          "document": "Whether to forbid the modification of the OCR result by users. Default value: `false` (modification allowed). ",
           "example": "true",
           "member": "bool",
           "name": "DisableChangeOcrResult",
@@ -467,7 +467,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to disable the OCR warnings. Default value: `false` (not disable), where OCR warnings are enabled and the OCR result will not be returned if there is a warning.\nThis feature applies only to Hong Kong (China) identity cards, Malaysian identity cards, and passports.",
+          "document": "Whether to disable the OCR warnings. Default value: `false` (not disable), where OCR warnings are enabled and the OCR result will not be returned if there is a warning.",
           "example": "true",
           "member": "bool",
           "name": "DisableCheckOcrWarnings",
@@ -476,7 +476,7 @@
         },
         {
           "disabled": false,
-          "document": "Customize which alarm codes to block. If left blank, all alarm codes will be blocked by default.\nOptional alarm codes are: -9101 (occlusion or incomplete border), -9102 (photocopying), -9103 (screen capture by camera), -9104 (image editing/PS modification), -9107 (glare/reflection), -9108 (blurriness), -9901 (other alarms).",
+          "document": "Customize which alarm codes to block. If left blank, all alarm codes will be blocked by default.\nOptional alarm codes are: -9101 (occlusion or incomplete border), -9102 (photocopying), -9103 (screen capture by camera), -9104 (image editing/PS modification), -9107 (glare/reflection), -9108 (blurriness), -8101 (information format check),-8102(information consistency check).",
           "example": "[-9101]",
           "member": "int64",
           "name": "SelectedWarningCodes",

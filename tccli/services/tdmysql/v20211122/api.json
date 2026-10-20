@@ -624,11 +624,11 @@
       "usage": "both"
     },
     "AutoScalingConfig": {
-      "document": "",
+      "document": "Scope of resources for instance configuration adjustment\nWhen ResourceType is cpu, it means ccu.\nWhen the value is nodecount, it indicates the range of the number of nodes.\nFor disk, it indicates the disk capacity range (unit: GB).\nWhether ScaleUpEnabled enables scale-up\nWhether ScaleDownEnabled is enabled\nThresholdPercent is the trigger threshold (%).\nStep is the step length for configuration change",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Minimum value</p>",
           "example": "1",
           "member": "float",
           "name": "RangeMin",
@@ -639,7 +639,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Maximum value</p>",
           "example": "16",
           "member": "float",
           "name": "RangeMax",
@@ -650,14 +650,58 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Resource type corresponding to the returned range parameter</p><p>Enumeration values:</p><ul><li>cpu: Returns the CPU adjustment return limit. When no mem limit exists, it represents ccu.</li><li>nodecount: Returns the limit range of the number of nodes for horizontal scaling.</li><li>datadisk: Returns the capacity limit range for disk scale-out.</li></ul>",
           "example": "cpu",
           "member": "string",
           "name": "ResourceType",
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether upgrade is allowed</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "ScaleUpEnabled",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to allow downgrade</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "ScaleDownEnabled",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Trigger threshold (%)</p>",
+          "example": "90",
+          "member": "int64",
+          "name": "ThresholdPercent",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Configuration change step length</p>",
+          "example": "50",
+          "member": "float",
+          "name": "Step",
+          "output_required": false,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -2114,7 +2158,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>ccu configuration change of the SVLS instance</p><p>Input limit: This parameter no longer takes effect when AutoScaleConfigs is also input</p>",
           "example": "无",
           "member": "AutoScalingConfig",
           "name": "AutoScaleConfig",
@@ -2123,7 +2167,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Security group binding list</p>",
+          "document": "<p>List of bound security groups</p>",
           "example": "[\"sg-lpowk2a\"]",
           "member": "string",
           "name": "SecurityGroupIds",
@@ -2132,7 +2176,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>root userName. It defaults to dbaadmin in the current version, and the passed value will be reset to dbaadmin</p>",
+          "document": "<p>root userName. The current version defaults to dbaadmin, and the passed value will reset to dbaadmin.</p>",
           "example": "dbaadmin",
           "member": "string",
           "name": "UserName",
@@ -2150,7 +2194,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Whether transparent encryption is enabled. 0: not enabled. 1: enabled</p>",
+          "document": "<p>Whether to enable transparent encryption. 0: disable, 1: enable</p>",
           "example": "1",
           "member": "int64",
           "name": "EncryptionEnable",
@@ -2159,7 +2203,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Relevant restrictions on automatic configuration adjustment for SVLS instances</p><p>Input parameter restriction: The AutoScaleConfig parameter will no longer take effect when passed in</p>",
           "example": "无",
           "member": "AutoScalingConfig",
           "name": "AutoScaleConfigs",
@@ -3370,7 +3414,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Expiration time.</p>",
           "example": "\"2006-01-02 15:04:05\"",
           "member": "string",
           "name": "ExpireAt",
@@ -3380,7 +3424,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Isolation time</p>",
           "example": "\"2006-01-02 15:04:05\"",
           "member": "string",
           "name": "IsolatedAt",
@@ -3390,7 +3434,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Instance Architecture Type, separate: decoupled architecture; hybrid: peer-to-peer architecture</p>",
           "example": "\"hybrid\"",
           "member": "string",
           "name": "InstanceType",
@@ -3400,7 +3444,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Disk Type, CLOUD_HSSD enhanced SSD, CLOUD_TCS local SSD disk</p>",
           "example": "CLOUD_HSSD",
           "member": "string",
           "name": "StorageType",
@@ -3420,7 +3464,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Disk usage of the largest node</p>",
           "example": "100",
           "member": "int64",
           "name": "DiskUsage",
@@ -3710,7 +3754,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Real use kms region for subsequent call to kms service</p>",
+          "document": "<p>Real use kms region for subsequent calls to the kms service</p>",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "EncryptionKmsRegion",
@@ -3720,7 +3764,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>serverless automatic configuration adjustment configuration</p>",
           "example": "无",
           "member": "AutoScalingConfig",
           "name": "AutoScaleConfigs",
@@ -3778,7 +3822,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Query By Field, supporting StorageNodeNum/CreateTime/CreateVersion</p>",
           "example": "CreateTime",
           "member": "string",
           "name": "OrderBy",
@@ -3787,7 +3831,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Sorting order</p><p>Enumeration values:</p><ul><li>ASC: ascending</li><li>DESC: descending</li></ul><p>Default value: DESC</p>",
           "example": "DESC",
           "member": "string",
           "name": "OrderDirection",
@@ -3812,7 +3856,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Total number of items that meet the conditions.</p>",
+          "document": "<p>Total number of items that meet the conditions</p>",
           "example": "100",
           "member": "int64",
           "name": "TotalCount",
@@ -5379,6 +5423,15 @@
           "name": "IsExclusiveInstance",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Availability zone combination list</p>",
+          "example": "[\"ap-guangzhou-7\"]",
+          "member": "string",
+          "name": "Zones",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -5388,7 +5441,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Purchasable specification list of peer nodes</p>",
           "example": "无",
           "member": "StorageNodeSpec",
           "name": "HybridNodeSpecs",
@@ -5408,7 +5461,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>serverless node quantity configuration</p>",
           "example": "无",
           "member": "ServerlessNodeNumSpec",
           "name": "ServerlessNodeNumSpec",
@@ -5934,7 +5987,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Create an instance version</p>",
           "example": "\"0.0.1\"",
           "member": "string",
           "name": "CreateVersion",
@@ -5944,7 +5997,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Initialize instance parameters</p>",
           "example": "无",
           "member": "InstanceParam",
           "name": "InitParams",
@@ -5984,7 +6037,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Instance tag information.</p>",
           "example": "无",
           "member": "ResourceTag",
           "name": "ResourceTags",
@@ -5994,7 +6047,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Instance name</p>",
           "example": "\"实例名称\"",
           "member": "string",
           "name": "InstanceName",
@@ -6104,7 +6157,7 @@
         },
         {
           "disabled": true,
-          "document": "",
+          "document": "<p>CPU cores of the control node</p>",
           "example": "1",
           "member": "int64",
           "name": "MCCpu",
@@ -6114,7 +6167,7 @@
         },
         {
           "disabled": true,
-          "document": "",
+          "document": "<p>CPU size of the control node</p>",
           "example": "2",
           "member": "int64",
           "name": "MCMem",
@@ -6124,7 +6177,7 @@
         },
         {
           "disabled": true,
-          "document": "",
+          "document": "<p>CPU cores of the computing node</p>",
           "example": "1",
           "member": "int64",
           "name": "ComputerNodeCpu",
@@ -6134,7 +6187,7 @@
         },
         {
           "disabled": true,
-          "document": "",
+          "document": "<p>Compute node memory size</p>",
           "example": "2",
           "member": "int64",
           "name": "ComputerNodeMem",
@@ -6144,7 +6197,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>CPU cores of the storage node</p>",
           "example": "1",
           "member": "int64",
           "name": "StorageNodeCpu",
@@ -6154,7 +6207,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Storage node memory size</p>",
           "example": "2",
           "member": "int64",
           "name": "StorageNodeMem",
@@ -6164,7 +6217,7 @@
         },
         {
           "disabled": true,
-          "document": "",
+          "document": "<p>Number of control nodes</p>",
           "example": "3",
           "member": "int64",
           "name": "MCNum",
@@ -6174,7 +6227,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Renewal flag</p>",
           "example": "0",
           "member": "int64",
           "name": "RenewFlag",
@@ -6194,7 +6247,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>User tag, inner: internal user; external: external user</p>",
           "example": "inner",
           "member": "string",
           "name": "AccountTag",
@@ -6204,7 +6257,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Instance Architecture Type, separate: decoupled architecture; hyper: peer-to-peer architecture</p>",
           "example": "hyper",
           "member": "string",
           "name": "InstanceType",
@@ -6214,7 +6267,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Disk Type, CLOUD_HSSD enhanced SSD, CLOUD_TCS local SSD disk</p>",
           "example": "CLOUD_HSSD",
           "member": "string",
           "name": "StorageType",
@@ -6284,7 +6337,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Account information</p>",
           "example": "1",
           "member": "int64",
           "name": "AppId",
@@ -6294,7 +6347,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Account information</p>",
           "example": "\"111111\"",
           "member": "string",
           "name": "SubAccountUin",
@@ -6304,7 +6357,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Account information</p>",
           "example": "\"111111\"",
           "member": "string",
           "name": "Uin",
@@ -6314,7 +6367,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>AZ information</p>",
           "example": "[\"ap-guangzhou-1\",\"ap-guangzhou-2\"]",
           "member": "string",
           "name": "Zones",
@@ -6324,7 +6377,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Instance node</p>",
           "example": "无",
           "member": "InstanceNode",
           "name": "Nodes",
@@ -6374,7 +6427,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>az mode. 1: Single az 2: Multi-az non-primary az mode 3: Multi-az primary az mode</p>",
           "example": "2",
           "member": "int64",
           "name": "AZMode",
@@ -6384,7 +6437,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Disaster recovery flag. 1: No disaster recovery relationship; 2: Primary instance for disaster recovery; 3: Disaster Recovery Standby Instance</p>",
           "example": "1",
           "member": "int64",
           "name": "StandbyFlag",
@@ -6394,7 +6447,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Number of connected standby instances (Valid only when StandbyFlag == 2)</p>",
           "example": "1",
           "member": "int64",
           "name": "StandbySecondaryNum",
@@ -6544,7 +6597,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Multiple automatic configuration adjustment configurations of the instance, including ccu and nodecount values</p>",
           "example": "无",
           "member": "AutoScalingConfig",
           "name": "AutoScaleConfigs",
@@ -6560,7 +6613,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Primary key",
           "example": "无",
           "member": "int64",
           "name": "ID",
@@ -6571,7 +6624,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance ID.",
           "example": "无",
           "member": "string",
           "name": "InstanceId",
@@ -6593,7 +6646,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance Ip",
           "example": "无",
           "member": "string",
           "name": "Ip",
@@ -6604,7 +6657,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance EniIp",
           "example": "无",
           "member": "string",
           "name": "EniIp",
@@ -6615,7 +6668,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance Port",
           "example": "无",
           "member": "int64",
           "name": "Port",
@@ -6626,7 +6679,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance SpecCode",
           "example": "无",
           "member": "string",
           "name": "SpecCode",
@@ -6637,7 +6690,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance NodeName",
           "example": "无",
           "member": "string",
           "name": "NodeName",
@@ -6648,7 +6701,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance Cpu",
           "example": "无",
           "member": "int64",
           "name": "Cpu",
@@ -6659,7 +6712,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance memory",
           "example": "无",
           "member": "int64",
           "name": "Mem",
@@ -6670,7 +6723,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance Disk",
           "example": "无",
           "member": "int64",
           "name": "Disk",
@@ -6681,7 +6734,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance type",
           "example": "无",
           "member": "string",
           "name": "Type",
@@ -6692,7 +6745,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance status",
           "example": "无",
           "member": "string",
           "name": "Status",
@@ -6703,7 +6756,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance version",
           "example": "无",
           "member": "string",
           "name": "Version",
@@ -6714,7 +6767,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance region",
           "example": "无",
           "member": "string",
           "name": "Zone",
@@ -6725,7 +6778,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance LocalDNS",
           "example": "无",
           "member": "string",
           "name": "LocalDNS",
@@ -6736,7 +6789,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance Region",
           "example": "无",
           "member": "string",
           "name": "Region",
@@ -6747,7 +6800,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance log disk",
           "example": "无",
           "member": "int64",
           "name": "LogDisk",
@@ -6758,7 +6811,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance data disk",
           "example": "无",
           "member": "int64",
           "name": "DataDisk",
@@ -6769,7 +6822,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance Zone ID",
           "example": "无",
           "member": "string",
           "name": "ZoneID",
@@ -6780,7 +6833,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance SpecName",
           "example": "无",
           "member": "string",
           "name": "SpecName",
@@ -6791,7 +6844,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance Replicas",
           "example": "无",
           "member": "int64",
           "name": "Replicas",
@@ -6802,7 +6855,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance Shards",
           "example": "无",
           "member": "int64",
           "name": "Shards",
@@ -6813,7 +6866,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance data replica",
           "example": "无",
           "member": "int64",
           "name": "DataReplicas",
@@ -6824,7 +6877,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Instance initialization parameter",
           "example": "无",
           "member": "string",
           "name": "Params",
@@ -6835,7 +6888,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Storage medium, CLOUD_PREMIUM: Premium Cloud Disk, CLOUD_SSD: SSD cloud disk, CLOUD_HSSD: HSSD cloud disk",
           "example": "无",
           "member": "string",
           "name": "StorageType",
@@ -7636,7 +7689,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Node IP information</p>",
           "example": "\"9.166.11.37\"",
           "member": "string",
           "name": "IP",
@@ -7646,7 +7699,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Node types, such as sqlengine, tdstore, mc</p>",
           "example": "\"sqlengine\"",
           "member": "string",
           "name": "Type",
@@ -7656,7 +7709,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Unique identifier of the node</p>",
           "example": "\"tdsql3-e234db15-sqlengine-0\"",
           "member": "string",
           "name": "NodeId",
@@ -7666,7 +7719,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Node port information</p>",
           "example": "3306",
           "member": "int64",
           "name": "Port",
@@ -7676,7 +7729,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Availability zone of the node</p>",
           "example": "ap-guangzhou-4",
           "member": "string",
           "name": "Zone",
@@ -7686,7 +7739,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Machine ip of the node</p>",
           "example": "10.0.0.1",
           "member": "string",
           "name": "Host",
@@ -8205,11 +8258,11 @@
       "usage": "out"
     },
     "ServerlessNodeNumSpec": {
-      "document": "",
+      "document": "Upper and lower limit of the hybrid node quantity allowed for adjustment for a Serverless instance",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Minimum number of nodes.</p>",
           "example": "2",
           "member": "int64",
           "name": "MinNodeNum",
@@ -8220,7 +8273,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Maximum number of nodes.</p>",
           "example": "16",
           "member": "int64",
           "name": "MaxNodeNum",
@@ -8649,7 +8702,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Specification code</p>",
           "example": "\"mini\"",
           "member": "string",
           "name": "SpecCode",
@@ -8719,7 +8772,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Disk Type, CLOUD_HSSD enhanced SSD, CLOUD_TCS local SSD disk</p>",
           "example": "\"CLOUD_HSSD\"",
           "member": "string",
           "name": "StorageType",
@@ -8729,7 +8782,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Default disk size of storage node for frontend display</p>",
           "example": "20",
           "member": "int64",
           "name": "StorageNodeDefaultDisk",

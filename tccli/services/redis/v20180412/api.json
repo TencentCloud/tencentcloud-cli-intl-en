@@ -168,6 +168,13 @@
       "output": "DescribeBackupDownloadRestrictionResponse",
       "status": "online"
     },
+    "DescribeBackupEncryptConfig": {
+      "document": "This API is used to query information related to backup encryption for an instance, including the enabled status and encryption keys.",
+      "input": "DescribeBackupEncryptConfigRequest",
+      "name": "Query the encryption configuration of an instance backup",
+      "output": "DescribeBackupEncryptConfigResponse",
+      "status": "online"
+    },
     "DescribeBackupUrl": {
       "document": "This API is used to query the download address of a backup RDB file.",
       "input": "DescribeBackupUrlRequest",
@@ -327,6 +334,13 @@
       "input": "DescribeInstanceParamsRequest",
       "name": "Queries the list of instance parameters",
       "output": "DescribeInstanceParamsResponse",
+      "status": "online"
+    },
+    "DescribeInstancePasswordPolicy": {
+      "document": "This API is used to query the current password complexity configuration of a specified instance.",
+      "input": "DescribeInstancePasswordPolicyRequest",
+      "name": "Query the current password",
+      "output": "DescribeInstancePasswordPolicyResponse",
       "status": "online"
     },
     "DescribeInstanceSecurityGroup": {
@@ -588,6 +602,13 @@
       "output": "ModifyBackupDownloadRestrictionResponse",
       "status": "online"
     },
+    "ModifyBackupEncrypt": {
+      "document": "This API is used to turn on or disable backup encryption and modify backup key functionality.",
+      "input": "ModifyBackupEncryptRequest",
+      "name": "Change backup encryption",
+      "output": "ModifyBackupEncryptResponse",
+      "status": "online"
+    },
     "ModifyConnectionConfig": {
       "document": "This API is used to modify the connection configuration of an instance, including the bandwidth and maximum number of connections.",
       "input": "ModifyConnectionConfigRequest",
@@ -663,6 +684,13 @@
       "input": "ModifyInstancePasswordRequest",
       "name": "Changes the Redis password",
       "output": "ModifyInstancePasswordResponse",
+      "status": "online"
+    },
+    "ModifyInstancePasswordPolicy": {
+      "document": "This API is used to modify the password complexity of an instance.",
+      "input": "ModifyInstancePasswordPolicyRequest",
+      "name": "Modifies the password complexity of existing instances",
+      "output": "ModifyInstancePasswordPolicyResponse",
       "status": "online"
     },
     "ModifyInstanceReadOnly": {
@@ -796,6 +824,13 @@
       "input": "UpgradeInstanceRequest",
       "name": "Modifies the instance configuration",
       "output": "UpgradeInstanceResponse",
+      "status": "online"
+    },
+    "UpgradeInstanceProductVersion": {
+      "document": "This API is used to upgrade the instance type from common I to common II.",
+      "input": "UpgradeInstanceProductVersionRequest",
+      "name": "Upgrades the instance type",
+      "output": "UpgradeInstanceProductVersionResponse",
       "status": "online"
     },
     "UpgradeInstanceVersion": {
@@ -2481,8 +2516,8 @@
         },
         {
           "disabled": false,
-          "document": "<p>Indicates the instance deployment mode.</p><ul><li>local: traditional architecture, defaults to local.</li><li>cdc: dedicated cluster.</li><li>cloud: cloud native, currently not available for sale.</li></ul>",
-          "example": "cdc",
+          "document": "<p>Instance deployment type.</p><p>Enumeration values:</p><ul><li>local: common type I.</li><li>localv2: common type II.</li><li>cdc: dedicated cluster type.</li><li>cloud: cloud native. Currently not available for sale.</li></ul>",
+          "example": "localv2",
           "member": "string",
           "name": "ProductVersion",
           "required": false,
@@ -3344,6 +3379,73 @@
       ],
       "type": "object"
     },
+    "DescribeBackupEncryptConfigRequest": {
+      "document": "DescribeBackupEncryptConfig request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Instance ID. Log in to the <a href=\"https://console.cloud.tencent.com/redis/instance/list\">Redis console</a> and copy it from the instance list.</p>",
+          "example": "crs-lpj0rplv",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBackupEncryptConfigResponse": {
+      "document": "DescribeBackupEncryptConfig response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Whether the backup is encrypted or not</p><p>Enumeration value:</p><ul><li>true: Encrypted</li><li>false: Unencrypted</li></ul>",
+          "example": "true",
+          "member": "bool",
+          "name": "BackupEncrypt",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Encryption key type.</p><p>Enumeration value:</p><ul><li>0: Tencent Cloud hosted (default)</li><li>1: User-customized KMS key</li></ul>",
+          "example": "0",
+          "member": "int64",
+          "name": "EncryptKeyType",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Key ID of KMS.</p><p>Parameter format: xxxxxxx-xxxx-xxxx-xxxx-xxxxxxx</p>",
+          "example": "b2f531ee-59a6-11f1-b8b2-5254008764f7",
+          "member": "string",
+          "name": "KmsKeyId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>KMS regional information.</p><p>Parameter format: ap-xxxx</p>",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "KmsRegion",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeBackupUrlRequest": {
       "document": "DescribeBackupUrl request structure.",
       "members": [
@@ -3969,7 +4071,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Backup task status:<br>1: Backup is in progress.<br>2: Backup is normal.<br>3: Backup is switching to RDB file processing.<br>4: RDB switch completed.<br>-1: Backup has expired.<br>-2: Backup has been deleted.</p>",
+          "document": "<p>Backup status:</p><p>Enumeration values:</p><ul><li>1: Backup is in process.</li><li>2: Backup is normal.</li></ul><p>Default value: 2</p>",
           "example": "[2]",
           "member": "int64",
           "name": "Status",
@@ -5019,6 +5121,43 @@
           "name": "InstanceMultiParam",
           "output_required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancePasswordPolicyRequest": {
+      "document": "DescribeInstancePasswordPolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Instance ID. Log in to the <a href=\"https://console.cloud.tencent.com/redis\">Redis console</a> and copy it from the instance list.</p>",
+          "example": "crs-5x9h****",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancePasswordPolicyResponse": {
+      "document": "DescribeInstancePasswordPolicy response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Password complexity policy for instances.</p>",
+          "example": "无",
+          "member": "PasswordPolicy",
+          "name": "PasswordPolicy",
+          "output_required": true,
+          "type": "object",
           "value_allowed_null": false
         },
         {
@@ -10627,6 +10766,69 @@
       ],
       "type": "object"
     },
+    "ModifyBackupEncryptRequest": {
+      "document": "ModifyBackupEncrypt request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Instance ID. Log in to the Redis console and copy it from the instance list.</p>",
+          "example": "crs-h09vd2w3",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether backup encryption is enabled.</p><p>Default value: false</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "BackupEncrypt",
+          "required": true,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Encryption key type.</p><p>Enumeration value:</p><ul><li>0: Tencent Cloud hosted (default)</li><li>1: User-customized KMS key</li></ul><p>Default value: 0</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "EncryptKeyType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Key ID of KMS.</p><p>Parameter format: xxxxxxx-xxxx-xxxx-xxxx-xxxxxxx</p>",
+          "example": "c23c300c-5db3-11f1-b8b2-5254008764f7",
+          "member": "string",
+          "name": "KmsKeyId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Regional information.</p><p>Parameter format: ap-xxxx</p><p>For reference: <a href=\"https://www.tencentcloud.com/document/api/573/34406?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8\">Supported region list for KMS</a></p>",
+          "example": "ap-region",
+          "member": "string",
+          "name": "KmsRegion",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyBackupEncryptResponse": {
+      "document": "ModifyBackupEncrypt response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyConnectionConfigRequest": {
       "document": "ModifyConnectionConfig request structure.",
       "members": [
@@ -11220,6 +11422,42 @@
           "type": "int",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstancePasswordPolicyRequest": {
+      "document": "ModifyInstancePasswordPolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Instance ID. Log in to the <a href=\"https://console.cloud.tencent.com/redis\">Redis console</a> and copy it from the instance list.</p>",
+          "example": "crs-5x9h****",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Password complexity policy control object for instances, including verification metrics for password length and minimum number of various types of characters (letters/digits/special symbols).</p>",
+          "example": "无",
+          "member": "PasswordPolicy",
+          "name": "PasswordPolicy",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstancePasswordPolicyResponse": {
+      "document": "ModifyInstancePasswordPolicy response structure.",
+      "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -12390,7 +12628,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Backup type.</p><ul><li>1: Automatic backup initiated by the system in the wee hours.</li><li>0: Manual backup initiated by the user.</li></ul>",
+          "document": "<p>Backup type.</p><p>Enumeration values:</p><ul><li>0: User-initiated manual backup</li><li>1: Automatic backup initiated by the system in the wee hours</li><li>2: Backup triggered by configuration changes</li></ul>",
           "example": "\"1\"",
           "member": "string",
           "name": "BackupType",
@@ -14237,6 +14475,61 @@
         }
       ],
       "usage": "out"
+    },
+    "UpgradeInstanceProductVersionRequest": {
+      "document": "UpgradeInstanceProductVersion request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Target product type for the update.</p><p>Enumeration values:</p><ul><li>localv2: General Type II</li></ul>",
+          "example": "localv2",
+          "member": "string",
+          "name": "TargetProductVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Switch time.</p><ul><li>1: Switch during maintenance window.</li><li>2: Switch immediately.</li></ul>",
+          "example": "2",
+          "member": "int64",
+          "name": "SwitchOption",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Specifies the instance ID. Example: crs-xjhsdj****. Log in to the <a href=\"https://console.cloud.tencent.com/redis#/\">Redis console</a> and copy the instance ID from the instance list.</p>",
+          "example": "crs-3au1tc75",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpgradeInstanceProductVersionResponse": {
+      "document": "UpgradeInstanceProductVersion response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Order number.</p>",
+          "example": "20260810296023340158681",
+          "member": "string",
+          "name": "DealName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "UpgradeInstanceRequest": {
       "document": "UpgradeInstance request structure.",

@@ -131,6 +131,63 @@ def doCreateEdrAlertExportJob(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeCosSourceIp(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeCosSourceIpRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeCosSourceIp(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeDbAssetInfo(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -416,7 +473,7 @@ def doDescribeBanMode(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeDspmAssetDatabaseList(args, parsed_globals):
+def doCreateCosRiskScanTask(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -450,11 +507,11 @@ def doDescribeDspmAssetDatabaseList(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeDspmAssetDatabaseListRequest()
+    model = models.CreateCosRiskScanTaskRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeDspmAssetDatabaseList(model)
+        rsp = client.CreateCosRiskScanTask(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -1139,6 +1196,120 @@ def doDescribeMultiCloudAssetCount(args, parsed_globals):
     start_time = time.time()
     while True:
         rsp = client.DescribeMultiCloudAssetCount(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doCreateCosObjectScanTask(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CreateCosObjectScanTaskRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.CreateCosObjectScanTask(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeRiskItemList(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeRiskItemListRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeRiskItemList(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -2183,7 +2354,7 @@ def doDescribeCspmShardConfig(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifySandboxAlertStatus(args, parsed_globals):
+def doDescribeDspmAssetDatabaseList(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -2217,11 +2388,11 @@ def doModifySandboxAlertStatus(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifySandboxAlertStatusRequest()
+    model = models.DescribeDspmAssetDatabaseListRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.ModifySandboxAlertStatus(model)
+        rsp = client.DescribeDspmAssetDatabaseList(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -2525,6 +2696,63 @@ def doDescribeCWPScanIpInfo(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doCreateCosPolicy(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CreateCosPolicyRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.CreateCosPolicy(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDeleteImageVirusWhitelist(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -2792,6 +3020,63 @@ def doDescribeDspmAssetDatabases(args, parsed_globals):
     start_time = time.time()
     while True:
         rsp = client.DescribeDspmAssetDatabases(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doModifyAlarmRiskStatus(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyAlarmRiskStatusRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.ModifyAlarmRiskStatus(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -3779,6 +4064,63 @@ def doSyncDspmAssets(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeCosAccessPermission(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeCosAccessPermissionRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeCosAccessPermission(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDeleteLoginWhiteList(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -4235,63 +4577,6 @@ def doUpdateAccessKeyRemark(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateImageVulListExportJob(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
-        cred = credential.CVMRoleCredential()
-    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
-        cred = credential.STSAssumeRoleCredential(
-            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
-            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
-        )
-    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
-            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
-            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
-            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
-        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
-    else:
-        cred = credential.Credential(
-            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-        )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint],
-        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
-    profile.request_client = "_CLI_" + __version__
-    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
-        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
-    if g_param[OptionsDefine.Language]:
-        profile.language = g_param[OptionsDefine.Language]
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateImageVulListExportJobRequest()
-    model.from_json_string(json.dumps(args))
-    start_time = time.time()
-    while True:
-        rsp = client.CreateImageVulListExportJob(model)
-        result = rsp.to_json_string()
-        try:
-            json_obj = json.loads(result)
-        except TypeError as e:
-            json_obj = json.loads(result.decode('utf-8'))  # python3.3
-        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
-            break
-        cur_time = time.time()
-        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
-            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
-            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
-            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
-        else:
-            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
-        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doCreateSkillScan(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -4577,6 +4862,63 @@ def doModifyBaselineSyncConf(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doModifySandboxAlertStatus(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifySandboxAlertStatusRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.ModifySandboxAlertStatus(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDeleteImageVulWhitelist(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -4787,6 +5129,63 @@ def doBatchModifyImageVulWhitelist(args, parsed_globals):
     start_time = time.time()
     while True:
         rsp = client.BatchModifyImageVulWhitelist(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeCosIpInvokeLog(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeCosIpInvokeLogRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeCosIpInvokeLog(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -5357,6 +5756,63 @@ def doModifySkillScanAlertStatus(args, parsed_globals):
     start_time = time.time()
     while True:
         rsp = client.ModifySkillScanAlertStatus(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doModifyCosMarkInfo(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyCosMarkInfoRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.ModifyCosMarkInfo(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -6857,6 +7313,63 @@ def doDescribeSecurityGroupPolicy(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeCosBucketRisk(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeCosBucketRiskRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeCosBucketRisk(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeDspmAssetAccountPresetPrivileges(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -7712,6 +8225,63 @@ def doCreateCFGRisksExportJob(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeIpInvokeRecordDetail(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeIpInvokeRecordDetailRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeIpInvokeRecordDetail(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doAddLoginWhiteLists(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -7883,7 +8453,7 @@ def doModifyWebhookPolicyStatus(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doAccessAIAnalysisSMTP(args, parsed_globals):
+def doDescribeDspmIdentifyComplianceGroupList(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -7917,11 +8487,68 @@ def doAccessAIAnalysisSMTP(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.AccessAIAnalysisSMTPRequest()
+    model = models.DescribeDspmIdentifyComplianceGroupListRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.AccessAIAnalysisSMTP(model)
+        rsp = client.DescribeDspmIdentifyComplianceGroupList(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribePolicyHitData(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribePolicyHitDataRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribePolicyHitData(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -8264,6 +8891,63 @@ def doDescribeImageLayerList(args, parsed_globals):
     start_time = time.time()
     while True:
         rsp = client.DescribeImageLayerList(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeDspmPayInfo(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeDspmPayInfoRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeDspmPayInfo(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -9176,6 +9860,63 @@ def doDescribeRiskRuleDetail(args, parsed_globals):
     start_time = time.time()
     while True:
         rsp = client.DescribeRiskRuleDetail(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeCosObjectScanTask(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeCosObjectScanTaskRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeCosObjectScanTask(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -10163,6 +10904,63 @@ def doDescribeAssetRiskList(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeCosIdentifyFileList(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeCosIdentifyFileListRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeCosIdentifyFileList(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeAssetFilterViews(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -10220,7 +11018,7 @@ def doDescribeAssetFilterViews(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateDspmAssetAccessTopologyExportJob(args, parsed_globals):
+def doDescribeCosRoleAccessPermission(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -10254,11 +11052,11 @@ def doCreateDspmAssetAccessTopologyExportJob(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateDspmAssetAccessTopologyExportJobRequest()
+    model = models.DescribeCosRoleAccessPermissionRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.CreateDspmAssetAccessTopologyExportJob(model)
+        rsp = client.DescribeCosRoleAccessPermission(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -11246,7 +12044,7 @@ def doDescribeSubnetAssets(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeDspmRisk(args, parsed_globals):
+def doCreateImageVulListExportJob(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -11280,11 +12078,11 @@ def doDescribeDspmRisk(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeDspmRiskRequest()
+    model = models.CreateImageVulListExportJobRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeDspmRisk(model)
+        rsp = client.CreateImageVulListExportJob(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -11303,7 +12101,7 @@ def doDescribeDspmRisk(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeDspmIdentifyComplianceGroupList(args, parsed_globals):
+def doAccessAIAnalysisSMTP(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -11337,11 +12135,11 @@ def doDescribeDspmIdentifyComplianceGroupList(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeDspmIdentifyComplianceGroupListRequest()
+    model = models.AccessAIAnalysisSMTPRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeDspmIdentifyComplianceGroupList(model)
+        rsp = client.AccessAIAnalysisSMTP(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -11474,7 +12272,7 @@ def doDescribeAccessKeyAsset(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeBaselineCalculatingStatisticsPolicyIDList(args, parsed_globals):
+def doDescribeCosAccessPermissions(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -11508,11 +12306,11 @@ def doDescribeBaselineCalculatingStatisticsPolicyIDList(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeBaselineCalculatingStatisticsPolicyIDListRequest()
+    model = models.DescribeCosAccessPermissionsRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeBaselineCalculatingStatisticsPolicyIDList(model)
+        rsp = client.DescribeCosAccessPermissions(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -12329,6 +13127,63 @@ def doDescribeCheckConnectivityHostList(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeCosRoleAccessPermissions(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeCosRoleAccessPermissionsRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeCosRoleAccessPermissions(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doCreatePodServiceListExportJob(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -12824,6 +13679,63 @@ def doDescribeAIAnalysisRobotInfo(args, parsed_globals):
     start_time = time.time()
     while True:
         rsp = client.DescribeAIAnalysisRobotInfo(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeCosRiskEvidence(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeCosRiskEvidenceRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeCosRiskEvidence(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -13583,7 +14495,7 @@ def doCreateDspmIdentifyInfoListExportJob(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeDspmPayInfo(args, parsed_globals):
+def doDescribeCosAuditPayInfo(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -13617,11 +14529,11 @@ def doDescribeDspmPayInfo(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeDspmPayInfoRequest()
+    model = models.DescribeCosAuditPayInfoRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeDspmPayInfo(model)
+        rsp = client.DescribeCosAuditPayInfo(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -13868,6 +14780,63 @@ def doCancelEdrAlertIgnore(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDeleteCosAkAsset(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeleteCosAkAssetRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DeleteCosAkAsset(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDeleteMachineClearHistory(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -14021,6 +14990,63 @@ def doInstallSandboxPlugin(args, parsed_globals):
     start_time = time.time()
     while True:
         rsp = client.InstallSandboxPlugin(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeCosAsset(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeCosAssetRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeCosAsset(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -14210,6 +15236,63 @@ def doModifyBaselinePolicy(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeCosAssetSyncTask(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeCosAssetSyncTaskRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeCosAssetSyncTask(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doModifyDspmRiskStrategy(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -14363,6 +15446,63 @@ def doCreateAssetTag(args, parsed_globals):
     start_time = time.time()
     while True:
         rsp = client.CreateAssetTag(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeAssumeRole(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeAssumeRoleRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeAssumeRole(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -15464,7 +16604,7 @@ def doCreatePodContainerListExportJob(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteDspmExportTask(args, parsed_globals):
+def doModifyDspmIdentifyCategory(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -15498,11 +16638,11 @@ def doDeleteDspmExportTask(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteDspmExportTaskRequest()
+    model = models.ModifyDspmIdentifyCategoryRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DeleteDspmExportTask(model)
+        rsp = client.ModifyDspmIdentifyCategory(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -16130,6 +17270,63 @@ def doDescribeNotifySetting(args, parsed_globals):
     start_time = time.time()
     while True:
         rsp = client.DescribeNotifySetting(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doModifyPolicyStatus(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyPolicyStatusRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.ModifyPolicyStatus(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -17174,7 +18371,7 @@ def doDescribeImageVirusWhitelist(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeAKAnalysisDetail(args, parsed_globals):
+def doDescribeCosAkAsset(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -17208,11 +18405,11 @@ def doDescribeAKAnalysisDetail(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeAKAnalysisDetailRequest()
+    model = models.DescribeCosAkAssetRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeAKAnalysisDetail(model)
+        rsp = client.DescribeCosAkAsset(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -17573,7 +18770,7 @@ def doCreateClusterListExportJob(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyDspmIdentifyCategory(args, parsed_globals):
+def doDeleteDspmExportTask(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -17607,11 +18804,11 @@ def doModifyDspmIdentifyCategory(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyDspmIdentifyCategoryRequest()
+    model = models.DeleteDspmExportTaskRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.ModifyDspmIdentifyCategory(model)
+        rsp = client.DeleteDspmExportTask(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -18086,7 +19283,7 @@ def doDescribeRiskCenterWebsiteRiskList(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyUebaRuleSwitch(args, parsed_globals):
+def doDescribeCosAlarmTrendData(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -18120,11 +19317,11 @@ def doModifyUebaRuleSwitch(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyUebaRuleSwitchRequest()
+    model = models.DescribeCosAlarmTrendDataRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.ModifyUebaRuleSwitch(model)
+        rsp = client.DescribeCosAlarmTrendData(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -19340,7 +20537,7 @@ def doDescribeDspmAssets(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeDspmAssetSupportedPrivileges(args, parsed_globals):
+def doDeleteDspmApplyOrder(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -19374,11 +20571,11 @@ def doDescribeDspmAssetSupportedPrivileges(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeDspmAssetSupportedPrivilegesRequest()
+    model = models.DeleteDspmApplyOrderRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeDspmAssetSupportedPrivileges(model)
+        rsp = client.DeleteDspmApplyOrder(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -19493,6 +20690,63 @@ def doDescribeClusterContainerDetail(args, parsed_globals):
     start_time = time.time()
     while True:
         rsp = client.DescribeClusterContainerDetail(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeCosRiskActionList(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeCosRiskActionListRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeCosRiskActionList(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -20651,6 +21905,63 @@ def doModifyDspmCkafkaStop(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeCosInvokeUa(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeCosInvokeUaRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeCosInvokeUa(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doCreateIaCAccessToken(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -20936,6 +22247,63 @@ def doDescribeReverseShellSystemPolicyConfig(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeRiskTrendData(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeRiskTrendDataRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeRiskTrendData(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeRiskRules(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -21107,6 +22475,63 @@ def doModifyDspmAssetLogDeliverySwitch(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeCosRiskScanTask(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeCosRiskScanTaskRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeCosRiskScanTask(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doModifyNotifySetting(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -21203,6 +22628,63 @@ def doDescribeClusterDetail(args, parsed_globals):
     start_time = time.time()
     while True:
         rsp = client.DescribeClusterDetail(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeCosPolicy(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeCosPolicyRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeCosPolicy(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -21506,7 +22988,7 @@ def doDescribeImageRegistryTimedScanTaskPreview(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifySandboxDLPRule(args, parsed_globals):
+def doDeleteSandboxFileRule(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -21540,11 +23022,11 @@ def doModifySandboxDLPRule(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifySandboxDLPRuleRequest()
+    model = models.DeleteSandboxFileRuleRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.ModifySandboxDLPRule(model)
+        rsp = client.DeleteSandboxFileRule(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -21830,6 +23312,63 @@ def doOperateRisk(args, parsed_globals):
     start_time = time.time()
     while True:
         rsp = client.OperateRisk(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeCosBucketList(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeCosBucketListRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeCosBucketList(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -23729,7 +25268,7 @@ def doDescribeAIAnalysisSMTP(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeDspmIdentifyComplianceGroupDetail(args, parsed_globals):
+def doDescribeDspmAccessTopologyIps(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -23763,11 +25302,11 @@ def doDescribeDspmIdentifyComplianceGroupDetail(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeDspmIdentifyComplianceGroupDetailRequest()
+    model = models.DescribeDspmAccessTopologyIpsRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeDspmIdentifyComplianceGroupDetail(model)
+        rsp = client.DescribeDspmAccessTopologyIps(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -23882,6 +25421,63 @@ def doModifyShareUserAK(args, parsed_globals):
     start_time = time.time()
     while True:
         rsp = client.ModifyShareUserAK(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doModifyCosAuditObjectSampleRate(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyCosAuditObjectSampleRateRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.ModifyCosAuditObjectSampleRate(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -25667,7 +27263,7 @@ def doUpdateClusterOwner(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeDspmAccessTopologyIps(args, parsed_globals):
+def doDescribeDspmIdentifyComplianceGroupDetail(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -25701,11 +27297,11 @@ def doDescribeDspmAccessTopologyIps(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeDspmAccessTopologyIpsRequest()
+    model = models.DescribeDspmIdentifyComplianceGroupDetailRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeDspmAccessTopologyIps(model)
+        rsp = client.DescribeDspmIdentifyComplianceGroupDetail(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -27149,6 +28745,63 @@ def doModifySandboxDLPRuleStatus(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doModifyCosAuditObjectIdentifyStatus(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyCosAuditObjectIdentifyStatusRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.ModifyCosAuditObjectIdentifyStatus(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeTopAttackInfo(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -27359,6 +29012,63 @@ def doDescribeModifyMachinesLoginTypeTasks(args, parsed_globals):
     start_time = time.time()
     while True:
         rsp = client.DescribeModifyMachinesLoginTypeTasks(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doModifyCosAuditMonitorAccount(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyCosAuditMonitorAccountRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.ModifyCosAuditMonitorAccount(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -28289,7 +29999,7 @@ def doDescribeExportJobDownloadURL(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyMalwareTimingScanSettings(args, parsed_globals):
+def doDescribeAKAnalysisDetail(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -28323,11 +30033,11 @@ def doModifyMalwareTimingScanSettings(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyMalwareTimingScanSettingsRequest()
+    model = models.DescribeAKAnalysisDetailRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.ModifyMalwareTimingScanSettings(model)
+        rsp = client.DescribeAKAnalysisDetail(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -28802,6 +30512,63 @@ def doCreateDspmAuditFilterStrategy(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doCreateDspmAssetAccessTopologyExportJob(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CreateDspmAssetAccessTopologyExportJobRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.CreateDspmAssetAccessTopologyExportJob(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeImageSensitiveWhitelist(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -28859,6 +30626,63 @@ def doDescribeImageSensitiveWhitelist(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doDescribeImageVulSummaryList(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeImageVulSummaryListRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeImageVulSummaryList(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeIaCFileList(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -28898,6 +30722,63 @@ def doDescribeIaCFileList(args, parsed_globals):
     start_time = time.time()
     while True:
         rsp = client.DescribeIaCFileList(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeCosActionList(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeCosActionListRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeCosActionList(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -30170,6 +32051,120 @@ def doModifyDspmAuditFilterStrategy(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doModifyMalwareTimingScanSettings(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyMalwareTimingScanSettingsRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.ModifyMalwareTimingScanSettings(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeCosBucketBillingInfo(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeCosBucketBillingInfoRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeCosBucketBillingInfo(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeTaskLogURL(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -30551,6 +32546,63 @@ def doScanBaselinePolicyList(args, parsed_globals):
     start_time = time.time()
     while True:
         rsp = client.ScanBaselinePolicyList(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doCreateCosAssetSyncTask(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CreateCosAssetSyncTaskRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.CreateCosAssetSyncTask(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -31121,6 +33173,120 @@ def doDescribeExportJobManageList(args, parsed_globals):
     start_time = time.time()
     while True:
         rsp = client.DescribeExportJobManageList(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doCreateImageRegistryConnectivityTask(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.CreateImageRegistryConnectivityTaskRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.CreateImageRegistryConnectivityTask(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeRiskBucketList(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeRiskBucketListRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeRiskBucketList(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -32165,6 +34331,63 @@ def doModifyNotifyMember(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doModifyUebaRuleSwitch(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyUebaRuleSwitchRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.ModifyUebaRuleSwitch(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeDspmIdentifyRuleDetail(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -32222,7 +34445,7 @@ def doDescribeDspmIdentifyRuleDetail(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateImageRegistryConnectivityTask(args, parsed_globals):
+def doDescribeCosAuditDictionaryList(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -32256,11 +34479,11 @@ def doCreateImageRegistryConnectivityTask(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateImageRegistryConnectivityTaskRequest()
+    model = models.DescribeCosAuditDictionaryListRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.CreateImageRegistryConnectivityTask(model)
+        rsp = client.DescribeCosAuditDictionaryList(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -32564,7 +34787,7 @@ def doDescribeScfCustomDomainEndpoints(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateImageRegistryScanTask(args, parsed_globals):
+def doCreateAssetComponentListExportJob(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -32598,11 +34821,68 @@ def doCreateImageRegistryScanTask(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateImageRegistryScanTaskRequest()
+    model = models.CreateAssetComponentListExportJobRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.CreateImageRegistryScanTask(model)
+        rsp = client.CreateAssetComponentListExportJob(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeCosOverview(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeCosOverviewRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeCosOverview(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -32888,6 +35168,63 @@ def doCreateImageLayerVulListExportJob(args, parsed_globals):
     start_time = time.time()
     while True:
         rsp = client.CreateImageLayerVulListExportJob(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeCosAkInvokeIpList(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeCosAkInvokeIpListRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeCosAkInvokeIpList(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -33419,7 +35756,7 @@ def doDescribeLighthouseFirewallRules(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateAssetComponentListExportJob(args, parsed_globals):
+def doCreateImageRegistryScanTask(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -33453,11 +35790,11 @@ def doCreateAssetComponentListExportJob(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateAssetComponentListExportJobRequest()
+    model = models.CreateImageRegistryScanTaskRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.CreateAssetComponentListExportJob(model)
+        rsp = client.CreateImageRegistryScanTask(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -33686,6 +36023,120 @@ def doModifySandboxFileRule(args, parsed_globals):
     start_time = time.time()
     while True:
         rsp = client.ModifySandboxFileRule(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeCosIpInvokeRecordFile(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeCosIpInvokeRecordFileRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeCosIpInvokeRecordFile(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeBucketInvokeIpList(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeBucketInvokeIpListRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeBucketInvokeIpList(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -34502,7 +36953,7 @@ def doDescribeRiskDetailList(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeBaselineMainTaskList(args, parsed_globals):
+def doDescribeCosAuditAppIdList(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -34536,11 +36987,68 @@ def doDescribeBaselineMainTaskList(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeBaselineMainTaskListRequest()
+    model = models.DescribeCosAuditAppIdListRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeBaselineMainTaskList(model)
+        rsp = client.DescribeCosAuditAppIdList(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeBaselineCalculatingStatisticsPolicyIDList(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeBaselineCalculatingStatisticsPolicyIDListRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeBaselineCalculatingStatisticsPolicyIDList(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -34616,7 +37124,7 @@ def doCreateDspmApproveHistoryExportJob(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeImageVulSummaryList(args, parsed_globals):
+def doDescribeBaselineMainTaskList(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -34650,11 +37158,11 @@ def doDescribeImageVulSummaryList(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeImageVulSummaryListRequest()
+    model = models.DescribeBaselineMainTaskListRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeImageVulSummaryList(model)
+        rsp = client.DescribeBaselineMainTaskList(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -35339,6 +37847,63 @@ def doModifyNotifySettingAlert(args, parsed_globals):
     start_time = time.time()
     while True:
         rsp = client.ModifyNotifySettingAlert(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDeleteCosPolicy(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DeleteCosPolicyRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DeleteCosPolicy(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -36137,6 +38702,63 @@ def doModifyDspmAssetDataScanTaskStatus(args, parsed_globals):
     start_time = time.time()
     while True:
         rsp = client.ModifyDspmAssetDataScanTaskStatus(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeDspmRisk(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeDspmRiskRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeDspmRisk(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -37181,7 +39803,7 @@ def doDescribeUserCallRecord(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteSandboxFileRule(args, parsed_globals):
+def doDescribeCosAlarmList(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -37215,11 +39837,11 @@ def doDeleteSandboxFileRule(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteSandboxFileRuleRequest()
+    model = models.DescribeCosAlarmListRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DeleteSandboxFileRule(model)
+        rsp = client.DescribeCosAlarmList(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -38264,7 +40886,7 @@ def doDescribeSCFAliasList(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteDspmApplyOrder(args, parsed_globals):
+def doDescribeDspmAssetSupportedPrivileges(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -38298,11 +40920,11 @@ def doDeleteDspmApplyOrder(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteDspmApplyOrderRequest()
+    model = models.DescribeDspmAssetSupportedPrivilegesRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DeleteDspmApplyOrder(model)
+        rsp = client.DescribeDspmAssetSupportedPrivileges(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -38702,6 +41324,120 @@ def doBatchModifyBaselinePolicy(args, parsed_globals):
     start_time = time.time()
     while True:
         rsp = client.BatchModifyBaselinePolicy(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeIpInvokeRecord(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeIpInvokeRecordRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeIpInvokeRecord(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doModifySandboxDLPRule(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CsipClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifySandboxDLPRuleRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.ModifySandboxDLPRule(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -40044,12 +42780,13 @@ MODELS_MAP = {
 ACTION_MAP = {
     "DescribeDspmAssetSecurityAnalyseStatus": doDescribeDspmAssetSecurityAnalyseStatus,
     "CreateEdrAlertExportJob": doCreateEdrAlertExportJob,
+    "DescribeCosSourceIp": doDescribeCosSourceIp,
     "DescribeDbAssetInfo": doDescribeDbAssetInfo,
     "DescribeDspmIdentifyDistributionStatistics": doDescribeDspmIdentifyDistributionStatistics,
     "DescribeComplianceStandardTermTree": doDescribeComplianceStandardTermTree,
     "ModifyShareUserCSPM": doModifyShareUserCSPM,
     "DescribeBanMode": doDescribeBanMode,
-    "DescribeDspmAssetDatabaseList": doDescribeDspmAssetDatabaseList,
+    "CreateCosRiskScanTask": doCreateCosRiskScanTask,
     "DescribeAccessKeyUserList": doDescribeAccessKeyUserList,
     "DescribeImageSensitiveInfoList": doDescribeImageSensitiveInfoList,
     "ModifySandboxLLMAuditRule": doModifySandboxLLMAuditRule,
@@ -40062,6 +42799,8 @@ ACTION_MAP = {
     "DescribeVULRiskDetail": doDescribeVULRiskDetail,
     "DeleteEdrLogCollectPaths": doDeleteEdrLogCollectPaths,
     "DescribeMultiCloudAssetCount": doDescribeMultiCloudAssetCount,
+    "CreateCosObjectScanTask": doCreateCosObjectScanTask,
+    "DescribeRiskItemList": doDescribeRiskItemList,
     "DescribeNotifyAgentOfflineDuration": doDescribeNotifyAgentOfflineDuration,
     "DeleteWebhookPolicies": doDeleteWebhookPolicies,
     "ModifyDspmIdentifyRule": doModifyDspmIdentifyRule,
@@ -40080,17 +42819,19 @@ ACTION_MAP = {
     "StartOrModifyPreventUninstall": doStartOrModifyPreventUninstall,
     "DescribeRegistryOverview": doDescribeRegistryOverview,
     "DescribeCspmShardConfig": doDescribeCspmShardConfig,
-    "ModifySandboxAlertStatus": doModifySandboxAlertStatus,
+    "DescribeDspmAssetDatabaseList": doDescribeDspmAssetDatabaseList,
     "DescribeSCFNamespaceList": doDescribeSCFNamespaceList,
     "ModifyEdrExcludeNetworkSegments": doModifyEdrExcludeNetworkSegments,
     "CreateDspmIdentifyComplianceGroup": doCreateDspmIdentifyComplianceGroup,
     "DescribeDspmRiskTendency": doDescribeDspmRiskTendency,
     "DescribeCWPScanIpInfo": doDescribeCWPScanIpInfo,
+    "CreateCosPolicy": doCreateCosPolicy,
     "DeleteImageVirusWhitelist": doDeleteImageVirusWhitelist,
     "DescribeAgentRunPolicy": doDescribeAgentRunPolicy,
     "DescribeExposureTrend": doDescribeExposureTrend,
     "DescribeVulFixedHostDetail": doDescribeVulFixedHostDetail,
     "DescribeDspmAssetDatabases": doDescribeDspmAssetDatabases,
+    "ModifyAlarmRiskStatus": doModifyAlarmRiskStatus,
     "CreateClusterContainerListExportJob": doCreateClusterContainerListExportJob,
     "DescribeAIAgentCredentialList": doDescribeAIAgentCredentialList,
     "DescribeVulFixTaskList": doDescribeVulFixTaskList,
@@ -40108,6 +42849,7 @@ ACTION_MAP = {
     "ModifyNotifySettingAk": doModifyNotifySettingAk,
     "DescribeAIScheduleList": doDescribeAIScheduleList,
     "SyncDspmAssets": doSyncDspmAssets,
+    "DescribeCosAccessPermission": doDescribeCosAccessPermission,
     "DeleteLoginWhiteList": doDeleteLoginWhiteList,
     "BatchModifyImageSensitiveWhitelist": doBatchModifyImageSensitiveWhitelist,
     "DescribeRiskCenterAssetViewPortRiskList": doDescribeRiskCenterAssetViewPortRiskList,
@@ -40116,16 +42858,17 @@ ACTION_MAP = {
     "ModifyEDRRuleStatus": doModifyEDRRuleStatus,
     "CreateDspmAccessExportJob": doCreateDspmAccessExportJob,
     "UpdateAccessKeyRemark": doUpdateAccessKeyRemark,
-    "CreateImageVulListExportJob": doCreateImageVulListExportJob,
     "CreateSkillScan": doCreateSkillScan,
     "DescribeBaselineSubTaskList": doDescribeBaselineSubTaskList,
     "CreateExposuresExportJob": doCreateExposuresExportJob,
     "DescribeDspmResource": doDescribeDspmResource,
     "ModifyBaselineSyncConf": doModifyBaselineSyncConf,
+    "ModifySandboxAlertStatus": doModifySandboxAlertStatus,
     "DeleteImageVulWhitelist": doDeleteImageVulWhitelist,
     "ModifyAssetCoreAttribute": doModifyAssetCoreAttribute,
     "DescribeDspmPersonApplyHistory": doDescribeDspmPersonApplyHistory,
     "BatchModifyImageVulWhitelist": doBatchModifyImageVulWhitelist,
+    "DescribeCosIpInvokeLog": doDescribeCosIpInvokeLog,
     "DescribeDspmWhitelistStrategy": doDescribeDspmWhitelistStrategy,
     "DescribeExposeRules": doDescribeExposeRules,
     "CreateDspmAssetIdentifyInfoExportJob": doCreateDspmAssetIdentifyInfoExportJob,
@@ -40136,6 +42879,7 @@ ACTION_MAP = {
     "CreateImageComponentListExportJob": doCreateImageComponentListExportJob,
     "StopImageRegistryScanTask": doStopImageRegistryScanTask,
     "ModifySkillScanAlertStatus": doModifySkillScanAlertStatus,
+    "ModifyCosMarkInfo": doModifyCosMarkInfo,
     "ModifyAssetFilterView": doModifyAssetFilterView,
     "ModifyDspmWhitelistStrategy": doModifyDspmWhitelistStrategy,
     "AddDspmAssetManager": doAddDspmAssetManager,
@@ -40162,6 +42906,7 @@ ACTION_MAP = {
     "DescribeAssetSyncTaskStatus": doDescribeAssetSyncTaskStatus,
     "DescribeImageRegistryList": doDescribeImageRegistryList,
     "DescribeSecurityGroupPolicy": doDescribeSecurityGroupPolicy,
+    "DescribeCosBucketRisk": doDescribeCosBucketRisk,
     "DescribeDspmAssetAccountPresetPrivileges": doDescribeDspmAssetAccountPresetPrivileges,
     "DescribeEDRRuleList": doDescribeEDRRuleList,
     "DescribeClusterSuperNodeInfo": doDescribeClusterSuperNodeInfo,
@@ -40177,16 +42922,19 @@ ACTION_MAP = {
     "CreateDspmWhitelistStrategy": doCreateDspmWhitelistStrategy,
     "CreateRiskDetailExportJob": doCreateRiskDetailExportJob,
     "CreateCFGRisksExportJob": doCreateCFGRisksExportJob,
+    "DescribeIpInvokeRecordDetail": doDescribeIpInvokeRecordDetail,
     "AddLoginWhiteLists": doAddLoginWhiteLists,
     "DescribeCFGRiskReportStatistics": doDescribeCFGRiskReportStatistics,
     "ModifyWebhookPolicyStatus": doModifyWebhookPolicyStatus,
-    "AccessAIAnalysisSMTP": doAccessAIAnalysisSMTP,
+    "DescribeDspmIdentifyComplianceGroupList": doDescribeDspmIdentifyComplianceGroupList,
+    "DescribePolicyHitData": doDescribePolicyHitData,
     "ModifyDspmCkafkaSave": doModifyDspmCkafkaSave,
     "DescribePortDetectList": doDescribePortDetectList,
     "DescribeImageVirusWhitelistDetail": doDescribeImageVirusWhitelistDetail,
     "CreateSandboxACLRule": doCreateSandboxACLRule,
     "DescribeRiskCenterAssetViewVULRiskList": doDescribeRiskCenterAssetViewVULRiskList,
     "DescribeImageLayerList": doDescribeImageLayerList,
+    "DescribeDspmPayInfo": doDescribeDspmPayInfo,
     "ModifyCspmShardConfig": doModifyCspmShardConfig,
     "DescribeBaselineMainTaskItemList": doDescribeBaselineMainTaskItemList,
     "DescribeSandboxLLMAuditAlertList": doDescribeSandboxLLMAuditAlertList,
@@ -40203,6 +42951,7 @@ ACTION_MAP = {
     "DescribeSecurityScoreRule": doDescribeSecurityScoreRule,
     "DeleteDomainAndIp": doDeleteDomainAndIp,
     "DescribeRiskRuleDetail": doDescribeRiskRuleDetail,
+    "DescribeCosObjectScanTask": doDescribeCosObjectScanTask,
     "DescribeNICAssets": doDescribeNICAssets,
     "DescribeDomainAssets": doDescribeDomainAssets,
     "DescribeVulFixedList": doDescribeVulFixedList,
@@ -40220,8 +42969,9 @@ ACTION_MAP = {
     "DescribeClusterAssetSyncTaskStatus": doDescribeClusterAssetSyncTaskStatus,
     "ModifyBaselinePolicyEnable": doModifyBaselinePolicyEnable,
     "DescribeAssetRiskList": doDescribeAssetRiskList,
+    "DescribeCosIdentifyFileList": doDescribeCosIdentifyFileList,
     "DescribeAssetFilterViews": doDescribeAssetFilterViews,
-    "CreateDspmAssetAccessTopologyExportJob": doCreateDspmAssetAccessTopologyExportJob,
+    "DescribeCosRoleAccessPermission": doDescribeCosRoleAccessPermission,
     "CreateDspmResource": doCreateDspmResource,
     "CreateAssetComponentRelatedImageListExportJob": doCreateAssetComponentRelatedImageListExportJob,
     "CheckRisk": doCheckRisk,
@@ -40239,11 +42989,11 @@ ACTION_MAP = {
     "DescribeOrganizationUserInfo": doDescribeOrganizationUserInfo,
     "CreateAccessKeyCheckTask": doCreateAccessKeyCheckTask,
     "DescribeSubnetAssets": doDescribeSubnetAssets,
-    "DescribeDspmRisk": doDescribeDspmRisk,
-    "DescribeDspmIdentifyComplianceGroupList": doDescribeDspmIdentifyComplianceGroupList,
+    "CreateImageVulListExportJob": doCreateImageVulListExportJob,
+    "AccessAIAnalysisSMTP": doAccessAIAnalysisSMTP,
     "CreateBaselineAggregatedItemExportJob": doCreateBaselineAggregatedItemExportJob,
     "DescribeAccessKeyAsset": doDescribeAccessKeyAsset,
-    "DescribeBaselineCalculatingStatisticsPolicyIDList": doDescribeBaselineCalculatingStatisticsPolicyIDList,
+    "DescribeCosAccessPermissions": doDescribeCosAccessPermissions,
     "ModifyClusterDefendStatus": doModifyClusterDefendStatus,
     "DescribeDspmAssetIdentifyInfoList": doDescribeDspmAssetIdentifyInfoList,
     "DescribeBaselineSyncConf": doDescribeBaselineSyncConf,
@@ -40258,6 +43008,7 @@ ACTION_MAP = {
     "AddNewBindRoleUser": doAddNewBindRoleUser,
     "DescribeDspmLogDeliveryType": doDescribeDspmLogDeliveryType,
     "DescribeCheckConnectivityHostList": doDescribeCheckConnectivityHostList,
+    "DescribeCosRoleAccessPermissions": doDescribeCosRoleAccessPermissions,
     "CreatePodServiceListExportJob": doCreatePodServiceListExportJob,
     "ModifyVulWhitelistSwitch": doModifyVulWhitelistSwitch,
     "DescribeVulLabelList": doDescribeVulLabelList,
@@ -40267,6 +43018,7 @@ ACTION_MAP = {
     "DescribeImageExportJobList": doDescribeImageExportJobList,
     "CreateHighBaseLineRisksExportJob": doCreateHighBaseLineRisksExportJob,
     "DescribeAIAnalysisRobotInfo": doDescribeAIAnalysisRobotInfo,
+    "DescribeCosRiskEvidence": doDescribeCosRiskEvidence,
     "DescribeAssetTagTree": doDescribeAssetTagTree,
     "DescribeClusterContainerProcessList": doDescribeClusterContainerProcessList,
     "RetryDspmExportLog": doRetryDspmExportLog,
@@ -40280,20 +43032,24 @@ ACTION_MAP = {
     "DescribeImageVulList": doDescribeImageVulList,
     "DescribeDspmAssetAccountIdentify": doDescribeDspmAssetAccountIdentify,
     "CreateDspmIdentifyInfoListExportJob": doCreateDspmIdentifyInfoListExportJob,
-    "DescribeDspmPayInfo": doDescribeDspmPayInfo,
+    "DescribeCosAuditPayInfo": doDescribeCosAuditPayInfo,
     "CreateCSIPManualMalwareScan": doCreateCSIPManualMalwareScan,
     "DescribeRiskCenterCFGViewCFGRiskList": doDescribeRiskCenterCFGViewCFGRiskList,
     "ModifyVulWhitelistConfig": doModifyVulWhitelistConfig,
     "CancelEdrAlertIgnore": doCancelEdrAlertIgnore,
+    "DeleteCosAkAsset": doDeleteCosAkAsset,
     "DeleteMachineClearHistory": doDeleteMachineClearHistory,
     "StopBaselineScanTask": doStopBaselineScanTask,
     "InstallSandboxPlugin": doInstallSandboxPlugin,
+    "DescribeCosAsset": doDescribeCosAsset,
     "DescribeTaskLogList": doDescribeTaskLogList,
     "DescribeRiskCenterRiskTrendAnalysis": doDescribeRiskCenterRiskTrendAnalysis,
     "ModifyBaselinePolicy": doModifyBaselinePolicy,
+    "DescribeCosAssetSyncTask": doDescribeCosAssetSyncTask,
     "ModifyDspmRiskStrategy": doModifyDspmRiskStrategy,
     "DescribeBaselineFixRecordList": doDescribeBaselineFixRecordList,
     "CreateAssetTag": doCreateAssetTag,
+    "DescribeAssumeRole": doDescribeAssumeRole,
     "CreateHostVulExportJob": doCreateHostVulExportJob,
     "DescribeDspmIdentifyCategoryList": doDescribeDspmIdentifyCategoryList,
     "DescribeImageRegistryScanSubTaskList": doDescribeImageRegistryScanSubTaskList,
@@ -40313,7 +43069,7 @@ ACTION_MAP = {
     "ModifyImageVulWhitelist": doModifyImageVulWhitelist,
     "DescribeAIAnalysisFileDownloadURL": doDescribeAIAnalysisFileDownloadURL,
     "CreatePodContainerListExportJob": doCreatePodContainerListExportJob,
-    "DeleteDspmExportTask": doDeleteDspmExportTask,
+    "ModifyDspmIdentifyCategory": doModifyDspmIdentifyCategory,
     "ModifyEDRRulesAction": doModifyEDRRulesAction,
     "DescribeHostKBRiskList": doDescribeHostKBRiskList,
     "DescribeDspmAssetTableList": doDescribeDspmAssetTableList,
@@ -40325,6 +43081,7 @@ ACTION_MAP = {
     "DescribeDspmAssetAccounts": doDescribeDspmAssetAccounts,
     "DescribeCLSLogIndexV3": doDescribeCLSLogIndexV3,
     "DescribeNotifySetting": doDescribeNotifySetting,
+    "ModifyPolicyStatus": doModifyPolicyStatus,
     "DeleteDspmPersonalIdentify": doDeleteDspmPersonalIdentify,
     "DescribeIaCFileReport": doDescribeIaCFileReport,
     "DescribeUserCSPMInfoList": doDescribeUserCSPMInfoList,
@@ -40343,14 +43100,14 @@ ACTION_MAP = {
     "CreateAssetViewRisksExportJob": doCreateAssetViewRisksExportJob,
     "CreateDspmIdentifyRule": doCreateDspmIdentifyRule,
     "DescribeImageVirusWhitelist": doDescribeImageVirusWhitelist,
-    "DescribeAKAnalysisDetail": doDescribeAKAnalysisDetail,
+    "DescribeCosAkAsset": doDescribeCosAkAsset,
     "DescribeAccessKeyUserDetail": doDescribeAccessKeyUserDetail,
     "DescribeEdrAlertCountForContainer": doDescribeEdrAlertCountForContainer,
     "DeleteIaCAccessToken": doDeleteIaCAccessToken,
     "DescribeRiskCenterAssetViewWeakPasswordRiskList": doDescribeRiskCenterAssetViewWeakPasswordRiskList,
     "ScanCSIPTaskAgain": doScanCSIPTaskAgain,
     "CreateClusterListExportJob": doCreateClusterListExportJob,
-    "ModifyDspmIdentifyCategory": doModifyDspmIdentifyCategory,
+    "DeleteDspmExportTask": doDeleteDspmExportTask,
     "DescribeImageRegistryAssetOverview": doDescribeImageRegistryAssetOverview,
     "DescribeProcessDaemonHost": doDescribeProcessDaemonHost,
     "DescribeBaselineAggregatedItemList": doDescribeBaselineAggregatedItemList,
@@ -40359,7 +43116,7 @@ ACTION_MAP = {
     "DescribeAIAnalysisRecommendQuestions": doDescribeAIAnalysisRecommendQuestions,
     "DescribeClusterContainerComponentList": doDescribeClusterContainerComponentList,
     "DescribeRiskCenterWebsiteRiskList": doDescribeRiskCenterWebsiteRiskList,
-    "ModifyUebaRuleSwitch": doModifyUebaRuleSwitch,
+    "DescribeCosAlarmTrendData": doDescribeCosAlarmTrendData,
     "DescribeDbAssets": doDescribeDbAssets,
     "DescribeImageRegistryConnectivityTaskResult": doDescribeImageRegistryConnectivityTaskResult,
     "DescribeSearchBugInfo": doDescribeSearchBugInfo,
@@ -40381,9 +43138,10 @@ ACTION_MAP = {
     "ModifyAssetTag": doModifyAssetTag,
     "ModifyAILinkSetting": doModifyAILinkSetting,
     "DescribeDspmAssets": doDescribeDspmAssets,
-    "DescribeDspmAssetSupportedPrivileges": doDescribeDspmAssetSupportedPrivileges,
+    "DeleteDspmApplyOrder": doDeleteDspmApplyOrder,
     "DescribeIaCFileOverview": doDescribeIaCFileOverview,
     "DescribeClusterContainerDetail": doDescribeClusterContainerDetail,
+    "DescribeCosRiskActionList": doDescribeCosRiskActionList,
     "DescribeAccessKeyRiskDetail": doDescribeAccessKeyRiskDetail,
     "DeleteDspmAssetAccount": doDeleteDspmAssetAccount,
     "DescribeVulItemList": doDescribeVulItemList,
@@ -40404,27 +43162,32 @@ ACTION_MAP = {
     "DescribeEDRScanTaskDetail": doDescribeEDRScanTaskDetail,
     "ModifyEdrAlertIsolation": doModifyEdrAlertIsolation,
     "ModifyDspmCkafkaStop": doModifyDspmCkafkaStop,
+    "DescribeCosInvokeUa": doDescribeCosInvokeUa,
     "CreateIaCAccessToken": doCreateIaCAccessToken,
     "DescribeAssetComponentList": doDescribeAssetComponentList,
     "DescribeDspmRiskStrategy": doDescribeDspmRiskStrategy,
     "OperateRiskRulePolicy": doOperateRiskRulePolicy,
     "DescribeReverseShellSystemPolicyConfig": doDescribeReverseShellSystemPolicyConfig,
+    "DescribeRiskTrendData": doDescribeRiskTrendData,
     "DescribeRiskRules": doDescribeRiskRules,
     "CreateVulFixTask": doCreateVulFixTask,
     "ModifyDspmAssetLogDeliverySwitch": doModifyDspmAssetLogDeliverySwitch,
+    "DescribeCosRiskScanTask": doDescribeCosRiskScanTask,
     "ModifyNotifySetting": doModifyNotifySetting,
     "DescribeClusterDetail": doDescribeClusterDetail,
+    "DescribeCosPolicy": doDescribeCosPolicy,
     "ExportTasks": doExportTasks,
     "DescribeExposeRiskStatistics": doDescribeExposeRiskStatistics,
     "CreateSandboxLLMAuditRule": doCreateSandboxLLMAuditRule,
     "DescribeAISchedulePlanList": doDescribeAISchedulePlanList,
     "DescribeImageRegistryTimedScanTaskPreview": doDescribeImageRegistryTimedScanTaskPreview,
-    "ModifySandboxDLPRule": doModifySandboxDLPRule,
+    "DeleteSandboxFileRule": doDeleteSandboxFileRule,
     "DescribeDspmSupportedAssetType": doDescribeDspmSupportedAssetType,
     "CreateDspmRiskStrategy": doCreateDspmRiskStrategy,
     "DescribeUserDspmInfoList": doDescribeUserDspmInfoList,
     "DescribeAIScheduleStats": doDescribeAIScheduleStats,
     "OperateRisk": doOperateRisk,
+    "DescribeCosBucketList": doDescribeCosBucketList,
     "DescribeDspmApplyHistory": doDescribeDspmApplyHistory,
     "DescribeAILinkSetting": doDescribeAILinkSetting,
     "CreateBaselineMainTaskExportJob": doCreateBaselineMainTaskExportJob,
@@ -40458,9 +43221,10 @@ ACTION_MAP = {
     "ModifyDspmAssetAccount": doModifyDspmAssetAccount,
     "DescribeEdrLogCollectPaths": doDescribeEdrLogCollectPaths,
     "DescribeAIAnalysisSMTP": doDescribeAIAnalysisSMTP,
-    "DescribeDspmIdentifyComplianceGroupDetail": doDescribeDspmIdentifyComplianceGroupDetail,
+    "DescribeDspmAccessTopologyIps": doDescribeDspmAccessTopologyIps,
     "DescribeAgentRunMode": doDescribeAgentRunMode,
     "ModifyShareUserAK": doModifyShareUserAK,
+    "ModifyCosAuditObjectSampleRate": doModifyCosAuditObjectSampleRate,
     "DescribeSkillScanAlertList": doDescribeSkillScanAlertList,
     "DescribeSandboxACLRuleList": doDescribeSandboxACLRuleList,
     "DescribeAccessKeyRisk": doDescribeAccessKeyRisk,
@@ -40492,7 +43256,7 @@ ACTION_MAP = {
     "DescribeAssetOverview": doDescribeAssetOverview,
     "ModifySandboxACLRuleStatus": doModifySandboxACLRuleStatus,
     "UpdateClusterOwner": doUpdateClusterOwner,
-    "DescribeDspmAccessTopologyIps": doDescribeDspmAccessTopologyIps,
+    "DescribeDspmIdentifyComplianceGroupDetail": doDescribeDspmIdentifyComplianceGroupDetail,
     "DescribeExposePath": doDescribeExposePath,
     "DescribeGatewayAssets": doDescribeGatewayAssets,
     "CreateImageAssociatedContainerListExportJob": doCreateImageAssociatedContainerListExportJob,
@@ -40518,10 +43282,12 @@ ACTION_MAP = {
     "DeleteEDRScanTask": doDeleteEDRScanTask,
     "DescribeBruteAttackRules": doDescribeBruteAttackRules,
     "ModifySandboxDLPRuleStatus": doModifySandboxDLPRuleStatus,
+    "ModifyCosAuditObjectIdentifyStatus": doModifyCosAuditObjectIdentifyStatus,
     "DescribeTopAttackInfo": doDescribeTopAttackInfo,
     "CreateImageRegistryTimedScanTaskConfig": doCreateImageRegistryTimedScanTaskConfig,
     "DescribeClusterContainerPortList": doDescribeClusterContainerPortList,
     "DescribeModifyMachinesLoginTypeTasks": doDescribeModifyMachinesLoginTypeTasks,
+    "ModifyCosAuditMonitorAccount": doModifyCosAuditMonitorAccount,
     "DescribeRegistryRegionList": doDescribeRegistryRegionList,
     "ModifyDspmPersonalIdentify": doModifyDspmPersonalIdentify,
     "DescribeDspmIdentifyInfo": doDescribeDspmIdentifyInfo,
@@ -40538,7 +43304,7 @@ ACTION_MAP = {
     "ModifyShareUserDspm": doModifyShareUserDspm,
     "CreateImageVulWhitelist": doCreateImageVulWhitelist,
     "DescribeExportJobDownloadURL": doDescribeExportJobDownloadURL,
-    "ModifyMalwareTimingScanSettings": doModifyMalwareTimingScanSettings,
+    "DescribeAKAnalysisDetail": doDescribeAKAnalysisDetail,
     "DeleteRiskScanTask": doDeleteRiskScanTask,
     "DescribeSubUserInfo": doDescribeSubUserInfo,
     "DescribeDspmBackupLogList": doDescribeDspmBackupLogList,
@@ -40547,8 +43313,11 @@ ACTION_MAP = {
     "ModifyRiskCenterScanTask": doModifyRiskCenterScanTask,
     "SendDspmCkafkaTest": doSendDspmCkafkaTest,
     "CreateDspmAuditFilterStrategy": doCreateDspmAuditFilterStrategy,
+    "CreateDspmAssetAccessTopologyExportJob": doCreateDspmAssetAccessTopologyExportJob,
     "DescribeImageSensitiveWhitelist": doDescribeImageSensitiveWhitelist,
+    "DescribeImageVulSummaryList": doDescribeImageVulSummaryList,
     "DescribeIaCFileList": doDescribeIaCFileList,
+    "DescribeCosActionList": doDescribeCosActionList,
     "ModifyNotifyAgentOfflineDuration": doModifyNotifyAgentOfflineDuration,
     "DescribeBaselineUserOtherConf": doDescribeBaselineUserOtherConf,
     "DescribeClusterAssetList": doDescribeClusterAssetList,
@@ -40571,6 +43340,8 @@ ACTION_MAP = {
     "DescribePreventUninstallGlobalConf": doDescribePreventUninstallGlobalConf,
     "ModifyOrganizationAccountStatus": doModifyOrganizationAccountStatus,
     "ModifyDspmAuditFilterStrategy": doModifyDspmAuditFilterStrategy,
+    "ModifyMalwareTimingScanSettings": doModifyMalwareTimingScanSettings,
+    "DescribeCosBucketBillingInfo": doDescribeCosBucketBillingInfo,
     "DescribeTaskLogURL": doDescribeTaskLogURL,
     "DescribeCWPTaskDuration": doDescribeCWPTaskDuration,
     "ModifyDspmRestoreLogTask": doModifyDspmRestoreLogTask,
@@ -40578,6 +43349,7 @@ ACTION_MAP = {
     "DeleteIaCFile": doDeleteIaCFile,
     "DescribeClbTargets": doDescribeClbTargets,
     "ScanBaselinePolicyList": doScanBaselinePolicyList,
+    "CreateCosAssetSyncTask": doCreateCosAssetSyncTask,
     "DescribeDspmIdentifyInfoList": doDescribeDspmIdentifyInfoList,
     "ExportCSIPMalwareScanTaskDetail": doExportCSIPMalwareScanTaskDetail,
     "ModifyExposureTag": doModifyExposureTag,
@@ -40588,6 +43360,8 @@ ACTION_MAP = {
     "DeleteCluster": doDeleteCluster,
     "DescribeDspmAssetIds": doDescribeDspmAssetIds,
     "DescribeExportJobManageList": doDescribeExportJobManageList,
+    "CreateImageRegistryConnectivityTask": doCreateImageRegistryConnectivityTask,
+    "DescribeRiskBucketList": doDescribeRiskBucketList,
     "DescribeDspmRiskDetail": doDescribeDspmRiskDetail,
     "DescribeDspmSessionList": doDescribeDspmSessionList,
     "DescribeSkillScanAlertDetail": doDescribeSkillScanAlertDetail,
@@ -40606,19 +43380,22 @@ ACTION_MAP = {
     "StopEDRScanTask": doStopEDRScanTask,
     "DescribeScanReportList": doDescribeScanReportList,
     "ModifyNotifyMember": doModifyNotifyMember,
+    "ModifyUebaRuleSwitch": doModifyUebaRuleSwitch,
     "DescribeDspmIdentifyRuleDetail": doDescribeDspmIdentifyRuleDetail,
-    "CreateImageRegistryConnectivityTask": doCreateImageRegistryConnectivityTask,
+    "DescribeCosAuditDictionaryList": doDescribeCosAuditDictionaryList,
     "DeleteImageRegistry": doDeleteImageRegistry,
     "DescribeDspmApplyOrderList": doDescribeDspmApplyOrderList,
     "DescribeDspmIdentifyComplianceCategoryRuleList": doDescribeDspmIdentifyComplianceCategoryRuleList,
     "DescribeScanTaskRecordList": doDescribeScanTaskRecordList,
     "DescribeScfCustomDomainEndpoints": doDescribeScfCustomDomainEndpoints,
-    "CreateImageRegistryScanTask": doCreateImageRegistryScanTask,
+    "CreateAssetComponentListExportJob": doCreateAssetComponentListExportJob,
+    "DescribeCosOverview": doDescribeCosOverview,
     "ModifyDspmIdentifyComplianceGroupStatus": doModifyDspmIdentifyComplianceGroupStatus,
     "DescribeAccessKeyAlarmDetail": doDescribeAccessKeyAlarmDetail,
     "DescribeSkillScanPayInfo": doDescribeSkillScanPayInfo,
     "DescribeAbnormalCallRecord": doDescribeAbnormalCallRecord,
     "CreateImageLayerVulListExportJob": doCreateImageLayerVulListExportJob,
+    "DescribeCosAkInvokeIpList": doDescribeCosAkInvokeIpList,
     "ModifyImageRegistry": doModifyImageRegistry,
     "DescribeDspmLogList": doDescribeDspmLogList,
     "DescribeBaselineSystemCategoryList": doDescribeBaselineSystemCategoryList,
@@ -40628,11 +43405,13 @@ ACTION_MAP = {
     "StopPreventUninstall": doStopPreventUninstall,
     "DeleteAIAnalysisSMTPAccess": doDeleteAIAnalysisSMTPAccess,
     "DescribeLighthouseFirewallRules": doDescribeLighthouseFirewallRules,
-    "CreateAssetComponentListExportJob": doCreateAssetComponentListExportJob,
+    "CreateImageRegistryScanTask": doCreateImageRegistryScanTask,
     "DescribeCVMAssets": doDescribeCVMAssets,
     "DescribeMachineLoginType": doDescribeMachineLoginType,
     "DescribeImageRegistryNamespaceList": doDescribeImageRegistryNamespaceList,
     "ModifySandboxFileRule": doModifySandboxFileRule,
+    "DescribeCosIpInvokeRecordFile": doDescribeCosIpInvokeRecordFile,
+    "DescribeBucketInvokeIpList": doDescribeBucketInvokeIpList,
     "DescribeDspmIdentifyIdList": doDescribeDspmIdentifyIdList,
     "ModifyCSIPRaspLicenseBinds": doModifyCSIPRaspLicenseBinds,
     "DeleteDspmRiskStrategy": doDeleteDspmRiskStrategy,
@@ -40647,9 +43426,10 @@ ACTION_MAP = {
     "DescribeVulIgnoreRuleList": doDescribeVulIgnoreRuleList,
     "DescribeUebaUserSummary": doDescribeUebaUserSummary,
     "DescribeRiskDetailList": doDescribeRiskDetailList,
-    "DescribeBaselineMainTaskList": doDescribeBaselineMainTaskList,
+    "DescribeCosAuditAppIdList": doDescribeCosAuditAppIdList,
+    "DescribeBaselineCalculatingStatisticsPolicyIDList": doDescribeBaselineCalculatingStatisticsPolicyIDList,
     "CreateDspmApproveHistoryExportJob": doCreateDspmApproveHistoryExportJob,
-    "DescribeImageVulSummaryList": doDescribeImageVulSummaryList,
+    "DescribeBaselineMainTaskList": doDescribeBaselineMainTaskList,
     "DescribeNotifySettingAk": doDescribeNotifySettingAk,
     "DescribeTaskPredictCostQuota": doDescribeTaskPredictCostQuota,
     "DescribeRiskScanCronConfig": doDescribeRiskScanCronConfig,
@@ -40662,6 +43442,7 @@ ACTION_MAP = {
     "ModifyNFSScanConf": doModifyNFSScanConf,
     "DescribeAssetTagAttributes": doDescribeAssetTagAttributes,
     "ModifyNotifySettingAlert": doModifyNotifySettingAlert,
+    "DeleteCosPolicy": doDeleteCosPolicy,
     "DescribePodContainerList": doDescribePodContainerList,
     "ModifyImageVirusWhitelist": doModifyImageVirusWhitelist,
     "DescribeOrganizationInfo": doDescribeOrganizationInfo,
@@ -40676,6 +43457,7 @@ ACTION_MAP = {
     "DeleteEDRRules": doDeleteEDRRules,
     "CreateComplianceRiskExportJob": doCreateComplianceRiskExportJob,
     "ModifyDspmAssetDataScanTaskStatus": doModifyDspmAssetDataScanTaskStatus,
+    "DescribeDspmRisk": doDescribeDspmRisk,
     "DescribeCFWAssetStatistics": doDescribeCFWAssetStatistics,
     "CreateDspmRiskExportJob": doCreateDspmRiskExportJob,
     "RevertDspmAssetAccount": doRevertDspmAssetAccount,
@@ -40694,7 +43476,7 @@ ACTION_MAP = {
     "DeleteDspmCkafkaConfig": doDeleteDspmCkafkaConfig,
     "DescribeVULRiskAdvanceCFGList": doDescribeVULRiskAdvanceCFGList,
     "DescribeUserCallRecord": doDescribeUserCallRecord,
-    "DeleteSandboxFileRule": doDeleteSandboxFileRule,
+    "DescribeCosAlarmList": doDescribeCosAlarmList,
     "ModifyEdrLogCollectPath": doModifyEdrLogCollectPath,
     "DescribeCWPMachineOsList": doDescribeCWPMachineOsList,
     "DescribeKBDetail": doDescribeKBDetail,
@@ -40713,7 +43495,7 @@ ACTION_MAP = {
     "DescribeDspmDictionaryList": doDescribeDspmDictionaryList,
     "ModifyCSIPLicenseBinds": doModifyCSIPLicenseBinds,
     "DescribeSCFAliasList": doDescribeSCFAliasList,
-    "DeleteDspmApplyOrder": doDeleteDspmApplyOrder,
+    "DescribeDspmAssetSupportedPrivileges": doDescribeDspmAssetSupportedPrivileges,
     "DescribeDspmApproveOrderList": doDescribeDspmApproveOrderList,
     "DescribeSandboxDLPSystemRuleList": doDescribeSandboxDLPSystemRuleList,
     "DescribeRiskCenterAssetViewCFGRiskList": doDescribeRiskCenterAssetViewCFGRiskList,
@@ -40721,6 +43503,8 @@ ACTION_MAP = {
     "VerifyDspmAssetLoginCode": doVerifyDspmAssetLoginCode,
     "ModifyAssetTagsByAssetInfo": doModifyAssetTagsByAssetInfo,
     "BatchModifyBaselinePolicy": doBatchModifyBaselinePolicy,
+    "DescribeIpInvokeRecord": doDescribeIpInvokeRecord,
+    "ModifySandboxDLPRule": doModifySandboxDLPRule,
     "ModifyDspmApproveStatus": doModifyDspmApproveStatus,
     "DescribeCloudFunctionList": doDescribeCloudFunctionList,
     "DescribeLastScanTaskInfo": doDescribeLastScanTaskInfo,

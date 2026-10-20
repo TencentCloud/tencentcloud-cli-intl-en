@@ -336,6 +336,13 @@
       "output": "DescribeAuditInstanceListResponse",
       "status": "online"
     },
+    "DescribeAuditLogs": {
+      "document": "This API is used to query database audit logs.",
+      "input": "DescribeAuditLogsRequest",
+      "name": "Queries database audit logs",
+      "output": "DescribeAuditLogsResponse",
+      "status": "online"
+    },
     "DescribeAuditRuleTemplates": {
       "document": "This API is used to query audit rule template information.",
       "input": "DescribeAuditRuleTemplatesRequest",
@@ -2827,6 +2834,365 @@
         }
       ],
       "usage": "out"
+    },
+    "AuditLog": {
+      "document": "Audit log details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of affected rows.",
+          "example": "0",
+          "member": "int64",
+          "name": "AffectRows",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error code.",
+          "example": "0",
+          "member": "int64",
+          "name": "ErrCode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "SQL type.",
+          "example": "UPDATE",
+          "member": "string",
+          "name": "SqlType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Table name.",
+          "example": "andy_table1",
+          "member": "string",
+          "name": "TableName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance name.",
+          "example": "cynosdbmysql-ins-xxxxxxxx",
+          "member": "string",
+          "name": "InstanceName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Audit policy name.",
+          "example": "审计策略",
+          "member": "string",
+          "name": "PolicyName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Database name.",
+          "example": "数据库名称",
+          "member": "string",
+          "name": "DBName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "SQL statement.",
+          "example": "ALTER TABLE ***",
+          "member": "string",
+          "name": "Sql",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Client address.",
+          "example": "192.168.0.1",
+          "member": "string",
+          "name": "Host",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Username.",
+          "example": "user",
+          "member": "string",
+          "name": "User",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Execution time, in microseconds.",
+          "example": "2000",
+          "member": "int64",
+          "name": "ExecTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Time.",
+          "example": "2024-06-08 14:29:25",
+          "member": "string",
+          "name": "Timestamp",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of rows returned.",
+          "example": "1",
+          "member": "int64",
+          "name": "SentRows",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Execution thread ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "ThreadId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of scanned rows.",
+          "example": "1",
+          "member": "int64",
+          "name": "CheckRows",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "cpu execution time, in microseconds.",
+          "example": "289.474",
+          "member": "float",
+          "name": "CpuTime",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "IO wait time, in microseconds.",
+          "example": "1000",
+          "member": "int64",
+          "name": "IoWaitTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Lock waiting time in microseconds.",
+          "example": "57",
+          "member": "int64",
+          "name": "LockWaitTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Transaction continuous waiting time, in µs.",
+          "example": "1092",
+          "member": "int64",
+          "name": "TrxLivingTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Start time. Together with timestamp, it forms a nanosecond-precision time.",
+          "example": "106483229",
+          "member": "int64",
+          "name": "NsTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Basic information of the log hit rule template",
+          "example": "无",
+          "member": "LogRuleTemplateInfo",
+          "name": "TemplateInfo",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Transaction ID",
+          "example": "13365",
+          "member": "int64",
+          "name": "TrxId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Client port.",
+          "example": "40050",
+          "member": "int64",
+          "name": "ClientPort",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AuditLogFilter": {
+      "document": "Audit log filter criteria. When querying audit logs, filter the returned audit logs by user.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Client address.",
+          "example": "192.168.0.1",
+          "member": "string",
+          "name": "Host",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Username.",
+          "example": "[\"user\"]",
+          "member": "string",
+          "name": "User",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Database name.",
+          "example": "[\"db_test\"]",
+          "member": "string",
+          "name": "DBName",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Table name.",
+          "example": "[\"table_test\"]",
+          "member": "string",
+          "name": "TableName",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Audit policy name.",
+          "example": "[\"policy_test\"]",
+          "member": "string",
+          "name": "PolicyName",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "SQL statement. Fuzzy matching supported.",
+          "example": "ALTER TABLE",
+          "member": "string",
+          "name": "Sql",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "SQL type. Currently supports: \"SELECT\", \"INSERT\", \"UPDATE\", \"DELETE\", \"CREATE\", \"DROP\", \"ALTER\", \"SET\", \"REPLACE\", \"EXECUTE\".",
+          "example": "SELECT",
+          "member": "string",
+          "name": "SqlType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Execution time. Unit: ms. Filter audit logs with an execution time more than this value.",
+          "example": "100",
+          "member": "int64",
+          "name": "ExecTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of affected rows. Filter audit logs where the number of affected rows is more than this value.",
+          "example": "10",
+          "member": "int64",
+          "name": "AffectRows",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "SQL type. Supports simultaneous query of multiple types. Currently supports: \"SELECT\", \"INSERT\", \"UPDATE\", \"DELETE\", \"CREATE\", \"DROP\", \"ALTER\", \"SET\", \"REPLACE\", \"EXECUTE\".",
+          "example": "[\"SELECT\"]",
+          "member": "string",
+          "name": "SqlTypes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "SQL statement. Supports transmission of multiple sql statements.",
+          "example": "\"DELETE FROM test\"",
+          "member": "string",
+          "name": "Sqls",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Number of rows returned.",
+          "example": "2",
+          "member": "uint64",
+          "name": "SentRows",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Thread ID.",
+          "example": "[\"49354\"]",
+          "member": "string",
+          "name": "ThreadId",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
     },
     "AuditRuleFilters": {
       "document": "Filter of rule audit",
@@ -11348,6 +11714,125 @@
       ],
       "type": "object"
     },
+    "DescribeAuditLogsRequest": {
+      "document": "DescribeAuditLogs request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "cynosdbmysql-ins-xx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time in the format of \"2017-07-12 10:29:20\".",
+          "example": "2017-07-12 10:29:20",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time in the format: \"2017-07-12 10:29:20\".",
+          "example": "2017-07-12 10:29:20",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sort order. Supported values: \"ASC\" - Ascending order, \"DESC\" - Descending order.",
+          "example": "ASC",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting field. Supported values include:\ntimestamp\n\"affectRows\" - Number of affected rows\n\"execTime\" - Execution time.",
+          "example": "timestap",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": true,
+          "document": "Deprecated.",
+          "example": "无",
+          "member": "AuditLogFilter",
+          "name": "Filter",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination parameter. Number of data entries returned per request. Default value: 100. Maximum value: 100.",
+          "example": "1",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination offset.\nDescription: The sum of Limit and Offset must be less than or equal to 65536.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter criteria. Multiple values have an AND relationship.",
+          "example": "无",
+          "member": "InstanceAuditLogFilter",
+          "name": "LogFilter",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAuditLogsResponse": {
+      "document": "DescribeAuditLogs response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of eligible audit log entries.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Audit log details.",
+          "example": "无",
+          "member": "AuditLog",
+          "name": "Items",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeAuditRuleTemplatesRequest": {
       "document": "DescribeAuditRuleTemplates request structure.",
       "members": [
@@ -19461,6 +19946,39 @@
       ],
       "usage": "out"
     },
+    "InstanceAuditLogFilter": {
+      "document": "Audit log search criteria",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Filter item. Currently supports the following search criteria:\n\nIncludes, excludes, includes (segment dimension), excludes (segment dimension): sql - SQL detail; alarmLevel - alarm level; ruleTemplateId - rule template id\n\nEqual to, not equal to, contains, does not contain: host - client IP address; user - userName; dbName - database name;\n\nEqual, not equal to: sqlType - SQL type; errCode - error code; threadId - thread ID.\n\nRange search (time type is unified to µs): execTime - execution time; lockWaitTime - execution time; ioWaitTime - IO wait time; trxLivingTime - transaction duration; cpuTime - CPU time; checkRows - scanned rows; affectRows - number of affected rows; sentRows - rows returned.",
+          "example": "host",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter criteria. The following conditions are supported:\nWINC-Contains (segment dimension)\nWEXC - Excluding (segment dimension)\nINC - included\nEXC - Excluding\nEQS - equal to\nNEQ - not equal to\nRA - Range.",
+          "example": "INC",
+          "member": "string",
+          "name": "Compare",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filtered value. In reverse query, multiple values have an AND relationship. In forward query, multiple values have an OR relationship.",
+          "example": "100.0.",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
     "InstanceAuditRule": {
       "document": "Audit rule details of the instance, which is an output parameter of the `DescribeAuditRuleWithInstanceIds` API.",
       "members": [
@@ -22278,6 +22796,52 @@
         }
       ],
       "usage": "in"
+    },
+    "LogRuleTemplateInfo": {
+      "document": "Basic information of the audit log hit rule template",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Template ID.",
+          "example": "cynosdb-art-ns0u376",
+          "member": "string",
+          "name": "RuleTemplateId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule template name.",
+          "example": "andy_rule",
+          "member": "string",
+          "name": "RuleTemplateName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alarm level. Valid values: 1 - Low risk, 2 - Medium risk, 3 - High risk.",
+          "example": "2",
+          "member": "string",
+          "name": "AlarmLevel",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule template change status. Valid values: 0 - unchanged, 1 - changed, 2 - deleted.",
+          "example": "1",
+          "member": "int64",
+          "name": "RuleTemplateStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "LogicBackupConfigInfo": {
       "document": "Logical backup configuration information.",

@@ -1,51 +1,539 @@
 {
   "actions": {
+    "AddAggregateCompliancePack": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddAggregateCompliancePack\n<Common request parameters>\n\n{\n    \"AccountGroupId\": \"ca-sdfs7734h24\",\n\"CompliancePackName\": \"Compliance1\",\n    \"RiskLevel\": 1,\n\"Description\": \"Security compliance\",\n    \"ConfigRules\": [\n        {\n            \"Identifier\": \"cam-user-group-bound\",\n\"RuleName\": \"A CAM sub-user must be associated with a user group.\",\n\"Description\": \"If a user in CAM is bound with at least one user group, the rule is complied with.\"\n            \"RiskLevel\": 3,\n            \"ConfigRuleId\": \"cr-13vkg9c31dixgabkepxe\",\n            \"InputParameter\": []\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"CompliancePackId\": \"cp-33mA27YUlOJWG4sJ53Sx\",\n        \"RequestId\": \"da85d5e2-4432-4f02-9863-0ab07adeff33\"\n    }\n}",
+        "title": "Create a Compliance Package"
+      }
+    ],
+    "AddAggregateConfigRule": [
+      {
+        "document": "Add Rule",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddAggregateConfigRule\n<Common request parameters>\n\n{\n    \"Identifier\": \"cam-user-group-bound\",\n    \"IdentifierType\": \"SYSTEM\",\n\"RuleName\": \"A CAM sub-user must be associated with a user group.\",\n    \"ResourceType\": [\n        \"QCS::CAM::User\"\n    ],\n    \"RiskLevel\": 3,\n\"Description\": \"If a user in CAM is bound with at least one user group, the rule is complied with.\"\n    \"TriggerType\": [\n        {\n            \"MessageType\": \"ScheduledNotification\",\n            \"MaximumExecutionFrequency\": \"TwentyFour_Hours\"\n        }\n    ],\n    \"InputParameter\": [],\n    \"AccountGroupId\": \"ca-sdfs7734h24h3\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"da85d5e2-4432-4f02-9863-0ab07adeff33\"\n    }\n}",
+        "title": "Add Rule"
+      }
+    ],
+    "AddAlarmPolicy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddAlarmPolicy\n<Common request parameters>\n\n{\n    \"Name\": \"Alarm Rule 1\",\n    \"Type\": 1,\n    \"EventScope\": [\n        1\n    ],\n    \"RiskLevel\": [\n        1\n    ],\n    \"NoticeTime\": \"09:30:00~23:30:00\",\n    \"NotificationMechanism\": \"real-time sending\",\n    \"Status\": 1,\n    \"NoticePeriod\": [\n        1\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"AlarmPolicyId\": 2,\n        \"RequestId\": \"e2c458f6-dedc-46eb-955a-6d2c3555c597\"\n    }\n}",
+        "title": "Creating Alarm"
+      }
+    ],
+    "AddCompliancePack": [
+      {
+        "document": "This example shows you how to create compliance packages.",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddCompliancePack\n<Common request parameters>\n\n{\n    \"ConfigRules\": [\n        {\n            \"Identifier\": \"sfc-function-settings-check\",\n\"RuleName\": \"Function settings in function compute meet the specified parameter requirements\",\n\"Description\": \"Function settings in function compute meet the specified parameter requirements, deemed as 'compliant'.\"\n            \"RiskLevel\": 3,\n            \"ManagedRuleIdentifier\": \"sfc-function-settings-check\",\n            \"InputParameter\": [\n                {\n                    \"ParameterKey\": \"maxMemorySize\",\n                    \"Type\": \"Require\",\n                    \"Value\": \"512\"\n                }\n            ]\n        }\n    ],\n    \"RiskLevel\": 1,\n\"CompliancePackName\": \"Compliance package 12\",\n    \"Description\": \"\"\n}",
+        "output": "{\n    \"Response\": {\n        \"CompliancePackId\": \"cp-33mA27YUlOJWG4sJ53Sx\",\n        \"RequestId\": \"9de42909-38ef-4e54-99de-8f17f5bbf018\"\n    }\n}",
+        "title": "This example shows you how to create compliance packages."
+      }
+    ],
+    "AddConfigRule": [
+      {
+        "document": "Add Rule",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddConfigRule\n<Common request parameters>\n\n{\n    \"Identifier\": \"cam-user-group-bound\",\n    \"IdentifierType\": \"SYSTEM\",\n\"RuleName\": \"A CAM sub-user must be associated with a user group.\",\n    \"ResourceType\": [\n        \"QCS::CAM::User\"\n    ],\n    \"RiskLevel\": 3,\n\"Description\": \"If a user in CAM is bound with at least one user group, the rule is complied with.\"\n    \"TriggerType\": [\n        {\n            \"MessageType\": \"ScheduledNotification\",\n            \"MaximumExecutionFrequency\": \"TwentyFour_Hours\"\n        }\n    ],\n    \"InputParameter\": []\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"da85d5e2-4432-4f02-9863-0ab07adeff33\",\n        \"RuleId\": \"cr-3xhsd76j603v0a8ma0i73\"\n    }\n}",
+        "title": "Add Rule"
+      }
+    ],
+    "CloseAggregateConfigRule": [
+      {
+        "document": "Close rule",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CloseAggregateConfigRule\n<Common request parameters>\n\n{\n    \"RuleId\": \"cr-3xhsd76j603v0a8ma0i73\",\n    \"AccountGroupId\": \"ca-sdfs7734h24h3\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"857db07e-d8b5-41f8-ae80-e9c4eec09386\"\n    }\n}",
+        "title": "Disable a rule"
+      }
+    ],
+    "CloseConfigRecorder": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CloseConfigRecorder\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"da85d5e2-4432-4f02-9863-0ab07adeff33\"\n    }\n}",
+        "title": "Disable monitoring"
+      }
+    ],
+    "CloseConfigRule": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CloseConfigRule\n<Common request parameters>\n\n{\n    \"RuleId\": \"cr-3xhsd76j603v0a8ma0i73\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"857db07e-d8b5-41f8-ae80-e9c4eec09386\"\n    }\n}",
+        "title": "Disable a Rule"
+      }
+    ],
+    "CreateAggregator": [
+      {
+        "document": "New account group",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAggregator\n<Common request parameters>\n\n{\n    \"Type\": \"RD\",\n    \"Name\": \"Account group 1\",\n    \"Description\": \"Account group description\",\n    \"AggregatorAccounts\": [\n        {\n            \"MemberUin\": \"110000000001\",\n            \"MemberName\": \"test124\"\n        },\n        {\n            \"MemberUin\": \"110000000002\",\n            \"MemberName\": \"test_ckafka\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"AccountGroupId\": \"ca-sdfs7734h24h3\",\n        \"RequestId\": \"da85d5e2-4432-4f02-9863-0ab07adeff33\"\n    }\n}",
+        "title": "New Account Group"
+      }
+    ],
+    "CreateRemediation": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRemediation\n<Common request parameters>\n\n{\n    \"RuleId\": \"cr-oPTxveTx0NbmcNmDNoQG\",\n    \"RemediationType\": \"SCF\",\n    \"RemediationTemplateId\": \"qcs::scf:ap-guangzhou:100000005287:namespace/test/functions/aaa\",\n    \"InvokeType\": \"MANUAL_EXECUTION\",\n    \"SourceType\": \"CUSTOM\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RemediationId\": \"crr-lKj43O4nbSD78XYlvGS9\",\n        \"RequestId\": \"4c9384a0-e80c-4af0-a84c-8682527c86a0\"\n    }\n}",
+        "title": "Creating Remediation Settings"
+      }
+    ],
+    "DeleteAggregateCompliancePack": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteAggregateCompliancePack\n<Common request parameters>\n\n{\n    \"CompliancePackId\": \"cp-p2fnfklc7sdwho2t4wcf\",\n    \"AccountGroupId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"857db07e-d8b5-41f8-ae80-e9c4eec09386\"\n    }\n}",
+        "title": "This API is used to delete compliance packages."
+      }
+    ],
+    "DeleteAggregateConfigRule": [
+      {
+        "document": "Delete a rule",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteAggregateConfigRule\n<Common request parameters>\n\n{\n    \"RuleId\": \"cr-3xhsd76j603v0a8ma0i73\",\n    \"AccountGroupId\": \"ca-sdfs7734h24h3\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"857db07e-d8b5-41f8-ae80-e9c4eec09386\"\n    }\n}",
+        "title": "Delete a rule"
+      }
+    ],
+    "DeleteAggregators": [
+      {
+        "document": "Delete an account group",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteAggregators\n<Common request parameters>\n\n{\n    \"OwnerUin\": 234234324,\n    \"AccountGroupId\": \"ca-sdfs7734h24h3\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"857db07e-d8b5-41f8-ae80-e9c4eec09386\"\n    }\n}",
+        "title": "Delete an Account Group"
+      }
+    ],
+    "DeleteAlarmPolicy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteAlarmPolicy\n<Common request parameters>\n\n{\n    \"AlarmPolicyId\": 18\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"9047c59f-22af-4dcb-8f3b-29677c8a513d\"\n    }\n}",
+        "title": "This API is used to delete alarm policies."
+      }
+    ],
+    "DeleteCompliancePack": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteCompliancePack\n<Common request parameters>\n\n{\n    \"CompliancePackId\": \"cp-p2fnfklc7sdwho2t4wcf\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"857db07e-d8b5-41f8-ae80-e9c4eec09386\"\n    }\n}",
+        "title": "This API is used to delete compliance packages."
+      }
+    ],
+    "DeleteConfigRule": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteConfigRule\n<Common request parameters>\n\n{\n    \"RuleId\": \"cr-3xhsd76j603v0a8ma0i73\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"857db07e-d8b5-41f8-ae80-e9c4eec09386\"\n    }\n}",
+        "title": "Delete a rule"
+      }
+    ],
+    "DeleteRemediations": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteRemediations\n<Common request parameters>\n\n{\n    \"RemediationIds\": [\n        \"crr-GBPkhQhe0UHodWPnZNRD\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"24247cd3-2460-4c9f-8f17-942ab38c6939\"\n    }\n}",
+        "title": "Deleting Remediation Settings"
+      }
+    ],
+    "DescribeAggregateCompliancePack": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAggregateCompliancePack\n<Common request parameters>\n\n{\n    \"CompliancePackId\": \"cp-1g118yvw28p142zr17kz\",\n    \"AccountGroupId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f9c86059-d081-4034-b566-05535406c231\",\n        \"CompliancePackId\": \"cp-xzfz0vu007feuhwi8auv\",\n\"CompliancePackName\": \"Compliance1\",\n        \"ConfigRules\": [\n            {\n                \"ComplianceResult\": \"NON_COMPLIANT\",\n                \"ConfigRuleId\": \"cr-13vkg9c31dixgabkepxe\",\n                \"CreateByType\": \"user\",\n\"Description\": \"If a user in CAM is bound with at least one user group, the rule is complied with.\"\n                \"Identifier\": \"cam-user-group-bound\",\n                \"InputParameter\": [],\n                \"Labels\": [\nuser\nUser group\n                ],\n                \"ManageInputParameter\": [],\n                \"RiskLevel\": 3,\n\"RuleName\": \"A CAM sub-user must be associated with a user group.\"\n                \"SourceCondition\": [\n                    {\n                        \"DesiredValue\": \"1\",\n                        \"EmptyAs\": \"COMPLIANT\",\n                        \"Operator\": \"GreaterOrEquals\",\n                        \"Required\": false,\n                        \"SelectPath\": \"$User.GroupBindNum\"\n                    }\n                ],\n                \"Status\": \"ACTIVE\"\n            }\n        ],\n        \"CreateTime\": \"2022-11-16 14:11:48\",\n\"Description\": \"Security compliance\",\n        \"RiskLevel\": 1,\n        \"Status\": \"ACTIVE\"\n    }\n}",
+        "title": "Querying Compliance Package Details"
+      }
+    ],
+    "DescribeAggregateConfigDeliver": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAggregateConfigDeliver\n<Common request parameters>\n\n{\n    \"AccountGroupId\": \"ca-sdfs7734h24\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Status\": 1,\n        \"DeliverType\": \"COS\",\n        \"DeliverPrefix\": \"testPrefix\",\n        \"DeliverName\": \"testDeliver\",\n        \"TargetArn\": \"qcs::cos:ap-guangzhou:700000358201:prefix/251227028/testbucket-251237532/0\",\n        \"CreateTime\": \"2023-12-12 20:23:56\",\n        \"DeliverUin\": 700000591517,\n        \"RequestId\": \"77c49fca-aa2c-471b-a5d6-d62496f2d13b\"\n    }\n}",
+        "title": "Querying Delivery Details"
+      }
+    ],
+    "DescribeAggregateConfigRule": [
+      {
+        "document": "This example shows you how to query rule details.",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAggregateConfigRule\n<Common request parameters>\n\n{\n    \"RuleId\": \"cr-25yzg5my0ggw5zxuxkhe\",\n    \"AccountGroupId\": \"ca-sdfs7734h24h3\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e4cd38fd-3c1c-415f-8b9a-d56332d1a3c7\",\n        \"ConfigRule\": {\n            \"Annotation\": null,\n            \"CompliancePackId\": \"\",\n            \"CompliancePackName\": null,\n            \"ComplianceResult\": null,\n            \"ConfigRuleId\": \"cr-2d3brhnvyazqb9j1el6o\",\n            \"ConfigRuleInvokedTime\": \"2022-11-16 14:11:50\",\n            \"CreateTime\": \"2022-11-16 11:36:45\",\n            \"Description\": \"If a user in CAM is bound with at least one user group, the rule is complied with.\",\n            \"Identifier\": \"cam-user-group-bound\",\n            \"IdentifierType\": \"SYSTEM\",\n            \"InputParameter\": [],\n            \"Labels\": [],\n            \"TagsScope\": [\n                {\n                    \"TagKey\": \"tag1\",\n                    \"TagValue\": \"tag2\"\n                }\n            ],\n            \"ExcludeResourceIdsScope\": [\n                \"ins-asdads\"\n            ],\n            \"RegionsScope\": [\n                \"ap-shanghai\"\n            ],\n            \"ManageInputParameter\": [],\n            \"ResourceType\": [\n                \"QCS::CAM::User\"\n            ],\n            \"RiskLevel\": 3,\n            \"RuleName\": \"A CAM sub-user must be associated with a user group.\",\n            \"ServiceFunction\": null,\n            \"SourceCondition\": [\n                {\n                    \"DesiredValue\": \"1\",\n                    \"EmptyAs\": \"COMPLIANT\",\n                    \"Operator\": \"GreaterOrEquals\",\n                    \"Required\": false,\n                    \"SelectPath\": \"$User.GroupBindNum\"\n                }\n            ],\n            \"Status\": \"ACTIVE\",\n            \"TriggerType\": [\n                {\n                    \"MaximumExecutionFrequency\": \"TwentyFour_Hours\",\n                    \"MessageType\": \"ScheduledNotification\"\n                }\n            ]\n        }\n    }\n}",
+        "title": "This example shows you how to query rule details."
+      }
+    ],
+    "DescribeAggregateDiscoveredResource": [
+      {
+        "document": "Querying Resource Details",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAggregateDiscoveredResource\n<Common request parameters>\n\n{\n    \"ResourceOwnerId\": 1,\n    \"AccountGroupId\": \"ad-234234234234\",\n    \"ResourceId\": \"adad-adasd-1307051190\",\n    \"ResourceRegion\": \"ap-nanjing\",\n    \"ResourceType\": \"QCS::COS::Bucket\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"701285ae-1e8e-4189-9d7a-e9dec4fadae6\",\n        \"Configuration\": \"{\\\"Acl\\\":[{\\\"Grantee\\\":null,\\\"Permission\\\":\\\"FULL_CONTROL\\\"}],\\\"Url\\\":\\\"https://adad-adasd-1307051190.cos.ap-nanjing.myqcloud.com\\\",\\\"Version\\\":\\\"\\\",\\\"Log\\\":{\\\"TargetBucket\\\":\\\"\\\",\\\"TargetPrefix\\\":\\\"\\\"},\\\"Encryption\\\":null}\",\n        \"ResourceCreateTime\": \"2022-09-01 10:36:51\",\n        \"ResourceId\": \"adad-adasd-1307051190\",\n        \"ResourceName\": \"adad-adasd-1307051190\",\n        \"ResourceRegion\": \"ap-nanjing\",\n        \"ResourceType\": \"QCS::COS::Bucket\",\n        \"ResourceZone\": \"global\",\n        \"Tags\": [\n            {\n                \"TagKey\": \"asd\",\n                \"TagValue\": \"asd\"\n            }\n        ],\n        \"UpdateTime\": \"2022-11-16 11:20:00\"\n    }\n}",
+        "title": "Querying Resource Details"
+      }
+    ],
+    "DescribeAggregator": [
+      {
+        "document": "This example shows you how to query account group details.",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAggregator\n<Common request parameters>\n\n{\n    \"OwnerUin\": 234234324,\n    \"AccountGroupId\": \"ca-sdfs7734h24h3\"\n}",
+        "output": "{\n    \"Response\": {\n        \"AggregatorAccounts\": [\n            {\n                \"MemberUin\": 23423424,\n                \"MemberName\": \"test_user\"\n            }\n        ],\n        \"Type\": \"RD\",\n        \"Description\": \"Global account group\",\n        \"RequestId\": \"73d105d8-5820-434f-9fac-76f926e61c\",\n        \"Name\": \"Name\",\n        \"AggregatorStatus\": 1\n    }\n}",
+        "title": "This example shows you how to query account group details."
+      }
+    ],
+    "DescribeCompliancePack": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCompliancePack\n<Common request parameters>\n\n{\n    \"CompliancePackId\": \"cp-1g118yvw28p142zr17kz\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f9c86059-d081-4034-b566-05535406c231\",\n        \"CompliancePackId\": \"cp-xzfz0vu007feuhwi8auv\",\n\"CompliancePackName\": \"Compliance1\",\n        \"ConfigRules\": [\n            {\n                \"ComplianceResult\": \"NON_COMPLIANT\",\n                \"ConfigRuleId\": \"cr-13vkg9c31dixgabkepxe\",\n                \"CreateByType\": \"user\",\n\"Description\": \"If a user in CAM is bound with at least one user group, the rule is complied with.\"\n                \"Identifier\": \"cam-user-group-bound\",\n                \"InputParameter\": [],\n                \"Labels\": [\nuser\nUser group\n                ],\n                \"ManageInputParameter\": [],\n                \"RiskLevel\": 3,\n\"RuleName\": \"A CAM sub-user must be associated with a user group.\"\n                \"SourceCondition\": [\n                    {\n                        \"DesiredValue\": \"1\",\n                        \"EmptyAs\": \"COMPLIANT\",\n                        \"Operator\": \"GreaterOrEquals\",\n                        \"Required\": false,\n                        \"SelectPath\": \"$User.GroupBindNum\"\n                    }\n                ],\n                \"Status\": \"ACTIVE\"\n            }\n        ],\n        \"CreateTime\": \"2022-11-16 14:11:48\",\n\"Description\": \"Security compliance\",\n        \"RiskLevel\": 1,\n        \"Status\": \"ACTIVE\"\n    }\n}",
+        "title": "Querying Compliance Package Details"
+      }
+    ],
+    "DescribeConfigDeliver": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeConfigDeliver\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Status\": 1,\n        \"DeliverType\": \"cls\",\n        \"DeliverPrefix\": \"config\",\n        \"DeliverName\": \"config_deliver\",\n        \"TargetArn\": \"qcs::cos:ap-hangzhou:45354345345:prefix/24234234/345345345\",\n        \"CreateTime\": \"2025-02-05 01:30:10\",\n        \"RequestId\": \"20250205013003-iwhygdf6sh42aj7gkp8sa\"\n    }\n}",
+        "title": "Querying Delivery Details"
+      }
+    ],
+    "DescribeConfigRecorder": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeConfigRecorder\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"Product\": \"abc\",\n                \"ProductName\": \"abc\",\n                \"ResourceType\": \"abc\",\n                \"ResourceTypeName\": \"abc\",\n                \"UpdateTime\": \"abc\"\n            }\n        ],\n        \"Status\": 1,\n        \"TriggerCount\": 1,\n        \"OpenCount\": 1,\n        \"UpdateCount\": 1,\n        \"CreateTime\": \"abc\",\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "This API is used to query monitoring details."
+      }
+    ],
+    "DescribeConfigRule": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeConfigRule\n<Common request parameters>\n\n{\n    \"RuleId\": \"cr-25yzg5my0ggw5zxuxkhe\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e4cd38fd-3c1c-415f-8b9a-d56332d1a3c7\",\n        \"ConfigRule\": {\n            \"Annotation\": null,\n            \"CompliancePackId\": \"\",\n            \"CompliancePackName\": null,\n            \"ComplianceResult\": null,\n            \"ConfigRuleId\": \"cr-2d3brhnvyazqb9j1el6o\",\n            \"ConfigRuleInvokedTime\": \"2022-11-16 14:11:50\",\n            \"CreateTime\": \"2022-11-16 11:36:45\",\n            \"Description\": \"If a user in CAM is bound with at least one user group, the rule is complied with.\",\n            \"Identifier\": \"cam-user-group-bound\",\n            \"IdentifierType\": \"SYSTEM\",\n            \"InputParameter\": [],\n            \"Labels\": [],\n            \"ManageInputParameter\": [],\n            \"ResourceType\": [\n                \"QCS::CAM::User\"\n            ],\n            \"RiskLevel\": 3,\n            \"RuleName\": \"A CAM sub-user must be associated with a user group.\",\n            \"ServiceFunction\": null,\n            \"SourceCondition\": [\n                {\n                    \"DesiredValue\": \"1\",\n                    \"EmptyAs\": \"COMPLIANT\",\n                    \"Operator\": \"GreaterOrEquals\",\n                    \"Required\": false,\n                    \"SelectPath\": \"$User.GroupBindNum\"\n                }\n            ],\n            \"Status\": \"ACTIVE\",\n            \"TriggerType\": [\n                {\n                    \"MaximumExecutionFrequency\": \"TwentyFour_Hours\",\n                    \"MessageType\": \"ScheduledNotification\"\n                }\n            ]\n        }\n    }\n}",
+        "title": "This example shows you how to query rule details."
+      }
+    ],
     "DescribeDiscoveredResource": [
       {
-        "document": "This example shows you how to get resource details.",
+        "document": "Querying Resource Details",
         "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDiscoveredResource\n<Common request parameters>\n\n{\n    \"ResourceId\": \"ins-2avl1cxx\",\n    \"ResourceType\": \"QCS::CVM::Instance\",\n    \"ResourceRegion\": \"ap-guangzhou\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ea2d804-d278-4631-b04d-70bd40e1a478\",\n        \"Configuration\": \"{\\\"InstanceState\\\":\\\"RUNNING\\\",\\\"InstanceName\\\":\\\"Unnamed\\\",\\\"InstanceId\\\":\\\"ins-111\\\",\\\"InstanceType\\\":\\\"S5.SMALL2\\\",\\\"VirtualPrivateCloud\\\":{\\\"VpcId\\\":\\\"vpc-333\\\",\\\"SubnetId\\\":\\\"subnet-qxupkefw\\\",\\\"AsVpcGateway\\\":false,\\\"PrivateIpAddresses\\\":null,\\\"Ipv6AddressCount\\\":0},\\\"PrivateIpAddresses\\\":[\\\"111\\\"],\\\"PublicIpAddresses\\\":null,\\\"OsName\\\":\\\"TencentOS Server 4 for x86_64\\\",\\\"Memory\\\":2,\\\"CPU\\\":1,\\\"InternetAccessible\\\":{\\\"InternetChargeType\\\":\\\"\\\",\\\"InternetMaxBandwidthOut\\\":0,\\\"PublicIpAssigned\\\":false,\\\"BandwidthPackageId\\\":\\\"\\\"},\\\"ImageId\\\":\\\"img-333\\\",\\\"InstanceChargeType\\\":\\\"PREPAID\\\",\\\"SecurityGroupIds\\\":[\\\"sg-222\\\"],\\\"DataDisks\\\":null,\\\"SystemDisk\\\":{\\\"DiskType\\\":\\\"CLOUD_PREMIUM\\\",\\\"DiskId\\\":\\\"disk-auh4557w\\\"},\\\"ExpiredTime\\\":\\\"2024-12-28T08:07:12Z\\\",\\\"RenewFlag\\\":\\\"NOTIFY_AND_MANUAL_RENEW\\\",\\\"LatestOperation\\\":\\\"\\\",\\\"Placement\\\":{\\\"ProjectId\\\":0},\\\"LatestOperationState\\\":\\\"\\\",\\\"CamRoleName\\\":\\\"\\\"}\"\n        \"ResourceCreateTime\": \"2024-11-28 16:07:12\",\n        \"ResourceId\": \"ins-2avl1cxx\",\n        \"ResourceName\": \"Unnamed\"\n        \"ResourceRegion\": \"ap-guangzhou\",\n        \"ResourceType\": \"QCS::CVM::Instance\",\n        \"ResourceZone\": \"\",\n        \"Tags\": [],\n        \"UpdateTime\": \"2024-11-28 16:08:36\"\n    }\n}",
-        "title": "Getting Resource Details"
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ea2d804-d278-4631-b04d-70bd40e1a478\",\n\"Configuration\": \"{\\\"InstanceState\\\":\\\"RUNNING\\\",\\\"InstanceName\\\":\\\"unnamed\\\",\\\"InstanceId\\\":\\\"ins-111\\\",\\\"InstanceType\\\":\\\"S5.SMALL2\\\",\\\"VirtualPrivateCloud\\\":{\\\"VpcId\\\":\\\"vpc-333\\\",\\\"SubnetId\\\":\\\"subnet-qxupkefw\\\",\\\"AsVpcGateway\\\":false,\\\"PrivateIpAddresses\\\":null,\\\"Ipv6AddressCount\\\":0},\\\"PrivateIpAddresses\\\":[\\\"111\\\"],\\\"PublicIpAddresses\\\":null,\\\"OsName\\\":\\\"TencentOS Server 4 for x86_64\\\",\\\"Memory\\\":2,\\\"CPU\\\":1,\\\"InternetAccessible\\\":{\\\"InternetChargeType\\\":\\\"\\\",\\\"InternetMaxBandwidthOut\\\":0,\\\"PublicIpAssigned\\\":false,\\\"BandwidthPackageId\\\":\\\"\\\"},\\\"ImageId\\\":\\\"img-333\\\",\\\"InstanceChargeType\\\":\\\"PREPAID\\\",\\\"SecurityGroupIds\\\":[\\\"sg-222\\\"],\\\"DataDisks\\\":null,\\\"SystemDisk\\\":{\\\"DiskType\\\":\\\"CLOUD_PREMIUM\\\",\\\"DiskId\\\":\\\"disk-auh4557w\\\"},\\\"ExpiredTime\\\":\\\"2024-12-28T08:07:12Z\\\",\\\"RenewFlag\\\":\\\"NOTIFY_AND_MANUAL_RENEW\\\",\\\"LatestOperation\\\":\\\"\\\",\\\"Placement\\\":{\\\"ProjectId\\\":0},\\\"LatestOperationState\\\":\\\"\\\",\\\"CamRoleName\\\":\\\"\\\"}\"\n        \"ResourceCreateTime\": \"2024-11-28 16:07:12\",\n        \"ResourceId\": \"ins-2avl1cxx\",\n\"ResourceName\": \"Unnamed\",\n        \"ResourceRegion\": \"ap-guangzhou\",\n        \"ResourceType\": \"QCS::CVM::Instance\",\n        \"ResourceZone\": \"\",\n        \"Tags\": [],\n        \"UpdateTime\": \"2024-11-28 16:08:36\"\n    }\n}",
+        "title": "Querying Resource Details"
+      }
+    ],
+    "DescribeSystemCompliancePack": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSystemCompliancePack\n<Common request parameters>\n\n{\n    \"CompliancePackId\": \"cp-wn7attowki\"\n}",
+        "output": "{\n    \"Response\": {\n        \"CompliancePackId\": \"cp-wn7attowki\",\n        \"CompliancePackName\": \"PCI-DSSu6570u636eu5b89u5168u6807u51c6u5408u89c4u5305\",\n        \"ConfigRules\": [\n            {\n                \"CreateTime\": \"2023-07-14 09:08:20\",\n                \"Description\": \"CBSu4e91u786cu76d8u5f00u542fu4e86u52a0u5bc6uff0cu5219u7b26u5408u89c4u5219\",\n                \"Identifier\": \"cbs-disk-encrypted\",\n                \"RiskLevel\": 2,\n                \"RuleName\": \"CBSu4e91u786cu76d8u5f00u542fu52a0u5bc6u72b6u6001\",\n                \"UpdateTime\": \"2023-09-11 18:04:45\"\n            }\n        ],\n        \"Description\": \"u53c2u7167PCI DSS v4.0u5bf9u8d26u53f7u6570u636eu4fddu62a4u7684u57fau7eb***u9762u63d0u4f9bu90e8u5206u5efau8baeu7684u5408u89c4u6027u68c0u6d4bu3002\",\n        \"RiskLevel\": 1,\n        \"RequestId\": \"3b76f6ae-1cc6-455f-8073-409cbf34e186\"\n    }\n}",
+        "title": "Querying Compliance Package Details"
+      }
+    ],
+    "DescribeSystemRule": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSystemRule\n<Common request parameters>\n\n{\n    \"Identifier\": \"cam-user-group-bound\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"SystemConfigRule\": {\n            \"UpdateTime\": \"xx\",\n            \"SourceCondition\": [\n                {\n                    \"Operator\": \"xx\",\n                    \"Required\": true,\n                    \"EmptyAs\": \"xx\",\n                    \"DesiredValue\": \"xx\",\n                    \"SelectPath\": \"xx\"\n                }\n            ],\n            \"ResourceType\": [\n                \"cxzzcxzcx\",\n                \"QCS::CAM::Policy\",\n                \"QCS::CAM::Role\"\n            ],\n            \"TriggerType\": [\n                \"ScheduledNotification\",\n                \"ConfigurationItemChangeNotification\"\n            ],\n            \"RuleName\": \"xx\",\n            \"Label\": [\n                \"3\"\n            ],\n            \"RiskLevel\": 3,\n            \"IdentifierType\": \"xx\",\n            \"ReferenceCount\": 1,\n            \"Identifier\": \"xx\",\n            \"InputParameter\": [\n                {\n                    \"ValueType\": \"xx\",\n                    \"Type\": \"xx\",\n                    \"DefaultValue\": \"xx\",\n                    \"ParameterKey\": \"xx\",\n                    \"Description\": \"xx\"\n                }\n            ],\n            \"CreateTime\": \"xx\",\n            \"ServiceFunction\": \"xx\",\n            \"Description\": \"xx\"\n        }\n    }\n}",
+        "title": "Querying Preset Rule Details"
+      }
+    ],
+    "DetachAggregateConfigRuleToCompliancePack": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DetachAggregateConfigRuleToCompliancePack\n<Common request parameters>\n\n{\n    \"CompliancePackId\": \"cp-3kr5im1ssbg6tdo5jbi9\",\n    \"ConfigRuleId\": \"cr-xhsd76j603v0a8ma0i73\",\n    \"AccountGroupId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"857db07e-d8b5-41f8-ae80-e9c4eec09386\"\n    }\n}",
+        "title": "Removing Rules from Compliance Packages"
+      }
+    ],
+    "DetachConfigRuleToCompliancePack": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DetachConfigRuleToCompliancePack\n<Common request parameters>\n\n{\n    \"CompliancePackId\": \"cp-3kr5im1ssbg6tdo5jbi9\",\n    \"ConfigRuleId\": \"cr-xhsd76j603v0a8ma0i73\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"857db07e-d8b5-41f8-ae80-e9c4eec09386\"\n    }\n}",
+        "title": "Removing Rules from Compliance Packages"
+      }
+    ],
+    "ListAggregateCompliancePacks": [
+      {
+        "document": "This API is used to query the list of compliance packages.",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListAggregateCompliancePacks\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"Offset\": 1,\n    \"AccountGroupId\": \"ca-asdasdad\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"4348278a-b93d-434c-aabd-e8e923560203\",\n        \"Items\": [\n            {\n                \"CompliancePackId\": \"cp-xzfz0vu007feuhwi8auv\",\n\"CompliancePackName\": \"Compliance1\",\n                \"ComplianceResult\": \"NON_COMPLIANT\",\n                \"CreateTime\": \"2022-11-16 14:11:48\",\n                \"Description\": null,\n                \"NoCompliantNames\": [\nA CAM sub-user must be associated with a user group.\n                ],\n                \"RiskLevel\": 1,\n                \"RuleCount\": 1,\n                \"Status\": \"ACTIVE\"\n            }\n        ],\n        \"Total\": 1\n    }\n}",
+        "title": "This API is used to query the list of compliance packages."
+      }
+    ],
+    "ListAggregateConfigRuleEvaluationResults": [
+      {
+        "document": "This example shows you how to query the list of resource evaluation results under a specific rule.",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListAggregateConfigRuleEvaluationResults\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"AccountGroupId\": \"ca-sdfs7734h24h3\",\n    \"ConfigRuleId\": \"cr-2d3brhnvyazqb9j1el6o\",\n    \"ResourceType\": [],\n    \"ComplianceType\": [\n        \"NON_COMPLIANT\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"46e3ce2c-0fd0-4403-97de-590d85408248\",\n        \"Items\": [\n            {\n                \"Annotation\": {\n                    \"Configuration\": \"0\",\n                    \"DesiredValue\": \"1\",\n                    \"Operator\": \"GreaterOrEquals\",\n                    \"Property\": \"$User.GroupBindNum\"\n                },\n                \"ResourceOwnerId\": 1,\n                \"CompliancePackId\": \"\",\n                \"ComplianceType\": \"NON_COMPLIANT\",\n                \"ConfigRuleId\": \"cr-2d3brhnvyazqb9j1el6o\",\n                \"ConfigRuleInvokedTime\": \"2022-11-16 11:36:47\",\n                \"ConfigRuleName\": \"A CAM sub-user must be associated with a user group.\",\n                \"InvokingEventMessageType\": \"[{\\\"messageType\\\":\\\"ScheduledNotification\\\",\\\"maximumExecutionFrequency\\\":{\\\"value\\\":\\\"TwentyFour_Hours\\\"}}]\",\n                \"ResourceId\": \"100028282616\",\n                \"ResourceOwnerName\": \"User1\",\n                \"ResourceName\": \"2\",\n                \"ResourceRegion\": \"global\",\n                \"ResourceType\": \"QCS::CAM::User\",\n                \"ResultRecordedTime\": \"2022-11-16 11:36:44\",\n                \"RiskLevel\": 3\n            }\n        ],\n        \"Total\": 1\n    }\n}",
+        "title": "This example shows you how to query the list of resource evaluation results under a specific rule."
+      }
+    ],
+    "ListAggregateConfigRuleResourceEvaluationResults": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListAggregateConfigRuleResourceEvaluationResults\n<Common request parameters>\n\n{\n    \"AccountGroupId\": \"ca-MEcWXoKFeeHdJq7LvXNA\",\n    \"Limit\": 10,\n    \"Offset\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"Annotation\": {\n                    \"Configuration\": \"Active\",\n                    \"DesiredValue\": \"Inactive\",\n                    \"Operator\": \"Equals\",\n                    \"Property\": \"$.User.ConsoleLogin & $.User.AccessKeys\"\n                },\n                \"ResourceId\": \"100000006214\",\n                \"ResourceName\": \"jj9\",\n                \"ResourceRegion\": \"global\",\n                \"ResourceTags\": [],\n                \"ResourceType\": \"QCS::CAM::User\",\n                \"RuleDescription\": \"23424\",\n                \"RuleId\": \"cr-wCkGQBmxKpxm4EhDldf7\",\n                \"RuleIdentifier\": \"cam-user-login-check\",\n                \"RuleName\": \"CAM access management user login permission detection\",\n                \"RuleOwnerId\": 100000005287,\n                \"RuleRiskLevel\": 3\n            }\n        ],\n        \"TotalCount\": 8,\n        \"RequestId\": \"5f68cd09-4116-4524-b700-35a4966918ae\"\n    }\n}",
+        "title": "Obtain non-compliant evaluation results"
       }
     ],
     "ListAggregateConfigRules": [
       {
-        "document": "This example shows you how to get the rule list of an account group.",
-        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListAggregateConfigRules\n<Common request parameters>\n\n\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"OrderType\": \"\",\n    \"RiskLevel\": [],\n    \"State\": \"ACTIVE\",\n    \"ComplianceResult\": [\n        \"abc\"\n    ],\n    \"RuleName\": \"\",\n    \"RuleOwnerId\": 1,\n    \"AccountGroupId\": \"ca-sdfs7734h24h3\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"149e116a-90ef-45f3-9d5d-3d77fd1c9eb3\",\n        \"Items\": [\n            {\n                \"RegionsScope\": [\n                    \"ap-shanghai\"\n                ],\n                \"TagsScope\": [\n                    {\n                        \"TagKey\": \"tag1\",\n                        \"TagValue\": \"tag2\"\n                    }\n                ],\n                \"ExcludeResourceIdsScope\": [\n                    \"ins-asdasd\"\n                ],\n                \"Annotation\": null,\n                \"CompliancePackId\": \"cp-xzfz0vu007feuhwi8auv\",\n                \"CompliancePackName\": \"Compliance 1\"\n                \"ComplianceResult\": \"NON_COMPLIANT\",\n                \"ConfigRuleId\": \"cr-13vkg9c31dixgabkepxe\",\n                \"ConfigRuleInvokedTime\": null,\n                \"CreateTime\": \"2022-11-16 14:25:01\",\n                \"Description\": \"The rule is met if the user in account access management is associated with at least one user group.\"\n                \"Identifier\": \"cam-user-group-bound\",\n                \"IdentifierType\": \"SYSTEM\",\n                \"InputParameter\": [],\n                \"Labels\": [],\n                \"ManageInputParameter\": [],\n                \"ResourceType\": [\n                    \"QCS::CAM::User\"\n                ],\n                \"RiskLevel\": 3,\n                \"RuleName\": \"Associate CAM Sub-user with User Group\"\n                \"ServiceFunction\": null,\n                \"SourceCondition\": [\n                    {\n                        \"DesiredValue\": \"1\",\n                        \"EmptyAs\": \"COMPLIANT\",\n                        \"Operator\": \"GreaterOrEquals\",\n                        \"Required\": false,\n                        \"SelectPath\": \"$User.GroupBindNum\"\n                    }\n                ],\n                \"Status\": \"ACTIVE\",\n                \"TriggerType\": [\n                    {\n                        \"MaximumExecutionFrequency\": \"TwentyFour_Hours\",\n                        \"MessageType\": \"ScheduledNotification\"\n                    }\n                ]\n            }\n        ],\n        \"Total\": 1\n    }\n}",
-        "title": "Getting Rule List of Account Group"
+        "document": "This API is used to query the list of rules for account groups.",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListAggregateConfigRules\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"OrderType\": \"\",\n    \"RiskLevel\": [],\n    \"State\": \"ACTIVE\",\n    \"ComplianceResult\": [\n        \"COMPLIANT\"\n    ],\n    \"RuleName\": \"\",\n    \"RuleOwnerId\": 1,\n    \"AccountGroupId\": \"ca-sdfs7734h24h3\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"149e116a-90ef-45f3-9d5d-3d77fd1c9eb3\",\n        \"Items\": [\n            {\n                \"RegionsScope\": [\n                    \"ap-shanghai\"\n                ],\n                \"TagsScope\": [\n                    {\n                        \"TagKey\": \"tag1\",\n                        \"TagValue\": \"tag2\"\n                    }\n                ],\n                \"ExcludeResourceIdsScope\": [\n                    \"ins-asdasd\"\n                ],\n                \"Annotation\": null,\n                \"RuleOwnerId\": 23424,\n                \"CompliancePackId\": \"cp-xzfz0vu007feuhwi8auv\",\n\"CompliancePackName\": \"Compliance1\",\n                \"AccountGroupId\": \"ca-sdfs7734h24h3\",\n\"AccountGroupName\": \"Account group\"\n                \"ComplianceResult\": \"NON_COMPLIANT\",\n                \"ConfigRuleId\": \"cr-13vkg9c31dixgabkepxe\",\n                \"ConfigRuleInvokedTime\": null,\n                \"ManageTriggerType\": [\n                    \"SCHEDULE\"\n                ],\n                \"CreateTime\": \"2022-11-16 14:25:01\",\n\"Description\": \"If a user in CAM is bound with at least one user group, the rule is complied with.\"\n                \"Identifier\": \"cam-user-group-bound\",\n                \"IdentifierType\": \"SYSTEM\",\n                \"InputParameter\": [],\n                \"Labels\": [],\n                \"ManageInputParameter\": [],\n                \"ResourceType\": [\n                    \"QCS::CAM::User\"\n                ],\n                \"RiskLevel\": 3,\n\"RuleName\": \"A CAM sub-user must be associated with a user group\",\n                \"ServiceFunction\": null,\n                \"SourceCondition\": [\n                    {\n                        \"DesiredValue\": \"1\",\n                        \"EmptyAs\": \"COMPLIANT\",\n                        \"Operator\": \"GreaterOrEquals\",\n                        \"Required\": false,\n                        \"SelectPath\": \"$User.GroupBindNum\"\n                    }\n                ],\n                \"Status\": \"ACTIVE\",\n                \"TriggerType\": [\n                    {\n                        \"MaximumExecutionFrequency\": \"TwentyFour_Hours\",\n                        \"MessageType\": \"ScheduledNotification\"\n                    }\n                ]\n            }\n        ],\n        \"Total\": 1\n    }\n}",
+        "title": "This API is used to query the list of rules for account groups."
       }
     ],
     "ListAggregateDiscoveredResources": [
       {
-        "document": "This API is used to get the resource list.",
+        "document": "Obtaining the Resource List",
         "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListAggregateDiscoveredResources\n<Common request parameters>\n\n{\n    \"AccountGroupId\": \"ca-sdfsdfsdf\",\n    \"OrderType\": \"DESC\",\n    \"Tags\": [\n        {\n            \"TagKey\": \"TAG1\",\n            \"TagValue\": \"TAG3\"\n        }\n    ],\n    \"MaxResults\": 1,\n    \"Filters\": [\n        {\n            \"Values\": [\n                \"CVM\"\n            ],\n            \"Name\": \"resourceType\"\n        }\n    ],\n    \"NextToken\": \"sdfsdfsdf456457rsf\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"ResourceOwnerName\": \"nickname\",\n                \"ResourceStatus\": \"1\",\n                \"ResourceOwnerId\": 1,\n                \"Tags\": [\n                    {\n                        \"TagKey\": \"TAG2\",\n                        \"TagValue\": \"33ATG5\"\n                    }\n                ],\n                \"ResourceType\": \"cvm\",\n                \"ResourceId\": \"ins-324234\",\n                \"ResourceCreateTime\": \"234234234234\",\n                \"ResourceRegion\": \"ap-hangzhou\",\n                \"ResourceName\": \"server\"\n                \"ResourceZone\": \"ap-guanghzou\",\n                \"ResourceDelete\": 1,\n                \"ComplianceResult\": \"COMPLIANCE\"\n            }\n        ],\n        \"NextToken\": \"0f6ac54682ee49d5b0\",\n        \"RequestId\": \"3d105d8-5820-434f-9fac-76f92\"\n    }\n}",
-        "title": "Getting resource list"
+        "output": "{\n    \"Response\": {\n        \"Count\": 10,\n        \"Items\": [\n            {\n                \"ResourceOwnerName\": \"Nickname\",\n                \"ResourceStatus\": \"1\",\n                \"ResourceOwnerId\": 1,\n                \"Tags\": [\n                    {\n                        \"TagKey\": \"TAG2\",\n                        \"TagValue\": \"33ATG5\"\n                    }\n                ],\n                \"ResourceType\": \"cvm\",\n                \"ResourceId\": \"ins-324234\",\n                \"ResourceCreateTime\": \"234234234234\",\n                \"ResourceRegion\": \"ap-hangzhou\",\n                \"ResourceName\": \"Server\",\n                \"ResourceZone\": \"ap-guanghzou\",\n                \"ResourceDelete\": 1,\n                \"ComplianceResult\": \"COMPLIANCE\"\n            }\n        ],\n        \"NextToken\": \"0f6ac54682ee49d5b0\",\n        \"RequestId\": \"3d105d8-5820-434f-9fac-76f92\"\n    }\n}",
+        "title": "Obtaining the Resource List"
+      }
+    ],
+    "ListAggregators": [
+      {
+        "document": "This example shows you how to query the list of group accounts.",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListAggregators\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"Offset\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"Name\": \"Account group 1\",\n                \"AccountGroupId\": \"ca-accountGroupNo1\",\n                \"OwnerUin\": 454646534234,\n                \"AccountCount\": 3,\n                \"Type\": \"RD\",\n                \"CreateTime\": \"2023-02-20 10:17:18\",\n                \"Description\": \"Description\"\n            }\n        ],\n        \"Total\": 1,\n        \"RequestId\": \"73d105d8-5820-434f-9fac-76f926e61\"\n    }\n}",
+        "title": "This example shows you how to query the list of group accounts."
+      }
+    ],
+    "ListAlarmPolicy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListAlarmPolicy\n<Common request parameters>\n\n{\n    \"Offset\": 10,\n    \"Limit\": 10\n}",
+        "output": "{\n    \"Response\": {\n        \"AlarmPolicyList\": [],\n        \"Total\": 2,\n        \"RequestId\": \"04ec0d59-723e-4800-ae75-5209394aeabf\"\n    }\n}",
+        "title": "Querying the Alarm List"
+      }
+    ],
+    "ListCompliancePacks": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListCompliancePacks\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"Offset\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [],\n        \"Total\": 0,\n        \"RequestId\": \"3e1c6055-e56a-4525-bec0-b1a07f0da340\"\n    }\n}",
+        "title": "Query the compliance package list"
+      }
+    ],
+    "ListConfigRuleEvaluationResults": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListConfigRuleEvaluationResults\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"ConfigRuleId\": \"cr-2d3brhnvyazqb9j1el6o\",\n    \"ResourceType\": [],\n    \"ComplianceType\": [\n        \"NON_COMPLIANT\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"46e3ce2c-0fd0-4403-97de-590d85408248\",\n        \"Items\": [\n            {\n                \"Annotation\": {\n                    \"Configuration\": \"0\",\n                    \"DesiredValue\": \"1\",\n                    \"Operator\": \"GreaterOrEquals\",\n                    \"Property\": \"$User.GroupBindNum\"\n                },\n                \"CompliancePackId\": \"\",\n                \"ComplianceType\": \"NON_COMPLIANT\",\n                \"ConfigRuleId\": \"cr-2d3brhnvyazqb9j1el6o\",\n                \"ConfigRuleInvokedTime\": \"2022-11-16 11:36:47\",\n                \"ConfigRuleName\": \"A CAM sub-user must be associated with a user group.\",\n                \"InvokingEventMessageType\": \"[{\\\"messageType\\\":\\\"ScheduledNotification\\\",\\\"maximumExecutionFrequency\\\":{\\\"value\\\":\\\"TwentyFour_Hours\\\"}}]\",\n                \"ResourceId\": \"100028282616\",\n                \"ResourceName\": \"2\",\n                \"ResourceRegion\": \"global\",\n                \"ResourceType\": \"QCS::CAM::User\",\n                \"ResultRecordedTime\": \"2022-11-16 11:36:44\",\n                \"RiskLevel\": 3\n            }\n        ],\n        \"Total\": 1\n    }\n}",
+        "title": "This example shows you how to query the list of resource evaluation results under a specific rule."
+      }
+    ],
+    "ListConfigRuleResourceEvaluationResults": [
+      {
+        "document": "Querying Resource Evaluation Results Under Configuration Rules",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListConfigRuleResourceEvaluationResults\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"Annotation\": {\n                    \"Configuration\": \"false\",\n                    \"DesiredValue\": \"false[123, 123, 123]\",\n                    \"Operator\": \"\",\n                    \"Property\": \"AttachedPolicy[resource, effect, action]\"\n                },\n                \"ResourceId\": \"4611686018427872551\",\n                \"ResourceName\": \"Orgnization_QCSLinkedRoleInCIC\",\n                \"ResourceRegion\": \"global\",\n                \"ResourceTags\": [],\n                \"ResourceType\": \"QCS::CAM::Role\",\n                \"RuleDescription\": \"CAMu89d2u8272u7ed1u5b9au4e86u6307u5b9au7684u7b56u7565\",\n                \"RuleId\": \"cr-9JY91Ayx1LamXSoa3geQ\",\n                \"RuleIdentifier\": \"cam-role-attached-specified-policy\",\n                \"RuleName\": \"CAMu89d2u8272u7ed1u5b9au4e86u6307u5b9au7684u7b56u7565\",\n                \"RuleOwnerId\": 700000145543,\n                \"RuleRiskLevel\": 1\n            }\n        ],\n        \"RequestId\": \"40e6fc5f-6b54-461d-8a5e-c0b7c276cebe\"\n    }\n}",
+        "title": "Querying Resource Evaluation Results Under Configuration Rules"
       }
     ],
     "ListConfigRules": [
       {
-        "document": " ",
-        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListConfigRules\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"OrderType\": \"\",\n    \"RiskLevel\": [],\n    \"State\": \"ACTIVE\",\n    \"ComplianceResult\": [],\n    \"RuleName\": \"\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"149e116a-90ef-45f3-9d5d-3d77fd1c9eb3\",\n        \"Items\": [\n            {\n                \"Annotation\": null,\n                \"CompliancePackId\": \"cp-xzfz0vu007feuhwi8auv\",\n                \"CompliancePackName\": \"Compliance 1\",\n                \"ComplianceResult\": \"NON_COMPLIANT\",\n                \"ConfigRuleId\": \"cr-13vkg9c31dixgabkepxe\",\n                \"ConfigRuleInvokedTime\": null,\n                \"CreateTime\": \"2022-11-16 14:25:01\",\n                \"Description\": \"The user must be associated with at least one user group in CAM access management to comply with the rule.\",\n                \"Identifier\": \"cam-user-group-bound\",\n                \"IdentifierType\": \"SYSTEM\",\n                \"InputParameter\": [],\n                \"Labels\": [],\n                \"ManageInputParameter\": [],\n                \"ResourceType\": [\n                    \"QCS::CAM::User\"\n                ],\n                \"RiskLevel\": 3,\n                \"RuleName\": \"Associate CAM sub-user with user group\"\n                \"ServiceFunction\": null,\n                \"SourceCondition\": [\n                    {\n                        \"DesiredValue\": \"1\",\n                        \"EmptyAs\": \"COMPLIANT\",\n                        \"Operator\": \"GreaterOrEquals\",\n                        \"Required\": false,\n                        \"SelectPath\": \"$User.GroupBindNum\"\n                    }\n                ],\n                \"Status\": \"ACTIVE\",\n                \"TriggerType\": [\n                    {\n                        \"MaximumExecutionFrequency\": \"TwentyFour_Hours\",\n                        \"MessageType\": \"ScheduledNotification\"\n                    }\n                ]\n            },\n            {\n                \"Annotation\": null,\n                \"CompliancePackId\": \"\",\n                \"CompliancePackName\": null,\n                \"ComplianceResult\": \"NON_COMPLIANT\",\n                \"ConfigRuleId\": \"cr-bdunf5kx3aywn0ac5bkk\",\n                \"ConfigRuleInvokedTime\": null,\n                \"CreateTime\": \"2022-11-16 14:22:59\",\n                \"Description\": \"In CAM, a user must be associated with at least one user group to comply with the rule.\"\n                \"Identifier\": \"cam-user-group-bound\",\n                \"IdentifierType\": \"SYSTEM\",\n                \"InputParameter\": [],\n                \"Labels\": [],\n                \"ManageInputParameter\": [],\n                \"ResourceType\": [\n                    \"QCS::CAM::User\"\n                ],\n                \"RiskLevel\": 3,\n                \"RuleName\": \"Associate CAM sub-user with user group\"\n                \"ServiceFunction\": null,\n                \"SourceCondition\": [\n                    {\n                        \"DesiredValue\": \"1\",\n                        \"EmptyAs\": \"COMPLIANT\",\n                        \"Operator\": \"GreaterOrEquals\",\n                        \"Required\": false,\n                        \"SelectPath\": \"$User.GroupBindNum\"\n                    }\n                ],\n                \"Status\": \"ACTIVE\",\n                \"TriggerType\": [\n                    {\n                        \"MaximumExecutionFrequency\": \"TwentyFour_Hours\",\n                        \"MessageType\": \"ScheduledNotification\"\n                    }\n                ]\n            },\n            {\n                \"Annotation\": null,\n                \"CompliancePackId\": \"\",\n                \"CompliancePackName\": null,\n                \"ComplianceResult\": \"NON_COMPLIANT\",\n                \"ConfigRuleId\": \"cr-2d3brhnvyazqb9j1el6o\",\n                \"ConfigRuleInvokedTime\": null,\n                \"CreateTime\": \"2022-11-16 11:36:45\",\n                \"Description\": \"In CAM, a user must be associated with at least one user group to comply with the rule.\"\n                \"Identifier\": \"cam-user-group-bound\",\n                \"IdentifierType\": \"SYSTEM\",\n                \"InputParameter\": [],\n                \"Labels\": [],\n                \"ManageInputParameter\": [],\n                \"ResourceType\": [\n                    \"QCS::CAM::User\"\n                ],\n                \"RiskLevel\": 3,\n                \"RuleName\": \"Associate CAM sub-user with user group\"\n                \"ServiceFunction\": null,\n                \"SourceCondition\": [\n                    {\n                        \"DesiredValue\": \"1\",\n                        \"EmptyAs\": \"COMPLIANT\",\n                        \"Operator\": \"GreaterOrEquals\",\n                        \"Required\": false,\n                        \"SelectPath\": \"$User.GroupBindNum\"\n                    }\n                ],\n                \"Status\": \"ACTIVE\",\n                \"TriggerType\": [\n                    {\n                        \"MaximumExecutionFrequency\": \"TwentyFour_Hours\",\n                        \"MessageType\": \"ScheduledNotification\"\n                    }\n                ]\n            }\n        ],\n        \"Total\": 3\n    }\n}",
-        "title": "Getting Rule List"
+        "document": "This example shows you how to query the rule list.",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListConfigRules\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"OrderType\": \"desc\",\n    \"RiskLevel\": [\n        1\n    ],\n    \"State\": \"ACTIVE\",\n    \"ComplianceResult\": [\n        \"COMPLIANT\"\n    ],\n    \"RuleName\": \"CAM\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"107f8d51-7095-4a6f-b374-a8aa7743584b\",\n        \"Items\": [\n            {\n                \"AccountGroupId\": \"ca-324234\",\n\"AccountGroupName\": \"Account group\",\n                \"Annotation\": null,\n                \"CompliancePackId\": \"\",\n                \"CompliancePackName\": null,\n                \"ComplianceResult\": \"NON_COMPLIANT\",\n                \"ConfigRuleId\": \"cr-HQxxxxxxxhR0BxxxxGodh\",\n                \"ConfigRuleInvokedTime\": null,\n                \"CreateTime\": \"2024-11-15 14:21:47\",\n\"Description\": \"Comply with rules if no disabled AccessKey exists under the CAM user.\"\n                \"ExcludeResourceIdsScope\": [],\n                \"Identifier\": \"cam-user-invalid-ak-check\",\n                \"IdentifierType\": \"SYSTEM\",\n                \"InputParameter\": [],\n                \"Labels\": [\nuser\nkey\n                ],\n                \"ManageInputParameter\": [],\n                \"ManageTriggerType\": [\n                    \"ConfigurationItemChangeNotification\"\n                ],\n                \"RegionsScope\": [],\n                \"ResourceType\": [\n                    \"QCS::CAM::User\"\n                ],\n                \"RiskLevel\": 3,\n\"RuleName\": \"No disabled access key exists under the CAM user\"\n                \"RuleOwnerId\": 84935363164,\n                \"ServiceFunction\": null,\n                \"SourceCondition\": [],\n                \"Status\": \"ACTIVE\",\n                \"TagsScope\": [],\n                \"TriggerType\": [\n                    {\n                        \"MaximumExecutionFrequency\": null,\n                        \"MessageType\": \"ConfigurationItemChangeNotification\"\n                    }\n                ]\n            }\n        ],\n        \"Total\": 1\n    }\n}",
+        "title": "This example shows you how to query the rule list."
       }
     ],
     "ListDiscoveredResources": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListDiscoveredResources\n<Common request parameters>\n\n{\n    \"OrderType\": \"xx\",\n    \"NextToken\": \"xx\",\n    \"MaxResults\": 1,\n    \"Filters\": [\n        {\n            \"Values\": [\n                \"xx\"\n            ],\n            \"Name\": \"xx\"\n        }\n    ],\n    \"Tags\": [\n        {\n            \"TagKey\": \"xx\",\n            \"TagValue\": \"xx\"\n        }\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"ResourceStatus\": \"xx\",\n                \"Tags\": [\n                    {\n                        \"TagKey\": \"xx\",\n                        \"TagValue\": \"xx\"\n                    }\n                ],\n                \"ResourceType\": \"xx\",\n                \"ResourceId\": \"xx\",\n                \"ResourceCreateTime\": 1,\n                \"ResourceRegion\": \"xx\",\n                \"ResourceName\": \"xx\",\n                \"ResourceZone\": \"xx\",\n                \"ResourceDelete\": 1,\n                \"ComplianceResult\": \"xx\"\n            }\n        ],\n        \"NextToken\": \"xx\",\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Getting resource list"
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListDiscoveredResources\n<Common request parameters>\n\n{\n    \"OrderType\": \"desc\",\n    \"NextToken\": \"C3IptlTj6hTlW0WKVO3NI\",\n    \"MaxResults\": 10,\n    \"Filters\": [\n        {\n            \"Values\": [\n                \"ins-234234\"\n            ],\n            \"Name\": \"resourceName\"\n        }\n    ],\n    \"Tags\": [\n        {\n            \"TagKey\": \"Development Department\",\n            \"TagValue\": \"Operations Department\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Count\": 10,\n        \"Items\": [\n            {\n                \"ResourceStatus\": \"Running\",\n                \"Tags\": [\n                    {\n                        \"TagKey\": \"Development Department\",\n                        \"TagValue\": \"Operations Department\"\n                    }\n                ],\n                \"ResourceType\": \"cvm\",\n                \"ResourceId\": \"ins-234er\",\n                \"ResourceCreateTime\": \"2022-10-10 12:56:37\",\n                \"ResourceRegion\": \"ap-guangzhou\",\n                \"ResourceName\": \"CVM\",\n                \"ResourceZone\": \"ap-guangzhou-1\",\n                \"ResourceDelete\": 1,\n                \"ComplianceResult\": \"COMPLIANT\"\n            }\n        ],\n        \"NextToken\": \"C3IptlTj6hTlW0WKVO3NI\",\n        \"RequestId\": \"4006b9ea-9b33-4b80-8496-6917c900b122\"\n    }\n}",
+        "title": "Obtaining the Resource List"
+      }
+    ],
+    "ListRemediationExecutions": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListRemediationExecutions\n<Common request parameters>\n\n{\n    \"RuleId\": \"cr-RhUgJXUIOisba3r8uEqf\",\n    \"Limit\": 10,\n    \"Offset\": 1,\n    \"ExecutionStatus\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RemediationExecutions\": [],\n        \"Total\": 0,\n        \"RequestId\": \"62f735cf-3135-4cd7-8349-f0c2fd09f11e\"\n    }\n}",
+        "title": "Querying Remediation Records"
+      }
+    ],
+    "ListRemediations": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListRemediations\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"RuleIds\": [\n        \"cr-hZWheBkQnPHGoRDUPd0N\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Remediations\": [\n            {\n                \"InvokeType\": \"NON_EXECUTION\",\n                \"OwnerUin\": \"100000005287\",\n                \"RemediationId\": \"crr-PYS0P5YUE1R1gavTDxlU\",\n                \"RemediationSourceType\": \"SCF\",\n                \"RemediationTemplateId\": \"qcs::scf:ap-guangzhou:100000005287:namespace/test/functions/aaa\",\n                \"RemediationType\": \"SCF\",\n                \"RuleId\": \"cr-hZWheBkQnPHGoRDUPd0N\"\n            }\n        ],\n        \"Total\": 1,\n        \"RequestId\": \"1002ea5c-ce56-4a2e-9cab-ffd5016a11a1\"\n    }\n}",
+        "title": "Querying the Remediation List"
+      }
+    ],
+    "ListResourceTypes": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListResourceTypes\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"Product\": \"CAM\",\n                \"ProductName\": \"Access Management\",\n                \"ResourceType\": \"QCS::CAM::Group\",\n                \"ResourceTypeName\": \"Access management - User group\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Get the resource type list"
+      }
+    ],
+    "ListSystemCompliancePacks": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListSystemCompliancePacks\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"Offset\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"asdasdsdfsdfsdfsdf\",\n        \"Items\": [\n            {\n                \"CompliancePackId\": \"ompliance-hv9k4vlv7h \",\n                \"CompliancePackName\": \"333\",\n                \"ConfigRules\": [],\n                \"Description\": \"444\",\n                \"RiskLevel\": 1\n            },\n            {\n                \"CompliancePackId\": \"compliance-vejvh2fx93\",\n                \"CompliancePackName\": \"222\",\n                \"ConfigRules\": [\n                    {\n                        \"CreateTime\": \"2022-10-09 15:28:38\",\n                        \"Description\": \"333\",\n                        \"Identifier\": \"1\",\n                        \"RiskLevel\": 3,\n                        \"RuleName\": \"2\",\n                        \"UpdateTime\": \"2022-10-09 15:28:38\"\n                    }\n                ],\n                \"Description\": \"222\",\n                \"RiskLevel\": 1\n            }\n        ],\n        \"Total\": 2\n    }\n}",
+        "title": "This API is used to query the list of system compliance packages."
+      }
+    ],
+    "ListSystemRules": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListSystemRules\n<Common request parameters>\n\n{\n    \"Limit\": \"1\",\n    \"Keyword\": \"Test 2\",\n    \"Offset\": \"0\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"CreateTime\": \"2022-11-10 18:56:39\",\n\"Description\": \"If a user in CAM is bound with at least one user group, the rule is complied with.\",\n                \"Identifier\": \"cam-user-group-bound\",\n                \"IdentifierType\": \"SYSTEM\",\n                \"InputParameter\": [],\n                \"Label\": [\n\"User\"\nUser group\n                ],\n                \"ReferenceCount\": 1,\n                \"ResourceType\": [\n                    \"QCS::CAM::User\"\n                ],\n                \"RiskLevel\": 3,\n\"RuleName\": \"A CAM sub-user must be associated with a user group.\"\n                \"ServiceFunction\": \"\",\n                \"SourceCondition\": [\n                    {\n                        \"DesiredValue\": \"1\",\n                        \"EmptyAs\": \"COMPLIANT\",\n                        \"Operator\": \"GreaterOrEquals\",\n                        \"Required\": false,\n                        \"SelectPath\": \"$User.GroupBindNum\"\n                    }\n                ],\n                \"TriggerType\": [\n                    \"ScheduledNotification\"\n                ],\n                \"UpdateTime\": \"2022-11-10 18:56:39\"\n            }\n        ],\n        \"Total\": 1,\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "This example shows you how to query the rule list."
+      }
+    ],
+    "OpenAggregateConfigRule": [
+      {
+        "document": "Enable rules",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: OpenAggregateConfigRule\n<Common request parameters>\n\n{\n    \"RuleId\": \"cr-3xhsd76j603v0a8ma0i73\",\n    \"AccountGroupId\": \"ca-sdfs7734h24h3\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"857db07e-d8b5-41f8-ae80-e9c4eec09386\"\n    }\n}",
+        "title": "Enable rules"
+      }
+    ],
+    "OpenConfigRecorder": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: OpenConfigRecorder\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"da85d5e2-4432-4f02-9863-0ab07adeff33\"\n    }\n}",
+        "title": "Open Monitoring"
+      }
+    ],
+    "OpenConfigRule": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: OpenConfigRule\n<Common request parameters>\n\n{\n    \"RuleId\": \"cr-3xhsd76j603v0a8ma0i73\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"857db07e-d8b5-41f8-ae80-e9c4eec09386\"\n    }\n}",
+        "title": "Enable Rules"
       }
     ],
     "PutEvaluations": [
       {
-        "document": "This example shows you how to report custom rule evaluation results.",
-        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: PutEvaluations\n<Common request parameters>\n\n \n\n \n\n \n\n \n\n{\n    \"ResultToken\": \"Wm9yZlY3WmlKa3cxaW1oQlu-H3WA6JZnH46cUAn2DWGJ9dp3GwJyhMyXsJyeXRcqa8sCimZKH6hy-7RGW_DEtva2Bjd36ryyDg0tbNOfYpf3r6lJB_gHRUCPRrr8HQbEvCoeoGw-KH7LqNUsoa4GzyrvKx2Ak1vycWzfAGaiTISWoTQ2mYr_BYSsVcO077lUlY4hieGJyolSxxUf1V9fDoIXFQikxW6AmU4cTUUpEJ-OF4Mvbq_7quPYZQOjDuo9cAxzUX-D8w==\",\n    \"Evaluations\": [\n        {\n            \"ComplianceResourceId\": \"disk-26itbqha\",\n            \"ComplianceResourceType\": \"QCS::CBS::Disk\",\n            \"ComplianceRegion\": \"ap-guangzhou\",\n            \"ComplianceType\": \"NON_COMPLIANT\",\n            \"Annotation\": {\n                \"Configuration\": \"1\",\n                \"DesiredValue\": \"2\",\n                \"Operator\": \"equal\",\n                \"Property\": \"age\"\n            }\n        }\n    ]\n}",
+        "document": "Reporting Evaluation Results Under Custom Rules",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: PutEvaluations\n<Common request parameters>\n\n{\n    \"ResultToken\": \"Wm9yZlY3WmlKa3cxaW1oQlu-H3WA6JZnH46cUAn2DWG****\",\n    \"Evaluations\": [\n        {\n            \"ComplianceResourceId\": \"disk-26itbqha\",\n            \"ComplianceResourceType\": \"QCS::CBS::Disk\",\n            \"ComplianceRegion\": \"ap-guangzhou\",\n            \"ComplianceType\": \"NON_COMPLIANT\",\n            \"Annotation\": {\n                \"Configuration\": \"1\",\n                \"DesiredValue\": \"2\",\n                \"Operator\": \"equal\",\n                \"Property\": \"age\"\n            }\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"d947eba9-f908-4d2e-9b3d-63bde43abd1a\"\n    }\n}",
-        "title": "Reporting Custom Rule Evaluation Results"
+        "title": "Reporting Evaluation Results Under Custom Rules"
+      }
+    ],
+    "StartAggregateConfigRuleEvaluation": [
+      {
+        "document": "This API is used to trigger evaluations.",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StartAggregateConfigRuleEvaluation\n<Common request parameters>\n\n{\n    \"RuleId\": \"cr-xhsd76j603v0a8ma0i73\",\n    \"AccountGroupId\": \"ca-sdfs7734h24h3\",\n    \"TriggerType\": \"MANUAL\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"857db07e-d8b5-41f8-ae80-e9c4eec09386\"\n    }\n}",
+        "title": "This API is used to trigger evaluations."
+      }
+    ],
+    "StartConfigRuleEvaluation": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StartConfigRuleEvaluation\n<Common request parameters>\n\n{\n    \"RuleId\": \"cr-xhsd76j603v0a8ma0i73\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"857db07e-d8b5-41f8-ae80-e9c4eec09386\"\n    }\n}",
+        "title": "This API is used to trigger evaluations."
+      }
+    ],
+    "StartRemediation": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StartRemediation\n<Common request parameters>\n\n{\n    \"RuleId\": \"cr-k7t0U3UrwBLOZe97lL20\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"43fe2144-f680-417d-8d82-891e73075142\"\n    }\n}",
+        "title": "Manual Repair"
+      }
+    ],
+    "UpdateAggregateCompliancePack": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateAggregateCompliancePack\n<Common request parameters>\n\n{\n    \"AccountGroupId\": \"xx\",\n    \"CompliancePackId\": \"cp-xzfz0vu007feuhwi8auv\",\n    \"CompliancePackName\": \"Compliance1\",\n    \"RiskLevel\": 1,\n    \"Description\": \"Security compliance\",\n    \"ConfigRules\": [\n        {\n            \"Identifier\": \"cam-user-group-bound\",\n            \"RuleName\": \"A CAM sub-user must be associated with a user group.\",\n            \"Description\": \"If a user in CAM is bound with at least one user group, the rule is complied with.\",\n            \"RiskLevel\": 3,\n            \"ConfigRuleId\": \"cr-13vkg9c31dixgabkepxe\",\n            \"InputParameter\": []\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"da85d5e2-4432-4f02-9863-0ab07adeff33\"\n    }\n}",
+        "title": "Edit Conformance Pack"
+      }
+    ],
+    "UpdateAggregateCompliancePackStatus": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateAggregateCompliancePackStatus\n<Common request parameters>\n\n{\n    \"Status\": \"ACTIVE\",\n    \"CompliancePackId\": \"cp-3kr5im1ssbg6tdo5jbi9\",\n    \"AccountGroupId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"857db07e-d8b5-41f8-ae80-e9c4eec09386\"\n    }\n}",
+        "title": "Modifying Compliance Package Statuses"
+      }
+    ],
+    "UpdateAggregateConfigDeliver": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateAggregateConfigDeliver\n<Common request parameters>\n\n{\n    \"Status\": 1,\n    \"DeliverName\": \"Shipping Service 1\",\n    \"AccountGroupId\": \"ca-sdfs7734h24\",\n    \"DeliverPrefix\": \"clonfig_fix\",\n    \"TargetArn\": \"qcs::cos:ap-nanjing:100020812189:prefix/1307051190/adad-adasd\",\n    \"DeliverUin\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"da85d5e2-4432-4f02-9863-0ab07adeff33\"\n    }\n}",
+        "title": "Editing Shipping Settings"
+      }
+    ],
+    "UpdateAggregateConfigRule": [
+      {
+        "document": "Edit Rule",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateAggregateConfigRule\n<Common request parameters>\n\n{\n    \"RuleId\": \"cr-bdunf5kx3aywn0ac5bkk\",\n\"RuleName\": \"A CAM sub-user must be associated with a user group.\"\n\"Description\": \"If a user in CAM is bound with at least one user group, the rule is complied with.\"\n    \"RiskLevel\": 3,\n    \"TriggerType\": [\n        {\n            \"MessageType\": \"ScheduledNotification\",\n            \"MaximumExecutionFrequency\": \"TwentyFour_Hours\"\n        }\n    ],\n    \"InputParameter\": [],\n    \"AccountGroupId\": \"ca-sdfs7734h24h3\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"da85d5e2-4432-4f02-9863-0ab07adeff33\"\n    }\n}",
+        "title": "Edit Rule"
+      }
+    ],
+    "UpdateAggregator": [
+      {
+        "document": "Edit account group",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateAggregator\n<Common request parameters>\n\n{\n    \"OwnerUin\": 234234,\n    \"Description\": \"Account group description\",\n    \"AccountGroupId\": \"ca-accountGroupNo1\",\n    \"Name\": \"Account group name\",\n    \"AggregatorAccounts\": [\n        {\n            \"MemberUin\": \"110000000001\",\n            \"MemberName\": \"test124\"\n        },\n        {\n            \"MemberUin\": \"110000000002\",\n            \"MemberName\": \"test_ckafka\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"da85d5e2-4432-4f02-9863-0ab07adeff33\"\n    }\n}",
+        "title": "Edit Account Group"
+      }
+    ],
+    "UpdateAlarmPolicy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateAlarmPolicy\n<Common request parameters>\n\n{\n    \"AlarmPolicyId\": 123,\n    \"Name\": \"u544au8b66u89c4u5219\",\n    \"EventScope\": [\n        1\n    ],\n    \"RiskLevel\": [\n        1\n    ],\n    \"NoticeTime\": \"09:30:00~23:30:00\",\n    \"NotificationMechanism\": \"u5b9eu65f6u53d1u9001\",\n    \"Status\": 1,\n    \"NoticePeriod\": [\n        1\n    ],\n    \"Description\": \"u5bf9u4e0du5408u89c4u89c4u5219u8fdbu884cu544au8b66\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a7a78dce-732b-4c5e-8cd1-c11ea0e4a40e\"\n    }\n}",
+        "title": "Updating Alarm Settings"
+      }
+    ],
+    "UpdateCompliancePack": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateCompliancePack\n<Common request parameters>\n\n{\n    \"CompliancePackId\": \"cp-xzfz0vu007feuhwi8auv\",\n\"CompliancePackName\": \"Compliance1\",\n    \"RiskLevel\": 1,\n\"Description\": \"Security compliance\",\n    \"ConfigRules\": [\n        {\n            \"Identifier\": \"cam-user-group-bound\",\n\"RuleName\": \"A CAM sub-user must be associated with a user group.\",\n\"Description\": \"If a user in CAM is bound with at least one user group, the rule is complied with.\"\n            \"RiskLevel\": 3,\n            \"ConfigRuleId\": \"cr-13vkg9c31dixgabkepxe\",\n            \"InputParameter\": []\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"da85d5e2-4432-4f02-9863-0ab07adeff33\"\n    }\n}",
+        "title": "Edit Conformance Pack"
+      }
+    ],
+    "UpdateCompliancePackStatus": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateCompliancePackStatus\n<Common request parameters>\n\n{\n    \"Status\": \"ACTIVE\",\n    \"CompliancePackId\": \"cp-3kr5im1ssbg6tdo5jbi9\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"857db07e-d8b5-41f8-ae80-e9c4eec09386\"\n    }\n}",
+        "title": "Modifying Compliance Package Statuses"
+      }
+    ],
+    "UpdateConfigDeliver": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateConfigDeliver\n<Common request parameters>\n\n{\n    \"Status\": 1,\n    \"DeliverName\": \"config_deliver\",\n    \"DeliverPrefix\": \"config\",\n    \"TargetArn\": \"qcs::cos:ap-nanjing:10002081*****:prefix/130705*****/adad-adasd\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"da85d5e2-4432-4f02-9863-0ab07adeff33\"\n    }\n}",
+        "title": "Editing Shipping Settings"
+      }
+    ],
+    "UpdateConfigRecorder": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateConfigRecorder\n<Common request parameters>\n\n{\n    \"ResourceTypes\": [\n        \"QCS::CAM::Group\",\n        \"QCS::CAM::Role\",\n        \"QCS::CAM::Policy\",\n        \"QCS::CAM::User\",\n        \"QCS::COS::Bucket\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"da85d5e2-4432-4f02-9863-0ab07adeff33\"\n    }\n}",
+        "title": "Edit Monitoring Scope"
+      }
+    ],
+    "UpdateConfigRule": [
+      {
+        "document": "Edit Rule",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateConfigRule\n<Common request parameters>\n\n{\n    \"RuleId\": \"cr-bdunf5kx3aywn0ac5bkk\",\n\"RuleName\": \"A CAM sub-user must be associated with a user group.\"\n\"Description\": \"If a user in CAM is bound with at least one user group, the rule is complied with.\",\n    \"RiskLevel\": 3,\n    \"TriggerType\": [\n        {\n            \"MessageType\": \"ScheduledNotification\",\n            \"MaximumExecutionFrequency\": \"TwentyFour_Hours\"\n        }\n    ],\n    \"InputParameter\": []\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"da85d5e2-4432-4f02-9863-0ab07adeff33\"\n    }\n}",
+        "title": "Edit Rule"
+      }
+    ],
+    "UpdateRemediation": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: config.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateRemediation\n<Common request parameters>\n\n{\n    \"RemediationId\": \"crr-Z80LHNfW09bakPGFd9cj\",\n    \"RemediationType\": \"SCF\",\n    \"RemediationTemplateId\": \"qcs::scf:ap-guangzhou:100000005287:namespace/test/functions/bbb\",\n    \"InvokeType\": \"MANUAL_EXECUTION\",\n    \"SourceType\": \"CUSTOM\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"9d52941a-5658-4dd3-b08c-590071eee6a7\"\n    }\n}",
+        "title": "Editing Remediation Settings"
       }
     ]
   },
