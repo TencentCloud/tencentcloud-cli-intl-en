@@ -7074,7 +7074,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Verification result code.\n-Fee result code\nThree-element information consistency.\n-4: Three-element information inconsistency.\n\n-No charge result code\n-6: Invalid phone number.\n-7: Identity number error.\n-8: Name verification failed.\n-9: No records.\n-11: The Verification Center Service is busy.\n-12: Authentication attempts exceeded the daily limit. Retry the next day.\n-13: The number range is unsupported for verification.",
+          "document": "Verification result code.\nFee result code\n-0:Three-element information consistency.\n-4: Three-element information inconsistency.\n\nNo charge result code\n-6: Invalid phone number.\n-7: Identity number error.\n-8: Name verification failed.\n-9: No records.\n-11: The Verification Center Service is busy.\n-12: Authentication attempts exceeded the daily limit. Retry the next day.\n-13: The number range is unsupported for verification.",
           "example": "0",
           "member": "string",
           "name": "Result",
