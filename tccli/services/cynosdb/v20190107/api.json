@@ -2239,7 +2239,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Order number of the payment. Description: We recommend you use the <a href=\"https://www.tencentcloud.com/document/product/1003/52131?from_cn_redirect=1\">DescribeResourcesByDealName</a> API to query order associated instances.</p>",
+          "document": "<p>Order number of the payment. Description: We recommend you use the <a href=\"https://www.tencentcloud.com/document/product/1003/52131?from_cn_redirect=1\">DescribeResourcesByDealName</a> API to query the instances associated with the order.</p>",
           "example": "[\"182711111\"]",
           "member": "string",
           "name": "DealNames",
@@ -2747,7 +2747,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Array of instance group IDs, starting with the cynosdbmysql-grp- prefix or the TKE cluster ID.\nDescription: To get the instance group ID of a cluster, perform [Query cluster instance group](https://www.tencentcloud.com/document/product/1003/103934?from_cn_redirect=1).",
+          "document": "Array of instance group IDs, starting with the cynosdbmysql-grp- prefix or cluster ID.\nDescription: To get the instance group ID of a cluster, call [Query cluster instance group](https://www.tencentcloud.com/document/product/1003/103934?from_cn_redirect=1).",
           "example": "cynosdbmysql-grp-beg2j3v0",
           "member": "string",
           "name": "InstanceIds",
@@ -18923,7 +18923,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Array of instance group IDs, starting with the cynosdbmysql-grp- prefix or cluster ID.\nDescription: To get the instance group ID of a cluster, perform [Query Cluster Instance Group](https://www.tencentcloud.com/document/product/1003/103934?from_cn_redirect=1).",
+          "document": "Array of instance group IDs, starting with the cynosdbmysql-grp- prefix or cluster ID.\nDescription: To get the instance group ID of a cluster, perform [Query cluster instance group](https://www.tencentcloud.com/document/product/1003/103934?from_cn_redirect=1).",
           "example": "[\"cynosdbmysql-grp-beg2j3v0\",\"cynosdbmysql-grp-bfayu2ks\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -25961,7 +25961,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Consistency timeout.<br>Value range: 0–1000000 (µs). Setting it to 0 means that if a read-only instance has a delay, causing the consistency policy to fail, the request will wait indefinitely.</p>",
+          "document": "<p>Consistency timeout. Value range: 0–1000000 (ms). If set to 0, requests will wait indefinitely when a read-only instance has a delay that causes the consistency policy to fail.</p>",
           "example": "100",
           "member": "string",
           "name": "ConsistencyTimeOut",
@@ -27564,7 +27564,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Please use [cluster information description](https://www.tencentcloud.com/document/api/1003/48086?from_cn_redirect=1) to get the clusterId.",
+          "document": "Please use [Cluster information description](https://www.tencentcloud.com/document/api/1003/48086?from_cn_redirect=1) to get the clusterId.",
           "example": "cynosdbmysql-bdcl1n11",
           "member": "string",
           "name": "ClusterId",
@@ -27582,7 +27582,7 @@
         },
         {
           "disabled": false,
-          "document": "Specified vpc ID. Please use [query the vpc list](https://www.tencentcloud.com/document/api/215/15778?from_cn_redirect=1) to get the vpc ID.",
+          "document": "Designated vpc ID. Please use [query the vpc list](https://www.tencentcloud.com/document/api/215/15778?from_cn_redirect=1) to get the vpc ID.",
           "example": "vpc-74h05211",
           "member": "string",
           "name": "VpcId",
@@ -27591,7 +27591,7 @@
         },
         {
           "disabled": false,
-          "document": "Designated subnet ID. If vpc ID is set up, SubnetId is required. Please use [query subnet list](https://www.tencentcloud.com/document/api/215/15784?from_cn_redirect=1) to get SubnetId.",
+          "document": "Designated subnet ID. If vpc ID is set up, SubnetId is required. Please use query subnet list (https://www.tencentcloud.com/document/api/215/15784?from_cn_redirect=1) to get SubnetId.",
           "example": "subnet-d16fxg11",
           "member": "string",
           "name": "SubnetId",
