@@ -680,9 +680,9 @@
       "status": "online"
     },
     "DescribeWorkflows": {
-      "document": "This API is used to get the list of workflow details by workflow ID.",
+      "document": "Based on the workflow ID, get the workflow details list.",
       "input": "DescribeWorkflowsRequest",
-      "name": "Get the workflow list",
+      "name": "Obtaining the List of Workflows",
       "output": "DescribeWorkflowsResponse",
       "status": "online"
     },
@@ -8451,6 +8451,17 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "mp3",
+          "member": "string",
+          "name": "OutputAudioFormat",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -9608,7 +9619,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Audio beautification configurations.</p>",
+          "document": "<p>Audio improvement configuration.</p>",
           "example": "无",
           "member": "AudioBeautifyConfig",
           "name": "Beautify",
@@ -9636,7 +9647,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>Capability configuration switch</p><p>Enumeration values: </p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul><p>Default value: OFF</p>",
+          "document": "<p>Capability configuration switch</p><p>Enumeration values:</p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul><p>Default value: OFF</p>",
           "example": "OFF",
           "member": "string",
           "name": "Switch",
@@ -9647,7 +9658,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Audio editing type</p><p>Enumeration values:</p><ul><li>restore: Repair</li></ul><p>When enabled, you must explicitly specify the enumeration value</p>",
+          "document": "<p>Types of audio editing</p><p>Enumeration values:</p><ul><li>restore: Repair</li></ul><p>When enabled, you must explicitly specify an enumeration value</p>",
           "example": "restore",
           "member": "string",
           "name": "Type",
@@ -9908,7 +9919,7 @@
         },
         {
           "disabled": false,
-          "document": "The region of the AWS S3 bucket.",
+          "document": "The region of the AWS S3 bucket.  us-east-1  \neu-west-3",
           "example": "us-east-1 ",
           "member": "string",
           "name": "S3Region",
@@ -11880,7 +11891,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Name of the COS bucket bound to a workflow, such as `TopRankVideo-125xxx88`.",
+          "document": "Name of the COS Bucket bound to the workflow, for example, TopRankVideo-125xxx88.",
           "example": "CosVideoFile-125xxx88",
           "member": "string",
           "name": "Bucket",
@@ -11902,7 +11913,7 @@
         },
         {
           "disabled": false,
-          "document": "Input path directory bound to a workflow, such as `/movie/201907/`. If this parameter is left empty, the `/` root directory will be used.",
+          "document": "The bucket directory bound to a workflow. It must be an absolute path that starts and ends with `/`, such as `/movie/201907/`. If you do not specify this, the root directory will be bound.",
           "example": "/trigger-dir/",
           "member": "string",
           "name": "Dir",
@@ -11913,7 +11924,7 @@
         },
         {
           "disabled": false,
-          "document": "All supported formats are as follows:\n- Video file extension. The following 15 options are supported:\n`.mp4`, `.avi`, `.mov`, `.wmv`, `.flv`, `.mkv`, `.mpg`, `.mpeg`, `.rm`, `.rmvb`, `.asf`, `.3gp`, `.webm`, `.ts`, and `.m4v`.\n- Audio file extension. The following 7 options are supported:\n`.mp3`, `.wav`, `.aac`, `.flac`, `.ogg`, `.m4a`, and `.amr`.\n- Subtitle file extension. The following 2 options are supported:\n`.vtt` and `.srt`.\n- `*`: any file format is supported.\n- Unspecified or input an empty list: the system supports the following preset file formats: video (`.mp4`, `.ts`, `.flv`, `.wmv`, `.asf`, `.rm`, `.rmvb`, `.mpg`, `.mpeg`, `.3gp`, `.mov`, `.webm`, `.mkv`, `.avi`, and `.m4v`); audio (`.mp3`, `.m4a`, `.flac`, `.ogg`, `.wav`, `.amr`, and `.aac`); subtitle (`.vtt` and `.srt`).\n**Note**:\n1. If the input format list includes `*`, it indicates that any file format is supported.\n2. File extensions can be provided with or without `.`, such as `.mp4` or `mp4`, both are supported.\n3. Custom file extensions should consist of digits, letters, and characters, and have a length between 1 and 64 characters.",
+          "document": "All supported formats are as follows:\n\n- Video file extension. The following 15 options are supported:\n`.mp4`, `.avi`, `.mov`, `.wmv`, `.flv`, `.mkv`, `.mpg`, `.mpeg`, `.rm`, `.rmvb`, `.asf`, `.3gp`, `.webm`, `.ts`, `.m4v`\n\n- Audio file extension. The following 7 options are supported:\n`.mp3`, `.wav`, `.aac`, `.flac`, `.ogg`, `.m4a`, `.amr`\n\n- Subtitle file extension. The following 2 options are supported:\n`.vtt`, `.srt`\n\n- `*`: any file format is supported.- Unspecified or input an empty list: the system supports the following preset file formats: video (`.mp4`, `.ts`, `.flv`, `.wmv`, `.asf`, `.rm`, `.rmvb`, `.mpg`, `.mpeg`, `.3gp`, `.mov`, `.webm`, `.mkv`, `.avi`, and `.m4v`); audio (`.mp3`, `.m4a`, `.flac`, `.ogg`, `.wav`, `.amr`, and `.aac`); subtitle (`.vtt` and `.srt`).**Note**:\n1. If the input format list includes `*`, it indicates that any file format is supported.\n2. File extensions can be provided with or without `.`, such as `.mp4` or `mp4`, both are supported.\n3. Custom file extensions should consist of digits, letters, and characters, and have a length between 1 and 64 characters.",
           "example": "[\"mp4\",\"flv\",\"mov\"]",
           "member": "string",
           "name": "Formats",
@@ -12421,7 +12432,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Specifies the model version. By default, the system uses the supported stable version of the model. Supported versions for GL: 3.0-clip and 3.0-pro. Supported versions for MiniMaxMusic: 2.0, 2.5, 2.6, and 3.0. Supported versions for EL: compose_v2 and sound_t2s_v2. Supported versions for Mureka: song_8, song_9, song_9.5, instrumental_8, instrumental_9, and instrumental_9.5.</p>",
+          "document": "<p>Specifies the model version. By default, the system uses the supported stable version of the model.<br>Supported versions for GL: 3.0-clip and 3.0-pro.<br>Supported versions for MiniMaxMusic: 2.0, 2.5, 2.6, and 3.0.<br>Supported versions for EL: compose_v2 and sound_t2s_v2.<br>Supported versions for Mureka: song_8, song_9, song_9.5, instrumental_8, instrumental_9, and instrumental_9.5.</p>",
           "example": "1.0",
           "member": "string",
           "name": "ModelVersion",
@@ -12484,7 +12495,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Used to pass in some special scene parameters required by the model, serialized into strings in Json format. <br>Example MinimaxMusic model When lyrics are passed in:<br> {\"lyric\":{\"ponies are running happily, flowers are blooming\"}}</p><ol><li>MiniMaxMusic raw pure music parameters use example:&quot; AdditionalParameters&quot;:&quot; {\"is_instrumental\":true}&quot;. <br>Supported transparent transmission parameters are: lyrics, is_instrumental, aigc_watermark, sample_rate, bitrate. </li><li>EL Health Music supports transparent transmission parameters:<br> PromptInfluence, WithTimestamps, CompositionPlan, ForceInstrumental and other parameters. </li></ol>",
+          "document": "<p>This is used to specify special scenario parameters required by the model, in the format of a serialized JSON string.<br>Example to specify lyrics for the MinimaxMusic model:<br>{\"lyric\":{\"The pony is running with joy. The flowers are blooming.\"}}</p><ol><li>Example for MiniMaxMusic instrumental music: &quot;AdditionalParameters&quot;:&quot;{\"is_instrumental\":true}&quot;。<br>Supported pass-through parameters: lyrics, is_instrumental, aigc_watermark, sample_rate, bitrate.</li><li>Pass-through parameters supported for EL music generation:<br>PromptInfluence, WithTimestamps, CompositionPlan, ForceInstrumental and other parameters.</li><li>Pass-through parameters supported by the Mureka model:<br>n: Specifies the number of output audio files.<br>Non-instrumental version supports: lyrics, gender, reference_id, melody_id.<br>Instrumental version supports: instrumental_id.</li></ol>",
           "example": "{\"sequential_image_generation\":\"auto\"}",
           "member": "string",
           "name": "AdditionalParameters",
@@ -13218,7 +13229,7 @@
         {
           "disabled": false,
           "document": "<p>Task ID.</p>",
-          "example": "e084efaa-d25************6b85e473c0e5",
+          "example": "516e11a9-**************-e0c84dffda8b",
           "member": "string",
           "name": "TaskId",
           "output_required": true,
@@ -15435,8 +15446,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Keyword, array length limit: 100 words.",
-          "example": "“”",
+          "document": "<p>Keyword. Array length limit: 100 words.</p>",
+          "example": "[\"keyword\"]",
           "member": "string",
           "name": "Keywords",
           "required": true,
@@ -18979,6 +18990,24 @@
         },
         {
           "disabled": false,
+          "document": "<p>Pagination query page number. Value range: starts from 1. Default value: 1.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Page size. If left blank, all data meeting conditions will be returned by default.</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
           "document": "<p>Extended parameters in the format of a JSON string. </p><p>Other filter criteria:\nvoiceName (String): Voice name, fuzzy matching. labels (Array of String): Tags. Matches voices that contain these tags.</p>",
           "example": "{\n    \"labels\": [\"温柔\"]\n}",
           "member": "string",
@@ -19212,8 +19241,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Workflow ID filter. Array length limit: 100.",
-          "example": "[\"78459\\n\"]",
+          "document": "<p>Workflow ID filter condition, with an array length limit of 100.</p>",
+          "example": "[10001]",
           "member": "int64",
           "name": "WorkflowIds",
           "required": false,
@@ -19221,8 +19250,8 @@
         },
         {
           "disabled": false,
-          "document": "Workflow status. Valid values:\n<li>Enabled: Enabled,</li>\n<li>Disabled: Disabled.</li>\nIf this parameter is left empty, the workflow status will not be distinguished.",
-          "example": "“”",
+          "document": "<p>Workflow status. Value range:</p><li>Enabled: on,</li><li>Disabled: off.</li>If this parameter is not specified, workflow status is not distinguished.",
+          "example": "Enabled",
           "member": "string",
           "name": "Status",
           "required": false,
@@ -19230,7 +19259,7 @@
         },
         {
           "disabled": false,
-          "document": "Paging offset. Default value: 0.",
+          "document": "<p>Paging offset. Default value: 0.</p>",
           "example": "0",
           "member": "int64",
           "name": "Offset",
@@ -19239,7 +19268,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of returned entries. Default value: 10. Maximum value: 100.",
+          "document": "<p>Number of returned entries. Default value: 10. Maximum value: 100.</p>",
           "example": "0",
           "member": "int64",
           "name": "Limit",
@@ -19254,7 +19283,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Number of eligible entries.",
+          "document": "<p>Total number of records that meet filter conditions.</p>",
           "example": "1",
           "member": "uint64",
           "name": "TotalCount",
@@ -19264,7 +19293,7 @@
         },
         {
           "disabled": false,
-          "document": "Workflow information array.",
+          "document": "<p>Workflow information array.</p>",
           "example": "无",
           "member": "WorkflowInfo",
           "name": "WorkflowInfoSet",
@@ -19601,11 +19630,11 @@
       "usage": "both"
     },
     "DiffusionEnhanceV2Config": {
-      "document": "LLM enhancement - Professional Edition",
+      "document": "LLM enhancement - Professional edition",
       "members": [
         {
           "disabled": false,
-          "document": "<p>Capability configuration switch</p><p>Enumeration values: </p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul><p>Default value: OFF</p>",
+          "document": "<p>Capability configuration switch</p><p>Enumeration values:</p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul><p>Default value: OFF</p>",
           "example": "OFF",
           "member": "string",
           "name": "Switch",
@@ -19616,7 +19645,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Strength type</p><p>Enumeration values: </p><ul><li>weak: Weak</li><li>normal: Medium</li><li>strong: Strong</li></ul>",
+          "document": "<p>Strength type</p><p>Enumeration values:</p><ul><li>weak: Weak</li><li>normal: Medium</li><li>strong: Strong</li></ul>",
           "example": "weak",
           "member": "string",
           "name": "Type",
@@ -19753,20 +19782,20 @@
         },
         {
           "disabled": false,
-          "document": "<p>Document-to-video model name</p><p>Default value: Wand</p>",
-          "example": "Wand",
+          "document": "<p>Document-to-video model version number</p><p>Enumeration values:</p><ul><li>1.0: 1.0</li><li>1.0-lite: 1.0-lite</li></ul><p>Default value: 1.0</p>",
+          "example": "1.0",
           "member": "string",
-          "name": "ModelName",
-          "required": true,
+          "name": "ModelVersion",
+          "required": false,
           "type": "string"
         },
         {
           "disabled": false,
-          "document": "<p>Document-to-video model version number</p><p>Default value: 1.0</p>",
-          "example": "1.0",
+          "document": "<p>Documentation generation video model name</p><p>Enumeration values:</p><ul><li>WAND: WAND</li></ul><p>Default value: WAND</p>",
+          "example": "WAND",
           "member": "string",
-          "name": "ModelVersion",
-          "required": true,
+          "name": "ModelName",
+          "required": false,
           "type": "string"
         },
         {
@@ -31754,6 +31783,106 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
+          "document": "<p>Task ID</p>",
+          "example": "r_75466f84b0b911f1b1b66aacb78dd458",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task type</p><p>Enumeration values:</p><ul><li>text_to_3d: Text to 3D</li><li>image_to_3d: Image to 3D</li><li>multiview_to_3d: Multi-view to 3D</li><li>mesh_to_texture: Mesh to texture</li><li>mesh_to_geometry: Mesh to geometry</li></ul>",
+          "example": "text_to_3d",
+          "member": "string",
+          "name": "TaskType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Input prompt</p>",
+          "example": "a cute chicken, cartoon style",
+          "member": "string",
+          "name": "Prompt",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Image URL input in image-to-3D scenarios</p>",
+          "example": "https://hunyuan-base-test-1258344703.cos.ap-guangzhou.myqcloud.com/public/test/eba3542f-5e19-4862-b95d-c2d28e7ef91e-latent.png",
+          "member": "string",
+          "name": "RefImage",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Image information input in multi-image to 3D scenarios</p>",
+          "example": "无",
+          "member": "ViewImage",
+          "name": "MultiViewImages",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task creation time</p>",
+          "example": "2026-09-15T03:56:40Z",
+          "member": "datetime_iso",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task update time</p>",
+          "example": "2026-09-15T04:00:14Z",
+          "member": "datetime_iso",
+          "name": "UpdateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>The target face count for the submitted task</p>",
+          "example": "500000",
+          "member": "uint64",
+          "name": "FaceCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Generation type</p><p>Enumeration values:</p><ul><li>Normal: Generate a complete 3D asset (geometry + texture)</li><li>Geometry: Generate only geometry (no texture, faster output speed)</li><li>Texture: Generate only texture (MeshUrl is required)</li></ul><p>Default value: Normal</p>",
+          "example": "Normal",
+          "member": "string",
+          "name": "GenerateType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task position in the queue; the smaller the value, the higher the priority.</p>",
+          "example": "2",
+          "member": "int64",
+          "name": "QueuePosition",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -33810,7 +33939,7 @@
         {
           "disabled": false,
           "document": "Allowlist list.",
-          "example": "0.0.0.0/0",
+          "example": "[\"0.0.0.0/0\"]",
           "member": "string",
           "name": "Whitelist",
           "output_required": true,
@@ -35887,7 +36016,7 @@
         {
           "disabled": false,
           "document": "Task specification.",
-          "example": "",
+          "example": "Delogo.desubtitle.FHD",
           "member": "string",
           "name": "Specification",
           "required": true,
@@ -35897,7 +36026,7 @@
         {
           "disabled": false,
           "document": "Statistical data.",
-          "example": "",
+          "example": "无",
           "member": "TaskStatDataItem",
           "name": "Data",
           "required": true,
@@ -36069,6 +36198,15 @@
           "name": "Style",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>COS bucket that the customer applies to create</p>",
+          "example": "无",
+          "member": "AigcStoreCosParam",
+          "name": "StoreCosParam",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -40091,7 +40229,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Configuration of the large model enhancement pro edition. Note that at most one of the large model, comprehensive enhancement, and artifacts removal can be configured. It cannot intersect with super resolution and noise reduction.</p>",
+          "document": "<p>LLM enhancement professional edition configuration. Note that only one of the three items, LLM enhancement, comprehensive enhancement, and artifacts removal, can be configured. It cannot be enabled simultaneously with super-resolution and noise reduction.</p>",
           "example": "无",
           "member": "DiffusionEnhanceV2Config",
           "name": "DiffusionEnhanceV2",
@@ -40794,8 +40932,10 @@
           "example": "front",
           "member": "string",
           "name": "ViewType",
+          "output_required": false,
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": true
         },
         {
           "disabled": false,
@@ -40803,11 +40943,13 @@
           "example": "https://hunyuan-base-test-1258344703.cos.ap-guangzhou.myqcloud.com/public/test/eba3542f-5e19-4862-b95d-c2d28e7ef91e-latent.png",
           "member": "string",
           "name": "ViewImageUrl",
+          "output_required": false,
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "VoiceInfo": {
       "document": "Voice information.",
@@ -41370,145 +41512,145 @@
       "usage": "out"
     },
     "WorkflowInfo": {
-      "document": "Workflow information details.",
+      "document": "Workflow information description.",
       "members": [
         {
           "disabled": false,
           "document": "Workflow ID.",
-          "example": "NULL",
+          "example": "435xxx",
           "member": "int64",
           "name": "WorkflowId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Workflow name.",
-          "example": "NULL",
+          "example": "workname",
           "member": "string",
           "name": "WorkflowName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Workflow status. Valid values:\n<li>Enabled: Enabled,</li>\n<li>Disabled: Disabled.</li>",
-          "example": "NULL",
+          "document": "Workflow status. Valid values:\n<li>Enabled: on</li>\n<li>Disabled: Disabled.</li>",
+          "example": "Enabled",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Input rule bound to a workflow. If an uploaded video hits the rule for the object, the workflow will be triggered.",
-          "example": "NULL",
+          "document": "The input rule bound to the workflow triggers the workflow when an uploaded video hits the rule for the object.",
+          "example": "无",
           "member": "WorkflowTrigger",
           "name": "Trigger",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The location to save the media processing output file.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "NULL",
+          "document": "",
+          "example": "无",
           "member": "TaskOutputStorage",
           "name": "OutputStorage",
-          "required": true,
+          "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The media processing parameters to use.\nNote: This field may return null, indicating that no valid value can be obtained.",
-          "example": "NULL",
+          "document": "",
+          "example": "无",
           "member": "MediaProcessTaskInput",
           "name": "MediaProcessTask",
-          "required": true,
+          "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Type parameter of a video content audit task.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "NULL",
+          "document": "",
+          "example": "无",
           "member": "AiContentReviewTaskInput",
           "name": "AiContentReviewTask",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Video content analysis task parameter.",
-          "example": "NULL",
+          "document": "",
+          "example": "无",
           "member": "AiAnalysisTaskInput",
           "name": "AiAnalysisTask",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Type parameter of a video content recognition task.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "NULL",
+          "document": "",
+          "example": "无",
           "member": "AiRecognitionTaskInput",
           "name": "AiRecognitionTask",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Event notification information of a task. If this parameter is left empty, no event notifications will be obtained.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "NULL",
+          "document": "",
+          "example": "无",
           "member": "TaskNotifyConfig",
           "name": "TaskNotifyConfig",
-          "required": true,
+          "output_required": true,
           "type": "object",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Task flow priority. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.",
-          "example": "NULL",
+          "document": "Priority of the task flow. The higher the value, the higher the priority. The value range is from -10 to 10. If left blank, the default value is 0.",
+          "example": "0",
           "member": "int64",
           "name": "TaskPriority",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The directory to save the media processing output file, such as `/movie/201907/`.",
-          "example": "NULL",
+          "document": "Storage directory for the output file, such as `/movie/201907/`.",
+          "example": "/output/",
           "member": "string",
           "name": "OutputDir",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Creation time of a workflow in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
-          "example": "NULL",
+          "document": "Workflow creation time, using the ISO date format (https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).",
+          "example": "2024-03-21T18:12:49+08:00",
           "member": "string",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Last modified time of a workflow in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
-          "example": "NULL",
+          "document": "Last modification time of the workflow, using the ISO date format (https://www.tencentcloud.com/document/product/862/37710?from_cn_redirect=1#52).",
+          "example": "2024-03-21T18:12:49+08:00",
           "member": "string",
           "name": "UpdateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
