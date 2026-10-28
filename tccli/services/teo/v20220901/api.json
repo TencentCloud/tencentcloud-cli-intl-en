@@ -34731,11 +34731,11 @@
       "usage": "both"
     },
     "Task": {
-      "document": "Content management task result",
+      "document": "Content management task result.",
       "members": [
         {
           "disabled": false,
-          "document": "ID of the task.",
+          "document": "Task ID.",
           "example": "20g9wz8m9mgx",
           "member": "string",
           "name": "JobId",
@@ -34755,7 +34755,7 @@
         },
         {
           "disabled": false,
-          "document": "Type of the task.",
+          "document": "Task type.",
           "example": "purge_url",
           "member": "string",
           "name": "Type",
@@ -34765,7 +34765,7 @@
         },
         {
           "disabled": false,
-          "document": "Node cache purge method. valid values:.\n<li>invalidate: marks as expired. a back-to-origin validation is triggered upon user request, sending an HTTP conditional request with If-None-Match and If-Modified-Since headers. If the origin server responds with 200, the node will fetch new resources from the origin and update the cache; If the origin server responds with 304, the cache will not be updated;</li>.\n<Li>Delete: directly deletes the node's cache, triggering a resource fetch from the origin upon user request.</li>.",
+          "document": "Node cache purge method, with values:\n<li>invalidate: Marks as expired. A back-to-origin validation is triggered upon user request, sending an HTTP conditional request with If-None-Match and If-Modified-Since headers. If the origin server responds with 200, the node will fetch new resources from the origin and update the cache; if the origin server responds with 304, the cache will not be updated;</li>\n<li>delete: Directly deletes the node's cache, triggering a resource fetch from the origin upon user request.</li>",
           "example": "invalidate",
           "member": "string",
           "name": "Method",
@@ -34775,7 +34775,7 @@
         },
         {
           "disabled": false,
-          "document": "Status. valid values:.\n<li>processing: indicates the operation is in progress.</li>.\n<Li>Success: specifies the success status.</li>.\n<li>failed: indicates a failure.</li>.\n<Li>Timeout: specifies the timeout period.</li>.\n<Li>Canceled: canceled.</li>.",
+          "document": "Status. Valid values:\n<li>processing: Processing;</li>\n<li>success: Succeeded;</li>\n<li>failed: Failed;</li>\n<li>timeout: Timed out;</li>\n<li>canceled: Canceled.</li>",
           "example": "状态",
           "member": "string",
           "name": "Status",
@@ -34785,7 +34785,7 @@
         },
         {
           "disabled": false,
-          "document": "Creation time of the task.",
+          "document": "Task creation time.",
           "example": "2022-02-09T02:28:43Z",
           "member": "datetime_iso",
           "name": "CreateTime",
@@ -34795,7 +34795,7 @@
         },
         {
           "disabled": false,
-          "document": "Completion time of the task.",
+          "document": "Task completion time.",
           "example": "2022-02-09T02:28:43Z",
           "member": "datetime_iso",
           "name": "UpdateTime",
@@ -34805,7 +34805,7 @@
         },
         {
           "disabled": false,
-          "document": "Refresh and preheat failure type. valid values:.\n<li>taskFailed: specifies the task failure.</li>.\n<li>quotaExceeded: specifies the quota exceeded status.</li>.\n<li>downloadManifestFailed: specifies the file failed to download.</li>.\n<li>accessDenied: specifies access denied.</li>.\n<li>originPullFailed: specifies the origin-pull failure.</li>.",
+          "document": "Failure type of update and preheating. Valid values:\n<li>taskFailed: Task failure;</li>\n<li>quotaExceeded: quota exceeded;</li>\n<li>downloadManifestFailed: Failed to download the description file;</li>\n<li>accessDenied: access denied.</li>\n<li>originPullFailed: origin-pull failure.</li>",
           "example": "originPullFailed",
           "member": "string",
           "name": "FailType",
@@ -34815,7 +34815,7 @@
         },
         {
           "disabled": false,
-          "document": "Description of the reason for cache purge or warm cache failure.",
+          "document": "Failure reason description for cache purge and cache pre-warming.",
           "example": "回源失败，可尝试重新提交，或检查源站是否出现以下问题：服务不可用、响应超时、触发限速策略、安全策略限制、网络故障、或达到带宽/连接数上限。",
           "member": "string",
           "name": "FailMessage",

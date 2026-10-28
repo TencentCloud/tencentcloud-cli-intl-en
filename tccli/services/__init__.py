@@ -21,6 +21,9 @@ def action_caller(service):
 
 
 SERVICE_VERSIONS = {
+    "adp": [
+        "2026-05-20"
+    ],
     "advisor": [
         "2020-07-21"
     ],

@@ -1,0 +1,1221 @@
+{
+  "actions": {
+    "SearchKnowledge": {
+      "document": "Knowledge retrieval",
+      "input": "SearchKnowledgeRequest",
+      "name": "Knowledge retrieval",
+      "output": "SearchKnowledgeResponse",
+      "status": "online"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2026-05-20",
+    "serviceNameCN": "腾讯云智能体开发平台",
+    "serviceShortName": "adp"
+  },
+  "objects": {
+    "DBRetrievalConfig": {
+      "document": "Database search configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "Enabled",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "DocRetrievalConfig": {
+      "document": "Document search configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Confidence threshold</p>",
+          "example": "0.2",
+          "member": "float",
+          "name": "Confidence",
+          "output_required": false,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "Enabled",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Return the top N entries</p>",
+          "example": "5",
+          "member": "uint64",
+          "name": "TopN",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ExpirationAwareness": {
+      "document": "Timeliness retrieval enhancement configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable timeliness retrieval. Once enabled, retrieval results will be sorted based on the validity time of the knowledge</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "Enabled",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "FinalRerankConfig": {
+      "document": "Final rerank configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Model name</p>",
+          "example": "Youtu/youtu-reranker-llm",
+          "member": "string",
+          "name": "ModelName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "GraphRAG": {
+      "document": "GraphRAG configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "Enabled",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "KBRetrievalConfig": {
+      "document": "Search configuration of each knowledge base",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Database search configuration</p>",
+          "example": "无",
+          "member": "DBRetrievalConfig",
+          "name": "DbRetrievalConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Document retrieval configuration.</p>",
+          "example": "无",
+          "member": "DocRetrievalConfig",
+          "name": "DocRetrievalConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Knowledge base ID</p>",
+          "example": "2084643656683962752",
+          "member": "string",
+          "name": "KbId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Retrieval optional configuration</p>",
+          "example": "无",
+          "member": "RetrievalOption",
+          "name": "OptionConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>QA search configuration</p>",
+          "example": "无",
+          "member": "QARetrievalConfig",
+          "name": "QaRetrievalConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>ReRank configuration</p>",
+          "example": "无",
+          "member": "RerankConfig",
+          "name": "RerankConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Search filter configuration</p>",
+          "example": "无",
+          "member": "SearchFilterConfig",
+          "name": "SearchFilterConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Retrieval strategy: 1=hybrid, 2=semantic, 3=keyword, 4=none<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>SEARCH_STRATEGY_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>SEARCH_STRATEGY_TYPE_MIXING</td><td>1</td><td>Hybrid retrieval</td></tr><tr><td>SEARCH_STRATEGY_TYPE_SEMANTIC</td><td>2</td><td>Semantic retrieval</td></tr><tr><td>SEARCH_STRATEGY_TYPE_KEYWORD</td><td>3</td><td>Keyword retrieval</td></tr><tr><td>SEARCH_STRATEGY_TYPE_NONE</td><td>4</td><td>No semantic/vector retrieval</td></tr></tbody></table></p>",
+          "example": "1",
+          "member": "int64",
+          "name": "StrategyType",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Text2SQL model</p>",
+          "example": "无",
+          "member": "ModelDetailInfo",
+          "name": "TextToSqlModel",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "KVPair": {
+      "document": "Common key-value pair",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Key",
+          "example": "key",
+          "member": "string",
+          "name": "Key",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Value",
+          "example": "value",
+          "member": "string",
+          "name": "Value",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "KnowledgeResult": {
+      "document": "A single retrieval result",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Confidence degree</p>",
+          "example": "0.3912946",
+          "member": "float",
+          "name": "Confidence",
+          "output_required": false,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Hit knowledge type: 1=QA, 2=document fragment, 3=database, 4=map<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>KNOWLEDGE_SOURCE_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KNOWLEDGE_SOURCE_TYPE_QA</td><td>1</td><td>QA</td></tr><tr><td>KNOWLEDGE_SOURCE_TYPE_DOC</td><td>2</td><td>Document fragment</td></tr><tr><td>KNOWLEDGE_SOURCE_TYPE_DB</td><td>3</td><td>Database</td></tr><tr><td>KNOWLEDGE_SOURCE_TYPE_GRAPH</td><td>4</td><td>Map</td></tr></tbody></table></p>",
+          "example": "0",
+          "member": "int64",
+          "name": "KnowledgeType",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Recall type list</p>",
+          "example": "[3]",
+          "member": "int64",
+          "name": "RecallTypeList",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Result payload</p>",
+          "example": "无",
+          "member": "SearchResultPayload",
+          "name": "ResultPayload",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Result type<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>SEARCH_RESULT_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>SEARCH_RESULT_TYPE_RETRIEVAL</td><td>1</td><td>Standard search result</td></tr><tr><td>SEARCH_RESULT_TYPE_TEXT_TO_SQL</td><td>2</td><td>text2sql result</td></tr><tr><td>SEARCH_RESULT_TYPE_IMAGE_SEARCH_IMAGE</td><td>3</td><td></td></tr><tr><td>SEARCH_RESULT_TYPE_TEXT_SEARCH_IMAGE</td><td>4</td><td></td></tr></tbody></table></p>",
+          "example": "1",
+          "member": "int64",
+          "name": "ResultType",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Additional information for similar questions.</p>",
+          "example": "无",
+          "member": "SimilarQuestionExtra",
+          "name": "SimilarQuestionExtra",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Basic information of knowledge fragment</p>",
+          "example": "无",
+          "member": "KnowledgeSnippetProfile",
+          "name": "SnippetProfile",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Knowledge source information</p>",
+          "example": "无",
+          "member": "KnowledgeSource",
+          "name": "SourceInfo",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "KnowledgeSnippetProfile": {
+      "document": "Basic information of knowledge fragment",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Content</p>",
+          "example": "文档名：奔驰文档片段：车型：奔驰e300价格：30w地点：上海上市时间:2021年轮胎直径:80cm颜色：黑色",
+          "member": "string",
+          "name": "Content",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Associated document ID</p>",
+          "example": "2079848099272955712",
+          "member": "string",
+          "name": "DocId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Document name</p>",
+          "example": "肺鱼.txt",
+          "member": "string",
+          "name": "DocName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Knowledge base ID</p>",
+          "example": "2097668735455299264",
+          "member": "string",
+          "name": "KbId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Knowledge ID</p>",
+          "example": "2079928370944713359",
+          "member": "string",
+          "name": "KnowledgeId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Query</p>",
+          "example": "小王电话",
+          "member": "string",
+          "name": "Question",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Document title</p>",
+          "example": "肺鱼",
+          "member": "string",
+          "name": "Title",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "KnowledgeSource": {
+      "document": "Knowledge source information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Whether it is big data</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "IsBigData",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether it is a shared knowledge base</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "IsShared",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Knowledge base name</p>",
+          "example": "我的智能体应用31",
+          "member": "string",
+          "name": "KbName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ModelDetailInfo": {
+      "document": "Model details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Model alias.",
+          "example": "DeepSeek-V3.2",
+          "member": "string",
+          "name": "Alias",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Limit on number of historical conversations",
+          "example": "5",
+          "member": "uint64",
+          "name": "HistoryLimit",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Unique model ID",
+          "example": "Deepseek/deepseek-v3.2",
+          "member": "string",
+          "name": "ModelId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Model parameters",
+          "example": "无",
+          "member": "ModelParams",
+          "name": "ModelParams",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ModelParams": {
+      "document": "Model parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Whether deep thinking is enabled</p>",
+          "example": "disabled",
+          "member": "string",
+          "name": "DeepThinking",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Frequency penalty</p>",
+          "example": "0.4",
+          "member": "float",
+          "name": "FrequencyPenalty",
+          "output_required": false,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Maximum output length</p>",
+          "example": "16384",
+          "member": "int64",
+          "name": "MaxTokens",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Existence penalty</p>",
+          "example": "0.3",
+          "member": "float",
+          "name": "PresencePenalty",
+          "output_required": false,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Deep thinking effect</p>",
+          "example": "none",
+          "member": "string",
+          "name": "ReasoningEffort",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Repetition penalty</p>",
+          "example": "0.4",
+          "member": "float",
+          "name": "RepetitionPenalty",
+          "output_required": false,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Output format (text, json_object)</p>",
+          "example": "text",
+          "member": "string",
+          "name": "ReplyFormat",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Random seed</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "Seed",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Stop sequence</p>",
+          "example": "[\"前进\"]",
+          "member": "string",
+          "name": "StopSequenceList",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Temperature</p>",
+          "example": "0.6",
+          "member": "float",
+          "name": "Temperature",
+          "output_required": false,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>top_p</p>",
+          "example": "0.6",
+          "member": "float",
+          "name": "TopP",
+          "output_required": false,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>top_k</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "TopK",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "QARetrievalConfig": {
+      "document": "QA search configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Confidence threshold</p>",
+          "example": "0.7",
+          "member": "float",
+          "name": "Confidence",
+          "output_required": false,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "Enabled",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Return the top N entries</p>",
+          "example": "3",
+          "member": "uint64",
+          "name": "TopN",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "RerankConfig": {
+      "document": "Rearrange the configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "Enabled",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Model name</p>",
+          "example": "Youtu/youtu-reranker-llm",
+          "member": "string",
+          "name": "ModelName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "RetrievalOption": {
+      "document": "Optional retrieval configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Timeliness retrieval enhancement configuration</p>",
+          "example": "无",
+          "member": "ExpirationAwareness",
+          "name": "ExpirationAwareness",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>GraphRAG Configuration</p>",
+          "example": "无",
+          "member": "GraphRAG",
+          "name": "GraphRag",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Spreadsheet enhancement configuration</p>",
+          "example": "无",
+          "member": "TableEnhancement",
+          "name": "TableEnhancement",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "SearchAdvancedConfig": {
+      "document": "Retrieve advanced configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Final ReRank Configuration</p>",
+          "example": "无",
+          "member": "FinalRerankConfig",
+          "name": "FinalRerankConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Search configuration of each knowledge base</p>",
+          "example": "无",
+          "member": "KBRetrievalConfig",
+          "name": "KbRetrievalList",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Retrieve knowledge type: 1=document and QA, 2=rejected question<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>SEARCH_KNOWLEDGE_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>SEARCH_KNOWLEDGE_TYPE_DOC_QA</td><td>1</td><td>Document and QA</td></tr><tr><td>SEARCH_KNOWLEDGE_TYPE_REJECTED_QUESTION</td><td>2</td><td>Rejected question</td></tr></tbody></table></p>",
+          "example": "1",
+          "member": "int64",
+          "name": "KnowledgeType",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of final returned results</p>",
+          "example": "13",
+          "member": "uint64",
+          "name": "RecallCount",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SearchBilling": {
+      "document": "Retrieval billing information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Billing tag list</p>",
+          "example": "无",
+          "member": "KVPair",
+          "name": "BillingTagList",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Billing sub-business type</p>",
+          "example": "SubBusinessType",
+          "member": "string",
+          "name": "FinanceSubBusinessType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SearchContext": {
+      "document": "Retrieval request context info",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Request source<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>CALL_SOURCE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>CALL_SOURCE_RAG</td><td>1</td><td>Standard mode</td></tr><tr><td>CALL_SOURCE_WORKFLOW</td><td>2</td><td>Workflow</td></tr><tr><td>CALL_SOURCE_PLUGIN</td><td>3</td><td>Plug-in</td></tr><tr><td>CALL_SOURCE_OPENCLAW</td><td>4</td><td>openclaw</td></tr><tr><td>CALL_SOURCE_RECALL_TEST</td><td>5</td><td>Recall test</td></tr><tr><td>CALL_SOURCE_RECALL_TEST_DIFF</td><td>6</td><td>Recall test in comparison scenarios also needs to trigger the retrieval interface. The difference is that in this case, the frontend does not need to update the latest configuration. Because when comparing 1, 2, and 3, the final saved one may be 2.</td></tr></tbody></table></p>",
+          "example": "5",
+          "member": "int64",
+          "name": "CallSource",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>adp DOMAIN: 1=development DOMAIN, 2=production DOMAIN<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>adp_DOMAIN_UNSPECIFIED</td><td>0</td><td>not specified</td></tr><tr><td>adp_DOMAIN_DEV</td><td>1</td><td>development DOMAIN</td></tr><tr><td>adp_DOMAIN_PROD</td><td>2</td><td>production DOMAIN</td></tr></tbody></table></p>",
+          "example": "1",
+          "member": "int64",
+          "name": "Domain",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Visitor ID</p>",
+          "example": "2067622575842400832",
+          "member": "string",
+          "name": "VisitorId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SearchFilter": {
+      "document": "Search filter",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Search filter type<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>SEARCH_FILTER_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>SEARCH_FILTER_TYPE_CUSTOMER_LABEL_VALUE</td><td>1</td><td>User-customized tag value</td></tr><tr><td>SEARCH_FILTER_TYPE_CUSTOMER_LABEL_VALUE_ID</td><td>2</td><td>User-customized tag value ID</td></tr><tr><td>SEARCH_FILTER_TYPE_DOC_ID</td><td>3</td><td>Retrieve by specified document ID</td></tr><tr><td>SEARCH_FILTER_TYPE_DOC_CATEGORY_ID</td><td>4</td><td>Retrieve by specified document classification ID</td></tr><tr><td>SEARCH_FILTER_TYPE_DB_TABLE_ID</td><td>5</td><td>Retrieve by specified database table ID</td></tr><tr><td>SEARCH_FILTER_TYPE_KB_SCHEMA_ID</td><td>6</td><td>Specified knowledge base schema ID</td></tr></tbody></table></p>",
+          "example": "2",
+          "member": "int64",
+          "name": "FilterType",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Filter value list. According to SearchFilterType, take value 1: pass a custom tag value; 2: pass a custom tag value ID; 3: pass a document ID; 4: pass a category ID</p>",
+          "example": "[\"2067622575842400832\"]",
+          "member": "string",
+          "name": "FilterValueList",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>User-customized tag ID</p>",
+          "example": "2067622575842400832",
+          "member": "string",
+          "name": "LabelId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Logical operator: AND or OR<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>LOGIC_OPR_NOOP</td><td>0</td><td></td></tr><tr><td>LOGIC_OPR_AND</td><td>1</td><td></td></tr><tr><td>LOGIC_OPR_OR</td><td>2</td><td></td></tr></tbody></table></p>",
+          "example": "1",
+          "member": "int64",
+          "name": "LogicOp",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Nested search filter</p>",
+          "example": "无",
+          "member": "SearchFilter",
+          "name": "SearchFilterList",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SearchFilterConfig": {
+      "document": "Search filter configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Whether to retrieve only selected tags. true: retrieve only knowledge with selected tags; false: simultaneous retrieval of knowledge with selected tags and knowledge without any tags</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "OnlyRetrievalSelectedLabel",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Search filter</p>",
+          "example": "无",
+          "member": "SearchFilter",
+          "name": "SearchFilter",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "SearchInput": {
+      "document": "Retrieval input",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>List of image URLs</p>",
+          "example": "[\"http://test.image\"]",
+          "member": "string",
+          "name": "ImageUrlList",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Query</p>",
+          "example": "明天天气",
+          "member": "string",
+          "name": "Question",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Deconstructed sub-problem list</p>",
+          "example": "[\"明天下雨吗\"]",
+          "member": "string",
+          "name": "SubQuestionList",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SearchKnowledgeRequest": {
+      "document": "SearchKnowledge request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Advanced search configuration</p>",
+          "example": "无",
+          "member": "SearchAdvancedConfig",
+          "name": "AdvancedConfig",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Retrieval input</p>",
+          "example": "无",
+          "member": "SearchInput",
+          "name": "Input",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Retrieval context</p>",
+          "example": "无",
+          "member": "SearchContext",
+          "name": "Context",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Billing information</p>",
+          "example": "无",
+          "member": "SearchBilling",
+          "name": "SearchBilling",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "SearchKnowledgeResponse": {
+      "document": "SearchKnowledge response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Search results list</p>",
+          "example": "无",
+          "member": "KnowledgeResult",
+          "name": "KnowledgeList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>token consumption statistics</p>",
+          "example": "无",
+          "member": "TokenUsage",
+          "name": "TokenUsageList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SearchResultPayload": {
+      "document": "Result payload",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Additional information of knowledge graph (JSON string)</p>",
+          "example": "数学",
+          "member": "string",
+          "name": "GraphData",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of hit image URLs</p>",
+          "example": "[\"http://test.com\"]",
+          "member": "string",
+          "name": "ImageUrlList",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Table additional information (JSON string)</p>",
+          "example": "[{}]",
+          "member": "string",
+          "name": "SheetInfo",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SimilarQuestionExtra": {
+      "document": "Additional information of the similar question",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Text content of the similar question</p>",
+          "example": "问：奔驰e300都有什么颜色？",
+          "member": "string",
+          "name": "Content",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Similar question ID</p>",
+          "example": "2097669080301892544",
+          "member": "string",
+          "name": "SimilarQuestionId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "TableEnhancement": {
+      "document": "Table enhancement configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "Enabled",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "TokenUsage": {
+      "document": "Token usage statistics",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Number of completion tokens</p>",
+          "example": "8",
+          "member": "uint64",
+          "name": "CompletionTokens",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Model name</p>",
+          "example": "Deepseek/deepseek-v4-flash",
+          "member": "string",
+          "name": "ModelName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>prompt token count</p>",
+          "example": "6765",
+          "member": "uint64",
+          "name": "PromptTokens",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total token count</p>",
+          "example": "886",
+          "member": "uint64",
+          "name": "TotalTokens",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    }
+  }
+}
