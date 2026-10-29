@@ -4,7 +4,19 @@
 distutils/setuptools install script.
 """
 from setuptools import setup, find_packages
+from setuptools.command.build_py import build_py as _build_py
 from tccli import __version__
+
+
+class build_py(_build_py):
+    def find_package_modules(self, package, package_dir):
+        modules = _build_py.find_package_modules(self, package, package_dir)
+        if package.startswith("tccli.services."):
+            modules = [
+                module for module in modules
+                if not module[1].endswith("_client")
+            ]
+        return modules
 
 
 def main():
@@ -23,6 +35,7 @@ def main():
         platforms=['unix', 'linux', 'win64'],
         scripts=[],
         py_modules=['tccli'],
+        cmdclass={'build_py': build_py},
         entry_points={
             'console_scripts': [
                 'tccli = tccli.main:main',
