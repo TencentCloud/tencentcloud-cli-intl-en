@@ -878,6 +878,14 @@
         "title": "Query the list of available custom configurations for the rule engine"
       }
     ],
+    "DescribeAvailableOriginACLFamily": [
+      {
+        "document": "You can select a site under any account to query the IP range information of various control domains for origin protection.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAvailableOriginACLFamily\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-2w0bpv1wlag8\",\n    \"Offset\": 0,\n    \"Limit\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"OriginACLFamilyInfos\": [\n            {\n                \"ActiveTime\": \"2025-08-15T00:00:00+08:00\",\n                \"EntireAddresses\": {\n                    \"IPv4\": [\n                        \"113.13.111.0/24\"\n                    ],\n                    \"IPv6\": [\n                        \"240d:c010:c2:3::/64\"\n                    ]\n                },\n                \"OriginACLFamily\": \"emc\",\n                \"Version\": \"emc-0.0.2-20250814\"\n            }\n        ],\n        \"TotalCount\": 4,\n        \"RequestId\": \"ddc1548a-a1d3-464d-a4d8-377ef6b5ed1f\"\n    }\n}",
+        "title": "Query the origin protection control domain by any specified site under the account"
+      }
+    ],
     "DescribeAvailablePlans": [
       {
         "document": " ",

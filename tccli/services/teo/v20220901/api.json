@@ -574,6 +574,13 @@
       "output": "DescribeAvailableCustomActionsForRuleEngineResponse",
       "status": "online"
     },
+    "DescribeAvailableOriginACLFamily": {
+      "document": "This API is used to query detailed information about the origin protection IP range control domain, including the version number and specific IP range information.\nThe main difference between standard control domain and streamlined control domain is the number of IP ranges provided. The latter has fewer IP ranges, but has some usage restrictions. For specific restrictions, consult the product. The format description is as follows:\nStandard control domain:\n<li>gaz: standard global control domain;</li>\n<li>mlc: Standard China control domain;</li>\n<li>emc: standard overseas (worldwide excluding China) control domain;</li>\nStreamline the control domain.\n<li>plat-gaz: simplified global control domain;</li>\n<li>plat-mlc: Simplified China control domain;</li>\n<li>plat-emc: Simplified overseas (global excluding China) control domain;</li>\n<li>plat-specific-gaz: custom edition global availability zone control domain;</li>\n<li>plat-specific-mlc: custom edition for controlling the Chinese mainland availability zone control domain;</li>\n<li>plat-specific-emc: custom edition control domain for availability zones worldwide (excluding Chinese mainland);</li>\nAbbreviation description:\n<li>gaz:Global AZ Availability Zone;</li>\n<li>mlc:mainlandChina;</li>\n<li>emc:Exclude mainlandChina.</li>",
+      "input": "DescribeAvailableOriginACLFamilyRequest",
+      "name": "Queries the configurable control domain information list for origin protection",
+      "output": "DescribeAvailableOriginACLFamilyResponse",
+      "status": "online"
+    },
     "DescribeAvailablePlans": {
       "document": "This API is used to query plan options available for purchase.",
       "input": "DescribeAvailablePlansRequest",
@@ -2497,7 +2504,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "IPv4 subnet.",
+          "document": "IPv4 IP range list.",
           "example": "[\"11.11.11.0/24\",\"22.22.22.0/24\"]",
           "member": "string",
           "name": "IPv4",
@@ -2508,7 +2515,7 @@
         },
         {
           "disabled": false,
-          "document": "IPv6 subnet.",
+          "document": "IPv6 IP range list.",
           "example": "[\"2001:980:7002:6::/64\"]",
           "member": "string",
           "name": "IPv6",
@@ -12340,6 +12347,80 @@
       ],
       "type": "object"
     },
+    "DescribeAvailableOriginACLFamilyRequest": {
+      "document": "DescribeAvailableOriginACLFamily request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Site ID.</p>",
+          "example": "zone-2w0bpv1wlag8",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Filter criteria. The maximum number of Filters.Values is 20. If this parameter is left empty, all available versions under the current site are returned. The IP range control domain of origin protection includes the standard control domain and the streamlined control domain. The main difference between the standard control domain and the streamlined control domain is the quantity difference of origin IP ranges provided. The latter has fewer IP ranges, however it is limited in use. Contact technical support if needed. Specific values are as follows:<br>Detailed filter criteria are as follows:<br>OriginACLFamily: filter by control domain;</p><li>gaz: standard global availability zone control domain;</li><li>mlc: standard Chinese mainland availability zone control domain;</li><li>emc: standard global (excluding Chinese mainland) availability zone control domain;</li><li>plat-gaz: streamlined global availability zone control domain;</li><li>plat-mlc: streamlined Chinese mainland availability zone control domain;</li><li>plat-emc: streamlined global (excluding Chinese mainland) availability zone control domain;</li><li>plat-specific-gaz: custom edition global availability zone control domain;</li><li>plat-specific-mlc: custom edition Chinese mainland availability zone control domain;</li><li>plat-specific-emc: custom edition global (excluding Chinese mainland) availability zone control domain.</li>",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The offset of paginated query. Default value: 0.</p>",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number limit of paginated query. Default value: 20. Maximum value: 100.</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAvailableOriginACLFamilyResponse": {
+      "document": "DescribeAvailableOriginACLFamily response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total number of detailed information entries for origin protection IP ranges.</p>",
+          "example": "4",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Detailed information list of origin-pull IP ranges.</p>",
+          "example": "无",
+          "member": "OriginACLFamilyInfo",
+          "name": "OriginACLFamilyInfos",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeAvailablePlansRequest": {
       "document": "DescribeAvailablePlans request structure.",
       "members": [],
@@ -20049,7 +20130,7 @@
       "usage": "out"
     },
     "Filter": {
-      "document": "Key-value pair filters for conditional filtering queries, such as filtering ID, name, and status.\nIf more than one filter exists, the logical relationship between these filters is `AND`.\nIf multiple values exist in one filter, the logical relationship between these values under the same filter is `OR`.",
+      "document": "Description key-value pair filter, which is used for conditional filtering queries. For example, filter by ID, name, and status.\nIf there are multiple Filters, the logical relationship between them is AND.\nIf there are multiple Values in the same Filter, the logical relationship between the Values under the same Filter is OR.",
       "members": [
         {
           "disabled": false,
@@ -20063,7 +20144,7 @@
         },
         {
           "disabled": false,
-          "document": "Value of the filtered field.",
+          "document": "Filter value of the field.",
           "example": "[\"qq.com\",\"baidu.com\"]",
           "member": "string",
           "name": "Values",
@@ -28793,6 +28874,56 @@
         }
       ],
       "usage": "in"
+    },
+    "OriginACLFamilyInfo": {
+      "document": "Version information of origin-pull IP ranges.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Origin protection version number.\nFormat description:\nStandard version.\n<li>gaz-xxxxx: global;</li>\n<li>mlc-xxxxx: China;</li>\n<li>emc-xxxxx: overseas (worldwide excluding China);</li>\nSimplified edition (platform-level version)\n<li>plat-gaz-xxxxxx: Simplified global edition;</li>\n<li>plat-mlc-xxxxxx: Simplified China version;</li>\n<li>plat-emc-xxxxxx: Simplified overseas (global excluding China) edition;</li>\nAbbreviation description:\n<li>gaz:Global AZ Availability Zone;</li>\n<li>mlc:mainlandChina;</li>\n<li>emc:Exclude mainlandChina.</li>",
+          "example": "emc-0.0.2-20250814",
+          "member": "string",
+          "name": "Version",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Version effective time, which adopts Beijing time (UTC+8) and follows the date and time format of the ISO 8601 standard.",
+          "example": "2026-03-06T00:00:00+08:00",
+          "member": "string",
+          "name": "ActiveTime",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Origin-pull IP range details.\t",
+          "example": "无",
+          "member": "Addresses",
+          "name": "EntireAddresses",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Origin protection origin-pull ACL control domain. Parameter values are as follows:\n<li>gaz: standard global availability zone control domain;</li>\n<li>mlc: standard Chinese mainland availability zone control domain;</li>\n<li>emc: standard worldwide (excluding Chinese mainland) availability zone control domain;</li>\n<li>plat-gaz: simplified global availability zone control domain;</li>\n<li>plat-mlc: Simplified Chinese mainland availability zone control domain;</li>\n<li>plat-emc: Simplified global (excluding Chinese mainland) availability zone control domain;</li>",
+          "example": "plat-emc",
+          "member": "string",
+          "name": "OriginACLFamily",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "OriginACLInfo": {
       "document": "The binding relationship between L7 acceleration domains/layer-4 proxy instances and origin IP ranges contains both origin IP range details and a switchable origin IP range list.",
