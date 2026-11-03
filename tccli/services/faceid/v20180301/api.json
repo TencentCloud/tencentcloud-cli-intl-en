@@ -8227,7 +8227,7 @@
         },
         {
           "disabled": false,
-          "document": "When CheckMode = 1, this defines the waiting policy for OCR recognition results.\nEnumeration values:\nrequired: Wait for OCR result after document capture.\nskip: Wait for OCR result confirmation before entering liveness check.\nDefault value: required.",
+          "document": "When CheckMode = 1, this defines the waiting policy for OCR recognition results.\nEnumeration values:\nrequired: Proceed to liveness check only after OCR result confirmation.\nskip: Enter liveness check immediately after card photo submission.\nDefault value: required.",
           "example": "required",
           "member": "string",
           "name": "OcrWaitPolicy",

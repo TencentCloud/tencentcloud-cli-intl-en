@@ -56,6 +56,20 @@
       "output": "CreateDBInstanceParamTplResponse",
       "status": "online"
     },
+    "CreateInstanceRole": {
+      "document": "Create a database role",
+      "input": "CreateInstanceRoleRequest",
+      "name": "Creates a database role",
+      "output": "CreateInstanceRoleResponse",
+      "status": "online"
+    },
+    "CreateInstanceUser": {
+      "document": "Create a database account",
+      "input": "CreateInstanceUserRequest",
+      "name": "Create a database account",
+      "output": "CreateInstanceUserResponse",
+      "status": "online"
+    },
     "CreateLogDownloadTask": {
       "document": "This API is used to create a log download task.",
       "input": "CreateLogDownloadTaskRequest",
@@ -75,6 +89,20 @@
       "input": "DeleteDBBackupsRequest",
       "name": "Delete a full backup",
       "output": "DeleteDBBackupsResponse",
+      "status": "online"
+    },
+    "DeleteInstanceRole": {
+      "document": "Delete role",
+      "input": "DeleteInstanceRoleRequest",
+      "name": "Deletes a database role",
+      "output": "DeleteInstanceRoleResponse",
+      "status": "online"
+    },
+    "DeleteInstanceUser": {
+      "document": "This API is used to delete a database account.",
+      "input": "DeleteInstanceUserRequest",
+      "name": "Delete a database account",
+      "output": "DeleteInstanceUserResponse",
       "status": "online"
     },
     "DeleteLogDownloadTask": {
@@ -210,11 +238,25 @@
       "output": "DescribeInstanceParamsResponse",
       "status": "online"
     },
+    "DescribeInstanceRoles": {
+      "document": "Obtains the list of roles",
+      "input": "DescribeInstanceRolesRequest",
+      "name": "Queries the list of roles",
+      "output": "DescribeInstanceRolesResponse",
+      "status": "online"
+    },
     "DescribeInstanceSSL": {
       "document": "This API is used to view the enabling status of Secure Sockets Layer (SSL) for an instance.",
       "input": "DescribeInstanceSSLRequest",
       "name": "Views the enabling status of SSL for an instance",
       "output": "DescribeInstanceSSLResponse",
+      "status": "online"
+    },
+    "DescribeInstanceUsers": {
+      "document": "This API is used to obtain the list of accounts.",
+      "input": "DescribeInstanceUsersRequest",
+      "name": "Queries an account list",
+      "output": "DescribeInstanceUsersResponse",
       "status": "online"
     },
     "DescribeLogDownloadTasks": {
@@ -467,6 +509,20 @@
       "input": "TerminateDBInstancesRequest",
       "name": "Monthly subscription return and refund",
       "output": "TerminateDBInstancesResponse",
+      "status": "online"
+    },
+    "UpdateInstanceRole": {
+      "document": "This API is used to update a database role.",
+      "input": "UpdateInstanceRoleRequest",
+      "name": "Updates a database role",
+      "output": "UpdateInstanceRoleResponse",
+      "status": "online"
+    },
+    "UpdateInstanceUser": {
+      "document": "Update database account",
+      "input": "UpdateInstanceUserRequest",
+      "name": "Updating Account Information",
+      "output": "UpdateInstanceUserResponse",
       "status": "online"
     },
     "UpgradeDBInstanceKernelVersion": {
@@ -806,7 +862,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Permission information of the current account.\n- 0: no permissions.\n- 1: read-only.\n- 3: read-write.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Permission information of the current account.\n- 0: no permissions.\n- 1: read-only.\n- 3: read-write.",
           "example": "1",
           "member": "int64",
           "name": "Mask",
@@ -817,7 +873,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the name of the database that has the current account permissions.\n- \\*: indicates all databases.\n- db.name: indicates the database with a specific name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Specifies the name of the database that has the current account permissions.\n- \\*: indicates all databases.\n- db.name: indicates the database with a specific name.",
           "example": "\"db_test\"",
           "member": "string",
           "name": "NameSpace",
@@ -2097,6 +2153,188 @@
       ],
       "type": "object"
     },
+    "CreateInstanceRoleRequest": {
+      "document": "CreateInstanceRole request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Instance id</p>",
+          "example": "cmgo-********",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>role name</p>",
+          "example": "trole11",
+          "member": "string",
+          "name": "RoleName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Role-based db</p>",
+          "example": "admin",
+          "member": "string",
+          "name": "Database",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Permission</p>",
+          "example": "无",
+          "member": "RolePrivilege",
+          "name": "Privileges",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Inheritable role</p>",
+          "example": "无",
+          "member": "Role",
+          "name": "InheritedRoles",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateInstanceRoleResponse": {
+      "document": "CreateInstanceRole response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "4339802",
+          "member": "int64",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateInstanceUserRequest": {
+      "document": "CreateInstanceUser request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Instance id</p>",
+          "example": "cmgo-********",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Username.</p>",
+          "example": "testuser1",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Password</p>",
+          "example": "*********",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Encrypted password (choose either this or Password)</p>",
+          "example": "***o*****DJ67kN52GK8oC49foA**+rXHRLrL6t2N7***CiKTN/mGSkMfD",
+          "member": "string",
+          "name": "EncryptedPassword",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Authentication database (Belonging Database of the user).</p>",
+          "example": "admin",
+          "member": "string",
+          "name": "Database",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Get role list (new method, can include built-in role and custom role)</p>",
+          "example": "无",
+          "member": "Role",
+          "name": "Roles",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Permission list (old method)</p>",
+          "example": "无",
+          "member": "Auth",
+          "name": "AuthRole",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Custom description.</p>",
+          "example": "测试用",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether password rotation is enabled (0: not enabled, 1: enabled)</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "EnablePasswordRotation",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateInstanceUserResponse": {
+      "document": "CreateInstanceUser response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Asynchronous task ID.</p>",
+          "example": "1750660112001309",
+          "member": "int64",
+          "name": "FlowId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateLogDownloadTaskRequest": {
       "document": "CreateLogDownloadTask request structure.",
       "members": [
@@ -2459,6 +2697,116 @@
     "DeleteDBBackupsResponse": {
       "document": "DeleteDBBackups response structure.",
       "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteInstanceRoleRequest": {
+      "document": "DeleteInstanceRole request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Instance id</p>",
+          "example": "cmgo-********",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Role name</p>",
+          "example": "trole11",
+          "member": "string",
+          "name": "RoleName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Database of the character.</p>",
+          "example": "admin",
+          "member": "string",
+          "name": "Database",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteInstanceRoleResponse": {
+      "document": "DeleteInstanceRole response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "4339803",
+          "member": "int64",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteInstanceUserRequest": {
+      "document": "DeleteInstanceUser request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Instance ID.</p>",
+          "example": "cmgo-********",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Username.</p>",
+          "example": "testuser1",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Authentication database.</p>",
+          "example": "admin",
+          "member": "string",
+          "name": "Database",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteInstanceUserResponse": {
+      "document": "DeleteInstanceUser response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Process ID</p>",
+          "example": "1750660112001310",
+          "member": "int64",
+          "name": "FlowId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -4240,6 +4588,125 @@
       ],
       "type": "object"
     },
+    "DescribeInstanceRolesRequest": {
+      "document": "DescribeInstanceRoles request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Instance id</p>",
+          "example": "cmgo-********",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Database name. If it is empty, query the role of all databases.</p>",
+          "example": "admin",
+          "member": "string",
+          "name": "Database",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Role type: builtin_database - built-in database role, builtin_cluster - built-in cluster role, custom - custom role. Query all if left empty.</p>",
+          "example": "[\"builtin_database\"]",
+          "member": "string",
+          "name": "RoleType",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Role name. Query all roles if left empty.</p>",
+          "example": "test1",
+          "member": "string",
+          "name": "RoleName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Common search keywords, fuzzy match inheritable roles and permissions relevant database name, role name, Action name, etc.</p>",
+          "example": "t",
+          "member": "string",
+          "name": "SearchKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sorting field, supports: RoleName, defaults to RoleName</p>",
+          "example": "RoleName",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sorting method: asc-ascending, desc-descending, defaults to asc</p>",
+          "example": "desc",
+          "member": "string",
+          "name": "OrderType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Pagination offset, defaults to 0</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of items per page. Default: 20. Maximum: 100.</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceRolesResponse": {
+      "document": "DescribeInstanceRoles response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "Total",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of characters.</p>",
+          "example": "无",
+          "member": "RoleInfo",
+          "name": "Roles",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeInstanceSSLRequest": {
       "document": "DescribeInstanceSSL request structure.",
       "members": [
@@ -4287,6 +4754,107 @@
           "output_required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceUsersRequest": {
+      "document": "DescribeInstanceUsers request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Instance ID.</p>",
+          "example": "cmgo-********",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>userName. If left empty, query all users</p>",
+          "example": "mongouser",
+          "member": "string",
+          "name": "UserName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Database name. If left empty, query all database accounts.</p>",
+          "example": "admin",
+          "member": "string",
+          "name": "Database",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sorting field, available values: UserName; by default, sort by UserName if not passed.</p>",
+          "example": "UserName",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sorting method. Value range: asc (in ascending order), desc (in descending order). Default: asc.</p>",
+          "example": "asc",
+          "member": "string",
+          "name": "OrderType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Pagination offset, defaults to 0</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of items per page, defaults to 20, maximum 100.</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceUsersResponse": {
+      "document": "DescribeInstanceUsers response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Account list</p>",
+          "example": "无",
+          "member": "InstanceUserInfo",
+          "name": "Users",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "Total",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -6332,6 +6900,111 @@
       ],
       "usage": "out"
     },
+    "InstanceUserInfo": {
+      "document": "Account information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Username.</p>",
+          "example": "testuser1",
+          "member": "string",
+          "name": "UserName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Authentication database</p>",
+          "example": "admin",
+          "member": "string",
+          "name": "Database",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Get role list (new method)</p>",
+          "example": "无",
+          "member": "Role",
+          "name": "Roles",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Permission list (old method)</p>",
+          "example": "无",
+          "member": "Auth",
+          "name": "AuthRole",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Creation time.</p>",
+          "example": "2026-04-14 17:54:18",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Update time.</p>",
+          "example": "2026-04-14 17:54:18",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Console password last update time</p>",
+          "example": "2026-04-14 17:43:04",
+          "member": "string",
+          "name": "ConsolePassUpdateTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable password rotation</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "EnablePasswordRotation",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Custom description</p>",
+          "example": "测试用",
+          "member": "string",
+          "name": "Description",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "IsolateDBInstanceRequest": {
       "document": "IsolateDBInstance request structure.",
       "members": [
@@ -7626,6 +8299,162 @@
       ],
       "usage": "in"
     },
+    "Role": {
+      "document": "Role",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>role name</p>",
+          "example": "readWrite",
+          "member": "string",
+          "name": "RoleName",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Role belongs to db</p>",
+          "example": "test_db",
+          "member": "string",
+          "name": "Database",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "RoleInfo": {
+      "document": "Role detailed information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Role name.</p>",
+          "example": "trole8",
+          "member": "string",
+          "name": "RoleName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Character's Belonging Database</p>",
+          "example": "admin",
+          "member": "string",
+          "name": "Database",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Role type: builtin_database - built-in database role, builtin_cluster - built-in cluster role, custom - custom role</p>",
+          "example": "custom",
+          "member": "string",
+          "name": "RoleType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Grant permission</p>",
+          "example": "无",
+          "member": "RolePrivilege",
+          "name": "Privileges",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Inheritable role.</p>",
+          "example": "无",
+          "member": "Role",
+          "name": "InheritedRoles",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "RolePrivilege": {
+      "document": "Role permission",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Resource</p>",
+          "example": "无",
+          "member": "RoleResource",
+          "name": "Resource",
+          "output_required": false,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Action</p>",
+          "example": "[\"find\"]",
+          "member": "string",
+          "name": "Actions",
+          "output_required": false,
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "RoleResource": {
+      "document": "Role resource",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Whether cluster-level resource</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "Cluster",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Database name.</p>",
+          "example": "local",
+          "member": "string",
+          "name": "Database",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>collection name.</p>",
+          "example": "system.users",
+          "member": "string",
+          "name": "Collection",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "SecurityGroup": {
       "document": "Security group information",
       "members": [
@@ -8504,6 +9333,179 @@
     "TerminateDBInstancesResponse": {
       "document": "TerminateDBInstances response structure.",
       "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateInstanceRoleRequest": {
+      "document": "UpdateInstanceRole request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Instance ID.</p>",
+          "example": "cmgo-********",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Role name.</p>",
+          "example": "test1",
+          "member": "string",
+          "name": "RoleName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Belonging Database of the character.</p>",
+          "example": "admin",
+          "member": "string",
+          "name": "Database",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Role permission list. If not passed, no modification will be made.</p>",
+          "example": "无",
+          "member": "RolePrivilege",
+          "name": "Privileges",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Get role list. If not passed, no modification is made.</p>",
+          "example": "无",
+          "member": "Role",
+          "name": "InheritedRoles",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateInstanceRoleResponse": {
+      "document": "UpdateInstanceRole response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "4356114",
+          "member": "int64",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateInstanceUserRequest": {
+      "document": "UpdateInstanceUser request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Instance ID.</p>",
+          "example": "cmgo-14akamap",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Username.</p>",
+          "example": "mongouser",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Authentication database</p>",
+          "example": "admin",
+          "member": "string",
+          "name": "Database",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>New password (Optional. If left empty, the password will not be changed)</p>",
+          "example": "**********",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Encrypted password (Optional, choose either this or Password)</p>",
+          "example": "*************************",
+          "member": "string",
+          "name": "EncryptedPassword",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>New role list (Optional. Leave it empty to not modify the role).</p>",
+          "example": "无",
+          "member": "Role",
+          "name": "Roles",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>New permission list (Optional. If left empty, no permission will be modified)</p>",
+          "example": "无",
+          "member": "Auth",
+          "name": "AuthRole",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>User description (Optional, leave it empty to not modify description)</p>",
+          "example": "测试用",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateInstanceUserResponse": {
+      "document": "UpdateInstanceUser response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Process ID</p>",
+          "example": "1750660112001308",
+          "member": "int64",
+          "name": "FlowId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",

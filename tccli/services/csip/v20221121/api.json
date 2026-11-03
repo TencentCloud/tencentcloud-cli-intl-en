@@ -1214,7 +1214,7 @@
     "DescribeAIScheduleList": {
       "document": "Query the list of AI scheduled tasks.\n\nSupports paging query and status filtering, and returns the scheduled task list and total number of entries.",
       "input": "DescribeAIScheduleListRequest",
-      "name": "Queries the scheduled AI task list",
+      "name": "Queries the AI scheduled task list",
       "output": "DescribeAIScheduleListResponse",
       "status": "online"
     },
@@ -2563,9 +2563,9 @@
       "status": "online"
     },
     "DescribeDspmIdentifyRuleTestResult": {
-      "document": "This API is used to query verification results of dspm data identification data items.",
+      "document": "Queries the verification result of a dspm data identification data item",
       "input": "DescribeDspmIdentifyRuleTestResultRequest",
-      "name": "Queries the dspm data identification data item verification result",
+      "name": "Queries the verification result of a dspm data identification data item",
       "output": "DescribeDspmIdentifyRuleTestResultResponse",
       "status": "online"
     },
@@ -5680,7 +5680,7 @@
       "usage": "both"
     },
     "AIScheduleUserIdentity": {
-      "document": "User identity information of the AI assistant",
+      "document": "User identity information for the AI assistant",
       "members": [
         {
           "disabled": false,
@@ -5694,7 +5694,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Account Uin</p>",
+          "document": "<p>Account UIN.</p>",
           "example": "700002365149",
           "member": "string",
           "name": "Uin",
@@ -5744,7 +5744,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Channel identifier, for example, wecom / qq / wx / feishu / dingtalk / cloud</p>",
+          "document": "<p>Channel identifier, such as wecom / qq / wx / feishu / dingtalk / cloud</p>",
           "example": "wecom",
           "member": "string",
           "name": "Channel",
@@ -7523,7 +7523,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>ID of the AI scheduled task.</p>",
+          "document": "<p>AI scheduled task ID.</p>",
           "example": "sched-a1b2c3d4",
           "member": "string",
           "name": "ScheduleId",
@@ -7553,7 +7553,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Status. Parameter Value: 1 (enabled), 2 (disabled).</p>",
+          "document": "<p>Status. Value: 1 (enabled), 2 (disabled).</p>",
           "example": "1",
           "member": "int64",
           "name": "Status",
@@ -36167,7 +36167,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Scheduled task ID, optional. If empty, a full query is performed.</p>",
+          "document": "<p>Scheduled task ID. It is optional. If it is empty, a full query is performed.</p>",
           "example": "a156***************************29702",
           "member": "string",
           "name": "ScheduleId",
@@ -51551,7 +51551,7 @@
         {
           "disabled": false,
           "document": "<p>Unstructured test content</p>",
-          "example": "kyrie@tencent.com",
+          "example": "*****@*******.com",
           "member": "string",
           "name": "UnStructuredTestContent",
           "required": false,
@@ -51574,7 +51574,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>Whether matched successfully</p><p>Enumeration values:</p><ul><li>true: match successful</li><li>false: fail to match</li></ul>",
+          "document": "<p>Whether the match is successful</p><p>Enumeration values:</p><ul><li>true: match successful</li><li>false: fail to match</li></ul>",
           "example": "true",
           "member": "bool",
           "name": "IsMatch",
