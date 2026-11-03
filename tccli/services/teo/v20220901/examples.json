@@ -1292,10 +1292,10 @@
     ],
     "DescribeMultiPathGatewaySecretKey": [
       {
-        "document": "Query the access key of a multi-channel security acceleration gateway for the specified site (ZoneId: zone-27q0p0bal192).",
+        "document": "This example shows you how to query the access key of a multi-channel security acceleration gateway under a specified site (ZoneId: zone-27q0p0bal192).",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMultiPathGatewaySecretKey\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bal192\"\n}",
-        "output": "{\n    \"Response\": {\n        \"SecretKey\": \"b8sfnemqzF5TNCwwtshVmG/gyCJVi/rP+7A+jsBwqGY=\",\n        \"RequestId\": \"9153aae4-26b1-4580-adc3-fa7cd4d32bf5\"\n    }\n}",
-        "title": "Querying Multi-Channel security acceleration Gateway Keys"
+        "output": "{\n    \"Response\": {\n        \"SecretKey\": \"b8**************************************qGY=\",\n        \"RequestId\": \"9153aae4-26b1-4580-adc3-fa7cd4d32bf5\"\n    }\n}",
+        "title": "Querying the Access Key of a Multi-Channel Security Acceleration Gateway"
       }
     ],
     "DescribeMultiPathGateways": [

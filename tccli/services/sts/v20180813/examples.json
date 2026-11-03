@@ -51,6 +51,14 @@
         "output": "{\n    \"Response\": {\n        \"Credentials\": {\n            \"Token\": \"kTRt***\",\n            \"TmpSecretId\": \"AKID***\",\n            \"TmpSecretKey\": \"Eo28***\"\n        },\n        \"Expiration\": \"2023-06-14T05:06:57Z\",\n        \"ExpiredTime\": 1686719217,\n        \"RequestId\": \"59a5e07e-4147-4d2e-a808-dca76ac5b3fd\"\n    }\n}",
         "title": "Obtaining Temporary Access Credentials"
       }
+    ],
+    "GetSessionToken": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: sts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetSessionToken\n<Common request parameters>\n\n{\n    \"SerialNumber\": \"qcs::cam:uin/10001::mfa/softToken\",\n    \"TokenCode\": \"102342\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Credentials\": {\n            \"Token\": \"da1e***\",\n            \"TmpSecretId\": \"AKID***\",\n            \"TmpSecretKey\": \"q95K***\"\n        },\n        \"ExpiredTime\": 1744271441,\n        \"Expiration\": \"2025-04-10T07:50:41Z\",\n        \"RequestId\": \"4rkgc443-9cd2-4f09-9e7a-7d4c43b2a74c\"\n    }\n}",
+        "title": "Obtain the MFA Temporary Certificate"
+      }
     ]
   },
   "version": "1.0"

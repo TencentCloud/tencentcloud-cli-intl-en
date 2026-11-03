@@ -883,9 +883,9 @@
       "status": "online"
     },
     "DescribeMultiPathGatewaySecretKey": {
-      "document": "This API is used to query keys for integrating multi-channel security acceleration gateways. Customers access multi-channel security acceleration gateways based on key signature.",
+      "document": "This API is used to query the key for integrating a multi-channel security acceleration gateway. Customers sign with the integration key to access the multi-channel security acceleration gateway.",
       "input": "DescribeMultiPathGatewaySecretKeyRequest",
-      "name": "Query the access key for the multi-channel security acceleration gateway",
+      "name": "Queries the access key of a multi-channel security acceleration gateway",
       "output": "DescribeMultiPathGatewaySecretKeyResponse",
       "status": "online"
     },
@@ -1654,7 +1654,7 @@
         },
         {
           "disabled": false,
-          "document": "Execution action of AI crawler detection. Required if Enabled is on. Name of SecurityAction only supports:\n<li>Deny: block;</li>\n<li>Monitor: observation;</li>\n<li>Allow: allow;</li>\n<li>Challenge: Among them, ChallengeOption in ChallengeActionParameters only supports JSChallenge and ManagedChallenge.</li>",
+          "document": "Execution action of AI crawler detection. Required if Enabled is on. Name of SecurityAction only supports:\n<li>Deny: block;</li>\n<li>Monitor: observation;</li>\n<li>Allow: Allow access;</li>\n<li>Challenge: Among them, ChallengeOption in ChallengeActionParameters only supports JSChallenge and ManagedChallenge.</li>",
           "example": "无",
           "member": "SecurityAction",
           "name": "Action",
@@ -2161,6 +2161,56 @@
       ],
       "usage": "both"
     },
+    "AccountProtectionSettings": {
+      "document": "Account protection configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Account protection feature switch.</p><p>Enumeration values: </p><ul><li>on: Enable;</li><li>off: Disable.</li></ul><p>Default value: off.</p>",
+          "example": "on",
+          "member": "string",
+          "name": "Enabled",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Request target. Used to identify the business operation scenario the request belongs to.</p> <p>Enumeration values:</p> <ul> <li>ACCOUNT.CHANGE_PASSWORD: request to change the password when the original password is known;</li> <li>ACCOUNT.CHANGE_SECURITY_QUESTION: request to modify the account security question;</li> <li>ACCOUNT.CHECK_EXISTENCE: request to verify whether the account exists, commonly used for pre-verification after entering an email or phone number on the login or registration page;</li> <li>ACCOUNT.LOGIN: request to log in to an account;</li> <li>ACCOUNT.REGISTER: request to sign up for a new account;</li> <li>ACCOUNT.RESET_PASSWORD: request to reset the password, usually by verifying identity through email or SMS and then setting a new password;</li> <li>ACCOUNT.UPDATE: request to modify account association information, such as phone number, email, payment card number, shipping address, etc.;</li> <li>ASSET.CHECK_GIFTCARD_BALANCE: request to query the gift card balance by card number and other information;</li> <li>ASSET.CHECK_LOYALTY_POINTS: request to query the account point balance;</li> <li>ASSET.REDEEM_CODE: request to exchange rights and interests using a redemption code;</li> <li>BROWSE.QUERY: request for in-site search of products or services;</li> <li>PAYMENT.ADD_TO_CART: request to add merchandise to the shopping cart;</li> <li>PAYMENT.GET_METHODS: request to obtain the list of payment methods bound to the account;</li> <li>PAYMENT.MAKE_PAYMENT: request to submit a payment, settlement, or fund transfer.</li> </ul>",
+          "example": "ACCOUNT.CHANGE_PASSWORD",
+          "member": "string",
+          "name": "RequestPurpose",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>The location of the user identity in the request source, where key is replaced with the actual parameter name.</p><p>Valid values:</p><ul><li>http.request.cookies[\"key\"]: Obtain the Cookie value named key from the Cookie;</li><li>http.request.headers[\"key\"]: Obtain the header value named key from the request header;</li><li>http.request.uri.args[\"key\"]: Obtain the parameter value named key from the URL query parameter.</li></ul>",
+          "example": "http.request.uri.args[\"user\"]",
+          "member": "string",
+          "name": "UserIDSource",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>User Risk Level configuration.</p>",
+          "example": "无",
+          "member": "UserRiskProfile",
+          "name": "UserRiskProfile",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "AclCondition": {
       "document": "The condition that makes up an access control rule",
       "members": [
@@ -2450,11 +2500,11 @@
       "usage": "both"
     },
     "AdaptiveFrequencyControl": {
-      "document": "Adaptive frequency control.",
+      "document": "Adaptive frequency control",
       "members": [
         {
           "disabled": false,
-          "document": "Whether adaptive frequency control is enabled. valid values: <li>on: enable;</li> <li>off: disable.</li>.",
+          "document": "Whether adaptive frequency control is enabled. Valid values: <li>on: enabled;</li><li>off: disabled.</li>",
           "example": "on",
           "member": "string",
           "name": "Enabled",
@@ -2465,7 +2515,7 @@
         },
         {
           "disabled": false,
-          "document": "Rule ID of adaptive frequency control, returned as an output parameter.",
+          "document": "Rule ID of adaptive frequency control, returned only as an output parameter.",
           "example": "2147483645",
           "member": "string",
           "name": "Id",
@@ -2476,7 +2526,7 @@
         },
         {
           "disabled": false,
-          "document": "The restriction level of adaptive frequency control. required when Enabled is on. valid values: <li>Loose: Loose</li><li>Moderate: Moderate</li><li>Strict: Strict</li>.",
+          "document": "The limitation level of adaptive frequency control. This field is required when Enabled is on. Valid values: <li>Loose: loose;</li><li>Moderate: moderate;</li><li>Strict: strict.</li>",
           "example": "Loose",
           "member": "string",
           "name": "Sensitivity",
@@ -2487,7 +2537,7 @@
         },
         {
           "disabled": false,
-          "document": "The handling method of adaptive frequency control. this field is required when Enabled is on. valid values for SecurityAction Name: <li>Monitor: observation;</li> <li>Deny: block;</li> <li>Challenge: Challenge, where ChallengeActionParameters.Name only supports JSChallenge.</li>.",
+          "document": "Handling method of adaptive frequency control. This field is required when Enabled is on. Supported values for SecurityAction Name: <li>Monitor: monitor;</li><li>Deny: block;</li><li>Challenge: challenge. ChallengeActionParameters.Name only supports JSChallenge.</li>",
           "example": "无",
           "member": "SecurityAction",
           "name": "Action",
@@ -2924,11 +2974,11 @@
       "usage": "out"
     },
     "AllowActionParameters": {
-      "document": "Additional parameter when the safe execution action is Allow.\n\nThis parameter is used to specify the extra handling action taken by the system when a security rule is hit and an Allow action is executed.\nDifferent handling actions are configured with different fixed parameter combinations. The system will determine the actually effective handling action type according to the configured parameter combination.\nDuring the same release execution, only one handling action can be configured and made effective. Parameter composites for multiple handling actions cannot appear simultaneously; otherwise, it is deemed an invalid configuration. If empty, the default release handling action is used.\nAllowActionParameters supports the following additional handling actions: <li>Default: When AllowActionParameters is empty, skip the remaining rules of the current security module immediately and continue matching subsequent security modules.</li><li>Delayed pass: Add response delay to the request and continue matching the remaining rules of the current module. Corresponding parameters: MinDelayTime, MaxDelayTime.</li>",
+      "document": "Additional parameter when the executed action is allow.\n\nThis parameter is used to specify the extra handling action taken by the system when a security rule is hit and the Allow action is executed.\nDifferent handling actions are configured with different fixed parameter combinations. The system will determine the actually effective handling action type according to the configured parameter combination.\nDuring the same release execution, only one handling action can be configured and made effective. Parameters for multiple handling actions cannot appear at the same time. Otherwise, it is deemed as an invalid configuration. If empty, the default release action is used.\nAllowActionParameters supports the following additional handling actions: <li>Default: When AllowActionParameters is empty, immediately skip the remaining rules of the current security module and continue matching subsequent security modules.</li><li>Delayed release: Add response delay to the request and continue matching the remaining rules of the current module. Corresponding parameters: MinDelayTime, MaxDelayTime.</li>",
       "members": [
         {
           "disabled": false,
-          "document": "Minimum latency response time. when configured as 0s, it means no delay for direct response. supported units: <li>s: seconds, value ranges from 0 to 5.</li>.",
+          "document": "Minimum delayed response time. When configured as 0s, it means no delay and direct response. Supported units: <li>s: second, value ranges from 0 to 5.</li>",
           "example": "0s",
           "member": "string",
           "name": "MinDelayTime",
@@ -2939,7 +2989,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum delayed response time. supported units: <li>s: seconds, value ranges from 5 to 10.</li>.",
+          "document": "Maximum delayed response time. Supported units: <li>s: seconds, value range: 5–10.</li>",
           "example": "0s",
           "member": "string",
           "name": "MaxDelayTime",
@@ -3477,11 +3527,11 @@
       "usage": "both"
     },
     "BandwidthAbuseDefense": {
-      "document": "Bandwidth abuse protection configuration (chinese mainland only).",
+      "document": "Bandwidth abuse protection configuration (only applicable to the Chinese mainland).",
       "members": [
         {
           "disabled": false,
-          "document": "Whether bandwidth abuse protection (applicable to chinese mainland only) is enabled. valid values: <li>on: enabled;</li> <li>off: disabled.</li>.",
+          "document": "Whether bandwidth abuse protection (only applicable to the Chinese mainland) is enabled. Valid values: <li>on: enabled;</li><li>off: disabled.</li>",
           "example": "on",
           "member": "string",
           "name": "Enabled",
@@ -3492,7 +3542,7 @@
         },
         {
           "disabled": false,
-          "document": "Rule ID of traffic anti-fraud, returned as an output parameter.",
+          "document": "Rule ID for bandwidth abuse protection. Returned as an output parameter only.",
           "example": "4294967290",
           "member": "string",
           "name": "Id",
@@ -3503,7 +3553,7 @@
         },
         {
           "disabled": false,
-          "document": "Bandwidth abuse protection (applicable to chinese mainland) handling method. required when Enabled is on. valid values for SecurityAction Name: <li>Monitor: observe;</li> <li>Deny: block;</li> <li>Challenge: Challenge, where ChallengeActionParameters.Name only supports JSChallenge.</li>.",
+          "document": "Handling method for bandwidth abuse protection (applicable to Chinese mainland only). This field is required when Enabled is on. Supported values for SecurityAction Name: <li>Monitor: monitor;</li><li>Deny: block;</li><li>Challenge: challenge. ChallengeActionParameters.Name only supports JSChallenge.</li>",
           "example": "无",
           "member": "SecurityAction",
           "name": "Action",
@@ -3516,11 +3566,11 @@
       "usage": "both"
     },
     "BasicBotSettings": {
-      "document": "Bot management basic configuration takes effect for all domains with policy association. CustomRules can be used to customize.",
+      "document": "Basic configuration of Bot management, which takes effect for all domain names associated with the policy. Fine-grained customization can be done through CustomRules.",
       "members": [
         {
           "disabled": false,
-          "document": "Client IP source IDC configuration, used for handling access requests from client ips in idcs (data centers). such source requests are not directly accessed by mobile terminals or browser-side.",
+          "document": "Source IDC configuration of the client IP, used for handling access requests from client IPs in IDCs (data centers). This type of source request is not directly accessed from a mobile terminal or browser side.",
           "example": "无",
           "member": "SourceIDC",
           "name": "SourceIDC",
@@ -3531,7 +3581,7 @@
         },
         {
           "disabled": false,
-          "document": "Search engine crawler configuration, used to handle requests from search engine crawlers. the IP, User-Agent, or rDNS results of such requests match known search engine crawlers.",
+          "document": "Search engine crawler configuration, used for handling requests from search engine crawlers. The IP, User-Agent, or rDNS results of such requests match known search engine crawlers.",
           "example": "无",
           "member": "SearchEngineBots",
           "name": "SearchEngineBots",
@@ -3542,7 +3592,7 @@
         },
         {
           "disabled": false,
-          "document": "Commercial or open-source tool UA feature configuration (original UA feature rule), used to handle access requests from known commercial or open-source tools. the User-Agent header of such requests complies with known commercial or open-source tool features.",
+          "document": "UA feature configuration for commercial or open-source tools (formerly UA feature rules), used for handling access requests from known commercial or open-source tools. The User-Agent header of such requests matches the features of known commercial or open-source tools.",
           "example": "无",
           "member": "KnownBotCategories",
           "name": "KnownBotCategories",
@@ -3553,7 +3603,7 @@
         },
         {
           "disabled": false,
-          "document": "Threat intelligence database (originally client profile analysis) configuration, used for handling client ips with specific risk characteristics in recent access behavior.",
+          "document": "IP threat intelligence database (formerly client profile analysis) configuration, used for handling client IP addresses with specific risk characteristics in recent access behavior.",
           "example": "无",
           "member": "IPReputation",
           "name": "IPReputation",
@@ -3564,7 +3614,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the configuration for Bot intelligent analysis.",
+          "document": "Specific configuration for Bot intelligent analysis.",
           "example": "无",
           "member": "BotIntelligence",
           "name": "BotIntelligence",
@@ -3875,11 +3925,11 @@
       "type": "object"
     },
     "BlockIPActionParameters": {
-      "document": "Additional parameter for SecurityAction `BlockIP`.",
+      "document": "Additional parameter for IP blocking in Web Security",
       "members": [
         {
           "disabled": false,
-          "document": "Penalty duration for `BlockIP`. Units: <li>`s`: second, value range 1-120;</li> <li>`m`: minute, value range 1-120;</li> <li>`h`: hour, value range 1-48.</li>.",
+          "document": "Penalty duration for blocked IPs. Supported units: <li>s: second, value ranges from 1 to 120;</li><li>m: minute, value ranges from 1 to 120;</li><li>h: hour, value ranges from 1 to 48.</li>",
           "example": "80s",
           "member": "string",
           "name": "Duration",
@@ -4003,11 +4053,11 @@
       "usage": "both"
     },
     "BotIntelligence": {
-      "document": "Bot intelligent analysis configuration.",
+      "document": "Specific configuration for Bot intelligent analysis.",
       "members": [
         {
           "disabled": false,
-          "document": "Specifies the switch for Bot intelligent analysis configuration. valid values:.\n\non: enabled.\noff: disabled.",
+          "document": "Specific configuration switch for Bot intelligent analysis. Valid values:\n\non: enable;\noff: Disable.",
           "example": "on",
           "member": "string",
           "name": "Enabled",
@@ -4018,7 +4068,7 @@
         },
         {
           "disabled": false,
-          "document": "Rule ID of Bot intelligent analysis, returned as an output parameter.",
+          "document": "Rule ID of Bot intelligent analysis, returned only as an output parameter.",
           "example": "4294967292",
           "member": "string",
           "name": "Id",
@@ -4029,7 +4079,7 @@
         },
         {
           "disabled": false,
-          "document": "Based on client and request features, divides request sources into human requests, legitimate Bot requests, suspected Bot requests, and high-risk Bot requests, and provides request handling options.",
+          "document": "Based on the client and request features, divide the request source into human requests, valid Bot requests, suspected Bot requests, and high-risk Bot requests, and provide request handling options.",
           "example": "无",
           "member": "BotRatings",
           "name": "BotRatings",
@@ -4125,11 +4175,11 @@
       "usage": "both"
     },
     "BotManagement": {
-      "document": "Web security BOT managed rules architecture.",
+      "document": "BOT rule structure for Web security.",
       "members": [
         {
           "disabled": false,
-          "document": "Whether Bot management is enabled. valid values: <li>on: enabled;</li><li>off: disabled.</li>.",
+          "document": "Whether Bot management is enabled. Valid values: <li>on: enabled;</li><li>off: disabled.</li>",
           "example": "on",
           "member": "string",
           "name": "Enabled",
@@ -4140,7 +4190,7 @@
         },
         {
           "disabled": false,
-          "document": "Bot management custom rule combines various crawlers and request behavior characteristics to accurately define bots and configure customized handling methods.",
+          "document": "Custom rule for Bot management combines various types of crawlers and request behavior characteristics to precisely define bots and configure customized handling methods.",
           "example": "无",
           "member": "BotManagementCustomRules",
           "name": "CustomRules",
@@ -4151,7 +4201,7 @@
         },
         {
           "disabled": false,
-          "document": "Bot management basic configuration. takes effect on all domains associated with the policy. can be customized through CustomRules.",
+          "document": "Basic configuration of Bot management, which takes effect on all domains associated with the policy. It can be customized through CustomRules.",
           "example": "无",
           "member": "BasicBotSettings",
           "name": "BasicBotSettings",
@@ -4162,7 +4212,7 @@
         },
         {
           "disabled": false,
-          "document": "Definition list of client authentication rules. this feature is in beta test. submit a ticket if you need to use it.",
+          "document": "Definition list of client authentication rules. This feature is in beta test. If needed, submit a ticket.",
           "example": "无",
           "member": "ClientAttestationRules",
           "name": "ClientAttestationRules",
@@ -4173,7 +4223,7 @@
         },
         {
           "disabled": false,
-          "document": "Configures browser spoofing identification rules (formerly active feature detection rule). sets the response page range for JavaScript injection, browser check options, and handling method for non-browser clients.",
+          "document": "Configure browser spoofing identification rules (formerly active feature detection rules). Set the response page range for JavaScript injection, browser check options, and handling method for non-browser clients.",
           "example": "无",
           "member": "BrowserImpersonationDetection",
           "name": "BrowserImpersonationDetection",
@@ -4186,11 +4236,11 @@
       "usage": "both"
     },
     "BotManagementActionOverrides": {
-      "document": "Bot rules specific configuration, used to override the upper layer default configuration.",
+      "document": "Configuration of a Bot rule item, used to overwrite the upper-layer default configuration.",
       "members": [
         {
           "disabled": false,
-          "document": "Specific item under Bot rules used to rewrite the configuration content of this single rule. refer to the returned message from the DescribeBotManagedRules API for detailed information corresponding to Ids.",
+          "document": "Specific item under the Bot rule group, used to rewrite the configuration content of this individual rule item. For detailed information corresponding to the Ids, see the returned message of the DescribeBotManagedRules API.",
           "example": "[\"5682929011\"]",
           "member": "string",
           "name": "Ids",
@@ -4201,7 +4251,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the handling action for Bot rule items in Ids. valid values for the Name parameter in SecurityAction: <li>Deny: block;</li><li>Monitor: observe;</li><li>Disabled: Disabled, disable the specified rule;</li><li>Challenge: Challenge, where ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge;</li><li>Allow: pass (only for Bot basic feature management).</li>.\n",
+          "document": "Handling action for the Bot rule item specified in Ids. Supported values for SecurityAction Name: <li>Deny: block;</li><li>Monitor: observe;</li><li>Disabled: not enabled, disable the specified rule;</li><li>Challenge: challenge. ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge;</li><li>Allow: allow (only for basic feature management of Bot).</li>\n",
           "example": "无",
           "member": "SecurityAction",
           "name": "Action",
@@ -4214,11 +4264,11 @@
       "usage": "both"
     },
     "BotManagementCustomRule": {
-      "document": "Web security Bot custom rule.",
+      "document": "Custom Bot rules for Web security.",
       "members": [
         {
           "disabled": false,
-          "document": "The ID of a Bot custom rule. different rule configuration operations are supported by rule ID: <li><b>add</b> a new rule: leave the ID empty or do not specify the ID parameter.</li> <li><b>modify</b> an existing rule: specify the rule ID that needs to be updated/modified.</li> <li><b>delete</b> an existing rule: existing Rules not included in the Rules list under the BotManagementCustomRules parameter will be deleted.</li>.",
+          "document": "<p>ID of the bot custom rule.<br>Different rule configuration operations are supported via the rule ID:<br> <li> <b>Add</b> a new rule: leave the ID empty or do not specify the ID parameter;</li><li><b>Modify</b> an existing rule: specify the rule ID that needs to be updated/modified;</li><li><b>Delete</b> an existing rule: existing rules not included in the Rules list in the BotManagementCustomRules parameter will be deleted.</li></p>",
           "example": "2181399690",
           "member": "string",
           "name": "Id",
@@ -4229,7 +4279,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the name of the Bot custom rule.",
+          "document": "<p>Name of the Bot custom rule.</p>",
           "example": "SampleCustomBotRule",
           "member": "string",
           "name": "Name",
@@ -4240,7 +4290,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether the custom Bot rule is enabled. valid values: <li>on: enabled;</li><li>off: disabled.</li>.",
+          "document": "<p>Whether the custom Bot rule is enabled. Valid values: <li>on: enable;</li><li>off: disable.</li></p>",
           "example": "on",
           "member": "string",
           "name": "Enabled",
@@ -4251,7 +4301,7 @@
         },
         {
           "disabled": false,
-          "document": "Priority of custom Bot rules. value range: 1–100. default value is 50.",
+          "document": "<p>Priority of Bot custom rules, ranging from 1 to 100, with a default value of 50.</p>",
           "example": "50",
           "member": "int64",
           "name": "Priority",
@@ -4262,7 +4312,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the specific content of the Bot custom rule, which must comply with expression grammar. for detailed specifications, refer to the product document.",
+          "document": "<p>For specific content of the Bot custom rule, it must comply with the expression grammar. For detailed specifications, see the product document.</p>",
           "example": "${http.request.bot.rating} in ['botrating-likely-bot','botrating-verified-bot']} and ${http.request.ip.client_reputation} in ['rep-attackes.high'] and ${http.request.method} in ['POST']",
           "member": "string",
           "name": "Condition",
@@ -4273,7 +4323,7 @@
         },
         {
           "disabled": false,
-          "document": "The handling method for Bot custom rules. valid values: <li>Monitor: observation;</li><li>Deny: block, where DenyActionParameters.Name supports Deny and ReturnCustomPage;</li><li>Challenge: Challenge, where ChallengeActionParameters.Name supports JSChallenge and ManagedChallenge;</li><li>Redirect: Redirect to URL.</li>.",
+          "document": "<p>List of safe execution actions by weight assignment.</p>",
           "example": "无",
           "member": "SecurityWeightedAction",
           "name": "Action",
@@ -4286,11 +4336,11 @@
       "usage": "both"
     },
     "BotManagementCustomRules": {
-      "document": "Configuration of Bot custom rule.",
+      "document": "Configuration of the Bot custom rule.",
       "members": [
         {
           "disabled": false,
-          "document": "List of Bot custom Rules. when using ModifySecurityPolicy to modify Web protection configuration: <br> <li> if Rules in SecurityPolicy.BotManagement.CustomRules is not specified or parameter length of Rules is zero: clear all Bot custom rule configurations.</li> <li> if CustomRules in SecurityPolicy.BotManagement parameters is unspecified: keep existing Bot custom rule configurations and do not modify them.</li>.",
+          "document": "List of Bot custom Rules. When using ModifySecurityPolicy to modify the Web protection configuration: <br> <li> If the Rules parameter in SecurityPolicy.BotManagement.CustomRules is not specified, or the Rules parameter length is zero: clear all Bot custom rule configurations.</li> <li> If the CustomRules parameter value is not specified in the SecurityPolicy.BotManagement parameters: keep the existing Bot custom rule configuration without modification.</li>",
           "example": "无",
           "member": "BotManagementCustomRule",
           "name": "Rules",
@@ -4303,11 +4353,11 @@
       "usage": "both"
     },
     "BotManagementLite": {
-      "document": "Foundation of Web security BOT rule architecture.",
+      "document": "Structure of BOT rules for Web security.",
       "members": [
         {
           "disabled": false,
-          "document": "Configuration of the human-machine verification page.",
+          "document": "Configuration of the CAPTCHA page.",
           "example": "无",
           "member": "CAPTCHAPageChallenge",
           "name": "CAPTCHAPageChallenge",
@@ -4318,7 +4368,7 @@
         },
         {
           "disabled": false,
-          "document": "AI crawler detection configuration.",
+          "document": "Specific configuration for AI crawler detection.",
           "example": "无",
           "member": "AICrawlerDetection",
           "name": "AICrawlerDetection",
@@ -4403,11 +4453,11 @@
       "usage": "both"
     },
     "BotRatings": {
-      "document": "Based on client and request features, the request source is divided into human request, valid Bot request, suspected Bot request, and high-risk Bot request, with request handling options provided.",
+      "document": "Based on client and request features, request sources are divided into human requests, legal Bot requests, suspected Bot requests, and high-risk Bot requests, with request handling options provided.",
       "members": [
         {
           "disabled": false,
-          "document": "Execution action for malicious Bot requests. valid values for the Name parameter in SecurityAction: <li>Deny: block;</li> <li>Monitor: observe;</li> <li>Allow: pass;</li> <li>Challenge: Challenge, where ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge.</li>.",
+          "document": "Execution action for malicious Bot requests. Supported values for the Name parameter of SecurityAction: <li>Deny: Block;</li><li>Monitor: Observe;</li><li>Allow: Allow;</li><li>Challenge: Challenge. Among them, ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge.</li>",
           "example": "无",
           "member": "SecurityAction",
           "name": "HighRiskBotRequestsAction",
@@ -4418,7 +4468,7 @@
         },
         {
           "disabled": false,
-          "document": "The execution action for suspected Bot requests. valid values for the Name parameter in SecurityAction: <li>Deny: block;</li> <li>Monitor: observe;</li> <li>Allow: pass;</li> <li>Challenge: Challenge, where ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge.</li>.",
+          "document": "Execution action for suspected Bot requests. Supported values for the Name parameter of SecurityAction: <li>Deny: Block;</li><li>Monitor: Observe;</li><li>Allow: Allow;</li><li>Challenge: Challenge. The ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge.</li>",
           "example": "无",
           "member": "SecurityAction",
           "name": "LikelyBotRequestsAction",
@@ -4429,7 +4479,7 @@
         },
         {
           "disabled": false,
-          "document": "Execution action for friendly Bot request. SecurityAction Name parameter supports: <li>Deny: block;</li><li>Monitor: observe;</li><li>Allow: pass;</li><li>Challenge: Challenge, where ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge.</li>.",
+          "document": "Execution action of friendly Bot requests. The Name parameter of SecurityAction supports the following values: <li>Deny: block;</li><li>Monitor: observe;</li><li>Allow: Allow;</li><li>Challenge: Challenge. The ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge.</li>",
           "example": "无",
           "member": "SecurityAction",
           "name": "VerifiedBotRequestsAction",
@@ -4440,7 +4490,7 @@
         },
         {
           "disabled": false,
-          "document": "Execution action for a normal Bot request. valid values for the Name parameter in SecurityAction: <li>Allow: pass.</li>.",
+          "document": "Execution action for normal Bot requests. Valid values of SecurityAction Name: <li>Allow: Allow.</li>",
           "example": "无",
           "member": "SecurityAction",
           "name": "HumanRequestsAction",
@@ -4453,11 +4503,11 @@
       "usage": "both"
     },
     "BotSessionValidation": {
-      "document": "Specifies the configuration for Cookie verification and session tracking behavior.",
+      "document": "Cookie verification and session tracking behavior configuration.",
       "members": [
         {
           "disabled": false,
-          "document": "Whether to update Cookie and validate. valid values: <li>on: update Cookie and validate;</li> <li>off: verify only.</li>.",
+          "document": "Whether to update the Cookie and verify. Valid values: <li>on: update the Cookie and verify;</li><li>off: verify only.</li>",
           "example": "on",
           "member": "string",
           "name": "IssueNewBotSessionCookie",
@@ -4468,7 +4518,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the trigger threshold for updating and validating cookies. valid only when IssueNewBotSessionCookie is set to on.",
+          "document": "Update threshold for cookie update and validation. Valid only when IssueNewBotSessionCookie is on.",
           "example": "无",
           "member": "MaxNewSessionTriggerConfig",
           "name": "MaxNewSessionTriggerConfig",
@@ -4479,7 +4529,7 @@
         },
         {
           "disabled": false,
-          "document": "Execution action when no Cookie is carried or the Cookie expired. valid values for the Name parameter in SecurityAction: <li>Deny: block, where Stall can be configured in DenyActionParameters;</li><li>Monitor: observe;</li><li>Allow: respond after wait, where MinDelayTime and MaxDelayTime must be configured in AllowActionParameters.</li>.",
+          "document": "Execution action without a Cookie or with an expired Cookie. Supported Name values for SecurityAction: <li>Deny: block. DenyActionParameters supports Stall configuration.</li><li>Monitor: observe.</li><li>Allow: respond after waiting. AllowActionParameters requires MinDelayTime and MaxDelayTime configuration.</li>",
           "example": "无",
           "member": "SecurityAction",
           "name": "SessionExpiredAction",
@@ -4490,7 +4540,7 @@
         },
         {
           "disabled": false,
-          "document": "Execution action for invalid Cookie. valid values for the Name parameter in SecurityAction: <li>Deny: block, where the DenyActionParameters supports Stall configuration;</li><li>Monitor: observe;</li><li>Allow: respond after wait, where AllowActionParameters requires MinDelayTime and MaxDelayTime configuration.</li>.",
+          "document": "Execution action for invalid Cookie. The Name parameter of SecurityAction supports the following values: <li>Deny: block. DenyActionParameters supports the Stall configuration.</li><li>Monitor: observe.</li><li>Allow: respond after waiting. AllowActionParameters requires the MinDelayTime and MaxDelayTime configurations.</li>",
           "example": "无",
           "member": "SecurityAction",
           "name": "SessionInvalidAction",
@@ -4501,7 +4551,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the session rate and periodic feature verification configuration.",
+          "document": "Specific configuration for session rate and periodic feature verification.",
           "example": "无",
           "member": "SessionRateControl",
           "name": "SessionRateControl",
@@ -4674,11 +4724,11 @@
       "usage": "both"
     },
     "BrowserImpersonationDetection": {
-      "document": "Browser spoofing identification rule (formerly active feature detection rule) configuration.",
+      "document": "Configuration of browser spoofing identification rules (formerly active feature detection rules).",
       "members": [
         {
           "disabled": false,
-          "document": "List of browser spoofing identification Rules. when using ModifySecurityPolicy to modify Web protection configuration: <br> <li>if Rules parameter in SecurityPolicy.BotManagement.BrowserImpersonationDetection is not specified or parameter length is zero: clear all browser spoofing identification rule configurations.</li> <li>if BrowserImpersonationDetection parameter value is unspecified in SecurityPolicy.BotManagement parameters: keep existing browser spoofing identification rule configurations without modification.</li>.",
+          "document": "List of browser spoofing identification rules. When using ModifySecurityPolicy to modify Web protection configuration: <br> <li> If the Rules parameter in SecurityPolicy.BotManagement.BrowserImpersonationDetection is not specified, or the parameter length is zero: clear all browser spoofing identification rule configurations.</li> <li> If the BrowserImpersonationDetection parameter value is not specified in the SecurityPolicy.BotManagement parameter: keep the existing browser spoofing identification rule configuration without modification.</li>",
           "example": "无",
           "member": "BrowserImpersonationDetectionRule",
           "name": "Rules",
@@ -4691,11 +4741,11 @@
       "usage": "both"
     },
     "BrowserImpersonationDetectionAction": {
-      "document": "Specifies the Action of the Bot browser verification rule (formerly active feature detection rule).",
+      "document": "Action of the Bot browser verification rule (formerly active feature detection rule).",
       "members": [
         {
           "disabled": false,
-          "document": "Configures Cookie verification and session tracking.",
+          "document": "Cookie verification and session tracking configuration.",
           "example": "无",
           "member": "BotSessionValidation",
           "name": "BotSessionValidation",
@@ -4706,7 +4756,7 @@
         },
         {
           "disabled": false,
-          "document": "Configures client behavior validation.",
+          "document": "Client behavior validation configuration.",
           "example": "无",
           "member": "ClientBehaviorDetection",
           "name": "ClientBehaviorDetection",
@@ -4723,7 +4773,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Browser spoofing identification rule ID. rule ID supports different rule configuration operations: <li> <b>add</b> a new rule: ID is empty or without specifying the ID parameter;</li> <li> <b>modify</b> an existing rule: specify the rule ID that needs to be updated/modified;</li> <li> <b>delete</b> an existing rule: existing Rules not included in the Rules list of the BrowserImpersonationDetection parameter will be deleted.</li>.",
+          "document": "ID of the browser spoofing identification rule.<br>You can perform different rule configuration operations by rule ID:<br> <li> <b>Add</b> a new rule: leave the ID empty or unspecified;</li><li><b>Modify</b> an existing rule: specify the rule ID that needs to be updated/modified;</li><li><b>Delete</b> an existing rule: existing rules not included in the Rules list in the BrowserImpersonationDetection parameter will be deleted.</li>",
           "example": "2184868170",
           "member": "string",
           "name": "Id",
@@ -4734,7 +4784,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the name of the browser spoofing identification rule.",
+          "document": "Name of the browser spoofing identification rule.",
           "example": "LoginValidation",
           "member": "string",
           "name": "Name",
@@ -4745,7 +4795,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether browser spoofing detection is enabled. valid values: <li>on: enabled;</li><li>off: disabled.</li>.",
+          "document": "Whether to enable the browser forgery identification rule. Valid values: <li>on: enable;</li><li>off: disable.</li>",
           "example": "on",
           "member": "string",
           "name": "Enabled",
@@ -4756,7 +4806,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the specific content of browser spoofing identification rules, which only support configuration of request Method (Method), request Path (Path), and request URL, and must comply with expression grammar. for detailed specifications, please refer to the product document.",
+          "document": "Specific content of the browser spoofing identification rule. It only supports the configuration of request Method, request Path, and request URL, which must comply with expression syntax. For detailed specifications, see the product document.",
           "example": "${http.request.path} in ['/api/v3/test','/api/v3/submit'] and ${http.request.method} in ['POST']",
           "member": "string",
           "name": "Condition",
@@ -4767,7 +4817,7 @@
         },
         {
           "disabled": false,
-          "document": "Describes the handling method for browser spoofing identification rules, including Cookie verification, session tracking configuration, and client behavior validation configuration.",
+          "document": "Handling method for browser spoofing identification rules, including Cookie verification, session tracking configuration, and client behavior validation configuration.",
           "example": "无",
           "member": "BrowserImpersonationDetectionAction",
           "name": "Action",
@@ -4780,11 +4830,11 @@
       "usage": "both"
     },
     "CAPTCHAPageChallenge": {
-      "document": "Human-Machine verification page configuration.",
+      "document": "Specific configuration of the CAPTCHA page.",
       "members": [
         {
           "disabled": false,
-          "document": "Whether the human-machine verification page is enabled. valid values: <li>on: enabled;</li> <li>off: disabled.</li>.",
+          "document": "Whether human-machine verification is enabled. Valid values: <li>on: enabled;</li><li>off: disabled.</li>",
           "example": "on",
           "member": "string",
           "name": "Enabled",
@@ -5479,11 +5529,11 @@
       "usage": "both"
     },
     "ChallengeActionParameters": {
-      "document": "Additional parameter for the security executed action when it is a challenge.\n\nThis parameter is used for specifying the extra handling action taken by the system when a security rule is hit and a challenge action is executed.\nChallenge disposal actions are segmented by ChallengeOption. Different challenge types correspond to different interaction forms and parameter requirements. The system will apply the corresponding parameter configuration according to the selected challenge type.\nChallengeActionParameters supports the following challenge disposition types: <li>Interstitial challenge: responds with a new page and runs the authentication mechanism on the new page. Corresponds to the ChallengeOption value InterstitialChallenge.</li><li>Inline challenge: responds with an SDK challenge. Corresponds to the ChallengeOption value InlineChallenge.</li><li>JavaScript challenge: invisible browser verification. The browser automatically performs verification and shows the requested resource. Corresponds to the ChallengeOption value JSChallenge.</li><li>Managed challenge: responds with a redirect page containing a JavaScript program, used for verifying the browser runtime environment. Corresponds to the ChallengeOption value ManagedChallenge.</li>",
+      "document": "Additional parameter for the safe execution action when it is a challenge.\n\nThis parameter is used to specify the extra handling action taken by the system when a security rule is hit and a challenge action is executed.\nChallenge disposal actions are segmented through ChallengeOption. Different challenge types correspond to different interaction forms and parameter requirements. The system will bring the corresponding parameter configuration into effect according to the selected challenge type.\nChallengeActionParameters supports the following challenge disposition types: <li>Interstitial challenge: responds with a new page and runs the authentication mechanism within the new page. The corresponding ChallengeOption value is InterstitialChallenge.</li><li>Inline challenge: responds with an SDK challenge. The corresponding ChallengeOption value is InlineChallenge.</li><li>JavaScript challenge: invisible verification in the browser. The browser automatically performs verification and shows the requested resource. The corresponding ChallengeOption value is JSChallenge.</li><li>Managed challenge: responds with a redirect page containing a JavaScript program, used for verification of the browser runtime environment. The corresponding ChallengeOption value is ManagedChallenge.</li>",
       "members": [
         {
           "disabled": false,
-          "document": "<p>Specific challenge action for safe execution.</p><p>Enumeration values:</p><ul><li>InterstitialChallenge: interstitial challenge;</li><li>InlineChallenge: embedded challenge (SDK challenge);</li><li>ManagedChallenge: managed challenge. Applicable only to HTML web pages directly accessed by users through a browser. Verification cannot be completed in scenarios such as API interfaces, XHR/AJAX async requests within web pages, mobile apps, and command line tools. Do not configure it;</li><li>JSChallenge: JavaScript challenge. Applicable only to HTML web pages directly accessed by users through a browser. Verification cannot be completed in scenarios such as API interfaces, XHR/AJAX async requests within web pages, mobile apps, and command line tools. Do not configure it.</li></ul>",
+          "document": "<p>Specific challenge action for safe execution.</p><p>Enumeration values:</p><ul><li>InterstitialChallenge: Interstitial challenge;</li><li>InlineChallenge: Embedded challenge (SDK challenge);</li><li>ManagedChallenge: Managed challenge. Applicable only to HTML web pages directly accessed by users through a browser. API interfaces, XHR/AJAX asynchronous requests within web pages, mobile apps, command line tools, and other scenarios cannot complete the verification. Do not configure;</li><li>JSChallenge: JavaScript challenge. Applicable only to HTML web pages directly accessed by users through a browser. API interfaces, XHR/AJAX asynchronous requests within web pages, mobile apps, command line tools, and other scenarios cannot complete the verification. Do not configure.</li></ul>",
           "example": "JSChallenge",
           "member": "string",
           "name": "ChallengeOption",
@@ -5666,11 +5716,11 @@
       "usage": "out"
     },
     "ClientAttestationRule": {
-      "document": "Client authentication rule.",
+      "document": "Client authentication rules",
       "members": [
         {
           "disabled": false,
-          "document": "Client authentication rule ID. supported rule configuration operations by rule ID: <li> <b>add</b> a new rule: leave the ID empty or do not specify the ID parameter.</li> <li> <b>modify</b> an existing rule: specify the rule ID that needs to be updated/modified.</li> <li> <b>delete</b> an existing rule: existing rules not included in the ClientAttestationRule list under BotManagement parameters will be deleted.</li>.",
+          "document": "<p>ID of the client authentication rule.<br>Different rule configuration operations are supported by rule ID:<br> <li> <b>Add</b> a new rule: leave ID empty or do not specify the ID parameter;</li><li> <b>Modify</b> an existing rule: specify the rule ID to be updated/modified;</li><li> <b>Delete</b> an existing rule: existing rules not included in the ClientAttestationRule list in the BotManagement parameter will be deleted.</li></p>",
           "example": "1492837239",
           "member": "string",
           "name": "Id",
@@ -5681,7 +5731,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the name of the client authentication rule.",
+          "document": "<p>Name of the client authentication rule.</p>",
           "example": "loginValidation",
           "member": "string",
           "name": "Name",
@@ -5692,7 +5742,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether the rule is enabled. valid values: <li>`on`: enable</li> <li>`off`: disable</li>.",
+          "document": "<p>Whether the rule is enabled. Valid values: <li>on: enabled;</li><li>off: disabled.</li></p>",
           "example": "on",
           "member": "string",
           "name": "Enabled",
@@ -5703,7 +5753,7 @@
         },
         {
           "disabled": false,
-          "document": "Priority of rules. a smaller value indicates higher priority execution. value range: 0-100. default value: 0.",
+          "document": "<p>Priority of rules. A smaller value indicates higher priority. Value range: 0-100. Default value: 0.</p>",
           "example": "10",
           "member": "uint64",
           "name": "Priority",
@@ -5714,7 +5764,7 @@
         },
         {
           "disabled": false,
-          "document": "The rule content must comply with expression grammar. for details, see the product document.",
+          "document": "<p>The specific content of the rule must comply with the expression syntax. For detailed specifications, see the product document.</p>",
           "example": "${http.request.api_resource} in ['apires-d92k5q11kgg@zone-9tk319gs192g']",
           "member": "string",
           "name": "Condition",
@@ -5725,7 +5775,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the client authentication option ID.",
+          "document": "<p>Client authentication option ID.</p>",
           "example": "attest-x9192k11kgg@zone-9tk319gs192g",
           "member": "string",
           "name": "AttesterId",
@@ -5736,7 +5786,18 @@
         },
         {
           "disabled": false,
-          "document": "Client device configuration. if the DeviceProfiles parameter value is not specified in the ClientAttestationRules parameter, keep the existing client device configuration and do not modify it.",
+          "document": "<p>Handling method when client authentication fails. SecurityAction.Name values are as follows:</p><ul><li>Allow: allow, where AllowActionParameters supports MinDelayTime and MaxDelayTime configuration;</li><li>Deny: block, where DenyActionParameters supports BlockIp, ReturnCustomPage, and Stall configuration;</li><li>Monitor: observe;</li><li>Challenge: challenge, where ChallengeActionParameters.ChallengeOption supports JSChallenge, ManagedChallenge, InterstitialChallenge, and InlineChallenge;</li><li>Redirect: redirect to a URL.</li></ul>",
+          "example": "无",
+          "member": "SecurityAction",
+          "name": "InvalidAttestationAction",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Client device configuration. If the DeviceProfiles parameter value is not specified in the ClientAttestationRules parameter: keep the existing client device configuration without modification.</p>",
           "example": "无",
           "member": "DeviceProfile",
           "name": "DeviceProfiles",
@@ -5747,10 +5808,10 @@
         },
         {
           "disabled": false,
-          "document": "Handling method for failed client authentication. valid values for SecurityAction Name: <li>Deny: block;</li> <li>Monitor: observation;</li> <li>Redirect: redirection;</li> <li>Challenge: Challenge.</li> default value: Monitor.",
+          "document": "<p>Account protection configuration.</p>",
           "example": "无",
-          "member": "SecurityAction",
-          "name": "InvalidAttestationAction",
+          "member": "AccountProtectionSettings",
+          "name": "AccountProtectionSettings",
           "output_required": false,
           "required": false,
           "type": "object",
@@ -5760,11 +5821,11 @@
       "usage": "both"
     },
     "ClientAttestationRules": {
-      "document": "Describes the client authentication configuration.",
+      "document": "Client authentication configuration.",
       "members": [
         {
           "disabled": false,
-          "document": "List of client authentication. when using ModifySecurityPolicy to modify Web protection configuration: <li> if Rules in SecurityPolicy.BotManagement.ClientAttestationRules is not specified or the parameter length of Rules is zero: clear all client authentication rule configuration. </li> <li> if ClientAttestationRules in SecurityPolicy.BotManagement parameters is unspecified: keep existing client authentication rule configuration and do not modify. </li>.",
+          "document": "List of client authentication. When using ModifySecurityPolicy to modify Web protection configuration: <li> If the Rules parameter in SecurityPolicy.BotManagement.ClientAttestationRules is not specified, or the Rules parameter length is zero: clear all client authentication rule configurations.</li> <li> If the ClientAttestationRules parameter value is not specified in the SecurityPolicy.BotManagement parameter: keep the existing client authentication rule configuration without modification.</li>",
           "example": "无",
           "member": "ClientAttestationRule",
           "name": "Rules",
@@ -5893,11 +5954,11 @@
       "usage": "both"
     },
     "ClientBehaviorDetection": {
-      "document": "Client behavior validation.",
+      "document": "Client behavior validation",
       "members": [
         {
           "disabled": false,
-          "document": "Specifies the proof-of-work strength. valid values: <li>low: low;</li><li>medium: medium;</li><li>high: high.</li>.",
+          "document": "Proof-of-work strength. Valid values: <li>low: Low;</li><li>medium: Medium;</li><li>high: High.</li>",
           "example": "high",
           "member": "string",
           "name": "CryptoChallengeIntensity",
@@ -5908,7 +5969,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the execution mode for client behavior verification. valid values: <li>0ms: immediate execution;</li> <li>100ms: delay 100ms execution;</li> <li>200ms: delay 200ms execution;</li> <li>300ms: delay 300ms execution;</li> <li>400ms: delay 400ms execution;</li> <li>500ms: delay 500ms execution;</li> <li>600ms: delay 600ms execution;</li> <li>700ms: delay 700ms execution;</li> <li>800ms: delay 800ms execution;</li> <li>900ms: delay 900ms execution;</li> <li>1000ms: delay 1000ms execution.</li>.",
+          "document": "Execution mode of client behavior validation. Valid values: <li>0ms: immediately execute;</li><li>100ms: execute after a 100ms delay;</li><li>200ms: execute after a 200ms delay;</li><li>300ms: execute after a 300ms delay;</li><li>400ms: execute after a 400ms delay;</li><li>500ms: execute after a 500ms delay;</li><li>600ms: execute after a 600ms delay;</li><li>700ms: execute after a 700ms delay;</li><li>800ms: execute after an 800ms delay;</li><li>900ms: execute after a 900ms delay;</li><li>1000ms: execute after a 1000ms delay.</li>",
           "example": "500ms",
           "member": "string",
           "name": "CryptoChallengeDelayBefore",
@@ -5919,7 +5980,7 @@
         },
         {
           "disabled": false,
-          "document": "Time window for trigger threshold statistics. valid values: <li>5s: within 5 seconds;</li><li>10s: within 10 seconds;</li><li>15s: within 15 seconds;</li><li>30s: within 30 seconds;</li><li>60s: within 60 seconds;</li><li>5m: within 5 minutes;</li><li>10m: within 10 minutes;</li><li>30m: within 30 minutes;</li><li>60m: within 60 minutes.</li>.",
+          "document": "Time window for trigger threshold statistics. Valid values: <li>5s: within 5 seconds;</li><li>10s: within 10 seconds;</li><li>15s: within 15 seconds;</li><li>30s: within 30 seconds;</li><li>60s: within 60 seconds;</li><li>5m: within 5 minutes;</li><li>10m: within 10 minutes;</li><li>30m: within 30 minutes;</li><li>60m: within 60 minutes.</li>",
           "example": "10s",
           "member": "string",
           "name": "MaxChallengeCountInterval",
@@ -5930,7 +5991,7 @@
         },
         {
           "disabled": false,
-          "document": "Trigger threshold cumulative count. value range: 1-100000000.",
+          "document": "Cumulative count of trigger threshold statistics. Value range: 1-100000000.",
           "example": "1000",
           "member": "int64",
           "name": "MaxChallengeCountThreshold",
@@ -5941,7 +6002,7 @@
         },
         {
           "disabled": false,
-          "document": "Execution action when client-side javascript is not enabled (test not completed). valid values for SecurityAction Name: <li>Deny: block, where Stall configuration is supported in DenyActionParameters;</li><li>Monitor: observe;</li><li>Allow: respond after waiting, where MinDelayTime and MaxDelayTime configuration is required in AllowActionParameters.</li>.",
+          "document": "Execution action when client-side JavaScript is not enabled (test not completed). Supported values for SecurityAction Name: <li>Deny: block. DenyActionParameters supports Stall configuration;</li><li>Monitor: observe;</li><li>Allow: respond after waiting. AllowActionParameters requires MinDelayTime and MaxDelayTime configuration.</li>",
           "example": "无",
           "member": "SecurityAction",
           "name": "ChallengeNotFinishedAction",
@@ -5952,7 +6013,7 @@
         },
         {
           "disabled": false,
-          "document": "The execution action for client-side detection timeout. valid values for the Name parameter in SecurityAction: <li>Deny: block, where Stall can be configured in DenyActionParameters;</li> <li>Monitor: observe;</li> <li>Allow: respond after wait, where MinDelayTime and MaxDelayTime must be configured in AllowActionParameters.</li>.",
+          "document": "Execution action for client-side detection timeout. Supported values of SecurityAction Name: <li>Deny: block, where DenyActionParameters supports Stall configuration;</li><li>Monitor: observe;</li><li>Allow: respond after waiting, where AllowActionParameters requires MinDelayTime and MaxDelayTime configuration.</li>",
           "example": "无",
           "member": "SecurityAction",
           "name": "ChallengeTimeoutAction",
@@ -5963,7 +6024,7 @@
         },
         {
           "disabled": false,
-          "document": "The execution action of the Bot client. valid values for the Name parameter in SecurityAction: <li>Deny: block, where the Stall configuration is supported in DenyActionParameters;</li><li>Monitor: observation;</li><li>Allow: respond after wait, where MinDelayTime and MaxDelayTime configurations are required in AllowActionParameters.</li>.",
+          "document": "Execution action of the Bot client. Supported values of Name in SecurityAction: <li>Deny: block, where Stall configuration is supported in DenyActionParameters;</li><li>Monitor: observe;</li><li>Allow: respond after waiting, where MinDelayTime and MaxDelayTime configuration is required in AllowActionParameters.</li>",
           "example": "无",
           "member": "SecurityAction",
           "name": "BotClientAction",
@@ -5976,11 +6037,11 @@
       "usage": "both"
     },
     "ClientFiltering": {
-      "document": "Intelligent client filtering.",
+      "document": "Intelligent client filtering",
       "members": [
         {
           "disabled": false,
-          "document": "Whether intelligent client filtering is enabled. valid values: <li>on: enable;</li> <li>off: disable.</li>.",
+          "document": "Whether intelligent client filtering is enabled. Valid values: <li>on: Enable;</li><li>off: Disable.</li>",
           "example": "on",
           "member": "string",
           "name": "Enabled",
@@ -5991,7 +6052,7 @@
         },
         {
           "disabled": false,
-          "document": "Rule ID of intelligent client filtering, returned as an output parameter.",
+          "document": "Rule ID of intelligent client filtering. Output only.",
           "example": "4294967293",
           "member": "string",
           "name": "Id",
@@ -6002,7 +6063,7 @@
         },
         {
           "disabled": false,
-          "document": "The handling method of intelligent client filtering. when Enabled is on, this field is required. the Name parameter of SecurityAction supports: <li>Monitor: observation;</li> <li>Deny: block;</li> <li>Challenge: Challenge, where ChallengeActionParameters.Name only supports JSChallenge.</li>.",
+          "document": "Handling method for intelligent client filtering. This field is required when Enabled is on. Supported values for SecurityAction Name: <li>Monitor: observe;</li><li>Deny: block;</li><li>Challenge: challenge, where ChallengeActionParameters.Name only supports JSChallenge.</li>",
           "example": "无",
           "member": "SecurityAction",
           "name": "Action",
@@ -9946,11 +10007,11 @@
       "usage": "both"
     },
     "CustomRule": {
-      "document": "Custom rule under Web protection feature.",
+      "document": "Custom rule under the Web protection feature.",
       "members": [
         {
           "disabled": false,
-          "document": "<p>Custom rule name.</p>",
+          "document": "<p>Name of the custom rule.</p>",
           "example": "SampleBasicACLRule",
           "member": "string",
           "name": "Name",
@@ -9961,7 +10022,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>The specific content of a custom rule must comply with the expression syntax. For detailed specifications, refer to the <a href=\"https://www.tencentcloud.com/document/product/1552/125343?from_cn_redirect=1\">product document</a>.</p>",
+          "document": "<p>The specific content of the custom rule must comply with the expression grammar. For detailed specifications, see the <a href=\"https://www.tencentcloud.com/document/product/1552/125343?from_cn_redirect=1\">product document</a>.</p>",
           "example": "${http.request.ip} in ['1.1.1.1', '10.10.10.0/24', ${security.ip_group['123'@'zone-2xsnpvkhdjes']} ]",
           "member": "string",
           "name": "Condition",
@@ -9972,7 +10033,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Handling action of the custom rule. SecurityAction.Name value range is as follows:</p><ul><li>Allow: allow, where AllowActionParameters supports MinDelayTime and MaxDelayTime configuration;</li><li>Deny: block, where DenyActionParameters supports BlockIp, ReturnCustomPage, and Stall configuration;</li><li>Monitor: observe;</li><li>Challenge: challenge, where ChallengeActionParameters.ChallengeOption supports JSChallenge and ManagedChallenge;</li><li>Redirect: redirect to a URL.</li></ul>",
+          "document": "<p>Handling action of the custom rule. SecurityAction.Name values are as follows:</p><ul><li>Allow: allow, where AllowActionParameters supports MinDelayTime and MaxDelayTime configuration;</li><li>Deny: block, where DenyActionParameters supports BlockIp, ReturnCustomPage, and Stall configuration;</li><li>Monitor: observe;</li><li>Challenge: challenge, where ChallengeActionParameters.ChallengeOption supports JSChallenge and ManagedChallenge;</li><li>Redirect: redirect to a URL.</li></ul>",
           "example": "无",
           "member": "SecurityAction",
           "name": "Action",
@@ -9983,7 +10044,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Whether the custom rule is enabled. Valid values: <ul><li>on: enabled;</li><li>off: disabled.</li></ul></p>",
+          "document": "<p>Whether the custom rule is enabled. Valid values: <ul><li>on: Enable;</li><li>off: Disable.</li></ul></p>",
           "example": "on",
           "member": "string",
           "name": "Enabled",
@@ -9994,7 +10055,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>ID of the custom rule. The rule ID supports different rule configuration operations: <ul><li>Add a new rule: leave the ID empty or do not specify the ID parameter;</li><li>Modify an existing rule: specify the rule ID that needs to be updated/modified;</li><li>Delete an existing rule: existing rules not included in the Rules list in the CustomRules parameter will be deleted.</li></ul></p>",
+          "document": "<p>ID of the custom rule. You can perform different rule configuration operations by rule ID: <ul><li>Add a new rule: leave the ID empty or do not specify the ID parameter;</li><li>Modify an existing rule: specify the rule ID that needs to be updated/modified;</li><li>Delete an existing rule: existing rules not included in the Rules list in the CustomRules parameter will be deleted.</li></ul></p>",
           "example": "1492837231",
           "member": "string",
           "name": "Id",
@@ -10016,7 +10077,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Priority of custom rules. Value range: 0-100. Default value: 0. Only exact matching rules (<code>PreciseMatchRule</code>) are supported.</p>",
+          "document": "<p>Priority of custom rules, ranging from 0 to 100, with a default value of 0. Only exact matching rules (<code>PreciseMatchRule</code>) are supported.</p>",
           "example": "10",
           "member": "int64",
           "name": "Priority",
@@ -10029,11 +10090,11 @@
       "usage": "both"
     },
     "CustomRules": {
-      "document": "Custom rules configuration.",
+      "document": "Custom rule structure for Web security",
       "members": [
         {
           "disabled": false,
-          "document": "The custom rule. <br>when modifying the Web protection configuration using ModifySecurityPolicy: <br> - if the Rules parameter is not specified or the parameter length of Rules is zero: clear all custom rule configurations. <br> - if the Rules parameter is not specified: keep the existing custom rule configuration without modification.",
+          "document": "Definition list of custom rules.<br>When using ModifySecurityPolicy to modify Web protection configuration: <br> - If the Rules parameter is not specified, or the parameter length of Rules is zero: clear ALL custom rule configurations.<br> - If the CustomRules parameter value is not specified in the SecurityPolicy parameter: keep the existing custom rule configuration and do not modify it.",
           "example": "参考 CustomRule 结构",
           "member": "CustomRule",
           "name": "Rules",
@@ -10537,11 +10598,11 @@
       "usage": "out"
     },
     "DefaultDenySecurityActionParameters": {
-      "document": "Default interception action configuration. When security rules are hit and trigger intercept handling actions, if SecurityAction only specifies Name as Deny and DenyActionParameters is not specified, match by feature module dimension and use the default parameter configuration defined here:\n<li>Default disposition action configuration for managed rules in ManagedRules.</li>\n<li>OtherModules Security protection rules (custom rule, rate limit, and Bot management function) except managed rules have default block disposition action configuration.</li>",
+      "document": "Default block action configuration. When a security rule is hit and triggers a block action, if SecurityAction specifies only Name as Deny and DenyActionParameters is not specified, the default parameter configuration defined here is matched by feature module dimension and used:\n<li>Default interception disposition action configuration for ManagedRules.</li>\n<li>OtherModules: default block disposition action configuration for security protection rules other than managed rules (custom rules, rate limit, and Bot management function).</li>",
       "members": [
         {
           "disabled": false,
-          "document": "The managed rule uses the default disposition action configuration. DenyActionParameters supported configuration parameters: <li>ReturnCustomPage: Whether to use a custom page.</li><li>ResponseCode: Status code of the custom page.</li><li>ErrorPageId: PageId of the custom page.</li>",
+          "document": "Default interception disposition action configuration for managed rules. Supported configuration parameters of DenyActionParameters: <li>ReturnCustomPage: whether to use a custom page.</li><li>ResponseCode: status code of the custom page.</li><li>ErrorPageId: PageId of the custom page.</li>",
           "example": "无",
           "member": "DenyActionParameters",
           "name": "ManagedRules",
@@ -10552,7 +10613,7 @@
         },
         {
           "disabled": false,
-          "document": "Security protection rules other than managed rules (custom rule, rate limit, and Bot management function) default to disposition action configuration. DenyActionParameters supported configuration parameters: <li>ReturnCustomPage: Whether to use custom page.</li> <li>ResponseCode: Status code of custom pages.</li> <li>ErrorPageId: PageId of custom pages.</li>",
+          "document": "Security protection rules other than managed rules (custom rules, rate limit, and Bot management function) default interception disposition action configuration. Configuration parameters supported by DenyActionParameters: <li>ReturnCustomPage: whether to use a custom page.</li><li>ResponseCode: status code of the custom page.</li><li>ErrorPageId: PageId of the custom page.</li>",
           "example": "无",
           "member": "DenyActionParameters",
           "name": "OtherModules",
@@ -11805,11 +11866,11 @@
       "usage": "both"
     },
     "DenyActionParameters": {
-      "document": "Additional parameter when the executed action is interception.\n\nThis parameter is used for specifying the extra handling action taken by the system when a security rule is hit and an intercept action is executed.\nDifferent disposal actions are configured with different fixed parameter combinations. The system will determine the actually effective disposal action type according to the configured parameter combination.\nDuring the same interception execution, only one handling action can be configured and made effective. Parameters for multiple handling actions cannot appear at the same time. Otherwise, it is deemed an invalid configuration. If empty, the default block handling action is used.\nDenyActionParameters supports the following additional handling actions: <li>Default: When DenyActionParameters is empty or no additional handling action is enabled, the system will perform the default block, responding with an interception page.</li><li>IP block: Continuously block the client source IP that triggers the rule. Corresponding parameters: BlockIp, BlockIpDuration.</li><li>Custom page interception: Use the designated custom page content to respond to requests. Corresponding parameters: ReturnCustomPage, ResponseCode, ErrorPageId.</li><li>Silence: Accept client requests but do not return. Corresponding parameter: Stall.</li>",
+      "document": "Additional parameter for the safe execution action when it is interception.\n\nThis parameter is used to specify the extra handling action taken by the system when a security rule is hit and an intercept action is executed.\nDifferent handling actions are configured with different fixed parameter combinations. The system will determine the actually effective handling action type according to the configured parameter combination.\nOnly one handling action can be configured and made effective during the same block execution. Parameters corresponding to multiple handling actions cannot appear simultaneously, otherwise the configuration is deemed invalid. If empty, the default block handling action is used.\nDenyActionParameters supports the following extra handling actions: <li>Default: When DenyActionParameters is empty or no extra handling action is enabled, the system will perform the default block, responding with an interception page.</li><li>IP blocking: Continuously block the client source IP that triggers the rule. Corresponding parameters: BlockIp, BlockIpDuration.</li><li>Custom page interception: Use the specified custom page content to respond to requests. Corresponding parameters: ReturnCustomPage, ResponseCode, ErrorPageId.</li><li>Silence: Accept client requests but do not return. Corresponding parameter: Stall.</li>",
       "members": [
         {
           "disabled": false,
-          "document": "Specifies whether to extend the ban on the source IP. valid values.\n<li>`on`: Enable;</li>\n\n<li>off: Disable.</li>\n\nAfter enabled, continuously blocks client ips that trigger the rule. when this option is enabled, the BlockIpDuration parameter must be simultaneously designated.\nNote: this option cannot intersect with ReturnCustomPage or Stall.",
+          "document": "Whether to extend the block on the source IP. Valid values:\n<li>`on`: Enable;</li>\n<li>off: Disable.</li>\nAfter enabled, the client IP that triggers the rule will be continuously blocked. When this option is enabled, the BlockIpDuration parameter must be specified simultaneously.\nNote: This option cannot intersect with ReturnCustomPage or Stall.",
           "example": "off",
           "member": "string",
           "name": "BlockIp",
@@ -11820,7 +11881,7 @@
         },
         {
           "disabled": false,
-          "document": "The ban duration when BlockIP is on.",
+          "document": "IP ban duration when BlockIP is on.",
           "example": "60s",
           "member": "string",
           "name": "BlockIpDuration",
@@ -11831,7 +11892,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies whether to use a custom page. valid values:.\n<li>`on`: Enable;</li>\n\n<li>off: Disable.</li>\n\nEnabled, use custom page content to intercept requests. when this option is enabled, ResponseCode and ErrorPageId parameters must be specified simultaneously.\nNote: this option cannot intersect with the BlockIp or Stall option.\n",
+          "document": "Whether to use custom pages. Valid values:\n<li>`on`: Enable;</li>\n<li>off: Disable.</li>\nEnabled. Use custom page content to intercept (respond to) requests. When this option is enabled, you must specify the ResponseCode and ErrorPageId parameters simultaneously.\nNote: This option cannot intersect with BlockIp or Stall.\n",
           "example": "on",
           "member": "string",
           "name": "ReturnCustomPage",
@@ -11853,7 +11914,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the page id of the custom page.",
+          "document": "PageId of the custom page.",
           "example": "p-2yr7ncnju1yk@zone-2xsnpvkhdjes",
           "member": "string",
           "name": "ErrorPageId",
@@ -11864,7 +11925,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies whether to suspend the request source without processing. valid values:.\n<li>`on`: Enable;</li>\n\n<li>off: Disable.</li>\n\nEnabled, no longer responds to requests in the current connection session and does not actively disconnect. used for crawler combat to consume client connection resources.\nNote: this option cannot intersect with BlockIp or ReturnCustomPage options.",
+          "document": "Whether to suspend requests from the request source without processing. Valid values:\n<li>`on`: Enable;</li>\n<li>off: Disable.</li>\nEnabled. It no longer responds to requests in the current connection session and does not actively disconnect. When used for crawler counteraction, it consumes client connection resources.\nNote: This option cannot intersect with BlockIp or ReturnCustomPage.",
           "example": "on",
           "member": "string",
           "name": "Stall",
@@ -15577,7 +15638,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Zone ID.",
+          "document": "<p>Site ID.</p>",
           "example": "zone-27q0p0bal192",
           "member": "string",
           "name": "ZoneId",
@@ -15592,8 +15653,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Access key.",
-          "example": "b8sfnemqzF5TNCwwtshVmG/gyCJVi/rP+7A+jsBwqGY=",
+          "document": "<p>Access key.</p>",
+          "example": "b8**************************************qGY=",
           "member": "string",
           "name": "SecretKey",
           "output_required": true,
@@ -18535,11 +18596,11 @@
       "usage": "both"
     },
     "DeviceProfile": {
-      "document": "Describes the client device configuration.",
+      "document": "Client device configuration",
       "members": [
         {
           "disabled": false,
-          "document": "Client device type. Valid values: <li>iOS;</li> <li>Android;</li> <li>WebView;</li> <li>WeChatMiniProgram.</li>",
+          "document": "<p>Client device type. Valid values: <li>iOS;</li><li>Android;</li><li>WebView;</li><li>WeChatMiniProgram.</li></p>",
           "example": "Android",
           "member": "string",
           "name": "ClientType",
@@ -18550,7 +18611,7 @@
         },
         {
           "disabled": false,
-          "document": "The minimum value to determine a request as high-risk ranges from 1–99. the larger the value, the higher the request risk, and the closer it resembles a request initiated by a Bot client. the default value is 50, corresponding to high-risk for values 51–100.",
+          "document": "<p>Minimum risk score for high-risk requests. A request is considered high-risk when its score is equal to or greater than this value.</p><p>Value range: [2, 99]</p><p>Default value: 50</p>",
           "example": "50",
           "member": "uint64",
           "name": "HighRiskMinScore",
@@ -18561,8 +18622,8 @@
         },
         {
           "disabled": false,
-          "document": "Handling method for high-risk requests. valid values for SecurityAction Name: <li>Deny: block;</li> <li>Monitor: observation;</li> <li>Redirect: redirection;</li> <li>Challenge: Challenge.</li> default value: Monitor.",
-          "example": "参考 SecurityAction 结构",
+          "document": "<p>Handling method for high-risk requests. Supported values for the Name parameter of SecurityAction: <li>Deny: Block;</li><li>Monitor: Observe;</li><li>Redirect: Redirection;</li><li>Challenge: Challenge.</li>Default value: Monitor.</p>",
+          "example": "无",
           "member": "SecurityAction",
           "name": "HighRiskRequestAction",
           "output_required": false,
@@ -18572,7 +18633,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the minimum value to determine a request as medium-risk. value range: 1–99. the larger the value, the higher the request risk, resembling requests initiated by a Bot client. default value: 15, corresponding to medium-risk for values 16–50.",
+          "document": "<p>The minimum risk score for a medium-risk request. When the score is equal to or greater than this value and less than HighRiskMinScore, it is determined as medium-risk. When it is below this value, it is determined as low risk.</p><p>Value range: [1, 98]</p><p>Default value: 15</p>",
           "example": "15",
           "member": "uint64",
           "name": "MediumRiskMinScore",
@@ -18583,8 +18644,8 @@
         },
         {
           "disabled": false,
-          "document": "Handling method for medium-risk requests. SecurityAction Name parameter supports: <li>Deny: block;</li> <li>Monitor: observe;</li> <li>Redirect: Redirect;</li> <li>Challenge: Challenge.</li> default value is Monitor.",
-          "example": "参考 SecurityAction 结构",
+          "document": "<p>Handling method for medium risk requests. Supported values for the Name of SecurityAction: <li>Deny: block;</li><li>Monitor: monitor;</li><li>Redirect: redirect;</li><li>Challenge: challenge.</li>Default value: Monitor.</p>",
+          "example": "无",
           "member": "SecurityAction",
           "name": "MediumRiskRequestAction",
           "output_required": false,
@@ -19873,11 +19934,11 @@
       "usage": "both"
     },
     "ExceptionRule": {
-      "document": "Web security exception rule.",
+      "document": "Exception rule for Web security",
       "members": [
         {
           "disabled": false,
-          "document": "The ID of the exception rule. different rule configuration operations are supported by rule ID: <li> <b>add</b> a new rule: leave the ID empty or do not specify the ID parameter.</li> <li> <b>modify</b> an existing rule: specify the rule ID that needs to be updated/modified.</li> <li> <b>delete</b> an existing rule: existing Rules not included in the Rules list under the ExceptionRules parameter will be deleted.</li>.",
+          "document": "ID of the exception rule.<br>Different rule configuration operations can be performed by rule ID:<br> <li> <b>Add</b> a new rule: leave the ID empty or do not specify the ID parameter;</li><li> <b>Modify</b> an existing rule: specify the rule ID to be updated/modified;</li><li> <b>Delete</b> an existing rule: existing rules not included in the Rules list in the ExceptionRules parameter will be deleted.</li>",
           "example": "2181399686",
           "member": "string",
           "name": "Id",
@@ -19888,7 +19949,7 @@
         },
         {
           "disabled": false,
-          "document": "The name of the exception rule.",
+          "document": "Name of the exception rule.",
           "example": "SampleBasicExceptionRule",
           "member": "string",
           "name": "Name",
@@ -19899,7 +19960,7 @@
         },
         {
           "disabled": false,
-          "document": "Describes the specific content of the exception rule, which must comply with the expression grammar. for details, please refer to the product document.",
+          "document": "Specific content of the exception rule must comply with the expression grammar. For detailed specifications, please refer to the product document.",
           "example": "${http.request.uri.path} in ['/api/v3/test','/api/v3/submit'] and ${http.request.method} in ['POST']",
           "member": "string",
           "name": "Condition",
@@ -19910,7 +19971,7 @@
         },
         {
           "disabled": false,
-          "document": "Exception rule execution options, valid values: <li>WebSecurityModules: designate the security protection module for the exception rule.</li> <li>ManagedRules: designate the managed rule.</li>.",
+          "document": "Exception rule execution options. Valid values: <li>WebSecurityModules: assigns the security protection module for the exception rule. Use in conjunction with WebSecurityModulesForException.</li><li>WebSecuritySubmodules: assigns the security protection submodule for the exception rule. Use in conjunction with WebSecuritySubmodulesForException.</li><li>ManagedRules: assigns the specific managed rule for the exception rule. Use in conjunction with ManagedRulesForException.</li><li>ManagedRuleGroups: assigns the managed rule group for the exception rule. Use in conjunction with ManagedRuleGroupsForException.</li>",
           "example": "WebSecurityModules",
           "member": "string",
           "name": "SkipScope",
@@ -19921,7 +19982,7 @@
         },
         {
           "disabled": false,
-          "document": "Skip the specific type of request. valid values: <li>SkipOnAllRequestFields: skip all requests;</li> <li>SkipOnSpecifiedRequestFields: skip specified request fields.</li> valid only when SkipScope is ManagedRules.",
+          "document": "Skip the specific type of request. Valid values: <li>SkipOnAllRequestFields: skip all requests;</li><li>SkipOnSpecifiedRequestFields: skip specified request fields.</li>Valid only when SkipScope is ManagedRules or ManagedRuleGroups.",
           "example": "SkipOnSpecifiedRequestFields",
           "member": "string",
           "name": "SkipOption",
@@ -19932,7 +19993,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the security protection module for exception rules. valid only when SkipScope is WebSecurityModules. valid values: <li>websec-mod-managed-rules: managed rule.</li><li>websec-mod-rate-limiting: rate limit.</li><li>websec-mod-custom-rules: custom rule.</li><li>websec-mod-adaptive-control: adaptive frequency control, intelligent client filtering, slow attack protection, traffic theft protection.</li><li>websec-mod-bot: bot management.</li>.",
+          "document": "Security protection module for the exception rule. Valid only when SkipScope is WebSecurityModules. Valid values: <li>websec-mod-managed-rules: managed rule</li><li>websec-mod-rate-limiting: rate limit</li><li>websec-mod-custom-rules: custom rule</li><li>websec-mod-adaptive-control: adaptive frequency control, intelligent client filtering, slow attack protection, traffic theft protection</li><li>websec-mod-bot: bot management</li>",
           "example": "[\"websec-mod-custom-rules\",\"websec-mod-rate-limiting\"]",
           "member": "string",
           "name": "WebSecurityModulesForException",
@@ -19943,7 +20004,18 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the managed rule for the exception rule. valid only when SkipScope is ManagedRules. cannot specify ManagedRuleGroupsForException at this time.",
+          "document": "Specifies the security protection submodule for the exception rule. Valid only when SkipScope is WebSecuritySubmodules. Valid values: <ul><li>ManagedRules module features: <ul><li>websec-mod-managed-rules/managed-rule-groups: rule set;</li><li>websec-mod-managed-rules/frequent-scanning-protection: high frequency scan protection;</li></ul></li><li>RateLimitingRules module features: <ul><li>websec-mod-rate-limiting-rules: rate limiting rule;</li></ul></li><li>CustomRules module features: <ul><li>websec-mod-custom-rules: custom rule;</li></ul></li><li>HttpDDoSProtection module features: <ul><li>websec-mod-HTTP-DDoS-protection/adaptive-frequency-control: adaptive frequency control;</li><li>websec-mod-HTTP-DDoS-protection/client-filtering: intelligent client filtering;</li><li>websec-mod-HTTP-DDoS-protection/bandwidth-abuse-defense: traffic fraud protection;</li></ul></li><li>BotManagement module features: <ul><li>websec-mod-Bot-management/basic-feature: basic feature management;</li><li>websec-mod-Bot-management/ip-reputation: client profile analysis;</li><li>websec-mod-Bot-management/Bot-intelligence: intelligent Bot analysis;</li><li>websec-mod-Bot-management/custom-rules: custom rule;</li><li>websec-mod-Bot-management/browser-impersonation-detection: proactive feature recognition;</li><li>websec-mod-Bot-management/client-attestation-rules: client authentication;</li></ul></li><li>BotManagementLite module features: <ul><li>websec-mod-Bot-management-lite/ai-crawler-detection: ai crawler disposal;</li><li>websec-mod-Bot-management-lite/captcha-page-challenge: captcha page challenge.</li></ul></li></ul>",
+          "example": "[\"websec-mod-bot-management/basic-feature\",\"websec-mod-bot-management-lite/captcha-page-challenge\"]",
+          "member": "string",
+          "name": "WebSecuritySubmodulesForException",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specify the specific managed rule for the exception rule. This parameter is valid only when SkipScope is ManagedRules.",
           "example": "[\"4401215074\",\"4368124487\"]",
           "member": "string",
           "name": "ManagedRulesForException",
@@ -19954,7 +20026,7 @@
         },
         {
           "disabled": false,
-          "document": "A managed rule group with designated exception rules is valid only when SkipScope is ManagedRules, and at this point you cannot specify ManagedRulesForException.",
+          "document": "Managed rule group with specified exception rules. This parameter is valid only when SkipScope is ManagedRuleGroups.",
           "example": "[\"wafgroup-sql-injection-attacks\"]",
           "member": "string",
           "name": "ManagedRuleGroupsForException",
@@ -19965,8 +20037,8 @@
         },
         {
           "disabled": false,
-          "document": "Specify exception rules to skip request fields. valid only when SkipScope is ManagedRules and SkipOption is SkipOnSpecifiedRequestFields.",
-          "example": "参考 RequestFieldsForException 结构",
+          "document": "Configuration for specifying exception rules to skip specified request fields. This is valid only when SkipScope is ManagedRules or ManagedRuleGroups and SkipOption is SkipOnSpecifiedRequestFields.",
+          "example": "无",
           "member": "RequestFieldsForException",
           "name": "RequestFieldsForException",
           "output_required": false,
@@ -19976,7 +20048,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether the exception rule is enabled. valid values: <li>`on`: enable</li> <li>`off`: disable</li>.",
+          "document": "Whether the exception rule is enabled. Valid values: <li>on: enabled</li><li>off: disabled</li>",
           "example": "on",
           "member": "string",
           "name": "Enabled",
@@ -19989,11 +20061,11 @@
       "usage": "both"
     },
     "ExceptionRules": {
-      "document": "Web security exception rules.",
+      "document": "Exception rule for Web security",
       "members": [
         {
           "disabled": false,
-          "document": "Definition list of exception Rules. when using ModifySecurityPolicy to modify Web protection configuration: <li>if the Rules parameter is not specified or the parameter length is zero: clear all exception rule configurations.</li><li>if the ExceptionRules parameter value is not specified in SecurityPolicy: keep existing exception rule configurations without modification.</li>.",
+          "document": "Definition list of exception Rules. When using ModifySecurityPolicy to modify Web protection configuration: <li>If the Rules parameter is not specified or its length is zero: clear all exception rule configurations.</li><li>If the ExceptionRules parameter value is not specified in the SecurityPolicy parameter: keep existing exception rule configurations without modification.</li>",
           "example": "参考 ExceptionRule 结构",
           "member": "ExceptionRule",
           "name": "Rules",
@@ -20372,11 +20444,11 @@
       "usage": "both"
     },
     "FrequentScanningProtection": {
-      "document": "High frequency scan protection configuration option. when a visitor's frequent requests hit the managed rule configured as block, ban all requests from that visitor within a period of time.",
+      "document": "High frequency scan protection configuration options. When a visitor's requests frequently hit managed rules configured as block, all requests from the visitor are blocked within a period of time.",
       "members": [
         {
           "disabled": false,
-          "document": "Whether the high-frequency scan protection rule is enabled. valid values: <li>on: enable. the high-frequency scan protection rule takes effect.</li><li>off: disable. the high-frequency scan protection rule does not take effect.</li>.\t",
+          "document": "Whether high-frequency scan protection is enabled. Valid values: <li>on: enabled, the high-frequency scan protection rule takes effect;</li><li>off: disabled, the high-frequency scan protection rule does not take effect.</li>\t",
           "example": "on",
           "member": "string",
           "name": "Enabled",
@@ -20387,7 +20459,7 @@
         },
         {
           "disabled": false,
-          "document": "Rule ID of high frequency scan protection, returned as an output parameter.",
+          "document": "Rule ID of high-frequency scan protection, returned only as an output parameter.",
           "example": "4294967288",
           "member": "string",
           "name": "Id",
@@ -20398,7 +20470,7 @@
         },
         {
           "disabled": false,
-          "document": "The handling action for high-frequency scan protection. required when Enabled is on. valid values for SecurityAction Name: <li>Deny: block and respond with an interception page;</li> <li>Monitor: observe without processing requests, log security events in logs;</li> <li>JSChallenge: respond with a JavaScript challenge page.</li>.",
+          "document": "Handling action for high frequency scan protection. When Enabled is on, this field is required. The Name parameter of SecurityAction supports: <li>Deny: block and respond with an Interception page;</li><li>Monitor: observe, do not process request records, and log security events;</li><li>JSChallenge: javascript challenge and respond with a JavaScript challenge page.</li>",
           "example": "无",
           "member": "SecurityAction",
           "name": "Action",
@@ -20409,7 +20481,7 @@
         },
         {
           "disabled": false,
-          "document": "The match mode for request statistics. required when Enabled is on. valid values: <li>http.request.xff_header_ip: client ip (priority match xff header);</li><li>http.request.ip: client ip.</li>.",
+          "document": "Match mode for request statistics. This field is required when Enabled is on. Valid values: <li>http.request.xff_header_ip: client ip (priority match xff header);</li><li>http.request.ip: client ip.</li>",
           "example": "http.request.ip",
           "member": "string",
           "name": "CountBy",
@@ -20420,7 +20492,7 @@
         },
         {
           "disabled": false,
-          "document": "This parameter specifies the threshold for high-frequency scan protection, which is the intercept count of managed rules set to interception within the time range set by CountingPeriod. value range: 1 to 4294967294, for example 100. when exceeding this statistical value, subsequent requests will trigger the handling Action set by Action. required when Enabled is on.",
+          "document": "This parameter specifies the threshold for high-frequency scan protection, which is the total interception count when managed rules configured for interception are hit within the time range set by CountingPeriod. The value ranges from 1 to 4294967294, for example, 100. When this statistical value is exceeded, subsequent requests trigger the handling action set by Action. This field is required when Enabled is on.",
           "example": "100",
           "member": "int64",
           "name": "BlockThreshold",
@@ -20431,7 +20503,7 @@
         },
         {
           "disabled": false,
-          "document": "This parameter specifies the statistical time window for high-frequency scan protection, which is the time window for counting requests that hit managed rules configured as block. valid values: 5-1800. measurement unit: seconds (s) only, such as 5s. this field is required when Enabled is on.",
+          "document": "This parameter specifies the time window for high-frequency scan protection statistics, that is, the statistical time window for requests that hit managed rules configured for interception. Value range: 5-1800. The unit only supports seconds (s), for example, 5s. Required when Enabled is on.",
           "example": "10s",
           "member": "string",
           "name": "CountingPeriod",
@@ -20442,7 +20514,7 @@
         },
         {
           "disabled": false,
-          "document": "This parameter specifies the duration of the handling Action set by the high frequency scan protection Action parameter. value range: 60 to 86400. measurement unit: seconds (s) only, for example 60s. this field is required when Enabled is on.",
+          "document": "This parameter specifies the duration of the handling Action set by the high frequency scan protection Action parameter. The value ranges from 60 to 86400. The unit only supports seconds (s), for example, 60s. This field is required when Enabled is on.",
           "example": "60s",
           "member": "string",
           "name": "ActionDuration",
@@ -21433,7 +21505,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Specifies the specific configuration of adaptive frequency control.",
+          "document": "Specific configuration of adaptive frequency control.",
           "example": "无",
           "member": "AdaptiveFrequencyControl",
           "name": "AdaptiveFrequencyControl",
@@ -21444,7 +21516,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the intelligent client filter configuration.",
+          "document": "Specific configuration for intelligent client filtering.",
           "example": "无",
           "member": "ClientFiltering",
           "name": "ClientFiltering",
@@ -21455,7 +21527,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the specific configuration for bandwidth abuse protection.",
+          "document": "Bandwidth abuse protection configuration.",
           "example": "无",
           "member": "BandwidthAbuseDefense",
           "name": "BandwidthAbuseDefense",
@@ -21466,7 +21538,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the configuration of slow attack protection.",
+          "document": "Specific configuration of slow attack protection.",
           "example": "无",
           "member": "SlowAttackDefense",
           "name": "SlowAttackDefense",
@@ -21764,11 +21836,11 @@
       "usage": "out"
     },
     "IPReputation": {
-      "document": "IP intelligence library (formerly client profile analysis) configuration.",
+      "document": "IP Intelligence Library (formerly client profile analysis) configuration.",
       "members": [
         {
           "disabled": false,
-          "document": "IP intelligence library (formerly client profile analysis). valid values: <li>on: enable;</li> <li>off: disable.</li>.",
+          "document": "IP Intelligence Library (formerly client profile analysis). Valid values: <li>on: enable;</li><li>off: disable.</li>",
           "example": "on",
           "member": "string",
           "name": "Enabled",
@@ -21779,7 +21851,7 @@
         },
         {
           "disabled": false,
-          "document": "IP intelligence library (formerly client profile analysis) configuration content.",
+          "document": "Specific configuration content of the IP Intelligence Library (formerly client profile analysis).",
           "example": "无",
           "member": "IPReputationGroup",
           "name": "IPReputationGroup",
@@ -21792,11 +21864,11 @@
       "usage": "both"
     },
     "IPReputationGroup": {
-      "document": "IP intelligence library (formerly client profile analysis) specific configuration.",
+      "document": "Specific configuration of IP Intelligence Library (formerly client profile analysis).",
       "members": [
         {
           "disabled": false,
-          "document": "Execution action of the IP intelligence library (formerly client profile analysis). SecurityAction Name parameter supports: <li>Deny: block;</li> <li>Monitor: observe;</li> <li>Disabled: not enabled, disable specified rule;</li> <li>Challenge: Challenge, where ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge.</li>.",
+          "document": "Execution action of the IP Intelligence Library (formerly client profile analysis). Supported values for SecurityAction Name: <li>Deny: block;</li><li>Monitor: observe;</li><li>Disabled: not enabled, disable the specified rule;</li><li>Challenge: challenge. ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge.</li>",
           "example": "无",
           "member": "SecurityAction",
           "name": "BaseAction",
@@ -21807,7 +21879,7 @@
         },
         {
           "disabled": false,
-          "document": "The specific configuration of the IP intelligence library (originally client profile analysis), used to override the default configuration in BaseAction. among them, the Ids in BotManagementActionOverrides can be filled with: <li>IPREP_WEB_AND_DDOS_ATTACKERS_LOW: network attack - general confidence;</li> <li>IPREP_WEB_AND_DDOS_ATTACKERS_MID: network attack - medium confidence;</li> <li>IPREP_WEB_AND_DDOS_ATTACKERS_HIGH: network attack - HIGH confidence;</li> <li>IPREP_PROXIES_AND_ANONYMIZERS_LOW: network proxy - general confidence;</li> <li>IPREP_PROXIES_AND_ANONYMIZERS_MID: network proxy - medium confidence;</li> <li>IPREP_PROXIES_AND_ANONYMIZERS_HIGH: network proxy - HIGH confidence;</li> <li>IPREP_SCANNING_TOOLS_LOW: scanner - general confidence;</li> <li>IPREP_SCANNING_TOOLS_MID: scanner - medium confidence;</li> <li>IPREP_SCANNING_TOOLS_HIGH: scanner - HIGH confidence;</li> <li>IPREP_ATO_ATTACKERS_LOW: account takeover attack - general confidence;</li> <li>IPREP_ATO_ATTACKERS_MID: account takeover attack - medium confidence;</li> <li>IPREP_ATO_ATTACKERS_HIGH: account takeover attack - HIGH confidence;</li> <li>IPREP_WEB_SCRAPERS_AND_TRAFFIC_BOTS_LOW: malicious BOT - general confidence;</li> <li>IPREP_WEB_SCRAPERS_AND_TRAFFIC_BOTS_MID: malicious BOT - medium confidence;</li> <li>IPREP_WEB_SCRAPERS_AND_TRAFFIC_BOTS_HIGH: malicious BOT - HIGH confidence.</li>.",
+          "document": "Specific configuration of the IP Intelligence Library (formerly client profile analysis), used to override the default configuration in BaseAction. The Ids of BotManagementActionOverrides can be filled with: <li>IPREP_WEB_AND_DDOS_ATTACKERS_LOW: network attack - general confidence;</li><li>IPREP_WEB_AND_DDOS_ATTACKERS_MID: network attack - medium confidence;</li><li>IPREP_WEB_AND_DDOS_ATTACKERS_HIGH: network attack - high confidence;</li><li>IPREP_PROXIES_AND_ANONYMIZERS_LOW: network proxy - general confidence;</li><li>IPREP_PROXIES_AND_ANONYMIZERS_MID: network proxy - medium confidence;</li><li>IPREP_PROXIES_AND_ANONYMIZERS_HIGH: network proxy - high confidence;</li><li>IPREP_SCANNING_TOOLS_LOW: scanner - general confidence;</li><li>IPREP_SCANNING_TOOLS_MID: scanner - medium confidence;</li><li>IPREP_SCANNING_TOOLS_HIGH: scanner - high confidence;</li><li>IPREP_ATO_ATTACKERS_LOW: account takeover attack - general confidence;</li><li>IPREP_ATO_ATTACKERS_MID: account takeover attack - medium confidence;</li><li>IPREP_ATO_ATTACKERS_HIGH: account takeover attack - high confidence;</li><li>IPREP_WEB_SCRAPERS_AND_TRAFFIC_BOTS_LOW: malicious bot - general confidence;</li><li>IPREP_WEB_SCRAPERS_AND_TRAFFIC_BOTS_MID: malicious bot - medium confidence;</li><li>IPREP_WEB_SCRAPERS_AND_TRAFFIC_BOTS_HIGH: malicious bot - high confidence.</li>",
           "example": "无",
           "member": "BotManagementActionOverrides",
           "name": "BotManagementActionOverrides",
@@ -23595,11 +23667,11 @@
       "usage": "out"
     },
     "KnownBotCategories": {
-      "document": "Commercial or open-source tool UA feature configuration (formerly UA feature rule).",
+      "document": "UA feature configuration for commercial or open-source tools (formerly UA feature rule).",
       "members": [
         {
           "disabled": false,
-          "document": "Handling method for access requests from known commercial tools or open-source tools. specifies the Name parameter value of SecurityAction: <li>Deny: block;</li> <li>Monitor: observe;</li> <li>Disabled: not enabled, disable specified rule;</li> <li>Challenge: Challenge, where ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge;</li> <li>Allow: pass (to be deprecated).</li>.",
+          "document": "Handling method for access requests from known commercial or open-source tools. Supported values of SecurityAction Name: <li>Deny: Block;</li><li>Monitor: Observe;</li><li>Disabled: Not enabled, disable the specified rule;</li><li>Challenge: Challenge. Among them, ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge;</li><li>Allow: Release (to be deprecated).</li>",
           "example": "无",
           "member": "SecurityAction",
           "name": "BaseAction",
@@ -23610,7 +23682,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the handling method for access requests from known commercial tools or open-source tools.",
+          "document": "Specify the handling method for access requests from known commercial or open-source tools.",
           "example": "无",
           "member": "BotManagementActionOverrides",
           "name": "BotManagementActionOverrides",
@@ -24504,11 +24576,11 @@
       "usage": "out"
     },
     "ManagedRuleAction": {
-      "document": "Action for specific RuleId.",
+      "document": "Item configuration of a managed rule",
       "members": [
         {
           "disabled": false,
-          "document": "Specific items under ManagedRuleGroup, used to rewrite the configuration of this individual rule item, refer to product documentation for details.\t",
+          "document": "Specific item under the managed rule group, used for rewriting the configuration content of this individual rule. For details, refer to the product documentation.\t",
           "example": "4312344811",
           "member": "string",
           "name": "RuleId",
@@ -24519,7 +24591,7 @@
         },
         {
           "disabled": false,
-          "document": "Action for the managed rule item specified by RuleId, the SecurityAction Name parameter supports: <li>`Deny`: block and respond with an block page;</li> <li>`Monitor`: observe, do not process the request and record the security event in logs;</li> <li>`Disabled`: disabled, do not scan the request and skip this rule.</li>.",
+          "document": "Specifies the handling action for the managed rule item in RuleId. Supported values for SecurityAction Name: <li>Deny: Block. Responds with an interception page.</li><li>Monitor: Observe. Does not process the request but records security events in logs.</li><li>Disabled: Not enabled. Skips the rule without scanning requests.</li>",
           "example": "参考 SecurityAction 结构",
           "member": "SecurityAction",
           "name": "Action",
@@ -24532,11 +24604,11 @@
       "usage": "both"
     },
     "ManagedRuleAutoUpdate": {
-      "document": "Managed rule automatic update option.",
+      "document": "Automatic update options for managed rules",
       "members": [
         {
           "disabled": false,
-          "document": "Enable automatic update to the latest version or not. Values: <li>`on`: enabled</li> <li>`off`: disabled</li>.",
+          "document": "Whether automatic update to the latest version is enabled. Valid values: <li>on: enabled</li><li>off: disabled</li>",
           "example": "on",
           "member": "string",
           "name": "AutoUpdateToLatestVersion",
@@ -24547,7 +24619,7 @@
         },
         {
           "disabled": false,
-          "document": "Current version, compliant with ISO 8601 standard format, such as 2023-12-21T12:00:32Z, empty by default, output parameter only.",
+          "document": "Currently used version in ISO 8601 format, for example, 2023-12-21T12:00:32Z. Empty by default. Output only.",
           "example": "2023-12-21T12:00:32Z",
           "member": "string",
           "name": "RulesetVersion",
@@ -24560,7 +24632,7 @@
       "usage": "both"
     },
     "ManagedRuleDetail": {
-      "document": "Managed rule detail.",
+      "document": "Details of managed rules",
       "members": [
         {
           "disabled": false,
@@ -24575,7 +24647,7 @@
         },
         {
           "disabled": false,
-          "document": "Protection level of managed rules. Values: <li>`low`: low risk, this rule has a relatively low risk and is applicable to very strict access scenarios, this level of rule may generate considerable false alarms.</li> <li>`medium`: medium risk, this means the risk of this rule is normal and is suitable for protection scenarios with stricter requirements.</li> <li>`high`: high risk, this indicates that the risk of this rule is relatively high and will not generate false alarms in most scenarios.</li> <li>`extreme`: ultra-high risk. this represents that the risk of this rule is extremely high and will not generate false alarms basically.</li>.",
+          "document": "Protection level of the managed rule. Valid values: <li>low: low risk. This rule has lower risk and is suitable for access scenarios in very strict control environments. Rules at this level may cause considerable false alarms;</li><li>medium: medium-risk. This rule has normal risk and is suitable for strict protection scenarios;</li><li>high: high-risk. This rule has relatively high risk and will not generate false alarms in most scenarios;</li><li>extreme: ultra-high risk. This rule has extremely high risk and basically will not generate false alarms;</li>",
           "example": "extreme",
           "member": "string",
           "name": "RiskLevel",
@@ -24625,7 +24697,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Name of the managed rule group, if the configuration for the rule group is not specified, it will be processed by default, refer to product documentation for the specific value of GroupId.",
+          "document": "Group name of the managed rule. If no rule group is specified, the default configuration is used. For the specific value of GroupId, refer to the product documentation.",
           "example": "wafmanagedrulegroup-file-upload-attacks",
           "member": "string",
           "name": "GroupId",
@@ -24636,7 +24708,7 @@
         },
         {
           "disabled": false,
-          "document": "Protection level of the managed rule group. Values: <li>`loose`: lenient, only contain ultra-high risk rules, at this point, Action parameter needs configured instead of RuleActions parameter;</li> <li>`normal`: normal, contain ultra-high risk and high-risk rules, at this point,Action parameter needs configured instead of RuleActions parameter;</li> <li>`strict`: strict, contains ultra-high risk, high-risk and medium-risk rules, at this point, Action parameter needs configured instead of RuleActions parameter;</li> <li>`extreme`: super strict, contains ultra-high risk, high-risk, medium-risk and low-risk rules, at this point, Action parameter needs configured instead of RuleActions parameter;</li> <li>`custom`: custom, refined strategy, configure the RuleActions parameter for each individual rule, at this point, the Action field is invalid, use RuleActions to configure the refined strategy for each individual rule.</li>.",
+          "document": "Protection level of the managed rule group. Valid values: <li>loose: Loose. It only contains ultra-high risk rules. At this point, Action is required and RuleActions is invalid.</li><li>normal: Normal. It contains ultra-high risk and high-risk rules. At this point, Action is required and RuleActions is invalid.</li><li>strict: Strict. It contains ultra-high risk, high-risk, and medium-risk rules. At this point, Action is required and RuleActions is invalid.</li><li>extreme: Ultra-strict. It contains ultra-high risk, high-risk, medium-risk, and low-risk rules. At this point, Action is required and RuleActions is invalid.</li><li>custom: Custom. Refined strategy. Configure the disposal method for each individual rule. At this point, the Action field is invalid. Use RuleActions to configure the refined strategy for individual rules.</li>\t",
           "example": "loose",
           "member": "string",
           "name": "SensitivityLevel",
@@ -24647,7 +24719,7 @@
         },
         {
           "disabled": false,
-          "document": "Action for ManagedRuleGroup. the Name parameter value of SecurityAction supports: <li>`Deny`: block and respond with a block page;</li> <li>`Monitor`: observe, do not process requests and record security events in logs;</li> <li>`Disabled`: not enabled, do not scan requests and skip this rule.</li>.",
+          "document": "Handling action of the managed rule group. Supported values for SecurityAction Name: <li>Deny: Block. Respond with an interception page;</li><li>Monitor: Observe. Do not process requests, log security events in logs;</li><li>Disabled: Not activated. Do not scan requests, skip this rule.</li>",
           "example": "参考 SecurityAction 结构。",
           "member": "SecurityAction",
           "name": "Action",
@@ -24658,7 +24730,7 @@
         },
         {
           "disabled": false,
-          "document": "Specific configuration of rule items under the managed rule group, valid only when SensitivityLevel is custom.",
+          "document": "Specific configuration of rule items in the managed rule group. This configuration is effective only when SensitivityLevel is custom.",
           "example": "参考 ManagedRuleAction 结构。",
           "member": "ManagedRuleAction",
           "name": "RuleActions",
@@ -24669,7 +24741,7 @@
         },
         {
           "disabled": false,
-          "document": "ManagedRuleGroup detailed information, output parameter only.",
+          "document": "Managed rule group information. This is an output-only parameter.\t",
           "example": "参考 ManagedRuleGroupMeta 结构。",
           "member": "ManagedRuleGroupMeta",
           "name": "MetaData",
@@ -24682,11 +24754,11 @@
       "usage": "both"
     },
     "ManagedRuleGroupMeta": {
-      "document": "Managed rule group meta information.",
+      "document": "Managed rule group information",
       "members": [
         {
           "disabled": false,
-          "document": "ManagedRuleGroup detailed information, output parameter only.",
+          "document": "Managed rule group description. For output usage only.",
           "example": "SQL 注入攻击防护",
           "member": "string",
           "name": "GroupDetail",
@@ -24697,7 +24769,7 @@
         },
         {
           "disabled": false,
-          "document": "ManagedRuleGroup name, output parameter only.",
+          "document": "Managed rule group name. Output parameter only.",
           "example": "SQL 注入攻击防护",
           "member": "string",
           "name": "GroupName",
@@ -24708,7 +24780,7 @@
         },
         {
           "disabled": false,
-          "document": "All sub-rules information under current ManagedRuleGroup, output parameter only.",
+          "document": "Rule information of all sub-rules in the current managed rule group. Output parameter only.",
           "example": "参考 ManagedRulesMeta 结构。",
           "member": "ManagedRuleDetail",
           "name": "RuleDetails",
@@ -24721,11 +24793,11 @@
       "usage": "both"
     },
     "ManagedRules": {
-      "document": "Managed rules configuration.",
+      "document": "Managed rules for Web security",
       "members": [
         {
           "disabled": false,
-          "document": "The managed rule status. Values: <li>`on`: enabled, all managed rules take effect as configured;</li> <li>`off`: disabled, all managed rules do not take effect.</li>.",
+          "document": "<p>Whether managed rules are enabled. Valid values: <li>on: enabled. All managed rules take effect as configured.</li><li>off: disabled. No managed rules take effect.</li></p>",
           "example": "on",
           "member": "string",
           "name": "Enabled",
@@ -24736,7 +24808,7 @@
         },
         {
           "disabled": false,
-          "document": "Evaluation mode is enabled or not, it is valid only when the `Enabled` parameter is set to `on`. Values: <li>`on`: enabled, all managed rules take effect in `observe` mode.</li> <li>off: disabled, all managed rules take effect according to the specified configuration.</li>.",
+          "document": "<p>Whether evaluation mode is enabled. This parameter is valid only when the `Enabled` parameter is set to `on`. Valid values: <li>on: enabled. All managed rules take effect in observation mode.</li><li>off: disabled. All managed rules take effect as configured.</li></p>",
           "example": "on",
           "member": "string",
           "name": "DetectionOnly",
@@ -24747,7 +24819,7 @@
         },
         {
           "disabled": false,
-          "document": "Managed rule semantic analysis is enabled or not, it is valid only when the `Enabled` parameter is `on`. Values: <li>`on`: enabled, perform semantic analysis  before processing requests;</li> <li>`off`: disabled, process requests directly without semantic analysis.</li> <br/>The default value is `off`.",
+          "document": "<p>Whether the deep analysis option for managed rules is enabled. This parameter is valid only when the `Enabled` parameter is set to `on`. Valid values: <li>on: enabled. Requests are processed after deep analysis.</li><li>off: disabled. Requests are processed directly without deep analysis.</li> <br>This parameter is to be deprecated. The switch for deep analysis rules is migrated to the `SemanticAnalysisRules.Enabled` parameter.</p>",
           "example": "on",
           "member": "string",
           "name": "SemanticAnalysis",
@@ -24758,7 +24830,18 @@
         },
         {
           "disabled": false,
-          "document": "Managed rule automatic update option.",
+          "document": "<p>Deep analysis configuration option. Identifies malicious behaviors in requests (such as SQL injection and XSS attacks), and logs and blocks malicious requests.</p>",
+          "example": "无",
+          "member": "SemanticAnalysisRules",
+          "name": "SemanticAnalysisRules",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Auto-update option for managed rules.</p>",
           "example": "无",
           "member": "ManagedRuleAutoUpdate",
           "name": "AutoUpdate",
@@ -24769,7 +24852,7 @@
         },
         {
           "disabled": false,
-          "document": "Configuration of the managed rule group. If this structure is passed as an empty array or the GroupId is not included in the array, it will be processed based by default.",
+          "document": "<p>Configuration of managed rule groups. If an empty array is passed for this structure or `GroupId` is not included in the list, the default processing method is used.</p>",
           "example": "无",
           "member": "ManagedRuleGroup",
           "name": "ManagedRuleGroups",
@@ -24780,7 +24863,7 @@
         },
         {
           "disabled": false,
-          "document": "High-Frequency scan protection configuration option. when a visitor's frequent requests hit the managed rule configured as block within a period of time, all requests from that visitor are blocked.",
+          "document": "<p>High-frequency scan protection configuration option. When a visitor's requests frequently trigger managed rules configured as block, all requests from this visitor are blocked for a period of time.</p>",
           "example": "无",
           "member": "FrequentScanningProtection",
           "name": "FrequentScanningProtection",
@@ -24849,11 +24932,11 @@
       "usage": "both"
     },
     "MaxNewSessionTriggerConfig": {
-      "document": "Trigger threshold for verification in Bot management.",
+      "document": "Trigger threshold of verification in Bot management.",
       "members": [
         {
           "disabled": false,
-          "document": "Time window for trigger threshold statistics. valid values: <li>5s: within 5 seconds;</li><li>10s: within 10 seconds;</li><li>15s: within 15 seconds;</li><li>30s: within 30 seconds;</li><li>60s: within 60 seconds;</li><li>5m: within 5 minutes;</li><li>10m: within 10 minutes;</li><li>30m: within 30 minutes;</li><li>60m: within 60 minutes.</li>.",
+          "document": "Time window for trigger threshold statistics. Valid values: <li>5s: within 5 seconds;</li><li>10s: within 10 seconds;</li><li>15s: within 15 seconds;</li><li>30s: within 30 seconds;</li><li>60s: within 60 seconds;</li><li>5m: within 5 minutes;</li><li>10m: within 10 minutes;</li><li>30m: within 30 minutes;</li><li>60m: within 60 minutes.</li>",
           "example": "10s",
           "member": "string",
           "name": "MaxNewSessionCountInterval",
@@ -24864,7 +24947,7 @@
         },
         {
           "disabled": false,
-          "document": "Trigger threshold cumulative count. value range: 1-100000000.",
+          "document": "Cumulative count of trigger threshold statistics. Value range: 1-100000000.",
           "example": "300",
           "member": "int64",
           "name": "MaxNewSessionCountThreshold",
@@ -24877,11 +24960,11 @@
       "usage": "both"
     },
     "MinimalRequestBodyTransferRate": {
-      "document": "Minimum minimum body transfer rate threshold configuration.",
+      "document": "Configuration of the minimum body transfer rate threshold.",
       "members": [
         {
           "disabled": false,
-          "document": "Minimum body transfer rate threshold, the measurement unit is only supported in bps.",
+          "document": "Minimum body transfer rate threshold. The measurement unit only supports bps.",
           "example": "50bps",
           "member": "string",
           "name": "MinimalAvgTransferRateThreshold",
@@ -24892,7 +24975,7 @@
         },
         {
           "disabled": false,
-          "document": "Minimum body transfer rate statistical time range, valid values: <li>10s: 10 seconds;</li> <li>30s: 30 seconds;</li> <li>60s: 60 seconds;</li> <li>120s: 120 seconds.</li>.",
+          "document": "Statistical time range for minimum body transfer rate. Valid values: <li>10s: 10 seconds;</li><li>30s: 30 seconds;</li><li>60s: 60 seconds;</li><li>120s: 120 seconds.</li>",
           "example": "10s",
           "member": "string",
           "name": "CountingPeriod",
@@ -24903,7 +24986,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies whether the minimum body transfer rate threshold is enabled. valid values: <li>on: enable;</li> <li>off: disable.</li>.",
+          "document": "Whether the minimum body transfer rate threshold is enabled. Valid values: <li>on: enabled;</li><li>off: disabled.</li>",
           "example": "on",
           "member": "string",
           "name": "Enabled",
@@ -30944,11 +31027,11 @@
       "usage": "both"
     },
     "RateLimitingRule": {
-      "document": "Specifies the rate limit configuration.",
+      "document": "Specific configuration of the rate limit.",
       "members": [
         {
           "disabled": false,
-          "document": "The ID of precise rate limiting. rule ID supports different rule configuration operations: <li><b>add</b> a new rule: leave the ID empty or do not specify the ID parameter.</li> <li><b>modify</b> an existing rule: specify the rule ID that needs to be updated/modified.</li> <li><b>delete</b> an existing rule: existing Rules not included in the Rules list under the RateLimitingRules parameter will be deleted.</li>.",
+          "document": "<p>ID of the precise rate limiting rule.<br>Different rule configuration operations can be performed by rule ID:<br> <li> <b>Add</b> a new rule: leave ID empty or unspecified;</li><li><b>Modify</b> an existing rule: specify the rule ID that needs to be updated/modified;</li><li><b>Delete</b> an existing rule: existing rules not included in the Rules list in the RateLimitingRules parameter will be deleted.</li></p>",
           "example": "2181399690",
           "member": "string",
           "name": "Id",
@@ -30959,7 +31042,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the name of the precise rate limit.",
+          "document": "<p>Name of the precise rate limit.</p>",
           "example": "SampleHttpDdosRule",
           "member": "string",
           "name": "Name",
@@ -30970,7 +31053,7 @@
         },
         {
           "disabled": false,
-          "document": "The specific content of precise rate limiting must comply with expression grammar. for detailed requirements, please refer to [the product document](https://www.tencentcloud.com/document/product/1552/125343?from_cn_redirect=1) .",
+          "document": "<p>The specific content of precise rate limiting must comply with expression syntax. For detailed specifications, see <a href=\"https://www.tencentcloud.com/document/product/1552/125343?from_cn_redirect=1\">product document</a>.</p>",
           "example": "${http.request.uri.path} in ['/api/v3/test','/api/v3/submit']",
           "member": "string",
           "name": "Condition",
@@ -30981,7 +31064,7 @@
         },
         {
           "disabled": false,
-          "document": "Speed limit mode. Within the statistical time window CountingPeriod, the following speed limit modes can be configured for requests that meet the feature CountBy:<li>Block: Block access source. When the count exceeds the threshold MaxRequestThreshold, execute Action disposal for ALL subsequent requests that meet the feature within the ActionDuration. </li><li>Throttle: Only dispose excess requests. When the count exceeds the threshold MaxRequestThreshold, only execute Action disposal for requests that exceed the threshold, and stop disposal when the window ends. At this point, the ActionDuration parameter will be ignored.</li><br />Default value is Block.",
+          "document": "<p>Bandwidth limit mode. Within the statistical time window CountingPeriod, for requests that meet the CountBy feature, the following bandwidth limit modes can be configured: <li>Block: Block the access source. When the count exceeds the MaxRequestThreshold, execute the Action on all subsequent requests that meet the feature within the ActionDuration;</li><li>Throttle: Only handle excess requests. When the count exceeds the MaxRequestThreshold, execute the Action only on requests that exceed the threshold, and stop when the window ends. At this point, the ActionDuration parameter will be ignored.</li><br>Default value: Block.</p>",
           "example": "block",
           "member": "string",
           "name": "Mode",
@@ -30992,7 +31075,7 @@
         },
         {
           "disabled": false,
-          "document": "The match mode of the rate threshold request feature. this field is required when Enabled is on.<br /><br />when there are multiple conditions, composite conditions are used to collect statistics. the maximum number of conditions cannot exceed 5. valid values:<br/><li><b>http.request.ip</b>: client ip;</li><li><b>http.request.xff_header_ip</b>: client ip (priority match xff header);</li><li><b>http.request.uri.path</b>: access path of the request;</li><li><b>http.request.cookies['session']</b>: Cookie named session, where session can be replaced with your own parameter;</li><li><b>http.request.headers['user-agent']</b>: http header named user-agent, where user-agent can be replaced with your own parameter;</li><li><b>http.request.ja3</b>: ja3 fingerprint of the request;</li><li><b>http.request.ja4</b>: ja4 fingerprint of the request;</li><li><b>http.request.uri.query['test']</b>: URL query parameter named test, where test can be replaced with your own parameter.</li>.",
+          "document": "<p>Match mode of the rate threshold request feature. Required when Enabled is on.<br><br>When there are multiple conditions, they will be combined for statistics and calculation. A maximum of 5 conditions is allowed. Valid values:<br><li><b>http.request.ip</b>: client IP;</li><li><b>http.request.xff_header_ip</b>: client IP (priority match XFF header);</li><li><b>http.request.uri.path</b>: access path of the request;</li><li><b>http.request.cookies[&#39;session&#39;]</b>: Cookie named session, where session can be replaced with your own parameter;</li><li><b>http.request.headers[&#39;user-agent&#39;]</b>: HTTP header named user-agent, where user-agent can be replaced with your own parameter;</li><li><b>http.request.ja3</b>: JA3 fingerprint of the request;</li><li><b>http.request.ja4</b>: JA4 fingerprint of the request;</li><li><b>http.request.uri.query[&#39;test&#39;]</b>: URL query parameter named test, where test can be replaced with your own parameter.</li></p>",
           "example": "[\"http.request.ip\"]",
           "member": "string",
           "name": "CountBy",
@@ -31003,7 +31086,7 @@
         },
         {
           "disabled": false,
-          "document": "Precision rate limiting specifies the cumulative number of interceptions within the time range. value ranges from 1 to 100000.",
+          "document": "<p>Cumulative number of interceptions by precise rate limiting within the time range, with a value range of 1 to 100000.</p>",
           "example": "100",
           "member": "int64",
           "name": "MaxRequestThreshold",
@@ -31014,7 +31097,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the time window for statistics. valid values: <li>1s: 1 second;</li><li>5s: 5 seconds;</li><li>10s: 10 seconds;</li><li>20s: 20 seconds;</li><li>30s: 30 seconds;</li><li>40s: 40 seconds;</li><li>50s: 50 seconds;</li><li>1m: 1 minute;</li><li>2m: 2 minutes;</li><li>5m: 5 minutes;</li><li>10m: 10 minutes;</li><li>1h: 1 hour.</li>.",
+          "document": "<p>Time window for statistics. Valid values: <li>1s: 1 second;</li><li>5s: 5 seconds;</li><li>10s: 10 seconds;</li><li>20s: 20 seconds;</li><li>30s: 30 seconds;</li><li>40s: 40 seconds;</li><li>50s: 50 seconds;</li><li>1m: 1 minute;</li><li>2m: 2 minutes;</li><li>5m: 5 minutes;</li><li>10m: 10 minutes;</li><li>1h: 1 hour.</li></p>",
           "example": "10s",
           "member": "string",
           "name": "CountingPeriod",
@@ -31025,7 +31108,7 @@
         },
         {
           "disabled": false,
-          "document": "Duration of the Action. Only the following units are supported: <li>s: second, value range 1-120;</li><li>m: minute, value range 1-120;</li><li>h: hour, value range 1-48;</li><li>d: day, value range 1-30.</li><br />This parameter will be ignored and will not take effect when Mode is Throttle.",
+          "document": "<p>Duration of the Action. Supported units: <li>s: seconds, value range: 1-120;</li><li>m: minutes, value range: 1-120;</li><li>h: hours, value range: 1-48;</li><li>d: days, value range: 1-30.</li><br>When Mode is Throttle, this parameter will be ignored and will not take effect.</p>",
           "example": "60s",
           "member": "string",
           "name": "ActionDuration",
@@ -31036,7 +31119,7 @@
         },
         {
           "disabled": false,
-          "document": "Precision rate limiting handling methods. valid values: <li>Monitor: Monitor;</li> <li>Deny: block, where DenyActionParameters.Name supports Deny and ReturnCustomPage;</li> <li>Challenge: Challenge, where ChallengeActionParameters.Name supports JSChallenge and ManagedChallenge;</li> <li>Redirect: Redirect to URL;</li>.",
+          "document": "<p>Handling method for precise rate limiting. SecurityAction.Name value range is as follows:</p><ul><li>Allow: allow, where AllowActionParameters supports MinDelayTime and MaxDelayTime configuration;</li><li>Deny: block, where DenyActionParameters supports ReturnCustomPage and Stall configuration;</li><li>Monitor: observe;</li><li>Challenge: challenge, where ChallengeActionParameters.ChallengeOption supports JSChallenge and ManagedChallenge;</li><li>Redirect: redirect to a URL.</li></ul>",
           "example": "无",
           "member": "SecurityAction",
           "name": "Action",
@@ -31047,7 +31130,7 @@
         },
         {
           "disabled": false,
-          "document": "Precision rate limiting specifies the priority. value range is 0 to 100. default is 0.",
+          "document": "<p>Priority of precise rate limiting, ranging from 0 to 100, with a default value of 0.</p>",
           "example": "50",
           "member": "int64",
           "name": "Priority",
@@ -31058,7 +31141,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether the precise rate limiting rule is enabled. valid values: <li>on: enabled;</li> <li>off: disabled.</li>.",
+          "document": "<p>Whether the precise rate limiting rule is enabled. Valid values: <li>on: enabled;</li><li>off: disabled.</li></p>",
           "example": "on",
           "member": "string",
           "name": "Enabled",
@@ -31071,11 +31154,11 @@
       "usage": "both"
     },
     "RateLimitingRules": {
-      "document": "Precision rate limiting configuration.",
+      "document": "Configuration of precise rate limiting",
       "members": [
         {
           "disabled": false,
-          "document": "Definition list of precise rate limiting. when using ModifySecurityPolicy to modify the Web protection configuration: <br> <li> if the Rules parameter is not specified or its length is zero: clear all precision rate limiting configurations.</li> <li> if the RateLimitingRules parameter value is unspecified in the SecurityPolicy parameter: retain the existing custom rule configuration without modification.</li>.",
+          "document": "Definition list of precise rate limiting. When using ModifySecurityPolicy to modify Web protection configuration: <br> <li> If the Rules parameter is not specified or its length is zero: clear all precise rate limiting configurations.</li> <li> If the RateLimitingRules parameter value is not specified in the SecurityPolicy parameter: keep the existing custom rule configuration without modification.</li>",
           "example": "无",
           "member": "RateLimitingRule",
           "name": "Rules",
@@ -31284,7 +31367,7 @@
       "usage": "out"
     },
     "RedirectActionParameters": {
-      "document": "Additional parameter for safe execution when the action is set to redirect.\n\nThis parameter is used to specify the extra handling action taken by the system when a security rule is hit and a redirection action is executed.\nDifferent disposal actions are configured with different fixed parameter combinations. The system will determine the actually effective disposal action type according to the configured parameter combination.\nDuring the same redirection execution, only one handling action can be configured and made effective. Parameter combinations for multiple disposal actions cannot appear at the same time. Otherwise, it is deemed as an invalid configuration.\nRedirectActionParameters supports the following extra handling actions: <li>Redirect: redirect client requests to the specified destination URL. Corresponding parameter: URL.</li>",
+      "document": "Additional parameter for safe execution when the action is set to redirect.\n\nThis parameter is used to specify the extra handling action taken by the system when a security rule is hit and a redirection action is executed.\nDifferent handling actions are configured with different fixed parameter combinations. The system will determine the effective handling action type according to the configured parameter combination.\nOnly one handling action can be configured and made effective during the same redirection. Parameter composites corresponding to multiple handling actions cannot appear at the same time. Otherwise, it is deemed as an invalid configuration.\nRedirectActionParameters supports the following extra handling actions: <li>Redirect: redirect client requests to the specified destination URL. Corresponding parameter: URL.</li>",
       "members": [
         {
           "disabled": false,
@@ -31447,11 +31530,11 @@
       "type": "object"
     },
     "RequestBodyTransferTimeout": {
-      "document": "Body transfer timeout duration configuration.",
+      "document": "Specific configuration of the body transfer timeout duration.",
       "members": [
         {
           "disabled": false,
-          "document": "Body transfer timeout duration. valid values: 5-120. measurement unit: seconds (s) only.",
+          "document": "Body transfer timeout duration. Value range: 5–120. Unit: seconds (s) only.",
           "example": "5s",
           "member": "string",
           "name": "IdleTimeout",
@@ -31462,7 +31545,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether body transfer timeout is enabled. valid values: <li>`on`: enable</li> <li>`off`: disable</li>.",
+          "document": "Whether body transfer timeout duration is enabled. Valid values: <li>on: enabled;</li><li>off: disabled.</li>",
           "example": "on",
           "member": "string",
           "name": "Enabled",
@@ -31475,11 +31558,11 @@
       "usage": "both"
     },
     "RequestFieldsForException": {
-      "document": "Skipped fields configuration in exception rules.",
+      "document": "Skipped field configuration in the exception rule",
       "members": [
         {
           "disabled": false,
-          "document": "Skip specific field. supported values:.\n<li>body.json: parameter content in json requests. at this point, Condition supports key and value, TargetField supports key and value, for example { \"Scope\": \"body.json\", \"Condition\": \"\", \"TargetField\": \"key\" }, which means all parameters in json requests skip WAF scan.</li>.\n<li style=\"margin-top:5px\">cookie: cookie; at this point Condition supports key, value, TargetField supports key, value, for example { \"Scope\": \"cookie\", \"Condition\": \"${key} in ['account-id'] and ${value} like ['prefix-*']\", \"TargetField\": \"value\" }, which means the cookie parameter name equals account-id and the parameter value wildcard matches prefix-* to skip WAF scan;</li>.\n<li style=\"margin-top:5px\">header: HTTP header parameters. at this point, Condition supports key and value, TargetField supports key and value, for example { \"Scope\": \"header\", \"Condition\": \"${key} like ['x-auth-*']\", \"TargetField\": \"value\" }, which means header parameter name wildcard match x-auth-* skips WAF scan.</li>.\n<li style=\"margin-top:5px\">uri.query: URL encoding content/query parameter. at this point, Condition supports key and value, TargetField supports key and value. example: { \"Scope\": \"uri.query\", \"Condition\": \"${key} in ['action'] and ${value} in ['upload', 'delete']\", \"TargetField\": \"value\" }. indicates URL encoding content/query parameter name equal to action and parameter value equal to upload or delete skips WAF scan.</li>.\n<li style=\"margin-top:5px\">uri: specifies the request path uri. at this point, Condition must be empty. TargetField supports query, path, fullpath, such as {\"Scope\": \"uri\", \"Condition\": \"\", \"TargetField\": \"query\"}, indicates the request path uri skips WAF scan for query parameters.</li>.\n<li style=\"margin-top:5px\">body: request body content. at this point Condition must be empty, TargetField supports fullbody, multipart, such as { \"Scope\": \"body\", \"Condition\": \"\", \"TargetField\": \"fullbody\" }, which means the request body content skips WAF scan as a full request.</li>.",
+          "document": "Specific fields to skip. Supported values: <br/>\n<li>body.json: parameter content in JSON requests. At this point, Condition supports key and value, and TargetField supports key and value. For example, { \"Scope\": \"body.json\", \"Condition\": \"\", \"TargetField\": \"key\" } means ALL parameters in the JSON request content skip WAF scan.</li>\n<li style=\"margin-top:5px\">cookie: Cookie; at this point, Condition supports key and value, and TargetField supports key and value, for example { \"Scope\": \"cookie\", \"Condition\": \"${key} in ['account-id'] and ${value} like ['prefix-*']\", \"TargetField\": \"value\" }, which means the cookie parameter name equals account-id and the parameter value wildcard matches prefix-* to skip WAF scan;</li>\n<li style=\"margin-top:5px\">header: HTTP header parameters. At this point, Condition supports key and value, and TargetField supports key and value. For example, { \"Scope\": \"header\", \"Condition\": \"${key} like ['x-auth-*']\", \"TargetField\": \"value\" } means the header parameter name wildcard match x-auth-* skips WAF scan.</li>\n<li style=\"margin-top:5px\">uri.query: URL-encoded content/query parameters. At this point, Condition supports key and value, and TargetField supports key and value. For example, { \"Scope\": \"uri.query\", \"Condition\": \"${key} in ['action'] and ${value} in ['upload', 'delete']\", \"TargetField\": \"value\" } means the parameter name of the URL-encoded content/query parameters is equal to action and the parameter value is equal to upload or delete, skip WAF scan;</li>\n<li style=\"margin-top:5px\">uri: request path URI. At this point, Condition must be empty, and TargetField supports query, path, and fullpath. For example, { \"Scope\": \"uri\", \"Condition\": \"\", \"TargetField\": \"query\" } means only query parameters in the request path URI skip WAF scan.</li>\n<li style=\"margin-top:5px\">body: request body content. At this point, Condition must be empty, and TargetField supports fullbody and multipart, for example { \"Scope\": \"body\",  \"Condition\": \"\", \"TargetField\": \"fullbody\" }, which means the request body content is the complete request body and skips WAF scan;</li>",
           "example": "header",
           "member": "string",
           "name": "Scope",
@@ -31490,7 +31573,7 @@
         },
         {
           "disabled": false,
-          "document": "Skip specific field expression must comply with expression grammar.\nCondition supports expression configuration syntax: <li> write according to the matching conditional expression syntax of rules, with support for referencing key and value.</li> <li> supports in, like operators, and logical combination with and.</li>.\nFor example: <li>${key} in ['x-trace-id']: the parameter name equals x-trace-id.</li> <li>${key} in ['x-trace-id'] and ${value} like ['Bearer *']: the parameter name equals x-trace-id and the parameter value wildcard matches Bearer *.</li>.",
+          "document": "Expression of the specific field to skip, which must comply with the expression grammar.<br />\nCondition supports expression configuration syntax: <li> Write the filter condition expression syntax based on the rule, with support for referencing key and value.</li><li> Support in and like operators, and logical combination with and.</li>\nFor example: <li>${key} in ['x-trace-id']: The parameter name is equal to x-trace-id.</li><li>${key} in ['x-trace-id'] and ${value} like ['Bearer *']: The parameter name is equal to x-trace-id and the parameter value wildcard matches Bearer *.</li>",
           "example": "${key} in ['x-trace-id'] and ${value} like ['Bearer *']",
           "member": "string",
           "name": "Condition",
@@ -31501,7 +31584,7 @@
         },
         {
           "disabled": false,
-          "document": "The Scope parameter takes different values. the TargetField expression supports the following values:.\n<Li> body.json: supports key, value.</li>.\n<li>cookie: supports key and value.</li>.\n<li>header: supports key, value</li>.\n<Li> uri.query: supports key and value</li>.\n<li>uri. specifies path, query, or fullpath.</li>.\n<Li>Body: supports fullbody and multipart.</li>.",
+          "document": "When the Scope parameter takes different values, the supported values in the TargetField expression are as follows:\n<li> body.json: supports key and value</li>\n<li> cookie: supports key and value</li>\n<li> header: supports key and value</li>\n<li> uri.query: supports key and value</li>\n<li> uri: supports path, query, and fullpath</li>\n<li> body: supports fullbody and multipart</li>",
           "example": "value",
           "member": "string",
           "name": "TargetField",
@@ -31689,11 +31772,11 @@
       "usage": "both"
     },
     "ReturnCustomPageActionParameters": {
-      "document": "Additional parameter for SecurityAction `ReturnCustomPage`.",
+      "document": "Additional parameter of the custom page for Web security",
       "members": [
         {
           "disabled": false,
-          "document": "Response custom status code.",
+          "document": "status code.",
           "example": "404",
           "member": "string",
           "name": "ResponseCode",
@@ -31704,7 +31787,7 @@
         },
         {
           "disabled": false,
-          "document": "Response custom page ID.",
+          "document": "ID of the custom page in the response.",
           "example": "p-2yr7ncnju1yk",
           "member": "string",
           "name": "ErrorPageId",
@@ -33200,11 +33283,11 @@
       "usage": "both"
     },
     "SearchEngineBots": {
-      "document": "Configures rules for the search engine.",
+      "document": "Search engine rule configuration.",
       "members": [
         {
           "disabled": false,
-          "document": "Specifies the action for requests from search engine crawlers. valid values for SecurityAction Name: <li>Deny: block;</li> <li>Monitor: observe;</li> <li>Disabled: not enabled, disable specified rule;</li> <li>Challenge: Challenge, where ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge;</li> <li>Allow: pass (to be deprecated).</li>.",
+          "document": "Execution action for requests from search engine crawlers. Supported values of SecurityAction Name: <li>Deny: block;</li><li>Monitor: observe;</li><li>Disabled: not enabled, disable the specified rule;</li><li>Challenge: challenge. ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge;</li><li>Allow: allow (to be deprecated).</li>",
           "example": "无",
           "member": "SecurityAction",
           "name": "BaseAction",
@@ -33215,7 +33298,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the handling method for search engine crawler requests.",
+          "document": "Specify the handling method for search engine crawler requests.",
           "example": "无",
           "member": "BotManagementActionOverrides",
           "name": "BotManagementActionOverrides",
@@ -33310,11 +33393,11 @@
       "usage": "out"
     },
     "SecurityAction": {
-      "document": "Action for security operation.",
+      "document": "Safe execution action",
       "members": [
         {
           "disabled": false,
-          "document": "<p>Specific actions for safe execution. Valid values:</p><ul><li>Deny: block, prevent requests from accessing site resources;</li><li>Monitor: observe, only record logs;</li><li>Redirect: redirect to URL;</li><li>Disabled: not enabled, do not enable the specified rule;</li><li>Allow: pass, skip the remaining rules of the current security module. Delay response when the AllowActionParameters parameter is configured;</li><li>Challenge: challenge, respond with challenge content;</li><li>BlockIP: to be deprecated, IP blocking;</li><li>ReturnCustomPage: to be deprecated, use a specified page for interception;</li><li>JSChallenge: to be deprecated, JavaScript challenge;</li><li>ManagedChallenge: to be deprecated, managed challenge.</li></ul>",
+          "document": "<p>Specific actions for safe execution. Valid values:</p><ul><li>Deny: block, prevent requests from accessing site resources;</li><li>Monitor: observe, only record logs;</li><li>Redirect: redirect to URL;</li><li>Disabled: not enabled, disable the specified rule;</li><li>Allow: allow, skip the remaining rules of the current security module. Delay response when the AllowActionParameters parameter is configured;</li><li>Challenge: challenge, respond with challenge content;</li><li>BlockIP: to be deprecated, IP block;</li><li>ReturnCustomPage: to be deprecated, use a specified page for interception;</li><li>JSChallenge: to be deprecated, JavaScript challenge;</li><li>ManagedChallenge: to be deprecated, managed challenge.</li></ul>",
           "example": "Deny",
           "member": "string",
           "name": "Name",
@@ -33369,7 +33452,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>To be deprecated. Additional parameter when Name is BlockIP.</p>",
+          "document": "<p>To be deprecated. An additional parameter when Name is BlockIP.</p>",
           "example": "无",
           "member": "BlockIPActionParameters",
           "name": "BlockIPActionParameters",
@@ -33519,12 +33602,51 @@
       ],
       "usage": "both"
     },
-    "SecurityPolicy": {
-      "document": "Web security policy.",
+    "SecurityHeadersToOrigin": {
+      "document": "Security headers to include in requests to the origin. After the configuration takes effect, request headers with the corresponding `keyname` will be sent to the origin.",
       "members": [
         {
           "disabled": false,
-          "document": "Custom rules. If the parameter is null or not filled, the configuration last set will be used by default.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "<p>Configuration of origin request headers for Bot identification information. Valid values:<ul><li>`EO-Bot-Botnet-ID`: Identifier generated based on Bot request characteristics.</li></ul></p>",
+          "example": "[\"EO-Bot-Botnet-ID\"]",
+          "member": "string",
+          "name": "BotIdentificationHeaders",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Configuration of origin request headers for identification results from the Advanced Bot Management module. Valid values:<ul><li>`EO-Bot-Client-Attestation`: Advanced Bot Management - Authentication ticket verification result from the Client Attestation module;</li><li>`EO-Bot-Client-Risk`: Advanced Bot Management - Device risk assessment result from the Client Attestation module;</li><li>`EO-Bot-Intelligence`: Advanced Bot Management - Identification result from the Bot Intelligence Analysis module;</li><li>`EO-Bot-IP-Reputation`: Advanced Bot Management - Identification result from Client Reputation module;</li><li>`EO-Bot-Known-Tool`: Advanced Bot Management - Basic Feature Management - Identification result from the UA Feature Rule module;</li><li>`EO-Bot-Search-Engine`: Advanced Bot Management - Basic Feature Management - Identification result from the Search Engine Rule module;</li><li>`EO-Bot-Source-IDC`: Advanced Bot Management - Basic Feature Management - Identification result from the IDC Rule module;</li><li>`EO-Bot-User-Risk`: Advanced Bot Management - Account risk assessment result from the Client Attestation module.</li></ul></p>",
+          "example": "[\"EO-Bot-Client-Attestation\"]",
+          "member": "string",
+          "name": "BotManagementHeaders",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Configuration of origin request headers for client fingerprint information. Valid values:<ul><li>`EO-Bot-Fingerprint`: Client fingerprint information.</li></ul></p>",
+          "example": "[\"EO-Bot-Fingerprint\"]",
+          "member": "string",
+          "name": "ClientFingerprintHeaders",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SecurityPolicy": {
+      "document": "Security policy configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Custom rule configuration.</p>",
           "example": "无",
           "member": "CustomRules",
           "name": "CustomRules",
@@ -33535,7 +33657,7 @@
         },
         {
           "disabled": false,
-          "document": "Managed. If the parameter is null or not filled, the configuration last set will be used by default.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "<p>Managed rule configuration.</p>",
           "example": "无",
           "member": "ManagedRules",
           "name": "ManagedRules",
@@ -33546,7 +33668,7 @@
         },
         {
           "disabled": false,
-          "document": "HTTP DDOS protection configuration.",
+          "document": "<p>HTTP DDoS protection configuration.</p>",
           "example": "无",
           "member": "HttpDDoSProtection",
           "name": "HttpDDoSProtection",
@@ -33557,7 +33679,7 @@
         },
         {
           "disabled": false,
-          "document": "Configures the rate limiting rule.",
+          "document": "<p>Rate limiting rule configuration.</p>",
           "example": "无",
           "member": "RateLimitingRules",
           "name": "RateLimitingRules",
@@ -33568,7 +33690,7 @@
         },
         {
           "disabled": false,
-          "document": "Exception rule configuration.",
+          "document": "<p>Exception rule configuration.</p>",
           "example": "无",
           "member": "ExceptionRules",
           "name": "ExceptionRules",
@@ -33579,7 +33701,7 @@
         },
         {
           "disabled": false,
-          "document": "Bot management configuration.",
+          "document": "<p>Bot management configuration.</p>",
           "example": "无",
           "member": "BotManagement",
           "name": "BotManagement",
@@ -33590,7 +33712,7 @@
         },
         {
           "disabled": false,
-          "document": "Basic Bot management configuration.",
+          "document": "<p>Basic Bot management configuration.</p>",
           "example": "无",
           "member": "BotManagementLite",
           "name": "BotManagementLite",
@@ -33601,10 +33723,21 @@
         },
         {
           "disabled": false,
-          "document": "Default intercept action configuration.",
+          "document": "<p>Default block action configuration.</p>",
           "example": "无",
           "member": "DefaultDenySecurityActionParameters",
           "name": "DefaultDenySecurityActionParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Security headers to include in requests to the origin. After the configuration takes effect, request headers with the corresponding `keyname` will be sent to the origin.</p>",
+          "example": "无",
+          "member": "SecurityHeadersToOrigin",
+          "name": "SecurityHeadersToOrigin",
           "output_required": false,
           "required": false,
           "type": "object",
@@ -33702,11 +33835,11 @@
       "usage": "both"
     },
     "SecurityWeightedAction": {
-      "document": "Specifies the SecurityAction with weight allocation.",
+      "document": "SecurityAction with weight assignment.",
       "members": [
         {
           "disabled": false,
-          "document": "The handling method of the Bot custom rule. valid values: <li>Allow: pass, where AllowActionParameters supports MinDelayTime and MaxDelayTime configuration;</li> <li>Deny: block, where DenyActionParameters supports BlockIp, ReturnCustomPage, and Stall configuration;</li> <li>Monitor: observation;</li> <li>Challenge: Challenge, where ChallengeActionParameters.ChallengeOption supports JSChallenge and ManagedChallenge;</li> <li>Redirect: Redirect to URL.</li>.",
+          "document": "Handling method of the Bot custom rule. Valid values: <li>Allow: Allow, where AllowActionParameters supports MinDelayTime and MaxDelayTime configuration;</li><li>Deny: block, where DenyActionParameters supports BlockIp, ReturnCustomPage, and Stall configuration;</li><li>Monitor: Monitor;</li><li>Challenge: Challenge, where ChallengeActionParameters.ChallengeOption supports JSChallenge and ManagedChallenge;</li><li>Redirect: Redirect to a URL.</li>",
           "example": "无",
           "member": "SecurityAction",
           "name": "SecurityAction",
@@ -33717,13 +33850,52 @@
         },
         {
           "disabled": false,
-          "document": "The Weight of the current SecurityAction, only supported between 10 and 100 and must be a multiple of 10. the total of all Weight parameters must equal 100.",
+          "document": "Weight of the current SecurityAction. Only multiples of 10 from 10 to 100 are supported. The sum of all Weight parameters must equal 100.",
           "example": "20",
           "member": "int64",
           "name": "Weight",
           "output_required": false,
           "required": false,
           "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SemanticAnalysisRules": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "on",
+          "member": "string",
+          "name": "Enabled",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "ManagedRuleAction",
+          "name": "RuleActions",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "ManagedRuleGroupMeta",
+          "name": "MetaData",
+          "output_required": false,
+          "required": false,
+          "type": "object",
           "value_allowed_null": false
         }
       ],
@@ -33817,7 +33989,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Specifies whether session rate and periodic feature verification are enabled. valid values: <li>on: enable</li><li>off: disable</li>.",
+          "document": "Whether session rate and periodic feature verification are enabled. Valid values: <li>on: enable</li><li>off: disable</li>",
           "example": "on",
           "member": "string",
           "name": "Enabled",
@@ -33828,7 +34000,7 @@
         },
         {
           "disabled": false,
-          "document": "Session rate and periodic feature verification high-risk execution actions. SecurityAction Name valid values: <li>Deny: block, where Stall configuration is supported in DenyActionParameters;</li> <li>Monitor: observation;</li> <li>Allow: respond after wait, where MinDelayTime and MaxDelayTime configuration is required in AllowActionParameters.</li>.",
+          "document": "Session rate and periodic feature verification for high-risk executed actions. The Name parameter of SecurityAction supports the following values: <li>Deny: block, with Stall configuration supported in DenyActionParameters;</li><li>Monitor: observe;</li><li>Allow: respond after waiting, where AllowActionParameters requires MinDelayTime and MaxDelayTime configuration.</li>",
           "example": "无",
           "member": "SecurityAction",
           "name": "HighRateSessionAction",
@@ -33839,7 +34011,7 @@
         },
         {
           "disabled": false,
-          "document": "Session rate and periodic feature verification medium-risk execution action. SecurityAction Name parameter supports: <li>Deny: block, where DenyActionParameters supports Stall configuration;</li><li>Monitor: observe;</li><li>Allow: respond after wait, where AllowActionParameters requires MinDelayTime and MaxDelayTime configuration.</li>.",
+          "document": "Execution action for medium-risk session rate and periodic feature verification. Supported values of SecurityAction Name: <li>Deny: block, where DenyActionParameters supports Stall configuration;</li><li>Monitor: observe;</li><li>Allow: respond after waiting, where AllowActionParameters requires MinDelayTime and MaxDelayTime configuration.</li>",
           "example": "无",
           "member": "SecurityAction",
           "name": "MidRateSessionAction",
@@ -33850,7 +34022,7 @@
         },
         {
           "disabled": false,
-          "document": "Session rate and periodic feature verification low risk execution action. SecurityAction Name parameter supports: <li>Deny: block, where DenyActionParameters supports Stall configuration;</li><li>Monitor: observe;</li><li>Allow: respond after wait, where AllowActionParameters requires MinDelayTime and MaxDelayTime configuration.</li>.",
+          "document": "Session rate and periodic feature verification are low-risk execution actions. The Name parameter of SecurityAction supports: <li>Deny: block, where DenyActionParameters supports Stall configuration;</li><li>Monitor: observe;</li><li>Allow: wait then respond, where AllowActionParameters requires MinDelayTime and MaxDelayTime configuration.</li>",
           "example": "无",
           "member": "SecurityAction",
           "name": "LowRateSessionAction",
@@ -34251,11 +34423,11 @@
       "usage": "both"
     },
     "SlowAttackDefense": {
-      "document": "Slow attack protection configuration.",
+      "document": "Specific configuration for slow attack protection.",
       "members": [
         {
           "disabled": false,
-          "document": "Whether slow attack protection is enabled. valid values: <li>on: enabled;</li> <li>off: disabled.</li>.",
+          "document": "Whether slow attack protection is enabled. Valid values: <li>on: enabled;</li><li>off: disabled.</li>",
           "example": "on",
           "member": "string",
           "name": "Enabled",
@@ -34266,7 +34438,7 @@
         },
         {
           "disabled": false,
-          "document": "Rule ID of slow attack protection, returned as an output parameter.",
+          "document": "Rule ID of slow attack protection, returned only as an output parameter.",
           "example": "4294967289",
           "member": "string",
           "name": "Id",
@@ -34277,7 +34449,7 @@
         },
         {
           "disabled": false,
-          "document": "Slow attack protection handling method. required when Enabled is on. valid values for SecurityAction Name: <li>Monitor: observation;</li> <li>Deny: block;</li>.",
+          "document": "Handling method for slow attack protection. This field is required when Enabled is on. Supported values for SecurityAction Name: <li>Monitor: observe;</li><li>Deny: block;</li>",
           "example": "无",
           "member": "SecurityAction",
           "name": "Action",
@@ -34288,7 +34460,7 @@
         },
         {
           "disabled": false,
-          "document": "The specific configuration of the minimum body transfer rate threshold is required when Enabled is on.",
+          "document": "Specific configuration of the minimum body transfer rate threshold. Required when Enabled is on.",
           "example": "无",
           "member": "MinimalRequestBodyTransferRate",
           "name": "MinimalRequestBodyTransferRate",
@@ -34299,7 +34471,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the specific configuration of body transfer timeout duration. required when Enabled is on.",
+          "document": "Specific configuration of the body transfer timeout duration. Required if Enabled is on.",
           "example": "无",
           "member": "RequestBodyTransferTimeout",
           "name": "RequestBodyTransferTimeout",
@@ -34445,11 +34617,11 @@
       "usage": "both"
     },
     "SourceIDC": {
-      "document": "Specifies the specific content of IDC rule configuration.",
+      "document": "Specific content of the IDC rule configuration.",
       "members": [
         {
           "disabled": false,
-          "document": "Handling method for requests from the specified IDC. valid values for SecurityAction Name: <li>Deny: block;</li> <li>Monitor: observe;</li> <li>Disabled: not enabled, disable specified rule;</li> <li>Challenge: Challenge, where ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge;</li> <li>Allow: pass (to be deprecated).</li>.",
+          "document": "Handling method for requests from a specified IDC. Supported values of the Name parameter of SecurityAction: <li>Deny: block;</li><li>Monitor: observe;</li><li>Disabled: not enabled, which disables the specified rule;</li><li>Challenge: challenge, where ChallengeOption in ChallengeActionParameters supports JSChallenge and ManagedChallenge;</li><li>Allow: allow (to be deprecated).</li>",
           "example": "参考 SecurityAction 结构",
           "member": "SecurityAction",
           "name": "BaseAction",
@@ -34460,7 +34632,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the handling method for the specified id request.",
+          "document": "Handling method for the request from the specified IDC.",
           "example": "无",
           "member": "BotManagementActionOverrides",
           "name": "BotManagementActionOverrides",
@@ -35567,6 +35739,56 @@
           "output_required": false,
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "UserRiskProfile": {
+      "document": "User Risk Level configuration. The risk score range is 0–100. The higher the score, the higher the risk.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Minimum risk score for high-risk requests. A request is considered high-risk when its score is equal to or greater than this value.</p><p>Value range: [2, 99]</p><p>Default value: 50</p>",
+          "example": "50",
+          "member": "uint64",
+          "name": "HighRiskMinScore",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Handling method for high-risk requests. Supported values for SecurityAction Name: <li>Deny: block;</li><li>Monitor: observe;</li><li>Redirect: redirect;</li><li>Challenge: challenge.</li>Default value: Monitor</p>",
+          "example": "无",
+          "member": "SecurityAction",
+          "name": "HighRiskRequestAction",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Minimum risk score for a medium-risk request. A score equal to or greater than this value and less than HighRiskMinScore is considered medium-risk; a score lower than this value is considered low risk.</p><p>Value range: [1, 98]</p><p>Default value: 15</p>",
+          "example": "15",
+          "member": "uint64",
+          "name": "MediumRiskMinScore",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Handling method for medium-risk requests. Supported values for the Name parameter of SecurityAction: <li>Deny: block;</li><li>Monitor: observe;</li><li>Redirect: redirect;</li><li>Challenge: challenge.</li>Default value: Monitor</p>",
+          "example": "无",
+          "member": "SecurityAction",
+          "name": "MediumRiskRequestAction",
+          "output_required": false,
+          "required": false,
+          "type": "object",
           "value_allowed_null": false
         }
       ],
