@@ -414,6 +414,14 @@
         "title": "Listing access keys"
       }
     ],
+    "ListAccounts": [
+      {
+        "document": "Get the sub-account list of all types",
+        "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListAllSubAccounts\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"IsTruncated\": false,\n        \"Marker\": \"\",\n        \"Users\": [\n            {\n                \"ConsoleLogin\": 1,\n                \"CountryCode\": \"86\",\n                \"CreateTime\": \"2022-11-23 17:07:28\",\n                \"Email\": \"gavi*******@tencent.com\",\n                \"Name\": \"gavi*******@tencent.com\",\n                \"PhoneNum\": \"132****0828\",\n                \"Remark\": \"\",\n                \"Uid\": 906949110,\n                \"Uin\": 0,\n                \"UserType\": \"Owner\"\n            }\n        ],\n        \"RequestId\": \"e89738b3-7eb3-46fe-be37-7d3210625d78\"\n    }\n}",
+        "title": "Retrieving the sub-account list of all types"
+      }
+    ],
     "ListAttachedGroupPolicies": [
       {
         "document": "This example shows you how to query the list of policies associated with a user group (ID: 3349).",

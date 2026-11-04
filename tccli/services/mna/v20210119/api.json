@@ -260,9 +260,9 @@
       "status": "online"
     },
     "GetStatisticDataByName": {
-      "document": "Download traffic data on the usage statistics page",
+      "document": "Download traffic data on the usage statistics page.",
       "input": "GetStatisticDataByNameRequest",
-      "name": "Download usage statistics based on device name",
+      "name": "Downloads usage statistics by device name",
       "output": "GetStatisticDataByNameResponse",
       "status": "online"
     },
@@ -3777,7 +3777,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Device name. If not specified, pass \"-1\".",
+          "document": "<p>Device name. If no device is specified, you can pass \"-1\"</p>",
           "example": "\"devicexxx\"",
           "member": "string",
           "name": "DeviceName",
@@ -3786,7 +3786,7 @@
         },
         {
           "disabled": false,
-          "document": "Start time of statistics (seconds).",
+          "document": "<p>Start time of statistics, unit: s</p>",
           "example": "1661212800",
           "member": "int64",
           "name": "BeginTime",
@@ -3795,7 +3795,7 @@
         },
         {
           "disabled": false,
-          "document": "Statistics end time (s).",
+          "document": "<p>Statistics end time, unit: s</p>",
           "example": "1661587200",
           "member": "int64",
           "name": "EndTime",
@@ -3804,7 +3804,7 @@
         },
         {
           "disabled": false,
-          "document": "Aggregation granularity:\nHourly statistics\n2: Daily statistics",
+          "document": "<p>Time granularity</p><p>Enumeration values:</p><ul><li>1: hourly statistics</li><li>2: daily statistics</li><li>3: per minute</li><li>4: every 5 minutes</li></ul>",
           "example": "1",
           "member": "int64",
           "name": "TimeGranularity",
@@ -3813,7 +3813,7 @@
         },
         {
           "disabled": false,
-          "document": "Access region. Value ranges from 'MC' to 'AM'. MC=Chinese mainland AP=Asia Pacific EU=Europe AM=Americas. Leave it blank to represent all regions.",
+          "document": "<p>Access region. Value range: ['MC','AP','EU','AM'] MC=Chinese mainland AP=Asia Pacific EU=Europe AM=Americas. If not specified, it represents all regions.</p>",
           "example": "MC",
           "member": "string",
           "name": "AccessRegion",
@@ -3822,7 +3822,7 @@
         },
         {
           "disabled": false,
-          "document": "Gateway type. 0: public cloud gateway; 1: private gateway. Default is 0 if not specified.",
+          "document": "<p>Gateway type. 0: public cloud gateway; 1: private gateway. Defaults to 0 if not passed.</p>",
           "example": "0",
           "member": "int64",
           "name": "GatewayType",
@@ -3831,7 +3831,7 @@
         },
         {
           "disabled": false,
-          "document": "Device name list. Up to 10 devices. Used when downloading traffic volume of multiple devices. At this point, DeviceName can be \"-1\".",
+          "document": "<p>Device name list, up to 10 devices. Used when downloading traffic for multiple devices. At this point, DeviceName can be set to \"-1\"</p>",
           "example": "[\"device1\",\"device2\"]",
           "member": "string",
           "name": "DeviceList",
@@ -3840,7 +3840,7 @@
         },
         {
           "disabled": false,
-          "document": "Device group ID. If not specified, do not pass it. Used when downloading data by grouping.",
+          "document": "<p>Device group ID. Do not pass it if no group is specified. Used when downloading data by group</p>",
           "example": "\"group-test\"",
           "member": "string",
           "name": "GroupId",
@@ -3849,7 +3849,7 @@
         },
         {
           "disabled": false,
-          "document": "Application ID. Leave blank if no designated application is specified. Used when downloading data by app.",
+          "document": "<p>Application ID. If not specified, leave it blank. Used when downloading data by application</p>",
           "example": "\"app-fvwy7esyat\"",
           "member": "string",
           "name": "MpApplicationId",
@@ -3864,7 +3864,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "File address url",
+          "document": "<p>File address url</p>",
           "example": "\"http://xxxx\"",
           "member": "string",
           "name": "FilePath",

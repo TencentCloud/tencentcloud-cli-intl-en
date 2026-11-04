@@ -29,7 +29,7 @@
       "status": "online"
     },
     "GeneralBasicOCR": {
-      "document": "This API is used to detect and recognize characters in an image in the following 20 languages: Chinese, English, Japanese, Korean, Spanish, French, German, Portuguese, Vietnamese, Malay, Russian, Italian, Dutch, Swedish, Finnish, Danish, Norwegian, Hungarian, Thai, and Arabic. Mixed characters in English and each supported language can be recognized together.\n\nIt can recognize printed text in paper documents, online images, ads, signboards, menus, video titles, profile photos, etc.\n\nStrengths: it can automatically recognize the text language, return the text box coordinate information, and automatically rotate tilted text to the upright direction.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).",
+      "document": "This API is used to detect and recognize characters in an image in the following 21 languages: Chinese, English, Japanese, Korean, Spanish, French, German, Portuguese, Vietnamese, Malay, Russian, Italian, Dutch, Swedish, Finnish, Danish, Norwegian, Hungarian, Thai, Hindi and Arabic. Mixed characters in English and each supported language can be recognized together.\n\nIt can recognize printed text in paper documents, online images, ads, signboards, menus, video titles, profile photos, etc.\n\nStrengths: it can automatically recognize the text language, return the text box coordinate information, and automatically rotate tilted text to the upright direction.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).",
       "input": "GeneralBasicOCRRequest",
       "name": "Recognizes general print.",
       "output": "GeneralBasicOCRResponse",
@@ -1824,7 +1824,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Rotation angle of the image, measured in degrees. The horizontal direction of the text is 0; clockwise is positive, counterclockwise is negative.\nExample value: 6.5 ",
           "example": "6.5",
           "member": "float",
           "name": "Angle",
