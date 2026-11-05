@@ -22,9 +22,9 @@
       "status": "online"
     },
     "CreateFace": {
-      "document": "This API is used to add a set of face images to a person. One person can have up to 5 images. If a person exists in multiple groups, the images will be added to all those groups for the person.\n\n>     \n- Please use the signature algorithm v3 to calculate the signature in the common parameters, that is, set the `SignatureMethod` parameter to `TC3-HMAC-SHA256`.",
+      "document": "Add a group of human face images to a person. A person allows up to 5 images. If the person exists across multiple person libraries, the images will be added to the person in ALL libraries.\n\n>     \n- For the signature method in public parameters, please use the V3 version. In other words, set the SignatureMethod parameter to TC3-HMAC-SHA256.",
       "input": "CreateFaceRequest",
-      "name": "Adds face",
+      "name": "Adds a face",
       "output": "CreateFaceResponse",
       "status": "online"
     },
@@ -36,9 +36,9 @@
       "status": "online"
     },
     "CreatePerson": {
-      "document": "This API is used to create a person and add face, name, gender, and other related information.\n\n>     \n- Please use the signature algorithm v3 to calculate the signature in the common parameters, that is, set the `SignatureMethod` parameter to `TC3-HMAC-SHA256`.",
+      "document": "Create a person and add a human face, name, sex, and other information related to the person.\n\n>     \n- Please use the V3 version of the signature method in public parameters. In other words, set the SignatureMethod parameter to TC3-HMAC-SHA256.",
       "input": "CreatePersonRequest",
-      "name": "Creates person",
+      "name": "Creator",
       "output": "CreatePersonResponse",
       "status": "online"
     },
@@ -155,9 +155,9 @@
       "status": "online"
     },
     "SearchFaces": {
-      "document": "This API is used to recognize top K persons in one or more groups who are similar to the person in a given image and rank the similarity in descending order.\n\nUp to 10 faces in an image can be recognized at a time, and up to 100 groups can be searched in at a time.\n\nThe maximum number of faces in groups that can be searched for at a time is subject to the algorithm model version (`FaceModelVersion`) of groups, which is 1 million for v2.0 or 3 million for v3.0.\n\nThis API recognizes each face image of a person as an independent one. By contrast, the [SearchPersons](https://intl.cloud.tencent.com/document/product/867/44992?from_cn_redirect=1) and [SearchPersonsReturnsByGroup](https://intl.cloud.tencent.com/document/product/867/44991?from_cn_redirect=1) APIs fuse the features of all face images of a person; for example, if a person has 4 face images, they will fuse the features of the 4 face images and generate the summarized facial features of the person to make the search more accurate.\n\n\nThis API should be used together with [Group Management APIs](https://intl.cloud.tencent.com/document/product/867/45015?from_cn_redirect=1).\n\n>     \n- Please use the signature algorithm v3 to calculate the signature in the common parameters, that is, set the parameter `SignatureMethod` to `TC3-HMAC-SHA256`.\n\n>     \n- You cannot search for groups using different algorithm model versions (`FaceModelVersion`) at a time.",
+      "document": "This API is used to recognize the top K most similar persons in one or more person libraries for a face image to be recognized, and sort the recognition results by similarity in descending order.\n\nThis API is used to recognize up to 10 human faces in an image at a time and search across 100 person libraries at a time.\n\nThe total number of human faces in a person library for a single search is related to the algorithm model version of the person library. For a person library with algorithm model version 2.0, the total number of human faces in a single search should not exceed 1 million. For a person library with algorithm model version 3.0, the total number of human faces in a single search should not exceed 3 million.\n\nUnlike the [Person search](https://www.tencentcloud.com/document/product/867/44992?from_cn_redirect=1) and [Person search by database return](https://www.tencentcloud.com/document/product/867/44991?from_cn_redirect=1) APIs, this API verifies each Face under a Person as a separate individual. The Person search and Person search by database return APIs perform fusion feature processing on all faces under a Person. For example, if a Person has 4 faces, the [Person search](https://www.tencentcloud.com/document/product/867/44992?from_cn_redirect=1) and [Person search by database return](https://www.tencentcloud.com/document/product/867/44991?from_cn_redirect=1) APIs will fuse the features of the 4 faces to generate the characteristics of this Person, making the search more accurate.\n\n\nThis interface should be used in conjunction with the personnel database management API (https://www.tencentcloud.com/document/product/867/45015?from_cn_redirect=1).\n\n**Note:** If a person library has not been called for over 1 year, the platform will delete its resources to ensure user information security.\n\n>     \n- Use the V3 signature method in public parameters. In other words, set the SignatureMethod parameter to TC3-HMAC-SHA256.\n\n>     \n-Cannot search person libraries of different algorithm model versions (FaceModelVersion) at the same time.",
       "input": "SearchFacesRequest",
-      "name": "Searches for face",
+      "name": "Performs face search",
       "output": "SearchFacesResponse",
       "status": "online"
     },
@@ -169,9 +169,9 @@
       "status": "online"
     },
     "SearchPersons": {
-      "document": "This API is used to recognize top K persons in one or more groups who are similar to the person in a given image and rank the similarity in a descending order.\n\nUp to 10 faces in an image can be recognized at a time, and up to 100 groups can be searched in at a time.\n\nThe maximum number of faces in groups that can be searched for at a time is subject to the group's algorithm model version (`FaceModelVersion`), which is 1 million for v2.0 or 3 million for v3.0.\n\nThis API fuses the features of all face images of a person; for example, if a person has 4 face images, it will fuse the features of the 4 face images and generate the summarized facial features of the person to make the person search (i.e., judging whether the face image to be recognized is of a specified person) more accurate. By contrast, the [SearchFaces](https://intl.cloud.tencent.com/document/product/867/44994?from_cn_redirect=1) and [SearchFacesReturnsByGroup](https://intl.cloud.tencent.com/document/product/867/44993?from_cn_redirect=1) APIs recognize each face image of a person as an independent one for search.\n\n>     \n- Please use the signature algorithm v3 to calculate the signature in the common parameters, that is, set the `SignatureMethod` parameter to `TC3-HMAC-SHA256`.\n- This feature is available only to groups whose algorithm model version (`FaceModelVersion`) is 3.0.",
+      "document": "This API is used to recognize the top K most similar persons in one or more person libraries for a face image to be recognized, and sort them by similarity in descending order.\n\nThis API is used to recognize up to 10 human faces in an image at a time and search across 100 person libraries at a time.\n\nThe total number of faces in a person library for a single search is related to the algorithm model version of the person library. For a person library with algorithm model version 2.0, the total number of faces in a single search should not exceed 1 million. For a person library with algorithm model version 3.0, the total number of faces in a single search should not exceed 3 million.\n\nThis API is used to perform fusion feature processing on all faces under a Person. For example, if a Person has 4 faces, this API will fuse the features of the 4 faces to generate the corresponding features of this Person, making Person search (confirming that the Face image to be identified belongs to a certain Person) more accurate. In contrast, [Face search](https://www.tencentcloud.com/document/product/867/44994?from_cn_redirect=1) and [Face search by group return API](https://www.tencentcloud.com/document/product/867/44993?from_cn_redirect=1) search for each Face under the Person as a separate individual.\n**Note:** If a person library has no calls for more than 1 year, the platform will delete its resources to ensure User Information Security.\n>     \n- Use the V3 signature method in public parameters. In other words, set the SignatureMethod parameter to TC3-HMAC-SHA256.\n-Only person libraries with algorithm model version (FaceModelVersion) 3.0 are supported.",
       "input": "SearchPersonsRequest",
-      "name": "Searches for person",
+      "name": "Person search",
       "output": "SearchPersonsResponse",
       "status": "online"
     },
@@ -329,59 +329,65 @@
       "usage": "out"
     },
     "Candidate": {
-      "document": "Most matching candidate recognized",
+      "document": "The most similar candidate identified",
       "members": [
         {
-          "document": "Person ID",
+          "disabled": false,
+          "document": "Person ID.",
           "example": "person1",
           "member": "string",
           "name": "PersonId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "Face ID, which is valid only when returned by the `SearchFaces` or `SearchFacesReturnsByGroup` API. User search APIs use facial feature fusion to search for users, for which this field is meaningless.",
+          "disabled": false,
+          "document": "Face ID.\n-Valid only in the API response of SearchFaces/SearchFacesReturnsByGroup.\n-Person search class interfaces use the fusion feature method for retrieval. This field is meaningless.",
           "example": "3820314501007076807",
           "member": "string",
           "name": "FaceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "Match score of candidate. \n\nIn a face base library containing 10,000 faces, the 1%, 0.1%, and 0.01% FARs correspond to scores of 70, 80, and 90, respectively;\nIn a face base library containing 100,000 faces, the 1%, 0.1%, and 0.01% FARs correspond to scores of 80, 90, and 100, respectively;\nIn a face base library containing 300,000 faces, the 1% and 0.1% FARs correspond to scores of 85 and 95, respectively.\n\nGenerally, the score of 80 is suitable for most scenarios. We recommend choosing an appropriate score based on the actual situation, preferably no more than 90.",
+          "disabled": false,
+          "document": "Match score of the candidate. \n-In a face base library of 10,000 faces, a false acceptance rate of 1% corresponds to a score of 70 points, 0.1% corresponds to 80 points, and 0.01% corresponds to 90 points.\n-For a face base library of 100,000, a false acceptance rate of 1% corresponds to a score of 80 points, 0.1% corresponds to 90 points, and 0.01% corresponds to 100 points.\n-With a face base library of 300,000, a false acceptance rate of 1% corresponds to a score of 85, and a false acceptance rate of 0.1% corresponds to a score of 95.\n-Generally, a score of around 80 applies to most scenarios. It is advisable not to exceed 90. You can choose a suitable score according to the actual situation.",
           "example": "50",
           "member": "float",
           "name": "Score",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
-          "document": "Person name\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "hello",
+          "disabled": false,
+          "document": "Person name.",
+          "example": "韦小宝",
           "member": "string",
           "name": "PersonName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
-          "document": "Person gender\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "disabled": false,
+          "document": "Gender of personnel.",
           "example": "0",
           "member": "int64",
           "name": "Gender",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
-          "document": "List of groups containing this person and their description fields\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "disabled": false,
+          "document": "List of person libraries containing this person and the content of the description field.",
           "example": "无",
           "member": "PersonGroupInfo",
           "name": "PersonGroupInfos",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         }
@@ -536,46 +542,76 @@
       "document": "CreateFace request structure.",
       "members": [
         {
-          "document": "Person ID, which is the `PersonId` in the `CreatePerson` API.",
+          "disabled": false,
+          "document": "<p>Person ID, which is the PersonId in the person creation API.</p>",
+          "example": "1001",
           "member": "string",
           "name": "PersonId",
           "required": true,
           "type": "string"
         },
         {
-          "document": "Base64-encoded image data, which cannot exceed 5 MB.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nA person can have up to 5 face images.\nIf there are multiple faces in the image, only the face with the largest size will be selected.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
+          "disabled": false,
+          "document": "<p>base64 data of the image.</p><ul><li>base64 encoded size must not exceed 5M.</li><li>For jpg format, the long side pixel must not exceed 4000. For other formats, the image long edge must not exceed 2000. The short side pixel of images in all formats must be not less than 64.</li><li>The total number of faces must not exceed 5.</li><li>If the image contains several faces, only the face with the maximum area is selected.</li><li>PNG, jpg, JPEG, and BMP are supported. GIF images are not supported.</li></ul>",
+          "example": "[\"/9j/4AAQSkZJRg.....s97n//2Q==\"]",
           "member": "string",
           "name": "Images",
           "required": false,
           "type": "list"
         },
         {
-          "document": "Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nEither `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  \nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. \nThe download speed and stability of non-Tencent Cloud URLs may be low.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.\nA person can have up to 5 face images.\nIf there are multiple faces in the image, only the face with the largest size will be selected.",
+          "disabled": false,
+          "document": "<p>Image Url.</p><ul><li>The size of the corresponding Image after base64 encoding must not exceed 5M.</li><li>For jpg format, the long side pixel must not exceed 4000. For other Image formats, the long side pixel must not exceed 2000. The short side pixel of images in all formats must be not less than 64.</li><li>Either Url or Image must be provided. If both are provided, only Url is used.</li><li>Images stored in Tencent Cloud URLs can guarantee higher download speed and stability. It is recommended to store images in Tencent Cloud.</li><li>The speed and stability of non-Tencent Cloud Storage URLs may be affected to a certain extent.</li><li>PNG, jpg, JPEG, and BMP are supported. GIF images are not supported.</li><li>The total number of human faces must not exceed 5.</li><li>If the Image contains several faces, only the face with the maximum area is selected.</li></ul>",
+          "example": "[\"http://test.image.myqcloud.com/testA.jpg\"]",
           "member": "string",
           "name": "Urls",
           "required": false,
           "type": "list"
         },
         {
-          "document": "Only faces whose similarity to an existing face of the person is above the value of `FaceMatchThreshold` can be added successfully. \nDefault value: 60. Value range: [0,100].",
+          "disabled": false,
+          "document": "<p>Only faces with a similarity to the person's existing faces exceeding the FaceMatchThreshold can be added successfully. </p><ul><li>Default value: 60. </li><li>Value range: [0,100]. </li></ul>",
+          "example": "60",
           "member": "float",
           "name": "FaceMatchThreshold",
           "required": false,
           "type": "float"
         },
         {
-          "document": "Image quality control. \n0: no control. \n1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. \n2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. \n3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. \n4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. \nDefault value: 0. \nIf the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.",
+          "disabled": false,
+          "document": "<p>Image quality control. </p><ul><li>Value range: <br>0: no control; <br>1: low quality requirement, where the image is super blurry, or at least one or more of the following exist: eye occlusion, nose occlusion, or mouth occlusion; <br>2: normal quality requirement, where the image is bright, dark, blurry or generally blurry, or at least three of the following exist: eyebrow obstruction, cheek obstruction, or chin obstruction; <br>3: high quality requirement, where the image is bright, dark, generally blurry, or one to two of the following exist: eyebrow obstruction, cheek obstruction, or chin obstruction; <br>4: super high quality requirement, where each dimension is at its best or at most one dimension has a minor problem; </li><li>Default: 0. </li><li>If the image quality fails to satisfy the requirement, the returned result will prompt that the image quality detection does not meet the requirement.</li></ul>",
+          "example": "0",
           "member": "uint64",
           "name": "QualityControl",
           "required": false,
           "type": "int"
         },
         {
-          "document": "Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.",
+          "disabled": false,
+          "document": "<p>Whether to enable image rotation recognition support.</p><ul><li>Value range: 0 means not enabled, 1 means enabled.</li><li>Default value: 0.</li><li>This parameter is used when the human face in the image is rotated and the image has no exif information. If image rotation recognition support is not enabled, the human face in the image cannot be correctly detected or recognized.</li><li>If you confirm that the image contains exif information or that the human face in the input image will not be rotated, do not enable this parameter. Once enabled, the overall duration may increase by several hundred milliseconds.</li></ul>",
+          "example": "0",
           "member": "uint64",
           "name": "NeedRotateDetection",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether full-body encryption is required for the request information. Supported encryption algorithm: AES-256-CBC. Users with encryption requirements can use this parameter.</p>",
+          "example": "无",
+          "member": "Encryption",
+          "name": "Encryption",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Encrypted ciphertext. The data format before encryption is as follows: {&quot;Url&quot;:&quot;<strong>&quot;,&quot;Image&quot;:&quot;</strong>&quot;}。</p>",
+          "example": "OJasd**",
+          "member": "string",
+          "name": "EncryptedBody",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -584,49 +620,67 @@
       "document": "CreateFace response structure.",
       "members": [
         {
-          "document": "Number of successfully added faces",
+          "disabled": false,
+          "document": "<p>Number of faces that joined successfully.</p>",
+          "example": "1",
           "member": "uint64",
           "name": "SucFaceNum",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "List of IDs of successfully added faces",
+          "disabled": false,
+          "document": "<p>List of face IDs that joined successfully.</p>",
+          "example": "[\"2875186538564559728\"]",
           "member": "string",
           "name": "SucFaceIds",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "Adding result for each face image. -1101: no face detected; -1102: image decoding failed; \n-1601: the image quality control requirement is not met; -1604: the face similarity is not above `FaceMatchThreshold`. \nOther non-zero values: algorithm service exception. \nThe order of `RetCode` values is the same as the order of `Images` or `Urls` in the input parameter.",
+          "disabled": false,
+          "document": "<p>Addition result of each face image.</p><ul><li>Other non-zero values represent algorithm service exceptions, with the following value ranges:<br>-1101 represents no face detected.<br>-1102 represents image decoding failure.<br>-1109 represents image size too large or too small.<br>-1601 represents the image quality control requirement is not met.<br>-1604 represents face similarity does not exceed FaceMatchThreshold. </li><li>The order of RetCode is consistent with the sequence of Images or Urls in the input parameters.</li></ul>",
+          "example": "[0]",
           "member": "int64",
           "name": "RetCode",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "Indexes of successfully added faces. The order of indexes is the same as the order of `Images` or `Urls` in the input parameter. \nFor example, if there are 3 URLs in `Urls`, and the second URL fails, then the value of `SucIndexes` will be [0,2].",
+          "disabled": false,
+          "document": "<p>Index of successfully added faces.</p><ul><li>The index order is consistent with the sequence of Images or Urls in the input parameter.</li><li>For example, if there are 3 Urls in Urls and the second url fails, the value of SucIndexes is [0,2].</li></ul>",
+          "example": "[0]",
           "member": "uint64",
           "name": "SucIndexes",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "Frame positions of successfully added faces. The order is the same as the order of `Images` or `Urls` in the input parameter.",
+          "disabled": false,
+          "document": "<p>Face bounding box position of successfully joined faces. The sequence is consistent with the sequence of Images or Urls in the input parameter.</p>",
+          "example": "无",
           "member": "FaceRect",
           "name": "SucFaceRects",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "Algorithm model version used for face recognition.",
+          "disabled": false,
+          "document": "<p>Algorithm model version used for face recognition.</p>",
+          "example": "3.0",
           "member": "string",
           "name": "FaceModelVersion",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -703,74 +757,112 @@
       "document": "CreatePerson request structure.",
       "members": [
         {
-          "document": "ID of the group to join, which is the `GroupId` in the `CreateGroup` API.",
+          "disabled": false,
+          "document": "<p>ID of the personnel database to be added, which is the GroupId in the API for creating a personnel database.</p>",
+          "example": "78",
           "member": "string",
           "name": "GroupId",
           "required": true,
           "type": "string"
         },
         {
-          "document": "Person name, which can contain 1 to 60 characters and is modifiable and repeatable.",
+          "disabled": false,
+          "document": "<p>Person name. [1, 60] characters, modifiable, repeatable.</p>",
+          "example": "韦小宝",
           "member": "string",
           "name": "PersonName",
           "required": true,
           "type": "string"
         },
         {
-          "document": "Person ID, which is unmodifiable, must be unique under a Tencent Cloud account, and can contain letters, digits, and special symbols (-%@#&_) of up to 64 B.",
+          "disabled": false,
+          "document": "<p>Person ID.</p><ul><li>Cannot be modified or repeated under a single Tencent Cloud account.</li><li>Supports English letters, digits, -%@#&amp;_, length limited to 64B.</li></ul>",
+          "example": "2001",
           "member": "string",
           "name": "PersonId",
           "required": true,
           "type": "string"
         },
         {
-          "document": "0: empty; 1: male; 2: female.",
+          "disabled": false,
+          "document": "<p>Gender.</p><ul><li>Value range: 0 represents empty, 1 represents man, 2 represents woman.</li></ul>",
+          "example": "1",
           "member": "int64",
           "name": "Gender",
           "required": false,
           "type": "int"
         },
         {
-          "document": "Content of person description field, which is a `key-value` pair, can contain 0 to 60 characters, and is modifiable and repeatable.",
+          "disabled": false,
+          "document": "<p>Person description field content, key-value. [0, 60] characters, modifiable, repeatable.</p>",
+          "example": "无",
           "member": "PersonExDescriptionInfo",
           "name": "PersonExDescriptionInfos",
           "required": false,
           "type": "list"
         },
         {
-          "document": "Base64-encoded image data, which cannot exceed 5 MB.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
+          "disabled": false,
+          "document": "<p>base64 image data.</p><ul><li>base64-encoded data must not exceed 5 MB.</li><li>For jpg images, the long edge must not exceed 4000 pixels. For other formats, the long edge must not exceed 2000 pixels. The short edge of images in all formats must be at least 64 pixels.</li><li>PNG, jpg, JPEG, and BMP are supported. GIF images are not supported.</li></ul>",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "Image",
           "required": false,
           "type": "string"
         },
         {
-          "document": "Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nEither `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  \nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. \nThe download speed and stability of non-Tencent Cloud URLs may be low.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
+          "disabled": false,
+          "document": "<p>Image Url.</p><ul><li>The corresponding Image size after base64 encoding must not exceed 5M.</li><li>For jpg format, the long side pixel cannot exceed 4000. For other formats, the long side pixel cannot exceed 2000. The short side pixel of images in all formats must not be less than 64.</li><li>Either Url or Image must be provided. If both are provided, only Url is used.</li><li>Images stored in Tencent Cloud's Url can guarantee higher download speed and stability. It is recommended to store images in Tencent Cloud.</li><li>The speed and stability of URLs not stored in Tencent Cloud may be affected to a certain extent.</li><li>PNG, jpg, JPEG, and BMP are supported. GIF images are not supported.</li></ul>",
+          "example": "http://test.image.myqcloud.com/testB.jpg",
           "member": "string",
           "name": "Url",
           "required": false,
           "type": "string"
         },
         {
-          "document": "This parameter is used to control the judgment whether the face contained in the image in `Image` or `Url` corresponds to an existing person in the group. \nIf it is judged that a duplicate person exists in the group, no new person will be created, and information of the suspected duplicate person will be returned. \nOtherwise, the new person will be created. \n0: do not judge, i.e., the person will be created no matter whether a duplicate person exists in the group. \n1: low duplicate person judgment requirement (1% FAR); \n2: average duplicate person judgment requirement (0.1% FAR); \n3: high duplicate person judgment requirement (0.01% FAR); \n4: very high duplicate person judgment requirement (0.001% FAR). \nDefault value: 0.  \nNote: the higher the requirement, the lower the probability of duplicate person. The FARs corresponding to different requirements are for reference only and can be adjusted as needed.",
+          "disabled": false,
+          "document": "<p>This parameter is used to control whether the human face contained in the image specified by Image or Url is determined to be a suspected duplicate person already existing in the person library. </p><ul><li>If determined to be the same person already in the person library, no new person will be created, and the personnel information of the suspected duplicate person will be returned. </li><li>If not, the person will be created. </li><li>Value range:<br>0: No judgment is performed, and the person will be stored regardless of whether there is a suspected duplicate person in the library;<br>1: Low duplicate person judgment requirement (1% false recognition rate);<br>2: Normal duplicate person judgment requirement (0.1% false recognition rate);<br>3: High duplicate person judgment requirement (0.01% false recognition rate);<br>4: Very high duplicate person judgment requirement (0.001% false recognition rate). </li><li>Default value: 0. </li><li>Note: The higher the requirement, the lower the probability of suspected duplicate persons. The false recognition rates for different requirements are for reference only and can be adjusted according to the actual situation.</li></ul>",
+          "example": "0",
           "member": "uint64",
           "name": "UniquePersonControl",
           "required": false,
           "type": "int"
         },
         {
-          "document": "Image quality control. \n0: no control. \n1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. \n2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. \n3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. \n4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. \nDefault value: 0. \nIf the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.",
+          "disabled": false,
+          "document": "<p>Image quality control. </p><ul><li>Value range: <br>0: no control; <br>1: low quality requirement, where the image is very blurry, or at least one or more of the eyes, nose, or mouth are occluded; <br>2: general quality requirement, where the image is bright, dark, blurry or generally blurry, with at least three of the following: eyebrow occlusion, cheek occlusion, or chin occlusion; <br>3: high quality requirement, where the image is bright, dark, generally blurry, with one or two of the following: eyebrow occlusion, cheek occlusion, or chin occlusion; <br>4: very high quality requirement, where each dimension is optimal or at most one dimension has a minor problem; </li><li>Default: 0. </li><li>If the image quality fails to satisfy the requirement, the returned result will prompt that the image quality detection does not meet the requirement.</li></ul>",
+          "example": "0",
           "member": "uint64",
           "name": "QualityControl",
           "required": false,
           "type": "int"
         },
         {
-          "document": "Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.",
+          "disabled": false,
+          "document": "<p>Whether to enable image rotation recognition support.</p><ul><li>Value range: 0 for disabled, 1 for enabled.</li><li>Default value: 0.</li><li>This parameter is used to correctly detect and recognize human faces in an image when the faces are rotated and the image has no exif information. If image rotation recognition support is not enabled in this case, the faces cannot be detected or recognized.</li><li>If you confirm that the image contains exif information or that the human faces in the input image will not be rotated, do not enable this parameter. Once enabled, the overall duration may increase by several hundred milliseconds.</li></ul>",
+          "example": "0",
           "member": "uint64",
           "name": "NeedRotateDetection",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to encrypt the entire request body. Supported encryption algorithm: AES-256-CBC. Users with encryption requirements can use this parameter.</p>",
+          "example": "无",
+          "member": "Encryption",
+          "name": "Encryption",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Encrypted ciphertext. The data format before encryption is as follows: {&quot;Url&quot;:&quot;<strong>&quot;,&quot;Image&quot;:&quot;</strong>&quot;}.</p>",
+          "example": "OJasd**",
+          "member": "string",
+          "name": "EncryptedBody",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -779,35 +871,47 @@
       "document": "CreatePerson response structure.",
       "members": [
         {
-          "document": "Unique ID of face image.",
+          "disabled": false,
+          "document": "<p>Unique ID of the face image.</p>",
+          "example": "3454816969590585885",
           "member": "string",
           "name": "FaceId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "Position of detected face frame.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "disabled": false,
+          "document": "<p>Position of the detected face frame.</p>",
+          "example": "无",
           "member": "FaceRect",
           "name": "FaceRect",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
-          "document": "`PersonId` of suspected duplicate person. \nThis parameter is meaningful only if the `UniquePersonControl` parameter is not 0 and there is a suspected duplicate person in the group.",
+          "disabled": false,
+          "document": "<p>PersonId of the suspected duplicate person. </p><ul><li>This parameter is meaningful only when the UniquePersonControl parameter is not 0 and there is a suspected duplicate person in the person library.</li></ul>",
+          "example": "18",
           "member": "string",
           "name": "SimilarPersonId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "Algorithm model version used for face recognition.",
+          "disabled": false,
+          "document": "<p>Algorithm model version used for face recognition.</p>",
+          "example": "3.0",
           "member": "string",
           "name": "FaceModelVersion",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1304,6 +1408,67 @@
         }
       ],
       "type": "object"
+    },
+    "Encryption": {
+      "document": "Sensitive data encryption",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>When using the encryption service, fill in the field to be encrypted. In this API, you can fill in one or more encrypted fields.</p>",
+          "example": "[\"Images\"]",
+          "member": "string",
+          "name": "EncryptList",
+          "output_required": false,
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Encrypted symmetric key. For key generation and use, see the <a href=\"https://www.tencentcloud.com/document/product/1007/47180?from_cn_redirect=1\">data encryption</a> document.</p>",
+          "example": "oC7ei**QLeJ4u0M1M2cYHFz2jo6ruj1apxFl****Qko1eVJm5VTeG5o4Ox******************************************************************************************************************",
+          "member": "string",
+          "name": "CiphertextBlob",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>For users with encryption requirements, import the initial vector for CBC encryption (a custom string of 16 characters).</p>",
+          "example": "7P2gZKsJUi4MzDobSUWa4g==",
+          "member": "string",
+          "name": "Iv",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Encryption algorithm (supports 'AES-256-CBC'). If not specified, it defaults to 'AES-256-CBC'</p>",
+          "example": "AES-256-CBC",
+          "member": "string",
+          "name": "Algorithm",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Message digest generated by the SM4-GCM algorithm (used when validating message integrity), not supported.</p>",
+          "example": "[\"string\"]",
+          "member": "string",
+          "name": "TagList",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "Eye": {
       "document": "Eye information",
@@ -1870,42 +2035,54 @@
       "usage": "out"
     },
     "FaceRect": {
-      "document": "Position of detected face frame",
+      "document": "Location of the detected face frame",
       "members": [
         {
-          "document": "Horizontal coordinate of the top-left vertex of face frame. \nThe face frame encompasses the facial features and is extended accordingly. If it is larger than the image, the coordinates will be negative. \nIf you want to capture a complete face, you can set the negative coordinates to 0 if the completeness score meets the requirement.",
+          "disabled": false,
+          "document": "Top-left X-axis coordinate of the face box \n-The face frame contains the facial feature locations and is expanded on this basis. If the face frame exceeds the image range, it can cause negative coordinate values. \n-If you need to capture a complete face, you can set negative coordinates to 0 when the completeness meets the requirements.",
+          "example": "253",
           "member": "int64",
           "name": "X",
-          "required": true,
+          "output_required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "Vertical coordinate of the top-left vertex of face frame. \nThe face frame encompasses the facial features and is extended accordingly. If it is larger than the image, the coordinates will be negative. \nIf you want to capture a complete face, you can set the negative coordinates to 0 if the completeness score meets the requirement.",
+          "disabled": false,
+          "document": "Top-left Y-axis coordinate of the face box \n-The face frame contains the facial feature locations and is expanded on this basis. If the face frame exceeds the image range, it can cause negative coordinate values. \n-If you need to capture a complete face, you can set negative coordinates to 0 when the completeness meets the requirements.",
+          "example": "414",
           "member": "int64",
           "name": "Y",
-          "required": true,
+          "output_required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "Face width",
+          "disabled": false,
+          "document": "Face width.",
+          "example": "180",
           "member": "uint64",
           "name": "Width",
-          "required": true,
+          "output_required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "Face height",
+          "disabled": false,
+          "document": "Face height.",
+          "example": "90",
           "member": "uint64",
           "name": "Height",
-          "required": true,
+          "output_required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         }
       ],
-      "usage": "out"
+      "usage": "both"
     },
     "FaceShape": {
       "document": "Specific information of facial feature localization (facial keypoints).",
@@ -2608,43 +2785,49 @@
       "usage": "out"
     },
     "PersonExDescriptionInfo": {
-      "document": "Custom description field of the person to be modified, which is a `key-value` pair.",
+      "document": "Content of the person description field to be modified, key-value",
       "members": [
         {
-          "document": "Person description field index, whose value starts from 0.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "disabled": false,
+          "document": "Person description field Index, starts from 0.",
+          "example": "0",
           "member": "uint64",
           "name": "PersonExDescriptionIndex",
           "required": true,
-          "type": "int",
-          "value_allowed_null": true
+          "type": "int"
         },
         {
-          "document": "Content of the person description field to be updated",
+          "disabled": false,
+          "document": "Person description field content that needs to be updated.",
+          "example": "年龄",
           "member": "string",
           "name": "PersonExDescription",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         }
       ],
       "usage": "in"
     },
     "PersonGroupInfo": {
-      "document": "List of groups containing this person and their description fields",
+      "document": "List of person libraries containing this person and description field content",
       "members": [
         {
-          "document": "ID of the group that contains this person",
+          "disabled": false,
+          "document": "Personnel database ID that contains this person.",
+          "example": "1001",
           "member": "string",
           "name": "GroupId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "Content of person description field",
+          "disabled": false,
+          "document": "Person description field content.",
+          "example": "[\"年龄\"]",
           "member": "string",
           "name": "PersonExDescriptions",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -2732,29 +2915,35 @@
       "usage": "out"
     },
     "Result": {
-      "document": "Face recognition result",
+      "document": "Recognition result of the human face",
       "members": [
         {
-          "document": "Most matching candidate recognized",
+          "disabled": false,
+          "document": "The most similar candidate identified.",
+          "example": "无",
           "member": "Candidate",
           "name": "Candidates",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "Position of detected face frame",
+          "disabled": false,
+          "document": "Face bounding box position detected.",
+          "example": "无",
           "member": "FaceRect",
           "name": "FaceRect",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
-          "document": "The status return code for the face image detected. Valid values: `0` - normal; `-1601` - the image does not meet the quality requirements, in which case `Candidate` is empty; `-1604` - the face similarity is not higher than `FaceMatchThreshold`.",
+          "disabled": false,
+          "document": "Status return code of the detected face image.\n- 0 indicates normal. \n-1601 indicates the image quality control requirement is not met. At this point, the Candidate content is empty.",
+          "example": "0",
           "member": "int64",
           "name": "RetCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -2795,23 +2984,26 @@
       "document": "SearchFaces request structure.",
       "members": [
         {
-          "document": "List of groups to be searched in (up to 100). The array element value is the `GroupId` in the `CreateGroup` API.\nYou cannot search for groups using different algorithm model versions (`FaceModelVersion`) at a time.",
-          "example": "[\"TencentShenZhenEmployee\\n\"]",
+          "disabled": false,
+          "document": "<p>List of person libraries to search, with a maximum of 100.</p><ul><li>The array element value is the GroupId in the person library creation API.</li><li>You cannot search person libraries with different algorithm model versions (FaceModelVersion) at the same time.</li></ul>",
+          "example": "[\"TencentShenZhenEmployee\"]",
           "member": "string",
           "name": "GroupIds",
           "required": true,
           "type": "list"
         },
         {
-          "document": "Base64-encoded image data, which cannot exceed 5 MB.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
-          "example": "无",
+          "disabled": false,
+          "document": "<p>base64 data of the image.</p><ul><li>base64-encoded data must not exceed 5 MB.</li><li>For jpg images, the long side pixel cannot exceed 4000. For other formats, the long side pixel cannot exceed 2000.</li><li>The short side pixel of images in all formats must be at least 64.</li><li>PNG, jpg, JPEG, and BMP are supported. GIF images are not supported.</li></ul>",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "Image",
           "required": false,
           "type": "string"
         },
         {
-          "document": "Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nEither `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  \nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. \nThe download speed and stability of non-Tencent Cloud URLs may be low.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
+          "disabled": false,
+          "document": "<p>The Url of the Image.</p><ul><li>The size of the corresponding Image after base64 encoding must not exceed 5M.</li><li>The long side pixel of a jpg Image cannot exceed 4000, and that of other formats cannot exceed 2000.</li><li>The short side pixel of images in all formats must be not less than 64.</li><li>Either Url or Image must be provided. If both are provided, only Url is used.</li><li>An Image stored in Tencent Cloud via Url can guarantee higher download speed and stability. It is recommended to store images in Tencent Cloud.</li><li>The speed and stability of URLs not stored in Tencent Cloud may be affected to a certain extent.</li><li>PNG, jpg, JPEG, and BMP are supported, while GIF images are not supported.</li></ul>",
           "example": "http://test.image.myqcloud.com/testA.jpg",
           "member": "string",
           "name": "Url",
@@ -2819,7 +3011,8 @@
           "type": "string"
         },
         {
-          "document": "Maximum number of recognizable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 10. \n`MaxFaceNum` is used to control the number of faces to be searched for if there are multiple faces in the input image to be recognized. \nFor example, if the input image in `Image` or `Url` contains multiple faces and `MaxFaceNum` is 5, top 5 faces with the largest size in the image will be recognized.",
+          "disabled": false,
+          "document": "<p>Maximum number of faces to be recognized.</p><ul><li>Default value: 1 (only the face with the maximum area in the image is detected). Maximum value: 10. </li><li>MaxFaceNum is used to set the number of faces to search when the input image to be recognized contains several faces. </li><li>For example, if the image in the input Image or Url contains several faces and MaxFaceNum is set to 5, the 5 faces with the maximum area in the image will be recognized.</li></ul>",
           "example": "1",
           "member": "uint64",
           "name": "MaxFaceNum",
@@ -2827,7 +3020,8 @@
           "type": "int"
         },
         {
-          "document": "Minimum height and width of face in px. Default value: 34. Face images whose value is below 34 cannot be recognized. We recommend setting this parameter to 80.",
+          "disabled": false,
+          "document": "<p>Minimum size of the face length and width, unit: pixel.</p><ul><li>Default value: 34.</li><li>Face images smaller than 34 cannot be recognized.</li><li>It is recommended to set it to 80.</li></ul>",
           "example": "40",
           "member": "uint64",
           "name": "MinFaceSize",
@@ -2835,7 +3029,8 @@
           "type": "int"
         },
         {
-          "document": "Number of the most similar persons returned for one single recognized face image. Default value: 5. Maximum value: 100. \nFor example, if `MaxFaceNum` is 1 and `MaxPersonNum` is 8, information of the top 8 most similar persons will be returned.\nThe greater the value, the longer the processing time. We recommend setting a value below 10.",
+          "disabled": false,
+          "document": "<p>Number of most similar persons returned for a single recognized human face.</p><ul><li>Default value: 5. Maximum value: 100. </li><li>For example, if MaxFaceNum is 1 and MaxPersonNum is 8, the Top 8 similar personnel information is returned.</li><li>A larger value means a longer time to process.</li><li>It is recommended not to exceed 10.</li></ul>",
           "example": "5",
           "member": "uint64",
           "name": "MaxPersonNum",
@@ -2843,7 +3038,8 @@
           "type": "int"
         },
         {
-          "document": "Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default.",
+          "disabled": false,
+          "document": "<p>Whether to return detailed personnel information.</p><ul><li>Value range: 0 to disable, 1 to enable.</li><li>Default value: 0.</li><li>Other values other than 0 and 1 default to 0.</li></ul>",
           "example": "0",
           "member": "int64",
           "name": "NeedPersonInfo",
@@ -2851,7 +3047,8 @@
           "type": "int"
         },
         {
-          "document": "Image quality control. \n0: no control. \n1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. \n2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. \n3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. \n4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. \nDefault value: 0. \nIf the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.",
+          "disabled": false,
+          "document": "<p>Image quality control. </p><ul><li>Value range: <br>0: No control. <br>1: Low quality requirement. The image is super blurry, with at least one or more of the following: eye, nose, or mouth occlusion. <br>2: General quality requirement. The image is bright, dark, blurry or generally blurry, with at least three of the following: eyebrow occlusion, cheek occlusion, or chin occlusion. <br>3: High quality requirement. The image is bright, dark, generally blurry, with one or two of the following: eyebrow occlusion, cheek occlusion, or chin occlusion. <br>4: Very high quality requirement. Each dimension is optimal or at most one dimension has a minor problem.</li><li>Default: 0. </li><li>If the image quality fails to satisfy the requirement, the returned result will prompt that the image quality detection does not meet the requirement.</li></ul>",
           "example": "0",
           "member": "uint64",
           "name": "QualityControl",
@@ -2859,20 +3056,40 @@
           "type": "int"
         },
         {
-          "document": "In the output parameter `Score`, the result will be returned only if the result value is above the `FaceMatchThreshold` value. Default value: 0.",
-          "example": "0",
+          "disabled": false,
+          "document": "<p>In the output parameter Score, only results exceeding the FaceMatchThreshold value will be returned. The default is 0.</p>",
+          "example": "0.0",
           "member": "float",
           "name": "FaceMatchThreshold",
           "required": false,
           "type": "float"
         },
         {
-          "document": "Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.",
+          "disabled": false,
+          "document": "<p>Whether to enable image rotation recognition support.</p><ul><li>Value range: 0 for not enabled, 1 for enabled.</li><li>Default value: 0.</li><li>This parameter is used to correctly detect and recognize human faces in the input image when the faces are rotated and the image has no exif information. If image rotation recognition support is not enabled, the faces cannot be detected or recognized correctly.</li><li>If you confirm that the image contains exif information or that the human faces in the input image will not be rotated, do not enable this parameter. Once enabled, the overall duration may increase by several hundred milliseconds.</li></ul>",
           "example": "0",
           "member": "uint64",
           "name": "NeedRotateDetection",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to encrypt the entire request body. Supported encryption algorithms: AES-256-CBC. Users with encryption requirements can use this parameter.</p>",
+          "example": "无",
+          "member": "Encryption",
+          "name": "Encryption",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Encrypted ciphertext. The data format before encryption is as follows: {&quot;Url&quot;:&quot;<strong>&quot;,&quot;Image&quot;:&quot;</strong>&quot;}.</p>",
+          "example": "OJasd**",
+          "member": "string",
+          "name": "EncryptedBody",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2881,28 +3098,37 @@
       "document": "SearchFaces response structure.",
       "members": [
         {
-          "document": "Recognition result.",
+          "disabled": false,
+          "document": "<p>Recognition result.</p>",
+          "example": "无",
           "member": "Result",
           "name": "Results",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "Number of faces included in searched groups.",
+          "disabled": false,
+          "document": "<p>Number of faces in the searched group.</p>",
+          "example": "1",
           "member": "uint64",
           "name": "FaceNum",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "Algorithm model version used for face recognition.",
+          "disabled": false,
+          "document": "<p>Algorithm model version used for face recognition.</p>",
+          "example": "3.0",
           "member": "string",
           "name": "FaceModelVersion",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3033,74 +3259,112 @@
       "document": "SearchPersons request structure.",
       "members": [
         {
-          "document": "List of groups to be searched in (up to 100). The array element value is the `GroupId` in the `CreateGroup` API.",
+          "disabled": false,
+          "document": "<p>List of person libraries to query, with a capacity limit of 100. The value of an array element is the GroupId in the person library creation API.</p>",
+          "example": "[\"TencentShenZhenEmployee\"]",
           "member": "string",
           "name": "GroupIds",
           "required": true,
           "type": "list"
         },
         {
-          "document": "Base64-encoded image data, which cannot exceed 5 MB.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nIf there are multiple faces in the image, only the face with the largest size will be selected.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
+          "disabled": false,
+          "document": "<p>Image base64 data.</p><ul><li>Size after base64 encoding must not exceed 5M.</li><li>Long side pixel of jpg images cannot exceed 4000, and that of other formats cannot exceed 2000.</li><li>Short side pixel of images in all formats must not be less than 64.</li><li>If an image contains several faces, only the face with the maximum area is selected.</li><li>PNG, jpg, JPEG, and BMP are supported. GIF images are not supported.</li></ul>",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "Image",
           "required": false,
           "type": "string"
         },
         {
-          "document": "Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nEither `Url` or `Image` must be provided; if both are provided, only `Url` will be used.\nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
+          "disabled": false,
+          "document": "<p>Image Url.</p><ul><li>The size of the corresponding Image after base64 encoding must not exceed 5M.</li><li>For jpg format, the long side pixel cannot exceed 4000. For other formats, the long side pixel cannot exceed 2000.</li><li>The short side pixel of images in all formats must be not less than 64.</li><li>Either Url or Image must be provided. If both are provided, only Url is used.</li><li>Urls of images stored in Tencent Cloud can guarantee higher download speed and stability. It is recommended to store images in Tencent Cloud.</li><li>The speed and stability of Urls not stored in Tencent Cloud may be affected to a certain extent.</li><li>PNG, jpg, JPEG, and BMP are supported. GIF images are not supported.</li></ul>",
+          "example": "http://test.image.myqcloud.com/testA.jpg",
           "member": "string",
           "name": "Url",
           "required": false,
           "type": "string"
         },
         {
-          "document": "Maximum number of recognizable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 10.\n`MaxFaceNum` is used to control the number of faces to be searched for if there are multiple faces in the input image to be recognized.\nFor example, if the input image in `Image` or `Url` contains multiple faces and `MaxFaceNum` is 5, top 5 faces with the largest size in the image will be recognized.",
+          "disabled": false,
+          "document": "<p>Maximum number of human faces to be recognized.</p><ul><li>Default value: 1 (only the face with the maximum area in the image is detected). Maximum value: 10.</li><li>MaxFaceNum is used to set the number of faces to search when the input image to be recognized contains several faces.</li><li>For example, if the image in the input Image or Url contains several faces and MaxFaceNum is set to 5, the 5 faces with the maximum area in the image will be recognized.</li></ul>",
+          "example": "1",
           "member": "uint64",
           "name": "MaxFaceNum",
           "required": false,
           "type": "int"
         },
         {
-          "document": "Minimum height and width of face in px. Default value: 34. A value below 34 will affect the search accuracy. We recommend setting this parameter to 80.",
+          "disabled": false,
+          "document": "<p>Minimum length and width of a human face, unit: pixel.</p><ul><li>Default value: 34.</li><li>Less than 34 will affect search accuracy.</li><li>Set it to 80.</li></ul>",
+          "example": "40",
           "member": "uint64",
           "name": "MinFaceSize",
           "required": false,
           "type": "int"
         },
         {
-          "document": "Number of the most similar persons returned for one single recognized face image. Default value: 5. Maximum value: 100.\nFor example, if `MaxFaceNum` is 1 and `MaxPersonNum` is 8, information of the top 8 most similar persons will be returned.\nThe greater the value, the longer the processing time. We recommend setting a value below 10.",
+          "disabled": false,
+          "document": "<p>Number of most similar persons returned for a single recognized human face.</p><ul><li>Default value: 5. Maximum value: 100.</li><li>For example, if MaxFaceNum is 1 and MaxPersonNum is 8, the information of the Top 8 similar persons is returned.</li><li>A larger value means a longer time to process. It is advisable not to exceed 10.</li></ul>",
+          "example": "3",
           "member": "uint64",
           "name": "MaxPersonNum",
           "required": false,
           "type": "int"
         },
         {
-          "document": "Image quality control. \n0: no control. \n1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. \n2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. \n3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. \n4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. \nDefault value: 0. \nIf the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.",
+          "disabled": false,
+          "document": "<p>Image quality control. </p><ul><li>Value range:<br>0: No control.<br>1: Low quality requirement. The image is super blurry, with at least one of the following: eye, nose, or mouth occlusion.<br>2: Normal quality requirement. The image is bright, dark, blurry or generally blurry, with at least three of the following: eyebrow occlusion, cheek occlusion, or chin occlusion.<br>3: High quality requirement. The image is bright, dark, generally blurry, with one or two of the following: eyebrow occlusion, cheek occlusion, or chin occlusion.<br>4: Very high quality requirement. Each dimension is optimal or at most one dimension has a minor problem.</li><li>Default: 0. </li><li>If the image quality fails to satisfy the requirement, the returned result will prompt that the image quality detection does not meet the requirement.</li></ul>",
+          "example": "0",
           "member": "uint64",
           "name": "QualityControl",
           "required": false,
           "type": "int"
         },
         {
-          "document": "In the output parameter `Score`, the result will be returned only if the result value is greater than or equal to the `FaceMatchThreshold` value. Default value: 0. Value range: [0.0,100.0).",
+          "disabled": false,
+          "document": "<p>In the output parameter Score, only results equal to or greater than the FaceMatchThreshold value will be returned.</p><ul><li>Default value: 0.</li><li>Value range: [0.0,100.0).</li></ul>",
+          "example": "0",
           "member": "float",
           "name": "FaceMatchThreshold",
           "required": false,
           "type": "float"
         },
         {
-          "document": "Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default.",
+          "disabled": false,
+          "document": "<p>Whether to return specific personnel information.</p><ul><li>Value range: 0 to disable, 1 to enable.</li><li>Default value: 0.</li><li>Other values other than 0 and 1 default to 0.</li></ul>",
+          "example": "0",
           "member": "int64",
           "name": "NeedPersonInfo",
           "required": false,
           "type": "int"
         },
         {
-          "document": "Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.",
+          "disabled": false,
+          "document": "<p>Whether to enable image rotation recognition support.</p><ul><li>Value range: 0 for not enabled, 1 for enabled.</li><li>Default value: 0.</li><li>This parameter is used when the human face in the image is rotated and the image has no exif information. If image rotation recognition support is not enabled, the human face in the image cannot be correctly detected and recognized.</li><li>If you confirm that the image contains exif information or that the human face in the input image will not be rotated, do not enable this parameter. Once enabled, the overall duration may increase by several hundred milliseconds.</li></ul>",
+          "example": "0",
           "member": "uint64",
           "name": "NeedRotateDetection",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether full request body encryption is required. Supported encryption algorithm: AES-256-CBC. Users with encryption requirements can use this parameter.</p>",
+          "example": "无",
+          "member": "Encryption",
+          "name": "Encryption",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Encrypted ciphertext. The data format before encryption is as follows: {&quot;Url&quot;:&quot;<strong>&quot;,&quot;Image&quot;:&quot;</strong>&quot;}.</p>",
+          "example": "OJasd**",
+          "member": "string",
+          "name": "EncryptedBody",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -3109,28 +3373,37 @@
       "document": "SearchPersons response structure.",
       "members": [
         {
-          "document": "Recognition result.",
+          "disabled": false,
+          "document": "<p>Recognition result.</p>",
+          "example": "无",
           "member": "Result",
           "name": "Results",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "Number of the persons included in searched groups. If the quality of all faces in the input image does not meet the requirement, 0 will be returned.",
+          "disabled": false,
+          "document": "<p>Number of personnel included in the searched group. If all faces in the input image fail to meet the quality requirement, 0 is returned.</p>",
+          "example": "5",
           "member": "uint64",
           "name": "PersonNum",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "Algorithm model version used for face recognition.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "disabled": false,
+          "document": "<p>Algorithm model version used for face recognition.</p>",
+          "example": "3.0",
           "member": "string",
           "name": "FaceModelVersion",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"

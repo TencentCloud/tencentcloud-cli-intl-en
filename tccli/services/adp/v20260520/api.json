@@ -371,11 +371,32 @@
       "output": "DescribeAuditLogListResponse",
       "status": "online"
     },
+    "DescribeAuditLogMeta": {
+      "document": "This API is used to obtain meta-information of audit logs.",
+      "input": "DescribeAuditLogMetaRequest",
+      "name": "This API is used to obtain meta-information of audit logs.",
+      "output": "DescribeAuditLogMetaResponse",
+      "status": "online"
+    },
     "DescribeCategoryList": {
       "document": "Query the classification list",
       "input": "DescribeCategoryListRequest",
       "name": "Queries the classification list",
       "output": "DescribeCategoryListResponse",
+      "status": "online"
+    },
+    "DescribeChannel": {
+      "document": "Query channel details (case-sensitive by scenario)",
+      "input": "DescribeChannelRequest",
+      "name": "Queries a channel",
+      "output": "DescribeChannelResponse",
+      "status": "online"
+    },
+    "DescribeChannelList": {
+      "document": "This API is used to obtain the channel list by scenario.",
+      "input": "DescribeChannelListRequest",
+      "name": "Queries the channel list",
+      "output": "DescribeChannelListResponse",
       "status": "online"
     },
     "DescribeConcurrencyLimitDetailList": {
@@ -399,6 +420,13 @@
       "output": "DescribeConflictQASummaryListResponse",
       "status": "online"
     },
+    "DescribeConsumptionDetailList": {
+      "document": "Query resource consumption details, including billing fields such as consumption type, consumption target, consumption scenario, package, and PU consumption.",
+      "input": "DescribeConsumptionDetailListRequest",
+      "name": "Queries resource consumption details",
+      "output": "DescribeConsumptionDetailListResponse",
+      "status": "online"
+    },
     "DescribeConversation": {
       "document": "View session information.",
       "input": "DescribeConversationRequest",
@@ -418,6 +446,34 @@
       "input": "DescribeConversationMessageListRequest",
       "name": "Get historical messages of a conversation.",
       "output": "DescribeConversationMessageListResponse",
+      "status": "online"
+    },
+    "DescribeDoc": {
+      "document": "Queries the details of a document.",
+      "input": "DescribeDocRequest",
+      "name": "Queries document details",
+      "output": "DescribeDocResponse",
+      "status": "online"
+    },
+    "DescribeDocSummaryList": {
+      "document": "Query the abstract list of a document.",
+      "input": "DescribeDocSummaryListRequest",
+      "name": "Queries the abstract list of a document",
+      "output": "DescribeDocSummaryListResponse",
+      "status": "online"
+    },
+    "DescribeKB": {
+      "document": "Query knowledge base details",
+      "input": "DescribeKBRequest",
+      "name": "Queries knowledge base details",
+      "output": "DescribeKBResponse",
+      "status": "online"
+    },
+    "DescribeKBSummaryList": {
+      "document": "Queries the knowledge base list",
+      "input": "DescribeKBSummaryListRequest",
+      "name": "Queries the knowledge base list",
+      "output": "DescribeKBSummaryListResponse",
       "status": "online"
     },
     "DescribeLabel": {
@@ -441,6 +497,13 @@
       "output": "DescribeLatestReleaseResponse",
       "status": "online"
     },
+    "DescribeMetricOverviewList": {
+      "document": "Query the overview KPI card data of dashboards, distinguish resource dashboards from business dashboards by resource_type, and return the KPI metric list of each domain.",
+      "input": "DescribeMetricOverviewListRequest",
+      "name": "Queries the KPI card in the dashboard overview",
+      "output": "DescribeMetricOverviewListResponse",
+      "status": "online"
+    },
     "DescribeModelList": {
       "document": "Query the model list",
       "input": "DescribeModelListRequest",
@@ -453,6 +516,13 @@
       "input": "DescribeMsgRecordCategoryListRequest",
       "name": "Queries the message record classification list",
       "output": "DescribeMsgRecordCategoryListResponse",
+      "status": "online"
+    },
+    "DescribeMsgRecordList": {
+      "document": "This API is used to query the dialogue message record list of an application. It supports filtering by channel type, feedback type, intent, call result, and other conditions, and supports cursor pagination and sorting by creation time.",
+      "input": "DescribeMsgRecordListRequest",
+      "name": "Queries the message list",
+      "output": "DescribeMsgRecordListResponse",
       "status": "online"
     },
     "DescribeNodeBatchRun": {
@@ -511,11 +581,25 @@
       "output": "DescribeReleaseSummaryResponse",
       "status": "online"
     },
+    "DescribeResourceSummary": {
+      "document": "This API is used to obtain user resource package and value-added package usage information.",
+      "input": "DescribeResourceSummaryRequest",
+      "name": "Obtains digest information of resource packages and value-added packages",
+      "output": "DescribeResourceSummaryResponse",
+      "status": "online"
+    },
     "DescribeSkillCategoryList": {
       "document": "Query the Skill classification list",
       "input": "DescribeSkillCategoryListRequest",
       "name": "Queries skill category keys",
       "output": "DescribeSkillCategoryListResponse",
+      "status": "online"
+    },
+    "DescribeSkillDetail": {
+      "document": "Query skill details",
+      "input": "DescribeSkillDetailRequest",
+      "name": "Queries Skill details",
+      "output": "DescribeSkillDetailResponse",
       "status": "online"
     },
     "DescribeSkillReferenceList": {
@@ -546,6 +630,13 @@
       "output": "DescribeSystemVariableListResponse",
       "status": "online"
     },
+    "DescribeUsageDetailList": {
+      "document": "This API is used to query time series details of resource invocations, including two types of resources: models and plug-ins. It returns detailed information of each call record in chronological order.",
+      "input": "DescribeUsageDetailListRequest",
+      "name": "Queries resource invocation details",
+      "output": "DescribeUsageDetailListResponse",
+      "status": "online"
+    },
     "DescribeUsageSummaryList": {
       "document": "This API is used to query aggregated details of resource usage, including three types of resources: models, plug-ins, and platforms. It displays indicators such as call count and Token consumption, aggregated by space or application dimension.",
       "input": "DescribeUsageSummaryListRequest",
@@ -574,11 +665,39 @@
       "output": "DescribeWorkflowRunResponse",
       "status": "online"
     },
+    "DescribeWorkflowRunSummaryList": {
+      "document": "Query the list of workflow running instances",
+      "input": "DescribeWorkflowRunSummaryListRequest",
+      "name": "Queries the list of workflow running instances",
+      "output": "DescribeWorkflowRunSummaryListResponse",
+      "status": "online"
+    },
     "ExportQA": {
       "document": "Asynchronously export QAs.",
       "input": "ExportQARequest",
       "name": "Exports QA asynchronously",
       "output": "ExportQAResponse",
+      "status": "online"
+    },
+    "FavoritePlugin": {
+      "document": "Favorite a plug-in",
+      "input": "FavoritePluginRequest",
+      "name": "Favorites a plug-in",
+      "output": "FavoritePluginResponse",
+      "status": "online"
+    },
+    "FavoriteSkill": {
+      "document": "Favorites a skill",
+      "input": "FavoriteSkillRequest",
+      "name": "Favorites a skill",
+      "output": "FavoriteSkillResponse",
+      "status": "online"
+    },
+    "ImportDocList": {
+      "document": "Batch imports documents",
+      "input": "ImportDocListRequest",
+      "name": "Batch import documents",
+      "output": "ImportDocListResponse",
       "status": "online"
     },
     "ModifyAgent": {
@@ -602,11 +721,39 @@
       "output": "ModifyAppTriggerResponse",
       "status": "online"
     },
+    "ModifyCategory": {
+      "document": "Modify category",
+      "input": "ModifyCategoryRequest",
+      "name": "Modifies a category",
+      "output": "ModifyCategoryResponse",
+      "status": "online"
+    },
+    "ModifyChannel": {
+      "document": "This API is used to modify a channel, including remarks and the callback robot ID of a WeCom chatbot channel.",
+      "input": "ModifyChannelRequest",
+      "name": "Updates a channel",
+      "output": "ModifyChannelResponse",
+      "status": "online"
+    },
+    "ModifyConflictQA": {
+      "document": "Modify a conflict",
+      "input": "ModifyConflictQARequest",
+      "name": "Modifies a conflict",
+      "output": "ModifyConflictQAResponse",
+      "status": "online"
+    },
     "ModifyConversation": {
       "document": "Modify session information.",
       "input": "ModifyConversationRequest",
       "name": "Modifies session information",
       "output": "ModifyConversationResponse",
+      "status": "online"
+    },
+    "ModifyDoc": {
+      "document": "Modify a single document",
+      "input": "ModifyDocRequest",
+      "name": "Modifies a single document",
+      "output": "ModifyDocResponse",
       "status": "online"
     },
     "ModifyDocList": {
@@ -630,6 +777,20 @@
       "output": "ModifyLabelResponse",
       "status": "online"
     },
+    "ModifyMsgRecordCategory": {
+      "document": "Modify the name of a specified message record category",
+      "input": "ModifyMsgRecordCategoryRequest",
+      "name": "Modifies message history categories",
+      "output": "ModifyMsgRecordCategoryResponse",
+      "status": "online"
+    },
+    "ModifyPlugin": {
+      "document": "Modify a plug-in",
+      "input": "ModifyPluginRequest",
+      "name": "Modify a plug-in",
+      "output": "ModifyPluginResponse",
+      "status": "online"
+    },
     "ModifyQA": {
       "document": "Modify single QA",
       "input": "ModifyQARequest",
@@ -642,6 +803,13 @@
       "input": "ModifyQAListRequest",
       "name": "Batch modify QAs",
       "output": "ModifyQAListResponse",
+      "status": "online"
+    },
+    "ModifySkill": {
+      "document": "Modify a Skill",
+      "input": "ModifySkillRequest",
+      "name": "Modifies a skill",
+      "output": "ModifySkillResponse",
       "status": "online"
     },
     "ModifySpace": {
@@ -665,6 +833,13 @@
       "output": "PauseAppTriggerResponse",
       "status": "online"
     },
+    "ReadMCPResource": {
+      "document": "This API is used to read MCP UI resources in HTML for frontend iframe to load the MCP App interface.",
+      "input": "ReadMCPResourceRequest",
+      "name": "MCP-APP resource acquisition interface",
+      "output": "ReadMCPResourceResponse",
+      "status": "online"
+    },
     "ReleaseSkill": {
       "document": "This API is used to list a skill.",
       "input": "ReleaseSkillRequest",
@@ -677,6 +852,20 @@
       "input": "ResetConversationRequest",
       "name": "Resets a session",
       "output": "ResetConversationResponse",
+      "status": "online"
+    },
+    "ResumeAppTrigger": {
+      "document": "ResumeAppTrigger",
+      "input": "ResumeAppTriggerRequest",
+      "name": "Restores an application trigger",
+      "output": "ResumeAppTriggerResponse",
+      "status": "online"
+    },
+    "ResumeWorkflowRun": {
+      "document": "Resume a workflow asynchronous execution instance that is waiting for input.",
+      "input": "ResumeWorkflowRunRequest",
+      "name": "Resume a running instance of an async workflow waiting for input",
+      "output": "ResumeWorkflowRunResponse",
       "status": "online"
     },
     "RetryRelease": {
@@ -700,11 +889,46 @@
       "output": "RunAppTriggerNowResponse",
       "status": "online"
     },
+    "SaveWorkflowDebugContext": {
+      "document": "SaveWorkflowDebugContext",
+      "input": "SaveWorkflowDebugContextRequest",
+      "name": "Saves workflow debugging information",
+      "output": "SaveWorkflowDebugContextResponse",
+      "status": "online"
+    },
+    "SaveWorkflowToolNodeOutput": {
+      "document": "SaveWorkflowToolNodeOutput",
+      "input": "SaveWorkflowToolNodeOutputRequest",
+      "name": "Callback for asynchronous invocation of a workflow tool node",
+      "output": "SaveWorkflowToolNodeOutputResponse",
+      "status": "online"
+    },
     "SearchKnowledge": {
       "document": "Knowledge retrieval",
       "input": "SearchKnowledgeRequest",
       "name": "Knowledge retrieval",
       "output": "SearchKnowledgeResponse",
+      "status": "online"
+    },
+    "StopWorkflowRunList": {
+      "document": "Batch stop running workflow instances.",
+      "input": "StopWorkflowRunListRequest",
+      "name": "Batch stops running instances of a workflow",
+      "output": "StopWorkflowRunListResponse",
+      "status": "online"
+    },
+    "UnfavoritePlugin": {
+      "document": "Unfavorite a plug-in",
+      "input": "UnfavoritePluginRequest",
+      "name": "Unfavorite a plug-in",
+      "output": "UnfavoritePluginResponse",
+      "status": "online"
+    },
+    "UnfavoriteSkill": {
+      "document": "Unfavorites a skill",
+      "input": "UnfavoriteSkillRequest",
+      "name": "Unfavorites a skill",
+      "output": "UnfavoriteSkillResponse",
       "status": "online"
     }
   },
@@ -936,6 +1160,102 @@
         }
       ],
       "usage": "both"
+    },
+    "AddOnPackageInfo": {
+      "document": "Billing value-added package usage information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total value-added packages</p>",
+          "example": "0",
+          "member": "float",
+          "name": "AddOnTotal",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Value-added package amount</p>",
+          "example": "0",
+          "member": "float",
+          "name": "AddOnUsage",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total number of exclusive concurrencies</p>",
+          "example": "0",
+          "member": "uint64",
+          "name": "ExclusiveConcurrency",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Resource pack status</p><p>Enumeration values:</p><ul><li>1: Available</li><li>2: Exhausted</li><li>3: Expired</li></ul>",
+          "example": "1",
+          "member": "uint64",
+          "name": "ResourceStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Exclusive concurrency status</p><p>Enumeration values:</p><ul><li>1: Available</li><li>3: Expired</li></ul>",
+          "example": "1",
+          "member": "uint64",
+          "name": "ConcurrencyStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Exclusive tpm</p>",
+          "example": "0",
+          "member": "uint64",
+          "name": "ExclusiveTpm",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Exclusive tpm status</p><p>Enumeration values:</p><ul><li>1: Available</li><li>3: Expired</li></ul>",
+          "example": "1",
+          "member": "uint64",
+          "name": "ExclusiveTpmStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Exclusive computing unit</p>",
+          "example": "0",
+          "member": "uint64",
+          "name": "ExclusiveComputeUnit",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Exclusive computing unit status</p><p>Enumeration values:</p><ul><li>1: Available</li><li>3: Expired</li><li>4: Terminated</li><li>5: Isolated</li><li>6: Not effective</li><li>7: Unavailable (when the package expires)</li></ul>",
+          "example": "1",
+          "member": "uint64",
+          "name": "ExclusiveComputeUnitStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "AgentAdvancedConfig": {
       "document": "Agent advanced setting",
@@ -4732,6 +5052,34 @@
       ],
       "usage": "both"
     },
+    "AppVariableValue": {
+      "document": "AppVariableValue",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Variable ID</p>",
+          "example": "ed7d33fa-c59b-4773-ae99-458c44d9384c",
+          "member": "string",
+          "name": "VariableId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Variable value</p>",
+          "example": "false",
+          "member": "string",
+          "name": "VariableValue",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "AppWebSearchConfig": {
       "document": "Online search configuration (for international edition)",
       "members": [
@@ -4946,6 +5294,34 @@
           "example": "a15d6f4af9a53aac4a3671a814f4d09a78d3723cfbe31eaa40001631d0be0af4",
           "member": "string",
           "name": "UniqueId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AuditLogMetaField": {
+      "document": "Log metadata for operations",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Operation log metadata key.</p>",
+          "example": "create",
+          "member": "string",
+          "name": "Key",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Name of the operation log metadata</p>",
+          "example": "新建",
+          "member": "string",
+          "name": "Name",
           "output_required": false,
           "required": false,
           "type": "string",
@@ -5396,6 +5772,23 @@
           "output_required": false,
           "required": false,
           "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CategoryModifyFields": {
+      "document": "Categorize modifiable field collection (use together with update_mask)",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Category name</p>",
+          "example": "cateU_adp_qta_Idnp",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -5963,6 +6356,217 @@
       ],
       "usage": "both"
     },
+    "ConsumptionClassification": {
+      "document": "Consumption category",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Consumption scenario (such as reasoning/training/evaluation)</p>",
+          "example": "chat",
+          "member": "string",
+          "name": "ConsumptionScene",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Consumption target (for example, specific model name/plug-in name/platform feature name)</p>",
+          "example": "hunyuan-turbo",
+          "member": "string",
+          "name": "ConsumptionTarget",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Consumption type. The set of values is defined by the business side (for example, model/plugin/platform)</p>",
+          "example": "model",
+          "member": "string",
+          "name": "ConsumptionType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Package name</p>",
+          "example": "企业标准套餐包",
+          "member": "string",
+          "name": "PackageName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ConsumptionDetail": {
+      "document": "Resource consumption details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Consumption category (Type/Target/Scenario/Package)</p>",
+          "example": "无",
+          "member": "ConsumptionClassification",
+          "name": "Classification",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Consumption time, Unix seconds.</p>",
+          "example": "1754956800",
+          "member": "string",
+          "name": "EventTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Amount source type</p><table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>METRIC_SOURCE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>METRIC_SOURCE_TYPE_APP</td><td>1</td><td>Application development</td></tr><tr><td>METRIC_SOURCE_TYPE_KB</td><td>2</td><td>Knowledge base</td></tr><tr><td>METRIC_SOURCE_TYPE_WIDGET</td><td>3</td><td>Widget</td></tr><tr><td>METRIC_SOURCE_TYPE_OPEN_CLAW</td><td>4</td><td>ClawPro</td></tr><tr><td>METRIC_SOURCE_TYPE_KB_RECALL_TEST</td><td>5</td><td>Knowledge base recall test</td></tr><tr><td>METRIC_SOURCE_TYPE_WORKBENCH</td><td>6</td><td>Intelligent workbench</td></tr><tr><td>METRIC_SOURCE_TYPE_MODEL_API</td><td>7</td><td>Model API calls</td></tr></tbody></table>",
+          "example": "1",
+          "member": "int64",
+          "name": "MetricSourceType",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Name.</p>",
+          "example": "智能客服应用",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Space name</p>",
+          "example": "产品研发空间",
+          "member": "string",
+          "name": "SpaceName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Consumed usage (numeric value/unit/PU consumption)</p>",
+          "example": "无",
+          "member": "ConsumptionUsage",
+          "name": "Usage",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Username</p>",
+          "example": "张三",
+          "member": "string",
+          "name": "UserName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ConsumptionUsage": {
+      "document": "Consumed usage",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Consume PU</p>",
+          "example": "0.00897",
+          "member": "float",
+          "name": "ConsumptionPU",
+          "output_required": false,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Amount value.</p>",
+          "example": "8970",
+          "member": "float",
+          "name": "Usage",
+          "output_required": false,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Usage unit. Enumeration value: DosageUnit</p><table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>DOSAGE_UNIT_TOKEN</td><td>0</td><td>token (default)</td></tr><tr><td>DOSAGE_UNIT_PAGE_COUNT</td><td>1</td><td>page_count (page number)</td></tr><tr><td>DOSAGE_UNIT_TIMES</td><td>2</td><td>times (frequency)</td></tr><tr><td>DOSAGE_UNIT_SECOND</td><td>3</td><td>second</td></tr><tr><td>DOSAGE_UNIT_ITEM</td><td>4</td><td>item</td></tr><tr><td>DOSAGE_UNIT_SHEET</td><td>5</td><td>sheet</td></tr><tr><td>DOSAGE_UNIT_CHARACTER</td><td>6</td><td>character</td></tr><tr><td>DOSAGE_UNIT_GB</td><td>7</td><td>GB</td></tr><tr><td>DOSAGE_UNIT_NUMBER</td><td>8</td><td>number (count)</td></tr><tr><td>DOSAGE_UNIT_MILL_SECOND</td><td>9</td><td>mill_second (ms)</td></tr></tbody></table>",
+          "example": "0",
+          "member": "int64",
+          "name": "UsageUnit",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ContentFilter": {
+      "document": "Content filtering configuration (image name regular/minimum width and height). By default, filtering is not enabled.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Minimum image height (pixel). Images with a height less than this value will be filtered; &lt;=0 means not enabled</p>",
+          "example": "64",
+          "member": "int64",
+          "name": "ImageMinHeight",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Minimum image width (pixel). Images with a smaller width will be filtered; &lt;=0 means not enabled</p>",
+          "example": "64",
+          "member": "int64",
+          "name": "ImageMinWidth",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Image name filter rule (multiple regular expressions separated by semicolons &#39;;&#39;, for example &#39;icon;notice;warning;info.*&#39;)</p>",
+          "example": "icon;logo;banner.*",
+          "member": "string",
+          "name": "ImageNamePatterns",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "Conversation": {
       "document": "Conversation session information",
       "members": [
@@ -6439,6 +7043,100 @@
           "output_required": false,
           "required": false,
           "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ConversationFileInfo": {
+      "document": "File information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>File creation time.</p>",
+          "example": "1777541239626",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Document business ID</p>",
+          "example": "0",
+          "member": "string",
+          "name": "DocId",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>File name.</p>",
+          "example": "new.txt",
+          "member": "string",
+          "name": "FileName",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>File size</p>",
+          "example": "0",
+          "member": "string",
+          "name": "FileSize",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>File type</p>",
+          "example": "txt",
+          "member": "string",
+          "name": "FileType",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>File download link.</p>",
+          "example": "https://sandbox-test.adp.cloud.tencent.com/files?path=/workdir/new.txt",
+          "member": "string",
+          "name": "FileUrl",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Original path of the file in the sandbox</p>",
+          "example": "/workdir/123.txt",
+          "member": "string",
+          "name": "LocalPath",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>File moderation status</p><p>Enumeration values:</p><ul><li>1: under review</li><li>2: pass review</li><li>3: fail review</li></ul>",
+          "example": "2",
+          "member": "uint64",
+          "name": "AuditStatus",
+          "output_required": false,
+          "required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -8797,6 +9495,34 @@
       ],
       "usage": "both"
     },
+    "DeDuplicateStrategy": {
+      "document": "Rules regarding repeated files",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Verification method: 1=determine whether they are identical based on document content<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>DUPLICATE_FILE_CHECK_TYPE_UNKNOWN</td><td>0</td><td>Unknown</td></tr><tr><td>DUPLICATE_FILE_CHECK_TYPE_COS_HASH</td><td>1</td><td>Determine whether they are identical based on document content (cos_hash)</td></tr></tbody></table></p>",
+          "example": "0",
+          "member": "int64",
+          "name": "CheckType",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Processing method: 1=return an error, 2=skip and return the duplicate document ID<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>DUPLICATE_FILE_HANDLE_TYPE_UNKNOWN</td><td>0</td><td>Unknown</td></tr><tr><td>DUPLICATE_FILE_HANDLE_TYPE_RETURN_ERR</td><td>1</td><td>Return an error</td></tr><tr><td>DUPLICATE_FILE_HANDLE_TYPE_SKIP</td><td>2</td><td>Skip and return the duplicate document ID</td></tr></tbody></table></p>",
+          "example": "2",
+          "member": "int64",
+          "name": "HandleType",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "DeleteAgentRequest": {
       "document": "DeleteAgent request structure.",
       "members": [
@@ -10443,6 +11169,43 @@
       ],
       "type": "object"
     },
+    "DescribeAuditLogMetaRequest": {
+      "document": "DescribeAuditLogMeta request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeAuditLogMetaResponse": {
+      "document": "DescribeAuditLogMeta response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Operation type list</p>",
+          "example": "无",
+          "member": "AuditLogMetaField",
+          "name": "Actions",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of operation objects.</p>",
+          "example": "无",
+          "member": "AuditLogMetaField",
+          "name": "BizObjects",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeCategoryListRequest": {
       "document": "DescribeCategoryList request structure.",
       "members": [
@@ -10526,6 +11289,40 @@
           "type": "int",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeChannelListRequest": {
+      "document": "DescribeChannelList request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeChannelListResponse": {
+      "document": "DescribeChannelList response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeChannelRequest": {
+      "document": "DescribeChannel request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeChannelResponse": {
+      "document": "DescribeChannel response structure.",
+      "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -10727,6 +11524,89 @@
           "name": "TotalCount",
           "output_required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeConsumptionDetailListRequest": {
+      "document": "DescribeConsumptionDetailList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Query time range (Unix seconds)</p>",
+          "example": "无",
+          "member": "TimeRange",
+          "name": "TimeRange",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>View scope: business view / space view</p>",
+          "example": "无",
+          "member": "ViewScope",
+          "name": "ViewScope",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended filtering. Filter combination rule: multiple conditions use AND, values within the same condition use OR. Supported Name: metric_source_type (metric_source_type_* OR integer), source_ids (multi-option source ID), resource_ID/source_ID (select one source ID, this parameter is valid only when source_ids is not passed), space_ID, user_ID</p>",
+          "example": "无",
+          "member": "Filter",
+          "name": "FilterList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Page number, starting from 0</p>",
+          "example": "0",
+          "member": "uint64",
+          "name": "PageNumber",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of items per page. Maximum: 100.</p>",
+          "example": "10",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeConsumptionDetailListResponse": {
+      "document": "DescribeConsumptionDetailList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Resource consumption details list</p>",
+          "example": "无",
+          "member": "ConsumptionDetail",
+          "name": "ConsumptionDetailList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total record count for frontend pagination</p>",
+          "example": "328",
+          "member": "string",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -11234,6 +12114,382 @@
       ],
       "type": "object"
     },
+    "DescribeDocRequest": {
+      "document": "DescribeDoc request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Document ID</p>",
+          "example": "2067622575842400832",
+          "member": "string",
+          "name": "DocId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>ID of the knowledge base it belongs to</p>",
+          "example": "2067622575842400832",
+          "member": "string",
+          "name": "KbId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Field mask: Currently supported Path: DocLink.CosUrl. Other unlisted fields are returned by default.</p>",
+          "example": "无",
+          "member": "FieldMask",
+          "name": "ReadMask",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDocResponse": {
+      "document": "DescribeDoc response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Documentation link (external URL + COS link)</p>",
+          "example": "无",
+          "member": "DocLink",
+          "name": "DocLink",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Parsing configuration (split rule, content filtering, etc.)</p>",
+          "example": "无",
+          "member": "DocParseConfig",
+          "name": "ParseConfig",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Basic document information</p>",
+          "example": "无",
+          "member": "DocSummary",
+          "name": "Summary",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Switch configuration</p>",
+          "example": "无",
+          "member": "DocSwitch",
+          "name": "Switch",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Update cycle configuration</p>",
+          "example": "无",
+          "member": "DocUpdatePeriod",
+          "name": "UpdatePeriod",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>User access configuration</p>",
+          "example": "无",
+          "member": "UserAccessConfig",
+          "name": "UserAccessConfig",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDocSummaryListRequest": {
+      "document": "DescribeDocSummaryList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>ID of the knowledge base it belongs to</p>",
+          "example": "2063937671963228544",
+          "member": "string",
+          "name": "KbId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Filter criteria (multiple Filters are in an AND relationship, and multiple Values of the same Filter are in an OR relationship): Status - document status, enumeration value, exact match; CategoryId - category ID, exact match; SourceType - document source type, enumeration value, exact match; EffectiveDomain - application scope, exact match; CreateTime - creation time, Unix seconds, BETWEEN with [start second, end second]; UpdateTime - update time, Unix seconds, BETWEEN with [start second, end second]</p>",
+          "example": "无",
+          "member": "Filter",
+          "name": "FilterList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Page number, starting from 0.</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageNumber",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of items per page. Default: 10. Maximum: 100</p>",
+          "example": "100",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Query condition (keyword + query scope)</p>",
+          "example": "无",
+          "member": "DocQuery",
+          "name": "Query",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Switch configuration</p>",
+          "example": "无",
+          "member": "SummaryListSwitch",
+          "name": "SummaryListSwitch",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDocSummaryListResponse": {
+      "document": "DescribeDocSummaryList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Document list</p>",
+          "example": "无",
+          "member": "DocSummary",
+          "name": "DocList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total.</p>",
+          "example": "22",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeKBRequest": {
+      "document": "DescribeKB request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Knowledge base ID</p>",
+          "example": "2097668735455299264",
+          "member": "string",
+          "name": "KbId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Workspace ID</p>",
+          "example": "\"700001046587\"",
+          "member": "string",
+          "name": "SpaceId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeKBResponse": {
+      "document": "DescribeKB response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Associated application ID list</p>",
+          "example": "[\"2086641682194878720\"]",
+          "member": "string",
+          "name": "AppIdList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Capacity information.</p>",
+          "example": "无",
+          "member": "KBCapacity",
+          "name": "CapacityInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>ES configuration</p>",
+          "example": "无",
+          "member": "ESConfig",
+          "name": "EsConfig",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Model configuration</p>",
+          "example": "无",
+          "member": "KBModelConfig",
+          "name": "ModelConfig",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Owner information</p>",
+          "example": "无",
+          "member": "Operator",
+          "name": "Owner",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Knowledge base digest information</p>",
+          "example": "无",
+          "member": "KBSummary",
+          "name": "Summary",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeKBSummaryListRequest": {
+      "document": "DescribeKBSummaryList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Workspace ID</p>",
+          "example": "default_space",
+          "member": "string",
+          "name": "SpaceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Common filter</p>",
+          "example": "无",
+          "member": "Filter",
+          "name": "FilterList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Page number, starting from 0</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageNumber",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of items per page. Default value: 10. Maximum value: 100.</p>",
+          "example": "100",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Keyword</p>",
+          "example": "共享知识库_文档问答PG检索开_adp_qta_ZRWBJY",
+          "member": "string",
+          "name": "Query",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeKBSummaryListResponse": {
+      "document": "DescribeKBSummaryList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Knowledge base list</p>",
+          "example": "无",
+          "member": "KBSummary",
+          "name": "KbList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total.</p>",
+          "example": "0",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeLabelRequest": {
       "document": "DescribeLabel request structure.",
       "members": [
@@ -11455,6 +12711,80 @@
       ],
       "type": "object"
     },
+    "DescribeMetricOverviewListRequest": {
+      "document": "DescribeMetricOverviewList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Dashboard domain. Required. Determines which domain's KPI data to return.</p><table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>RESOURCE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>RESOURCE_TYPE_MODEL</td><td>1</td><td>Model usage</td></tr><tr><td>RESOURCE_TYPE_PLUGIN</td><td>2</td><td>Plug-in usage</td></tr><tr><td>RESOURCE_TYPE_PLATFORM</td><td>3</td><td>Platform feature usage</td></tr><tr><td>RESOURCE_TYPE_MODEL_CONCURRENCY</td><td>4</td><td>Model concurrency limit exceeded</td></tr><tr><td>RESOURCE_TYPE_KB_CAPACITY</td><td>5</td><td>Knowledge base capacity</td></tr><tr><td>RESOURCE_TYPE_USAGE_SUMMARY</td><td>6</td><td>Usage summary</td></tr><tr><td>RESOURCE_TYPE_RESOURCE_CONSUME</td><td>7</td><td>Resource consumption (billing details)</td></tr></tbody></table>",
+          "example": "1",
+          "member": "int64",
+          "name": "ResourceType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Query time range (Unix seconds).</p>",
+          "example": "无",
+          "member": "TimeRange",
+          "name": "TimeRange",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>View scope: corporate view / space view</p>",
+          "example": "无",
+          "member": "ViewScope",
+          "name": "ViewScope",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended filtering (resource_type=MODEL). Filter combination rule: multiple items use AND, AND value_list within the same item uses OR. Supported Names: MODEL_Name (MODEL Name), user_id (uid), space_id (space id), resource_id/source_id (source id), metric_source_type (metric_source_type_* Enumeration Name OR integer)</p>",
+          "example": "无",
+          "member": "Filter",
+          "name": "FilterList",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMetricOverviewListResponse": {
+      "document": "DescribeMetricOverviewList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>All domain Overview unified output parameters: KPI Card List, key string identification indicator, client parses by resource_type; for key allowlist, see platform.common.v2.MetricOverview annotation</p>",
+          "example": "无",
+          "member": "MetricOverview",
+          "name": "MetricList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total record count, equal to the length of MetricList, reserved only for list API consistency</p>",
+          "example": "12",
+          "member": "string",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeModelListRequest": {
       "document": "DescribeModelList request structure.",
       "members": [
@@ -11573,6 +12903,119 @@
           "name": "CategoryList",
           "output_required": false,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMsgRecordListRequest": {
+      "document": "DescribeMsgRecordList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Application ID</p>",
+          "example": "2087429578337166592",
+          "member": "string",
+          "name": "AppId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<ul><li><strong>ChannelType</strong> : 0-all 2-experience page (Tencent Cloud) 3-web debugging page (Tencent Cloud) 4-experience page (phone number) 5-dialogue API connection 6-application evaluation 7-debug API 10000-WeChat service account 10001-WeChat Subscription Account 10002-WeCom app 10004-WeChat Customer Service 10005-WeChat mini program 10006-Tencent Yuanqi 10007-App Treasure 10009-WeCom intelligent bot 10014-WeCom intelligent bot 10011-LINE 10012-Telegram 10013-DingTalk chatbot 10016-Lark chatbot 30000-scheduled task 30001-trigger </li><li><strong>FeedbackType</strong> : feedback type, -1-all 0-not rated 1-like 2-dislike </li><li><strong>QueryType</strong> : retrieval type (take value as agreed by the platform), SessionId-sessionID Question-question Answer-reply Intent-intent User-user </li><li><strong>Query</strong> : filter criteria corresponding to QueryType </li><li><strong>CategoryId</strong> : category ID </li><li><strong>ReplyMethod</strong> : reply type 0-all reply types 1-reply to rejected questions 2-direct QA reply 3-review failure reply 4-knowledge polish reply 6-workflow reply 8-image understanding reply 9-search engine reply 10-large model direct reply 11-fallback response </li><li><strong>StartTime</strong> : start time, unix second-level timestamp </li><li><strong>EndTime</strong> : end time, unix second-level timestamp </li><li><strong>Cursor</strong> : cursor. For the previous page, take PrevCursor from the response; for the next page, take NextCursor from the response. </li><li><strong>Direction</strong> : direction. next: next page, prev: previous page</li><li><strong>CallResult</strong> : call result: 0-all / 1-success / 2-failure / 3-canceled by the user </li><li><strong>FailReason</strong> : failure reason 0-all 1-review failure 2-QPM limit reached 3-TPM limit reached 4-concurrency limit reached 5-system exception </li><li><strong>Intent</strong> : intent</li></ul>",
+          "example": "无",
+          "member": "Filter",
+          "name": "FilterList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Page number, starting from 0. If not passed, it is processed as 0.</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageNumber",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of items per page. Maximum value: 100. If not specified or set to 0, the default pagination size is used.</p>",
+          "example": "10",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sort condition. Supports sorting by CreateTime only</p>",
+          "example": "无",
+          "member": "Sort",
+          "name": "Sort",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeMsgRecordListResponse": {
+      "document": "DescribeMsgRecordList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Whether there are more pages</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "HasMore",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Message record list</p>",
+          "example": "无",
+          "member": "MsgRecord",
+          "name": "MsgRecordList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Next page cursor information.</p>",
+          "example": "{\"cursor_time\":\"2026-08-12 14:43:24\",\"skipped\":6}",
+          "member": "string",
+          "name": "NextCursor",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Previous page cursor info.</p>",
+          "example": "{\"cursor_time\":\"2026-08-12 17:13:29\",\"skipped\":0}",
+          "member": "string",
+          "name": "PrevCursor",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total record count that meets the conditions, used for frontend paginated display</p>",
+          "example": "6",
+          "member": "string",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -12255,6 +13698,43 @@
       ],
       "type": "object"
     },
+    "DescribeResourceSummaryRequest": {
+      "document": "DescribeResourceSummary request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeResourceSummaryResponse": {
+      "document": "DescribeResourceSummary response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Usage information of the billing package</p>",
+          "example": "无",
+          "member": "ResourcePackageInfo",
+          "name": "ResourcePackage",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Billing value-added package usage information</p>",
+          "example": "无",
+          "member": "AddOnPackageInfo",
+          "name": "AddOnPackage",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeSkillCategoryListRequest": {
       "document": "DescribeSkillCategoryList request structure.",
       "members": [],
@@ -12271,6 +13751,61 @@
           "name": "CategoryList",
           "output_required": false,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSkillDetailRequest": {
+      "document": "DescribeSkillDetail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "skillID",
+          "example": "9e488e0c-ee1f-4b1c-b745-0e0e6f97e8c3",
+          "member": "string",
+          "name": "SkillId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Space ID.",
+          "example": "default_space",
+          "member": "string",
+          "name": "SpaceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "version Filter criteria (multiple filters are in an AND relationship with each other, AND multiple Values of the same Filter are in an OR relationship): - Perspective: Perspective enumeration, single string value. The length of Values must be 1. Multiple Values are deemed as illegal. It only acts on the trimming of version_list returned in the details AND does not determine the visibility of the api itself. Default if not passed: USER (USER = USER Perspective, version_list returns only launch versions / EDITOR = EDITOR Perspective, version_list returns ALL liveness versions / ALL = full Perspective, same as EDITOR)",
+          "example": "无",
+          "member": "Filter",
+          "name": "VersionFilterList",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSkillDetailResponse": {
+      "document": "DescribeSkillDetail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "skill details",
+          "example": "无",
+          "member": "SkillDetail",
+          "name": "SkillDetail",
+          "output_required": false,
+          "type": "object",
           "value_allowed_null": false
         },
         {
@@ -12501,6 +14036,98 @@
           "example": "无",
           "member": "SystemVariable",
           "name": "SystemVariableList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUsageDetailListRequest": {
+      "document": "DescribeUsageDetailList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Resource type, limited to RESOURCE_TYPE_MODEL / RESOURCE_TYPE_PLUGIN</p><table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>RESOURCE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>RESOURCE_TYPE_MODEL</td><td>1</td><td>Model usage</td></tr><tr><td>RESOURCE_TYPE_PLUGIN</td><td>2</td><td>Plug-in usage (reserved, not currently supported)</td></tr><tr><td>RESOURCE_TYPE_PLATFORM</td><td>3</td><td>Platform feature usage (reserved, not currently supported)</td></tr><tr><td>RESOURCE_TYPE_MODEL_CONCURRENCY</td><td>4</td><td>Model concurrency limit exceeded (reserved, not currently supported)</td></tr><tr><td>RESOURCE_TYPE_KB_CAPACITY</td><td>5</td><td>Knowledge base capacity (reserved, not currently supported)</td></tr><tr><td>RESOURCE_TYPE_USAGE_SUMMARY</td><td>6</td><td>Usage summary (reserved, not currently supported)</td></tr><tr><td>RESOURCE_TYPE_RESOURCE_CONSUME</td><td>7</td><td>Resource consumption (billing details) (reserved, not currently supported)</td></tr></tbody></table>",
+          "example": "1",
+          "member": "int64",
+          "name": "ResourceType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Query time range (Unix seconds).</p>",
+          "example": "无",
+          "member": "TimeRange",
+          "name": "TimeRange",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>View scope: corporate view / space view / application view</p>",
+          "example": "无",
+          "member": "ViewScope",
+          "name": "ViewScope",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Extended Filter (resource_type=MODEL). Filter combination rule: multiple items use AND, AND values within the same item use OR. Supported names: MODEL_Name, user_id, space_id, resource_id/source_id, metric_source_type (metric_source_type_* OR integer), call_type (invocation type)</p>",
+          "example": "无",
+          "member": "Filter",
+          "name": "FilterList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Page number, starting from 0.</p>",
+          "example": "0",
+          "member": "uint64",
+          "name": "PageNumber",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of items per page. Maximum: 100.</p>",
+          "example": "10",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUsageDetailListResponse": {
+      "document": "DescribeUsageDetailList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total record count for frontend pagination</p>",
+          "example": "12580",
+          "member": "string",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Resource invocation time series details list</p>",
+          "example": "无",
+          "member": "UsageDetail",
+          "name": "UsageDetailList",
           "output_required": false,
           "type": "list",
           "value_allowed_null": false
@@ -12846,6 +14473,89 @@
       ],
       "type": "object"
     },
+    "DescribeWorkflowRunSummaryListRequest": {
+      "document": "DescribeWorkflowRunSummaryList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Application ID. For how to obtain it, see <a href=\"https://www.tencentcloud.com/document/product/1759/109469?from_cn_redirect=1#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa\">AppId</a></p>",
+          "example": "1854548189164339200",
+          "member": "string",
+          "name": "AppId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of items per page (value ranges from 1 to 200)</p>",
+          "example": "20",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Page number (must be greater than 0)</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageNumber",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Execution environment. 1: Development domain, 2: Production domain -</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "Domain",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Parameter filtering</p>",
+          "example": "无",
+          "member": "Filter",
+          "name": "FilterList",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeWorkflowRunSummaryListResponse": {
+      "document": "DescribeWorkflowRunSummaryList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total.</p>",
+          "example": "100",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Workflow operation instance list</p>",
+          "example": "无",
+          "member": "WorkflowRunSummary",
+          "name": "WorkflowRunSummaryList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DialogCustomConfig": {
       "document": "Custom configuration for the dialogue side (shared across all modes, with permission to modify configuration dynamically during a dialogue)",
       "members": [
@@ -12980,6 +14690,566 @@
       ],
       "usage": "both"
     },
+    "DocImportSpec": {
+      "document": "Document import specification (one-time input of non-persistent data)",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>File ID (file identifier obtained through the file management service, required)</p>",
+          "example": "2097945951689898304",
+          "member": "string",
+          "name": "FileId",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Ownership category ID</p>",
+          "example": "0",
+          "member": "string",
+          "name": "CategoryId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of rules regarding repeated files</p>",
+          "example": "无",
+          "member": "DeDuplicateStrategy",
+          "name": "DeDuplicateStrategyList",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Knowledge effective scope<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_NONE</td><td>1</td><td>Disabled</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_DEV</td><td>2</td><td>Development domain only</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_RELEASE</td><td>3</td><td>Release domain only</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_ALL</td><td>4</td><td>Global</td></tr></tbody></table></p>",
+          "example": "1",
+          "member": "int64",
+          "name": "EffectiveDomain",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Expiration policy (validity time and behavior after the validity period expires)</p>",
+          "example": "无",
+          "member": "ExpirationPolicy",
+          "name": "ExpirationPolicy",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>External link</p>",
+          "example": "无",
+          "member": "DocExternalLink",
+          "name": "ExternalLink",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Applicable scope (tag condition).</p>",
+          "example": "无",
+          "member": "LabelRefIdentity",
+          "name": "LabelRefList",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Parsing configuration (split rules, content filtering, etc.)</p>",
+          "example": "无",
+          "member": "DocParseConfig",
+          "name": "ParseConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Switch configuration</p>",
+          "example": "无",
+          "member": "DocSwitch",
+          "name": "Switch",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Update cycle</p>",
+          "example": "无",
+          "member": "DocUpdatePeriod",
+          "name": "UpdatePeriod",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>User access configuration</p>",
+          "example": "无",
+          "member": "UserAccessConfig",
+          "name": "UserAccessConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "DocLifecycle": {
+      "document": "Document lifecycle information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Creation time (Unix seconds).</p>",
+          "example": "1788783358",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Expiration policy (validity time and behavior after the validity period expires)</p>",
+          "example": "无",
+          "member": "ExpirationPolicy",
+          "name": "ExpirationPolicy",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Document status: 1=parsing, 2=parsing failure, 3=import failed, 4=under review, 5=review failure, 6=Learning, 7=learning failed, 8=import complete, 9=expired, 10=quota invalid, 11=quota recovering, 12=rename review failure, 13=rename appeal failure, 14=manual appeal in progress, 15=manual appeal failure<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>DOC_STATUS_UNKNOWN</td><td>0</td><td></td></tr><tr><td>DOC_STATUS_PARSING</td><td>1</td><td>Parsing</td></tr><tr><td>DOC_STATUS_PARSE_FAIL</td><td>2</td><td>Parsing failure</td></tr><tr><td>DOC_STATUS_IMPORT_FAIL</td><td>3</td><td>Import failed</td></tr><tr><td>DOC_STATUS_AUDITING</td><td>4</td><td>Under review</td></tr><tr><td>DOC_STATUS_AUDIT_FAIL</td><td>5</td><td>Review failure</td></tr><tr><td>DOC_STATUS_LEARNING</td><td>6</td><td>Learning</td></tr><tr><td>DOC_STATUS_LEARN_FAIL</td><td>7</td><td>Learning failed</td></tr><tr><td>DOC_STATUS_IMPORTED</td><td>8</td><td>Import complete</td></tr><tr><td>DOC_STATUS_EXPIRED</td><td>9</td><td>Expired</td></tr><tr><td>DOC_STATUS_QUOTA_INVALID</td><td>10</td><td>Quota invalid</td></tr><tr><td>DOC_STATUS_QUOTA_RECOVERING</td><td>11</td><td>Quota recovering</td></tr><tr><td>DOC_STATUS_RENAME_AUDIT_FAIL</td><td>12</td><td>Rename review failure</td></tr><tr><td>DOC_STATUS_RENAME_APPEAL_FAIL</td><td>13</td><td>Rename appeal failure</td></tr><tr><td>DOC_STATUS_MANUAL_APPEALING</td><td>14</td><td>Manual appeal in progress</td></tr><tr><td>DOC_STATUS_MANUAL_APPEAL_FAIL</td><td>15</td><td>Manual appeal failure</td></tr></tbody></table></p>",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Status description</p>",
+          "example": "重命名审核失败",
+          "member": "string",
+          "name": "StatusDesc",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Status additional information</p>",
+          "example": "文档名称审核失败，请修改文档名称",
+          "member": "string",
+          "name": "StatusMessage",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Update time (Unix seconds)</p>",
+          "example": "1788783408",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "DocLink": {
+      "document": "Document link",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>COS link address, which can be used for preview and download</p>",
+          "example": "https://cos.example.com/kb/50001/billing.pdf?sign=xxx",
+          "member": "string",
+          "name": "CosUrl",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>External link</p>",
+          "example": "无",
+          "member": "DocExternalLink",
+          "name": "ExternalLink",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "DocMetadata": {
+      "document": "Document metadata",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Number of characters in the document</p>",
+          "example": "20",
+          "member": "string",
+          "name": "DocCharCount",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>File name.</p>",
+          "example": "04-交接报告已脱敏.pptx",
+          "member": "string",
+          "name": "FileName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>File size (byte)</p>",
+          "example": "29087344",
+          "member": "string",
+          "name": "FileSize",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>File type/extension</p>",
+          "example": "pdf",
+          "member": "string",
+          "name": "FileType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of metadata reference field names (used to display which categories and properties of a document are set as metadata)</p>",
+          "example": "[\"产品咨询/计费咨询\"]",
+          "member": "string",
+          "name": "RefFieldNameList",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Source description.</p>",
+          "example": "本地文档",
+          "member": "string",
+          "name": "SourceDesc",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Document source type: 1=local upload, 2=webpage link, 3=COS integration, 4=import from external sources<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>DOC_SOURCE_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>DOC_SOURCE_TYPE_LOCAL</td><td>1</td><td>Local upload</td></tr><tr><td>DOC_SOURCE_TYPE_URL</td><td>2</td><td>Webpage link</td></tr><tr><td>DOC_SOURCE_TYPE_COS</td><td>3</td><td>COS integration</td></tr><tr><td>DOC_SOURCE_TYPE_IMPORT</td><td>4</td><td>Import from external sources</td></tr></tbody></table></p>",
+          "example": "28",
+          "member": "int64",
+          "name": "SourceType",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "DocModifyFields": {
+      "document": "Collection of modifiable document fields (used in conjunction with update_mask)",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Ownership category ID</p>",
+          "example": "2097978830645224896",
+          "member": "string",
+          "name": "CategoryId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Application scope<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_NONE</td><td>1</td><td>Disabled</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_DEV</td><td>2</td><td>Development domain only</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_RELEASE</td><td>3</td><td>Release domain only</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_ALL</td><td>4</td><td>Global</td></tr></tbody></table></p>",
+          "example": "0",
+          "member": "int64",
+          "name": "EffectiveDomain",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Expiration policy (validity time and behavior after the validity period expires)</p>",
+          "example": "无",
+          "member": "ExpirationPolicy",
+          "name": "ExpirationPolicy",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>External link</p>",
+          "example": "无",
+          "member": "DocExternalLink",
+          "name": "ExternalLink",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Tag list.</p>",
+          "example": "无",
+          "member": "LabelRefIdentity",
+          "name": "LabelRefList",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Document name.</p>",
+          "example": "肺鱼rename111.txt",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Parsing configuration (split rules, content filtering, etc.)</p>",
+          "example": "无",
+          "member": "DocParseConfig",
+          "name": "ParseConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Switch configuration</p>",
+          "example": "无",
+          "member": "DocSwitch",
+          "name": "Switch",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Update cycle</p>",
+          "example": "无",
+          "member": "DocUpdatePeriod",
+          "name": "UpdatePeriod",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>User access configuration</p>",
+          "example": "无",
+          "member": "UserAccessConfig",
+          "name": "UserAccessConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "DocOperator": {
+      "document": "Document operator information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Modifier</p>",
+          "example": "无",
+          "member": "Operator",
+          "name": "Modifier",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Operation permission</p>",
+          "example": "无",
+          "member": "DocPermission",
+          "name": "Permission",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "DocParseConfig": {
+      "document": "Document parsing configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Content filtering configuration</p>",
+          "example": "无",
+          "member": "ContentFilter",
+          "name": "ContentFilter",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Split rule</p>",
+          "example": "chapter",
+          "member": "string",
+          "name": "SplitRule",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "DocPermission": {
+      "document": "Document operation permission information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Whether it is deletable.</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "CanDelete",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether it is editable</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "CanEdit",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether it can be regenerated</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "CanRestart",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether retry is allowed</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "CanRetry",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "DocQuery": {
+      "document": "Documentation query condition",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Query keyword (name fuzzy search)</p>",
+          "example": "汽车",
+          "member": "string",
+          "name": "Query",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Query scope (fields that the query applies to): 1=file name, 2=tag or tag value; multiple selections supported, invalid by default</p>",
+          "example": "[1]",
+          "member": "int64",
+          "name": "QueryScopeList",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "DocRetrievalConfig": {
       "document": "Document search configuration",
       "members": [
@@ -13019,6 +15289,89 @@
       ],
       "usage": "both"
     },
+    "DocSummary": {
+      "document": "Document digest information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Category path (including category ID, category ID path from the root node, and category name path)</p>",
+          "example": "无",
+          "member": "CategoryPath",
+          "name": "CategoryPath",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Document ID</p>",
+          "example": "2096935505918795456",
+          "member": "string",
+          "name": "DocId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Knowledge effective scope (aggregate application scope + tag condition)</p>",
+          "example": "无",
+          "member": "KnowledgeScope",
+          "name": "KnowledgeScope",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Lifecycle information.</p>",
+          "example": "无",
+          "member": "DocLifecycle",
+          "name": "Lifecycle",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Meta information.</p>",
+          "example": "无",
+          "member": "DocMetadata",
+          "name": "Metadata",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Operator information (aggregate modifier + operation permission)</p>",
+          "example": "无",
+          "member": "DocOperator",
+          "name": "OperatorInfo",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Task status information</p>",
+          "example": "无",
+          "member": "DocTaskStatus",
+          "name": "TaskStatus",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "DocSwitch": {
       "document": "Document switch configuration",
       "members": [
@@ -13042,6 +15395,62 @@
           "output_required": false,
           "required": false,
           "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "DocTaskStatus": {
+      "document": "Document task status information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>List of completed historical task types</p>",
+          "example": "[1]",
+          "member": "int64",
+          "name": "CompletedTaskTypeList",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of supported task types in progress</p>",
+          "example": "[1]",
+          "member": "int64",
+          "name": "OngoingTaskTypeList",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "DocUpdatePeriod": {
+      "document": "Document update cycle configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Whether periodic update is enabled</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "Enabled",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Update interval (hr)</p>",
+          "example": "24",
+          "member": "uint64",
+          "name": "PeriodHour",
+          "output_required": false,
+          "required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -13316,6 +15725,78 @@
           "type": "string",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "FavoritePluginRequest": {
+      "document": "FavoritePlugin request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Plugin_id</p>",
+          "example": "adcda186-813b-4d70-bb3f-538a522fe4a5",
+          "member": "string",
+          "name": "PluginId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Current workspace id</p>",
+          "example": "default_space",
+          "member": "string",
+          "name": "SpaceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "FavoritePluginResponse": {
+      "document": "FavoritePlugin response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "FavoriteSkillRequest": {
+      "document": "FavoriteSkill request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>SkillId</p>",
+          "example": "8988*******************-ca5d3bdd0ffc",
+          "member": "string",
+          "name": "SkillId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Workspace ID</p>",
+          "example": "default_space",
+          "member": "string",
+          "name": "SpaceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "FavoriteSkillResponse": {
+      "document": "FavoriteSkill response structure.",
+      "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -13659,6 +16140,52 @@
       ],
       "usage": "both"
     },
+    "ImportDocListRequest": {
+      "document": "ImportDocList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>List of documents to be imported (quantity: 1-20)</p>",
+          "example": "无",
+          "member": "DocImportSpec",
+          "name": "DocList",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Knowledge base ID</p>",
+          "example": "2079089760838256704",
+          "member": "string",
+          "name": "KbId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ImportDocListResponse": {
+      "document": "ImportDocList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Batch import result.</p>",
+          "example": "无",
+          "member": "OperationResult",
+          "name": "ResultList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "InputBoxConfig": {
       "document": "Input box configuration",
       "members": [
@@ -13738,6 +16265,45 @@
           "output_required": false,
           "required": false,
           "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "KBCapacity": {
+      "document": "Knowledge base capacity information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Maximum number of characters</p>",
+          "example": "0",
+          "member": "string",
+          "name": "MaxCharSize",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of excess characters</p>",
+          "example": "0",
+          "member": "string",
+          "name": "OverCharSize",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Used number of characters</p>",
+          "example": "0",
+          "member": "string",
+          "name": "UsedCharSize",
+          "output_required": false,
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -13904,6 +16470,56 @@
       ],
       "usage": "both"
     },
+    "KBPermission": {
+      "document": "Knowledge base operation permission information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Whether it is deletable.</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "CanDelete",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether it is editable</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "CanEdit",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether or not it can be shared</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "CanShare",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether it is viewable</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "CanView",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "KBRetrievalConfig": {
       "document": "Search configuration of each knowledge base",
       "members": [
@@ -14009,6 +16625,84 @@
       ],
       "usage": "both"
     },
+    "KBShareStatus": {
+      "document": "Sub-status information of the knowledge base",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Approval Id.</p>",
+          "example": "2102028569658115904",
+          "member": "string",
+          "name": "ApprovalId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Approval/shared state: 1=PENDING Pending Approval, 2=REJECTED rejected, 3=APPROVED approved, 4=CANCELLED canceled</p>",
+          "example": "[1]",
+          "member": "int64",
+          "name": "SubStatusList",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "KBSpaceShare": {
+      "document": "Knowledge base space share information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Whether it has been referenced by other spaces</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "IsSpaceShared",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Referenced spatial information.</p>",
+          "example": "无",
+          "member": "Identity",
+          "name": "SharedSpaceList",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Shared state</p>",
+          "example": "无",
+          "member": "KBShareStatus",
+          "name": "SubStatus",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether operation is allowed</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "Enable",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "KBSpec": {
       "document": "Collection of writable attributes of the knowledge base (used in conjunction with update_mask)",
       "members": [
@@ -14066,6 +16760,177 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "KBSummary": {
+      "document": "Digest information of the knowledge base",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>List of associated applications. Returned only for shared knowledge base.</p>",
+          "example": "无",
+          "member": "Identity",
+          "name": "AppList",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Creation time (Unix seconds).</p>",
+          "example": "1788420591",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Creator</p>",
+          "example": "无",
+          "member": "Operator",
+          "name": "Creator",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Description.</p>",
+          "example": "测试权限",
+          "member": "string",
+          "name": "Description",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of documents</p>",
+          "example": "72",
+          "member": "uint64",
+          "name": "DocCount",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether it is excessive</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "IsExceeded",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Knowledge base ID</p>",
+          "example": "2085276041989969472",
+          "member": "string",
+          "name": "KbId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Type: 1=default knowledge base, 2=shared knowledge base<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>KB_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KB_TYPE_DEFAULT</td><td>1</td><td>Default knowledge base</td></tr><tr><td>KB_TYPE_SHARED</td><td>2</td><td>Shared knowledge base</td></tr></tbody></table></p>",
+          "example": "2",
+          "member": "int64",
+          "name": "KbType",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Last operator. Returned only for shared knowledge bases.</p>",
+          "example": "无",
+          "member": "Operator",
+          "name": "LatestOperator",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Knowledge base name.</p>",
+          "example": "共享知识库_生效范围综合查询_adp_qta_TQMtMT",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Operation permission.</p>",
+          "example": "无",
+          "member": "KBPermission",
+          "name": "Permission",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of in-processing statuses</p>",
+          "example": "[1]",
+          "member": "int64",
+          "name": "ProcessingFlagList",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Share sub-type: 1=ordinary, 2=wechat official account<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>SHARED_KB_SUB_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>SHARED_KB_SUB_TYPE_NORMAL</td><td>1</td><td>Ordinary</td></tr><tr><td>SHARED_KB_SUB_TYPE_PUBLIC_ACCOUNT</td><td>2</td><td>WeChat official account</td></tr></tbody></table></p>",
+          "example": "1",
+          "member": "int64",
+          "name": "SharedSubType",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Update time (Unix seconds)</p>",
+          "example": "1788420601",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Knowledge base space share information</p>",
+          "example": "无",
+          "member": "KBSpaceShare",
+          "name": "SpaceShare",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -14770,6 +17635,67 @@
       ],
       "usage": "both"
     },
+    "MCPResourceContents": {
+      "document": "MCP ResourceContents. The chat-manage side does not parse internal fields and only passes through the structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Binary content. Either this parameter or text must be specified.</p>",
+          "example": "dGVzdC1ibG9i",
+          "member": "string",
+          "name": "Blob",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>JSON: Original _meta of a single resource</p>",
+          "example": "{\"test\":\"meta\"}",
+          "member": "string",
+          "name": "Meta",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>MIME type. The HTML of the MCP App is text/html;profile=mcp-app</p>",
+          "example": "text/html;profile=mcp-app",
+          "member": "string",
+          "name": "MimeType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Text content. Either this field or blob is required.</p>",
+          "example": "<!DOCTYPE",
+          "member": "string",
+          "name": "Text",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Resource URI</p>",
+          "example": "ui://overtime-list/overtime-list.html",
+          "member": "string",
+          "name": "Uri",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "MCPToolConfig": {
       "document": "MCPToolConfig",
       "members": [
@@ -14938,6 +17864,56 @@
           "output_required": false,
           "required": false,
           "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "MetricOverview": {
+      "document": "Overview KPI card metric items",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Metric key. For the value, see the key allowlist in the MetricOverview note.</p>",
+          "example": "total_calls",
+          "member": "string",
+          "name": "Key",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Month-over-month percentage. Enter 0 if there is no month-over-month comparison</p>",
+          "example": "0.15",
+          "member": "float",
+          "name": "Mom",
+          "output_required": false,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Metric unit, enumeration value DosageUnit; for the mapping between key and unit, see the MetricOverview comment allowlist</p><table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>DOSAGE_UNIT_TOKEN</td><td>0</td><td>token (default)</td></tr><tr><td>DOSAGE_UNIT_PAGE_COUNT</td><td>1</td><td>page_count (page number)</td></tr><tr><td>DOSAGE_UNIT_TIMES</td><td>2</td><td>times (count)</td></tr><tr><td>DOSAGE_UNIT_SECOND</td><td>3</td><td>second</td></tr><tr><td>DOSAGE_UNIT_ITEM</td><td>4</td><td>item</td></tr><tr><td>DOSAGE_UNIT_SHEET</td><td>5</td><td>sheet</td></tr><tr><td>DOSAGE_UNIT_CHARACTER</td><td>6</td><td>character</td></tr><tr><td>DOSAGE_UNIT_GB</td><td>7</td><td>GB</td></tr><tr><td>DOSAGE_UNIT_NUMBER</td><td>8</td><td>number (count)</td></tr><tr><td>DOSAGE_UNIT_MILL_SECOND</td><td>9</td><td>mill_second (ms)</td></tr></tbody></table>",
+          "example": "2",
+          "member": "int64",
+          "name": "Unit",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Metric value.</p>",
+          "example": "12580",
+          "member": "float",
+          "name": "Value",
+          "output_required": false,
+          "required": false,
+          "type": "float",
           "value_allowed_null": false
         }
       ],
@@ -15607,6 +18583,67 @@
       ],
       "usage": "out"
     },
+    "ModelUsageDetail": {
+      "document": "Model invocation details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Invocation type, originating from billing scene_billing (corresponding to filter.call_type)</p>",
+          "example": "chat",
+          "member": "string",
+          "name": "CallType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether it is the default knowledge base. It is only meaningful for the business where ResourceType=5 (knowledge base capacity)</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "IsDefaultKB",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Model name</p>",
+          "example": "hunyuan-turbo",
+          "member": "string",
+          "name": "ModelName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of consumption measurements for a single call in the MODEL field (authoritative field): lists each measurement type by unit + label. When unit=TOKEN, label is case-sensitive for Token subcategories (input/output/avg_*/cache_*), and being empty indicates total_tokens; unit=PAGE_COUNT refers to the number of pages consumed by the model</p>",
+          "example": "无",
+          "member": "ResourceConsumption",
+          "name": "ResourceConsumptionList",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>PU consumption of this call</p>",
+          "example": "0.008",
+          "member": "float",
+          "name": "ConsumptionPU",
+          "output_required": false,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "ModelUsageSummary": {
       "document": "Aggregated details of model resource usage (exclusive to MODEL domain)",
       "members": [
@@ -15913,6 +18950,149 @@
       ],
       "type": "object"
     },
+    "ModifyCategoryRequest": {
+      "document": "ModifyCategory request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Category ID to be modified (must be greater than 0)</p>",
+          "example": "2097580091993756672",
+          "member": "string",
+          "name": "CategoryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Classification type (not allowed to be 0. Value: 1=document classification, 2=QA classification)<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>CATEGORY_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>CATEGORY_TYPE_DOC</td><td>1</td><td>Document classification</td></tr><tr><td>CATEGORY_TYPE_QA</td><td>2</td><td>QA classification</td></tr></tbody></table></p>",
+          "example": "1",
+          "member": "int64",
+          "name": "CategoryType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Modify field content (required, used in conjunction with update_mask)</p>",
+          "example": "无",
+          "member": "CategoryModifyFields",
+          "name": "Fields",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>ID of the knowledge base it belongs to</p>",
+          "example": "2092085032339506432",
+          "member": "string",
+          "name": "KbId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Field mask: specifies the field to modify (supported Paths: Name)</p>",
+          "example": "无",
+          "member": "FieldMask",
+          "name": "UpdateMask",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCategoryResponse": {
+      "document": "ModifyCategory response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyChannelRequest": {
+      "document": "ModifyChannel request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "ModifyChannelResponse": {
+      "document": "ModifyChannel response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyConflictQARequest": {
+      "document": "ModifyConflictQA request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Knowledge base ID</p>",
+          "example": "2097994659744810688",
+          "member": "string",
+          "name": "KbId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Conflict group ID (optional if ignored globally)</p>",
+          "example": "2097996818891709760",
+          "member": "string",
+          "name": "ConflictGroupId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to ignore globally (ignore all pending conflict issues under the current KB)</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "IsIgnoreAll",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>QA ID list involved in decision-making (required for KEEP and DELETE)</p>",
+          "example": "[\"2097996546990656256\"]",
+          "member": "string",
+          "name": "QaIdList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Conflict resolution policy: 1=reserve, 2=ignore, 3=delete (can be omitted when ignored globally)<table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>CONFLICT_RESOLUTION_UNKNOWN</td><td>0</td><td>-</td></tr><tr><td>CONFLICT_RESOLUTION_KEEP</td><td>1</td><td>Reserve</td></tr><tr><td>CONFLICT_RESOLUTION_IGNORE</td><td>2</td><td>Ignore</td></tr><tr><td>CONFLICT_RESOLUTION_DELETE</td><td>3</td><td>Delete</td></tr></tbody></table></p>",
+          "example": "2",
+          "member": "int64",
+          "name": "Resolution",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyConflictQAResponse": {
+      "document": "ModifyConflictQA response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyConversationRequest": {
       "document": "ModifyConversation request structure.",
       "members": [
@@ -16112,6 +19292,60 @@
       ],
       "type": "object"
     },
+    "ModifyDocRequest": {
+      "document": "ModifyDoc request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Document ID</p>",
+          "example": "2067623425823338880",
+          "member": "string",
+          "name": "DocId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Modify field contents (required, used together with update_mask)</p>",
+          "example": "无",
+          "member": "DocModifyFields",
+          "name": "Fields",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>ID of the knowledge base it belongs to</p>",
+          "example": "2067622575842400832",
+          "member": "string",
+          "name": "KbId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Field mask: specifies the fields to be modified (supported Paths: Name, CategoryId, EffectiveDomain, LabelRefList, ExternalLink, ExpirationPolicy, UpdatePeriod, Switch, ParseConfig, UserAccessConfig)</p>",
+          "example": "无",
+          "member": "FieldMask",
+          "name": "UpdateMask",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDocResponse": {
+      "document": "ModifyDoc response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyKBRequest": {
       "document": "ModifyKB request structure.",
       "members": [
@@ -16221,6 +19455,141 @@
           "type": "list",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMsgRecordCategoryRequest": {
+      "document": "ModifyMsgRecordCategory request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>App ID</p>",
+          "example": "2062456131215815616",
+          "member": "string",
+          "name": "AppId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Business ID of the category to be modified</p>",
+          "example": "2087100220301236928",
+          "member": "string",
+          "name": "CategoryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Category name after modification</p>",
+          "example": "电子产品使用类咨询",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyMsgRecordCategoryResponse": {
+      "document": "ModifyMsgRecordCategory response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyPluginRequest": {
+      "document": "ModifyPlugin request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Plugin_id</p>",
+          "example": "6ec78f78-23fb-49db-8e53-76921e1e3918",
+          "member": "string",
+          "name": "PluginId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Plugin version number</p>",
+          "example": "4",
+          "member": "int64",
+          "name": "PluginVersion",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Plug-in basic information</p>",
+          "example": "无",
+          "member": "PluginProfile",
+          "name": "Profile",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Plug-in type configuration</p>",
+          "example": "无",
+          "member": "PluginConfig",
+          "name": "Config",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Specify the fields to update to avoid full coverage</p>",
+          "example": "无",
+          "member": "FieldMask",
+          "name": "UpdateMask",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Tool list of the plug-in. This parameter is not required for mcp plug-ins.</p>",
+          "example": "无",
+          "member": "Tool",
+          "name": "ToolList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>User Main Account logged in (required in integrator mode)</p>",
+          "example": "6000005624511",
+          "member": "string",
+          "name": "LoginUin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>User Sub-account logged in (required in integrator mode)</p>",
+          "example": "6000005624511",
+          "member": "string",
+          "name": "LoginSubAccountUin",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyPluginResponse": {
+      "document": "ModifyPlugin response structure.",
+      "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -16375,6 +19744,96 @@
       ],
       "type": "object"
     },
+    "ModifySkillRequest": {
+      "document": "ModifySkill request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>SkillId</p>",
+          "example": "8988f8b5-**************-ca5d3bdd0ffc",
+          "member": "string",
+          "name": "SkillId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Space ID</p>",
+          "example": "default_space",
+          "member": "string",
+          "name": "SpaceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>skill description</p>",
+          "example": "skill_****",
+          "member": "string",
+          "name": "DisplayDescription",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>skill name</p>",
+          "example": "skill_****",
+          "member": "string",
+          "name": "DisplayName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>skill package file address (zip); importing it triggers new version generation. It must be imported together with SkillVersion and UpdateDescription</p>",
+          "example": "public*****il*********etter_v2026*******0*****ckag***ip",
+          "member": "string",
+          "name": "FileUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Icon address</p>",
+          "example": "https://qidian-*************************************.myqcloud.com/public/2004076269431393728/image/ZdLTEaZpzWYlNEbNYTRL-2047574044935267136.png",
+          "member": "string",
+          "name": "IconUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>skill version number (import together with FileUrl)</p>",
+          "example": "1.0.6",
+          "member": "string",
+          "name": "SkillVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Version change description (import together with FileUrl).</p>",
+          "example": "*新版*",
+          "member": "string",
+          "name": "UpdateDescription",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySkillResponse": {
+      "document": "ModifySkill response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifySpaceRequest": {
       "document": "ModifySpace request structure.",
       "members": [
@@ -16465,6 +19924,162 @@
       ],
       "type": "object"
     },
+    "MsgRecord": {
+      "document": "MsgRecord",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Answer.",
+          "example": "你好！有什么我可以帮助你的吗？",
+          "member": "string",
+          "name": "Answer",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Application ID",
+          "example": "2059116175760018240",
+          "member": "string",
+          "name": "AppId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Category ID",
+          "example": "0",
+          "member": "string",
+          "name": "CategoryId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.",
+          "example": "1780390822",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Intent.",
+          "example": "聊天",
+          "member": "string",
+          "name": "Intent",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Intent category",
+          "example": "self_awareness",
+          "member": "string",
+          "name": "IntentCategory",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is intelligent categorization",
+          "example": "true",
+          "member": "bool",
+          "name": "IsSmart",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Issue",
+          "example": "你好",
+          "member": "string",
+          "name": "Question",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Record ID",
+          "example": "9cf_20260602_170021_708_05qBgUfb",
+          "member": "string",
+          "name": "RecordId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "method. Enumerates ReplyMethod: 0=not specified, 1=direct reply by large model, 2=conservative reply, 3=refuse to answer, 4=sensitive reply, 5=Q&A pair prioritized reply, 6=welcome message, 7=concurrency limit exceeded, 8=global intervention knowledge, 9=task flow process reply, 10=task flow answer, 11=search engine, 12=knowledge polish, 13=image understanding, 14=real-time document, 15=clarification confirmation, 16=workflow reply, 17=workflow completion, 18=Intelligent Agent reply, 19=multiple intents, 20=interruption, 21=Intelligent Agent plan preview, 22=Intelligent Agent plan result, 23=Intelligent Agent structured output.",
+          "example": "10",
+          "member": "int64",
+          "name": "ReplyMethod",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Returned result",
+          "example": "无",
+          "member": "MsgRecordResult",
+          "name": "Result",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Score",
+          "example": "0",
+          "member": "uint64",
+          "name": "Score",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Session ID",
+          "example": "0fad7bb5-6b75-4667-bfea-64ec2503a964",
+          "member": "string",
+          "name": "SessionId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Source.",
+          "example": "无",
+          "member": "MsgRecordSource",
+          "name": "Source",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "trace_id",
+          "example": "bf21a83c67a647e3a8e2925ecbfda598",
+          "member": "string",
+          "name": "TraceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "MsgRecordCategory": {
       "document": "MsgRecordCategory",
       "members": [
@@ -16525,6 +20140,158 @@
         }
       ],
       "usage": "both"
+    },
+    "MsgRecordResult": {
+      "document": "MsgRecordResult",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Indicates the call result of the message: 0=CALL_RESULT_UNKNOWN (all/unknown), 1=CALL_RESULT_SUCCESS (success), 2=CALL_RESULT_FAILED (failed). fail_reason (string) describes the failure reason when the call failed.",
+          "example": "1",
+          "member": "int64",
+          "name": "CallResult",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Custom variable, json string",
+          "example": "{\"name\":\"naevar\"}",
+          "member": "string",
+          "name": "CustomerVariable",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Failure cause.",
+          "example": "0",
+          "member": "string",
+          "name": "FailReason",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Time to first token",
+          "example": "4636",
+          "member": "uint64",
+          "name": "FirstTokenLatency",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of input tokens.",
+          "example": "0",
+          "member": "uint64",
+          "name": "InputToken",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of output tokens.",
+          "example": "0",
+          "member": "uint64",
+          "name": "OutputToken",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of tokens.",
+          "example": "0",
+          "member": "uint64",
+          "name": "TotalToken",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total token duration",
+          "example": "5673",
+          "member": "uint64",
+          "name": "TotalTokenLatency",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "MsgRecordSource": {
+      "document": "MsgRecordSource",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Channel type for dialogue message access: 0=not specified, 1=agent, 2=experience page (Tencent Cloud), 3=evaluation dialogue, 4=experience page (phone number), 5=dialogue API connection, 6=evaluation task dialogue, 10=workflow debugging, 10000=WeChat official account, 10001=WeChat service account, 10002=WeCom app, 10003=web components, 10004=WeChat Customer Service, 10005=WeChat mini program, 10006=Yuanqi, 10007=App Treasure, 10008=Yuanbao, 10009=WeCom intelligent bot, 10010=Yuanqi API, 10011=LINE, 10012=Telegram, 10100=PC manager, 20001=honor Intelligent Agent platform, 20002=Xiaomi app store; user_id (string) is the unique ID of the visitor under this channel.",
+          "example": "3",
+          "member": "uint64",
+          "name": "ChannelType",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "User ID.",
+          "example": "180",
+          "member": "string",
+          "name": "FromId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "User source type of the message sender: 1=user (visitor/C-end user), 2=robot (AI reply), 3=agent (human customer service); from_id (string) is the unique user ID under this source type.",
+          "example": "2",
+          "member": "uint64",
+          "name": "FromType",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "User profile photo",
+          "example": "https://qidian-qbot-1251316161.cos.ap-guangzhou.myqcloud.com/public/avatar_monkey01.png",
+          "member": "string",
+          "name": "UserAvatar",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Visitor ID.",
+          "example": "1747547736783716352",
+          "member": "string",
+          "name": "UserId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Visitor name",
+          "example": "coco测试11",
+          "member": "string",
+          "name": "UserNickname",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "MultiAgentConfig": {
       "document": "Multi-agent configuration",
@@ -17635,6 +21402,45 @@
       ],
       "usage": "both"
     },
+    "PluginUsageDetail": {
+      "document": "Plug-in call detail",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Plugin name.</p>",
+          "example": "doc-parser-v2",
+          "member": "string",
+          "name": "PluginName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Consumption measurement list for a single PLUGIN domain call (authoritative field): lists each measurement category by unit + label. When unit=TOKEN, label is case-sensitive for Token subcategories (input/output/avg_*). Being empty indicates total_tokens</p>",
+          "example": "无",
+          "member": "ResourceConsumption",
+          "name": "ResourceConsumptionList",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Plug-in Tool Name (tool_name)</p>",
+          "example": "parse_document",
+          "member": "string",
+          "name": "ToolName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "PluginUsageSummary": {
       "document": "Aggregated details of plug-in resource usage (exclusive to the PLUGIN domain)",
       "members": [
@@ -18418,6 +22224,71 @@
       ],
       "usage": "both"
     },
+    "ReadMCPResourceRequest": {
+      "document": "ReadMCPResource request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Capacity boundary: one request can only read the resources belonging to this plugin</p>",
+          "example": "418eee0b-4aa7-4aef-939b-3c48d404e846",
+          "member": "string",
+          "name": "PluginId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>thread on the agent-exec side</p>",
+          "example": "b18c602d-054d-4f1a-ad9b-f785ba4d69c5",
+          "member": "string",
+          "name": "ThreadId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Resource URI, source: _meta.ui.resourceUri of the tool</p>",
+          "example": "ui://overtime-list/overtime-list.html",
+          "member": "string",
+          "name": "Uri",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ReadMCPResourceResponse": {
+      "document": "ReadMCPResource response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Resource content returned by MCP resources/read</p>",
+          "example": "无",
+          "member": "MCPResourceContents",
+          "name": "Contents",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>JSON: The original _meta of Resource. In the MCP App scenario, Host enforces the CSP policy based on ui.csp.</p>",
+          "example": "<>",
+          "member": "string",
+          "name": "ResourceMeta",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ReleaseRecord": {
       "document": "[Data structure definition] Release record",
       "members": [
@@ -19057,6 +22928,72 @@
       ],
       "usage": "both"
     },
+    "ResourcePackageInfo": {
+      "document": "Usage information of the billing package",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Package type</p><p>Enumeration values:</p><ul><li>1: Free edition</li><li>2: Pro edition</li><li>3: Enterprise edition</li></ul>",
+          "example": "2",
+          "member": "uint64",
+          "name": "PackageType",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total resource package quantity</p>",
+          "example": "150000",
+          "member": "int64",
+          "name": "ResourceTotal",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Resource package usage</p>",
+          "example": "150000",
+          "member": "float",
+          "name": "ResourceUsage",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Knowledge base capacity.</p>",
+          "example": "0",
+          "member": "float",
+          "name": "KnowledgeCapacity",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Knowledge base amount</p>",
+          "example": "0",
+          "member": "float",
+          "name": "KnowledgeUsage",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Resource pack status</p><p>Enumeration values:</p><ul><li>1: Normal</li><li>3: Expired</li><li>4: About to expire</li></ul>",
+          "example": "3",
+          "member": "uint64",
+          "name": "ResourceStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "ResponseParam": {
       "document": "ResponseParam",
       "members": [
@@ -19117,6 +23054,114 @@
         }
       ],
       "usage": "both"
+    },
+    "ResumeAppTriggerRequest": {
+      "document": "ResumeAppTrigger request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Application ID.</p>",
+          "example": "2075415763781738240",
+          "member": "string",
+          "name": "AppId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<table> <tbody> <tr> <td>Enumeration item</td> <td>Enumeration value</td> <td>Description</td> </tr> <tr> <td>APP_TRIGGER_SCOPE_UNSPECIFIED</td> <td>0</td> <td>Unspecified</td> </tr> <tr> <td>APP_TRIGGER_SCOPE_APP</td> <td>1</td> <td>B-end admin</td> </tr> <tr> <td>APP_TRIGGER_SCOPE_USER</td> <td>2</td> <td>C-end visitor</td> </tr> </tbody> </table>",
+          "example": "2",
+          "member": "int64",
+          "name": "Scope",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Application trigger ID</p>",
+          "example": "febb4930-0e2b-470b-9e24-04b73f9d773b",
+          "member": "string",
+          "name": "TriggerId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Visitor ID</p>",
+          "example": "cuiyo******",
+          "member": "string",
+          "name": "UserId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResumeAppTriggerResponse": {
+      "document": "ResumeAppTrigger response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResumeWorkflowRunRequest": {
+      "document": "ResumeWorkflowRun request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Application ID.</p>",
+          "example": "2017209116131141888",
+          "member": "string",
+          "name": "AppId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Workflow operation instance ID</p>",
+          "example": "wfr-bisjn9hln4e8",
+          "member": "string",
+          "name": "WorkflowRunId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>User input</p>",
+          "example": "北京",
+          "member": "string",
+          "name": "Query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>File information</p>",
+          "example": "无",
+          "member": "ConversationFileInfo",
+          "name": "FileList",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ResumeWorkflowRunResponse": {
+      "document": "ResumeWorkflowRun response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "RetrievalOption": {
       "document": "Optional retrieval configuration",
@@ -19297,6 +23342,116 @@
           "example": "2e41cd4a-39cc-455e-a530-8a543db8ac13",
           "member": "string",
           "name": "InstanceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SaveWorkflowDebugContextRequest": {
+      "document": "SaveWorkflowDebugContext request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Application ID.</p>",
+          "example": "2046434807234765632",
+          "member": "string",
+          "name": "AppId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Application variable list.</p>",
+          "example": "无",
+          "member": "AppVariableValue",
+          "name": "AppVariableValueList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Session ID</p>",
+          "example": "096f3add-318c-41b6-883e-87d720d741b9",
+          "member": "string",
+          "name": "SessionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Custom user ID</p>",
+          "example": "1747547736783716352",
+          "member": "string",
+          "name": "UserId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SaveWorkflowDebugContextResponse": {
+      "document": "SaveWorkflowDebugContext response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SaveWorkflowToolNodeOutputRequest": {
+      "document": "SaveWorkflowToolNodeOutput request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Callback token</p><p>Request Header X-ADP-Callback-Token</p>",
+          "example": "wfr-ee494028-1f91-4cf2-89ab-f04e052b9f52..91b257f7-5145-a013-0b32-0a651ce0b18b.1784201278.be167a5ddddf0779e7b362cef7024771d54c321ae3ba8cbf0eac124616044591",
+          "member": "string",
+          "name": "CallbackToken",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Callback result</p>",
+          "example": "{\\\"approval_result\\\":\\\"approved\\\",\\\"approver\\\":\\\"张三\\\",\\\"comment\\\":\\\"同意\\\"}",
+          "member": "string",
+          "name": "Result",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SaveWorkflowToolNodeOutputResponse": {
+      "document": "SaveWorkflowToolNodeOutput response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Status code</p><p>Enumeration values:</p><ul><li>0: success</li><li>1000: failure</li></ul>",
+          "example": "0",
+          "member": "int64",
+          "name": "Code",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Error description</p>",
+          "example": "ok",
+          "member": "string",
+          "name": "Msg",
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
@@ -20069,6 +24224,45 @@
       ],
       "usage": "both"
     },
+    "SkillDetail": {
+      "document": "skill details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Call condition abstract",
+          "example": "无",
+          "member": "SkillReferenceSummary",
+          "name": "ReferenceSummaryList",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Skill abstract",
+          "example": "无",
+          "member": "SkillSummary",
+          "name": "SkillSummary",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Version list",
+          "example": "无",
+          "member": "SkillVersion",
+          "name": "VersionList",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "SkillNotice": {
       "document": "Skill exception notification.",
       "members": [
@@ -20650,6 +24844,34 @@
       ],
       "usage": "both"
     },
+    "Sort": {
+      "document": "<p>Sorting condition</p>",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Sort field name, for example, create_time</p>",
+          "example": "create_time",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sorting order. 1: ascending, 2: descending</p><table><tbody><tr><td>Enumeration item</td><td>Enumeration value</td><td>Description</td></tr><tr><td>SORT_ORDER_INVALID</td><td>0</td><td>invalid</td></tr><tr><td>SORT_ORDER_ASC</td><td>1</td><td>ascending</td></tr><tr><td>SORT_ORDER_DESC</td><td>2</td><td>descending</td></tr></tbody></table>",
+          "example": "1",
+          "member": "int64",
+          "name": "Direction",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "Space": {
       "document": "Spatial information",
       "members": [
@@ -20810,6 +25032,62 @@
         }
       ],
       "usage": "both"
+    },
+    "StopWorkflowRunListRequest": {
+      "document": "StopWorkflowRunList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Application ID.</p>",
+          "example": "2012107019292144576",
+          "member": "string",
+          "name": "AppId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Workflow running instance ID list</p>",
+          "example": "[\"wfr-bev59tniw39c\"]",
+          "member": "string",
+          "name": "WorkflowRunIdList",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "StopWorkflowRunListResponse": {
+      "document": "StopWorkflowRunList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>List of instance IDs stopped successfully</p>",
+          "example": "[\"wfr-cd6a2j03k5j4\"]",
+          "member": "string",
+          "name": "SuccessIdList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of instance IDs that failed to stop</p>",
+          "example": "[\"wfr-cd6a2j89k5j4\"]",
+          "member": "string",
+          "name": "FailedIdList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "SummaryListSwitch": {
       "document": "Abstract list query common switch configuration",
@@ -21468,6 +25746,161 @@
       ],
       "usage": "both"
     },
+    "UnfavoritePluginRequest": {
+      "document": "UnfavoritePlugin request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Plugin_id</p>",
+          "example": "adcda186-813b-4d70-bb3f-538a522fe4a5",
+          "member": "string",
+          "name": "PluginId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Current workspace id</p>",
+          "example": "default_space",
+          "member": "string",
+          "name": "SpaceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UnfavoritePluginResponse": {
+      "document": "UnfavoritePlugin response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UnfavoriteSkillRequest": {
+      "document": "UnfavoriteSkill request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>SkillId</p>",
+          "example": "8988*******************-ca5d3bdd0ffc",
+          "member": "string",
+          "name": "SkillId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Workspace ID</p>",
+          "example": "default_space",
+          "member": "string",
+          "name": "SpaceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UnfavoriteSkillResponse": {
+      "document": "UnfavoriteSkill response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UsageDetail": {
+      "document": "Resource invocation time series details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Invocation source</p>",
+          "example": "无",
+          "member": "CallSource",
+          "name": "CallSource",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Measurement ID, used for reconciliation/tracing</p>",
+          "example": "dosage_9988776655",
+          "member": "string",
+          "name": "DosageId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Call timestamp (Unix seconds).</p>",
+          "example": "1754956800",
+          "member": "string",
+          "name": "EventTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Exclusive to MODEL domain</p>",
+          "example": "无",
+          "member": "ModelUsageDetail",
+          "name": "Model",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Exclusive to the PLUGIN domain</p>",
+          "example": "无",
+          "member": "PluginUsageDetail",
+          "name": "Plugin",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Call chain tracing ID</p>",
+          "example": "trace_abc123def456",
+          "member": "string",
+          "name": "TraceId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>User ID</p>",
+          "example": "user_001",
+          "member": "string",
+          "name": "UserId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "UsageSummary": {
       "document": "Aggregated details of resource usage",
       "members": [
@@ -21535,6 +25968,34 @@
           "output_required": false,
           "required": false,
           "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "UserAccessConfig": {
+      "document": "User access configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Customer-defined knowledge ID</p>",
+          "example": "cust-doc-abc-001",
+          "member": "string",
+          "name": "CustomerKnowledgeId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether the document is public</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "IsPublic",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
           "value_allowed_null": false
         }
       ],

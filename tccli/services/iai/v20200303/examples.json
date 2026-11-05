@@ -38,16 +38,16 @@
     ],
     "CreateFace": [
       {
-        "document": "This example shows you how to add a group of face images to a person.",
-        "input": "https://iai.tencentcloudapi.com/?Action=CreateFace\n&PersonId=1001\n&Urls.0=http://test.image.myqcloud.com/testA.jpg\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"SucFaceNum\": 1,\n        \"SucFaceIds\": [\n            \"2875186538564559728\"\n        ],\n        \"RetCode\": [\n            0\n        ],\n        \"SucIndexes\": [\n            0\n        ],\n        \"SucFaceRects\": [\n            {\n                \"X\": 135,\n                \"Y\": 42,\n                \"Width\": 98,\n                \"Height\": 136\n            }\n        ],\n        \"FaceModelVersion\": \"3.0\",\n        \"RequestId\": \"07d63403-a199-4bbe-b9e0-692356ac738d\"\n    }\n}",
-        "title": "Adding faces"
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=CreateFace\n&PersonId=1001\n&Urls.0=http://test.image.myqcloud.com/testB.jpg\n&Urls.1=http://test.image.myqcloud.com/testC.jpg\n&Urls.2=http://test.image.myqcloud.com/testD.jpg\n&Urls.3=http://test.image.myqcloud.com/testE.jpg\n&Urls.4=http://test.image.myqcloud.com/testF.jpg\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Error\": {\n            \"Code\": \"InvalidParameterValue.UploadFaceNumExceed\",\n            \"Message\": \"Upload up to four human faces.\"\n        },\n        \"RequestId\": \"44506f79-2191-49bc-997b-748a566d781c\"\n    }\n}",
+        "title": "Failure Example of Adding a Face"
       },
       {
-        "document": "This example shows the error that will occur if a person has more than 5 face images.",
-        "input": "https://iai.tencentcloudapi.com/?Action=CreateFace\n&PersonId=1001\n&Urls.0=http://test.image.myqcloud.com/testB.jpg\n&Urls.1=http://test.image.myqcloud.com/testC.jpg\n&Urls.2=http://test.image.myqcloud.com/testD.jpg\n&Urls.3=http://test.image.myqcloud.com/testE.jpg\n&Urls.4=http://test.image.myqcloud.com/testF.jpg\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"44506f79-2191-49bc-997b-748a566d781c\"\n    }\n}",
-        "title": "Sample error"
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=CreateFace\n&PersonId=1001\n&Urls.0=http://test.image.myqcloud.com/testA.jpg\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"SucFaceNum\": 1,\n        \"SucFaceIds\": [\n            \"2875186538564559728\"\n        ],\n        \"RetCode\": [\n            0\n        ],\n        \"SucIndexes\": [\n            0\n        ],\n        \"SucFaceRects\": [\n            {\n                \"X\": 135,\n                \"Y\": 42,\n                \"Width\": 98,\n                \"Height\": 136\n            }\n        ],\n        \"FaceModelVersion\": \"3.0\",\n        \"RequestId\": \"07d63403-a199-4bbe-b9e0-692356ac738d\"\n    }\n}",
+        "title": "Add Face Successful Example"
       }
     ],
     "CreateGroup": [
@@ -79,27 +79,21 @@
     "CreatePerson": [
       {
         "document": "",
-        "input": "https://iai.tencentcloudapi.com/?Action=CreatePerson\n&GroupId=ZhuYuanDormitoryNo1\n&PersonName=Junly\n&PersonId=2001\n&Gender=1\n&Url=http://test.image.myqcloud.com/testB.jpg\n&PersonExDescriptionInfos.0.PersonExDescriptionIndex=0\n&PersonExDescriptionInfos.0.PersonExDescription=School of Computer Science\n&PersonExDescriptionInfos.1.PersonExDescriptionIndex=1\n&PersonExDescriptionInfos.1.PersonExDescription=Software Engineering\n&PersonExDescriptionInfos.2.PersonExDescriptionIndex=2\n&PersonExDescriptionInfos.2.PersonExDescription=Class of 2015\n&PersonExDescriptionInfos.3.PersonExDescriptionIndex=3\n&PersonExDescriptionInfos.3.PersonExDescription=3150808\n&<Common request parameters>",
+        "input": "https://iai.tencentcloudapi.com/?Action=CreatePerson\n&GroupId=ZhuYuanDormitoryNo1\n&PersonName=Junly\n&PersonId=2001\n&Gender=1\n&Url=http://test.image.myqcloud.com/testB.jpg\n&PersonExDescriptionInfos.0.PersonExDescriptionIndex=0\n&PersonExDescriptionInfos.0.PersonExDescription=School of Computer Science\n&PersonExDescriptionInfos.1.PersonExDescriptionIndex=1\n&PersonExDescriptionInfos.1.PersonExDescription=software engineering\n&PersonExDescriptionInfos.2.PersonExDescriptionIndex=2\n&PersonExDescriptionInfos.2.PersonExDescription=Level 15\n&PersonExDescriptionInfos.3.PersonExDescriptionIndex=3\n&PersonExDescriptionInfos.3.PersonExDescription=3150808\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"FaceId\": \"3454816969590585885\",\n        \"SimilarPersonId\": \"\",\n        \"FaceRect\": {\n            \"X\": 172,\n            \"Y\": 122,\n            \"Width\": 178,\n            \"Height\": 228\n        },\n        \"FaceModelVersion\": \"3.0\",\n        \"RequestId\": \"738a2fb0-bd4b-4cf6-9c91-18d50978d76b\"\n    }\n}",
-        "title": "Creating person"
+        "title": "Successful example of creating a person"
       },
       {
-        "document": "This example shows you how to create persons.",
-        "input": "https://iai.tencentcloudapi.com/?Action=CreatePerson\n&GroupId=TencentShenZhenEmployee\n&PersonName=evanliao\n&PersonId=1001\n&Gender=1\n&Url=http://test.image.myqcloud.com/testA.jpg\n&PersonExDescriptionInfos.0.PersonExDescriptionIndex=0\n&PersonExDescriptionInfos.0.PersonExDescription=Cloud & Smart Industries Group\n&PersonExDescriptionInfos.1.PersonExDescriptionIndex=1\n&PersonExDescriptionInfos.1.PersonExDescription=AI Product Center\n&PersonExDescriptionInfos.2.PersonExDescriptionIndex=2\n&PersonExDescriptionInfos.2.PersonExDescription=Face Recognition Products Group\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"FaceId\": \"3454816969590585881\",\n        \"SimilarPersonId\": \"\",\n        \"FaceRect\": {\n            \"X\": 172,\n            \"Y\": 122,\n            \"Width\": 178,\n            \"Height\": 228\n        },\n        \"FaceModelVersion\": \"3.0\",\n        \"RequestId\": \"269a6bc0-0016-47e8-a63d-517ce4052b0e\"\n    }\n}",
-        "title": "Creating person - 2"
-      },
-      {
-        "document": "This example shows the error that will occur if a person ID already exists.",
+        "document": "",
         "input": "https://iai.tencentcloudapi.com/?Action=CreatePerson\n&GroupId=ZhuYuanDormitoryNo1\n&PersonName=Cheng\n&PersonId=1001\n&Gender=2\n&Url=http://test.image.myqcloud.com/testD.jpg\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"76dedef7-af27-4a20-9064-c5ef3133926d\"\n    }\n}",
-        "title": "Sample error"
+        "output": "{\n    \"Response\": {\n        \"Error\": {\n            \"Code\": \"InvalidParameterValue.PersonIdAlreadyExist\",\n            \"Message\": \"The person ID already exists. Person IDs cannot be repeated.\"\n        },\n        \"RequestId\": \"76dedef7-af27-4a20-9064-c5ef3133926d\"\n    }\n}",
+        "title": "Duplicate ID error example when creating a person"
       },
       {
-        "document": "This example shows the error that will occur if a group ID does not exist.",
+        "document": "",
         "input": "https://iai.tencentcloudapi.com/?Action=CreatePerson\n&GroupId=ShenZhenCitizen\n&PersonName=Siccy\n&PersonId=3001\n&Gender=2\n&Url=http://test.image.myqcloud.com/testC.jpg\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"dfa512fc-fd07-4bf1-a292-cb497b620857\"\n    }\n}",
-        "title": "Sample error - 2"
+        "output": "{\n    \"Response\": {\n        \"Error\": {\n            \"Code\": \"InvalidParameterValue.GroupIdNotExist\",\n            \"Message\": \"The personnel database ID does not exist.\"\n        },\n        \"RequestId\": \"dfa512fc-fd07-4bf1-a292-cb497b620857\"\n    }\n}",
+        "title": "Error example for creating a person when the library ID does not exist"
       }
     ],
     "DeleteFace": [
@@ -353,21 +347,15 @@
     "SearchFaces": [
       {
         "document": "",
-        "input": "https://iai.tencentcloudapi.com/?Action=SearchFaces\n&Url=http://test.image.myqcloud.com/testA.jpg\n&MaxFaceNum=1\n&MinFaceSize=40\n&MaxPersonNum=5\n&GroupIds.0=TencentShenZhenEmployee\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Results\": [\n            {\n                \"RetCode\": 0,\n                \"Candidates\": [\n                    {\n                        \"PersonId\": \"1001\",\n                        \"FaceId\": \"2875093635484912302\",\n                        \"PersonName\": \"Jerry\",\n                        \"Gender\": 0,\n                        \"Score\": 100,\n                        \"PersonGroupInfos\": [\n                            {\n                                \"GroupId\": \"abc\",\n                                \"PersonExDescriptions\": [\n                                    \"description1\",\n                                    \"description2\"\n                                ]\n                            }\n                        ]\n                    }\n                ],\n                \"FaceRect\": {\n                    \"X\": 370,\n                    \"Y\": 46,\n                    \"Width\": 75,\n                    \"Height\": 75\n                }\n            }\n        ],\n        \"FaceNum\": 1,\n        \"FaceModelVersion\": \"3.0\",\n        \"RequestId\": \"57b42b73-b978-45b9-8095-8f50e9642d35\"\n    }\n}",
-        "title": "Searching for face"
-      },
-      {
-        "document": "`MaxFaceNum` cannot be above 10.",
         "input": "https://iai.tencentcloudapi.com/?Action=SearchFaces\n&Url=http://test.image.myqcloud.com/testA.jpg\n&MaxFaceNum=11\n&GroupIds.0=TencentShenZhenEmployee\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f04ba2f3-532c-4207-9caa-6e818ded7fb9\"\n    }\n}",
-        "title": "Sample error"
+        "output": "{\n    \"Response\": {\n        \"Error\": {\n            \"Code\": \"FailedOperation.SearchFacesExceed\",\n            \"Message\": \"The count of retrieved human faces exceeds the limit.\"\n        },\n        \"RequestId\": \"f04ba2f3-532c-4207-9caa-6e818ded7fb9\"\n    }\n}",
+        "title": "Face Search Failure Example"
       },
       {
-        "document": "This example shows the error that will occur if an image URL is incorrect.",
-        "input": "https://iai.tencentcloudapi.com/?Action=SearchFaces\n&Url=http://test.image.myqcloud.com/testA\n&GroupIds.0=TencentShenZhenEmployee\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"527ecffe-4c6a-47c9-8217-4dd2e3f018da\"\n    }\n}",
-        "title": "Sample error - 2"
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=SearchFaces\n&Url=http://test.image.myqcloud.com/testA.jpg\n&MaxFaceNum=1\n&MinFaceSize=40\n&MaxPersonNum=5\n&GroupIds.0=TencentShenZhenEmployee\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Results\": [\n            {\n                \"RetCode\": 0,\n                \"Candidates\": [\n                    {\n                        \"PersonId\": \"1001\",\n                        \"FaceId\": \"2875093635484912302\",\n                        \"PersonName\": \"Jerry\",\n                        \"Gender\": 0,\n                        \"Score\": 100,\n                        \"PersonGroupInfos\": [\n                            {\n                                \"GroupId\": \"TencentShenZhenEmployee\",\n                                \"PersonExDescriptions\": [\n                                    \"description1\",\n                                    \"description2\"\n                                ]\n                            }\n                        ]\n                    }\n                ],\n                \"FaceRect\": {\n                    \"X\": 370,\n                    \"Y\": 46,\n                    \"Width\": 75,\n                    \"Height\": 75\n                }\n            }\n        ],\n        \"FaceNum\": 1,\n        \"FaceModelVersion\": \"3.0\",\n        \"RequestId\": \"57b42b73-b978-45b9-8095-8f50e9642d35\"\n    }\n}",
+        "title": "Example of Successful Human Face Search"
       }
     ],
     "SearchFacesReturnsByGroup": [
@@ -381,15 +369,15 @@
     "SearchPersons": [
       {
         "document": "",
-        "input": "https://iai.tencentcloudapi.com/?Action=SearchPersons\n&Url=http://test.image.myqcloud.com/testA.jpg\n&MaxFaceNum=2\n&MinFaceSize=40\n&MaxPersonNum=3\n&GroupIds.0=TencentShenZhenEmployee\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Results\": [\n            {\n                \"RetCode\": 0,\n                \"Candidates\": [\n                    {\n                        \"PersonId\": \"person1\",\n                        \"FaceId\": \"\",\n                        \"Score\": 100,\n                        \"PersonName\": null,\n                        \"Gender\": null,\n                        \"PersonGroupInfos\": null\n                    },\n                    {\n                        \"PersonId\": \"person2\",\n                        \"FaceId\": \"\",\n                        \"Score\": 60,\n                        \"PersonName\": null,\n                        \"Gender\": null,\n                        \"PersonGroupInfos\": null\n                    },\n                    {\n                        \"PersonId\": \"person3\",\n                        \"FaceId\": \"\",\n                        \"Score\": 50,\n                        \"PersonName\": null,\n                        \"Gender\": null,\n                        \"PersonGroupInfos\": null\n                    }\n                ],\n                \"FaceRect\": {\n                    \"X\": 139,\n                    \"Y\": 59,\n                    \"Width\": 124,\n                    \"Height\": 162\n                }\n            },\n            {\n                \"RetCode\": 0,\n                \"Candidates\": [\n                    {\n                        \"PersonId\": \"person2\",\n                        \"FaceId\": \"\",\n                        \"Score\": 100,\n                        \"PersonName\": null,\n                        \"Gender\": null,\n                        \"PersonGroupInfos\": null\n                    },\n                    {\n                        \"PersonId\": \"person1\",\n                        \"FaceId\": \"\",\n                        \"Score\": 60,\n                        \"PersonName\": null,\n                        \"Gender\": null,\n                        \"PersonGroupInfos\": null\n                    },\n                    {\n                        \"PersonId\": \"person3\",\n                        \"FaceId\": \"\",\n                        \"Score\": 20,\n                        \"PersonName\": null,\n                        \"Gender\": null,\n                        \"PersonGroupInfos\": null\n                    }\n                ],\n                \"FaceRect\": {\n                    \"X\": 328,\n                    \"Y\": 70,\n                    \"Width\": 119,\n                    \"Height\": 162\n                }\n            }\n        ],\n        \"PersonNum\": 5,\n        \"FaceModelVersion\": \"3.0\",\n        \"RequestId\": \"c4608852-ff60-4a01-8dc3-367f6046baaf\"\n    }\n}",
-        "title": "Searching for person"
+        "input": "https://iai.tencentcloudapi.com/?Action=SearchPersons\n&Url=http://test.image.myqcloud.com/testA\n&GroupIds.0=TencentShenZhenEmployee\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Error\": {\n            \"Code\": \"FailedOperation.ImageDownloadError\",\n            \"Message\": \"Image download error.\"\n        },\n        \"RequestId\": \"527ecffe-4c6a-47c9-8217-4dd2e3f018da\"\n    }\n}",
+        "title": "Person Search Failure Example"
       },
       {
-        "document": "This example shows the error that will occur if an image URL is incorrect.",
-        "input": "https://iai.tencentcloudapi.com/?Action=SearchPersons\n&Url=http://test.image.myqcloud.com/testA\n&GroupIds.0=TencentShenZhenEmployee\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"527ecffe-4c6a-47c9-8217-4dd2e3f018da\"\n    }\n}",
-        "title": "Sample error"
+        "document": "",
+        "input": "https://iai.tencentcloudapi.com/?Action=SearchPersons\n&Url=http://test.image.myqcloud.com/testA.jpg\n&MaxFaceNum=2\n&MinFaceSize=40\n&MaxPersonNum=3\n&GroupIds.0=TencentShenZhenEmployee\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Results\": [\n            {\n                \"RetCode\": 0,\n                \"Candidates\": [\n                    {\n                        \"PersonId\": \"person1\",\n                        \"FaceId\": \"\",\n                        \"Score\": 100,\n                        \"PersonName\": null,\n                        \"Gender\": null,\n                        \"PersonGroupInfos\": null\n                    },\n                    {\n                        \"PersonId\": \"person2\",\n                        \"FaceId\": \"\",\n                        \"Score\": 60,\n                        \"PersonName\": null,\n                        \"Gender\": null,\n                        \"PersonGroupInfos\": null\n                    },\n                    {\n                        \"PersonId\": \"person3\",\n                        \"FaceId\": \"\",\n                        \"Score\": 50,\n                        \"PersonName\": null,\n                        \"Gender\": null,\n                        \"PersonGroupInfos\": null\n                    }\n                ],\n                \"FaceRect\": {\n                    \"X\": 139,\n                    \"Y\": 59,\n                    \"Width\": 124,\n                    \"Height\": 162\n                }\n            },\n            {\n                \"RetCode\": 0,\n                \"Candidates\": [\n                    {\n                        \"PersonId\": \"person2\",\n                        \"FaceId\": \"\",\n                        \"Score\": 100,\n                        \"PersonName\": null,\n                        \"Gender\": null,\n                        \"PersonGroupInfos\": null\n                    },\n                    {\n                        \"PersonId\": \"person1\",\n                        \"FaceId\": \"\",\n                        \"Score\": 60,\n                        \"PersonName\": null,\n                        \"Gender\": null,\n                        \"PersonGroupInfos\": null\n                    },\n                    {\n                        \"PersonId\": \"person3\",\n                        \"FaceId\": \"\",\n                        \"Score\": 20,\n                        \"PersonName\": null,\n                        \"Gender\": null,\n                        \"PersonGroupInfos\": null\n                    }\n                ],\n                \"FaceRect\": {\n                    \"X\": 328,\n                    \"Y\": 70,\n                    \"Width\": 119,\n                    \"Height\": 162\n                }\n            }\n        ],\n        \"PersonNum\": 5,\n        \"FaceModelVersion\": \"3.0\",\n        \"RequestId\": \"c4608852-ff60-4a01-8dc3-367f6046baaf\"\n    }\n}",
+        "title": "Person Search Successful Example"
       }
     ],
     "SearchPersonsReturnsByGroup": [

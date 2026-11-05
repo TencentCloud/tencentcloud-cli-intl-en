@@ -454,12 +454,36 @@
         "title": "View Operation Log List"
       }
     ],
+    "DescribeAuditLogMeta": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAuditLogMeta\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Actions\": [\n            {\n                \"Key\": \"create\",\n                \"Name\": \"Create\"\n            }\n        ],\n        \"BizObjects\": [\n            {\n                \"Key\": \"app\",\n                \"Name\": \"Application\"\n            }\n        ],\n        \"RequestId\": \"a398a630-d061-4dbe-a353-2e4943d11182\"\n    }\n}",
+        "title": "Querying Audit Log Meta-information"
+      }
+    ],
     "DescribeCategoryList": [
       {
         "document": "Query the classification list",
         "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCategoryList\n<Common request parameters>\n\n{\n    \"KbId\": \"2082355981171975296\",\n    \"FilterList\": [\n        {\n            \"Name\": \"CategoryType\",\n            \"Operator\": 0,\n            \"ValueList\": [\n                \"1\"\n            ]\n        }\n    ],\n    \"PageNumber\": 0,\n    \"PageSize\": 20\n}",
         "output": "{\n    \"Response\": {\n        \"CategoryList\": [\n            {\n                \"CanAdd\": false,\n                \"CanDelete\": false,\n                \"CanEdit\": false,\n                \"CategoryId\": \"2082355982908901632\",\n                \"ChildList\": [],\n                \"ItemCount\": 0,\n                \"Name\": \"Unclassified\"\n            }\n        ],\n        \"RequestId\": \"b8e226f9-8a05-4b6a-b901-9ce41fedc989\"\n    }\n}",
         "title": "Query the classification list"
+      }
+    ],
+    "DescribeChannel": [
+      {
+        "document": "Query channel information",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeChannel\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"7abdf1cb-2a77-4284-b4c7-67b059dcd34f\"\n    }\n}",
+        "title": "Querying channel information"
+      }
+    ],
+    "DescribeChannelList": [
+      {
+        "document": "Query the channel list",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeChannelList\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"bc4a1046-fbac-49ce-9812-6e15701b200f\"\n    }\n}",
+        "title": "Query the channel list"
       }
     ],
     "DescribeConcurrencyLimitDetailList": [
@@ -486,6 +510,14 @@
         "title": "Query the conflict list"
       }
     ],
+    "DescribeConsumptionDetailList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeConsumptionDetailList\n<Common request parameters>\n\n{\n    \"TimeRange\": {\n        \"EndTime\": \"1786550699\",\n        \"StartTime\": \"1786550399\"\n    },\n    \"ViewScope\": {\n        \"ViewType\": 1,\n        \"ScopeId\": \"default_space\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"ConsumptionDetailList\": [\n            {\n                \"Classification\": {\n                    \"ConsumptionScene\": \"chat\",\n                    \"ConsumptionTarget\": \"hunyuan-turbo\",\n                    \"ConsumptionType\": \"model\",\n\"PackageName\": \"Enterprise standard package\"\n                },\n                \"EventTime\": \"1754956800\",\n                \"MetricSourceType\": 1,\n\"Name\": \"Smart Customer Service Application\",\n\"SpaceName\": \"Product R&D space\"\n                \"Usage\": {\n                    \"ConsumptionPU\": 0.00897,\n                    \"Usage\": 8970,\n                    \"UsageUnit\": 0\n                },\n\"UserName\": \"Zhang San\"\n            }\n        ],\n        \"TotalCount\": \"328\",\n        \"RequestId\": \"90431410-173a-4e44-b79e-d77a399da29b\"\n    }\n}",
+        "title": "DescribeConsumptionDetailList"
+      }
+    ],
     "DescribeConversation": [
       {
         "document": "",
@@ -508,6 +540,38 @@
         "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeConversationMessageList\n<Common request parameters>\n\n{\n    \"ConversationId\": \"27fe97d2-b9a7-457f-b2a2-73dc901f2959\",\n    \"Type\": 2,\n    \"RecordQueryDirection\": 1\n}",
         "output": "{\n    \"Response\": {\n        \"FirstRecordId\": \"req_65faffa4-0d6f-402d-8511-60eb472880ae\",\n        \"HasMoreAfter\": false,\n        \"HasMoreBefore\": false,\n        \"LastRecordId\": \"rcd_70b72a39-b7fc-405f-a0b9-32f786a3effc\",\n        \"MessageList\": [\n            {\n                \"ContentList\": [\n                    {\n                        \"CustomParamList\": [],\n                        \"OptionCardList\": [],\n                        \"QuoteInfoList\": [],\n                        \"ReferenceList\": [],\n                        \"TaskList\": [],\n                        \"Tasks\": [],\n\"Text\": \"Hello\",\n                        \"Type\": \"text\"\n                    }\n                ],\n                \"ConversationId\": \"27fe97d2-b9a7-457f-b2a2-73dc901f2959\",\n                \"ExtraInfo\": {\n                    \"AgentIcon\": \"\",\n                    \"AgentName\": \"\",\n                    \"CanFeedback\": false,\n                    \"CanRate\": false,\n                    \"Elapsed\": \"0\",\n                    \"EndTime\": \"1785296272074\",\n                    \"HasRead\": true,\n                    \"IsModelGenerated\": false,\n                    \"IsSubAgent\": false,\n                    \"IsTeammate\": false,\n                    \"ParentMessageId\": \"\",\n                    \"ReasonList\": [],\n                    \"RelatedRecordId\": \"rcd_65faffa4-0d6f-402d-8511-60eb472880ae\",\n                    \"ReplyMethod\": 0,\n                    \"Score\": 0,\n                    \"StartTime\": \"1785296270837\",\n                    \"SubAgentRunId\": \"\",\n                    \"SubAgentThreadId\": \"\",\n                    \"TeammateName\": \"\",\n                    \"ToolIcon\": \"\",\n                    \"ToolName\": \"\",\n                    \"TraceId\": \"d6cb723baa9549a79db0c40e908720f2\"\n                },\n                \"Icon\": \"\",\n                \"MessageId\": \"user_65faffa4-0d6f-402d-8511-60eb472880ae_turn_65faffa4-0d6f-402d-8511-60eb472880ae_content\",\n                \"Name\": \"question\",\n                \"RecordId\": \"req_65faffa4-0d6f-402d-8511-60eb472880ae\",\n                \"Role\": \"user\",\n                \"Status\": \"success\",\n\"StatusDesc\": \"Reply completed\"\n\"Title\": \"User question\",\n                \"Type\": \"question\"\n            }\n        ],\n        \"RecordSummaryList\": [\n            {\n                \"ErrorInfo\": null,\n                \"RecordId\": \"rcd_65faffa4-0d6f-402d-8511-60eb472880ae\",\n                \"RelatedRecordId\": \"req_65faffa4-0d6f-402d-8511-60eb472880ae\",\n                \"Status\": \"success\",\n                \"TimeUsage\": {\n                    \"Elapsed\": \"3139\",\n                    \"FirstTokenCost\": \"3397\",\n                    \"TotalCost\": \"3139\"\n                },\n                \"TokenUsage\": {\n                    \"CachedTokens\": \"0\",\n                    \"InputTokens\": \"17190\",\n                    \"OutputTokens\": \"29\",\n                    \"ReasoningTokens\": \"20\",\n                    \"TotalTokens\": \"17219\"\n                }\n            }\n        ],\n        \"ResetInfo\": {\n            \"ResetThroughRecordId\": \"\",\n            \"ResetTime\": \"0\"\n        },\n        \"RequestId\": \"a36c0228-248b-4b38-8e5b-396aaf89ab41\"\n    }\n}",
         "title": "Query session historical message records"
+      }
+    ],
+    "DescribeDoc": [
+      {
+        "document": "Query document details",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDoc\n<Common request parameters>\n\n{\n    \"DocId\": \"2067622575842400832\",\n    \"KbId\": \"2067622575842400832\"\n}",
+        "output": "{\n    \"Response\": {\n        \"DocLink\": {\n            \"CosUrl\": \"https://cos.example.com/kb/50001/billing.pdf?sign=xxx\",\n            \"ExternalLink\": {\n                \"ExternalUrl\": \"https://example.com/docs/billing.html\",\n                \"ReplaceOriginEnabled\": false\n            }\n        },\n        \"ParseConfig\": {\n            \"ContentFilter\": {\n                \"ImageMinHeight\": 64,\n                \"ImageMinWidth\": 64,\n                \"ImageNamePatterns\": \"icon;logo;banner.*\"\n            },\n            \"SplitRule\": \"chapter\"\n        },\n        \"Summary\": {\n            \"CategoryPath\": {\n                \"CategoryId\": \"1002\",\n                \"CategoryIdPath\": [\n                    \"1001\"\n                ],\n                \"CategoryNamePath\": [\nProduct inquiry\n                ]\n            },\n            \"DocId\": \"50001\",\n            \"KnowledgeScope\": {\n                \"EffectiveDomain\": 4,\n                \"LabelRefList\": [\n                    {\n                        \"LabelId\": \"30001\",\n\"LabelName\": \"Consultation intent\",\n                        \"LabelTermIdList\": [\n                            \"1\"\n                        ],\n                        \"LabelTermList\": [\nPrice.\n                        ]\n                    }\n                ]\n            },\n            \"Lifecycle\": {\n                \"CreateTime\": \"1735689600\",\n                \"ExpirationPolicy\": {\n                    \"EffectivePeriod\": {\n                        \"EndTime\": \"0\",\n                        \"StartTime\": \"1735689600\"\n                    }\n                },\n                \"Status\": 8,\n\"StatusDesc\": \"Import complete\",\n                \"StatusMessage\": \"\",\n                \"UpdateTime\": \"1736294400\"\n            },\n            \"Metadata\": {\n                \"DocCharCount\": \"15320\",\n\"FileName\": \"Billing description.pdf\",\n                \"FileSize\": \"204800\",\n                \"FileType\": \"pdf\",\n                \"RefFieldNameList\": [\nProduct consultation/Billing consultation\n                ],\n\"SourceDesc\": \"Local upload\"\n                \"SourceType\": 1\n            },\n            \"OperatorInfo\": {\n                \"Modifier\": {\n                    \"UserId\": \"u_10001\",\n\"UserName\": \"Zhang San\"\n                },\n                \"Permission\": {\n                    \"CanDelete\": true,\n                    \"CanEdit\": true,\n                    \"CanRestart\": true,\n                    \"CanRetry\": false\n                }\n            },\n            \"TaskStatus\": {\n                \"CompletedTaskTypeList\": [\n                    1\n                ],\n                \"OngoingTaskTypeList\": []\n            }\n        },\n        \"Switch\": {\n            \"DownloadEnabled\": true,\n            \"ReferEnabled\": true\n        },\n        \"UpdatePeriod\": {\n            \"Enabled\": true,\n            \"PeriodHour\": 24\n        },\n        \"UserAccessConfig\": {\n            \"CustomerKnowledgeId\": \"cust-doc-abc-001\",\n            \"IsPublic\": true\n        },\n        \"RequestId\": \"8d87d655-d6d6-45ca-9034-d37d3b003249\"\n    }\n}",
+        "title": "Query document details"
+      }
+    ],
+    "DescribeDocSummaryList": [
+      {
+        "document": "Query the abstract list of a document",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDocSummaryList\n<Common request parameters>\n\n{\n    \"KbId\": \"2063937671963228544\",\n    \"SummaryListSwitch\": {\n        \"ShowMetadataEnabled\": true\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"DocList\": [\n            {\n                \"CategoryPath\": {\n                    \"CategoryId\": \"2063937672853638592\",\n                    \"CategoryIdPath\": [],\n                    \"CategoryNamePath\": []\n                },\n                \"DocId\": \"2095797834220731520\",\n                \"KnowledgeScope\": {\n                    \"EffectiveDomain\": 4,\n                    \"LabelRefList\": []\n                },\n                \"Lifecycle\": {\n                    \"CreateTime\": \"1788512116\",\n                    \"ExpirationPolicy\": null,\n                    \"Status\": 8,\n\"StatusDesc\": \"Import complete\"\n                    \"StatusMessage\": \"\",\n                    \"UpdateTime\": \"1788935064\"\n                },\n                \"Metadata\": {\n                    \"DocCharCount\": \"45120\",\n\"FileName\": \"PICC Health Xiyue Junxin Internet Critical Illness Insurance (2022 Edition)_1721880984_1_copy.doc\",\n                    \"FileSize\": \"435953\",\n                    \"FileType\": \"doc\",\n                    \"RefFieldNameList\": [],\n\"SourceDesc\": \"Local document\",\n                    \"SourceType\": 0\n                },\n                \"OperatorInfo\": {\n                    \"Modifier\": {\n                        \"UserId\": \"1747547736783716352\",\n\"UserName\": \"coco test 11\"\n                    },\n                    \"Permission\": {\n                        \"CanDelete\": true,\n                        \"CanEdit\": true,\n                        \"CanRestart\": true,\n                        \"CanRetry\": false\n                    }\n                },\n                \"TaskStatus\": null\n            }\n        ],\n        \"TotalCount\": 22,\n        \"RequestId\": \"66c89981-2fd7-4eab-a598-4610960b9662\"\n    }\n}",
+        "title": "Query the abstract list of a document"
+      }
+    ],
+    "DescribeKB": [
+      {
+        "document": "Query knowledge base details",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeKB\n<Common request parameters>\n\n{\n    \"KbId\": \"2097668735455299264\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Summary\": {\n            \"KbId\": \"2097668735455299264\",\n            \"Name\": \"Managed es Share\",\n            \"Description\": \"\",\n            \"KbType\": 2,\n            \"SharedSubType\": 0,\n            \"DocCount\": 0,\n            \"IsExceeded\": false,\n            \"CreateTime\": \"1788958174\",\n            \"UpdateTime\": \"1788958174\",\n            \"ProcessingFlagList\": [],\n            \"AppList\": [],\n            \"LatestOperator\": null,\n            \"Creator\": null\n        },\n        \"ModelConfig\": {\n            \"EmbeddingModel\": \"Youtu/youtu-embedding-llm\",\n            \"QaExtractModel\": \"Deepseek/deepseek-v4-pro\",\n            \"SchemaModel\": \"Deepseek/deepseek-v4-pro\"\n        },\n        \"EsConfig\": {\n            \"StorageType\": 2,\n            \"InstanceId\": \"es-jirwzied\",\n            \"UserName\": \"elastic\",\n            \"EncryptedPassword\": \"\",\n            \"CanModify\": true\n        },\n        \"CapacityInfo\": {\n            \"MaxCharSize\": \"0\",\n            \"UsedCharSize\": \"0\",\n            \"OverCharSize\": \"0\"\n        },\n        \"Owner\": {\n            \"UserId\": \"14337\",\n            \"UserName\": \"\"\n        },\n        \"AppIdList\": [],\n        \"RequestId\": \"b90eb2fd-e8ff-44dc-aa88-4f33c933ded6\"\n    }\n}",
+        "title": "Query knowledge base details"
+      }
+    ],
+    "DescribeKBSummaryList": [
+      {
+        "document": "Query the knowledge base list",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeKBSummaryList\n<Common request parameters>\n\n{\n    \"SpaceId\": \"default_space\",\n    \"PageNumber\": 1,\n    \"PageSize\": 100,\n    \"Query\": \"Shared knowledge base_Document QA PG retrieval enabled_adp_qta_ZRWBJY\"\n}",
+        "output": "{\n    \"Response\": {\n        \"KbList\": [],\n        \"TotalCount\": 0,\n        \"RequestId\": \"c03c9513-4994-4feb-8f44-d89efaaef369\"\n    }\n}",
+        "title": "Query the knowledge base list"
       }
     ],
     "DescribeLabel": [
@@ -534,6 +598,14 @@
         "title": "DescribeLatestRelease"
       }
     ],
+    "DescribeMetricOverviewList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMetricOverviewList\n<Common request parameters>\n\n{\n    \"ResourceType\": 1,\n    \"TimeRange\": {\n        \"EndTime\": \"1786463999\",\n        \"StartTime\": \"1786377600\"\n    },\n    \"ViewScope\": {\n        \"ViewType\": 2,\n        \"ScopeId\": \"default_space\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"MetricList\": [\n            {\n                \"Key\": \"total_calls\",\n                \"Mom\": 0.15,\n                \"Unit\": 2,\n                \"Value\": 12580\n            }\n        ],\n        \"TotalCount\": \"12\",\n        \"RequestId\": \"72c3b5b9-9c94-4fb3-9073-498bc50d0981\"\n    }\n}",
+        "title": "DescribeMetricOverviewList"
+      }
+    ],
     "DescribeModelList": [
       {
         "document": "",
@@ -548,6 +620,14 @@
         "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMsgRecordCategoryList\n<Common request parameters>\n\n{\n    \"AppId\": \"2062456131215815616\"\n}",
         "output": "{\n    \"Response\": {\n        \"CategoryList\": [\n            {\n                \"CategoryId\": \"0\",\n                \"Children\": [\n                    {\n                        \"CategoryId\": \"2087095266081654784\",\n                        \"Children\": [\n                            {\n                                \"CategoryId\": \"2087095343458174976\",\n                                \"Children\": [],\n\"Name\": \"WeChat Official Account Channel\",\n                                \"Permission\": {\n                                    \"CanAdd\": true,\n                                    \"CanDelete\": true,\n                                    \"CanEdit\": true\n                                },\n                                \"TotalCount\": \"0\"\n                            }\n                        ],\n\"Name\": \"Marketing\",\n                        \"Permission\": {\n                            \"CanAdd\": true,\n                            \"CanDelete\": true,\n                            \"CanEdit\": true\n                        },\n                        \"TotalCount\": \"0\"\n                    }\n                ],\n\"Name\": \"All categories\"\n                \"Permission\": {\n                    \"CanAdd\": true,\n                    \"CanDelete\": false,\n                    \"CanEdit\": false\n                },\n                \"TotalCount\": \"61\"\n            }\n        ],\n        \"RequestId\": \"eae0d14b-8c50-46df-a791-0f449de920a3\"\n    }\n}",
         "title": "Get all message categories under an application"
+      }
+    ],
+    "DescribeMsgRecordList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeMsgRecordList\n<Common request parameters>\n\n{\n    \"AppId\": \"2087429578337166592\",\n    \"FilterList\": [\n        {\n            \"Name\": \"StartTime\",\n            \"ValueList\": [\n                \"1786118400\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"HasMore\": false,\n        \"MsgRecordList\": [\n            {\n\"Answer\": \"# \\\"Defying the Heavens: Path to Immortality\\\"\\n\\n## Chapter One: The Useless One Defies Fate\\n\\n---\\n\\nDeep within the vast mountain range, clouds and mist rolled like an ocean.\\n\\nOutside Fallen Cloud City, in a run-down woodshed, the young man Lin Yuan sat cross-legged, eyes tightly shut, veins bulging on his forehead, beads of sweat rolling down his cheeks.\\n\\n\\\"Failed again.\\\"\\n\\nHe slowly opened his eyes, bitterness filling his gaze. Sixteen years old, practicing\",\n                \"AppId\": \"2087429578337166592\",\n                \"CategoryId\": \"0\",\n                \"CreateTime\": \"1786526009\",\n\"Intent\": \"other issues\"\n                \"IntentCategory\": \"default\",\n                \"IsSmart\": false,\n\"Question\": \"Write a cultivation novel for me without calling any tools\"\n                \"RecordId\": \"Gwx_20260812_171328_602_BAZ2vswt\",\n                \"ReplyMethod\": 10,\n                \"Result\": {\n                    \"CallResult\": 3,\n                    \"CustomerVariable\": \"**\",\n                    \"FailReason\": \"0\",\n                    \"FirstTokenLatency\": 2685,\n                    \"InputToken\": 1991,\n                    \"OutputToken\": 44,\n                    \"TotalToken\": 2035,\n                    \"TotalTokenLatency\": 6444\n                },\n                \"Score\": 0,\n                \"SessionId\": \"c0a10dbb-b9fa-4aae-89fd-7f0d44a8eec0\",\n                \"Source\": {\n                    \"ChannelType\": 2,\n                    \"FromId\": \"1319\",\n                    \"FromType\": 2,\n                    \"UserAvatar\": \"https://qidian-qbot-1251316161.cos.ap-guangzhou.myqcloud.com/public/avatar_sheep01.png\",\n                    \"UserId\": \"1932008810606356480\",\n                    \"UserNickname\": \"ty_02@tt.com\"\n                },\n                \"TraceId\": \"34e89fa8029842ebaaac03cd31192d23\"\n            }\n        ],\n        \"NextCursor\": \"{\\\"cursor_time\\\":\\\"2026-08-12 14:43:24\\\",\\\"skipped\\\":6}\",\n        \"PrevCursor\": \"{\\\"cursor_time\\\":\\\"2026-08-12 17:13:29\\\",\\\"skipped\\\":0}\",\n        \"TotalCount\": \"6\",\n        \"RequestId\": \"b3eedba2-e542-4e7e-aa84-0b2d46f8ec1f\"\n    }\n}",
+        "title": "Use Case 1"
       }
     ],
     "DescribeNodeBatchRun": [
@@ -614,12 +694,28 @@
         "title": "DescribeReleaseSummary"
       }
     ],
+    "DescribeResourceSummary": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeResourceSummary\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"AddOnPackage\": {\n            \"AddOnTotal\": 0,\n            \"AddOnUsage\": 0,\n            \"ConcurrencyStatus\": 1,\n            \"ExclusiveComputeUnit\": 0,\n            \"ExclusiveComputeUnitStatus\": 1,\n            \"ExclusiveConcurrency\": 0,\n            \"ExclusiveTpm\": 0,\n            \"ExclusiveTpmStatus\": 1,\n            \"ResourceStatus\": 1\n        },\n        \"ResourcePackage\": {\n            \"KnowledgeCapacity\": 0,\n            \"KnowledgeUsage\": 0,\n            \"PackageType\": 2,\n            \"ResourceStatus\": 3,\n            \"ResourceTotal\": 150000,\n            \"ResourceUsage\": 150000\n        },\n        \"RequestId\": \"556a8474-d04f-4d1d-a660-982d99a8f05c\"\n    }\n}",
+        "title": "Obtain resource package and value-added package digest information"
+      }
+    ],
     "DescribeSkillCategoryList": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSkillCategoryList\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"CategoryList\": [\n            {\n                \"CategoryKey\": \"doc\",\n                \"CategoryName\": \"Document\"\n            }\n        ],\n        \"RequestId\": \"18793f85-8312-42cb-8c1c-b1b03bc91c4c\"\n    }\n}",
         "title": "Query skill category key"
+      }
+    ],
+    "DescribeSkillDetail": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSkillDetail\n<Common request parameters>\n\n{\n    \"SkillId\": \"9e488e0c-ee1f-4b1c-b745-0e0e6f97e8c3\",\n    \"SpaceId\": \"default_space\",\n    \"VersionFilterList\": [\n        {\n            \"Name\": \"Perspective\",\n            \"ValueList\": [\n                \"USER\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"SkillDetail\": {\n            \"ReferenceSummaryList\": [],\n            \"SkillSummary\": {\n                \"ClassificationInfo\": {\n                    \"BillingType\": 0,\n                    \"BuiltinSource\": 0,\n                    \"CategoryKey\": \"\",\n                    \"CreateType\": 1,\n                    \"ProviderType\": 3,\n                    \"SourceLink\": \"\"\n                },\n                \"CurrentVersionInfo\": {\n                    \"AnalysisInfo\": {\n                        \"AnalysisStatus\": 2,\n                        \"RiskDescription\": \"\",\n                        \"RiskLevel\": 0,\n                        \"SecurityReportUrl\": \"https://tix.qq.com/search/skill?keyword=e8ef636d1c007ef8f26c7d291d5a1b57\"\n                    },\n                    \"Version\": \"1.0.5\",\n                    \"VersionId\": \"9cc26b2f-e364-41e6-b7d0-26a8bc19b944\",\n                    \"VersionStatus\": 0\n                },\n                \"IsFavorite\": false,\n                \"NoticeList\": [],\n                \"PermissionIdList\": [\n                    \"adpSkillsCenterEdit\"\n                ],\n                \"Profile\": {\n                    \"CreateTime\": \"1779071255\",\n                    \"Creator\": \"channel@qq.com\",\n\"Description\": \"Use this skill when the user asks for time, greeting, ping the greeting bot, or explicitly mentions \\\"time-greeting\\\". Its purpose is to return a greeting message with a version number, current time, period greeting, and fixed signature line to verify the skill publishing process.\",\n\"DisplayDescription\": \"Automatically collect 1688 products and upload them to the OZON platform\"\n\"DisplayName\": \"time-greeting-update-high risk\",\n                    \"IconUrl\": \"https://qidian-qbot-1251316161.cos.ap-guangzhou.myqcloud.com/public/adp/skill/skill_icon/skill_default.jpg\",\n                    \"Name\": \"time-greeting\",\n                    \"UpdateTime\": \"1780902492\"\n                },\n                \"ShareList\": [\n                    {\n                        \"ApprovalId\": \"2058846163546755776\",\n                        \"ShareSkillId\": \"9e488e0c-ee1f-4b1c-b745-0e0e6f97e8c3_shared\",\n                        \"ShareVersion\": \"1.0.1\",\n                        \"ShareVersionId\": \"274d8c10-85c0-41df-bbb5-8bfa93553a85\",\n                        \"SkillId\": \"9e488e0c-ee1f-4b1c-b745-0e0e6f97e8c3\",\n                        \"Status\": 1\n                    }\n                ],\n                \"SkillId\": \"9e488e0c-ee1f-4b1c-b745-0e0e6f97e8c3\",\n                \"SkillStatus\": 3\n            },\n            \"VersionList\": [\n                {\n                    \"AnalysisInfo\": {\n                        \"AnalysisStatus\": 2,\n                        \"RiskDescription\": \"\",\n                        \"RiskLevel\": 0,\n                        \"SecurityReportUrl\": \"https://tix.qq.com/search/skill?keyword=e8ef636d1c007ef8f26c7d291d5a1b57\"\n                    },\n                    \"Version\": \"1.0.5\",\n                    \"VersionId\": \"9cc26b2f-e364-41e6-b7d0-26a8bc19b944\",\n                    \"VersionStatus\": 3\n                }\n            ]\n        },\n        \"RequestId\": \"06102b66-8b7f-4e2f-92fd-548bf447e60c\"\n    }\n}",
+        "title": "DescribeSkillDetail"
       }
     ],
     "DescribeSkillReferenceList": [
@@ -654,6 +750,14 @@
         "title": "DescribeSystemVariableList"
       }
     ],
+    "DescribeUsageDetailList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeUsageDetailList\n<Common request parameters>\n\n{\n    \"ResourceType\": 1,\n    \"TimeRange\": {\n        \"EndTime\": \"1786463999\",\n        \"StartTime\": \"1786377600\"\n    },\n    \"ViewScope\": {\n        \"ViewType\": 2,\n        \"ScopeId\": \"default_space\"\n    },\n    \"PageNumber\": 0,\n    \"PageSize\": 10\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": \"12580\",\n        \"UsageDetailList\": [\n            {\n                \"CallSource\": {\n                    \"SubjectId\": \"10023456\",\n                    \"SubjectName\": \"Smart Customer Service Application\",\n                    \"SubjectType\": 1\n                },\n                \"DosageId\": \"dosage_9988776655\",\n                \"EventTime\": \"1754956800\",\n                \"Model\": {\n                    \"CallType\": \"chat\",\n                    \"IsDefaultKB\": false,\n                    \"ModelName\": \"hunyuan-turbo\",\n                    \"ResourceConsumptionList\": [\n                        {\n                            \"Label\": \"\",\n                            \"Unit\": 0,\n                            \"Value\": 8970\n                        }\n                    ]\n                },\n                \"TraceId\": \"trace_abc123def456\",\n                \"UserId\": \"user_001\"\n            }\n        ],\n        \"RequestId\": \"4cfbc421-7c7f-47c8-ac7e-7e3c5eb92ac1\"\n    }\n}",
+        "title": "DescribeUsageDetailList"
+      }
+    ],
     "DescribeUsageSummaryList": [
       {
         "document": "",
@@ -686,12 +790,44 @@
         "title": "Query workflow running instance details"
       }
     ],
+    "DescribeWorkflowRunSummaryList": [
+      {
+        "document": "Query the list of workflow running instances",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeWorkflowRunSummaryList\n<Common request parameters>\n\n{\n    \"AppId\": \"2075134221221714816\",\n    \"PageSize\": 15,\n    \"PageNumber\": 1,\n    \"Domain\": 1,\n    \"FilterList\": [\n        {\n            \"Name\": \"WorkflowRunId\",\n            \"ValueList\": [\n                \"wfr-cd6a2j03k5j4\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"WorkflowRunSummaryList\": [\n            {\n                \"Domain\": 1,\n                \"WorkflowRunProfile\": {\n                    \"AppId\": \"2075134221221714816\",\n\"Name\": \"Buy a vehicle\"\n                    \"WorkflowId\": \"f5d9e1eb-d6c3-4529-93b1-f041ea3347cc\",\n                    \"WorkflowRunId\": \"wfr-cd6a2j03k5j4\"\n                },\n                \"WorkflowRunResult\": {\n                    \"FailMessage\": \"\",\n                    \"Status\": 3,\n                    \"TotalTokens\": 1647\n                },\n                \"WorkflowRunTime\": {\n                    \"CreateTime\": \"1783932410370\",\n                    \"EndTime\": \"1783932471294\",\n                    \"StartTime\": \"1783932410478\"\n                }\n            }\n        ],\n        \"RequestId\": \"30fcc9bd-5239-47ce-847a-5cdedf7b50ab\"\n    }\n}",
+        "title": "Query the list of workflow running instances"
+      }
+    ],
     "ExportQA": [
       {
         "document": "Asynchronously export QA",
         "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ExportQA\n<Common request parameters>\n\n{\n    \"FilterList\": [\n        {\n            \"Name\": \"Status\",\n            \"ValueList\": [\n                \"3\"\n            ]\n        }\n    ],\n    \"KbId\": \"2068959268369066176\"\n}",
         "output": "{\n    \"Response\": {\n        \"ExportTaskId\": \"223780\",\n        \"RequestId\": \"159e3177-7072-477f-9a18-5486b5074aca\"\n    }\n}",
         "title": "Asynchronously Export QA"
+      }
+    ],
+    "FavoritePlugin": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: FavoritePlugin\n<Common request parameters>\n\n{\n    \"PluginId\": \"adcda186-813b-4d70-bb3f-538a522fe4a5\",\n    \"SpaceId\": \"default_space\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"7d8b31e4-c42e-46e4-adb4-8567ed2d885a\"\n    }\n}",
+        "title": "Favorite a Plug-in"
+      }
+    ],
+    "FavoriteSkill": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: FavoriteSkill\n<Common request parameters>\n\n{\n    \"SkillId\": \"8988*******************-ca5d3bdd0ffc\",\n    \"SpaceId\": \"default_space\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c3b1e939-c42f-44fd-b4ef-2941833feba9\"\n    }\n}",
+        "title": "Favorite a skill"
+      }
+    ],
+    "ImportDocList": [
+      {
+        "document": "This example shows you how to import documents in batches.",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ImportDocList\n<Common request parameters>\n\n{\n    \"DocList\": [\n        {\n            \"FileId\": \"2079463384883903552\"\n        }\n    ],\n    \"KbId\": \"2079089760838256704\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ResultList\": [\n            {\n                \"Id\": \"2079876913604708608\",\n                \"Reason\": \"\",\n                \"Succeeded\": true\n            }\n        ],\n        \"RequestId\": \"33ac60aa-d82f-4f2c-9f0b-71913caaf740\"\n    }\n}",
+        "title": "Import Documents in Batches"
       }
     ],
     "ModifyAgent": [
@@ -718,12 +854,44 @@
         "title": "Success"
       }
     ],
+    "ModifyCategory": [
+      {
+        "document": "Modify category",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyCategory\n<Common request parameters>\n\n{\n    \"CategoryId\": \"2097580091993756672\",\n    \"CategoryType\": 1,\n    \"Fields\": {\n        \"Name\": \"2423432443242\"\n    },\n    \"KbId\": \"2092085032339506432\",\n    \"UpdateMask\": {\n        \"Paths\": [\n            \"Name\"\n        ]\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c034503c-b9cb-461c-8b1c-c0bf5d134591\"\n    }\n}",
+        "title": "Modify a Category"
+      }
+    ],
+    "ModifyChannel": [
+      {
+        "document": "Modify channel information",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyChannel\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eed79ed8-edfa-430e-9956-f26c0b385d97\"\n    }\n}",
+        "title": "Modify channel information"
+      }
+    ],
+    "ModifyConflictQA": [
+      {
+        "document": "Modify conflict",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyConflictQA\n<Common request parameters>\n\n{\n    \"ConflictGroupId\": \"2097996818891709760\",\n    \"KbId\": \"2097994659744810688\",\n    \"Resolution\": 2\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b49696b7-1af1-485d-8e3c-2f64142a6be2\"\n    }\n}",
+        "title": "Modify Conflict"
+      }
+    ],
     "ModifyConversation": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyConversation\n<Common request parameters>\n\n{\n    \"Type\": 1,\n    \"AppId\": \"205***********75456\",\n    \"ConversationId\": \"e9261687-****-*********-1980aedad3f2\",\n    \"Title\": \"Search for the principal of Shenzhen University\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"33d1dfd7-b8fd-4487-8edb-f2f635b3d895\"\n    }\n}",
         "title": "Modify a Session Heading"
+      }
+    ],
+    "ModifyDoc": [
+      {
+        "document": "Modify a Single Document",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDoc\n<Common request parameters>\n\n{\n    \"DocId\": \"2067623425823338880\",\n    \"Fields\": {\n        \"Name\": \"Lungfish rename111.txt\"\n    },\n    \"KbId\": \"2067622575842400832\",\n    \"UpdateMask\": {\n        \"Paths\": [\n            \"Name\"\n        ]\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e4e631fb-298b-440b-8a55-4b08691a10a3\"\n    }\n}",
+        "title": "Modify a Single Document"
       }
     ],
     "ModifyDocList": [
@@ -750,6 +918,22 @@
         "title": "Modify a tag"
       }
     ],
+    "ModifyMsgRecordCategory": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyMsgRecordCategory\n<Common request parameters>\n\n{\n    \"AppId\": \"2062456131215815616\",\n    \"CategoryId\": \"2087100220301236928\",\n    \"Name\": \"Electronic product class usage consultation\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1533ac3d-173a-4f6d-a3ca-3f3a15d68ee3\"\n    }\n}",
+        "title": "Modify message categorization"
+      }
+    ],
+    "ModifyPlugin": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyPlugin\n<Common request parameters>\n\n{\n    \"PluginId\": \"6ec78f78-23fb-49db-8e53-76921e1e3918\",\n    \"PluginVersion\": 4,\n    \"Profile\": {\n        \"Description\": \"Weather plug-in test\",\n        \"IconUrl\": \"https://qidian-qbot-1251316161.cos.ap-guangzhou.myqcloud.com/public/plugin_files/%E6%8F%92%E4%BB%B6-%E9%BB%98%E8%AE%A4.png\",\n        \"Name\": \"CAPI-Test-modify\",\n        \"PluginClass\": 0,\n        \"PluginKind\": 2\n    },\n    \"Config\": {\n        \"MCPPluginConfig\": {\n            \"MCPServerUrl\": \"https://******************************.com/sse\",\n            \"MCPTransport\": 0,\n            \"PluginHeader\": [\n                {\n                    \"IsGlobalHidden\": false,\n                    \"IsRequired\": true,\n                    \"Name\": \"Authorization\",\n                    \"Value\": \"Bearer ************************************************\"\n                }\n            ],\n            \"PluginQuery\": [],\n            \"SSEReadTimeout\": 300,\n            \"Timeout\": 15,\n            \"AuthConfig\": {\n                \"AuthType\": 0\n            }\n        }\n    },\n    \"UpdateMask\": {\n        \"Paths\": [\n            \"Config.Timeout\"\n        ]\n    },\n    \"LoginUin\": \"6000005624511\",\n    \"LoginSubAccountUin\": \"6000005624511\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"9814760b-4166-4571-bf83-856aed7ccade\"\n    }\n}",
+        "title": "Sample Code for Modifying a Plug-in"
+      }
+    ],
     "ModifyQA": [
       {
         "document": "Modify single QA",
@@ -764,6 +948,14 @@
         "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyQAList\n<Common request parameters>\n\n{\n    \"KbId\": \"2097635494119704256\",\n    \"QaIdList\": [\n        \"2097635721520180864\"\n    ],\n    \"EffectiveDomain\": 2,\n    \"LabelRefList\": {\n        \"ItemList\": [\n            {\n                \"LabelId\": \"2097635499087851136\",\n                \"LabelTermIdList\": [\n                    \"2097635499087851138\"\n                ]\n            }\n        ]\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"ResultList\": [\n            {\n                \"Id\": \"2097635721520180864\",\n                \"Succeeded\": true,\n                \"Reason\": \"\"\n            }\n        ],\n        \"RequestId\": \"0685d2df-ea42-40ff-880f-7d00aa6a9e0e\"\n    }\n}",
         "title": "Batch Modify QA"
+      }
+    ],
+    "ModifySkill": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifySkill\n<Common request parameters>\n\n{\n    \"SpaceId\": \"default_space\",\n    \"DisplayName\": \"skill_****\",\n    \"DisplayDescription\": \"skill_****\",\n    \"FileUrl\": \"public*****il*********etter_v2026*******0*****ckag***ip\",\n    \"SkillId\": \"8988f8b5-**************-ca5d3bdd0ffc\",\n    \"SkillVersion\": \"1.0.6\",\n    \"UpdateDescription\": \"*new version*\",\n    \"IconUrl\": \"https://qidian-*************************************.myqcloud.com/public/2004076269431393728/image/ZdLTEaZpzWYlNEbNYTRL-2047574044935267136.png\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"970da2a0-a809-444f-aa5f-57c6c67ff7d7\"\n    }\n}",
+        "title": "Modify a skill"
       }
     ],
     "ModifySpace": [
@@ -790,6 +982,14 @@
         "title": "Success"
       }
     ],
+    "ReadMCPResource": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ReadMCPResource\n<Common request parameters>\n\n{\n    \"PluginId\": \"418eee0b-4aa7-4aef-939b-3c48d404e846\",\n    \"ThreadId\": \"b18c602d-054d-4f1a-ad9b-f785ba4d69c5\",\n    \"Uri\": \"ui://overtime-list/overtime-list.html\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Contents\": [\n            {\n                \"Blob\": null,\n                \"Meta\": \"\",\n                \"MimeType\": \"text/html;profile=mcp-app\",\n                \"Text\": \"<!DOCTYPE \",\n                \"Uri\": \"ui://overtime-list/overtime-list.html\"\n            }\n        ],\n        \"ResourceMeta\": \"<>\",\n        \"RequestId\": \"4be49907-1928-419f-9b26-5c4199ea7967\"\n    }\n}",
+        "title": "Get MCP-APP resources"
+      }
+    ],
     "ReleaseSkill": [
       {
         "document": "",
@@ -804,6 +1004,22 @@
         "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResetConversation\n<Common request parameters>\n\n{\n    \"ConversationId\": \"4abd149a-e010-4a6c-bc52-1132658f149d\",\n    \"Type\": 2,\n    \"AppKey\": \"1\",\n    \"ShareCode\": \"1\",\n    \"UserId\": \"1\",\n    \"LoginSubAccountUin\": \"700001046587\",\n    \"LoginUin\": \"700001046587\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"75452a02-8afa-4953-a121-9aba019ea326\"\n    }\n}",
         "title": "Reset a session"
+      }
+    ],
+    "ResumeAppTrigger": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResumeAppTrigger\n<Common request parameters>\n\n{\n    \"AppId\": \"2075415763781738240\",\n    \"TriggerId\": \"febb4930-0e2b-470b-9e24-04b73f9d773b\",\n    \"UserId\": \"cuiyo******\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"92a4e42a-0103-4d24-b407-afc1f106bef3\"\n    }\n}",
+        "title": "Success"
+      }
+    ],
+    "ResumeWorkflowRun": [
+      {
+        "document": "Continue to execute the running instance of an async workflow waiting for input.",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResumeWorkflowRun\n<Common request parameters>\n\n{\n    \"AppId\": \"2075134221221714816\",\n    \"WorkflowRunId\": \"wfr-cd6a2j03k5j4\",\n    \"Query\": \"Buy a Chery vehicle\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"956fcc99-f94d-4ad1-87ab-e1f4115577b5\"\n    }\n}",
+        "title": "Continue to Execute the Running Instance of an Async Workflow Waiting for Input"
       }
     ],
     "RetryRelease": [
@@ -830,12 +1046,52 @@
         "title": "Success"
       }
     ],
+    "SaveWorkflowDebugContext": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SaveWorkflowDebugContext\n<Common request parameters>\n\n{\n    \"AppId\": \"2046434807234765632\",\n    \"AppVariableValueList\": [\n        {\n            \"VariableId\": \"ed7d33fa-c59b-4773-ae99-458c44d9384c\",\n            \"VariableValue\": \"false\"\n        }\n    ],\n    \"SessionId\": \"096f3add-318c-41b6-883e-87d720d741b9\",\n    \"UserId\": \"1747547736783716352\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"74a1bbd6-b4cb-42c1-894e-7e68014ff5ae\"\n    }\n}",
+        "title": "Success"
+      }
+    ],
+    "SaveWorkflowToolNodeOutput": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SaveWorkflowToolNodeOutput\n<Common request parameters>\n\n{\n    \"CallbackToken\": \"wfr-ee494028-1f91-4cf2-89ab-f04e052b9f52..91b257f7-5145-a013-0b32-0a651ce0b18b.1784201278.be167a5ddddf0779e7b362cef7024771d54c321ae3ba8cbf0eac124616044591\",\n    \"Result\": \"{\\\\\\\"approval_result\\\\\\\":\\\\\\\"approved\\\\\\\",\\\\\\\"approver\\\\\\\":\\\\\\\"Zhang San\\\\\\\",\\\\\\\"comment\\\\\\\":\\\\\\\"Approved\\\\\\\"}\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Code\": 0,\n        \"Msg\": \"ok\",\n        \"RequestId\": \"a80d6038-9fdd-4df6-967f-6dd3ccc44fc6\"\n    }\n}",
+        "title": "Success"
+      }
+    ],
     "SearchKnowledge": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SearchKnowledge\n<Common request parameters>\n\n{\n    \"AdvancedConfig\": {\n        \"FinalRerankConfig\": {\n            \"ModelName\": \"Youtu/youtu-reranker-llm\"\n        },\n        \"KbRetrievalList\": [\n            {\n                \"DbRetrievalConfig\": {\n                    \"Enabled\": true\n                },\n                \"DocRetrievalConfig\": {\n                    \"Confidence\": 0.2,\n                    \"Enabled\": true,\n                    \"TopN\": 5\n                },\n                \"KbId\": \"2067622575842400832\",\n                \"QaRetrievalConfig\": {\n                    \"Confidence\": 0.7,\n                    \"Enabled\": true,\n                    \"TopN\": 3\n                },\n                \"RerankConfig\": {\n                    \"Enabled\": true,\n                    \"ModelName\": \"Youtu/youtu-reranker-llm\"\n                },\n                \"StrategyType\": 0,\n                \"TextToSqlModel\": {\n                    \"Alias\": \"DeepSeek-V4-Flash\",\n                    \"HistoryLimit\": 0,\n                    \"ModelId\": \"Deepseek/deepseek-v4-flash\"\n                }\n            }\n        ],\n        \"KnowledgeType\": 1,\n        \"RecallCount\": 13\n    },\n    \"Input\": {\n        \"Question\": \"What is a lungfish\"\n    },\n    \"Context\": {\n        \"CallSource\": 5\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"KnowledgeList\": [\n            {\n                \"Confidence\": 0.5791762,\n                \"KnowledgeType\": 2,\n                \"RecallTypeList\": [\n                    2\n                ],\n                \"ResultPayload\": {\n                    \"GraphData\": \"\",\n                    \"ImageUrlList\": [],\n                    \"SheetInfo\": \"\"\n                },\n                \"ResultType\": 0,\n                \"SimilarQuestionExtra\": {\n                    \"Content\": \"\",\n                    \"SimilarQuestionId\": \"0\"\n                },\n                \"SnippetProfile\": {\n\"Content\": \"Document name: Lungfish\\nDocument fragment: Lungfish are an ancient type of fish with unique physiological structures and survival abilities, belonging to the order Dipnoi under the subclass Sarcopterygii of the class Osteichthyes. They first appeared around 400 million years ago during the Devonian period and are one of the oldest existing fish species.\\n\\n\\nMain features\\n\\n\\nRespiration: Lungfish have two respiratory organs: gills and lungs. In water, they breathe mainly through gills; when the water dries up, they can use a specialized swim bladder (called a \\\"lung\\\") to breathe air directly.\\n\\n\\nMorphology: Lungfish have a slender body, with thick and powerful pectoral and pelvic fins that allow them to walk on the bottom. Their scales are small and their body is eel-like, helping them move flexibly through dense aquatic vegetation.\\n\\n\\nSurvival ability: Lungfish can survive in dry environments. When rivers dry up, they drill into the mud, form a cocoon-like structure, breathe through the lungs and internal nostrils, and wait for the rainy season to return.\\n\\n\\nDistribution and types\\n\\n\\nDistribution: Existing lungfish are mainly distributed in the freshwater environments of South America, Africa, and Australia.\\n\\n\\nTypes: The order Dipnoi includes two main families: Lepidosirenidae and Protopteridae. Among them, the Australian lungfish, South American lungfish, and African lungfish are common types.\\n\\n\\nLiving habits\\n\\n\\nDiet: Lungfish feed on crustaceans, mollusks, and worms. They have a powerful bite force and can prey on shelled invertebrates.\\n\\n\\nReproduction: Lungfish have diverse reproduction methods. Some species lay eggs in aquatic plants, and the larvae have no external gills and develop without metamorphosis; other species require metamorphosis, and the larvae\\n\\n\\nProtection status\\n\\n\\nDue to their unique physiological features and important scientific research value, lungfish are listed in \\\"Appendix I, Appendix II, and Appendix III of the Convention on International Trade in Endangered Species of Wild Fauna and Flora\\\" and are subject to international protection.\\n\"\n                    \"DocId\": \"2079848099272955712\",\n\"DocName\": \"Lungfish.txt\",\n                    \"KbId\": \"2079847931153870720\",\n                    \"KnowledgeId\": \"2079848160140695360\",\n                    \"Question\": \"\",\n\"Title\": \"Lungfish\"\n                },\n                \"SourceInfo\": {\n                    \"IsBigData\": false,\n                    \"IsShared\": false,\n                    \"KbName\": \"\"\n                }\n            }\n        ],\n        \"TokenUsageList\": [\n            {\n                \"CompletionTokens\": 0,\n                \"ModelName\": \"Youtu/youtu-embedding\",\n                \"PromptTokens\": 16,\n                \"TotalTokens\": 16\n            }\n        ],\n        \"RequestId\": \"e06aa6d0-1811-480b-b21d-900bc835e6da\"\n    }\n}",
         "title": "Knowledge retrieval"
+      }
+    ],
+    "StopWorkflowRunList": [
+      {
+        "document": "Batch stop workflow running instances",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StopWorkflowRunList\n<Common request parameters>\n\n{\n    \"AppId\": \"2075134221221714816\",\n    \"WorkflowRunIdList\": [\n        \"wfr-cd6a2j03k5j4\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"FailedIdList\": [],\n        \"SuccessIdList\": [\n            \"wfr-cd6a2j03k5j4\"\n        ],\n        \"RequestId\": \"c126301e-91a7-433c-9b21-a543a03c513f\"\n    }\n}",
+        "title": "Batch stop workflow running instances"
+      }
+    ],
+    "UnfavoritePlugin": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UnfavoritePlugin\n<Common request parameters>\n\n{\n    \"PluginId\": \"adcda186-813b-4d70-bb3f-538a522fe4a5\",\n    \"SpaceId\": \"default_space\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"75752bbd-8bf9-4859-bb0f-24cbfb0c5cb2\"\n    }\n}",
+        "title": "Unfavorite a plug-in"
+      }
+    ],
+    "UnfavoriteSkill": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: adp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UnfavoriteSkill\n<Common request parameters>\n\n{\n    \"SkillId\": \"8988*******************-ca5d3bdd0ffc\",\n    \"SpaceId\": \"default_space\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c3b1e939-c42f-44fd-b4ef-2941833feba9\"\n    }\n}",
+        "title": "Unfavorite a skill"
       }
     ]
   }
