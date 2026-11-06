@@ -192,7 +192,7 @@ def assume_role_with_saml(saml_assertion, principal_arn, role_arn, role_ses_name
         raise
 
 
-def save_credential(cred, sso_info, profile):
+def save_credential(cred, sso_info, profile, login_token=""):
     cred_path = cred_path_of_profile(profile)
 
     cred = {
@@ -212,11 +212,40 @@ def save_credential(cred, sso_info, profile):
             "expiresAt": sso_info["expiresAt"],
         },
     }
+    if login_token:
+        # Cache the SSO login state so that sso login / list-uin / list-role can reuse it
+        # without opening the browser again.
+        cred["ssoSession"] = {"token": login_token, "expiresAt": sso_info["expiresAt"]}
     Utils.dump_json_msg(cred_path, cred)
 
 
 def cred_path_of_profile(profile):
     return os.path.join(os.path.expanduser("~"), ".tccli", profile + ".credential")
+
+
+def load_login_token(profile):
+    """Read the cached SSO login state; return dict(token/site/expiresAt) when still usable, else None."""
+    cred_path = cred_path_of_profile(profile)
+    try:
+        with open(cred_path, "r") as cred_file:
+            cred = json.load(cred_file)
+    except (IOError, OSError, ValueError):
+        return None
+
+    if cred.get("type") != "sso":
+        return None
+
+    session = cred.get("ssoSession") or {}
+    site = (cred.get("sso") or {}).get("site", "")
+    token = session.get("token", "")
+    expires_at = session.get("expiresAt", 0)
+    if not token or not site:
+        return None
+
+    if expires_at - time.time() < _SKEY_REFRESH_SAFE_DUR:
+        return None
+
+    return {"token": token, "site": site, "expiresAt": expires_at}
 
 
 def check_login_state(state):

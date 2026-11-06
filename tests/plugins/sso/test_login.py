@@ -295,5 +295,101 @@ class TestLoginRememberSelection(unittest.TestCase):
         self.assertEqual(saved["roleConfigurationName"], "role-a")
 
 
+# ---------------------------------------------------------------------------
+# TestLoginTokenReuse
+# ---------------------------------------------------------------------------
+
+class TestLoginTokenReuse(unittest.TestCase):
+    """A cached, still valid SSO login state skips the browser sign-in."""
+
+    def _run(self, cached, args=None, roles=None):
+        cred_data = {"sso": {"authUrl": "https://example.com"}}
+        patchers = [
+            ("open", mock.patch(
+                _BUILTINS_MODULE + ".open", mock.mock_open(read_data=json.dumps(cred_data)))),
+            ("exists", mock.patch.object(login_module.os.path, "exists", return_value=True)),
+            ("cred_path", mock.patch.object(
+                login_module.sso, "cred_path_of_profile", return_value="/tmp/default.credential")),
+            ("cached", mock.patch.object(
+                login_module.sso, "load_login_token", return_value=cached)),
+            ("get_token", mock.patch.object(
+                login_module, "_get_token",
+                side_effect=lambda auth_url, state, language: {
+                    "State": state, "Token": "fresh-token", "Site": "ap"
+                })),
+            ("accounts", mock.patch.object(
+                login_module.sso, "list_accounts_for_access_assignment", return_value=_ACCOUNTS)),
+            ("roles", mock.patch.object(
+                login_module.sso, "list_role_configurations_for_account", return_value=roles or _ROLES)),
+            ("gen_saml", mock.patch.object(
+                login_module.sso, "gen_saml_response", return_value={"SAMLResponse": "saml"})),
+            ("verify", mock.patch.object(
+                login_module.sso, "verify_login_skey", return_value={"ZoneId": "zone"})),
+            ("assume", mock.patch.object(
+                login_module.sso, "assume_role_with_saml", return_value=_make_cred_resp())),
+            ("save", mock.patch.object(login_module.sso, "save_credential")),
+            ("print", mock.patch.object(login_module, "print_message")),
+        ]
+        mocks = {}
+        try:
+            for name, patcher in patchers:
+                mocks[name] = patcher.start()
+            login_module.login(args or {"uin": "123", "rolename": "role-a"}, "default", "zh-CN")
+        finally:
+            for _, patcher in reversed(patchers):
+                patcher.stop()
+        return mocks
+
+    def test_cached_token_skips_browser_login(self):
+        """Reuse the cached token instead of calling _get_token."""
+        cached = {"token": "cached-token", "site": "cn", "expiresAt": time.time() + 3600}
+        mocks = self._run(cached)
+        mocks["get_token"].assert_not_called()
+        self.assertEqual(mocks["accounts"].call_args[0][0], "cached-token")
+        self.assertEqual(mocks["accounts"].call_args[0][1], "cn")
+        self.assertEqual(mocks["save"].call_args[0][3], "cached-token")
+
+    def test_expired_token_falls_back_to_browser_login(self):
+        """Fall back to browser sign-in when no usable login state exists."""
+        mocks = self._run(None)
+        mocks["get_token"].assert_called_once()
+        self.assertEqual(mocks["save"].call_args[0][3], "fresh-token")
+
+    def test_cached_login_state_expiry_is_preserved(self):
+        """Preserve the cached session expiry instead of resetting it to 12 hours."""
+        expires_at = time.time() + 600
+        mocks = self._run({"token": "cached-token", "site": "cn", "expiresAt": expires_at})
+        saved_sso_info = mocks["save"].call_args[0][1]
+        self.assertEqual(saved_sso_info["expiresAt"], expires_at)
+
+
+# ---------------------------------------------------------------------------
+# TestLoginSpecifyRoleId
+# ---------------------------------------------------------------------------
+
+class TestLoginSpecifyRoleId(unittest.TestCase):
+    """--role-id takes precedence over --rolename, telling apart same-named roles under different uins."""
+
+    def _run(self, args):
+        mocks = TestLoginTokenReuse()._run(None, args=args)
+        return mocks
+
+    def test_role_id_selects_role_without_selector(self):
+        mocks = self._run({"uin": "456", "role-id": "rid-b"})
+        saved = mocks["save"].call_args[0][1]
+        self.assertEqual(saved["roleConfigurationId"], "rid-b")
+        self.assertEqual(saved["roleConfigurationName"], "role-b")
+
+    def test_role_id_takes_precedence_over_rolename(self):
+        mocks = self._run({"uin": "456", "rolename": "role-a", "role-id": "rid-b"})
+        saved = mocks["save"].call_args[0][1]
+        self.assertEqual(saved["roleConfigurationId"], "rid-b")
+
+    def test_unknown_role_id_stops_before_saving(self):
+        mocks = self._run({"uin": "456", "role-id": "missing"})
+        mocks["save"].assert_not_called()
+        self.assertIn("missing", mocks["print"].call_args[0][0])
+
+
 if __name__ == "__main__":
     unittest.main()
