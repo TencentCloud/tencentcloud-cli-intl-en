@@ -134,7 +134,7 @@
       "status": "online"
     },
     "CreateAigcQuota": {
-      "document": "This API is used to create and enable AIGC quota configuration. Quota usage starts accumulating from the enablement of the quota feature. Once the quota is reached, AIGC features will no longer be usable.\n\nIf the quota is deleted and re-enabled, the amount will be cleared and recalculated.\n\nSince AGC content generation is an asynchronous task, real-time usage data cannot be obtained. Therefore, quota limits may result in some errors, and completely precise control over the set limit cannot be achieved.",
+      "document": "This API is used to create and enable AIGC quota configuration. Quota usage starts accumulating when the quota feature is enabled. Once the quota is reached, AIGC features will no longer be usable.\n\nIf the quota is deleted and re-enabled, the amount will be zero and recalculated.\n\nSince content generation in AGC is an asynchronous task, real-time usage data cannot be obtained. Therefore, quota limits may result in some errors, and full precise control over the set limit cannot be achieved.",
       "input": "CreateAigcQuotaRequest",
       "name": "Creates an AIGC quota",
       "output": "CreateAigcQuotaResponse",
@@ -1240,7 +1240,7 @@
       "status": "online"
     },
     "ModifyAigcQuota": {
-      "document": "This API is used to edit AIGC quota configuration. Quota usage starts accumulating when the quota feature is enabled. Once the quota is reached, AIGC features will no longer be usable.\n\nSince AGC content generation is an async task, real-time usage data cannot be obtained. Therefore, quota limits result in some errors, and precise control over the set limit cannot be achieved.",
+      "document": "This API is used to edit AIGC quota configuration. Quota usage accumulates from the start of quota enablement. Once the quota is reached, AIGC features will no longer be usable.\n\nSince content generation in AGC is an asynchronous task, real-time usage data cannot be obtained. Therefore, quota limits may result in some errors, and precise control over the set limit cannot be achieved.",
       "input": "ModifyAigcQuotaRequest",
       "name": "Modifies AIGC quota",
       "output": "ModifyAigcQuotaResponse",
@@ -9312,6 +9312,39 @@
       ],
       "usage": "out"
     },
+    "AigcModelQuota": {
+      "document": "AIGC single-quota model.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Model name.</p>",
+          "example": "Hunyuan",
+          "member": "string",
+          "name": "ModelName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Quota quantity of tasks.</p><p>Unit: frames/second.</p><ul><li>When QuotaType is Image, the unit is frames;</li><li>When QuotaType is Video, the unit is seconds;</li></ul>",
+          "example": "10",
+          "member": "uint64",
+          "name": "QuotaLimit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Model version.</p>",
+          "example": "3.0",
+          "member": "string",
+          "name": "ModelVersion",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
     "AigcQuotaItem": {
       "document": "AIGC quota",
       "members": [
@@ -17215,7 +17248,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p><strong>VOD application ID. From December 25, 2023, customers who activate on-demand services must fill in this field with the app ID when accessing resources in on-demand applications, whether it is the default application or a newly created application.</strong></p>",
+          "document": "<p><strong>VOD application ID. From December 25, 2023, customers who activate on-demand services must fill in this field with the app ID when accessing resources in on-demand applications, whether in the default application or a newly created application.</strong></p>",
           "example": "200000004",
           "member": "uint64",
           "name": "SubAppId",
@@ -17233,7 +17266,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Number of task quotas.</p><p>Unit: images/seconds/tokens.</p><ul><li>When QuotaType is Image, the unit is images;</li><li>When QuotaType is Video, the unit is seconds;</li><li>When QuotaType is Text, the unit is tokens.</li></ul>",
+          "document": "<p>Number of quotas for the task.</p><p>Unit: images/second/tokens.</p><ul><li>When QuotaType is Image, the unit is images;</li><li>When QuotaType is Video, the unit is seconds;</li><li>When QuotaType is Text, the unit is tokens.</li></ul>",
           "example": "1000",
           "member": "uint64",
           "name": "QuotaLimit",
@@ -17242,12 +17275,48 @@
         },
         {
           "disabled": false,
-          "document": "<p>Valid only when QuotaType is Text. It is used to select the ApiToken that needs a quota limit.</p>",
+          "document": "<p>Valid only when QuotaType=Text, used to select the ApiToken that requires quota limit</p>",
           "example": "FnHR1a9GmP4qvdYiLEMGuddRHfLRU40t",
           "member": "string",
           "name": "ApiToken",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Quota reset cycle.</p><p>Enumeration values:</p><ul><li>Day: Reset every day.</li><li>Month: Reset on a specified date each month.</li><li>Total: Never reset. The QuotaLimit parameter is the total quota.</li></ul>",
+          "example": "Month",
+          "member": "string",
+          "name": "QuotaPeriod",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Reset date of the per month quota. Valid only when QuotaPeriod=Month.</p><p>If the selected date does not exist in the current month, the reset is postponed to 00:00 on the 1st of the next month.</p>",
+          "example": "15",
+          "member": "uint64",
+          "name": "ResetDay",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to set specified quotas for each model</p><p>Enumeration values: </p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul>",
+          "example": "ON",
+          "member": "string",
+          "name": "ModelQuotaSwitch",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Quota set for each model, valid only when ModelQuotaSwitch=ON.</p>",
+          "example": "无",
+          "member": "AigcModelQuota",
+          "name": "ModelQuotas",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -40710,7 +40779,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p><strong>VOD application ID. For customers who activate on-demand services after December 25, 2023, this field must be set to the app ID when accessing resources in on-demand applications (whether the default application or a newly created application).</strong></p>",
+          "document": "<p><strong>VOD application ID. For customers who activate on-demand services after December 25, 2023, this field must be filled in with the app ID when accessing resources in on-demand applications, whether in the default application or a newly created application.</strong></p>",
           "example": "200000004",
           "member": "uint64",
           "name": "SubAppId",
@@ -40737,12 +40806,48 @@
         },
         {
           "disabled": false,
-          "document": "<p>Valid only when QuotaType=Text. Used to select the ApiToken that needs a quota limit.</p>",
+          "document": "<p>Valid only when QuotaType=Text, used to select the ApiToken that requires quota limit</p>",
           "example": "F******************************t",
           "member": "string",
           "name": "ApiToken",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Quota reset cycle.</p><p>Enumeration values:</p><ul><li>Day: Reset daily.</li><li>Month: Reset on a specified date per month.</li><li>Total: Never reset. The QuotaLimit parameter is the total quota.</li></ul>",
+          "example": "Month",
+          "member": "string",
+          "name": "QuotaPeriod",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Reset date of the monthly quota. Valid only when QuotaPeriod=Month.</p><p>If the selected date does not exist in the current month, the reset will be postponed to 00:00 on the 1st of the next month.</p>",
+          "example": "15",
+          "member": "uint64",
+          "name": "ResetDay",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to set specified quotas for each model</p><p>Enumeration values: </p><ul><li>ON: Enable</li><li>OFF: Disable</li></ul>",
+          "example": "OFF",
+          "member": "string",
+          "name": "ModelQuotaSwitch",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Quota set for each model, valid only when ModelQuotaSwitch=ON.</p>",
+          "example": "无",
+          "member": "AigcModelQuota",
+          "name": "ModelQuotas",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"

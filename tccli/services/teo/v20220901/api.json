@@ -10312,7 +10312,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Specifies the custom header Key.",
+          "document": "Custom header Key.",
           "example": "host",
           "member": "string",
           "name": "Key",
@@ -10323,7 +10323,7 @@
         },
         {
           "disabled": false,
-          "document": "Set custom headers Value.",
+          "document": "Value of the custom header.",
           "example": "www.example.com",
           "member": "string",
           "name": "Value",
@@ -21250,7 +21250,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Health check policy. Valid values:\n<li>HTTP.</li>\n<li>HTTPS.</li>\n<li>TCP.</li>\n<li>UDP.</li>\n<li>ICMP Ping.</li>\n<li>NoCheck.</li>\nNote: NoCheck means the health check policy is not enabled.",
+          "document": "<p>Health check policy. Valid values:</p><li>HTTP;</li><li>HTTPS;</li><li>TCP;</li><li>UDP;</li><li>ICMP Ping;</li><li>NoCheck.</li>Note: NoCheck means health check policy is not enabled.",
           "example": "HTTP",
           "member": "string",
           "name": "Type",
@@ -21261,7 +21261,7 @@
         },
         {
           "disabled": false,
-          "document": "Check port, which is required when Type = HTTP, Type = HTTPS, Type = TCP, or Type = UDP.",
+          "document": "<p>Check port, which is required when Type = HTTP, Type = HTTPS, Type = TCP, or Type = UDP.</p>",
           "example": "80",
           "member": "uint64",
           "name": "Port",
@@ -21272,7 +21272,7 @@
         },
         {
           "disabled": false,
-          "document": "Check frequency, in seconds. It indicates how often a health check task is initiated. Configurable range: 10-600 seconds.",
+          "document": "<p>Check frequency, in seconds. It indicates how often a health check task is initiated. Configurable range: 10-600 seconds.</p>",
           "example": "30",
           "member": "uint64",
           "name": "Interval",
@@ -21283,7 +21283,7 @@
         },
         {
           "disabled": false,
-          "document": "Timeout for each health check, in seconds. If the health check time exceeds this value, the check result is determined as \"unhealthy\". The default value is 5s, and the value should be less than Interval.",
+          "document": "<p>Timeout for each health check, in seconds. If the health check time exceeds this value, the check result is determined as \"unhealthy\". The default value is 5s, and the value should be less than Interval.</p>",
           "example": "5",
           "member": "uint64",
           "name": "Timeout",
@@ -21294,7 +21294,7 @@
         },
         {
           "disabled": false,
-          "document": "Healthy state threshold, in the number of times. It indicates that if the consecutive health check results are \"healthy\" for a certain number of times, an origin server is considered \"healthy\". The default value is 3 times, with the minimum value of 1 time.",
+          "document": "<p>Health threshold, in the number of times. It indicates that if the consecutive health check results are \"healthy\" for a certain number of times, an origin server is considered \"healthy\". The default value is 3 times, with the minimum value of 1 time.</p>",
           "example": "3",
           "member": "uint64",
           "name": "HealthThreshold",
@@ -21305,7 +21305,7 @@
         },
         {
           "disabled": false,
-          "document": "Unhealthy state threshold, in the number of times. It indicates that if the consecutive health check results are \"unhealthy\" for a certain number of times, an origin server is considered \"unhealthy\". The default value is 2 times.",
+          "document": "<p>Unhealthy state threshold, in the number of times. It indicates that if the consecutive health check results are \"unhealthy\" for a certain number of times, an origin server is considered \"unhealthy\". The default value is 2 times.</p>",
           "example": "5",
           "member": "uint64",
           "name": "CriticalThreshold",
@@ -21316,7 +21316,7 @@
         },
         {
           "disabled": false,
-          "document": "Probe path. This parameter is valid only when Type = HTTP or Type = HTTPS. It needs to include the complete host/path and should not contain a protocol, for example, www.example.com/test.\n",
+          "document": "<p>Probe path. This parameter is valid only when Type = HTTP or Type = HTTPS. It needs to include the complete host/path and should not contain a protocol, for example, www.example.com/test.</p>",
           "example": "www.example.com/test",
           "member": "string",
           "name": "Path",
@@ -21327,7 +21327,18 @@
         },
         {
           "disabled": false,
-          "document": "Request method. This parameter is valid only when Type = HTTP or Type = HTTPS. Valid values:\n<li>GET.</li>\n<li>HEAD.</li>",
+          "document": "<p>Probe request Host Header policy. It takes effect only when Type=HTTP or Type=HTTPS and the instance type is HTTP-dedicated (V2). Valid values:</p><li>FollowCheckURL: Follows the Host specified by the probe URL, that is, the Host part in the HealthChecker.Path field will be used as the Host address for probing;</li><li>FollowOriginGroup: Follows the origin-pull Host Header configured in the origin group, that is, the OriginGroup.HostHeader field value of the origin group where the probed origin resides will be used as the Host address for probing. If the origin group has no HostHeader configured, the Host part in the HealthChecker.Path field will be used as the Host address for probing;</li><li>FollowOrigin: Follows the origin address, that is, the OriginGroup.Records[N].Record field value (the origin address itself) of the corresponding origin record in the origin group where the probed origin resides will be used as the Host address for probing.</li>Default: FollowCheckURL.",
+          "example": "FollowCheckURL",
+          "member": "string",
+          "name": "HostHeaderPolicy",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Request method. This parameter is valid only when Type = HTTP or Type = HTTPS. Valid values:</p><li>GET;</li><li>HEAD.</li>",
           "example": "HEAD",
           "member": "string",
           "name": "Method",
@@ -21338,7 +21349,7 @@
         },
         {
           "disabled": false,
-          "document": "The status codes used to determine that the probe result is healthy when the probe node initiates a health check to an origin server. This parameter is valid only when Type = HTTP or Type = HTTPS.",
+          "document": "<p>The status codes used to determine that the probe result is healthy when the probe node initiates a health check to an origin server. This parameter is valid only when Type = HTTP or Type = HTTPS.</p>",
           "example": "[\"200\", \"500\"]",
           "member": "string",
           "name": "ExpectedCodes",
@@ -21349,8 +21360,8 @@
         },
         {
           "disabled": false,
-          "document": "The custom HTTP request header carried by a probe request, with a maximum value of 10. This parameter is valid only when Type = HTTP or Type = HTTPS.",
-          "example": "[{   \"Key\": \"host\",   \"Value\": \"www.example.com\" }]",
+          "document": "<p>This parameter is valid only when Type=HTTP or Type=HTTPS. It refers to the custom HTTP request header carried in the probe request. Up to 10 can be configured.</p>",
+          "example": "无",
           "member": "CustomizedHeader",
           "name": "Headers",
           "output_required": false,
@@ -21360,7 +21371,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to follow 301/302 redirect. When enabled, 301/302 is considered a \"healthy\" status code, redirecting 3 times by default. This parameter is valid only when Type = HTTP or Type = HTTPS.",
+          "document": "<p>Whether to follow 301/302 redirect. When enabled, 301/302 is considered a \"healthy\" status code, redirecting 3 times by default. This parameter is valid only when Type = HTTP or Type = HTTPS.</p>",
           "example": "true",
           "member": "string",
           "name": "FollowRedirect",
@@ -21371,7 +21382,7 @@
         },
         {
           "disabled": false,
-          "document": "The content sent by a health check. Only ASCII visible characters are allowed, with up to 500 characters. This parameter is valid only when Type = UDP.",
+          "document": "<p>The content sent by a health check. Only ASCII visible characters are allowed, with up to 500 characters. This parameter is valid only when Type = UDP.</p>",
           "example": "send_payload",
           "member": "string",
           "name": "SendContext",
@@ -21382,10 +21393,21 @@
         },
         {
           "disabled": false,
-          "document": "The expected return result from an origin server during health check. Only ASCII visible characters are allowed, with up to 500 characters. This parameter is valid only when Type = UDP.",
+          "document": "<p>The expected return result from an origin server during health check. Only ASCII visible characters are allowed, with up to 500 characters. This parameter is valid only when Type = UDP.</p>",
           "example": "recv_context",
           "member": "string",
           "name": "RecvContext",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Health check probe cluster. Specifies the cluster region scope from which this load balancer instance initiates health probes. For details on the regional distribution of probe clusters, see <a href=\"https://www.tencentcloud.com/document/product/1552/104228?from_cn_redirect=1\">Health Check Policy Introduction</a>. This can be configured only for HTTP-dedicated (V2) load balancer instances. Valid values:</p><li>global: Probes are initiated by probe clusters in all regions worldwide, including the Chinese mainland and regions outside the Chinese mainland. Clusters in each region independently maintain their own probe results;</li><li>mainland_china: Probes are initiated only by probe clusters in the Chinese mainland. Currently, the Chinese mainland shares one probe cluster, and probe results are maintained by the probe cluster in the Chinese mainland. Other regions follow the probe results of the cluster in the Chinese mainland;</li><li>overseas: Probes are initiated only by probe clusters in regions outside the Chinese mainland. Currently, regions outside the Chinese mainland contain probe clusters in multiple areas, and probe results are independently maintained by the probe clusters in each area. Probe results for the Chinese mainland are generated by aggregating the probe results of the probe clusters in all other areas.</li>Default: global.",
+          "example": "global",
+          "member": "string",
+          "name": "ProbeCluster",
           "output_required": false,
           "required": false,
           "type": "string",
