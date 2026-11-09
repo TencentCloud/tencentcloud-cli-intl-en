@@ -1667,7 +1667,7 @@
       "status": "online"
     },
     "UpdateAigcApiToken": {
-      "document": "Creates a Token for invoking AIGC APIs. Data sync has a delay once created. It can be queried or deleted after about 30 seconds.",
+      "document": "Update the Token for AIGC API calls. Data synchronization has a delay of about 30 seconds after the update.",
       "input": "UpdateAigcApiTokenRequest",
       "name": "Updates the AIGC API Token",
       "output": "UpdateAigcApiTokenResponse",
@@ -57148,15 +57148,6 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p><b>Video-on-demand <a href=\"https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1\">application</a> ID. For customers who activate on-demand services after December 25, 2023, this field must be filled in as the app ID when accessing resources in on-demand applications (whether the default application or a newly created application).</b></p>",
-          "example": "251441341",
-          "member": "uint64",
-          "name": "SubAppId",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "disabled": false,
           "document": "<p>To update the Api Key</p>",
           "example": "D2JJ0DHJ********************rXFX",
           "member": "string",
@@ -57166,7 +57157,16 @@
         },
         {
           "disabled": false,
-          "document": "<p>Merge (default, merge the ExtInfo JSON by top-level key), Overwrite (direct overwrite)</p>",
+          "document": "<p><b>On-demand <a href=\"https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1\">application</a> ID. For customers who activate on-demand services after December 25, 2023, this field must be set to the app ID when accessing resources in on-demand applications (whether the default application or a newly created application).</b></p>",
+          "example": "251441341",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Merge (default, merge ExtInfo JSON by top-level key), Overwrite (direct overwrite)</p>",
           "example": "Merge",
           "member": "string",
           "name": "ActionType",
@@ -57175,7 +57175,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Extended information of the token</p>",
+          "document": "<p>The ip allowlist and model allowlist are stored in ExtInfo in json format, with the following fields:</p><p>(1) ip allowlist<br>&quot;ip&quot;: {&quot;127.0.0.1&quot;:true}<br>Not enabled: &quot;ip&quot;: {}<br>Multiple groups: {&quot;&#39;11.12.112.90&quot;:true,&quot;15.12.112.90&quot;:true}</p><p>(2) model allowlist<br>&quot;model&quot;: {&quot;deepseek-v4-pro&quot;:true}<br>Not enabled: &quot;model&quot;: {}</p><p>(3) name<br>&quot;name&quot;: &quot;test&quot;</p>",
           "example": "{\"ip\":{\"9.134.4.21\":true}}",
           "member": "string",
           "name": "ExtInfo",

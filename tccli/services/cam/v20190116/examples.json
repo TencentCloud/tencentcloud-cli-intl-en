@@ -304,6 +304,14 @@
         "title": "Disabling user SSO"
       }
     ],
+    "GenerateOIDCAccessToken": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cam.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GenerateOIDCAccessToken\n<Common request parameters>\n\n{\n    \"ClientId\": \"100001****52_it3dYTGmaWIvHyk1NrqojU025hwAJeDx\",\n    \"ResourceId\": \"ins111\"\n}",
+        "output": "{\n    \"Response\": {\n        \"IdToken\": \"eyJ0eXAiOiJKV1QiLCJhbGciO***5kSUXuMIWidOFArCJT7YgjY_pn8MIeq2w\",\n        \"RequestId\": \"8129d118-6f36-4636-9c83-8b63e0ff1a16\"\n    }\n}",
+        "title": "Successful Example"
+      }
+    ],
     "GetAccountSummary": [
       {
         "document": " ",
