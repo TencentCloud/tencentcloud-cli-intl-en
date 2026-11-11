@@ -141,7 +141,7 @@
       "status": "online"
     },
     "DeleteReplicationInstance": {
-      "document": "This API is used to remove a replication group member. Note: This API is being deprecated. Use [RemoveReplicationInstance](https://intl.cloud.tencent.com/document/product/239/90099?from_cn_redirect=1) instead.",
+      "document": "This API is used to remove replication group members. Note: This API is offline. Please use RemoveReplicationInstance.",
       "input": "DeleteReplicationInstanceRequest",
       "name": "Deletes replication group members",
       "output": "DeleteReplicationInstanceResponse",
@@ -260,21 +260,21 @@
       "status": "online"
     },
     "DescribeInstanceMonitorBigKey": {
-      "document": "The API for querying big keys of a TencentDB for Redis instance was disused on October 31, 2022. For more information, see [API for Querying Instance Big Key Will Be Disused](https://intl.cloud.tencent.com/document/product/239/81005?from_cn_redirect=1).",
+      "document": "Tencent Cloud Database Redis decommissioned the API for querying large keys of instances on October 31, 2022. For the specific notice, please refer to the decommissioning announcement of the API for querying large keys of instances.",
       "input": "DescribeInstanceMonitorBigKeyRequest",
       "name": "Queries the instance big key (disused)",
       "output": "DescribeInstanceMonitorBigKeyResponse",
       "status": "online"
     },
     "DescribeInstanceMonitorBigKeySizeDist": {
-      "document": "The API for querying big keys of a TencentDB for Redis instance was disused on October 31, 2022. For more information, see [API for Querying Instance Big Key Will Be Disused](https://intl.cloud.tencent.com/document/product/239/81005?from_cn_redirect=1).",
+      "document": "TencentDB for Redis decommissioned the API for querying large keys in instances on October 31, 2022. For the specific announcement, please refer to the decommissioning announcement of the API for querying large keys in instances.",
       "input": "DescribeInstanceMonitorBigKeySizeDistRequest",
       "name": "Queries the big key size distribution of an instance (disused)",
       "output": "DescribeInstanceMonitorBigKeySizeDistResponse",
       "status": "online"
     },
     "DescribeInstanceMonitorBigKeyTypeDist": {
-      "document": "The API for querying big keys of a TencentDB for Redis instance was disused on October 31, 2022. For more information, see [API for Querying Instance Big Key Will Be Disused](https://intl.cloud.tencent.com/document/product/239/81005?from_cn_redirect=1).",
+      "document": "TencentDB for Redis decommissioned the API for querying large keys in instances on October 31, 2022. For the specific announcement, please refer to the decommissioning announcement of the API for querying large keys in instances.",
       "input": "DescribeInstanceMonitorBigKeyTypeDistRequest",
       "name": "Queries the big key type distribution of an instance (disused)",
       "output": "DescribeInstanceMonitorBigKeyTypeDistResponse",
@@ -288,7 +288,7 @@
       "status": "online"
     },
     "DescribeInstanceMonitorSIP": {
-      "document": "This API is no longer used. Please use the TencentDB for DBbrain API [DescribeProxyProcessStatistics](https://intl.cloud.tencent.com/document/product/1130/84544?from_cn_redirect=1) to obtain the instance access source.",
+      "document": "This API is no longer used. Please use the TencentDB for DBbrain API [DescribeProxyProcessStatistics](https://www.tencentcloud.com/document/product/1130/84544?from_cn_redirect=1) to obtain the instance access source.",
       "input": "DescribeInstanceMonitorSIPRequest",
       "name": "Queries the access source information of an instance",
       "output": "DescribeInstanceMonitorSIPResponse",
@@ -582,7 +582,7 @@
       "status": "online"
     },
     "ModfiyInstancePassword": {
-      "document": "This API is used to change the instance access password. Due to a spelling error in the original API name, it has been corrected to [ModifyInstancePassword](https://intl.cloud.tencent.com/document/product/239/111555?from_cn_redirect=1). It is recommended to use the corrected API.",
+      "document": "This API is used to change the instance access password. As the API name contains a spelling error, it has been corrected to [ModifyInstancePassword](https://www.tencentcloud.com/document/product/239/111555?from_cn_redirect=1). The corrected API is recommended for use.",
       "input": "ModfiyInstancePasswordRequest",
       "name": "Changes the instance access password",
       "output": "ModfiyInstancePasswordResponse",
@@ -735,6 +735,20 @@
       "output": "ModifyReplicationGroupResponse",
       "status": "online"
     },
+    "ModifySSLEncryptionMode": {
+      "document": "This API is used to change the SSL encryption mode.",
+      "input": "ModifySSLEncryptionModeRequest",
+      "name": "Modifies SSL encryption mode",
+      "output": "ModifySSLEncryptionModeResponse",
+      "status": "online"
+    },
+    "ModifyValkeyModule": {
+      "document": "This API is used to modify the enable status of the Valkey instance extension module.",
+      "input": "ModifyValkeyModuleRequest",
+      "name": "Modifies a Valkey instance extension module",
+      "output": "ModifyValkeyModuleResponse",
+      "status": "online"
+    },
     "OpenLog": {
       "document": "Enable logging",
       "input": "OpenLogRequest",
@@ -817,6 +831,13 @@
       "input": "SwitchProxyRequest",
       "name": "Simulates the failure of a proxy node",
       "output": "SwitchProxyResponse",
+      "status": "online"
+    },
+    "UpdateSSLCert": {
+      "document": "This API is used to update SSL key information.",
+      "input": "UpdateSSLCertRequest",
+      "name": "Updates an SSL certificate",
+      "output": "UpdateSSLCertResponse",
       "status": "online"
     },
     "UpgradeInstance": {
@@ -968,7 +989,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance ID.\n- There are region and AZ limitations for adding a replication group instance. For detailed information, see [Use Limits](https://www.tencentcloud.com/document/product/239/71934?from_cn_redirect=1).\n- Currently, only Redis 4.0 and 5.0 cluster architecture instances support being added to the replication groups.\n- Log in to the [Redis console](https://console.cloud.tencent.com/redis/instance/list), and copy the ID of the instance that needs to be added to the replication group in the instance list.",
+          "document": "Instance ID.\n- There are region and AZ limitations for adding a replication group instance. For detailed information, see [Usage Limits](https://www.tencentcloud.com/document/product/239/71934?from_cn_redirect=1).\n- Currently, only Redis 4.0 and 5.0 cluster architecture instances support being added to the replication groups.\n- Log in to the [Redis console](https://console.cloud.tencent.com/redis/instance/list), and copy the ID of the instance that needs to be added to the replication group in the instance list.",
           "example": "crs-deindi7de",
           "member": "string",
           "name": "InstanceId",
@@ -1617,7 +1638,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Replica node group ID. Use the interface <a href=\"https://www.tencentcloud.com/document/product/239/50312?from_cn_redirect=1\">DescribeInstanceZoneInfo</a> to obtain the id information of the multi-AZ replica node group. For a single AZ, no need to configure this parameter.</p>",
+          "document": "<p>Replica node group ID. Use the interface <a href=\"https://www.tencentcloud.com/document/product/239/50312?from_cn_redirect=1\">DescribeInstanceZoneInfo</a> to obtain the ID information of the multi-AZ replica node group. For single AZ, no need to configure this parameter.</p>",
           "example": "354266",
           "member": "int64",
           "name": "GroupId",
@@ -1773,7 +1794,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Availability zone ID of the cloned instance. For supported AZ IDs, see <a href=\"https://www.tencentcloud.com/document/product/239/4106?from_cn_redirect=1\">Regions and Availability Zones</a>.</p>",
+          "document": "<p>Availability zone ID of the clone instance. For supported availability zone IDs, see <a href=\"https://www.tencentcloud.com/document/product/239/4106?from_cn_redirect=1\">Regions and Availability Zones</a>.</p>",
           "example": "100001",
           "member": "uint64",
           "name": "ZoneId",
@@ -1809,7 +1830,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Backup ID used to clone an instance. Use the interface <a href=\"https://www.tencentcloud.com/document/product/239/20011?from_cn_redirect=1\">DescribeInstanceBackups</a> to obtain the backup ID.</p>",
+          "document": "<p>Backup ID used for cloning an instance. Obtain the backup ID through the API <a href=\"https://www.tencentcloud.com/document/product/239/20011?from_cn_redirect=1\">DescribeInstanceBackups</a>.</p>",
           "example": "154572601-1165734322-153705740",
           "member": "string",
           "name": "BackupId",
@@ -1881,7 +1902,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Node information of instance.<ul><li>Currently supports configuring node type (primary node or replica node) and its availability zone info. For details, please refer to <a href=\"https://www.tencentcloud.com/document/product/239/20022?from_cn_redirect=1#RedisNodeInfo\">RedisNodeInfo</a>.</li><li>This parameter can be left blank for single-AZ deployment.</li></ul></p>",
+          "document": "<p>Node information of the instance.<ul><li>Currently, you can configure the node type (primary node or replica node) and its availability zone info. For details, see <a href=\"https://www.tencentcloud.com/document/product/239/20022?from_cn_redirect=1#RedisNodeInfo\">RedisNodeInfo</a>.</li><li>This parameter can be left blank for single-AZ deployment.</li></ul></p>",
           "example": "无",
           "member": "RedisNodeInfo",
           "name": "NodeSet",
@@ -1908,7 +1929,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Specify the parameter template ID related to the cloned instance.</p><ul><li>If this parameter is not configured, the system will automatically adapt the corresponding default template based on the selected compatible version and architecture.</li><li>Query the parameter template list of the instance through the <a href=\"https://www.tencentcloud.com/document/product/239/58750?from_cn_redirect=1\">DescribeParamTemplates</a> API to obtain the template ID number.</li></ul>",
+          "document": "<p>Specify the parameter template ID for cloning an instance.</p><ul><li>If this parameter is not configured, the system will automatically adapt the corresponding default template based on the selected compatible version and architecture.</li><li>Query the parameter template list of the instance through the <a href=\"https://www.tencentcloud.com/document/product/239/58750?from_cn_redirect=1\">DescribeParamTemplates</a> API to obtain the template ID number.</li></ul>",
           "example": "crs-cfg-rhlppeye",
           "member": "string",
           "name": "TemplateId",
@@ -2318,7 +2339,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Memory capacity, measured in MB, must be a multiple of 1024. For specific specifications, query the sales specifications for all regions via the <a href=\"https://www.tencentcloud.com/document/api/239/30600?from_cn_redirect=1\">DescribeProductInfo</a> API.</p><ul><li>When <strong>TypeId</strong> is standard architecture, <strong>MemSize</strong> is the total memory capacity of the instance.</li><li>When <strong>TypeId</strong> is cluster architecture, <strong>MemSize</strong> is the sharded memory capacity.</li></ul>",
+          "document": "<p>Memory capacity, measured in MB. The value must be an integral multiple of 1024. For detailed parameter information, query the sales specifications for all regions through the <a href=\"https://www.tencentcloud.com/document/api/239/30600?from_cn_redirect=1\">DescribeProductInfo</a> API.</p><ul><li>When <strong>TypeId</strong> is the standard architecture, <strong>MemSize</strong> is the total memory capacity of the instance.</li><li>When <strong>TypeId</strong> is the cluster architecture, <strong>MemSize</strong> is the sharded memory capacity.</li></ul>",
           "example": "4096",
           "member": "uint64",
           "name": "MemSize",
@@ -2327,7 +2348,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Instance count. Number of instances to purchase at a time. For details, query sales specifications in all regions via the <a href=\"https://www.tencentcloud.com/document/api/239/30600?from_cn_redirect=1\">DescribeProductInfo</a> API.</p>",
+          "document": "<p>Instance count. The number of instances to purchase at a time. For details, use the <a href=\"https://www.tencentcloud.com/document/api/239/30600?from_cn_redirect=1\">DescribeProductInfo</a> API to query the sales specifications in all regions.</p>",
           "example": "1",
           "member": "uint64",
           "name": "GoodsNum",
@@ -2408,7 +2429,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Security group ID array.</p><ul><li>A security group is a virtual firewall that controls network access to a cloud database instance. When creating an instance, it is recommended to bind the corresponding security group.</li><li>Get the security group ID of an instance through the <a href=\"https://www.tencentcloud.com/document/product/239/34447?from_cn_redirect=1\">DescribeInstanceSecurityGroup</a> API.</li></ul>",
+          "document": "<p>Security group ID array.</p><ul><li>A security group is a virtual firewall to control network access to cloud database instances. It is recommended to bind the corresponding security group when creating an instance.</li><li>Obtain the security group ID of an instance through the <a href=\"https://www.tencentcloud.com/document/product/239/34447?from_cn_redirect=1\">DescribeInstanceSecurityGroup</a> API.</li></ul>",
           "example": "[\"sg-bmadczm1\"]",
           "member": "string",
           "name": "SecurityGroupIdList",
@@ -2471,7 +2492,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Node information of instance, including node ID, node type, node availability zone ID. For details, please see <a href=\"https://www.tencentcloud.com/document/product/239/20022?from_cn_redirect=1\">RedisNodeInfo</a>.<br>Currently support inputting node type (primary node or replica node) and availability zone. When this parameter is not specified, in regions that support multi-availability zone deployment, the system defaults to creating instances with multi-availability zone architecture.</p>",
+          "document": "<p>Node information of the instance, including node ID, node type, and node availability zone ID. For details, see <a href=\"https://www.tencentcloud.com/document/product/239/20022?from_cn_redirect=1\">RedisNodeInfo </a>.<br>Currently supports inputting the node type (primary node or replica node) and the availability zone of the node. If this parameter is not specified, the system defaults to creating a multi-availability zone architecture instance in regions that support multi-availability zone deployment.</p>",
           "example": "无",
           "member": "RedisNodeInfo",
           "name": "NodeSet",
@@ -2489,7 +2510,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Specify the name of the AZ to which the instance belongs. For details, see <a href=\"https://www.tencentcloud.com/document/product/239/4106?from_cn_redirect=1\">Regions and AZs</a>.</p>",
+          "document": "<p>Specify the name of the availability zone to which the instance belongs. For details, see <a href=\"https://www.tencentcloud.com/document/product/239/4106?from_cn_redirect=1\">Regions and Availability Zones</a>.</p>",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "ZoneName",
@@ -2498,7 +2519,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Parameter template ID of the specified instance.</p><ul><li>If this parameter is not configured, the system will automatically adapt to the corresponding default template based on the selected compatible version and architecture.</li><li>Query the parameter template list of the instance through the <a href=\"https://www.tencentcloud.com/document/product/239/58750?from_cn_redirect=1\">DescribeParamTemplates</a> API to obtain the template ID number.</li></ul>",
+          "document": "<p>Parameter template ID associated with the specified instance.</p><ul><li>If this parameter is not configured, the system will automatically adapt the corresponding default template based on the selected compatible version and architecture.</li><li>Query the parameter template list of the instance through the <a href=\"https://www.tencentcloud.com/document/product/239/58750?from_cn_redirect=1\">DescribeParamTemplates</a> API to obtain the template ID number.</li></ul>",
           "example": "crs-cfg-rhlppeye",
           "member": "string",
           "name": "TemplateId",
@@ -2525,7 +2546,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Dedicated cluster ID.</p><ul><li>When <strong>ProductVersion</strong> is set to <strong>cdc</strong>, this parameter must be set.</li><li>Get cluster ID through the API <a href=\"https://www.tencentcloud.com/document/product/239/109628?from_cn_redirect=1\">DescribeRedisClusters</a>.</li></ul>",
+          "document": "<p>Dedicated cluster ID.</p><ul><li>When <strong>ProductVersion</strong> is set to <strong>cdc</strong>, this parameter must be set.</li><li>Get the cluster ID through the API <a href=\"https://www.tencentcloud.com/document/product/239/109628?from_cn_redirect=1\">DescribeRedisClusters</a>.</li></ul>",
           "example": "crs-cdc-0xigvn3t",
           "member": "string",
           "name": "RedisClusterId",
@@ -2864,7 +2885,7 @@
         },
         {
           "disabled": false,
-          "document": "Sub-account name. Log in to the [Redis console](https://console.tencentcloud.com/redis) and switch to the **Account Management** page to obtain it. For details, see [Managing Account](https://www.tencentcloud.com/document/product/239/34590).",
+          "document": "Sub-account name. Log in to the [Redis console](https://console.cloud.tencent.com/redis), switch to the **Account Management** page to get it. For details, see [Managing Accounts](https://www.tencentcloud.com/document/product/239/36710?from_cn_redirect=1).",
           "example": "example_name",
           "member": "string",
           "name": "AccountName",
@@ -3044,7 +3065,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the specified instance,  such as  \"crs-xjhsdj****\" Log in to the [Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.",
+          "document": "<p>Specifies the instance ID. Example: crs-xjhsdj****. Log in to the <a href=\"https://console.cloud.tencent.com/redis\">Redis console</a> and copy the instance ID from the instance list.</p>",
           "example": "crs-5a4py64p",
           "member": "string",
           "name": "InstanceId",
@@ -3059,7 +3080,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "This parameter is retained due to compatibility and can be ignored.",
+          "document": "<p>This parameter is temporarily reserved due to compatibility issues. Ignore it.</p>",
           "example": "1",
           "member": "int64",
           "name": "AutoBackupType",
@@ -3069,7 +3090,7 @@
         },
         {
           "disabled": false,
-          "document": "Backup cycle, which will be daily by default. Valid values: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`.",
+          "document": "<p>Backup cycle. Automatic backup is performed every day by default: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.</p>",
           "example": "[\"Monday\",\"Tuesday\"]",
           "member": "string",
           "name": "WeekDays",
@@ -3079,7 +3100,7 @@
         },
         {
           "disabled": false,
-          "document": "Time period for backup task initialization",
+          "document": "<p>Backup task initiation time range.</p>",
           "example": "01:00-02:00",
           "member": "string",
           "name": "TimePeriod",
@@ -3089,7 +3110,7 @@
         },
         {
           "disabled": false,
-          "document": "Retention time of full backup files in days.  Default value: `7`.  To retain the files for more days, [submit a ticket](https://console.cloud.tencent.com/workorder/category) for application.",
+          "document": "<p>Number of days to save full backup files. Default value: 7 days. To save for more days, please <a href=\"https://console.cloud.tencent.com/workorder/category\">submit a ticket</a> to apply.</p>",
           "example": "7",
           "member": "int64",
           "name": "BackupStorageDays",
@@ -3099,7 +3120,7 @@
         },
         {
           "disabled": false,
-          "document": "This parameter has been disused.",
+          "document": "<p>This parameter is no longer in use. Ignore it.</p>",
           "example": "7",
           "member": "int64",
           "name": "BinlogStorageDays",
@@ -3130,7 +3151,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Backup ID, which can be obtained through the response parameter <strong>RedisBackupSet</strong> of the API <a href=\"https://www.tencentcloud.com/document/product/239/20011?from_cn_redirect=1\">DescribeInstanceBackups</a>.</p>",
+          "document": "<p>Backup ID, which can be obtained through the <strong>RedisBackupSet</strong> parameter in the API response of <a href=\"https://www.tencentcloud.com/document/product/239/20011?from_cn_redirect=1\">DescribeInstanceBackups</a>.</p>",
           "example": "67836256600000000****",
           "member": "string",
           "name": "BackupId",
@@ -3460,7 +3481,7 @@
         },
         {
           "disabled": false,
-          "document": "Backup ID, which can be obtained through the `RedisBackupSet` parameter returned by the [DescribeInstanceBackups](https://intl.cloud.tencent.com/document/product/239/20011?from_cn_redirect=1) API.",
+          "document": "Backup ID, which can be obtained through the RedisBackupSet parameter in the API response of [DescribeInstanceBackups](https://www.tencentcloud.com/document/product/239/20011?from_cn_redirect=1).",
           "example": "678362566696298532848117",
           "member": "string",
           "name": "BackupId",
@@ -4320,7 +4341,7 @@
       "members": [
         {
           "disabled": true,
-          "document": "Order number, which is the output parameter DealId of [CreateInstances](https://www.tencentcloud.com/document/api/239/20026?from_cn_redirect=1), with the maximum array length of 10.",
+          "document": "Order ID, which is the output parameter DealId of [CreateInstances](https://www.tencentcloud.com/document/api/239/20026?from_cn_redirect=1), with the maximum array length of 10.",
           "example": "[\"20250825297021508048753\"]",
           "member": "string",
           "name": "DealIds",
@@ -5450,7 +5471,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Number of instances returned per page. Default value: `20`. Maximum value: `1000`.",
+          "document": "<p>Number of instances output per page. Default parameter value: 20. Maximum value: 1000.</p>",
           "example": "20",
           "member": "uint64",
           "name": "Limit",
@@ -5459,7 +5480,7 @@
         },
         {
           "disabled": false,
-          "document": "Pagination offset, which is an integral multiple of `Limit`. Calculation formula:  `offset` = `limit` * (page number - 1).",
+          "document": "<p>Pagination offset, which is an integer multiple of Limit. Calculation formula: offset=limit*(page number-1).</p>",
           "example": "0",
           "member": "uint64",
           "name": "Offset",
@@ -5468,7 +5489,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of a specified instance,  such as  \"crs-xjhsdj****\" Log in to the [Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.\n\n",
+          "document": "<p>Specifies the instance ID. Example: crs-xjhsdj****. Log in to the <a href=\"https://console.cloud.tencent.com/redis\">Redis console</a> and copy the instance ID from the instance list.</p>",
           "example": "crs-dagpcalj",
           "member": "string",
           "name": "InstanceId",
@@ -5477,7 +5498,7 @@
         },
         {
           "disabled": false,
-          "document": "The instance list is sorted according to the following enumeration valid values:\n- projectId: By project ID.- createtime: By the creation time of instances.- instancename: By the name of instances.- type: By the type of instances.- curDeadline: By the expiration time of instances.",
+          "document": "<p>Instance list sorting criteria. Enumeration values are as follows:</p><ul><li>projectId: by project ID.</li><li>createtime: sort by instance creation time.</li><li>instancename: by instance name sorting.</li><li>type: by instance type.</li><li>curDeadline: by instance expiration time.</li></ul>",
           "example": "instancename",
           "member": "string",
           "name": "OrderBy",
@@ -5486,7 +5507,7 @@
         },
         {
           "disabled": false,
-          "document": "For instance sorting order, the default is descending order.\n- 1: Descending order.\n- 0: Ascending order.",
+          "document": "<p>Instance sorting order, with a default value of reverse sorting.</p><ul><li>1: Reverse order.</li><li>0: Sequential order.</li></ul>",
           "example": "0",
           "member": "int64",
           "name": "OrderType",
@@ -5495,8 +5516,8 @@
         },
         {
           "disabled": false,
-          "document": "Array of VPC IDs such as 47525. If this parameter is not passed in or the array is empty, the classic network will be selected by default. This parameter is retained and can be ignored. It is set based on `UniqVpcIds` parameter format.",
-          "example": "47525",
+          "document": "<p>VPC ID array. If this parameter is not configured or the array is empty, the basic network is selected by default. For example: 47525. This parameter is temporarily reserved and can be ignored. Set the VPC ID array according to the format of the UniqVpcIds parameter.</p>",
+          "example": "[\"47525\"]",
           "member": "string",
           "name": "VpcIds",
           "required": false,
@@ -5504,8 +5525,8 @@
         },
         {
           "disabled": false,
-          "document": "Array of VPC subnet IDs such as 56854. This parameter is retained and can be ignored. It is set based on `UniqSubnetIds` parameter format.",
-          "example": "56854",
+          "document": "<p>Array of subnet IDs belonging to the private network, for example: 56854. This parameter is temporarily reserved and can be ignored. Set the private network subnet ID array according to the format of the UniqSubnetIds parameter.</p>",
+          "example": "[\"56854\"]",
           "member": "string",
           "name": "SubnetIds",
           "required": false,
@@ -5513,7 +5534,7 @@
         },
         {
           "disabled": false,
-          "document": "Setting keywords field for fuzzy query, only instance names support fuzzy query.",
+          "document": "<p>Set the key field for fuzzy query. Only instance names support fuzzy query.</p>",
           "example": "模糊查询实例名称",
           "member": "string",
           "name": "SearchKey",
@@ -5522,7 +5543,7 @@
         },
         {
           "disabled": false,
-          "document": "Array of project IDs",
+          "document": "<p>Array of project IDs.</p>",
           "example": "[1289900]",
           "member": "int64",
           "name": "ProjectIds",
@@ -5531,7 +5552,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance name",
+          "document": "<p>Instance name.</p>",
           "example": "example_InstanceName",
           "member": "string",
           "name": "InstanceName",
@@ -5540,8 +5561,8 @@
         },
         {
           "disabled": false,
-          "document": "Array of VPC IDs such as vpc-sad23jfdfk. If this parameter is not passed in or or the array is empty, the classic network will be selected by default.",
-          "example": "vpc-b6fsjaxt",
+          "document": "<p>VPC ID array. If this parameter is not configured or the array is empty, the basic network is selected by default, for example: vpc-sad23jfdfk.</p>",
+          "example": "[\"vpc-b6fsjaxt\"]",
           "member": "string",
           "name": "UniqVpcIds",
           "required": false,
@@ -5549,8 +5570,8 @@
         },
         {
           "disabled": false,
-          "document": "Array of VPC subnet IDs such as subnet-fdj24n34j2",
-          "example": "subnet-gqj66zh0",
+          "document": "<p>Subnet ID array belonging to the private network, for example: subnet-fdj24n34j2.</p>",
+          "example": "[\"subnet-gqj66zh0\"]",
           "member": "string",
           "name": "UniqSubnetIds",
           "required": false,
@@ -5558,8 +5579,8 @@
         },
         {
           "disabled": false,
-          "document": "Array of region IDs (disused). The corresponding region can be queried through the common parameter `Region`.",
-          "example": "1",
+          "document": "<p>Region ID array. This parameter has been deprecated. Use the common parameter Region to query the corresponding region.</p>",
+          "example": "[1]",
           "member": "int64",
           "name": "RegionIds",
           "required": false,
@@ -5567,8 +5588,8 @@
         },
         {
           "disabled": false,
-          "document": "Instance status.\n- 0: To be initialized.\n- 1: In process.\n- 2: Running.\n- -2: Isolated.\n- -3: Pending Delete.",
-          "example": "1",
+          "document": "<p>Instance status.</p><ul><li>0: pending initialization.</li><li>1: in process.</li><li>2: running.</li><li>-2: isolated.</li><li>-3: pending deletion.</li></ul>",
+          "example": "[1,2]",
           "member": "int64",
           "name": "Status",
           "required": false,
@@ -5576,7 +5597,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance architecture version.\n- 1: Single-node edition.\n- 2: Master-replica edition.- 3: Cluster edition.",
+          "document": "<p>Instance architecture version.</p><ul><li>1: standalone edition.</li><li>2: primary/secondary edition.</li><li>3: cluster version.</li></ul>",
           "example": "2",
           "member": "int64",
           "name": "TypeVersion",
@@ -5585,7 +5606,7 @@
         },
         {
           "disabled": false,
-          "document": "Storage engine information. Valid values: `Redis-2.8`, `Redis-4.0`, `Redis-5.0`, `Redis-6.0` or `CKV`.",
+          "document": "<p>Storage engine info. It can be set to Redis-2.8, Redis-4.0, Redis-5.0, Redis-6.0, or CKV.</p>",
           "example": "Redis-4.0",
           "member": "string",
           "name": "EngineName",
@@ -5594,8 +5615,8 @@
         },
         {
           "disabled": false,
-          "document": "Renewal pattern.\n- 0: Manual renewal.\n- 1: Automatic renewal.\n- 2: No renewal after expiry.",
-          "example": "1",
+          "document": "<p>Renewal mode.</p><ul><li>0: Manual renewal.</li><li>1: Automatic renewal.</li><li>2: No renewal after expiry.</li></ul>",
+          "example": "[1]",
           "member": "int64",
           "name": "AutoRenew",
           "required": false,
@@ -5603,7 +5624,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing mode.\n- postpaid: pay-as-you-go.\n- prepaid: monthly subscription.",
+          "document": "<p>Billing mode.</p><ul><li>postpaid: pay-as-you-go billing.</li><li>prepaid: annual/monthly subscription.</li></ul>",
           "example": "prepaid",
           "member": "string",
           "name": "BillingMode",
@@ -5612,7 +5633,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance type.\n\n- 2: Redis 2.8 memory edition (standard architecture).\n- 3: CKV 3.2 memory edition (standard architecture).\n- 4: CKV 3.2 memory edition (cluster architecture).\n- 5: Redis 2.8 memory edition (standalone).\n- 6: Redis 4.0 memory edition (standard architecture).\n- 7: Redis 4.0 memory edition (cluster architecture).\n- 8: Redis 5.0 memory edition (standard architecture).\n- 9: Redis 5.0 memory edition (cluster architecture).\n- 15: Redis 6.2 memory edition (standard architecture).\n- 16: Redis 6.2 memory edition (cluster architecture).\n- 17: Redis 7.0 memory edition (standard architecture).\n- 18: Redis 7.0 memory edition (cluster architecture).\n- 200: Memcached 1.6 memory edition (cluster architecture).",
+          "document": "<p>Instance type.</p><ul><li>2: Redis 2.8 memory edition (standard architecture).</li><li>3: CKV 3.2 memory edition (standard architecture).</li><li>4: CKV 3.2 memory edition (cluster architecture).</li><li>5: Redis 2.8 memory edition (standalone).</li><li>6: Redis 4.0 memory edition (standard architecture).</li><li>7: Redis 4.0 memory edition (cluster architecture).</li><li>8: Redis 5.0 memory edition (standard architecture).</li><li>9: Redis 5.0 memory edition (cluster architecture).</li><li>15: Redis 6.2 memory edition (standard architecture).</li><li>16: Redis 6.2 memory edition (cluster architecture).</li><li>17: Redis 7.0 memory edition (standard architecture).</li><li>18: Redis 7.0 memory edition (cluster architecture).</li><li>200: Memcached 1.6 memory edition (cluster architecture).</li></ul>",
           "example": "8",
           "member": "int64",
           "name": "Type",
@@ -5621,7 +5642,7 @@
         },
         {
           "disabled": false,
-          "document": "This parameter is of array type and supports the configuration of instance names, instance IDs, and IP addresses. Among these, the instance name is fuzzy matching while the instance ID and IP address are precise matching.\n- Each element in the array is used for a union-based matching query.- When both **InstanceId** and **SearchKeys** are configured simultaneously, their intersection will be used for the matching query.",
+          "document": "<p>This parameter is an array type and supports configuring instance name, instance ID, and IP address. Among them, instance name uses fuzzy matching, while instance ID and IP address use exact matching.</p><ul><li>Each element in the array uses union for match query.</li><li>If <strong>InstanceId</strong> and <strong>SearchKeys</strong> are configured concurrently, their intersection is used for matching query.</li></ul>",
           "example": "[\"crs-dagpcalj\"]",
           "member": "string",
           "name": "SearchKeys",
@@ -5630,8 +5651,8 @@
         },
         {
           "disabled": false,
-          "document": "Internal parameter, which can be ignored.",
-          "example": "1",
+          "document": "<p>Internal parameter, which can be ignored.</p>",
+          "example": "[6,7]",
           "member": "int64",
           "name": "TypeList",
           "required": false,
@@ -5639,7 +5660,7 @@
         },
         {
           "disabled": false,
-          "document": "Internal parameter, which can be ignored.",
+          "document": "<p>Internal parameter, which can be ignored.</p>",
           "example": "1",
           "member": "string",
           "name": "MonitorVersion",
@@ -5648,8 +5669,8 @@
         },
         {
           "disabled": false,
-          "document": "Resources filter by tag key and value. If this parameter is not specified or is an empty array, resources will not be filtered.",
-          "example": "[{\"TagKey\":\"key1\",\"TagValue\":\"value1\"}]",
+          "document": "<p>Filter resources by tag Key and Value. If this parameter is not configured or the array is set to empty, no tag-based filtering is applied.</p>",
+          "example": "无",
           "member": "InstanceTagInfo",
           "name": "InstanceTags",
           "required": false,
@@ -5657,8 +5678,8 @@
         },
         {
           "disabled": false,
-          "document": "Resources filter by tag key. If this parameter is not specified or is an empty array, resources will not be filtered.",
-          "example": "keyname",
+          "document": "<p>Filter resources by tag Key. If this parameter is not configured or the array is set to empty, no filtering by tag Key is performed.</p>",
+          "example": "[\"keyname\"]",
           "member": "string",
           "name": "TagKeys",
           "required": false,
@@ -5666,8 +5687,8 @@
         },
         {
           "disabled": false,
-          "document": "The product version of the instance. If this parameter is not configured or the array is set to empty, instances will not be filtered based on this parameter by default.\n- local: local Disk Edition.- cdc: Cluster dedicated edition.\n",
-          "example": "[\"cdc\"]",
+          "document": "<p>Deployment type of the instance. If this parameter is not configured or the array is set to empty, instances will not be filtered based on this parameter by default.</p><p>Enumeration values:</p><ul><li>local: Common I.</li><li>localv2: Common II.</li><li>cdc: Dedicated cluster.</li></ul>",
+          "example": "[\"local\"]",
           "member": "string",
           "name": "ProductVersions",
           "required": false,
@@ -5675,7 +5696,7 @@
         },
         {
           "disabled": false,
-          "document": "Batch query of the specified instances ID. The number of results returned is based on `Limit`.",
+          "document": "<p>Batch query the specified instance IDs. The returned results are mainly limited by Limit.</p>",
           "example": "[\"crs-fljrtizn\",\"crs-0tbmwtop\",\"crs-i0n3dutj\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -5684,7 +5705,7 @@
         },
         {
           "disabled": false,
-          "document": "Availability zone mode.\n- singleaz: Single availability zone.- multiaz: Multiple availability zones.",
+          "document": "<p>Availability zone mode.</p><ul><li>singleaz: single availability zone.</li><li>multiaz: multi-availability zone.</li></ul>",
           "example": "multiaz",
           "member": "string",
           "name": "AzMode",
@@ -5699,7 +5720,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total number of instances",
+          "document": "<p>Total number of instances.</p>",
           "example": "1",
           "member": "int64",
           "name": "TotalCount",
@@ -5709,8 +5730,8 @@
         },
         {
           "disabled": false,
-          "document": "List of instance details",
-          "example": "具体请参考对应数据结构",
+          "document": "<p>Instance detail list.</p>",
+          "example": "无",
           "member": "InstanceSet",
           "name": "InstanceSet",
           "output_required": true,
@@ -5989,7 +6010,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The parameter template ID for query. Get parameter template list information through the [DescribeParamTemplates](https://intl.cloud.tencent.com/document/product/239/58750?from_cn_redirect=1) API.",
+          "document": "Parameter template ID specified for query. Get the parameter template list through the API [DescribeParamTemplates](https://www.tencentcloud.com/document/product/239/58750?from_cn_redirect=1).",
           "example": "crs-cfg-rhlppeye",
           "member": "string",
           "name": "TemplateId",
@@ -6195,7 +6216,7 @@
         },
         {
           "disabled": false,
-          "document": "Security group ID, which can be obtained through the sub-parameter **SecurityGroupId** of the response parameter **InstanceSecurityGroupsDetail** of the API [DescribeInstanceSecurityGroup](https://intl.cloud.tencent.com/document/product/239/34447?from_cn_redirect=1).",
+          "document": "Security group ID, which can be obtained through the sub-parameter **SecurityGroupId** of the response parameter **InstanceSecurityGroupsDetail** of the API [DescribeInstanceSecurityGroup](https://www.tencentcloud.com/document/product/239/34447?from_cn_redirect=1).",
           "example": "sg-gl1egaj1",
           "member": "string",
           "name": "SecurityGroupId",
@@ -6730,6 +6751,15 @@
           "name": "InstanceId",
           "required": true,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Certificate download format type. Defaults to nginx if not passed. Only applicable to custom certificates (CertSource=1)</p><p>Enumeration values:</p><ul><li>nginx: nginx available</li><li>apache: apache available</li><li>tomcat: tomcat available</li><li>iis: iis available</li></ul>",
+          "example": "nginx",
+          "member": "string",
+          "name": "ServiceType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -6803,6 +6833,86 @@
           "example": "127.0.0.1",
           "member": "string",
           "name": "EncryptAddress",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Key source</p><p>Enumeration values:</p><ul><li>0: Tencent Cloud provides</li><li>1: Custom certificate</li></ul>",
+          "example": "1",
+          "member": "uint64",
+          "name": "CertSource",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Certificate validity</p><p>Enumeration values:</p><ul><li>0: valid</li><li>1: expiring soon (within 30 days)</li><li>2: expired</li><li>404: cert deleted</li><li>500: query exception</li></ul>",
+          "example": "0",
+          "member": "uint64",
+          "name": "CertStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Certificate ID of the SSL certificate service. Required when CertSource=1</p>",
+          "example": "QL*****M",
+          "member": "string",
+          "name": "CertId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Cert alias</p>",
+          "example": "redis测试自定义证书1",
+          "member": "string",
+          "name": "CertAlias",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Certificate expiration time</p><p>Parameter format: time format YYYY-MM-DD hh:mm:ss</p>",
+          "example": "2046-05-15 17:53:58",
+          "member": "string",
+          "name": "CertExpireTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Certificate-associated domain name (SAN)</p><p>Includes IP</p>",
+          "example": "127.0.0.1",
+          "member": "string",
+          "name": "Domain",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Minimum TLS version</p><p>Enumeration values:</p><ul><li>TLSv1.0: TLSv1.0</li><li>TLSv1.1: TLSv1.1</li><li>TLSv1.2: TLSv1.2</li></ul>",
+          "example": "TLSv1.2",
+          "member": "string",
+          "name": "SSLMinVersion",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Current encryption mode</p><p>Enumeration values:</p><ul><li>required: Enforced encryption</li><li>flexible: Compatible mode</li></ul>",
+          "example": "required",
+          "member": "string",
+          "name": "EncryptionMode",
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
@@ -7008,7 +7118,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task ID, which can be obtained through the sub-parameter **TaskId** of the response parameter **Tasks** of the API [DescribeTaskList](https://intl.cloud.tencent.com/document/product/239/39374?from_cn_redirect=1).",
+          "document": "Task ID, which can be obtained through the sub-parameter **TaskId** of the response parameter **Tasks** of the API [DescribeTaskList](https://www.tencentcloud.com/document/product/239/39374?from_cn_redirect=1).",
           "example": "18215",
           "member": "uint64",
           "name": "TaskId",
@@ -7453,7 +7563,7 @@
         },
         {
           "disabled": false,
-          "document": "Security group ID, which can be obtained through the sub-parameter **SecurityGroupId** of the response parameter InstanceSecurityGroupsDetail of the API [DescribeInstanceSecurityGroup](https://intl.cloud.tencent.com/document/product/239/34447?from_cn_redirect=1).",
+          "document": "Security group ID, which can be obtained through the sub-parameter **SecurityGroupId** of the response parameter InstanceSecurityGroupsDetail of the API [DescribeInstanceSecurityGroup](https://www.tencentcloud.com/document/product/239/34447?from_cn_redirect=1).",
           "example": "sg-ajr1jzgj",
           "member": "string",
           "name": "SecurityGroupId",
@@ -7932,7 +8042,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Memory capacity, measured in MB, must be a multiple of 1024. For specific specifications, refer to the specifications returned by <a href=\"https://www.tencentcloud.com/document/api/239/30600?from_cn_redirect=1\">query product sales specifications</a>. When TypeId is standard architecture, MemSize is the total memory capacity of the instance. When TypeId is cluster architecture, MemSize is the sharded memory capacity.</p>",
+          "document": "<p>Memory capacity, measured in MB. The value must be a multiple of 1024. The specific specifications are subject to those returned by <a href=\"https://www.tencentcloud.com/document/api/239/30600?from_cn_redirect=1\">Query Product Sales Specifications</a>. When TypeId is standard architecture, MemSize is the total memory capacity of the instance; when TypeId is cluster architecture, MemSize is the memory capacity of a single shard.</p>",
           "example": "4096",
           "member": "uint64",
           "name": "MemSize",
@@ -7968,7 +8078,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>ID of the AZ to which the instance belongs. See <a href=\"https://www.tencentcloud.com/document/product/239/4106?from_cn_redirect=1\">Regions and AZs</a>.<strong>Note</strong>: Please specify at least one parameter in <strong>ZoneId</strong> and <strong>ZoneName</strong>.</p>",
+          "document": "<p>ID of the AZ to which the instance belongs. See <a href=\"https://www.tencentcloud.com/document/product/239/4106?from_cn_redirect=1\">Regions and AZs</a>. <strong>Description</strong>: Please specify at least one of <strong>ZoneId</strong> and <strong>ZoneName</strong>.</p>",
           "example": "100002",
           "member": "uint64",
           "name": "ZoneId",
@@ -8004,7 +8114,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Name of the availability zone to which the instance belongs. See <a href=\"https://www.tencentcloud.com/document/product/239/4106?from_cn_redirect=1\">Regions and Availability Zones</a>. <strong>Description</strong>: Please specify at least one parameter in <strong>ZoneId</strong> and <strong>ZoneName</strong>.</p>",
+          "document": "<p>Name of the AZ to which the instance belongs. See <a href=\"https://www.tencentcloud.com/document/product/239/4106?from_cn_redirect=1\">Regions and AZs</a>. <strong>Description</strong>: Please specify at least one of <strong>ZoneId</strong> and <strong>ZoneName</strong>.</p>",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "ZoneName",
@@ -8476,7 +8586,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Parameter name",
+          "document": "<p>Parameter name.</p>",
           "example": "maxmemory-policy",
           "member": "string",
           "name": "ParamName",
@@ -8486,7 +8596,7 @@
         },
         {
           "disabled": false,
-          "document": "Parameter type, such as `Enum`.",
+          "document": "<p>Parameter type. For example: Enum.</p>",
           "example": "Emun",
           "member": "string",
           "name": "ValueType",
@@ -8496,7 +8606,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to restart the database after modifying the parameters. Valid values: - `true` (required) - `false` (not required)",
+          "document": "<p>Whether restart is required after parameter values are modified.</p><ul><li>true: required.</li><li>false: not required.</li></ul>",
           "example": "false",
           "member": "string",
           "name": "NeedRestart",
@@ -8506,7 +8616,7 @@
         },
         {
           "disabled": false,
-          "document": "Default value of the parameter",
+          "document": "<p>Default parameter value.</p>",
           "example": "noeviction",
           "member": "string",
           "name": "DefaultValue",
@@ -8516,8 +8626,8 @@
         },
         {
           "disabled": false,
-          "document": "Current value",
-          "example": "noeviction ",
+          "document": "<p>Current value of the parameter.</p>",
+          "example": "noeviction",
           "member": "string",
           "name": "CurrentValue",
           "output_required": true,
@@ -8526,7 +8636,7 @@
         },
         {
           "disabled": false,
-          "document": "Description",
+          "document": "<p>Parameter description.</p>",
           "example": "How Redis will select what to remove when maxmemory is reached",
           "member": "string",
           "name": "Tips",
@@ -8536,8 +8646,8 @@
         },
         {
           "disabled": false,
-          "document": "Acceptable values for the parameter",
-          "example": "[“volatile-lru”,\"volatile-lfu\",\"allkeys-lru\",\"allkeys-lfu\",\"volatile-random\",\"allkeys-random\",\"volatile-ttl\",\"noeviction\"]",
+          "document": "<p>Available values of the parameter.</p>",
+          "example": "[\"volatile-lru\",\"volatile-lfu\",\"allkeys-lru\",\"allkeys-lfu\",\"volatile-random\",\"allkeys-random\",\"volatile-ttl\",\"noeviction\"]",
           "member": "string",
           "name": "EnumValue",
           "output_required": true,
@@ -8546,12 +8656,62 @@
         },
         {
           "disabled": false,
-          "document": "Parameter modification status. Valid values: - `1` (modifying) - `2` (modified)",
+          "document": "<p>Parameter modification status.</p><ul><li>1: Modifying.</li><li>2: Modified.</li></ul>",
           "example": "2",
           "member": "int64",
           "name": "Status",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Parameter type</p><p>Enumeration values:</p><ul><li>redis: parameters supported by cache nodes</li><li>redis-interface: parameters supported by proxy</li><li>tendis: parameters supported by tendis</li></ul>",
+          "example": "redis-interface",
+          "member": "string",
+          "name": "ParamType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether the current instance supports this feature</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "FeatureSupported",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>New feature launch date</p><p>Parameter format: time format YYYY-MM-DD</p>",
+          "example": "2026-08-20",
+          "member": "string",
+          "name": "NewFeatureOnlineTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Regular expression validation rule</p>",
+          "example": "^$|^[a-zA-Z]+( +[a-zA-Z0-9]+)*( *, *[a-zA-Z]+( +[a-zA-Z0-9]+)*)*$",
+          "member": "string",
+          "name": "Pattern",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Input format description</p>",
+          "example": "Comma-separated rules. Each rule: command name (letters only) optionally followed by space-separated parameters (letters and digits)",
+          "member": "string",
+          "name": "InputDescription",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -8667,7 +8827,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Parameter name",
+          "document": "<p>Parameter name</p>",
           "example": "cluster-node-timeout",
           "member": "string",
           "name": "ParamName",
@@ -8677,7 +8837,7 @@
         },
         {
           "disabled": false,
-          "document": "Parameter type: Integer",
+          "document": "<p>Parameter type: integer</p>",
           "example": "integer",
           "member": "string",
           "name": "ValueType",
@@ -8687,7 +8847,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether restart is required after a modification is made. Valid values: true, false",
+          "document": "<p>Whether restart is required after modification: true, false</p>",
           "example": "false",
           "member": "string",
           "name": "NeedRestart",
@@ -8697,7 +8857,7 @@
         },
         {
           "disabled": false,
-          "document": "Default value of the parameter",
+          "document": "<p>Default parameter value</p>",
           "example": "15000",
           "member": "string",
           "name": "DefaultValue",
@@ -8707,7 +8867,7 @@
         },
         {
           "disabled": false,
-          "document": "Current value",
+          "document": "<p>Current running parameter value</p>",
           "example": "15000",
           "member": "string",
           "name": "CurrentValue",
@@ -8717,7 +8877,7 @@
         },
         {
           "disabled": false,
-          "document": "Parameter description",
+          "document": "<p>Parameter description</p>",
           "example": "集群模式下当节点在指定时间内(毫秒)不可达则被认为处于失败状态",
           "member": "string",
           "name": "Tips",
@@ -8727,7 +8887,7 @@
         },
         {
           "disabled": false,
-          "document": "Minimum value of the parameter",
+          "document": "<p>Minimum parameter value</p>",
           "example": "15000",
           "member": "string",
           "name": "Min",
@@ -8737,7 +8897,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum value of the parameter",
+          "document": "<p>Maximum parameter value</p>",
           "example": "120000",
           "member": "string",
           "name": "Max",
@@ -8747,7 +8907,7 @@
         },
         {
           "disabled": false,
-          "document": "Parameter status. 1: modifying; 2: modified",
+          "document": "<p>Parameter status. 1: modifying, 2: modified</p>",
           "example": "2",
           "member": "int64",
           "name": "Status",
@@ -8757,11 +8917,61 @@
         },
         {
           "disabled": false,
-          "document": "Parameter unit.",
+          "document": "<p>Parameter unit</p>",
           "example": "ms",
           "member": "string",
           "name": "Unit",
           "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Parameter type</p><p>Enumeration values:</p><ul><li>redis: parameters supported by cache nodes</li><li>redis-interface: parameters supported by proxy</li><li>tendis: parameters supported by tendis</li></ul>",
+          "example": "redis-interface",
+          "member": "string",
+          "name": "ParamType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether the current instance supports this feature</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "FeatureSupported",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>New feature launch date</p><p>Parameter format: time format YYYY-MM-DD</p>",
+          "example": "2026-08-20",
+          "member": "string",
+          "name": "NewFeatureOnlineTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Regular expression validation rule</p>",
+          "example": "^$|^[a-zA-Z]+( +[a-zA-Z0-9]+)*( *, *[a-zA-Z]+( +[a-zA-Z0-9]+)*)*$",
+          "member": "string",
+          "name": "Pattern",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Input format description</p>",
+          "example": "Comma-separated rules. Each rule: command name (letters only) optionally followed by space-separated parameters (letters and digits)",
+          "member": "string",
+          "name": "InputDescription",
+          "output_required": false,
           "type": "string",
           "value_allowed_null": false
         }
@@ -8773,7 +8983,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Parameter name",
+          "document": "<p>Parameter name.</p>",
           "example": "InstanceMultiParam",
           "member": "string",
           "name": "ParamName",
@@ -8783,7 +8993,7 @@
         },
         {
           "disabled": false,
-          "document": "Parameter Type such as  `MULTI`",
+          "document": "<p>Parameter type. For example: multi.</p>",
           "example": "multi",
           "member": "string",
           "name": "ValueType",
@@ -8793,7 +9003,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to restart the database after modifying the parameter. Valid values:  - `true` (required) - `false` (not required)",
+          "document": "<p>Whether restart is required after parameter modification.</p><ul><li>true: required.</li><li>false: not required.</li></ul>",
           "example": "false",
           "member": "string",
           "name": "NeedRestart",
@@ -8803,7 +9013,7 @@
         },
         {
           "disabled": false,
-          "document": "Default value of the parameter",
+          "document": "<p>Default parameter value.</p>",
           "example": "“\\\"\\\"”",
           "member": "string",
           "name": "DefaultValue",
@@ -8813,7 +9023,7 @@
         },
         {
           "disabled": false,
-          "document": "Current value",
+          "document": "<p>Current running parameter value.</p>",
           "example": "“\\\"\\\"”",
           "member": "string",
           "name": "CurrentValue",
@@ -8823,7 +9033,7 @@
         },
         {
           "disabled": false,
-          "document": "Description",
+          "document": "<p>Parameter description.</p>",
           "example": "commands in such config will not be allowed to run in this instance,you can config multi commands like this 'flushdb,keys'",
           "member": "string",
           "name": "Tips",
@@ -8833,8 +9043,8 @@
         },
         {
           "disabled": false,
-          "document": "Parameter enumeration value.",
-          "example": "\"flushall\",\"flushdb\",\"keys\",\"hgetall\",\"eval\",\"evalsha\",\"script\",\"scan\",\"psetex\",\"set\",\"hmset\",\"hset\",\"lpush\",\"rpush\",\"sadd\",\"zadd\",\"del\",\"mget\",\"mset\",\"bitop\",\"exists\",\"msetnx\",\"blpop\",\"brpop\",\"rpoplpush\",\"brpoplpush\",\"smove\",\"sunion\",\"sinter\",\"sdiff\",\"sunionstore\",\"sinterstore\",\"sdiffstore\",\"zunionstore\",\"zinterstore\",\"pfmerge\",\"pfcount\"",
+          "document": "<p>Parameter enumeration value.</p>",
+          "example": "[\"flushall\",\"flushdb\",\"keys\",\"hgetall\",\"eval\",\"evalsha\",\"script\",\"scan\",\"psetex\",\"set\",\"hmset\",\"hset\",\"lpush\",\"rpush\",\"sadd\",\"zadd\",\"del\",\"mget\",\"mset\",\"bitop\",\"exists\",\"msetnx\",\"blpop\",\"brpop\"]",
           "member": "string",
           "name": "EnumValue",
           "output_required": true,
@@ -8843,12 +9053,62 @@
         },
         {
           "disabled": false,
-          "document": "Parameter modification status. Valid values: - `1` (modifying) - `2` (modified)",
+          "document": "<p>Parameter modification status.</p><ul><li>1: Modifying.</li><li>2: Modified.</li></ul>",
           "example": "2",
           "member": "int64",
           "name": "Status",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Parameter type</p><p>Enumeration values:</p><ul><li>redis: parameters supported by cache nodes</li><li>redis-interface: parameters supported by proxy</li><li>tendis: parameters supported by tendis</li></ul>",
+          "example": "redis-interface",
+          "member": "string",
+          "name": "ParamType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether the current instance supports this feature</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "FeatureSupported",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>New feature launch date</p><p>Parameter format: time format YYYY-MM-DD</p>",
+          "example": "2026-08-20",
+          "member": "string",
+          "name": "NewFeatureOnlineTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Regular expression validation rule</p>",
+          "example": "^$|^[a-zA-Z]+( +[a-zA-Z0-9]+)*( *, *[a-zA-Z]+( +[a-zA-Z0-9]+)*)*$",
+          "member": "string",
+          "name": "Pattern",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Input format description</p>",
+          "example": "Comma-separated rules. Each rule: command name (letters only) optionally followed by space-separated parameters (letters and digits)",
+          "member": "string",
+          "name": "InputDescription",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -8885,7 +9145,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Parameter name, such as “timeout”. For supported custom parameters, see <a href=\"https://www.tencentcloud.com/document/product/239/39796\">Setting Instance Parameters</a>",
+          "document": "Parameter name. For example, timeout. For customizable parameters, see <a href=\"https://www.tencentcloud.com/document/product/239/49925?from_cn_redirect=1\">Parameter Configuration</a>.",
           "example": "timeout",
           "member": "string",
           "name": "Key",
@@ -8895,7 +9155,7 @@
         },
         {
           "disabled": false,
-          "document": "Current parameter value. For example, if you set the current value of “timeout” to 120 (in seconds), the client connections that remain idle longer than 120 seconds will be closed. For more information on parameter values, see <a href=\"https://www.tencentcloud.com/document/product/239/39796\">Setting Instance Parameters</a>",
+          "document": "Set the running value corresponding to the parameter name. For example, the running value corresponding to timeout can be set to 120, in seconds (s). When the client connection idle time reaches 120 s, the connection closed. For more parameter value information, please refer to <a href=\"https://www.tencentcloud.com/document/product/239/49925?from_cn_redirect=1\">parameter configuration</a>.",
           "example": "120",
           "member": "string",
           "name": "Value",
@@ -9529,7 +9789,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Monitoring version.<ul><li>1m: 1-minute granularity monitoring. This monitoring granularity is deprecated. For details, please see <a href=\"https://www.tencentcloud.com/document/product/239/80653?from_cn_redirect=1\">TencentDB for Redis 1-minute granularity deprecation notice</a>.</li><li>5s: 5-second granularity monitoring.</li></ul></p>",
+          "document": "<p>Monitoring version.<ul><li>1m: 1-minute granularity monitoring. This monitoring granularity has been deprecated. For details, see <a href=\"https://www.tencentcloud.com/document/product/239/80653?from_cn_redirect=1\">TencentDB for Redis 1-Minute Granularity Deprecation Notice</a>.</li><li>5s: 5-second granularity monitoring.</li></ul></p>",
           "example": "5s",
           "member": "string",
           "name": "MonitorVersion",
@@ -9789,7 +10049,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Parameter name",
+          "document": "<p>Parameter name.</p>",
           "example": "UserPasswordSeparate",
           "member": "string",
           "name": "ParamName",
@@ -9799,7 +10059,7 @@
         },
         {
           "disabled": false,
-          "document": "Parameter type such as  `Text`.",
+          "document": "<p>Parameter type. For example: text.</p>",
           "example": "text",
           "member": "string",
           "name": "ValueType",
@@ -9809,7 +10069,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to restart the database after modifying the parameter. Valid values:  - `true` (required) - `false` (not required)",
+          "document": "<p>Whether restart is required after parameter modification.</p><ul><li>true: required.</li><li>false: not required.</li></ul>",
           "example": "false",
           "member": "string",
           "name": "NeedRestart",
@@ -9819,7 +10079,7 @@
         },
         {
           "disabled": false,
-          "document": "Default value of the parameter",
+          "document": "<p>Default parameter value.</p>",
           "example": "\"@\"",
           "member": "string",
           "name": "DefaultValue",
@@ -9829,7 +10089,7 @@
         },
         {
           "disabled": false,
-          "document": "Current value",
+          "document": "<p>Current value of the parameter.</p>",
           "example": "\"@\"",
           "member": "string",
           "name": "CurrentValue",
@@ -9839,7 +10099,7 @@
         },
         {
           "disabled": false,
-          "document": "Description",
+          "document": "<p>Parameter description.</p>",
           "example": "Specify password connection symbols for custom accounts",
           "member": "string",
           "name": "Tips",
@@ -9849,8 +10109,8 @@
         },
         {
           "disabled": false,
-          "document": "Acceptable values of the parameter",
-          "example": "\"@\",\":\"",
+          "document": "<p>Available values of the parameter.</p>",
+          "example": "[\"@\",\":\"]",
           "member": "string",
           "name": "TextValue",
           "output_required": true,
@@ -9859,12 +10119,62 @@
         },
         {
           "disabled": false,
-          "document": "Parameter modification status. Valid values: - `1` (modifying) - `2` (modified)",
+          "document": "<p>Parameter modification status.</p><ul><li>1: Modifying.</li><li>2: Modified.</li></ul>",
           "example": "2",
           "member": "int64",
           "name": "Status",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Parameter type</p><p>Enumeration values:</p><ul><li>redis: parameters supported by cache nodes</li><li>redis-interface: parameters supported by proxy</li><li>tendis: parameters supported by tendis</li></ul>",
+          "example": "redis-interface",
+          "member": "string",
+          "name": "ParamType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether the current instance supports this feature</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "FeatureSupported",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>New feature launch date</p><p>Parameter format: time format YYYY-MM-DD</p>",
+          "example": "2026-08-20",
+          "member": "string",
+          "name": "NewFeatureOnlineTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Regular expression validation rule</p>",
+          "example": "^$|^[a-zA-Z]+( +[a-zA-Z0-9]+)*( *, *[a-zA-Z]+( +[a-zA-Z0-9]+)*)*$",
+          "member": "string",
+          "name": "Pattern",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Input format description</p>",
+          "example": "Comma-separated rules. Each rule: command name (letters only) optionally followed by space-separated parameters (letters and digits)",
+          "member": "string",
+          "name": "InputDescription",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -10109,7 +10419,7 @@
         },
         {
           "disabled": false,
-          "document": "Sharded cluster ID, which can be obtained through **ClusterId** of the response parameter \n **Redis** of the API [DescribeInstanceNodeInfo](https://intl.cloud.tencent.com/document/product/239/48603?from_cn_redirect=1).",
+          "document": "Shard ID. Obtain it from the **ClusterId** field in the **Redis** response parameter through the [DescribeInstanceNodeInfo](https://www.tencentcloud.com/document/product/239/48603?from_cn_redirect=1) API.",
           "example": "null",
           "member": "int64",
           "name": "ShardIds",
@@ -10477,6 +10787,17 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Node ID of the proxy</p>",
+          "example": "f5b7112",
+          "member": "string",
+          "name": "Node",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -10605,7 +10926,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of a specified instance,  such as  \"crs-xjhsdj****\" Log in to the [Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.\n",
+          "document": "<p>Specifies the instance ID. Example: crs-xjhsdj****. Log in to the <a href=\"https://console.cloud.tencent.com/redis\">Redis console</a> and copy the instance ID in the instance list.</p>",
           "example": "crs-5a4py64p",
           "member": "string",
           "name": "InstanceId",
@@ -10614,7 +10935,7 @@
         },
         {
           "disabled": false,
-          "document": "Automatic backup cycle. Valid values: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`. This parameter currently cannot be modified.",
+          "document": "<p>Set the automatic backup cycle. It can be set to Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday. This parameter cannot be modified for the moment.</p>",
           "example": "[\"Monday\",\"Tuesday\",\"Wednesday\",\"Thursday\",\"Friday\",\"Saturday\"]",
           "member": "string",
           "name": "WeekDays",
@@ -10623,7 +10944,7 @@
         },
         {
           "disabled": false,
-          "document": "Automatic backup time in the format of 00:00-01:00, 01:00-02:00... 23:00-00:00.",
+          "document": "<p>Backup time period. It can be set to every full hour. Format: 00:00-01:00, 01:00-02:00...... 23:00-00:00.</p>",
           "example": "04:00-05:00",
           "member": "string",
           "name": "TimePeriod",
@@ -10632,7 +10953,7 @@
         },
         {
           "disabled": false,
-          "document": "Automatic backup type.  Valid value:  `1` (scheduled backup).",
+          "document": "<p>Automatic backup type. Currently, it can only be configured as: 1, scheduled backup.</p>",
           "example": "1",
           "member": "int64",
           "name": "AutoBackupType",
@@ -10641,7 +10962,7 @@
         },
         {
           "disabled": false,
-          "document": "Retention days for full backup files. Only support setting to 7, unit: day. If needed for longer period, please submit a ticket (https://console.cloud.tencent.com/workorder/category) to apply.",
+          "document": "<p>Number of days to save full backup files. Only support setting to 7, unit: days. For a longer period, please <a href=\"https://console.cloud.tencent.com/workorder/category\">submit a ticket</a> to apply.</p>",
           "example": "7",
           "member": "int64",
           "name": "BackupStorageDays",
@@ -10656,7 +10977,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Automatic backup type.  Valid value:  `1` (scheduled backup).",
+          "document": "<p>Automatic backup type. Currently, it can only be configured as: 1, scheduled backup.</p>",
           "example": "1",
           "member": "int64",
           "name": "AutoBackupType",
@@ -10666,7 +10987,7 @@
         },
         {
           "disabled": false,
-          "document": "Automatic backup cycle. Valid values: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`.",
+          "document": "<p>Automatic backup cycle. Value: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.</p>",
           "example": "[\"Monday\",\"Tuesday\",\"Wednesday\",\"Thursday\",\"Friday\",\"Saturday\"]",
           "member": "string",
           "name": "WeekDays",
@@ -10676,7 +10997,7 @@
         },
         {
           "disabled": false,
-          "document": "Time period for automatic scheduled backup  in the format of  “00:00-01:00, 01:00-02:00...... 23:00-00:00”.",
+          "document": "<p>Automatic scheduled backup time period. Format: 00:00-01:00, 01:00-02:00...... 23:00-00:00.</p>",
           "example": "04:00-05:00",
           "member": "string",
           "name": "TimePeriod",
@@ -10686,7 +11007,7 @@
         },
         {
           "disabled": false,
-          "document": "Retention time of full backup files in days",
+          "document": "<p>Number of days to save full backup files, in days.</p>",
           "example": "7",
           "member": "int64",
           "name": "BackupStorageDays",
@@ -10807,7 +11128,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Regional information.</p><p>Parameter format: ap-xxxx</p><p>For reference: <a href=\"https://www.tencentcloud.com/document/api/573/34406?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8\">Supported region list for KMS</a></p>",
+          "document": "<p>Regional information.</p><p>Parameter format: ap-xxxx</p><p>For parameter values, see <a href=\"https://www.tencentcloud.com/document/api/573/34406?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8\">KMS supported region list</a></p>",
           "example": "ap-region",
           "member": "string",
           "name": "KmsRegion",
@@ -10898,7 +11219,7 @@
         },
         {
           "disabled": false,
-          "document": "Replaces with the new security group ID list, which is an array of one or more security group IDs.\n- To configure a security group for an instance for the first time, call the API [AssociateSecurityGroups](https://www.tencentcloud.com/document/product/239/41260?from_cn_redirect=1) to bind a security group first.\n- To replace the security group, obtain the security group ID on the [security group](https://console.tencentcloud.com/vpc/security-group) page of the console.\n\n**Note:** This input parameter performs a full replacement on all existing collections but not an incremental update. To modify it, import the expected full collections.",
+          "document": "Security group ID list. Replace it with a new one, which is an array of one or more security group IDs.\n- To configure a security group for an instance for the first time, bind the security group through the API [AssociateSecurityGroups](https://www.tencentcloud.com/document/product/239/41260?from_cn_redirect=1) first.\n- To replace the security group, obtain the security group ID on the [security group](https://console.tencentcloud.com/vpc/security-group) page of the console.\n  **Note:** This input parameter performs a full replacement on all existing collections but not an incremental update. To modify it, import the expected full collections.",
           "example": "[\"sg-ajr1jzgj\"]",
           "member": "string",
           "name": "SecurityGroupIds",
@@ -11003,6 +11324,24 @@
           "name": "EncryptPassword",
           "required": false,
           "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Disabled command configuration at the account level.</p><ul><li>Default value: [] (empty array, meaning no commands are disabled)</li><li>Input parameter limitation: Only the following specified database commands can be configured (multiple selections are supported)<br>flushall, flushdb, keys, hgetall, eval, evalsha, script, scan, psetex, set, hmset, hset, lpush, rpush, sadd, zadd, del, mget, mset, bitop, exists, msetnx, blpop, brpop, rpoplpush, brpoplpush, smove, sunion, sinter, sdiff, sunionstore, sinterstore, sdiffstore, zunionstore, zinterstore, pfmerge, pfcount, pfadd.</li></ul><p>Default value: \"\"</p>",
+          "example": "[\"flushall\"]",
+          "member": "string",
+          "name": "DisableCommands",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to modify the command disablement configuration at the account level. Pass in only when the command list needs to be updated.</p><ul><li>true: Modify (an overwrite update will be performed based on the new command list passed in).</li><li>false: Do not modify (default value).</li></ul>",
+          "example": "true",
+          "member": "bool",
+          "name": "ModifyDisableCommands",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -11052,7 +11391,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance node information includes the node ID, node type, and node availability zone ID, and so on. For specific information, please see [RedisNodeInfo ](https://intl.cloud.tencent.com/document/product/239/20022?from_cn_redirect=1).\nFor instances in a single availability zone, there is no need to configure the NodeId. For instances in multiple availability zones, the NodeId is required to configure.",
+          "document": "Node information of the instance, including node ID, node type, and node availability zone ID. For details, see [RedisNodeInfo](https://www.tencentcloud.com/document/product/239/20022?from_cn_redirect=1).\nFor a single-AZ instance, no need to pass in NodeId. For a multi-AZ instance, NodeId is required.",
           "example": "无",
           "member": "RedisNodeInfo",
           "name": "NodeSet",
@@ -11299,7 +11638,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of the shipped logset. It can be obtained through the API [DescribeLogsets](https://intl.cloud.tencent.com/document/api/614/58624?from_cn_redirect=1).",
+          "document": "ID of the shipped logset. It can be obtained through the API [DescribeLogsets](https://www.tencentcloud.com/document/api/614/58624?from_cn_redirect=1).",
           "example": "4ae3d686-0dcf-4db3-9867-482def442c9a",
           "member": "string",
           "name": "LogsetId",
@@ -11308,7 +11647,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of the shipped log topic. It can be obtained through the API [DescribeTopics](https://intl.cloud.tencent.com/document/api/614/56454?from_cn_redirect=1).",
+          "document": "ID of the shipped log topic. It can be obtained through the API [DescribeTopics](https://www.tencentcloud.com/document/api/614/56454?from_cn_redirect=1).",
           "example": "27197b72-e1cb-4fc1-ab21-3865f589136f",
           "member": "string",
           "name": "TopicId",
@@ -11908,7 +12247,7 @@
         },
         {
           "disabled": false,
-          "document": "Task ID. Obtain **taskId** and query the task execution status through the API [DescribeTaskInfo](https://intl.cloud.tencent.com/document/product/239/30601?from_cn_redirect=1).",
+          "document": "Task ID. Obtain **taskId** and query the task execution status through the API [DescribeTaskInfo](https://www.tencentcloud.com/document/product/239/30601?from_cn_redirect=1).",
           "example": "1",
           "member": "int64",
           "name": "TaskId",
@@ -11930,7 +12269,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Source parameter template ID, which can be obtained through the response parameter **TemplateId** of the API [DescribeParamTemplateInfo](https://intl.cloud.tencent.com/document/product/239/58748?from_cn_redirect=1).",
+          "document": "Source parameter template ID, which can be obtained through the response parameter **TemplateId** of the API [DescribeParamTemplateInfo](https://www.tencentcloud.com/document/product/239/58748?from_cn_redirect=1).",
           "example": "crs-cfg-rhlppeye",
           "member": "string",
           "name": "TemplateId",
@@ -12015,6 +12354,107 @@
     "ModifyReplicationGroupResponse": {
       "document": "ModifyReplicationGroup response structure.",
       "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySSLEncryptionModeRequest": {
+      "document": "ModifySSLEncryptionMode request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Specifies the instance ID. Example: crs-xjhsdj****. Log in to the <a href=\"https://console.cloud.tencent.com/redis\">Redis console</a> and copy the instance ID from the instance list.</p>",
+          "example": "crs-kb5f4wul",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Target encryption mode</p><p>Enumeration values:</p><ul><li>required: Enforced encryption</li><li>flexible: Compatible mode</li></ul>",
+          "example": "required",
+          "member": "string",
+          "name": "EncryptionMode",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifySSLEncryptionModeResponse": {
+      "document": "ModifySSLEncryptionMode response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "2031422420",
+          "member": "int64",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyValkeyModuleRequest": {
+      "document": "ModifyValkeyModule request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Specifies the instance ID. Example: crs-xjhsdj****. Log in to the <a href=\"https://console.cloud.tencent.com/redis\">Redis console</a> and copy the instance ID from the instance list.</p>",
+          "example": "crs-d5rb****",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Specify the extension module to be modified.</p><p>Enumeration values:</p><ul><li>ValkeyBloom: Refers to the Bloom module, which can efficiently judge whether an element exists in a collection.</li><li>ValkeyJSON: Refers to the JSON module, which allows Redis to natively support the JSON data format, facilitating the storage and manipulation of JSON Objects.</li><li>ValkeySearch: Refers to the Search module, which provides a full-text search feature, enabling efficient search operations on data stored in Redis.</li></ul>",
+          "example": "ValkeyBloom",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Set the enable status of the extension module. Only support setting to ON to enable the extension module.</p>",
+          "example": "ON",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyValkeyModuleResponse": {
+      "document": "ModifyValkeyModule response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "2031391183",
+          "member": "int64",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -12116,6 +12556,51 @@
           "name": "AddressType",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Key type.</p><p>Enumeration values:</p><ul><li>0: Tencent Cloud provides</li><li>1: User-defined certificate</li></ul><p>Default value: 0</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "CertSource",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": true,
+          "document": "<p>Switch time. (This parameter is deprecated and no longer effective.)</p><p>Enumeration values:</p><ul><li>1: Operate within the maintenance window: SSL encryption will be enabled and executed within the set maintenance window. Use the DescribeMaintenanceWindow interface to query the set maintenance time period.</li><li>2: Immediate operation: The operation will be executed immediately with no waiting for the maintenance window. The system default setting is immediate operation.</li></ul>",
+          "example": "2",
+          "member": "int64",
+          "name": "SwitchOption",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Certificate ID of the SSL certificate service. Required when CertSource=1</p>",
+          "example": "QL*****M",
+          "member": "string",
+          "name": "CertId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Min TLS version</p><p>Enumeration values:</p><ul><li>TLSv1.0: TLSv1.0</li><li>TLSv1.1: TLSv1.1</li><li>TLSv1.2: TLSv1.2</li></ul>",
+          "example": "TLSv1.0",
+          "member": "string",
+          "name": "SSLMinVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Target encryption mode</p><p>Enumeration values:</p><ul><li>required: Enforced encryption</li><li>flexible: Compatible mode</li></ul><p>Default value: flexible</p>",
+          "example": "required",
+          "member": "string",
+          "name": "EncryptionMode",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -13122,7 +13607,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of the master or replica node <ul><li>This parameter is optional when the [CreateInstances](https://intl.cloud.tencent.com/document/product/239/20026?from_cn_redirect=1) API is used to create a TencentDB for Redis instance, but it is required when the [UpgradeInstance](https://intl.cloud.tencent.com/document/product/239/20013?from_cn_redirect=1) API is used to adjust the configuration of an instance by deleting a replica.  </li><li>You can use the [DescribeInstances](https://intl.cloud.tencent.com/document/product/239/20018?from_cn_redirect=1) API to get the node ID of integer type. </li></ul> </li></ul>",
+          "document": "ID of the primary or replica node.<ul><li>This parameter does not need to be set for the Create Redis Instance API [CreateInstances](https://www.tencentcloud.com/document/product/239/20026?from_cn_redirect=1), but needs to be set when deleting replicas through the instance configuration change API [UpgradeInstance](https://www.tencentcloud.com/document/product/239/20013?from_cn_redirect=1).</li><li>This parameter can be used to obtain the Integer type node ID through the API [DescribeInstances](https://www.tencentcloud.com/document/product/239/20018?from_cn_redirect=1).</li></ul>",
           "example": "1",
           "member": "int64",
           "name": "NodeId",
@@ -13643,7 +14128,7 @@
         },
         {
           "disabled": false,
-          "document": "Backup ID, which can be obtained through the response parameter RedisBackupSet of the [DescribeInstanceBackups](https://www.tencentcloud.com/document/product/239/20011?from_cn_redirect=1) API.",
+          "document": "Backup ID, which can be obtained through the RedisBackupSet parameter in the API response of [DescribeInstanceBackups](https://www.tencentcloud.com/document/product/239/20011?from_cn_redirect=1).",
           "example": "\"154572601-1165734321-153731245\"",
           "member": "string",
           "name": "BackupId",
@@ -14121,7 +14606,7 @@
         },
         {
           "disabled": false,
-          "document": "Proxy ID of an instance, which can be obtained through NodeId of the response parameter **Proxy** of the API [DescribeInstanceNodeInfo](https://intl.cloud.tencent.com/document/product/239/48603?from_cn_redirect=1).",
+          "document": "Instance ProxyID. Obtain it through the NodeId in the Proxy response parameter of the DescribeInstanceNodeInfo interface (https://www.tencentcloud.com/document/product/239/48603?from_cn_redirect=1).",
           "example": "6ff0eb7815606bb7e3f14cdde9410b64b488e8f9",
           "member": "string",
           "name": "ProxyID",
@@ -14130,7 +14615,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance proxy ID list. Call the API [DescribeInstanceNodeInfo](https://www.tencentcloud.com/document/product/239/48603?from_cn_redirect=1) to obtain IDs from **NodeId** in the **Proxy** response parameter.",
+          "document": "List of instance ProxyIDs. Obtain it through the NodeId in the Proxy response parameter of the DescribeInstanceNodeInfo interface (https://www.tencentcloud.com/document/product/239/48603?from_cn_redirect=1).",
           "example": "[\"896873be5805ebacae5042311237e6d2d78be00b\"]",
           "member": "string",
           "name": "ProxyIDList",
@@ -14476,6 +14961,115 @@
       ],
       "usage": "out"
     },
+    "UpdateSSLCertRequest": {
+      "document": "UpdateSSLCert request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Specifies the instance ID. Example: crs-xjhsdj****. Log in to the <a href=\"https://console.cloud.tencent.com/redis\">Redis console</a> and copy the instance ID from the instance list.</p>",
+          "example": "crs-42x*****",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Key type.</p><p>Enumeration value:</p><ul><li>0: Tencent Cloud provides</li><li>1: User-customized KMS</li></ul>",
+          "example": "1",
+          "member": "int64",
+          "name": "CertSource",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": true,
+          "document": "<p>Switch time. (This parameter is deprecated and no longer effective.)</p><p>Enumeration values:</p><ul><li>1: Maintenance window operation: SSL encryption is enabled and executed within the set maintenance window. Use the DescribeMaintenanceWindow API to query the set maintenance time window period.</li><li>2: Immediate operation: The operation will be executed immediately with no waiting for the maintenance window. The system default setting is immediate operation.</li></ul>",
+          "example": "1",
+          "member": "int64",
+          "name": "SwitchOption",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>SSL address type.</p><p>Enumeration value:</p><ul><li>0: Unlimited.</li><li>1: Private IPv4 address.</li><li>2: Private IPv6 address.</li><li>3: Public network.</li><li>-1: Unspecified.</li></ul>",
+          "example": "0",
+          "member": "int64",
+          "name": "AddressType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": true,
+          "document": "<p>Key ID of KMS. (This parameter is deprecated and no longer effective)</p><p>Parameter format: xxxxxxx-xxxx-xxxx-xxxx-xxxxxxx</p>",
+          "example": "1ba881ca-****-****-bb4c-525400c6****",
+          "member": "string",
+          "name": "KmsKeyId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": true,
+          "document": "<p>KMS regional information. (This parameter is deprecated and no longer effective.)</p><p>Parameter format: ap-xxxx</p><p>For parameter values, see <a href=\"https://www.tencentcloud.com/document/api/573/34406?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8\">KMS supported region list</a></p>",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "KmsRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Certificate ID of the SSL certificate service. Required when CertSource=1</p>",
+          "example": "aKnH4alS",
+          "member": "string",
+          "name": "CertId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Min TLS version</p><p>Enumeration values:</p><ul><li>TLSv1.0: TLSv1.0</li><li>TLSv1.1: TLSv1.1</li><li>TLSv1.2: TLSv1.2</li></ul>",
+          "example": "TLSv1.2",
+          "member": "string",
+          "name": "SSLMinVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Targeted encryption mode</p><p>Enumeration values:</p><ul><li>required: Enforced encryption</li><li>flexible: Compatible mode</li></ul>",
+          "example": "flexible",
+          "member": "string",
+          "name": "EncryptionMode",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateSSLCertResponse": {
+      "document": "UpdateSSLCert response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task ID.</p>",
+          "example": "2031390652",
+          "member": "int64",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "UpgradeInstanceProductVersionRequest": {
       "document": "UpgradeInstanceProductVersion request structure.",
       "members": [
@@ -14581,7 +15175,7 @@
         },
         {
           "disabled": false,
-          "document": "Switch time.\n - 1: Perform the operation within the maintenance window: Specification upgrade is executed within the set maintenance window. Use the API [DescribeMaintenanceWindow](https://intl.cloud.tencent.com/document/product/239/46336?from_cn_redirect=1) to query the time period of the set maintenance window. Replica addition/removal, shard addition/removal, and memory capacity expansion/shrinkage are supported within the maintenance window. Specification upgrade within the maintenance window is being gradually tested and published by region. It is already supported in some regions. For urgent integration in regions that do not support it, [submit a ticket](https://console.cloud.tencent.com/workorder/category) to apply for an allowlist.\n -2: Perform the operation immediately: The operation will be performed immediately, without the need to wait for the maintenance window. Operations will be performed immediately by default for the system.",
+          "document": "Switch time. \n- 1: Perform the operation within the maintenance window: Specification upgrade is executed within the set maintenance window. Use the API [DescribeMaintenanceWindow](https://www.tencentcloud.com/document/product/239/46336?from_cn_redirect=1) to query the time period of the set maintenance window. Replica addition/removal, shard addition/removal, and memory capacity expansion/shrinkage are supported within the maintenance window. Specification upgrade within the maintenance window is being gradually tested and published by region. It is already supported in some regions. For urgent integration in regions that do not support it, [submit a ticket](https://console.cloud.tencent.com/workorder/category) to apply for an allowlist.\n-2: Perform the operation immediately: The operation will be performed immediately, without the need to wait for the maintenance window. Operations will be performed immediately by default for the system.",
           "example": "2",
           "member": "uint64",
           "name": "SwitchOption",
@@ -14628,7 +15222,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Target instance type after the change, which is the same as the `TypeId` of the [CreateInstances](https://intl.cloud.tencent.com/document/api/239/20026?from_cn_redirect=1) API.\n- For Redis 4.0 or later, a standard architecture instance can be upgraded to a cluster architecture instance on the same version; for example, you can upgrade from Redis 4.0 Standard Architecture to Redis 4.0 Cluster Architecture.\n- Cross-version architecture upgrade is not supported; for example, you cannot upgrade from Redis 4.0 Standard Architecture to Redis 5.0 Cluster Architecture.\n- The architecture of Redis 2.8 cannot be upgraded.\n- Cluster architecture cannot be downgraded to standard architecture.\n",
+          "document": "Target instance type, same as **TypeId** in [CreateInstances](https://www.tencentcloud.com/document/api/239/20026?from_cn_redirect=1), which is the target type to change the instance to.\n- For Redis 4.0 or higher, instances of the same version support upgrading from standard architecture to cluster architecture. For example, Redis 4.0 standard architecture can be upgraded to Redis 4.0 cluster architecture.\n-Cross-version architecture upgrade is not supported, for example, upgrading from Redis 4.0 standard architecture to Redis 5.0 cluster architecture.\n-Architecture upgrade from Redis 2.8 is not supported.\n-Downgrade from cluster architecture to standard architecture is not supported.\n",
           "example": "6",
           "member": "string",
           "name": "TargetInstanceType",
@@ -14702,7 +15296,7 @@
         },
         {
           "disabled": false,
-          "document": "Current proxy version. Call the [DescribeInstances](https://www.tencentcloud.com/document/product/239/20018?from_cn_redirect=1) API to obtain the current proxy version for the instance.",
+          "document": "Current Proxy version. Get the current Proxy version of an instance through the [DescribeInstances](https://www.tencentcloud.com/document/product/239/20018?from_cn_redirect=1) API.",
           "example": "5.0.0",
           "member": "string",
           "name": "CurrentProxyVersion",
@@ -14766,7 +15360,7 @@
         },
         {
           "disabled": false,
-          "document": "Current Redis minor version. For minor version information, see [Upgrading Instance Version](https://www.tencentcloud.com/document/product/239/37710).",
+          "document": "Current Redis minor version. For minor version information, please see Upgrade Instance Version (https://www.tencentcloud.com/document/product/239/46457?from_cn_redirect=1).",
           "example": "5.0.0",
           "member": "string",
           "name": "CurrentRedisVersion",
@@ -14775,7 +15369,7 @@
         },
         {
           "disabled": false,
-          "document": "Upgraded Redis minor version. For minor version information, see [Upgrading Instance Version](https://www.tencentcloud.com/document/product/239/37710).",
+          "document": "Redis minor version upgrade. For minor version information, please refer to upgrade instance version (https://www.tencentcloud.com/document/product/239/46457?from_cn_redirect=1).",
           "example": "5.0.1",
           "member": "string",
           "name": "UpgradeRedisVersion",

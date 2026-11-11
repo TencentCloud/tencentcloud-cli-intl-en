@@ -30011,11 +30011,11 @@
       "usage": "both"
     },
     "Plan": {
-      "document": "Package information.",
+      "document": "Plan information",
       "members": [
         {
           "disabled": false,
-          "document": "Package type. valid values:.\n<Li>`Plan-Trial`: trial plan</li>.\n<Li>`Plan-Personal`: personal plan</li>.\n<Li>`Plan-Basic`: basic plan</li>.\n<Li>`Plan-Standard`: standard edition plan</li>.\n<li>plan-enterprise-v2: enterprise plan;</li>.\n<li>plan-enterprise-model-a: enterprise edition model a package.</li>.\n<Li>Plan-Enterprise: legacy enterprise plan.</li>.",
+          "document": "<p>Plan type. Valid values:</p><li>plan-trial: Trial Edition plan;</li><li>plan-personal: Personal Edition plan;</li><li>plan-basic: Basic Edition plan;</li><li>plan-standard: Standard Edition plan;</li><li>plan-enterprise-v2: Enterprise Edition plan;</li><li>plan-enterprise-model-a: Enterprise Edition Model A plan;</li><li>plan-enterprise: Legacy Enterprise Edition plan;</li><li>plan-makers-pro: Makers Pro Edition plan;</li><li>plan-makers-business: Makers Business Edition plan;</li><p>Valid values:</p><ul><li>plan-trial: Trial Edition plan</li><li>plan-personal: Personal Edition plan</li><li>plan-basic: Basic Edition plan</li><li>plan-standard: Standard Edition plan</li><li>plan-enterprise-v2: Enterprise Edition plan</li><li>plan-enterprise-model-a: Enterprise Edition Model A plan</li><li>plan-enterprise: Legacy Enterprise Edition plan</li><li>plan-makers-pro: Makers Pro Edition plan</li><li>plan-makers-business: Makers Business Edition plan</li></ul>",
           "example": "plan-personal",
           "member": "string",
           "name": "PlanType",
@@ -30025,7 +30025,7 @@
         },
         {
           "disabled": false,
-          "document": "Package ID. such as edgeone-2y041pblwaxe.",
+          "document": "<p>Plan ID, in the format of edgeone-2y041pblwaxe.</p>",
           "example": "edgeone-2y041pblwaxe",
           "member": "string",
           "name": "PlanId",
@@ -30035,7 +30035,7 @@
         },
         {
           "disabled": false,
-          "document": "Service area. valid values:.\n<Li>`Mainland`: chinese mainland</li>.\n<li>`overseas`: global (chinese mainland not included)</li>.\n<Li>`Global`: global (chinese mainland included)</li>.",
+          "document": "<p>Service region. Valid values:</p><li>mainland: Chinese mainland;</li><li>overseas: Global (excluding the Chinese mainland);</li><li>global: Global (including the Chinese mainland).</li>",
           "example": "oversea",
           "member": "string",
           "name": "Area",
@@ -30045,7 +30045,7 @@
         },
         {
           "disabled": false,
-          "document": "Auto-Renew switch. valid values:.\n<li>true: automatic renewal is enabled.</li>.\n<li>false: automatic renewal is not enabled.</li>.",
+          "document": "<p>Auto-renewal switch. Valid values:</p><li>true: Auto-renewal enabled;</li><li>false: Auto-renewal disabled.</li>",
           "example": "false",
           "member": "bool",
           "name": "AutoRenewal",
@@ -30055,7 +30055,7 @@
         },
         {
           "disabled": false,
-          "document": "Package status. valid values:.\n<Li>Normal: indicates the normal status.</li>.\n<li>`expiring-soon`: will expire soon;</li>.\n<li>`expired`: expiration status;</li>.\n<Li>`Isolated`: isolated state</li>.\n<li>`overdue-isolated`: arrears isolated state.</li>.",
+          "document": "<p>Plan status. Valid values:</p><li>normal: Normal;</li><li>expiring-soon: Expiring soon;</li><li>expired: Expired;</li><li>isolated: Isolated;</li><li>overdue-isolated: Isolated due to overdue payment.</li>",
           "example": "normal",
           "member": "string",
           "name": "Status",
@@ -30065,7 +30065,7 @@
         },
         {
           "disabled": false,
-          "document": "Payment type. valid values:.\n<Li>0: postpaid;</li>.\n<Li>1: prepaid.</li>.",
+          "document": "<p>Billing type. Valid values:</p><li>0: Postpaid;</li><li>1: Prepaid.</li>",
           "example": "0",
           "member": "int64",
           "name": "PayMode",
@@ -30075,7 +30075,7 @@
         },
         {
           "disabled": false,
-          "document": "Describes the site information bound to the package, including the site id, site name, and site status.",
+          "document": "<p>Information of the sites bound to the plan, including site id, site name, and site status.</p>",
           "example": "无",
           "member": "ZoneInfo",
           "name": "ZonesInfo",
@@ -30085,7 +30085,7 @@
         },
         {
           "disabled": false,
-          "document": "Smart acceleration request quantity in the package, unit: times.",
+          "document": "<p>Quota of smart acceleration requests in the plan, in the unit of requests.</p>",
           "example": "1",
           "member": "int64",
           "name": "SmartRequestCapacity",
@@ -30095,7 +30095,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the VAU specification in the package. measurement unit: unit.",
+          "document": "<p>VAU quota in the plan, in the unit of VAUs.</p>",
           "example": "10",
           "member": "int64",
           "name": "VAUCapacity",
@@ -30105,7 +30105,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the content acceleration traffic specification in the package, measurement unit: byte.",
+          "document": "<p>Quota of content acceleration traffic in the plan, in the unit of bytes.</p>",
           "example": "1",
           "member": "int64",
           "name": "AccTrafficCapacity",
@@ -30115,7 +30115,17 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the smart acceleration traffic specification in the package. measurement unit: byte.",
+          "document": "<p>Quota of client authentication traffic in the plan, in the unit of bytes.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "ClientAuthTrafficCapacity",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Quota of smart acceleration traffic in the plan, in the unit of bytes.</p>",
           "example": "1",
           "member": "int64",
           "name": "SmartTrafficCapacity",
@@ -30125,7 +30135,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the DDoS protection traffic specification in the package, measurement unit: byte.",
+          "document": "<p>Quota of DDoS protection traffic in the plan, in the unit of bytes.</p>",
           "example": "1",
           "member": "int64",
           "name": "DDoSTrafficCapacity",
@@ -30135,7 +30145,7 @@
         },
         {
           "disabled": false,
-          "document": "Security traffic specification in the package. measurement unit: byte.",
+          "document": "<p>Quota of security traffic in the plan, in the unit of bytes.</p>",
           "example": "1",
           "member": "int64",
           "name": "SecTrafficCapacity",
@@ -30145,7 +30155,7 @@
         },
         {
           "disabled": false,
-          "document": "Security requests in the package, unit: times.",
+          "document": "<p>Quota of security requests in the plan, in the unit of requests.</p>",
           "example": "1",
           "member": "int64",
           "name": "SecRequestCapacity",
@@ -30155,7 +30165,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the layer 4 acceleration traffic specification in the package, measurement unit: byte.",
+          "document": "<p>Quota of L4 acceleration traffic in the plan, in the unit of bytes.</p>",
           "example": "1",
           "member": "int64",
           "name": "L4TrafficCapacity",
@@ -30165,7 +30175,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the network optimization traffic specification in the package for the chinese mainland, measurement unit: byte.",
+          "document": "<p>Quota of network optimization traffic for the Chinese mainland in the plan, in the unit of bytes.</p>",
           "example": "1",
           "member": "int64",
           "name": "CrossMLCTrafficCapacity",
@@ -30175,8 +30185,8 @@
         },
         {
           "disabled": false,
-          "document": "Specifies whether the package allows binding to new sites. valid values:.\n<li>true: allows binding a new site.</li>.\n<li>`false`: cannot bind new sites.</li>.",
-          "example": "无",
+          "document": "<p>Whether the plan allows binding new sites. Valid values:</p><li>true: Allows binding new sites;</li><li>false: Does not allow binding new sites.</li>",
+          "example": "true",
           "member": "string",
           "name": "Bindable",
           "output_required": true,
@@ -30185,7 +30195,7 @@
         },
         {
           "disabled": false,
-          "document": "Package activation time.",
+          "document": "<p>Time when the plan takes effect.</p>",
           "example": "2020-09-22T00:00:00Z",
           "member": "datetime_iso",
           "name": "EnabledTime",
@@ -30195,7 +30205,7 @@
         },
         {
           "disabled": false,
-          "document": "Plan expiration time.",
+          "document": "<p>Expiration time of the plan.</p>",
           "example": "2020-09-22T00:00:00Z",
           "member": "datetime_iso",
           "name": "ExpiredTime",
@@ -30205,7 +30215,7 @@
         },
         {
           "disabled": false,
-          "document": "Supported features of the package include: <li>ContentAcceleration: content acceleration feature;</li> <li>SmartAcceleration: intelligent acceleration feature;</li> <li>L4: L4 acceleration feature;</li> <li>Waf: advanced Web protection;</li> <li>QUIC: QUIC feature;</li> <li>CrossMLC: network optimization in the chinese mainland;</li> <li>ProcessMedia: media processing feature;</li> <li>L4DDoS: L4 DDoS protection feature;</li> L7DDoS feature will only appear in one of the following specifications: <li>L7DDoS.CM30G; layer-7 DDoS protection feature - 30G guaranteed minimum bandwidth specification in the chinese mainland;</li> <li>L7DDoS.CM60G; layer-7 DDoS protection feature - 60G guaranteed minimum bandwidth specification in the chinese mainland;</li> <li>L7DDoS.CM100G; layer-7 DDoS protection feature - 100G guaranteed minimum bandwidth specification in the chinese mainland;</li> <li>L7DDoS.Anycast300G; layer-7 DDoS protection feature - 300G guaranteed minimum bandwidth specification outside the chinese mainland with Anycast;</li> <li>L7DDoS.AnycastUnlimited; layer-7 DDoS protection feature - unlimited Anycast full protection outside the chinese mainland;</li> <li>L7DDoS.CM30G_Anycast300G; layer-7 DDoS protection feature - 30G guaranteed minimum bandwidth specification in the chinese mainland and 300G guaranteed minimum bandwidth specification outside the chinese mainland with Anycast;</li> <li>L7DDoS.CM60G_Anycast300G; layer-7 DDoS protection feature - 60G guaranteed minimum bandwidth specification in the chinese mainland and 300G guaranteed minimum bandwidth specification outside the chinese mainland with Anycast;</li> <li>L7DDoS.CM100G_Anycast300G; layer-7 DDoS protection feature - 100G guaranteed minimum bandwidth specification in the chinese mainland and 300G guaranteed minimum bandwidth specification outside the chinese mainland with Anycast;</li> <li>L7DDoS.CM30G_AnycastUnlimited; layer-7 DDoS protection feature - 30G guaranteed minimum bandwidth specification in the chinese mainland and unlimited Anycast full protection outside the chinese mainland;</li> <li>L7DDoS.CM60G_AnycastUnlimited; layer-7 DDoS protection feature - 60G guaranteed minimum bandwidth specification in the chinese mainland and unlimited Anycast full protection outside the chinese mainland;</li> <li>L7DDoS.CM100G_AnycastUnlimited; layer-7 DDoS protection feature - 100G guaranteed minimum bandwidth specification in the chinese mainland and unlimited Anycast full protection outside the chinese mainland;</li>.",
+          "document": "<p>Features supported by the plan. Valid values: <li>ContentAcceleration: content acceleration;</li><li>SmartAcceleration: smart acceleration;</li><li>L4: L4 acceleration;</li><li>Waf: advanced Web protection;</li><li>QUIC: QUIC;</li><li>CrossMLC: network optimization for the Chinese mainland;</li><li>ProcessMedia: media processing;</li><li>L4DDoS: L4 DDoS protection.</li>Only one of the following L7DDoS specifications can appear: <li>L7DDoS.CM30G: L7 DDoS protection - 30 Gbps guaranteed bandwidth in the Chinese mainland;</li><li>L7DDoS.CM60G: L7 DDoS protection - 60 Gbps guaranteed bandwidth in the Chinese mainland;</li><li>L7DDoS.CM100G: L7 DDoS protection - 100 Gbps guaranteed bandwidth in the Chinese mainland;</li><li>L7DDoS.Anycast300G: L7 DDoS protection - 300 Gbps Anycast guaranteed bandwidth outside the Chinese mainland;</li><li>L7DDoS.AnycastUnlimited: L7 DDoS protection - unlimited Anycast full protection outside the Chinese mainland;</li><li>L7DDoS.CM30G_Anycast300G: L7 DDoS protection - 30 Gbps guaranteed bandwidth in the Chinese mainland and 300 Gbps Anycast guaranteed bandwidth outside the Chinese mainland;</li><li>L7DDoS.CM60G_Anycast300G: L7 DDoS protection - 60 Gbps guaranteed bandwidth in the Chinese mainland and 300 Gbps Anycast guaranteed bandwidth outside the Chinese mainland;</li><li>L7DDoS.CM100G_Anycast300G: L7 DDoS protection - 100 Gbps guaranteed bandwidth in the Chinese mainland and 300 Gbps Anycast guaranteed bandwidth outside the Chinese mainland;</li><li>L7DDoS.CM30G_AnycastUnlimited: L7 DDoS protection - 30 Gbps guaranteed bandwidth in the Chinese mainland and unlimited Anycast full protection outside the Chinese mainland;</li><li>L7DDoS.CM60G_AnycastUnlimited: L7 DDoS protection - 60 Gbps guaranteed bandwidth in the Chinese mainland and unlimited Anycast full protection outside the Chinese mainland;</li><li>L7DDoS.CM100G_AnycastUnlimited: L7 DDoS protection - 100 Gbps guaranteed bandwidth in the Chinese mainland and unlimited Anycast full protection outside the Chinese mainland.</li></p>",
           "example": "[\"ContentAcceleration\",\"Waf\"]",
           "member": "string",
           "name": "Features",
@@ -36734,7 +36744,7 @@
       "usage": "out"
     },
     "ZoneInfo": {
-      "document": "Describes the returned site information.",
+      "document": "Back to site information",
       "members": [
         {
           "disabled": false,
@@ -36760,7 +36770,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to disable the site. valid values: <li>false: not disabled;</li>.\n<li>true: disabled.</li>.",
+          "document": "Whether to disable the site. Valid values: <li>false: not disabled;</li>\n<li>true: Disable.</li>",
           "example": "false",
           "member": "bool",
           "name": "Paused",

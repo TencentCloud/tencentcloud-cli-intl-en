@@ -168,6 +168,14 @@
         "title": "This API is used to export all assets."
       }
     ],
+    "CreateAssetBaselineRiskExportJob": [
+      {
+        "document": "Export asset baseline risks",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAssetBaselineRiskExportJob\n<Common request parameters>\n\n{\n    \"AssetUniqueID\": \"87cd7655-**********9ea1-6267cb76707d\",\n    \"AssetType\": \"HOST\",\n    \"AssetAppID\": 260000096,\n    \"Name\": \"Asset Export\",\n    \"MemberId\": [\n        \"mem-****e**-*******52f66e429\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"JobId\": \"d1cbc89d-ee9c-46d7-8a86-fa8c418f8719\",\n        \"RequestId\": \"cabf5bae-f0ac-4e69-b663-cd0bb5b6fcf6\"\n    }\n}",
+        "title": "Export Asset Baseline Risks"
+      }
+    ],
     "CreateAssetComponentListExportJob": [
       {
         "document": "",
@@ -944,6 +952,14 @@
         "title": "Delete an asset tag"
       }
     ],
+    "DeleteBaselineIgnorePolicy": [
+      {
+        "document": "Delete the baseline ignore policy",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteBaselineIgnorePolicy\n<Common request parameters>\n\n{\n    \"ID\": [\n        1\n    ],\n    \"MemberId\": [\n        \"mem-tencent-6f5795752f66e429\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3d555c07-8ad1-4de4-b7d2-d5b8f894384c\"\n    }\n}",
+        "title": "Delete baseline ignore policy"
+      }
+    ],
     "DeleteBaselineSelfDefinedPolicyList": [
       {
         "document": "Delete a custom policy",
@@ -1222,6 +1238,22 @@
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteImageVulWhitelist\n<Common request parameters>\n\n{\n    \"MemberId\": [\n        \"mem-12e1se11\"\n    ],\n    \"RuleId\": [\n        2\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"09d549a9-7e54-4141-bb80-8ce9e5ec13ef\"\n    }\n}",
         "title": "Delete a Container Image Vulnerability Allowlist"
+      }
+    ],
+    "DeleteLoginWhiteCustomEDR": [
+      {
+        "document": "Batch delete custom allowlist for abnormal logins",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteLoginWhiteCustomEDR\n<Common request parameters>\n\n{\n    \"Ids\": [\n        101,\n        102\n    ],\n    \"SelectAll\": false,\n    \"TargetAppIDs\": []\n}",
+        "output": "{\n    \"Response\": {\n        \"DeletedCount\": 2,\n        \"FailedAppIds\": [],\n        \"RequestId\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\"\n    }\n}",
+        "title": "DeleteLoginWhiteCustomEDR"
+      }
+    ],
+    "DeleteLoginWhiteLearnEDR": [
+      {
+        "document": "Delete an abnormal login self-learning allowlist rule group",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteLoginWhiteLearnEDR\n<Common request parameters>\n\n{\n    \"Ids\": [\n        42383278\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"DeletedCount\": 3,\n        \"FailedAppIds\": [],\n        \"RequestId\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\"\n    }\n}",
+        "title": "DeleteLoginWhiteLearnEDR"
       }
     ],
     "DeleteLoginWhiteList": [
@@ -1544,6 +1576,14 @@
         "title": "All Alarms in Alert Center"
       }
     ],
+    "DescribeAssetBaselineRiskList": [
+      {
+        "document": "Retrieve the host asset risk list",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAssetBaselineRiskList\n<Common request parameters>\n\n{\n    \"AssetUniqueID\": \"87cd7655-**2**4******a1-6267cb76707d\",\n    \"AssetType\": \"HOST\",\n    \"AssetAppID\": 260083796,\n    \"MemberId\": [\n        \"mem-***c**t*6*57*5*5**66e429\"\n    ],\n    \"Limit\": 10,\n    \"Offset\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"Item\": {\n                    \"AffectedVersionList\": [],\n                    \"Category\": {\n                        \"CheckAssetType\": \"HOST\",\n\"Description\": \"CIS Benchmarks from the Center for Internet Security (CIS) are a set of globally recognized consensus-driven best practices\"\n                        \"ID\": 209,\n\"Name\": \"International standard—TencentOS 4 security baseline check\"\n                    },\n                    \"CheckObject\": [\n                        \"HOST\"\n                    ],\n                    \"CustomItemID\": 0,\n                    \"CustomValueList\": [],\n                    \"DefaultValueList\": [],\n\"Description\": \".netrc file contains authentication data for logging in to a remote host via FTP for file transfer.\",\n\"FixSuggestion\": \"The following script will remove the .netrc file from the interactive user's main directory\\n#!/bin/bash\\n\\nawk -F: '($1!~/(halt|sync|shutdown|nfsnobody)/ && $7!~/^(\\\\/usr)?\\\\/sbin\\\\/nologin(\\\\/)?$/ && $7!~/(\\\\/usr)?\\\\/bin\\\\/false(\\\\/)?$/) { print $6 }' /etc/passwd | while read -r dir; do\\n\\tif [ -d \\\"$dir\\\" ]; then\\n\\t\\tfile=\\\"$dir/.netrc\\\"\\n\\t\\t[ ! -h \\\"$file\\\" ] && [ -f \\\"$file\\\" ] && rm -f \\\"$file\\\"\\n\\tfi\\ndone\"\n                    \"ID\": 5593,\n                    \"IsCustomConf\": false,\n\"Name\": \"Underwrite no .netrc file for all users\"\n                    \"ReferenceLink\": \"\",\n                    \"RiskLevel\": \"LOW\",\n                    \"RuleID\": 14584,\n                    \"SupportCustomValue\": false,\n                    \"SupportFix\": false,\n                    \"SystemCategory\": {\n                        \"CheckAssetType\": \"HOST\",\n\"Description\": \"CIS Benchmarks from the Center for Internet Security (CIS) are a set of globally recognized consensus-driven best practices\"\n                        \"ID\": 2,\n\"Name\": \"Internationally Compatible Baseline of Best Security Practices (CIS)\"\n                    },\n                    \"WebEditParam\": \"\"\n                },\n                \"LatestCheckTime\": \"2026-09-21T19:25:40Z\",\n                \"PolicyInfo\": {\n                    \"ID\": 1008,\n                    \"IsSystem\": false,\n                    \"PolicyName\": \"vcvbcvb\"\n                },\n                \"ResultStatus\": \"PASS\",\n                \"RiskID\": \"03d747385c23a17c834615ee0c6f1ea8\"\n            }\n        ],\n        \"TotalCount\": 10,\n        \"RequestId\": \"0bd276e2-31f8-4d34-a327-31ca8a8a2ac7\"\n    }\n}",
+        "title": "Retrieve the host asset risk list"
+      }
+    ],
     "DescribeAssetComponentList": [
       {
         "document": "",
@@ -1748,6 +1788,14 @@
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBaselineFixRecordList\n<Common request parameters>\n\n{\n    \"MemberId\": [\n        \"mem-tencent-6*************29\"\n    ],\n    \"Limit\": 10,\n    \"Offset\": 0,\n    \"Order\": \"asc\",\n    \"By\": \"ID\"\n}",
         "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"AppID\": 200000000,\n                \"AssetType\": \"HOST\",\n                \"DiscoveryTime\": \"1970-01-01T00:00:00Z\",\n                \"FixTime\": \"2026-07-15T08:36:09Z\",\n                \"HostInfo\": {\n                    \"AgentStatus\": \"ONLINE\",\n                    \"Appid\": 200000000,\n                    \"CloudTag\": [],\n                    \"InstanceID\": \"lh**********o4\",\n                    \"InstanceStatus\": \"RUNNING\",\n\"Name\": \"Vulnerability Phase 2 Trial lh-1\",\n                    \"OsInfo\": \"Ubuntu Server 22.04 LTS 64bit\",\n                    \"PrivateIP\": \"10.1.0.2\",\n                    \"ProtectVersion\": \"ULTIMATE\",\n                    \"PublicIP\": \"1.14.91.114\",\n                    \"QUUID\": \"c*********************************8f\",\n                    \"RegionInfo\": {\n                        \"Region\": \"ap-guangzhou\",\n                        \"RegionCode\": \"\",\n                        \"RegionId\": 0,\n\"RegionName\": \"Guangzhou\",\n                        \"RegionNameEn\": \"Guangzhou\"\n                    },\n                    \"TagItem\": [\n                        {\n                            \"Color\": \"red\",\n                            \"Description\": \"\",\n                            \"ID\": 123,\n                            \"TagKey\": \"csip\",\n                            \"TagKeyEn\": \"csip\",\n                            \"TagValue\": \"csip\",\n                            \"TagValueEn\": \"csip\"\n                        }\n                    ],\n                    \"UUID\": \"c*********************************8f\"\n                },\n                \"ID\": 1,\n                \"ItemInfo\": {\n                    \"AffectedVersionList\": [],\n                    \"Category\": {\n                        \"CheckAssetType\": \"HOST\",\n\"Description\": \"Level Protection 2.0 second level security requirements, suitable for general business systems\"\n                        \"ID\": 144,\n\"Name\": \"Level-2 cybersecurity classified protection - Ubuntu 22 security baseline check\"\n                    },\n                    \"CheckObject\": [\n                        \"HOST\"\n                    ],\n                    \"CustomItemID\": 0,\n                    \"CustomValueList\": [],\n                    \"DefaultValueList\": [],\n\"Description\": \"Configures the maximum size of audit log files. Once a log reaches the maximum size, it will be rotated and a new log file started.\"\n\"FixSuggestion\": \"Set the following parameters in /etc/audit/auditd.conf according to the site policy (<MB> replace with a specific number):\\nmax_log_file = <MB>.\",\n                    \"ID\": 3249,\n                    \"IsCustomConf\": false,\n\"Name\": \"Underwrite the configured audit log storage size\"\n                    \"ReferenceLink\": \"\",\n                    \"RiskLevel\": \"MEDIUM\",\n                    \"RuleID\": 11996,\n                    \"SupportCustomValue\": false,\n                    \"SupportFix\": false,\n                    \"SystemCategory\": {\n                        \"CheckAssetType\": \"HOST\",\n\"Description\": \"Level Protection 2.0 second level security requirements, suitable for general business systems\"\n                        \"ID\": 222,\n\"Name\": \"Level-2 of Multi-Level Protection Scheme 2.0\"\n                    },\n                    \"WebEditParam\": \"\"\n                }\n            }\n        ],\n        \"TotalCount\": 4,\n        \"RequestId\": \"f3da60c4-5469-4dd5-baa4-7590ab0389c0\"\n    }\n}",
         "title": "Calling the API"
+      }
+    ],
+    "DescribeBaselineIgnorePolicyList": [
+      {
+        "document": "Obtain the baseline ignored policy list",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBaselineIgnorePolicyList\n<Common request parameters>\n\n{\n    \"MemberId\": [\n        \"mem-tencent-6f5795752f66e429\"\n    ],\n    \"Limit\": 10,\n    \"Offset\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"AppID\": 260083796,\n                \"AssetType\": \"HOST\",\n                \"CategoryName\": \"Unauthorized access\",\n                \"CreateTime\": \"2026-09-21T11:24:59Z\",\n                \"ID\": 4,\n                \"ItemID\": 4,\n                \"ItemName\": \"MongoDB unauthorized access\",\n                \"ModifyTime\": \"2026-09-21T11:25:36Z\",\n                \"Remark\": \"ignore all\",\n                \"ScopeExcludeList\": [\n                    \"instance-ikk\"\n                ],\n                \"ScopeIncludeList\": [\n                    \"instance-tki\"\n                ],\n                \"ScopeType\": \"ALL\"\n            }\n        ],\n        \"TotalCount\": 4,\n        \"RequestId\": \"fca4f58d-9419-49c9-a79e-c7f2162ac177\"\n    }\n}",
+        "title": "Obtain the Baseline Ignored Policy List"
       }
     ],
     "DescribeBaselineItemRiskList": [
@@ -2150,6 +2198,14 @@
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeClusterAssets\n<Common request parameters>\n\n{\n    \"Filter\": {\n        \"Filters\": [\n            {\n                \"Name\": \"TimeRange\",\n                \"Values\": [\n                    \"2\"\n                ],\n                \"OperatorType\": 7\n            }\n        ],\n        \"Limit\": 10,\n        \"Offset\": 0,\n        \"Order\": \"desc\",\n        \"By\": \"InstanceCreateTime\"\n    },\n    \"MemberId\": [\n        \"mem-b21i4hgxa\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"AppIdList\": [\n            {\n                \"Text\": \"1300448058\",\n                \"Value\": \"1300448058\"\n            },\n            {\n                \"Text\": \"1302396215\",\n                \"Value\": \"1302396215\"\n            },\n            {\n                \"Text\": \"1305350016\",\n                \"Value\": \"1305350016\"\n            }\n        ],\n        \"ClusterStatusList\": [\n            {\n\"Text\": \"Running\",\n                \"Value\": \"running\"\n            }\n        ],\n        \"ClusterTypeList\": [\n            {\n\"Text\": \"Managed cluster\"\n                \"Value\": \"managed_cluster\"\n            },\n            {\nElastic cluster\n                \"Value\": \"eks\"\n            }\n        ],\n        \"ComponentStatusList\": [\n            {\n\"Text\": \"Not installed\"\n                \"Value\": \"defender_uninstall\"\n            }\n        ],\n        \"Data\": [\n            {\n                \"AppId\": 1302396215,\n                \"AssetId\": \"cls-bc1916ky\",\n                \"AssetName\": \"benben\",\n                \"AssetType\": \"managed_cluster\",\n                \"Region\": \"ap-guangzhou\",\n                \"ServiceCount\": 17,\n                \"PodCount\": 41,\n                \"MachineCount\": 1,\n                \"VpcId\": \"vpc-fw2ndu5f\",\n                \"KubernetesVersion\": \"1.30.0\",\n                \"Component\": \"containerd\",\n                \"CheckCount\": 43,\n                \"VulRisk\": 0,\n                \"CFGRisk\": 1,\n                \"InstanceCreateTime\": \"2024-12-04 10:33:08\",\n                \"Status\": \"running\",\n                \"ComponentStatus\": \"defended\",\n                \"Uin\": \"100014592178\",\n                \"VpcName\": \"fengqqian2test\",\n                \"CheckTime\": \"\",\n                \"ComponentVersion\": \"1.6.9\",\n\"Nick\": \"Sheng Sheng Oolong\",\n                \"IsCore\": 1,\n                \"IsNewAsset\": 0,\n                \"ProtectStatus\": 0,\n                \"ProtectInfo\": \"AccessedSubNone\",\n                \"CloudType\": 0\n            }\n        ],\n        \"ProtectStatusList\": [\n            {\n\"Text\": \"Not connected\"\n                \"Value\": \"0\"\n            },\n            {\nno protection\n                \"Value\": \"1\"\n            },\n            {\nPartial protection\n                \"Value\": \"2\"\n            },\n            {\n\"Text\": \"under protection\"\n                \"Value\": \"3\"\n            },\n            {\n\"Text\": \"Access exception\"\n                \"Value\": \"4\"\n            },\n            {\n\"Text\": \"Accessing\",\n                \"Value\": \"5\"\n            },\n            {\nUninstalling\n                \"Value\": \"6\"\n            },\n            {\nUninstallation exception.\n                \"Value\": \"7\"\n            }\n        ],\n        \"RegionList\": [\n            {\n\"Text\": \"Guangzhou\"\n                \"Value\": \"ap-guangzhou\"\n            }\n        ],\n        \"RequestId\": \"035c9d95-a2da-465e-b735-535d9afed6cf\",\n        \"TotalCount\": 1,\n        \"VpcList\": [\n            {\n                \"Text\": \"wy conflict\",\n                \"Value\": \"vpc-39sc6ru5\"\n            },\n            {\n                \"Text\": \"Default-VPC\",\n                \"Value\": \"vpc-ommo5hlv\"\n            },\n            {\n                \"Text\": \"fengqqian2test\",\n                \"Value\": \"vpc-fw2ndu5f\"\n            },\n            {\n                \"Text\": \"gordan-test1\",\n                \"Value\": \"vpc-q1of50wz\"\n            }\n        ]\n    }\n}",
         "title": "Null example."
+      }
+    ],
+    "DescribeClusterBaselineRiskPolicyList": [
+      {
+        "document": "Get the cluster baseline risk policy",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeClusterBaselineRiskPolicyList\n<Common request parameters>\n\n{\n    \"ClusterAppid\": 260082268,\n    \"ClusterCaMD5\": \"27092b0cf181be0d848ddcd66dbee929\",\n    \"MemberId\": [\n        \"mem-*****************f66e429\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"CheckAssetType\": \"HOST\",\n                \"IsSystem\": true,\n                \"ParentCategoryID\": 4,\n                \"PolicyID\": 779,\n                \"PolicyName\": \"Weak password\"\n            }\n        ],\n        \"RequestId\": \"b177c57c-391b-4da4-9b5b-a20ab8267135\"\n    }\n}",
+        "title": "Get the Cluster Baseline Risk Policy"
       }
     ],
     "DescribeClusterContainerAppList": [
@@ -3256,6 +3312,26 @@
         "title": "Example"
       }
     ],
+    "DescribeEdrMalwareFile": [
+      {
+        "document": "When it is not a public cloud and the export switch is on, return the base64 DataURL and file name.",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeEdrMalwareFile\n<Common request parameters>\n\n{\n    \"AlertId\": \"edr-alert-8f3c1a2b\"\n}",
+        "output": "{\n    \"Response\": {\n        \"FileUrl\": \"data:application/octet-stream;base64,UEsDBBQ...\",\n        \"FileName\": \"evil.bin.zip\",\n        \"RequestId\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\"\n    }\n}",
+        "title": "Get the EDR malicious file sample download URL (base64 DataURL)"
+      },
+      {
+        "document": "Download a malicious sample in a single account scenario (without passing TargetAppId).",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeEdrMalwareFile\n<Common request parameters>\n\n{\n    \"AlertId\": \"edr-alert-8f3c1a2b\"\n}",
+        "output": "{\n    \"Response\": {\n        \"FileUrl\": \"https://xxx.cos.ap-guangzhou.myqcloud.com/samples/6f1e9c...?q-sign-time=...\",\n        \"RequestId\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\"\n    }\n}",
+        "title": "Getting the EDR Malicious File Sample Download Link (Pre-Signed URL in Public Cloud)"
+      },
+      {
+        "document": "Download malicious samples of member account alerts under the group account",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeEdrMalwareFile\n<Common request parameters>\n\n{\n    \"TargetAppId\": 1250000001,\n    \"AlertId\": \"edr-alert-8f3c1a2b\"\n}",
+        "output": "{\n    \"Response\": {\n        \"FileUrl\": \"https://xxx.cos.ap-guangzhou.myqcloud.com/samples/6f1e9c...?q-sign-time=...\",\n        \"RequestId\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\"\n    }\n}",
+        "title": "Get the EDR malicious file sample download link across different accounts"
+      }
+    ],
     "DescribeExportJobDownloadURL": [
       {
         "document": "",
@@ -3384,12 +3460,28 @@
         "title": "Obtain overview data"
       }
     ],
+    "DescribeHostVulRiskEventList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeHostVulRiskEventList\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"MemberId\": [\n        \"mem-tencent-*********f66e429\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"UUID\": \"8f3c4c74-8cc9-4ddf-b66f-2d20f1a9a001\",\n                \"RiskID\": 1000000000001,\n                \"VulID\": 12345,\n                \"VulName\": \"OpenSSL remote code execution vulnerability\",\n                \"CVEID\": \"CVE-2024-12345\",\n                \"Category\": \"LINUX\",\n                \"Level\": \"HIGH\",\n                \"VPRLevel\": \"URGENT\",\n                \"CheckMethod\": \"POC\",\n                \"RiskStatus\": \"PENDING\",\n                \"SupportFix\": true,\n                \"LatestScanTime\": \"2026-09-18T06:00:00+08:00\",\n                \"InstanceID\": \"ins-5ijxpaa6\",\n                \"AppID\": 1251234567\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n    }\n}",
+        "title": "Query the list of host vulnerability risk events"
+      }
+    ],
     "DescribeHostVulRiskList": [
       {
         "document": "Retrieve the vulnerability risk list",
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeHostVulRiskList\n<Common request parameters>\n\n{\n    \"MemberId\": [\n        \"mem-tencent-6f5795752f66e429\"\n    ],\n    \"Limit\": 10,\n    \"Offset\": 0,\n    \"Order\": \"desc\",\n    \"By\": \"LatestScanTime\"\n}",
         "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"Account\": [\n                    {\n                        \"AppID\": 260083796,\n                        \"Nick\": \"700002365149\",\n                        \"Uin\": \"700002365149\"\n                    }\n                ],\n                \"DefendStatus\": \"NOT_ENABLED\",\n                \"EffectHostCount\": 1,\n                \"LatestScanTime\": \"2026-06-12T08:15:45Z\",\n                \"RiskID\": 45230,\n                \"RiskStatus\": \"PENDING\",\n                \"VulDetail\": {\n                    \"AffectProduct\": [\n                        \"socat\"\n                    ],\n                    \"AffectVendor\": [\n                        \"dest-unreach\"\n                    ],\n                    \"CVEID\": \"CVE-2024-54661\",\n                    \"CVSSLevel\": \"LOW\",\n                    \"Category\": \"LINUX\",\n                    \"CheckMethod\": \"VersionCompare\",\n                    \"CvssScore\": 9.8,\n                    \"DefendHostCount\": 0,\n                    \"DefendStatus\": \"NOT_ENABLED\",\n                    \"EPSSScore\": 0.00164,\n\"FixSolution\": \"It is recommended to pay attention to vendor announcements or upgrade to the latest version.\"\n                    \"ID\": 45230,\n                    \"KVERecord\": false,\n                    \"KVERecordTime\": \"\",\n                    \"Label\": [],\n                    \"LatestScanTime\": \"\",\n                    \"LatestTrend\": [],\n                    \"Mechanism\": \"\",\n\"Name\": \"socat security vulnerability (CVE-2024-54661)\"\n                    \"NotDefendHostCount\": 0,\n                    \"Precondition\": \"\",\n                    \"PublishTime\": \"2024-12-04 13:15:00\",\n                    \"RefLink\": \"https://repo.or.cz/socat.git/blob/6ff391324d2d3b9f6bfb58e7d16a20be43b47af7:/readline.sh#l29\",\n                    \"Remark\": \"\",\n\"Summary\": \"socat is an open-source relay for bidirectional data transmission between two standalone channels. socat 1.8.0.1 and prior versions has a security vulnerability, which stems from readline.sh depend on the /tmp/$USER/stderr2 file.\"\n                    \"SupportFix\": true,\n                    \"VRPRatingInfo\": {\n                        \"Remark\": \"\",\n                        \"Result\": \"\",\n                        \"Stage\": [\n                            {\n                                \"Result\": \"\",\n\"Stage\": \"Threat Activity Level\"\n                            }\n                        ]\n                    },\n                    \"VulAffect\": []\n                }\n            }\n        ],\n        \"TotalCount\": 706,\n        \"RequestId\": \"d224b5c5-013c-427e-a7ea-0b2e780da55f\"\n    }\n}",
         "title": "Retrieving the vulnerability risk list"
+      }
+    ],
+    "DescribeHostVulScanStatus": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeHostVulScanStatus\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Status\": {\n            \"HasScanned\": true,\n            \"IsFirstScan\": true,\n            \"ScanTaskStatus\": \"SUCCESS\",\n            \"ScanScene\": \"FIRST_SCAN_HAS_FIXABLE_VUL\",\n            \"LatestScanTime\": \"2026-10-20T10:00:00Z\",\n            \"TotalVulCount\": 12,\n            \"FixableVulCount\": 5,\n            \"FixableEmergencyCount\": 1,\n            \"FixableLinuxVulCount\": 2,\n            \"FixableWindowVulCount\": 2\n        },\n        \"RequestId\": \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n    }\n}",
+        "title": "Querying Host Vulnerability Scanning Status"
       }
     ],
     "DescribeIaCFileList": [
@@ -3734,12 +3826,28 @@
         "title": "Obtaining the Log-in Audit Allowlist List (Filtering by Version Supported)"
       }
     ],
+    "DescribeLoginWhiteCustomListEDR": [
+      {
+        "document": "Query the custom allowlist list for logon exceptions",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLoginWhiteCustomListEDR\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"AppId\": 260199983,\n                \"CreateTime\": \"2026-10-23 15:38:40\",\n                \"EndTime\": \"\",\n                \"ExcludeInstanceIDs\": [],\n                \"ExcludeQUUIDS\": [],\n                \"HostCount\": 0,\n                \"Id\": 3,\n                \"InstanceIDs\": [],\n                \"Locations\": \"\",\n                \"ModifyTime\": \"2026-10-23 15:38:40\",\n                \"Places\": [],\n                \"QUUIDS\": [],\n                \"Remark\": \"\",\n                \"Scope\": 1,\n                \"SrcIp\": \"1.1.1.2\",\n                \"StartTime\": \"\",\n                \"TagItems\": [],\n                \"Type\": \"Custom\",\n                \"UserName\": \"place\"\n            }\n        ],\n        \"TotalCount\": 2,\n        \"RequestId\": \"51c542e6-5cde-4adf-8f01-4e21e027cf20\"\n    }\n}",
+        "title": "DescribeLoginWhiteCustomListEDR"
+      }
+    ],
     "DescribeLoginWhiteHostList": [
       {
         "document": "This example shows you how to edit the log-in audit allowlist.",
         "input": "POST / HTTP/1.1\nHost: cwp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLoginWhiteHostList\n<Common request parameters>\n\n{\n    \"Limit\": 1,\n    \"Id\": 1,\n    \"Offset\": 1\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Hosts\": [\n            {\n                \"MachineName\": \"Machine name\",\n                \"Quuid\": \"05f0bcab-726c-4ea4-8109-bcd03d5598f7\",\n                \"MachineWanIp\": \"1.1.1.1\",\n                \"Uuid\": \"05f0bcab-726c-4ea4-8109-bcd03d5598f7\",\n                \"MachineIp\": \"1.1.1.1\",\n                \"Tags\": [\n                    {\n                        \"Name\": \"cwp\",\n                        \"TagId\": 1,\n                        \"Rid\": 1\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"be6f6eec-0825-4e67-ab9a-c8568bbf736c\"\n    }\n}",
         "title": "Editing the Log-in Audit Allowlist"
+      }
+    ],
+    "DescribeLoginWhiteLearnListEDR": [
+      {
+        "document": "Query the self-learning allowlist for abnormal logins",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLoginWhiteLearnListEDR\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"Offset\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"AutoLearnEnable\": true,\n        \"List\": [\n            {\n                \"Type\": \"Learn\",\n                \"AppId\": 1250000000,\n                \"Id\": 42383278,\n                \"SrcIp\": \"\",\n                \"UserName\": \"\",\n                \"StartTime\": \"\",\n                \"EndTime\": \"\",\n                \"Places\": [\n                    {\n                        \"CountryId\": 1,\n                        \"ProvinceId\": 19,\n                        \"CityId\": 197,\n                        \"Location\": \"China - Guangdong - Shenzhen\"\n                    },\n                    {\n                        \"CountryId\": 1,\n                        \"ProvinceId\": 99999,\n                        \"CityId\": 99999,\n                        \"Location\": \"China-all provinces\"\n                    }\n                ],\n                \"Locations\": \"China - Guangdong - Shenzhen, China - all provinces\",\n                \"Scope\": 0,\n                \"QUUIDS\": [\n                    \"cd7eba4e-3a35-4e3d-aa41-8fce6c46e8ff\"\n                ],\n                \"InstanceIDs\": [\n                    \"ins-xxxxxxxx\"\n                ],\n                \"ExcludeQUUIDS\": [],\n                \"ExcludeInstanceIDs\": [],\n                \"TagItems\": [],\n                \"HostCount\": 1,\n                \"Remark\": \"\",\n                \"CreateTime\": \"2026-10-20 09:00:00\",\n                \"ModifyTime\": \"2026-10-21 09:00:00\"\n            }\n        ],\n        \"RequestId\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\"\n    }\n}",
+        "title": "DescribeLoginWhiteLearnListEDR"
       }
     ],
     "DescribeMachineClearHistory": [
@@ -4940,6 +5048,14 @@
         "title": "Modifying Brute-Force Blocking Mode"
       }
     ],
+    "ModifyBaselineIgnorePolicy": [
+      {
+        "document": "Add an ignore policy",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyBaselineIgnorePolicy\n<Common request parameters>\n\n{\n    \"ItemID\": 1,\n    \"ScopeType\": \"ALL\",\n    \"ScopeIncludeList\": [\n        \"instance-tki\"\n    ],\n    \"ScopeExcludeList\": [\n        \"instance-ikj\"\n    ],\n    \"Remark\": \"ignore all\",\n    \"ID\": 0,\n    \"MemberId\": [\n        \"mem-tencent-6f5795752f66e429\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f2dec187-04f4-4cd2-aeb1-ce51c56bc8b8\"\n    }\n}",
+        "title": "Add ignore policy"
+      }
+    ],
     "ModifyBaselinePolicy": [
       {
         "document": "",
@@ -5458,6 +5574,22 @@
         "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyImageVulWhitelist\n<Common request parameters>\n\n{\n    \"RuleId\": 1,\n    \"MemberId\": [\n        \"mem-12e1se11\"\n    ],\n    \"PocId\": \"tvd736\",\n    \"ImageIds\": [\n        \"1\"\n    ],\n    \"Scope\": 1,\n    \"Status\": 1,\n    \"Remark\": \"Vulnerability allowlist\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c3c0132-cfb2-4ceb-872a-90a7cc8110c2\"\n    }\n}",
         "title": "Modify the Vulnerability Allowlist of a Container Image"
+      }
+    ],
+    "ModifyLoginWhiteCustomEDR": [
+      {
+        "document": "Modify exception logon custom allowlist (full coverage, no rescan)",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyLoginWhiteCustomEDR\n<Common request parameters>\n\n{\n    \"Id\": 2,\n    \"Places\": [\n        {\n            \"CountryId\": 1,\n            \"ProvinceId\": 1,\n            \"CityId\": 1\n        }\n    ],\n    \"Remark\": \"Remark 3\",\n    \"Scope\": 0,\n    \"InstanceIDsWithAppId\": [\n        {\n            \"AppId\": 260199983,\n            \"InstanceID\": \"ins-2zltluch\"\n        }\n    ],\n    \"TargetAppIDs\": [\n        260199983\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"FailedAppIds\": [],\n        \"RequestId\": \"356104a2-3d15-49aa-baed-106a76dbaf2c\"\n    }\n}",
+        "title": "ModifyLoginWhiteCustomEDR"
+      }
+    ],
+    "ModifyLoginWhiteLearnEDR": [
+      {
+        "document": "Modify exception login self-learning allowlist (all assets + remove host)",
+        "input": "POST / HTTP/1.1\nHost: csip.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyLoginWhiteLearnEDR\n<Common request parameters>\n\n{\n    \"Id\": 39781687,\n    \"Places\": [\n        {\n            \"CountryId\": 1,\n            \"ProvinceId\": 1,\n            \"CityId\": 1\n        }\n    ],\n    \"RuleAppId\": 260199983,\n    \"Remark\": \"remark2\",\n    \"Scope\": 0,\n    \"InstanceIDsWithAppId\": [\n        {\n            \"AppId\": 260199983,\n            \"InstanceID\": \"ins-2zltluch\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6f81cb29-2f49-49e3-b27b-f7062ea5841e\"\n    }\n}",
+        "title": "ModifyLoginWhiteLearnEDR"
       }
     ],
     "ModifyLoginWhiteRecord": [

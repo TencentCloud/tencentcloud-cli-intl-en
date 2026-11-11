@@ -296,13 +296,13 @@
       {
         "document": "",
         "input": "https://faceid.tencentcloudapi.com/?Action=ImageRecognitionV2\n&IdCard=11204416541220243X\n&Name=Wei Xiaobao\n&ImageBase64=/9j/4AAQSkZJRg.....s97n//2Q==\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Result\": \"Success\",\n\"Description\": \"Success\"\n        \"Sim\": 89.88,\n        \"RequestId\": \"f904f4cf-75db-4f8f-a5ec-dc4f942c7f7a\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"Success\",\n        \"Description\": \"Success\",\n        \"Sim\": 89.88,\n        \"RequestId\": \"f904f4cf-75db-4f8f-a5ec-dc4f942c7f7a\"\n    }\n}",
         "title": "Photo Face Verification Successful Example"
       },
       {
         "document": "",
         "input": "https://faceid.tencentcloudapi.com/?Action=ImageRecognitionV2\n&IdCard=11204416541220243X\n&Name=Wei Xiaobao\n&ImageBase64=/9j/4AAQSkZJRg.....s97n//2Q==\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n\"Description\": \"Similarity comparison does not reach the pass standard\"\n        \"RequestId\": \"e9e198e4-4fa8-49f0-a67e-f8053bc49201\",\n        \"Result\": \"FailedOperation.CompareLowSimilarity\",\n        \"Sim\": 26.04\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Description\": \"Similarity comparison does not reach the pass standard\",\n        \"RequestId\": \"e9e198e4-4fa8-49f0-a67e-f8053bc49201\",\n        \"Result\": \"FailedOperation.CompareLowSimilarity\",\n        \"Sim\": 26.04\n    }\n}",
         "title": "Photo Face Verification Similarity Substandard Example"
       }
     ],

@@ -147,6 +147,13 @@
       "output": "CreateAllAssetsExportJobResponse",
       "status": "online"
     },
+    "CreateAssetBaselineRiskExportJob": {
+      "document": "This API is used to create an asset baseline risk export task.",
+      "input": "CreateAssetBaselineRiskExportJobRequest",
+      "name": "Creates an asset baseline risk export task",
+      "output": "CreateAssetBaselineRiskExportJobResponse",
+      "status": "online"
+    },
     "CreateAssetComponentListExportJob": {
       "document": "Creates a component list export task for image assets.",
       "input": "CreateAssetComponentListExportJobRequest",
@@ -826,6 +833,13 @@
       "output": "DeleteAssetTagResponse",
       "status": "online"
     },
+    "DeleteBaselineIgnorePolicy": {
+      "document": "Delete baseline ignore policy",
+      "input": "DeleteBaselineIgnorePolicyRequest",
+      "name": "Deletes a baseline ignore policy",
+      "output": "DeleteBaselineIgnorePolicyResponse",
+      "status": "online"
+    },
     "DeleteBaselineSelfDefinedPolicyList": {
       "document": "Delete custom baseline policies in batches. Only support deletion of policies with PolicyType=SELF. After deletion, historical risk records are retained, but no new results are generated.",
       "input": "DeleteBaselineSelfDefinedPolicyListRequest",
@@ -1069,6 +1083,20 @@
       "input": "DeleteImageVulWhitelistRequest",
       "name": "Deletes a vulnerability allowlist from a container mirror",
       "output": "DeleteImageVulWhitelistResponse",
+      "status": "online"
+    },
+    "DeleteLoginWhiteCustomEDR": {
+      "document": "This API is used to delete CSC abnormal login custom allowlist entries in batches (soft delete, status=2), with support for cross-page select all. Either Ids or SelectAll is required. If both are empty, InvalidParameter is returned. If the total amount of cross-page select all exceeds 100,000 entries, the entire request is denied.",
+      "input": "DeleteLoginWhiteCustomEDRRequest",
+      "name": "Deletes the custom allowlist for exception logins",
+      "output": "DeleteLoginWhiteCustomEDRResponse",
+      "status": "online"
+    },
+    "DeleteLoginWhiteLearnEDR": {
+      "document": "Delete CSC abnormal login self-learning allowlist rule groups in batches (soft delete the entire group with enable=0). Import any row ID in a group to locate the entire group. Cross-page select all is supported (cap: 100,000 rule groups). Once deleted, the groups will not be automatically re-learned. You need to toggle self-learning again to update the learning anchor. This interface does not rescan historical alarms.",
+      "input": "DeleteLoginWhiteLearnEDRRequest",
+      "name": "Deletes abnormal login self-learning allowlist",
+      "output": "DeleteLoginWhiteLearnEDRResponse",
       "status": "online"
     },
     "DeleteLoginWhiteList": {
@@ -1351,6 +1379,13 @@
       "output": "DescribeAlertListResponse",
       "status": "online"
     },
+    "DescribeAssetBaselineRiskList": {
+      "document": "This API is used to obtain the asset risk list.",
+      "input": "DescribeAssetBaselineRiskListRequest",
+      "name": "Retrieves the asset baseline risk list",
+      "output": "DescribeAssetBaselineRiskListResponse",
+      "status": "online"
+    },
     "DescribeAssetComponentList": {
       "document": "Query the component list in an asset.",
       "input": "DescribeAssetComponentListRequest",
@@ -1524,6 +1559,13 @@
       "input": "DescribeBaselineFixRecordListRequest",
       "name": "Retrieves the baseline fix record list",
       "output": "DescribeBaselineFixRecordListResponse",
+      "status": "online"
+    },
+    "DescribeBaselineIgnorePolicyList": {
+      "document": "Queries the baseline ignore policy list",
+      "input": "DescribeBaselineIgnorePolicyListRequest",
+      "name": "Queries the baseline ignore policy list",
+      "output": "DescribeBaselineIgnorePolicyListResponse",
       "status": "online"
     },
     "DescribeBaselineItemRiskList": {
@@ -1860,6 +1902,13 @@
       "input": "DescribeClusterAssetsRequest",
       "name": "This example shows you how to obtain the cluster list.",
       "output": "DescribeClusterAssetsResponse",
+      "status": "online"
+    },
+    "DescribeClusterBaselineRiskPolicyList": {
+      "document": "Get the cluster risk policy list.",
+      "input": "DescribeClusterBaselineRiskPolicyListRequest",
+      "name": "Gets the list of baseline risk policies for a cluster",
+      "output": "DescribeClusterBaselineRiskPolicyListResponse",
       "status": "online"
     },
     "DescribeClusterContainerAppList": {
@@ -2807,6 +2856,13 @@
       "output": "DescribeEdrLogCollectPathsResponse",
       "status": "online"
     },
+    "DescribeEdrMalwareFile": {
+      "document": "Locate malicious file alarms by EDR alarm ID and return the download URL of the malicious sample. Only alarms with alert_sub_type=1 (malicious file) can be downloaded. Other sub-types are handled as resource not found. Public cloud returns a COS presigned URL (valid for 1 hour). Non-public cloud returns a base64 DataURL and FileName when the export switch is on. In cross-account scenarios, TargetAppId specifies the account that owns the alarm, and ownership verification is performed (fail-close, InvalidParameter is returned if no permission).",
+      "input": "DescribeEdrMalwareFileRequest",
+      "name": "Gets the sample download link for EDR malicious file alerts",
+      "output": "DescribeEdrMalwareFileResponse",
+      "status": "online"
+    },
     "DescribeExportJobDownloadURL": {
       "document": "Result download URL of an export task",
       "input": "DescribeExportJobDownloadURLRequest",
@@ -2919,11 +2975,25 @@
       "output": "DescribeHostVulOverviewResponse",
       "status": "online"
     },
+    "DescribeHostVulRiskEventList": {
+      "document": "This API is used to query the host vulnerability risk event list and return basic vulnerability information, instance information, risk status, and latest scan time by risk record dimension.",
+      "input": "DescribeHostVulRiskEventListRequest",
+      "name": "Retrieves the host vulnerability risk event list",
+      "output": "DescribeHostVulRiskEventListResponse",
+      "status": "online"
+    },
     "DescribeHostVulRiskList": {
       "document": "This API is used to retrieve the host vulnerability risk list.",
       "input": "DescribeHostVulRiskListRequest",
       "name": "This API is used to retrieve the host vulnerability risk list.",
       "output": "DescribeHostVulRiskListResponse",
+      "status": "online"
+    },
+    "DescribeHostVulScanStatus": {
+      "document": "Query the host vulnerability scanning status to determine whether vulnerabilities have been scanned, whether the first vulnerability scan failed, and the fixable vulnerability status after the first scan is completed.",
+      "input": "DescribeHostVulScanStatusRequest",
+      "name": "Queries the vulnerability scanning status of a host",
+      "output": "DescribeHostVulScanStatusResponse",
       "status": "online"
     },
     "DescribeIaCFileList": {
@@ -3220,11 +3290,25 @@
       "output": "DescribeLoginWhiteCombinedListResponse",
       "status": "online"
     },
+    "DescribeLoginWhiteCustomListEDR": {
+      "document": "This API is used to query the CSC abnormal login custom allowlist. In multi-account scenarios, parse out all member AppIds by MemberId and perform an aggregate query only once. Return in pages by ModifyTime DESC. The output slice field is always [] and never null.",
+      "input": "DescribeLoginWhiteCustomListEDRRequest",
+      "name": "Queries the custom allowlist for exception logins",
+      "output": "DescribeLoginWhiteCustomListEDRResponse",
+      "status": "online"
+    },
     "DescribeLoginWhiteHostList": {
       "document": "This API is used to query the list of allowlisted machines after merge.",
       "input": "DescribeLoginWhiteHostListRequest",
       "name": "Queries the list of allowlisted machines after merge",
       "output": "DescribeLoginWhiteHostListResponse",
+      "status": "online"
+    },
+    "DescribeLoginWhiteLearnListEDR": {
+      "document": "This API is used to query the CSC abnormal login self-learning allowlist (rule group). Rule groups are aggregated by (AppId, common login location), and the ID is the minimum line ID in the group. The output fields SrcIp, UserName, StartTime, and EndTime are always empty. AutoLearnEnable returns the self-learning switch state for the frontend to determine whether to redirect to enable it based on the empty state.",
+      "input": "DescribeLoginWhiteLearnListEDRRequest",
+      "name": "Queries the self-learning allowlist for exceptional logins",
+      "output": "DescribeLoginWhiteLearnListEDRResponse",
       "status": "online"
     },
     "DescribeMachineClearHistory": {
@@ -4249,6 +4333,13 @@
       "output": "ModifyBanModeResponse",
       "status": "online"
     },
+    "ModifyBaselineIgnorePolicy": {
+      "document": "Modify baseline ignore policy",
+      "input": "ModifyBaselineIgnorePolicyRequest",
+      "name": "Modify baseline ignore policy",
+      "output": "ModifyBaselineIgnorePolicyResponse",
+      "status": "online"
+    },
     "ModifyBaselinePolicy": {
       "document": "Create or edit a baseline policy. Policy.ID 0 means create, non-zero means edit. Name is required when creating or editing. CheckAssetType and Type must comply with the CheckAssetType and PolicyType enums.",
       "input": "ModifyBaselinePolicyRequest",
@@ -4702,6 +4793,20 @@
       "input": "ModifyImageVulWhitelistRequest",
       "name": "Modifies the Vulnerability Allowlist of a Container Image",
       "output": "ModifyImageVulWhitelistResponse",
+      "status": "online"
+    },
+    "ModifyLoginWhiteCustomEDR": {
+      "document": "Modify the CSC abnormal login custom allowlist with full coverage saving (fields not passed are deemed as cleared). This API does not trigger historical alarm rescanning. Exclude itself during deduplication. If the rule does not exist, return ResourceNotFound.",
+      "input": "ModifyLoginWhiteCustomEDRRequest",
+      "name": "Modifies the custom allowlist for exception logins",
+      "output": "ModifyLoginWhiteCustomEDRResponse",
+      "status": "online"
+    },
+    "ModifyLoginWhiteLearnEDR": {
+      "document": "This API is used to modify the CSC abnormal login self-learning allowlist rule group, locating the entire group by (AppId, common login location). Constraints: creating is not supported, and taking effect by tag is not supported (TagIDs must be empty). Only Scope=0 direct selection and Scope=1 all assets + removal are supported. Reject when the rule group row count exceeds 5000. In a single transaction, insert first and delete later. It takes effect within one cache cycle (default 120s) after editing. This API does not rescan historical alarms.",
+      "input": "ModifyLoginWhiteLearnEDRRequest",
+      "name": "Modifies abnormal login self-learning allowlist",
+      "output": "ModifyLoginWhiteLearnEDRResponse",
       "status": "online"
     },
     "ModifyLoginWhiteRecord": {
@@ -9456,6 +9561,62 @@
           "name": "ProtectedDay",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AssetBaselineRisk": {
+      "document": "Asset baseline risk",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Unique identifier of a risk record.</p>",
+          "example": "29944856d0307789d2d98eb768b5584a",
+          "member": "string",
+          "name": "RiskID",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Detection item details.</p>",
+          "example": "无",
+          "member": "BaselineItem",
+          "name": "Item",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Most recent detection time (ISO 8601 format).</p>",
+          "example": "2026-09-20T19:28:36Z",
+          "member": "string",
+          "name": "LatestCheckTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Detection result status. Parameter values:</p><ul><li>NOT_PASS: failed</li><li>PASS: passed</li><li>CHECKING: in-progress detection</li></ul><p></p>",
+          "example": "PASS",
+          "member": "string",
+          "name": "ResultStatus",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Brief information of the associated baseline policy.</p>",
+          "example": "无",
+          "member": "BaselinePolicyBrief",
+          "name": "PolicyInfo",
+          "output_required": true,
+          "type": "object",
           "value_allowed_null": false
         }
       ],
@@ -14425,7 +14586,7 @@
       "usage": "out"
     },
     "BaselineCategory": {
-      "document": "Baseline classification basic information, covering both parent and subcategory layers.",
+      "document": "Basic information of baseline categories, covering two layers: parent categories and subcategories.",
       "members": [
         {
           "disabled": false,
@@ -14459,7 +14620,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Detect the asset major category and distinguish between host baseline and container cluster baseline. Parameter Value:</p><ul><li>HOST: Host</li><li>CLUSTER: Container cluster</li></ul>",
+          "document": "<p>Detect asset major category, case-sensitive between host baseline and container cluster baseline. Parameter Value:</p><ul><li>HOST: Host</li><li>CLUSTER: Container cluster</li></ul>",
           "example": "HOST",
           "member": "string",
           "name": "CheckAssetType",
@@ -14817,6 +14978,132 @@
       ],
       "usage": "out"
     },
+    "BaselineIgnorePolicy": {
+      "document": "Baseline ignore policy",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Ignore policy record ID.</p>",
+          "example": "2",
+          "member": "uint64",
+          "name": "ID",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Detection item name.</p>",
+          "example": "Kubelet 未授权访问",
+          "member": "string",
+          "name": "ItemName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Category name of the detection item.</p>",
+          "example": "未授权访问",
+          "member": "string",
+          "name": "CategoryName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>User AppID.</p>",
+          "example": "260083796",
+          "member": "uint64",
+          "name": "AppID",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Ignorable range type</p><p>Enumeration values:</p><ul><li>ALL: all assets</li><li>PICK: specified asset</li></ul>",
+          "example": "ALL",
+          "member": "string",
+          "name": "ScopeType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Custom asset ID list. This parameter is valid only when PICK is selected. Store instance-id or cluster ID.</p>",
+          "example": "[\"instance-tki\"]",
+          "member": "string",
+          "name": "ScopeIncludeList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Remove asset ID list. This parameter is valid only when set to ALL. Store instance-id or cluster ID.</p>",
+          "example": "[\"instance-ikj\"]",
+          "member": "string",
+          "name": "ScopeExcludeList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Remark information.</p>",
+          "example": "ignore all",
+          "member": "string",
+          "name": "Remark",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Creation time.</p>",
+          "example": "2026-09-21T09:21:35Z",
+          "member": "datetime_iso",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Last modification time.</p>",
+          "example": "2026-09-21T09:21:35Z",
+          "member": "datetime_iso",
+          "name": "ModifyTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Corresponding asset type</p><p>Enumeration values:</p><ul><li>HOST: host</li><li>CLUSTER: cluster-related assets</li></ul>",
+          "example": "HOST",
+          "member": "string",
+          "name": "AssetType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Check item ID</p>",
+          "example": "1628",
+          "member": "uint64",
+          "name": "ItemID",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "BaselineItem": {
       "document": "Baseline detection item.",
       "members": [
@@ -14842,7 +15129,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Detection object description, such as configuration file path, kernel parameter, and Kubernetes Resources.</p>",
+          "document": "<p>Detection target description, such as configuration file path, kernel parameter, Kubernetes Resources.</p>",
           "example": "[\"POD\"]",
           "member": "string",
           "name": "CheckObject",
@@ -14882,7 +15169,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Detection item repair advice (Chinese, including recommended configuration reference values or hardening commands).</p>",
+          "document": "<p>Detection item repair advice (in Chinese, including recommended configuration reference values or hardening commands).</p>",
           "example": "根据站点策略，在/etc/audit/auditd.conf中设置以下参数(<MB>需替换为具体的数字)：\nmax_log_file = <MB>。",
           "member": "string",
           "name": "FixSuggestion",
@@ -14892,7 +15179,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Reference link list of detection items.</p>",
+          "document": "<p>Detection item reference link list.</p>",
           "example": "https://kube********************************/******************ards/",
           "member": "string",
           "name": "ReferenceLink",
@@ -14902,7 +15189,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Classification information of the parent category in the associated system.</p>",
+          "document": "<p>Parent classification information of the associated system.</p>",
           "example": "无",
           "member": "BaselineCategory",
           "name": "SystemCategory",
@@ -14912,7 +15199,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Classification information of the subcategory it belongs to.</p>",
+          "document": "<p>Belonging subcategory information.</p>",
           "example": "无",
           "member": "BaselineCategory",
           "name": "Category",
@@ -14922,7 +15209,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Whether one-click repair is supported. true: supported, false: unsupported.</p>",
+          "document": "<p>Whether one-click repair is supported. true: support, false: no support.</p>",
           "example": "true",
           "member": "bool",
           "name": "SupportFix",
@@ -14932,7 +15219,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Whether user-defined judgment values are supported. true: supported; false: not supported.</p>",
+          "document": "<p>Whether to support user customization of judgment values. true: support, false: no support.</p>",
           "example": "true",
           "member": "bool",
           "name": "SupportCustomValue",
@@ -14942,7 +15229,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Operating system/component version list applicable to this detection item.</p>",
+          "document": "<p>Applicable operating system/component version list for this detection item.</p>",
           "example": "[\"All Kubernetes versions\"]",
           "member": "string",
           "name": "AffectedVersionList",
@@ -14952,7 +15239,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Parameter definition when editing a custom judgment value (for example, permissible range, control type).</p>",
+          "document": "<p>Parameter definition when editing custom judgment values (such as value range, control type, etc.).</p>",
           "example": "eyJ0eXBlIjogImlucHV0TnVtYmVyIiwgImxhYmVsIjogWyLkuI3mtLvot4PotKbmiLfnmoTplIHlrprml7bpl7Q8PSJdLCAidW5pdCI6IFsi5aSpIl0sICJkZWZhdWx0VmFsdWUiOiBbMzBdfQ==",
           "member": "string",
           "name": "WebEditParam",
@@ -14962,7 +15249,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Default detection item judgment value list.</p>",
+          "document": "<p>Default judgment value list of the detection item.</p>",
           "example": "[\"30\"]",
           "member": "string",
           "name": "DefaultValueList",
@@ -14972,7 +15259,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Whether customized by the user. true: customized; false: use default values.</p>",
+          "document": "<p>Whether it has been customized by the user. true: customized, false: still use default values.</p>",
           "example": "true",
           "member": "bool",
           "name": "IsCustomConf",
@@ -14982,7 +15269,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>User-customized configuration record ID. The value is 0 if not customized.</p>",
+          "document": "<p>User-customized configuration record ID. 0 if not customized.</p>",
           "example": "0",
           "member": "uint64",
           "name": "CustomItemID",
@@ -15554,6 +15841,42 @@
         }
       ],
       "usage": "both"
+    },
+    "BaselinePolicyBrief": {
+      "document": "Brief information of the baseline policy",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Baseline policy ID.</p>",
+          "example": "1015",
+          "member": "uint64",
+          "name": "ID",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Baseline policy name.</p>",
+          "example": "sdfsfsf",
+          "member": "string",
+          "name": "PolicyName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether it is a system built-in policy. true indicates yes, false indicates no (user-defined policy).</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "IsSystem",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "BaselinePolicySubCategoryConf": {
       "document": "Hit configuration of detection items under the sub-classification dimension.",
@@ -19826,6 +20149,62 @@
           "name": "AccountInfo",
           "output_required": true,
           "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ClusterBaselinePolicy": {
+      "document": "Baseline policy for a cluster",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Baseline policy ID.</p>",
+          "example": "1366",
+          "member": "uint64",
+          "name": "PolicyID",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Baseline policy name.</p>",
+          "example": "等保2.0二级",
+          "member": "string",
+          "name": "PolicyName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Asset type to detect.<br>Enumeration values:<br>HOST: host<br>CLUSTER: container cluster</p>",
+          "example": "HOST",
+          "member": "string",
+          "name": "CheckAssetType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Baseline system parent category ID.</p>",
+          "example": "4",
+          "member": "uint64",
+          "name": "ParentCategoryID",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether it is a system baseline policy. true means system policy, false means custom policy.</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "IsSystem",
+          "output_required": true,
+          "type": "bool",
           "value_allowed_null": false
         }
       ],
@@ -25277,6 +25656,88 @@
           "disabled": false,
           "document": "Export Task ID",
           "example": "679f0712-8d72-4525-b6ff-e7b081815ee9",
+          "member": "string",
+          "name": "JobId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAssetBaselineRiskExportJobRequest": {
+      "document": "CreateAssetBaselineRiskExportJob request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Unique asset identifier (UUID), used with AssetType to locate a specific asset.</p>",
+          "example": "87cd7655-**********9ea1-6267cb76707d",
+          "member": "string",
+          "name": "AssetUniqueID",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Asset type. Parameter Value: HOST (host), CLUSTER (cluster).</p>",
+          "example": "HOST",
+          "member": "string",
+          "name": "AssetType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>appid of asset ownership</p>",
+          "example": "260000096",
+          "member": "uint64",
+          "name": "AssetAppID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Export task name</p>",
+          "example": "资产导出",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Group account member id</p>",
+          "example": "[\"mem-****e**-*******52f66e429\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Universal Filter Criteria. Supported fields: ItemName (detection item name, blurry), PolicyName (baseline name, blurry), InstanceName (host name, blurry), InstanceID (instance ID, exact), IP (IP, blurry). Different Names are in an AND relationship with each other, while multiple Values under the same Name are in an OR relationship.</p>",
+          "example": "无",
+          "member": "Filters",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAssetBaselineRiskExportJobResponse": {
+      "document": "CreateAssetBaselineRiskExportJob response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Export task ID.</p>",
+          "example": "d1cbc89d-ee9c-46d7-8a86-fa8c418f8719",
           "member": "string",
           "name": "JobId",
           "output_required": true,
@@ -33645,6 +34106,42 @@
       ],
       "type": "object"
     },
+    "DeleteBaselineIgnorePolicyRequest": {
+      "document": "DeleteBaselineIgnorePolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>ID of the ignored policy record to delete.</p>",
+          "example": "[1]",
+          "member": "uint64",
+          "name": "ID",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Group account member id</p>",
+          "example": "[\"mem-tencent-6f5795752f66e429\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteBaselineIgnorePolicyResponse": {
+      "document": "DeleteBaselineIgnorePolicy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteBaselineSelfDefinedPolicyListRequest": {
       "document": "DeleteBaselineSelfDefinedPolicyList request structure.",
       "members": [
@@ -35074,6 +35571,190 @@
     "DeleteImageVulWhitelistResponse": {
       "document": "DeleteImageVulWhitelist response structure.",
       "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLoginWhiteCustomEDRRequest": {
+      "document": "DeleteLoginWhiteCustomEDR request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Group account member id</p>",
+          "example": "[\"mem-tencent-e74488e0ba0cd8ff\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of explicitly selected rule IDs, up to 1,000; mutually exclusive with SelectAll</p>",
+          "example": "[3]",
+          "member": "uint64",
+          "name": "Ids",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Select all across pages: true - Delete all rules that meet Filters (Filters is required at this point). false - Delete only Ids</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "SelectAll",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of target account AppIds for multi-account, up to 1000; being empty indicates only the current account; returns InvalidParameter when input but no permissions at all</p>",
+          "example": "[260199983]",
+          "member": "uint64",
+          "name": "TargetAppIDs",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of excluded rule IDs, up to 1000</p>",
+          "example": "[246]",
+          "member": "int64",
+          "name": "ExcludeIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Filtering criteria under select all</p>",
+          "example": "无",
+          "member": "EDRFilter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLoginWhiteCustomEDRResponse": {
+      "document": "DeleteLoginWhiteCustomEDR response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Number of deleted rules</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "DeletedCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of account AppIds that failed to delete; returns an error only if all failed</p>",
+          "example": "[256]",
+          "member": "uint64",
+          "name": "FailedAppIds",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLoginWhiteLearnEDRRequest": {
+      "document": "DeleteLoginWhiteLearnEDR request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Group account member id</p>",
+          "example": "[\"mem-tencent-e74488e0ba0cd8ff\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Explicitly selected rule ID list, up to 1000; choose either this or SelectAll</p>",
+          "example": "[39781688]",
+          "member": "uint64",
+          "name": "Ids",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Select all across pages: true - Delete all rules that meet Filters (Filters is required at this point). false - Delete only Ids</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "SelectAll",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of target account AppIds for multi-account, up to 1000; being empty indicates only the current account; returns InvalidParameter when input but no permissions at all</p>",
+          "example": "[260199983]",
+          "member": "uint64",
+          "name": "TargetAppIDs",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of excluded rule IDs</p>",
+          "example": "[39781721]",
+          "member": "int64",
+          "name": "ExcludeIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Filtering criteria under select all</p>",
+          "example": "无",
+          "member": "EDRFilter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteLoginWhiteLearnEDRResponse": {
+      "document": "DeleteLoginWhiteLearnEDR response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Number of deleted host record rows (a rule group may contain multiple rows, which is different from the custom allowlist API that uses the number of rules for statistics)</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "DeletedCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of account AppIds that failed to delete; an error is returned only when all failed</p>",
+          "example": "[256]",
+          "member": "uint64",
+          "name": "FailedAppIds",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -37604,6 +38285,107 @@
       ],
       "type": "object"
     },
+    "DescribeAssetBaselineRiskListRequest": {
+      "document": "DescribeAssetBaselineRiskList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Unique asset identifier (UUID), used with AssetType to locate a specific asset.</p>",
+          "example": "87cd7655-**2**4******a1-6267cb76707d",
+          "member": "string",
+          "name": "AssetUniqueID",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Asset type. Parameter Value: HOST (host), CLUSTER (cluster).</p>",
+          "example": "HOST",
+          "member": "string",
+          "name": "AssetType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>appid of asset ownership</p>",
+          "example": "260083796",
+          "member": "uint64",
+          "name": "AssetAppID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Group account member id</p>",
+          "example": "[\"mem-***c**t*6*57*5*5**66e429\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Universal Filter Criteria. Supported fields: ItemName (detection item name, blurry), PolicyName (baseline name, blurry), ResultStatus (result status), RiskLevel (risk level). Different Names are in an AND relationship with each other, and multiple Values under the same Name are in an OR relationship.</p>",
+          "example": "无",
+          "member": "Filters",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of items per page for paging query. Maximum value: 100. If exceeded, the server will automatically fall back to the default value 10.</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Paging query starting offset amount, starting from 0.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAssetBaselineRiskListResponse": {
+      "document": "DescribeAssetBaselineRiskList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Baseline risk repair record list.</p>",
+          "example": "无",
+          "member": "AssetBaselineRisk",
+          "name": "List",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total number of secrets</p>",
+          "example": "10",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeAssetComponentListRequest": {
       "document": "DescribeAssetComponentList request structure.",
       "members": [
@@ -39318,6 +40100,80 @@
           "document": "<p>Baseline risk repair record list.</p>",
           "example": "无",
           "member": "BaselineFixRecord",
+          "name": "List",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total number of secrets</p>",
+          "example": "4",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBaselineIgnorePolicyListRequest": {
+      "document": "DescribeBaselineIgnorePolicyList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Group account member id</p>",
+          "example": "[\"mem-tencent-6f5795752f66e429\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Universal Filter Criteria. Supported fields: ItemName (detection item name, blurry). Different Names are in an AND relationship, while multiple Values under the same Name are in an OR relationship.</p>",
+          "example": "无",
+          "member": "Filters",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of items per page for paging query. Maximum value: 100. If exceeded, the server will automatically fall back to the default value 10.</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Paging query starting offset amount, starting from 0.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBaselineIgnorePolicyListResponse": {
+      "document": "DescribeBaselineIgnorePolicyList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Baseline risk repair record list.</p>",
+          "example": "无",
+          "member": "BaselineIgnorePolicy",
           "name": "List",
           "output_required": true,
           "type": "list",
@@ -43605,6 +44461,61 @@
           "member": "FilterDataObject",
           "name": "ProtectStatusList",
           "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterBaselineRiskPolicyListRequest": {
+      "document": "DescribeClusterBaselineRiskPolicyList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Appid of the cluster's account, used to specify the account for querying baseline risk policies.</p>",
+          "example": "260082268",
+          "member": "uint64",
+          "name": "ClusterAppid",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Cluster CaMD5</p>",
+          "example": "27092b0cf181be0d848ddcd66dbee929",
+          "member": "string",
+          "name": "ClusterCaMD5",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of member IDs of the group account.",
+          "example": "[\"mem-*****************f66e429\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterBaselineRiskPolicyListResponse": {
+      "document": "DescribeClusterBaselineRiskPolicyList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Scan the main task list.</p>",
+          "example": "无",
+          "member": "ClusterBaselinePolicy",
+          "name": "List",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -54684,6 +55595,71 @@
       ],
       "type": "object"
     },
+    "DescribeEdrMalwareFileRequest": {
+      "document": "DescribeEdrMalwareFile request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Unique ID of the EDR alert. Required. Up to 34 characters</p>",
+          "example": "321b43909fba435d1adedd5648805a36",
+          "member": "string",
+          "name": "AlertId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Group account member id</p>",
+          "example": "[\"mem-tencent-6f5795752f66e429\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>AppId of the account associated with the alarm (in cross-account scenarios, the member AppId is passed through by the frontend); if 0 or omitted, the login account AppId is used</p>",
+          "example": "260083796",
+          "member": "uint64",
+          "name": "TargetAppId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeEdrMalwareFileResponse": {
+      "document": "DescribeEdrMalwareFile response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Sample download link. For public cloud, it is a COS presigned URL (expires in 1 hour); for non-public cloud with the export switch on, it is data:application/octet-stream;base64,&lt;base64 of the zip&gt;</p>",
+          "example": "http://xxx.com/test",
+          "member": "string",
+          "name": "FileUrl",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Export file name, such as &lt;name&gt;.zip; only returned in the non-public cloud base64 branch, and this field is not returned in other scenarios</p>",
+          "example": "文件名",
+          "member": "string",
+          "name": "FileName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeExportJobDownloadURLRequest": {
       "document": "DescribeExportJobDownloadURL request structure.",
       "members": [
@@ -55826,6 +56802,98 @@
       ],
       "type": "object"
     },
+    "DescribeHostVulRiskEventListRequest": {
+      "document": "DescribeHostVulRiskEventList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Pagination offset.<br>Value range: [0, +∞).<br>Default value: 0.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of returned items per page.<br>Value range: [1, 100].<br>Default value: 10.</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Filter.Name supported by Filter criteria: VulName - fuzzy matching, search by vulnerability Name. Category - exact matching, Filter by vulnerability Category: LINUX-LINUX software vulnerability, WINDOWS-WINDOWS system patch vulnerability, WEB_CMS-WEB-CMS vulnerability, APPLICATION-APPLICATION vulnerability, EMERGENCY-URGENT vulnerability. RiskStatus - exact matching, Filter by risk status: PENDING-PENDING, HANDLED-processed, FIXED-FIXED, SCANNING-rechecking, IGNORED-IGNORED, NOT_REQUIRED-no action is REQUIRED, DELETED-DELETED, FIXING-in remediation, NEED_REBOOT-FIXED PENDING restart, FIX_FAILED-FIX failure. Level - exact matching, Filter by vulnerability severity Level: UNKNOWN-unavailable, LOW-LOW risk, MEDIUM-MEDIUM risk, HIGH-HIGH risk, CRITICAL-CRITICAL. CVSSLevel - exact matching, compatible field, equivalent to Level. VPRLevel - exact matching, Filter by VPR repair priority: DEFERRABLE-DEFERRABLE repair, PLANNED-PLANNED repair, SOON-repair as SOON as possible, URGENT-URGENT repair. - exact matching, Filter by vulnerability ID. InstanceID - exact matching, Filter by CVM instance ID. InstanceID - exact matching, compatible field, equivalent to InstanceID. UUID - exact matching, Filter by host security UUID. LatestScanTimeStart - range matching, latest scan time start, format: YYYY-MM-DD HH:MM:ss. LatestScanTimeEnd - range matching, latest scan time end, format: YYYY-MM-DD HH:MM:ss</p>",
+          "example": "无",
+          "member": "Filters",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sorting order.<br>Enumeration values:<br>asc: ascending<br>desc: descending<br>Default value: desc.</p>",
+          "example": "desc",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sorting field<br>Enumeration values:<br>LatestScanTime: sort by latest scan time<br>Level: sort by threat level<br>VPRLevel: sort by VPR rating<br>RiskStatus: sort by risk status<br>VulID: sort by vulnerability ID<br>InstanceID: sort by instance ID<br>Default value: LatestScanTime</p>",
+          "example": "Level",
+          "member": "string",
+          "name": "By",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Group Account Member ID",
+          "example": "[\"mem-tencent-*********f66e429\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeHostVulRiskEventListResponse": {
+      "document": "DescribeHostVulRiskEventList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Host vulnerability risk event list</p>",
+          "example": "无",
+          "member": "HostVulRiskEventItem",
+          "name": "List",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total number of entries that meet the criteria</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeHostVulRiskListRequest": {
       "document": "DescribeHostVulRiskList request structure.",
       "members": [
@@ -55907,6 +56975,43 @@
           "name": "TotalCount",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeHostVulScanStatusRequest": {
+      "document": "DescribeHostVulScanStatus request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Group account member id</p>",
+          "example": "[\"mem-xxxxxx\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeHostVulScanStatusResponse": {
+      "document": "DescribeHostVulScanStatus response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Host vulnerability scanning status</p>",
+          "example": "无",
+          "member": "HostVulScanStatus",
+          "name": "Status",
+          "output_required": true,
+          "type": "object",
           "value_allowed_null": false
         },
         {
@@ -58577,6 +59682,98 @@
       ],
       "type": "object"
     },
+    "DescribeLoginWhiteCustomListEDRRequest": {
+      "document": "DescribeLoginWhiteCustomListEDR request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Group account member id</p>",
+          "example": "[\"mem-tencent-e74488e0ba0cd8fe\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Filter condition array (multiple Filters have an AND relationship). Supports Name: Keyword (SrcIp/UserName/Locations/Remark blurry), SrcIp, UserName, Location, Remark, ModifyBeginTime, ModifyEndTime (time format 2006-01-02 15:04:05); unknown Name is ignored with no error reported</p>",
+          "example": "无",
+          "member": "EDRFilter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Page size. Default: 10. Upper limit: 100. If 0 or more than 100 is passed, the default or upper limit is used.</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Pagination offset. Default value: 0.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sorting order: ASC - ascending, DESC - descending (not case-sensitive). Default: DESC</p>",
+          "example": "DESC",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sorting field: CreateTime-creation time, ModifyTime-last modified. Default: ModifyTime. If an illegal value is passed, InvalidParameter is returned.</p>",
+          "example": "ModifyTime",
+          "member": "string",
+          "name": "By",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLoginWhiteCustomListEDRResponse": {
+      "document": "DescribeLoginWhiteCustomListEDR response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total number of rules that meet the criteria</p>",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Custom allowlist rule list (Type is always Custom). If empty, [] is returned.</p>",
+          "example": "无",
+          "member": "LoginWhiteItem",
+          "name": "List",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeLoginWhiteHostListRequest": {
       "document": "DescribeLoginWhiteHostList request structure.",
       "members": [
@@ -58649,6 +59846,108 @@
           "name": "Hosts",
           "output_required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLoginWhiteLearnListEDRRequest": {
+      "document": "DescribeLoginWhiteLearnListEDR request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Group account member id</p>",
+          "example": "[\"mem-tencent-e74488e0ba0cd8fe\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Filter condition array (multiple Filters have an AND relationship). Supports Name: Keyword or Location (common login location blurry), Remark, ModifyBeginTime, ModifyEndTime (time format 2006-01-02 15:04:05); unknown Name is ignored with no error reported</p>",
+          "example": "无",
+          "member": "EDRFilter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Page size. Default: 10. Upper limit: 100. If 0 or more than 100 is passed, the default or upper limit is used.</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Pagination offset. Default value: 0.</p>",
+          "example": "9",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sorting order: ASC - ascending, DESC - descending (not case-sensitive). Default: DESC</p>",
+          "example": "DESC",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sorting field: CreateTime-creation time, ModifyTime-last modified. Default: ModifyTime. If an illegal value is passed, InvalidParameter is returned.</p>",
+          "example": "ModifyTime",
+          "member": "string",
+          "name": "By",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLoginWhiteLearnListEDRResponse": {
+      "document": "DescribeLoginWhiteLearnListEDR response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total number of rule groups (aggregated by AppId + common login location)</p>",
+          "example": "3",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Self-learning allowlist rule group list (Type is always Learn). If empty, [] is returned.</p>",
+          "example": "无",
+          "member": "LoginWhiteItem",
+          "name": "List",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Self-learning allowlist switch status; for multi-account, the current account is used to prompt the frontend to go to enable in the empty state</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "AutoLearnEnable",
+          "output_required": true,
+          "type": "bool",
           "value_allowed_null": false
         },
         {
@@ -75674,7 +76973,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>Name of filter key</p>",
+          "document": "<p>Name of filter key.</p>",
           "example": "AlertCategory",
           "member": "string",
           "name": "Name",
@@ -76160,7 +77459,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Tag value in English.</p>",
+          "document": "<p>Tag value in English</p>",
           "example": "test89",
           "member": "string",
           "name": "TagValueEn",
@@ -76171,7 +77470,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Tag description</p>",
+          "document": "<p>Tag description.</p>",
           "example": "dsf",
           "member": "string",
           "name": "Description",
@@ -76182,7 +77481,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Tag color</p>",
+          "document": "<p>Tag color.</p>",
           "example": "grey",
           "member": "string",
           "name": "Color",
@@ -79285,7 +80584,7 @@
       "usage": "out"
     },
     "Filters": {
-      "document": "Filter criteria. Multiple Values under the same Name are OR-related, while different Names are AND-related. Supported Name: Status (execution result, Values: SUCCESS/FAILED/USER_CANCELED/CHECKING)",
+      "document": "Filter criteria. Multiple Values under the same Name are in an OR relationship. Different Names are in an AND relationship with each other. Supported Name: Status (execution result, Values: SUCCESS/FAILED/USER_CANCELED/CHECKING)",
       "members": [
         {
           "disabled": false,
@@ -79300,7 +80599,7 @@
         },
         {
           "disabled": false,
-          "document": "List of filter condition values",
+          "document": "Filter condition value list",
           "example": "[\"意图识别\",\"敏感数据\"]",
           "member": "string",
           "name": "Values",
@@ -79311,7 +80610,7 @@
         },
         {
           "disabled": false,
-          "document": "Exact match: 1 for exact match; fuzzy match by default",
+          "document": "Exact match: 1 - exact match; fuzzy match by default",
           "example": "1",
           "member": "string",
           "name": "ExactMatch",
@@ -80514,6 +81813,258 @@
           "name": "VulDetail",
           "output_required": true,
           "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "HostVulRiskEventItem": {
+      "document": "Host vulnerability risk event details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique identifier of a vulnerability risk record.",
+          "example": "8f3c4c74-8cc9-4ddf-b66f-2d20f1a9a001",
+          "member": "string",
+          "name": "UUID",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Risk record ID",
+          "example": "1000000000001",
+          "member": "uint64",
+          "name": "RiskID",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Vulnerability ID",
+          "example": "12345",
+          "member": "uint64",
+          "name": "VulID",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Vulnerability name",
+          "example": "OpenSSL 远程代码执行漏洞",
+          "member": "string",
+          "name": "VulName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "CVE No.\nParameter format: such as CVE-2024-12345",
+          "example": "CVE-2024-12345",
+          "member": "string",
+          "name": "CVEID",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Vulnerability category\nEnumeration values:\nLINUX: Linux software vulnerability\nWINDOWS: Windows system patch\nWEB_CMS: Web-CMS vulnerability\nAPPLICATION: Application vulnerability\nEMERGENCY: Urgent vulnerability",
+          "example": "LINUX",
+          "member": "string",
+          "name": "Category",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Vulnerability severity level\nEnumeration values:\nUNKNOWN: invalid\nLOW: low-risk\nMEDIUM: Medium risk\nHIGH: High risk\nCRITICAL: Critical",
+          "example": "HIGH",
+          "member": "string",
+          "name": "Level",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VPR repair priority\nEnumeration values:\nDEFERRABLE: Can be repaired later\nPLANNED: Planned repair\nSOON: Fix as soon as possible\nURGENT: urgent repair",
+          "example": "URGENT",
+          "member": "string",
+          "name": "VPRLevel",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Detection mode\nEnumeration values:\nVersionCompare: version comparison\nPOC: POC detection\nVersionComparePOC: version comparison + POC",
+          "example": "POC",
+          "member": "string",
+          "name": "CheckMethod",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Risk status\nEnumeration value:\nPENDING: to be processed.\nHANDLED: processed\nFIXED: Fixed\nSCANNING: Rechecking\nIGNORED: ignored\nNOT_REQUIRED: No action is required\nDELETED: Deleted\nFIXING: In remediation\nNEED_REBOOT: Fixed and pending restart\nFIX_FAILURE: FIX failure",
+          "example": "PENDING",
+          "member": "string",
+          "name": "RiskStatus",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether one-click repair is supported",
+          "example": "true",
+          "member": "bool",
+          "name": "SupportFix",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last scan time\nParameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)",
+          "example": "2026-09-18T06:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "LatestScanTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cloud host instance ID\nParameter format: such as ins-xxxxxxxx",
+          "example": "ins-5ijxpaa6",
+          "member": "string",
+          "name": "InstanceID",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Account AppID",
+          "example": "1251234567",
+          "member": "uint64",
+          "name": "AppID",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "HostVulScanStatus": {
+      "document": "Vulnerability scanning status of a host",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether vulnerability scanning has been initiated\nEnumeration values:\ntrue: Vulnerability scanning initiated\nfalse: vulnerability scanning not initiated",
+          "example": "true",
+          "member": "bool",
+          "name": "HasScanned",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "If it is the first vulnerability scanning judgment scenario\nEnumeration values:\ntrue: is in the first-time vulnerability scanning judgment scenario\nfalse: not in the first vulnerability scanning judgment scenario",
+          "example": "true",
+          "member": "bool",
+          "name": "IsFirstScan",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Status of the last scan task\nEnumeration values:\nSCANNING: scan in progress\nSUCCESS: Scan successful\nPARTIAL_FAILED: Partial scan failure\nALL_FAILED: All scans failed\nSTOPPED: Stop scanning",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "ScanTaskStatus",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Business status of the page\nEnumeration values:\nNEVER_SCANNED: Never scanned for vulnerabilities\nSCANNING: scan in progress\nFIRST_SCAN_FAILED: Vulnerability scanning failed for the first time\nFIRST_SCAN_HAS_FIXABLE_VUL: First scan complete, fixable vulnerabilities exist\nFIRST_SCAN_NO_FIXABLE_VUL: First scan completed. Vulnerabilities exist but none can be fixed.\nFIRST_SCAN_NO_VUL: First scan complete, no vulnerabilities\nSCANNED_HAS_FIXABLE_VUL: Not the first scan, fixable vulnerabilities exist\nSCANNED_NO_FIXABLE_VUL: Not the first scan. Vulnerabilities exist but none can be fixed.\nSCANNED_NO_VUL: Not the first scan, no vulnerabilities",
+          "example": "FIRST_SCAN_HAS_FIXABLE_VUL",
+          "member": "string",
+          "name": "ScanScene",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last scan time\nParameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)\nReturns an empty string if unscanned.",
+          "example": "2026-10-20T10:00:00Z",
+          "member": "datetime_iso",
+          "name": "LatestScanTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Current total count of pending vulnerabilities\nContains common host vulnerabilities and pending risks of the latest Windows KB.",
+          "example": "12",
+          "member": "int64",
+          "name": "TotalVulCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Current number of fixable vulnerabilities\nContains ordinary host vulnerabilities that support one-click repair and the latest pending Windows KB risks.",
+          "example": "5",
+          "member": "int64",
+          "name": "FixableVulCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Current number of repairable emergency vulnerabilities\nUrgent vulnerabilities are prioritized for categorization: urgent vulnerabilities are only counted into this field and no longer included in the Linux software vulnerability count.",
+          "example": "1",
+          "member": "int64",
+          "name": "FixableEmergencyCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Current number of repairable Linux software vulnerabilities\nOnly non-emergency Linux software vulnerabilities are counted.",
+          "example": "2",
+          "member": "int64",
+          "name": "FixableLinuxVulCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of currently repairable patches for Windows systems\nStatistics of the latest pending Windows KB risks.",
+          "example": "2",
+          "member": "int64",
+          "name": "FixableWindowVulCount",
+          "output_required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -84896,11 +86447,11 @@
       "type": "object"
     },
     "InstanceIDWithAppIdItem": {
-      "document": "Host instance location information",
+      "document": "Location information of the host instance",
       "members": [
         {
           "disabled": false,
-          "document": "AppId of the machine ownership",
+          "document": "AppId of the machine",
           "example": "260199983",
           "member": "uint64",
           "name": "AppId",
@@ -87257,6 +88808,281 @@
       ],
       "usage": "out"
     },
+    "LoginWhiteItem": {
+      "document": "Abnormal login allowlist rule item (shared by custom and self-learning, distinguished by Type)",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Allowlist type: Custom - custom allowlist; Learn - self-learning allowlist</p>",
+          "example": "Custom",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>AppId of the account associated with the policy, used to distinguish and locate for subsequent editing in multi-account scenarios</p>",
+          "example": "260199983",
+          "member": "uint64",
+          "name": "AppId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Rule ID; for self-learning, it is the rule group ID (minimum line ID in the group)</p>",
+          "example": "39781688",
+          "member": "uint64",
+          "name": "Id",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Login source IP (comma-separated); self-learning allowlist is always empty</p>",
+          "example": "1.1.1.2",
+          "member": "string",
+          "name": "SrcIp",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Login usernames (separate with commas); self-learning allowlist is always empty</p>",
+          "example": "place",
+          "member": "string",
+          "name": "UserName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Starting HH:MM when logging in; the self-learning allowlist is always empty</p>",
+          "example": "08:00",
+          "member": "string",
+          "name": "StartTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Login period ends at HH:MM; self-learning allowlist is always empty</p>",
+          "example": "10:00",
+          "member": "string",
+          "name": "EndTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Common login location list</p>",
+          "example": "无",
+          "member": "LoginWhitePlace",
+          "name": "Places",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Common login location display copy (comma-separated) for direct display in the list</p>",
+          "example": "中国-广东-韶关市",
+          "member": "string",
+          "name": "Locations",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Effective asset scope: 0-specified hosts (host or tag hit) 1-all hosts</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "Scope",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Effective host QUUID list (one-to-one correspondence with InstanceIDs)</p>",
+          "example": "[\"1a528cc3-1083-4edc-8732-ff7a0588c018\"]",
+          "member": "string",
+          "name": "QUUIDS",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of host instance IDs that take effect (one-to-one correspondence with QUUIDS)</p>",
+          "example": "[\"ins-fsjclbic\"]",
+          "member": "string",
+          "name": "InstanceIDs",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Remove host QUUID list</p>",
+          "example": "[\"1a528cc3-1083-4edc-8732-ff7a0588c018\"]",
+          "member": "string",
+          "name": "ExcludeQUUIDS",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Host instance ID list for removal</p>",
+          "example": "[\"1a528cc3-1083-4edc-8732-ff7a0588c018\"]",
+          "member": "string",
+          "name": "ExcludeInstanceIDs",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of effective tag details.</p>",
+          "example": "无",
+          "member": "EDRRuleTagItem",
+          "name": "TagItems",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Hosts: custom to the specified number of hosts (0 when Scope=1, all hosts displayed on the front-end); self-learning is the number of deduplicated hosts in the group</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "HostCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Remarks.</p>",
+          "example": "备注",
+          "member": "string",
+          "name": "Remark",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Creation time, format 2006-01-02 15:04:05</p>",
+          "example": "2026-10-23 15:41:53",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Last modification time, format 2006-01-02 15:04:05</p>",
+          "example": "2026-10-23 15:49:03",
+          "member": "string",
+          "name": "ModifyTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "LoginWhitePlace": {
+      "document": "Common login location (output parameter)",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Country ID</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "CountryId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Province ID; 99999 means all provinces</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "ProvinceId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>City ID; 99999 means all cities</p>",
+          "example": "198",
+          "member": "int64",
+          "name": "CityId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Location display copy, generated by the server based on Language, for example, China-Guangdong-Shenzhen</p>",
+          "example": "中国-广东-韶关市",
+          "member": "string",
+          "name": "Location",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "LoginWhitePlaceInput": {
+      "document": "Common login location (input parameter)",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Country ID. Currently, only 1 is supported, indicating China.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "CountryId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Province ID; 99999 means all provinces</p>",
+          "example": "17",
+          "member": "int64",
+          "name": "ProvinceId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>City ID; 99999 means all cities</p>",
+          "example": "190",
+          "member": "int64",
+          "name": "CityId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "usage": "in"
+    },
     "Machine": {
       "document": "Host list",
       "members": [
@@ -89346,6 +91172,87 @@
     },
     "ModifyBanModeResponse": {
       "document": "ModifyBanMode response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyBaselineIgnorePolicyRequest": {
+      "document": "ModifyBaselineIgnorePolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Detection item ID, identifying which detection item to set an ignore policy for.</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "ItemID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Ignorable range type.</p><p>Enumeration values:</p><ul><li>ALL: all assets</li><li>PICK: specified asset</li></ul>",
+          "example": "ALL",
+          "member": "string",
+          "name": "ScopeType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Remark information.</p>",
+          "example": "ignore all",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Ignore policy record ID. Pass 0 when creating, and pass the corresponding record ID when updating.</p>",
+          "example": "0",
+          "member": "uint64",
+          "name": "ID",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Custom asset ID list. This parameter is valid only when PICK is selected. Import instance-id or cluster ID.</p>",
+          "example": "[\"instance-tki\"]",
+          "member": "string",
+          "name": "ScopeIncludeList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Remove asset ID list. This parameter is valid only when set to ALL. Input instance-id or cluster ID.</p>",
+          "example": "[\"instance-ikj\"]",
+          "member": "string",
+          "name": "ScopeExcludeList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Group account member id</p>",
+          "example": "[\"mem-tencent-6f5795752f66e429\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyBaselineIgnorePolicyResponse": {
+      "document": "ModifyBaselineIgnorePolicy response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -93640,6 +95547,259 @@
         }
       ],
       "usage": "both"
+    },
+    "ModifyLoginWhiteCustomEDRRequest": {
+      "document": "ModifyLoginWhiteCustomEDR request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Rule ID; for self-learning, it is the rule group ID (minimum line ID in the group)</p>",
+          "example": "2",
+          "member": "uint64",
+          "name": "Id",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Group account member id</p>",
+          "example": "[\"mem-tencent-e74488e0ba0cd8fe\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Login source IP. Use commas (,) to separate multiple items. Supports individual IPs, intervals (a-b), and CIDR. Supports IPv4 and IPv6. Up to 2048 characters.</p>",
+          "example": "127.0.0.0",
+          "member": "string",
+          "name": "SrcIp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Login username separated by commas; up to 1024 characters</p>",
+          "example": "place",
+          "member": "string",
+          "name": "UserName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Login time start HH:MM; it must be filled in or left empty simultaneously with EndTime</p>",
+          "example": "08:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Login period end HH:MM; must be filled in or empty at the same time as StartTime</p>",
+          "example": "10:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of common login locations, up to 200. Set ProvinceId/CityId to 99999 to indicate all provinces/all cities.</p>",
+          "example": "无",
+          "member": "LoginWhitePlaceInput",
+          "name": "Places",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Remark, up to 255 characters</p>",
+          "example": "备注3",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Effective asset scope: 0-specified hosts (host or tag hit) 1-all hosts</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "Scope",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of specified hosts (in instance ID form), up to 10,000 items. The server translates them to QUUIDs via idmap, then merges and deduplicates them with QUUIDSWithAppId.</p>",
+          "example": "无",
+          "member": "InstanceIDWithAppIdItem",
+          "name": "InstanceIDsWithAppId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of hosts (instance ID form) to remove, up to 10,000 items</p>",
+          "example": "无",
+          "member": "InstanceIDWithAppIdItem",
+          "name": "ExcludeInstanceIDsWithAppId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Security center tag ID list, up to 100. When Scope=0, it is in an OR relationship with the host. Self-learning allowlist does not support taking effect by tag (a non-empty value will be rejected).</p>",
+          "example": "[\"56\"]",
+          "member": "string",
+          "name": "TagIDs",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Target appid</p>",
+          "example": "[260199983]",
+          "member": "uint64",
+          "name": "TargetAppIDs",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to add historical alarm data to whitelist</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "DealOldEvents",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyLoginWhiteCustomEDRResponse": {
+      "document": "ModifyLoginWhiteCustomEDR response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Failed account</p>",
+          "example": "[2446]",
+          "member": "uint64",
+          "name": "FailedAppIds",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyLoginWhiteLearnEDRRequest": {
+      "document": "ModifyLoginWhiteLearnEDR request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Rule ID; for self-learning, it is the rule group ID (minimum line ID in the group)</p>",
+          "example": "39781687",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of common login locations. Required. 1-200 entries. It is the unique content dimension of the self-learning rule.</p>",
+          "example": "无",
+          "member": "LoginWhitePlaceInput",
+          "name": "Places",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Group account member id</p>",
+          "example": "[\"mem-tencent-e74488e0ba0cd8fe\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>AppId of the account associated with the policy (obtained from the list output parameter AppId); if empty, the current account is used; non-current accounts must pass ownership verification</p>",
+          "example": "260199983",
+          "member": "uint64",
+          "name": "RuleAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Remark, up to 255 characters</p>",
+          "example": "备注2",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Effective asset scope: 0-specified hosts (host or tag hit) 1-all hosts</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "Scope",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of specified hosts (in instance ID form), up to 10,000 items. The server translates them to QUUIDs via idmap, then merges and deduplicates them with QUUIDSWithAppId.</p>",
+          "example": "无",
+          "member": "InstanceIDWithAppIdItem",
+          "name": "InstanceIDsWithAppId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of hosts (instance ID form) to remove, up to 10,000 items</p>",
+          "example": "无",
+          "member": "InstanceIDWithAppIdItem",
+          "name": "ExcludeInstanceIDsWithAppId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Security center tag ID list, up to 100. When Scope=0, it is in an OR relationship with the host. Self-learning allowlist does not support taking effect by tag (a non-empty value will be rejected).</p>",
+          "example": "[\"246\"]",
+          "member": "string",
+          "name": "TagIDs",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyLoginWhiteLearnEDRResponse": {
+      "document": "ModifyLoginWhiteLearnEDR response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ModifyLoginWhiteRecordRequest": {
       "document": "ModifyLoginWhiteRecord request structure.",

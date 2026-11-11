@@ -396,25 +396,25 @@
     ],
     "CreateProcedureTemplate": [
       {
-        "document": "Create a task flow template named \"My Task Flow\" to initiate a content review task (including content involving offensive, unsafe, and inappropriate information), using content review template ID 10.",
+        "document": "Create a task flow template named \"My Task Flow\" to initiate a content review task (including offensive content, unsafe information, and inappropriate information). The content review template ID used is 10.",
         "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateProcedureTemplate\n<Common request parameters>\n\n{\n    \"AiContentReviewTask\": {\n        \"Definition\": 10\n    },\n    \"Name\": \"My task flow\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\"\n    }\n}",
-        "title": "Creating a Task Flow Template to Initiate Content Review Tasks"
+        "title": "Creating a Task Flow Template for Initiating Content Review Tasks"
       },
       {
         "document": "Create a task flow template named \"My Task Flow\" to transfer 20, 30, and 40 formats, and add a watermark to each transferred video. The watermark template ID is 15780.",
         "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateProcedureTemplate\n<Common request parameters>\n\n{\n    \"MediaProcessTask\": {\n        \"TranscodeTaskSet\": [\n            {\n                \"Definition\": 30,\n                \"WatermarkSet\": [\n                    {\n                        \"EndTimeOffset\": 0,\n                        \"Definition\": 15780,\n                        \"TextContent\": \" \",\n                        \"SvgContent\": \" \",\n                        \"StartTimeOffset\": 0\n                    }\n                ]\n            },\n            {\n                \"Definition\": 20,\n                \"WatermarkSet\": [\n                    {\n                        \"EndTimeOffset\": 0,\n                        \"Definition\": 15780,\n                        \"TextContent\": \" \",\n                        \"SvgContent\": \" \",\n                        \"StartTimeOffset\": 0\n                    }\n                ]\n            },\n            {\n                \"Definition\": 40,\n                \"WatermarkSet\": [\n                    {\n                        \"EndTimeOffset\": 0,\n                        \"Definition\": 15780,\n                        \"TextContent\": \" \",\n                        \"SvgContent\": \" \",\n                        \"StartTimeOffset\": 0\n                    }\n                ]\n            }\n        ]\n    },\n    \"Name\": \"My task flow\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\"\n    }\n}",
-        "title": "Create a task flow template that initiates a watermarked transcoding task"
+        "title": "Creating a Task Flow Template for Initiating a Watermarked Transcoding Task"
       },
       {
-        "document": "Create a task flow template named \"My Task Flow\" with three formats: 20, 30, and 40.",
+        "document": "Create a task flow template named \"My Task Flow\" to transcode 20, 30, and 40 formats.",
         "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateProcedureTemplate\n<Common request parameters>\n\n{\n    \"MediaProcessTask\": {\n        \"TranscodeTaskSet\": [\n            {\n                \"Definition\": 30\n            },\n            {\n                \"Definition\": 20\n            },\n            {\n                \"Definition\": 40\n            }\n        ]\n    },\n    \"Name\": \"My task flow\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\"\n    }\n}",
-        "title": "Create a Task Flow Template for Initiating a Transcoding Task"
+        "title": "Creating a Task Flow Template for Initiating a Transcoding Task"
       },
       {
-        "document": "Create a task flow template named \"My Task Flow\" to transfer three formats: 20, 30, and 40. At the same time, take sampling screenshots of the video. The template ID used for sampling screenshot taking is 10.",
+        "document": "Create a task flow template named \"My Task Flow\" to transfer 20, 30, and 40 formats, and take sampled screenshots of the video. The sampled screenshot template ID is 10.",
         "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateProcedureTemplate\n<Common request parameters>\n\n{\n    \"MediaProcessTask\": {\n        \"TranscodeTaskSet\": [\n            {\n                \"Definition\": 30\n            },\n            {\n                \"Definition\": 20\n            },\n            {\n                \"Definition\": 40\n            }\n        ],\n        \"SampleSnapshotTaskSet\": [\n            {\n                \"Definition\": 10\n            }\n        ]\n    },\n    \"Name\": \"My task flow\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\"\n    }\n}",
         "title": "Create a task flow template for initiating transcoding and sampling screenshot tasks"

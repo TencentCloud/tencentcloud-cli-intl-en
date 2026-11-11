@@ -354,6 +354,20 @@
         "title": "Change Auto-Renewal Status"
       }
     ],
+    "ModifyDBInstance": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql3-7d3ymevo4z\",\n    \"DryRun\": false,\n    \"HybridNodeCpu\": 2,\n    \"HybridNodeMem\": 4,\n    \"HybridNodeNum\": 3,\n    \"Disk\": 30,\n    \"SpecCode\": \"2c4g\"\n}",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": 110149,\n        \"RequestId\": \"2340d9d0-5e20-46a6-8078-eece8d2d46a0\"\n    }\n}",
+        "title": "Vertical Scaling"
+      },
+      {
+        "document": "Pre-check the configuration adjustment plan without executing it, and return the configuration adjustment method and sub-process orchestration description.",
+        "input": "POST / HTTP/1.1\nHost: tdmysql.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"tdsql3-ecab00ac\",\n    \"HybridNodeCpu\": 16,\n    \"HybridNodeMem\": 32,\n    \"Disk\": 8000,\n    \"HybridNodeNum\": 20,\n    \"DryRun\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"IsInPlaceModification\": false,\n        \"IsMigrateModification\": true,\n\"ModifyPlan\": \"Vertical configuration change: specification 4c8g -> 16c32g, Disk 500GB -> 8000GB; Horizontal configuration change: number of nodes 6 -> 20\"\n        \"RequestId\": \"5b104d05-7e16-4869-87fe-dbd2e8f30b70\"\n    }\n}",
+        "title": "Pre-check the configuration change plan (DryRun mode)"
+      }
+    ],
     "ModifyDBInstanceSecurityGroups": [
       {
         "document": "Modify an Instance Security Group",

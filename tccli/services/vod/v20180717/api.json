@@ -290,7 +290,7 @@
     "CreateProcedureTemplate": {
       "document": "This API is used to create user-defined task flow templates. Template capacity limit: 50.",
       "input": "CreateProcedureTemplateRequest",
-      "name": "Create a task flow template",
+      "name": "Create task flow template",
       "output": "CreateProcedureTemplateResponse",
       "status": "online"
     },
@@ -2220,7 +2220,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>External subtitle file. Elements are subtitle IDs. Supports multiple subtitles, up to 16.</p>",
+          "document": "<p>External subtitle list. The element is Subtitle ID. Supports multiple subtitles, up to 16.</p>",
           "example": "[\"z8gnl*H\"]",
           "member": "string",
           "name": "SubtitleSet",
@@ -2242,7 +2242,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Third-party DRM encryption information. It is not currently supported to initiate tasks using third-party DRM info via task flow.</p>",
+          "document": "<p>Third-party DRM encryption information. It is not currently supported to initiate tasks using third-party DRM information via task flow.</p>",
           "example": "无",
           "member": "ThirdPartyDrmInfo",
           "name": "DrmInfo",
@@ -3553,7 +3553,7 @@
       "usage": "out"
     },
     "AiContentReviewTaskInput": {
-      "document": "Type of the audio/video moderation task",
+      "document": "Audio/video moderation task type",
       "members": [
         {
           "disabled": false,
@@ -4822,7 +4822,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Video intelligent identification template ID.",
+          "document": "Intelligent video identification template ID.",
           "example": "20",
           "member": "uint64",
           "name": "Definition",
@@ -10857,7 +10857,7 @@
       "usage": "out"
     },
     "AnimatedGraphicTaskInput": {
-      "document": "Type of rotating image tasks",
+      "document": "Rotating image task type",
       "members": [
         {
           "disabled": false,
@@ -10872,7 +10872,7 @@
         },
         {
           "disabled": false,
-          "document": "Start time offset of the GIF in the video, in seconds.\n<li>If not set or set to 0, it starts from the starting position of the video.</li>\n<li>When the value is greater than 0 (assume it is n), it means starting from the nth second of the video;</li>\n<li>When the value is less than 0 (assuming -n), it means starting from the position n seconds before the video ends.</li>",
+          "document": "Start time offset of the GIF in the video, in seconds.\n<li>If not set or set to 0, it starts from the beginning of the video.</li>\n<li>When the value is greater than 0 (assuming n), it means starting from the nth second of the video;</li>\n<li>When the value is less than 0 (assuming -n), it means starting from the position n seconds before the video ends.</li>",
           "example": "1",
           "member": "float",
           "name": "StartTimeOffset",
@@ -10883,7 +10883,7 @@
         },
         {
           "disabled": false,
-          "document": "End time offset of an animated image in the video, in seconds.\n<li>If not set or set to 0, it will last until the end of a video.</li>\n<li>When the value is greater than 0 (assuming n), it means it will last until the nth second of the video and then terminate;</li>\n<li>When the value is less than 0 (assuming -n), it means the video will terminate n seconds before the end.</li>",
+          "document": "End time offset of the GIF in the video, in seconds.\n<li>If not set or set to 0, it will last until the end of a video.</li>\n<li>When the value is greater than 0 (assuming n), it means the video ends at the nth second.</li>\n<li>When the value is less than 0 (assuming -n), it means termination n seconds before the video ends.</li>",
           "example": "5",
           "member": "float",
           "name": "EndTimeOffset",
@@ -11827,7 +11827,7 @@
       "usage": "both"
     },
     "AudioTemplateInfoForUpdate": {
-      "document": "Audio stream configuration parameters",
+      "document": "Audio stream configuration parameters.",
       "members": [
         {
           "disabled": false,
@@ -11842,7 +11842,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Audio stream bitrate, in kbps. Value range: 0 and [26, 256]. When the value is 0, it means VOD automatically sets the bitrate.</p>",
+          "document": "<p>Audio stream bitrate. Value range: 0 and [26, 256]. Unit: kbps. When the value is 0, it means VOD automatically sets the bitrate.</p>",
           "example": "0",
           "member": "uint64",
           "name": "Bitrate",
@@ -11864,7 +11864,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Audio channel. Available values:</p><li>1: single channel</li><li>2: dual-channel</li><li>6: stereo</li><li>0: the number of audio channels remains consistent with the original audio</li>When the media encapsulation format is an audio format (flac, ogg, mp3, m4a), the number of sound channels cannot be set to stereo.",
+          "document": "<p>Audio channel. Valid values:</p><li>1: Single channel</li><li>2: Two channels</li><li>6: Stereo</li><li>0: The number of audio channels remains the same as the original audio.</li>When the media encapsulation format is an audio format (flac, ogg, mp3, m4a), the number of audio channels cannot be set to stereo.",
           "example": "1",
           "member": "int64",
           "name": "AudioChannel",
@@ -11875,7 +11875,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Specifies the retained audio tracks for output. All source tracks are retained by default.</p><p>This parameter is valid only when specified in OverrideParameter. In other cases, it does not take effect.</p>",
+          "document": "<p>Specifies the retained audio tracks for output. All source tracks are retained by default.</p><p>This parameter is valid only when specified in the OverrideParameter parameter. In other cases, it does not take effect.</p>",
           "example": "[0]",
           "member": "int64",
           "name": "StreamSelects",
@@ -15231,7 +15231,7 @@
       "usage": "both"
     },
     "CoverBySnapshotTaskInput": {
-      "document": "Task input parameter type for screencapturing for cover image of a video",
+      "document": "Task input parameter type for screencapturing for cover image in a video",
       "members": [
         {
           "disabled": false,
@@ -15246,7 +15246,7 @@
         },
         {
           "disabled": false,
-          "document": "Screenshot type. Valid values:\n<li>Time: time point screencapturing</li>\n<li>Percent: screenshot by percentage</li>",
+          "document": "Screenshot type. Valid values:\n<li>Time: screenshot by time point</li>\n<li>Percent: screenshot by percentage</li>",
           "example": "Percent",
           "member": "string",
           "name": "PositionType",
@@ -15257,7 +15257,7 @@
         },
         {
           "disabled": false,
-          "document": "Screenshot position:\n<li>For time point screenshot taking, this value indicates the second of the specified video to use as the cover</li>\n<li>For percentage-based screenshots, this value indicates the percentage of the video used as the cover.</li>",
+          "document": "Screenshot position:\n<li>For time point screenshots, this value indicates the second of the specified video to use as the cover</li>\n<li>For screenshot by percentage, this value indicates the percentage of the video used as the cover.</li>",
           "example": "10.0",
           "member": "float",
           "name": "PositionValue",
@@ -19413,7 +19413,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>Task flow name (support Chinese, up to 20 characters).</p>",
+          "document": "<p>Task flow name (supports Chinese, up to 20 characters).</p>",
           "example": "我的一个任务流",
           "member": "string",
           "name": "Name",
@@ -19422,7 +19422,7 @@
         },
         {
           "disabled": false,
-          "document": "<p><b>On-demand <a href=\"https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1\">application</a> ID. For customers who activate on-demand services after December 25, 2023, this field must be set to the app ID when accessing resources in on-demand applications, whether in the default application or a newly created application.</b></p>",
+          "document": "<p><b>Video-on-demand (VOD) <a href=\"https://www.tencentcloud.com/document/product/266/14574?from_cn_redirect=1\">application</a> ID. For customers who activate VOD services on or after December 25, 2023, this field must be set to the app ID when accessing resources in VOD applications, whether in the default application or a newly created application.</b></p>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -19449,7 +19449,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>AI content moderation type task parameter *.<br><font color=\"red\">*: This parameter is used to initiate legacy review and is not recommended. It is recommended to use the ReviewAudioVideoTask parameter to initiate review.</font></p>",
+          "document": "<p>AI content review type task parameter *. <font color=\"red\">*This parameter is used to initiate legacy review and is not recommended. It is recommended to use the ReviewAudioVideoTask parameter to initiate review.</font></p>",
           "example": "无",
           "member": "AiContentReviewTaskInput",
           "name": "AiContentReviewTask",
@@ -19467,7 +19467,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Parameters for the AI content recognition type task.</p>",
+          "document": "<p>Parameters for the AI content recognition task.</p>",
           "example": "无",
           "member": "AiRecognitionTaskInput",
           "name": "AiRecognitionTaskSet",
@@ -32785,11 +32785,11 @@
       "usage": "both"
     },
     "ImageSpriteTaskInput": {
-      "document": "Task input parameter type of sprite sheet capture in a video",
+      "document": "Task input parameter type for generating a sprite sheet from a video",
       "members": [
         {
           "disabled": false,
-          "document": "Image sprite template ID.",
+          "document": "Sprite screenshot template ID.",
           "example": "10",
           "member": "uint64",
           "name": "Definition",
@@ -33346,7 +33346,7 @@
       "usage": "out"
     },
     "ImportMediaKnowledgeTaskInput": {
-      "document": "Input parameter type for importing an intelligent media assets knowledge base in a task flow template.",
+      "document": "Input parameter type for importing a task flow template into the Intelligent Media Assets knowledge base.",
       "members": [
         {
           "disabled": false,
@@ -33361,7 +33361,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>List of knowledge base IDs. Leave empty to use the default knowledge base.</p>",
+          "document": "<p>List of knowledge base IDs. If left empty, the default knowledge base will be used.</p>",
           "example": "[\"kb-**********\"]",
           "member": "string",
           "name": "KnowledgeBaseIds",
@@ -39216,7 +39216,7 @@
         },
         {
           "disabled": false,
-          "document": "List of video-to-GIF tasks.",
+          "document": "List of video-to-animated-image tasks.",
           "example": "",
           "member": "AnimatedGraphicTaskInput",
           "name": "AnimatedGraphicTaskSet",
@@ -39226,7 +39226,7 @@
         },
         {
           "disabled": false,
-          "document": "List of time point screenshot tasks for videos.",
+          "document": "List of time point screencapturing tasks for videos.",
           "example": "",
           "member": "SnapshotByTimeOffsetTaskInput",
           "name": "SnapshotByTimeOffsetTaskSet",
@@ -39256,7 +39256,7 @@
         },
         {
           "disabled": false,
-          "document": "Task list of screencapturing for cover images from videos.",
+          "document": "Task list of screencapturing for cover images of videos.",
           "example": "",
           "member": "CoverBySnapshotTaskInput",
           "name": "CoverBySnapshotTaskSet",
@@ -43817,7 +43817,7 @@
         },
         {
           "disabled": false,
-          "document": "Vertical position of the mosaic origin relative to the origin of coordinates of the video image. Supports two formats: % and px.\n<li>If a string ends with %, it indicates that the `YPos` of a mosaic is a specified percentage of a video's height. For example, `10%` means that `YPos` is 10% of a video's height.</li>\n<li>If a string ends with px, it means the mosaic YPos is specified in pixels. For example, 100px means the YPos is 100 pixels.</li>\nDefault value: 0px.",
+          "document": "Vertical position of the mosaic origin relative to the origin of coordinates of the video image. Supports two formats: % and px.\n<li>If a string ends with %, it indicates that the `YPos` of a mosaic is a specified percentage of a video's height. For example, `10%` means that `YPos` is 10% of a video's height.</li>\n<li>If a string ends with px, it means the mosaic YPos is specified in pixels. For example, 100px means YPos is 100 pixels.</li>\nDefault value: 0px.",
           "example": "10%",
           "member": "string",
           "name": "YPos",
@@ -43828,7 +43828,7 @@
         },
         {
           "disabled": false,
-          "document": "Width of the mosaic, supporting two formats: % and px.\n<li>If a string ends with %, it indicates that the `Width` of a mosaic is a percentage of a video's width. For example, `10%` means that `Width` is 10% of a video's width.</li>\n<li>If a string ends with px, it means the mosaic Width unit is pixel. For example, 100px means the Width is 100 pixels.</li>\nDefault value: 10%.",
+          "document": "Width of a mosaic, supporting two formats: % and px.\n<li>If a string ends with %, it indicates that the `Width` of a mosaic is a percentage of a video's width. For example, `10%` means that `Width` is 10% of a video's width.</li>\n<li>If a string ends with px, it means the mosaic Width unit is pixel. For example, 100px means the Width is 100 pixels.</li>\nDefault value: 10%.",
           "example": "10%",
           "member": "string",
           "name": "Width",
@@ -43839,7 +43839,7 @@
         },
         {
           "disabled": false,
-          "document": "Height of a mosaic, supporting two formats: % and px.\n<li>If a string ends with %, it indicates that the `Height` of a mosaic is a percentage of a video's height. For example, `10%` means that `Height` is 10% of a video's height.</li>\n<li>If a string ends with px, it means the mosaic Height unit is pixel. For example, 100px means the Height is 100 pixels.</li>\nDefault value: 10%.",
+          "document": "Height of the mosaic, supporting two formats: % and px.\n<li>If a string ends with %, it indicates that the `Height` of a mosaic is a percentage of a video's height. For example, `10%` means that `Height` is 10% of a video's height.</li>\n<li>If a string ends with px, it means the mosaic Height unit is pixel. For example, 100px means the Height is 100 pixels.</li>\nDefault value: 10%.",
           "example": "10%",
           "member": "string",
           "name": "Height",
@@ -43850,7 +43850,7 @@
         },
         {
           "disabled": false,
-          "document": "Start time offset of a mosaic, in seconds. If not set or set to 0, a mosaic starts appearing when a video starts.\n<li>If not set or set to 0, a mosaic appears when a video starts.</li>\n<li>If the value is greater than 0 (for example, n), a mosaic will appear at second n of a frame.</li>\n<li>When the value is less than 0 (assuming -n), it means the mosaic appears n seconds before the end of a video.</li>",
+          "document": "Start time offset of a mosaic, in seconds. If not set or set to 0, a mosaic starts appearing when a video starts.\n<li>If not set or set to 0, a mosaic starts appearing when a video starts.</li>\n<li>If the value is greater than 0 (for example, n), a mosaic will appear at second n of a video.</li>\n<li>When the value is less than 0 (assuming -n), it means the mosaic appears n seconds before the end of a video.</li>",
           "example": "3",
           "member": "float",
           "name": "StartTimeOffset",
@@ -43861,7 +43861,7 @@
         },
         {
           "disabled": false,
-          "document": "End time offset of a mosaic, in seconds.\n<li>If not set or set to 0, mosaic will last until the end of a frame.</li>\n<li>If the value is greater than 0 (for example, n), a mosaic will disappear at second n.</li>\n<li>When the value is less than 0 (assuming -n), it means the mosaic lasts until n seconds before the end of a video.</li>",
+          "document": "End time offset of a mosaic, in seconds.\n<li>If not set or set to 0, a mosaic will last until the end of a frame.</li>\n<li>If the value is greater than 0 (for example, n), the mosaic will disappear at second n.</li>\n<li>When the value is less than 0 (assuming -n), it means the mosaic lasts until n seconds before the end of a video.</li>",
           "example": "3",
           "member": "float",
           "name": "EndTimeOffset",
@@ -44351,7 +44351,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Indicates whether to remove video data. Valid values:<br>&lt;li&gt;0: Data is reserved;&lt;\\li&gt;<br>&lt;li&gt;1: Data is removed.&lt;\\li&gt;</p>",
+          "document": "<p>Indicates whether to remove video data. Parameter value:<br>&lt;li&gt;0: Data is reserved;&lt;\\li&gt;<br>&lt;li&gt;1: Data is removed.&lt;\\li&gt;</p>",
           "example": "0",
           "member": "uint64",
           "name": "RemoveVideo",
@@ -44395,7 +44395,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Top Speed Codec transcoding configuration parameters.</p>",
+          "document": "<p>TSC transcoding configuration parameters.</p>",
           "example": "无",
           "member": "TEHDConfigForUpdate",
           "name": "TEHDConfig",
@@ -45474,7 +45474,7 @@
       "usage": "in"
     },
     "ProcedureReviewAudioVideoTaskInput": {
-      "document": "Input parameter type for audio/video moderation in the task flow template.",
+      "document": "Input parameter type for audio/video moderation in a task flow template.",
       "members": [
         {
           "disabled": false,
@@ -45489,7 +45489,7 @@
         },
         {
           "disabled": false,
-          "document": "Content for review. Available values:\n<li>Media: original audio/video;</li>\n<li>Cover: cover.</li>\nIf this parameter is not specified or is set to an empty array, Media is reviewed by default.",
+          "document": "Content for review. Available values:\n<li>Media: original audio/video;</li>\n<li>Cover: cover.</li>\nIf this parameter is not specified or is set to an empty array, Media is used for review by default.",
           "example": "[\"Media\",\"Cover\"]",
           "member": "string",
           "name": "ReviewContents",
@@ -52230,11 +52230,11 @@
       "usage": "both"
     },
     "SPEKEDrm": {
-      "document": "Encryption information of a third-party DRM manufacturer.",
+      "document": "Encryption information of the external DRM vendor.",
       "members": [
         {
           "disabled": false,
-          "document": "<p>Resource tagging. The field content is user-customized. It supports 1-128 characters, including numbers, letters, underscores (_), and hyphens (-). This field corresponds to the cid field in the Speke request. Note: Different DRM manufacturers have different restrictions on this field (for example, SDMC does not support underscores in this field). For specific rules, please confirm with the DRM manufacturer.</p>",
+          "document": "<p>Resource tagging. The field content is user-customized. It supports 1-128 characters, including numbers, letters, underscores (_), and hyphens (-). This field corresponds to the cid field in the Speke request. Note: Different DRM manufacturers have differences in the limits for this field (for example, SDMC does not support underscores in this field). For specific rules, please contact the DRM manufacturer for confirmation.</p>",
           "example": "test-****************",
           "member": "string",
           "name": "ResourceId",
@@ -52245,7 +52245,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>DRM manufacturer access address. This field content is obtained from the DRM manufacturer. Note: Different DRM manufacturers have different limits on the number of substreams. For example, PallyCon cannot exceed 5 substreams, and DRMtoday supports stream encryption for a maximum of 9 substreams.</p>",
+          "document": "<p>DRM manufacturer access address. This field content is obtained from the DRM manufacturer. Note: Different DRM manufacturers have different limits on the number of substreams. For example, PallyCon allows no more than 5 substreams, while DRMtoday supports up to 9 substreams for encryption.</p>",
           "example": "https:*************.******************************************************************************",
           "member": "string",
           "name": "KeyServerUrl",
@@ -52267,7 +52267,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Encryption method. Available values:<br>cbcs: PlayReady, Widevine, FairPlay, Widevine+FairPlay, Widevine+PlayReady, PlayReady+FairPlay, Widevine+PlayReady+FairPlay supported;<br>cenc: PlayReady, Widevine, Widevine+PlayReady supported;<br>If left blank, cbcs is used by default for FairPlay;<br>cenc is used by default for PlayReady and Widevine;<br>cbcs is used by default for Widevine+FairPlay, PlayReady+FairPlay, Widevine+PlayReady+FairPlay;<br>cenc is used by default for Widevine+PlayReady;</p>",
+          "document": "<p>Encryption method. Available values:<br>cbcs: PlayReady, Widevine, FairPlay, Widevine+FairPlay, Widevine+PlayReady, PlayReady+FairPlay, Widevine+PlayReady+FairPlay are supported;<br>cenc: PlayReady, Widevine, Widevine+PlayReady are supported;<br>If left blank, cbcs is used for FairPlay by default;<br>cenc is used for PlayReady and Widevine by default;<br>cbcs is used for Widevine+FairPlay, PlayReady+FairPlay, Widevine+PlayReady+FairPlay by default;<br>cenc is used for Widevine+PlayReady by default;</p>",
           "example": "cbcs",
           "member": "string",
           "name": "EncryptionMethod",
@@ -52289,7 +52289,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>DRM manufacturer request method.</p><p>Enumeration values:</p><ul><li>POST: Most DRM manufacturers use the POST method for requests.</li><li>GET: Some DRM manufacturers support the GET method for requests. When using this method, request information needs to be included in the KeyServerUrl field.</li></ul><p>Default value: POST</p>",
+          "document": "<p>Request method of the DRM manufacturer.</p><p>Enumeration values:</p><ul><li>POST: Most DRM manufacturers use the POST method for requests.</li><li>GET: Some DRM manufacturers support the GET method for requests. When using this method, request information needs to be included in the KeyServerUrl field.</li></ul><p>Default value: POST</p>",
           "example": "GET",
           "member": "string",
           "name": "KeyAcquireMode",
@@ -52302,7 +52302,7 @@
       "usage": "both"
     },
     "SampleSnapshotTaskInput": {
-      "document": "Task input parameter type for sampling screenshot taking of a video",
+      "document": "Task input parameter type for sampling screenshot taking in a video",
       "members": [
         {
           "disabled": false,
@@ -54092,7 +54092,7 @@
       "usage": "out"
     },
     "SnapshotByTimeOffsetTaskInput": {
-      "document": "Task input parameter type for screenshot taking at specified time points for a video.",
+      "document": "Task input parameter type for screenshot taking at specified time points in a video",
       "members": [
         {
           "disabled": false,
@@ -54118,7 +54118,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>List of screenshot time points, in <font color=\"red\">ms</font>. This parameter is not recommended. We recommend that you use the ExtTimeOffsetSet parameter.</p>",
+          "document": "<p>List of screencapturing time points, unit: <font color=\"red\">ms</font>. This parameter is no longer recommended. We recommend that you use the ExtTimeOffsetSet parameter.</p>",
           "example": "[5.0,10.0,15.0]",
           "member": "float",
           "name": "TimeOffsetSet",
@@ -55117,7 +55117,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Specifies the subtitle track index to be suppressed into the video. The value starts from 0, where 0 indicates usage of the first subtitle track in the source video. This parameter is valid only when Id is SUBTITLE_ID_PLACE_HOLDER. StreamIndex must be consistent with the subtitle track index in the source file. For example, if the subtitle track in the source file is stream#0:3, StreamIndex should be 3. Otherwise, task processing failed.</p>",
+          "document": "<p>Specifies the subtitle track index to be suppressed into the video. The value starts from 0, where 0 indicates using the first subtitle track in the source video. This parameter is valid only when Id is SUBTITLE_ID_PLACE_HOLDER. StreamIndex must be consistent with the subtitle track index in the source file. For example, if the subtitle track in the source file is stream#0:3, StreamIndex should be 3. Otherwise, task processing may fail.</p>",
           "example": "2",
           "member": "int64",
           "name": "StreamIndex",
@@ -55128,7 +55128,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Font type.</p><p>Enumeration values:</p><ul><li>hei.ttf: Heiti</li><li>song.ttf: Song Typeface</li><li>kai.ttf (recommended) or simkai.ttf: KaiTi</li><li>msyh.ttf: Microsoft YaHei</li><li>msyhbd.ttf: Microsoft YaHei in bold</li><li>hkjgt.ttf: Hwakangangtai</li><li>dhttx.ttf: Dianheiti Ultra Light</li><li>xqgdzt.ttf: Xique Ancient Dictionary</li><li>qpcyt.ttf: Smart Splice Super Round Body</li><li>arial.ttf: only supports English</li><li>dinalternate.ttf: DIN Alternate Bold</li><li>helveticalt.ttf: Helvetica</li><li>helveticains.ttf: Helvetica Inserat</li><li>trajanpro.ttf: TrajanPro-Bold</li><li>korean.ttf: Korean</li><li>japanese.ttf: Japanese</li><li>thai.ttf: Thai</li><li>roboto.ttf: Roboto</li><li>notosans.ttf: NotoSans</li><li>notosansthai.ttf: Thai NotoSansThai</li><li>sarabun.ttf: Thai Sarabun</li><li>kanit.ttf: Thai Kanit</li><li>charmonman.ttf: Thai Charmonman</li><li>notonaskharabic.ttf: Arabic NotoNaskhArabic</li><li>notosansdevanagari.ttf: India NotoSansDevanagari</li><li>notosanstc.ttf: Cantonese Source Han Sans NotoSansTC</li><li>notosanskr.ttf: Korean NotoSansKR</li><li>gothica1.ttf: Korean GothicA1</li><li>nanummyeongjo.ttf: Korean NanumMyeongjo</li><li>notosansjp.ttf: Japanese NotoSansJP</li><li>notoserifjp.ttf: Japanese NotoSerifJP</li><li>shipporimincho.ttf: Japanese ShipporiMincho</li></ul><p>Default value: hei.ttf Heiti</p>",
+          "document": "<p>Font type.</p><p>Enumeration values:</p><ul><li>hei.ttf: Heiti</li><li>song.ttf: Song Typeface</li><li>kai.ttf (recommended) or simkai.ttf: KaiTi</li><li>msyh.ttf: Microsoft YaHei</li><li>msyhbd.ttf: Microsoft YaHei in bold</li><li>hkjgt.ttf: Hwakangangtai</li><li>dhttx.ttf: Dianheiti Ultra Light</li><li>xqgdzt.ttf: Xique Ancient Dictionary</li><li>qpcyt.ttf: Smart Splice Super Round Body</li><li>arial.ttf: only supports English</li><li>dinalternate.ttf: DIN Alternate Bold</li><li>helveticalt.ttf: Helvetica</li><li>helveticains.ttf: Helvetica Inserat</li><li>trajanpro.ttf: TrajanPro-Bold</li><li>korean.ttf: Korean</li><li>japanese.ttf: Japanese</li><li>thai.ttf: Thai</li><li>roboto.ttf: Roboto</li><li>notosans.ttf: NotoSans</li><li>notosansthai.ttf: Thai NotoSansThai</li><li>sarabun.ttf: Thai Sarabun</li><li>kanit.ttf: Thai Kanit</li><li>charmonman.ttf: Thai Charmonman</li><li>notonaskharabic.ttf: Arabic NotoNaskhArabic</li><li>notosansdevanagari.ttf: India NotoSansDevanagari</li><li>notosanstc.ttf: Cantonese NotoSansTC</li><li>notosanskr.ttf: Korean NotoSansKR</li><li>gothica1.ttf: Korean GothicA1</li><li>nanummyeongjo.ttf: Korean NanumMyeongjo</li><li>notosansjp.ttf: Japanese NotoSansJP</li><li>notoserifjp.ttf: Japanese NotoSerifJP</li><li>shipporimincho.ttf: Japanese ShipporiMincho</li></ul><p>Default value: hei.ttf Heiti</p>",
           "example": "hei.ttf",
           "member": "string",
           "name": "FontType",
@@ -55150,7 +55150,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Text color, format: 0xRRGGBB.</p><p>Default value: 0xFFFFFF (white).</p>",
+          "document": "<p>Font color. Format: 0xRRGGBB.</p><p>Default value: 0xFFFFFF (white).</p>",
           "example": "0xffffff",
           "member": "string",
           "name": "FontColor",
@@ -55172,7 +55172,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Subtitle Y-coordinate position. Specify this parameter to ignore the built-in coordinates in the subtitle file. Supports pixel and percentage formats:</p><ul><li>Pixel: Npx, where N ranges from [0,4096].</li><li>Percentage: N%, where N ranges from [0,100]. For example, 10% means the subtitle Y-coordinate = 10%<em>source video height. Default value: source video height</em>4%.<br>Note: The coordinate axis origin is at the bottom of the central axis of the source video, and the subtitle reference point is at the bottom of the central axis of the subtitle. Refer to the figure below:<img src=\"https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png\" alt=\"image\"></li></ul>",
+          "document": "<p>Subtitle Y-coordinate position. Specify this parameter to ignore the built-in coordinates in the subtitle file. Supports pixel and percentage formats:</p><ul><li>Pixel: Npx, where N ranges from [0,4096].</li><li>Percentage: N%, where N ranges from [0,100]. For example, 10% means the subtitle Y-coordinate = 10% <em>source video height. Default value: source video height</em>4%.<br>Note: The coordinate axis origin is at the bottom of the central axis of the source video, and the subtitle reference point is at the bottom of the central axis of the subtitle. Refer to the figure below:<img src=\"https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png\" alt=\"image\"></li></ul>",
           "example": "4%",
           "member": "string",
           "name": "YPos",
@@ -55183,7 +55183,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Y-coordinate position of the subtitle background base plate. Supports pixel and percentage formats:</p><ul><li>Pixel: Npx, where N ranges from [0,4096].</li><li>Percentage: N%, where N ranges from [0,100]. For example, 10% means the subtitle background base plate Y-coordinate = 10% * source video height. If not specified, the subtitle background base plate is disabled.<br>Note: The coordinate axis origin is located at the bottom of the central axis of the source video, and the reference point of the subtitle background base plate is at the bottom of its central axis. See the following diagram:<img src=\"https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png\" alt=\"image\"></li></ul>",
+          "document": "<p>Y-coordinate position of the subtitle background plate. Supports pixel and percentage formats:</p><ul><li>Pixel: Npx, where N ranges from [0,4096].</li><li>Percentage: N%, where N ranges from [0,100]. For example, 10% means the subtitle background plate Y-coordinate = 10% * source video height. If not specified, the subtitle background plate is disabled.<br>Note: The coordinate axis origin is located at the bottom of the central axis of the source video, and the reference point of the subtitle background plate is at the bottom of its central axis. See the following diagram:<img src=\"https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png\" alt=\"image\"></li></ul>",
           "example": "1%",
           "member": "string",
           "name": "BoardY",
@@ -55194,7 +55194,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Width of the base plate, a positive integer.</p><ul><li>Pixel: Npx, N value range: [0,4096].</li><li>Percentage: N%, N value range: [0, 100]. If background is enabled and this parameter is not specified, the default width is 90% of the source video width.</li></ul>",
+          "document": "<p>Base plate width, positive integer.</p><ul><li>Pixel: Npx, N value range: [0,4096].</li><li>Percentage: N%, N value range: [0, 100]. If base plate is enabled and this parameter is not specified, the default width is 90% of the source video width.</li></ul>",
           "example": "600px",
           "member": "string",
           "name": "BoardWidth",
@@ -55238,7 +55238,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Alignment mode.</p><p>Enumeration values:</p><ul><li>top: Top alignment. The top position of subtitles is fixed, while the bottom position changes according to the number of lines. </li><li>bottom: Bottom alignment. The bottom position of subtitles is fixed, while the top position changes according to the number of lines. </li></ul><p>Default value: bottom</p>",
+          "document": "<p>Alignment mode.</p><p>Enumeration values:</p><ul><li>top: Top alignment. The top position of subtitles is fixed, while the bottom position changes according to the number of lines.</li><li>bottom: Bottom alignment. The bottom position of subtitles is fixed, while the top position changes according to the number of lines.</li></ul><p>Default value: bottom</p>",
           "example": "bottom",
           "member": "string",
           "name": "Alignment",
@@ -55249,7 +55249,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Stroke width. Floating-point number.</p><ul><li>Pixel: Npx, N value range: [0, 1000].</li><li>Percentage: N%, N value range: [0, 100].</li></ul><p>By default if left blank, it is 0.3% of the source video height.</p>",
+          "document": "<p>Stroke width. Floating-point number.</p><ul><li>Pixel: Npx, N value range: [0, 1000].</li><li>Percentage: N%, N value range: [0, 100].</li></ul><p>By default if left blank, 0.3% of the source video height.</p>",
           "example": "2px",
           "member": "string",
           "name": "OutlineWidth",
@@ -55304,7 +55304,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Shadow transparency. The value should be a positive floating-point number in the range of (0, 1].</p><ul><li>0: completely transparent;</li><li>1: completely opaque.</li></ul><p>Default value: 1, which means completely opaque, with shadow configured.</p>",
+          "document": "<p>Shadow transparency. The value should be a positive floating-point number in the range of (0, 1].</p><ul><li>0: completely transparent;</li><li>1: completely opaque.</li></ul><p>Default value: 1, which means completely opaque (with shadow configured).</p>",
           "example": "0.8",
           "member": "float",
           "name": "ShadowAlpha",
@@ -55462,11 +55462,11 @@
       "usage": "both"
     },
     "TEHDConfigForUpdate": {
-      "document": "Top Speed Codec parameter configuration.",
+      "document": "Parameter configuration for top speed Codec.",
       "members": [
         {
           "disabled": false,
-          "document": "Top speed Codec type. Available values: <li>TEHD-100: top speed Codec-100;</li> <li>OFF: disables top speed Codec.</li> If not specified, no modification is made.",
+          "document": "Top speed Codec type. Available values: <li>TEHD-100 means top speed Codec-100;</li> <li>OFF means disabling top speed Codec.</li> If not specified, no modification is made.",
           "example": "TEHD-100",
           "member": "string",
           "name": "Type",
@@ -55477,7 +55477,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum video bitrate. If not specified, no modification is made.",
+          "document": "Maximum video bitrate. If this parameter is not specified, no modification is made.",
           "example": "1000",
           "member": "uint64",
           "name": "MaxVideoBitrate",
@@ -56550,7 +56550,7 @@
       "usage": "both"
     },
     "ThirdPartyDrmInfo": {
-      "document": "Third-party Drm encryption information.",
+      "document": "Encryption information of the external Drm vendor.",
       "members": [
         {
           "disabled": false,
@@ -56565,7 +56565,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Third-party DRM vendor information.</p>",
+          "document": "<p>External DRM vendor information.</p>",
           "example": "无",
           "member": "SPEKEDrm",
           "name": "SPEKEDrm",
@@ -56602,11 +56602,11 @@
       "usage": "in"
     },
     "TraceWatermarkInput": {
-      "document": "Watermark parameters for source tracing",
+      "document": "Traceability watermark parameters",
       "members": [
         {
           "disabled": false,
-          "document": "Traceability watermark task switch. Required. Available values:\n<li>ON: enable traceability watermark</li>\n<li>OFF: disables traceability watermark.</li>",
+          "document": "Traceability watermark task switch. Required. Available values:\n<li>ON: enable traceability watermark</li>\n<li>OFF: Disable traceability watermark.</li>",
           "example": "ON",
           "member": "string",
           "name": "Switch",
@@ -56842,7 +56842,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Opening and ending content list. Up to 10 opening and ending contents are supported.</p>",
+          "document": "<p>Opening and ending content list. Up to 10 supported.</p>",
           "example": "无",
           "member": "HeadTailTaskInput",
           "name": "HeadTailSet",
@@ -56853,7 +56853,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Start time offset of the transcoded video, in seconds.</p><li>If not specified or set to 0, the transcoded video starts from the start position of the original video;</li><li>If the value is greater than 0 (assuming n), the transcoded video starts from the position at the nth second of the original video;</li><li>If the value is less than 0 (assuming -n), the transcoded video starts from the position n seconds before the end of the original video.</li>",
+          "document": "<p>Start time offset of the transcoded video, in seconds.</p><li>If not specified or set to 0, the transcoded video starts from the start position of the original video;</li><li>If the value is greater than 0 (assuming n), the transcoded video starts from the nth second of the original video;</li><li>If the value is less than 0 (assuming -n), the transcoded video starts from the position n seconds before the end of the original video.</li>",
           "example": "2",
           "member": "float",
           "name": "StartTimeOffset",
@@ -56886,7 +56886,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Subtitle suppression information list. Up to 2 are supported.</p>",
+          "document": "<p>Subtitle suppression information list. Up to 2 supported.</p>",
           "example": "无",
           "member": "SubtitleInfoInput",
           "name": "SubtitleInfoSet",
@@ -58425,7 +58425,7 @@
       "usage": "both"
     },
     "VideoTemplateInfoForUpdate": {
-      "document": "Video stream configuration parameters",
+      "document": "Video stream configuration parameters.",
       "members": [
         {
           "disabled": false,
@@ -58462,7 +58462,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Resolution adaptation. Available values:</p><li>open: enable. At this point, Width represents the long side of the video, and Height represents the short side.</li><li>close: disable. At this point, Width represents the width of the video, and Height represents the height.</li>",
+          "document": "<p>Resolution adaptation. Available values:</p><li>open: enable. At this point, Width represents the long side of the video, and Height represents the short side of the video.</li><li>close: disable. At this point, Width represents the width of the video, and Height represents the height of the video.</li>",
           "example": "open",
           "member": "string",
           "name": "ResolutionAdaptive",
@@ -58495,7 +58495,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Filling method. When the video stream configuration width and height parameters are inconsistent with the aspect ratio of the original video, the processing method for transcoding is \"fill\". Optional filling modes:</p><li>stretch: stretch each frame to fill the entire screen, which may cause the transcoded video to be \"squashed\" or \"stretched\";</li><li>black: keep the video aspect ratio unchanged, with the rest of the edges filled with black.</li><li>white: keep the video aspect ratio unchanged, with the rest of the edges filled with white.</li><li>gauss: Gaussian blur. Keep the video aspect ratio unchanged, with the rest of the edges filled using Gaussian blur.</li>",
+          "document": "<p>Filling method. When the video stream configuration width and height parameters are inconsistent with the aspect ratio of the original video, the processing method for transcoding is \"filling\". Optional filling methods:</p><li>stretch: Stretch each frame to fill the entire screen, which may cause the transcoded video to be \"squashed\" or \"stretched\";</li><li>black: Keep the video aspect ratio unchanged and fill the rest of the edges with black.</li><li>white: Keep the video aspect ratio unchanged and fill the rest of the edges with white.</li><li>gauss: Gaussian blur. Keep the video aspect ratio unchanged and use Gaussian blur filling for the rest of the edges.</li>",
           "example": "stretch",
           "member": "string",
           "name": "FillType",
@@ -58561,7 +58561,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Bitrate control mode.</p><p>Enumeration values:</p><ul><li>VBR: Variable Bit Rate. It dynamically adjusts the output bitrate based on the complexity of the video image to ensure higher image quality. It is suitable for storage scenarios and applications with high image quality requirements.</li><li>ABR: Average Bit Rate. It tries to stabilize the average bitrate of the output video as much as possible while allowing short-term bitrate fluctuation. It is suitable for scenarios where minimizing overall bitrate is needed while maintaining a certain image quality.</li><li>CBR: Constant Bit Rate. It maintains a constant output bitrate during video encoding regardless of changes in image complexity. It is suitable for scenarios with strict network bandwidth requirements, such as live streaming.</li><li>VCRF: Constant Rate Factor. It controls video quality by setting a quality factor to achieve constant quality encoding of videos. The bitrate adjusts automatically based on content complexity. It is suitable for scenarios where maintaining a certain image quality is desired.</li></ul><p>Default value: VBR</p>",
+          "document": "<p>Bitrate control mode.</p><p>Enumeration values:</p><ul><li>VBR: Variable Bit Rate. The output bitrate is adjusted based on the complexity of the video image to ensure higher image quality. It is suitable for storage scenarios and applications with high image quality requirements.</li><li>ABR: Average Bit Rate. It tries to stabilize the average bitrate of the output video as much as possible while allowing short-term bitrate fluctuation. It is suitable for scenarios where minimizing overall bitrate is needed while maintaining a certain image quality.</li><li>CBR: Constant Bit Rate. The output bitrate remains constant during video encoding, regardless of image complexity. It is suitable for scenarios with strict network bandwidth requirements, such as live streaming.</li><li>VCRF: Constant Rate Factor. A quality factor is set for video quality control to achieve constant quality encoding of videos. The bitrate is adjusted based on content complexity. It is suitable for scenarios where maintaining a certain image quality is desired.</li></ul><p>Default value: VBR</p>",
           "example": "VBR",
           "member": "string",
           "name": "Mode",
@@ -58583,7 +58583,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Average shard duration. 0 or left empty means auto, which will automatically choose an appropriate shard duration based on video features such as GOP.</p><p>Value range: [0, 10]</p><p>Unit: seconds</p><p>Supports only transcoding templates, not adaptive bitrate stream templates.</p>",
+          "document": "<p>Average duration of slices. 0 or left empty means auto, which will choose an appropriate segment duration based on video features such as GOP.</p><p>Value range: [0, 10]</p><p>Unit: seconds</p><p>Supports only transcoding templates, not adaptive bitrate templates.</p>",
           "example": "5",
           "member": "int64",
           "name": "HlsTime",
@@ -58594,7 +58594,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>A predefined combination of encoding tools or features allowed in a video encoding standard, suitable for different scenarios.</p><p>Enumeration values:</p><ul><li>baseline: Supports only I/p frames and non-interlaced scenarios, suitable for video calls, mobile video, and other scenarios.</li><li>main: Mainstream Profile, provides I-frames, p-frames, and B-frames, and supports both interlaced and non-interlaced modes. Mainly used in mainstream audio and video consumption products such as video players and streaming media transmission devices.</li><li>high: Highest encoding level, adds 8X8 prediction on top of the main Profile, and supports custom quantification. Widely used in Blu-ray storage, HDTV, and other scenarios.</li><li>default: Automatic filling along with the original video.  </li></ul><p>default value: default</p><p>This configuration item is valid only when Codec is libx264.</p>",
+          "document": "<p>A predefined combination of encoding tools or features allowed in video encoding standards, suitable for different scenarios.</p><p>Enumeration values:</p><ul><li>baseline: Supports only I/p frames and non-interlaced scenarios, suitable for video calls, mobile video, and other scenarios.</li><li>main: Mainstream Profile that provides I, p, and B frames, and supports both interlaced and non-interlaced modes. It is mainly used in mainstream audio and video consumption products such as video players and streaming media transmission devices.</li><li>high: Highest encoding level. It adds 8X8 prediction on top of the main Profile and supports custom quantification. It is widely used in Blu-ray storage, HDTV, and other scenarios.</li><li>default: Automatic filling along with the original video.  </li></ul><p>default value: default</p><p>This configuration item is valid only when Codec is libx264.</p>",
           "example": "baseline",
           "member": "string",
           "name": "VideoProfile",
@@ -59299,7 +59299,7 @@
         },
         {
           "disabled": false,
-          "document": "Text content, up to 100 characters. This field is required only when the watermark type is text.\nText watermarks do not support watermarking screenshots.",
+          "document": "Text content, up to 100 characters. Fill in only when the watermark type is text watermark.\nText watermarks do not support watermarking screenshots.",
           "example": "腾讯云点播",
           "member": "string",
           "name": "TextContent",
@@ -59310,7 +59310,7 @@
         },
         {
           "disabled": false,
-          "document": "SVG content. Length not exceeding 2,000,000 characters. Fill in only when the watermark type is SVG watermark.\nSVG watermark does not support watermarking screenshots.",
+          "document": "SVG content. Length not exceeding 2,000,000 characters. Fill in only when the watermark type is SVG watermark.\nSVG watermark does not support screenshot watermarking.",
           "example": "<svg xmlns=\"http://www.w3.org/2000/svg\"></svg>",
           "member": "string",
           "name": "SvgContent",
@@ -59332,7 +59332,7 @@
         },
         {
           "disabled": false,
-          "document": "End time offset of a watermark, in seconds.\n<li>If not set or set to 0, a watermark will last until the end of a video.</li>\n<li>If the value is greater than 0 (for example, n), a watermark will disappear at second n.</li>\n<li>When the value is less than 0 (assuming -n), the watermark persists until n seconds before the end of the video.</li>",
+          "document": "End time offset of a watermark, in seconds.\n<li>If not set or set to 0, a watermark will last until the end of a video.</li>\n<li>If the value is greater than 0 (for example, n), a watermark will disappear at second n.</li>\n<li>When the value is less than 0 (assuming -n), the watermark persists until n seconds before the end of a video.</li>",
           "example": "3.0",
           "member": "float",
           "name": "EndTimeOffset",
