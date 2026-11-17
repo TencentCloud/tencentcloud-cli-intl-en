@@ -1040,6 +1040,14 @@
         "title": "Removing nodes from a node pool"
       }
     ],
+    "RotateClusterToken": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RotateClusterToken\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-h92i9b7e\",\n    \"Force\": true,\n    \"ClusterType\": \"TKE\",\n    \"Operation\": \"CreateNewToken\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8859cd95-1c52-48fd-a100-600d9bfea6b1\"\n    }\n}",
+        "title": "This API is used to rotate a cluster token."
+      }
+    ],
     "SetNodePoolNodeProtection": [
       {
         "document": "This example shows you how to prevent nodes from being removed from the cluster by the scaling group when scale-in is triggered (including manual and automatic).",

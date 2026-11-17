@@ -140,6 +140,13 @@
       "output": "RecognizeDetectCardCoordsResponse",
       "status": "online"
     },
+    "RecognizeGeneralCardVerification": {
+      "document": "This API performs unified verification on images of various card types worldwide. It supports automatic card type classification, field recognition, quality check, tampering (PS) detection, copy detection, recapture detection, format validation, and information consistency check. Candidate card types and check items can be flexibly combined.\nThe following 20 document types are currently supported: Mainland China ID Card, Passport, Thai ID Card, Malaysian ID Card, Indonesian ID Card, Singapore ID Card, Philippine Driver's License, Philippine SSS ID, Philippine PRC ID, Philippine Postal ID Card, Philippine UMID, Philippine Voter ID, Philippine TIN Card, Philippine National ID, Philippine Health Card, Taiwan (China) ID Card, Vietnamese ID Card, Myanmar Driver's License, Brazilian ID Card, and Brazilian Driver's License.",
+      "input": "RecognizeGeneralCardVerificationRequest",
+      "name": "General Card Recognition and Verification",
+      "output": "RecognizeGeneralCardVerificationResponse",
+      "status": "online"
+    },
     "RecognizeIndonesiaIDCardOCR": {
       "document": "Indonesian identity card recognition\n\nDefault API request rate limit: 5 requests/second.",
       "input": "RecognizeIndonesiaIDCardOCRRequest",
@@ -350,7 +357,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Fourth line of the address bar</p>",
+          "document": "<p>Line 4 of the address bar</p>",
           "example": "xx区",
           "member": "string",
           "name": "LineFour",
@@ -360,7 +367,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Fifth line of the address bar</p>",
+          "document": "<p>Line 5 of the address bar</p>",
           "example": "xx办事处",
           "member": "string",
           "name": "LineFive",
@@ -1315,6 +1322,75 @@
       ],
       "usage": "out"
     },
+    "CardVerificationConfig": {
+      "document": "Verification capacity switch configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Whether to perform card field recognition, true by default</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableRecognition",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to perform quality detection (blurry/reflective/incomplete border/obstruction). false by default</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableQualityCheck",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to perform tampering detection (PS/synthesis/electronic). false by default</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableTamperCheck",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to perform photocopy detection. false by default</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableCopyCheck",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to perform rephotography detection. false by default</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableRecaptureCheck",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to perform format validation (dependent recognition). false by default</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableFormatCheck",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to perform both sides consistency check (dependent on recognition), false by default</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableConsistencyCheck",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "usage": "in"
+    },
     "ConfigAdvanced": {
       "document": "Supports single attribute configuration for templates.",
       "members": [
@@ -1926,7 +2002,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Last name</p>",
+          "document": "<p>Surname</p>",
           "example": "A******",
           "member": "string",
           "name": "LastName",
@@ -1946,7 +2022,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Gender on the document</p><ul><li>M: man</li><li>F: woman</li><li>X: other gender identity</li></ul>",
+          "document": "<p>Gender on the document</p><ul><li>M: Man</li><li>F: Woman</li><li>X: Other gender identity</li></ul>",
           "example": "M",
           "member": "string",
           "name": "Sex",
@@ -1996,7 +2072,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Place where the specified file is issued</p>",
+          "document": "<p>Place where the file is issued.</p>",
           "example": "Beijing",
           "member": "string",
           "name": "IssuedPlace",
@@ -2036,7 +2112,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Content of the single-line machine-readable zone (MRZ) on the document. The number represents the order in which the line appears in the MRZ</p>",
+          "document": "<p>Content of the single-line machine-readable zone (MRZ) on the document. The number represents the line count in the order of the MRZ</p>",
           "example": "P<CHNZH**<<ZH**<<<<<<<<<<<<<<<<<<<<<<<<<<<<",
           "member": "string",
           "name": "MRZLine1",
@@ -2066,7 +2142,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Address information on the document</p>",
+          "document": "<p>Document address information</p>",
           "example": "无",
           "member": "AddressInfo",
           "name": "Address",
@@ -2116,7 +2192,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Weight</p>",
+          "document": "<p>Weight.</p>",
           "example": "70",
           "member": "string",
           "name": "Weight",
@@ -2136,7 +2212,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Driver's license restriction condition</p>",
+          "document": "<p>Driver's license restrictions</p>",
           "example": "**",
           "member": "string",
           "name": "Restrictions",
@@ -2146,7 +2222,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Driver's license extra records</p>",
+          "document": "<p>Additional driver's license records</p>",
           "example": "**",
           "member": "string",
           "name": "Endorsement",
@@ -2186,7 +2262,7 @@
         },
         {
           "disabled": true,
-          "document": "<p>Validity date, in YYYY-MM-DD format</p>",
+          "document": "<p>Validity period, in YYYY-MM-DD format</p>",
           "example": "2028-07-04",
           "member": "string",
           "name": "DueDate",
@@ -2211,6 +2287,16 @@
           "member": "string",
           "name": "RegistrationNumber",
           "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Complete enumeration of specific card types confirmed by server-side classification (for example, THA_ID_CARD). Wildcards are not returned.</p>",
+          "example": "THA_ID_CARD",
+          "member": "string",
+          "name": "DetectedCardType",
+          "output_required": false,
           "type": "string",
           "value_allowed_null": true
         }
@@ -5260,6 +5346,147 @@
       ],
       "type": "object"
     },
+    "RecognizeGeneralCardVerificationRequest": {
+      "document": "RecognizeGeneralCardVerification request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Base64 value of the front document image. Supported formats: PNG, JPG, JPEG. The Base64 encoded size shall not exceed 7 MB. One of ImageUrl, ImageBase64, BackImageUrl, BackImageBase64 must be provided. If both URL and Base64 are passed, URL will be used preferentially. Image download timeout is 3 seconds.",
+          "example": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAEBAQEBAQEBAQEBAQExxxx/iy4jUzxl8KI4YzxvUckHK5FYelf8HD3gzw/G2m/Ej4Ha3qmo26JHJd",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "URL address of the front side image of the card. Refer to the description of ImageBase64 for image requirements.",
+          "example": "https://ai-basic-1259088371.cos.ap-singapore.myqcloud.com/%E6%98%8E%E8%A7%86/HKIDCardOCR/%EB%BD%E8%AF%81%E5%8E%9F%E4%BB%B6.png",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Base64-encoded value of the back side image of the card. Refer to the description of ImageBase64 for image requirements.",
+          "example": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAEBAQEBAQEBAQEBAQExxxx/iy4jUzxl8KI4YzxvUckHK5FYelf8HD3gzw/G2m/Ej4Ha3qmo26JHJd",
+          "member": "string",
+          "name": "BackImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "URL address of the back side image of the card. Refer to the description of ImageBase64 for image requirements.",
+          "example": "https://ai-basic-1259088371.cos.ap-singapore.myqcloud.com/%E6%98%8E%E8%A7%86/HKIDCardOCR/%EB%BD%E8%AF%81%E5%8E%9F%E4%BB%B6.png",
+          "member": "string",
+          "name": "BackImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the target document type for this verification. Each element is a full card type enum in the format {CountryOrRegionCode}_{CardType}, such as THA_ID_CARD and PHL_UMID. For passports, use the single value PASSPORT regardless of the issuing country. Wildcards are supported: * indicates all supported card types, and {CountryCode}_* indicates all card types of a country/region, such as PHL_*. If this parameter is not specified or an empty array is passed, the server performs automatic classification across all supported card types. An unsupported card type returns InvalidParameterValueLimit, and the unsupported values are listed in the error message.",
+          "example": "[\"IDN_ID_CARD\"]",
+          "member": "string",
+          "name": "CardTypes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to return the Base64-encoded portrait image of the card. Default: false.",
+          "example": "false",
+          "member": "bool",
+          "name": "ReturnHeadImage",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Card verification configuration.",
+          "example": "无",
+          "member": "CardVerificationConfig",
+          "name": "VerificationConfig",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "RecognizeGeneralCardVerificationResponse": {
+      "document": "RecognizeGeneralCardVerification response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Recognition result of the front side of the card. Returned only when recognition is enabled (EnableRecognition=true) and succeeds.",
+          "example": "无",
+          "member": "GeneralCard",
+          "name": "FrontCardInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Recognition result of the back side of the card. Returned only for double-sided card types when recognition is enabled. The structure is the same as that of FrontCardInfo.",
+          "example": "无",
+          "member": "GeneralCard",
+          "name": "BackCardInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Base64-encoded portrait image of the card. Returned only when ReturnHeadImage=true.",
+          "example": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAEBAQEBAQEBAQEBAQExxxx/iy4jUzxl8KI4YzxvUckHK5FYelf8HD3gzw/G2m/Ej4Ha3qmo26JHJd",
+          "member": "string",
+          "name": "HeadImageBase64",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Card Warning Information\n\n-9102 Alarm for photocopied certificate\n-9103 Alarm for photographed certificate\n-9104 Alarm for tamper certificate\n-9105 Alarm for an incomplete card border. \n-9106 Alarm for a covered card. \n-9107 Alarm for reflective certificate\n-9108 Alarm for blurry certificate \n-8101 Alarm for document information format verification\n-8102 Alarm for document information consistency verification",
+          "example": "[-9104]",
+          "member": "int64",
+          "name": "WarnCardInfos",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Check items actually executed. Valid values: Recognition, QualityCheck, TamperCheck, CopyCheck, RecaptureCheck, FormatCheck, ConsistencyCheck.",
+          "example": "[\"Recognition\"]",
+          "member": "string",
+          "name": "ExecutedChecks",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Check items that were skipped and the reasons.",
+          "example": "无",
+          "member": "SkippedCheck",
+          "name": "SkippedChecks",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "RecognizeIndonesiaIDCardOCRRequest": {
       "document": "RecognizeIndonesiaIDCardOCR request structure.",
       "members": [
@@ -7552,6 +7779,32 @@
         }
       ],
       "type": "object"
+    },
+    "SkippedCheck": {
+      "document": "Skipped check items",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Detection item name</p>",
+          "example": "ConsistencyCheck",
+          "member": "string",
+          "name": "Check",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Skip reason: NotSupported (this card type does not support this detection item) / NotApplicable (prerequisite not met, for example, consistency check requires a back image)</p>",
+          "example": "NotApplicable",
+          "member": "string",
+          "name": "Reason",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "SmartStructuralOCRV2Request": {
       "document": "SmartStructuralOCRV2 request structure.",

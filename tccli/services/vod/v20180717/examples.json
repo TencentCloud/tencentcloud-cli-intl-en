@@ -956,6 +956,14 @@
         "title": "Querying usage data for AI-generated videos"
       }
     ],
+    "DescribeAigcWhitelist": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAigcWhitelist\n<Common request parameters>\n\n{\n    \"SubAppId\": 200000,\n    \"AigcType\": \"Video\"\n}",
+        "output": "{\n    \"Response\": {\n        \"AigcType\": \"Video\",\n        \"IpWhitelist\": [\n            \"4*.*.*.0/8\"\n        ],\n        \"IpWhitelistSwitch\": \"ON\",\n        \"ModelWhitelist\": [\n            {\n                \"ModelName\": \"Hunyuan\",\n                \"ModelVersion\": \"1.5\"\n            }\n        ],\n        \"ModelWhitelistSwitch\": \"ON\",\n        \"RequestId\": \"4bb3588f-18a6-4caa-a667-096f13498afa\"\n    }\n}",
+        "title": "Querying the Sub-application Allowlist Configuration"
+      }
+    ],
     "DescribeAllClass": [
       {
         "document": " ",
@@ -2300,6 +2308,14 @@
         "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SearchMediaBySemantics\n<Common request parameters>\n\n{\n    \"SubAppId\": 1500035838,\n\"Text\": \"Seaside video with a sunset\"\n    \"KnowledgeBaseId\": \"kb-**********\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1e7aa7b9-0f92-4fbb-9ca2-6aebdfb31543\",\n        \"SearchResults\": [\n            {\n                \"EndTimeOffset\": 159.07,\n                \"FileId\": \"966263618841114024\",\n                \"Score\": 0.58276,\n                \"StartTimeOffset\": 109.908\n            },\n            {\n                \"EndTimeOffset\": 109.708,\n                \"FileId\": \"966263618841114024\",\n                \"Score\": 0.58201,\n                \"StartTimeOffset\": 83.141\n            },\n            {\n                \"EndTimeOffset\": 82.741,\n                \"FileId\": \"966263618841114024\",\n                \"Score\": 0.46496,\n                \"StartTimeOffset\": 10.222\n            }\n        ]\n    }\n}",
         "title": "Search"
+      }
+    ],
+    "SetAigcWhitelist": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SetAigcWhitelist\n<Common request parameters>\n\n{\n    \"SubAppId\": 200000,\n    \"AigcType\": \"Video\",\n    \"ModelWhitelistSwitch\": \"ON\",\n    \"IpWhitelistSwitch\": \"ON\",\n    \"ModelWhitelist\": [\n        {\n            \"ModelName\": \"Hunyuan\",\n            \"ModelVersion\": \"1.5\"\n        }\n    ],\n    \"IpWhitelist\": [\n        \"1*.*.*.*/24\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"9ee3724d-6f5e-482a-9112-188e1c19d62a\"\n    }\n}",
+        "title": "Setting the Model Allowlist and IP Allowlist for an AIGC Video Generation Task"
       }
     ],
     "SetCLSPushTarget": [

@@ -743,7 +743,7 @@
       "status": "online"
     },
     "DescribeKafkaConsumer": {
-      "document": "This API is used to access Kafka protocol consumption information.",
+      "document": "Accesses Kafka protocol consumption information",
       "input": "DescribeKafkaConsumerRequest",
       "name": "Accesses Kafka protocol consumption information",
       "output": "DescribeKafkaConsumerResponse",
@@ -1270,7 +1270,7 @@
     "OpenKafkaConsumer": {
       "document": "This API is used to enable the Kafka consumption feature.",
       "input": "OpenKafkaConsumerRequest",
-      "name": "Enables Kafka consumption",
+      "name": "Enables Kafka protocol consumption",
       "output": "OpenKafkaConsumerResponse",
       "status": "online"
     },
@@ -12713,7 +12713,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>Log topic Id.</p><ul><li>Get log topic Id by <a href=\"https://www.tencentcloud.com/document/product/614/56454?from_cn_redirect=1\">get log topic list</a>.</li><li>Get log topic Id by <a href=\"https://www.tencentcloud.com/document/product/614/56456?from_cn_redirect=1\">create log topic</a>.</li></ul>",
+          "document": "<p>Log topic Id.</p><ul><li>Get the log topic Id through <a href=\"https://www.tencentcloud.com/document/product/614/56454?from_cn_redirect=1\">getting the log topic list</a>.</li><li>Get the log topic Id through <a href=\"https://www.tencentcloud.com/document/product/614/56456?from_cn_redirect=1\">creating a log topic</a>.</li></ul>",
           "example": "57f5808c-4a55-11eb-b378-0242ac130002",
           "member": "string",
           "name": "FromTopicId",
@@ -12728,7 +12728,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>Whether Kafka Protocol Consumption is enabled</p>",
+          "document": "<p>Whether Kafka consumption is enabled</p>",
           "example": "false",
           "member": "bool",
           "name": "Status",
@@ -12738,7 +12738,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Topic parameter used by KafkaConsumer during consumption</p>",
+          "document": "<p>Topic parameter used by KafkaConsumer for consumption</p>",
           "example": "out-a5ce0c9c-0690-44a5-bc79-5f2190626bd0",
           "member": "string",
           "name": "TopicID",
@@ -12748,7 +12748,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Compression mode [0:NONE;2:SNAPPY;3:LZ4]</p>",
+          "document": "<p>Compression method [0: NONE; 2: SNAPPY; 3: LZ4]</p>",
           "example": "2",
           "member": "int64",
           "name": "Compression",
@@ -12758,7 +12758,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>kafka protocol consumption data format</p>",
+          "document": "<p>kafka consumption data format</p>",
           "example": "无",
           "member": "KafkaConsumerContent",
           "name": "ConsumerContent",
@@ -12768,7 +12768,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Whether to enable the delivery service log. 1: Disabled, 2: Enabled.</p>",
+          "document": "<p>Whether to enable delivery service logs. 1: Disable, 2: Enable.</p>",
           "example": "2",
           "member": "uint64",
           "name": "HasServicesLog",
@@ -12778,7 +12778,27 @@
         },
         {
           "disabled": false,
-          "document": "<p>Range type of consumption, 0: latest, 1: history + latest</p>",
+          "document": "<p>Public network consumption switch.</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableInternetConsume",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Private network consumption switch.</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableIntranetConsume",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Consumption scope type. 0: Latest, 1: Historical + latest</p>",
           "example": "1",
           "member": "uint64",
           "name": "ScopeType",
@@ -17151,11 +17171,11 @@
       "usage": "both"
     },
     "KafkaConsumerContent": {
-      "document": "Kafka consumer content",
+      "document": "Kafka consumption content",
       "members": [
         {
           "disabled": false,
-          "document": "Consumption data format. Valid values: 0 (original content) and 1 (JSON).",
+          "document": "<p>Consumption data format. 0: Raw content; 1: JSON.</p>",
           "example": "1",
           "member": "int64",
           "name": "Format",
@@ -17166,7 +17186,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to ship tag information\nThis parameter does not need to be set when `Format` is set to `0`.",
+          "document": "<p>Whether to deliver TAG information<br>When Format is 0, this field does not need to be assigned a value</p>",
           "example": "false",
           "member": "bool",
           "name": "EnableTag",
@@ -17177,8 +17197,8 @@
         },
         {
           "disabled": false,
-          "document": "Metadata information list. Valid values: \\_\\_SOURCE\\_\\_, \\_\\_FILENAME\\_\\_,\n\\_\\_TIMESTAMP\\_\\_, \\_\\_HOSTNAME\\_\\_, and \\_\\_PKGID\\_\\_.\nThis parameter does not need to be set when `Format` is set to `0`.",
-          "example": "[\"\\_\\_HOSTNAME\\_\\_\"]",
+          "document": "<p>Metadata information list. Valid values: __SOURCE__, __FILENAME__<br>, __TIMESTAMP__, __HOSTNAME__, __PKGID__<br>When Format is 0, this field does not need to be assigned a value</p>",
+          "example": "[\"__HOSTNAME__\"]",
           "member": "string",
           "name": "MetaFields",
           "output_required": true,
@@ -17188,7 +17208,7 @@
         },
         {
           "disabled": false,
-          "document": "tag data processing method: 1: Not Tiled (default value); 2: Tile.\n\nUntiled example:\nTAG information: `{\"__TAG__\":{\"fieldA\":200,\"fieldB\":\"text\"}}`\nNo tiling: `{\"__TAG__\":{\"fieldA\":200,\"fieldB\":\"text\"}}`\n\nTiled example:\nTAG information: `{\"__TAG__\":{\"fieldA\":200,\"fieldB\":\"text\"}}`\nTiled: `{\"__TAG__.fieldA\":200,\"__TAG__.fieldB\":\"text\"}`",
+          "document": "<p>Tag data processing method. 1: Not flattened (default); 2: Flattened.</p><p>Not flattened example:<br>TAG information: <code>{&quot;__TAG__&quot;:{&quot;fieldA&quot;:200,&quot;fieldB&quot;:&quot;text&quot;}}</code><br>Not flattened: <code>{&quot;__TAG__&quot;:{&quot;fieldA&quot;:200,&quot;fieldB&quot;:&quot;text&quot;}}</code></p><p>Flattened example:<br>TAG information: <code>{&quot;__TAG__&quot;:{&quot;fieldA&quot;:200,&quot;fieldB&quot;:&quot;text&quot;}}</code><br>Flattened: <code>{&quot;__TAG__.fieldA&quot;:200,&quot;__TAG__.fieldB&quot;:&quot;text&quot;}</code></p>",
           "example": "1",
           "member": "int64",
           "name": "TagTransaction",
@@ -17199,13 +17219,24 @@
         },
         {
           "disabled": false,
-          "document": "JSON data format:\n1: Not escaped (default format)\n2: Escaped\n\nDeliver in JSON format.JsonType is 1: Consistent with the original log, not escaped. Example:\nOriginal log: `{\"a\":\"aa\", \"b\":{\"b1\":\"b1b1\", \"c1\":\"c1c1\"}}`\nDeliver to CKafka: `{\"a\":\"aa\", \"b\":{\"b1\":\"b1b1\", \"c1\":\"c1c1\"}}`JsonType is 2: escaped. Example:Original log: `{\"a\":\"aa\", \"b\":{\"b1\":\"b1b1\", \"c1\":\"c1c1\"}}`\nDeliver to CKafka: `{\"a\":\"aa\",\"b\":\"{\\\"b1\\\":\\\"b1b1\\\", \\\"c1\\\":\\\"c1c1\\\"}\"}`",
+          "document": "<p>Consumption data Json format:<br>1: Not escaped (default format)<br>2: Escaped</p><p>Delivery Json format.<br>When JsonType is 1: Consistent with the original log, not escaped. Example:<br>Original log: <code>{&quot;a&quot;:&quot;aa&quot;, &quot;b&quot;:{&quot;b1&quot;:&quot;b1b1&quot;, &quot;c1&quot;:&quot;c1c1&quot;}}</code><br>Delivered to Ckafka: <code>{&quot;a&quot;:&quot;aa&quot;, &quot;b&quot;:{&quot;b1&quot;:&quot;b1b1&quot;, &quot;c1&quot;:&quot;c1c1&quot;}}</code></p><p>When JsonType is 2: Escaped. Example:<br>Original log: <code>{&quot;a&quot;:&quot;aa&quot;, &quot;b&quot;:{&quot;b1&quot;:&quot;b1b1&quot;, &quot;c1&quot;:&quot;c1c1&quot;}}</code><br>Delivered to Ckafka: <code>{&quot;a&quot;:&quot;aa&quot;,&quot;b&quot;:&quot;{\\&quot;b1\\&quot;:\\&quot;b1b1\\&quot;, \\&quot;c1\\&quot;:\\&quot;c1c1\\&quot;}&quot;}</code></p>",
           "example": "1",
           "member": "int64",
           "name": "JsonType",
           "output_required": true,
           "required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Switch for automatic conversion of numeric types</p><p>Valid values:</p><ul><li>true: Numeric strings (such as &quot;123&quot;) in the first-level values of the JSON structure are automatically converted to numeric types (int/float).</li><li>false: Numeric strings (such as &quot;123&quot;) in the first-level values of the JSON structure remain strings.</li></ul><p>Default value: false</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "AutoConvertNumber",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
           "value_allowed_null": false
         }
       ],
@@ -20802,7 +20833,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>log topic id</p><ul><li>Obtain the log topic Id through <a href=\"https://www.tencentcloud.com/document/product/614/56454?from_cn_redirect=1\">Get Log Topic List</a>.</li><li>Obtain the log topic Id through <a href=\"https://www.tencentcloud.com/document/product/614/56456?from_cn_redirect=1\">Create Log Topic</a>.</li></ul>",
+          "document": "<p>Log topic Id.</p><ul><li>Get the log topic Id through <a href=\"https://www.tencentcloud.com/document/product/614/56454?from_cn_redirect=1\">getting the log topic list</a>.</li><li>Get the log topic Id through <a href=\"https://www.tencentcloud.com/document/product/614/56456?from_cn_redirect=1\">creating a log topic</a>.</li></ul>",
           "example": "57f5808c-4a55-11eb-b378-0242ac130002",
           "member": "string",
           "name": "FromTopicId",
@@ -20811,7 +20842,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Compression mode. 0: No compression; 2: Use Snappy compression; 3: Use LZ4 compression</p>",
+          "document": "<p>Compression method. 0: No compression; 2: Snappy compression; 3: LZ4 compression</p>",
           "example": "2",
           "member": "int64",
           "name": "Compression",
@@ -20820,7 +20851,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>kafka protocol consumption data format</p>",
+          "document": "<p>kafka consumption data format</p>",
           "example": "无",
           "member": "KafkaConsumerContent",
           "name": "ConsumerContent",
@@ -20829,7 +20860,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Whether to enable the delivery service log. 1: Disabled, 2: Enabled.</p>",
+          "document": "<p>Whether to enable delivery service logs. 1: Disable, 2: Enable.</p>",
           "example": "2",
           "member": "uint64",
           "name": "HasServicesLog",
@@ -20838,7 +20869,25 @@
         },
         {
           "disabled": false,
-          "document": "<p>Range type of consumption, 0: latest, 1: history + latest</p>",
+          "document": "<p>Public network consumption switch.</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableInternetConsume",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Private network consumption switch.</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableIntranetConsume",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Consumption scope type. 0: Latest, 1: Historical + latest</p>",
           "example": "1",
           "member": "uint64",
           "name": "ScopeType",
@@ -23552,7 +23601,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>Log topic Id.</p><ul><li>Get log topic Id by <a href=\"https://www.tencentcloud.com/document/product/614/56454?from_cn_redirect=1\">get log topic list</a>.</li><li>Get log topic Id by <a href=\"https://www.tencentcloud.com/document/product/614/56456?from_cn_redirect=1\">create log topic</a>.</li></ul>",
+          "document": "<p>Log topic Id.</p><ul><li>Obtain the log topic Id through <a href=\"https://www.tencentcloud.com/document/product/614/56454?from_cn_redirect=1\">obtaining the log topic list</a>.</li><li>Obtain the log topic Id through <a href=\"https://www.tencentcloud.com/document/product/614/56456?from_cn_redirect=1\">creating a log topic</a>.</li></ul>",
           "example": "57f5808c-4a55-11eb-b378-0242ac130002",
           "member": "string",
           "name": "FromTopicId",
@@ -23561,7 +23610,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Compression mode [0:NONE; 2:SNAPPY; 3:LZ4], default: 0</p>",
+          "document": "<p>Compression type [0: NONE; 2: SNAPPY; 3: LZ4]. Default value: 0</p>",
           "example": "0",
           "member": "int64",
           "name": "Compression",
@@ -23570,7 +23619,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>kafka protocol consumption data format</p>",
+          "document": "<p>kafka consumption data format</p>",
           "example": "无",
           "member": "KafkaConsumerContent",
           "name": "ConsumerContent",
@@ -23579,7 +23628,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Whether to enable service log shipping. Valid values: 1: disable; 2: enable. Default value: 2</p>",
+          "document": "<p>Whether to enable the delivery service log. 1: Disabled; 2: Enabled. Default value: 2</p>",
           "example": "2",
           "member": "uint64",
           "name": "HasServicesLog",
@@ -23588,7 +23637,25 @@
         },
         {
           "disabled": false,
-          "document": "<p>Range type of consumption, 0: latest; 1: historic + latest; default value: 0</p>",
+          "document": "<p>Public network consumption switch. Enabled by default</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableInternetConsume",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Private network consumption switch. Enabled by default</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableIntranetConsume",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Consumption scope type. 0: Latest; 1: Historical + latest. Default value: 0</p>",
           "example": "1",
           "member": "uint64",
           "name": "ScopeType",
@@ -23603,7 +23670,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>Topic parameter used by KafkaConsumer during consumption</p>",
+          "document": "<p>Topic parameter used by KafkaConsumer for consumption</p>",
           "example": "out-57f5808c-4a55-11eb-b378-0242ac130002",
           "member": "string",
           "name": "TopicID",

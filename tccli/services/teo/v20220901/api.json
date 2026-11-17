@@ -1050,6 +1050,13 @@
       "output": "DescribeSharedCNAMEResponse",
       "status": "online"
     },
+    "DescribeTimingFunctionAnalysisData": {
+      "document": "This API is used to query the time series data of edge function analysis. Note that the data queried by this API has a delay of about 10 minutes. It is recommended to pull data from at least 10 minutes before the current time.",
+      "input": "DescribeTimingFunctionAnalysisDataRequest",
+      "name": "Queries the time series data of edge function analysis",
+      "output": "DescribeTimingFunctionAnalysisDataResponse",
+      "status": "online"
+    },
     "DescribeTimingL4Data": {
       "document": "<p>This API is used to query time series monitoring data for L4 proxy instences.</p>",
       "input": "DescribeTimingL4DataRequest",
@@ -1076,6 +1083,13 @@
       "input": "DescribeTimingL7OriginPullDataRequest",
       "name": "Query origin time series data",
       "output": "DescribeTimingL7OriginPullDataResponse",
+      "status": "online"
+    },
+    "DescribeTopFunctionAnalysisData": {
+      "document": "This API is used to query the topN data of Edge Functions by a specified dimension. Note that the data returned by this API has a delay of about 10 minutes. We recommend that you query the data generated at least 10 minutes before the current time.",
+      "input": "DescribeTopFunctionAnalysisDataRequest",
+      "name": "Queries the Top data of edge function analysis",
+      "output": "DescribeTopFunctionAnalysisDataResponse",
       "status": "online"
     },
     "DescribeTopL7AnalysisData": {
@@ -17247,6 +17261,107 @@
       ],
       "type": "object"
     },
+    "DescribeTimingFunctionAnalysisDataRequest": {
+      "document": "DescribeTimingFunctionAnalysisData request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Set of site IDs. Enter at least one site ID.</p>",
+          "example": "[\"zone-2ju9lrnpaxol\"]",
+          "member": "string",
+          "name": "ZoneIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Start time.</p>",
+          "example": "2020-04-29T00:00:00Z",
+          "member": "datetime_iso",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time. The query time range (`EndTime` - `StartTime`) must be no longer than 7 days.",
+          "example": "2020-04-30T00:00:00Z",
+          "member": "datetime_iso",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of metrics. Valid values:<ul><li>`function_requestCount`: the number of Edge Function requests. This is a cumulative value.</li><li>`function_cpuCostTime`: the average CPU time consumed by Edge Function execution, in microseconds.</li><li>`function_wallClockTime`: the average wall clock time consumed by Edge Function execution, in microseconds.</li></ul>",
+          "example": "[\"function_requestCount\"]",
+          "member": "string",
+          "name": "MetricNames",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Query time granularity. Valid values:<ul><li>`min`: 1 minute.</li><li>`5min`: 5 minutes.</li><li>`hour`: 1 hour.</li><li>`day`: 1 day.</li></ul>If this parameter is not specified, the granularity is automatically inferred based on the interval between the start time and the end time. The specific rules are as follows: within 2 hours, the granularity is `min`; within 2 days, the granularity is `5min`; within 7 days, the granularity is `hour`; longer than 7 days, the granularity is `day`.",
+          "example": "hour",
+          "member": "string",
+          "name": "Interval",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter conditions. The maximum number of values in `Filters.Value` is 20. The detailed filter condition keys are as follows:<ul><li>`domain`: filters by subdomain name. Example value: `www.example.com`.</li><li>`function-name`: filters by Edge Function name. Example value: `test051301-zone-2r2fdoxxxx-130000000`.</li><li>`function-result`: filters by Edge Function execution result. Valid values for the corresponding `Value`:<ul><li>`success`: success.</li><li>`fail`: failure.</li></ul></li></ul>",
+          "example": "无",
+          "member": "QueryCondition",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "The region the data belongs to. Valid values:<ul><li>`overseas`: data from the global area (excluding the Chinese mainland).</li><li>`mainland`: data from the Chinese mainland.</li><li>`global`: global data.</li></ul>If this parameter is not specified, the default value is `global`.",
+          "example": "mainland",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTimingFunctionAnalysisDataResponse": {
+      "document": "DescribeTimingFunctionAnalysisData response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total number of query results.</p>",
+          "example": "20",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of time series data.</p>",
+          "example": "无",
+          "member": "TimingDataRecord",
+          "name": "Data",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeTimingL4DataRequest": {
       "document": "DescribeTimingL4Data request structure.",
       "members": [
@@ -17647,6 +17762,116 @@
           "example": "无",
           "member": "TimingDataRecord",
           "name": "TimingDataRecords",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTopFunctionAnalysisDataRequest": {
+      "document": "DescribeTopFunctionAnalysisData request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Set of site IDs. Enter at least one site ID.</p>",
+          "example": "[\"zone-2mzegj4vln5f\"]",
+          "member": "string",
+          "name": "ZoneIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Start time.</p>",
+          "example": "2020-04-20T00:00:00Z",
+          "member": "datetime_iso",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time. The query time range (`EndTime` - `StartTime`) must be no longer than 7 days.",
+          "example": "2020-04-30T00:00:00Z",
+          "member": "datetime_iso",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The metric to query. Valid values:<ul><li>`function_requestCount_functionResult`: counts Edge Function requests by the dimension of execution result.</li><li>`function_requestCount_functionName`: counts Edge Function requests by the dimension of function name.</li><li>`function_requestCount_domain`: counts Edge Function requests by the dimension of domain name.</li></ul>",
+          "example": "function_requestCount_functionResult",
+          "member": "string",
+          "name": "MetricName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of top data entries to query. The maximum value is 1000. If not specified, the default value is 10, indicating that the top 10 data entries are queried.</p>",
+          "example": "3",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter conditions. The maximum number of values in `Filters.Value` is 20. The detailed filter condition keys are as follows:<ul><li>`domain`: filters by subdomain name. Example value: `www.example.com`.</li><li>`function-name`: filters by Edge Function name. Example value: `test051301-zone-2r2fdoxxxx-130000000`.</li><li>`function-result`: filters by Edge Function execution result. Valid values for the corresponding `Value`:<ul><li>`success`: success.</li><li>`fail`: failure.</li></ul></li></ul>",
+          "example": "无",
+          "member": "QueryCondition",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Query time granularity. Valid values:<ul><li>`min`: 1 minute.</li><li>`5min`: 5 minutes.</li><li>`hour`: 1 hour.</li><li>`day`: 1 day.</li></ul>If this parameter is not specified, the granularity is automatically inferred based on the interval between the start time and the end time. The specific rules are as follows: within 2 hours, the granularity is `min`; within 2 days, the granularity is `5min`; within 7 days, the granularity is `hour`; longer than 7 days, the granularity is `day`.",
+          "example": "min",
+          "member": "string",
+          "name": "Interval",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The region the data belongs to. Valid values:<ul><li>`overseas`: data from the global area (excluding the Chinese mainland).</li><li>`mainland`: data from the Chinese mainland.</li><li>`global`: global data.</li></ul>If this parameter is not specified, the default value is `global`.",
+          "example": "mainland",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTopFunctionAnalysisDataResponse": {
+      "document": "DescribeTopFunctionAnalysisData response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total number of query results.</p>",
+          "example": "10",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of topN data by the statistical dimension specified by MetricName.</p>",
+          "example": "无",
+          "member": "TopDataRecord",
+          "name": "Data",
           "output_required": true,
           "type": "list",
           "value_allowed_null": false
@@ -20256,7 +20481,7 @@
       "usage": "both"
     },
     "FloatTimingDataItem": {
-      "document": "Statistical curve data item.",
+      "document": "Statistics curve data item",
       "members": [
         {
           "disabled": false,
@@ -20282,7 +20507,7 @@
       "usage": "out"
     },
     "FloatTimingTypeValue": {
-      "document": "Time series type details.",
+      "document": "Detailed data of time series type",
       "members": [
         {
           "disabled": false,
@@ -20306,7 +20531,7 @@
         },
         {
           "disabled": false,
-          "document": "Average.",
+          "document": "Mean.",
           "example": "0.02",
           "member": "float",
           "name": "Avg",
@@ -30531,7 +30756,7 @@
         {
           "disabled": false,
           "document": "The value of QueryCondition.",
-          "example": "查询值",
+          "example": "[\"16914412410576339927\"]",
           "member": "string",
           "name": "Value",
           "output_required": true,
@@ -35216,7 +35441,7 @@
       "usage": "both"
     },
     "TimingDataItem": {
-      "document": "Data items of the statistical curve",
+      "document": "Statistical curve data item",
       "members": [
         {
           "disabled": false,
@@ -35230,7 +35455,7 @@
         },
         {
           "disabled": false,
-          "document": "The value.",
+          "document": "Specific values.",
           "example": "100",
           "member": "int64",
           "name": "Value",
@@ -35242,11 +35467,11 @@
       "usage": "out"
     },
     "TimingDataRecord": {
-      "document": "The time-series data",
+      "document": "Data information of time series",
       "members": [
         {
           "disabled": false,
-          "document": "The query dimension value.",
+          "document": "Query the dimension value.",
           "example": "l7Flow_flux",
           "member": "string",
           "name": "TypeKey",
@@ -35256,7 +35481,7 @@
         },
         {
           "disabled": false,
-          "document": "Detailed time series data of the <code>Integer</code> type. query metrics with the <code>Integer</code> value type will return corresponding time series data through this field.<br> **note**: if the query metric does not specify the value type, this field will return data by default.",
+          "document": "Detailed time series data of the <code>Integer</code> type. If the value type of the query metric is <code>Integer</code>, the corresponding time series data will be returned in this field.<br> **Note**: If the value type of the query metric is unclear, data will be returned in this field by default.",
           "example": "无",
           "member": "TimingTypeValue",
           "name": "TypeValue",
@@ -35266,7 +35491,7 @@
         },
         {
           "disabled": false,
-          "document": "Detailed time series data of <code>Float</code> type. query metrics with <code>Float</code> value type will return corresponding time series data via this field.",
+          "document": "Detailed time series data of <code>Float</code> type. For metrics whose query metric value type is <code>Float</code>, the corresponding time series data is returned in this field.",
           "example": "无",
           "member": "FloatTimingTypeValue",
           "name": "FloatTypeValue",
@@ -35282,7 +35507,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Sum.",
+          "document": "Data and.",
           "example": "321",
           "member": "int64",
           "name": "Sum",
@@ -35292,7 +35517,7 @@
         },
         {
           "disabled": false,
-          "document": "The maximum value.",
+          "document": "Maximum value.",
           "example": "23",
           "member": "int64",
           "name": "Max",
@@ -35302,7 +35527,7 @@
         },
         {
           "disabled": false,
-          "document": "The average value.",
+          "document": "Mean.",
           "example": "231",
           "member": "int64",
           "name": "Avg",
@@ -35322,7 +35547,7 @@
         },
         {
           "disabled": false,
-          "document": "Details.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Details.",
           "example": "无",
           "member": "TimingDataItem",
           "name": "Detail",
@@ -35334,11 +35559,11 @@
       "usage": "out"
     },
     "TopDataRecord": {
-      "document": "The top-ranked data record",
+      "document": "Top data record",
       "members": [
         {
           "disabled": false,
-          "document": "The query dimension value.",
+          "document": "Dimension value to query.",
           "example": "\"1234\"",
           "member": "string",
           "name": "TypeKey",
@@ -35348,7 +35573,7 @@
         },
         {
           "disabled": false,
-          "document": "Top data rankings",
+          "document": "top data ranking.",
           "example": "无",
           "member": "TopDetailData",
           "name": "DetailData",
@@ -35360,11 +35585,11 @@
       "usage": "out"
     },
     "TopDetailData": {
-      "document": "The top-ranked data details",
+      "document": "Detailed information of Top data",
       "members": [
         {
           "disabled": false,
-          "document": "The field name.",
+          "document": "Field name.",
           "example": "china",
           "member": "string",
           "name": "Key",
@@ -35374,7 +35599,7 @@
         },
         {
           "disabled": false,
-          "document": "The field value.",
+          "document": "Field value.",
           "example": "500",
           "member": "int64",
           "name": "Value",

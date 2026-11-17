@@ -540,7 +540,7 @@
       "status": "online"
     },
     "CreateHostVulExportJob": {
-      "document": "This API is used to create a host vulnerability table export task.",
+      "document": "Creates an export task for a vulnerability table on hosts.",
       "input": "CreateHostVulExportJobRequest",
       "name": "Creates a host vulnerability list export task",
       "output": "CreateHostVulExportJobResponse",
@@ -764,21 +764,21 @@
       "status": "online"
     },
     "CreateVulFixRetryTask": {
-      "document": "Retry the vulnerability repair task that failed to fix, and redispatch the repair instruction only for the hosts of the original task that failed to fix. Retry is allowed only when the task status is partially or totally failed to fix.",
+      "document": "Retry the vulnerability repair tasks that failed to fix. Redispatch repair instructions only to the hosts of the original task where the fix failed. Retry is allowed only when the task status is partially failed to fix or fix failure.",
       "input": "CreateVulFixRetryTaskRequest",
-      "name": "Retries to fix a vulnerability",
+      "name": "Retries a vulnerability repair task",
       "output": "CreateVulFixRetryTaskResponse",
       "status": "online"
     },
     "CreateVulFixTask": {
-      "document": "Users manually submit vulnerability repair tasks, specify the vulnerabilities and target hosts that need to be repaired, and the system creates fixing tasks and dispatches execution. It supports options such as specifying the repair timeout period and whether to create a snapshot. The FixItems array is used to precisely control which hosts each vulnerability or KB patch repairs.",
+      "document": "This API is used to manually submit vulnerability repair tasks, specify the vulnerabilities to fix and the target hosts, create fixing tasks, and dispatch execution. It supports options such as specifying the timeout period and whether to create a snapshot. The FixItems array is used to precisely control which hosts each vulnerability or KB patch repairs.",
       "input": "CreateVulFixTaskRequest",
-      "name": "Submit a vulnerability repair task",
+      "name": "Submits a vulnerability repair task",
       "output": "CreateVulFixTaskResponse",
       "status": "online"
     },
     "CreateVulFixedExportJob": {
-      "document": "Create an export task for the list of fixed vulnerabilities. It supports the same filter criteria as DescribeVulFixedList. The export is implemented via an asynchronous task. After a JobID is returned, the frontend polls to query the export task status. The export fields include vulnerability ID, vulnerability name, vulnerability level, VPR rating, vulnerability type, CVE ID, host name, instance ID, associated component & path, and repair time.",
+      "document": "This API is used to create an export task for a fixed vulnerability list. It supports the same filter criteria as DescribeVulFixedList. The export is implemented through an asynchronous task. After a JobID is returned, the frontend polls the export task status. Export fields include vulnerability ID, vulnerability name, vulnerability level, VPR rating, vulnerability type, CVE ID, host name, instance ID, associated component & path, and repair time.",
       "input": "CreateVulFixedExportJobRequest",
       "name": "Creates a fixed vulnerability list export task",
       "output": "CreateVulFixedExportJobResponse",
@@ -1529,7 +1529,7 @@
     "DescribeBaselineAggregatedItemList": {
       "document": "This API is used to obtain the aggregated scan result list by detection item, for showing the number of passed and failed assets by detection item on the \"Detection Item\" Tab of the policy details page.",
       "input": "DescribeBaselineAggregatedItemListRequest",
-      "name": "Queries the baseline aggregation detection item list",
+      "name": "Retrieves the baseline aggregation detection item list",
       "output": "DescribeBaselineAggregatedItemListResponse",
       "status": "online"
     },
@@ -1571,7 +1571,7 @@
     "DescribeBaselineItemRiskList": {
       "document": "This API is used to retrieve the risk record list of detection item dimensions.",
       "input": "DescribeBaselineItemRiskListRequest",
-      "name": "Retrieves the baseline detection item risk list",
+      "name": "Searches for the baseline detection item risk list",
       "output": "DescribeBaselineItemRiskListResponse",
       "status": "online"
     },
@@ -2796,7 +2796,7 @@
     "DescribeEdrAlertInfo": {
       "document": "This API is used to obtain EDR alert details, including complete information such as alert content JSON, asset enrichment, and intelligence enrichment.",
       "input": "DescribeEdrAlertInfoRequest",
-      "name": "Retrieves EDR alarm details",
+      "name": "Retrieves EDR alert details",
       "output": "DescribeEdrAlertInfoResponse",
       "status": "online"
     },
@@ -3090,7 +3090,7 @@
     "DescribeImageRegistryAssetOverview": {
       "document": "Query the repository asset overview of images",
       "input": "DescribeImageRegistryAssetOverviewRequest",
-      "name": "Queries asset overview of the mirror repository",
+      "name": "Queries asset overview of a mirror repository",
       "output": "DescribeImageRegistryAssetOverviewResponse",
       "status": "online"
     },
@@ -4054,37 +4054,37 @@
       "status": "online"
     },
     "DescribeVulFixTaskDetail": {
-      "document": "This API is used to query the details of a specified vulnerability repair task, including detailed data such as remediation status and snapshot status for each host, and supports pagination and filtering.",
+      "document": "This API is used to query details of a specified vulnerability repair task, including remediation status and snapshot status of each host, and supports pagination and filtering.",
       "input": "DescribeVulFixTaskDetailRequest",
-      "name": "Retrieves vulnerability repair task details",
+      "name": "Gets vulnerability repair task details",
       "output": "DescribeVulFixTaskDetailResponse",
       "status": "online"
     },
     "DescribeVulFixTaskList": {
-      "document": "This API is used to query the vulnerability repair task record list with paging, support by conditional filtering such as remediation status and time range, and show summary information for each repair task.",
+      "document": "Paginate the vulnerability fix task record list, support filtering by remediation status, time range, and other conditions, and show summary information of each fix task.",
       "input": "DescribeVulFixTaskListRequest",
-      "name": "Retrieves the vulnerability repair task record list",
+      "name": "Gets the vulnerability repair task record list",
       "output": "DescribeVulFixTaskListResponse",
       "status": "online"
     },
     "DescribeVulFixableMachineList": {
-      "document": "This API is used to query the host list where specified vulnerabilities can be repaired. Before a user submits a repair task, it is necessary to query which hosts support automatic fix, providing data support for users to select repair targets.",
+      "document": "This API is used to query the host list for a specified vulnerability that can be repaired. Before users submit a fix task, they need to query which hosts support automatic fix to provide data support for user selection of repair targets.",
       "input": "DescribeVulFixableMachineListRequest",
-      "name": "Queries the fixable host information",
+      "name": "Queries fixable host information",
       "output": "DescribeVulFixableMachineListResponse",
       "status": "online"
     },
     "DescribeVulFixedHostDetail": {
-      "document": "This API is used to query the repair details of a certain fixed vulnerability on a specified host, including basic information about the vulnerability, repair host information, and a detailed list of associated components and paths (component name, version number hit, associated path, repair command).",
+      "document": "This API is used to query the repair details of a fixed vulnerability on specified hosts, including basic vulnerability information, host information, and a detailed list of associated components and paths, such as component name, hit version, associated path, and fix command.",
       "input": "DescribeVulFixedHostDetailRequest",
-      "name": "Retrieves the repair details of the host with fixed vulnerabilities",
+      "name": "Retrieves host repair details for fixed vulnerabilities",
       "output": "DescribeVulFixedHostDetailResponse",
       "status": "online"
     },
     "DescribeVulFixedList": {
-      "document": "This API is used to query the list of repaired vulnerabilities, show vulnerability information with successful fixes and statistics on repair conditions, helping users understand the repair results.",
+      "document": "Query the list of repaired vulnerabilities, show successful fix details and repair statistics to help users understand the fix result.",
       "input": "DescribeVulFixedListRequest",
-      "name": "Retrieves the list of fixed vulnerabilities",
+      "name": "Gets the list of repaired vulnerabilities",
       "output": "DescribeVulFixedListResponse",
       "status": "online"
     },
@@ -4124,23 +4124,23 @@
       "status": "online"
     },
     "DescribeVulRiskRelateComponent": {
-      "document": "Retrieve the associated component of a vulnerability",
+      "document": "Retrieve the associated components of a vulnerability",
       "input": "DescribeVulRiskRelateComponentRequest",
-      "name": "Obtain vulnerability risk associated component",
+      "name": "Obtains associated components of vulnerability risk",
       "output": "DescribeVulRiskRelateComponentResponse",
       "status": "online"
     },
     "DescribeVulRiskRelateHost": {
-      "document": "Search for hosts associated with vulnerabilities or KBs",
+      "document": "This API is used to search hosts associated with a vulnerability or KB.",
       "input": "DescribeVulRiskRelateHostRequest",
-      "name": "Obtains vulnerability risk associated server",
+      "name": "Obtains the associated host of vulnerability risk",
       "output": "DescribeVulRiskRelateHostResponse",
       "status": "online"
     },
     "DescribeVulScanPeriodic": {
-      "document": "This API is used to obtain vulnerability scanning (period scanning).",
+      "document": "This API is used to query vulnerability scan settings.",
       "input": "DescribeVulScanPeriodicRequest",
-      "name": "Get vulnerability scan configuration (periodic scan)",
+      "name": "Queries the vulnerability scan configuration (period scanning)",
       "output": "DescribeVulScanPeriodicResponse",
       "status": "online"
     },
@@ -4700,7 +4700,7 @@
     "ModifyEdrAlertIsolation": {
       "document": "EDR alert quarantine and recovery",
       "input": "ModifyEdrAlertIsolationRequest",
-      "name": "Isolates and restores EDR alerts",
+      "name": "Quarantines and recovers EDR alerts",
       "output": "ModifyEdrAlertIsolationResponse",
       "status": "online"
     },
@@ -21846,7 +21846,7 @@
       "usage": "out"
     },
     "ComponentDetailItem": {
-      "document": "Associated component & path description",
+      "document": "Associated component & path details",
       "members": [
         {
           "disabled": false,
@@ -21860,7 +21860,7 @@
         },
         {
           "disabled": false,
-          "document": "cache hit version",
+          "document": "Hit version",
           "example": "2.2.0-12.el7",
           "member": "string",
           "name": "Version",
@@ -22047,6 +22047,23 @@
           "output_required": false,
           "required": false,
           "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ContainerAutoScaleConfig": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "OFF",
+          "member": "string",
+          "name": "Switch",
+          "output_required": true,
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -30023,7 +30040,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>Exported action</p><p>Enumeration value:</p><ul><li>LinuxHostVulRiskList: linux vulnerability risk list</li><li>WebCmsHostVulRiskList: WebCms vulnerability risk list</li><li>AppHostVulRiskList: App vulnerability risk list</li><li>EmergencyHostVulRiskList: Emergency vulnerability risk list</li><li>KBRiskList: Windows kb risk list</li><li>RelateHostList: Associated host list</li><li>WhiteList: Vulnerability allowlist</li></ul>",
+          "document": "<p>Export action</p><p>Enumeration values:</p><ul><li>LinuxHostVulRiskList: linux vulnerability risk list</li><li>WebCmsHostVulRiskList: WebCms vulnerability risk list</li><li>AppHostVulRiskList: App vulnerability risk list</li><li>EmergencyHostVulRiskList: Emergency vulnerability risk list</li><li>KBRiskList: Windows kb risk list</li><li>RelateHostList: Associated host list</li><li>WhiteList: Vulnerability allowlist</li></ul>",
           "example": "RelateHostList",
           "member": "string",
           "name": "BusinessAction",
@@ -30041,7 +30058,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Filter conditions array, multi-condition with each other is AND relationship<br>Supported Filter.Name:<br>KbID: KB risk associated server in the current situation needs to add KB Risk ID<br>VulID: Vulnerability risk associated server in the current situation needs to add vul Risk ID</p>",
+          "document": "<p>Criteria array, multi-condition uses AND relationship with each other<br>Supported Filter.Name:<br>KbID: KB risk associated host requires adding KB Risk ID as needed<br>VulID: Vulnerability risk associated host requires adding vul Risk ID as needed</p>",
           "example": "无",
           "member": "Filters",
           "name": "Filters",
@@ -32475,7 +32492,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>Repair task ID that needs to be retried</p>",
+          "document": "<p>Repair task ID that needs to retry</p>",
           "example": "10001",
           "member": "int64",
           "name": "TaskId",
@@ -32484,7 +32501,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Specify the list of host instance IDs that need to retry. If not passed, retry all failed hosts.</p>",
+          "document": "<p>Specify the instance ID list of the host that needs to retry. If not passed, retry all failed hosts.</p>",
           "example": "[\"ins-a1b2c3d4\",\"ins-e5f6g7h8\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -32508,7 +32525,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>New task ID generated by retry, used for subsequent query task status</p>",
+          "document": "<p>ID of the generated new task for retry, used for subsequently querying task status</p>",
           "example": "10001",
           "member": "int64",
           "name": "TaskId",
@@ -32518,7 +32535,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Number of hosts retried this time</p>",
+          "document": "<p>Number of hosts to retry this time</p>",
           "example": "3",
           "member": "int64",
           "name": "RetryCount",
@@ -32540,7 +32557,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>Repair item list, each item specifies a vulnerability/KB patch and its hosts requiring fixing<br>Input parameter limit: No more than 100 items, total number of instances not more than 5000</p>",
+          "document": "<p>Repair item list. Each item specifies a vulnerability/KB patch and its hosts requiring fixing<br>Input limit: up to 100 items, and the total number of instances cannot exceed 5000</p>",
           "example": "无",
           "member": "VulFixItem",
           "name": "FixItems",
@@ -32549,7 +32566,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Maximum repair time<br>Measurement unit: second<br>Default value: 3600</p>",
+          "document": "<p>Maximum repair time<br>Unit: second<br>Default value: 3600</p>",
           "example": "3600",
           "member": "int64",
           "name": "Timeout",
@@ -32558,7 +32575,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Whether to create a disk snapshot before repair<br>Default value: false</p>",
+          "document": "<p>Create a disk snapshot before repair<br>Default value: false</p>",
           "example": "false",
           "member": "bool",
           "name": "CreateSnapshot",
@@ -32567,7 +32584,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Snapshot name. Valid when CreateSnapshot is true.<br>Input parameter limit: Up to 128 characters.</p>",
+          "document": "<p>Snapshot name. Valid when CreateSnapshot is true. Input limits: up to 60 characters, with automatic truncation for overly long ones.</p>",
           "example": "fix-snapshot-20250626",
           "member": "string",
           "name": "SnapshotName",
@@ -32576,7 +32593,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Snapshot retention days. Valid when CreateSnapshot is true.</p>",
+          "document": "<p>Snapshot retention days. Valid when CreateSnapshot is true</p>",
           "example": "7",
           "member": "int64",
           "name": "SaveDays",
@@ -32600,7 +32617,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>Repair task ID, used for subsequent query task status</p>",
+          "document": "<p>Repair task ID, used for subsequent query of task status</p>",
           "example": "10001",
           "member": "int64",
           "name": "TaskId",
@@ -32622,7 +32639,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>Filter criteria (same as DescribeVulFixedList)<br>Supported Filter.Name:<br>Keyword - Fuzzy matching, search by keyword (vulnerability name/CVE ID/host name/instance ID)<br>VulName - Fuzzy matching, vulnerability name search<br>Level - Exact match, filter by vulnerability level: LOW-Low risk MEDIUM-Medium risk HIGH-High risk CRITICAL-Critical<br>VprLevel - Exact match, filter by VPR rating: 1-Low 2-Medium 3-High 4-Critical<br>VulCategory - Exact match, filter by vulnerability type: LINUX-Linux software vulnerability WINDOWS-Windows system patch vulnerability WEB_CMS-Web-CMS vulnerability APPLICATION-Application vulnerability EMERGENCY-Emergency vulnerability<br>MachineName - Fuzzy matching, host name search<br>InstanceId - Fuzzy matching, instance ID search<br>FixTime - Range matching, repair time range, input two values for start and end time</p>",
+          "document": "<p>Filter criteria (same as DescribeVulFixedList)<br>Supported Filter.Name:<br>Keyword - fuzzy matching, search by keyword (vulnerability name/CVE ID/host name/instance ID)<br>VulName - fuzzy matching, search by vulnerability name<br>Level - exact match, filter by vulnerability level: LOW-low MEDIUM-medium HIGH-high CRITICAL-critical<br>VprLevel - exact match, filter by VPR rating: 1-Low 2-Medium 3-High 4-Critical<br>VulCategory - exact match, filter by vulnerability type: LINUX-Linux software vulnerability WINDOWS-Windows system patch vulnerability WEB_CMS-Web-CMS vulnerability APPLICATION-application vulnerability EMERGENCY-urgent vulnerability<br>MachineName - fuzzy matching, search by host name<br>InstanceId - fuzzy matching, search by instance ID<br>FixTime - range matching, repair time range. Input two values for start and end time</p>",
           "example": "无",
           "member": "Filters",
           "name": "Filters",
@@ -32631,7 +32648,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Sorting field<br>Enumeration value:<br>FixTime: Sort by repair time<br>VulName: Sort by vulnerability name</p>",
+          "document": "<p>Sorting field<br>Enumeration values:<br>FixTime: Sort by fix time<br>VulName: Sort by vulnerability name</p>",
           "example": "FixTime",
           "member": "string",
           "name": "Order",
@@ -32640,7 +32657,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Sorting method<br>Enumeration value:<br>asc: Ascending<br>desc: Descending order<br>Default value: desc</p>",
+          "document": "<p>Sorting method<br>Enumeration values:<br>asc: ascending<br>desc: descending<br>Default value: desc</p>",
           "example": "desc",
           "member": "string",
           "name": "By",
@@ -32664,7 +32681,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>Export task ID<br>Used when: front-end polling the status of tasks for reference</p>",
+          "document": "<p>Export task ID<br>Value for reference: used when polling the export task status on the frontend</p>",
           "example": "export-job-12345",
           "member": "string",
           "name": "JobID",
@@ -41773,7 +41790,26 @@
     },
     "DescribeCSCPayInfoRequest": {
       "document": "DescribeCSCPayInfo request structure.",
-      "members": [],
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "[\"mem-14**24\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "true",
+          "member": "bool",
+          "name": "NeedQuotaUsed",
+          "required": false,
+          "type": "bool"
+        }
+      ],
       "type": "object"
     },
     "DescribeCSCPayInfoResponse": {
@@ -46623,6 +46659,16 @@
           "example": "2",
           "member": "uint64",
           "name": "UnboundUltimateNodeCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of regular nodes",
+          "example": "100",
+          "member": "uint64",
+          "name": "NormalNodeCount",
           "output_required": false,
           "type": "int",
           "value_allowed_null": false
@@ -54522,6 +54568,15 @@
           "name": "By",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "File operation rule, populated when ContentType=file_operation (file path regex AND any selected action)",
+          "example": "无",
+          "member": "RuleContentFileOperation",
+          "name": "FileOperationRules",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -54532,7 +54587,7 @@
         {
           "disabled": false,
           "document": "<p>Total.</p>",
-          "example": "953",
+          "example": "1545",
           "member": "int64",
           "name": "TotalCount",
           "output_required": true,
@@ -57943,6 +57998,66 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
+          "document": "<p>Number of risky images</p>",
+          "example": "284",
+          "member": "uint64",
+          "name": "RiskImageCnt",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of CICD images</p>",
+          "example": "2",
+          "member": "uint64",
+          "name": "CICDImageCnt",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of scanned CICD images</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "CICDImageScannedCnt",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of risky CICD images</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "RiskCICDImageCnt",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of sensitive files</p>",
+          "example": "1",
+          "member": "uint64",
+          "name": "SecretFileCnt",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of build risks</p>",
+          "example": "1349",
+          "member": "uint64",
+          "name": "BuildRiskCnt",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -60649,6 +60764,26 @@
           "name": "Timeout",
           "output_required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of alarm type codes saved in custom quarantine mode</p>",
+          "example": "[\"Trojan\"]",
+          "member": "string",
+          "name": "QuaraTypes",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Alarm type dictionary (delivered via gray release rules, used by the frontend to render checkbox options)</p>",
+          "example": "无",
+          "member": "QuaraTypeDictItem",
+          "name": "QuaraTypeDict",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -68601,7 +68736,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Paging offset<br>Value ranges from 0 to +∞<br>Default value: 0</p>",
+          "document": "<p>Paging offset<br>Value range: [0, +∞)<br>Default value: 0</p>",
           "example": "0",
           "member": "int64",
           "name": "Offset",
@@ -68610,7 +68745,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Number of results per page<br>Value ranges from 1 to 100<br>Default value: 10</p>",
+          "document": "<p>Number of results per page<br>Value range: [1, 100]<br>Default value: 10</p>",
           "example": "10",
           "member": "int64",
           "name": "Limit",
@@ -68619,7 +68754,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Filter criteria<br>Supported Filter.Name:<br>InstanceId - Exact match, filter by host instance ID<br>VulId - Exact match, filter by vulnerability ID, filter out hosts under a certain vulnerability<br>KBId - Exact match, filter by KB Patch ID, filter out hosts under a certain KB patch<br>Status - Exact match, filter by execution status: 0-Initial status 1-Issued 11-Client confirmed 2-Repair completed 3-Client offline 4-Timeout 5-Failure 6-No support 9-Waiting for snapshot creation to complete 10-Snapshot creation failed<br>FixStatus - Exact match, filter by repair result: 0-Initial status 1-Repair successful 2-Fix failure<br>SnapshotStatus - Exact match, filter by snapshot status: -1-No need to create snapshot 0-Not started 1-In progress 2-Completed 3-Creation failure</p>",
+          "document": "<p>Filter criteria<br>Supported Filter.Name:<br>InstanceId - Exact match. Filter by host instance ID.<br>VulId - Exact match. Filter by vulnerability ID to filter out hosts under a vulnerability.<br>KBId - Exact match. Filter by KB Patch ID to filter out hosts under a KB patch.<br>Status - Exact match. Filter by execution status: 0-Initial status 1-Issued 11-Confirmed by client 2-Repair completed 3-Client offline 4-Timeout 5-Failed 6-Unsupported 9-Waiting for snapshot creation 10-Snapshot creation failed<br>FixStatus - Exact match. Filter by fix result: 0-Initial status 1-Repair successful 2-Failed to fix<br>SnapshotStatus - Exact match. Filter by snapshot status: -1-No need to create snapshot 0-Not started 1-In progress 2-Completed 3-Creation failed</p>",
           "example": "无",
           "member": "Filters",
           "name": "Filters",
@@ -68628,7 +68763,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Sorting field<br>Enumeration value:<br>StartTime: Sort by repair start time<br>EndTime: Sort by repair end time</p>",
+          "document": "<p>Sorting field<br>Enumeration values:<br>StartTime: sort by repair start time<br>EndTime: sort by repair end time</p>",
           "example": "StartTime",
           "member": "string",
           "name": "Order",
@@ -68637,7 +68772,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Sorting method<br>Enumeration value:<br>asc: Ascending<br>desc: Descending<br>Default value: desc</p>",
+          "document": "<p>Sorting method<br>Enumeration values:<br>asc: in ascending order<br>desc: in descending order<br>Default value: desc</p>",
           "example": "desc",
           "member": "string",
           "name": "By",
@@ -68661,7 +68796,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>Task details</p>",
+          "document": "<p>Task details list</p>",
           "example": "无",
           "member": "VulFixTaskDetailItem",
           "name": "Data",
@@ -68703,7 +68838,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>Paging offset<br>Value ranges from 0 to +∞<br>Default value: 0</p>",
+          "document": "<p>Paging offset<br>Value range: [0, +∞)<br>Default value: 0</p>",
           "example": "0",
           "member": "int64",
           "name": "Offset",
@@ -68712,7 +68847,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Number of results per page<br>Value ranges from 1 to 100<br>Default value: 10</p>",
+          "document": "<p>Number of results per page<br>Value range: [1, 100]<br>Default value: 10</p>",
           "example": "10",
           "member": "int64",
           "name": "Limit",
@@ -68721,7 +68856,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Filtering Conditions<br>Supported Filter.Name:<br>TaskId - Exact match, filter by task ID<br>JobId - Exact match, filter by task JobId, corresponding to the task ID of the background job system<br>FixStatus - Exact match, filter by remediation status: 0-Initialization 1-In remediation 2-Repair successful 3-Partially fix failed 4-All fix failed 5-Stop fix<br>StartTime - Range match, remediation startup time range, input two values to indicate start and end time<br>AppId - Exact match, filter by creator AppId<br>VulCategory - Exact match, filter by vulnerability type: LINUX-Linux software vulnerability WINDOWS-Windows system patch vulnerability WEB_CMS-Web-CMS vulnerability APPLICATION-Application vulnerability EMERGENCY-Emergency vulnerability<br>TaskName - Fuzzy matching, filter by vulnerability name/CVE ID/KB patch name, matching task associated vulnerability or KB patch</p>",
+          "document": "<p>Filter criteria<br>Supported Filter.Name:<br>TaskId - Exact match, Filter by task ID<br>JobId - Exact match, Filter by task JobId, which corresponds to the task ID in the background job system<br>FixStatus - Exact match, Filter by remediation status: 0-initialization 1-in remediation 2-repair successful 3-partially failed to fix 4-all failed to fix 5-stop fix<br>StartTime - Range match, remediation start time range. Input two values to indicate the start and end time<br>AppId - Exact match, Filter by creator AppId<br>VulCategory - Exact match, Filter by vulnerability type: LINUX-LINUX software vulnerability WINDOWS-WINDOWS system patch vulnerability WEB_CMS-WEB-CMS vulnerability APPLICATION-APPLICATION vulnerability EMERGENCY-urgent vulnerability<br>TaskName - Fuzzy matching, Filter by vulnerability Name/CVE ID/KB patch Name, matching the vulnerability or KB patch associated with the task</p>",
           "example": "无",
           "member": "Filters",
           "name": "Filters",
@@ -68730,7 +68865,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Sorting field<br>Enumeration value:<br>StartTime: Sort by repair start time<br>EndTime: Sort by repair end time<br>CreateTime: Sort by creation time</p>",
+          "document": "<p>Sorting field<br>Enumeration values:<br>StartTime: sort by repair start time<br>EndTime: sort by repair end time<br>CreateTime: sort by creation time</p>",
           "example": "CreateTime",
           "member": "string",
           "name": "Order",
@@ -68739,7 +68874,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Sorting method<br>Enumeration value:<br>asc: Ascending<br>desc: Descending order<br>Default value: desc</p>",
+          "document": "<p>Sorting method<br>Enumeration values:<br>asc: in ascending order<br>desc: in descending order<br>Default value: desc</p>",
           "example": "desc",
           "member": "string",
           "name": "By",
@@ -68795,7 +68930,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>Vulnerability ID list, a maximum of 100</p>",
+          "document": "<p>List of vulnerability IDs. Supports up to 100.</p>",
           "example": "[10001, 10002]",
           "member": "int64",
           "name": "VulIds",
@@ -68804,7 +68939,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Paging offset<br>Value ranges from 0 to +∞<br>Default value: 0</p>",
+          "document": "<p>Paging offset<br>Value range: [0, +∞)<br>Default value: 0</p>",
           "example": "0",
           "member": "int64",
           "name": "Offset",
@@ -68813,7 +68948,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Number of results per page<br>Value ranges from 1 to 100<br>Default value: 10</p>",
+          "document": "<p>Number of results per page<br>Value range: [1, 100]<br>Default value: 10</p>",
           "example": "10",
           "member": "int64",
           "name": "Limit",
@@ -68822,7 +68957,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Filtering Conditions<br>Supported Filter.Name:<br>Keyword - fuzzy matching, search by asset ID, asset name<br>ComponentName - fuzzy matching, search by associated component name<br>InstanceId - exact match, filter by host instance ID<br>MachineName - fuzzy matching, search by host name<br>MachineIp - fuzzy matching, search by host IP<br>OsType - exact match, filter by OS type: linux/windows<br>SupportAutoFix - exact match, filter by whether automatic fixing is supported: 0-unsupported 1-supported<br>Tag - exact match, filter by asset tag<br>AppId - exact match, filter by associated account</p>",
+          "document": "<p>Filter criteria<br>Supported Filter.Name:<br>Keyword - Fuzzy matching. Search by asset ID or asset name.<br>ComponentName - Fuzzy matching. Search by associated component name.<br>InstanceId - Exact match. Filter by host instance ID.<br>MachineName - Fuzzy matching. Search by host name.<br>MachineIp - Fuzzy matching. Search by host IP.<br>OsType - Exact match. Filter by OS type: linux/windows<br>SupportAutoFix - Exact match. Filter by whether auto-repair is supported: 0-unsupported 1-supported<br>Tag - Exact match. Filter by asset tag.<br>AppId - Exact match. Filter by associated account.</p>",
           "example": "无",
           "member": "Filters",
           "name": "Filters",
@@ -68846,7 +68981,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>Repair host list</p>",
+          "document": "<p>Repairable host list</p>",
           "example": "无",
           "member": "VulFixableMachineItem",
           "name": "Data",
@@ -68876,7 +69011,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Number of hosts that cannot be one-click repaired</p>",
+          "document": "<p>Number of hosts that cannot be repaired with one click</p>",
           "example": "2",
           "member": "int64",
           "name": "NotFixableCount",
@@ -68886,7 +69021,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Summary information of vulnerability dimension, showing overview of list of vulnerabilities to be fixed</p>",
+          "document": "<p>Vulnerability dimensional summary, showing an overview of the list of repaired vulnerabilities</p>",
           "example": "无",
           "member": "VulFixSummaryItem",
           "name": "VulSummary",
@@ -68926,7 +69061,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Paging offset, used for associated component & path list pagination.<br>Value ranges from 0 to +∞.<br>Default value: 0.</p>",
+          "document": "<p>Paging offset for associated component &amp; path list pagination<br>Value range: [0, +∞)<br>Default value: 0</p>",
           "example": "0",
           "member": "int64",
           "name": "Offset",
@@ -68935,7 +69070,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Number of results per page, used for paginating associated components & path list<br>Value ranges from 1 to 100<br>Default value: 10</p>",
+          "document": "<p>Number of results per page, used for list pagination of associated components &amp; paths<br>Value range: [1, 100]<br>Default value: 10</p>",
           "example": "10",
           "member": "int64",
           "name": "Limit",
@@ -68979,7 +69114,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Vulnerability type<br>Enumeration value:<br>LINUX: Linux software vulnerability<br>WINDOWS: Windows system patch vulnerability<br>WEB_CMS: Web-CMS vulnerability<br>APPLICATION: Application vulnerability</p>",
+          "document": "<p>Vulnerability type<br>Enumeration values:<br>LINUX: Linux software vulnerability<br>WINDOWS: Windows system patch vulnerability<br>WEB_CMS: Web-CMS vulnerability<br>APPLICATION: Application vulnerability</p>",
           "example": "LINUX",
           "member": "string",
           "name": "VulCategory",
@@ -68989,7 +69124,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Repair completion time<br>Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)</p>",
+          "document": "<p>Repair completed time<br>Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)</p>",
           "example": "2025-08-30T23:00:00+08:00",
           "member": "string",
           "name": "FixTime",
@@ -69019,7 +69154,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Public IP of the server</p>",
+          "document": "<p>Public IP of the Server</p>",
           "example": "118.24.71.134",
           "member": "string",
           "name": "PublicIp",
@@ -69039,7 +69174,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Associated component & path detail list</p>",
+          "document": "<p>Associated component &amp; path detail list</p>",
           "example": "无",
           "member": "ComponentDetailItem",
           "name": "ComponentDetails",
@@ -69049,7 +69184,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Total number of associated components & paths</p>",
+          "document": "<p>Total number of associated components &amp; paths</p>",
           "example": "49",
           "member": "int64",
           "name": "TotalCount",
@@ -69071,7 +69206,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>Paging offset<br>Value ranges from 0 to +∞<br>Default value: 0</p>",
+          "document": "<p>Paging offset<br>Value range: [0, +∞)<br>Default value: 0</p>",
           "example": "0",
           "member": "int64",
           "name": "Offset",
@@ -69080,7 +69215,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Number of results per page<br>Value ranges from 1 to 100<br>Default value: 10</p>",
+          "document": "<p>Number of results per page<br>Value range: [1, 100]<br>Default value: 10</p>",
           "example": "10",
           "member": "int64",
           "name": "Limit",
@@ -69089,7 +69224,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Filtering Conditions<br>Supported Filter.Name:<br>Keyword - Fuzzy matching, search by keyword (vulnerability name/CVE ID/host name/instance ID)<br>VulName - Fuzzy matching, vulnerability name search<br>Level - Exact match, filter by vulnerability level: LOW-Low risk MEDIUM-Medium risk HIGH-High risk CRITICAL-Critical<br>VprLevel - Exact match, filter by VPR rating: 1-Low 2-Medium 3-High 4-Critical<br>VulCategory - Exact match, type filter: LINUX-Linux software vulnerability WINDOWS-Windows system patch vulnerability WEB_CMS-Web-CMS vulnerability APPLICATION-Application vulnerability EMERGENCY-Emergency vulnerability<br>MachineName - Fuzzy matching, search by host name<br>InstanceId - Fuzzy matching, id search by instance<br>FixTime - Range matching, repair time range, input two values to indicate start and end time</p>",
+          "document": "<p>Filter criteria<br>Supported Filter.Name:<br>Keyword - fuzzy matching, search by keyword (vulnerability name/CVE ID/host name/instance ID)<br>VulName - fuzzy matching, search by vulnerability name<br>Level - exact matching, filter by vulnerability level: LOW - low risk, MEDIUM - medium risk, HIGH - high risk, CRITICAL - critical<br>VprLevel - exact matching, filter by VPR rating: 1 - Low, 2 - Medium, 3 - High, 4 - Critical<br>VulCategory - exact matching, filter by vulnerability type: LINUX - Linux software vulnerability, WINDOWS - Windows system patch vulnerability, WEB_CMS - Web-CMS vulnerability, APPLICATION - application vulnerability, EMERGENCY - urgent vulnerability<br>MachineName - fuzzy matching, search by host name<br>InstanceId - fuzzy matching, search by instance ID<br>FixTime - range matching, repair time range. Input two values to indicate the start and end time</p>",
           "example": "无",
           "member": "Filters",
           "name": "Filters",
@@ -69098,7 +69233,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Sorting field<br>Enumeration value:<br>FixTime: Sort by repair time<br>VulName: Sort by vulnerability name</p>",
+          "document": "<p>Sorting field<br>Enumeration values:<br>FixTime: sort by fix time<br>VulName: sort by vulnerability name</p>",
           "example": "FixTime",
           "member": "string",
           "name": "Order",
@@ -69107,7 +69242,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Sorting method<br>Enumeration value:<br>asc: Ascending<br>desc: Descending order<br>Default value: desc</p>",
+          "document": "<p>Sorting method<br>Enumeration values:<br>asc: Ascending<br>desc: Descending<br>Default value: desc</p>",
           "example": "desc",
           "member": "string",
           "name": "By",
@@ -69131,7 +69266,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>List of fixed vulnerabilities</p>",
+          "document": "<p>Fixed vulnerability list</p>",
           "example": "无",
           "member": "VulFixedItem",
           "name": "Data",
@@ -69548,7 +69683,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Filter conditions array, multi-condition with each other in the AND relationship<br>Supported Filter.Name:<br>Keyword: Keyword fuzzy search (fuzzy matching for component name)</p>",
+          "document": "<p>Criteria array, multi-condition uses AND relationship with each other<br>Supported Filter.Name:<br>Keyword: keyword fuzzy search (fuzzy matching for component name)</p>",
           "example": "无",
           "member": "Filters",
           "name": "Filters",
@@ -69563,7 +69698,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>List of affected components for the vulnerability</p>",
+          "document": "<p>List of affected components</p>",
           "example": "无",
           "member": "VulComponentSummary",
           "name": "List",
@@ -69585,7 +69720,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>p>KB patch internal ID (kb_info.id)</p>",
+          "document": "<p>KB patch internal ID (kb_info.id)</p>",
           "example": "0",
           "member": "uint64",
           "name": "KBID",
@@ -69612,7 +69747,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Filter conditions array. Multi-condition with each other is AND relationship<br>Supported Filter.Name:<br>Keyword: Keyword fuzzy search (fuzzy matching for host name/IP/InstanceID)<br>CloudTag: Cloud tag<br>Tag: Security center tag</p>",
+          "document": "<p>Criteria array, multi-condition uses AND relationship with each other<br>Supported Filter.Name:<br>Keyword: Keyword fuzzy search (fuzzy matching for host name/IP/InstanceID)<br>CloudTag: Cloud tag<br>Tag: Security center tag</p>",
           "example": "无",
           "member": "Filters",
           "name": "Filters",
@@ -69621,7 +69756,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Number of results per page<br>Value ranges from 1 to 100<br>Default value: 10</p>",
+          "document": "<p>Number of results per page<br>Value range: [1, 100]<br>Default value: 10</p>",
           "example": "10",
           "member": "uint64",
           "name": "Limit",
@@ -69630,7 +69765,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Paging offset<br>Value ranges from 0 to +∞<br>Default value: 0</p>",
+          "document": "<p>Paging offset<br>Value range: [0, positive infinity)<br>Default value: 0</p>",
           "example": "0",
           "member": "uint64",
           "name": "Offset",
@@ -69639,7 +69774,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Sorting order<br>Enumeration value:<br>ASC: Ascending<br>DESC: Descending order<br>Default value: DESC</p>",
+          "document": "<p>Sorting order<br>Enumeration values:<br>ASC: ascending<br>DESC: descending<br>Default value: DESC</p>",
           "example": "desc",
           "member": "string",
           "name": "Order",
@@ -69648,7 +69783,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Sorting field<br>Enumeration value:<br>LatestScanTime: Latest scan time<br>VPRLevel: VPR rating<br>RiskStatus: Remediation status<br>Default value: LatestScanTime</p>",
+          "document": "<p>Sorting field<br>Enumeration values:<br>LatestScanTime: Latest scan time<br>VPRLevel: VPR rating<br>RiskStatus: Remediation status<br>Default value: LatestScanTime</p>",
           "example": "LatestScanTime",
           "member": "string",
           "name": "By",
@@ -69663,7 +69798,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>List of affected hosts for the vulnerability</p>",
+          "document": "<p>List of affected hosts</p>",
           "example": "无",
           "member": "VulHostBriefInfo",
           "name": "List",
@@ -69673,7 +69808,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Total number of qualified instances</p>",
+          "document": "<p>Total number of eligible items</p>",
           "example": "1",
           "member": "uint64",
           "name": "TotalCount",
@@ -69710,7 +69845,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<p>Period scanning switch (0-off, 1-on)</p>",
+          "document": "<p>Periodic scan switch (0-Disable, 1-Enable)</p>",
           "example": "0",
           "member": "int64",
           "name": "Status",
@@ -69720,7 +69855,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Vulnerability type</p><p>Enumeration value:</p><ul><li>LINUX: Linux software vulnerability</li><li>WINDOWS: Windows system patch</li><li>WEB_CMS: Web-CMS vulnerability</li><li>APPLICATION: Application vulnerability</li><li>EMERGENCY: Emergency vulnerability</li></ul>",
+          "document": "<p>Vulnerability type</p><p>Enumeration values:</p><ul><li>LINUX: Linux software vulnerability</li><li>WINDOWS: Windows system patch</li><li>WEB_CMS: Web-CMS vulnerability</li><li>APPLICATION: Application vulnerability</li><li>EMERGENCY: Emergency vulnerability</li></ul>",
           "example": "[\"LINUX\"]",
           "member": "string",
           "name": "VulCategory",
@@ -69730,7 +69865,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Vulnerability level (INVALID: Invalid, INFO: Notification, LOW: Low risk, MEDIUM: Medium risk, HIGH: High risk, CRITICAL: Critical)</p>",
+          "document": "<p>Vulnerability level (INVALID: invalid, INFO: notification, LOW: low risk, MEDIUM: medium risk, HIGH: high risk, CRITICAL: critical)</p>",
           "example": "[\"MEDIUM\"]",
           "member": "string",
           "name": "Level",
@@ -69740,7 +69875,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Scanning method (VersionCompare: version comparison, POC: POC detection, VersionComparePOC: version p comparison+POC detection)</p>",
+          "document": "<p>Scan mode (VersionCompare: version comparison, POC: POC detection, VersionComparePOC: version comparison + POC detection)</p>",
           "example": "VersionCompare",
           "member": "string",
           "name": "Method",
@@ -69750,7 +69885,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Period scanning type</p><p>Enumeration value:</p><ul><li>1: Daily</li><li>2: Weekly</li><li>3: Per month</li></ul>",
+          "document": "<p>Periodic scan type</p><p>Enumeration values:</p><ul><li>1: Daily</li><li>2: Weekly</li><li>3: Per month</li></ul>",
           "example": "2",
           "member": "uint64",
           "name": "CycleType",
@@ -69780,7 +69915,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Asset scope (0-All assets, 1-Custom assets, 2-Remove asset)</p>",
+          "document": "<p>Asset scope (0 - all assets, 1 - custom asset, 2 - remove asset)</p>",
           "example": "0",
           "member": "int64",
           "name": "AssetRange",
@@ -69800,7 +69935,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Period value</p><p>Unit: Day of the week or day of the month</p>",
+          "document": "<p>Cycle value</p><p>Unit: day of the week or day per month</p>",
           "example": "[3]",
           "member": "uint64",
           "name": "CycleValue",
@@ -69810,7 +69945,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Timeout duration</p><p>Unit: second</p>",
+          "document": "<p>Timeout duration</p><p>Unit: seconds</p>",
           "example": "3600",
           "member": "uint64",
           "name": "Timeout",
@@ -69820,7 +69955,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Whether to synchronize configuration 0-cannot, 1-permission</p>",
+          "document": "<p>Whether to run the synchronized configuration. 0: not allowed, 1: allowed</p>",
           "example": "0",
           "member": "uint64",
           "name": "AllowSync",
@@ -69830,7 +69965,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Whether the admin account has the automated configuration synchronization switch enabled 0-Off, 1-On</p>",
+          "document": "<p>Whether automatic synchronization is enabled for the admin account. 0: disabled, 1: enabled</p>",
           "example": "1",
           "member": "uint64",
           "name": "EnableSync",
@@ -69840,7 +69975,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Which account the configuration message comes from. Being empty indicates set by oneself.</p>",
+          "document": "<p>Which account the configuration message comes from. Being empty indicates it is set by oneself.</p>",
           "example": "无",
           "member": "AccountBriefInfo",
           "name": "AdminInfo",
@@ -69850,12 +69985,22 @@
         },
         {
           "disabled": false,
-          "document": "<p>tag id</p>",
+          "document": "<p>Tag id</p>",
           "example": "[1]",
           "member": "uint64",
           "name": "TagIds",
           "output_required": false,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to prefer Tencent Cloud software sources</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "PreferCloudSource",
+          "output_required": false,
+          "type": "bool",
           "value_allowed_null": false
         },
         {
@@ -79553,6 +79698,15 @@
           "name": "By",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>File operation rules, populated when ContentType=file_operation (file path regex AND any selected action)</p>",
+          "example": "无",
+          "member": "RuleContentFileOperation",
+          "name": "FileOperationRules",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -94298,6 +94452,24 @@
           "name": "ConditionMatches",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>File operation rules, populated when ContentType=file_operation (file path regex AND any selected action)</p>",
+          "example": "无",
+          "member": "RuleContentFileOperation",
+          "name": "FileOperationRules",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>K8s API rule passed when ContentType=k8s_api. Values of all non-empty fields must be Base64-encoded, and k8s_api rules apply only per cluster.</p>",
+          "example": "无",
+          "member": "RuleContentK8sAPI",
+          "name": "K8sApiRule",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -96447,6 +96619,15 @@
           "name": "Timeout",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of alarm type codes for custom quarantine mode (required when ProtectMode=2; codes are taken from the QuaraTypeDict returned by Describe)</p>",
+          "example": "[\"Packed\"]",
+          "member": "string",
+          "name": "QuaraTypes",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -96986,6 +97167,15 @@
           "example": "无",
           "member": "HostAutoScaleConfig",
           "name": "HostConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Auto-scaling configuration for the container security module; if not passed, it remains unchanged</p>",
+          "example": "无",
+          "member": "ContainerAutoScaleConfig",
+          "name": "ContainerConfig",
           "required": false,
           "type": "object"
         }
@@ -100274,32 +100464,32 @@
         {
           "disabled": false,
           "document": "Quota Key",
-          "example": "无",
+          "example": "sv_soccloud_edition_ultimate_hp",
           "member": "string",
           "name": "QuotaKey",
-          "required": false,
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Total Quota",
-          "example": "无",
+          "example": "2",
           "member": "int64",
           "name": "QuotaNum",
-          "required": false,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Quota Usage",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "QuotaUsed",
-          "required": false,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -101698,6 +101888,52 @@
         }
       ],
       "usage": "in"
+    },
+    "QuaraTypeDictItem": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "Macro-Virus",
+          "member": "string",
+          "name": "Code",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "宏病毒",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "true",
+          "member": "bool",
+          "name": "Recommend",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "漏洞探测、端口扫描、密码破解、流量嗅探或网络攻击的专用工具。企业运维及安全测试也可能使用同类工具",
+          "member": "string",
+          "name": "Desc",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "RaspLicenseList": {
       "document": "List of authorization packages for major event protection.",
@@ -103631,6 +103867,183 @@
           "output_required": false,
           "required": false,
           "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "RuleContentFileOperation": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "RuleContentProcessInfo",
+          "name": "Process",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "RuleContentProcessInfo",
+          "name": "ParentProcess",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "/usr/bin/b4f3a1c3",
+          "member": "string",
+          "name": "FilePath",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "[\"write\"]",
+          "member": "string",
+          "name": "FileActions",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "RuleContentK8sAPI": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "exec",
+          "member": "string",
+          "name": "RequestURI",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "create",
+          "member": "string",
+          "name": "Verb",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "system:anonymous",
+          "member": "string",
+          "name": "RequestUser",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "kubectl",
+          "member": "string",
+          "name": "UserAgent",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "172.16.0.10",
+          "member": "string",
+          "name": "SourceIPS",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "101",
+          "member": "string",
+          "name": "ResponseStatusCode",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "privileged",
+          "member": "string",
+          "name": "RequestObject",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "secret",
+          "member": "string",
+          "name": "ResponseObject",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "/etc",
+          "member": "string",
+          "name": "MountHostDir",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "nginx",
+          "member": "string",
+          "name": "PodNameIP",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "7ff64758-45ec-4eec-b31d-90db11f85c9e",
+          "member": "string",
+          "name": "AuditID",
+          "output_required": false,
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -111569,6 +111982,104 @@
       ],
       "usage": "out"
     },
+    "VPRExplainDimension": {
+      "document": "Explain one dimension in the VPR interpretation card.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Tag key</p>",
+          "example": "asset_value",
+          "member": "string",
+          "name": "Key",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Tag name</p>",
+          "example": "资产价值",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Tag sub-item.</p>",
+          "example": "无",
+          "member": "VPRExplainDimensionItem",
+          "name": "Items",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "VPRExplainDimensionItem": {
+      "document": "Interpret a single tag item in the VPR card",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Tag.</p>",
+          "example": "important",
+          "member": "string",
+          "name": "Key",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Tag name</p>",
+          "example": "核心:核心",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Tag description.</p>",
+          "example": "核心资产",
+          "member": "string",
+          "name": "Remark",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "VPRExplainInfo": {
+      "document": "VPR rating interpretation card",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Vulnerability intelligence</p>",
+          "example": "无",
+          "member": "VPRExplainDimension",
+          "name": "VulIntel",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Asset context</p>",
+          "example": "无",
+          "member": "VPRExplainDimension",
+          "name": "AssetContext",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "VPRLabel": {
       "document": "Vulnerability VPR tag",
       "members": [
@@ -111610,7 +112121,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "VPR rating result\nEnumeration value:\nURGENT: Immediate repair\nSUGGESTED: Suggested repairs\nDEFERRABLE: Deferrable repair",
+          "document": "VPR rating result\nEnumeration value:\nURGENT: immediate repair\nSUGGESTED repairs\nDEFERRABLE: Deferrable repair",
           "example": "URGENT",
           "member": "string",
           "name": "Result",
@@ -111630,7 +112141,7 @@
         },
         {
           "disabled": false,
-          "document": "List of stage rating details",
+          "document": "List of phased rating details",
           "example": "无",
           "member": "VPRRatingStage",
           "name": "Stage",
@@ -111646,7 +112157,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Stage name (for example: threat activity level, exploitability, vulnerability severity)",
+          "document": "Stage name (for example, threat activity, exploitability, vulnerability severity)",
           "example": "威胁活跃度",
           "member": "string",
           "name": "Stage",
@@ -111657,7 +112168,7 @@
         },
         {
           "disabled": false,
-          "document": "Rating result of this stage",
+          "document": "Rating result of this stage.",
           "example": "高",
           "member": "string",
           "name": "Result",
@@ -113182,11 +113693,11 @@
       "usage": "out"
     },
     "VulComponentSummary": {
-      "document": "Host Vulnerability Component Overview",
+      "document": "Host vulnerability component overview",
       "members": [
         {
           "disabled": false,
-          "document": "<p>Component name.</p>",
+          "document": "<p>Component name</p>",
           "example": "socat",
           "member": "string",
           "name": "Name",
@@ -113197,7 +113708,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Associated hosts.</p>",
+          "document": "<p>Number of associated hosts</p>",
           "example": "1",
           "member": "uint64",
           "name": "RelateHostCount",
@@ -113516,11 +114027,11 @@
       "usage": "out"
     },
     "VulFixItem": {
-      "document": "Vulnerability repair item, specify a vulnerability/KB patch and its target host that needs to be repaired.",
+      "document": "Vulnerability repair item. Specify a vulnerability/KB patch and its target host for repair.",
       "members": [
         {
           "disabled": false,
-          "document": "<p>Instance ID list of hosts requiring fixing<br>Input parameter limitation: Up to 1,000 instance IDs per single item</p>",
+          "document": "<p>Instance ID list of hosts requiring fixing<br>Input limit: up to 1000 instance IDs per single item</p>",
           "example": "[\"ins-a1b2c3d4\",\"ins-e5f6g7h8\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -113531,7 +114042,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Vulnerability ID. Choose either VulId or KBId.</p>",
+          "document": "<p>Vulnerability ID. Choose either VulId or KBId</p>",
           "example": "10001",
           "member": "int64",
           "name": "VulId",
@@ -113542,7 +114053,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Patch ID. Choose either VulId or KBId.</p>",
+          "document": "<p>KB patch ID. Either VulId or KBId is required.</p>",
           "example": "0",
           "member": "int64",
           "name": "KBId",
@@ -113555,11 +114066,11 @@
       "usage": "both"
     },
     "VulFixStatusItem": {
-      "document": "Vulnerability/KB patch dimensional remediation status",
+      "document": "Remediation status in vulnerability/KB patch dimension",
       "members": [
         {
           "disabled": false,
-          "document": "Vulnerability ID (empty for KB patch fix tasks)",
+          "document": "Vulnerability ID (empty for KB patch repair tasks)",
           "example": "20001",
           "member": "int64",
           "name": "VulId",
@@ -113569,7 +114080,7 @@
         },
         {
           "disabled": false,
-          "document": "Patch ID (empty for vulnerability repair tasks)",
+          "document": "KB patch ID (empty for vulnerability repair tasks)",
           "example": "0",
           "member": "int64",
           "name": "KBId",
@@ -113589,7 +114100,7 @@
         },
         {
           "disabled": false,
-          "document": "Remediation status of the vulnerability\nEnumeration value:\n0: In remediation\n1: All successful\n2: partially failed\n3: All failed",
+          "document": "Remediation status of the vulnerability\nEnumeration value:\n0: In remediation\n1: All successful\n2: Partially failed\n3: All failed",
           "example": "1",
           "member": "int64",
           "name": "FixStatus",
@@ -113599,7 +114110,7 @@
         },
         {
           "disabled": false,
-          "document": "Total hosts associated with the vulnerability/KB patch",
+          "document": "Total number of hosts associated with this vulnerability/KB patch",
           "example": "3",
           "member": "int64",
           "name": "HostCount",
@@ -113609,7 +114120,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of hosts successfully fixed by the vulnerability/KB patch",
+          "document": "Number of hosts successfully fixed by this vulnerability/KB patch",
           "example": "3",
           "member": "int64",
           "name": "SuccessHostCount",
@@ -113619,7 +114130,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of hosts failed to be fixed for the vulnerability/KB patch",
+          "document": "Number of hosts failed to be fixed by this vulnerability/KB patch",
           "example": "0",
           "member": "int64",
           "name": "FailHostCount",
@@ -113631,7 +114142,7 @@
       "usage": "out"
     },
     "VulFixSummaryItem": {
-      "document": "Vulnerability repair summary",
+      "document": "Vulnerability repair summary information",
       "members": [
         {
           "disabled": false,
@@ -113675,7 +114186,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Whether restart is required after repair</p>",
+          "document": "<p>Whether the system needs to be restarted after repair</p>",
           "example": "false",
           "member": "bool",
           "name": "NeedReboot",
@@ -113685,7 +114196,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Whether one-click repair is supported true-supported false-unsupported</p>",
+          "document": "<p>Whether one-click repair is supported. true - support; false - not support</p>",
           "example": "true",
           "member": "bool",
           "name": "FixSwitch",
@@ -113697,7 +114208,7 @@
       "usage": "out"
     },
     "VulFixTaskDetailItem": {
-      "document": "Vulnerability repair task details",
+      "document": "Vulnerability repair task details item",
       "members": [
         {
           "disabled": false,
@@ -113721,7 +114232,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Vulnerability ID to be repaired</p>",
+          "document": "<p>ID of the repaired vulnerability</p>",
           "example": "20001",
           "member": "int64",
           "name": "VulId",
@@ -113731,7 +114242,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Patch ID of the fixed KB</p>",
+          "document": "<p>KB patch ID repaired</p>",
           "example": "0",
           "member": "int64",
           "name": "KBId",
@@ -113781,7 +114292,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Execution status<br>Enumeration value:<br>0: Initial state<br>1: Task issued<br>11: Client confirmed<br>2: Repair completed<br>3: Client offline<br>4: Timeout<br>5: Failure<br>6: Unsupported<br>9: Waiting for snapshot creation<br>10: Snapshot creation failed</p>",
+          "document": "<p>Execution status<br>Enumeration values:<br>0: Initial status<br>1: Task issued<br>11: Confirmed by client<br>2: Repair completed<br>3: Client offline<br>4: Timeout<br>5: Failed<br>6: Not supported<br>9: Waiting for snapshot creation<br>10: Snapshot creation failed</p>",
           "example": "2",
           "member": "int64",
           "name": "Status",
@@ -113791,7 +114302,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Fix result</p><p>Enumeration values:</p><ul><li>0: initial state</li><li>1: repair successful</li><li>2: fix failure</li><li>3: fix</li></ul>",
+          "document": "<p>Fix result</p><p>Enumeration values:</p><ul><li>0: initial status</li><li>1: successful fix</li><li>2: fix failure</li><li>3: in remediation</li></ul>",
           "example": "1",
           "member": "int64",
           "name": "FixStatus",
@@ -113801,7 +114312,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Snapshot status<br>Enumeration value:<br>-1: No need to create a snapshot<br>0: Not started<br>1: In progress<br>2: Completed<br>3: Creation failed</p>",
+          "document": "<p>Snapshot status<br>Enumeration values:<br>-1: No need to create a snapshot<br>0: Not started<br>1: In progress<br>2: Completed<br>3: Creation failed</p>",
           "example": "0",
           "member": "int64",
           "name": "SnapshotStatus",
@@ -113812,7 +114323,7 @@
         {
           "disabled": false,
           "document": "<p>Exception prompt message</p>",
-          "example": "Error: Errors during*d*wnloading metadata for rep***tory 'docker*ce-nightly-*ource':\n  - **********e:*404*for http:/*******s.te************/docker-ce/li*********s/**s**rce/nightly/*e*****a*****m*.xml (IP: 1***2*4.0.3)\n**ro***Failed to do************ata f*",
+          "example": "软件源配置重复：软件源在配置文件中存在重复定义，请清理 /etc/yum.repos.d/ 下的重复配置，重复源名以报错日志为准",
           "member": "string",
           "name": "ExceptionMessage",
           "output_required": false,
@@ -113821,7 +114332,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Repair startup time<br>Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)</p>",
+          "document": "<p>Recovery startup time<br>Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)</p>",
           "example": "2025-06-26T10:00:00+08:00",
           "member": "datetime_iso",
           "name": "StartTime",
@@ -113861,7 +114372,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Snapshot creation failure reason (available when SnapshotStatus=3)</p>",
+          "document": "<p>Snapshot creation failure reason (valid when SnapshotStatus=3)</p>",
           "example": "快照创建失败: CBS CreateSnapshot failed: [TencentCloudSDKError] Code=ResourceUnavailable.SnapshotCreating, Messa*e=(7652545c53a0)云硬盘(di*********3g)正在创建快照中，请稍后重试,*****es*********d9a-be2*****2-*****************",
           "member": "string",
           "name": "SnapshotFailReason",
@@ -113873,11 +114384,11 @@
       "usage": "out"
     },
     "VulFixTaskInfo": {
-      "document": "Task summary of vulnerability repair",
+      "document": "Vulnerability repair task summary information",
       "members": [
         {
           "disabled": false,
-          "document": "Primary key ID of the fix task",
+          "document": "Repair task primary key ID",
           "example": "10001",
           "member": "int64",
           "name": "Id",
@@ -113897,7 +114408,7 @@
         },
         {
           "disabled": false,
-          "document": "Remediation status\nEnumeration values:\n0: initialization\n1: In remediation\n2: Repair successful\n3: Partially fix failed\n4: All fix failures\n5: Stop repair",
+          "document": "Remediation status\nEnumeration values:\n0: initialization\n1: In remediation\n2: Repair successful\n3: Partially fixed\n4: All fix failures\n5: Stop repair",
           "example": "1",
           "member": "int64",
           "name": "FixStatus",
@@ -113907,7 +114418,7 @@
         },
         {
           "disabled": false,
-          "document": "Repair total number of assets",
+          "document": "Total number of repaired assets",
           "example": "5",
           "member": "int64",
           "name": "AssetCount",
@@ -113927,7 +114438,7 @@
         },
         {
           "disabled": false,
-          "document": "FIX_FAILURE count",
+          "document": "Number of failed fixes",
           "example": "1",
           "member": "int64",
           "name": "FailCount",
@@ -113957,7 +114468,7 @@
         },
         {
           "disabled": false,
-          "document": "Progress percentage of the repair\nValue range: [0, 100].\nSupplemental description: Calculation method is (SuccessCount+FailCount)/AssetCount×100.",
+          "document": "Repair progress percentage\nValue range: [0, 100].\nSupplemental description: Calculation method: (SuccessCount+FailCount)/AssetCount×100",
           "example": "80",
           "member": "int64",
           "name": "Progress",
@@ -113967,7 +114478,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of successfully fixed vulnerabilities",
+          "document": "Number of vulnerabilities with successful fixes",
           "example": "2",
           "member": "int64",
           "name": "SuccessVulCount",
@@ -113987,7 +114498,7 @@
         },
         {
           "disabled": false,
-          "document": "List of vulnerability names to be fixed",
+          "document": "List of fixed vulnerability names",
           "example": "[\"OpenSSL 远程代码执行漏洞\",\"glibc 缓冲区溢出漏洞\"]",
           "member": "string",
           "name": "VulNames",
@@ -113997,7 +114508,7 @@
         },
         {
           "disabled": false,
-          "document": "Fix startup time\nParameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format).",
+          "document": "Startup time for repair\nParameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)",
           "example": "2025-06-26T10:00:00+08:00",
           "member": "datetime_iso",
           "name": "StartTime",
@@ -114007,7 +114518,7 @@
         },
         {
           "disabled": false,
-          "document": "Fixing end time\nParameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format).",
+          "document": "Repair end time\nParameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)",
           "example": "2025-06-26T10:10:00+08:00",
           "member": "datetime_iso",
           "name": "EndTime",
@@ -114017,7 +114528,7 @@
         },
         {
           "disabled": false,
-          "document": "List of vulnerability dimensional remediation status, status details of each vulnerability",
+          "document": "List of vulnerability dimensional remediation statuses, with status details for each vulnerability",
           "example": "无",
           "member": "VulFixStatusItem",
           "name": "VulFixStatusList",
@@ -114033,7 +114544,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Primary key ID of the fix task",
+          "document": "Primary key ID of the repair task",
           "example": "10001",
           "member": "int64",
           "name": "Id",
@@ -114043,7 +114554,7 @@
         },
         {
           "disabled": false,
-          "document": "Task ID, hash flag for interactive",
+          "document": "Task ID, a hash flag for interaction.",
           "example": "10001",
           "member": "int64",
           "name": "TaskId",
@@ -114053,7 +114564,7 @@
         },
         {
           "disabled": false,
-          "document": "JobId, corresponding to the Task ID of the task system.",
+          "document": "Task JobId, corresponding to the task ID in the task system.",
           "example": "job-abc123def456",
           "member": "string",
           "name": "JobId",
@@ -114063,7 +114574,7 @@
         },
         {
           "disabled": false,
-          "document": "List of vulnerability IDs to be fixed",
+          "document": "List of fixed vulnerability IDs",
           "example": "[1001,1002]",
           "member": "int64",
           "name": "VulIds",
@@ -114073,7 +114584,7 @@
         },
         {
           "disabled": false,
-          "document": "List of fixed KB patch IDs",
+          "document": "List of repaired KB patch IDs",
           "example": "[2001]",
           "member": "int64",
           "name": "KBIds",
@@ -114083,7 +114594,7 @@
         },
         {
           "disabled": false,
-          "document": "Repair the total number of assets",
+          "document": "Total number of repaired assets",
           "example": "5",
           "member": "int64",
           "name": "AssetCount",
@@ -114113,7 +114624,7 @@
         },
         {
           "disabled": false,
-          "document": "Progress percentage of the repair\nValid values: [0, 100]\nSupplemental description: Calculation method is (SuccessCount+FailCount)/AssetCount×100.",
+          "document": "Repair progress percentage\nValid values: [0, 100].\nSupplemental description: Calculation method: (SuccessCount+FailCount)/AssetCount×100",
           "example": "80",
           "member": "int64",
           "name": "Progress",
@@ -114123,7 +114634,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of users in the fix task",
+          "document": "Number of users for fix tasks",
           "example": "2",
           "member": "int64",
           "name": "TargetAppIdsCount",
@@ -114133,7 +114644,7 @@
         },
         {
           "disabled": false,
-          "document": "Remediation status\nEnumeration value:\n0: initialization\n1: In remediation\n2: Repair successful\n3: Partially fix failed\n4: All fix failures\n5: Stop repair",
+          "document": "Remediation status\nEnumeration values:\n0: initialization\n1: In remediation\n2: Repair successful\n3: Partial fix failure\n4: All fix failures\n5: Stop repair",
           "example": "1",
           "member": "int64",
           "name": "FixStatus",
@@ -114153,7 +114664,7 @@
         },
         {
           "disabled": false,
-          "document": "Fix startup time\nParameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format).",
+          "document": "Repair startup time\nParameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)",
           "example": "2025-06-26T10:00:00+08:00",
           "member": "datetime_iso",
           "name": "StartTime",
@@ -114163,7 +114674,7 @@
         },
         {
           "disabled": false,
-          "document": "Fix end time\nParameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format).",
+          "document": "Repair end time\nParameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)",
           "example": "2025-06-26T10:10:00+08:00",
           "member": "datetime_iso",
           "name": "EndTime",
@@ -114173,7 +114684,7 @@
         },
         {
           "disabled": false,
-          "document": "Record creation time.\nParameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format).",
+          "document": "Record creation time.\nParameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)",
           "example": "2025-06-26T09:58:00+08:00",
           "member": "datetime_iso",
           "name": "CreateTime",
@@ -114183,7 +114694,7 @@
         },
         {
           "disabled": false,
-          "document": "List of vulnerability names to be fixed, making it easy to show directly on the list page",
+          "document": "List of names of repaired vulnerabilities, making it easy to show directly on the list page",
           "example": "[\"OpenSSL 远程代码执行漏洞\",\"glibc 缓冲区溢出漏洞\"]",
           "member": "string",
           "name": "VulNames",
@@ -114193,7 +114704,7 @@
         },
         {
           "disabled": false,
-          "document": "Vulnerability Type List\nEnumeration values:\nLINUX: Linux software vulnerability\nWINDOWS: Windows system patch vulnerability\nWEB_CMS: Web-CMS vulnerabilities\nAPPLICATION: Application vulnerability\nEMERGENCY: Urgent vulnerability",
+          "document": "Vulnerability Type List\nEnumeration value:\nLINUX: Linux software vulnerability\nWINDOWS: WINDOWS system patch vulnerabilities\nWEB_CMS: Web-CMS vulnerability\nAPPLICATION: Application vulnerability\nEMERGENCY: Urgent vulnerability",
           "example": "[\"LINUX\"]",
           "member": "string",
           "name": "VulCategory",
@@ -114203,7 +114714,7 @@
         },
         {
           "disabled": false,
-          "document": "Creator AppId",
+          "document": "Creator `AppId`",
           "example": "1251001234",
           "member": "uint64",
           "name": "AppId",
@@ -114215,11 +114726,11 @@
       "usage": "out"
     },
     "VulFixableMachineItem": {
-      "document": "Fixable host information",
+      "document": "Repairable host information",
       "members": [
         {
           "disabled": false,
-          "document": "<p>Vulnerability ID list, grouped by SupportAutoFix dimension: repairable vulnerability IDs when SupportAutoFix=1, non-repairable vulnerability IDs when SupportAutoFix=0</p>",
+          "document": "<p>Vulnerability ID list, grouped by the SupportAutoFix dimension: When SupportAutoFix=1, it is a repairable vulnerability ID; when SupportAutoFix=0, it is a non-repairable vulnerability ID</p>",
           "example": "[10001]",
           "member": "int64",
           "name": "VulIds",
@@ -114259,7 +114770,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>public IP address</p>",
+          "document": "<p>Public IP Address</p>",
           "example": "203.0.113.10",
           "member": "string",
           "name": "PublicIp",
@@ -114269,7 +114780,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>OS type<br>Enumeration value:<br>linux: Linux operating system<br>windows: Windows operating system</p>",
+          "document": "<p>Operating system type<br>Enumeration values:<br>linux: Linux operating system<br>windows: Windows operating system</p>",
           "example": "linux",
           "member": "string",
           "name": "OsType",
@@ -114279,7 +114790,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Operating system name.</p>",
+          "document": "<p>OS name</p>",
           "example": "CentOS 7.9",
           "member": "string",
           "name": "OsName",
@@ -114299,7 +114810,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Is auto-repair supported<br>Enumeration value:<br>0: No support<br>1: Support</p>",
+          "document": "<p>Is auto-repair supported<br>Enumeration values:<br>0: No support<br>1: Support</p>",
           "example": "1",
           "member": "int64",
           "name": "SupportAutoFix",
@@ -114309,7 +114820,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Current remediation status<br>Enumeration value:<br>0: Unfixed<br>1: In remediation<br>2: Fix failure<br>3: Repair successful<br>4: Timeout</p>",
+          "document": "<p>Current remediation status<br>Enumeration values:<br>0: unfixed<br>1: in remediation<br>2: fix failed<br>3: successful fix<br>4: remediation timeout</p>",
           "example": "0",
           "member": "int64",
           "name": "FixStatus",
@@ -114339,7 +114850,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Fix command list, returned when SupportAutoFix is 1</p>",
+          "document": "<p>List of fix commands. Returned when SupportAutoFix is 1</p>",
           "example": "[\"sudo yum update zlib-devel zlib\"]",
           "member": "string",
           "name": "FixCommands",
@@ -114369,7 +114880,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Account AppId</p>",
+          "document": "<p>Associated account AppId</p>",
           "example": "1251234567",
           "member": "uint64",
           "name": "AppId",
@@ -114379,7 +114890,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Paid edition info<br>Enumeration value:<br>BASIC: Basic version<br>PRO: Pro edition<br>ULTIMATE: Flagship edition</p>",
+          "document": "<p>Paid edition info<br>Enumeration values:<br>BASIC: Basic version<br>PRO: Pro edition<br>ULTIMATE: Flagship edition</p>",
           "example": "ULTIMATE",
           "member": "string",
           "name": "PayVersion",
@@ -114391,11 +114902,11 @@
       "usage": "out"
     },
     "VulFixedItem": {
-      "document": "Fixed vulnerability information",
+      "document": "Information of fixed vulnerabilities",
       "members": [
         {
           "disabled": false,
-          "document": "Vulnerability ID",
+          "document": "<p>Vulnerability ID</p>",
           "example": "10001",
           "member": "int64",
           "name": "VulId",
@@ -114405,7 +114916,7 @@
         },
         {
           "disabled": false,
-          "document": "Vulnerability name",
+          "document": "<p>Vulnerability name</p>",
           "example": "CVE-2024-12345",
           "member": "string",
           "name": "VulName",
@@ -114415,7 +114926,7 @@
         },
         {
           "disabled": false,
-          "document": "Vulnerability level\nEnumeration values:\nLOW: low-risk\nMEDIUM: Medium risk\nHIGH: High risk\nCRITICAL",
+          "document": "<p>Vulnerability level<br>Enumeration values:<br>LOW: Low risk<br>MEDIUM: Medium risk<br>HIGH: High risk<br>CRITICAL: Critical</p>",
           "example": "HIGH",
           "member": "string",
           "name": "Level",
@@ -114425,7 +114936,7 @@
         },
         {
           "disabled": false,
-          "document": "VPR rating information (including rating result, description, and phased score), consistent with DescribeHostVulRiskList",
+          "document": "<p>VPR rating information (including rating result, description, and staged score), consistent with DescribeHostVulRiskList</p>",
           "example": "无",
           "member": "VPRRatingInfo",
           "name": "VRPRatingInfo",
@@ -114435,7 +114946,7 @@
         },
         {
           "disabled": false,
-          "document": "Vulnerability Type\nEnumeration values:\nLINUX: Linux software vulnerability\nWINDOWS: Windows system patch vulnerability\nWEB_CMS: Web-CMS vulnerabilities\nAPPLICATION: Application vulnerability\nEMERGENCY: Urgent vulnerability",
+          "document": "<p>Vulnerability type<br>Enumeration values:<br>LINUX: Linux software vulnerability<br>WINDOWS: Windows system patch vulnerability<br>WEB_CMS: Web-CMS vulnerability<br>APPLICATION: Application vulnerability<br>EMERGENCY: Urgent vulnerability</p>",
           "example": "LINUX",
           "member": "string",
           "name": "VulCategory",
@@ -114445,7 +114956,7 @@
         },
         {
           "disabled": false,
-          "document": "CVE id",
+          "document": "<p>CVE id</p>",
           "example": "CVE-2024-12345",
           "member": "string",
           "name": "CveId",
@@ -114455,7 +114966,7 @@
         },
         {
           "disabled": false,
-          "document": "Repair the host name",
+          "document": "<p>Repair host name</p>",
           "example": "web-server-01",
           "member": "string",
           "name": "MachineName",
@@ -114465,7 +114976,7 @@
         },
         {
           "disabled": false,
-          "document": "Repair the host instance ID",
+          "document": "<p>Repair host instance ID</p>",
           "example": "ins-abc12345",
           "member": "string",
           "name": "InstanceId",
@@ -114475,7 +114986,7 @@
         },
         {
           "disabled": false,
-          "document": "Associated component & number of paths",
+          "document": "<p>Associated component &amp; number of paths</p>",
           "example": "2",
           "member": "int64",
           "name": "ComponentCount",
@@ -114485,7 +114996,7 @@
         },
         {
           "disabled": false,
-          "document": "Associated component & path list",
+          "document": "<p>Associated component &amp; path list</p>",
           "example": "[\"openssl 1.1.1 /usr/lib/libssl.so\",\"openssl 1.1.1 /usr/bin/openssl\"]",
           "member": "string",
           "name": "Components",
@@ -114495,12 +115006,22 @@
         },
         {
           "disabled": false,
-          "document": "Last repair time\nParameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format).",
+          "document": "<p>Last repair time<br>Parameter format: YYYY-MM-DDTHH:mm:ssZ (ISO8601 format)</p>",
           "example": "2025-06-26T10:05:00+08:00",
           "member": "string",
           "name": "LatestFixTime",
           "output_required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>VPR rating basis</p>",
+          "example": "无",
+          "member": "VPRExplainInfo",
+          "name": "VPRExplainInfo",
+          "output_required": false,
+          "type": "object",
           "value_allowed_null": false
         }
       ],
@@ -114531,7 +115052,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Public network IP address</p>",
+          "document": "<p>Public IP address</p>",
           "example": "12.*.*.4",
           "member": "string",
           "name": "PublicIP",
@@ -114551,7 +115072,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Protection edition<br>Enumeration value:<br>NONE: No protection<br>BASIC: Basic version<br>PRO: Pro edition<br>ULTIMATE: Flagship edition<br>PRO_LH: Lightweight edition</p>",
+          "document": "<p>Protection edition<br>Enumeration values:<br>NONE: no protection<br>BASIC: basic version<br>PRO: pro edition<br>ULTIMATE: flagship edition<br>PRO_LH: lightweight edition</p>",
           "example": "ULTIMATE",
           "member": "string",
           "name": "DefendVersion",
@@ -114561,7 +115082,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Vulnerability defense status<br>Enumeration value:<br>ENABLED: Enabled<br>NOT_SUPPORTED: Unsupported<br>NOT_ENABLED: Not enabled</p>",
+          "document": "<p>Vulnerability defense status<br>Enumeration values:<br>ENABLED: enabled<br>NOT_SUPPORTED: unsupported<br>NOT_ENABLED: not enabled</p>",
           "example": "ENABLED",
           "member": "string",
           "name": "DefendStatus",
@@ -114571,7 +115092,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Associated account information</p>",
+          "document": "<p>Account information belonging to</p>",
           "example": "无",
           "member": "AccountBriefInfo",
           "name": "Account",
@@ -114581,7 +115102,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Cloud host instance status<br>Enumeration value:<br>RUNNING: running<br>STOPPED: stopped<br>UNKNOWN: unknown</p>",
+          "document": "<p>CVM instance status<br>Enumeration value:<br>RUNNING: running<br>STOPPED: stopped<br>UNKNOWN: unknown</p>",
           "example": "RUNNING",
           "member": "string",
           "name": "InstanceStatus",
@@ -114591,7 +115112,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Remediation status enumeration values.</p><p>Enumeration values: </p><ul><li>PENDING: To be fixed, </li><li>SCANNING: Scan in progress, </li><li>FIXED: Fixed, </li><li>IGNORED: Ignored, </li><li>FIXING: In remediation, </li><li>FIX_FAILED: Fix failure, </li><li>NEED_REBOOT: Pending restart.</li></ul>",
+          "document": "<p>Remediation status enumeration values.</p><p>Enumeration values: </p><ul><li>PENDING: To be fixed, </li><li>SCANNING: Scanning, </li><li>FIXED: Fixed, </li><li>IGNORED: Ignored, </li><li>FIXING: In remediation, </li><li>FIX_FAILED: Fix failure, </li><li>NEED_REBOOT: Pending restart.</li></ul>",
           "example": "PENDING",
           "member": "string",
           "name": "RiskStatus",
@@ -114611,7 +115132,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>CWP Agent status<br>Enumeration value:<br>ONLINE: Online<br>OFFLINE: Offline<br>UNINSTALLED: Not installed</p>",
+          "document": "<p>CWP Agent status<br>Enumeration values:<br>ONLINE: ONLINE<br>OFFLINE: OFFLINE<br>UNINSTALLED: not installed</p>",
           "example": "ONLINE",
           "member": "string",
           "name": "AgentStatus",
@@ -114621,7 +115142,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>Asset tag list (CSIP internal asset tag)</p>",
+          "document": "<p>Asset tag list (CSIP internal asset tags)</p>",
           "example": "无",
           "member": "MiniTagItem",
           "name": "TagItem",
