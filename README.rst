@@ -4,7 +4,7 @@ Install
 Lite Version (Preview)
 ----------------------
 
-TCCLI now offers a lightweight version with a significantly reduced footprint. Try it out with:
+TCCLI now offers a lightweight version with identical functionality and a significantly smaller footprint during use. Try it out with:
 
 .. code-block:: sh
 
