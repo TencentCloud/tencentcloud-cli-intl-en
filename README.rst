@@ -1,6 +1,24 @@
 Install
 =======
 
+Lite Version (Preview)
+----------------------
+
+TCCLI now offers a lightweight version with a significantly reduced footprint. Try it out with:
+
+.. code-block:: sh
+
+    pip install --pre tccli-intl-en
+
+If you already have ``tccli-intl-en`` installed, add ``--upgrade`` to update to the lightweight version:
+
+.. code-block:: sh
+
+    pip install --pre --upgrade tccli-intl-en
+
+Standard Version
+----------------
+
 .. code-block:: sh
 
     pip install tccli-intl-en
