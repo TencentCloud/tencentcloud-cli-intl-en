@@ -74,7 +74,7 @@
     ],
     "CreateInstances": [
       {
-        "document": "This example shows how to create a monthly subscribed Lighthouse instance.",
+        "document": "This example shows how to create a yearly/monthly subscribed Lighthouse instance.",
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateInstances\n<Common request parameters>\n\n{\n    \"BundleId\": \"bundle_gen_03\",\n    \"BlueprintId\": \"lhbp-g0tn7djh\",\n    \"InstanceChargePrepaid\": {\n        \"Period\": \"1\",\n        \"RenewFlag\": \"NOTIFY_AND_MANUAL_RENEW\"\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"InstanceIdSet\": [\n            \"lhins-hx5wjw4g\"\n        ],\n        \"RequestId\": \"232b2817-ec08-43f3-8d78-41b1bfb6082c\"\n    }\n}",
         "title": "Creating a Lighthouse instance"
