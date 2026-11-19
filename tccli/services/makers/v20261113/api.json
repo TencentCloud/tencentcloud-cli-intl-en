@@ -1,0 +1,2879 @@
+{
+  "actions": {
+    "CreateDeployment": {
+      "document": "This API is used to create a deployment. When uploading an artifact, pass Upload for ViaMeta and Provider, and pass the path of the uploaded object for TempBucketPath.",
+      "input": "CreateDeploymentRequest",
+      "name": "Create deployment",
+      "output": "CreateDeploymentResponse",
+      "status": "online"
+    },
+    "CreateProject": {
+      "document": "This API is used to create a project. When uploading an artifact, pass Upload for Provider and Custom for Channel.",
+      "input": "CreateProjectRequest",
+      "name": "Creates a project",
+      "output": "CreateProjectResponse",
+      "status": "online"
+    },
+    "CreateZoneCustomDomain": {
+      "document": "Bind a custom domain name to a specified environment of a project.",
+      "input": "CreateZoneCustomDomainRequest",
+      "name": "Binds a custom domain",
+      "output": "CreateZoneCustomDomainResponse",
+      "status": "online"
+    },
+    "DeleteProject": {
+      "document": "Delete a project. In-progress builds prevent deletion.",
+      "input": "DeleteProjectRequest",
+      "name": "Deletes a project",
+      "output": "DeleteProjectResponse",
+      "status": "online"
+    },
+    "DeleteProjectCustomDomains": {
+      "document": "Unbind a custom domain name from a project by domain name.",
+      "input": "DeleteProjectCustomDomainsRequest",
+      "name": "Deletes a custom domain name of a project",
+      "output": "DeleteProjectCustomDomainsResponse",
+      "status": "online"
+    },
+    "DeleteProjectEnvs": {
+      "document": "Delete environment variables by EnvVars. Match by Id or Key. Value is required but not used for matching. You can pass any value.",
+      "input": "DeleteProjectEnvsRequest",
+      "name": "Deletes environment variables of a project",
+      "output": "DeleteProjectEnvsResponse",
+      "status": "online"
+    },
+    "DescribeCosTempToken": {
+      "document": "Get the COS bucket, region, target path, and temporary key for uploading artifacts.",
+      "input": "DescribeCosTempTokenRequest",
+      "name": "Obtains a temporary key for upload",
+      "output": "DescribeCosTempTokenResponse",
+      "status": "online"
+    },
+    "DescribeDeploymentLog": {
+      "document": "Return the access address of the build log.",
+      "input": "DescribeDeploymentLogRequest",
+      "name": "Gets deployment logs",
+      "output": "DescribeDeploymentLogResponse",
+      "status": "online"
+    },
+    "DescribeDeployments": {
+      "document": "Query deployment records of a project.",
+      "input": "DescribeDeploymentsRequest",
+      "name": "Retrieves the deployment record list",
+      "output": "DescribeDeploymentsResponse",
+      "status": "online"
+    },
+    "DescribeEnvironments": {
+      "document": "Query environments in a project, including built-in Production, Preview, and custom environments.",
+      "input": "DescribeEnvironmentsRequest",
+      "name": "Queries the environment list",
+      "output": "DescribeEnvironmentsResponse",
+      "status": "online"
+    },
+    "DescribeProjectEnvs": {
+      "document": "Query project environment variables. If Env is not specified, return all application scopes.",
+      "input": "DescribeProjectEnvsRequest",
+      "name": "Obtains environment variables of a project",
+      "output": "DescribeProjectEnvsResponse",
+      "status": "online"
+    },
+    "DescribeProjects": {
+      "document": "This API is used to query projects under a site by page. Offset is the page number offset, and the backend skips Offset * Limit items.",
+      "input": "DescribeProjectsRequest",
+      "name": "Obtains the user project list",
+      "output": "DescribeProjectsResponse",
+      "status": "online"
+    },
+    "DescribeZoneCustomDomains": {
+      "document": "Queries the custom and preset domain names of a project under a site.",
+      "input": "DescribeZoneCustomDomainsRequest",
+      "name": "Queries a custom domain name",
+      "output": "DescribeZoneCustomDomainsResponse",
+      "status": "online"
+    },
+    "ModifyProject": {
+      "document": "Modify the project name and build configuration. Fields not passed retain their original values.",
+      "input": "ModifyProjectRequest",
+      "name": "Edits basic project information",
+      "output": "ModifyProjectResponse",
+      "status": "online"
+    },
+    "ModifyProjectEnvs": {
+      "document": "Write environment variables based on the passed-in EnvVars.",
+      "input": "ModifyProjectEnvsRequest",
+      "name": "Edits environment variables of a project",
+      "output": "ModifyProjectEnvsResponse",
+      "status": "online"
+    },
+    "ModifyZoneCustomDomainEnv": {
+      "document": "Switch a bound custom domain name to another environment.",
+      "input": "ModifyZoneCustomDomainEnvRequest",
+      "name": "Modifies the custom domain environment",
+      "output": "ModifyZoneCustomDomainEnvResponse",
+      "status": "online"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2026-11-13",
+    "serviceNameCN": "Web 与 Agent 开发部署平台 Makers",
+    "serviceShortName": "makers"
+  },
+  "objects": {
+    "CosCredentials": {
+      "document": "COS Temporary Key",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Temporary SecretId</p>",
+          "example": "********************************************************************",
+          "member": "string",
+          "name": "TmpSecretId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Temporary SecretKey</p>",
+          "example": "********************************************",
+          "member": "string",
+          "name": "TmpSecretKey",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Temporary Token</p>",
+          "example": "***",
+          "member": "string",
+          "name": "Token",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateDeploymentRequest": {
+      "document": "CreateDeployment request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Makers site ID</p>",
+          "example": "zone-************",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project ID</p>",
+          "example": "makers-************",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Trigger source. Github, ReDeploy, Api, Webhook, Upload, Coding, Gitee, Gitlab</p>",
+          "example": "Upload",
+          "member": "string",
+          "name": "ViaMeta",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Environment slug. Production, Preview, or custom environment</p>",
+          "example": "Production",
+          "member": "string",
+          "name": "Env",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Code source. For upload artifact, pass Upload.</p>",
+          "example": "Upload",
+          "member": "string",
+          "name": "Provider",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Artifact type. Zip or Folder</p>",
+          "example": "Folder",
+          "member": "string",
+          "name": "DistType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Object path of the uploaded artifact in the temporary bucket</p>",
+          "example": "***************************************",
+          "member": "string",
+          "name": "TempBucketPath",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Build branch</p>",
+          "example": "main",
+          "member": "string",
+          "name": "RepoBranch",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Submit hash</p>",
+          "example": "abc1234",
+          "member": "string",
+          "name": "RepoCommitHash",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Commit description</p>",
+          "example": "docs example",
+          "member": "string",
+          "name": "RepoCommitMsg",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Build source</p>",
+          "example": "Upload",
+          "member": "string",
+          "name": "BuildFrom",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Template ID</p>",
+          "example": "tpl-demo",
+          "member": "string",
+          "name": "TemplateId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Build specification. The current server still reads from edgeone.json. This field is reserved for now.</p>",
+          "example": "default",
+          "member": "string",
+          "name": "CiSpec",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDeploymentResponse": {
+      "document": "CreateDeployment response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Deployment ID</p>",
+          "example": "************",
+          "member": "string",
+          "name": "DeploymentId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateProjectRequest": {
+      "document": "CreateProject request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Makers site ID</p>",
+          "example": "zone-************",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project name.</p>",
+          "example": "*************",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Create Source. Template, Custom, CLI, Guest</p>",
+          "example": "Custom",
+          "member": "string",
+          "name": "Channel",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Code source. Upload, Github, Gitee, Gitlab, Coding</p>",
+          "example": "Upload",
+          "member": "string",
+          "name": "Provider",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Accessing party identifier.</p>",
+          "example": "capi-selftest",
+          "member": "string",
+          "name": "Source",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Acceleration region. mainland, overseas, global</p>",
+          "example": "overseas",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Node.js version. 14.21.3, 16.20.2, 18.20.4, 20.18.0, 22.11.0, 22.17.1, 22.21.1, 24.5.0, 24.11.0, 24.18.0</p>",
+          "example": "20.18.0",
+          "member": "string",
+          "name": "NodeJsVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project root directory</p>",
+          "example": "/",
+          "member": "string",
+          "name": "RootDir",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Build artifact directory</p>",
+          "example": "dist",
+          "member": "string",
+          "name": "OutputDir",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Build command</p>",
+          "example": "npm run build",
+          "member": "string",
+          "name": "BuildCmd",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Installation command</p>",
+          "example": "npm install",
+          "member": "string",
+          "name": "InstallCmd",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Framework</p>",
+          "example": "Other",
+          "member": "string",
+          "name": "Framework",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Template ID</p>",
+          "example": "tpl-demo",
+          "member": "string",
+          "name": "TemplateId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Repository address</p>",
+          "example": "https://***********************",
+          "member": "string",
+          "name": "RepoUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Repository owner</p>",
+          "example": "example",
+          "member": "string",
+          "name": "RepoOwner",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Repository name</p>",
+          "example": "demo",
+          "member": "string",
+          "name": "RepoName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Production branch</p>",
+          "example": "main",
+          "member": "string",
+          "name": "RepoBranch",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Initial environment variable.</p>",
+          "example": "无",
+          "member": "EnvVar",
+          "name": "EnvVars",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Coding namespace. Used when the Provider is Coding.</p>",
+          "example": "demo",
+          "member": "string",
+          "name": "Namespace",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Coding project ID. Used when the Provider is Coding</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "CodingProjectId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateProjectResponse": {
+      "document": "CreateProject response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Project ID</p>",
+          "example": "makers-************",
+          "member": "string",
+          "name": "ProjectId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateZoneCustomDomainRequest": {
+      "document": "CreateZoneCustomDomain request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Site ID</p>",
+          "example": "zone-************",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project ID</p>",
+          "example": "makers-************",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Custom domain name</p>",
+          "example": "************************",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Environment slug. If not passed, it is determined by the backend.</p>",
+          "example": "Production",
+          "member": "string",
+          "name": "Env",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateZoneCustomDomainResponse": {
+      "document": "CreateZoneCustomDomain response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Domain name.</p>",
+          "example": "************************",
+          "member": "string",
+          "name": "Domain",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Domain configuration ID</p>",
+          "example": "***************",
+          "member": "string",
+          "name": "Id",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CustomDomainInput": {
+      "document": "Domain item for binding a custom domain",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Domain name.</p>",
+          "example": "***",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Certificate ID</p>",
+          "example": "***",
+          "member": "string",
+          "name": "CertificateId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Verification status. Verify, Pass, Fail</p>",
+          "example": "Pass",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether not to apply for a certificate.</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "NoCertificate",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "usage": "in"
+    },
+    "CustomDomainItem": {
+      "document": "Custom domain name",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Domain name.</p>",
+          "example": "*****************",
+          "member": "string",
+          "name": "Domain",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DeleteProjectCustomDomainsRequest": {
+      "document": "DeleteProjectCustomDomains request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Makers site ID</p>",
+          "example": "zone-************",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project ID</p>",
+          "example": "makers-************",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Domain to unbind</p>",
+          "example": "[\"************************\"]",
+          "member": "string",
+          "name": "CustomDomains",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteProjectCustomDomainsResponse": {
+      "document": "DeleteProjectCustomDomains response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteProjectEnvsRequest": {
+      "document": "DeleteProjectEnvs request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Makers site ID</p>",
+          "example": "zone-************",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project ID</p>",
+          "example": "makers-************",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Environment variables to delete. Pass Key (or Id). Value is required but not used for matching.</p>",
+          "example": "无",
+          "member": "EnvVar",
+          "name": "EnvVars",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteProjectEnvsResponse": {
+      "document": "DeleteProjectEnvs response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteProjectRequest": {
+      "document": "DeleteProject request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Makers site ID</p>",
+          "example": "zone-************",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project ID</p>",
+          "example": "makers-************",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteProjectResponse": {
+      "document": "DeleteProject response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Deployment": {
+      "document": "Deployment record",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Deployment ID</p>",
+          "example": "************",
+          "member": "string",
+          "name": "DeploymentId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project ID</p>",
+          "example": "makers-************",
+          "member": "string",
+          "name": "ProjectId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Success,Failed,Process,Invalid,Pending,Timeout,Cancelled</p>",
+          "example": "Success",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Original status before deployment removal</p>",
+          "example": "Success",
+          "member": "string",
+          "name": "OriginalStatus",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Build exit code. 0 indicates success</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "Code",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Build duration, in milliseconds.</p>",
+          "example": "14474",
+          "member": "string",
+          "name": "BuildCost",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Trigger source. Github, ReDeploy, Api, Coding, Gitee, Upload, Gitlab</p>",
+          "example": "Upload",
+          "member": "string",
+          "name": "ViaMeta",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Environment slug</p>",
+          "example": "Preview",
+          "member": "string",
+          "name": "Env",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Branch</p>",
+          "example": "main",
+          "member": "string",
+          "name": "RepoBranch",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Submit hash</p>",
+          "example": "abc1234",
+          "member": "string",
+          "name": "RepoCommitHash",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Commit description</p>",
+          "example": "docs example",
+          "member": "string",
+          "name": "RepoCommitMsg",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Access address of this deployment</p>",
+          "example": "https://******************************************************",
+          "member": "string",
+          "name": "PreviewUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Default domain address of the project</p>",
+          "example": "https://**************************************************",
+          "member": "string",
+          "name": "ProjectUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether it is the current production version</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "UsedInProd",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Address of a cover</p>",
+          "example": "https://*******************************************************************",
+          "member": "string",
+          "name": "CoverUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Routing configuration, JSON string</p>",
+          "example": "{\"version\": 3}",
+          "member": "string",
+          "name": "MetaData",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Repository address used for this deployment</p>",
+          "example": "https://github.com/example/demo",
+          "member": "string",
+          "name": "DplRepoUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Creation time.</p>",
+          "example": "2026-11-17T02:47:58.122Z",
+          "member": "string",
+          "name": "CreatedOn",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Update time.</p>",
+          "example": "2026-11-17T02:48:18.000Z",
+          "member": "string",
+          "name": "ModifiedOn",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DeploymentFilter": {
+      "document": "Deployment list filter criteria",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Filter field. ProjectId, DeploymentId, Name, Status, StartTime, EndTime, RepoBranch</p>",
+          "example": "Name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Filter value</p>",
+          "example": "[\"string\"]",
+          "member": "string",
+          "name": "Values",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "DescribeCosTempTokenRequest": {
+      "document": "DescribeCosTempToken request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Makers site ID</p>",
+          "example": "zone-************",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project name. The temporary path is concatenated based on it.</p>",
+          "example": "**************",
+          "member": "string",
+          "name": "ProjectName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project ID. Used to reverse-check the project name when ProjectName is not passed in.</p>",
+          "example": "makers-************",
+          "member": "string",
+          "name": "ProjectId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCosTempTokenResponse": {
+      "document": "DescribeCosTempToken response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>COS bucket</p>",
+          "example": "*************************",
+          "member": "string",
+          "name": "Bucket",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>COS region</p>",
+          "example": "ap-shanghai",
+          "member": "string",
+          "name": "Region",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Upload path, format: appId/projectName/timestamp</p>",
+          "example": "***************************************",
+          "member": "string",
+          "name": "TargetPath",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Temporary key expiration time in Unix seconds</p>",
+          "example": "1794831547",
+          "member": "int64",
+          "name": "ExpiredTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Time when the temporary key expires in ISO 8601</p>",
+          "example": "2026-11-16T12:19:07Z",
+          "member": "string",
+          "name": "Expiration",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Temporary key</p>",
+          "example": "无",
+          "member": "CosCredentials",
+          "name": "Credentials",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDeploymentLogRequest": {
+      "document": "DescribeDeploymentLog request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Makers site ID</p>",
+          "example": "zone-************",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project ID</p>",
+          "example": "makers-************",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Deployment ID</p>",
+          "example": "************",
+          "member": "string",
+          "name": "DeploymentId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDeploymentLogResponse": {
+      "document": "DescribeDeploymentLog response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Build log address</p>",
+          "example": "https://***************************************************************************",
+          "member": "string",
+          "name": "LogUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDeploymentsRequest": {
+      "document": "DescribeDeployments request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Makers site ID</p>",
+          "example": "zone-************",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project ID</p>",
+          "example": "makers-************",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Query by deployment ID</p>",
+          "example": "[\"************\"]",
+          "member": "string",
+          "name": "DeploymentIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Filter conditions.</p>",
+          "example": "无",
+          "member": "DeploymentFilter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Offset</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of items per page. Maximum value: 100.</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>CreatedOn or ModifiedOn</p>",
+          "example": "CreatedOn",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Asc or Desc</p>",
+          "example": "DESC",
+          "member": "string",
+          "name": "OrderType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Start time.</p>",
+          "example": "2026-11-16 00:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>End time.</p>",
+          "example": "2026-11-17 00:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDeploymentsResponse": {
+      "document": "DescribeDeployments response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Deployment list</p>",
+          "example": "无",
+          "member": "Deployment",
+          "name": "Deployments",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeEnvironmentsRequest": {
+      "document": "DescribeEnvironments request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Makers site ID</p>",
+          "example": "zone-************",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project ID</p>",
+          "example": "makers-************",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeEnvironmentsResponse": {
+      "document": "DescribeEnvironments response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total.</p>",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Environment list</p>",
+          "example": "无",
+          "member": "Environment",
+          "name": "Environments",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProjectEnvsRequest": {
+      "document": "DescribeProjectEnvs request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Makers site ID</p>",
+          "example": "zone-************",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project ID</p>",
+          "example": "makers-************",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Only return the variables of the environment slug</p>",
+          "example": "Production",
+          "member": "string",
+          "name": "Env",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProjectEnvsResponse": {
+      "document": "DescribeProjectEnvs response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Environment variable.</p>",
+          "example": "无",
+          "member": "EnvVar",
+          "name": "EnvVars",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProjectsRequest": {
+      "document": "DescribeProjects request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Makers site ID</p>",
+          "example": "zone-3v5*********",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Page number offset, starting from 0. The backend skips Offset * Limit entries</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of items per page. Maximum value: 100.</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Filter criteria. Name parameter values: ProjectId, Name, Status, Provider</p>",
+          "example": "无",
+          "member": "ProjectFilter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Query by project ID</p>",
+          "example": "[\"makers-yvl*********\"]",
+          "member": "string",
+          "name": "ProjectIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sorting field. CreatedOn, ModifiedOn. Default: CreatedOn</p>",
+          "example": "CreatedOn",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sorting order. Asc, Desc, ASC, DESC. Default: DESC</p>",
+          "example": "DESC",
+          "member": "string",
+          "name": "OrderType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Source. Only return the Upload project on drop</p>",
+          "example": "****",
+          "member": "string",
+          "name": "Source",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Fuzzy search by project name</p>",
+          "example": "makers-functions-demo",
+          "member": "string",
+          "name": "Query",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeProjectsResponse": {
+      "document": "DescribeProjects response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total.</p>",
+          "example": "3",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project list</p>",
+          "example": "无",
+          "member": "Project",
+          "name": "Projects",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeZoneCustomDomainsRequest": {
+      "document": "DescribeZoneCustomDomains request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Makers site ID</p>",
+          "example": "zone-************",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project ID</p>",
+          "example": "makers-************",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Only query these domain names. If not passed, return the domain name under the project.</p>",
+          "example": "无",
+          "member": "CustomDomainInput",
+          "name": "CustomDomains",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeZoneCustomDomainsResponse": {
+      "document": "DescribeZoneCustomDomains response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Domain name list.</p>",
+          "example": "无",
+          "member": "ZoneDomain",
+          "name": "PagesDomains",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DnsVerification": {
+      "document": "DNS ownership verification record",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Record type, TXT</p>",
+          "example": "TXT",
+          "member": "string",
+          "name": "RecordType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Host record</p>",
+          "example": "******************************",
+          "member": "string",
+          "name": "Subdomain",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Record value</p>",
+          "example": "reclaim-********************************",
+          "member": "string",
+          "name": "RecordValue",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "EnvVar": {
+      "document": "Environment variable. An empty or default Env array means global. When writing, it unfolds to all current environments of the project.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Variable name, up to 255 characters</p>",
+          "example": "CAPI_TEST",
+          "member": "string",
+          "name": "Key",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Variable value, up to 1000</p>",
+          "example": "_",
+          "member": "string",
+          "name": "Value",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Variable ID. It is not passed in upon creation.</p>",
+          "example": "2101",
+          "member": "int64",
+          "name": "Id",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Remark. Up to 255 characters</p>",
+          "example": "selftest",
+          "member": "string",
+          "name": "Comment",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Effective environment slug, for example, Production, Preview. Multi-line environments with the same Key must not overlap</p>",
+          "example": "[\"Production\"]",
+          "member": "string",
+          "name": "Env",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "Environment": {
+      "document": "Environment.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Environment identifier. It cannot be changed after creation.</p>",
+          "example": "Production",
+          "member": "string",
+          "name": "Slug",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Environment name.</p>",
+          "example": "生产",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Production,Preview,Custom</p>",
+          "example": "Production",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Associate a branch. Wildcards are supported.</p>",
+          "example": "[\"main\"]",
+          "member": "string",
+          "name": "Branches",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to deploy automatically. Production is always true</p>",
+          "example": "true",
+          "member": "bool",
+          "name": "AutoDeploy",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Bound custom domain name</p>",
+          "example": "[\"**\"]",
+          "member": "string",
+          "name": "CustomDomains",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Environment variable.</p>",
+          "example": "无",
+          "member": "EnvironmentEnvVar",
+          "name": "EnvVars",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Creation time.</p>",
+          "example": "2026-11-17T02:43:02.000Z",
+          "member": "string",
+          "name": "CreatedOn",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Update time.</p>",
+          "example": "2026-11-17T02:43:02.000Z",
+          "member": "string",
+          "name": "ModifiedOn",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "EnvironmentEnvVar": {
+      "document": "Variable in the environment.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Variable ID</p>",
+          "example": "123",
+          "member": "int64",
+          "name": "Id",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Variable name</p>",
+          "example": "key1",
+          "member": "string",
+          "name": "Key",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Variable value</p>",
+          "example": "value1",
+          "member": "string",
+          "name": "Value",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Remarks.</p>",
+          "example": "comment",
+          "member": "string",
+          "name": "Comment",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Effective environment slug</p>",
+          "example": "[\"Preview\"]",
+          "member": "string",
+          "name": "Env",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "FileVerification": {
+      "document": "File ownership verification info",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Verification file path</p>",
+          "example": "********************************************",
+          "member": "string",
+          "name": "Path",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Verify file content</p>",
+          "example": "********************************",
+          "member": "string",
+          "name": "Content",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ForceRedirectConfig": {
+      "document": "Forced HTTPS redirection",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>on or off</p>",
+          "example": "off",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>301,302,307,308</p>",
+          "example": "302",
+          "member": "int64",
+          "name": "RedirectStatusCode",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "HstsConfig": {
+      "document": "HSTS configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>on or off</p>",
+          "example": "off",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Valid period in seconds.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "MaxAge",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>on or off</p>",
+          "example": "off",
+          "member": "string",
+          "name": "IncludeSubDomains",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>on or off</p>",
+          "example": "off",
+          "member": "string",
+          "name": "Preload",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ModifyProjectEnvsRequest": {
+      "document": "ModifyProjectEnvs request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Makers site ID</p>",
+          "example": "zone-************",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project ID</p>",
+          "example": "makers-************",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Environment variable to write to</p>",
+          "example": "无",
+          "member": "EnvVar",
+          "name": "EnvVars",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyProjectEnvsResponse": {
+      "document": "ModifyProjectEnvs response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyProjectRequest": {
+      "document": "ModifyProject request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Makers site ID</p>",
+          "example": "zone-************",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project ID</p>",
+          "example": "makers-************",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project name.</p>",
+          "example": "**************",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project root directory</p>",
+          "example": "/",
+          "member": "string",
+          "name": "RootDir",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Build artifact directory</p>",
+          "example": "dist",
+          "member": "string",
+          "name": "OutputDir",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Build command</p>",
+          "example": "npm run build",
+          "member": "string",
+          "name": "BuildCmd",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Installation command</p>",
+          "example": "npm install",
+          "member": "string",
+          "name": "InstallCmd",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Framework</p>",
+          "example": "Other",
+          "member": "string",
+          "name": "Framework",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Address of a cover</p>",
+          "example": "**************************************************************",
+          "member": "string",
+          "name": "CoverUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Node.js version</p>",
+          "example": "22.11.0",
+          "member": "string",
+          "name": "NodeJsVersion",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyProjectResponse": {
+      "document": "ModifyProject response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyZoneCustomDomainEnvRequest": {
+      "document": "ModifyZoneCustomDomainEnv request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Site ID</p>",
+          "example": "zone-************",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project ID</p>",
+          "example": "makers-************",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Domain name.</p>",
+          "example": "************************",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Target environment slug</p>",
+          "example": "Preview",
+          "member": "string",
+          "name": "Env",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyZoneCustomDomainEnvResponse": {
+      "document": "ModifyZoneCustomDomainEnv response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Domain name.</p>",
+          "example": "************************",
+          "member": "string",
+          "name": "Domain",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Environment slug after toggling</p>",
+          "example": "Preview",
+          "member": "string",
+          "name": "Env",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "NsVerification": {
+      "document": "NS ownership verification info. Makers is currently always null.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>NS server</p>",
+          "example": "[\"String\"]",
+          "member": "string",
+          "name": "NameServers",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "OwnershipVerification": {
+      "document": "Domain name ownership verification info",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>DNS verification</p>",
+          "example": "无",
+          "member": "DnsVerification",
+          "name": "DnsVerification",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>File verification</p>",
+          "example": "无",
+          "member": "FileVerification",
+          "name": "FileVerification",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>NS verification</p>",
+          "example": "无",
+          "member": "NsVerification",
+          "name": "NsVerification",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "Project": {
+      "document": "Project. The fields are consistent with the actual return of DescribeProjects.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Project ID</p>",
+          "example": "makers-************",
+          "member": "string",
+          "name": "ProjectId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project name.</p>",
+          "example": "landing-page-demo",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project status. Normal, Ban, Unlink, Process, Pending, Offline</p>",
+          "example": "Pending",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Site ID</p>",
+          "example": "zone-************",
+          "member": "string",
+          "name": "ZoneId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Acceleration region. mainland, overseas, global</p>",
+          "example": "overseas",
+          "member": "string",
+          "name": "Area",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Code source. Github, Gitee, Coding, Upload, Gitlab, Bitbucket, Cnb</p>",
+          "example": "Github",
+          "member": "string",
+          "name": "Provider",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Create Source. Template, Custom, CLI, Guest</p>",
+          "example": "Custom",
+          "member": "string",
+          "name": "Channel",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Preset domain name.</p>",
+          "example": "**************************************************",
+          "member": "string",
+          "name": "PresetDomain",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Preset domain name status</p>",
+          "example": "Normal",
+          "member": "string",
+          "name": "PresetDomainStatus",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project root directory</p>",
+          "example": "./",
+          "member": "string",
+          "name": "RootDir",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Build artifact directory</p>",
+          "example": "out",
+          "member": "string",
+          "name": "OutputDir",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Build command</p>",
+          "example": "true",
+          "member": "string",
+          "name": "BuildCmd",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Installation command</p>",
+          "example": "true",
+          "member": "string",
+          "name": "InstallCmd",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Framework</p>",
+          "example": "react",
+          "member": "string",
+          "name": "Framework",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Node.js version</p>",
+          "example": "22.11.0",
+          "member": "string",
+          "name": "NodejsVersion",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Repository address</p>",
+          "example": "https://github*******************************",
+          "member": "string",
+          "name": "RepoUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Repository owner</p>",
+          "example": "*********",
+          "member": "string",
+          "name": "RepoOwner",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Repository name</p>",
+          "example": "deepseek-harness",
+          "member": "string",
+          "name": "RepoName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Production branch</p>",
+          "example": "main",
+          "member": "string",
+          "name": "RepoBranch",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Preview Branch</p>",
+          "example": "[\"main\"]",
+          "member": "string",
+          "name": "RepoPreBranches",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Deployment region</p>",
+          "example": "无",
+          "member": "Regions",
+          "name": "Regions",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Environment variable.</p>",
+          "example": "无",
+          "member": "ProjectEnvVar",
+          "name": "EnvVars",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Custom domain name</p>",
+          "example": "无",
+          "member": "CustomDomainItem",
+          "name": "CustomDomains",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Last deployment</p>",
+          "example": "无",
+          "member": "ProjectDeployment",
+          "name": "Deployment",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether it is an Agent project. 1: yes, 0: no</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "IsAgent",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Agent framework. Non-Agent project is empty</p>",
+          "example": "openai-sdk",
+          "member": "string",
+          "name": "AgentFramework",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether it hits a user-level wildcard domain name. 1: yes, 0: no</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "IsTld",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Creation time.</p>",
+          "example": "2026-09-18T07:27:10.623Z",
+          "member": "string",
+          "name": "CreatedOn",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Update time.</p>",
+          "example": "2026-09-18T07:27:11.970Z",
+          "member": "string",
+          "name": "ModifiedOn",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ProjectDeployment": {
+      "document": "Last deployment of the project",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Deployment ID</p>",
+          "example": "************",
+          "member": "string",
+          "name": "DeploymentId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Project ID</p>",
+          "example": "makers-************",
+          "member": "string",
+          "name": "ProjectId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Deployment state</p>",
+          "example": "Failed",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Build duration, in milliseconds.</p>",
+          "example": "21295",
+          "member": "string",
+          "name": "BuildCost",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Trigger source.</p>",
+          "example": "*****",
+          "member": "string",
+          "name": "ViaMeta",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Environment slug</p>",
+          "example": "Preview",
+          "member": "string",
+          "name": "Env",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Branch</p>",
+          "example": "main",
+          "member": "string",
+          "name": "RepoBranch",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Submit hash</p>",
+          "example": "****************************************",
+          "member": "string",
+          "name": "RepoCommitHash",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Commit description</p>",
+          "example": "*************************************************************************************",
+          "member": "string",
+          "name": "RepoCommitMsg",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Preview address</p>",
+          "example": "****************************************************",
+          "member": "string",
+          "name": "PreviewUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Address of a cover</p>",
+          "example": "https://*******************************************************************",
+          "member": "string",
+          "name": "CoverUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Creation time.</p>",
+          "example": "2026-11-14T08:55:06.918Z",
+          "member": "string",
+          "name": "CreatedOn",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Update time.</p>",
+          "example": "2026-11-14T08:55:53.000Z",
+          "member": "string",
+          "name": "ModifiedOn",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Repository address used for this deployment</p>",
+          "example": "https://github.com*************************************",
+          "member": "string",
+          "name": "DplRepoUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ProjectEnvVar": {
+      "document": "Environment variables returned in the project list, only keys and values",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Variable name</p>",
+          "example": "*********",
+          "member": "string",
+          "name": "Key",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Variable value</p>",
+          "example": "***************************************************",
+          "member": "string",
+          "name": "Value",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ProjectFilter": {
+      "document": "List filter criteria of a project. The Values of the same condition are connected with each other by OR.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Filter field. ProjectId, Name, Status, Provider</p>",
+          "example": "Name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Filter value</p>",
+          "example": "[\"string\"]",
+          "member": "string",
+          "name": "Values",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "Regions": {
+      "document": "Project deployment region",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Chinese mainland</p>",
+          "example": "[\"string\"]",
+          "member": "string",
+          "name": "Mainland",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Overseas region</p>",
+          "example": "[\"string\"]",
+          "member": "string",
+          "name": "Overseas",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "SwitchConfig": {
+      "document": "Switch configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>on or off</p>",
+          "example": "off",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ZoneDomain": {
+      "document": "Custom domain name under the site",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Custom or Preset</p>",
+          "example": "Custom",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Domain name.</p>",
+          "example": "*************************",
+          "member": "string",
+          "name": "Domain",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Domain name status</p>",
+          "example": "init",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Bound environment slug. Default value: Production</p>",
+          "example": "Production",
+          "member": "string",
+          "name": "Env",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Site ID</p>",
+          "example": "zone-************",
+          "member": "string",
+          "name": "ZoneId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Acceleration region</p>",
+          "example": "global",
+          "member": "string",
+          "name": "Area",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>CNAME</p>",
+          "example": "**********************************************************************************",
+          "member": "string",
+          "name": "Cname",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Primary domain name.</p>",
+          "example": "*********",
+          "member": "string",
+          "name": "MainDomain",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>IPv6</p>",
+          "example": "无",
+          "member": "SwitchConfig",
+          "name": "Ipv6",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>HTTP/2</p>",
+          "example": "无",
+          "member": "SwitchConfig",
+          "name": "Http2",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>OCSP</p>",
+          "example": "无",
+          "member": "SwitchConfig",
+          "name": "OcspStapling",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Force HTTPS</p>",
+          "example": "无",
+          "member": "ForceRedirectConfig",
+          "name": "ForceRedirect",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>HSTS</p>",
+          "example": "无",
+          "member": "HstsConfig",
+          "name": "Hsts",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Ownership verification</p>",
+          "example": "无",
+          "member": "OwnershipVerification",
+          "name": "OwnershipVerification",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    }
+  }
+}

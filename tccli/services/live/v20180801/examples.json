@@ -976,6 +976,14 @@
         "title": "Sample request"
       }
     ],
+    "StopScreenshotTask": [
+      {
+        "document": " ",
+        "input": "https://live.tencentcloudapi.com/?Action=StopScreenshotTask\n&TaskId=UZZUVbQ1FSQFlvKxYBxUVGzwcBB00UETZU5QRlNURlhR1FDUVBFUWpCUkbUUBKb\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Request Example"
+      }
+    ],
     "UnBindLiveDomainCert": [
       {
         "document": " ",

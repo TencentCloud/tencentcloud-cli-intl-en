@@ -442,7 +442,7 @@
       "status": "online"
     },
     "ModifyInstancesRenewFlag": {
-      "document": "This API is used to change the auto-renewal setting of monthly-subscribed instances. \n\n* Instances with auto-renewal enabled are automatically renewed on a monthly basis upon the expiration. \n* Batch operations are supported. Up to 100 instances per request is allowed.",
+      "document": "This API is used to change the auto-renewal setting of yearly/monthly-subscribed instances. \n\n* Instances with auto-renewal enabled are automatically renewed on a monthly basis upon the expiration. \n* Batch operations are supported. Up to 100 instances per request is allowed.",
       "input": "ModifyInstancesRenewFlagRequest",
       "name": "Modifies the renewal flags of instances",
       "output": "ModifyInstancesRenewFlagResponse",
@@ -5097,7 +5097,7 @@
         },
         {
           "disabled": false,
-          "document": "Parameter setting for prepaid mode. This parameter can specify the purchase period, whether to enable auto-renewal, and other attributes of the monthly subscribed instances.",
+          "document": "Parameter setting for prepaid mode. This parameter can specify the purchase period, whether to enable auto-renewal, and other attributes of the yearly/monthly subscribed instances.",
           "example": "无",
           "member": "InstanceChargePrepaid",
           "name": "InstanceChargePrepaid",
@@ -5207,7 +5207,7 @@
         },
         {
           "disabled": false,
-          "document": "Parameter setting for prepaid mode. This parameter can specify the renewal period, whether to enable auto-renewal, and other attributes of the monthly subscribed instances.",
+          "document": "Parameter setting for prepaid mode. This parameter can specify the renewal period, whether to enable auto-renewal, and other attributes of the yearly/monthly subscribed instances.",
           "example": "无",
           "member": "InstanceChargePrepaid",
           "name": "InstanceChargePrepaid",
