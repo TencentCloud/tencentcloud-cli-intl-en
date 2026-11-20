@@ -7,6 +7,13 @@
       "output": "ControlAIConversationResponse",
       "status": "online"
     },
+    "ControlVoiceConversation": {
+      "document": "After a conversation task starts successfully, use this API to control it.",
+      "input": "ControlVoiceConversationRequest",
+      "name": "Controls an AI conversation task",
+      "output": "ControlVoiceConversationResponse",
+      "status": "online"
+    },
     "CreateCloudModeration": {
       "document": "API description:\nThis API is used to enable the cloud moderation feature to complete audio and video slicing, video frame extraction, and audio stream recording in the room, and submit them to the specified moderation supplier for completing the moderation.\n\nThis API is used to achieve the following goals:\n* This API is used to specify the moderation parameters (ModerationParams) to specify the detailed parameters required for moderation.\n* This API is used to specify the storage parameter (SliceStorageParams) to specify the cloud storage you want to upload the file complying with the moderation policy to. Currently, Tencent Cloud Object Storage (COS) and third-party AWS are supported.",
       "input": "CreateCloudModerationRequest",
@@ -35,6 +42,13 @@
       "output": "CreateCloudTranscriptionResponse",
       "status": "online"
     },
+    "CreateVoiceConversation": {
+      "document": "This API is used to create an AI conversation task.",
+      "input": "CreateVoiceConversationRequest",
+      "name": "Create an AI conversation task.",
+      "output": "CreateVoiceConversationResponse",
+      "status": "online"
+    },
     "DeleteCloudModeration": {
       "document": "This API is used to stop submission for moderation after the cloud moderation task is successfully started.",
       "input": "DeleteCloudModerationRequest",
@@ -61,6 +75,13 @@
       "input": "DeleteCloudTranscriptionRequest",
       "name": "Terminate a cloud transcription task.",
       "output": "DeleteCloudTranscriptionResponse",
+      "status": "online"
+    },
+    "DeleteVoiceConversation": {
+      "document": "After a conversation task starts successfully, use this API to stop it.",
+      "input": "DeleteVoiceConversationRequest",
+      "name": "Deletes an AI conversation task",
+      "output": "DeleteVoiceConversationResponse",
       "status": "online"
     },
     "DescribeAIConversation": {
@@ -217,6 +238,13 @@
       "output": "DescribeUserInfoResponse",
       "status": "online"
     },
+    "DescribeVoiceConversation": {
+      "document": "After a conversation task starts successfully, use this API to query the conversation status. It can be used only while the conversation task is in progress. Querying after the conversation task exits returns an error.",
+      "input": "DescribeVoiceConversationRequest",
+      "name": "Queries an AI conversation task",
+      "output": "DescribeVoiceConversationResponse",
+      "status": "online"
+    },
     "DescribeWebRecord": {
       "document": "Queries the status of a web-page recording task",
       "input": "DescribeWebRecordRequest",
@@ -257,6 +285,13 @@
       "input": "ModifyCloudSliceTaskRequest",
       "name": "Modifies a cloud slicing task",
       "output": "ModifyCloudSliceTaskResponse",
+      "status": "online"
+    },
+    "ModifyVoiceConversation": {
+      "document": "After a conversation task starts successfully, use this API to modify its configuration.",
+      "input": "ModifyVoiceConversationRequest",
+      "name": "Modifies an AI conversation task",
+      "output": "ModifyVoiceConversationResponse",
       "status": "online"
     },
     "QueryAIMessageList": {
@@ -1145,7 +1180,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The cloud storage provider.\n`0`: Tencent Cloud COS; `1`: AWS storage. Other vendors are not supported currently.",
+          "document": "<p>Information about Tencent Cloud object storage COS and third-party cloud storage accounts<br>0: Tencent Cloud object storage COS<br>1: AWS<br>[Note] Currently, only AWS is supported for third-party cloud storage. More third-party cloud storage options are being added.</p>",
           "example": "0",
           "member": "uint64",
           "name": "Vendor",
@@ -1154,7 +1189,7 @@
         },
         {
           "disabled": false,
-          "document": "[Region information](https://www.tencentcloud.com/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of tencent cloud object storage.\nExample value: cn-shanghai-1.\n\n[Region information](https://docs.AWS.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions) of AWS S3.",
+          "document": "<p>[Region information](https://www.tencentcloud.com/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of Tencent Cloud object storage.<br>Example value: cn-shanghai-1</p><p>[Region information](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions) of AWS S3</p>",
           "example": "ap-shanghai(cos, 具体参考云存储厂商支持的地域)",
           "member": "string",
           "name": "Region",
@@ -1163,7 +1198,7 @@
         },
         {
           "disabled": false,
-          "document": "The storage bucket.",
+          "document": "<p>Cloud bucket name.</p>",
           "example": "test-bucket",
           "member": "string",
           "name": "Bucket",
@@ -1172,7 +1207,7 @@
         },
         {
           "disabled": false,
-          "document": "access_key account information of the cloud storage.\nTo store files to tencent cloud object storage (COS), visit https://console.cloud.tencent.com/cam/capi to view or create the SecretId value corresponding to the key fields in the link.",
+          "document": "<p>access key account information for cloud storage.<br>To store files to tencent cloud Object Storage (COS), visit https://console.cloud.tencent.com/cam/capi to view or create the SecretId value corresponding to the key field in the link.</p>",
           "example": "test-accesskey",
           "member": "string",
           "name": "AccessKey",
@@ -1181,7 +1216,7 @@
         },
         {
           "disabled": false,
-          "document": "secret_key account information of the cloud storage.\nTo store files to tencent cloud object storage (COS), visit https://console.cloud.tencent.com/cam/capi to view or create the SecretKey value corresponding to the key fields in the link.",
+          "document": "<p>The secret_key account information for cloud storage.<br>To store files to Tencent Cloud Object Storage (COS), visit https://console.cloud.tencent.com/cam/capi to view or create the SecretKey value corresponding to the key fields in the link.</p>",
           "example": "test-secretkey",
           "member": "string",
           "name": "SecretKey",
@@ -1190,7 +1225,7 @@
         },
         {
           "disabled": false,
-          "document": "The specified position of the cloud storage bucket consists of an array of strings. valid values: az, az, 0-9, '_', and '-'. for example, the recording file xxx.m3u8 becomes prefix1/prefix2/TaskId/xxx.m3u8 under the function of [\"prefix1\", \"prefix2\"].",
+          "document": "<p>The user-specified location in the cloud storage bucket consists of an array of strings. Valid string range: az, az, 0-9, '_' and '-'. For example, with [\"prefix1\", \"prefix2\"], the recording file xxx.m3u8 becomes prefix1/prefix2/TaskId/xxx.m3u8.</p>",
           "example": "[\"prefix1\", \"prefix2\"]",
           "member": "string",
           "name": "FileNamePrefix",
@@ -1199,7 +1234,7 @@
         },
         {
           "disabled": false,
-          "document": "If specified, the client uses this S3-compatible endpoint override instead of the default AWS S3 endpoint. This is useful for S3-compatible storage services such as Cloudflare R2. Example: \"account_id.r2.cloudflarestorage.com\"",
+          "document": "<p>When this parameter is set up for an S3-compatible endpoint override (for example, Cloudflare R2), the client will use this endpoint rather than the default AWS S3 endpoint. Example: \"account_id.R2.cloudflarestorage.com\"</p>",
           "example": "account_id.r2.cloudflarestorage.com",
           "member": "string",
           "name": "EndpointUrl",
@@ -1279,6 +1314,79 @@
     "ControlAIConversationResponse": {
       "document": "ControlAIConversation response structure.",
       "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ControlVoiceConversationRequest": {
+      "document": "ControlVoiceConversation request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The TRTC [SdkAppId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#sdkappid). It must be the same SdkAppId as the conversation room.",
+          "example": "1400704311",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Unique ID of the conversation task. Returned when the conversation task starts successfully.",
+          "example": "-m9jX35U7ginppW8rcCa0K3L6C*************************b7SjBmnozma7Gfq2Tbb5htQE.",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Control command.\nValid values:\n\n- `Interrupt`: Force-interrupt the AI bot's current speech.\n- `invokellm`: Inject text into the current conversation context to trigger one LLM response. Not supported in `S2S` mode.\n- `invoketts`: Inject text into the current TTS so the AI bot broadcasts it. Not supported in `S2S` mode.",
+          "example": "interrupt",
+          "member": "string",
+          "name": "Command",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Configuration for injecting text into the LLM. Required when `Command` is `invokellm`.",
+          "example": "无",
+          "member": "VoiceConversationInvokeLLM",
+          "name": "InvokeLLM",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Configuration for injecting text into TTS. Required when `Command` is `invoketts`.",
+          "example": "无",
+          "member": "VoiceConversationInvokeTTS",
+          "name": "InvokeTTS",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ControlVoiceConversationResponse": {
+      "document": "ControlVoiceConversation response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique ID of the conversation task.",
+          "example": "-m9jX35U7ginppW8rcCa0K3L6C*************************b7SjBmnozma7Gfq2Tbb5htQE.",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -1715,6 +1823,133 @@
       ],
       "type": "object"
     },
+    "CreateVoiceConversationRequest": {
+      "document": "CreateVoiceConversation request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The TRTC [SdkAppId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#sdkappid). It must be the same SdkAppId as the conversation room.",
+          "example": "1400000311",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "[Room ID](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#roomid) of the TRTC room where the conversation runs. Room IDs are numeric by default. If the room ID is a string, set RoomIdType to 1.",
+          "example": "99884336",
+          "member": "string",
+          "name": "RoomId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Room ID type. It must match the room ID type of the conversation room. 0 is a numeric room ID, and 1 is a string room ID.\nValid values:\n- 0: numeric room ID (Default)\n- 1: string room ID",
+          "example": "0",
+          "member": "uint64",
+          "name": "RoomIdType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Chatbot configuration.</p>",
+          "example": "无",
+          "member": "VoiceConversationConfig",
+          "name": "AgentConfig",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Conversation pipeline mode: `Cascade` (default, three-stage pipeline) or `S2S` (end-to-end speech-to-speech model).\nValid values:\n- Cascade: three-stage pipeline (default). Speech recognition, a large language model, and text-to-speech.\n- S2S: end-to-end speech-to-speech model.\nDefault: Cascade",
+          "example": "Cascade",
+          "member": "string",
+          "name": "ConversationMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End-to-end speech-to-speech model configuration. Required only in `S2S` mode. Ignored in `Cascade` mode.",
+          "example": "无",
+          "member": "VoiceConversationS2SConfig",
+          "name": "S2SConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Speech recognition configuration. <strong>Required only in <code>Cascade</code> mode</strong>; ignored in <code>S2S</code> mode.</p>",
+          "example": "无",
+          "member": "VoiceConversationSTTConfig",
+          "name": "STTConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Large language model (LLM) configuration. Required only in `Cascade` mode. Ignored in `S2S` mode.",
+          "example": "无",
+          "member": "VoiceConversationLLMConfig",
+          "name": "LLMConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Text to speech configuration. <strong>Required only in <code>Cascade</code> mode</strong>; ignored in <code>S2S</code> mode.</p>",
+          "example": "无",
+          "member": "VoiceConversationTTSConfig",
+          "name": "TTSConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Conversation control configuration. Not supported in `S2S` mode.",
+          "example": "无",
+          "member": "VoiceConversationDialogConfig",
+          "name": "DialogConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Visual understanding configuration. Not supported in `S2S` mode.",
+          "example": "无",
+          "member": "VoiceConversationVisionConfig",
+          "name": "VisionConfig",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateVoiceConversationResponse": {
+      "document": "CreateVoiceConversation response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique ID of the conversation task, generated by the Tencent Cloud server. Later requests that query or control the task must include this TaskId.",
+          "example": "-nG0jIFU7iHfG3DHVsI24YFXEn*************************bRRKvrG-CxBxuPyrGvSr2ZQE.",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteCloudModerationRequest": {
       "document": "DeleteCloudModeration request structure.",
       "members": [
@@ -1884,6 +2119,52 @@
           "disabled": false,
           "document": "Task ID of the service allocation for transcribing. The task ID is the unique identifier for a transcription lifecycle process and loses its meaning once the transcription is complete.",
           "example": "-m9Ghi1U*****gjmwRxKiwE...",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteVoiceConversationRequest": {
+      "document": "DeleteVoiceConversation request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The TRTC [SdkAppId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#sdkappid). It must be the same SdkAppId as the conversation room.",
+          "example": "1400704311",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Unique ID of the conversation task. Returned when the conversation task starts successfully.",
+          "example": "-nG0xCFU7lbAnrSOAsc22iFg4v*************************b7S+nNiUvm6EPLEY7SC+VIAE.",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteVoiceConversationResponse": {
+      "document": "DeleteVoiceConversation response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique ID of the conversation task.",
+          "example": "-nG0xCFU7lbAnrSOAsc22iFg4v*************************b7S+nNiUvm6EPLEY7SC+VIAE.",
           "member": "string",
           "name": "TaskId",
           "output_required": true,
@@ -3489,6 +3770,91 @@
       ],
       "type": "object"
     },
+    "DescribeVoiceConversationRequest": {
+      "document": "DescribeVoiceConversation request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The TRTC [SdkAppId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#sdkappid). It must be the same SdkAppId as the conversation room.",
+          "example": "1400000311",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Unique ID of the conversation task. Returned when the conversation task starts successfully.",
+          "example": "-nG0jIFU7rPr0tFW0cg282rOxP*************************bUA9JbOXgp3tnRyVJAzlBFAE.",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to include the conversation history.\nValid values:\n- 0: Do not include the conversation history.\n- 1: Include the conversation history.\n\nDefault: 0",
+          "example": "1",
+          "member": "uint64",
+          "name": "DescribeType",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeVoiceConversationResponse": {
+      "document": "DescribeVoiceConversation response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Task start time</p><p>Unit: ms</p>",
+          "example": "1790081311564",
+          "member": "uint64",
+          "name": "StartTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Conversation task status.\nValid values:\n\n- `Idle`: The conversation task is idle.\n- `InProgress`: The conversation task is in progress.\n- `Exited`: The conversation task is exiting.",
+          "example": "InProgress",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Unique ID of the conversation task.",
+          "example": "-nG0jIFU7rPr0tFW0cg282rOxP*************************bUA9JbOXgp3tnRyVJAzlBFAE.",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Conversation history.",
+          "example": "无",
+          "member": "VoiceConversationHistoryContent",
+          "name": "HistoryContents",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeWebRecordRequest": {
       "document": "DescribeWebRecord request structure.",
       "members": [
@@ -3766,6 +4132,30 @@
           "name": "Interrupt",
           "required": false,
           "type": "bool"
+        }
+      ],
+      "usage": "in"
+    },
+    "KeyValueItem": {
+      "document": "LLM custom data structure",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Key</p>",
+          "example": "enable_search",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Value</p>",
+          "example": "true",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string"
         }
       ],
       "usage": "in"
@@ -5356,6 +5746,88 @@
           "disabled": false,
           "document": "Unique ID of the slicing task, which is returned after the task is started.",
           "example": "-nHwX3RU7h3eZ-9PYsqd+z8I1uU1tUnbTWClW4K-xuWiN6KipeCyXJ8ZJEFpWSZ5zZuyZUAuAQ..",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyVoiceConversationRequest": {
+      "document": "ModifyVoiceConversation request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The <a href=\"https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#sdkappid\">SdkAppId</a> of TRTC, which is the same as the SdkAppId corresponding to the conversation room.</p>",
+          "example": "1400704311",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Unique ID of the conversation task. Returned when the conversation task starts successfully.",
+          "example": "-nG0jIFU7llEfJ3MR8El60TD18*************************bOp75dg0i7c+NqbBQ2tAxOAE.",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "For the same task, `SequenceNumber` must increase with each modification request. This prevents requests from being applied out of order.",
+          "example": "0",
+          "member": "uint64",
+          "name": "SequenceNumber",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Large language model (LLM) configuration. Applies only in `Cascade` mode. In `S2S` mode, the request returns an error.",
+          "example": "无",
+          "member": "VoiceConversationLLMConfig",
+          "name": "LLMConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "End-to-end speech-to-speech model configuration. Applies only in `S2S` mode. In `Cascade` mode, the request returns an error.",
+          "example": "无",
+          "member": "VoiceConversationS2SConfig",
+          "name": "S2SConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Conversation control configuration. Applies only in `Cascade` mode.",
+          "example": "无",
+          "member": "VoiceConversationDialogConfig",
+          "name": "DialogConfig",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyVoiceConversationResponse": {
+      "document": "ModifyVoiceConversation response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique ID of the conversation task.",
+          "example": "-nG0jIFU7llEfJ3MR8El60TD18*************************bOp75dg0i7c+NqbBQ2tAxOAE.",
           "member": "string",
           "name": "TaskId",
           "output_required": true,
@@ -7904,8 +8376,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "User ID.",
-          "example": "",
+          "document": "<p>uid.</p>",
+          "example": "tts-bot-001",
           "member": "string",
           "name": "UserId",
           "required": true,
@@ -8717,6 +9189,566 @@
         }
       ],
       "type": "object"
+    },
+    "VoiceConversationConfig": {
+      "document": "Task parameters for an AI conversation.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "[UserId](https://www.tencentcloud.com/document/product/647/46351?from_cn_redirect=1#userid) used by the conversation service in the TRTC room. It must not match a UserId already used by another TRTC user or by the conversation service. Include the room ID in the UserId.",
+          "example": "test2",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "[UserSig](https://www.tencentcloud.com/document/product/647/45910?from_cn_redirect=1#UserSig) for the conversation service to join the TRTC room. It is the authentication signature of this UserId and works like a login password. For how to calculate UserSig, see the linked topic.",
+          "example": "eJyrVgrxCdYrzkxXslJQyvEsqDTzcyrzyHGNcgoMKsuudEt2D3D1KUwsi8jy8PD3NQnK********************************************************************cmWpRSDrjPQMYKaUZOaCzTA3MzYwMDI2NYOKZ6ak5pVkpmVCNJSkFpcYKdUCAKlEMxg_",
+          "member": "string",
+          "name": "UserSig",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>UserId of the anchor whose audio the conversation service subscribes to. Specify one anchor only.</p>",
+          "example": "[\"Trtc_User_0\"]",
+          "member": "string",
+          "name": "TargetUserId",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Parameters of the bot that publishes TTS audio back to the room.</p>",
+          "example": "无",
+          "member": "TranscriptionUserInfoParams",
+          "name": "TTSPushRoomParams",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>If an anchor in the conversation stays out of the TRTC room, or stays in the audience role, for longer than `MaxIdleTime`, the conversation task stops automatically. Valid range: 5 to 86400 (24 hours). Default: 30. Unit: seconds.</p>",
+          "example": "50",
+          "member": "uint64",
+          "name": "MaxIdleTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filters content returned by the LLM. Text inside the specified brackets is not played. If this parameter is not set, nothing is filtered. Valid range: 1 to 5. Example: 1. \nNot supported in S2S mode.\nValid values:\n- 1: Chinese parentheses \n- 2: English parentheses\n- 3: Chinese square brackets\n- 4: English square brackets\n- 5: English curly braces",
+          "example": "[1]",
+          "member": "uint64",
+          "name": "FilterBracketsContent",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle display mode. Not supported in S2S mode.\nValid values:\n- 0: Show subtitles as soon as possible.\n- 1: Show subtitles sentence by sentence in real time.",
+          "example": "0",
+          "member": "uint64",
+          "name": "SubtitleMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Controls how a new conversation turn starts. Default: `auto`. Not supported in S2S mode.\nValid values:\n\n- `auto`: The backend detects the end of a sentence from the silence duration, and then calls the LLM.",
+          "example": "auto",
+          "member": "string",
+          "name": "TurnDetectionMode",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "VoiceConversationDialogConfig": {
+      "document": "Configuration for AI conversation.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Interrupt mode. Default: 0.\nValid values:\n- 0: Automatic. When STT returns text, it interrupts TTS playback. Use this mode with InterruptSpeechDuration.\n- 1: Manual. The bot is interrupted only by the Interrupt command from the server or client API.\n- 2: Keyword.",
+          "example": "0",
+          "member": "uint64",
+          "name": "InterruptMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Minimum duration of user speech that triggers an automatic interrupt. Default: 200. Unit: ms.",
+          "example": "200",
+          "member": "uint64",
+          "name": "InterruptSpeechDuration",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Preset keywords that interrupt the bot. Use them when the user must explicitly indicate the intent to interrupt. You can set up to 128 keywords. Applies only when `InterruptMode` is 2.",
+          "example": "[\"停止\"]",
+          "member": "string",
+          "name": "InterruptKeywords",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "How long the user is silent before the bot asks a follow-up question. Valid range: 0 to 300. 0 turns this off. Default: 0. Unit: seconds.\n\n",
+          "example": "10",
+          "member": "uint64",
+          "name": "SilenceFollowUp",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Text of the proactive follow-up question.</p>",
+          "example": "你还在吗？有想问的直接告诉我。",
+          "member": "string",
+          "name": "SilenceFollowUpText",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Welcome message the bot broadcasts when an anchor enters the room for the first time. It is broadcast again when the anchor leaves the room and enters again.",
+          "example": "你好，我是AI助手，有什么可以帮你的？",
+          "member": "string",
+          "name": "WelcomeMessage",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "VoiceConversationHistoryContent": {
+      "document": "Historical conversation content.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Conversation role.</p>",
+          "example": "user",
+          "member": "string",
+          "name": "Role",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Conversation content.</p>",
+          "example": "能听见吗",
+          "member": "string",
+          "name": "Content",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "VoiceConversationHistoryMessage": {
+      "document": "Historical messages of AI conversations.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The Conversation role, for example, \"user\", \"assistant\", \"system\".</p>",
+          "example": "user",
+          "member": "string",
+          "name": "Role",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Conversation content.</p>",
+          "example": "你好，有什么可以帮你？",
+          "member": "string",
+          "name": "Content",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "VoiceConversationInvokeLLM": {
+      "document": "The server proactively sends a request to the LLM.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The injected content.</p>",
+          "example": "你好，有什么可以帮助你的？",
+          "member": "string",
+          "name": "Content",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Priority. If no conversation is in progress, the injected content is sent to the LLM. Otherwise, the behavior depends on this value. Default: 0.\nValid values:\n- 0: High. Interrupt the current conversation, clear the waiting queue, and send the injected content to the LLM.\n- 1: Medium. Do not interrupt the current conversation. Clear the waiting queue and queue the injected content. If no conversation is in progress, the injected content is still queued.\n- 2: Low. Discard the injected content.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Priority",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "usage": "in"
+    },
+    "VoiceConversationInvokeTTS": {
+      "document": "The server proactively sends a request to TTS.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Content to inject.</p>",
+          "example": "你好，有什么可以帮助你的？",
+          "member": "string",
+          "name": "Content",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Priority. If no conversation is in progress, the injected content is sent to TTS. Otherwise, the behavior depends on this value. Default: 0.\nValid values:\n- 0: High. Interrupt the current conversation, clear the waiting queue, and send the injected content to TTS.\n- 1: Medium. Do not interrupt the current conversation. Clear the waiting queue and queue the injected content. If no conversation is in progress, the injected content is still queued.\n- 2: Low. Discard the injected content.\n`InvokeLLM` and `InvokeTTS` share one queue. The queue can hold only one Invoke event.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Priority",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "usage": "in"
+    },
+    "VoiceConversationLLMConfig": {
+      "document": "LLM parameter configuration for AI conversation.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>LLM API type, for example, openai (OpenAI-compatible API).</p>",
+          "example": "openai",
+          "member": "string",
+          "name": "LLMType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Model name, for example, gpt-4o-mini</p>",
+          "example": "gpt-3****urbo",
+          "member": "string",
+          "name": "Model",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>OpenAI-compatible endpoint.</p>",
+          "example": "http://avc*********oa.com/v1",
+          "member": "string",
+          "name": "APIUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Provider API key.",
+          "example": "sk-kW4vZmhEni4EfU*****************0ivgvIfqL6ueVYvC5",
+          "member": "string",
+          "name": "APIKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>System prompt.</p>",
+          "example": "你是一个简洁的对话助手。",
+          "member": "string",
+          "name": "SystemPrompt",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Text used to generate TTS audio when the LLM call fails.</p>",
+          "example": "系统繁忙请稍后再试",
+          "member": "string",
+          "name": "FailureMessage",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Maximum number of tokens in a single response. 0 means no limit. Default: 0. If the model outputs more tokens than MaxTokens, the response is truncated.</p>",
+          "example": "0",
+          "member": "uint64",
+          "name": "MaxTokens",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable thinking mode. Availability depends on the model provider. Enabling thinking mode consumes output tokens.</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "ThinkingMode",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of conversation turns cached for the LLM. Valid range: 0 to 50. Recommended range: 10 to 30. The total number of tokens in this context must not exceed the LLM context limit.</p>",
+          "example": "50",
+          "member": "uint64",
+          "name": "MaxHistory",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Maximum rounds of MCP tool calls, ranging from 0 to 50. Default: 10.</p>",
+          "example": "20",
+          "member": "uint64",
+          "name": "MaxToolRound",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Timeout for a single request, in milliseconds. Valid range: 1000 to 60000. Default: 10000.",
+          "example": "20000",
+          "member": "uint64",
+          "name": "Timeout",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sampling temperature, ranging from 0.0 to 2.0. Default: 1.0.</p>",
+          "example": "0.5",
+          "member": "float",
+          "name": "Temperature",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Top p nucleus sampling. Valid range: 0.0 to 1.0. Default: 1.0.</p>",
+          "example": "0.9",
+          "member": "float",
+          "name": "TopP",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "disabled": false,
+          "document": "<p>MCP Server parameters.</p>",
+          "example": "无",
+          "member": "VoiceConversationMcpServer",
+          "name": "McpServer",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Custom HTTP request headers.</p>",
+          "example": "无",
+          "member": "KeyValueItem",
+          "name": "CustomHeaders",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Provider-specific parameters, such as DeepSeek's reasoning_effort and Hunyuan's enable_enhancement.",
+          "example": "无",
+          "member": "KeyValueItem",
+          "name": "CustomFields",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Initial conversation history. Each item uses this format: `{\"Role\": \"user\"/\"assistant\"/\"system\", \"Content\": \"xxx\"}`.</p>",
+          "example": "无",
+          "member": "VoiceConversationHistoryMessage",
+          "name": "HistoryMessages",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "VoiceConversationMcpServer": {
+      "document": "MCP Sever parameters.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The unique mcp identifier.</p>",
+          "example": "weat****mcp",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Endpoint URL.</p>",
+          "example": "https://m*********e.com/v1",
+          "member": "string",
+          "name": "Url",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Request timeout in ms. Default: 5000. This value should not exceed 30000.</p>",
+          "example": "5000",
+          "member": "uint64",
+          "name": "Timeout",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Custom request headers, such as authentication information.</p>",
+          "example": "无",
+          "member": "KeyValueItem",
+          "name": "Headers",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Allowlist of tools that can be used.</p>",
+          "example": "[\"get_weather\"]",
+          "member": "string",
+          "name": "ToolList",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "VoiceConversationS2SConfig": {
+      "document": "Configuration parameters for the end-to-end large speech model of an AI conversation task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>S2S manufacturer identification, for example, \"tencent\".</p>",
+          "example": "doubao",
+          "member": "string",
+          "name": "Provider",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Manufacturer exclusive parameter, JSON serialized string.</p>",
+          "example": "{\"api_key\":\"f6aff*****************0-68e4cf4753d5\"}",
+          "member": "string",
+          "name": "Params",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>The welcome message played when the host enters the room for the first time. It will play again if the host leaves and re-enters the room.</p>",
+          "example": "你好，有什么可以帮助你的？",
+          "member": "string",
+          "name": "WelcomeMessage",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "VoiceConversationSTTConfig": {
+      "document": "STT configuration parameters for the AI conversation task",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>ASR provider name: trtc (Tencent Self-developed) or third-party provider (for example, azure).</p>",
+          "example": "trtc",
+          "member": "string",
+          "name": "Provider",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>ASR manufacturer exclusive parameter. Fill in the JSON serialized string.</p>",
+          "example": "{\"engine_model_type\":\"bigmodel\", \"max_speak_time\":\"60000\", \"language\":\"zh\", \"vad_silence_time\":\"1000\"}",
+          "member": "string",
+          "name": "Params",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "VoiceConversationTTSConfig": {
+      "document": "TTS configuration for conversation tasks.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>TTS providers, such as trtc.</p>",
+          "example": "azure",
+          "member": "string",
+          "name": "Provider",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Manufacturer exclusive parameter, string after JSON serialization.</p>",
+          "example": "{\"model\":\"flow_02_turbo\",\"voice_id\":\"v-female-R2s4N9qJ\",\"speed\":1.0,\"volume\":1.0,\"pitch\":0}",
+          "member": "string",
+          "name": "Params",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "VoiceConversationVisionConfig": {
+      "document": "Parameter configuration related to AI conversation visual understanding.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Whether to enable visual understanding.</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "Enable",
+          "required": true,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Storage type.</p><p>Enumeration values:</p><ul><li>0: Do not store.</li><li>1: Specify cloud storage. In such cases, the CloudStorage parameter is required.</li></ul><p>Default value: 0</p>",
+          "example": "0",
+          "member": "uint64",
+          "name": "StorageType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Third-party Cloud Storage archive configuration. After configuration, the backend will automatically upload I-frames received from the SDK to the designated cloud bucket for persistent storage.</p>",
+          "example": "无",
+          "member": "CloudStorage",
+          "name": "CloudStorage",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "usage": "in"
     },
     "VoicePrint": {
       "document": "Voiceprint configuration parameters.",

@@ -238,6 +238,13 @@
       "output": "SmartStructuralOCRV2Response",
       "status": "online"
     },
+    "VerifyPdfOcr": {
+      "document": "This API is used to recognize entry and exit record PDFs and verify electronic signatures, returning structured entry and exit records and signature verification conclusions.",
+      "input": "VerifyPdfOcrRequest",
+      "name": "Chinese Citizen Entry-Exit Record Query",
+      "output": "VerifyPdfOcrResponse",
+      "status": "online"
+    },
     "VinOCR": {
       "document": "This API is used to recognize the vehicle identification number (VIN) in an image.",
       "input": "VinOCRRequest",
@@ -1674,6 +1681,92 @@
         }
       ],
       "type": "object"
+    },
+    "ExtractedFields": {
+      "document": "Flattened extraction result of entry and exit records (recommended, with 2–3 levels directly reaching business fields)",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Title, such as &quot;Exit and Entry Record Query Result of the National Immigration Administration (Electronic Document)&quot;</p>",
+          "example": "国家移民管理局出入境记录查询结果(电子文件)",
+          "member": "string",
+          "name": "Title",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Query number</p>",
+          "example": "E250417329188",
+          "member": "string",
+          "name": "QueryNo",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Query date</p>",
+          "example": "2025年04月17日",
+          "member": "string",
+          "name": "QueryDate",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Date of issue</p>",
+          "example": "2025年04月17日20时59分",
+          "member": "string",
+          "name": "GenerateDate",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Information of the inquirer</p>",
+          "example": "无",
+          "member": "PersonInfo",
+          "name": "PersonInfo",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of entry and exit records</p>",
+          "example": "无",
+          "member": "Record",
+          "name": "Records",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Start time of the query range</p>",
+          "example": "2025年01月17日",
+          "member": "string",
+          "name": "QueryPeriodStart",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>End time of the query range</p>",
+          "example": "2025年04月17日",
+          "member": "string",
+          "name": "QueryPeriodEnd",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "GeneralAccurateOCRRequest": {
       "document": "GeneralAccurateOCR request structure.",
@@ -4273,6 +4366,52 @@
         }
       ],
       "type": "object"
+    },
+    "PersonInfo": {
+      "document": "Information of the inquirer",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Name of the inquirer",
+          "example": "张良茂",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Gender",
+          "example": "男",
+          "member": "string",
+          "name": "Gender",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Date of birth",
+          "example": "1990年01月17日",
+          "member": "string",
+          "name": "BirthDate",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Citizen ID number",
+          "example": "440982199001170439",
+          "member": "string",
+          "name": "IdCardNo",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "Polygon": {
       "document": "The coordinates of the four vertices of the text\nNote: This field may return null, indicating that no valid values can be obtained.",
@@ -7780,6 +7919,128 @@
       ],
       "type": "object"
     },
+    "Record": {
+      "document": "Single exit-entry record",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Serial number.",
+          "example": "1",
+          "member": "string",
+          "name": "Index",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Exit/Entry",
+          "example": "入境",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Date of exit/entry",
+          "example": "2025-04-16",
+          "member": "string",
+          "name": "Date",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Document name",
+          "example": "往来港澳通行证",
+          "member": "string",
+          "name": "CertName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Document number",
+          "example": "CB4476891",
+          "member": "string",
+          "name": "CertId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Port of exit/entry",
+          "example": "西九龙口岸",
+          "member": "string",
+          "name": "Port",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "SignResult": {
+      "document": "Signature verification conclusion",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Signature verification status. 1 indicates that the signature verification is passed.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "VerifyStatus",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Signer name</p>",
+          "example": "国家移民管理局 National Immigration Administration",
+          "member": "string",
+          "name": "SignerName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Signature algorithm, such as SHA256withRSA</p>",
+          "example": "SHA256withRSA",
+          "member": "string",
+          "name": "SignAlgorithm",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Signature time (Unix timestamp in milliseconds)</p>",
+          "example": "1744895717000",
+          "member": "int64",
+          "name": "SignTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Signature verification information</p>",
+          "example": "4e6ae7119652c643e46a08e7c3669a22f1e9e5c8",
+          "member": "string",
+          "name": "CertSn",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "SkippedCheck": {
       "document": "Skipped check items",
       "members": [
@@ -8035,6 +8296,53 @@
         }
       ],
       "usage": "out"
+    },
+    "VerifyPdfOcrRequest": {
+      "document": "VerifyPdfOcr request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Base64-encoded content of the PDF file. The data:application/pdf;base64, prefix is supported (the server automatically strips it).</p>",
+          "example": "PDF 文件的 Base64 编码内容。支持带 data:application/pdf;base64, 前缀（服务端自动剥离）。",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "VerifyPdfOcrResponse": {
+      "document": "VerifyPdfOcr response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Flattened extraction result of exit-entry records (recommended)</p>",
+          "example": "无",
+          "member": "ExtractedFields",
+          "name": "ExtractedFields",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "<p>Signature verification conclusion (recommended)</p>",
+          "example": "无",
+          "member": "SignResult",
+          "name": "SignResult",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "VinOCRRequest": {
       "document": "VinOCR request structure.",

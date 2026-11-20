@@ -8,6 +8,14 @@
         "title": "Send Broadcast Text"
       }
     ],
+    "ControlVoiceConversation": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ControlVoiceConversation\n<Common request parameters>\n\n{\n    \"SdkAppId\": 1400704311,\n    \"TaskId\": \"-m9jX35U7ginppW8rcCa0K3L6C*************************b7SjBmnozma7Gfq2Tbb5htQE.\",\n    \"Command\": \"interrupt\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"-m9jX35U7ginppW8rcCa0K3L6C*************************b7SjBmnozma7Gfq2Tbb5htQE.\",\n        \"RequestId\": \"13bd15e4-70b3-42e3-a7d6-3b2b3f26ff53\"\n    }\n}",
+        "title": "Interrupt a dialogue"
+      }
+    ],
     "CreateCloudModeration": [
       {
         "document": "This example shows you how to start a cloud moderation task for the specified room (room number: 150) with SdkAppId 200806.\n\nThis example shows you how to set the idle time for the room to 30 seconds.\nThis example shows you how to set the moderation mode to send a video frame screenshot to Tencent ACE for moderation every 5 seconds.\nThis example shows you how to send a 15-second audio to Tencent ACE for moderation every 15 seconds.\nThis example shows you how to send the moderation result to the customers through the configured callback URL.",
@@ -40,6 +48,20 @@
         "title": "Initiate a transcription task"
       }
     ],
+    "CreateVoiceConversation": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateVoiceConversation\n<Common request parameters>\n\n{\n    \"SdkAppId\": 1400000311,\n    \"RoomId\": \"99884336\",\n    \"RoomIdType\": 0,\n    \"AgentConfig\": {\n        \"UserId\": \"test2\",\n        \"UserSig\": \"eJyrVgrxCdYrzkxXslJQyvEsqDTzcyrzyHGNcgoMKsuudEt2D3D1KUwsi8jy8PD3NQnK********************************************************************cmWpRSDrjPQMYKaUZOaCzTA3MzYwMDI2NYOKZ6ak5pVkpmVCNJSkFpcYKdUCAKlEMxg_\",\n        \"TargetUserId\": [\n            \"Jeff\"\n        ],\n        \"TTSPushRoomParams\": {\n            \"UserId\": \"tts-bot-001\"\n        },\n        \"MaxIdleTime\": 5000,\n        \"FilterBracketsContent\": [\n            1\n        ],\n        \"SubtitleMode\": 0,\n        \"TurnDetectionMode\": \"auto\"\n    },\n    \"ConversationMode\": \"Cascade\",\n    \"STTConfig\": {\n        \"Provider\": \"trtc\",\n        \"Params\": \"{\\\"engine_model_type\\\":\\\"bigmodel\\\", \\\"max_speak_time\\\":\\\"60000\\\", \\\"language\\\":\\\"zh\\\"}\"\n    },\n    \"LLMConfig\": {\n        \"LLMType\": \"tencent\",\n        \"Model\": \"hunyu*****0628\",\n        \"APIUrl\": \"http://api.taiji.w*****************/chat/completions\",\n        \"APIKey\": \"n21LYT6WmpE***********mqWKCrQlzJ\",\n\"SystemPrompt\": \"You are a concise dialogue assistant.\",\n\"FailureMessage\": \"System busy, try again later\",\n        \"MaxTokens\": 0,\n        \"ThinkingMode\": false,\n        \"MaxHistory\": 50,\n        \"MaxToolRound\": 20,\n        \"Timeout\": 60000,\n        \"Temperature\": 0.5,\n        \"TopP\": 0.9,\n        \"McpServer\": {\n            \"Name\": \"weath****ools\",\n            \"Url\": \"https://m*********e.com/sse\",\n            \"Timeout\": 10000,\n            \"Headers\": [\n                {\n                    \"Key\": \"enable_search\",\n                    \"Value\": \"true\"\n                }\n            ],\n            \"ToolList\": [\n                \"get_****her\"\n            ]\n        },\n        \"CustomHeaders\": [\n            {\n                \"Key\": \"X-Request-Source\",\n                \"Value\": \"trtc-conversation\"\n            }\n        ],\n        \"CustomFields\": [\n            {\n                \"Key\": \"enable_search\",\n                \"Value\": \"true\"\n            }\n        ],\n        \"HistoryMessages\": [\n            {\n                \"Role\": \"user\",\n\"Content\": \"Hello\"\n            }\n        ]\n    },\n    \"TTSConfig\": {\n        \"Provider\": \"trtc\",\n        \"Params\": \"{\\\"model\\\":\\\"flow_02_turbo\\\",\\\"voice_id\\\":\\\"v-female-R2s4N9qJ\\\",\\\"speed\\\":1.0,\\\"volume\\\":1.0,\\\"pitch\\\":0}\"\n    },\n    \"DialogConfig\": {\n        \"InterruptMode\": 2,\n        \"InterruptSpeechDuration\": 200,\n        \"InterruptKeywords\": [\nStop\n        ],\n        \"SilenceFollowUp\": 50,\n\"SilenceFollowUpText\": \"Are you still there? Tell me directly if you have any questions.\",\n\"WelcomeMessage\": \"Hello, I'm your ai assistant. What can I do for you?\"\n    },\n    \"VisionConfig\": {\n        \"Enable\": true,\n        \"StorageType\": 0\n    },\n    \"SpeechPushConfig\": {\n        \"Url\": \"ws://21.********22:9002\",\n        \"Token\": \"test***ken\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"-nG0jIFU7iHfG3DHVsI24YFXEn*************************bRRKvrG-CxBxuPyrGvSr2ZQE.\",\n        \"RequestId\": \"45192e66-a49e-4ea4-92f0-519955e3c903\"\n    }\n}",
+        "title": "Start a conversation task (three-segment)"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateVoiceConversation\n<Common request parameters>\n\n{\n    \"SdkAppId\": 1400704311,\n    \"RoomId\": \"9988123\",\n    \"RoomIdType\": 0,\n    \"AgentConfig\": {\n        \"UserId\": \"test2\",\n        \"UserSig\": \"eJyrVgrxCdYrzkxXslJQyvEsqDTzcyrzyHGNcgoMKsuudEt2D3D1KUwsi8jy8PD3NQnK********************************************************************cmWpRSDrjPQMYKaUZOaCzTA3MzYwMDI2NYOKZ6ak5pVkpmVCNJSkFpcYKdUCAKlEMxg_\",\n        \"TargetUserId\": [\n            \"Jeff\"\n        ],\n        \"TTSPushRoomParams\": {\n            \"UserId\": \"tts-bot-001\"\n        },\n        \"MaxIdleTime\": 50\n    },\n    \"ConversationMode\": \"S2S\",\n    \"S2SConfig\": {\n        \"Provider\": \"doubao\",\n        \"Params\": \"{\\\"api_key\\\":\\\"xxxxxx\\\",\\\"type\\\":\\\"session.create\\\",\\\"session\\\":{\\\"id\\\":\\\"\\\",\\\"model\\\":\\\"1.2.6.1\\\",\\\"instructions\\\":\\\"You are an everyday-life assistant. You are good at answering daily questions about recipes, travel, parenting, health, shopping, and legal matters. Please answer concisely and clearly in Chinese.\\\",\\\"type\\\":\\\"realtime\\\",\\\"audio\\\":{\\\"input\\\":{\\\"format\\\":{\\\"type\\\":\\\"pcm\\\",\\\"rate\\\":16000}},\\\"output\\\":{\\\"format\\\":{\\\"type\\\":\\\"pcm_s16le\\\",\\\"rate\\\":24000},\\\"voice\\\":\\\"zh_female_vv_jupiter_bigtts\\\"}}},\\\"extension\\\":{\\\"asr\\\":{\\\"extra\\\":{}},\\\"dialog\\\":{\\\"bot_name\\\":\\\"Doubao\\\"},\\\"tts\\\":{\\\"speaker\\\":\\\"zh_female_vv_jupiter_bigtts\\\",\\\"audio_config\\\":{\\\"channel\\\":1,\\\"format\\\":\\\"pcm_s16le\\\",\\\"sample_rate\\\":24000}}}}\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"-nG0jIFU7g8UyQOwf8uvyfe1ph*************************bAp-C8HdhuD+Acd+5Tavn6AE.\",\n        \"RequestId\": \"32151e30-fd9f-47d4-b59d-72a372eb61f0\"\n    }\n}",
+        "title": "Start a conversation task (end-to-end large speech model)"
+      }
+    ],
     "DeleteCloudModeration": [
       {
         "document": "",
@@ -70,6 +92,14 @@
         "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteCloudTranscription\n<Common request parameters>\n\n{\n    \"SdkAppId\": 14000000,\n    \"TaskId\": \"-nE5Nd9U7pfwyEzu+8LN******j-r1AI7H3plkD1p8pHX71AE.\"\n}",
         "output": "{\n    \"Response\": {\n        \"TaskId\": \"-nE5Nd9U7pfwyEzu+8LNXe******ndibj-r1AI7H3plkD1p8pHX71AE.\",\n        \"RequestId\": \"768c7bde-70******c-e81f21cb1599\"\n    }\n}",
         "title": "Stop transcription task"
+      }
+    ],
+    "DeleteVoiceConversation": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteVoiceConversation\n<Common request parameters>\n\n{\n    \"SdkAppId\": 1400704311,\n    \"TaskId\": \"-nG0xCFU7lbAnrSOAsc22iFg4v*************************b7S+nNiUvm6EPLEY7SC+VIAE.\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"-nG0xCFU7lbAnrSOAsc22iFg4v*************************b7S+nNiUvm6EPLEY7SC+VIAE.\",\n        \"RequestId\": \"222dbe7b-e1e4-45e5-b08a-43699e3493e4\"\n    }\n}",
+        "title": "Stop a conversation task"
       }
     ],
     "DescribeAIConversation": [
@@ -248,6 +278,14 @@
         "title": "Querying users and call metrics"
       }
     ],
+    "DescribeVoiceConversation": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeVoiceConversation\n<Common request parameters>\n\n{\n    \"SdkAppId\": 1400000311,\n    \"TaskId\": \"-nG0jIFU7rPr0tFW0cg282rOxP*************************bUA9JbOXgp3tnRyVJAzlBFAE.\",\n    \"DescribeType\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"HistoryContents\": [\n            {\n                \"Role\": \"user\",\n                \"Content\": \"How is the recent weather in Shanghai\"\n            },\n            {\n                \"Role\": \"assistant\",\n                \"Content\": \"I'm unable to access real-time weather data, so I cannot tell you the exact current weather in Shanghai. I recommend checking your phone's built-in weather app or a platform such as China Weather to get the latest forecast.\\n\\nIf you tell me the specific date, I can also describe Shanghai's typical climate during this season, including temperature ranges and precipitation, for your reference.\"\n            }\n        ],\n        \"StartTime\": 1790081311564,\n        \"Status\": \"InProgress\",\n        \"TaskId\": \"-nG0jIFU7rPr0tFW0cg282rOxP*************************bUA9JbOXgp3tnRyVJAzlBFAE.\",\n        \"RequestId\": \"ebb2213e-7322-4f9b-8fcd-60c08a5168b7\"\n    }\n}",
+        "title": "Querying a conversation task"
+      }
+    ],
     "DescribeWebRecord": [
       {
         "document": "",
@@ -294,6 +332,14 @@
         "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyCloudSliceTask\n<Common request parameters>\n\n{\n    \"SdkAppId\": 20010806,\n    \"TaskId\": \"-nHwQ8NU7t7Ps1bc3MXN7wTw1-BZVg7bbhyXLoK-mumNM6KipeAYnB3iUGIpBL-ajrCF-pd2AQ..\",\n    \"SubscribeStreamUserIds\": {\n        \"SubscribeAudioUserIds\": [\n            \"555\"\n        ]\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"b4d09681-4413-4f21-972d-bba98422aa30\",\n        \"TaskId\": \"-nHwQ8NU7t7Ps1bc3MXN7wTw1-BZVg7bbhyXLoK-mumNM6KipeAYnB3iUGIpBL-ajrCF-pd2AQ..\"\n    }\n}",
         "title": "Modifying a Cloud Slicing Task"
+      }
+    ],
+    "ModifyVoiceConversation": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyVoiceConversation\n<Common request parameters>\n\n{\n    \"SdkAppId\": 1400704311,\n    \"TaskId\": \"-nG0jIFU7llEfJ3MR8El60TD18*************************bOp75dg0i7c+NqbBQ2tAxOAE.\",\n    \"SequenceNumber\": 0,\n    \"LLMConfig\": {\n        \"LLMType\": \"openai\",\n        \"Model\": \"gpt-4o-mini\",\n        \"APIUrl\": \"https://translationsllm.openai.azure.com****************************************pletions?api-version=2025-01-01-preview\",\n        \"APIKey\": \"CKLhA70tjVXN8Tp0ADnCiv5YSqFe****************************99BJAC4f1cMXJ3w3AAABACOG9t8q\",\n\"SystemPrompt\": \"You are a conversation assistant.\",\n        \"MaxTokens\": 2048,\n        \"MaxHistory\": 50,\n        \"MaxToolRound\": 20,\n        \"Timeout\": 20000,\n        \"Temperature\": 0.5,\n        \"TopP\": 0.9,\n        \"McpServer\": {\n            \"Name\": \"weather-mcp\",\n            \"Url\": \"https://m*********e.com/v1\",\n            \"Timeout\": 5000,\n            \"ToolList\": [\n                \"get_weather\"\n            ]\n        }\n    },\n    \"DialogConfig\": {\n        \"InterruptMode\": 2,\n        \"InterruptKeywords\": [\nstop\n        ]\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"-nG0jIFU7llEfJ3MR8El60TD18*************************bOp75dg0i7c+NqbBQ2tAxOAE.\",\n        \"RequestId\": \"0842be45-1e51-401a-8372-f57f6c86edb9\"\n    }\n}",
+        "title": "Modify ai Dialogue"
       }
     ],
     "QueryAIMessageList": [

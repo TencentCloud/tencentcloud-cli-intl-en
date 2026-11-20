@@ -218,9 +218,9 @@
       "status": "online"
     },
     "DescribeInstances": {
-      "document": "This API is used to query the details of one or multiple instances.\n\n* You can query the details of an instance according to its ID, name, or private IP.\n* For more information on filters, please see [Filters](https://intl.cloud.tencent.com/document/product/1207/47576?from_cn_redirect=1#Filter).\n* If no parameter is defined, the status of a certain number of instances under the current account will be returned. The number is specified by `Limit` and is 20 by default.\n* The latest operation (LatestOperation) and the latest operation status (LatestOperationState) of the instance can be queried.",
+      "document": "This API is used to query the detailed information of one or more instances.\n\n* You can query the detailed information of instances by instance ID, instance name, or private IP of the instance.\n* For detailed filter information, see [Filters](https://www.tencentcloud.com/document/product/1207/47576?from_cn_redirect=1#Filter).\n* If the parameter is empty, a certain number of instances (the number specified by `Limit`, 20 by default) under the current user will be returned.\n* You can query the latest operation (LatestOperation) and the latest operation state (LatestOperationState) of an instance.",
       "input": "DescribeInstancesRequest",
-      "name": "Views instance list",
+      "name": "Queries the instance list",
       "output": "DescribeInstancesResponse",
       "status": "online"
     },
@@ -3083,7 +3083,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID list. Each request can contain up to 100 instances at a time.",
+          "document": "List of instance IDs. The maximum number of instances in each request is 100. You can obtain the instance IDs from the `InstanceId` field in the response of the [DescribeInstances](https://www.tencentcloud.com/document/api/1207/47573?from_cn_redirect=1) API.",
           "example": "[\"lhins-4r4pvtbg\"]",
           "member": "string",
           "name": "InstanceIds",
@@ -3092,7 +3092,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter list. \n<li>instance-name</li>Filter by the **instance name**. \nType: String \nRequired: No \n<li>private-ip-address</li>Filter by the **private IP of instance primary ENI**. \nType: String \nRequired: No \n<li>public-ip-address</li>Filter by the **public IP of instance primary ENI**. \nType: String \nRequired: No \n<li>zone</li>Filter by the availability zone. \nType: String \nRequired: No \n<li>instance-state</li>Filter by the **instance status**. \nType: String \nRequired: No \n<li>tag-key</li>Filter by the **tag key**. \nType: String \nRequired: No \n<li>tag-value</li>Filter by the **tag value**. \nType: String \nRequired: No \n<li> tag:tag-key</li>Filter by tag key-value pair. The `tag-key` should be replaced with a specific tag key. \nType: String \nRequired: No \nEach request can contain up to 10 `Filters` and 100 `Filter.Values`. You cannot specify both `InstanceIds` and `Filters` at the same time.",
+          "document": "List of filters.\n<li>instance-name</li>Filters by instance name.\nType: String\nRequired: No\n<li>private-ip-address</li>Filters by the private IP of the primary ENI of the instance.\nType: String\nRequired: No\n<li>public-ip-address</li>Filters by the public IP of the primary ENI of the instance.\nType: String\nRequired: No\n<li>zone</li>Filters by AZ.\nType: String\nRequired: No\n<li>instance-state</li>Filters by instance state.\nType: String\nRequired: No\n<li>tag-key</li>Filters by tag key.\nType: String\nRequired: No\n<li>tag-value</li>Filters by tag value.\nType: String\nRequired: No\n<li> tag:tag-key</li>Filters by tag key-value pair. Replace tag-key with the specific tag key.\nType: String\nRequired: No\n<li>bundle-id</li>Filters by bundle ID.\nType: String\nRequired: No\n\nThe maximum number of Filters per request is 10, and the maximum number of Filter.Values is 100. You cannot specify both InstanceIds and Filters at the same time.",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -3101,7 +3101,7 @@
         },
         {
           "disabled": false,
-          "document": "Offset. Default value: 0. For more information on `Offset`, please see the relevant section in [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).",
+          "document": "Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [Introduction](https://www.tencentcloud.com/document/product/1207/47578?from_cn_redirect=1).",
           "example": "0",
           "member": "int64",
           "name": "Offset",
@@ -3110,12 +3110,30 @@
         },
         {
           "disabled": false,
-          "document": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, please see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).",
+          "document": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [Introduction](https://www.tencentcloud.com/document/product/1207/47578?from_cn_redirect=1).",
           "example": "1",
           "member": "int64",
           "name": "Limit",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the field by which to sort. Valid values: \"EXPIRED_TIME\": Sorts by the expiration time of the instance. \n If this field is not passed in, instances with the status of \"pending reclamation\" are returned first, and the remaining instances are returned in descending order by creation time.",
+          "example": "EXPIRED_TIME",
+          "member": "string",
+          "name": "OrderField",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The order in which the output instance list is sorted. Valid values:\n\"ASC\": Sorts in ascending order.\n\"DESC\": Sorts in descending order.\nBy default, the list is sorted in ascending order. If this field is passed in, OrderField must be specified.",
+          "example": "DESC",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -3135,7 +3153,7 @@
         },
         {
           "disabled": false,
-          "document": "List of instance details",
+          "document": "Detailed information list of instances.",
           "example": "无",
           "member": "Instance",
           "name": "InstanceSet",
@@ -4593,11 +4611,11 @@
       "usage": "both"
     },
     "Filter": {
-      "document": ">Key-Value pair filter for conditional filtering queries, such as filtering name\n> * If there are multiple `Filter` parameters, the relationship among them is the logical `AND`.\n> * If there are multiple `Values` for the same `Filter`, the relationship among the `Values` is the logical `OR`.\n>\n> Taking the `Filter` in the `DescribeInstances` API as an example, you can use the following filters to query the instance whose name (`instance-name`) is `test` ***and*** private IP (`private-ip-address`) is 10.10.10.10:\n```\nFilters.0.Name=instance-name\n&Filters.0.Values.0=test\n&Filters.1.Name=private-ip-address\n&Filters.1.Values.0=10.10.10.10\n```",
+      "document": ">Describes key-value pair filters used for conditional filtering queries. For example, filter by name.\n> * If there are multiple `Filter` parameters, the relationship between them is logical AND (`AND`).\n> * If the same `Filter` has multiple `Values`, the relationship between the `Values` under the same `Filter` is logical OR (`OR`).\n>\n> Take the `Filter` of the DescribeInstances API as an example. If you need to query instances whose instance name (`instance-name`) is test ***and*** private IP (`private-ip-address`) is 10.10.10.10, you can implement it as follows:\n```\nFilters.0.Name=instance-name\n&Filters.0.Values.0=test\n&Filters.1.Name=private-ip-address\n&Filters.1.Values.0=10.10.10.10\n```",
       "members": [
         {
           "disabled": false,
-          "document": "Field to be filtered.",
+          "document": "Fields to be filtered.",
           "example": "bundle-id",
           "member": "string",
           "name": "Name",
@@ -4607,7 +4625,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter value of field.",
+          "document": "Filter value of the field.",
           "example": "['bundle_ntp_small2_100']",
           "member": "string",
           "name": "Values",
@@ -5288,7 +5306,7 @@
       "type": "object"
     },
     "Instance": {
-      "document": "Instance information.",
+      "document": "Describes the instance information.",
       "members": [
         {
           "disabled": false,
@@ -5302,7 +5320,7 @@
         },
         {
           "disabled": false,
-          "document": "Package ID.",
+          "document": "Bundle ID.",
           "example": "bundle_bw_small1_1",
           "member": "string",
           "name": "BundleId",
@@ -5322,7 +5340,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of instance CPU cores.",
+          "document": "Number of CPU cores for the instance, in cores.",
           "example": "2",
           "member": "int64",
           "name": "CPU",
@@ -5332,7 +5350,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance memory capacity in GB.",
+          "document": "Instance memory capacity, in GB.",
           "example": "2",
           "member": "int64",
           "name": "Memory",
@@ -5352,7 +5370,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance billing mode. Valid values: \nPREPAID: prepaid (i.e., monthly subscription).",
+          "document": "Instance billing mode. Valid values: \nPREPAID: prepaid, that is, monthly or yearly subscription.",
           "example": "PREPAID",
           "member": "string",
           "name": "InstanceChargeType",
@@ -5372,7 +5390,7 @@
         },
         {
           "disabled": false,
-          "document": "Private IP of instance primary ENI. \nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Private IP of the instance's primary NIC. \nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "[\"10.0.2.13\"]",
           "member": "string",
           "name": "PrivateAddresses",
@@ -5382,7 +5400,7 @@
         },
         {
           "disabled": false,
-          "document": "Public IP of instance primary ENI. \nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Public IP of the instance's primary NIC. \nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "[\"43.128.117.26\"]",
           "member": "string",
           "name": "PublicAddresses",
@@ -5402,7 +5420,7 @@
         },
         {
           "disabled": false,
-          "document": "Auto-Renewal flag. Valid values: \nNOTIFY_AND_MANUAL_RENEW: notify upon expiration but do not renew automatically  \nNOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically.",
+          "document": "Auto-renewal flag. Valid values: \nNOTIFY_AND_MANUAL_RENEW: Notify when the subscription is about to expire, but do not renew automatically.  \nNOTIFY_AND_AUTO_RENEW: Notify when the subscription is about to expire and renew automatically. DISABLE_NOTIFY_AND_MANUAL_RENEW: Do not renew automatically or send notifications.",
           "example": "NOTIFY_AND_MANUAL_RENEW",
           "member": "string",
           "name": "RenewFlag",
@@ -5412,7 +5430,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance login settings.",
+          "document": "Instance login setting.",
           "example": "无",
           "member": "LoginSettings",
           "name": "LoginSettings",
@@ -5422,7 +5440,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance status. Valid values: \n<li>PENDING: Creating</li><li>LAUNCH_FAILED: Failed to create</li><li>RUNNING: Running</li><li>STOPPED: Shut down</li><li>STARTING: Starting up</li><li>STOPPING: Shutting down</li><li>REBOOTING: Restarting</li><li>SHUTDOWN: Shutdown and to be terminated</li><li>TERMINATING: Terminating</li><li>DELETING: Deleting</li><li>FREEZING: Frozen</li><li>ENTER_RESCUE_MODE: Entering the rescue mode</li><li>RESCUE_MODE: Rescue mode</li><li>EXIT_RESCUE_MODE: Exiting from the rescue mode</li>",
+          "document": "Instance status. Valid values: \n<li>PENDING: Creating</li><li>LAUNCH_FAILED: Failed to create</li><li>RUNNING: Running</li><li>STOPPED: Shut down</li><li>STARTING: Starting up</li><li>STOPPING: Shutting down</li><li>REBOOTING: Restarting</li><li>SHUTDOWN: Shutdown and to be terminated</li><li>TERMINATING: Terminating</li><li>DELETING: Deleting</li><li>FREEZING: Frozen</li><li>ENTER_RESCUE_MODE: Entering the rescue mode</li><li>RESCUE_MODE: Rescue mode</li><li>EXIT_RESCUE_MODE: Exiting the rescue mode</li>",
           "example": "RUNNING",
           "member": "string",
           "name": "InstanceState",
@@ -5432,7 +5450,7 @@
         },
         {
           "disabled": false,
-          "document": "Globally unique ID of instance.",
+          "document": "Globally unique ID of the instance.",
           "example": "1db916fc-ac02-498c-9fe0-ce60003ebcbf",
           "member": "string",
           "name": "Uuid",
@@ -5442,7 +5460,7 @@
         },
         {
           "disabled": false,
-          "document": "Last instance operation, such as `StopInstances` and `ResetInstance`. Note: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Latest operation on the instance, such as StopInstances and ResetInstance. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "StartInstances",
           "member": "string",
           "name": "LatestOperation",
@@ -5452,7 +5470,7 @@
         },
         {
           "disabled": false,
-          "document": "Last instance operation status. Valid values: \nSUCCESS: operation succeeded \nOPERATING: the operation is being executed \nFAILED: operation failed \nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Status of the latest operation on the instance. Valid values: \nSUCCESS: The operation succeeded. \nOPERATING: The operation is in progress. \nFAILED: The operation failed. \nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "SUCCESS",
           "member": "string",
           "name": "LatestOperationState",
@@ -5462,7 +5480,7 @@
         },
         {
           "disabled": false,
-          "document": "Unique request ID for the last operation of the instance. \nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Unique request ID of the latest operation on the instance. \nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "f498d99d-2647-4c1c-a234-36f0e082e7ba",
           "member": "string",
           "name": "LatestOperationRequestId",
@@ -5472,7 +5490,17 @@
         },
         {
           "disabled": false,
-          "document": "Isolation time according to ISO 8601 standard. UTC time is used. \nFormat: YYYY-MM-DDThh:mm:ssZ.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Start time of the latest operation on the instance.",
+          "example": "2023-12-01T06:34:59Z",
+          "member": "datetime_iso",
+          "name": "LatestOperationStartedTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Isolation time in UTC, formatted according to the ISO 8601 standard. \nFormat: YYYY-MM-DDThh:mm:ssZ.",
           "example": "2023-12-01T06:34:59Z",
           "member": "datetime_iso",
           "name": "IsolatedTime",
@@ -5482,7 +5510,7 @@
         },
         {
           "disabled": false,
-          "document": "Creation time according to ISO 8601 standard. UTC time is used. \nFormat: YYYY-MM-DDThh:mm:ssZ.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Creation time in UTC, formatted according to the ISO 8601 standard. \nFormat: YYYY-MM-DDThh:mm:ssZ.",
           "example": "2023-12-01T06:34:59Z",
           "member": "datetime_iso",
           "name": "CreatedTime",
@@ -5492,7 +5520,7 @@
         },
         {
           "disabled": false,
-          "document": "Expiration time according to ISO 8601 standard. UTC time is used. \nFormat: YYYY-MM-DDThh:mm:ssZ.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Expiration time in UTC, formatted according to the ISO 8601 standard. \nFormat: YYYY-MM-DDThh:mm:ssZ.",
           "example": "2024-01-01T06:34:59Z",
           "member": "datetime_iso",
           "name": "ExpiredTime",
@@ -5502,7 +5530,7 @@
         },
         {
           "disabled": false,
-          "document": "OS type, such as LINUX_UNIX and WINDOWS.",
+          "document": "Operating system platform type, such as LINUX_UNIX and WINDOWS.",
           "example": "LINUX_UNIX",
           "member": "string",
           "name": "PlatformType",
@@ -5512,7 +5540,7 @@
         },
         {
           "disabled": false,
-          "document": "OS type.",
+          "document": "Operating system platform.",
           "example": "CENTOS",
           "member": "string",
           "name": "Platform",
@@ -5522,7 +5550,7 @@
         },
         {
           "disabled": false,
-          "document": "OS name.",
+          "document": "Operating system name.",
           "example": "CentOS 7.6 64bit",
           "member": "string",
           "name": "OsName",
@@ -5542,7 +5570,7 @@
         },
         {
           "disabled": false,
-          "document": "The list of tags associated with the instance",
+          "document": "List of tags bound to the instance.",
           "example": "无",
           "member": "Tag",
           "name": "Tags",
@@ -5552,12 +5580,32 @@
         },
         {
           "disabled": false,
-          "document": "Obtain instance status\n<li>NORMAL: The instance is normal</li><li>NETWORK_RESTRICT: The instance is blocked from the network.</li>",
+          "document": "Instance ban status. Valid values:\n<li>NORMAL: The instance is normal.</li><li>NETWORK_RESTRICT: The instance is banned from network access.</li>",
           "example": "NETWORK_RESTRICT",
           "member": "string",
           "name": "InstanceRestrictState",
           "output_required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Invocation ID of the TAT command to be automatically executed after the instance is created.",
+          "example": "inv-adtgj412l",
+          "member": "string",
+          "name": "InitInvocationId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance violation details.",
+          "example": "无",
+          "member": "InstanceViolationDetail",
+          "name": "InstanceViolationDetail",
+          "output_required": false,
+          "type": "object",
           "value_allowed_null": false
         }
       ],
@@ -5787,12 +5835,58 @@
       ],
       "usage": "out"
     },
-    "InternetAccessible": {
-      "document": "This describes the internet accessibility of the instance created by a launch configuration and declares the internet usage billing method of the instance and the maximum bandwidth",
+    "InstanceViolationDetail": {
+      "document": "Instance violation details.",
       "members": [
         {
           "disabled": false,
-          "document": "Network billing mode. Valid values:\n<li>Bill by traffic package: TRAFFIC_POSTPAID_BY_HOUR</li>\n<li>Bill by bandwidth: BANDWIDTH_POSTPAID_BY_HOUR</li>",
+          "document": " Source: RESTRICT: Banned; FREEZW: Frozen.",
+          "example": "FREEZING",
+          "member": "string",
+          "name": "Source",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether self-service unblocking is allowed. 1: Yes; 2: No.",
+          "example": "2",
+          "member": "string",
+          "name": "State",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Violation type.",
+          "example": "未备案",
+          "member": "string",
+          "name": "Reason",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Violation content (URL and associated domain name).",
+          "example": "http://157.*.*.29/",
+          "member": "string",
+          "name": "Content",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "InternetAccessible": {
+      "document": "Describes the public network accessibility of instances created with the launch configuration, and declares the public network billing mode and maximum bandwidth of the instance.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Network billing type. Valid values:\n<li>Pay-as-you-go by traffic: TRAFFIC_POSTPAID_BY_HOUR</li>\n<li>Pay-as-you-go by bandwidth: BANDWIDTH_POSTPAID_BY_HOUR</li>",
           "example": "BANDWIDTH_PREPAID",
           "member": "string",
           "name": "InternetChargeType",
@@ -5802,7 +5896,7 @@
         },
         {
           "disabled": false,
-          "document": "Public network outbound bandwidth cap in Mbps.",
+          "document": "Maximum outbound public bandwidth, in the unit of Mbps.",
           "example": "20",
           "member": "int64",
           "name": "InternetMaxBandwidthOut",
@@ -5812,7 +5906,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to assign a public IP.",
+          "document": "Indicates whether a public IP is assigned.",
           "example": "true",
           "member": "bool",
           "name": "PublicIpAssigned",
@@ -5986,11 +6080,11 @@
       "usage": "in"
     },
     "LoginSettings": {
-      "document": "Describes login settings of an instance.",
+      "document": "Describe the instance login related configuration and information.",
       "members": [
         {
           "disabled": false,
-          "document": "Key ID list. After a key is associated, you can use it to access the instance. Note: this field may return [], indicating that no valid values can be obtained.",
+          "document": "List of key IDs. After a key is associated, you can access the instance by using the corresponding private key. Note: This field may return [], indicating that no valid value can be obtained.",
           "example": "[\"lhkp-2hqb9khu\"]",
           "member": "string",
           "name": "KeyIds",
@@ -7371,11 +7465,11 @@
       "type": "object"
     },
     "SystemDisk": {
-      "document": "Information on the block device where the operating system is installed, namely the system disk.",
+      "document": "Describes the information of the block device where the operating system resides, i.e., the system disk.",
       "members": [
         {
           "disabled": false,
-          "document": "System disk type.\nValid values: \n<li> LOCAL_BASIC: local disk</li><li> LOCAL_SSD: local SSD disk</li><li> CLOUD_BASIC: HDD cloud disk</li><li> CLOUD_SSD: SSD cloud disk</li><li> CLOUD_PREMIUM: Premium Cloud Storage</li>",
+          "document": "System disk type.\nValid values: \n<li> LOCAL_BASIC: local disk</li><li> LOCAL_SSD: local SSD disk</li><li> CLOUD_BASIC: basic cloud disk</li><li> CLOUD_SSD: SSD cloud disk</li><li> CLOUD_PREMIUM: premium cloud disk</li>",
           "example": "CLOUD_PREMIUM",
           "member": "string",
           "name": "DiskType",
@@ -7385,7 +7479,7 @@
         },
         {
           "disabled": false,
-          "document": "System disk size in GB.",
+          "document": "System disk size, in the unit of GB.",
           "example": "20",
           "member": "int64",
           "name": "DiskSize",
@@ -7395,7 +7489,7 @@
         },
         {
           "disabled": false,
-          "document": "System disk ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "System disk ID.",
           "example": "lhdisk-jxj6qnpo",
           "member": "string",
           "name": "DiskId",
@@ -7407,11 +7501,11 @@
       "usage": "out"
     },
     "Tag": {
-      "document": "Information on tags",
+      "document": "Tag.",
       "members": [
         {
           "disabled": false,
-          "document": "Tag key",
+          "document": "Tag key.",
           "example": "Owner",
           "member": "string",
           "name": "Key",
@@ -7422,7 +7516,7 @@
         },
         {
           "disabled": false,
-          "document": "Tag value",
+          "document": "Tag value.",
           "example": "Green",
           "member": "string",
           "name": "Value",
