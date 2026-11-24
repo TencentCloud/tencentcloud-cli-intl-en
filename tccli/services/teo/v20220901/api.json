@@ -105,6 +105,13 @@
       "output": "CreateContentIdentifierResponse",
       "status": "online"
     },
+    "CreateCustomGroup": {
+      "document": "This API is used to create a custom group. A custom group is used to centrally manage a set of reusable matching entries. For example, you can save multiple JA3/JA4 TLS fingerprints as a TLS fingerprint group and directly reference the group in security rules, avoiding the need to maintain the same fingerprint list in multiple rules.",
+      "input": "CreateCustomGroupRequest",
+      "name": "Creates a custom group",
+      "output": "CreateCustomGroupResponse",
+      "status": "online"
+    },
     "CreateCustomizeErrorPage": {
       "document": "This API is used to create a custom response page.",
       "input": "CreateCustomizeErrorPageRequest",
@@ -371,6 +378,13 @@
       "output": "DeleteCustomErrorPageResponse",
       "status": "online"
     },
+    "DeleteCustomGroup": {
+      "document": "This API is used to delete a specified custom group. If the group is referenced by a rule, deletion is not allowed. Remove the reference first.",
+      "input": "DeleteCustomGroupRequest",
+      "name": "Deletes a custom group",
+      "output": "DeleteCustomGroupResponse",
+      "status": "online"
+    },
     "DeleteDnsRecords": {
       "document": "You can use this API to batch delete DNS records.",
       "input": "DeleteDnsRecordsRequest",
@@ -628,6 +642,27 @@
       "input": "DescribeCustomErrorPagesRequest",
       "name": "Queries the custom response page list",
       "output": "DescribeCustomErrorPagesResponse",
+      "status": "online"
+    },
+    "DescribeCustomGroup": {
+      "document": "This API is used to query the detailed information of a custom group, including all entries in the group (returned with pagination via Limit/Offset). The DescribeCustomGroups list API returns up to the first 500 entries for each group. To obtain all entries, use this API. The GroupId can be obtained from the response of CreateCustomGroup or by querying DescribeCustomGroups.",
+      "input": "DescribeCustomGroupRequest",
+      "name": "Queries custom groups",
+      "output": "DescribeCustomGroupResponse",
+      "status": "online"
+    },
+    "DescribeCustomGroupReferences": {
+      "document": "This API is used to obtain the security policy configuration that uses a custom group.",
+      "input": "DescribeCustomGroupReferencesRequest",
+      "name": "Queries custom group reference information",
+      "output": "DescribeCustomGroupReferencesResponse",
+      "status": "online"
+    },
+    "DescribeCustomGroups": {
+      "document": "This API is used to query the list of custom groups under a specified site. This API returns only the first 500 entries of each custom group. To query all entries in a group, use the DescribeSecurityCustomGroup API.",
+      "input": "DescribeCustomGroupsRequest",
+      "name": "Queries the custom group list",
+      "output": "DescribeCustomGroupsResponse",
       "status": "online"
     },
     "DescribeDDoSAttackData": {
@@ -1314,6 +1349,13 @@
       "input": "ModifyCustomErrorPageRequest",
       "name": "Modifies a custom response page",
       "output": "ModifyCustomErrorPageResponse",
+      "status": "online"
+    },
+    "ModifyCustomGroup": {
+      "document": "This API is used to modify the content of a custom group. GroupType cannot be modified after creation. When modifying entries in the group, you can specify replacement, append, or removal operations through GroupItemOperation.",
+      "input": "ModifyCustomGroupRequest",
+      "name": "Modifies a custom group",
+      "output": "ModifyCustomGroupResponse",
       "status": "online"
     },
     "ModifyDDoSProtection": {
@@ -7264,6 +7306,100 @@
       ],
       "type": "object"
     },
+    "CreateCustomGroupRequest": {
+      "document": "CreateCustomGroup request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Site ID.</p>",
+          "example": "zone-3nw1o2owaf7p",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Custom group name.</p>",
+          "example": "tls_group_1",
+          "member": "string",
+          "name": "GroupName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Custom group type. It cannot be modified after creation. Different types of custom groups support different entry types.</p><p>Valid values:</p><ul><li>TLSFingerprint: TLS fingerprint group, supporting JA3 and JA4 entries</li><li>UA: UA group, supporting UA entries</li><li>Referer: Referer group, supporting Referer entries</li></ul>",
+          "example": "TLSFingerprint",
+          "member": "string",
+          "name": "GroupType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of custom group entries.</p>",
+          "example": "无",
+          "member": "CustomGroupItem",
+          "name": "GroupItems",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCustomGroupResponse": {
+      "document": "CreateCustomGroup response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Unique ID of the custom group.</p>",
+          "example": "273746923",
+          "member": "string",
+          "name": "GroupId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Custom group name.</p>",
+          "example": "tls_group_1",
+          "member": "string",
+          "name": "GroupName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Custom group type.</p><p>Valid values:</p><ul><li>TLSFingerprint: TLS fingerprint group</li><li>UA: UA group</li><li>Referer: Referer group</li></ul>",
+          "example": "TLSFingerprint",
+          "member": "string",
+          "name": "GroupType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of custom group entries.</p>",
+          "example": "无",
+          "member": "CustomGroupItem",
+          "name": "GroupItems",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateCustomizeErrorPageRequest": {
       "document": "CreateCustomizeErrorPage request structure.",
       "members": [
@@ -10020,6 +10156,189 @@
       ],
       "usage": "both"
     },
+    "CustomGroup": {
+      "document": "A security custom group is used to centrally manage a set of reusable security matching entries. For example, you can save multiple JA3/JA4 TLS fingerprints as a TLS fingerprint group and directly reference the group in security rules, avoiding the need to maintain the same fingerprint list in multiple rules.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>The unique ID of the custom group.</p>",
+          "example": "273746923",
+          "member": "string",
+          "name": "GroupId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Custom group name.</p>",
+          "example": "tls_group_1",
+          "member": "string",
+          "name": "GroupName",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Custom group type.</p><p>Valid values:</p><ul><li>TLSFingerprint: TLS fingerprint group</li><li>UA: UA group</li><li>Referer: Referer group</li></ul>",
+          "example": "TLSFingerprint",
+          "member": "string",
+          "name": "GroupType",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of custom group entries.</p>",
+          "example": "无",
+          "member": "CustomGroupItem",
+          "name": "GroupItems",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total number of custom group entries.</p>",
+          "example": "2",
+          "member": "int64",
+          "name": "GroupItemTotalCount",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of times the custom group is referenced.</p>",
+          "example": "2",
+          "member": "int64",
+          "name": "RefCount",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CustomGroupItem": {
+      "document": "Custom group entry.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Entry content.</p>",
+          "example": "SPECIAL_VALUE_EMPTY",
+          "member": "string",
+          "name": "Content",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Entry type.</p><p>Valid values:</p><ul><li>JA3: JA3 fingerprint, available only when the GroupType of the group is TLSFingerprint</li><li>JA4: JA4 fingerprint, available only when the GroupType of the group is TLSFingerprint</li><li>UA: UA value, available only when the GroupType of the group is UA</li><li>Referer: Referer value, available only when the GroupType of the group is Referer</li></ul>",
+          "example": "JA4",
+          "member": "string",
+          "name": "ItemType",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CustomGroupReference": {
+      "document": "Security module that references the custom group",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Site ID.</p>",
+          "example": "zone-3nw1o2owaf7p",
+          "member": "string",
+          "name": "ZoneId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Entity type.</p><p>Valid values:</p><ul><li>WebSec.ZonePolicy: Site-level protection policy</li><li>WebSec.HostPolicy: Domain-level protection policy</li><li>WebSec.Template: Policy template</li><li>WebSec.APIResource: API resource</li><li>WebSec.JSInjectionRule: Injection rule</li><li>DDoS.L4Proxy: Layer-4 proxy DDoS protection</li><li>DDoS.L3Transit: Layer-3 transit DDoS protection</li></ul>",
+          "example": "WebSec.ZonePolicy",
+          "member": "string",
+          "name": "EntityType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Entity identifier, which has different meanings depending on EntityType:</p><ul><li>WebSec.ZonePolicy: Site ID</li><li>WebSec.HostPolicy: Domain</li><li>WebSec.Template: Template ID</li><li>WebSec.APIResource: API resource ID</li><li>WebSec.JSInjectionRule: JavaScript injection rule ID</li><li>DDoS.L4Proxy: Instance ID</li><li>DDoS.L3Transit: Instance ID</li></ul>",
+          "example": "zone-3nw1o2owaf7p",
+          "member": "string",
+          "name": "EntityId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Entity identifier, which has different meanings depending on EntityType:</p><ul><li>WebSec.ZonePolicy: Empty</li><li>WebSec.HostPolicy: Empty</li><li>WebSec.Template: Template name</li><li>WebSec.APIResource: API resource name</li><li>WebSec.JSInjectionRule: JavaScript injection rule name</li><li>DDoS.L4Proxy: Empty</li><li>DDoS.L3Transit: Empty</li></ul>",
+          "example": "referer组",
+          "member": "string",
+          "name": "EntityName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sub-entity type.</p><p>Valid values:</p><ul><li>WebSec.ExceptionRule: Protection exception rule</li><li>WebSec.BasicAccessRule: Basic access control</li><li>WebSec.PreciseMatchRule: Precise match rule</li><li>WebSec.RateLimitRule: Precise rate limiting</li><li>WebSec.BotCustomRule: Advanced Bot management - Custom rule</li><li>DDoS.L4Proxy.IpAccessControl: Layer-4 proxy DDoS protection - IP allowlist/blocklist</li><li>DDoS.L3Transit.IpAccessControl: Layer-3 transit DDoS protection - IP allowlist/blocklist</li></ul>",
+          "example": "WebSec.ExceptionRule",
+          "member": "string",
+          "name": "SubEntityType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sub-entity identifier, which has different meanings depending on SubEntityType:</p><ul><li>WebSec.ExceptionRule: Rule ID</li><li>WebSec.BasicAccessRule: Rule ID</li><li>WebSec.PreciseMatchRule: Rule ID</li><li>WebSec.RateLimitRule: Rule ID</li><li>WebSec.BotCustomRule: Rule ID</li><li>DDoS.L4Proxy.IpAccessControl: Empty</li><li>DDoS.L3Transit.IpAccessControl: Empty</li></ul><p>EntityType and SubEntityType are in a mapping relationship. Different EntityTypes support different SubEntityTypes.<br>WebSec.ZonePolicy, WebSec.HostPolicy, and WebSec.Template support the following SubEntityTypes:</p><ul><li>WebSec.ExceptionRule</li><li>WebSec.BasicAccessRule</li><li>WebSec.PreciseMatchRule</li><li>WebSec.RateLimitRule</li><li>WebSec.BotCustomRule</li></ul>DDoS.L4Proxy supports the following SubEntityType:<ul><li>DDoS.L4Proxy.IpAccessControl</li></ul>DDoS.L3Transit supports the following SubEntityType:<ul><li>DDoS.L3Transit.IpAccessControl</li></ul>",
+          "example": "2181589977",
+          "member": "string",
+          "name": "SubEntityId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Sub-entity name, which has different meanings depending on SubEntityType:</p><ul><li>WebSec.ExceptionRule: Rule name</li><li>WebSec.BasicAccessRule: Rule name</li><li>WebSec.PreciseMatchRule: Rule name</li><li>WebSec.RateLimitRule: Rule name</li><li>WebSec.BotCustomRule: Rule name</li><li>DDoS.L4Proxy.IpAccessControl: Empty</li><li>DDoS.L3Transit.IpAccessControl: Empty</li></ul>",
+          "example": "TLS 白名单",
+          "member": "string",
+          "name": "SubEntityName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "CustomRule": {
       "document": "Custom rule under the Web protection feature.",
       "members": [
@@ -10970,6 +11289,42 @@
     },
     "DeleteCustomErrorPageResponse": {
       "document": "DeleteCustomErrorPage response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteCustomGroupRequest": {
+      "document": "DeleteCustomGroup request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Site ID.</p>",
+          "example": "zone-3nw1o2owaf7p",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Unique ID of the custom group.</p>",
+          "example": "273746923",
+          "member": "string",
+          "name": "GroupId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteCustomGroupResponse": {
+      "document": "DeleteCustomGroup response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -12927,6 +13282,268 @@
           "member": "CustomErrorPage",
           "name": "ErrorPages",
           "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCustomGroupReferencesRequest": {
+      "document": "DescribeCustomGroupReferences request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Site ID.</p>",
+          "example": "zone-3nw1o2owaf7p",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Custom group ID.</p>",
+          "example": "273746924",
+          "member": "string",
+          "name": "GroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Pagination offset.</p><p>Default value: 0</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of configurations that reference the custom group returned in a paginated query.</p><p>Value range: [1, 200]</p><p>Default value: 20</p>",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCustomGroupReferencesResponse": {
+      "document": "DescribeCustomGroupReferences response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Configuration information that references the corresponding custom group.</p>",
+          "example": "无",
+          "member": "CustomGroupReference",
+          "name": "References",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total number of query results.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCustomGroupRequest": {
+      "document": "DescribeCustomGroup request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Site ID.</p>",
+          "example": "zone-3nw1o2owaf7p",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Unique ID of the custom group.</p>",
+          "example": "273746923",
+          "member": "string",
+          "name": "GroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number limit of paginated query for GroupItems.</p><p>Valid range: [1, 50000]</p><p>Default value: 500</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Offset of paginated query for GroupItems.</p><p>Default value: 0</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCustomGroupResponse": {
+      "document": "DescribeCustomGroup response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Unique ID of the custom group.</p>",
+          "example": "273746923",
+          "member": "string",
+          "name": "GroupId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Custom group name.</p>",
+          "example": "tls_group_1",
+          "member": "string",
+          "name": "GroupName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Custom group type.</p><p>Valid values:</p><ul><li>TLSFingerprint: TLS fingerprint group</li><li>UA: UA group</li><li>Referer: Referer group</li></ul>",
+          "example": "TLSFingerprint",
+          "member": "string",
+          "name": "GroupType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of custom group entries.</p>",
+          "example": "无",
+          "member": "CustomGroupItem",
+          "name": "GroupItems",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total number of custom group entries.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "GroupItemTotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number of times the custom group is referenced.</p>",
+          "example": "2",
+          "member": "int64",
+          "name": "RefCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCustomGroupsRequest": {
+      "document": "DescribeCustomGroups request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Site ID.</p>",
+          "example": "zone-3nw1o2owaf7p",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of custom group types. If not specified, all types are queried.</p>",
+          "example": "[\"TLSFingerprint\"]",
+          "member": "string",
+          "name": "GroupTypes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Number limit of paginated query.</p><p>Valid range: [1, 100]</p><p>Default value: 10</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Offset of paginated query.</p><p>Default value: 0</p>",
+          "example": "100",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCustomGroupsResponse": {
+      "document": "DescribeCustomGroups response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Total number of custom groups that meet the type list conditions.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "GroupTotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of custom groups that meet the type list conditions.</p>",
+          "example": "无",
+          "member": "CustomGroup",
+          "name": "CustomGroups",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -25892,6 +26509,69 @@
     },
     "ModifyCustomErrorPageResponse": {
       "document": "ModifyCustomErrorPage response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCustomGroupRequest": {
+      "document": "ModifyCustomGroup request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Site ID.</p>",
+          "example": "zone-3nw1o2owaf7p",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Unique ID of the custom group.</p>",
+          "example": "273746923",
+          "member": "string",
+          "name": "GroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Custom group name. If this field is not specified, the original value is retained.</p>",
+          "example": "referer_group_new_59462312071",
+          "member": "string",
+          "name": "GroupName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Specifies how to update GroupItems.</p><p>Valid values:</p><ul><li>Replace: Replaces the entire original entry list with GroupItems.</li><li>Append: Appends GroupItems to the group entry list.</li><li>Remove: Removes entries whose Content and ItemType are the same as those in GroupItems from the original entry list. If a specified entry does not exist, it is ignored.</li></ul><p>Default value: Replace</p>",
+          "example": "Append",
+          "member": "string",
+          "name": "GroupItemOperation",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of custom group entries. If this field is not specified, the original value is retained.</p>",
+          "example": "无",
+          "member": "CustomGroupItem",
+          "name": "GroupItems",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCustomGroupResponse": {
+      "document": "ModifyCustomGroup response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
