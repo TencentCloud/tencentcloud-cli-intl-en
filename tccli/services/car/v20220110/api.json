@@ -311,7 +311,19 @@
     },
     "ApplicationConcurrentPackage": {
       "document": "Cloud application concurrency packs.",
-      "members": [],
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Concurrency pack ID</p>",
+          "example": "cac-j6x242r6",
+          "member": "string",
+          "name": "ConcurrentId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
       "usage": "both"
     },
     "ApplicationProject": {
@@ -319,201 +331,201 @@
       "members": [
         {
           "disabled": false,
-          "document": "Project ID.Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"\"",
+          "document": "<p>Project ID.</p>",
+          "example": "\"cap-op8pfan8\"",
           "member": "string",
           "name": "ProjectId",
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Project name.Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"\"",
+          "document": "<p>Project name.</p>",
+          "example": "\"project_name\"",
           "member": "string",
           "name": "Name",
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Project description.Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"\"",
+          "document": "<p>Project description.</p>",
+          "example": "\"project test\"",
           "member": "string",
           "name": "Description",
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Concurrency type required for project operation.S1: concurrency for rendering small cloud applications.M1: concurrency for rendering medium cloud applications.L1: concurrency for rendering large cloud applications.L2: concurrency for rendering large cloud applications.XL2: concurrency for rendering extra large cloud applications.MM1_HD: concurrency for performance-based cloud ARM (HD).MM1_FHD: concurrency for performance-based cloud ARM (FHD).Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Concurrency type required for project operation.<br>S1: Small-scale cloud application rendering concurrency<br>M1: Medium cloud application rendering concurrency<br>L1: Large cloud application rendering concurrency<br>L2: Large cloud application rendering concurrency<br>XL2: Ultra-large cloud application rendering concurrency<br>MM1_HD: Performance Cloud ARM concurrency - high-definition<br>MM1_FHD: Performance Cloud ARM concurrency - ultra-high-definition</p>",
           "example": "L1",
           "member": "string",
           "name": "Type",
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Cloud application ID.Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"\"",
+          "document": "<p>Cloud Application ID</p>",
+          "example": "\"app-a1b2c3d4\"",
           "member": "string",
           "name": "ApplicationId",
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Pre-launch.Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Pre-launch</p>",
           "example": "false",
           "member": "bool",
           "name": "IsPreload",
           "output_required": true,
           "required": false,
           "type": "bool",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Number of concurrencies already configured.Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Configured concurrency</p>",
           "example": "0",
           "member": "int64",
           "name": "Amount",
           "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Number of concurrencies in use.Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Number of concurrencies in use</p>",
           "example": "0",
           "member": "int64",
           "name": "Using",
           "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Application status. NoConcurrent: no concurrency pack configured; Online: activated. Cloud application status: applicationCreating: creating; applicationCreateFail: creation failed; applicationDeleting: deleting; applicationNoConfigured: startup parameters not configured.Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"\"",
+          "document": "<p>Application status: NoConcurrent - no concurrency package configured, Online - launched, other statuses are cloud application status: applicationCreating - creating, applicationCreateFail - creation failed, applicationDeleting - deleting, applicationNoConfigured - startup parameter not configured</p>",
+          "example": "\"NoConcurrent\"",
           "member": "string",
           "name": "ApplicationStatus",
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Application startup parameters.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"\"",
+          "document": "<p>Application startup parameter</p>",
+          "example": "\"param -b\"",
           "member": "string",
           "name": "ApplicationParams",
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Creation time.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"\"",
+          "document": "<p>Creation time.</p>",
+          "example": "\"2024-06-20T08:55:38.255Z\"",
           "member": "string",
           "name": "CreateTime",
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Application name.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"\"",
+          "document": "<p>Application name</p>",
+          "example": "\"app_name\"",
           "member": "string",
           "name": "ApplicationName",
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Resolution, in the format of widthxheight, such as 1920x1080.Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Resolution, format as \"width x height\", for example 1920x1080</p>",
           "example": "“1920x1080”",
           "member": "string",
           "name": "Resolution",
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Project type.SHARED: shared by all applications.EXCLUSIVE (default value): dedicated for one application.Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Project type.<br>SHARED: Shared by all applications<br>EXCLUSIVE (default value): Dedicated for one application</p>",
           "example": "SHARED",
           "member": "string",
           "name": "ProjectType",
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Purpose.EXPERIENCE: Experience.Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Purpose.<br>EXPERIENCE: Experience</p>",
           "example": "EXPERIENCE",
           "member": "string",
           "name": "Purpose",
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Application distribution area. Standard areas are as follows. ap-chinese-mainland: Chinese mainland; na-north-america: North America; eu-frankfurt: Frankfurt; ap-mumbai: Mumbai; ap-tokyo: Tokyo; ap-seoul: Seoul; ap-singapore: Singapore; ap-bangkok: Bangkok; ap-hongkong: Hong Kong (China). Fusion areas are as follows. me-middle-east-fusion: Middle East; na-north-america-fusion: North America; sa-south-america-fusion: South America; ap-tokyo-fusion: Tokyo; ap-seoul-fusion: Seoul; eu-frankfurt-fusion: Frankfurt; ap-singapore-fusion: Singapore; ap-hongkong-fusion: Hong Kong (China).Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "ap-chinese-mainland",
+          "document": "<p>Application distribution area (Standard zone: ap-chinese-mainland: Chinese mainland, na-north-america: North America, eu-frankfurt: Frankfurt, ap-mumbai: Mumbai, ap-tokyo: Tokyo, ap-seoul: Seoul, ap-singapore: Singapore, ap-bangkok: Bangkok, ap-hongkong: Hong Kong (China). Fusion region: me-middle-east-fusion: Middle East, na-north-america-fusion: North America, sa-south-america-fusion: South America, ap-tokyo-fusion: Tokyo, ap-seoul-fusion: Seoul, eu-frankfurt-fusion: Frankfurt, ap-singapore-fusion: Singapore, ap-hongkong-fusion: Hong Kong (China))</p>",
+          "example": "[\"ap-chinese-mainland\"]",
           "member": "string",
           "name": "ApplicationRegions",
           "output_required": true,
           "required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Concurrency area. Standard areas are as follows. ap-chinese-mainland: Chinese mainland; na-north-america: North America; eu-frankfurt: Frankfurt; ap-mumbai: Mumbai; ap-tokyo: Tokyo; ap-seoul: Seoul; ap-singapore: Singapore; ap-bangkok: Bangkok; ap-hongkong: Hong Kong (China). Fusion areas are as follows. me-middle-east-fusion: Middle East; na-north-america-fusion: North America; sa-south-america-fusion: South America; ap-tokyo-fusion: Tokyo; ap-seoul-fusion: Seoul; eu-frankfurt-fusion: Frankfurt; ap-singapore-fusion: Singapore; ap-hongkong-fusion: Hong Kong (China).Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "ap-chinese-mainland",
+          "document": "<p>Concurrent region (Standard zone: ap-chinese-mainland: Chinese mainland, na-north-america: North America, eu-frankfurt: Frankfurt, ap-mumbai: Mumbai, ap-tokyo: Tokyo, ap-seoul: Seoul, ap-singapore: Singapore, ap-bangkok: Bangkok, ap-hongkong: Hong Kong (China), Fusion region: me-middle-east-fusion: Middle East, na-north-america-fusion: North America, sa-south-america-fusion: South America, ap-tokyo-fusion: Tokyo, ap-seoul-fusion: Seoul, eu-frankfurt-fusion: Frankfurt, ap-singapore-fusion: Singapore, ap-hongkong-fusion: Hong Kong (China))</p>",
+          "example": "[\"ap-chinese-mainland\"]",
           "member": "string",
           "name": "ConcurrentRegions",
           "output_required": true,
           "required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Project category.DESKTOP: desktop (default value).MOBILE: mobile.Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Project category.<br>DESKTOP: On PC, default value<br>MOBILE: Mobile terminal</p>",
           "example": "MOBILE",
           "member": "string",
           "name": "ProjectCategory",
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -586,47 +598,47 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the COS file.Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "ID of the COS file.",
           "example": "cf-abcd1234",
           "member": "string",
           "name": "COSFileId",
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Download URL.Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Download URL.",
           "example": "https://abc",
           "member": "string",
           "name": "URL",
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Name\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Name",
           "example": "123.png",
           "member": "string",
           "name": "Name",
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Creation time.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Creation Time",
           "example": "2021-07-02T10:15:36Z",
           "member": "string",
           "name": "CreateTime",
           "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -2754,6 +2766,34 @@
       ],
       "type": "object"
     },
+    "Tag": {
+      "document": "Tag information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Tag key</p>",
+          "example": "qcs:tag:createdBy",
+          "member": "string",
+          "name": "TagKey",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Tag value</p>",
+          "example": "移动应用3",
+          "member": "string",
+          "name": "TagValue",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "UnbindConcurrentPackagesFromProjectRequest": {
       "document": "UnbindConcurrentPackagesFromProject request structure.",
       "members": [
@@ -2795,23 +2835,23 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application file path.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Application file path.",
           "example": "\"windows/test\"",
           "member": "string",
           "name": "FilePath",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "File status. NO_EXIST: The file does not exist; EXIST: The file exists.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "File status. NO_EXIST: not EXIST; EXIST: exist.",
           "example": "\"EXIST|NO_EXIST\"",
           "member": "string",
           "name": "FileState",
           "output_required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2821,7 +2861,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID.",
+          "document": "<p>Application Id</p>",
           "example": "\"app-r3fsr45g\"",
           "member": "string",
           "name": "ApplicationId",
@@ -2831,7 +2871,7 @@
         },
         {
           "disabled": false,
-          "document": "Application name.",
+          "document": "<p>Application name</p>",
           "example": "\"name\"",
           "member": "string",
           "name": "ApplicationName",
@@ -2841,7 +2881,7 @@
         },
         {
           "disabled": false,
-          "document": "Application type (cloud 3D: Application3D; cloud XR: ApplicationXR; cloud Web: ApplicationWeb).",
+          "document": "<p>Application type (Cloud 3D: Application3D, Cloud XR: ApplicationXR, Cloud Web: ApplicationWeb)</p>",
           "example": "\"Application3D\"",
           "member": "string",
           "name": "ApplicationType",
@@ -2851,7 +2891,7 @@
         },
         {
           "disabled": false,
-          "document": "Application program execution path.",
+          "document": "<p>Program execution path</p>",
           "example": "\"applicatoin/bin/xx.exe\"",
           "member": "string",
           "name": "ApplicationExePath",
@@ -2861,7 +2901,7 @@
         },
         {
           "disabled": false,
-          "document": "Application process list.",
+          "document": "<p>Application process list</p>",
           "example": "\"xx.exe|test.exe\"",
           "member": "string",
           "name": "ApplicationInterList",
@@ -2871,7 +2911,7 @@
         },
         {
           "disabled": false,
-          "document": "Application startup parameters.",
+          "document": "<p>Application startup parameter</p>",
           "example": "\"-b -xxx\"",
           "member": "string",
           "name": "ApplicationParams",
@@ -2881,7 +2921,7 @@
         },
         {
           "disabled": false,
-          "document": "Application running status (ApplicationDeleting: application deletion in progress; ApplicationCreateFail: application creation failed; ApplicationCreating: application creation in progress; ApplicationRunning: normal running; ApplicationNoConfigured: main execution program path not configured).",
+          "document": "<p>Application running status (ApplicationDeleting: application deletion in progress; ApplicationCreateFail: application creation failed; ApplicationCreating: application creation in progress; ApplicationRunning: normal running; ApplicationNoConfigured: main execution program path not configured).</p>",
           "example": "\"ApplicationDeleting\"",
           "member": "string",
           "name": "ApplicationRunStatus",
@@ -2891,7 +2931,7 @@
         },
         {
           "disabled": false,
-          "document": "Application update status (ApplicationUpdateCreating: version creation in progress; ApplicationUpdateCreateFail: version creation failed; ApplicationUpdateNoReleased: version to be released; ApplicationUpdateReleased: version release completed; ApplicationUpdateNormal: none).",
+          "document": "<p>Application update status (ApplicationUpdateCreating: version creation in progress; ApplicationUpdateCreateFail: version creation failed; ApplicationUpdateNoReleased: version to be released; ApplicationUpdateReleased: version release completed; ApplicationUpdateNormal: none)</p>",
           "example": "\"ApplicationUpdateCreating\"",
           "member": "string",
           "name": "ApplicationUpdateStatus",
@@ -2901,8 +2941,8 @@
         },
         {
           "disabled": false,
-          "document": "Application creation time.",
-          "example": "\"2022-02-15T01:51:55.786Z\"",
+          "document": "<p>Application creation time</p>",
+          "example": "2024-03-13T06:10:03Z",
           "member": "datetime_iso",
           "name": "ApplicationCreateTime",
           "output_required": true,
@@ -2911,8 +2951,8 @@
         },
         {
           "disabled": false,
-          "document": "List of application versions.",
-          "example": "\"\"",
+          "document": "<p>Application version list</p>",
+          "example": "无",
           "member": "UserApplicationVersion",
           "name": "ApplicationVersions",
           "output_required": true,
@@ -2921,8 +2961,8 @@
         },
         {
           "disabled": false,
-          "document": "Application basic data.",
-          "example": "\"\"",
+          "document": "<p>Application basic data</p>",
+          "example": "无",
           "member": "ApplicationBaseInfo",
           "name": "ApplicationBaseInfo",
           "output_required": true,
@@ -2931,7 +2971,7 @@
         },
         {
           "disabled": false,
-          "document": "Application update progress.",
+          "document": "<p>Application update progress</p>",
           "example": "100",
           "member": "int64",
           "name": "ApplicationUpdateProgress",
@@ -2941,7 +2981,7 @@
         },
         {
           "disabled": false,
-          "document": "Application nature (PUBLIC: public application; PRIVATE: user application).",
+          "document": "<p>Application nature (PUBLIC: public application; PRIVATE: user application)</p>",
           "example": "\"PRIVATE\"",
           "member": "string",
           "name": "ApplicationNature",
@@ -2951,10 +2991,20 @@
         },
         {
           "disabled": false,
-          "document": "Application repository list.",
-          "example": "\"\"",
+          "document": "<p>Application repository list</p>",
+          "example": "无",
           "member": "UserApplicationStore",
           "name": "ApplicationStores",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Application tag</p>",
+          "example": "无",
+          "member": "Tag",
+          "name": "ApplicationTags",
           "output_required": true,
           "type": "list",
           "value_allowed_null": false
@@ -3013,58 +3063,69 @@
       "members": [
         {
           "disabled": false,
-          "document": "COS bucket name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Cos bucket name</p>",
           "example": "\"examplebucket-1250000000\"",
           "member": "string",
           "name": "CosBucket",
           "output_required": true,
           "required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "COS bucket region.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Cos Bucket Region</p>",
           "example": "\"ap-guangzhou\"",
           "member": "string",
           "name": "CosRegion",
           "output_required": true,
           "required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Repository type. LOG: application logs; ARCHIVE: application archive.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Repository type. LOG: application logs; ARCHIVE: application archive.</p>",
           "example": "\"LOG|ARCHIVE\"",
           "member": "string",
           "name": "StoreType",
           "output_required": true,
           "required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Repository status. ON: enabled; OFF: disabled.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Repository status. ON: enabled; OFF: disabled.</p>",
           "example": "\"ON|OFF\"",
           "member": "string",
           "name": "StoreState",
           "output_required": true,
           "required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Repository path.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"xxx\"",
+          "document": "<p>Repository path</p><p>Primary path data. If StoreType is ARCHIVE and SubStorePaths is configured, the system default value will be used.</p>",
+          "example": "\"Windows\\\\log\"",
           "member": "string",
           "name": "StorePath",
           "output_required": true,
           "required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Subpath list</p><p>Subpath data (multi-path pattern) supports only ARCHIVE StoreType; up to 25 data entries.</p>",
+          "example": "[\"Windows\\\\SavaData1\", \"Windows\\\\SavaData2\"]",
+          "member": "string",
+          "name": "SubStorePaths",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -3074,8 +3135,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application version ID.",
-          "example": "\"ver-kcegqb\"",
+          "document": "<p>Application version Id</p>",
+          "example": "ver-kcegqb",
           "member": "string",
           "name": "ApplicationVersionId",
           "output_required": true,
@@ -3084,7 +3145,7 @@
         },
         {
           "disabled": false,
-          "document": "Application version size.",
+          "document": "<p>Application version size</p>",
           "example": "1024",
           "member": "int64",
           "name": "ApplicationVersionSize",
@@ -3094,8 +3155,8 @@
         },
         {
           "disabled": false,
-          "document": "Application version status (Uploading: uploading; Creating: in creation; CreateFailed: creation failed; Deleting: deleting; Inuse: current version; Normal: to be released; Usable: available).",
-          "example": "\"Createing\"",
+          "document": "<p>Application version status (Uploading: Creating, Creating: Creating, CreateFailed: Failed to create, Deleting: Deleting, Inuse: Current version, Normal: To be released, Usable: Available)</p>",
+          "example": "Createing",
           "member": "string",
           "name": "ApplicationVersionStatus",
           "output_required": true,
@@ -3104,8 +3165,8 @@
         },
         {
           "disabled": false,
-          "document": "Application version name.",
-          "example": "\"xxx\"",
+          "document": "<p>Application version name</p>",
+          "example": "version_name",
           "member": "string",
           "name": "ApplicationVersionName",
           "output_required": true,
@@ -3114,8 +3175,8 @@
         },
         {
           "disabled": false,
-          "document": "Application version creation time.",
-          "example": "\"2022-02-15T01:51:55.786Z\"",
+          "document": "<p>Application version creation time</p>",
+          "example": "2022-02-15T01:51:55.786Z",
           "member": "datetime_iso",
           "name": "CreateTime",
           "output_required": true,
@@ -3124,23 +3185,23 @@
         },
         {
           "disabled": false,
-          "document": "Region for application version distribution (\nStandard zone:\nap-chinese-mainland: Chinese mainland\nna-north-america: North America\neu-frankfurt: Frankfurt\nap-mumbai: Mumbai\nap-tokyo: Tokyo\nap-seoul: Seoul\nap-singapore: Singapore\nap-bangkok: Bangkok\nap-hongkong: Hong Kong (China)\nIntegration zone:\nme-middle-east-fusion: Middle East\nna-north-america-fusion: North America\nsa-south-america-fusion: South America\nap-tokyo-fusion: Tokyo\nap-seoul-fusion: Seoul\neu-frankfurt-fusion: Frankfurt\nap-singapore-fusion: Singapore\nap-hongkong-fusion: Hong Kong (China)\n).\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"[\"ap-chinese-mainland\",\"sa-south-america-fusion\"]\"",
+          "document": "<p>Application version distribution regions (<br>Standard regions:<br>ap-chinese-mainland: Chinese mainland,<br>na-north-america: North America,<br>eu-frankfurt: Frankfurt,<br>ap-mumbai: Mumbai,<br>ap-tokyo: Tokyo,<br>ap-seoul: Seoul,<br>ap-singapore: Singapore,<br>ap-bangkok: Bangkok,<br>ap-hongkong: Hong Kong (China),<br>Fusion regions:<br>me-middle-east-fusion: Middle East<br>na-north-america-fusion: North America<br>sa-south-america-fusion: South America<br>ap-tokyo-fusion: Tokyo<br>ap-seoul-fusion: Seoul<br>eu-frankfurt-fusion: Frankfurt<br>ap-singapore-fusion: Singapore<br>ap-hongkong-fusion: Hong Kong (China)<br>)</p>",
+          "example": "[\"ap-chinese-mainland\",\"sa-south-america-fusion\"]",
           "member": "string",
           "name": "ApplicationVersionRegions",
           "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Application version update method.\nFULL: full update.\nINCREMENT: incremental update.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"FULL|INCREMENT\"",
+          "document": "<p>Application version update mode: <br>FULL: Full update, <br>INCREMENT: Incremental update</p>",
+          "example": "FULL",
           "member": "string",
           "name": "ApplicationVersionUpdateMode",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -3150,7 +3211,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID.",
+          "document": "<p>Application Id</p>",
           "example": "\"app-a1b2c3\"",
           "member": "string",
           "name": "ApplicationId",
@@ -3160,7 +3221,7 @@
         },
         {
           "disabled": false,
-          "document": "Application name.",
+          "document": "<p>Application name</p>",
           "example": "\"name\"",
           "member": "string",
           "name": "ApplicationName",
@@ -3170,7 +3231,7 @@
         },
         {
           "disabled": false,
-          "document": "Application type (cloud APK: application APK).",
+          "document": "<p>App type (Cloud APK: ApplicationAPK)</p>",
           "example": "\"ApplicationAPK\"",
           "member": "string",
           "name": "ApplicationType",
@@ -3180,7 +3241,7 @@
         },
         {
           "disabled": false,
-          "document": "Application running status (ApplicationRunning: normal running; ApplicationNoPackage: no available package).",
+          "document": "<p>Application running status (ApplicationRunning: normal running; ApplicationNoPackage: no available package)</p>",
           "example": "\"ApplicationRunning\"",
           "member": "string",
           "name": "ApplicationRunStatus",
@@ -3190,7 +3251,7 @@
         },
         {
           "disabled": false,
-          "document": "Application update status (ApplicationUpdateCreating: version creation in progress; ApplicationUpdateCreateFail: version creation failed; ApplicationUpdateNoReleased: version to be released; ApplicationUpdateReleased: version release completed; ApplicationUpdateNormal: none).",
+          "document": "<p>Application update status (ApplicationUpdateCreating: version creation in progress; ApplicationUpdateCreateFail: version creation failed; ApplicationUpdateNoReleased: version to be released; ApplicationUpdateReleased: version release completed; ApplicationUpdateNormal: none)</p>",
           "example": "\"ApplicationUpdateCreating\"",
           "member": "string",
           "name": "ApplicationUpdateStatus",
@@ -3200,8 +3261,8 @@
         },
         {
           "disabled": false,
-          "document": "Application creation time.",
-          "example": "\"2022-02-15T01:51:55.786Z\"",
+          "document": "<p>Application creation time</p>",
+          "example": "2024-03-13T06:10:03Z",
           "member": "datetime_iso",
           "name": "ApplicationCreateTime",
           "output_required": true,
@@ -3210,8 +3271,8 @@
         },
         {
           "disabled": false,
-          "document": "List of application versions.",
-          "example": "\"\"",
+          "document": "<p>Application version list</p>",
+          "example": "无",
           "member": "UserApplicationVersion",
           "name": "ApplicationVersions",
           "output_required": true,
@@ -3220,12 +3281,22 @@
         },
         {
           "disabled": false,
-          "document": "Application nature (PUBLIC: public application; PRIVATE: user application).",
+          "document": "<p>Application nature (PUBLIC: public application; PRIVATE: user application)</p>",
           "example": "\"PRIVATE\"",
           "member": "string",
           "name": "ApplicationNature",
           "output_required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Application tag</p>",
+          "example": "无",
+          "member": "Tag",
+          "name": "ApplicationTags",
+          "output_required": true,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -3236,14 +3307,14 @@
       "members": [
         {
           "disabled": false,
-          "document": "Streaming GOP length, in seconds.Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Push streaming GOP length, in seconds.",
           "example": "3",
           "member": "uint64",
           "name": "StreamPushGOPSeconds",
           "output_required": false,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"

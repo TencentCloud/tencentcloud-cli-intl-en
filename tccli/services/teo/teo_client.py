@@ -3097,6 +3097,63 @@ def doEdgeKVDelete(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doModifyAliasDomain(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.TeoClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyAliasDomainRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.ModifyAliasDomain(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeSecurityPolicyManagedRules(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -3496,7 +3553,7 @@ def doCreateSecurityJSInjectionRule(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyZoneSetting(args, parsed_globals):
+def doCreateInferenceAPIToken(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -3530,11 +3587,11 @@ def doModifyZoneSetting(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.TeoClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyZoneSettingRequest()
+    model = models.CreateInferenceAPITokenRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.ModifyZoneSetting(model)
+        rsp = client.CreateInferenceAPIToken(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -3934,6 +3991,63 @@ def doDescribePrefetchTasks(args, parsed_globals):
     start_time = time.time()
     while True:
         rsp = client.DescribePrefetchTasks(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doOperateInferenceDomain(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.TeoClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.OperateInferenceDomainRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.OperateInferenceDomain(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -4618,6 +4732,63 @@ def doRefreshMultiPathGatewaySecretKey(args, parsed_globals):
     start_time = time.time()
     while True:
         rsp = client.RefreshMultiPathGatewaySecretKey(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeInferenceDomains(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.TeoClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeInferenceDomainsRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeInferenceDomains(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -5662,7 +5833,7 @@ def doModifyL7AccRulePriority(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateInferenceAPIToken(args, parsed_globals):
+def doModifyZoneSetting(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -5696,11 +5867,11 @@ def doCreateInferenceAPIToken(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.TeoClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateInferenceAPITokenRequest()
+    model = models.ModifyZoneSettingRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.CreateInferenceAPIToken(model)
+        rsp = client.ModifyZoneSetting(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -6973,6 +7144,63 @@ def doDescribeOriginGroupHealthStatus(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doModifyDnssec(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.TeoClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyDnssecRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.ModifyDnssec(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDeleteL4ProxyRules(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -7600,7 +7828,7 @@ def doDeleteLoadBalancer(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeTimingL7AnalysisData(args, parsed_globals):
+def doCreateInferenceDomain(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -7634,11 +7862,11 @@ def doDescribeTimingL7AnalysisData(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.TeoClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeTimingL7AnalysisDataRequest()
+    model = models.CreateInferenceDomainRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeTimingL7AnalysisData(model)
+        rsp = client.CreateInferenceDomain(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -9709,7 +9937,7 @@ def doUpgradePlan(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeDDoSAttackTopData(args, parsed_globals):
+def doDescribeLogAnalysisStatistics(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -9743,11 +9971,11 @@ def doDescribeDDoSAttackTopData(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.TeoClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeDDoSAttackTopDataRequest()
+    model = models.DescribeLogAnalysisStatisticsRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeDDoSAttackTopData(model)
+        rsp = client.DescribeLogAnalysisStatistics(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -11818,7 +12046,7 @@ def doEnableOriginACL(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyAliasDomain(args, parsed_globals):
+def doDescribeDDoSAttackTopData(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -11852,11 +12080,11 @@ def doModifyAliasDomain(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.TeoClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyAliasDomainRequest()
+    model = models.DescribeDDoSAttackTopDataRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.ModifyAliasDomain(model)
+        rsp = client.DescribeDDoSAttackTopData(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -13339,6 +13567,63 @@ def doDescribeZoneCustomVariables(args, parsed_globals):
     start_time = time.time()
     while True:
         rsp = client.DescribeZoneCustomVariables(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doDescribeDDosAttackData(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION) \
+            and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID) \
+            and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE) \
+            and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="TC3-HMAC-SHA256")
+    profile.request_client = "_CLI_" + __version__
+    if g_param[OptionsDefine.RequestClient.replace('-', '_')]:
+        profile.request_client += "; " + g_param[OptionsDefine.RequestClient.replace('-', '_')]
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.TeoClient(cred, g_param[OptionsDefine.Region], profile)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.DescribeDDosAttackDataRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.DescribeDDosAttackData(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -15067,7 +15352,7 @@ def doImportZoneConfig(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeDDosAttackData(args, parsed_globals):
+def doDescribeTimingL7AnalysisData(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -15101,11 +15386,11 @@ def doDescribeDDosAttackData(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.TeoClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeDDosAttackDataRequest()
+    model = models.DescribeTimingL7AnalysisDataRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeDDosAttackData(model)
+        rsp = client.DescribeTimingL7AnalysisData(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -16435,7 +16720,7 @@ def doDescribeTimingFunctionAnalysisData(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyDnssec(args, parsed_globals):
+def doDummyParseZoneFullConfig(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -16469,11 +16754,11 @@ def doModifyDnssec(args, parsed_globals):
     mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
     client = mod.TeoClient(cred, g_param[OptionsDefine.Region], profile)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyDnssecRequest()
+    model = models.DummyParseZoneFullConfigRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.ModifyDnssec(model)
+        rsp = client.DummyParseZoneFullConfig(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -16616,6 +16901,7 @@ ACTION_MAP = {
     "CheckCertificate": doCheckCertificate,
     "CreateMultiPathGatewayLine": doCreateMultiPathGatewayLine,
     "EdgeKVDelete": doEdgeKVDelete,
+    "ModifyAliasDomain": doModifyAliasDomain,
     "DescribeSecurityPolicyManagedRules": doDescribeSecurityPolicyManagedRules,
     "DescribeCnameStatus": doDescribeCnameStatus,
     "DescribeZones": doDescribeZones,
@@ -16623,7 +16909,7 @@ ACTION_MAP = {
     "DescribeCustomGroups": doDescribeCustomGroups,
     "ModifyDDoSPolicy": doModifyDDoSPolicy,
     "CreateSecurityJSInjectionRule": doCreateSecurityJSInjectionRule,
-    "ModifyZoneSetting": doModifyZoneSetting,
+    "CreateInferenceAPIToken": doCreateInferenceAPIToken,
     "DescribeL7AccRules": doDescribeL7AccRules,
     "BindSecurityTemplateToEntity": doBindSecurityTemplateToEntity,
     "BindSharedCNAME": doBindSharedCNAME,
@@ -16631,6 +16917,7 @@ ACTION_MAP = {
     "ModifyApplicationProxyRuleStatus": doModifyApplicationProxyRuleStatus,
     "DescribeSecurityPolicyList": doDescribeSecurityPolicyList,
     "DescribePrefetchTasks": doDescribePrefetchTasks,
+    "OperateInferenceDomain": doOperateInferenceDomain,
     "DescribeCustomGroupReferences": doDescribeCustomGroupReferences,
     "DeleteOriginGroup": doDeleteOriginGroup,
     "DescribeWebManagedRulesTopData": doDescribeWebManagedRulesTopData,
@@ -16643,6 +16930,7 @@ ACTION_MAP = {
     "DeleteAccelerationDomains": doDeleteAccelerationDomains,
     "DeleteSecurityJSInjectionRule": doDeleteSecurityJSInjectionRule,
     "RefreshMultiPathGatewaySecretKey": doRefreshMultiPathGatewaySecretKey,
+    "DescribeInferenceDomains": doDescribeInferenceDomains,
     "CreateRealtimeLogDeliveryTask": doCreateRealtimeLogDeliveryTask,
     "ModifyL4Proxy": doModifyL4Proxy,
     "CheckFreeCertificateVerification": doCheckFreeCertificateVerification,
@@ -16661,7 +16949,7 @@ ACTION_MAP = {
     "ModifyWebSecurityTemplate": doModifyWebSecurityTemplate,
     "DescribeSecurityIPGroupContent": doDescribeSecurityIPGroupContent,
     "ModifyL7AccRulePriority": doModifyL7AccRulePriority,
-    "CreateInferenceAPIToken": doCreateInferenceAPIToken,
+    "ModifyZoneSetting": doModifyZoneSetting,
     "ModifyPrefetchOriginLimit": doModifyPrefetchOriginLimit,
     "CreateAliasDomain": doCreateAliasDomain,
     "ModifyAliasDomainStatus": doModifyAliasDomainStatus,
@@ -16684,6 +16972,7 @@ ACTION_MAP = {
     "DescribeBotLog": doDescribeBotLog,
     "BindZoneToPlan": doBindZoneToPlan,
     "DescribeOriginGroupHealthStatus": doDescribeOriginGroupHealthStatus,
+    "ModifyDnssec": doModifyDnssec,
     "DeleteL4ProxyRules": doDeleteL4ProxyRules,
     "DescribeSecurityPolicyRegions": doDescribeSecurityPolicyRegions,
     "CreateCustomizeErrorPage": doCreateCustomizeErrorPage,
@@ -16695,7 +16984,7 @@ ACTION_MAP = {
     "ModifySecurityAPIResource": doModifySecurityAPIResource,
     "ModifyApplicationProxyStatus": doModifyApplicationProxyStatus,
     "DeleteLoadBalancer": doDeleteLoadBalancer,
-    "DescribeTimingL7AnalysisData": doDescribeTimingL7AnalysisData,
+    "CreateInferenceDomain": doCreateInferenceDomain,
     "DescribeTopL7AnalysisData": doDescribeTopL7AnalysisData,
     "CreateFunction": doCreateFunction,
     "DescribeApplicationProxies": doDescribeApplicationProxies,
@@ -16732,7 +17021,7 @@ ACTION_MAP = {
     "DescribeSecurityIPGroup": doDescribeSecurityIPGroup,
     "DescribeFunctionRules": doDescribeFunctionRules,
     "UpgradePlan": doUpgradePlan,
-    "DescribeDDoSAttackTopData": doDescribeDDoSAttackTopData,
+    "DescribeLogAnalysisStatistics": doDescribeLogAnalysisStatistics,
     "DescribeWebProtectionLog": doDescribeWebProtectionLog,
     "ModifyZoneStatus": doModifyZoneStatus,
     "CreateL7AccRules": doCreateL7AccRules,
@@ -16769,7 +17058,7 @@ ACTION_MAP = {
     "CreateApplicationProxy": doCreateApplicationProxy,
     "DeleteRealtimeLogDeliveryTask": doDeleteRealtimeLogDeliveryTask,
     "EnableOriginACL": doEnableOriginACL,
-    "ModifyAliasDomain": doModifyAliasDomain,
+    "DescribeDDoSAttackTopData": doDescribeDDoSAttackTopData,
     "CreateLoadBalancer": doCreateLoadBalancer,
     "DescribeMultiPathGatewayOriginACL": doDescribeMultiPathGatewayOriginACL,
     "DescribeJustInTimeTranscodeTemplates": doDescribeJustInTimeTranscodeTemplates,
@@ -16796,6 +17085,7 @@ ACTION_MAP = {
     "ModifyZoneWorkMode": doModifyZoneWorkMode,
     "ModifyRealtimeLogDeliveryTask": doModifyRealtimeLogDeliveryTask,
     "DescribeZoneCustomVariables": doDescribeZoneCustomVariables,
+    "DescribeDDosAttackData": doDescribeDDosAttackData,
     "DescribeInferenceServiceMonitorData": doDescribeInferenceServiceMonitorData,
     "DescribeOriginProtection": doDescribeOriginProtection,
     "ModifyL4ProxyRulesStatus": doModifyL4ProxyRulesStatus,
@@ -16826,7 +17116,7 @@ ACTION_MAP = {
     "ModifyDDoSProtection": doModifyDDoSProtection,
     "CreateLogAnalysisDownloadTask": doCreateLogAnalysisDownloadTask,
     "ImportZoneConfig": doImportZoneConfig,
-    "DescribeDDosAttackData": doDescribeDDosAttackData,
+    "DescribeTimingL7AnalysisData": doDescribeTimingL7AnalysisData,
     "ModifyFunctionRule": doModifyFunctionRule,
     "ModifyFunctionReplica": doModifyFunctionReplica,
     "DescribeL4ProxyRules": doDescribeL4ProxyRules,
@@ -16850,7 +17140,7 @@ ACTION_MAP = {
     "EdgeKVPut": doEdgeKVPut,
     "DescribeInferenceServiceDeploymentLogs": doDescribeInferenceServiceDeploymentLogs,
     "DescribeTimingFunctionAnalysisData": doDescribeTimingFunctionAnalysisData,
-    "ModifyDnssec": doModifyDnssec,
+    "DummyParseZoneFullConfig": doDummyParseZoneFullConfig,
     "HandleFunctionRuntimeEnvironment": doHandleFunctionRuntimeEnvironment,
 
 }
