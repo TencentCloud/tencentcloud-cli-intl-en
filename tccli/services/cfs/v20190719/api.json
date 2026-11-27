@@ -14,6 +14,13 @@
       "output": "BindAutoSnapshotPolicyResponse",
       "status": "online"
     },
+    "CreateAutoDeletePolicy": {
+      "document": "This API is used to create an automatic data deletion policy for a specified CFS file system.",
+      "input": "CreateAutoDeletePolicyRequest",
+      "name": "Creates an automatic data cleanup policy",
+      "output": "CreateAutoDeletePolicyResponse",
+      "status": "online"
+    },
     "CreateAutoSnapshotPolicy": {
       "document": "This API is used to create a scheduled snapshot policy.",
       "input": "CreateAutoSnapshotPolicyRequest",
@@ -56,6 +63,13 @@
       "output": "CreateDataFlowResponse",
       "status": "online"
     },
+    "CreateDataRetrieval": {
+      "document": "This API is used to create data retrieval.",
+      "input": "CreateDataRetrievalRequest",
+      "name": "Creates data retrieval",
+      "output": "CreateDataRetrievalResponse",
+      "status": "online"
+    },
     "CreateLifecycleDataTask": {
       "document": "Support proactive settlement/preheat API.",
       "input": "CreateLifecycleDataTaskRequest",
@@ -82,6 +96,13 @@
       "input": "CreateMigrationTaskRequest",
       "name": "Creates a migration task",
       "output": "CreateMigrationTaskResponse",
+      "status": "online"
+    },
+    "DeleteAutoDeletePolicy": {
+      "document": "This API is used to delete a specified automatic deletion policy.",
+      "input": "DeleteAutoDeletePolicyRequest",
+      "name": "Deletes a specified automatic deletion policy",
+      "output": "DeleteAutoDeletePolicyResponse",
       "status": "online"
     },
     "DeleteAutoSnapshotPolicy": {
@@ -126,6 +147,13 @@
       "output": "DeleteDataFlowResponse",
       "status": "online"
     },
+    "DeleteDataRetrieval": {
+      "document": "This API is used to delete data retrieval.\n\nThis API is used to delete a specified data retrieval configuration. Deletion is not allowed when associated tasks exist. After this API is called, if the corresponding data retrieval cannot be found through the DescribeDataRetrieval API, the deletion is successful.",
+      "input": "DeleteDataRetrievalRequest",
+      "name": "Deletes data retrieval",
+      "output": "DeleteDataRetrievalResponse",
+      "status": "online"
+    },
     "DeleteLifecyclePolicy": {
       "document": "Delete a lifecycle management policy.",
       "input": "DeleteLifecyclePolicyRequest",
@@ -138,6 +166,13 @@
       "input": "DeleteMigrationTaskRequest",
       "name": "Deletes a migration task",
       "output": "DeleteMigrationTaskResponse",
+      "status": "online"
+    },
+    "DescribeAutoDeletePolicies": {
+      "document": "This API is used to query the list of automatic data deletion policies.",
+      "input": "DescribeAutoDeletePoliciesRequest",
+      "name": "Queries the list of automatic data deletion policies",
+      "output": "DescribeAutoDeletePoliciesResponse",
       "status": "online"
     },
     "DescribeAutoSnapshotPolicies": {
@@ -220,7 +255,7 @@
     "DescribeLifecycleDataTask": {
       "document": "This API is used to query the lifecycle task. It only supports querying task data within 3 months.",
       "input": "DescribeLifecycleDataTaskRequest",
-      "name": "Query the lifecycle of a task",
+      "name": "Queries data management tasks",
       "output": "DescribeLifecycleDataTaskResponse",
       "status": "online"
     },
@@ -257,6 +292,13 @@
       "input": "DoDirectoryOperationRequest",
       "name": "Directory operation interface",
       "output": "DoDirectoryOperationResponse",
+      "status": "online"
+    },
+    "ModifyAutoDeletePolicy": {
+      "document": "This API is used to modify the name or cleanup path of an automatic deletion policy.",
+      "input": "ModifyAutoDeletePolicyRequest",
+      "name": "Modifies the name or cleanup path of an automatic deletion policy",
+      "output": "ModifyAutoDeletePolicyResponse",
       "status": "online"
     },
     "ModifyDataFlow": {
@@ -376,7 +418,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Lifecycle management policy ID.",
+          "document": "<p>Lifecycle management policy ID.</p>",
           "example": "policy-xxxxxx",
           "member": "string",
           "name": "LifecyclePolicyID",
@@ -385,7 +427,7 @@
         },
         {
           "disabled": false,
-          "document": "List of absolute paths for directories associated with the lifecycle management policy.",
+          "document": "<p>List of directory paths associated with the lifecycle management policy. Each path must start with /cfs/, representing a logical path within the file storage instance, not a local mount point path.</p><p>Examples:</p><ul><li>If the CFS root directory / is mounted and you need to associate test1/test2 under the mount path, the input value is /cfs/test1/test2.</li><li>If the CFS subdirectory /subdir is mounted and you need to associate test1/test2 under the mount path, the input value is /cfs/subdir/test1/test2.</li></ul>",
           "example": "无",
           "member": "PathInfo",
           "name": "Paths",
@@ -400,7 +442,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Returns existing rule information if there is a rule conflict.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Information of existing conflicting rules returned when rule conflicts occur.</p>",
           "example": "无",
           "member": "CheckResult",
           "name": "CheckResults",
@@ -416,6 +458,111 @@
         }
       ],
       "type": "object"
+    },
+    "AutoDeletePolicy": {
+      "document": "Automatic deletion policy configuration information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Policy ID.</p>",
+          "example": "adp-8c29****",
+          "member": "string",
+          "name": "PolicyId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>File system Id.</p>",
+          "example": "cfs-4e69*****",
+          "member": "string",
+          "name": "FileSystemId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Automatic cleanup policy name.</p>",
+          "example": "te***",
+          "member": "string",
+          "name": "PolicyName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Path to be cleaned up.</p>",
+          "example": "[\"/cfs/*\"]",
+          "member": "string",
+          "name": "Paths",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Automatic cleanup policy status.</p><p>Enumeration values:</p><ul><li>enabling: Enabling</li><li>enabled: Enabled</li><li>disabling: Disabling</li><li>disabed: Disabled</li><li>deleting: Deleting</li><li>failed: Failed</li><li>creating: Creating</li><li>updating: Updating</li></ul>",
+          "example": "enabled",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Cleanup policy creation time.</p><p>Parameter format: YYYY-MM-DD hh:mm:ss</p>",
+          "example": "2026-08-12 17:29:12",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Policy update time.</p><p>Parameter format: YYYY-MM-DD hh:mm:ss</p>",
+          "example": "2026-08-13 10:51:59",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Region to which the policy belongs.</p>",
+          "example": "ap-gu*******",
+          "member": "string",
+          "name": "Region",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Error information.</p>",
+          "example": "auto_de****: ****** ****** failed",
+          "member": "string",
+          "name": "ErrMsg",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "AutoScaleUpRule": {
       "document": "Auto scale-out rule.",
@@ -944,6 +1091,61 @@
       ],
       "usage": "out"
     },
+    "CreateAutoDeletePolicyRequest": {
+      "document": "CreateAutoDeletePolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>File system ID.</p>",
+          "example": "cfs-85nd****",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Auto deletion policy name.</p>",
+          "example": "te***",
+          "member": "string",
+          "name": "PolicyName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of paths for the auto deletion policy.</p>",
+          "example": "[\"/cfs/*\"]",
+          "member": "string",
+          "name": "Paths",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAutoDeletePolicyResponse": {
+      "document": "CreateAutoDeletePolicy response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Auto deletion policy ID.</p>",
+          "example": "adp-c0d0****",
+          "member": "string",
+          "name": "PolicyId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateAutoSnapshotPolicyRequest": {
       "document": "CreateAutoSnapshotPolicy request structure.",
       "members": [
@@ -1040,7 +1242,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "AZ name, such as \"ap-beijing-1\". For the list of regions and AZs, please see [Overview](https://intl.cloud.tencent.com/document/product/582/13225?from_cn_redirect=1)",
+          "document": "<p>AZ name</p><p>For valid values, see <a href=\"https://www.tencentcloud.com/document/product/213/15707??from_cn_redirect=1\">Querying the List of AZs</a></p>",
           "example": "ap-beijing-1",
           "member": "string",
           "name": "Zone",
@@ -1049,7 +1251,7 @@
         },
         {
           "disabled": false,
-          "document": "Network type. Valid values: `VPC` and `CCN`. Select `VPC` for a Standard or High-Performance file system, and `CCN` for a Standard Turbo or High-Performance Turbo one.",
+          "document": "<p>Network type</p><p>Valid values:</p><ul><li><p>VPC: Virtual Private Cloud</p></li><li><p>CCN: Cloud Connect Network</p></li><li><p>For General-purpose Standard/Performance (including enhanced) and Throughput types, select VPC.</p></li><li><p>For Turbo Standard/Performance types, VPC or CCN can be selected.</p></li><li><p>When Scenario=AgentSandbox, this parameter is not required for creating AgentCFS and will be ignored if passed in.</p></li></ul>",
           "example": "VPC",
           "member": "string",
           "name": "NetInterface",
@@ -1058,7 +1260,7 @@
         },
         {
           "disabled": false,
-          "document": "Permission group ID. pgroupbasic is the default permission group. obtain through the api [DescribeCfsPGroups](https://www.tencentcloud.com/document/product/582/38157?from_cn_redirect=1) to query the permission group list.",
+          "document": "<p>Permission group ID. A permission group defines a set of allowlisted visitors and operation permissions.</p><p>For valid values, see <a href=\"https://www.tencentcloud.com/document/api/582/38157?from_cn_redirect=1\">DescribeCfsPGroups</a></p><ul><li>pgroupbasic is the default permission group, which allows access and read/write permissions for all IP addresses. </li><li>Note: When Scenario=AgentSandbox, that is, when creating AgentCFS, pgroupbasic (the default permission group) must be passed in. Passing in other values will cause an error.</li></ul>",
           "example": "pgroupbasic",
           "member": "string",
           "name": "PGroupId",
@@ -1067,7 +1269,7 @@
         },
         {
           "disabled": false,
-          "document": "File system protocol type. valid values: NFS, CIFS, and TURBO. if left blank, NFS by default. the TURBO series must select TURBO. NFS and CIFS are not supported.",
+          "document": "<p>File system protocol type</p><p>Valid values:</p><ul><li>NFS: Instances of General-purpose Standard (including enhanced) and General-purpose Performance (including enhanced) types can be created with this protocol.</li><li>CIFS: The SMB protocol. Only General-purpose Standard and Throughput types in certain AZs support this protocol.</li><li>TURBO: Instances of Turbo Standard/Turbo Performance/AgentCFS types can be created with this protocol.</li></ul><p>Default value: NFS</p>",
           "example": "NFS",
           "member": "string",
           "name": "Protocol",
@@ -1076,7 +1278,7 @@
         },
         {
           "disabled": false,
-          "document": "Storage type of the file system. Valid values: `SD` (Standard), `HP` (High-Performance), `TB` (Standard Turbo), and `TP` (High-Performance Turbo). Default value: `SD`.",
+          "document": "<p>File system storage type. SD indicates General-purpose Standard storage, HP indicates General-purpose Performance storage, TB indicates Turbo Standard, and TP indicates Turbo Performance.</p><p>Valid values:</p><ul><li>SD: General-purpose Standard (including enhanced). For General-purpose Standard, version = v1.5; for General-purpose Standard (enhanced), version = v3.1.</li><li>HP: General-purpose Performance (including enhanced). For General-purpose Performance, version = v1.5; for General-purpose Performance (enhanced), version = v3.1.</li><li>TB: Turbo Standard</li><li>TP: Turbo Performance</li><li>THP: Throughput</li></ul><p>Default value: SD</p>",
           "example": "SD",
           "member": "string",
           "name": "StorageType",
@@ -1085,7 +1287,7 @@
         },
         {
           "disabled": false,
-          "document": "Private network (VPC) ID. if the network type is VPC, this field must be specified. obtain it by querying the private network interface.\n[DescribeVpcs](https://www.tencentcloud.com/document/product/215/15778?from_cn_redirect=1)",
+          "document": "<p>VPC ID. This field is required if VPC is selected as the network type.</p><p>For valid values, see <a href=\"https://www.tencentcloud.com/document/product/215/15778?from_cn_redirect=1\">Querying the List of VPCs</a></p><p>When Scenario=AgentSandbox, that is, when creating AgentCFS, this parameter is not required and will be ignored if passed in.</p>",
           "example": "vpc-abc123",
           "member": "string",
           "name": "VpcId",
@@ -1094,7 +1296,7 @@
         },
         {
           "disabled": false,
-          "document": "Subnet ID. this field must be specified if the network type is VPC. obtain through the api for querying subnets.\n[DescribeSubnets](https://www.tencentcloud.com/document/product/215/15784?from_cn_redirect=1)",
+          "document": "<p>Subnet ID. This field is required if VPC is selected as the network type.</p><p>For valid values, see <a href=\"https://www.tencentcloud.com/document/product/215/15784?from_cn_redirect=1\">Querying the List of Subnets</a></p><p>When Scenario=AgentSandbox, that is, when creating AgentCFS, this parameter is not required and will be ignored if passed in.</p>",
           "example": "subnet-abc234",
           "member": "string",
           "name": "SubnetId",
@@ -1103,7 +1305,7 @@
         },
         {
           "disabled": false,
-          "document": "IP address (this parameter supports only the VPC network type, and the Turbo series is not supported). If this parameter is left empty, a random IP in the subnet will be assigned.",
+          "document": "<p>Specifies the IP address. Only VPC networks support this. If this parameter is not specified, an IP address will be randomly assigned from the subnet. Turbo series currently does not support specifying an IP address.</p>",
           "example": "10.0.0.1",
           "member": "string",
           "name": "MountIP",
@@ -1112,7 +1314,7 @@
         },
         {
           "disabled": false,
-          "document": "Custom file system name",
+          "document": "<p>User-defined file system name</p>",
           "example": "QcloudCfs",
           "member": "string",
           "name": "FsName",
@@ -1121,7 +1323,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<p>Indicates whether the file system is encrypted. If this parameter is left empty, the file system is not encrypted by default.</p>",
           "example": "true",
           "member": "bool",
           "name": "Encrypted",
@@ -1130,7 +1332,7 @@
         },
         {
           "disabled": false,
-          "document": "File system tag",
+          "document": "<p>File system tag</p>",
           "example": "无",
           "member": "TagInfo",
           "name": "ResourceTags",
@@ -1139,7 +1341,7 @@
         },
         {
           "disabled": false,
-          "document": "A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed. This string is valid for 2 hours.",
+          "document": "<p>String used to ensure the idempotency of the request. This string is generated by the customer and must be unique across different requests, with a maximum length of 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed. The string used to ensure idempotency expires after 2 hours.</p>",
           "example": "QcloudCfs001",
           "member": "string",
           "name": "ClientToken",
@@ -1148,7 +1350,7 @@
         },
         {
           "disabled": false,
-          "document": "Cloud connect network ID. this field must be specified if the network type is CCN. obtain it by querying the CCN list through the api.\n[DescribeCcns](https://www.tencentcloud.com/document/product/215/19199?from_cn_redirect=1)\n",
+          "document": "<p>CCN ID. This field is required if CCN is selected as the network type.</p><p>For valid values, see <a href=\"https://www.tencentcloud.com/document/product/215/19199?from_cn_redirect=1\">Querying the List of CCNs</a></p><p>When Scenario=AgentSandbox, that is, when creating AgentCFS, this parameter is not required and will be ignored if passed in.</p>",
           "example": "ccn-abc123",
           "member": "string",
           "name": "CcnId",
@@ -1157,7 +1359,7 @@
         },
         {
           "disabled": false,
-          "document": "CCN IP range used by the CFS (required if the network type is CCN), which cannot conflict with other IP ranges bound in CCN",
+          "document": "<p>CIDR block used by CFS in the CCN. This field is required if CCN is selected as the network type, and it cannot conflict with CIDR blocks already bound in the CCN.</p><p>When Scenario=AgentSandbox, that is, when creating AgentCFS, this parameter is not required and will be ignored if passed in.</p>",
           "example": "10.0.0.1/24",
           "member": "string",
           "name": "CidrBlock",
@@ -1166,7 +1368,7 @@
         },
         {
           "disabled": false,
-          "document": "File system capacity, required for the turbo series, in GiB. turbo standard type in GB, starting from 20 TiB (20480 GiB); scaling increment 10 TiB (10240 GiB). turbo performance type starts from 10 TiB (10240 GiB); capacity expansion step 10 TiB (10240 GiB).",
+          "document": "<p>File system capacity. This parameter is required for Turbo series.</p><p>Unit: GiB</p><p>Turbo Standard starts at 20 TiB, that is, 20,480 GiB, with a scale-out step of 10 TiB, that is, 10,240 GiB. Turbo Performance starts at 10 TiB, that is, 10,240 GiB, with a scale-out step of 10 TiB, that is, 10,240 GiB.</p>",
           "example": "40960",
           "member": "uint64",
           "name": "Capacity",
@@ -1175,7 +1377,7 @@
         },
         {
           "disabled": false,
-          "document": "File system snapshot ID. this parameter can be obtained by querying the snapshot list.\n[DescribeCfsSnapshots](https://www.tencentcloud.com/document/product/582/80206?from_cn_redirect=1)",
+          "document": "<p>File system snapshot ID</p><p>For valid values, see <a href=\"https://www.tencentcloud.com/document/api/582/80206?from_cn_redirect=1\">DescribeCfsSnapshots</a></p>",
           "example": "snapcfs-abc1234",
           "member": "string",
           "name": "SnapshotId",
@@ -1184,7 +1386,7 @@
         },
         {
           "disabled": false,
-          "document": "Scheduled snapshot policy ID, which can be obtained by querying the snapshot policy information.\n[DescribeAutoSnapshotPolicies](https://www.tencentcloud.com/document/product/582/38157?from_cn_redirect=1)",
+          "document": "<p>Scheduled snapshot policy ID</p><p>For valid values, see <a href=\"https://www.tencentcloud.com/document/api/582/80208?from_cn_redirect=1\">DescribeAutoSnapshotPolicies</a></p>",
           "example": "asp-abc1234",
           "member": "string",
           "name": "AutoSnapshotPolicyId",
@@ -1193,7 +1395,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether default expansion is enabled. only turbo file storage supports this feature.",
+          "document": "<p>Indicates whether to enable the automatic scale-out policy. Only turbo file storage supports this feature.</p>",
           "example": "false",
           "member": "bool",
           "name": "EnableAutoScaleUp",
@@ -1202,7 +1404,7 @@
         },
         {
           "disabled": false,
-          "document": "v1.5: create a standard edition general file system.\nv3.1: create an enhanced general file system.\nDescription: the enhanced universal system requires enabling the allowlist to use. if needed, submit a ticket to contact us.",
+          "document": "<p>File system version.</p><p>Valid values:</p><ul><li>v1.5: Creates a General Purpose Standard or General Purpose Performance file system.</li><li>v3.1: Creates a General Purpose Standard (Enhanced) or General Purpose Performance (Enhanced) file system. This parameter is required if you want to create an enhanced file system.</li><li>v4.0: Creates a Turbo Standard, Turbo Performance, or Throughput file system. This parameter is optional.</li></ul><p>To create a General Purpose Standard (Enhanced) or General Purpose Performance (Enhanced) file system, the root account must be added to the allowlist. Contact us if needed.</p>",
           "example": "v1.5",
           "member": "string",
           "name": "CfsVersion",
@@ -1211,10 +1413,19 @@
         },
         {
           "disabled": false,
-          "document": "turbo file system metadata attribute.\nbasic: creates metadata of the standard type.\nEnhanced: creates enhanced metadata.",
+          "document": "<p>Metadata type of the Turbo file system.</p><p>Valid values:</p><ul><li>basic: Creates standard metadata.</li><li>enhanced: Creates enhanced metadata.</li></ul><p>For details, see <a href=\"https://www.tencentcloud.com/document/product/582/116836?from_cn_redirect=1\">Turbo File System Metadata Types</a></p>",
           "example": "basic",
           "member": "string",
           "name": "MetaType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Business scenario.</p><p>Valid values:</p><ul><li>AgentSandbox: Required when creating AgentCFS.</li></ul>",
+          "example": "AgentSandbox",
+          "member": "string",
+          "name": "Scenario",
           "required": false,
           "type": "string"
         }
@@ -1226,7 +1437,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "File system creation time",
+          "document": "<p>File system creation time.</p>",
           "example": "2017-02-24 11:28:12",
           "member": "string",
           "name": "CreationTime",
@@ -1236,7 +1447,7 @@
         },
         {
           "disabled": false,
-          "document": "Custom file system name",
+          "document": "<p>User-defined file system name.</p>",
           "example": "QcloudCfs",
           "member": "string",
           "name": "CreationToken",
@@ -1246,7 +1457,7 @@
         },
         {
           "disabled": false,
-          "document": "File system ID",
+          "document": "<p>File system ID.</p>",
           "example": "cfs-abc",
           "member": "string",
           "name": "FileSystemId",
@@ -1256,7 +1467,7 @@
         },
         {
           "disabled": false,
-          "document": "File system status. Valid values: `creating`, `create_failed`, `available`, `unserviced`, `upgrading`, `deleting`",
+          "document": "<p>File system status. Possible statuses include: \"creating\": Creating, \"create_failed\": Creation failed, \"available\": Available, \"unserviced\": Unavailable, \"upgrading\": Upgrading, and \"deleting\": Deleting.</p>",
           "example": "AVAILABLE",
           "member": "string",
           "name": "LifeCycleState",
@@ -1266,7 +1477,7 @@
         },
         {
           "disabled": false,
-          "document": "Storage used by the file system, in bytes",
+          "document": "<p>Used capacity of the file system, in bytes.</p>",
           "example": "1000",
           "member": "uint64",
           "name": "SizeByte",
@@ -1276,7 +1487,7 @@
         },
         {
           "disabled": false,
-          "document": "AZ ID",
+          "document": "<p>AZ ID.</p>",
           "example": "800001",
           "member": "uint64",
           "name": "ZoneId",
@@ -1286,7 +1497,7 @@
         },
         {
           "disabled": false,
-          "document": "Custom file system name",
+          "document": "<p>User-defined file system name.</p>",
           "example": "QcloudCfs",
           "member": "string",
           "name": "FsName",
@@ -1296,7 +1507,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether a file system is encrypted",
+          "document": "<p>Whether the file system is encrypted.</p>",
           "example": "false",
           "member": "bool",
           "name": "Encrypted",
@@ -1582,7 +1793,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "File system ID, which can be obtained by querying the file system through the [DescribeCfsFileSystems](https://www.tencentcloud.com/document/product/582/38170?from_cn_redirect=1) api.",
+          "document": "<p>File system ID, which can be obtained through the API for querying file systems <a href=\"https://www.tencentcloud.com/document/product/582/38170?from_cn_redirect=1\">DescribeCfsFileSystems</a>.</p>",
           "example": "cfs-4abkgaga",
           "member": "string",
           "name": "FileSystemId",
@@ -1591,7 +1802,7 @@
         },
         {
           "disabled": false,
-          "document": "Source data type; includes S3_COS, S3_L5.",
+          "document": "<p>Source data type. Valid values: S3_COS and S3_L5.</p>",
           "example": "S3_COS",
           "member": "string",
           "name": "SourceStorageType",
@@ -1600,7 +1811,7 @@
         },
         {
           "disabled": false,
-          "document": "Source storage address.",
+          "document": "<p>Source storage address</p>",
           "example": "https://cfs-test-1251000014.cos.ap-shanghai.myqcloud.com",
           "member": "string",
           "name": "SourceStorageAddress",
@@ -1609,7 +1820,7 @@
         },
         {
           "disabled": false,
-          "document": "Source path.",
+          "document": "<p>Source path</p>",
           "example": "/cos/test",
           "member": "string",
           "name": "SourcePath",
@@ -1618,7 +1829,7 @@
         },
         {
           "disabled": false,
-          "document": "Target path in the file system.",
+          "document": "<p>Target path in the file system specified when setting data flow. It must start with /cfs/ and represents a logical path inside the file storage instance, not a local mount point path.<br>Example:</p><ul><li>If the CFS root directory / is mounted, and you need to map the source directory on object storage to test1/test2 under the mount path, the value of this parameter is /cfs/test1/test2.</li><li>If the CFS subdirectory /subdir is mounted, and you need to map the source directory on object storage to test1/test2 under the mount path, the value of this parameter is /cfs/subdir/test1/test2.</li></ul>",
           "example": "/cfs/12a3",
           "member": "string",
           "name": "TargetPath",
@@ -1627,7 +1838,7 @@
         },
         {
           "disabled": false,
-          "document": "Key ID.",
+          "document": "<p>Secret ID</p>",
           "example": "asafsafsa",
           "member": "string",
           "name": "SecretId",
@@ -1636,7 +1847,7 @@
         },
         {
           "disabled": false,
-          "document": "key.",
+          "document": "<p>Secret key</p>",
           "example": "ssafsafas",
           "member": "string",
           "name": "SecretKey",
@@ -1645,7 +1856,7 @@
         },
         {
           "disabled": false,
-          "document": "Data flow name, supports no more than 64 characters in length, supports chinese, numbers, _, and -.",
+          "document": "<p>Data flow name. It supports up to 64 characters, including Chinese characters, digits, underscores (_), and hyphens (-).</p>",
           "example": "default",
           "member": "string",
           "name": "DataFlowName",
@@ -1654,7 +1865,7 @@
         },
         {
           "disabled": false,
-          "document": "0: disable auto-update  1: enable auto-update.",
+          "document": "<p>0: Automatic update disabled. 1: Automatic update enabled.</p>",
           "example": "0",
           "member": "uint64",
           "name": "AutoRefresh",
@@ -1663,7 +1874,7 @@
         },
         {
           "disabled": false,
-          "document": "Topic Parameter used by KafkaConsumer during consumption",
+          "document": "<p>Topic parameter used by KafkaConsumer for consumption</p>",
           "example": "1251000004-e37d71b2-4fb1-4b2c-b7d0-522946d17d93",
           "member": "string",
           "name": "UserKafkaTopic",
@@ -1672,7 +1883,7 @@
         },
         {
           "disabled": false,
-          "document": "\tService address example value: kafkaconsumer-ap-beijing.cls.tencentyun.com:9095.",
+          "document": "<p>Service address. Example: kafkaconsumer-ap-beijing.cls.tencentyun.com:9095</p>",
           "example": "kafkaconsumer-ap-beijing.cls.tencentyun.com:9095",
           "member": "string",
           "name": "ServerAddr",
@@ -1681,7 +1892,7 @@
         },
         {
           "disabled": false,
-          "document": "Kafka consuming user name. example value: name.",
+          "document": "<p>Kafka consumer username. Example: name</p>",
           "example": "name",
           "member": "string",
           "name": "UserName",
@@ -1690,7 +1901,7 @@
         },
         {
           "disabled": false,
-          "document": "Kafka consuming user password. default ${SecretId}#${SecretKey}.",
+          "document": "<p>Kafka consumer password. Default value: ${SecretId}#${SecretKey}.</p>",
           "example": "xbxcxdxexcxdxa",
           "member": "string",
           "name": "Password",
@@ -1705,10 +1916,101 @@
       "members": [
         {
           "disabled": false,
-          "document": "Data flow manage ID.",
+          "document": "<p>Data flow management ID</p>",
           "example": "cfs-dataflow-abcdefgh",
           "member": "string",
           "name": "DataFlowId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDataRetrievalRequest": {
+      "document": "CreateDataRetrieval request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>File system instance ID, which can be obtained through the DescribeCfsFileSystems API. Example value: cfs-xxxxxx</p>",
+          "example": "cfs-4e5e76ff8",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Data retrieval name. Example value: DataDive</p>",
+          "example": "default",
+          "member": "string",
+          "name": "DataRetrievalName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Aggregated retrieval condition. Example value: from entries|where size &gt;4096</p>",
+          "example": "WHERE size > 1048576 AND type == \"file\"",
+          "member": "string",
+          "name": "CompoundCondition",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>List retrieval condition.</p>",
+          "example": "from entries|where size >4096",
+          "member": "string",
+          "name": "QueryCondition",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Monthly data retrieval. Valid values: 1–31. The retrieval will be automatically created on the specified day of each month. For example, 1 indicates the 1st day of a month. You must specify either this parameter or DayOfWeek. Example value: 1</p>",
+          "example": "1",
+          "member": "string",
+          "name": "DayOfMonth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Day of the week for data retrieval repetition. Valid values: 1–7. 1 indicates Monday and 7 indicates Sunday. You must specify either this parameter or DayOfMonth. Example value: 2,3</p>",
+          "example": "3,4",
+          "member": "string",
+          "name": "DayOfWeek",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Hour of the day for repetition. Valid values: 0–23. Example value: 1,3,5</p>",
+          "example": "12,13",
+          "member": "string",
+          "name": "Hour",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDataRetrievalResponse": {
+      "document": "CreateDataRetrieval response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Data retrieval ID. Example: dataretrieval-123456</p>",
+          "example": "dataretrieval-1234bdbc",
+          "member": "string",
+          "name": "DataRetrievalId",
           "output_required": true,
           "type": "string",
           "value_allowed_null": false
@@ -1727,7 +2029,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "File system unique ID.",
+          "document": "<p>Unique file system ID.</p>",
           "example": "cfs-4agcdretg",
           "member": "string",
           "name": "FileSystemId",
@@ -1736,7 +2038,7 @@
         },
         {
           "disabled": false,
-          "document": "Lifecycle task type; archive: settlement; restore: preheating; release: data release; metaload: metadata loading.",
+          "document": "<p>Lifecycle task type. archive: archiving; restore: preheating; release: data release; metaload: metadata loading.</p>",
           "example": "archive",
           "member": "string",
           "name": "Type",
@@ -1745,7 +2047,7 @@
         },
         {
           "disabled": false,
-          "document": "Task name.",
+          "document": "<p>Task name.</p>",
           "example": "dataarchive",
           "member": "string",
           "name": "TaskName",
@@ -1754,7 +2056,7 @@
         },
         {
           "disabled": false,
-          "document": "The path or file to be settled supports passing only one path and cannot be empty.",
+          "document": "<p>Path or file to be archived. Only one path is supported and it cannot be empty.</p>",
           "example": "/cfs/data",
           "member": "string",
           "name": "TaskPath",
@@ -1763,7 +2065,7 @@
         },
         {
           "disabled": false,
-          "document": "Data flow ID. this api can be accessed through DescribeDataFlow.",
+          "document": "<p>Data flow ID. It can be queried through DescribeDataFlow.</p>",
           "example": "cfs-dataflow-abcdefeg",
           "member": "string",
           "name": "DataFlowId",
@@ -1772,12 +2074,21 @@
         },
         {
           "disabled": false,
-          "document": "When a file in CFS Turbo and an external storage have the same name, whether to overwrite. true: overwrite. false: not overwrite (at the same time, data storage will not be released). default false when empty.",
+          "document": "<p>Whether to overwrite a file in CFSTurbo if it has the same name as a file in the external storage. true: overwrite; false: do not overwrite (and hot storage data will not be released). If this parameter is left empty, the default value is false.</p>",
           "example": "false",
           "member": "bool",
           "name": "IsOverwrite",
           "required": false,
           "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Path of the data manifest file. Each line in the manifest file is the full path of a file to be processed. All paths (including the manifest file path and the paths of files to be processed in each line of the manifest file) must start with /cfs and point to existing files in the CFS file system. Specify either this parameter or TaskPath.<br>Example:</p><ul><li>If the CFS root directory / is mounted and the manifest file is located at lists/archive_list.txt under the mount path, set this parameter to /cfs/lists/archive_list.txt.</li><li>If the CFS subdirectory /subdir is mounted and the manifest file is located at lists/archive_list.txt under the mount path, set this parameter to /cfs/subdir/lists/archive_list.txt.</li></ul>",
+          "example": "/cfs/datalist",
+          "member": "string",
+          "name": "ListPath",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1787,7 +2098,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task ID.",
+          "document": "<p>Task ID.</p>",
           "example": "task-20250101abcdef",
           "member": "string",
           "name": "TaskId",
@@ -1901,7 +2212,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Migration task name",
+          "document": "<p>Migration task name.</p>",
           "example": "copytask",
           "member": "string",
           "name": "TaskName",
@@ -1910,7 +2221,7 @@
         },
         {
           "disabled": false,
-          "document": "Migration method flags, default is 0. 0: bucket migration; 1: inventory migration.",
+          "document": "<p>Migration mode flag. Default value: 0. 0: Bucket migration; 1: Inventory migration.</p>",
           "example": "0",
           "member": "uint64",
           "name": "MigrationType",
@@ -1919,7 +2230,7 @@
         },
         {
           "disabled": false,
-          "document": "Migration mode. Default value: `0` (full migration).",
+          "document": "<p>Migration mode. Default value: 0. 0: Full migration.</p>",
           "example": "0",
           "member": "uint64",
           "name": "MigrationMode",
@@ -1928,7 +2239,7 @@
         },
         {
           "disabled": false,
-          "document": "SecretId of the data source account.",
+          "document": "<p>SecretId of the data source account.</p>",
           "example": "secretid",
           "member": "string",
           "name": "SrcSecretId",
@@ -1937,7 +2248,7 @@
         },
         {
           "disabled": false,
-          "document": "SecretKey of the data source account.",
+          "document": "<p>SecretKey of the data source account.</p>",
           "example": "secretkey",
           "member": "string",
           "name": "SrcSecretKey",
@@ -1946,7 +2257,7 @@
         },
         {
           "disabled": false,
-          "document": "File system instance ID, which can be obtained by querying the file system through the [DescribeCfsFileSystems](https://www.tencentcloud.com/document/product/582/38170?from_cn_redirect=1) api.",
+          "document": "<p>File system instance ID, which can be obtained through <a href=\"https://www.tencentcloud.com/document/product/582/38170?from_cn_redirect=1\">DescribeCfsFileSystems</a>.</p>",
           "example": "cfs-xxxxxx",
           "member": "string",
           "name": "FileSystemId",
@@ -1955,8 +2266,8 @@
         },
         {
           "disabled": false,
-          "document": "File system path",
-          "example": "/cfs/123",
+          "document": "<p>Directory path in the file system. It does not involve the actual mounted subdirectory or root directory, and does not need to be prefixed with /cfs/.</p>",
+          "example": "/filepathincfs",
           "member": "string",
           "name": "FsPath",
           "required": true,
@@ -1964,7 +2275,7 @@
         },
         {
           "disabled": false,
-          "document": "Overwrite policy for files with the same name. Valid values: `0` (retain the file with the latest modified time), `1` (overwrite); and `2` (not overwrite). Default value: `0`.",
+          "document": "<p>Overwrite policy for files with the same name during migration. Default value: 0. 0: The file with the latest modification time takes precedence; 1: Full overwrite; 2: No overwrite.</p>",
           "example": "0",
           "member": "uint64",
           "name": "CoverType",
@@ -1973,7 +2284,7 @@
         },
         {
           "disabled": false,
-          "document": "Data source service providers. COS: tencent cloud COS, OSS: alibaba cloud OSS, OBS: huawei cloud OBS.",
+          "document": "<p>Data source service provider.</p><p>Valid values:</p><ul><li>COS: Tencent Cloud COS</li><li>OSS: Alibaba Cloud OSS</li><li>OBS: Huawei Cloud OBS</li><li>BOS: Baidu Cloud BOS</li><li>TOS: Volcano Engine TOS</li></ul>",
           "example": "COS",
           "member": "string",
           "name": "SrcService",
@@ -1982,7 +2293,7 @@
         },
         {
           "disabled": false,
-          "document": "Data source bucket name. specifies the bucket name for migration. either BucketName or BucketAddress is required for bucket migration. this parameter is not required for inventory migration.",
+          "document": "<p>Name of the data source bucket. For bucket migration, either BucketName or BucketAddress is required. For inventory migration, this parameter is not required.</p>",
           "example": "testbucket-125xxxxxxx",
           "member": "string",
           "name": "BucketName",
@@ -1991,7 +2302,7 @@
         },
         {
           "disabled": false,
-          "document": "Data source bucket region",
+          "document": "<p>Region of the data source bucket.</p>",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "BucketRegion",
@@ -2000,7 +2311,7 @@
         },
         {
           "disabled": false,
-          "document": "Source bucket address. specifies the bucket address of the data source. for bucket migration, either BucketName or BucketAddress is required. this parameter is not required for inventory migration.",
+          "document": "<p>Address of the data source bucket. For bucket migration, either BucketName or BucketAddress is required. For inventory migration, this parameter is not required.</p>",
           "example": "https://testbucket-125xxxxxx.cos.ap-guangzhou.myqcloud.com",
           "member": "string",
           "name": "BucketAddress",
@@ -2009,7 +2320,7 @@
         },
         {
           "disabled": false,
-          "document": "List address. This parameter is required if `MigrationType` is set to `1` (list).",
+          "document": "<p>Inventory address. Required when the migration mode is inventory migration.</p>",
           "example": "https://testbucket-125xxxxxxx.cos.ap-guangzhou.myqcloud.com/cos_bucket_inventory/125xxxxx/brucetest/test/20240122/manifest.json",
           "member": "string",
           "name": "ListAddress",
@@ -2018,7 +2329,7 @@
         },
         {
           "disabled": false,
-          "document": "Target file system name",
+          "document": "<p>Name of the destination file system.</p>",
           "example": "name",
           "member": "string",
           "name": "FsName",
@@ -2027,7 +2338,7 @@
         },
         {
           "disabled": false,
-          "document": "Source bucket path, defaults to /.",
+          "document": "<p>Source bucket path. Default value: /.</p>",
           "example": "cos/",
           "member": "string",
           "name": "BucketPath",
@@ -2036,7 +2347,7 @@
         },
         {
           "disabled": false,
-          "document": "Migration direction. valid values: 0 (cos migration to file system), 1 (file system migration to cos). default is 0.",
+          "document": "<p>Migration direction. 0: Migrate from object storage to file system. 1: Migrate from file system to object storage. Default value: 0.</p>",
           "example": "0",
           "member": "uint64",
           "name": "Direction",
@@ -2051,7 +2362,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Migration task ID.",
+          "document": "<p>Migration task ID.</p>",
           "example": "tasgagagagi",
           "member": "string",
           "name": "TaskId",
@@ -2084,7 +2395,7 @@
         {
           "disabled": false,
           "document": "Data flow name.",
-          "example": "default",
+          "example": "cfsdataflowname",
           "member": "string",
           "name": "DataFlowName",
           "output_required": true,
@@ -2224,6 +2535,42 @@
       ],
       "usage": "out"
     },
+    "DeleteAutoDeletePolicyRequest": {
+      "document": "DeleteAutoDeletePolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>File system ID.</p>",
+          "example": "cfs-85nd****",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Auto deletion policy ID.</p>",
+          "example": "adp-c0d0****",
+          "member": "string",
+          "name": "PolicyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAutoDeletePolicyResponse": {
+      "document": "DeleteAutoDeletePolicy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteAutoSnapshotPolicyRequest": {
       "document": "DeleteAutoSnapshotPolicy request structure.",
       "members": [
@@ -2266,7 +2613,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "File system ID, which can be obtained by [querying the file system interface](https://www.tencentcloud.com/document/api/582/38170?from_cn_redirect=1). note: the DeleteMountTarget api must be called to remove the mount point of this file system before file system deletion, otherwise deletion will fail.",
+          "document": "File system ID, which can be obtained through the [API for querying file systems](https://www.tencentcloud.com/document/api/582/38170?from_cn_redirect=1). Note: Before deleting a file system, you need to call the DeleteMountTarget API to delete the mount target of the file system. Otherwise, the deletion will fail.",
           "example": "cfs-12345",
           "member": "string",
           "name": "FileSystemId",
@@ -2473,6 +2820,33 @@
       ],
       "type": "object"
     },
+    "DeleteDataRetrievalRequest": {
+      "document": "DeleteDataRetrieval request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>Data retrieval ID, which can be obtained through the DescribeDataRetrieval API.</p>",
+          "example": "dataretrieval-20507000",
+          "member": "string",
+          "name": "DataRetrievalId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDataRetrievalResponse": {
+      "document": "DeleteDataRetrieval response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteLifecyclePolicyRequest": {
       "document": "DeleteLifecyclePolicy request structure.",
       "members": [
@@ -2518,6 +2892,71 @@
     "DeleteMigrationTaskResponse": {
       "document": "DeleteMigrationTask response structure.",
       "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAutoDeletePoliciesRequest": {
+      "document": "DescribeAutoDeletePolicies request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>File system ID</p>",
+          "example": "cfs-4e5e7****",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Page offset.</p>",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Page size.</p>",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAutoDeletePoliciesResponse": {
+      "document": "DescribeAutoDeletePolicies response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>List of auto deletion policies</p>",
+          "example": "无",
+          "member": "AutoDeletePolicy",
+          "name": "Policies",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Total.</p>",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -2781,7 +3220,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "File system ID",
+          "document": "<p>File system ID.</p>",
           "example": "cfs-12345",
           "member": "string",
           "name": "FileSystemId",
@@ -2790,7 +3229,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC ID",
+          "document": "<p>Virtual Private Cloud (VPC) ID.</p>",
           "example": "vpc-12345",
           "member": "string",
           "name": "VpcId",
@@ -2799,7 +3238,7 @@
         },
         {
           "disabled": false,
-          "document": "Subnet ID",
+          "document": "<p>Subnet ID.</p>",
           "example": "subnet-12345",
           "member": "string",
           "name": "SubnetId",
@@ -2808,7 +3247,7 @@
         },
         {
           "disabled": false,
-          "document": "Offset paging number. default 0.",
+          "document": "<p>Offset for pagination. Default value: 0.</p>",
           "example": "10",
           "member": "uint64",
           "name": "Offset",
@@ -2817,7 +3256,7 @@
         },
         {
           "disabled": false,
-          "document": "Limit page size. default value 10.",
+          "document": "<p>Limit for page size. Default value: 10.</p>",
           "example": "10",
           "member": "uint64",
           "name": "Limit",
@@ -2826,12 +3265,30 @@
         },
         {
           "disabled": false,
-          "document": "User-defined name",
+          "document": "<p>User-defined name.</p>",
           "example": "test_fs",
           "member": "string",
           "name": "CreationToken",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Filter conditions.<br><br><li>Protocol - Array of String - optional - (Filter condition) Filters by protocol. (NFS | CIFS | TURBO) </li><br><br><li>StorageType - Array of String - optional - (Filter condition) Filters by storage type. (SD | HP | TB | TP | THP) </li><br><br><li>LifeCycleState - Array of String - optional - (Filter condition) Filters by lifecycle state. (creating | create_failed | available | deleting | delete_failed | upgrading | unserviced | expanding) </li><br><br><li>Zone - Array of String - optional - (Filter condition) Filters by AZ. (For example: ap-guangzhou-3) </li><br><br><li>IpAddress - Array of String - optional - (Filter condition) Filters by export point IP address. (For example: 10.0.0.3) </li><br><br><li>PGroupId - Array of String - optional - (Filter condition) Filters by permission group ID. (For example: pgroup-xxxxxrxt) </li><br><br><li>PGroupName - Array of String - optional - (Filter condition) Filters by permission group name. (For example: default permission group) </li><br><br><li>Scenario- Array of String - optional - (Filter condition) Filters by permission group name. (For example: AgentSandbox) </li></p>",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Tag.</p>",
+          "example": "无",
+          "member": "TagInfo",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -2841,7 +3298,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "File system information",
+          "document": "<p>File system information</p>",
           "example": "无",
           "member": "FileSystemInfo",
           "name": "FileSystems",
@@ -2851,7 +3308,7 @@
         },
         {
           "disabled": false,
-          "document": "Total number of file systems",
+          "document": "<p>Total number of file systems</p>",
           "example": "1",
           "member": "uint64",
           "name": "TotalCount",
@@ -3566,7 +4023,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "File system ID. currently, only Turbo series file systems support calling this api. general series file systems (including enhanced) do not support calling.",
+          "document": "<p>File system ID. Currently, only Turbo file systems support this API. General-purpose file systems (including enhanced ones) do not support this API.</p>",
           "example": "cfs-5xxxyyyzz",
           "member": "string",
           "name": "FileSystemId",
@@ -3575,7 +4032,7 @@
         },
         {
           "disabled": false,
-          "document": "create a directory, equivalent to mkdir.\ncheck: confirm the existence of the directory, equivalent to stat.\nmove: rename a file or directory, equivalent to mv.",
+          "document": "<p>create: creates a directory, equivalent to mkdir.<br>check: checks whether a directory exists, equivalent to stat.<br>move: renames a file or directory, equivalent to mv.</p>",
           "example": "check",
           "member": "string",
           "name": "OpetationType",
@@ -3584,7 +4041,7 @@
         },
         {
           "disabled": false,
-          "document": "Absolute path of the directory. recursive creation is enabled by default (if the directory contains non-existent subdirectories, create the corresponding subdirectory first).",
+          "document": "<p>The system recursively creates all parent directories in the path by default. The path must start with /cfs/, which represents the logical path inside the file storage instance, not the local mount point path.<br>Example:</p><ul><li><p>If the operation is create/check</p><ul><li>If the CFS root directory / is mounted, and you need to create/check whether test1/test2 exists under the mount path, the input value is /cfs/test1/test2</li><li>If the CFS subdirectory /subdir is mounted, and you need to create/check whether test1/test2 exists under the mount path, the input value is /cfs/subdir/test1/test2</li></ul></li><li><p>If the operation is move</p><ul><li>If the CFS root directory / is mounted, and you need to move files under test1/test2 to DestPath, the input value is /cfs/test1/test2</li><li>If the CFS subdirectory /subdir is mounted, and you need to move files under test1/test2 to DestPath, the input value is /cfs/subdir/test1/test2</li></ul></li></ul>",
           "example": "/user1/dir2/",
           "member": "string",
           "name": "DirectoryPath",
@@ -3593,7 +4050,7 @@
         },
         {
           "disabled": false,
-          "document": "Permission to create directory. if not specified, it defaults to 0755. if OperationType is check, this value is meaningless.",
+          "document": "<p>Permission for creating the directory. If not specified, the default value is 0755. If OperationType is check, this value is meaningless.</p>",
           "example": "0777",
           "member": "string",
           "name": "Mode",
@@ -3602,7 +4059,7 @@
         },
         {
           "disabled": false,
-          "document": "The destination directory name for the mv operation. the path must start with /cfs/.",
+          "document": "<p>Target directory path for the mv operation. It must start with /cfs/, which represents the logical path inside the file storage instance, not the local mount point path.<br>Example:</p><ul><li>If the CFS root directory / is mounted, and you need to move files under DirectoryPath to test3/test4 under the mount path, the input value is /cfs/test3/test4</li><li>If the CFS subdirectory /subdir is mounted, and you need to move files under DirectoryPath to test3/test4 under the mount path, the input value is /cfs/subdir/test3/test4</li></ul>",
           "example": "/cfs/testa",
           "member": "string",
           "name": "DestPath",
@@ -3617,7 +4074,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "1: success 0: failure. for the create directory operation, 1 indicates successful creation, 0 indicates creation failed. for the confirm directory existence operation, 1 indicates the directory exists, 0 indicates the directory does not exist. in addition, if the directory already exists during the create directory operation, it will also return creation succeeded.",
+          "document": "<p>1: success. 0: failure. For the operation of creating a directory, 1 indicates that the directory is created successfully, and 0 indicates a creation failure. For the operation of checking whether a directory exists, 1 indicates that the directory exists, and 0 indicates that the directory does not exist. In addition, if the directory already exists during the directory creation operation, the creation is also considered successful.</p>",
           "example": "1",
           "member": "int64",
           "name": "Result",
@@ -3807,7 +4264,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Creation time",
+          "document": "<p>Creation time.</p>",
           "example": "2020-08-11 20:57:17",
           "member": "string",
           "name": "CreationTime",
@@ -3817,7 +4274,7 @@
         },
         {
           "disabled": false,
-          "document": "Custom name",
+          "document": "<p>User-defined name.</p>",
           "example": "default",
           "member": "string",
           "name": "CreationToken",
@@ -3827,7 +4284,7 @@
         },
         {
           "disabled": false,
-          "document": "File system ID",
+          "document": "<p>File system ID.</p>",
           "example": "cfs-gabtqtq",
           "member": "string",
           "name": "FileSystemId",
@@ -3837,7 +4294,7 @@
         },
         {
           "disabled": false,
-          "document": "File system status. Valid values:\n- creating\n- mounting\n- create_failed\n- available\n- unserviced\n- upgrading",
+          "document": "<p>File system status. Valid values:</p><ul><li>creating: Creating</li><li>mounting: Mounting</li><li>create_failed: Failed to create</li><li>available: Available</li><li>unserviced: Service suspended</li><li>upgrading: Upgrading</li></ul>",
           "example": "creating",
           "member": "string",
           "name": "LifeCycleState",
@@ -3847,7 +4304,7 @@
         },
         {
           "disabled": false,
-          "document": "Used capacity of the file system, in Byte.",
+          "document": "<p>Used capacity of the file system. Unit: Byte.</p>",
           "example": "10",
           "member": "uint64",
           "name": "SizeByte",
@@ -3857,7 +4314,7 @@
         },
         {
           "disabled": false,
-          "document": "File system space limit, in GiB.",
+          "document": "<p>File system space limit. Unit: GiB.</p>",
           "example": "50",
           "member": "uint64",
           "name": "SizeLimit",
@@ -3867,7 +4324,7 @@
         },
         {
           "disabled": false,
-          "document": "Region ID",
+          "document": "<p>Region ID.</p>",
           "example": "100001",
           "member": "uint64",
           "name": "ZoneId",
@@ -3877,7 +4334,7 @@
         },
         {
           "disabled": false,
-          "document": "Region name",
+          "document": "<p>Region name.</p>",
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "Zone",
@@ -3887,7 +4344,7 @@
         },
         {
           "disabled": false,
-          "document": "File system protocol type. Valid values: NFS, CIFS, and TURBO.",
+          "document": "<p>File system protocol type. Valid values: NFS, CIFS, and TURBO.</p>",
           "example": "NFS",
           "member": "string",
           "name": "Protocol",
@@ -3897,7 +4354,7 @@
         },
         {
           "disabled": false,
-          "document": "Storage type. HP: high-performance; SD: standard; TP: high-performance Turbo; TB: standard Turbo; THP: throughput.",
+          "document": "<p>Storage type. Valid values: HP: General performance; SD: General standard; TP: turbo performance; TB: turbo standard; THP: Throughput.</p>",
           "example": "HP",
           "member": "string",
           "name": "StorageType",
@@ -3907,7 +4364,7 @@
         },
         {
           "disabled": false,
-          "document": "Prepaid storage pack bound with the file system",
+          "document": "<p>Prepaid storage pack bound to the file system.</p>",
           "example": "cfspkg-xx",
           "member": "string",
           "name": "StorageResourcePkg",
@@ -3917,7 +4374,7 @@
         },
         {
           "disabled": false,
-          "document": "Prepaid bandwidth pack bound to a file system (not supported currently)",
+          "document": "<p>Prepaid bandwidth pack bound to the file system (not supported yet).</p>",
           "example": "cfspkg-xx",
           "member": "string",
           "name": "BandwidthResourcePkg",
@@ -3927,8 +4384,8 @@
         },
         {
           "disabled": false,
-          "document": "Information of permission groups bound to a file system",
-          "example": "pgroupbasic",
+          "document": "<p>Information of the permission group bound to the file system.</p>",
+          "example": "无",
           "member": "PGroup",
           "name": "PGroup",
           "output_required": true,
@@ -3937,7 +4394,7 @@
         },
         {
           "disabled": false,
-          "document": "Custom name",
+          "document": "<p>User-defined name.</p>",
           "example": "default",
           "member": "string",
           "name": "FsName",
@@ -3947,7 +4404,7 @@
         },
         {
           "disabled": false,
-          "document": "Is the file system encrypted. true: encrypted. false: non-encrypted.",
+          "document": "<p>Whether the file system is encrypted. true: encrypted; false: not encrypted.</p>",
           "example": "true",
           "member": "bool",
           "name": "Encrypted",
@@ -3957,7 +4414,7 @@
         },
         {
           "disabled": false,
-          "document": "Key used for encryption, which can be the key ID or ARN",
+          "document": "<p>Key used for encryption, which can be the key ID or ARN.</p>",
           "example": "gaglkjgfpnggagalkinebn14tw",
           "member": "string",
           "name": "KmsKeyId",
@@ -3967,8 +4424,8 @@
         },
         {
           "disabled": false,
-          "document": "Application ID",
-          "example": "1000443xxxx",
+          "document": "<p>Application ID.</p>",
+          "example": "1300275735",
           "member": "int64",
           "name": "AppId",
           "output_required": true,
@@ -3977,7 +4434,7 @@
         },
         {
           "disabled": false,
-          "document": "Upper limit of the file system throughput, in MiB/s. The upper limit is determined based on the current storage used of the file system, bound storage resource packages, and throughput resource packages.",
+          "document": "<p>Maximum file system throughput, which is determined by the current used storage capacity of the file system, the bound storage pack, and the throughput pack. Unit: MiB/s.</p>",
           "example": "100",
           "member": "float",
           "name": "BandwidthLimit",
@@ -3987,7 +4444,7 @@
         },
         {
           "disabled": false,
-          "document": "Snapshot policy associated with the file system.",
+          "document": "<p>Snapshot policy associated with the file system.</p>",
           "example": "asp-gabgat",
           "member": "string",
           "name": "AutoSnapshotPolicyId",
@@ -3997,7 +4454,7 @@
         },
         {
           "disabled": false,
-          "document": "File system processes snapshot status, snapping: in snapshot, normal: in normal status.",
+          "document": "<p>Snapshot processing status of the file system. snapping: snapshot in progress; normal: normal status.</p>",
           "example": "snapping",
           "member": "string",
           "name": "SnapStatus",
@@ -4007,7 +4464,7 @@
         },
         {
           "disabled": false,
-          "document": "Upper limit of file system capacity.\nUnit: GiB.",
+          "document": "<p>Maximum capacity specification of the file system.<br>Unit: GiB.</p>",
           "example": "100",
           "member": "uint64",
           "name": "Capacity",
@@ -4017,8 +4474,8 @@
         },
         {
           "disabled": false,
-          "document": "File system tag list",
-          "example": "\"TagKey\": \"xxxxx\", \"TagValue\": \"xxxxx\"",
+          "document": "<p>List of file system tags.</p>",
+          "example": "无",
           "member": "TagInfo",
           "name": "Tags",
           "output_required": true,
@@ -4027,7 +4484,7 @@
         },
         {
           "disabled": false,
-          "document": "Status of file system lifecycle management.\nNotAvailable: unavailable.\nAvailable.",
+          "document": "<p>Lifecycle management status of the file system.<br>NotAvailable: Unavailable.<br>Available: Available.</p>",
           "example": "NotAvailable",
           "member": "string",
           "name": "TieringState",
@@ -4037,8 +4494,8 @@
         },
         {
           "disabled": false,
-          "document": "Layered storage detail.",
-          "example": "\"TieringSizeInBytes\": 0",
+          "document": "<p>Tiered storage details.</p>",
+          "example": "无",
           "member": "TieringDetailInfo",
           "name": "TieringDetail",
           "output_required": true,
@@ -4047,8 +4504,8 @@
         },
         {
           "disabled": false,
-          "document": "File system auto scale-out policy.",
-          "example": "\"Status\":close",
+          "document": "<p>Automatic scaling policy of the file system.</p>",
+          "example": "无",
           "member": "AutoScaleUpRule",
           "name": "AutoScaleUpRule",
           "output_required": true,
@@ -4057,7 +4514,7 @@
         },
         {
           "disabled": false,
-          "document": "File System Version",
+          "document": "<p>File system version.</p>",
           "example": "v1.0",
           "member": "string",
           "name": "Version",
@@ -4067,8 +4524,8 @@
         },
         {
           "disabled": false,
-          "document": "Additional performance info.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"Type\": \"fixed\", \"Performance\": 300",
+          "document": "<p>Additional performance information.</p>",
+          "example": "无",
           "member": "ExstraPerformanceInfo",
           "name": "ExstraPerformanceInfo",
           "output_required": false,
@@ -4077,12 +4534,52 @@
         },
         {
           "disabled": false,
-          "document": "basic: standard version metadata type.\nenhanced: additional metadata type.",
+          "document": "<p>basic: standard metadata type.<br>enhanced: enhanced metadata type.</p>",
           "example": "basic",
           "member": "string",
           "name": "MetaType",
           "output_required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Business scenario.</p><p>Valid values:</p><ul><li>AgentSandbox: Create AgentCFS.</li></ul>",
+          "example": "AgentSandbox",
+          "member": "string",
+          "name": "Scenario",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Overfull deletion capacity ratio. 0.0 indicates disabled.</p><p>Value range: [0.0, 1.0].</p>",
+          "example": "0.85",
+          "member": "float",
+          "name": "FullDeleteCapacityUsage",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Minimum survival time before overfull deletion, in seconds.</p><p>Unit: seconds.</p>",
+          "example": "3600",
+          "member": "uint64",
+          "name": "FullDeleteMinTtl",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Expiration deletion TTL, in seconds. 0 indicates disabled.</p><p>Unit: seconds.</p>",
+          "example": "3600",
+          "member": "uint64",
+          "name": "ExpireDeleteTtl",
+          "output_required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -4117,7 +4614,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task ID.",
+          "document": "<p>Task ID.</p>",
           "example": "task-202411gatagah",
           "member": "string",
           "name": "TaskId",
@@ -4128,7 +4625,7 @@
         },
         {
           "disabled": false,
-          "document": "Task status.\ninit: pending.\nrunning: executing, finished: completed.\nfailed: failure.\nStopping: stopping, stopped: stopped.",
+          "document": "<p>Task status.</p><p>Valid values:</p><ul><li>init: queuing</li><li>running: running</li><li>finished: completed</li><li>failed: failed</li><li>stopping: stopping</li><li>stopped: stopped</li></ul>",
           "example": "init",
           "member": "string",
           "name": "TaskStatus",
@@ -4139,7 +4636,7 @@
         },
         {
           "disabled": false,
-          "document": "Task creation time",
+          "document": "<p>Task creation time</p>",
           "example": "2024-10-30 12：43:44",
           "member": "string",
           "name": "CreationTime",
@@ -4150,7 +4647,7 @@
         },
         {
           "disabled": false,
-          "document": "Task end time.",
+          "document": "<p>Task end time</p>",
           "example": "2024-10-30 12：43:44",
           "member": "string",
           "name": "FinishTime",
@@ -4161,7 +4658,7 @@
         },
         {
           "disabled": false,
-          "document": "Total files.",
+          "document": "<p>Total number of files</p>",
           "example": "20",
           "member": "uint64",
           "name": "FileTotalCount",
@@ -4172,7 +4669,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of successfully processed files.",
+          "document": "<p>Number of files processed successfully</p>",
           "example": "10",
           "member": "uint64",
           "name": "FileSuccessedCount",
@@ -4183,7 +4680,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of failed files.",
+          "document": "<p>Number of files that have failed</p>",
           "example": "30",
           "member": "uint64",
           "name": "FileFailedCount",
@@ -4194,7 +4691,7 @@
         },
         {
           "disabled": false,
-          "document": "File capacity, in Byte.\n\n",
+          "document": "<p>File size, in bytes</p>",
           "example": "3000000",
           "member": "uint64",
           "name": "FileTotalSize",
@@ -4205,7 +4702,7 @@
         },
         {
           "disabled": false,
-          "document": "Processed file capacity, in Byte.\n\n",
+          "document": "<p>Size of processed files, in bytes</p>",
           "example": "666666",
           "member": "uint64",
           "name": "FileSuccessedSize",
@@ -4216,7 +4713,7 @@
         },
         {
           "disabled": false,
-          "document": "Capacity of processed failed files, in Byte.\n",
+          "document": "<p>Size of failed files, in bytes</p>",
           "example": "68788778",
           "member": "uint64",
           "name": "FileFailedSize",
@@ -4227,7 +4724,7 @@
         },
         {
           "disabled": false,
-          "document": "Total file list.",
+          "document": "<p>Total file list.</p>",
           "example": "https://cfs-migrate-xxxxx.cos.ap-chongqing.myqcloud.com/cfs-migrate-results/cfsmigrate-3d2cf062",
           "member": "string",
           "name": "FileTotalList",
@@ -4238,7 +4735,7 @@
         },
         {
           "disabled": false,
-          "document": "List of successful files.",
+          "document": "<p>List of successful files.</p>",
           "example": "https://cfs-migrate-xxxxx.cos.ap-chongqing.myqcloud.com/cfs-migrate-results/cfsmigrate-3d2cf062",
           "member": "string",
           "name": "FileSuccessedList",
@@ -4249,7 +4746,7 @@
         },
         {
           "disabled": false,
-          "document": "List of failed files.",
+          "document": "<p>List of failed files.</p>",
           "example": "https://cfs-migrate-xxxxx.cos.ap-chongqing.myqcloud.com/cfs-migrate-results/cfsmigrate-3d2cf062",
           "member": "string",
           "name": "FileFailedList",
@@ -4260,7 +4757,7 @@
         },
         {
           "disabled": false,
-          "document": "FileSystemId",
+          "document": "<p>FileSystemId</p>",
           "example": "cfs-4gagagag",
           "member": "string",
           "name": "FileSystemId",
@@ -4271,7 +4768,7 @@
         },
         {
           "disabled": false,
-          "document": "Task name.",
+          "document": "<p>Task name.</p>",
           "example": "agcg",
           "member": "string",
           "name": "TaskName",
@@ -4282,7 +4779,7 @@
         },
         {
           "disabled": false,
-          "document": "Task path.",
+          "document": "<p>Task path.</p>",
           "example": "/cfs/abc",
           "member": "string",
           "name": "TaskPath",
@@ -4293,7 +4790,7 @@
         },
         {
           "disabled": false,
-          "document": "Task type, archive: indicates settlement task, restore: indicates pull task.",
+          "document": "<p>Task type. archive: an archiving task. restore: a retrieval task.</p>",
           "example": "archive",
           "member": "string",
           "name": "Type",
@@ -4304,7 +4801,7 @@
         },
         {
           "disabled": false,
-          "document": "Data flow Id.",
+          "document": "<p>Data flow Id.</p>",
           "example": "cfs-dataflow-e9ec49eb",
           "member": "string",
           "name": "DataFlowId",
@@ -4315,13 +4812,24 @@
         },
         {
           "disabled": false,
-          "document": "When a file in CFSTurbo and an external storage have the same name, whether to overwrite.\n\nOverride.\n\nfalse: not overwrite (at the same time, it does not release hot data storage).\nDefault false when empty.",
+          "document": "<p>Whether to overwrite files with the same name in CFS Turbo and external storage.</p><p>true: Overwrite.</p><p>false: Do not overwrite (and hot storage data will not be released).<br>If this parameter is left empty, the default value is false.</p>",
           "example": "false",
           "member": "bool",
           "name": "IsOverwrite",
           "output_required": false,
           "required": false,
           "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Path of the data manifest file. Each line in the manifest file is the full path of a file to be processed. All paths (including the manifest file path and the paths of files to be processed in each line of the manifest file) must start with /cfs and point to existing files in the CFS file system. This parameter and TaskPath are alternative. <br>Example:</p><ul><li>If the CFS root directory / is mounted and the manifest file is located at lists/archive_list.txt under the mount path, set this parameter to /cfs/lists/archive_list.txt.</li><li>If the CFS subdirectory /subdir is mounted and the manifest file is located at lists/archive_list.txt under the mount path, set this parameter to /cfs/subdir/lists/archive_list.txt.</li></ul>",
+          "example": "/cfs/lists/archive_list.txt",
+          "member": "string",
+          "name": "ListPath",
+          "output_required": false,
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -4388,7 +4896,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Storage type after data dump. among them: InfrequentAccess: infrequent medium storage; ColdStorage: cold storage.",
+          "document": "<p>Storage type after data dumping. Valid values: InfrequentAccess: Infrequent Access storage. ColdStorage: Cold storage.</p>",
           "example": "InfrequentAccess",
           "member": "string",
           "name": "StorageType",
@@ -4399,7 +4907,7 @@
         },
         {
           "disabled": false,
-          "document": "Data dump FILE type. among them, BIG_FILE: extra large FILE; STD_FILE: regular FILE; SMALL_FILE: SMALL FILE; ALL: ALL files.",
+          "document": "<p>File type for data dumping. Valid values: BIG_FILE: Very large files. STD_FILE: Standard files. SMALL_FILE: Small files. ALL: All files.</p>",
           "example": "All",
           "member": "string",
           "name": "FileType",
@@ -4410,7 +4918,7 @@
         },
         {
           "disabled": false,
-          "document": "Data dumping action. among them, Archive: settlement; Noarchive: no settlement.",
+          "document": "<p>Data dumping behavior. Valid values: Archive: Archive. Noarchive: Do not archive.</p>",
           "example": "Archive",
           "member": "string",
           "name": "Action",
@@ -4421,7 +4929,7 @@
         },
         {
           "disabled": false,
-          "document": "Data dump trigger time. consists of \"DEFAULT_ATIME_\" and a number, in days. keep it empty when Action is Noarchive.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Trigger time for data dumping. It consists of \"DEFAULT_ATIME_\" and a number, in the unit of days. Leave this parameter empty when Action is Noarchive.</p>",
           "example": "DEFAULT_ATIME_14",
           "member": "string",
           "name": "Interval",
@@ -4432,7 +4940,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum specification for data dump files. the value needs to use the \"number+measurement unit\" format, and the supported units are K (KiB), M (MiB), and G (GiB).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Maximum size of a file for data dumping. The value must be in the format of \"number + unit\". Supported units: K (KiB), M (MiB), and G (GiB).</p>",
           "example": "1G",
           "member": "string",
           "name": "FileMaxSize",
@@ -4443,7 +4951,7 @@
         },
         {
           "disabled": false,
-          "document": "Minimum specification of the dump file. its numeric value needs to use the \"number+measurement unit\" format, and the supported units are K (KiB), M (MiB), and G (GiB).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "<p>Minimum size of a file for data dumping. The value must be in the format of \"number + unit\". Supported units: K (KiB), M (MiB), and G (GiB).</p>",
           "example": "1M",
           "member": "string",
           "name": "FileMinSize",
@@ -4454,7 +4962,7 @@
         },
         {
           "disabled": false,
-          "document": "Policy type.",
+          "document": "<p>Policy type</p>",
           "example": "SmartTiering",
           "member": "string",
           "name": "PolicyType",
@@ -4465,7 +4973,7 @@
         },
         {
           "disabled": false,
-          "document": "Threshold range: 10-90.",
+          "document": "<p>Threshold range [10-90]</p>",
           "example": "90",
           "member": "uint64",
           "name": "ExpireThreshold",
@@ -4476,7 +4984,7 @@
         },
         {
           "disabled": false,
-          "document": "Threshold range: 10-90.",
+          "document": "<p>Threshold range [10-90]</p>",
           "example": "80",
           "member": "uint64",
           "name": "TargetThreshold",
@@ -4487,10 +4995,43 @@
         },
         {
           "disabled": false,
-          "document": "When a file in CFSTurbo and an external storage have the same name, whether to overwrite.\n\nOverride.\n\nfalse: not overwrite (at the same time will not release hot data storage).\n\nDefault false when empty.",
+          "document": "<p>Whether to overwrite a file in CFSTurbo if it has the same name as a file in the external storage.</p><p>true: Overwrite.</p><p>false: Do not overwrite (and hot storage data will not be released).</p><p>If this parameter is left empty, the default value is false.</p>",
           "example": "false",
           "member": "bool",
           "name": "IsOverwrite",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to sync new files to S3 in near real time. true: Near real-time sync (within 30 seconds). false: Sync based on the time configured in the policy. The default value is false. This parameter takes effect only when StorageType=ExternalStorage.</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "IsCreateRealTimeSync",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to sync modified files to S3 in near real time. true: Near real-time sync (within 30 seconds) / false: Sync based on the time configured in the policy. The default value is false. This parameter takes effect only when StorageType=ExternalStorage. It is independent of IsOverwrite.</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "IsModifyRealTimeSync",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "<p>Whether to sync file deletion to S3. true: Sync deletion (within 30 seconds) / false: Do not sync deletion. The default value is false. If this parameter is set to true, versioning must be enabled for the destination COS Bucket. This parameter takes effect only when StorageType=ExternalStorage.</p>",
+          "example": "false",
+          "member": "bool",
+          "name": "IsSyncDelete",
           "output_required": false,
           "required": false,
           "type": "bool",
@@ -4764,6 +5305,69 @@
         }
       ],
       "usage": "out"
+    },
+    "ModifyAutoDeletePolicyRequest": {
+      "document": "ModifyAutoDeletePolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<p>File system ID.</p>",
+          "example": "cfs-4e5e7****",
+          "member": "string",
+          "name": "FileSystemId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Automatic cleanup policy ID.</p>",
+          "example": "adp-d774****",
+          "member": "string",
+          "name": "PolicyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>List of automatic cleanup paths.</p>",
+          "example": "[\"/cfs/*\"]",
+          "member": "string",
+          "name": "Paths",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Automatic cleanup policy name.</p>",
+          "example": "te***",
+          "member": "string",
+          "name": "PolicyName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<p>Policy status.</p><p>Valid values:</p><ul><li>enabled: Enabled.</li><li>disabled: Disabled.</li></ul>",
+          "example": "enabled",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAutoDeletePolicyResponse": {
+      "document": "ModifyAutoDeletePolicy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ModifyDataFlowRequest": {
       "document": "ModifyDataFlow request structure.",

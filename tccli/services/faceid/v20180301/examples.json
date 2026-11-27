@@ -18,10 +18,10 @@
     ],
     "ApplyWebVerificationBizTokenIntl": [
       {
-        "document": "Apply Web Verification BizToken",
+        "document": "This example shows you how to apply for a Web verification service Token.",
         "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ApplyWebVerificationBizTokenIntl\n<Common request parameters>\n\n{\n    \"RedirectURL\": \"https://www.tencentcloud.com/products/faceid\",\n    \"Config\": {\n        \"CheckMode\": 1,\n        \"IDCardType\": \"MainlandIDCard\"\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"BizToken\": \"584D404C-F1C3-401C-961E-78C6EF90BDDB\",\n        \"VerificationURL\": \"https://intl-test.faceid.qq.com/reflect/?token=584D404C-F1C3-401C-961E-78C6EF90BDDB\",\n        \"VerificationUrl\": \"https://intl-test.faceid.qq.com/reflect/?token=584D404C-F1C3-401C-961E-78C6EF90BDDB\",\n        \"RequestId\": \"1334f124-317f-4ea0-969e-19fba57f568a\"\n    }\n}",
-        "title": "Apply Web Verification BizToken"
+        "title": "Applying for a Web Verification Service Token"
       }
     ],
     "BankCard2EVerification": [

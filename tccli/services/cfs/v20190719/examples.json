@@ -16,6 +16,14 @@
         "title": "Binding a file system to a snapshot policy"
       }
     ],
+    "CreateAutoDeletePolicy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAutoDeletePolicy\n<Common request parameters>\n\n{\n    \"FileSystemId\": \"cfs-85nd****\",\n    \"PolicyName\": \"te***\",\n    \"Paths\": [\n        \"/cfs/*\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"PolicyId\": \"adp-c0d0****\",\n        \"RequestId\": \"277995e0-88d9-4c48-bcf9-d3df31ad3ffa\"\n    }\n}",
+        "title": "Creating an Auto Deletion Policy for a Specified CFS File System"
+      }
+    ],
     "CreateAutoSnapshotPolicy": [
       {
         "document": "",
@@ -64,6 +72,14 @@
         "title": "Creating a Data Flow"
       }
     ],
+    "CreateDataRetrieval": [
+      {
+        "document": "This example shows you how to retrieve data, which is supported only for Turbo series file systems.",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDataRetrieval\n<Common request parameters>\n\n{\n    \"FileSystemId\": \"cfs-4e5e76ff8\",\n    \"DataRetrievalName\": \"default\",\n    \"DayOfWeek\": \"3,4\",\n    \"Hour\": \"12,13\"\n}",
+        "output": "{\n    \"Response\": {\n        \"DataRetrievalId\": \"dataretrieval-1234bdbc\",\n        \"RequestId\": \"b3df3eb8-cd14-4c0a-8b8d-11a7ad082b40\"\n    }\n}",
+        "title": "Creating a Data Retrieval Policy"
+      }
+    ],
     "CreateLifecycleDataTask": [
       {
         "document": "",
@@ -94,6 +110,14 @@
         "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateMigrationTask\n<Common request parameters>\n\n{\n    \"BucketRegion\": \"ap-nanjing\",\n    \"SrcService\": \"COS\",\n    \"CoverType\": 1,\n    \"SrcSecretKey\": \"*****************************\",\n    \"BucketPath\": \"cos/\",\n    \"MigrationMode\": 0,\n    \"FileSystemId\": \"cfs-8dd58fd7\",\n    \"BucketName\": \"test-1-1256238147\",\n    \"FsPath\": \"/test/\",\n    \"MigrationType\": 0,\n    \"TaskName\": \"migrate1\",\n    \"SrcSecretId\": \"**************************************************\",\n    \"FsName\": \"oldfs\"\n}",
         "output": "{\n    \"Response\": {\n        \"TaskId\": \"cfsmigrate-dfe9b1f2\",\n        \"RequestId\": \"91cd4a08-a105-4c59-b229-82f0fs7363b8\"\n    }\n}",
         "title": "Creating a Migration Task"
+      }
+    ],
+    "DeleteAutoDeletePolicy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteAutoDeletePolicy\n<Common request parameters>\n\n{\n    \"FileSystemId\": \"cfs-85nd****\",\n    \"PolicyId\": \"adp-c0d0****\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fcbaa577-b74d-44ed-ba95-ebab9c7da2b7\"\n    }\n}",
+        "title": "Deleting an Auto Cleanup Policy"
       }
     ],
     "DeleteAutoSnapshotPolicy": [
@@ -144,6 +168,14 @@
         "title": "Delete a Data Flow"
       }
     ],
+    "DeleteDataRetrieval": [
+      {
+        "document": "This example shows you how to retrieve data, which is supported only for Turbo series file systems.",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteDataRetrieval\n<Common request parameters>\n\n{\n    \"DataRetrievalId\": \"dataretrieval-20507000\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f28168c8-8560-4e8b-8844-746cc501826f\"\n    }\n}",
+        "title": "Deleting a Data Retrieval Policy"
+      }
+    ],
     "DeleteLifecyclePolicy": [
       {
         "document": "Delete a lifecycle management policy",
@@ -158,6 +190,14 @@
         "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteMigrationTask\n<Common request parameters>\n\n{\n    \"TaskId\": \"cfsmigrate-4e78dae8\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"b72e3de2-6770-4388-af42-7e511935ad8e\"\n    }\n}",
         "title": "Deleting the Migration Task"
+      }
+    ],
+    "DescribeAutoDeletePolicies": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAutoDeletePolicies\n<Common request parameters>\n\n{\n    \"FileSystemId\": \"cfs-4e5e7****\",\n    \"Offset\": 0,\n    \"Limit\": 20\n}",
+        "output": "{\n    \"Response\": {\n        \"Policies\": [\n            {\n                \"CreateTime\": \"2026-**-** **:17:40\",\n                \"ErrMsg\": \"\",\n                \"FileSystemId\": \"cfs-4e5e7****\",\n                \"Paths\": [\n                    \"/cfs/*\"\n                ],\n                \"PolicyId\": \"adp-d774****\",\n                \"PolicyName\": \"te***\",\n                \"Region\": \"ap-guangzhou\",\n                \"Status\": \"enabling\",\n                \"UpdateTime\": \"2026-08-03 14:25:15\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"8d29b9df-293f-48d3-86dc-3e8e59269119\"\n    }\n}",
+        "title": "Querying the Auto Deletion Policy List"
       }
     ],
     "DescribeAutoSnapshotPolicies": [
@@ -294,6 +334,26 @@
         "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SetUserQuota\n<Common request parameters>\n\n{\n    \"FileSystemId\": \"cfs-12345\",\n    \"OpetationType\": \"create\",\n    \"DirectoryPath\": \"/user1/dir1/\",\n    \"Mode\": \"0644\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fjo8aejo-fjei-32eu-2je9-fhue83nd81\",\n        \"Result\": 1\n    }\n}",
         "title": "File System Directory Operation API"
+      }
+    ],
+    "ModifyAutoDeletePolicy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAutoDeletePolicy\n<Common request parameters>\n\n{\n    \"FileSystemId\": \"cfs-4e5e7****\",\n    \"PolicyId\": \"adp-d774****\",\n    \"PolicyName\": \"te***\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"49c5456f-038f-4daf-bbdf-678ac32ba0a9\"\n    }\n}",
+        "title": "Modifying an Auto Policy Name"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAutoDeletePolicy\n<Common request parameters>\n\n{\n    \"FileSystemId\": \"cfs-4e5e7****\",\n    \"PolicyId\": \"adp-d774****\",\n    \"Paths\": [\n        \"/cfs/*\"\n    ],\n    \"PolicyName\": \"te***\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b4a8dab3-ed49-44d1-b5a8-745f9af36190\"\n    }\n}",
+        "title": "Modifying an Auto Policy Name and Path"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cfs.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAutoDeletePolicy\n<Common request parameters>\n\n{\n    \"FileSystemId\": \"cfs-4e5e7****\",\n    \"PolicyId\": \"adp-d774****\",\n    \"Paths\": [\n        \"/cfs/*\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5a633af9-42b8-4e41-babd-8056aa77fd1e\"\n    }\n}",
+        "title": "Modifying an Auto Policy Path"
       }
     ],
     "ModifyDataFlow": [
