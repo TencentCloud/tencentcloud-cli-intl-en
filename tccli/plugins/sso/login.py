@@ -17,6 +17,9 @@ from tccli.plugins.sso.texts import get as _
 _DURATION_MIN = 1800
 _DURATION_MAX = 43200
 _DURATION_DEFAULT = 7200
+# Server-side error code meaning the login token is no longer accepted
+_AUTH_ERROR_KEYWORD = "JWTVerifyFailed"
+_SESSION_FALLBACK_DUR = 3600 * 12
 
 
 def print_message(msg):
@@ -62,19 +65,29 @@ def login(args, profile, language):
         print_message(_("auth_url_not_configured") % profile_opt)
         return
 
-    characters = string.ascii_letters + string.digits
-    state = ''.join(random.choice(characters) for x in range(32))
-
-    token = _get_token(auth_url, state, language)
-
-    if token["State"] != state:
-        raise ValueError("invalid state %s" % token["state"])
+    cached = sso.load_login_token(profile)
+    if cached:
+        print_message(_("login_token_valid") % ((cached["expiresAt"] - time.time()) / 60))
+        token = {"Token": cached["token"], "Site": cached["site"], "State": ""}
+    else:
+        print_message(_("token_expired_relogin"))
+        token = _browser_login(auth_url, language)
 
     print_message("")
 
     login_token = token["Token"]
     site = token["Site"]
-    accounts = sso.list_accounts_for_access_assignment(login_token, site)
+    try:
+        accounts = sso.list_accounts_for_access_assignment(login_token, site)
+    except ValueError as e:
+        # 本地缓存还没过期, 但服务端已吊销该登录态: 清掉缓存并回退到浏览器登录
+        if not cached or not _is_auth_error(e):
+            raise
+        print_message(_("login_state_revoked"))
+        token = _browser_login(auth_url, language)
+        login_token = token["Token"]
+        site = token["Site"]
+        accounts = sso.list_accounts_for_access_assignment(login_token, site)
     if not accounts:
         print_message(_("no_account"))
         return
@@ -100,7 +113,14 @@ def login(args, profile, language):
         return
 
     specified_role = args.get("rolename", "")
-    if specified_role:
+    specified_role_id = args.get("role-id", "")
+    if specified_role_id:
+        role = next((x for x in roles if x["RoleConfigurationId"] == specified_role_id), None)
+        if not role:
+            print_message(
+                _("specified_role_not_found") % (specified_role_id, ",".join(x["RoleConfigurationId"] for x in roles)))
+            return
+    elif specified_role:
         role = next((x for x in roles if x["RoleConfigurationName"] == specified_role), None)
         if not role:
             print_message(
@@ -115,11 +135,19 @@ def login(args, profile, language):
         role = roles[idx]
 
     print_message("role: %s" % role["RoleConfigurationName"])
+    print_message("role id: %s" % role["RoleConfigurationId"])
 
     saml_resp = sso.gen_saml_response(
         login_token, "RoleSAML", account["Uin"], "", role["RoleConfigurationId"], site)
 
     token_info = sso.verify_login_skey(login_token, site)
+
+    # Keep the cached session's expiry, fall back to _SESSION_FALLBACK_DUR when signing in
+    # with the browser and the server reports no expiry
+    if cached:
+        sso_expires_at = cached["expiresAt"]
+    else:
+        sso_expires_at = int(token_info.get("ExpiresAt") or 0) or int(time.time()) + _SESSION_FALLBACK_DUR
 
     role_arn = "qcs::cam::uin/%s:roleName/TencentCloudSSO-%s" % (account["Uin"], role["RoleConfigurationName"])
     principal_arn = "qcs::cam::uin/%s:saml-provider/TencentReservedSSO-%s" % (account["Uin"], token_info["ZoneId"])
@@ -134,12 +162,31 @@ def login(args, profile, language):
         "zoneId": token_info["ZoneId"],
         "site": site,
         "authUrl": auth_url,
-        "expiresAt": int(time.time()) + 3600 * 12,
+        "expiresAt": sso_expires_at,
     }
-    sso.save_credential(cred, sso_info, profile)
+    sso.save_credential(cred, sso_info, profile, login_token)
 
     print_message(_("login_success") % sso.cred_path_of_profile(profile))
+    # 打印 uin/role/role id, 便于直接拿去 sso list-role --uin
+    print_message(_("login_result") % (account["Uin"], role["RoleConfigurationName"], role["RoleConfigurationId"]))
 
+
+def _browser_login(auth_url, language):
+    """Open the browser and wait for the user to approve, returning the login token."""
+    characters = string.ascii_letters + string.digits
+    state = ''.join(random.choice(characters) for x in range(32))
+
+    token = _get_token(auth_url, state, language)
+
+    if token["State"] != state:
+        raise ValueError("invalid state %s" % token["state"])
+
+    return token
+
+
+def _is_auth_error(exc):
+    """Whether the exception means the login token was rejected by the server."""
+    return _AUTH_ERROR_KEYWORD in str(exc)
 
 def _get_token(auth_url, state, language):
     cli_params = {

@@ -89,7 +89,7 @@ class TestSaveCredential(unittest.TestCase):
 
     def _call_save(self, sso_info=None):
         sso_module.save_credential(
-            _make_cred_resp(), sso_info or _make_sso_info(), "default")
+            _make_cred_resp(), sso_info or _make_sso_info(), "default", "login-token")
         return self._read_credential()
 
     def test_legacy_default_duration_is_not_persisted(self):
@@ -174,12 +174,96 @@ class TestAutoRefresh(unittest.TestCase):
         mocks = self._run_refresh(36000)
         self.assertEqual(mocks["assume"].call_args[0][4], sso_module._CRED_DEFAULT_DUR)
 
+    def test_refresh_keeps_login_token_cached(self):
+        """Cache the SSO login state while refreshing the STS credential."""
+        mocks = self._run_refresh(36000)
+        self.assertEqual(mocks["save"].call_args[0][3], "t")
+
     def test_refresh_checks_session_with_current_time(self):
         """Skip SAML generation when the current remaining session time drops below 300 seconds."""
         now = 100000.0
         mocks = self._run_refresh(400, time_values=[now, now + 101])
         mocks["gen_saml"].assert_not_called()
         mocks["assume"].assert_not_called()
+
+
+# ---------------------------------------------------------------------------
+# TestLoginTokenCache
+# ---------------------------------------------------------------------------
+
+class TestLoginTokenCache(unittest.TestCase):
+    """Cache the SSO login state in the credential file for list-uin/list-role and later logins."""
+
+    def setUp(self):
+        self.temp_dir = tempfile.mkdtemp(prefix="tccli_sso_token_test_")
+        self.cred_path = os.path.join(self.temp_dir, "default.credential")
+
+    def tearDown(self):
+        shutil.rmtree(self.temp_dir, ignore_errors=True)
+
+    def _write_cred(self, cred):
+        with open(self.cred_path, "w") as cred_file:
+            json.dump(cred, cred_file)
+
+    def _load(self):
+        with mock.patch.object(
+                sso_module, "cred_path_of_profile", return_value=self.cred_path):
+            return sso_module.load_login_token("default")
+
+    def test_load_token_from_saved_credential(self):
+        """Read back the login state written by login."""
+        info = _make_sso_info()
+        with mock.patch.object(
+                sso_module, "cred_path_of_profile", return_value=self.cred_path):
+            sso_module.save_credential(_make_cred_resp(), info, "default", "login-token")
+        loaded = self._load()
+        self.assertEqual(loaded["token"], "login-token")
+        self.assertEqual(loaded["site"], info["site"])
+        self.assertEqual(loaded["expiresAt"], info["expiresAt"])
+
+    def test_expiring_login_token_is_rejected(self):
+        """Do not reuse a login state with too little time left, which would break the exchange."""
+        self._write_cred({
+            "type": "sso",
+            "sso": {"site": "cn"},
+            "session": {"token": "t", "expiresAt": int(time.time()) + 60},
+        })
+        self.assertIsNone(self._load())
+
+    def test_non_sso_credential_has_no_session(self):
+        self._write_cred({"type": "cvm-role", "sso": {"session": {"token": "t", "expiresAt": time.time() + 3600}}})
+        self.assertIsNone(self._load())
+
+    def test_missing_or_corrupted_file_is_tolerated(self):
+        self.assertIsNone(self._load())
+        with open(self.cred_path, "w") as cred_file:
+            cred_file.write("{not json")
+        self.assertIsNone(self._load())
+
+    def test_saved_login_state_does_not_replace_sts_credential(self):
+        """Caching the login state leaves the STS credential structure untouched."""
+        info = _make_sso_info()
+        with mock.patch.object(
+                sso_module, "cred_path_of_profile", return_value=self.cred_path):
+            sso_module.save_credential(_make_cred_resp(), info, "default", "login-token")
+        with open(self.cred_path) as cred_file:
+            cred = json.load(cred_file)
+        self.assertEqual(cred["type"], "sso")
+        self.assertEqual(cred["secretId"], "sid")
+        self.assertEqual(cred["token"], "tok")
+        self.assertEqual(cred["sso"]["session"], {"token": "login-token", "expiresAt": info["expiresAt"]})
+
+    def test_load_token_from_hand_written_credential(self):
+        """Only sso.session holds the login state; a top-level session is ignored."""
+        self._write_cred({
+            "type": "sso",
+            "sso": {
+                "site": "cn",
+                "session": {"token": "t", "expiresAt": int(time.time()) + 3600},
+            },
+            "session": {"token": "wrong", "expiresAt": int(time.time()) + 3600},
+        })
+        self.assertEqual(self._load()["token"], "t")
 
 
 if __name__ == "__main__":
